@@ -3,6 +3,9 @@ node_modules/
 
 # Environment variables (NUNCA subir chaves de API!)
 .env
+.env.local
+.env.*.local
+*.env
 
 # Build output
 dist/
@@ -19,3 +22,6 @@ Thumbs.db
 # Editor
 .vscode/
 .idea/
+
+# Qwen
+.qwen/

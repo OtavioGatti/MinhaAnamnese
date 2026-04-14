@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { API_BASE_URL } from './config';
 
 function App() {
   const [templates, setTemplates] = useState([]);
@@ -10,7 +11,7 @@ function App() {
   const [copiado, setCopiado] = useState(false);
 
   useEffect(() => {
-    fetch('/api/templates')
+    fetch(`${API_BASE_URL}/templates`)
       .then((res) => res.json())
       .then((data) => setTemplates(data))
       .catch(() => setErro('Erro ao carregar templates.'));
@@ -33,7 +34,7 @@ function App() {
     setLoading(true);
 
     try {
-      const res = await fetch('/api/organizar', {
+      const res = await fetch(`${API_BASE_URL}/organizar`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ template: templateSelecionado, texto }),
