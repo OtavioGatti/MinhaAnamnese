@@ -96,10 +96,13 @@ REGRAS OBRIGATÓRIAS:
 
 FORMATAÇÃO:
 - Seguir exatamente a estrutura do modelo fornecido
+- MANTER OS NOMES DAS SEÇÕES EXATAMENTE COMO APRESENTADOS (siglas, abreviações, tudo). NUNCA traduzir, expandir ou alterar. Ex: "QPD" continua "QPD", "HV" continua "HV", "MUC" continua "MUC"
+- TODAS as seções do modelo DEVEM aparecer no resultado, sem exceção
+- Se um campo não tem informação, escreva "Não informado" — NUNCA omita ou esconda a seção
 - Manter siglas médicas apropriadas (IG, DUM, BCF, etc.)
 - Não adicionar seções extras
 - Não remover seções do modelo
-- Escrever sempre em paragrafo dentro dos itens e não em tópico (Ex: ID: Nome, 32 anos, Casada...)`,
+- Escrever sempre em parágrafo dentro dos itens e não em tópicos (Ex: ID: Nome, 32 anos, Casada...)`,
   },
 };
 
