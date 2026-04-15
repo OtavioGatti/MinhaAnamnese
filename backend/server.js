@@ -98,7 +98,8 @@ FORMATAÇÃO:
 - Seguir exatamente a estrutura do modelo fornecido
 - Manter siglas médicas apropriadas (IG, DUM, BCF, etc.)
 - Não adicionar seções extras
-- Não remover seções do modelo`,
+- Não remover seções do modelo
+- Escrever sempre em paragrafo dentro dos itens e não em tópico (Ex: ID: Nome, 32 anos, Casada...)`,
   },
 };
 
