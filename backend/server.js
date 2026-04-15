@@ -2,6 +2,9 @@ require('dotenv').config({ override: true });
 const express = require('express');
 const cors = require('cors');
 const OpenAI = require('openai');
+const formatResponse = require('./middlewares/formatResponse');
+const errorHandler = require('./middlewares/errorHandler');
+const { validateOrganizar } = require('./middlewares/validations');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -10,6 +13,7 @@ const FRONTEND_URL = process.env.FRONTEND_URL || '*';
 // Middleware
 app.use(cors({ origin: FRONTEND_URL, credentials: true }));
 app.use(express.json({ limit: '10mb' }));
+app.use(formatResponse);
 
 // Validação
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
@@ -112,22 +116,12 @@ app.get('/api/templates', (_req, res) => {
     id: chave,
     nome: valor.nome,
   }));
-  res.json(lista);
+  res.formatResponse(lista);
 });
 
-app.post('/api/organizar', async (req, res) => {
+app.post('/api/organizar', validateOrganizar, async (req, res) => {
   try {
     const { template, texto } = req.body;
-
-    if (!template || !TEMPLATES[template]) {
-      return res.status(400).json({
-        erro: 'Template inválido. Escolha um dos templates disponíveis.',
-      });
-    }
-
-    if (!texto || texto.trim().length === 0) {
-      return res.status(400).json({ erro: 'O texto não pode estar vazio.' });
-    }
 
     const modelo = TEMPLATES[template];
     const estrutura = modelo.secoes.map((s) => `### ${s}`).join('\n');
@@ -153,24 +147,25 @@ ${texto}`;
     });
 
     const resultado = resposta.choices[0].message.content;
-    res.json({ resultado });
+    res.formatResponse({ resultado });
   } catch (erro) {
     console.error('Erro ao processar:', erro.message);
 
     if (erro.message?.includes('API key')) {
-      return res.status(500).json({
-        erro: 'Erro de autenticação com a OpenAI. Verifique sua API KEY.',
-      });
+      return res.status(500).formatResponse(null, 'Erro de autenticação com a OpenAI. Verifique sua API KEY.');
     }
 
-    res.status(500).json({ erro: 'Erro interno ao processar a anamnese.' });
+    return res.status(500).formatResponse(null, 'Erro interno ao processar a anamnese.');
   }
 });
 
 // Health check
 app.get('/api/health', (_req, res) => {
-  res.json({ status: 'ok' });
+  res.formatResponse({ status: 'ok' });
 });
+
+// Middleware de erro global (deve ser o último)
+app.use(errorHandler);
 
 app.listen(PORT, () => {
   console.log(`Backend rodando em http://localhost:${PORT}`);

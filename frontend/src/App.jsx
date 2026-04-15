@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { API_BASE_URL } from './config';
+import { api } from './apiClient';
 
 function App() {
   const [templates, setTemplates] = useState([]);
@@ -9,12 +9,22 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [erro, setErro] = useState('');
   const [copiado, setCopiado] = useState(false);
+  const [loadingTemplates, setLoadingTemplates] = useState(true);
 
   useEffect(() => {
-    fetch(`${API_BASE_URL}/templates`)
-      .then((res) => res.json())
-      .then((data) => setTemplates(data))
-      .catch(() => setErro('Erro ao carregar templates.'));
+    async function carregarTemplates() {
+      setLoadingTemplates(true);
+      const response = await api.get('/templates');
+      
+      if (response.success) {
+        setTemplates(response.data);
+      } else {
+        setErro(response.error || 'Erro ao carregar templates.');
+      }
+      setLoadingTemplates(false);
+    }
+    
+    carregarTemplates();
   }, []);
 
   const handleOrganizar = async () => {
@@ -34,21 +44,18 @@ function App() {
     setLoading(true);
 
     try {
-      const res = await fetch(`${API_BASE_URL}/organizar`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ template: templateSelecionado, texto }),
+      const response = await api.post('/organizar', {
+        template: templateSelecionado,
+        texto,
       });
 
-      const data = await res.json();
-
-      if (!res.ok) {
-        throw new Error(data.erro || 'Erro ao processar.');
+      if (response.success) {
+        setResultado(response.data.resultado);
+      } else {
+        setErro(response.error || 'Erro ao processar anamnese.');
       }
-
-      setResultado(data.resultado);
     } catch (err) {
-      setErro(err.message);
+      setErro(err.message || 'Erro inesperado ao processar.');
     } finally {
       setLoading(false);
     }
@@ -121,8 +128,11 @@ function App() {
               id="template"
               value={templateSelecionado}
               onChange={(e) => setTemplateSelecionado(e.target.value)}
+              disabled={loadingTemplates}
             >
-              <option value="">Selecione um modelo...</option>
+              <option value="">
+                {loadingTemplates ? 'Carregando...' : 'Selecione um modelo...'}
+              </option>
               {templates.map((t) => (
                 <option key={t.id} value={t.id}>
                   {t.nome}
@@ -196,6 +206,13 @@ function App() {
               <line x1="12" y1="16" x2="12.01" y2="16"/>
             </svg>
             <span>{erro}</span>
+            <button
+              className="btn-erro-dismiss"
+              onClick={() => setErro('')}
+              title="Fechar"
+            >
+              ×
+            </button>
           </div>
         )}
       </div>
