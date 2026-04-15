@@ -2,12 +2,12 @@
  * Validações para as rotas da API
  */
 
-const TEMPLATES_VALID = ['psiquiatria', 'pediatria', 'clinica', 'gofaa'];
+const templates = require('../templates/templates');
 
 function validateOrganizar(req, res, next) {
   const { template, texto } = req.body;
 
-  if (!template || !TEMPLATES_VALID.includes(template)) {
+  if (!template || !templates[template]) {
     return res.status(400).json({
       success: false,
       data: null,

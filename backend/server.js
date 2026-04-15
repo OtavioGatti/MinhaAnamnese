@@ -5,6 +5,7 @@ const OpenAI = require('openai');
 const formatResponse = require('./middlewares/formatResponse');
 const errorHandler = require('./middlewares/errorHandler');
 const { validateOrganizar } = require('./middlewares/validations');
+const templates = require('./templates/templates');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -24,95 +25,9 @@ if (!OPENAI_API_KEY) {
 
 const openai = new OpenAI({ apiKey: OPENAI_API_KEY });
 
-// Templates disponíveis
-const TEMPLATES = {
-  psiquiatria: {
-    nome: 'Psiquiatria',
-    secoes: [
-      'Identificação',
-      'Queixa Principal',
-      'História da Doença Atual',
-      'História Psiquiátrica Pregressa',
-      'História Familiar',
-      'Uso de Medicações',
-      'Exame do Estado Mental',
-      'Hipótese Diagnóstica',
-      'Conduta',
-    ],
-  },
-  pediatria: {
-    nome: 'Pediatria',
-    secoes: [
-      'Identificação',
-      'Queixa Principal',
-      'História da Doença Atual',
-      'Antecedentes Pessoais',
-      'Antecedentes Familiares',
-      'Vacinação',
-      'Desenvolvimento Neuropsicomotor',
-      'Exame Físico',
-      'Hipótese Diagnóstica',
-      'Conduta',
-    ],
-  },
-  clinica: {
-    nome: 'Clínica Médica',
-    secoes: [
-      'Identificação',
-      'Queixa Principal',
-      'História da Doença Atual',
-      'Revisão de Sistemas',
-      'Antecedentes',
-      'Medicações em Uso',
-      'Exame Físico',
-      'Hipótese Diagnóstica',
-      'Plano',
-    ],
-  },
-  gofaa: {
-    nome: 'GO FAA',
-    secoes: [
-      'ID',
-      'IG (USG) | (DUM)',
-      'Tipagem Sanguínea',
-      'QPD',
-      'H. Obstétrico',
-      'HV',
-      'Alergia',
-      'Doenças de Base',
-      'MUC',
-      'Ex. Físico',
-      'HD',
-      'Conduta',
-    ],
-    promptSistema: `Você é um médico responsável por organizar registros clínicos obstétricos de forma técnica, objetiva e fiel às informações fornecidas.
-
-Sua função é estruturar o texto livre exatamente no modelo obstétrico solicitado.
-
-REGRAS OBRIGATÓRIAS:
-- NÃO inventar informações
-- NÃO inferir dados ausentes
-- NÃO sugerir diagnósticos ou condutas
-- NÃO completar automaticamente campos
-- Se a informação não estiver presente, escrever: "Não informado"
-- Manter linguagem médica técnica e concisa
-- Preservar todos os dados relevantes do texto original
-
-FORMATAÇÃO:
-- Seguir exatamente a estrutura do modelo fornecido
-- MANTER OS NOMES DAS SEÇÕES EXATAMENTE COMO APRESENTADOS (siglas, abreviações, tudo). NUNCA traduzir, expandir ou alterar. Ex: "QPD" continua "QPD", "HV" continua "HV", "MUC" continua "MUC"
-- TODAS as seções do modelo DEVEM aparecer no resultado, sem exceção
-- Se um campo não tem informação, escreva "Não informado" — NUNCA omita ou esconda a seção
-- Manter siglas médicas apropriadas (IG, DUM, BCF, etc.)
-- Não adicionar seções extras
-- Não remover seções do modelo
-- Escrever sempre em parágrafo dentro dos itens e não em tópicos (Ex: ID: Nome, 32 anos, Casada...)`,
-  },
-};
-
 // Rotas
 app.get('/api/templates', (_req, res) => {
-  const lista = Object.entries(TEMPLATES).map(([chave, valor]) => ({
+  const lista = Object.entries(templates).map(([chave, valor]) => ({
     id: chave,
     nome: valor.nome,
   }));
@@ -123,7 +38,7 @@ app.post('/api/organizar', validateOrganizar, async (req, res) => {
   try {
     const { template, texto } = req.body;
 
-    const modelo = TEMPLATES[template];
+    const modelo = templates[template];
     const estrutura = modelo.secoes.map((s) => `### ${s}`).join('\n');
 
     const systemPrompt = modelo.promptSistema || `Você é um médico que organiza anamneses. Não invente informações. Se faltar dado escreva 'Não informado'. Use linguagem médica técnica e organize conforme o modelo.
