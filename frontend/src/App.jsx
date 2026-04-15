@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { api } from './apiClient';
+import GuidePanel from './components/GuidePanel';
 
 function App() {
   const [templates, setTemplates] = useState([]);
@@ -10,6 +11,7 @@ function App() {
   const [erro, setErro] = useState('');
   const [copiado, setCopiado] = useState(false);
   const [loadingTemplates, setLoadingTemplates] = useState(true);
+  const [guiaAberto, setGuiaAberto] = useState(false);
 
   useEffect(() => {
     async function carregarTemplates() {
@@ -144,17 +146,32 @@ function App() {
 
         <div className="form-group">
           <label htmlFor="texto">Anotações da Consulta</label>
-          <div className="input-wrapper">
-            <textarea
-              id="texto"
-              value={texto}
-              onChange={(e) => setTexto(e.target.value)}
-              placeholder="Digite ou cole as anotações da consulta aqui..."
-            />
-            {texto.length > 0 && (
-              <span className="char-count">{texto.length} caracteres</span>
-            )}
+          <div className="texto-com-guia">
+            <div className="input-wrapper">
+              <textarea
+                id="texto"
+                value={texto}
+                onChange={(e) => setTexto(e.target.value)}
+                placeholder="Digite ou cole as anotações da consulta aqui..."
+              />
+              {texto.length > 0 && (
+                <span className="char-count">{texto.length} caracteres</span>
+              )}
+            </div>
+            <GuidePanel templateSelecionado={templateSelecionado} aberto={guiaAberto} />
           </div>
+          <button
+            className="btn-guia-toggle"
+            onClick={() => setGuiaAberto(!guiaAberto)}
+            title="Mostrar/ocultar guia de anamnese"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="12" y1="16" x2="12" y2="12"/>
+              <line x1="12" y1="8" x2="12.01" y2="8"/>
+            </svg>
+            {guiaAberto ? 'Ocultar guia' : 'Mostrar guia'}
+          </button>
         </div>
 
         <div className="botoes">
