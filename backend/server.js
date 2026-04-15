@@ -65,6 +65,41 @@ const TEMPLATES = {
       'Plano',
     ],
   },
+  gofaa: {
+    nome: 'GO FAA',
+    secoes: [
+      'ID',
+      'IG (USG) | (DUM)',
+      'Tipagem Sanguínea',
+      'QPD',
+      'H. Obstétrico',
+      'HV',
+      'Alergia',
+      'Doenças de Base',
+      'MUC',
+      'Ex. Físico',
+      'HD',
+      'Conduta',
+    ],
+    promptSistema: `Você é um médico responsável por organizar registros clínicos obstétricos de forma técnica, objetiva e fiel às informações fornecidas.
+
+Sua função é estruturar o texto livre exatamente no modelo obstétrico solicitado.
+
+REGRAS OBRIGATÓRIAS:
+- NÃO inventar informações
+- NÃO inferir dados ausentes
+- NÃO sugerir diagnósticos ou condutas
+- NÃO completar automaticamente campos
+- Se a informação não estiver presente, escrever: "Não informado"
+- Manter linguagem médica técnica e concisa
+- Preservar todos os dados relevantes do texto original
+
+FORMATAÇÃO:
+- Seguir exatamente a estrutura do modelo fornecido
+- Manter siglas médicas apropriadas (IG, DUM, BCF, etc.)
+- Não adicionar seções extras
+- Não remover seções do modelo`,
+  },
 };
 
 // Rotas
@@ -93,7 +128,7 @@ app.post('/api/organizar', async (req, res) => {
     const modelo = TEMPLATES[template];
     const estrutura = modelo.secoes.map((s) => `### ${s}`).join('\n');
 
-    const systemPrompt = `Você é um médico que organiza anamneses. Não invente informações. Se faltar dado escreva 'Não informado'. Use linguagem médica técnica e organize conforme o modelo.
+    const systemPrompt = modelo.promptSistema || `Você é um médico que organiza anamneses. Não invente informações. Se faltar dado escreva 'Não informado'. Use linguagem médica técnica e organize conforme o modelo.
 
 Estrutura obrigatória:
 ${estrutura}`;
