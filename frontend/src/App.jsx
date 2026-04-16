@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { api } from './apiClient';
 import CalculatorPanel from './components/CalculatorPanel';
 import GuidePanel from './components/GuidePanel';
+import { supabase } from './lib/supabaseClient';
 
 const TEMPLATE_WITH_CALCULATORS = 'obstetricia';
 const isPro = false;
@@ -31,8 +32,10 @@ function App() {
   const [templateSelecionado, setTemplateSelecionado] = useState('');
   const [texto, setTexto] = useState('');
   const [resultado, setResultado] = useState('');
+  const [user, setUser] = useState(null);
   const [insights, setInsights] = useState('');
   const [loading, setLoading] = useState(false);
+  const [loadingUser, setLoadingUser] = useState(true);
   const [loadingInsights, setLoadingInsights] = useState(false);
   const [erro, setErro] = useState('');
   const [copiado, setCopiado] = useState(false);
@@ -43,6 +46,27 @@ function App() {
   const [jaSelecionou, setJaSelecionou] = useState(false);
 
   const templateTemCalculadora = templateSelecionado === TEMPLATE_WITH_CALCULATORS;
+  const userPlan = user?.plan || (isPro ? 'pro' : 'free');
+
+  useEffect(() => {
+    async function carregarSessao() {
+      setLoadingUser(true);
+      const { data } = await supabase.auth.getSession();
+      setUser(data.session?.user || null);
+      setLoadingUser(false);
+    }
+
+    const { data } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUser(session?.user || null);
+      setLoadingUser(false);
+    });
+
+    carregarSessao();
+
+    return () => {
+      data.subscription.unsubscribe();
+    };
+  }, []);
 
   useEffect(() => {
     async function carregarTemplates() {
@@ -175,6 +199,39 @@ function App() {
     window.alert('Essa funcionalidade faz parte do plano Pro');
   };
 
+  const handleEntrar = async () => {
+    const email = window.prompt('Digite seu email para receber o link de acesso:');
+
+    if (!email) {
+      return;
+    }
+
+    setErro('');
+    setLoadingUser(true);
+
+    const { error } = await supabase.auth.signInWithOtp({
+      email,
+      options: {
+        emailRedirectTo: window.location.origin,
+      },
+    });
+
+    if (error) {
+      setErro('Não foi possível enviar o link de acesso.');
+      setLoadingUser(false);
+      return;
+    }
+
+    window.alert('Enviamos um link de acesso para o seu email.');
+    setLoadingUser(false);
+  };
+
+  const handleSair = async () => {
+    setLoadingUser(true);
+    await supabase.auth.signOut();
+    setLoadingUser(false);
+  };
+
   const insightsPreview = insights ? getInsightsPreview(insights) : '';
   const shouldShowPaywall = insights && !isPro;
   const hiddenInsightsCount = getHiddenInsightsCount(insights);
@@ -193,6 +250,34 @@ function App() {
         </div>
         <h1>Minha Anamnese</h1>
         <p>Organize suas anamneses com inteligência artificial</p>
+        <div style={{ marginTop: '1rem', display: 'flex', justifyContent: 'center' }}>
+          {loadingUser ? (
+            <span style={{ fontSize: '0.9rem', color: '#6b7280' }}>Carregando usuário...</span>
+          ) : user ? (
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexWrap: 'wrap', justifyContent: 'center' }}>
+              <span style={{ fontSize: '0.9rem', color: '#4b5563' }}>
+                {user.email} · Plano {userPlan}
+              </span>
+              <button
+                type="button"
+                className="btn btn-secundario"
+                onClick={handleSair}
+                style={{ padding: '0.55rem 1rem' }}
+              >
+                Sair
+              </button>
+            </div>
+          ) : (
+            <button
+              type="button"
+              className="btn btn-secundario"
+              onClick={handleEntrar}
+              style={{ padding: '0.55rem 1rem' }}
+            >
+              Entrar
+            </button>
+          )}
+        </div>
       </header>
 
       <div className="aviso">
