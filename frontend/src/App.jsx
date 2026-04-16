@@ -154,23 +154,15 @@ function App() {
     setLoadingInsights(true);
 
     try {
-      const response = await fetch('/api/insights', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          texto: resultado,
-          templateId: templateSelecionado,
-        }),
+      const response = await api.post('/insights', {
+        texto: resultado,
+        templateId: templateSelecionado,
       });
 
-      const json = await response.json();
-
-      if (json.success) {
-        setInsights(json.data);
+      if (response.success) {
+        setInsights(response.data);
       } else {
-        setErro(json.error || 'Erro ao gerar insights');
+        setErro(response.error || 'Erro ao gerar insights');
       }
     } catch (_err) {
       setErro('Erro ao gerar insights');
