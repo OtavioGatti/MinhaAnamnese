@@ -5,7 +5,6 @@ import GuidePanel from './components/GuidePanel';
 import { supabase } from './lib/supabaseClient';
 
 const TEMPLATE_WITH_CALCULATORS = 'obstetricia';
-const isPro = false;
 const INSIGHTS_PREVIEW_LINES = 4;
 
 function getInsightsLines(content) {
@@ -56,6 +55,7 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [loadingUser, setLoadingUser] = useState(true);
   const [loadingInsights, setLoadingInsights] = useState(false);
+  const [loadingCheckout, setLoadingCheckout] = useState(false);
   const [erro, setErro] = useState('');
   const [copiado, setCopiado] = useState(false);
   const [loadingTemplates, setLoadingTemplates] = useState(true);
@@ -65,7 +65,8 @@ function App() {
   const [jaSelecionou, setJaSelecionou] = useState(false);
 
   const templateTemCalculadora = templateSelecionado === TEMPLATE_WITH_CALCULATORS;
-  const userPlan = user?.plan || (isPro ? 'profissional' : 'básico');
+  const userPlan = user?.user_metadata?.plan || 'basic';
+  const isPro = userPlan === 'pro';
 
   useEffect(() => {
     async function carregarSessao() {
@@ -90,6 +91,34 @@ function App() {
     return () => {
       data.subscription.unsubscribe();
     };
+  }, []);
+
+  useEffect(() => {
+    async function atualizarSessaoAposCheckout() {
+      const checkoutStatus = new URLSearchParams(window.location.search).get('checkout');
+
+      if (checkoutStatus !== 'success') {
+        return;
+      }
+
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+
+      if (session) {
+        const { data, error } = await supabase.auth.refreshSession();
+
+        if (!error) {
+          setUser(data.session?.user || session.user || null);
+        }
+      }
+
+      const nextUrl = new URL(window.location.href);
+      nextUrl.searchParams.delete('checkout');
+      window.history.replaceState({}, '', nextUrl.toString());
+    }
+
+    atualizarSessaoAposCheckout();
   }, []);
 
   useEffect(() => {
@@ -220,7 +249,37 @@ function App() {
   };
 
   const handleUpgradeInsights = () => {
-    window.alert('Essa funcionalidade faz parte do plano profissional.');
+    if (!user?.id || !user?.email) {
+      setErro('Acesse sua conta para liberar o plano profissional.');
+      return;
+    }
+
+    setErro('');
+    setLoadingCheckout(true);
+
+    fetch('/api/create-checkout', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        userId: user.id,
+        email: user.email,
+      }),
+    })
+      .then(async (response) => {
+        const json = await response.json();
+
+        if (!response.ok || !json?.success || !json?.data?.init_point) {
+          throw new Error(json?.error || 'Não foi possível iniciar o pagamento');
+        }
+
+        window.location.href = json.data.init_point;
+      })
+      .catch((error) => {
+        setErro(error.message || 'Não foi possível iniciar o pagamento');
+        setLoadingCheckout(false);
+      });
   };
 
   const handleEntrar = async () => {
@@ -285,7 +344,7 @@ function App() {
                   Olá, {userDisplayName}
                 </span>
                 <span style={{ fontSize: '0.82rem', color: '#6b7280' }}>
-                  {user.email} · Acesso {userPlan}
+                  {user.email} · Acesso {isPro ? 'profissional' : 'básico'}
                 </span>
               </div>
               <button
@@ -559,8 +618,9 @@ function App() {
                           className="btn btn-secundario"
                           type="button"
                           onClick={handleUpgradeInsights}
+                          disabled={loadingCheckout}
                         >
-                          Ver avaliação completa
+                          {loadingCheckout ? 'Redirecionando para o pagamento...' : 'Fazer upgrade para o plano profissional'}
                         </button>
                       </div>
                     </div>
