@@ -63,9 +63,6 @@ function App() {
   const [calculadoraAberta, setCalculadoraAberta] = useState(false);
   const [tooltipGuia, setTooltipGuia] = useState(false);
   const [jaSelecionou, setJaSelecionou] = useState(false);
-  const [authRedirectPending, setAuthRedirectPending] = useState(
-    typeof window !== 'undefined' && window.location.hash.includes('access_token='),
-  );
 
   const templateTemCalculadora = templateSelecionado === TEMPLATE_WITH_CALCULATORS;
   const userPlan = user?.plan || (isPro ? 'pro' : 'free');
@@ -73,15 +70,18 @@ function App() {
   useEffect(() => {
     async function carregarSessao() {
       setLoadingUser(true);
-      const { data } = await supabase.auth.getSession();
+      const { data, error } = await supabase.auth.getSession();
+
+      if (error) {
+        setErro('Não foi possível carregar a sessão do usuário.');
+      }
+
       setUser(data.session?.user || null);
-      setAuthRedirectPending(false);
       setLoadingUser(false);
     }
 
     const { data } = supabase.auth.onAuthStateChange((_event, session) => {
       setUser(session?.user || null);
-      setAuthRedirectPending(false);
       setLoadingUser(false);
     });
 
@@ -259,7 +259,6 @@ function App() {
   const insightsPreview = insights ? getInsightsPreview(insights) : '';
   const shouldShowPaywall = insights && !isPro;
   const hiddenInsightsCount = getHiddenInsightsCount(insights);
-  const shouldShowLoginButton = !loadingUser && !user && !authRedirectPending;
   const userDisplayName = user ? getUserDisplayName(user) : '';
 
   return (
@@ -277,7 +276,7 @@ function App() {
         <h1>Minha Anamnese</h1>
         <p>Organize suas anamneses com inteligência artificial</p>
         <div style={{ marginTop: '1rem', display: 'flex', justifyContent: 'center' }}>
-          {loadingUser || authRedirectPending ? (
+          {loadingUser ? (
             <span style={{ fontSize: '0.9rem', color: '#6b7280' }}>Carregando usuário...</span>
           ) : user ? (
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexWrap: 'wrap', justifyContent: 'center' }}>
@@ -298,7 +297,7 @@ function App() {
                 Sair
               </button>
             </div>
-          ) : shouldShowLoginButton ? (
+          ) : (
             <button
               type="button"
               className="btn btn-secundario"
@@ -307,7 +306,7 @@ function App() {
             >
               Entrar
             </button>
-          ) : null}
+          )}
         </div>
       </header>
 
