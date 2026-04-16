@@ -6,6 +6,7 @@ import { supabase } from './lib/supabaseClient';
 
 const TEMPLATE_WITH_CALCULATORS = 'obstetricia';
 const INSIGHTS_PREVIEW_LINES = 4;
+const CHECKOUT_RETURN_STATE_KEY = 'checkout-return-state';
 const CHECKOUT_API_BASE_URL =
   import.meta.env.VITE_CHECKOUT_API_URL ||
   (window.location.hostname === 'localhost'
@@ -29,6 +30,29 @@ function getHiddenInsightsCount(content) {
   }
 
   return Math.max(getInsightsLines(content).length - INSIGHTS_PREVIEW_LINES, 0);
+}
+
+function saveCheckoutReturnState(state) {
+  sessionStorage.setItem(CHECKOUT_RETURN_STATE_KEY, JSON.stringify(state));
+}
+
+function getCheckoutReturnState() {
+  const rawState = sessionStorage.getItem(CHECKOUT_RETURN_STATE_KEY);
+
+  if (!rawState) {
+    return null;
+  }
+
+  try {
+    return JSON.parse(rawState);
+  } catch {
+    sessionStorage.removeItem(CHECKOUT_RETURN_STATE_KEY);
+    return null;
+  }
+}
+
+function clearCheckoutReturnState() {
+  sessionStorage.removeItem(CHECKOUT_RETURN_STATE_KEY);
 }
 
 function getUserDisplayName(user) {
@@ -106,6 +130,17 @@ function App() {
         return;
       }
 
+      const returnState = getCheckoutReturnState();
+
+      if (returnState) {
+        setTemplateSelecionado(returnState.templateSelecionado || '');
+        setTexto(returnState.texto || '');
+        setResultado(returnState.resultado || '');
+        setInsights(returnState.insights || '');
+        setGuiaAberto(Boolean(returnState.guiaAberto));
+        setCalculadoraAberta(Boolean(returnState.calculadoraAberta));
+      }
+
       const {
         data: { session },
       } = await supabase.auth.getSession();
@@ -121,6 +156,7 @@ function App() {
       const nextUrl = new URL(window.location.href);
       nextUrl.searchParams.delete('checkout');
       window.history.replaceState({}, '', nextUrl.toString());
+      clearCheckoutReturnState();
     }
 
     atualizarSessaoAposCheckout();
@@ -261,6 +297,14 @@ function App() {
 
     setErro('');
     setLoadingCheckout(true);
+    saveCheckoutReturnState({
+      templateSelecionado,
+      texto,
+      resultado,
+      insights,
+      guiaAberto,
+      calculadoraAberta,
+    });
 
     fetch(`${CHECKOUT_API_BASE_URL}/api/create-checkout`, {
       method: 'POST',
