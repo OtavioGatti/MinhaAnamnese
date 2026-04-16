@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { api } from './apiClient';
+import CalculatorPanel from './components/CalculatorPanel';
 import GuidePanel from './components/GuidePanel';
 
 function App() {
@@ -31,7 +32,6 @@ function App() {
     carregarTemplates();
   }, []);
 
-  // Mostra tooltip na primeira seleção de template
   const handleTemplateChange = (e) => {
     const novoTemplate = e.target.value;
     setTemplateSelecionado(novoTemplate);
@@ -128,12 +128,9 @@ function App() {
         <span>Não insira dados sensíveis identificáveis (nome, CPF, endereço). Use apenas informações clínicas.</span>
       </div>
 
-      {/* Layout com sidebar + conteúdo principal */}
       <div className="layout-principal">
-        {/* Sidebar do guia (lateral esquerda) */}
         <GuidePanel templateSelecionado={templateSelecionado} aberto={guiaAberto} />
 
-        {/* Conteúdo principal */}
         <div className="conteudo-principal">
           <div className="card">
             <div className="card-header">
@@ -167,18 +164,21 @@ function App() {
 
             <div className="form-group">
               <label htmlFor="texto">Anotações da Consulta</label>
-              <div className="input-wrapper">
-                <textarea
-                  id="texto"
-                  value={texto}
-                  onChange={(e) => setTexto(e.target.value)}
-                  placeholder="Digite ou cole as anotações da consulta aqui..."
-                />
-                {texto.length > 0 && (
-                  <span className="char-count">{texto.length} caracteres</span>
-                )}
+              <div className="texto-complementar">
+                <div className="input-wrapper">
+                  <textarea
+                    id="texto"
+                    value={texto}
+                    onChange={(e) => setTexto(e.target.value)}
+                    placeholder="Digite ou cole as anotações da consulta aqui..."
+                  />
+                  {texto.length > 0 && (
+                    <span className="char-count">{texto.length} caracteres</span>
+                  )}
+                </div>
+                <CalculatorPanel />
               </div>
-              {/* Tooltip do guia */}
+
               {tooltipGuia && (
                 <div className="tooltip-guia">
                   <div className="tooltip-content">
@@ -200,6 +200,7 @@ function App() {
                   </button>
                 </div>
               )}
+
               <button
                 className="btn-guia-toggle"
                 onClick={() => setGuiaAberto(!guiaAberto)}
