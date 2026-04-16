@@ -465,6 +465,16 @@ body {
   display: grid;
   grid-template-columns: 1fr 92px;
   gap: 0.75rem;
+  align-items: start;
+}
+
+.calculator-inline-fields .calculator-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.calculator-inline-fields .calculator-field label {
+  min-height: 2.9rem;
 }
 
 .calculator-placeholder,

@@ -10,7 +10,9 @@ function App() {
   const [templateSelecionado, setTemplateSelecionado] = useState('');
   const [texto, setTexto] = useState('');
   const [resultado, setResultado] = useState('');
+  const [insights, setInsights] = useState('');
   const [loading, setLoading] = useState(false);
+  const [loadingInsights, setLoadingInsights] = useState(false);
   const [erro, setErro] = useState('');
   const [copiado, setCopiado] = useState(false);
   const [loadingTemplates, setLoadingTemplates] = useState(true);
@@ -117,6 +119,41 @@ function App() {
       document.body.removeChild(textarea);
       setCopiado(true);
       setTimeout(() => setCopiado(false), 2000);
+    }
+  };
+
+  const handleGerarInsights = async () => {
+    if (!resultado.trim() || !templateSelecionado) {
+      setErro('Gere a anamnese antes de solicitar insights clínicos.');
+      return;
+    }
+
+    setErro('');
+    setLoadingInsights(true);
+
+    try {
+      const response = await fetch('/api/insights', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          texto: resultado,
+          templateId: templateSelecionado,
+        }),
+      });
+
+      const json = await response.json();
+
+      if (json.success) {
+        setInsights(json.data);
+      } else {
+        setErro(json.error || 'Erro ao gerar insights');
+      }
+    } catch (_err) {
+      setErro('Erro ao gerar insights');
+    } finally {
+      setLoadingInsights(false);
     }
   };
 
@@ -344,6 +381,29 @@ function App() {
                     </>
                   )}
                 </button>
+                <button
+                  className="btn btn-secundario"
+                  onClick={handleGerarInsights}
+                  disabled={loadingInsights}
+                >
+                  {loadingInsights ? 'Analisando anamnese...' : 'Gerar insights clínicos'}
+                </button>
+              </div>
+            </div>
+          )}
+
+          {insights && (
+            <div className="card">
+              <div className="card-header">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M12 3a9 9 0 1 0 9 9"/>
+                  <path d="M12 7v5l3 3"/>
+                </svg>
+                <h2>Insights clínicos</h2>
+              </div>
+
+              <div className="resultado-container">
+                <div className="resultado">{insights}</div>
               </div>
             </div>
           )}

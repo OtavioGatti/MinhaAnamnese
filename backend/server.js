@@ -25,6 +25,28 @@ if (!OPENAI_API_KEY) {
 
 const openai = new OpenAI({ apiKey: OPENAI_API_KEY });
 
+function montarPromptInsights(texto) {
+  return `Você é um médico auxiliando na avaliação da qualidade de uma anamnese.
+
+Analise o texto abaixo e identifique:
+
+1. Pontos importantes que não foram abordados
+2. Informações que poderiam ser melhor exploradas
+3. Lacunas na coleta da história clínica
+
+Regras:
+
+* NÃO inventar dados
+* NÃO assumir nada não descrito
+* NÃO sugerir diagnóstico
+* NÃO sugerir tratamento
+* Se algo não estiver presente, diga 'não informado'
+* Use linguagem médica simples
+
+Texto:
+${texto}`;
+}
+
 // Rotas
 app.get('/api/templates', (_req, res) => {
   const lista = Object.entries(templates).map(([chave, valor]) => ({
@@ -71,6 +93,47 @@ ${texto}`;
     }
 
     return res.status(500).formatResponse(null, 'Erro interno ao processar a anamnese.');
+  }
+});
+
+app.post('/api/insights', async (req, res) => {
+  try {
+    const { texto, templateId } = req.body;
+
+    if (!texto || typeof texto !== 'string' || !texto.trim()) {
+      return res.status(400).formatResponse(null, 'Texto inválido.');
+    }
+
+    if (!templateId || typeof templateId !== 'string') {
+      return res.status(400).formatResponse(null, 'Template inválido.');
+    }
+
+    const resposta = await openai.chat.completions.create({
+      model: 'gpt-4o-mini',
+      messages: [
+        {
+          role: 'system',
+          content: 'Você avalia a completude de anamneses clínicas sem inferir dados ausentes.',
+        },
+        {
+          role: 'user',
+          content: montarPromptInsights(texto.trim()),
+        },
+      ],
+      temperature: 0.2,
+      max_tokens: 1200,
+    });
+
+    const insights = resposta.choices[0]?.message?.content?.trim();
+
+    if (!insights) {
+      return res.status(500).formatResponse(null, 'Erro ao gerar insights');
+    }
+
+    return res.formatResponse(insights);
+  } catch (erro) {
+    console.error('Erro ao gerar insights:', erro.message);
+    return res.status(500).formatResponse(null, 'Erro ao gerar insights');
   }
 });
 
