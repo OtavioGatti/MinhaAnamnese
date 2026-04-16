@@ -7,13 +7,23 @@ const TEMPLATE_WITH_CALCULATORS = 'obstetricia';
 const isPro = false;
 const INSIGHTS_PREVIEW_LINES = 4;
 
-function getInsightsPreview(content) {
-  const lines = content
+function getInsightsLines(content) {
+  return content
     .split('\n')
     .map((line) => line.trimEnd())
     .filter((line, index, allLines) => line || (index > 0 && allLines[index - 1]));
+}
 
-  return lines.slice(0, INSIGHTS_PREVIEW_LINES).join('\n');
+function getInsightsPreview(content) {
+  return getInsightsLines(content).slice(0, INSIGHTS_PREVIEW_LINES).join('\n');
+}
+
+function getHiddenInsightsCount(content) {
+  if (!content) {
+    return 0;
+  }
+
+  return Math.max(getInsightsLines(content).length - INSIGHTS_PREVIEW_LINES, 0);
 }
 
 function App() {
@@ -110,6 +120,7 @@ function App() {
     setTemplateSelecionado('');
     setTexto('');
     setResultado('');
+    setInsights('');
     setErro('');
     setCalculadoraAberta(false);
   };
@@ -174,6 +185,7 @@ function App() {
 
   const insightsPreview = insights ? getInsightsPreview(insights) : '';
   const shouldShowPaywall = insights && !isPro;
+  const hiddenInsightsCount = getHiddenInsightsCount(insights);
 
   return (
     <div className="container">
@@ -431,7 +443,10 @@ function App() {
                       <circle cx="12" cy="8" r="1"/>
                     </svg>
                     <div style={{ flex: 1 }}>
-                      <span>🔒 Desbloqueie os insights completos para melhorar sua anamnese</span>
+                      <span>
+                        {'\u{1F512}'} Desbloqueie os insights completos para melhorar sua anamnese
+                        {hiddenInsightsCount > 0 ? ` (${hiddenInsightsCount} insight${hiddenInsightsCount > 1 ? 's' : ''} oculto${hiddenInsightsCount > 1 ? 's' : ''})` : ''}
+                      </span>
                       <div style={{ marginTop: '0.75rem' }}>
                         <button
                           className="btn btn-secundario"
