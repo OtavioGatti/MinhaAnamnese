@@ -1,5 +1,5 @@
 const MERCADO_PAGO_API_URL = 'https://api.mercadopago.com/checkout/preferences';
-const PLAN_PRICE = 29.9;
+const PLAN_PRICE = 19.9;
 const PLAN_TITLE = 'Plano Profissional';
 
 function getBaseUrl(req) {
