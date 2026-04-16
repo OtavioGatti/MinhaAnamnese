@@ -27,6 +27,25 @@ function getHiddenInsightsCount(content) {
   return Math.max(getInsightsLines(content).length - INSIGHTS_PREVIEW_LINES, 0);
 }
 
+function getUserDisplayName(user) {
+  const email = user?.email || '';
+
+  if (!email.includes('@')) {
+    return 'Olá';
+  }
+
+  const [rawName] = email.split('@');
+  const normalizedName = rawName
+    .replace(/[._-]+/g, ' ')
+    .trim()
+    .split(' ')
+    .filter(Boolean)
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+    .join(' ');
+
+  return normalizedName || 'Olá';
+}
+
 function App() {
   const [templates, setTemplates] = useState([]);
   const [templateSelecionado, setTemplateSelecionado] = useState('');
@@ -241,6 +260,7 @@ function App() {
   const shouldShowPaywall = insights && !isPro;
   const hiddenInsightsCount = getHiddenInsightsCount(insights);
   const shouldShowLoginButton = !loadingUser && !user && !authRedirectPending;
+  const userDisplayName = user ? getUserDisplayName(user) : '';
 
   return (
     <div className="container">
@@ -261,9 +281,14 @@ function App() {
             <span style={{ fontSize: '0.9rem', color: '#6b7280' }}>Carregando usuário...</span>
           ) : user ? (
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexWrap: 'wrap', justifyContent: 'center' }}>
-              <span style={{ fontSize: '0.9rem', color: '#4b5563' }}>
-                {user.email} · Plano {userPlan}
-              </span>
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', lineHeight: 1.4 }}>
+                <span style={{ fontSize: '0.95rem', color: '#1f2937', fontWeight: 500 }}>
+                  Olá, {userDisplayName}
+                </span>
+                <span style={{ fontSize: '0.82rem', color: '#6b7280' }}>
+                  {user.email} · Plano {userPlan}
+                </span>
+              </div>
               <button
                 type="button"
                 className="btn btn-secundario"
