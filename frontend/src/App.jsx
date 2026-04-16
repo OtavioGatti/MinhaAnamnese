@@ -275,6 +275,7 @@ function App() {
       const response = await api.post('/insights', {
         texto: resultado,
         templateId: templateSelecionado,
+        userId: user?.id || null,
       });
 
       if (response.success) {
