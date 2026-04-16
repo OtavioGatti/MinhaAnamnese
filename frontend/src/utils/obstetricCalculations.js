@@ -1,6 +1,7 @@
 const DAYS_IN_WEEK = 7;
 const TOTAL_GESTATION_WEEKS = 40;
 const TOTAL_GESTATION_DAYS = TOTAL_GESTATION_WEEKS * DAYS_IN_WEEK;
+const MAX_EXPECTED_GESTATION_DAYS = TOTAL_GESTATION_DAYS + 21;
 const DATE_INPUT_PATTERN = /^\d{4}-\d{2}-\d{2}$/;
 
 function isValidDateParts(year, month, day) {
@@ -40,6 +41,30 @@ function buildSuccess(data) {
   };
 }
 
+function formatGestationalAge(totalDays) {
+  const weeks = Math.floor(totalDays / DAYS_IN_WEEK);
+  const days = totalDays % DAYS_IN_WEEK;
+
+  return {
+    weeks,
+    days,
+    totalDays,
+    formatted: `IG: ${weeks} semana${weeks === 1 ? '' : 's'} e ${days} dia${days === 1 ? '' : 's'}`,
+  };
+}
+
+function validateGestationalAgeRange(totalDays) {
+  if (totalDays < 0) {
+    return 'A idade gestacional calculada não pode ser negativa.';
+  }
+
+  if (totalDays > MAX_EXPECTED_GESTATION_DAYS) {
+    return 'A data informada excede a faixa esperada para uma gestação.';
+  }
+
+  return '';
+}
+
 export function parseDateInput(dateString) {
   if (!dateString || !DATE_INPUT_PATTERN.test(dateString)) {
     return null;
@@ -77,7 +102,7 @@ export function getTodayInputValue() {
   return formatDateForInput(new Date());
 }
 
-export function calcularIG(dumInput, referenceDateInput = getTodayInputValue()) {
+export function calcularIGPorDUM(dumInput, referenceDateInput = getTodayInputValue()) {
   const dum = parseDateInput(dumInput);
   const referenceDate = parseDateInput(referenceDateInput);
 
@@ -94,20 +119,60 @@ export function calcularIG(dumInput, referenceDateInput = getTodayInputValue()) 
   }
 
   const totalDays = differenceInDays(dum, referenceDate);
+  const rangeError = validateGestationalAgeRange(totalDays);
 
-  if (totalDays > TOTAL_GESTATION_DAYS + 21) {
-    return buildError('A data informada excede a faixa esperada para uma gestação.');
+  if (rangeError) {
+    return buildError(rangeError);
   }
 
-  const weeks = Math.floor(totalDays / DAYS_IN_WEEK);
-  const days = totalDays % DAYS_IN_WEEK;
+  return buildSuccess(formatGestationalAge(totalDays));
+}
 
-  return buildSuccess({
-    weeks,
-    days,
-    totalDays,
-    formatted: `IG: ${weeks} semana${weeks === 1 ? '' : 's'} e ${days} dia${days === 1 ? '' : 's'}`,
-  });
+export function calcularIGPorUSG({
+  usgDateInput,
+  usgWeeksInput,
+  usgDaysInput = 0,
+  referenceDateInput = getTodayInputValue(),
+}) {
+  const usgDate = parseDateInput(usgDateInput);
+  const referenceDate = parseDateInput(referenceDateInput);
+  const usgWeeks = Number(usgWeeksInput);
+  const usgDays = usgDaysInput === '' ? 0 : Number(usgDaysInput);
+
+  if (!usgDate) {
+    return buildError('Informe a data da USG.');
+  }
+
+  if (!referenceDate) {
+    return buildError('Informe uma data de referência válida.');
+  }
+
+  if (usgWeeksInput === '' || Number.isNaN(usgWeeks)) {
+    return buildError('Informe a IG da USG em semanas.');
+  }
+
+  if (!Number.isInteger(usgWeeks) || usgWeeks < 0 || usgWeeks > TOTAL_GESTATION_WEEKS) {
+    return buildError('As semanas da USG devem ser um número inteiro entre 0 e 40.');
+  }
+
+  if (Number.isNaN(usgDays) || !Number.isInteger(usgDays) || usgDays < 0 || usgDays >= DAYS_IN_WEEK) {
+    return buildError('Os dias da USG devem ser um número inteiro entre 0 e 6.');
+  }
+
+  if (usgDate > referenceDate) {
+    return buildError('A data da USG não pode ser maior que a data de referência.');
+  }
+
+  const initialDays = (usgWeeks * DAYS_IN_WEEK) + usgDays;
+  const elapsedDays = differenceInDays(usgDate, referenceDate);
+  const totalDays = initialDays + elapsedDays;
+  const rangeError = validateGestationalAgeRange(totalDays);
+
+  if (rangeError) {
+    return buildError(rangeError);
+  }
+
+  return buildSuccess(formatGestationalAge(totalDays));
 }
 
 export function calcularDPP(dumInput) {

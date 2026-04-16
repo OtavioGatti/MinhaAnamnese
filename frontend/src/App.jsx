@@ -1,7 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { api } from './apiClient';
 import CalculatorPanel from './components/CalculatorPanel';
 import GuidePanel from './components/GuidePanel';
+
+const TEMPLATE_WITH_CALCULATORS = 'obstetricia';
 
 function App() {
   const [templates, setTemplates] = useState([]);
@@ -13,8 +15,11 @@ function App() {
   const [copiado, setCopiado] = useState(false);
   const [loadingTemplates, setLoadingTemplates] = useState(true);
   const [guiaAberto, setGuiaAberto] = useState(false);
+  const [calculadoraAberta, setCalculadoraAberta] = useState(false);
   const [tooltipGuia, setTooltipGuia] = useState(false);
   const [jaSelecionou, setJaSelecionou] = useState(false);
+
+  const templateTemCalculadora = templateSelecionado === TEMPLATE_WITH_CALCULATORS;
 
   useEffect(() => {
     async function carregarTemplates() {
@@ -26,15 +31,26 @@ function App() {
       } else {
         setErro(response.error || 'Erro ao carregar templates.');
       }
+
       setLoadingTemplates(false);
     }
 
     carregarTemplates();
   }, []);
 
+  useEffect(() => {
+    if (!templateTemCalculadora) {
+      setCalculadoraAberta(false);
+    }
+  }, [templateTemCalculadora]);
+
   const handleTemplateChange = (e) => {
     const novoTemplate = e.target.value;
     setTemplateSelecionado(novoTemplate);
+
+    if (novoTemplate === TEMPLATE_WITH_CALCULATORS) {
+      setCalculadoraAberta(true);
+    }
 
     if (novoTemplate && !jaSelecionou) {
       setTooltipGuia(true);
@@ -82,6 +98,7 @@ function App() {
     setTexto('');
     setResultado('');
     setErro('');
+    setCalculadoraAberta(false);
   };
 
   const handleCopiar = async () => {
@@ -164,19 +181,16 @@ function App() {
 
             <div className="form-group">
               <label htmlFor="texto">Anotações da Consulta</label>
-              <div className="texto-complementar">
-                <div className="input-wrapper">
-                  <textarea
-                    id="texto"
-                    value={texto}
-                    onChange={(e) => setTexto(e.target.value)}
-                    placeholder="Digite ou cole as anotações da consulta aqui..."
-                  />
-                  {texto.length > 0 && (
-                    <span className="char-count">{texto.length} caracteres</span>
-                  )}
-                </div>
-                <CalculatorPanel />
+              <div className="input-wrapper">
+                <textarea
+                  id="texto"
+                  value={texto}
+                  onChange={(e) => setTexto(e.target.value)}
+                  placeholder="Digite ou cole as anotações da consulta aqui..."
+                />
+                {texto.length > 0 && (
+                  <span className="char-count">{texto.length} caracteres</span>
+                )}
               </div>
 
               {tooltipGuia && (
@@ -201,18 +215,41 @@ function App() {
                 </div>
               )}
 
-              <button
-                className="btn-guia-toggle"
-                onClick={() => setGuiaAberto(!guiaAberto)}
-                title="Mostrar/ocultar guia de anamnese"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="12" cy="12" r="10"/>
-                  <line x1="12" y1="16" x2="12" y2="12"/>
-                  <line x1="12" y1="8" x2="12.01" y2="8"/>
-                </svg>
-                {guiaAberto ? 'Ocultar guia' : 'Mostrar guia'}
-              </button>
+              <div className="painel-acoes">
+                <button
+                  className="btn-guia-toggle"
+                  onClick={() => setGuiaAberto(!guiaAberto)}
+                  title="Mostrar/ocultar guia de anamnese"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="12" cy="12" r="10"/>
+                    <line x1="12" y1="16" x2="12" y2="12"/>
+                    <line x1="12" y1="8" x2="12.01" y2="8"/>
+                  </svg>
+                  {guiaAberto ? 'Ocultar guia' : 'Mostrar guia'}
+                </button>
+
+                {templateTemCalculadora && (
+                  <button
+                    className="btn-guia-toggle"
+                    onClick={() => setCalculadoraAberta(!calculadoraAberta)}
+                    title="Mostrar/ocultar calculadoras"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <rect x="4" y="2" width="16" height="20" rx="2"/>
+                      <line x1="8" y1="6" x2="16" y2="6"/>
+                      <line x1="8" y1="10" x2="8" y2="10"/>
+                      <line x1="12" y1="10" x2="12" y2="10"/>
+                      <line x1="16" y1="10" x2="16" y2="10"/>
+                      <line x1="8" y1="14" x2="8" y2="14"/>
+                      <line x1="12" y1="14" x2="12" y2="14"/>
+                      <line x1="16" y1="14" x2="16" y2="14"/>
+                      <line x1="8" y1="18" x2="16" y2="18"/>
+                    </svg>
+                    {calculadoraAberta ? 'Ocultar calculadoras' : 'Mostrar calculadoras'}
+                  </button>
+                )}
+              </div>
             </div>
 
             <div className="botoes">
@@ -311,6 +348,8 @@ function App() {
             </div>
           )}
         </div>
+
+        {templateTemCalculadora && calculadoraAberta && <CalculatorPanel />}
       </div>
 
       <footer className="footer">

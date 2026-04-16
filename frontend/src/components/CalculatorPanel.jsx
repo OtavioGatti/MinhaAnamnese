@@ -2,40 +2,74 @@ import { useMemo, useState } from 'react';
 import {
   calcularDPP,
   calcularDPPporIG,
-  calcularIG,
+  calcularIGPorDUM,
+  calcularIGPorUSG,
   getTodayInputValue,
 } from '../utils/obstetricCalculations';
 
 const calculators = [
-  { id: 'ig-dum', label: 'IG por DUM' },
-  { id: 'dpp-dum', label: 'DPP' },
-  { id: 'ig-para-dpp', label: 'IG -> DPP' },
+  { id: 'ig', label: 'IG' },
+  { id: 'dpp', label: 'DPP' },
+  { id: 'ig-para-dpp', label: 'IG para DPP' },
+];
+
+const igModes = [
+  { id: 'dum', label: 'DUM' },
+  { id: 'usg', label: 'USG' },
 ];
 
 function CalculatorPanel() {
-  const [activeCalculator, setActiveCalculator] = useState(calculators[0].id);
-  const [dumForIG, setDumForIG] = useState('');
+  const [activeCalculator, setActiveCalculator] = useState('ig');
+  const [igMode, setIgMode] = useState('dum');
+  const [dum, setDum] = useState('');
   const [referenceDate, setReferenceDate] = useState(getTodayInputValue);
-  const [dumForDPP, setDumForDPP] = useState('');
-  const [igWeeks, setIgWeeks] = useState('');
+  const [usgDate, setUsgDate] = useState('');
+  const [usgWeeks, setUsgWeeks] = useState('');
+  const [usgDays, setUsgDays] = useState('');
+  const [dumForDpp, setDumForDpp] = useState('');
+  const [currentIgWeeks, setCurrentIgWeeks] = useState('');
   const [currentDate, setCurrentDate] = useState(getTodayInputValue);
 
-  const igResult = useMemo(
-    () => (dumForIG ? calcularIG(dumForIG, referenceDate) : null),
-    [dumForIG, referenceDate],
-  );
+  const igByDumResult = useMemo(() => {
+    if (!dum) {
+      return null;
+    }
 
-  const dppFromDumResult = useMemo(
-    () => (dumForDPP ? calcularDPP(dumForDPP) : null),
-    [dumForDPP],
-  );
+    return calcularIGPorDUM(dum, referenceDate);
+  }, [dum, referenceDate]);
 
-  const dppFromIgResult = useMemo(
-    () => (igWeeks !== '' ? calcularDPPporIG(igWeeks, currentDate) : null),
-    [igWeeks, currentDate],
-  );
+  const igByUsgResult = useMemo(() => {
+    if (!usgDate && usgWeeks === '' && usgDays === '') {
+      return null;
+    }
 
-  const renderResult = (result, successLabel) => {
+    return calcularIGPorUSG({
+      usgDateInput: usgDate,
+      usgWeeksInput: usgWeeks,
+      usgDaysInput: usgDays,
+      referenceDateInput: referenceDate,
+    });
+  }, [referenceDate, usgDate, usgWeeks, usgDays]);
+
+  const dppResult = useMemo(() => {
+    if (!dumForDpp) {
+      return null;
+    }
+
+    return calcularDPP(dumForDpp);
+  }, [dumForDpp]);
+
+  const dppByIgResult = useMemo(() => {
+    if (currentIgWeeks === '') {
+      return null;
+    }
+
+    return calcularDPPporIG(currentIgWeeks, currentDate);
+  }, [currentDate, currentIgWeeks]);
+
+  const activeIgResult = igMode === 'dum' ? igByDumResult : igByUsgResult;
+
+  const renderResult = (result, formatSuccess) => {
     if (!result) {
       return <p className="calculator-placeholder">Preencha os campos para ver o resultado.</p>;
     }
@@ -46,7 +80,7 @@ function CalculatorPanel() {
 
     return (
       <div className="calculator-result">
-        <p>{successLabel(result.data)}</p>
+        <p>{formatSuccess(result.data)}</p>
       </div>
     );
   };
@@ -74,60 +108,131 @@ function CalculatorPanel() {
       </div>
 
       <div className="calculator-body">
-        {activeCalculator === 'ig-dum' && (
+        {activeCalculator === 'ig' && (
           <section className="calculator-section">
-            <div className="calculator-field">
-              <label htmlFor="calculator-dum-ig">DUM</label>
-              <input
-                id="calculator-dum-ig"
-                type="date"
-                value={dumForIG}
-                onChange={(e) => setDumForIG(e.target.value)}
-              />
+            <div className="calculator-subtabs" role="tablist" aria-label="Método de cálculo da IG">
+              {igModes.map((mode) => (
+                <button
+                  key={mode.id}
+                  type="button"
+                  className={`calculator-subtab ${igMode === mode.id ? 'active' : ''}`}
+                  onClick={() => setIgMode(mode.id)}
+                >
+                  {mode.label}
+                </button>
+              ))}
             </div>
 
-            <div className="calculator-field">
-              <label htmlFor="calculator-reference-date">Data de referência</label>
-              <input
-                id="calculator-reference-date"
-                type="date"
-                value={referenceDate}
-                onChange={(e) => setReferenceDate(e.target.value)}
-              />
-            </div>
+            {igMode === 'dum' && (
+              <>
+                <div className="calculator-field">
+                  <label htmlFor="calculator-dum">DUM</label>
+                  <input
+                    id="calculator-dum"
+                    type="date"
+                    value={dum}
+                    onChange={(e) => setDum(e.target.value)}
+                  />
+                </div>
 
-            {renderResult(igResult, (data) => data.formatted)}
+                <div className="calculator-field">
+                  <label htmlFor="calculator-reference-date">Data de referência</label>
+                  <input
+                    id="calculator-reference-date"
+                    type="date"
+                    value={referenceDate}
+                    onChange={(e) => setReferenceDate(e.target.value)}
+                  />
+                </div>
+              </>
+            )}
+
+            {igMode === 'usg' && (
+              <>
+                <div className="calculator-field">
+                  <label htmlFor="calculator-usg-date">Data da USG</label>
+                  <input
+                    id="calculator-usg-date"
+                    type="date"
+                    value={usgDate}
+                    onChange={(e) => setUsgDate(e.target.value)}
+                  />
+                </div>
+
+                <div className="calculator-inline-fields">
+                  <div className="calculator-field">
+                    <label htmlFor="calculator-usg-weeks">IG na USG (semanas)</label>
+                    <input
+                      id="calculator-usg-weeks"
+                      type="number"
+                      min="0"
+                      max="40"
+                      step="1"
+                      value={usgWeeks}
+                      onChange={(e) => setUsgWeeks(e.target.value)}
+                      placeholder="Ex: 12"
+                    />
+                  </div>
+
+                  <div className="calculator-field">
+                    <label htmlFor="calculator-usg-days">Dias</label>
+                    <input
+                      id="calculator-usg-days"
+                      type="number"
+                      min="0"
+                      max="6"
+                      step="1"
+                      value={usgDays}
+                      onChange={(e) => setUsgDays(e.target.value)}
+                      placeholder="0"
+                    />
+                  </div>
+                </div>
+
+                <div className="calculator-field">
+                  <label htmlFor="calculator-reference-date-usg">Data de referência</label>
+                  <input
+                    id="calculator-reference-date-usg"
+                    type="date"
+                    value={referenceDate}
+                    onChange={(e) => setReferenceDate(e.target.value)}
+                  />
+                </div>
+              </>
+            )}
+
+            {renderResult(activeIgResult, (data) => data.formatted)}
           </section>
         )}
 
-        {activeCalculator === 'dpp-dum' && (
+        {activeCalculator === 'dpp' && (
           <section className="calculator-section">
             <div className="calculator-field">
-              <label htmlFor="calculator-dum-dpp">DUM</label>
+              <label htmlFor="calculator-dpp-dum">DUM</label>
               <input
-                id="calculator-dum-dpp"
+                id="calculator-dpp-dum"
                 type="date"
-                value={dumForDPP}
-                onChange={(e) => setDumForDPP(e.target.value)}
+                value={dumForDpp}
+                onChange={(e) => setDumForDpp(e.target.value)}
               />
             </div>
 
-            {renderResult(dppFromDumResult, (data) => `DPP: ${data.formatted}`)}
+            {renderResult(dppResult, (data) => `DPP: ${data.formatted}`)}
           </section>
         )}
 
         {activeCalculator === 'ig-para-dpp' && (
           <section className="calculator-section">
             <div className="calculator-field">
-              <label htmlFor="calculator-ig-weeks">IG atual (semanas)</label>
+              <label htmlFor="calculator-current-ig">IG atual (semanas)</label>
               <input
-                id="calculator-ig-weeks"
+                id="calculator-current-ig"
                 type="number"
                 min="0"
                 max="40"
                 step="1"
-                value={igWeeks}
-                onChange={(e) => setIgWeeks(e.target.value)}
+                value={currentIgWeeks}
+                onChange={(e) => setCurrentIgWeeks(e.target.value)}
                 placeholder="Ex: 32"
               />
             </div>
@@ -142,7 +247,7 @@ function CalculatorPanel() {
               />
             </div>
 
-            {renderResult(dppFromIgResult, (data) => `DPP: ${data.formatted}`)}
+            {renderResult(dppByIgResult, (data) => `DPP: ${data.formatted}`)}
           </section>
         )}
       </div>
