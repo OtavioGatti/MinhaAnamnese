@@ -4,6 +4,17 @@ import CalculatorPanel from './components/CalculatorPanel';
 import GuidePanel from './components/GuidePanel';
 
 const TEMPLATE_WITH_CALCULATORS = 'obstetricia';
+const isPro = false;
+const INSIGHTS_PREVIEW_LINES = 4;
+
+function getInsightsPreview(content) {
+  const lines = content
+    .split('\n')
+    .map((line) => line.trimEnd())
+    .filter((line, index, allLines) => line || (index > 0 && allLines[index - 1]));
+
+  return lines.slice(0, INSIGHTS_PREVIEW_LINES).join('\n');
+}
 
 function App() {
   const [templates, setTemplates] = useState([]);
@@ -156,6 +167,13 @@ function App() {
       setLoadingInsights(false);
     }
   };
+
+  const handleUpgradeInsights = () => {
+    window.alert('Essa funcionalidade faz parte do plano Pro');
+  };
+
+  const insightsPreview = insights ? getInsightsPreview(insights) : '';
+  const shouldShowPaywall = insights && !isPro;
 
   return (
     <div className="container">
@@ -403,7 +421,29 @@ function App() {
               </div>
 
               <div className="resultado-container">
-                <div className="resultado">{insights}</div>
+                <div className="resultado">{isPro ? insights : insightsPreview}</div>
+
+                {shouldShowPaywall && (
+                  <div className="erro" style={{ marginTop: '1rem', animation: 'none' }}>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <rect x="4" y="2" width="16" height="20" rx="2"/>
+                      <line x1="12" y1="11" x2="12" y2="17"/>
+                      <circle cx="12" cy="8" r="1"/>
+                    </svg>
+                    <div style={{ flex: 1 }}>
+                      <span>🔒 Desbloqueie os insights completos para melhorar sua anamnese</span>
+                      <div style={{ marginTop: '0.75rem' }}>
+                        <button
+                          className="btn btn-secundario"
+                          type="button"
+                          onClick={handleUpgradeInsights}
+                        >
+                          Ver insights completos
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           )}
