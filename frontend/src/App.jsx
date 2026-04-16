@@ -65,7 +65,7 @@ function App() {
   const [jaSelecionou, setJaSelecionou] = useState(false);
 
   const templateTemCalculadora = templateSelecionado === TEMPLATE_WITH_CALCULATORS;
-  const userPlan = user?.plan || (isPro ? 'pro' : 'free');
+  const userPlan = user?.plan || (isPro ? 'profissional' : 'básico');
 
   useEffect(() => {
     async function carregarSessao() {
@@ -73,7 +73,7 @@ function App() {
       const { data, error } = await supabase.auth.getSession();
 
       if (error) {
-        setErro('Não foi possível carregar a sessão do usuário.');
+        setErro('Não foi possível carregar sua sessão.');
       }
 
       setUser(data.session?.user || null);
@@ -100,7 +100,7 @@ function App() {
       if (response.success) {
         setTemplates(response.data);
       } else {
-        setErro(response.error || 'Erro ao carregar templates.');
+        setErro(response.error || 'Não foi possível carregar os modelos clínicos.');
       }
 
       setLoadingTemplates(false);
@@ -135,12 +135,12 @@ function App() {
     setResultado('');
 
     if (!templateSelecionado) {
-      setErro('Selecione um modelo de anamnese.');
+      setErro('Selecione um modelo clínico para continuar.');
       return;
     }
 
     if (!texto.trim()) {
-      setErro('Insira o texto da anamnese.');
+      setErro('Preencha a anamnese antes de continuar.');
       return;
     }
 
@@ -155,10 +155,10 @@ function App() {
       if (response.success) {
         setResultado(response.data.resultado);
       } else {
-        setErro(response.error || 'Erro ao processar anamnese.');
+        setErro(response.error || 'Não foi possível estruturar a anamnese.');
       }
     } catch (err) {
-      setErro(err.message || 'Erro inesperado ao processar.');
+      setErro(err.message || 'Ocorreu um erro ao estruturar a anamnese.');
     } finally {
       setLoading(false);
     }
@@ -194,7 +194,7 @@ function App() {
 
   const handleGerarInsights = async () => {
     if (!resultado.trim() || !templateSelecionado) {
-      setErro('Gere a anamnese antes de solicitar insights clínicos.');
+      setErro('Gere a anamnese estruturada antes de avaliar sua qualidade.');
       return;
     }
 
@@ -210,21 +210,21 @@ function App() {
       if (response.success) {
         setInsights(response.data);
       } else {
-        setErro(response.error || 'Erro ao gerar insights');
+        setErro(response.error || 'Não foi possível avaliar a qualidade da anamnese.');
       }
     } catch (_err) {
-      setErro('Erro ao gerar insights');
+      setErro('Não foi possível avaliar a qualidade da anamnese.');
     } finally {
       setLoadingInsights(false);
     }
   };
 
   const handleUpgradeInsights = () => {
-    window.alert('Essa funcionalidade faz parte do plano Pro');
+    window.alert('Essa funcionalidade faz parte do plano profissional.');
   };
 
   const handleEntrar = async () => {
-    const email = window.prompt('Digite seu email para receber o link de acesso:');
+    const email = window.prompt('Informe seu e-mail para receber o link de acesso:');
 
     if (!email) {
       return;
@@ -241,12 +241,12 @@ function App() {
     });
 
     if (error) {
-      setErro('Não foi possível enviar o link de acesso.');
+      setErro('Não foi possível enviar o link de acesso ao e-mail informado.');
       setLoadingUser(false);
       return;
     }
 
-    window.alert('Enviamos um link de acesso para o seu email.');
+    window.alert('Enviamos um link de acesso para o e-mail informado.');
     setLoadingUser(false);
   };
 
@@ -274,10 +274,10 @@ function App() {
           </svg>
         </div>
         <h1>Minha Anamnese</h1>
-        <p>Organize suas anamneses com inteligência artificial</p>
+        <p>Padronize e eleve a qualidade das suas anamneses clínicas</p>
         <div style={{ marginTop: '1rem', display: 'flex', justifyContent: 'center' }}>
           {loadingUser ? (
-            <span style={{ fontSize: '0.9rem', color: '#6b7280' }}>Carregando usuário...</span>
+            <span style={{ fontSize: '0.9rem', color: '#6b7280' }}>Carregando acesso...</span>
           ) : user ? (
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexWrap: 'wrap', justifyContent: 'center' }}>
               <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', lineHeight: 1.4 }}>
@@ -285,7 +285,7 @@ function App() {
                   Olá, {userDisplayName}
                 </span>
                 <span style={{ fontSize: '0.82rem', color: '#6b7280' }}>
-                  {user.email} · Plano {userPlan}
+                  {user.email} · Acesso {userPlan}
                 </span>
               </div>
               <button
@@ -304,7 +304,7 @@ function App() {
               onClick={handleEntrar}
               style={{ padding: '0.55rem 1rem' }}
             >
-              Entrar
+              Acessar
             </button>
           )}
         </div>
@@ -316,7 +316,7 @@ function App() {
           <line x1="12" y1="9" x2="12" y2="13"/>
           <line x1="12" y1="17" x2="12.01" y2="17"/>
         </svg>
-        <span>Não insira dados sensíveis identificáveis (nome, CPF, endereço). Use apenas informações clínicas.</span>
+        <span>Utilize apenas informações clínicas não identificáveis, conforme boas práticas de confidencialidade.</span>
       </div>
 
       <div className="layout-principal">
@@ -329,11 +329,11 @@ function App() {
                 <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
                 <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
               </svg>
-              <h2>Dados da Consulta</h2>
+              <h2>Dados da consulta</h2>
             </div>
 
             <div className="form-group">
-              <label htmlFor="template">Modelo de Anamnese</label>
+              <label htmlFor="template">Modelo clínico</label>
               <div className="input-wrapper">
                 <select
                   id="template"
@@ -342,7 +342,7 @@ function App() {
                   disabled={loadingTemplates}
                 >
                   <option value="">
-                    {loadingTemplates ? 'Carregando...' : 'Selecione um modelo...'}
+                    {loadingTemplates ? 'Carregando modelos...' : 'Selecione um modelo clínico...'}
                   </option>
                   {templates.map((t) => (
                     <option key={t.id} value={t.id}>
@@ -354,13 +354,13 @@ function App() {
             </div>
 
             <div className="form-group">
-              <label htmlFor="texto">Anotações da Consulta</label>
+              <label htmlFor="texto">Anotações clínicas</label>
               <div className="input-wrapper">
                 <textarea
                   id="texto"
                   value={texto}
                   onChange={(e) => setTexto(e.target.value)}
-                  placeholder="Digite ou cole as anotações da consulta aqui..."
+                  placeholder="Digite ou cole aqui as anotações clínicas da consulta..."
                 />
                 {texto.length > 0 && (
                   <span className="char-count">{texto.length} caracteres</span>
@@ -376,13 +376,13 @@ function App() {
                       <line x1="12" y1="8" x2="12.01" y2="8"/>
                     </svg>
                     <span>
-                      Use <strong>"Mostrar guia"</strong> para ver os itens essenciais da anamnese. A sidebar aparecerá à esquerda.
+                      Use <strong>"Mostrar guia"</strong> para consultar os itens essenciais da coleta clínica.
                     </span>
                   </div>
                   <button
                     className="tooltip-fechar"
                     onClick={() => setTooltipGuia(false)}
-                    aria-label="Fechar dica"
+                    aria-label="Fechar orientação"
                   >
                     ×
                   </button>
@@ -393,21 +393,21 @@ function App() {
                 <button
                   className="btn-guia-toggle"
                   onClick={() => setGuiaAberto(!guiaAberto)}
-                  title="Mostrar/ocultar guia de anamnese"
+                  title="Mostrar ou ocultar guia clínico"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <circle cx="12" cy="12" r="10"/>
                     <line x1="12" y1="16" x2="12" y2="12"/>
                     <line x1="12" y1="8" x2="12.01" y2="8"/>
                   </svg>
-                  {guiaAberto ? 'Ocultar guia' : 'Mostrar guia'}
+                  {guiaAberto ? 'Ocultar guia clínico' : 'Mostrar guia clínico'}
                 </button>
 
                 {templateTemCalculadora && (
                   <button
                     className="btn-guia-toggle"
                     onClick={() => setCalculadoraAberta(!calculadoraAberta)}
-                    title="Mostrar/ocultar calculadoras"
+                    title="Mostrar ou ocultar cálculos clínicos"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <rect x="4" y="2" width="16" height="20" rx="2"/>
@@ -420,7 +420,7 @@ function App() {
                       <line x1="16" y1="14" x2="16" y2="14"/>
                       <line x1="8" y1="18" x2="16" y2="18"/>
                     </svg>
-                    {calculadoraAberta ? 'Ocultar calculadoras' : 'Mostrar calculadoras'}
+                    {calculadoraAberta ? 'Ocultar cálculos clínicos' : 'Mostrar cálculos clínicos'}
                   </button>
                 )}
               </div>
@@ -435,7 +435,7 @@ function App() {
                 {loading ? (
                   <>
                     <span className="spinner" />
-                    Processando...
+                    Estruturando anamnese...
                   </>
                 ) : (
                   <>
@@ -449,7 +449,7 @@ function App() {
                       <path d="M2 12h4"/>
                       <path d="m4.9 4.9 2.9 2.9"/>
                     </svg>
-                    Organizar Anamnese
+                    Gerar anamnese estruturada
                   </>
                 )}
               </button>
@@ -463,7 +463,7 @@ function App() {
                   <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/>
                   <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/>
                 </svg>
-                Limpar
+                Limpar campos
               </button>
             </div>
 
@@ -492,7 +492,7 @@ function App() {
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <polyline points="20 6 9 17 4 12"/>
                 </svg>
-                <h2>Anamnese Organizada</h2>
+                <h2>Anamnese estruturada</h2>
               </div>
 
               <div className="resultado-container">
@@ -506,7 +506,7 @@ function App() {
                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                         <polyline points="20 6 9 17 4 12"/>
                       </svg>
-                      Copiado!
+                      Texto copiado
                     </>
                   ) : (
                     <>
@@ -514,7 +514,7 @@ function App() {
                         <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
                         <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
                       </svg>
-                      Copiar resultado
+                      Copiar anamnese
                     </>
                   )}
                 </button>
@@ -523,7 +523,7 @@ function App() {
                   onClick={handleGerarInsights}
                   disabled={loadingInsights}
                 >
-                  {loadingInsights ? 'Analisando anamnese...' : 'Gerar insights clínicos'}
+                  {loadingInsights ? 'Avaliando qualidade da anamnese...' : 'Avaliar qualidade da anamnese'}
                 </button>
               </div>
             </div>
@@ -536,7 +536,7 @@ function App() {
                   <path d="M12 3a9 9 0 1 0 9 9"/>
                   <path d="M12 7v5l3 3"/>
                 </svg>
-                <h2>Insights clínicos</h2>
+                <h2>Avaliação clínica da anamnese</h2>
               </div>
 
               <div className="resultado-container">
@@ -551,8 +551,8 @@ function App() {
                     </svg>
                     <div style={{ flex: 1 }}>
                       <span>
-                        {'\u{1F512}'} Desbloqueie os insights completos para melhorar sua anamnese
-                        {hiddenInsightsCount > 0 ? ` (${hiddenInsightsCount} insight${hiddenInsightsCount > 1 ? 's' : ''} oculto${hiddenInsightsCount > 1 ? 's' : ''})` : ''}
+                        {'\u{1F512}'} Desbloqueie a avaliação completa para ampliar a qualidade da anamnese
+                        {hiddenInsightsCount > 0 ? ` (${hiddenInsightsCount} ponto${hiddenInsightsCount > 1 ? 's' : ''} adicional${hiddenInsightsCount > 1 ? 's' : ''} disponível${hiddenInsightsCount > 1 ? 'is' : ''})` : ''}
                       </span>
                       <div style={{ marginTop: '0.75rem' }}>
                         <button
@@ -560,7 +560,7 @@ function App() {
                           type="button"
                           onClick={handleUpgradeInsights}
                         >
-                          Ver insights completos
+                          Ver avaliação completa
                         </button>
                       </div>
                     </div>
@@ -575,7 +575,7 @@ function App() {
       </div>
 
       <footer className="footer">
-        <p>Minha Anamnese &middot; Processamento em tempo real &middot; Nenhum dado é armazenado</p>
+        <p>Minha Anamnese &middot; Apoio à padronização clínica &middot; Nenhum dado é armazenado</p>
       </footer>
     </div>
   );

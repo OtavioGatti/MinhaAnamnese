@@ -13,7 +13,7 @@ function GuidePanel({ templateSelecionado, aberto }) {
           <line x1="12" y1="16" x2="12" y2="12"/>
           <line x1="12" y1="8" x2="12.01" y2="8"/>
         </svg>
-        <h3>Guia de Anamnese</h3>
+        <h3>Guia clínico da anamnese</h3>
       </div>
       <ul className="guide-list">
         {guia.map((item, index) => (

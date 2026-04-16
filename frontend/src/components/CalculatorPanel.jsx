@@ -71,7 +71,7 @@ function CalculatorPanel() {
 
   const renderResult = (result, formatSuccess) => {
     if (!result) {
-      return <p className="calculator-placeholder">Preencha os campos para ver o resultado.</p>;
+      return <p className="calculator-placeholder">Preencha os campos para visualizar o cálculo.</p>;
     }
 
     if (!result.success) {
@@ -89,12 +89,12 @@ function CalculatorPanel() {
     <aside className="calculator-panel">
       <div className="calculator-panel-header">
         <div>
-          <h3>Calculadoras</h3>
+          <h3>Cálculos clínicos</h3>
           <p>Obstetrícia</p>
         </div>
       </div>
 
-      <div className="calculator-tabs" role="tablist" aria-label="Calculadoras clínicas">
+      <div className="calculator-tabs" role="tablist" aria-label="Cálculos clínicos">
         {calculators.map((calculator) => (
           <button
             key={calculator.id}
@@ -110,7 +110,7 @@ function CalculatorPanel() {
       <div className="calculator-body">
         {activeCalculator === 'ig' && (
           <section className="calculator-section">
-            <div className="calculator-subtabs" role="tablist" aria-label="Método de cálculo da IG">
+            <div className="calculator-subtabs" role="tablist" aria-label="Método de cálculo da idade gestacional">
               {igModes.map((mode) => (
                 <button
                   key={mode.id}
@@ -150,7 +150,7 @@ function CalculatorPanel() {
             {igMode === 'usg' && (
               <>
                 <div className="calculator-field">
-                  <label htmlFor="calculator-usg-date">Data da USG</label>
+                  <label htmlFor="calculator-usg-date">Data da ultrassonografia</label>
                   <input
                     id="calculator-usg-date"
                     type="date"
@@ -161,7 +161,7 @@ function CalculatorPanel() {
 
                 <div className="calculator-inline-fields">
                   <div className="calculator-field">
-                    <label htmlFor="calculator-usg-weeks">IG na USG (semanas)</label>
+                    <label htmlFor="calculator-usg-weeks">IG na ultrassonografia (semanas)</label>
                     <input
                       id="calculator-usg-weeks"
                       type="number"
@@ -170,7 +170,7 @@ function CalculatorPanel() {
                       step="1"
                       value={usgWeeks}
                       onChange={(e) => setUsgWeeks(e.target.value)}
-                      placeholder="Ex: 12"
+                      placeholder="Ex.: 12"
                     />
                   </div>
 
@@ -233,12 +233,12 @@ function CalculatorPanel() {
                 step="1"
                 value={currentIgWeeks}
                 onChange={(e) => setCurrentIgWeeks(e.target.value)}
-                placeholder="Ex: 32"
+                placeholder="Ex.: 32"
               />
             </div>
 
             <div className="calculator-field">
-              <label htmlFor="calculator-current-date">Data atual</label>
+              <label htmlFor="calculator-current-date">Data de avaliação</label>
               <input
                 id="calculator-current-date"
                 type="date"
