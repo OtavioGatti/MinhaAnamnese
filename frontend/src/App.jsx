@@ -81,11 +81,17 @@ function App() {
   const [resultado, setResultado] = useState('');
   const [user, setUser] = useState(null);
   const [insights, setInsights] = useState('');
+  const [email, setEmail] = useState('');
+  const [otpCode, setOtpCode] = useState('');
+  const [step, setStep] = useState('email');
   const [loading, setLoading] = useState(false);
   const [loadingUser, setLoadingUser] = useState(true);
   const [loadingInsights, setLoadingInsights] = useState(false);
   const [loadingCheckout, setLoadingCheckout] = useState(false);
+  const [loadingAuth, setLoadingAuth] = useState(false);
+  const [cooldownTimer, setCooldownTimer] = useState(0);
   const [erro, setErro] = useState('');
+  const [authFeedback, setAuthFeedback] = useState('');
   const [copiado, setCopiado] = useState(false);
   const [loadingTemplates, setLoadingTemplates] = useState(true);
   const [guiaAberto, setGuiaAberto] = useState(false);
@@ -96,6 +102,25 @@ function App() {
   const templateTemCalculadora = templateSelecionado === TEMPLATE_WITH_CALCULATORS;
   const userPlan = user?.user_metadata?.plan || 'basic';
   const isPro = userPlan === 'pro';
+
+  useEffect(() => {
+    if (cooldownTimer <= 0) {
+      return undefined;
+    }
+
+    const timer = window.setInterval(() => {
+      setCooldownTimer((current) => {
+        if (current <= 1) {
+          window.clearInterval(timer);
+          return 0;
+        }
+
+        return current - 1;
+      });
+    }, 1000);
+
+    return () => window.clearInterval(timer);
+  }, [cooldownTimer]);
 
   useEffect(() => {
     async function carregarSessao() {
@@ -113,6 +138,14 @@ function App() {
     const { data } = supabase.auth.onAuthStateChange((_event, session) => {
       setUser(session?.user || null);
       setLoadingUser(false);
+
+      if (session?.user) {
+        setEmail('');
+        setOtpCode('');
+        setStep('email');
+        setAuthFeedback('');
+        setCooldownTimer(0);
+      }
     });
 
     carregarSessao();
@@ -335,36 +368,99 @@ function App() {
       });
   };
 
-  const handleEntrar = async () => {
-    const email = window.prompt('Informe seu e-mail para receber o link de acesso:');
+  const handleEnviarCodigo = async () => {
+    const normalizedEmail = email.trim().toLowerCase();
 
-    if (!email) {
+    if (!normalizedEmail || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(normalizedEmail)) {
+      setErro('Informe um e-mail válido.');
+      return;
+    }
+
+    if (loadingAuth || cooldownTimer > 0) {
       return;
     }
 
     setErro('');
-    setLoadingUser(true);
+    setAuthFeedback('');
+    setLoadingAuth(true);
 
     const { error } = await supabase.auth.signInWithOtp({
-      email,
+      email: normalizedEmail,
       options: {
-        emailRedirectTo: window.location.origin,
+        shouldCreateUser: true,
       },
     });
 
     if (error) {
-      setErro('Não foi possível enviar o link de acesso ao e-mail informado.');
-      setLoadingUser(false);
+      setErro('Não foi possível enviar o código para o e-mail informado.');
+      setLoadingAuth(false);
       return;
     }
 
-    window.alert('Enviamos um link de acesso para o e-mail informado.');
-    setLoadingUser(false);
+    setEmail(normalizedEmail);
+    setOtpCode('');
+    setStep('otp');
+    setCooldownTimer(60);
+    setAuthFeedback(`Código enviado para ${normalizedEmail}.`);
+    setLoadingAuth(false);
+    return;
+  };
+
+  const handleConfirmarCodigo = async () => {
+    if (!email.trim() || !otpCode.trim() || loadingAuth) {
+      return;
+    }
+
+    setErro('');
+    setAuthFeedback('');
+    setLoadingAuth(true);
+
+    const { error } = await supabase.auth.verifyOtp({
+      email: email.trim().toLowerCase(),
+      token: otpCode.trim(),
+      type: 'email',
+    });
+
+    if (error) {
+      setErro('Código inválido ou expirado');
+      setLoadingAuth(false);
+      return;
+    }
+
+    setEmail('');
+    setOtpCode('');
+    setStep('email');
+    setAuthFeedback('');
+    setCooldownTimer(0);
+    setLoadingAuth(false);
+  };
+
+  const handleVoltarEtapaEmail = () => {
+    if (loadingAuth) {
+      return;
+    }
+
+    setOtpCode('');
+    setStep('email');
+    setAuthFeedback('');
+  };
+
+  const handleReenviarCodigo = async () => {
+    if (loadingAuth || cooldownTimer > 0) {
+      return;
+    }
+
+    await handleEnviarCodigo();
   };
 
   const handleSair = async () => {
     setLoadingUser(true);
     await supabase.auth.signOut();
+    setEmail('');
+    setOtpCode('');
+    setStep('email');
+    setAuthFeedback('');
+    setCooldownTimer(0);
     setLoadingUser(false);
   };
 
@@ -410,14 +506,98 @@ function App() {
               </button>
             </div>
           ) : (
-            <button
-              type="button"
-              className="btn btn-secundario"
-              onClick={handleEntrar}
-              style={{ padding: '0.55rem 1rem' }}
-            >
-              Acessar
-            </button>
+            <div style={{ width: '100%', maxWidth: '320px' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Seu e-mail de acesso"
+                  disabled={loadingAuth}
+                  style={{
+                    width: '100%',
+                    padding: '0.75rem 0.9rem',
+                    border: '1px solid #d7deea',
+                    borderRadius: '8px',
+                    fontSize: '0.95rem',
+                  }}
+                />
+
+                {step === 'otp' && (
+                  <input
+                    type="text"
+                    inputMode="numeric"
+                    value={otpCode}
+                    onChange={(e) => setOtpCode(e.target.value)}
+                    placeholder="Código recebido por e-mail"
+                    disabled={loadingAuth}
+                    style={{
+                      width: '100%',
+                      padding: '0.75rem 0.9rem',
+                      border: '1px solid #d7deea',
+                      borderRadius: '8px',
+                      fontSize: '0.95rem',
+                    }}
+                  />
+                )}
+
+                {authFeedback && (
+                  <span style={{ fontSize: '0.82rem', color: '#4b5563' }}>
+                    {authFeedback}
+                  </span>
+                )}
+
+                {step === 'email' ? (
+                  <button
+                    type="button"
+                    className="btn btn-secundario"
+                    onClick={handleEnviarCodigo}
+                    disabled={loadingAuth || cooldownTimer > 0}
+                    style={{ padding: '0.55rem 1rem' }}
+                  >
+                    {loadingAuth
+                      ? 'Enviando código...'
+                      : cooldownTimer > 0
+                        ? `Aguarde ${cooldownTimer}s`
+                        : 'Enviar código'}
+                  </button>
+                ) : (
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                    <button
+                      type="button"
+                      className="btn btn-secundario"
+                      onClick={handleConfirmarCodigo}
+                      disabled={loadingAuth || !otpCode.trim()}
+                      style={{ padding: '0.55rem 1rem' }}
+                    >
+                      {loadingAuth ? 'Confirmando código...' : 'Confirmar código'}
+                    </button>
+
+                    <button
+                      type="button"
+                      className="btn btn-secundario"
+                      onClick={handleReenviarCodigo}
+                      disabled={loadingAuth || cooldownTimer > 0}
+                      style={{ padding: '0.55rem 1rem' }}
+                    >
+                      {cooldownTimer > 0
+                        ? `Aguarde ${cooldownTimer}s para reenviar`
+                        : 'Reenviar código'}
+                    </button>
+
+                    <button
+                      type="button"
+                      className="btn btn-secundario"
+                      onClick={handleVoltarEtapaEmail}
+                      disabled={loadingAuth}
+                      style={{ padding: '0.55rem 1rem' }}
+                    >
+                      Voltar
+                    </button>
+                  </div>
+                )}
+              </div>
+            </div>
           )}
         </div>
       </header>
