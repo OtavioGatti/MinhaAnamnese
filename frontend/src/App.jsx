@@ -6,6 +6,11 @@ import { supabase } from './lib/supabaseClient';
 
 const TEMPLATE_WITH_CALCULATORS = 'obstetricia';
 const INSIGHTS_PREVIEW_LINES = 4;
+const CHECKOUT_API_BASE_URL =
+  import.meta.env.VITE_CHECKOUT_API_URL ||
+  (window.location.hostname === 'localhost'
+    ? 'https://minha-anamnese.vercel.app'
+    : window.location.origin);
 
 function getInsightsLines(content) {
   return content
@@ -257,7 +262,7 @@ function App() {
     setErro('');
     setLoadingCheckout(true);
 
-    fetch('/api/create-checkout', {
+    fetch(`${CHECKOUT_API_BASE_URL}/api/create-checkout`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -268,7 +273,10 @@ function App() {
       }),
     })
       .then(async (response) => {
-        const json = await response.json();
+        const contentType = response.headers.get('content-type') || '';
+        const json = contentType.includes('application/json')
+          ? await response.json()
+          : null;
 
         if (!response.ok || !json?.success || !json?.data?.init_point) {
           throw new Error(json?.error || 'Não foi possível iniciar o pagamento');
