@@ -164,7 +164,9 @@ function getUserDisplayName(user) {
 function App() {
   const emailInputRef = useRef(null);
   const otpInputRef = useRef(null);
+  const textoInputRef = useRef(null);
   const autoSubmitTriggeredRef = useRef(false);
+  const improveActionLockRef = useRef(false);
   const trackedEventsRef = useRef(new Set());
   const [templates, setTemplates] = useState([]);
   const [templateSelecionado, setTemplateSelecionado] = useState('');
@@ -469,6 +471,24 @@ function App() {
     setCalculadoraAberta(false);
     setGuiaAberto(false);
     trackedEventsRef.current.clear();
+  };
+
+  const handleMelhorarAnamnese = () => {
+    if (!texto.trim() || loading || improveActionLockRef.current) {
+      return;
+    }
+
+    improveActionLockRef.current = true;
+
+    window.setTimeout(() => {
+      improveActionLockRef.current = false;
+    }, 500);
+
+    textoInputRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    textoInputRef.current?.focus();
+
+    const textLength = textoInputRef.current?.value?.length || 0;
+    textoInputRef.current?.setSelectionRange?.(textLength, textLength);
   };
 
   const handleCopiar = async () => {
@@ -1082,6 +1102,7 @@ function App() {
               </p>
               <div className="input-wrapper">
                 <textarea
+                  ref={textoInputRef}
                   id="texto"
                   value={texto}
                   onChange={(e) => setTexto(e.target.value)}
@@ -1366,6 +1387,31 @@ function App() {
                         }}
                       >
                         {qualityScore.justification}
+                      </div>
+
+                      <div
+                        style={{
+                          padding: '0.95rem 1rem',
+                          border: '1px solid #dbeafe',
+                          borderRadius: '8px',
+                          backgroundColor: '#f8fbff',
+                          display: 'grid',
+                          gap: '0.6rem',
+                        }}
+                      >
+                        <span style={{ fontSize: '0.88rem', color: '#1f3b6d' }}>
+                          Pequenos ajustes podem aumentar seu score
+                        </span>
+                        <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
+                          <button
+                            className="btn btn-secundario"
+                            type="button"
+                            onClick={handleMelhorarAnamnese}
+                            disabled={!texto.trim() || loading}
+                          >
+                            Melhorar minha anamnese
+                          </button>
+                        </div>
                       </div>
 
                       {user && !loadingAnamneseStats && anamneseStats && isValidScoreValue(anamneseStats.ultimo_score) && (
