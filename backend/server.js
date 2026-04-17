@@ -149,6 +149,53 @@ async function getAnamneseStats(userId) {
   };
 }
 
+async function getAnamneseActivity(userId) {
+  if (!isValidUserId(userId)) {
+    return [];
+  }
+
+  const supabaseUrl = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL;
+  const supabaseServiceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+
+  if (!supabaseUrl || !supabaseServiceRoleKey) {
+    return [];
+  }
+
+  const query = new URLSearchParams({
+    select: 'created_at',
+    user_id: `eq.${userId}`,
+    order: 'created_at.asc',
+  });
+
+  const response = await fetch(`${supabaseUrl}/rest/v1/anamneses?${query.toString()}`, {
+    method: 'GET',
+    headers: {
+      apikey: supabaseServiceRoleKey,
+      Authorization: `Bearer ${supabaseServiceRoleKey}`,
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error('failed to fetch anamneses activity');
+  }
+
+  const json = await response.json();
+
+  if (!Array.isArray(json)) {
+    return [];
+  }
+
+  const uniqueDates = Array.from(
+    new Set(
+      json
+        .map((item) => (typeof item?.created_at === 'string' ? item.created_at.slice(0, 10) : null))
+        .filter(Boolean)
+    )
+  );
+
+  return uniqueDates.sort((left, right) => left.localeCompare(right));
+}
+
 function montarPromptInsights(texto) {
   return `Você é um médico auxiliando na avaliação da qualidade de uma anamnese.
 
@@ -219,6 +266,21 @@ app.get('/api/anamneses/stats', async (req, res) => {
       ultimo_score: null,
       score_anterior: null,
     });
+  }
+});
+
+app.get('/api/anamneses/activity', async (req, res) => {
+  const userId = req.query?.userId;
+
+  if (!isValidUserId(userId)) {
+    return res.formatResponse([]);
+  }
+
+  try {
+    const activity = await getAnamneseActivity(userId);
+    return res.formatResponse(activity);
+  } catch (_error) {
+    return res.formatResponse([]);
   }
 });
 
