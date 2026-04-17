@@ -7,7 +7,7 @@ import { supabase } from './lib/supabaseClient';
 import { evaluateAnamnesisQuality } from './utils/anamnesisQualityScore';
 
 const TEMPLATE_WITH_CALCULATORS = 'obstetricia';
-const INSIGHTS_PREVIEW_LINES = 1;
+const INSIGHTS_PREVIEW_LINES = 6;
 const CHECKOUT_RETURN_STATE_KEY = 'checkout-return-state';
 const CHECKOUT_API_BASE_URL =
   import.meta.env.VITE_CHECKOUT_API_URL ||
