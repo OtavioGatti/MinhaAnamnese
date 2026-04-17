@@ -1009,7 +1009,7 @@ function App() {
                 {loading ? (
                   <>
                     <span className="spinner" />
-                    Estruturando anamnese...
+                    Organizando...
                   </>
                 ) : (
                   <>
@@ -1081,7 +1081,7 @@ function App() {
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                           <polyline points="20 6 9 17 4 12"/>
                         </svg>
-                        Texto copiado
+                        Copiado!
                       </>
                     ) : (
                       <>
@@ -1104,7 +1104,7 @@ function App() {
               </div>
 
               {!isPro && qualityScore.teaser.shouldShowTeaser && (
-                <div className="card">
+                <div className="card reveal-block">
                   <div className="card-header">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M9 12h6"/>
@@ -1136,7 +1136,7 @@ function App() {
                 </div>
               )}
 
-              <div className="card">
+              <div className="card reveal-block reveal-block-delayed">
                 <div className="card-header">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M3 12h18"/>
@@ -1179,7 +1179,7 @@ function App() {
                               : qualityScore.score >= 55
                                 ? 'linear-gradient(90deg, #f59e0b, #d97706)'
                                 : 'linear-gradient(90deg, #f97316, #ef4444)',
-                            transition: 'width 650ms cubic-bezier(0.22, 1, 0.36, 1)',
+                            transition: 'width 600ms cubic-bezier(0.4, 0, 0.2, 1)',
                           }}
                         />
                       </div>
