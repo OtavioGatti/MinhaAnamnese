@@ -1,8 +1,9 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { api } from './apiClient';
 import CalculatorPanel from './components/CalculatorPanel';
 import GuidePanel from './components/GuidePanel';
 import { supabase } from './lib/supabaseClient';
+import { evaluateAnamnesisQuality } from './utils/anamnesisQualityScore';
 
 const TEMPLATE_WITH_CALCULATORS = 'obstetricia';
 const INSIGHTS_PREVIEW_LINES = 4;
@@ -513,6 +514,7 @@ function App() {
   const shouldShowPaywall = insights && !isPro;
   const hiddenInsightsCount = getHiddenInsightsCount(insights);
   const userDisplayName = user ? getUserDisplayName(user) : '';
+  const qualityScore = useMemo(() => evaluateAnamnesisQuality(resultado), [resultado]);
 
   return (
     <div className="container">
@@ -944,46 +946,145 @@ function App() {
           </div>
 
           {resultado && (
-            <div className="card">
-              <div className="card-header">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <polyline points="20 6 9 17 4 12"/>
-                </svg>
-                <h2>Anamnese estruturada</h2>
+            <>
+              <div className="card">
+                <div className="card-header">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="20 6 9 17 4 12"/>
+                  </svg>
+                  <h2>Anamnese estruturada</h2>
+                </div>
+
+                <div className="resultado-container">
+                  <div className="resultado">{resultado}</div>
+                  <button
+                    className={`btn btn-copiar ${copiado ? 'copiado' : ''}`}
+                    onClick={handleCopiar}
+                  >
+                    {copiado ? (
+                      <>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <polyline points="20 6 9 17 4 12"/>
+                        </svg>
+                        Texto copiado
+                      </>
+                    ) : (
+                      <>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                          <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                        </svg>
+                        Copiar anamnese
+                      </>
+                    )}
+                  </button>
+                  <button
+                    className="btn btn-secundario"
+                    onClick={handleGerarInsights}
+                    disabled={loadingInsights}
+                  >
+                    {loadingInsights ? 'Avaliando qualidade da anamnese...' : 'Avaliar qualidade da anamnese'}
+                  </button>
+                </div>
               </div>
 
-              <div className="resultado-container">
-                <div className="resultado">{resultado}</div>
-                <button
-                  className={`btn btn-copiar ${copiado ? 'copiado' : ''}`}
-                  onClick={handleCopiar}
-                >
-                  {copiado ? (
+              <div className="card">
+                <div className="card-header">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M3 12h18"/>
+                    <path d="M7 8h10"/>
+                    <path d="M7 16h6"/>
+                  </svg>
+                  <h2>Qualidade da anamnese</h2>
+                </div>
+
+                <div style={{ display: 'grid', gap: '0.9rem' }}>
+                  {qualityScore.shouldShowScore ? (
                     <>
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <polyline points="20 6 9 17 4 12"/>
-                      </svg>
-                      Texto copiado
+                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '1rem', flexWrap: 'wrap' }}>
+                        <div>
+                          <div style={{ fontSize: '1.9rem', fontWeight: 700, color: '#111827', lineHeight: 1 }}>
+                            {qualityScore.score}%
+                          </div>
+                          <div style={{ marginTop: '0.3rem', fontSize: '0.92rem', color: '#4b5563' }}>
+                            {qualityScore.message}
+                          </div>
+                        </div>
+                      </div>
+
+                      <div
+                        style={{
+                          width: '100%',
+                          height: '0.55rem',
+                          borderRadius: '999px',
+                          backgroundColor: '#e5e7eb',
+                          overflow: 'hidden',
+                        }}
+                      >
+                        <div
+                          style={{
+                            width: `${qualityScore.score}%`,
+                            height: '100%',
+                            borderRadius: '999px',
+                            background: qualityScore.score >= 75
+                              ? 'linear-gradient(90deg, #22c55e, #16a34a)'
+                              : qualityScore.score >= 55
+                                ? 'linear-gradient(90deg, #f59e0b, #d97706)'
+                                : 'linear-gradient(90deg, #f97316, #ef4444)',
+                            transition: 'width 500ms ease',
+                          }}
+                        />
+                      </div>
+
+                      <div
+                        style={{
+                          padding: '0.85rem 0.95rem',
+                          border: '1px solid #e5e7eb',
+                          borderRadius: '8px',
+                          backgroundColor: '#f9fafb',
+                          color: '#4b5563',
+                          fontSize: '0.88rem',
+                          lineHeight: 1.5,
+                        }}
+                      >
+                        {qualityScore.justification}
+                      </div>
                     </>
                   ) : (
-                    <>
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
-                        <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
-                      </svg>
-                      Copiar anamnese
-                    </>
+                    <div
+                      style={{
+                        padding: '0.95rem 1rem',
+                        border: '1px solid #e5e7eb',
+                        borderRadius: '8px',
+                        backgroundColor: '#f9fafb',
+                        color: '#4b5563',
+                        fontSize: '0.9rem',
+                        lineHeight: 1.55,
+                      }}
+                    >
+                      <strong style={{ display: 'block', color: '#1f2937', marginBottom: '0.2rem' }}>
+                        Estimativa ainda indisponível
+                      </strong>
+                      <span>{qualityScore.message}</span>
+                      <div style={{ marginTop: '0.35rem' }}>{qualityScore.justification}</div>
+                    </div>
                   )}
-                </button>
-                <button
-                  className="btn btn-secundario"
-                  onClick={handleGerarInsights}
-                  disabled={loadingInsights}
-                >
-                  {loadingInsights ? 'Avaliando qualidade da anamnese...' : 'Avaliar qualidade da anamnese'}
-                </button>
+
+                  {!isPro && (
+                    <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
+                      <button
+                        className="btn btn-secundario"
+                        type="button"
+                        onClick={handleGerarInsights}
+                        disabled={loadingInsights}
+                      >
+                        {loadingInsights ? 'Avaliando qualidade da anamnese...' : 'Ver avaliação completa'}
+                      </button>
+                    </div>
+                  )}
+                </div>
               </div>
-            </div>
+            </>
           )}
 
           {insights && (
