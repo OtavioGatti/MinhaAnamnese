@@ -1,5 +1,5 @@
 const MERCADO_PAGO_PAYMENT_API = 'https://api.mercadopago.com/v1/payments';
-const PLAN_PRICE = 19.9;
+const PLAN_PRICE = 9.9;
 
 function getMercadoPagoToken() {
   return process.env.MERCADO_PAGO_ACCESS_TOKEN || process.env.MP_ACCESS_TOKEN;

@@ -1248,7 +1248,38 @@ function App() {
                       <circle cx="12" cy="8" r="1"/>
                     </svg>
                     <div style={{ flex: 1 }}>
-                      <span>
+                      <div style={{ display: 'grid', gap: '0.7rem' }}>
+                        <div>
+                          <div style={{ fontSize: '1rem', fontWeight: 600, color: '#991b1b' }}>
+                            Veja exatamente o que pode ser melhorado na sua anamnese
+                          </div>
+                          <div style={{ marginTop: '0.35rem', fontSize: '0.9rem', lineHeight: 1.55 }}>
+                            Há pontos adicionais que podem ajudar a revisar a coleta clínica com mais clareza e objetividade.
+                          </div>
+                        </div>
+
+                        <div style={{ display: 'grid', gap: '0.35rem', fontSize: '0.88rem', lineHeight: 1.5 }}>
+                          <span>• Lacunas potenciais na história e no exame que merecem revisão</span>
+                          <span>• Pistas concretas sobre o que aprofundar no registro clínico</span>
+                          <span>• Leitura mais clara dos pontos que ainda podem ser refinados</span>
+                        </div>
+
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexWrap: 'wrap' }}>
+                          <span style={{ fontSize: '1rem', fontWeight: 700, color: '#991b1b' }}>
+                            Acesso completo por R$ 9,90
+                          </span>
+                          <span style={{ fontSize: '0.82rem', color: '#b45309' }}>
+                            Liberação imediata após o pagamento
+                          </span>
+                        </div>
+
+                        {hiddenInsightsCount > 0 && (
+                          <div style={{ fontSize: '0.82rem', color: '#7f1d1d' }}>
+                            {hiddenInsightsCount} ponto{hiddenInsightsCount > 1 ? 's' : ''} adicional{hiddenInsightsCount > 1 ? 's' : ''} já identificado{hiddenInsightsCount > 1 ? 's' : ''} nesta avaliação.
+                          </div>
+                        )}
+                      </div>
+                      <span style={{ display: 'none' }}>
                         {'\u{1F512}'} Desbloqueie a avaliação completa para ampliar a qualidade da anamnese
                         {hiddenInsightsCount > 0 ? ` (${hiddenInsightsCount} ponto${hiddenInsightsCount > 1 ? 's' : ''} adicional${hiddenInsightsCount > 1 ? 's' : ''} disponível${hiddenInsightsCount > 1 ? 'is' : ''})` : ''}
                       </span>
@@ -1259,7 +1290,7 @@ function App() {
                           onClick={handleUpgradeInsights}
                           disabled={loadingCheckout}
                         >
-                          {loadingCheckout ? 'Redirecionando para o pagamento...' : 'Fazer upgrade para o plano profissional'}
+                          {loadingCheckout ? 'Redirecionando para o pagamento...' : 'Ver análise completa'}
                         </button>
                       </div>
                     </div>
