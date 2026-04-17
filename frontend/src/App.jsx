@@ -79,6 +79,7 @@ function App() {
   const emailInputRef = useRef(null);
   const otpInputRef = useRef(null);
   const autoSubmitTriggeredRef = useRef(false);
+  const trackedEventsRef = useRef(new Set());
   const [templates, setTemplates] = useState([]);
   const [templateSelecionado, setTemplateSelecionado] = useState('');
   const [texto, setTexto] = useState('');
@@ -293,6 +294,11 @@ function App() {
 
       if (response.success) {
         setResultado(response.data.resultado);
+        trackEvent('anamnese_gerada', {
+          template: templateSelecionado,
+          text_length: texto.trim().length,
+          is_pro: isPro,
+        });
       } else {
         setErro(response.error || 'Não foi possível estruturar a anamnese.');
       }
@@ -310,6 +316,7 @@ function App() {
     setInsights('');
     setErro('');
     setCalculadoraAberta(false);
+    trackedEventsRef.current.clear();
   };
 
   const handleCopiar = async () => {
@@ -339,6 +346,13 @@ function App() {
 
     setErro('');
     setLoadingInsights(true);
+    trackEvent('cta_avaliacao_click', {
+      template: templateSelecionado,
+      text_length: resultado.trim().length,
+      score: qualityScore.score,
+      is_pro: isPro,
+      has_teaser: qualityScore.teaser.shouldShowTeaser,
+    });
 
     try {
       const response = await api.post('/insights', {
@@ -349,6 +363,12 @@ function App() {
 
       if (response.success) {
         setInsights(response.data);
+        trackEvent('insight_gerado', {
+          template: templateSelecionado,
+          text_length: resultado.trim().length,
+          score: qualityScore.score,
+          is_pro: isPro,
+        });
       } else {
         setErro(response.error || 'Não foi possível avaliar a qualidade da anamnese.');
       }
@@ -367,6 +387,13 @@ function App() {
 
     setErro('');
     setLoadingCheckout(true);
+    trackEvent('upgrade_click', {
+      template: templateSelecionado || null,
+      text_length: resultado.trim().length || texto.trim().length,
+      score: qualityScore.score,
+      is_pro: isPro,
+      has_teaser: qualityScore.teaser.shouldShowTeaser,
+    });
     saveCheckoutReturnState({
       templateSelecionado,
       texto,
@@ -518,6 +545,76 @@ function App() {
     () => evaluateAnamnesisQuality(resultado, templateSelecionado),
     [resultado, templateSelecionado]
   );
+
+  const trackEvent = async (eventName, metadata = {}, options = {}) => {
+    const eventKey = options.eventKey || null;
+
+    if (eventKey && trackedEventsRef.current.has(eventKey)) {
+      return;
+    }
+
+    try {
+      const response = await fetch(`${CHECKOUT_API_BASE_URL}/api/track-event`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          userId: user?.id || null,
+          eventName,
+          metadata,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('tracking request failed');
+      }
+
+      if (eventKey) {
+        trackedEventsRef.current.add(eventKey);
+      }
+    } catch (error) {
+      console.error('tracking: failed to register event', error);
+    }
+  };
+
+  useEffect(() => {
+    if (!resultado || !qualityScore.shouldShowScore || qualityScore.score == null) {
+      return;
+    }
+
+    const eventKey = `score_exibido:${templateSelecionado}:${resultado.length}:${qualityScore.score}`;
+    trackEvent(
+      'score_exibido',
+      {
+        template: templateSelecionado || null,
+        text_length: resultado.length,
+        score: qualityScore.score,
+        is_pro: isPro,
+        has_teaser: qualityScore.teaser.shouldShowTeaser,
+      },
+      { eventKey }
+    );
+  }, [resultado, templateSelecionado, qualityScore.shouldShowScore, qualityScore.score, qualityScore.teaser.shouldShowTeaser, isPro]);
+
+  useEffect(() => {
+    if (!resultado || !qualityScore.teaser.shouldShowTeaser) {
+      return;
+    }
+
+    const eventKey = `teaser_exibido:${templateSelecionado}:${resultado.length}:${qualityScore.score}`;
+    trackEvent(
+      'teaser_exibido',
+      {
+        template: templateSelecionado || null,
+        text_length: resultado.length,
+        score: qualityScore.score,
+        is_pro: isPro,
+        has_teaser: true,
+      },
+      { eventKey }
+    );
+  }, [resultado, templateSelecionado, qualityScore.teaser.shouldShowTeaser, qualityScore.score, isPro]);
 
   return (
     <div className="container">
