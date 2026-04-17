@@ -64,6 +64,52 @@ async function registerAnamneseMetric({ userId, template, score, textLength, has
   });
 }
 
+async function listRecentAnamneseMetrics(userId) {
+  if (!isValidUserId(userId)) {
+    return [];
+  }
+
+  const supabaseUrl = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL;
+  const supabaseServiceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+
+  if (!supabaseUrl || !supabaseServiceRoleKey) {
+    return [];
+  }
+
+  const query = new URLSearchParams({
+    select: 'id,template,score,created_at',
+    user_id: `eq.${userId}`,
+    order: 'created_at.desc',
+    limit: '20',
+  });
+
+  const response = await fetch(`${supabaseUrl}/rest/v1/anamneses?${query.toString()}`, {
+    method: 'GET',
+    headers: {
+      apikey: supabaseServiceRoleKey,
+      Authorization: `Bearer ${supabaseServiceRoleKey}`,
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error('failed to fetch anamneses');
+  }
+
+  const json = await response.json();
+
+  if (!Array.isArray(json)) {
+    return [];
+  }
+
+  return json.filter((item) => (
+    item &&
+    typeof item.id === 'string' &&
+    typeof item.template === 'string' &&
+    typeof item.score === 'number' &&
+    typeof item.created_at === 'string'
+  ));
+}
+
 function montarPromptInsights(texto) {
   return `Você é um médico auxiliando na avaliação da qualidade de uma anamnese.
 
@@ -93,6 +139,21 @@ app.get('/api/templates', (_req, res) => {
     nome: valor.nome,
   }));
   res.formatResponse(lista);
+});
+
+app.get('/api/anamneses', async (req, res) => {
+  const userId = req.query?.userId;
+
+  if (!isValidUserId(userId)) {
+    return res.formatResponse([]);
+  }
+
+  try {
+    const anamneses = await listRecentAnamneseMetrics(userId);
+    return res.formatResponse(anamneses);
+  } catch (_error) {
+    return res.formatResponse([]);
+  }
 });
 
 app.post('/api/organizar', validateOrganizar, async (req, res) => {

@@ -114,6 +114,30 @@ function clearCheckoutReturnState() {
   sessionStorage.removeItem(CHECKOUT_RETURN_STATE_KEY);
 }
 
+function formatRelativeTime(value) {
+  const date = new Date(value);
+
+  if (Number.isNaN(date.getTime())) {
+    return '';
+  }
+
+  const diffMs = date.getTime() - Date.now();
+  const rtf = new Intl.RelativeTimeFormat('pt-BR', { numeric: 'auto' });
+  const minutes = Math.round(diffMs / 60000);
+
+  if (Math.abs(minutes) < 60) {
+    return rtf.format(minutes, 'minute');
+  }
+
+  const hours = Math.round(diffMs / 3600000);
+  if (Math.abs(hours) < 24) {
+    return rtf.format(hours, 'hour');
+  }
+
+  const days = Math.round(diffMs / 86400000);
+  return rtf.format(days, 'day');
+}
+
 function getUserDisplayName(user) {
   const email = user?.email || '';
 
@@ -159,8 +183,10 @@ function App() {
   const [authFeedback, setAuthFeedback] = useState('');
   const [copiado, setCopiado] = useState(false);
   const [loadingTemplates, setLoadingTemplates] = useState(true);
+  const [loadingRecentAnamneses, setLoadingRecentAnamneses] = useState(false);
   const [guiaAberto, setGuiaAberto] = useState(false);
   const [calculadoraAberta, setCalculadoraAberta] = useState(false);
+  const [recentAnamneses, setRecentAnamneses] = useState([]);
 
   const templateTemCalculadora = templateSelecionado === TEMPLATE_WITH_CALCULATORS;
   const userPlan = user?.user_metadata?.plan || 'basic';
@@ -305,6 +331,37 @@ function App() {
 
     carregarTemplates();
   }, []);
+
+  useEffect(() => {
+    async function carregarAnamnesesRecentes() {
+      if (!user?.id) {
+        setRecentAnamneses([]);
+        setLoadingRecentAnamneses(false);
+        return;
+      }
+
+      setLoadingRecentAnamneses(true);
+      const response = await api.get(`/anamneses?userId=${encodeURIComponent(user.id)}`);
+
+      if (response.success && Array.isArray(response.data)) {
+        const sanitized = response.data.filter((item) => (
+          item &&
+          typeof item.id === 'string' &&
+          typeof item.template === 'string' &&
+          typeof item.score === 'number' &&
+          typeof item.created_at === 'string'
+        ));
+
+        setRecentAnamneses(sanitized);
+      } else {
+        setRecentAnamneses([]);
+      }
+
+      setLoadingRecentAnamneses(false);
+    }
+
+    carregarAnamnesesRecentes();
+  }, [user?.id]);
 
   useEffect(() => {
     if (!templateTemCalculadora) {
@@ -608,6 +665,10 @@ function App() {
   );
   const templateAtual = templates.find((template) => template.id === templateSelecionado) || null;
   const possuiGuiaSelecionado = Boolean(guides[templateSelecionado]?.length);
+  const templateNameMap = useMemo(
+    () => Object.fromEntries(templates.map((template) => [template.id, template.nome])),
+    [templates]
+  );
 
   const trackEvent = async (eventName, metadata = {}, options = {}) => {
     const eventKey = options.eventKey || null;
@@ -1094,6 +1155,56 @@ function App() {
               </div>
             )}
           </div>
+
+          {user && (
+            <div className="card">
+              <div className="card-header">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M3 3v18h18"/>
+                  <path d="M7 13l3-3 3 2 4-5"/>
+                </svg>
+                <h2>Suas avaliações recentes</h2>
+              </div>
+
+              {loadingRecentAnamneses ? (
+                <p className="field-helper">Carregando avaliações recentes...</p>
+              ) : recentAnamneses.length === 0 ? (
+                <div className="empty-state-hint">
+                  Sua evolução aparecerá aqui conforme você usar o app
+                </div>
+              ) : (
+                <div style={{ display: 'grid', gap: '0.75rem' }}>
+                  {recentAnamneses.map((item) => (
+                    <div
+                      key={item.id}
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'space-between',
+                        gap: '1rem',
+                        padding: '0.9rem 1rem',
+                        border: '1px solid #e5e7eb',
+                        borderRadius: '8px',
+                        backgroundColor: '#ffffff',
+                      }}
+                    >
+                      <div style={{ minWidth: 0 }}>
+                        <div style={{ fontSize: '0.95rem', fontWeight: 600, color: '#111827' }}>
+                          {templateNameMap[item.template] || item.template}
+                        </div>
+                        <div style={{ marginTop: '0.2rem', fontSize: '0.82rem', color: '#6b7280' }}>
+                          {formatRelativeTime(item.created_at)}
+                        </div>
+                      </div>
+                      <div style={{ flexShrink: 0, fontSize: '1rem', fontWeight: 700, color: '#1f2937' }}>
+                        {Math.round(item.score)}%
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
 
           {resultado && (
             <>
