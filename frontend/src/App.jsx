@@ -7,7 +7,7 @@ import { supabase } from './lib/supabaseClient';
 import { evaluateAnamnesisQuality } from './utils/anamnesisQualityScore';
 
 const TEMPLATE_WITH_CALCULATORS = 'obstetricia';
-const INSIGHTS_PREVIEW_LINES = 4;
+const INSIGHTS_PREVIEW_LINES = 1;
 const CHECKOUT_RETURN_STATE_KEY = 'checkout-return-state';
 const CHECKOUT_API_BASE_URL =
   import.meta.env.VITE_CHECKOUT_API_URL ||
@@ -602,8 +602,8 @@ function App() {
   const displayedResultado = useMemo(() => sanitizeAnamnesisForDisplay(resultado), [resultado]);
   const userDisplayName = user ? getUserDisplayName(user) : '';
   const qualityScore = useMemo(
-    () => evaluateAnamnesisQuality(resultado, templateSelecionado),
-    [resultado, templateSelecionado]
+    () => evaluateAnamnesisQuality(texto, templateSelecionado),
+    [texto, templateSelecionado]
   );
   const templateAtual = templates.find((template) => template.id === templateSelecionado) || null;
   const possuiGuiaSelecionado = Boolean(guides[templateSelecionado]?.length);
@@ -641,23 +641,23 @@ function App() {
   };
 
   useEffect(() => {
-    if (!resultado || !qualityScore.shouldShowScore || qualityScore.score == null) {
+    if (!texto || !qualityScore.shouldShowScore || qualityScore.score == null) {
       return;
     }
 
-    const eventKey = `score_exibido:${templateSelecionado}:${resultado.length}:${qualityScore.score}`;
+    const eventKey = `score_exibido:${templateSelecionado}:${texto.length}:${qualityScore.score}`;
     trackEvent(
       'score_exibido',
       {
         template: templateSelecionado || null,
-        text_length: resultado.length,
+        text_length: texto.length,
         score: qualityScore.score,
         is_pro: isPro,
         has_teaser: qualityScore.teaser.shouldShowTeaser,
       },
       { eventKey }
     );
-  }, [resultado, templateSelecionado, qualityScore.shouldShowScore, qualityScore.score, qualityScore.teaser.shouldShowTeaser, isPro]);
+  }, [texto, templateSelecionado, qualityScore.shouldShowScore, qualityScore.score, qualityScore.teaser.shouldShowTeaser, isPro]);
 
   useEffect(() => {
     if (!qualityScore.shouldShowScore || qualityScore.score == null) {
@@ -671,7 +671,7 @@ function App() {
     });
 
     return () => window.cancelAnimationFrame(frameId);
-  }, [qualityScore.shouldShowScore, qualityScore.score, resultado, templateSelecionado]);
+  }, [qualityScore.shouldShowScore, qualityScore.score, texto, templateSelecionado]);
 
   return (
     <div className="container">

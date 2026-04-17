@@ -1,107 +1,69 @@
-const ABSENT_PATTERNS = [
-  /\bnao informado\b/g,
-  /\bnão informado\b/g,
-  /\bnao refere\b/g,
-  /\bnão refere\b/g,
-];
-
 const CATEGORY_CONFIG = [
   {
     id: 'history',
-    label: 'história clínica',
-    weight: 9,
-    patterns: ['historia', 'queixa', 'qp', 'evolucao', 'hda', 'sintomas associados'],
+    weight: 6,
+    patterns: ['historia', 'queixa', 'qp', 'evolucao', 'hda', 'sintomas associados', 'dor', 'febre'],
   },
   {
     id: 'exam',
-    label: 'exame físico',
-    weight: 10,
-    patterns: ['exame fisico', 'ao exame', 'sinais vitais', 'ectoscopia', 'exame'],
+    weight: 6,
+    patterns: ['exame fisico', 'ao exame', 'sinais vitais', 'ectoscopia', 'ausculta', 'palpacao', 'pressao arterial'],
   },
   {
     id: 'background',
-    label: 'antecedentes',
-    weight: 8,
-    patterns: ['antecedentes', 'comorbidades', 'historia pregressa', 'antecedente'],
+    weight: 6,
+    patterns: ['antecedentes', 'comorbidades', 'historia pregressa', 'doencas previas', 'cirurgias previas'],
   },
   {
     id: 'medications',
-    label: 'medicações e alergias',
-    weight: 8,
-    patterns: ['medicacoes', 'medicacao', 'medicamentos', 'alergias', 'alergia'],
+    weight: 6,
+    patterns: ['medicacoes', 'medicacao', 'medicamentos', 'alergias', 'alergia', 'uso continuo'],
   },
   {
     id: 'plan',
-    label: 'conduta e hipótese',
-    weight: 7,
-    patterns: ['conduta', 'hipotese', 'impressao diagnostica', 'avaliacao'],
+    weight: 6,
+    patterns: ['conduta', 'hipotese', 'impressao diagnostica', 'avaliacao', 'plano'],
   },
 ];
 
 const SPECIALTY_OVERRIDES = {
   pediatria: {
-    background: ['desenvolvimento', 'neuropsicomotor', 'vacinacao'],
-    history: ['aceitacao alimentar', 'eliminacoes'],
+    history: ['aceitacao alimentar', 'eliminacoes', 'vacinacao'],
   },
   obstetricia: {
-    history: ['ig', 'dum', 'usg'],
-    exam: ['bcf', 'movimentacao fetal', 'contrações', 'contracoes'],
+    history: ['ig', 'dum', 'usg', 'movimentacao fetal', 'contracoes'],
+    exam: ['bcf', 'batimentos cardiofetais', 'altura uterina'],
   },
   ginecologia: {
-    history: ['historia menstrual', 'sexual', 'contracepcao', 'contraceptivo'],
+    history: ['historia menstrual', 'historia sexual', 'corrimento', 'dor pelvica'],
   },
   upa_emergencia: {
-    exam: ['saturacao', 'pressao', 'frequencia cardiaca', 'frequencia respiratoria'],
-    plan: ['gravidade', 'sinais de gravidade'],
+    exam: ['saturacao', 'frequencia cardiaca', 'frequencia respiratoria', 'glasgow'],
+    plan: ['sinais de gravidade', 'risco'],
   },
 };
 
+const ABSENT_PATTERNS = ['nao informado', 'nao descrito', 'nao realizado', 'ignorado'];
+
 const HIGH_MESSAGES = [
-  'Boa base clínica, mas há lacunas importantes que podem impactar a avaliação do caso.',
-  'Boa base clínica, mas alguns pontos ainda podem limitar a avaliação do caso.',
+  'Boa base clínica, com registro globalmente coerente para avaliação inicial.',
+  'A anamnese tem boa consistência clínica para sustentar a avaliação inicial.',
 ];
 
 const MEDIUM_MESSAGES = [
-  'Há lacunas relevantes que limitam a avaliação clínica.',
-  'A anamnese apresenta lacunas relevantes que ainda limitam a avaliação clínica.',
+  'Há lacunas clínicas relevantes que reduzem a confiabilidade da avaliação.',
+  'A anamnese sustenta parte da avaliação, mas ainda tem lacunas clínicas importantes.',
 ];
 
 const LOW_MESSAGES = [
   'Anamnese insuficiente para uma avaliação clínica segura.',
-  'O registro ainda está insuficiente para uma avaliação clínica segura.',
+  'O registro ainda está frágil para sustentar uma avaliação clínica confiável.',
 ];
 
-const JUSTIFICATION_VARIANTS = {
-  exam: [
-    'A descrição do exame físico ainda pode ser mais detalhada.',
-    'Faltam achados objetivos do exame físico para sustentar melhor a avaliação.',
-  ],
-  medications: [
-    'Ainda faltam informações sobre medicações em uso ou alergias.',
-    'Medicações em uso e alergias ainda não aparecem com clareza suficiente.',
-  ],
-  background: [
-    'Os antecedentes ainda podem ser descritos com mais clareza.',
-    'Há pouca exploração de antecedentes relevantes para o caso.',
-  ],
-  demographic: [
-    'Idade ou sexo ainda não aparecem de forma clara no registro.',
-    'A identificação clínica básica ainda pode ser mais objetiva.',
-  ],
-  structure: [
-    'A estrutura do registro ainda pode ficar mais segmentada.',
-    'A organização do texto ainda pode ser mais clara entre os blocos clínicos.',
-  ],
-  coverage: [
-    'Há espaço para ampliar a cobertura de itens clínicos importantes.',
-    'Alguns eixos clínicos importantes ainda aparecem pouco explorados.',
-  ],
-};
-
 const CRITICAL_INSIGHT_MESSAGES = {
-  exam: 'Ausência de exame físico pode comprometer a hipótese diagnóstica.',
-  medications: 'Falta de medicações em uso pode impactar a conduta.',
-  background: 'Antecedentes não descritos limitam a avaliação do caso.',
+  exam: 'Ausência de exame físico compromete a avaliação de um quadro potencialmente grave.',
+  medications: 'Ausência de medicações em uso pode ocultar interações, efeitos adversos e impacto na conduta.',
+  background: 'Ausência de antecedentes limita a avaliação de riscos e muda a interpretação do quadro clínico.',
 };
 
 function clamp(value, min, max) {
@@ -123,9 +85,55 @@ function pickVariant(collection, seed) {
   return collection[seed % collection.length];
 }
 
-function lineHasAbsentMarker(line) {
-  const normalizedLine = normalizeText(line);
-  return ABSENT_PATTERNS.some((pattern) => pattern.test(normalizedLine));
+function hasAbsentMarker(value) {
+  const normalizedValue = normalizeText(value).trim();
+  return ABSENT_PATTERNS.some((pattern) => normalizedValue.includes(pattern));
+}
+
+export function isCampoPreenchido(valor) {
+  if (!valor) return false;
+
+  const texto = normalizeText(valor).trim();
+
+  if (texto === '' || hasAbsentMarker(texto)) {
+    return false;
+  }
+
+  return true;
+}
+
+function getLabeledFieldValue(text, fieldPatterns) {
+  const lines = text
+    .split('\n')
+    .map((line) => line.trim())
+    .filter(Boolean);
+
+  for (const line of lines) {
+    const labeledMatch = line.match(/^([^:]+):\s*(.*)$/);
+
+    if (!labeledMatch) {
+      continue;
+    }
+
+    const label = normalizeText(labeledMatch[1]);
+
+    if (fieldPatterns.some((pattern) => label.includes(pattern))) {
+      return labeledMatch[2] || '';
+    }
+  }
+
+  return null;
+}
+
+function hasFilledField(text, directPatterns, evidencePatterns = []) {
+  const labeledValue = getLabeledFieldValue(text, directPatterns);
+
+  if (labeledValue !== null) {
+    return isCampoPreenchido(labeledValue);
+  }
+
+  const normalizedText = normalizeText(text);
+  return containsAny(normalizedText, [...directPatterns, ...evidencePatterns]);
 }
 
 function fieldMarkedAbsent(text, fieldPatterns) {
@@ -136,31 +144,43 @@ function fieldMarkedAbsent(text, fieldPatterns) {
 
   return lines.some((line) => {
     const normalizedLine = normalizeText(line);
-    return fieldPatterns.some((pattern) => normalizedLine.includes(pattern)) && lineHasAbsentMarker(line);
+    return fieldPatterns.some((pattern) => normalizedLine.includes(pattern)) && hasAbsentMarker(normalizedLine);
   });
 }
 
 function detectCategory(text, category, templateId) {
-  const categoryPatterns = [...category.patterns];
   const specialtyPatterns = SPECIALTY_OVERRIDES[templateId]?.[category.id] || [];
-  return containsAny(text, [...categoryPatterns, ...specialtyPatterns]);
+  return containsAny(text, [...category.patterns, ...specialtyPatterns]);
 }
 
 function buildMainMessage(score, seed) {
   if (score >= 80) return pickVariant(HIGH_MESSAGES, seed);
-  if (score >= 50) return pickVariant(MEDIUM_MESSAGES, seed);
+  if (score >= 55) return pickVariant(MEDIUM_MESSAGES, seed);
   return pickVariant(LOW_MESSAGES, seed);
 }
 
-function buildJustification(missingFields, structureSegmented, matchedCategories, seed) {
-  if (missingFields.exam) return pickVariant(JUSTIFICATION_VARIANTS.exam, seed);
-  if (missingFields.medications) return pickVariant(JUSTIFICATION_VARIANTS.medications, seed);
-  if (missingFields.background) return pickVariant(JUSTIFICATION_VARIANTS.background, seed);
-  if (missingFields.demographic) return pickVariant(JUSTIFICATION_VARIANTS.demographic, seed);
-  if (!structureSegmented) return pickVariant(JUSTIFICATION_VARIANTS.structure, seed);
-  if (matchedCategories.length <= 2) return pickVariant(JUSTIFICATION_VARIANTS.coverage, seed);
+function buildJustification({ missingFields, poorCoverage, wordCount }) {
+  if (missingFields.exam) {
+    return 'Sem exame físico descrito, a estimativa clínica perde segurança e não deve ser supervalorizada.';
+  }
 
-  return 'Alguns pontos ainda podem ser descritos com mais objetividade clínica.';
+  if (missingFields.medications) {
+    return 'Faltam medicações em uso ou alergias, o que reduz a segurança da interpretação clínica.';
+  }
+
+  if (missingFields.background) {
+    return 'Antecedentes ausentes limitam a leitura de risco e contexto do caso.';
+  }
+
+  if (poorCoverage) {
+    return 'O registro ainda cobre poucos eixos clínicos essenciais para uma avaliação mais confiável.';
+  }
+
+  if (wordCount < 35) {
+    return 'O texto ainda está curto para sustentar uma avaliação clínica mais sólida.';
+  }
+
+  return 'A base clínica está razoável, mas ainda pode ganhar precisão com mais objetividade e completude.';
 }
 
 function buildCriticalInsight(missingFields) {
@@ -177,12 +197,12 @@ export function evaluateAnamnesisQuality(text, templateId = '') {
   const wordCount = words.length;
   const characterCount = rawText.length;
 
-  if (characterCount < 180 || wordCount < 30) {
+  if (!rawText || characterCount < 20 || wordCount < 4) {
     return {
       shouldShowScore: false,
       score: null,
-      message: 'Ainda não há conteúdo suficiente para estimar a avaliação inicial da anamnese.',
-      justification: 'Inclua um registro um pouco mais detalhado para liberar a estimativa.',
+      message: 'Ainda não há conteúdo suficiente para estimar a qualidade da anamnese.',
+      justification: 'Inclua um registro clínico inicial para liberar a avaliação.',
       criticalInsight: '',
       teaser: {
         shouldShowTeaser: false,
@@ -200,8 +220,30 @@ export function evaluateAnamnesisQuality(text, templateId = '') {
     .map((sentence) => sentence.trim())
     .filter(Boolean).length;
   const hasSectionLabels = /(^|\n)\s*[a-zà-ú0-9/\- ]{2,30}\s*:/gim.test(rawText);
-  const structureSegmented = paragraphCount >= 2 || hasSectionLabels;
 
+  const historyCategory = CATEGORY_CONFIG.find((category) => category.id === 'history');
+  const examCategory = CATEGORY_CONFIG.find((category) => category.id === 'exam');
+  const backgroundCategory = CATEGORY_CONFIG.find((category) => category.id === 'background');
+  const medicationsCategory = CATEGORY_CONFIG.find((category) => category.id === 'medications');
+
+  const exameFisico = getLabeledFieldValue(rawText, ['exame fisico', 'exame', 'ao exame', 'sinais vitais']);
+  const medicacoes = getLabeledFieldValue(rawText, ['medicacoes', 'medicacao', 'medicamentos', 'alergias', 'alergia']);
+  const antecedentes = getLabeledFieldValue(rawText, ['antecedentes', 'comorbidades', 'historia pregressa']);
+
+  const temExameFisico =
+    !fieldMarkedAbsent(rawText, ['exame fisico', 'exame', 'ao exame', 'sinais vitais']) &&
+    (isCampoPreenchido(exameFisico) ||
+      hasFilledField(rawText, ['exame fisico', 'ao exame', 'sinais vitais'], examCategory?.patterns || []));
+  const temMedicacoes =
+    !fieldMarkedAbsent(rawText, ['medicacoes', 'medicacao', 'medicamentos', 'alergias', 'alergia']) &&
+    (isCampoPreenchido(medicacoes) ||
+      hasFilledField(rawText, ['medicacoes', 'medicacao', 'medicamentos', 'alergias', 'alergia'], medicationsCategory?.patterns || []));
+  const temAntecedentes =
+    !fieldMarkedAbsent(rawText, ['antecedentes', 'comorbidades', 'historia pregressa']) &&
+    (isCampoPreenchido(antecedentes) ||
+      hasFilledField(rawText, ['antecedentes', 'comorbidades', 'historia pregressa'], backgroundCategory?.patterns || []));
+
+  const matchedCategories = CATEGORY_CONFIG.filter((category) => detectCategory(normalizedText, category, templateId));
   const hasAge = /\b\d{1,3}\s*anos?\b/.test(normalizedText);
   const hasSex = containsAny(normalizedText, [
     'masculino',
@@ -211,62 +253,62 @@ export function evaluateAnamnesisQuality(text, templateId = '') {
     'sexo masculino',
     'sexo feminino',
   ]);
-  const demographicMissing = !(hasAge || hasSex);
 
-  const backgroundMissing =
-    fieldMarkedAbsent(rawText, ['antecedentes', 'comorbidades', 'historia pregressa']) ||
-    !detectCategory(normalizedText, CATEGORY_CONFIG.find((category) => category.id === 'background'), templateId);
+  let scoreBase = 40;
 
-  const medicationsMissing =
-    fieldMarkedAbsent(rawText, ['medicacoes', 'medicacao', 'medicamentos', 'alergias', 'alergia']) ||
-    !detectCategory(normalizedText, CATEGORY_CONFIG.find((category) => category.id === 'medications'), templateId);
+  if (wordCount >= 25) scoreBase += 8;
+  if (wordCount >= 50) scoreBase += 8;
+  if (wordCount >= 80) scoreBase += 6;
+  if (characterCount >= 250) scoreBase += 4;
+  if (hasAge || hasSex) scoreBase += 5;
+  if (detectCategory(normalizedText, historyCategory, templateId)) scoreBase += 8;
 
-  const examMissing =
-    fieldMarkedAbsent(rawText, ['exame', 'exame fisico', 'sinais vitais', 'ao exame']) ||
-    !detectCategory(normalizedText, CATEGORY_CONFIG.find((category) => category.id === 'exam'), templateId);
+  let scoreEstrutura = 0;
+  if (paragraphCount >= 2) scoreEstrutura += 8;
+  if (sentenceCount >= 3) scoreEstrutura += 6;
+  if (hasSectionLabels) scoreEstrutura += 10;
+  scoreEstrutura = Math.min(scoreEstrutura, 30);
 
-  const missingFields = {
-    demographic: demographicMissing,
-    background: backgroundMissing,
-    medications: medicationsMissing,
-    exam: examMissing,
-  };
+  const scoreCobertura = matchedCategories.reduce((total, category) => total + category.weight, 0);
 
-  const matchedCategories = CATEGORY_CONFIG.filter((category) =>
-    detectCategory(normalizedText, category, templateId)
-  );
+  let score = scoreBase + scoreEstrutura + scoreCobertura;
 
-  let sizePoints = 0;
-  if (wordCount >= 45) sizePoints += 4;
-  if (wordCount >= 90) sizePoints += 4;
-  if (characterCount >= 500) sizePoints += 4;
-  sizePoints = Math.min(sizePoints, 12);
+  if (!temExameFisico) score -= 25;
+  if (!temMedicacoes) score -= 15;
+  if (!temAntecedentes) score -= 10;
 
-  let structurePoints = 0;
-  if (paragraphCount >= 2) structurePoints += 4;
-  if (paragraphCount >= 4) structurePoints += 2;
-  if (sentenceCount >= 4) structurePoints += 2;
-  if (hasSectionLabels) structurePoints += 2;
-  structurePoints = Math.min(structurePoints, 10);
+  const missingCritical = [!temExameFisico, !temMedicacoes, !temAntecedentes].filter(Boolean).length;
 
-  const categoryPoints = matchedCategories.reduce((total, category) => total + category.weight, 0);
-
-  let score = 30 + sizePoints + structurePoints + categoryPoints;
-
-  if (missingFields.exam) score -= 20;
-  if (missingFields.medications) score -= 15;
-  if (missingFields.background) score -= 10;
-
-  const criticalMissingCount = Object.values(missingFields).filter(Boolean).length;
-  let maxScore = 90;
-
-  if (criticalMissingCount >= 2) {
-    maxScore = 70;
-  } else if (criticalMissingCount >= 1) {
-    maxScore = 80;
+  if (missingCritical >= 1) {
+    score = Math.min(score, 80);
   }
 
-  score = clamp(Math.round(Math.min(score, maxScore)), 30, 90);
+  if (missingCritical >= 2) {
+    score = Math.min(score, 70);
+  }
+
+  if (!temExameFisico) {
+    score = Math.min(score, 75);
+  }
+
+  if (!temExameFisico && missingCritical >= 2) {
+    score = Math.min(score, 65);
+  }
+
+  const poorCoverage = matchedCategories.length <= 2;
+  const incompleteCase = (wordCount < 25 || characterCount < 140) || (wordCount < 35 && poorCoverage);
+
+  if (incompleteCase) {
+    score = Math.min(score, 55);
+  }
+
+  score = clamp(Math.round(score), 30, 90);
+
+  const missingFields = {
+    exam: !temExameFisico,
+    medications: !temMedicacoes,
+    background: !temAntecedentes,
+  };
 
   const seed =
     wordCount +
@@ -274,7 +316,7 @@ export function evaluateAnamnesisQuality(text, templateId = '') {
     paragraphCount +
     sentenceCount +
     matchedCategories.length +
-    criticalMissingCount;
+    missingCritical;
 
   const criticalInsight = buildCriticalInsight(missingFields);
 
@@ -282,7 +324,7 @@ export function evaluateAnamnesisQuality(text, templateId = '') {
     shouldShowScore: true,
     score,
     message: buildMainMessage(score, seed),
-    justification: buildJustification(missingFields, structureSegmented, matchedCategories, seed),
+    justification: buildJustification({ missingFields, poorCoverage, wordCount }),
     criticalInsight,
     teaser: {
       shouldShowTeaser: Boolean(criticalInsight),
