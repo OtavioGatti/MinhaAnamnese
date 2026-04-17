@@ -165,6 +165,7 @@ function App() {
   const emailInputRef = useRef(null);
   const otpInputRef = useRef(null);
   const textoInputRef = useRef(null);
+  const insightsSectionRef = useRef(null);
   const autoSubmitTriggeredRef = useRef(false);
   const improveActionLockRef = useRef(false);
   const trackedEventsRef = useRef(new Set());
@@ -473,22 +474,29 @@ function App() {
     trackedEventsRef.current.clear();
   };
 
-  const handleMelhorarAnamnese = () => {
-    if (!texto.trim() || loading || improveActionLockRef.current) {
+  const handleMelhorarAnamnese = async () => {
+    if (!resultado.trim() || loadingInsights || improveActionLockRef.current) {
       return;
     }
 
     improveActionLockRef.current = true;
 
-    window.setTimeout(() => {
-      improveActionLockRef.current = false;
-    }, 500);
+    try {
+      if (insights) {
+        insightsSectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        return;
+      }
 
-    textoInputRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    textoInputRef.current?.focus();
+      await handleGerarInsights();
 
-    const textLength = textoInputRef.current?.value?.length || 0;
-    textoInputRef.current?.setSelectionRange?.(textLength, textLength);
+      window.setTimeout(() => {
+        insightsSectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 50);
+    } finally {
+      window.setTimeout(() => {
+        improveActionLockRef.current = false;
+      }, 500);
+    }
   };
 
   const handleCopiar = async () => {
@@ -1411,7 +1419,7 @@ function App() {
                             className="btn btn-secundario"
                             type="button"
                             onClick={handleMelhorarAnamnese}
-                            disabled={!texto.trim() || loading}
+                            disabled={!resultado.trim() || loadingInsights}
                           >
                             Melhorar minha anamnese
                           </button>
@@ -1502,7 +1510,7 @@ function App() {
           )}
 
           {insights && (
-            <div className="card">
+            <div ref={insightsSectionRef} className="card">
               <div className="card-header">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M12 3a9 9 0 1 0 9 9"/>
