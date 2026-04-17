@@ -13,6 +13,25 @@ const CHECKOUT_API_BASE_URL =
   (window.location.hostname === 'localhost'
     ? 'https://minha-anamnese.vercel.app'
     : window.location.origin);
+const DEFAULT_TEXT_PLACEHOLDER =
+  'Ex: Paciente feminina, 32 anos, com dor abdominal há 2 dias, associada a náuseas, sem vômitos...';
+const ONBOARDING_SPECIALTY_GUIDES = {
+  pediatria: {
+    label: 'Pediatria',
+    placeholder: 'Ex: criança com febre, tempo de evolução, sintomas associados, aceitação alimentar e exame físico...',
+    guidance: 'Avalie tempo de evolução, febre, sintomas associados, aceitação alimentar, eliminações e exame físico.',
+  },
+  go: {
+    label: 'GO',
+    placeholder: 'Ex: gestante, idade gestacional, dor ou perdas, movimentação fetal e antecedentes obstétricos...',
+    guidance: 'Avalie IG, DUM ou USG, queixa principal, perdas, contrações, movimentação fetal e antecedentes obstétricos.',
+  },
+  clinica: {
+    label: 'Clínica',
+    placeholder: 'Ex: queixa principal, tempo de evolução, sintomas associados, antecedentes, medicações e exame físico...',
+    guidance: 'Avalie queixa principal, tempo de evolução, sintomas associados, antecedentes, medicações e exame físico.',
+  },
+};
 
 function getInsightsLines(content) {
   return content
@@ -105,6 +124,7 @@ function App() {
   const [calculadoraAberta, setCalculadoraAberta] = useState(false);
   const [tooltipGuia, setTooltipGuia] = useState(false);
   const [jaSelecionou, setJaSelecionou] = useState(false);
+  const [onboardingSpecialty, setOnboardingSpecialty] = useState('');
 
   const templateTemCalculadora = templateSelecionado === TEMPLATE_WITH_CALCULATORS;
   const userPlan = user?.user_metadata?.plan || 'basic';
@@ -546,6 +566,12 @@ function App() {
     () => evaluateAnamnesisQuality(resultado, templateSelecionado),
     [resultado, templateSelecionado]
   );
+  const activeOnboardingGuide = onboardingSpecialty
+    ? ONBOARDING_SPECIALTY_GUIDES[onboardingSpecialty]
+    : null;
+  const contextualPlaceholder = texto.trim()
+    ? DEFAULT_TEXT_PLACEHOLDER
+    : activeOnboardingGuide?.placeholder || DEFAULT_TEXT_PLACEHOLDER;
 
   const trackEvent = async (eventName, metadata = {}, options = {}) => {
     const eventKey = options.eventKey || null;
@@ -937,12 +963,38 @@ function App() {
                   id="texto"
                   value={texto}
                   onChange={(e) => setTexto(e.target.value)}
-                  placeholder="Ex: Paciente feminina, 32 anos, com dor abdominal há 2 dias, associada a náuseas, sem vômitos..."
+                  placeholder={contextualPlaceholder}
                 />
                 {texto.length > 0 && (
                   <span className="char-count">{texto.length} caracteres</span>
                 )}
               </div>
+
+              <div className="quick-guides">
+                <span className="quick-guides-label">Exemplos rápidos:</span>
+                <div className="quick-guides-actions">
+                  {Object.entries(ONBOARDING_SPECIALTY_GUIDES).map(([key, guide]) => (
+                    <button
+                      key={key}
+                      type="button"
+                      className={`quick-guide-chip ${onboardingSpecialty === key ? 'ativo' : ''}`}
+                      onClick={() => setOnboardingSpecialty(key)}
+                    >
+                      {guide.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {activeOnboardingGuide && (
+                <div className={`specialty-guidance ${texto.trim() ? 'escondida' : ''}`}>
+                  <span className="specialty-guidance-title">
+                    Guia: {activeOnboardingGuide.label}
+                  </span>
+                  <span>{activeOnboardingGuide.guidance}</span>
+                </div>
+              )}
+
               {!texto.trim() && (
                 <div className="empty-state-hint">
                   Um registro inicial já é suficiente para começar. Depois, você pode revisar a qualidade e aprofundar pontos específicos.
