@@ -142,6 +142,27 @@ function isValidScoreValue(value) {
   return typeof value === 'number' && !Number.isNaN(value);
 }
 
+function normalizeUiText(value) {
+  return (value || '')
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase();
+}
+
+function areMessagesRedundant(primary, secondary) {
+  const primaryTokens = normalizeUiText(primary)
+    .split(/\W+/)
+    .filter((token) => token.length >= 5);
+  const secondaryTokens = new Set(
+    normalizeUiText(secondary)
+      .split(/\W+/)
+      .filter((token) => token.length >= 5)
+  );
+
+  const overlapCount = primaryTokens.filter((token) => secondaryTokens.has(token)).length;
+  return overlapCount >= 3;
+}
+
 function getUserDisplayName(user) {
   const email = user?.email || '';
 
@@ -734,6 +755,16 @@ function App() {
     () => Object.fromEntries(templates.map((template) => [template.id, template.nome])),
     [templates]
   );
+  const showJustificationCard = !(
+    !isPro &&
+    qualityScore.criticalInsight &&
+    qualityScore.justification &&
+    areMessagesRedundant(qualityScore.criticalInsight, qualityScore.justification)
+  );
+  const improvementBoxCopy = insights
+    ? 'Use os pontos abaixo para revisar o texto e testar uma nova versão.'
+    : 'Veja o principal ponto a revisar e avance para as orientações de melhoria.';
+  const improvementButtonLabel = insights ? 'Ir para orientações de melhoria' : 'Ver como melhorar';
   const scoreDelta = useMemo(() => {
     if (!isValidScoreValue(anamneseStats?.ultimo_score) || !isValidScoreValue(anamneseStats?.score_anterior)) {
       return null;
@@ -1387,19 +1418,21 @@ function App() {
                         </div>
                       )}
 
-                      <div
-                        style={{
-                          padding: '0.85rem 0.95rem',
-                          border: '1px solid #e5e7eb',
-                          borderRadius: '8px',
-                          backgroundColor: '#f9fafb',
-                          color: '#4b5563',
-                          fontSize: '0.88rem',
-                          lineHeight: 1.5,
-                        }}
-                      >
-                        {qualityScore.justification}
-                      </div>
+                      {showJustificationCard && (
+                        <div
+                          style={{
+                            padding: '0.85rem 0.95rem',
+                            border: '1px solid #e5e7eb',
+                            borderRadius: '8px',
+                            backgroundColor: '#f9fafb',
+                            color: '#4b5563',
+                            fontSize: '0.88rem',
+                            lineHeight: 1.5,
+                          }}
+                        >
+                          {qualityScore.justification}
+                        </div>
+                      )}
 
                       <div
                         style={{
@@ -1412,7 +1445,7 @@ function App() {
                         }}
                       >
                         <span style={{ fontSize: '0.88rem', color: '#1f3b6d' }}>
-                          Pequenos ajustes podem aumentar seu score
+                          {improvementBoxCopy}
                         </span>
                         <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
                           <button
@@ -1421,7 +1454,7 @@ function App() {
                             onClick={handleMelhorarAnamnese}
                             disabled={!resultado.trim() || loadingInsights}
                           >
-                            Melhorar minha anamnese
+                            {improvementButtonLabel}
                           </button>
                         </div>
                       </div>
@@ -1487,7 +1520,7 @@ function App() {
                     </div>
                   )}
 
-                  {!isPro && (
+                  {!isPro && !insights && (
                     <>
                       <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
                         <button
