@@ -94,6 +94,7 @@ function App() {
   const [loadingAuth, setLoadingAuth] = useState(false);
   const [cooldownTimer, setCooldownTimer] = useState(0);
   const [erro, setErro] = useState('');
+  const [authError, setAuthError] = useState('');
   const [authFeedback, setAuthFeedback] = useState('');
   const [copiado, setCopiado] = useState(false);
   const [loadingTemplates, setLoadingTemplates] = useState(true);
@@ -175,6 +176,7 @@ function App() {
         setEmail('');
         setOtpCode('');
         setStep('email');
+        setAuthError('');
         setAuthFeedback('');
         setCooldownTimer(0);
         autoSubmitTriggeredRef.current = false;
@@ -405,7 +407,7 @@ function App() {
     const normalizedEmail = email.trim().toLowerCase();
 
     if (!normalizedEmail || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(normalizedEmail)) {
-      setErro('Informe um e-mail válido.');
+      setAuthError('Informe um e-mail válido.');
       return;
     }
 
@@ -414,6 +416,7 @@ function App() {
     }
 
     setErro('');
+    setAuthError('');
     setAuthFeedback('');
     setLoadingAuth(true);
 
@@ -425,7 +428,7 @@ function App() {
     });
 
     if (error) {
-      setErro('Não foi possível enviar o código para o e-mail informado.');
+      setAuthError('Não foi possível enviar o código para o e-mail informado.');
       setLoadingAuth(false);
       return;
     }
@@ -446,6 +449,7 @@ function App() {
     }
 
     setErro('');
+    setAuthError('');
     setAuthFeedback('');
     setLoadingAuth(true);
 
@@ -456,7 +460,7 @@ function App() {
     });
 
     if (error) {
-      setErro('Código inválido ou expirado');
+      setAuthError('Código inválido ou expirado');
       setLoadingAuth(false);
       autoSubmitTriggeredRef.current = true;
       return;
@@ -465,6 +469,7 @@ function App() {
     setEmail('');
     setOtpCode('');
     setStep('email');
+    setAuthError('');
     setAuthFeedback('');
     setCooldownTimer(0);
     setLoadingAuth(false);
@@ -478,6 +483,7 @@ function App() {
 
     setOtpCode('');
     setStep('email');
+    setAuthError('');
     setAuthFeedback('');
     autoSubmitTriggeredRef.current = false;
   };
@@ -496,6 +502,7 @@ function App() {
     setEmail('');
     setOtpCode('');
     setStep('email');
+    setAuthError('');
     setAuthFeedback('');
     setCooldownTimer(0);
     autoSubmitTriggeredRef.current = false;
@@ -603,7 +610,12 @@ function App() {
                     ref={emailInputRef}
                     type="email"
                     value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    onChange={(e) => {
+                      setEmail(e.target.value);
+                      if (authError) {
+                        setAuthError('');
+                      }
+                    }}
                     placeholder="Seu e-mail"
                     disabled={loadingAuth || step === 'otp'}
                     style={{
@@ -627,6 +639,9 @@ function App() {
                         onChange={(e) => {
                           autoSubmitTriggeredRef.current = false;
                           setOtpCode(e.target.value.trim());
+                          if (authError) {
+                            setAuthError('');
+                          }
                         }}
                         onPaste={(e) => {
                           autoSubmitTriggeredRef.current = false;
@@ -634,17 +649,20 @@ function App() {
                           if (pastedCode) {
                             e.preventDefault();
                             setOtpCode(pastedCode);
+                            if (authError) {
+                              setAuthError('');
+                            }
                           }
                         }}
                         placeholder="Código recebido por e-mail"
                         disabled={loadingAuth}
-                        style={{
+                      style={{
                           width: '100%',
-                          padding: '0.9rem 1rem',
+                          padding: '0.85rem 1rem',
                           border: '1px solid #d7deea',
                           borderRadius: '8px',
-                          fontSize: '1.15rem',
-                          letterSpacing: '0.35rem',
+                          fontSize: '1rem',
+                          letterSpacing: '0.14rem',
                           textAlign: 'center',
                           fontVariantNumeric: 'tabular-nums',
                           fontFamily: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace',
@@ -678,6 +696,22 @@ function App() {
                   <span style={{ fontSize: '0.82rem', color: '#4b5563' }}>
                     {authFeedback}
                   </span>
+                )}
+
+                {authError && (
+                  <div
+                    style={{
+                      padding: '0.75rem 0.9rem',
+                      border: '1px solid #fecaca',
+                      borderRadius: '8px',
+                      backgroundColor: '#fef2f2',
+                      color: '#dc2626',
+                      fontSize: '0.84rem',
+                      lineHeight: 1.45,
+                    }}
+                  >
+                    {authError}
+                  </div>
                 )}
 
                 {step === 'email' ? (
