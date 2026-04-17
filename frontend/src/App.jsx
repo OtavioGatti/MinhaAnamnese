@@ -15,7 +15,7 @@ const CHECKOUT_API_BASE_URL =
     ? 'https://minha-anamnese.vercel.app'
     : window.location.origin);
 const DEFAULT_TEXT_PLACEHOLDER =
-  'Ex: Paciente feminina, 32 anos, com dor abdominal há 2 dias, associada a náuseas, sem vômitos...';
+  'Ex: Paciente feminina, 32 anos, com dor abdominal hÃ¡ 2 dias, associada a nÃ¡useas, sem vÃ´mitos...';
 
 function getInsightsLines(content) {
   return content
@@ -34,6 +34,61 @@ function getHiddenInsightsCount(content) {
   }
 
   return Math.max(getInsightsLines(content).length - INSIGHTS_PREVIEW_LINES, 0);
+}
+
+function isAbsentDisplayValue(value) {
+  if (value == null) {
+    return true;
+  }
+
+  const normalizedValue = String(value)
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .trim()
+    .toLowerCase();
+
+  return (
+    normalizedValue === '' ||
+    normalizedValue === 'nao informado' ||
+    normalizedValue === 'nao informado.' ||
+    normalizedValue === 'nao refere' ||
+    normalizedValue === 'nao refere.'
+  );
+}
+
+function sanitizeAnamnesisForDisplay(content) {
+  if (!content) {
+    return '';
+  }
+
+  const cleanedLines = content
+    .split('\n')
+    .filter((line) => {
+      const trimmedLine = line.trim();
+
+      if (!trimmedLine) {
+        return true;
+      }
+
+      const labeledMatch = trimmedLine.match(/^([^:]+):\s*(.+)$/);
+
+      if (labeledMatch) {
+        return !isAbsentDisplayValue(labeledMatch[2]);
+      }
+
+      return !isAbsentDisplayValue(trimmedLine);
+    })
+    .filter((line, index, lines) => {
+      if (line.trim()) {
+        return true;
+      }
+
+      const previousLine = lines[index - 1];
+      const nextLine = lines[index + 1];
+      return Boolean(previousLine?.trim()) && Boolean(nextLine?.trim());
+    });
+
+  return cleanedLines.join('\n').trim();
 }
 
 function saveCheckoutReturnState(state) {
@@ -63,7 +118,7 @@ function getUserDisplayName(user) {
   const email = user?.email || '';
 
   if (!email.includes('@')) {
-    return 'Olá';
+    return 'OlÃ¡';
   }
 
   const [rawName] = email.split('@');
@@ -75,7 +130,7 @@ function getUserDisplayName(user) {
     .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
     .join(' ');
 
-  return normalizedName || 'Olá';
+  return normalizedName || 'OlÃ¡';
 }
 
 function App() {
@@ -165,7 +220,7 @@ function App() {
       const { data, error } = await supabase.auth.getSession();
 
       if (error) {
-        setErro('Não foi possível carregar sua sessão.');
+        setErro('NÃ£o foi possÃ­vel carregar sua sessÃ£o.');
       }
 
       setUser(data.session?.user || null);
@@ -242,7 +297,7 @@ function App() {
       if (response.success) {
         setTemplates(response.data);
       } else {
-        setErro(response.error || 'Não foi possível carregar os modelos clínicos.');
+        setErro(response.error || 'NÃ£o foi possÃ­vel carregar os modelos clÃ­nicos.');
       }
 
       setLoadingTemplates(false);
@@ -276,7 +331,7 @@ function App() {
     setResultado('');
 
     if (!templateSelecionado) {
-      setErro('Selecione um modelo clínico para continuar.');
+      setErro('Selecione um modelo clÃ­nico para continuar.');
       return;
     }
 
@@ -301,7 +356,7 @@ function App() {
           is_pro: isPro,
         });
       } else {
-        setErro(response.error || 'Não foi possível estruturar a anamnese.');
+        setErro(response.error || 'NÃ£o foi possÃ­vel estruturar a anamnese.');
       }
     } catch (err) {
       setErro(err.message || 'Ocorreu um erro ao estruturar a anamnese.');
@@ -324,13 +379,15 @@ function App() {
   const handleCopiar = async () => {
     if (!resultado) return;
 
+    const textToCopy = displayedResultado || resultado;
+
     try {
-      await navigator.clipboard.writeText(resultado);
+      await navigator.clipboard.writeText(textToCopy);
       setCopiado(true);
       setTimeout(() => setCopiado(false), 2000);
     } catch {
       const textarea = document.createElement('textarea');
-      textarea.value = resultado;
+      textarea.value = textToCopy;
       document.body.appendChild(textarea);
       textarea.select();
       document.execCommand('copy');
@@ -372,10 +429,10 @@ function App() {
           is_pro: isPro,
         });
       } else {
-        setErro(response.error || 'Não foi possível avaliar a qualidade da anamnese.');
+        setErro(response.error || 'NÃ£o foi possÃ­vel avaliar a qualidade da anamnese.');
       }
     } catch (_err) {
-      setErro('Não foi possível avaliar a qualidade da anamnese.');
+      setErro('NÃ£o foi possÃ­vel avaliar a qualidade da anamnese.');
     } finally {
       setLoadingInsights(false);
     }
@@ -422,13 +479,13 @@ function App() {
           : null;
 
         if (!response.ok || !json?.success || !json?.data?.init_point) {
-          throw new Error(json?.error || 'Não foi possível iniciar o pagamento');
+          throw new Error(json?.error || 'NÃ£o foi possÃ­vel iniciar o pagamento');
         }
 
         window.location.href = json.data.init_point;
       })
       .catch((error) => {
-        setErro(error.message || 'Não foi possível iniciar o pagamento');
+        setErro(error.message || 'NÃ£o foi possÃ­vel iniciar o pagamento');
         setLoadingCheckout(false);
       });
   };
@@ -437,7 +494,7 @@ function App() {
     const normalizedEmail = email.trim().toLowerCase();
 
     if (!normalizedEmail || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(normalizedEmail)) {
-      setAuthError('Informe um e-mail válido.');
+      setAuthError('Informe um e-mail vÃ¡lido.');
       return;
     }
 
@@ -458,7 +515,7 @@ function App() {
     });
 
     if (error) {
-      setAuthError('Não foi possível enviar o código para o e-mail informado.');
+      setAuthError('NÃ£o foi possÃ­vel enviar o cÃ³digo para o e-mail informado.');
       setLoadingAuth(false);
       return;
     }
@@ -468,7 +525,7 @@ function App() {
     setStep('otp');
     setCooldownTimer(60);
     autoSubmitTriggeredRef.current = false;
-    setAuthFeedback('Código enviado para seu e-mail');
+    setAuthFeedback('CÃ³digo enviado para seu e-mail');
     setLoadingAuth(false);
     return;
   };
@@ -490,7 +547,7 @@ function App() {
     });
 
     if (error) {
-      setAuthError('Código inválido ou expirado');
+      setAuthError('CÃ³digo invÃ¡lido ou expirado');
       setLoadingAuth(false);
       autoSubmitTriggeredRef.current = true;
       return;
@@ -542,6 +599,7 @@ function App() {
   const insightsPreview = insights ? getInsightsPreview(insights) : '';
   const shouldShowPaywall = insights && !isPro;
   const hiddenInsightsCount = getHiddenInsightsCount(insights);
+  const displayedResultado = useMemo(() => sanitizeAnamnesisForDisplay(resultado), [resultado]);
   const userDisplayName = user ? getUserDisplayName(user) : '';
   const qualityScore = useMemo(
     () => evaluateAnamnesisQuality(resultado, templateSelecionado),
@@ -602,25 +660,6 @@ function App() {
   }, [resultado, templateSelecionado, qualityScore.shouldShowScore, qualityScore.score, qualityScore.teaser.shouldShowTeaser, isPro]);
 
   useEffect(() => {
-    if (!resultado || !qualityScore.teaser.shouldShowTeaser) {
-      return;
-    }
-
-    const eventKey = `teaser_exibido:${templateSelecionado}:${resultado.length}:${qualityScore.score}`;
-    trackEvent(
-      'teaser_exibido',
-      {
-        template: templateSelecionado || null,
-        text_length: resultado.length,
-        score: qualityScore.score,
-        is_pro: isPro,
-        has_teaser: true,
-      },
-      { eventKey }
-    );
-  }, [resultado, templateSelecionado, qualityScore.teaser.shouldShowTeaser, qualityScore.score, isPro]);
-
-  useEffect(() => {
     if (!qualityScore.shouldShowScore || qualityScore.score == null) {
       setAnimatedScore(0);
       return undefined;
@@ -647,7 +686,7 @@ function App() {
           </svg>
         </div>
         <h1>Minha Anamnese</h1>
-        <p>Padronize e eleve a qualidade das suas anamneses clínicas</p>
+        <p>Padronize e eleve a qualidade das suas anamneses clÃ­nicas</p>
         <div style={{ marginTop: '1rem', display: 'flex', justifyContent: 'center' }}>
           {loadingUser ? (
             <span style={{ fontSize: '0.9rem', color: '#6b7280' }}>Carregando acesso...</span>
@@ -655,10 +694,10 @@ function App() {
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexWrap: 'wrap', justifyContent: 'center' }}>
               <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', lineHeight: 1.4 }}>
                 <span style={{ fontSize: '0.95rem', color: '#1f2937', fontWeight: 500 }}>
-                  Olá, {userDisplayName}
+                  OlÃ¡, {userDisplayName}
                 </span>
                 <span style={{ fontSize: '0.82rem', color: '#6b7280' }}>
-                  {user.email} · Acesso {isPro ? 'profissional' : 'básico'}
+                  {user.email} Â· Acesso {isPro ? 'profissional' : 'bÃ¡sico'}
                 </span>
               </div>
               <button
@@ -708,12 +747,12 @@ function App() {
                   }}
                 >
                   <strong style={{ fontSize: '1rem', color: '#111827' }}>
-                    {step === 'email' ? 'Acesse sua conta' : 'Digite o código'}
+                    {step === 'email' ? 'Acesse sua conta' : 'Digite o cÃ³digo'}
                   </strong>
                   <span style={{ fontSize: '0.88rem', color: '#6b7280' }}>
                     {step === 'email'
-                      ? 'Receba um código e continue rapidamente'
-                      : 'Enviamos um código para seu e-mail'}
+                      ? 'Receba um cÃ³digo e continue rapidamente'
+                      : 'Enviamos um cÃ³digo para seu e-mail'}
                   </span>
                 </div>
 
@@ -774,7 +813,7 @@ function App() {
                             }
                           }
                         }}
-                        placeholder="Digite o código"
+                        placeholder="Digite o cÃ³digo"
                         disabled={loadingAuth}
                       style={{
                           width: '100%',
@@ -842,10 +881,10 @@ function App() {
                     style={{ padding: '0.65rem 1rem' }}
                   >
                     {loadingAuth
-                      ? 'Enviando código...'
+                      ? 'Enviando cÃ³digo...'
                       : cooldownTimer > 0
-                        ? `Reenviar código em ${cooldownTimer}s`
-                        : 'Enviar código'}
+                        ? `Reenviar cÃ³digo em ${cooldownTimer}s`
+                        : 'Enviar cÃ³digo'}
                   </button>
                 ) : (
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
@@ -866,8 +905,8 @@ function App() {
                       style={{ padding: '0.65rem 1rem' }}
                     >
                       {cooldownTimer > 0
-                        ? `Reenviar código em ${cooldownTimer}s`
-                        : 'Reenviar código'}
+                        ? `Reenviar cÃ³digo em ${cooldownTimer}s`
+                        : 'Reenviar cÃ³digo'}
                     </button>
 
                     <button
@@ -893,7 +932,7 @@ function App() {
           <line x1="12" y1="9" x2="12" y2="13"/>
           <line x1="12" y1="17" x2="12.01" y2="17"/>
         </svg>
-        <span>Utilize apenas informações clínicas não identificáveis, conforme boas práticas de confidencialidade.</span>
+        <span>Utilize apenas informaÃ§Ãµes clÃ­nicas nÃ£o identificÃ¡veis, conforme boas prÃ¡ticas de confidencialidade.</span>
       </div>
 
       <div className="layout-principal">
@@ -910,7 +949,7 @@ function App() {
             </div>
 
             <div className="form-group">
-              <label htmlFor="template">Modelo clínico</label>
+              <label htmlFor="template">Modelo clÃ­nico</label>
               <div className="input-wrapper">
                 <select
                   id="template"
@@ -919,7 +958,7 @@ function App() {
                   disabled={loadingTemplates}
                 >
                   <option value="">
-                    {loadingTemplates ? 'Carregando modelos...' : 'Selecione um modelo clínico...'}
+                    {loadingTemplates ? 'Carregando modelos...' : 'Selecione um modelo clÃ­nico...'}
                   </option>
                   {templates.map((t) => (
                     <option key={t.id} value={t.id}>
@@ -931,7 +970,7 @@ function App() {
             </div>
 
             <div className="form-group">
-              <label htmlFor="texto">Anotações clínicas</label>
+              <label htmlFor="texto">AnotaÃ§Ãµes clÃ­nicas</label>
               <p className="field-helper">
                 Digite ou cole sua anamnese para organizar automaticamente.
               </p>
@@ -952,8 +991,8 @@ function App() {
               {!texto.trim() && (
                 <div className="empty-state-hint">
                   {possuiGuiaSelecionado
-                    ? 'Guia clínico do modelo selecionado disponível ao lado, com os tópicos esperados para esta coleta.'
-                    : 'Um registro inicial já é suficiente para começar. Depois, você pode revisar a qualidade e aprofundar pontos específicos.'}
+                    ? 'Guia clÃ­nico do modelo selecionado disponÃ­vel ao lado, com os tÃ³picos esperados para esta coleta.'
+                    : 'Um registro inicial jÃ¡ Ã© suficiente para comeÃ§ar. Depois, vocÃª pode revisar a qualidade e aprofundar pontos especÃ­ficos.'}
                 </div>
               )}
 
@@ -962,21 +1001,21 @@ function App() {
                 <button
                   className="btn-guia-toggle"
                   onClick={() => setGuiaAberto(!guiaAberto)}
-                  title="Mostrar ou ocultar guia clínico"
+                  title="Mostrar ou ocultar guia clÃ­nico"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <circle cx="12" cy="12" r="10"/>
                     <line x1="12" y1="16" x2="12" y2="12"/>
                     <line x1="12" y1="8" x2="12.01" y2="8"/>
                   </svg>
-                  {guiaAberto ? 'Ocultar guia clínico' : 'Mostrar guia clínico'}
+                  {guiaAberto ? 'Ocultar guia clÃ­nico' : 'Mostrar guia clÃ­nico'}
                 </button>
 
                 {templateTemCalculadora && (
                   <button
                     className="btn-guia-toggle"
                     onClick={() => setCalculadoraAberta(!calculadoraAberta)}
-                    title="Mostrar ou ocultar cálculos clínicos"
+                    title="Mostrar ou ocultar cÃ¡lculos clÃ­nicos"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <rect x="4" y="2" width="16" height="20" rx="2"/>
@@ -989,7 +1028,7 @@ function App() {
                       <line x1="16" y1="14" x2="16" y2="14"/>
                       <line x1="8" y1="18" x2="16" y2="18"/>
                     </svg>
-                    {calculadoraAberta ? 'Ocultar cálculos clínicos' : 'Mostrar cálculos clínicos'}
+                    {calculadoraAberta ? 'Ocultar cÃ¡lculos clÃ­nicos' : 'Mostrar cÃ¡lculos clÃ­nicos'}
                   </button>
                 )}
               </div>
@@ -1049,7 +1088,7 @@ function App() {
                   onClick={() => setErro('')}
                   title="Fechar"
                 >
-                  ×
+                  Ã—
                 </button>
               </div>
             )}
@@ -1070,7 +1109,7 @@ function App() {
                 </p>
 
                 <div className="resultado-container">
-                  <div className="resultado">{resultado}</div>
+                  <div className="resultado">{displayedResultado}</div>
                   <button
                     className={`btn btn-copiar ${copiado ? 'copiado' : ''}`}
                     onClick={handleCopiar}
@@ -1092,48 +1131,8 @@ function App() {
                       </>
                     )}
                   </button>
-                  <button
-                    className="btn btn-secundario"
-                    onClick={handleGerarInsights}
-                    disabled={loadingInsights}
-                  >
-                    {loadingInsights ? 'Preparando análise detalhada...' : 'Ver análise detalhada'}
-                  </button>
                 </div>
               </div>
-
-              {!isPro && qualityScore.teaser.shouldShowTeaser && (
-                <div className="card reveal-block">
-                  <div className="card-header">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M9 12h6"/>
-                      <path d="M12 9v6"/>
-                      <circle cx="12" cy="12" r="9"/>
-                    </svg>
-                    <h2>Avaliação clínica inicial</h2>
-                  </div>
-
-                  <div style={{ display: 'grid', gap: '0.9rem' }}>
-                    <div
-                      style={{
-                        padding: '0.95rem 1rem',
-                        border: '1px solid #e5e7eb',
-                        borderRadius: '8px',
-                        backgroundColor: '#f9fafb',
-                        color: '#374151',
-                        fontSize: '0.92rem',
-                        lineHeight: 1.6,
-                      }}
-                    >
-                      {qualityScore.teaser.message}
-                    </div>
-
-                    <span style={{ fontSize: '0.82rem', color: '#6b7280' }}>
-                      A análise detalhada fica disponível no bloco abaixo.
-                    </span>
-                  </div>
-                </div>
-              )}
 
               <div className="card reveal-block reveal-block-delayed">
                 <div className="card-header">
@@ -1183,6 +1182,22 @@ function App() {
                         />
                       </div>
 
+                      {!isPro && qualityScore.criticalInsight && (
+                        <div
+                          style={{
+                            padding: '0.95rem 1rem',
+                            border: '1px solid #dbeafe',
+                            borderRadius: '8px',
+                            backgroundColor: '#f8fbff',
+                            color: '#1f3b6d',
+                            fontSize: '0.9rem',
+                            lineHeight: 1.55,
+                          }}
+                        >
+                          {qualityScore.criticalInsight}
+                        </div>
+                      )}
+
                       <div
                         style={{
                           padding: '0.85rem 0.95rem',
@@ -1210,7 +1225,7 @@ function App() {
                       }}
                     >
                       <strong style={{ display: 'block', color: '#1f2937', marginBottom: '0.2rem' }}>
-                        Estimativa ainda indisponível
+                        {'Estimativa ainda indispon\u00edvel'}
                       </strong>
                       <span>{qualityScore.message}</span>
                       <div style={{ marginTop: '0.35rem' }}>{qualityScore.justification}</div>
@@ -1226,11 +1241,11 @@ function App() {
                           onClick={handleGerarInsights}
                           disabled={loadingInsights}
                         >
-                          {loadingInsights ? 'Preparando análise detalhada...' : 'Ver análise detalhada'}
+                          {loadingInsights ? 'Preparando an\u00e1lise detalhada...' : 'Ver an\u00e1lise detalhada \u2192'}
                         </button>
                       </div>
                       <span style={{ fontSize: '0.82rem', color: '#6b7280', marginTop: '-0.2rem' }}>
-                        Identifique pontos específicos de melhoria
+                        Identifique exatamente o que falta na sua anamnese
                       </span>
                     </>
                   )}
@@ -1246,7 +1261,7 @@ function App() {
                   <path d="M12 3a9 9 0 1 0 9 9"/>
                   <path d="M12 7v5l3 3"/>
                 </svg>
-                <h2>Avaliação clínica da anamnese</h2>
+                <h2>AvaliaÃ§Ã£o clÃ­nica da anamnese</h2>
               </div>
 
               <div className="resultado-container">
@@ -1266,20 +1281,20 @@ function App() {
                             Veja exatamente o que pode ser melhorado na sua anamnese
                           </div>
                           <div style={{ marginTop: '0.35rem', fontSize: '0.9rem', lineHeight: 1.55 }}>
-                            Há pontos adicionais que podem ajudar a revisar a coleta clínica com mais clareza e objetividade.
+                            HÃ¡ pontos adicionais que podem ajudar a revisar a coleta clÃ­nica com mais clareza e objetividade.
                           </div>
                         </div>
 
                         <div style={{ display: 'grid', gap: '0.35rem', fontSize: '0.88rem', lineHeight: 1.5 }}>
-                          <span>• Lacunas importantes identificadas</span>
-                          <span>• O que precisa ser melhorado</span>
-                          <span>• Direcionamento claro de revisão</span>
+                          <span>â€¢ Lacunas importantes identificadas</span>
+                          <span>â€¢ O que precisa ser melhorado</span>
+                          <span>â€¢ Direcionamento claro de revisÃ£o</span>
                         </div>
 
                         {hiddenInsightsCount > 0 && (
                           <div className="paywall-points-highlight">
                             <strong>
-                              {hiddenInsightsCount} ponto{hiddenInsightsCount > 1 ? 's' : ''} adicional{hiddenInsightsCount > 1 ? 's' : ''} identificado{hiddenInsightsCount > 1 ? 's' : ''} nesta avaliação
+                              {hiddenInsightsCount} ponto{hiddenInsightsCount > 1 ? 's' : ''} adicional{hiddenInsightsCount > 1 ? 's' : ''} identificado{hiddenInsightsCount > 1 ? 's' : ''} nesta avaliaÃ§Ã£o
                             </strong>
                           </div>
                         )}
@@ -1289,7 +1304,7 @@ function App() {
                             Acesso completo por R$ 9,90
                           </span>
                           <span style={{ fontSize: '0.82rem', color: '#4b5563' }}>
-                            Liberação imediata após o pagamento
+                            LiberaÃ§Ã£o imediata apÃ³s o pagamento
                           </span>
                         </div>
                       </div>
@@ -1300,7 +1315,7 @@ function App() {
                           onClick={handleUpgradeInsights}
                           disabled={loadingCheckout}
                         >
-                          {loadingCheckout ? 'Redirecionando para o pagamento...' : 'Desbloquear análise completa'}
+                          {loadingCheckout ? 'Redirecionando para o pagamento...' : 'Desbloquear anÃ¡lise completa'}
                         </button>
                       </div>
                     </div>
@@ -1315,7 +1330,7 @@ function App() {
       </div>
 
       <footer className="footer">
-        <p>Minha Anamnese &middot; Apoio à padronização clínica &middot; Nenhum dado é armazenado</p>
+        <p>Minha Anamnese &middot; Apoio Ã  padronizaÃ§Ã£o clÃ­nica &middot; Nenhum dado Ã© armazenado</p>
       </footer>
     </div>
   );

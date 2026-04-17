@@ -1,228 +1,189 @@
+const ABSENT_PATTERNS = [
+  /\bnao informado\b/g,
+  /\bnão informado\b/g,
+  /\bnao refere\b/g,
+  /\bnão refere\b/g,
+];
+
 const CATEGORY_CONFIG = [
   {
     id: 'history',
     label: 'história clínica',
-    teaserLabel: 'história clínica mais detalhada',
-    missingJustifications: [
-      'Pouca exploração da história clínica.',
-      'A evolução do quadro ainda pode ficar mais clara.',
-    ],
-    patterns: [/\bhist[oó]ria\b/gi, /\bqueixa\b/gi, /\bevolu[cç][aã]o\b/gi],
+    weight: 9,
+    patterns: ['historia', 'queixa', 'qp', 'evolucao', 'hda', 'sintomas associados'],
   },
   {
     id: 'exam',
     label: 'exame físico',
-    teaserLabel: 'descrição do exame físico',
-    missingJustifications: [
-      'A descrição do exame físico ainda pode ser mais detalhada.',
-      'Há espaço para tornar o exame físico mais objetivo.',
-    ],
-    patterns: [/\bexame\b/gi, /\bsinais vitais\b/gi, /\binspe[cç][aã]o\b/gi],
+    weight: 10,
+    patterns: ['exame fisico', 'ao exame', 'sinais vitais', 'ectoscopia', 'exame'],
   },
   {
-    id: 'historyBackground',
+    id: 'background',
     label: 'antecedentes',
-    teaserLabel: 'antecedentes relevantes',
-    missingJustifications: [
-      'Pouca exploração de antecedentes.',
-      'Os antecedentes clínicos ainda podem ser melhor documentados.',
-    ],
-    patterns: [/\bantecedentes?\b/gi, /\bcomorbidades?\b/gi, /\bhist[oó]ria pregressa\b/gi],
+    weight: 8,
+    patterns: ['antecedentes', 'comorbidades', 'historia pregressa', 'antecedente'],
   },
   {
-    id: 'medsAllergies',
+    id: 'medications',
     label: 'medicações e alergias',
-    teaserLabel: 'medicações em uso e alergias',
-    missingJustifications: [
-      'Ausência de informações sobre medicações em uso ou alergias.',
-      'Medicações e alergias ainda podem ser descritas com mais clareza.',
-    ],
-    patterns: [/\bmedica[cç][aã]o(?:es)?\b/gi, /\balergia(?:s)?\b/gi],
+    weight: 8,
+    patterns: ['medicacoes', 'medicacao', 'medicamentos', 'alergias', 'alergia'],
   },
   {
     id: 'plan',
     label: 'conduta e hipótese',
-    teaserLabel: 'conduta inicial e hipótese clínica',
-    missingJustifications: [
-      'Conduta ou hipótese clínica aparecem pouco definidas.',
-      'Há espaço para explicitar melhor hipótese clínica ou conduta inicial.',
-    ],
-    patterns: [/\bconduta\b/gi, /\bhip[oó]tese\b/gi, /\bimpress[aã]o\b/gi],
+    weight: 7,
+    patterns: ['conduta', 'hipotese', 'impressao diagnostica', 'avaliacao'],
   },
 ];
 
 const SPECIALTY_OVERRIDES = {
   pediatria: {
-    categoryBonuses: {
-      historyBackground: {
-        patterns: [/\bdesenvolvimento\b/gi, /\bneuropsicomotor\b/gi, /\bvacin[aç][aã]o\b/gi],
-        bonus: 2,
-      },
-      medsAllergies: {
-        patterns: [/\balimenta[cç][aã]o\b/gi, /\belimina[cç][oõ]es\b/gi],
-        bonus: 1,
-      },
-    },
-    missingCategoryMessages: {
-      historyBackground: [
-        'Há pouca exploração de desenvolvimento ou histórico vacinal.',
-        'Aspectos de desenvolvimento e vacinação ainda podem ser melhor descritos.',
-      ],
-    },
+    background: ['desenvolvimento', 'neuropsicomotor', 'vacinacao'],
+    history: ['aceitacao alimentar', 'eliminacoes'],
   },
   obstetricia: {
-    categoryBonuses: {
-      history: {
-        patterns: [/\bIG\b/gi, /\bDUM\b/gi, /\bUSG\b/gi],
-        bonus: 3,
-      },
-      exam: {
-        patterns: [/\bBCF\b/gi, /\bmovimenta[cç][aã]o fetal\b/gi],
-        bonus: 2,
-      },
-    },
-    missingCategoryMessages: {
-      history: [
-        'Faltam referências mais claras a IG, DUM ou USG.',
-        'IG, DUM ou USG ainda podem ser melhor explicitados.',
-      ],
-      exam: [
-        'Aspectos obstétricos como BCF ou movimentação fetal podem ser melhor explorados.',
-        'Há espaço para detalhar melhor achados obstétricos do exame.',
-      ],
-    },
+    history: ['ig', 'dum', 'usg'],
+    exam: ['bcf', 'movimentacao fetal', 'contrações', 'contracoes'],
   },
   ginecologia: {
-    categoryBonuses: {
-      history: {
-        patterns: [/\bmenstrual\b/gi, /\bsexual\b/gi],
-        bonus: 2,
-      },
-      plan: {
-        patterns: [/\bcontracep[cç][aã]o\b/gi, /\bcontraceptivo\b/gi],
-        bonus: 1,
-      },
-    },
-    missingCategoryMessages: {
-      history: [
-        'A história menstrual ou sexual ainda pode ser melhor explorada.',
-        'Há espaço para detalhar melhor aspectos ginecológicos básicos da história.',
-      ],
-    },
+    history: ['historia menstrual', 'sexual', 'contracepcao', 'contraceptivo'],
   },
   upa_emergencia: {
-    categoryBonuses: {
-      exam: {
-        patterns: [/\bsatur[aç][aã]o\b/gi, /\bpress[aã]o\b/gi, /\bfrequ[eê]ncia\b/gi],
-        bonus: 2,
-      },
-      plan: {
-        patterns: [/\bsinal(?:is)? de gravidade\b/gi, /\bgravidade\b/gi],
-        bonus: 2,
-      },
-    },
-    missingCategoryMessages: {
-      exam: [
-        'Sinais vitais ou dados objetivos de exame ainda aparecem pouco definidos.',
-        'Há espaço para reforçar dados objetivos do exame na avaliação inicial.',
-      ],
-    },
+    exam: ['saturacao', 'pressao', 'frequencia cardiaca', 'frequencia respiratoria'],
+    plan: ['gravidade', 'sinais de gravidade'],
   },
 };
 
-const LOW_SCORE_MESSAGES = [
-  'A anamnese sugere espaço importante para maior completude clínica.',
-  'O registro ainda pode ganhar mais consistência em pontos essenciais.',
-  'Há margem relevante para aprofundar a coleta de informações.',
+const HIGH_MESSAGES = [
+  'Boa base clínica, mas há lacunas importantes que podem impactar a avaliação do caso.',
+  'Boa base clínica, mas alguns pontos ainda podem limitar a avaliação do caso.',
 ];
 
-const MEDIUM_SCORE_MESSAGES = [
-  'Boa base clínica, com pontos que ainda podem ser melhor explorados.',
-  'O registro está adequado, com oportunidades claras de refinamento.',
-  'A estrutura é consistente, embora ainda haja pontos a aprofundar.',
+const MEDIUM_MESSAGES = [
+  'Há lacunas relevantes que limitam a avaliação clínica.',
+  'A anamnese apresenta lacunas relevantes que ainda limitam a avaliação clínica.',
 ];
 
-const HIGH_SCORE_MESSAGES = [
-  'Boa base clínica, com pequenos pontos que ainda podem ser refinados.',
-  'O registro demonstra boa consistência, com espaço para ajustes pontuais.',
-  'Há boa completude clínica, com margem para refinamentos específicos.',
+const LOW_MESSAGES = [
+  'Anamnese insuficiente para uma avaliação clínica segura.',
+  'O registro ainda está insuficiente para uma avaliação clínica segura.',
 ];
 
-const TEASER_MESSAGES = [
-  'Alguns pontos podem ser melhor explorados nesta anamnese.',
-  'Há elementos importantes que ainda podem ser aprofundados.',
-  'A coleta de informações pode ser expandida em pontos relevantes.',
-  'A avaliação inicial sugere oportunidades objetivas de refinamento.',
-  'Este registro parece consistente, mas ainda pode ganhar mais completude clínica.',
-];
+const JUSTIFICATION_VARIANTS = {
+  exam: [
+    'A descrição do exame físico ainda pode ser mais detalhada.',
+    'Faltam achados objetivos do exame físico para sustentar melhor a avaliação.',
+  ],
+  medications: [
+    'Ainda faltam informações sobre medicações em uso ou alergias.',
+    'Medicações em uso e alergias ainda não aparecem com clareza suficiente.',
+  ],
+  background: [
+    'Os antecedentes ainda podem ser descritos com mais clareza.',
+    'Há pouca exploração de antecedentes relevantes para o caso.',
+  ],
+  demographic: [
+    'Idade ou sexo ainda não aparecem de forma clara no registro.',
+    'A identificação clínica básica ainda pode ser mais objetiva.',
+  ],
+  structure: [
+    'A estrutura do registro ainda pode ficar mais segmentada.',
+    'A organização do texto ainda pode ser mais clara entre os blocos clínicos.',
+  ],
+  coverage: [
+    'Há espaço para ampliar a cobertura de itens clínicos importantes.',
+    'Alguns eixos clínicos importantes ainda aparecem pouco explorados.',
+  ],
+};
+
+const CRITICAL_INSIGHT_MESSAGES = {
+  exam: 'Ausência de exame físico pode comprometer a hipótese diagnóstica.',
+  medications: 'Falta de medicações em uso pode impactar a conduta.',
+  background: 'Antecedentes não descritos limitam a avaliação do caso.',
+};
 
 function clamp(value, min, max) {
   return Math.min(Math.max(value, min), max);
+}
+
+function normalizeText(value) {
+  return (value || '')
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase();
+}
+
+function containsAny(text, values) {
+  return values.some((value) => text.includes(value));
 }
 
 function pickVariant(collection, seed) {
   return collection[seed % collection.length];
 }
 
-function buildScoreMessage(score, seed) {
-  if (score < 55) {
-    return pickVariant(LOW_SCORE_MESSAGES, seed);
-  }
-
-  if (score < 75) {
-    return pickVariant(MEDIUM_SCORE_MESSAGES, seed);
-  }
-
-  return pickVariant(HIGH_SCORE_MESSAGES, seed);
+function lineHasAbsentMarker(line) {
+  const normalizedLine = normalizeText(line);
+  return ABSENT_PATTERNS.some((pattern) => pattern.test(normalizedLine));
 }
 
-function buildMissingJustification(missingCategories, seed, structureSegmented) {
-  if (missingCategories.length > 0) {
-    const primary = missingCategories[0];
-    const options = primary.missingJustifications;
-    return options[seed % options.length];
-  }
+function fieldMarkedAbsent(text, fieldPatterns) {
+  const lines = text
+    .split('\n')
+    .map((line) => line.trim())
+    .filter(Boolean);
 
-  if (!structureSegmented) {
-    return 'A estrutura ainda pode ficar mais segmentada.';
-  }
-
-  return 'Há boa cobertura clínica, com margem para pequenos refinamentos na organização.';
+  return lines.some((line) => {
+    const normalizedLine = normalizeText(line);
+    return fieldPatterns.some((pattern) => normalizedLine.includes(pattern)) && lineHasAbsentMarker(line);
+  });
 }
 
-function buildTeaserMessage(seed, missingCategories) {
-  const baseMessage = pickVariant(TEASER_MESSAGES, seed);
-
-  if (missingCategories.length === 0) {
-    return baseMessage;
-  }
-
-  if (missingCategories.length === 1) {
-    return `${baseMessage} Vale revisar ${missingCategories[0].teaserLabel}.`;
-  }
-
-  return `${baseMessage} Vale revisar ${missingCategories[0].teaserLabel} e ${missingCategories[1].teaserLabel}.`;
+function detectCategory(text, category, templateId) {
+  const categoryPatterns = [...category.patterns];
+  const specialtyPatterns = SPECIALTY_OVERRIDES[templateId]?.[category.id] || [];
+  return containsAny(text, [...categoryPatterns, ...specialtyPatterns]);
 }
 
-function getSpecialtyConfig(templateId) {
-  return SPECIALTY_OVERRIDES[templateId] || null;
+function buildMainMessage(score, seed) {
+  if (score >= 80) return pickVariant(HIGH_MESSAGES, seed);
+  if (score >= 50) return pickVariant(MEDIUM_MESSAGES, seed);
+  return pickVariant(LOW_MESSAGES, seed);
+}
+
+function buildJustification(missingFields, structureSegmented, matchedCategories, seed) {
+  if (missingFields.exam) return pickVariant(JUSTIFICATION_VARIANTS.exam, seed);
+  if (missingFields.medications) return pickVariant(JUSTIFICATION_VARIANTS.medications, seed);
+  if (missingFields.background) return pickVariant(JUSTIFICATION_VARIANTS.background, seed);
+  if (missingFields.demographic) return pickVariant(JUSTIFICATION_VARIANTS.demographic, seed);
+  if (!structureSegmented) return pickVariant(JUSTIFICATION_VARIANTS.structure, seed);
+  if (matchedCategories.length <= 2) return pickVariant(JUSTIFICATION_VARIANTS.coverage, seed);
+
+  return 'Alguns pontos ainda podem ser descritos com mais objetividade clínica.';
+}
+
+function buildCriticalInsight(missingFields) {
+  if (missingFields.exam) return CRITICAL_INSIGHT_MESSAGES.exam;
+  if (missingFields.medications) return CRITICAL_INSIGHT_MESSAGES.medications;
+  if (missingFields.background) return CRITICAL_INSIGHT_MESSAGES.background;
+  return '';
 }
 
 export function evaluateAnamnesisQuality(text, templateId = '') {
-  const normalizedText = (text || '').trim();
-  const characterCount = normalizedText.length;
-  const words = normalizedText
-    .split(/\s+/)
-    .map((word) => word.trim())
-    .filter(Boolean);
+  const rawText = (text || '').trim();
+  const normalizedText = normalizeText(rawText);
+  const words = normalizedText.split(/\s+/).filter(Boolean);
   const wordCount = words.length;
+  const characterCount = rawText.length;
 
   if (characterCount < 180 || wordCount < 30) {
     return {
       shouldShowScore: false,
+      score: null,
       message: 'Ainda não há conteúdo suficiente para estimar a avaliação inicial da anamnese.',
       justification: 'Inclua um registro um pouco mais detalhado para liberar a estimativa.',
-      score: null,
+      criticalInsight: '',
       teaser: {
         shouldShowTeaser: false,
         message: '',
@@ -230,85 +191,102 @@ export function evaluateAnamnesisQuality(text, templateId = '') {
     };
   }
 
-  const specialtyConfig = getSpecialtyConfig(templateId);
-  const matchedCategories = [];
-  const missingCategories = [];
-  let specialtyBonusPoints = 0;
-
-  CATEGORY_CONFIG.forEach((category) => {
-    const matched = category.patterns.some((pattern) => pattern.test(normalizedText));
-    const categoryOverride = specialtyConfig?.categoryBonuses?.[category.id];
-    const overrideMatched = categoryOverride
-      ? categoryOverride.patterns.some((pattern) => pattern.test(normalizedText))
-      : false;
-
-    if (matched || overrideMatched) {
-      matchedCategories.push(category);
-      if (overrideMatched) {
-        specialtyBonusPoints += categoryOverride.bonus;
-      }
-      return;
-    }
-
-    const overrideMessages = specialtyConfig?.missingCategoryMessages?.[category.id];
-    missingCategories.push({
-      ...category,
-      missingJustifications: overrideMessages || category.missingJustifications,
-    });
-  });
-
-  const paragraphCount = normalizedText
+  const paragraphCount = rawText
     .split(/\n+/)
     .map((block) => block.trim())
     .filter(Boolean).length;
-  const hasSectionLabels = /(^|\n)\s*[a-zà-ú]{2,20}\s*:/gim.test(normalizedText);
-  const sentenceCount = normalizedText
+  const sentenceCount = rawText
     .split(/[.!?]+/)
     .map((sentence) => sentence.trim())
     .filter(Boolean).length;
+  const hasSectionLabels = /(^|\n)\s*[a-zà-ú0-9/\- ]{2,30}\s*:/gim.test(rawText);
   const structureSegmented = paragraphCount >= 2 || hasSectionLabels;
+
+  const hasAge = /\b\d{1,3}\s*anos?\b/.test(normalizedText);
+  const hasSex = containsAny(normalizedText, [
+    'masculino',
+    'feminino',
+    'sexo masc',
+    'sexo fem',
+    'sexo masculino',
+    'sexo feminino',
+  ]);
+  const demographicMissing = !(hasAge || hasSex);
+
+  const backgroundMissing =
+    fieldMarkedAbsent(rawText, ['antecedentes', 'comorbidades', 'historia pregressa']) ||
+    !detectCategory(normalizedText, CATEGORY_CONFIG.find((category) => category.id === 'background'), templateId);
+
+  const medicationsMissing =
+    fieldMarkedAbsent(rawText, ['medicacoes', 'medicacao', 'medicamentos', 'alergias', 'alergia']) ||
+    !detectCategory(normalizedText, CATEGORY_CONFIG.find((category) => category.id === 'medications'), templateId);
+
+  const examMissing =
+    fieldMarkedAbsent(rawText, ['exame', 'exame fisico', 'sinais vitais', 'ao exame']) ||
+    !detectCategory(normalizedText, CATEGORY_CONFIG.find((category) => category.id === 'exam'), templateId);
+
+  const missingFields = {
+    demographic: demographicMissing,
+    background: backgroundMissing,
+    medications: medicationsMissing,
+    exam: examMissing,
+  };
+
+  const matchedCategories = CATEGORY_CONFIG.filter((category) =>
+    detectCategory(normalizedText, category, templateId)
+  );
 
   let sizePoints = 0;
   if (wordCount >= 45) sizePoints += 4;
   if (wordCount >= 90) sizePoints += 4;
-  if (characterCount >= 450) sizePoints += 2;
-  sizePoints = Math.min(sizePoints, 10);
+  if (characterCount >= 500) sizePoints += 4;
+  sizePoints = Math.min(sizePoints, 12);
 
   let structurePoints = 0;
   if (paragraphCount >= 2) structurePoints += 4;
-  if (paragraphCount >= 4) structurePoints += 3;
+  if (paragraphCount >= 4) structurePoints += 2;
   if (sentenceCount >= 4) structurePoints += 2;
-  if (hasSectionLabels) structurePoints += 3;
-  structurePoints = Math.min(structurePoints, 12);
+  if (hasSectionLabels) structurePoints += 2;
+  structurePoints = Math.min(structurePoints, 10);
 
-  const categoryPoints = matchedCategories.length * 9;
-  const score = clamp(
-    Math.round(30 + sizePoints + structurePoints + categoryPoints + specialtyBonusPoints),
-    30,
-    90
-  );
+  const categoryPoints = matchedCategories.reduce((total, category) => total + category.weight, 0);
+
+  let score = 30 + sizePoints + structurePoints + categoryPoints;
+
+  if (missingFields.exam) score -= 20;
+  if (missingFields.medications) score -= 15;
+  if (missingFields.background) score -= 10;
+
+  const criticalMissingCount = Object.values(missingFields).filter(Boolean).length;
+  let maxScore = 90;
+
+  if (criticalMissingCount >= 2) {
+    maxScore = 70;
+  } else if (criticalMissingCount >= 1) {
+    maxScore = 80;
+  }
+
+  score = clamp(Math.round(Math.min(score, maxScore)), 30, 90);
+
   const seed =
     wordCount +
     characterCount +
-    matchedCategories.length +
     paragraphCount +
     sentenceCount +
-    specialtyBonusPoints;
+    matchedCategories.length +
+    criticalMissingCount;
 
-  const shouldShowTeaser =
-    score < 88 &&
-    missingCategories.length > 0 &&
-    !(score >= 78 && seed % 3 === 0) &&
-    !(score >= 70 && matchedCategories.length >= 4 && seed % 4 === 0);
+  const criticalInsight = buildCriticalInsight(missingFields);
 
   return {
     shouldShowScore: true,
     score,
-    message: buildScoreMessage(score, seed),
-    justification: buildMissingJustification(missingCategories, seed, structureSegmented),
+    message: buildMainMessage(score, seed),
+    justification: buildJustification(missingFields, structureSegmented, matchedCategories, seed),
+    criticalInsight,
     teaser: {
-      shouldShowTeaser,
-      message: shouldShowTeaser ? buildTeaserMessage(seed, missingCategories) : '',
+      shouldShowTeaser: Boolean(criticalInsight),
+      message: criticalInsight,
     },
   };
 }
