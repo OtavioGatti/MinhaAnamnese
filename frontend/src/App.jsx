@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { api } from './apiClient';
 import CalculatorPanel from './components/CalculatorPanel';
 import GuidePanel from './components/GuidePanel';
@@ -75,6 +75,9 @@ function getUserDisplayName(user) {
 }
 
 function App() {
+  const emailInputRef = useRef(null);
+  const otpInputRef = useRef(null);
+  const autoSubmitTriggeredRef = useRef(false);
   const [templates, setTemplates] = useState([]);
   const [templateSelecionado, setTemplateSelecionado] = useState('');
   const [texto, setTexto] = useState('');
@@ -102,6 +105,7 @@ function App() {
   const templateTemCalculadora = templateSelecionado === TEMPLATE_WITH_CALCULATORS;
   const userPlan = user?.user_metadata?.plan || 'basic';
   const isPro = userPlan === 'pro';
+  const otpIsComplete = otpCode.trim().length >= 6;
 
   useEffect(() => {
     if (cooldownTimer <= 0) {
@@ -121,6 +125,34 @@ function App() {
 
     return () => window.clearInterval(timer);
   }, [cooldownTimer]);
+
+  useEffect(() => {
+    if (user) {
+      return;
+    }
+
+    if (step === 'otp') {
+      otpInputRef.current?.focus();
+      otpInputRef.current?.select();
+      return;
+    }
+
+    emailInputRef.current?.focus();
+  }, [step, user]);
+
+  useEffect(() => {
+    if (step !== 'otp') {
+      autoSubmitTriggeredRef.current = true;
+      return;
+    }
+
+    if (!otpIsComplete || loadingAuth || autoSubmitTriggeredRef.current) {
+      return;
+    }
+
+    autoSubmitTriggeredRef.current = true;
+    handleConfirmarCodigo();
+  }, [otpCode, step, loadingAuth]);
 
   useEffect(() => {
     async function carregarSessao() {
@@ -145,6 +177,7 @@ function App() {
         setStep('email');
         setAuthFeedback('');
         setCooldownTimer(0);
+        autoSubmitTriggeredRef.current = false;
       }
     });
 
@@ -401,7 +434,8 @@ function App() {
     setOtpCode('');
     setStep('otp');
     setCooldownTimer(60);
-    setAuthFeedback(`Código enviado para ${normalizedEmail}.`);
+    autoSubmitTriggeredRef.current = false;
+    setAuthFeedback('Código enviado para seu e-mail');
     setLoadingAuth(false);
     return;
   };
@@ -424,6 +458,7 @@ function App() {
     if (error) {
       setErro('Código inválido ou expirado');
       setLoadingAuth(false);
+      autoSubmitTriggeredRef.current = true;
       return;
     }
 
@@ -433,6 +468,7 @@ function App() {
     setAuthFeedback('');
     setCooldownTimer(0);
     setLoadingAuth(false);
+    autoSubmitTriggeredRef.current = false;
   };
 
   const handleVoltarEtapaEmail = () => {
@@ -443,6 +479,7 @@ function App() {
     setOtpCode('');
     setStep('email');
     setAuthFeedback('');
+    autoSubmitTriggeredRef.current = false;
   };
 
   const handleReenviarCodigo = async () => {
@@ -461,6 +498,7 @@ function App() {
     setStep('email');
     setAuthFeedback('');
     setCooldownTimer(0);
+    autoSubmitTriggeredRef.current = false;
     setLoadingUser(false);
   };
 
@@ -506,40 +544,135 @@ function App() {
               </button>
             </div>
           ) : (
-            <div style={{ width: '100%', maxWidth: '320px' }}>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Seu e-mail de acesso"
-                  disabled={loadingAuth}
-                  style={{
-                    width: '100%',
-                    padding: '0.75rem 0.9rem',
-                    border: '1px solid #d7deea',
-                    borderRadius: '8px',
-                    fontSize: '0.95rem',
-                  }}
-                />
+            <div
+              style={{
+                width: '100%',
+                maxWidth: '360px',
+                marginInline: 'auto',
+                padding: '1rem',
+                border: '1px solid #e2e8f0',
+                borderRadius: '8px',
+                backgroundColor: '#ffffff',
+                boxShadow: '0 10px 25px rgba(15, 23, 42, 0.05)',
+              }}
+            >
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
 
-                {step === 'otp' && (
+                  if (step === 'email') {
+                    handleEnviarCodigo();
+                    return;
+                  }
+
+                  handleConfirmarCodigo();
+                }}
+                style={{ display: 'flex', flexDirection: 'column', gap: '0.9rem' }}
+              >
+                <div
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '0.25rem',
+                    minHeight: '3.75rem',
+                    opacity: 1,
+                    transform: 'translateY(0)',
+                    transition: 'opacity 180ms ease, transform 180ms ease',
+                  }}
+                >
+                  <strong style={{ fontSize: '1rem', color: '#111827' }}>
+                    {step === 'email' ? 'Acesse sua conta' : 'Digite o código'}
+                  </strong>
+                  <span style={{ fontSize: '0.88rem', color: '#6b7280' }}>
+                    {step === 'email'
+                      ? 'Receba um código e continue rapidamente'
+                      : 'Enviamos um código para seu e-mail'}
+                  </span>
+                </div>
+
+                <div
+                  style={{
+                    display: 'grid',
+                    gap: '0.75rem',
+                    opacity: 1,
+                    transform: 'translateY(0)',
+                    transition: 'opacity 180ms ease, transform 180ms ease',
+                  }}
+                >
                   <input
-                    type="text"
-                    inputMode="numeric"
-                    value={otpCode}
-                    onChange={(e) => setOtpCode(e.target.value)}
-                    placeholder="Código recebido por e-mail"
-                    disabled={loadingAuth}
+                    ref={emailInputRef}
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Seu e-mail"
+                    disabled={loadingAuth || step === 'otp'}
                     style={{
                       width: '100%',
-                      padding: '0.75rem 0.9rem',
+                      padding: '0.8rem 0.9rem',
                       border: '1px solid #d7deea',
                       borderRadius: '8px',
                       fontSize: '0.95rem',
+                      backgroundColor: loadingAuth || step === 'otp' ? '#f8fafc' : '#ffffff',
                     }}
                   />
-                )}
+
+                  {step === 'otp' && (
+                    <div style={{ display: 'grid', gap: '0.5rem' }}>
+                      <input
+                        ref={otpInputRef}
+                        type="text"
+                        inputMode="text"
+                        autoComplete="one-time-code"
+                        value={otpCode}
+                        onChange={(e) => {
+                          autoSubmitTriggeredRef.current = false;
+                          setOtpCode(e.target.value.trim());
+                        }}
+                        onPaste={(e) => {
+                          autoSubmitTriggeredRef.current = false;
+                          const pastedCode = e.clipboardData.getData('text').trim();
+                          if (pastedCode) {
+                            e.preventDefault();
+                            setOtpCode(pastedCode);
+                          }
+                        }}
+                        placeholder="Código recebido por e-mail"
+                        disabled={loadingAuth}
+                        style={{
+                          width: '100%',
+                          padding: '0.9rem 1rem',
+                          border: '1px solid #d7deea',
+                          borderRadius: '8px',
+                          fontSize: '1.15rem',
+                          letterSpacing: '0.35rem',
+                          textAlign: 'center',
+                          fontVariantNumeric: 'tabular-nums',
+                          fontFamily: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace',
+                        }}
+                      />
+                      <div
+                        aria-hidden="true"
+                        style={{
+                          display: 'grid',
+                          gridTemplateColumns: 'repeat(6, minmax(0, 1fr))',
+                          gap: '0.35rem',
+                        }}
+                      >
+                        {Array.from({ length: 6 }).map((_, index) => (
+                          <div
+                            key={index}
+                            style={{
+                              height: '0.28rem',
+                              borderRadius: '999px',
+                              backgroundColor: otpCode[index] ? '#2563eb' : '#d7deea',
+                              transition: 'background-color 160ms ease',
+                            }}
+                          />
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
 
                 {authFeedback && (
                   <span style={{ fontSize: '0.82rem', color: '#4b5563' }}>
@@ -549,28 +682,26 @@ function App() {
 
                 {step === 'email' ? (
                   <button
-                    type="button"
+                    type="submit"
                     className="btn btn-secundario"
-                    onClick={handleEnviarCodigo}
                     disabled={loadingAuth || cooldownTimer > 0}
-                    style={{ padding: '0.55rem 1rem' }}
+                    style={{ padding: '0.65rem 1rem' }}
                   >
                     {loadingAuth
                       ? 'Enviando código...'
                       : cooldownTimer > 0
-                        ? `Aguarde ${cooldownTimer}s`
+                        ? `Reenviar código em ${cooldownTimer}s`
                         : 'Enviar código'}
                   </button>
                 ) : (
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
                     <button
-                      type="button"
+                      type="submit"
                       className="btn btn-secundario"
-                      onClick={handleConfirmarCodigo}
                       disabled={loadingAuth || !otpCode.trim()}
-                      style={{ padding: '0.55rem 1rem' }}
+                      style={{ padding: '0.65rem 1rem' }}
                     >
-                      {loadingAuth ? 'Confirmando código...' : 'Confirmar código'}
+                      {loadingAuth ? 'Confirmando acesso...' : 'Confirmar acesso'}
                     </button>
 
                     <button
@@ -578,10 +709,10 @@ function App() {
                       className="btn btn-secundario"
                       onClick={handleReenviarCodigo}
                       disabled={loadingAuth || cooldownTimer > 0}
-                      style={{ padding: '0.55rem 1rem' }}
+                      style={{ padding: '0.65rem 1rem' }}
                     >
                       {cooldownTimer > 0
-                        ? `Aguarde ${cooldownTimer}s para reenviar`
+                        ? `Reenviar código em ${cooldownTimer}s`
                         : 'Reenviar código'}
                     </button>
 
@@ -590,13 +721,13 @@ function App() {
                       className="btn btn-secundario"
                       onClick={handleVoltarEtapaEmail}
                       disabled={loadingAuth}
-                      style={{ padding: '0.55rem 1rem' }}
+                      style={{ padding: '0.65rem 1rem' }}
                     >
-                      Voltar
+                      Alterar e-mail
                     </button>
                   </div>
                 )}
-              </div>
+              </form>
             </div>
           )}
         </div>
