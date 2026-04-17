@@ -138,6 +138,10 @@ function formatRelativeTime(value) {
   return rtf.format(days, 'day');
 }
 
+function isValidScoreValue(value) {
+  return typeof value === 'number' && !Number.isNaN(value);
+}
+
 function getUserDisplayName(user) {
   const email = user?.email || '';
 
@@ -184,9 +188,11 @@ function App() {
   const [copiado, setCopiado] = useState(false);
   const [loadingTemplates, setLoadingTemplates] = useState(true);
   const [loadingRecentAnamneses, setLoadingRecentAnamneses] = useState(false);
+  const [loadingAnamneseStats, setLoadingAnamneseStats] = useState(false);
   const [guiaAberto, setGuiaAberto] = useState(false);
   const [calculadoraAberta, setCalculadoraAberta] = useState(false);
   const [recentAnamneses, setRecentAnamneses] = useState([]);
+  const [anamneseStats, setAnamneseStats] = useState(null);
 
   const templateTemCalculadora = templateSelecionado === TEMPLATE_WITH_CALCULATORS;
   const userPlan = user?.user_metadata?.plan || 'basic';
@@ -362,6 +368,37 @@ function App() {
 
     carregarAnamnesesRecentes();
   }, [user?.id]);
+
+  useEffect(() => {
+    async function carregarStatsAnamneses() {
+      if (!user?.id) {
+        setAnamneseStats(null);
+        setLoadingAnamneseStats(false);
+        return;
+      }
+
+      setLoadingAnamneseStats(true);
+      const response = await api.get(`/anamneses/stats?userId=${encodeURIComponent(user.id)}`);
+
+      if (response.success && response.data && typeof response.data === 'object') {
+        const nextStats = {
+          total_anamneses: typeof response.data.total_anamneses === 'number' ? response.data.total_anamneses : 0,
+          score_medio: isValidScoreValue(response.data.score_medio) ? response.data.score_medio : null,
+          melhor_score: isValidScoreValue(response.data.melhor_score) ? response.data.melhor_score : null,
+          ultimo_score: isValidScoreValue(response.data.ultimo_score) ? response.data.ultimo_score : null,
+          score_anterior: isValidScoreValue(response.data.score_anterior) ? response.data.score_anterior : null,
+        };
+
+        setAnamneseStats(nextStats);
+      } else {
+        setAnamneseStats(null);
+      }
+
+      setLoadingAnamneseStats(false);
+    }
+
+    carregarStatsAnamneses();
+  }, [user?.id, resultado]);
 
   useEffect(() => {
     if (!templateTemCalculadora) {
@@ -669,6 +706,13 @@ function App() {
     () => Object.fromEntries(templates.map((template) => [template.id, template.nome])),
     [templates]
   );
+  const scoreDelta = useMemo(() => {
+    if (!isValidScoreValue(anamneseStats?.ultimo_score) || !isValidScoreValue(anamneseStats?.score_anterior)) {
+      return null;
+    }
+
+    return anamneseStats.ultimo_score - anamneseStats.score_anterior;
+  }, [anamneseStats]);
 
   const trackEvent = async (eventName, metadata = {}, options = {}) => {
     const eventKey = options.eventKey || null;
@@ -1323,6 +1367,47 @@ function App() {
                       >
                         {qualityScore.justification}
                       </div>
+
+                      {user && !loadingAnamneseStats && anamneseStats && isValidScoreValue(anamneseStats.ultimo_score) && (
+                        <div
+                          style={{
+                            padding: '0.9rem 1rem',
+                            border: '1px solid #e5e7eb',
+                            borderRadius: '8px',
+                            backgroundColor: '#ffffff',
+                            display: 'grid',
+                            gap: '0.5rem',
+                          }}
+                        >
+                          <div style={{ fontSize: '0.92rem', fontWeight: 600, color: '#111827' }}>
+                            Evolução do score
+                          </div>
+                          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '0.5rem' }}>
+                            <div style={{ fontSize: '0.85rem', color: '#4b5563' }}>
+                              Último: <strong style={{ color: '#111827' }}>{Math.round(anamneseStats.ultimo_score)}</strong>
+                            </div>
+                            <div style={{ fontSize: '0.85rem', color: '#4b5563' }}>
+                              Melhor: <strong style={{ color: '#111827' }}>{isValidScoreValue(anamneseStats.melhor_score) ? Math.round(anamneseStats.melhor_score) : '-'}</strong>
+                            </div>
+                            <div style={{ fontSize: '0.85rem', color: '#4b5563' }}>
+                              Anterior: <strong style={{ color: '#111827' }}>{isValidScoreValue(anamneseStats.score_anterior) ? Math.round(anamneseStats.score_anterior) : '-'}</strong>
+                            </div>
+                            <div style={{ fontSize: '0.85rem', color: '#4b5563' }}>
+                              Média: <strong style={{ color: '#111827' }}>{isValidScoreValue(anamneseStats.score_medio) ? anamneseStats.score_medio.toFixed(1) : '-'}</strong>
+                            </div>
+                          </div>
+
+                          {anamneseStats.total_anamneses >= 2 && scoreDelta !== null && (
+                            <div style={{ fontSize: '0.84rem', color: '#1f2937' }}>
+                              {scoreDelta > 0
+                                ? `Você melhorou +${Math.round(scoreDelta)}`
+                                : scoreDelta < 0
+                                  ? `Caiu ${Math.round(scoreDelta)}`
+                                  : 'Você manteve estabilidade'}
+                            </div>
+                          )}
+                        </div>
+                      )}
                     </>
                   ) : (
                     <div

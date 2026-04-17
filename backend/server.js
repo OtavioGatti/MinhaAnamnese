@@ -110,6 +110,45 @@ async function listRecentAnamneseMetrics(userId) {
   ));
 }
 
+async function getAnamneseStats(userId) {
+  const anamneses = await listRecentAnamneseMetrics(userId);
+
+  if (!anamneses.length) {
+    return {
+      total_anamneses: 0,
+      score_medio: null,
+      melhor_score: null,
+      ultimo_score: null,
+      score_anterior: null,
+    };
+  }
+
+  const scores = anamneses
+    .map((item) => item.score)
+    .filter((score) => typeof score === 'number' && !Number.isNaN(score));
+
+  if (!scores.length) {
+    return {
+      total_anamneses: 0,
+      score_medio: null,
+      melhor_score: null,
+      ultimo_score: null,
+      score_anterior: null,
+    };
+  }
+
+  const total = scores.length;
+  const scoreMedio = scores.reduce((sum, score) => sum + score, 0) / total;
+
+  return {
+    total_anamneses: total,
+    score_medio: Number(scoreMedio.toFixed(1)),
+    melhor_score: Math.max(...scores),
+    ultimo_score: scores[0] ?? null,
+    score_anterior: scores[1] ?? null,
+  };
+}
+
 function montarPromptInsights(texto) {
   return `Você é um médico auxiliando na avaliação da qualidade de uma anamnese.
 
@@ -153,6 +192,33 @@ app.get('/api/anamneses', async (req, res) => {
     return res.formatResponse(anamneses);
   } catch (_error) {
     return res.formatResponse([]);
+  }
+});
+
+app.get('/api/anamneses/stats', async (req, res) => {
+  const userId = req.query?.userId;
+
+  if (!isValidUserId(userId)) {
+    return res.formatResponse({
+      total_anamneses: 0,
+      score_medio: null,
+      melhor_score: null,
+      ultimo_score: null,
+      score_anterior: null,
+    });
+  }
+
+  try {
+    const stats = await getAnamneseStats(userId);
+    return res.formatResponse(stats);
+  } catch (_error) {
+    return res.formatResponse({
+      total_anamneses: 0,
+      score_medio: null,
+      melhor_score: null,
+      ultimo_score: null,
+      score_anterior: null,
+    });
   }
 });
 
