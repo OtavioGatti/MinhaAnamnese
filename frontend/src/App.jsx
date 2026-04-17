@@ -654,7 +654,7 @@ function App() {
                             }
                           }
                         }}
-                        placeholder="Código recebido por e-mail"
+                        placeholder="Digite o código"
                         disabled={loadingAuth}
                       style={{
                           width: '100%',
