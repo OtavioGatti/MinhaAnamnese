@@ -737,6 +737,10 @@ function App() {
   const trackEvent = async (eventName, metadata = {}, options = {}) => {
     const eventKey = options.eventKey || null;
 
+    if (window.location.hostname === 'localhost') {
+      return;
+    }
+
     if (eventKey && trackedEventsRef.current.has(eventKey)) {
       return;
     }
