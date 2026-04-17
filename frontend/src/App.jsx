@@ -95,6 +95,7 @@ function App() {
   const [loadingCheckout, setLoadingCheckout] = useState(false);
   const [loadingAuth, setLoadingAuth] = useState(false);
   const [cooldownTimer, setCooldownTimer] = useState(0);
+  const [animatedScore, setAnimatedScore] = useState(0);
   const [erro, setErro] = useState('');
   const [authError, setAuthError] = useState('');
   const [authFeedback, setAuthFeedback] = useState('');
@@ -616,6 +617,20 @@ function App() {
     );
   }, [resultado, templateSelecionado, qualityScore.teaser.shouldShowTeaser, qualityScore.score, isPro]);
 
+  useEffect(() => {
+    if (!qualityScore.shouldShowScore || qualityScore.score == null) {
+      setAnimatedScore(0);
+      return undefined;
+    }
+
+    setAnimatedScore(0);
+    const frameId = window.requestAnimationFrame(() => {
+      setAnimatedScore(qualityScore.score);
+    });
+
+    return () => window.cancelAnimationFrame(frameId);
+  }, [qualityScore.shouldShowScore, qualityScore.score, resultado, templateSelecionado]);
+
   return (
     <div className="container">
       <header className="header">
@@ -1083,7 +1098,7 @@ function App() {
                     onClick={handleGerarInsights}
                     disabled={loadingInsights}
                   >
-                    {loadingInsights ? 'Avaliando qualidade da anamnese...' : 'Ver análise completa'}
+                    {loadingInsights ? 'Preparando análise detalhada...' : 'Ver análise detalhada'}
                   </button>
                 </div>
               </div>
@@ -1114,16 +1129,9 @@ function App() {
                       {qualityScore.teaser.message}
                     </div>
 
-                    <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
-                      <button
-                        className="btn btn-secundario"
-                        type="button"
-                        onClick={handleGerarInsights}
-                        disabled={loadingInsights}
-                      >
-                        {loadingInsights ? 'Avaliando qualidade da anamnese...' : 'Ver avaliação completa'}
-                      </button>
-                    </div>
+                    <span style={{ fontSize: '0.82rem', color: '#6b7280' }}>
+                      A análise detalhada fica disponível no bloco abaixo.
+                    </span>
                   </div>
                 </div>
               )}
@@ -1135,7 +1143,7 @@ function App() {
                     <path d="M7 8h10"/>
                     <path d="M7 16h6"/>
                   </svg>
-                  <h2>Avaliação inicial da anamnese</h2>
+                  <h2>Qualidade estimada da anamnese</h2>
                 </div>
 
                 <div style={{ display: 'grid', gap: '0.9rem' }}>
@@ -1163,7 +1171,7 @@ function App() {
                       >
                         <div
                           style={{
-                            width: `${qualityScore.score}%`,
+                            width: `${animatedScore}%`,
                             height: '100%',
                             borderRadius: '999px',
                             background: qualityScore.score >= 75
@@ -1171,7 +1179,7 @@ function App() {
                               : qualityScore.score >= 55
                                 ? 'linear-gradient(90deg, #f59e0b, #d97706)'
                                 : 'linear-gradient(90deg, #f97316, #ef4444)',
-                            transition: 'width 500ms ease',
+                            transition: 'width 650ms cubic-bezier(0.22, 1, 0.36, 1)',
                           }}
                         />
                       </div>
@@ -1211,16 +1219,21 @@ function App() {
                   )}
 
                   {!isPro && (
-                    <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
-                      <button
-                        className="btn btn-secundario"
-                        type="button"
-                        onClick={handleGerarInsights}
-                        disabled={loadingInsights}
-                      >
-                        {loadingInsights ? 'Avaliando qualidade da anamnese...' : 'Ver avaliação completa'}
-                      </button>
-                    </div>
+                    <>
+                      <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
+                        <button
+                          className="btn btn-secundario"
+                          type="button"
+                          onClick={handleGerarInsights}
+                          disabled={loadingInsights}
+                        >
+                          {loadingInsights ? 'Preparando análise detalhada...' : 'Ver análise detalhada'}
+                        </button>
+                      </div>
+                      <span style={{ fontSize: '0.82rem', color: '#6b7280', marginTop: '-0.2rem' }}>
+                        Identifique pontos específicos de melhoria
+                      </span>
+                    </>
                   )}
                 </div>
               </div>
@@ -1279,10 +1292,6 @@ function App() {
                           </div>
                         )}
                       </div>
-                      <span style={{ display: 'none' }}>
-                        {'\u{1F512}'} Desbloqueie a avaliação completa para ampliar a qualidade da anamnese
-                        {hiddenInsightsCount > 0 ? ` (${hiddenInsightsCount} ponto${hiddenInsightsCount > 1 ? 's' : ''} adicional${hiddenInsightsCount > 1 ? 's' : ''} disponível${hiddenInsightsCount > 1 ? 'is' : ''})` : ''}
-                      </span>
                       <div style={{ marginTop: '0.75rem' }}>
                         <button
                           className="btn btn-secundario"
@@ -1290,7 +1299,7 @@ function App() {
                           onClick={handleUpgradeInsights}
                           disabled={loadingCheckout}
                         >
-                          {loadingCheckout ? 'Redirecionando para o pagamento...' : 'Ver análise completa'}
+                          {loadingCheckout ? 'Redirecionando para o pagamento...' : 'Ver análise detalhada'}
                         </button>
                       </div>
                     </div>
