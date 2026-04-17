@@ -196,6 +196,50 @@ async function getAnamneseActivity(userId) {
   return uniqueDates.sort((left, right) => left.localeCompare(right));
 }
 
+function getCurrentStreakFromActivityDates(activityDates) {
+  if (!Array.isArray(activityDates) || activityDates.length === 0) {
+    return {
+      current_streak: 0,
+      last_active_date: null,
+    };
+  }
+
+  const sortedDates = [...activityDates].sort((left, right) => right.localeCompare(left));
+  const lastActiveDate = sortedDates[0] || null;
+
+  if (!lastActiveDate) {
+    return {
+      current_streak: 0,
+      last_active_date: null,
+    };
+  }
+
+  let currentStreak = 1;
+  let previousDate = new Date(`${lastActiveDate}T00:00:00.000Z`);
+
+  for (let index = 1; index < sortedDates.length; index += 1) {
+    const currentDate = new Date(`${sortedDates[index]}T00:00:00.000Z`);
+
+    if (Number.isNaN(currentDate.getTime())) {
+      break;
+    }
+
+    const diffInDays = Math.round((previousDate.getTime() - currentDate.getTime()) / 86400000);
+
+    if (diffInDays !== 1) {
+      break;
+    }
+
+    currentStreak += 1;
+    previousDate = currentDate;
+  }
+
+  return {
+    current_streak: currentStreak,
+    last_active_date: lastActiveDate,
+  };
+}
+
 function montarPromptInsights(texto) {
   return `Você é um médico auxiliando na avaliação da qualidade de uma anamnese.
 
@@ -281,6 +325,28 @@ app.get('/api/anamneses/activity', async (req, res) => {
     return res.formatResponse(activity);
   } catch (_error) {
     return res.formatResponse([]);
+  }
+});
+
+app.get('/api/anamneses/streak', async (req, res) => {
+  const userId = req.query?.userId;
+
+  if (!isValidUserId(userId)) {
+    return res.formatResponse({
+      current_streak: 0,
+      last_active_date: null,
+    });
+  }
+
+  try {
+    const activityDates = await getAnamneseActivity(userId);
+    const streak = getCurrentStreakFromActivityDates(activityDates);
+    return res.formatResponse(streak);
+  } catch (_error) {
+    return res.formatResponse({
+      current_streak: 0,
+      last_active_date: null,
+    });
   }
 });
 
