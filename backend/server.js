@@ -6,6 +6,7 @@ const formatResponse = require('./middlewares/formatResponse');
 const errorHandler = require('./middlewares/errorHandler');
 const { validateOrganizar } = require('./middlewares/validations');
 const templates = require('./templates/templates');
+const { evaluateAnamnesisQuality } = require('./utils/anamnesisQualityScore');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -24,6 +25,44 @@ if (!OPENAI_API_KEY) {
 }
 
 const openai = new OpenAI({ apiKey: OPENAI_API_KEY });
+
+function isValidUserId(userId) {
+  return typeof userId === 'string' && /^[0-9a-fA-F-]{36}$/.test(userId);
+}
+
+async function registerAnamneseMetric({ userId, template, score, textLength, hasTeaser }) {
+  if (!isValidUserId(userId)) {
+    return;
+  }
+
+  if (typeof score !== 'number' || Number.isNaN(score)) {
+    return;
+  }
+
+  const supabaseUrl = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL;
+  const supabaseServiceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+
+  if (!supabaseUrl || !supabaseServiceRoleKey) {
+    return;
+  }
+
+  await fetch(`${supabaseUrl}/rest/v1/anamneses`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      apikey: supabaseServiceRoleKey,
+      Authorization: `Bearer ${supabaseServiceRoleKey}`,
+      Prefer: 'return=minimal',
+    },
+    body: JSON.stringify({
+      user_id: userId,
+      template,
+      score,
+      text_length: textLength,
+      has_teaser: Boolean(hasTeaser),
+    }),
+  });
+}
 
 function montarPromptInsights(texto) {
   return `Você é um médico auxiliando na avaliação da qualidade de uma anamnese.
@@ -58,7 +97,7 @@ app.get('/api/templates', (_req, res) => {
 
 app.post('/api/organizar', validateOrganizar, async (req, res) => {
   try {
-    const { template, texto } = req.body;
+    const { template, texto, userId } = req.body;
 
     const modelo = templates[template];
     const estrutura = modelo.secoes.map((s) => `### ${s}`).join('\n');
@@ -84,7 +123,21 @@ ${texto}`;
     });
 
     const resultado = resposta.choices[0].message.content;
+
+    const qualityScore = evaluateAnamnesisQuality(texto.trim(), template);
+    const textLength = texto.trim().length;
+    const score = qualityScore.shouldShowScore ? qualityScore.score : null;
+    const hasTeaser = qualityScore.teaser?.shouldShowTeaser;
+
     res.formatResponse({ resultado });
+
+    registerAnamneseMetric({
+      userId,
+      template,
+      score,
+      textLength,
+      hasTeaser,
+    }).catch(() => {});
   } catch (erro) {
     console.error('Erro ao processar:', erro.message);
 

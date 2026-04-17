@@ -346,6 +346,7 @@ function App() {
       const response = await api.post('/organizar', {
         template: templateSelecionado,
         texto,
+        userId: user?.id || null,
       });
 
       if (response.success) {
