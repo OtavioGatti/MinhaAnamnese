@@ -198,6 +198,12 @@ body {
   color: var(--gray-700);
 }
 
+.field-helper {
+  font-size: 0.8125rem;
+  color: var(--gray-500);
+  margin-bottom: 0.5rem;
+}
+
 .input-wrapper {
   position: relative;
 }
@@ -256,6 +262,17 @@ body {
   font-size: 0.75rem;
   color: var(--gray-400);
   pointer-events: none;
+}
+
+.empty-state-hint {
+  margin-top: 0.75rem;
+  padding: 0.8rem 0.9rem;
+  border: 1px dashed var(--gray-200);
+  border-radius: var(--radius-md);
+  background: var(--gray-50);
+  color: var(--gray-500);
+  font-size: 0.8125rem;
+  line-height: 1.55;
 }
 
 .guide-panel,
@@ -609,6 +626,12 @@ body {
   word-break: break-word;
 }
 
+.result-guidance {
+  margin-bottom: 1rem;
+  color: var(--gray-500);
+  font-size: 0.875rem;
+}
+
 .btn-copiar {
   background: var(--green-50);
   color: var(--green-600);
@@ -645,6 +668,36 @@ body {
   flex-shrink: 0;
   margin-top: 1px;
   color: var(--red-500);
+}
+
+.paywall-panel {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.625rem;
+  background: linear-gradient(180deg, #f8fbff 0%, #eff6ff 100%);
+  color: var(--gray-700);
+  padding: 0.95rem 1rem;
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  border: 1px solid #dbeafe;
+}
+
+.paywall-panel svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  margin-top: 1px;
+  color: var(--primary-600);
+}
+
+.paywall-points-highlight {
+  padding: 0.7rem 0.8rem;
+  border-radius: var(--radius-md);
+  background: rgba(37, 99, 235, 0.08);
+  color: var(--primary-800);
+  font-size: 0.84rem;
+  line-height: 1.45;
 }
 
 .btn-erro-dismiss {

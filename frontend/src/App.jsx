@@ -929,17 +929,25 @@ function App() {
 
             <div className="form-group">
               <label htmlFor="texto">Anotações clínicas</label>
+              <p className="field-helper">
+                Digite ou cole sua anamnese para organizar automaticamente.
+              </p>
               <div className="input-wrapper">
                 <textarea
                   id="texto"
                   value={texto}
                   onChange={(e) => setTexto(e.target.value)}
-                  placeholder="Digite ou cole aqui as anotações clínicas da consulta..."
+                  placeholder="Ex: Paciente feminina, 32 anos, com dor abdominal há 2 dias, associada a náuseas, sem vômitos..."
                 />
                 {texto.length > 0 && (
                   <span className="char-count">{texto.length} caracteres</span>
                 )}
               </div>
+              {!texto.trim() && (
+                <div className="empty-state-hint">
+                  Um registro inicial já é suficiente para começar. Depois, você pode revisar a qualidade e aprofundar pontos específicos.
+                </div>
+              )}
 
               {tooltipGuia && (
                 <div className="tooltip-guia">
@@ -1023,7 +1031,7 @@ function App() {
                       <path d="M2 12h4"/>
                       <path d="m4.9 4.9 2.9 2.9"/>
                     </svg>
-                    Gerar anamnese estruturada
+                    Organizar e estruturar anamnese
                   </>
                 )}
               </button>
@@ -1069,6 +1077,10 @@ function App() {
                   </svg>
                   <h2>Anamnese estruturada</h2>
                 </div>
+
+                <p className="result-guidance">
+                  Analise a qualidade da anamnese e identifique pontos de melhoria.
+                </p>
 
                 <div className="resultado-container">
                   <div className="resultado">{resultado}</div>
@@ -1254,7 +1266,7 @@ function App() {
                 <div className="resultado">{isPro ? insights : insightsPreview}</div>
 
                 {shouldShowPaywall && (
-                  <div className="erro" style={{ marginTop: '1rem', animation: 'none' }}>
+                  <div className="paywall-panel" style={{ marginTop: '1rem' }}>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <rect x="4" y="2" width="16" height="20" rx="2"/>
                       <line x1="12" y1="11" x2="12" y2="17"/>
@@ -1263,7 +1275,7 @@ function App() {
                     <div style={{ flex: 1 }}>
                       <div style={{ display: 'grid', gap: '0.7rem' }}>
                         <div>
-                          <div style={{ fontSize: '1rem', fontWeight: 600, color: '#991b1b' }}>
+                          <div style={{ fontSize: '1rem', fontWeight: 600, color: '#1e3a8a' }}>
                             Veja exatamente o que pode ser melhorado na sua anamnese
                           </div>
                           <div style={{ marginTop: '0.35rem', fontSize: '0.9rem', lineHeight: 1.55 }}>
@@ -1272,25 +1284,27 @@ function App() {
                         </div>
 
                         <div style={{ display: 'grid', gap: '0.35rem', fontSize: '0.88rem', lineHeight: 1.5 }}>
-                          <span>• Lacunas potenciais na história e no exame que merecem revisão</span>
-                          <span>• Pistas concretas sobre o que aprofundar no registro clínico</span>
-                          <span>• Leitura mais clara dos pontos que ainda podem ser refinados</span>
-                        </div>
-
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexWrap: 'wrap' }}>
-                          <span style={{ fontSize: '1rem', fontWeight: 700, color: '#991b1b' }}>
-                            Acesso completo por R$ 9,90
-                          </span>
-                          <span style={{ fontSize: '0.82rem', color: '#b45309' }}>
-                            Liberação imediata após o pagamento
-                          </span>
+                          <span>• Lacunas importantes identificadas</span>
+                          <span>• O que precisa ser melhorado</span>
+                          <span>• Direcionamento claro de revisão</span>
                         </div>
 
                         {hiddenInsightsCount > 0 && (
-                          <div style={{ fontSize: '0.82rem', color: '#7f1d1d' }}>
-                            {hiddenInsightsCount} ponto{hiddenInsightsCount > 1 ? 's' : ''} adicional{hiddenInsightsCount > 1 ? 's' : ''} já identificado{hiddenInsightsCount > 1 ? 's' : ''} nesta avaliação.
+                          <div className="paywall-points-highlight">
+                            <strong>
+                              {hiddenInsightsCount} ponto{hiddenInsightsCount > 1 ? 's' : ''} adicional{hiddenInsightsCount > 1 ? 's' : ''} identificado{hiddenInsightsCount > 1 ? 's' : ''} nesta avaliação
+                            </strong>
                           </div>
                         )}
+
+                        <div style={{ display: 'grid', gap: '0.25rem' }}>
+                          <span style={{ fontSize: '1rem', fontWeight: 700, color: '#1e3a8a' }}>
+                            Acesso completo por R$ 9,90
+                          </span>
+                          <span style={{ fontSize: '0.82rem', color: '#4b5563' }}>
+                            Liberação imediata após o pagamento
+                          </span>
+                        </div>
                       </div>
                       <div style={{ marginTop: '0.75rem' }}>
                         <button
@@ -1299,7 +1313,7 @@ function App() {
                           onClick={handleUpgradeInsights}
                           disabled={loadingCheckout}
                         >
-                          {loadingCheckout ? 'Redirecionando para o pagamento...' : 'Ver análise detalhada'}
+                          {loadingCheckout ? 'Redirecionando para o pagamento...' : 'Desbloquear análise completa'}
                         </button>
                       </div>
                     </div>
