@@ -983,7 +983,7 @@ function App() {
                     onClick={handleGerarInsights}
                     disabled={loadingInsights}
                   >
-                    {loadingInsights ? 'Avaliando qualidade da anamnese...' : 'Avaliar qualidade da anamnese'}
+                    {loadingInsights ? 'Avaliando qualidade da anamnese...' : 'Ver análise completa'}
                   </button>
                 </div>
               </div>
@@ -1035,7 +1035,7 @@ function App() {
                     <path d="M7 8h10"/>
                     <path d="M7 16h6"/>
                   </svg>
-                  <h2>Qualidade da anamnese</h2>
+                  <h2>Avaliação inicial da anamnese</h2>
                 </div>
 
                 <div style={{ display: 'grid', gap: '0.9rem' }}>

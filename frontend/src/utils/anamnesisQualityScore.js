@@ -1,69 +1,128 @@
-const KEYWORD_WEIGHTS = [
-  { pattern: /\bhist[oó]ria\b/gi, weight: 9, label: 'história clínica', teaserLabel: 'história clínica mais detalhada' },
-  { pattern: /\bexame\b/gi, weight: 8, label: 'exame físico', teaserLabel: 'descrição do exame físico' },
-  { pattern: /\bantecedentes?\b/gi, weight: 8, label: 'antecedentes', teaserLabel: 'antecedentes relevantes' },
-  { pattern: /\bmedica[cç][aã]o(?:es)?\b/gi, weight: 7, label: 'medicações', teaserLabel: 'medicações em uso' },
-  { pattern: /\balergia(?:s)?\b/gi, weight: 6, label: 'alergias', teaserLabel: 'alergias' },
-  { pattern: /\bconduta\b/gi, weight: 6, label: 'conduta', teaserLabel: 'conduta inicial' },
-  { pattern: /\bqueixa\b/gi, weight: 5, label: 'queixa principal', teaserLabel: 'queixa principal mais refinada' },
-  { pattern: /\bhip[oó]tese\b/gi, weight: 5, label: 'hipótese clínica', teaserLabel: 'hipótese clínica' },
-  { pattern: /\bsinais vitais\b/gi, weight: 5, label: 'sinais vitais', teaserLabel: 'sinais vitais' },
+const CATEGORY_CONFIG = [
+  {
+    id: 'history',
+    label: 'história clínica',
+    teaserLabel: 'história clínica mais detalhada',
+    missingJustifications: [
+      'Pouca exploração da história clínica.',
+      'A evolução do quadro ainda pode ficar mais clara.',
+    ],
+    patterns: [/\bhist[oó]ria\b/gi, /\bqueixa\b/gi, /\bevolu[cç][aã]o\b/gi],
+  },
+  {
+    id: 'exam',
+    label: 'exame físico',
+    teaserLabel: 'descrição do exame físico',
+    missingJustifications: [
+      'A descrição do exame físico ainda aparece de forma limitada.',
+      'Há espaço para detalhar melhor o exame físico.',
+    ],
+    patterns: [/\bexame\b/gi, /\bsinais vitais\b/gi, /\binspe[cç][aã]o\b/gi],
+  },
+  {
+    id: 'historyBackground',
+    label: 'antecedentes',
+    teaserLabel: 'antecedentes relevantes',
+    missingJustifications: [
+      'Pouca exploração de antecedentes.',
+      'Os antecedentes clínicos ainda podem ser melhor documentados.',
+    ],
+    patterns: [/\bantecedentes?\b/gi, /\bcomorbidades?\b/gi, /\bhist[oó]ria pregressa\b/gi],
+  },
+  {
+    id: 'medsAllergies',
+    label: 'medicações e alergias',
+    teaserLabel: 'medicações em uso e alergias',
+    missingJustifications: [
+      'Ausência de informações sobre medicações em uso ou alergias.',
+      'Medicações e alergias ainda podem ser descritas com mais clareza.',
+    ],
+    patterns: [/\bmedica[cç][aã]o(?:es)?\b/gi, /\balergia(?:s)?\b/gi],
+  },
+  {
+    id: 'plan',
+    label: 'conduta e hipótese',
+    teaserLabel: 'conduta inicial e hipótese clínica',
+    missingJustifications: [
+      'Conduta ou hipótese clínica aparecem pouco definidas.',
+      'Há espaço para explicitar melhor hipótese clínica ou conduta inicial.',
+    ],
+    patterns: [/\bconduta\b/gi, /\bhip[oó]tese\b/gi, /\bimpress[aã]o\b/gi],
+  },
 ];
 
 const LOW_SCORE_MESSAGES = [
-  'Há lacunas relevantes na coleta de informações.',
-  'A anamnese ainda pede complementação em pontos essenciais.',
-  'O registro inicial aponta necessidade de maior aprofundamento clínico.',
+  'A anamnese sugere espaço importante para maior completude clínica.',
+  'O registro ainda pode ganhar mais consistência em pontos essenciais.',
+  'Há margem relevante para aprofundar a coleta de informações.',
 ];
 
 const MEDIUM_SCORE_MESSAGES = [
-  'A estrutura está adequada, com pontos a aprofundar.',
-  'O registro está consistente, com espaço para maior completude clínica.',
-  'A base está organizada, com oportunidades de detalhamento adicional.',
+  'A anamnese mostra boa base, com aspectos que ainda podem evoluir.',
+  'O registro está adequado, com oportunidades claras de refinamento.',
+  'A estrutura é consistente, embora ainda haja pontos a aprofundar.',
 ];
 
 const HIGH_SCORE_MESSAGES = [
-  'Boa organização, com oportunidades de refinamento.',
-  'A anamnese está bem construída, com margem para pequenos ajustes.',
-  'O registro demonstra boa consistência, com refinamentos pontuais possíveis.',
+  'A anamnese está bem organizada, com pequenas oportunidades de melhoria.',
+  'O registro demonstra boa consistência, com espaço para refinamentos pontuais.',
+  'Há boa completude clínica, com margem para ajustes específicos.',
 ];
 
 const TEASER_MESSAGES = [
   'Alguns pontos podem ser melhor explorados nesta anamnese.',
-  'Há elementos importantes que podem ser aprofundados.',
+  'Há elementos importantes que ainda podem ser aprofundados.',
   'A coleta de informações pode ser expandida em pontos relevantes.',
-  'Ainda existe margem para ampliar a completude clínica deste registro.',
   'A avaliação inicial sugere oportunidades objetivas de refinamento.',
+  'Este registro parece sólido, mas ainda pode ganhar mais completude clínica.',
 ];
 
 function clamp(value, min, max) {
   return Math.min(Math.max(value, min), max);
 }
 
-function pickScoreMessage(score, matchedKeywordsCount, structurePoints) {
+function pickVariant(collection, seed) {
+  return collection[seed % collection.length];
+}
+
+function buildScoreMessage(score, seed) {
   if (score < 55) {
-    return LOW_SCORE_MESSAGES[(matchedKeywordsCount + structurePoints) % LOW_SCORE_MESSAGES.length];
+    return pickVariant(LOW_SCORE_MESSAGES, seed);
   }
 
   if (score < 75) {
-    return MEDIUM_SCORE_MESSAGES[(matchedKeywordsCount + structurePoints) % MEDIUM_SCORE_MESSAGES.length];
+    return pickVariant(MEDIUM_SCORE_MESSAGES, seed);
   }
 
-  return HIGH_SCORE_MESSAGES[(matchedKeywordsCount + structurePoints) % HIGH_SCORE_MESSAGES.length];
+  return pickVariant(HIGH_SCORE_MESSAGES, seed);
 }
 
-function buildTeaserMessage(seed, missingAreas) {
-  const message = TEASER_MESSAGES[seed % TEASER_MESSAGES.length];
-
-  if (missingAreas.length === 0) {
-    return message;
+function buildMissingJustification(missingCategories, seed, structureSegmented) {
+  if (missingCategories.length > 0) {
+    const primary = missingCategories[0];
+    const options = primary.missingJustifications;
+    return options[seed % options.length];
   }
 
-  if (missingAreas.length === 1) {
-    return `${message} Vale revisar ${missingAreas[0]}.`;
+  if (!structureSegmented) {
+    return 'Estrutura pouco segmentada, apesar da boa cobertura clínica.';
   }
 
-  return `${message} Vale revisar ${missingAreas[0]} e ${missingAreas[1]}.`;
+  return 'A cobertura clínica está boa, com margem para pequenos refinamentos na organização.';
+}
+
+function buildTeaserMessage(seed, missingCategories) {
+  const baseMessage = pickVariant(TEASER_MESSAGES, seed);
+
+  if (missingCategories.length === 0) {
+    return baseMessage;
+  }
+
+  if (missingCategories.length === 1) {
+    return `${baseMessage} Vale revisar ${missingCategories[0].teaserLabel}.`;
+  }
+
+  return `${baseMessage} Vale revisar ${missingCategories[0].teaserLabel} e ${missingCategories[1].teaserLabel}.`;
 }
 
 export function evaluateAnamnesisQuality(text) {
@@ -78,7 +137,7 @@ export function evaluateAnamnesisQuality(text) {
   if (characterCount < 180 || wordCount < 30) {
     return {
       shouldShowScore: false,
-      message: 'Ainda não há conteúdo suficiente para estimar a qualidade da anamnese.',
+      message: 'Ainda não há conteúdo suficiente para estimar a avaliação inicial da anamnese.',
       justification: 'Inclua um registro um pouco mais detalhado para liberar a estimativa.',
       score: null,
       teaser: {
@@ -88,16 +147,15 @@ export function evaluateAnamnesisQuality(text) {
     };
   }
 
-  let keywordPoints = 0;
-  const matchedKeywordLabels = [];
-  const missingAreas = [];
+  const matchedCategories = [];
+  const missingCategories = [];
 
-  KEYWORD_WEIGHTS.forEach(({ pattern, weight, label, teaserLabel }) => {
-    if (pattern.test(normalizedText)) {
-      keywordPoints += weight;
-      matchedKeywordLabels.push(label);
+  CATEGORY_CONFIG.forEach((category) => {
+    const matched = category.patterns.some((pattern) => pattern.test(normalizedText));
+    if (matched) {
+      matchedCategories.push(category);
     } else {
-      missingAreas.push(teaserLabel);
+      missingCategories.push(category);
     }
   });
 
@@ -110,59 +168,39 @@ export function evaluateAnamnesisQuality(text) {
     .split(/[.!?]+/)
     .map((sentence) => sentence.trim())
     .filter(Boolean).length;
+  const structureSegmented = paragraphCount >= 2 || hasSectionLabels;
 
   let sizePoints = 0;
-  if (wordCount >= 45) sizePoints += 6;
-  if (wordCount >= 90) sizePoints += 6;
-  if (characterCount >= 450) sizePoints += 4;
-  if (characterCount >= 900) sizePoints += 4;
-  sizePoints = Math.min(sizePoints, 16);
+  if (wordCount >= 45) sizePoints += 4;
+  if (wordCount >= 90) sizePoints += 4;
+  if (characterCount >= 450) sizePoints += 2;
+  sizePoints = Math.min(sizePoints, 10);
 
   let structurePoints = 0;
   if (paragraphCount >= 2) structurePoints += 4;
-  if (paragraphCount >= 4) structurePoints += 4;
-  if (sentenceCount >= 4) structurePoints += 3;
-  if (hasSectionLabels) structurePoints += 5;
+  if (paragraphCount >= 4) structurePoints += 3;
+  if (sentenceCount >= 4) structurePoints += 2;
+  if (hasSectionLabels) structurePoints += 3;
   structurePoints = Math.min(structurePoints, 12);
 
-  const score = clamp(Math.round(34 + sizePoints + keywordPoints + structurePoints), 30, 90);
+  const categoryPoints = matchedCategories.length * 9;
+  const score = clamp(Math.round(30 + sizePoints + structurePoints + categoryPoints), 30, 90);
+  const seed = wordCount + characterCount + matchedCategories.length + paragraphCount + sentenceCount;
 
-  const topKeywords = matchedKeywordLabels.slice(0, 3);
-  const justificationParts = [];
-
-  if (topKeywords.length > 0) {
-    justificationParts.push(`Foram identificados elementos como ${topKeywords.join(', ')}.`);
-  }
-
-  if (paragraphCount >= 2 || hasSectionLabels) {
-    justificationParts.push('O texto apresenta alguma organização estrutural.');
-  } else {
-    justificationParts.push('A organização do conteúdo ainda pode ficar mais clara.');
-  }
-
-  if (wordCount < 60) {
-    justificationParts.push('O nível de detalhamento ainda está enxuto.');
-  } else if (wordCount > 140) {
-    justificationParts.push('O detalhamento contribui positivamente para a completude do registro.');
-  } else {
-    justificationParts.push('O volume de informações está em uma faixa intermediária.');
-  }
-
-  const teaserSeed = wordCount + paragraphCount + matchedKeywordLabels.length + structurePoints;
   const shouldShowTeaser =
     score < 88 &&
-    missingAreas.length > 0 &&
-    !(score >= 76 && teaserSeed % 3 === 0) &&
-    !(score >= 68 && matchedKeywordLabels.length >= 6 && teaserSeed % 4 === 0);
+    missingCategories.length > 0 &&
+    !(score >= 78 && seed % 3 === 0) &&
+    !(score >= 70 && matchedCategories.length >= 4 && seed % 4 === 0);
 
   return {
     shouldShowScore: true,
     score,
-    message: pickScoreMessage(score, matchedKeywordLabels.length, structurePoints),
-    justification: justificationParts.join(' '),
+    message: buildScoreMessage(score, seed),
+    justification: buildMissingJustification(missingCategories, seed, structureSegmented),
     teaser: {
       shouldShowTeaser,
-      message: shouldShowTeaser ? buildTeaserMessage(teaserSeed, missingAreas) : '',
+      message: shouldShowTeaser ? buildTeaserMessage(seed, missingCategories) : '',
     },
   };
 }
