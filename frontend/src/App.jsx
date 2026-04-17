@@ -514,7 +514,10 @@ function App() {
   const shouldShowPaywall = insights && !isPro;
   const hiddenInsightsCount = getHiddenInsightsCount(insights);
   const userDisplayName = user ? getUserDisplayName(user) : '';
-  const qualityScore = useMemo(() => evaluateAnamnesisQuality(resultado), [resultado]);
+  const qualityScore = useMemo(
+    () => evaluateAnamnesisQuality(resultado, templateSelecionado),
+    [resultado, templateSelecionado]
+  );
 
   return (
     <div className="container">

@@ -1,21 +1,21 @@
 const CATEGORY_CONFIG = [
   {
     id: 'history',
-    label: 'história clínica',
-    teaserLabel: 'história clínica mais detalhada',
+    label: 'historia clinica',
+    teaserLabel: 'historia clinica mais detalhada',
     missingJustifications: [
-      'Pouca exploração da história clínica.',
-      'A evolução do quadro ainda pode ficar mais clara.',
+      'Pouca exploracao da historia clinica.',
+      'A evolucao do quadro ainda pode ficar mais clara.',
     ],
     patterns: [/\bhist[oó]ria\b/gi, /\bqueixa\b/gi, /\bevolu[cç][aã]o\b/gi],
   },
   {
     id: 'exam',
-    label: 'exame físico',
-    teaserLabel: 'descrição do exame físico',
+    label: 'exame fisico',
+    teaserLabel: 'descricao do exame fisico',
     missingJustifications: [
-      'A descrição do exame físico ainda aparece de forma limitada.',
-      'Há espaço para detalhar melhor o exame físico.',
+      'A descricao do exame fisico ainda aparece de forma limitada.',
+      'Ha espaco para detalhar melhor o exame fisico.',
     ],
     patterns: [/\bexame\b/gi, /\bsinais vitais\b/gi, /\binspe[cç][aã]o\b/gi],
   },
@@ -24,57 +24,136 @@ const CATEGORY_CONFIG = [
     label: 'antecedentes',
     teaserLabel: 'antecedentes relevantes',
     missingJustifications: [
-      'Pouca exploração de antecedentes.',
-      'Os antecedentes clínicos ainda podem ser melhor documentados.',
+      'Pouca exploracao de antecedentes.',
+      'Os antecedentes clinicos ainda podem ser melhor documentados.',
     ],
     patterns: [/\bantecedentes?\b/gi, /\bcomorbidades?\b/gi, /\bhist[oó]ria pregressa\b/gi],
   },
   {
     id: 'medsAllergies',
-    label: 'medicações e alergias',
-    teaserLabel: 'medicações em uso e alergias',
+    label: 'medicacoes e alergias',
+    teaserLabel: 'medicacoes em uso e alergias',
     missingJustifications: [
-      'Ausência de informações sobre medicações em uso ou alergias.',
-      'Medicações e alergias ainda podem ser descritas com mais clareza.',
+      'Ausencia de informacoes sobre medicacoes em uso ou alergias.',
+      'Medicacoes e alergias ainda podem ser descritas com mais clareza.',
     ],
     patterns: [/\bmedica[cç][aã]o(?:es)?\b/gi, /\balergia(?:s)?\b/gi],
   },
   {
     id: 'plan',
-    label: 'conduta e hipótese',
-    teaserLabel: 'conduta inicial e hipótese clínica',
+    label: 'conduta e hipotese',
+    teaserLabel: 'conduta inicial e hipotese clinica',
     missingJustifications: [
-      'Conduta ou hipótese clínica aparecem pouco definidas.',
-      'Há espaço para explicitar melhor hipótese clínica ou conduta inicial.',
+      'Conduta ou hipotese clinica aparecem pouco definidas.',
+      'Ha espaco para explicitar melhor hipotese clinica ou conduta inicial.',
     ],
     patterns: [/\bconduta\b/gi, /\bhip[oó]tese\b/gi, /\bimpress[aã]o\b/gi],
   },
 ];
 
+const SPECIALTY_OVERRIDES = {
+  pediatria: {
+    categoryBonuses: {
+      historyBackground: {
+        patterns: [/\bdesenvolvimento\b/gi, /\bneuropsicomotor\b/gi, /\bvacin[aç][aã]o\b/gi],
+        bonus: 2,
+      },
+      medsAllergies: {
+        patterns: [/\balimenta[cç][aã]o\b/gi, /\belimina[cç][oõ]es\b/gi],
+        bonus: 1,
+      },
+    },
+    missingCategoryMessages: {
+      historyBackground: [
+        'Ha pouca exploracao de desenvolvimento ou historico vacinal.',
+        'Aspectos de desenvolvimento e vacinacao ainda podem ser melhor descritos.',
+      ],
+    },
+  },
+  obstetricia: {
+    categoryBonuses: {
+      history: {
+        patterns: [/\bIG\b/gi, /\bDUM\b/gi, /\bUSG\b/gi],
+        bonus: 3,
+      },
+      exam: {
+        patterns: [/\bBCF\b/gi, /\bmovimenta[cç][aã]o fetal\b/gi],
+        bonus: 2,
+      },
+    },
+    missingCategoryMessages: {
+      history: [
+        'Faltam referencias mais claras a IG, DUM ou USG.',
+        'IG, DUM ou USG ainda podem ser melhor explicitados.',
+      ],
+      exam: [
+        'Aspectos obstetricos como BCF ou movimentacao fetal podem ser melhor explorados.',
+        'Ha espaco para detalhar melhor achados obstetricos do exame.',
+      ],
+    },
+  },
+  ginecologia: {
+    categoryBonuses: {
+      history: {
+        patterns: [/\bmenstrual\b/gi, /\bsexual\b/gi],
+        bonus: 2,
+      },
+      plan: {
+        patterns: [/\bcontracep[cç][aã]o\b/gi, /\bcontraceptivo\b/gi],
+        bonus: 1,
+      },
+    },
+    missingCategoryMessages: {
+      history: [
+        'A historia menstrual ou sexual ainda pode ser melhor explorada.',
+        'Ha espaco para detalhar melhor aspectos ginecologicos basicos da historia.',
+      ],
+    },
+  },
+  upa_emergencia: {
+    categoryBonuses: {
+      exam: {
+        patterns: [/\bsatur[aç][aã]o\b/gi, /\bpress[aã]o\b/gi, /\bfrequ[eê]ncia\b/gi],
+        bonus: 2,
+      },
+      plan: {
+        patterns: [/\bsinal(?:is)? de gravidade\b/gi, /\bgravidade\b/gi],
+        bonus: 2,
+      },
+    },
+    missingCategoryMessages: {
+      exam: [
+        'Sinais vitais ou dados objetivos de exame ainda aparecem pouco definidos.',
+        'Ha espaco para reforcar dados objetivos do exame na avaliacao inicial.',
+      ],
+    },
+  },
+};
+
 const LOW_SCORE_MESSAGES = [
-  'A anamnese sugere espaço importante para maior completude clínica.',
-  'O registro ainda pode ganhar mais consistência em pontos essenciais.',
-  'Há margem relevante para aprofundar a coleta de informações.',
+  'A anamnese sugere espaco importante para maior completude clinica.',
+  'O registro ainda pode ganhar mais consistencia em pontos essenciais.',
+  'Ha margem relevante para aprofundar a coleta de informacoes.',
 ];
 
 const MEDIUM_SCORE_MESSAGES = [
   'A anamnese mostra boa base, com aspectos que ainda podem evoluir.',
-  'O registro está adequado, com oportunidades claras de refinamento.',
-  'A estrutura é consistente, embora ainda haja pontos a aprofundar.',
+  'O registro esta adequado, com oportunidades claras de refinamento.',
+  'A estrutura e consistente, embora ainda haja pontos a aprofundar.',
 ];
 
 const HIGH_SCORE_MESSAGES = [
-  'A anamnese está bem organizada, com pequenas oportunidades de melhoria.',
-  'O registro demonstra boa consistência, com espaço para refinamentos pontuais.',
-  'Há boa completude clínica, com margem para ajustes específicos.',
+  'A anamnese esta bem organizada, com pequenas oportunidades de melhoria.',
+  'O registro demonstra boa consistencia, com espaco para refinamentos pontuais.',
+  'Ha boa completude clinica, com margem para ajustes especificos.',
 ];
 
 const TEASER_MESSAGES = [
   'Alguns pontos podem ser melhor explorados nesta anamnese.',
-  'Há elementos importantes que ainda podem ser aprofundados.',
-  'A coleta de informações pode ser expandida em pontos relevantes.',
-  'A avaliação inicial sugere oportunidades objetivas de refinamento.',
-  'Este registro parece sólido, mas ainda pode ganhar mais completude clínica.',
+  'Ha elementos importantes que ainda podem ser aprofundados.',
+  'A coleta de informacoes pode ser expandida em pontos relevantes.',
+  'A avaliacao inicial sugere oportunidades objetivas de refinamento.',
+  'Este registro parece solido, mas ainda pode ganhar mais completude clinica.',
 ];
 
 function clamp(value, min, max) {
@@ -105,10 +184,10 @@ function buildMissingJustification(missingCategories, seed, structureSegmented) 
   }
 
   if (!structureSegmented) {
-    return 'Estrutura pouco segmentada, apesar da boa cobertura clínica.';
+    return 'Estrutura pouco segmentada, apesar da boa cobertura clinica.';
   }
 
-  return 'A cobertura clínica está boa, com margem para pequenos refinamentos na organização.';
+  return 'A cobertura clinica esta boa, com margem para pequenos refinamentos na organizacao.';
 }
 
 function buildTeaserMessage(seed, missingCategories) {
@@ -125,7 +204,11 @@ function buildTeaserMessage(seed, missingCategories) {
   return `${baseMessage} Vale revisar ${missingCategories[0].teaserLabel} e ${missingCategories[1].teaserLabel}.`;
 }
 
-export function evaluateAnamnesisQuality(text) {
+function getSpecialtyConfig(templateId) {
+  return SPECIALTY_OVERRIDES[templateId] || null;
+}
+
+export function evaluateAnamnesisQuality(text, templateId = '') {
   const normalizedText = (text || '').trim();
   const characterCount = normalizedText.length;
   const words = normalizedText
@@ -137,7 +220,7 @@ export function evaluateAnamnesisQuality(text) {
   if (characterCount < 180 || wordCount < 30) {
     return {
       shouldShowScore: false,
-      message: 'Ainda não há conteúdo suficiente para estimar a avaliação inicial da anamnese.',
+      message: 'Ainda nao ha conteudo suficiente para estimar a avaliacao inicial da anamnese.',
       justification: 'Inclua um registro um pouco mais detalhado para liberar a estimativa.',
       score: null,
       teaser: {
@@ -147,16 +230,31 @@ export function evaluateAnamnesisQuality(text) {
     };
   }
 
+  const specialtyConfig = getSpecialtyConfig(templateId);
   const matchedCategories = [];
   const missingCategories = [];
+  let specialtyBonusPoints = 0;
 
   CATEGORY_CONFIG.forEach((category) => {
     const matched = category.patterns.some((pattern) => pattern.test(normalizedText));
-    if (matched) {
+    const categoryOverride = specialtyConfig?.categoryBonuses?.[category.id];
+    const overrideMatched = categoryOverride
+      ? categoryOverride.patterns.some((pattern) => pattern.test(normalizedText))
+      : false;
+
+    if (matched || overrideMatched) {
       matchedCategories.push(category);
-    } else {
-      missingCategories.push(category);
+      if (overrideMatched) {
+        specialtyBonusPoints += categoryOverride.bonus;
+      }
+      return;
     }
+
+    const overrideMessages = specialtyConfig?.missingCategoryMessages?.[category.id];
+    missingCategories.push({
+      ...category,
+      missingJustifications: overrideMessages || category.missingJustifications,
+    });
   });
 
   const paragraphCount = normalizedText
@@ -184,8 +282,14 @@ export function evaluateAnamnesisQuality(text) {
   structurePoints = Math.min(structurePoints, 12);
 
   const categoryPoints = matchedCategories.length * 9;
-  const score = clamp(Math.round(30 + sizePoints + structurePoints + categoryPoints), 30, 90);
-  const seed = wordCount + characterCount + matchedCategories.length + paragraphCount + sentenceCount;
+  const score = clamp(Math.round(30 + sizePoints + structurePoints + categoryPoints + specialtyBonusPoints), 30, 90);
+  const seed =
+    wordCount +
+    characterCount +
+    matchedCategories.length +
+    paragraphCount +
+    sentenceCount +
+    specialtyBonusPoints;
 
   const shouldShowTeaser =
     score < 88 &&
