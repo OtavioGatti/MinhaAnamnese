@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { api } from './apiClient';
 import CalculatorPanel from './components/CalculatorPanel';
 import GuidePanel from './components/GuidePanel';
+import { guides } from './data/guides';
 import { supabase } from './lib/supabaseClient';
 import { evaluateAnamnesisQuality } from './utils/anamnesisQualityScore';
 
@@ -15,23 +16,6 @@ const CHECKOUT_API_BASE_URL =
     : window.location.origin);
 const DEFAULT_TEXT_PLACEHOLDER =
   'Ex: Paciente feminina, 32 anos, com dor abdominal há 2 dias, associada a náuseas, sem vômitos...';
-const ONBOARDING_SPECIALTY_GUIDES = {
-  pediatria: {
-    label: 'Pediatria',
-    placeholder: 'Ex: criança com febre, tempo de evolução, sintomas associados, aceitação alimentar e exame físico...',
-    guidance: 'Avalie tempo de evolução, febre, sintomas associados, aceitação alimentar, eliminações e exame físico.',
-  },
-  go: {
-    label: 'GO',
-    placeholder: 'Ex: gestante, idade gestacional, dor ou perdas, movimentação fetal e antecedentes obstétricos...',
-    guidance: 'Avalie IG, DUM ou USG, queixa principal, perdas, contrações, movimentação fetal e antecedentes obstétricos.',
-  },
-  clinica: {
-    label: 'Clínica',
-    placeholder: 'Ex: queixa principal, tempo de evolução, sintomas associados, antecedentes, medicações e exame físico...',
-    guidance: 'Avalie queixa principal, tempo de evolução, sintomas associados, antecedentes, medicações e exame físico.',
-  },
-};
 
 function getInsightsLines(content) {
   return content
@@ -122,9 +106,6 @@ function App() {
   const [loadingTemplates, setLoadingTemplates] = useState(true);
   const [guiaAberto, setGuiaAberto] = useState(false);
   const [calculadoraAberta, setCalculadoraAberta] = useState(false);
-  const [tooltipGuia, setTooltipGuia] = useState(false);
-  const [jaSelecionou, setJaSelecionou] = useState(false);
-  const [onboardingSpecialty, setOnboardingSpecialty] = useState('');
 
   const templateTemCalculadora = templateSelecionado === TEMPLATE_WITH_CALCULATORS;
   const userPlan = user?.user_metadata?.plan || 'basic';
@@ -276,6 +257,10 @@ function App() {
     }
   }, [templateTemCalculadora]);
 
+  useEffect(() => {
+    setGuiaAberto(Boolean(templateSelecionado));
+  }, [templateSelecionado]);
+
   const handleTemplateChange = (e) => {
     const novoTemplate = e.target.value;
     setTemplateSelecionado(novoTemplate);
@@ -284,11 +269,6 @@ function App() {
       setCalculadoraAberta(true);
     }
 
-    if (novoTemplate && !jaSelecionou) {
-      setTooltipGuia(true);
-      setJaSelecionou(true);
-      setTimeout(() => setTooltipGuia(false), 5000);
-    }
   };
 
   const handleOrganizar = async () => {
@@ -337,6 +317,7 @@ function App() {
     setInsights('');
     setErro('');
     setCalculadoraAberta(false);
+    setGuiaAberto(false);
     trackedEventsRef.current.clear();
   };
 
@@ -566,12 +547,8 @@ function App() {
     () => evaluateAnamnesisQuality(resultado, templateSelecionado),
     [resultado, templateSelecionado]
   );
-  const activeOnboardingGuide = onboardingSpecialty
-    ? ONBOARDING_SPECIALTY_GUIDES[onboardingSpecialty]
-    : null;
-  const contextualPlaceholder = texto.trim()
-    ? DEFAULT_TEXT_PLACEHOLDER
-    : activeOnboardingGuide?.placeholder || DEFAULT_TEXT_PLACEHOLDER;
+  const templateAtual = templates.find((template) => template.id === templateSelecionado) || null;
+  const possuiGuiaSelecionado = Boolean(guides[templateSelecionado]?.length);
 
   const trackEvent = async (eventName, metadata = {}, options = {}) => {
     const eventKey = options.eventKey || null;
@@ -920,7 +897,7 @@ function App() {
       </div>
 
       <div className="layout-principal">
-        <GuidePanel templateSelecionado={templateSelecionado} aberto={guiaAberto} />
+        <GuidePanel templateSelecionado={templateSelecionado} templateNome={templateAtual?.nome} aberto={guiaAberto} />
 
         <div className="conteudo-principal">
           <div className="card">
@@ -963,65 +940,23 @@ function App() {
                   id="texto"
                   value={texto}
                   onChange={(e) => setTexto(e.target.value)}
-                  placeholder={contextualPlaceholder}
+                  placeholder={DEFAULT_TEXT_PLACEHOLDER}
                 />
                 {texto.length > 0 && (
                   <span className="char-count">{texto.length} caracteres</span>
                 )}
               </div>
 
-              <div className="quick-guides">
-                <span className="quick-guides-label">Exemplos rápidos:</span>
-                <div className="quick-guides-actions">
-                  {Object.entries(ONBOARDING_SPECIALTY_GUIDES).map(([key, guide]) => (
-                    <button
-                      key={key}
-                      type="button"
-                      className={`quick-guide-chip ${onboardingSpecialty === key ? 'ativo' : ''}`}
-                      onClick={() => setOnboardingSpecialty(key)}
-                    >
-                      {guide.label}
-                    </button>
-                  ))}
-                </div>
-              </div>
 
-              {activeOnboardingGuide && (
-                <div className={`specialty-guidance ${texto.trim() ? 'escondida' : ''}`}>
-                  <span className="specialty-guidance-title">
-                    Guia: {activeOnboardingGuide.label}
-                  </span>
-                  <span>{activeOnboardingGuide.guidance}</span>
-                </div>
-              )}
 
               {!texto.trim() && (
                 <div className="empty-state-hint">
-                  Um registro inicial já é suficiente para começar. Depois, você pode revisar a qualidade e aprofundar pontos específicos.
+                  {possuiGuiaSelecionado
+                    ? 'Guia clínico do modelo selecionado disponível ao lado, com os tópicos esperados para esta coleta.'
+                    : 'Um registro inicial já é suficiente para começar. Depois, você pode revisar a qualidade e aprofundar pontos específicos.'}
                 </div>
               )}
 
-              {tooltipGuia && (
-                <div className="tooltip-guia">
-                  <div className="tooltip-content">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <circle cx="12" cy="12" r="10"/>
-                      <line x1="12" y1="16" x2="12" y2="12"/>
-                      <line x1="12" y1="8" x2="12.01" y2="8"/>
-                    </svg>
-                    <span>
-                      Use <strong>"Mostrar guia"</strong> para consultar os itens essenciais da coleta clínica.
-                    </span>
-                  </div>
-                  <button
-                    className="tooltip-fechar"
-                    onClick={() => setTooltipGuia(false)}
-                    aria-label="Fechar orientação"
-                  >
-                    ×
-                  </button>
-                </div>
-              )}
 
               <div className="painel-acoes">
                 <button
@@ -1387,3 +1322,4 @@ function App() {
 }
 
 export default App;
+
