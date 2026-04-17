@@ -988,6 +988,46 @@ function App() {
                 </div>
               </div>
 
+              {!isPro && qualityScore.teaser.shouldShowTeaser && (
+                <div className="card">
+                  <div className="card-header">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M9 12h6"/>
+                      <path d="M12 9v6"/>
+                      <circle cx="12" cy="12" r="9"/>
+                    </svg>
+                    <h2>Avaliação clínica inicial</h2>
+                  </div>
+
+                  <div style={{ display: 'grid', gap: '0.9rem' }}>
+                    <div
+                      style={{
+                        padding: '0.95rem 1rem',
+                        border: '1px solid #e5e7eb',
+                        borderRadius: '8px',
+                        backgroundColor: '#f9fafb',
+                        color: '#374151',
+                        fontSize: '0.92rem',
+                        lineHeight: 1.6,
+                      }}
+                    >
+                      {qualityScore.teaser.message}
+                    </div>
+
+                    <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
+                      <button
+                        className="btn btn-secundario"
+                        type="button"
+                        onClick={handleGerarInsights}
+                        disabled={loadingInsights}
+                      >
+                        {loadingInsights ? 'Avaliando qualidade da anamnese...' : 'Ver avaliação completa'}
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              )}
+
               <div className="card">
                 <div className="card-header">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

@@ -1,13 +1,13 @@
 const KEYWORD_WEIGHTS = [
-  { pattern: /\bhist[oó]ria\b/gi, weight: 9, label: 'história clínica' },
-  { pattern: /\bexame\b/gi, weight: 8, label: 'exame físico' },
-  { pattern: /\bantecedentes?\b/gi, weight: 8, label: 'antecedentes' },
-  { pattern: /\bmedica[cç][aã]o(?:es)?\b/gi, weight: 7, label: 'medicações' },
-  { pattern: /\balergia(?:s)?\b/gi, weight: 6, label: 'alergias' },
-  { pattern: /\bconduta\b/gi, weight: 6, label: 'conduta' },
-  { pattern: /\bqueixa\b/gi, weight: 5, label: 'queixa principal' },
-  { pattern: /\bhip[oó]tese\b/gi, weight: 5, label: 'hipótese clínica' },
-  { pattern: /\bsinais vitais\b/gi, weight: 5, label: 'sinais vitais' },
+  { pattern: /\bhist[oó]ria\b/gi, weight: 9, label: 'história clínica', teaserLabel: 'história clínica mais detalhada' },
+  { pattern: /\bexame\b/gi, weight: 8, label: 'exame físico', teaserLabel: 'descrição do exame físico' },
+  { pattern: /\bantecedentes?\b/gi, weight: 8, label: 'antecedentes', teaserLabel: 'antecedentes relevantes' },
+  { pattern: /\bmedica[cç][aã]o(?:es)?\b/gi, weight: 7, label: 'medicações', teaserLabel: 'medicações em uso' },
+  { pattern: /\balergia(?:s)?\b/gi, weight: 6, label: 'alergias', teaserLabel: 'alergias' },
+  { pattern: /\bconduta\b/gi, weight: 6, label: 'conduta', teaserLabel: 'conduta inicial' },
+  { pattern: /\bqueixa\b/gi, weight: 5, label: 'queixa principal', teaserLabel: 'queixa principal mais refinada' },
+  { pattern: /\bhip[oó]tese\b/gi, weight: 5, label: 'hipótese clínica', teaserLabel: 'hipótese clínica' },
+  { pattern: /\bsinais vitais\b/gi, weight: 5, label: 'sinais vitais', teaserLabel: 'sinais vitais' },
 ];
 
 const LOW_SCORE_MESSAGES = [
@@ -28,11 +28,19 @@ const HIGH_SCORE_MESSAGES = [
   'O registro demonstra boa consistência, com refinamentos pontuais possíveis.',
 ];
 
+const TEASER_MESSAGES = [
+  'Alguns pontos podem ser melhor explorados nesta anamnese.',
+  'Há elementos importantes que podem ser aprofundados.',
+  'A coleta de informações pode ser expandida em pontos relevantes.',
+  'Ainda existe margem para ampliar a completude clínica deste registro.',
+  'A avaliação inicial sugere oportunidades objetivas de refinamento.',
+];
+
 function clamp(value, min, max) {
   return Math.min(Math.max(value, min), max);
 }
 
-function pickVariant(score, matchedKeywordsCount, structurePoints) {
+function pickScoreMessage(score, matchedKeywordsCount, structurePoints) {
   if (score < 55) {
     return LOW_SCORE_MESSAGES[(matchedKeywordsCount + structurePoints) % LOW_SCORE_MESSAGES.length];
   }
@@ -42,6 +50,20 @@ function pickVariant(score, matchedKeywordsCount, structurePoints) {
   }
 
   return HIGH_SCORE_MESSAGES[(matchedKeywordsCount + structurePoints) % HIGH_SCORE_MESSAGES.length];
+}
+
+function buildTeaserMessage(seed, missingAreas) {
+  const message = TEASER_MESSAGES[seed % TEASER_MESSAGES.length];
+
+  if (missingAreas.length === 0) {
+    return message;
+  }
+
+  if (missingAreas.length === 1) {
+    return `${message} Vale revisar ${missingAreas[0]}.`;
+  }
+
+  return `${message} Vale revisar ${missingAreas[0]} e ${missingAreas[1]}.`;
 }
 
 export function evaluateAnamnesisQuality(text) {
@@ -59,16 +81,23 @@ export function evaluateAnamnesisQuality(text) {
       message: 'Ainda não há conteúdo suficiente para estimar a qualidade da anamnese.',
       justification: 'Inclua um registro um pouco mais detalhado para liberar a estimativa.',
       score: null,
+      teaser: {
+        shouldShowTeaser: false,
+        message: '',
+      },
     };
   }
 
   let keywordPoints = 0;
   const matchedKeywordLabels = [];
+  const missingAreas = [];
 
-  KEYWORD_WEIGHTS.forEach(({ pattern, weight, label }) => {
+  KEYWORD_WEIGHTS.forEach(({ pattern, weight, label, teaserLabel }) => {
     if (pattern.test(normalizedText)) {
       keywordPoints += weight;
       matchedKeywordLabels.push(label);
+    } else {
+      missingAreas.push(teaserLabel);
     }
   });
 
@@ -119,10 +148,21 @@ export function evaluateAnamnesisQuality(text) {
     justificationParts.push('O volume de informações está em uma faixa intermediária.');
   }
 
+  const teaserSeed = wordCount + paragraphCount + matchedKeywordLabels.length + structurePoints;
+  const shouldShowTeaser =
+    score < 88 &&
+    missingAreas.length > 0 &&
+    !(score >= 76 && teaserSeed % 3 === 0) &&
+    !(score >= 68 && matchedKeywordLabels.length >= 6 && teaserSeed % 4 === 0);
+
   return {
     shouldShowScore: true,
     score,
-    message: pickVariant(score, matchedKeywordLabels.length, structurePoints),
+    message: pickScoreMessage(score, matchedKeywordLabels.length, structurePoints),
     justification: justificationParts.join(' '),
+    teaser: {
+      shouldShowTeaser,
+      message: shouldShowTeaser ? buildTeaserMessage(teaserSeed, missingAreas) : '',
+    },
   };
 }
