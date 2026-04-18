@@ -7,7 +7,6 @@ import { supabase } from './lib/supabaseClient';
 import { evaluateAnamnesisQuality } from './utils/anamnesisQualityScore';
 
 const TEMPLATE_WITH_CALCULATORS = 'obstetricia';
-const INSIGHTS_PREVIEW_LINES = 6;
 const OTP_CODE_LENGTH = 8;
 const CHECKOUT_RETURN_STATE_KEY = 'checkout-return-state';
 const CHECKOUT_API_BASE_URL =
@@ -25,8 +24,43 @@ function getInsightsLines(content) {
     .filter((line, index, allLines) => line || (index > 0 && allLines[index - 1]));
 }
 
+function isInsightHeadingLine(line) {
+  const trimmedLine = line.trim();
+
+  return (
+    /^#{1,6}\s/.test(trimmedLine) ||
+    /^(\d+\.\s*)?\*\*.*\*\*$/.test(trimmedLine)
+  );
+}
+
+function getFirstInsightLine(content) {
+  const insightLines = getInsightsLines(content)
+    .map((line) => line.trim())
+    .filter(Boolean);
+
+  return (
+    insightLines.find((line) => !isInsightHeadingLine(line)) ||
+    insightLines.find(Boolean) ||
+    ''
+  );
+}
+
 function getInsightsPreview(content) {
-  return getInsightsLines(content).slice(0, INSIGHTS_PREVIEW_LINES).join('\n');
+  const firstInsightLine = getFirstInsightLine(content);
+
+  if (!firstInsightLine) {
+    return '';
+  }
+
+  const cleanedLine = firstInsightLine
+    .replace(/^[-*]\s+/, '')
+    .replace(/^\d+\.\s+/, '')
+    .trim();
+  const sentenceMatch = cleanedLine.match(/^.*?[.!?](?=\s|$)/);
+  const previewBase = sentenceMatch ? sentenceMatch[0].trim() : cleanedLine;
+  const truncatedPreview = previewBase.length > 160 ? `${previewBase.slice(0, 157).trim()}...` : previewBase;
+
+  return `${truncatedPreview.replace(/[.!?…]+$/, '').trim()}... veja a análise completa`;
 }
 
 function getHiddenInsightsCount(content) {
@@ -34,7 +68,17 @@ function getHiddenInsightsCount(content) {
     return 0;
   }
 
-  return Math.max(getInsightsLines(content).length - INSIGHTS_PREVIEW_LINES, 0);
+  const insightLines = getInsightsLines(content)
+    .map((line) => line.trim())
+    .filter(Boolean);
+  const firstPreviewLine = getFirstInsightLine(content);
+
+  if (!firstPreviewLine) {
+    return 0;
+  }
+
+  const previewIndex = insightLines.findIndex((line) => line === firstPreviewLine);
+  return Math.max(insightLines.length - previewIndex - 1, 0);
 }
 
 function isAbsentDisplayValue(value) {
