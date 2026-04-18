@@ -885,15 +885,13 @@ function App() {
     () => Object.fromEntries(templates.map((template) => [template.id, template.nome])),
     [templates]
   );
-  const showJustificationCard = !(
-    !isPro &&
-    qualityScore.criticalInsight &&
-    qualityScore.justification &&
-    areMessagesRedundant(qualityScore.criticalInsight, qualityScore.justification)
-  );
+  const scoreSummaryText = !isPro && qualityScore.criticalInsight
+    ? qualityScore.criticalInsight
+    : qualityScore.justification;
+  const showScoreSummaryCard = Boolean(scoreSummaryText);
   const improvementBoxCopy = insights
     ? 'Use os pontos abaixo para revisar o texto e testar uma nova versão.'
-    : 'Veja o principal ponto a revisar e avance para as orientações de melhoria.';
+    : '';
   const improvementButtonLabel = insights ? 'Ir para orientações de melhoria' : 'Ver como melhorar';
   const performanceMessage = getPerformanceMessage(qualityScore.score);
   const upgradeButtonLabel = getUpgradeButtonLabel(qualityScore.score);
@@ -1574,7 +1572,7 @@ function App() {
                         />
                       </div>
 
-                      {showJustificationCard && (
+                      {showScoreSummaryCard && (
                         <div
                           style={{
                             padding: '0.85rem 0.95rem',
@@ -1586,50 +1584,36 @@ function App() {
                             lineHeight: 1.5,
                           }}
                         >
-                          {qualityScore.justification}
+                          {scoreSummaryText}
                         </div>
                       )}
 
-                      {!isPro && qualityScore.criticalInsight && (
+                      {insights && (
                         <div
                           style={{
                             padding: '0.95rem 1rem',
                             border: '1px solid #dbeafe',
                             borderRadius: '8px',
                             backgroundColor: '#f8fbff',
-                            color: '#1f3b6d',
-                            fontSize: '0.9rem',
-                            lineHeight: 1.55,
+                            display: 'grid',
+                            gap: '0.6rem',
                           }}
                         >
-                          {qualityScore.criticalInsight}
+                          <span style={{ fontSize: '0.88rem', color: '#1f3b6d' }}>
+                            {improvementBoxCopy}
+                          </span>
+                          <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
+                            <button
+                              className="btn btn-secundario"
+                              type="button"
+                              onClick={handleMelhorarAnamnese}
+                              disabled={!resultado.trim() || loadingInsights}
+                            >
+                              {improvementButtonLabel}
+                            </button>
+                          </div>
                         </div>
                       )}
-
-                      <div
-                        style={{
-                          padding: '0.95rem 1rem',
-                          border: '1px solid #dbeafe',
-                          borderRadius: '8px',
-                          backgroundColor: '#f8fbff',
-                          display: 'grid',
-                          gap: '0.6rem',
-                        }}
-                      >
-                        <span style={{ fontSize: '0.88rem', color: '#1f3b6d' }}>
-                          {improvementBoxCopy}
-                        </span>
-                        <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
-                          <button
-                            className="btn btn-secundario"
-                            type="button"
-                            onClick={handleMelhorarAnamnese}
-                            disabled={!resultado.trim() || loadingInsights}
-                          >
-                            {improvementButtonLabel}
-                          </button>
-                        </div>
-                      </div>
 
                       {user && !loadingAnamneseStats && anamneseStats && isValidScoreValue(anamneseStats.ultimo_score) && (
                         <div
