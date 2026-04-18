@@ -695,23 +695,18 @@ function App() {
   };
 
   const handleMelhorarAnamnese = async () => {
-    if (!resultado.trim() || loadingInsights || improveActionLockRef.current) {
+    if (!texto.trim() || improveActionLockRef.current) {
       return;
     }
 
     improveActionLockRef.current = true;
 
     try {
-      if (insights) {
-        insightsSectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        return;
-      }
-
-      await handleGerarInsights();
-
+      textoInputRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
       window.setTimeout(() => {
-        insightsSectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }, 50);
+        textoInputRef.current?.focus();
+        textoInputRef.current?.select?.();
+      }, 120);
     } finally {
       window.setTimeout(() => {
         improveActionLockRef.current = false;
@@ -960,10 +955,8 @@ function App() {
     ? qualityScore.criticalInsight
     : qualityScore.justification;
   const showScoreSummaryCard = Boolean(scoreSummaryText);
-  const improvementBoxCopy = insights
-    ? 'Use os pontos abaixo para revisar o texto e testar uma nova versão.'
-    : '';
-  const improvementButtonLabel = insights ? 'Ir para orientações de melhoria' : 'Ver como melhorar';
+  const improvementBoxCopy = 'Revise o texto atual, faça ajustes e gere uma nova versão quando quiser.';
+  const improvementButtonLabel = isPro ? 'Refinar minha anamnese' : 'Melhorar minha anamnese';
   const performanceMessage = getPerformanceMessage(qualityScore.score);
   const upgradeButtonLabel = getUpgradeButtonLabel(qualityScore.score);
   const consistencySummary = useMemo(() => {
@@ -1729,33 +1722,6 @@ function App() {
                         </div>
                       )}
 
-                      {insights && (
-                        <div
-                          style={{
-                            padding: '0.95rem 1rem',
-                            border: '1px solid #dbeafe',
-                            borderRadius: '8px',
-                            backgroundColor: '#f8fbff',
-                            display: 'grid',
-                            gap: '0.6rem',
-                          }}
-                        >
-                          <span style={{ fontSize: '0.88rem', color: '#1f3b6d' }}>
-                            {improvementBoxCopy}
-                          </span>
-                          <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
-                            <button
-                              className="btn btn-secundario"
-                              type="button"
-                              onClick={handleMelhorarAnamnese}
-                              disabled={!resultado.trim() || loadingInsights}
-                            >
-                              {improvementButtonLabel}
-                            </button>
-                          </div>
-                        </div>
-                      )}
-
                       {user && !loadingAnamneseStats && anamneseStats && isValidScoreValue(anamneseStats.ultimo_score) && (
                         <div
                           style={{
@@ -1876,6 +1842,32 @@ function App() {
 
               <div className="resultado-container">
                 <div className="resultado">{isPro ? insights : insightsPreview}</div>
+
+                <div
+                  style={{
+                    marginTop: '1rem',
+                    padding: '0.95rem 1rem',
+                    border: '1px solid #dbeafe',
+                    borderRadius: '8px',
+                    backgroundColor: '#f8fbff',
+                    display: 'grid',
+                    gap: '0.6rem',
+                  }}
+                >
+                  <span style={{ fontSize: '0.88rem', color: '#1f3b6d' }}>
+                    {improvementBoxCopy}
+                  </span>
+                  <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
+                    <button
+                      className="btn btn-secundario"
+                      type="button"
+                      onClick={handleMelhorarAnamnese}
+                      disabled={!texto.trim()}
+                    >
+                      {improvementButtonLabel}
+                    </button>
+                  </div>
+                </div>
 
                 {shouldShowPaywall && (
                   <div className="paywall-panel" style={{ marginTop: '1rem' }}>
