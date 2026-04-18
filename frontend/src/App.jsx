@@ -250,6 +250,14 @@ function getPerformanceMessage(score) {
   return 'Sua anamnese já está bem estruturada, mas pode ficar ainda mais precisa.';
 }
 
+function getUpgradeButtonLabel(score) {
+  if (!isValidScoreValue(score)) {
+    return 'Desbloquear análise completa';
+  }
+
+  return score < 70 ? 'Melhorar minha avaliação clínica' : 'Refinar minha anamnese';
+}
+
 function getUserDisplayName(user) {
   const email = user?.email || '';
 
@@ -880,6 +888,7 @@ function App() {
     : 'Veja o principal ponto a revisar e avance para as orientações de melhoria.';
   const improvementButtonLabel = insights ? 'Ir para orientações de melhoria' : 'Ver como melhorar';
   const performanceMessage = getPerformanceMessage(qualityScore.score);
+  const upgradeButtonLabel = getUpgradeButtonLabel(qualityScore.score);
   const consistencySummary = useMemo(() => {
     if (!user) {
       return null;
@@ -1789,7 +1798,7 @@ function App() {
                             Acesso completo por R$ 9,90
                           </span>
                           <span style={{ fontSize: '0.82rem', color: '#4b5563' }}>
-                            Liberação imediata após o pagamento
+                            Veja exatamente o que ajustar para melhorar seu score
                           </span>
                         </div>
                       </div>
@@ -1800,7 +1809,7 @@ function App() {
                           onClick={handleUpgradeInsights}
                           disabled={loadingCheckout}
                         >
-                          {loadingCheckout ? 'Redirecionando para o pagamento...' : 'Desbloquear análise completa'}
+                          {loadingCheckout ? 'Redirecionando para o pagamento...' : upgradeButtonLabel}
                         </button>
                       </div>
                     </div>
