@@ -1,42 +1,5 @@
 const OPENAI_API_URL = 'https://api.openai.com/v1/chat/completions';
 
-function isValidUserId(userId) {
-  return typeof userId === 'string' && /^[0-9a-fA-F-]{36}$/.test(userId);
-}
-
-async function registerUsageLog({ userId, templateId }) {
-  if (!isValidUserId(userId)) {
-    return;
-  }
-
-  const supabaseUrl = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL;
-  const supabaseServiceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
-
-  if (!supabaseUrl || !supabaseServiceRoleKey) {
-    console.error('usage_logs: missing Supabase configuration');
-    return;
-  }
-
-  const response = await fetch(`${supabaseUrl}/rest/v1/usage_logs`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      apikey: supabaseServiceRoleKey,
-      Authorization: `Bearer ${supabaseServiceRoleKey}`,
-      Prefer: 'return=minimal',
-    },
-    body: JSON.stringify({
-      user_id: userId,
-      action: 'insight',
-      template_id: typeof templateId === 'string' && templateId ? templateId : null,
-    }),
-  });
-
-  if (!response.ok) {
-    throw new Error('failed to insert usage log');
-  }
-}
-
 function buildPrompt(texto) {
   return `Você é um médico auxiliando na avaliação da qualidade de uma anamnese.
 
@@ -67,7 +30,7 @@ module.exports = async function handler(req, res) {
     });
   }
 
-  const { texto, templateId, userId } = req.body || {};
+  const { texto, templateId } = req.body || {};
 
   if (!texto || typeof texto !== 'string' || !texto.trim()) {
     return res.status(400).json({
@@ -126,11 +89,6 @@ module.exports = async function handler(req, res) {
     if (!insights) {
       throw new Error('Empty insights response');
     }
-
-    registerUsageLog({ userId, templateId }).catch((error) => {
-      console.error('usage_logs: failed to register insight', error);
-    });
-
     return res.status(200).json({
       success: true,
       data: insights,
