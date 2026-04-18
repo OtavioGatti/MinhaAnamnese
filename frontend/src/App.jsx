@@ -1787,6 +1787,33 @@ function App() {
                           ))}
                         </div>
                       )}
+
+                      {!insights && (
+                        <div
+                          style={{
+                            padding: '0.95rem 1rem',
+                            border: '1px solid #dbeafe',
+                            borderRadius: '8px',
+                            backgroundColor: '#f8fbff',
+                            display: 'grid',
+                            gap: '0.6rem',
+                          }}
+                        >
+                          <span style={{ fontSize: '0.88rem', color: '#1f3b6d' }}>
+                            {improvementBoxCopy}
+                          </span>
+                          <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
+                            <button
+                              className="btn btn-secundario"
+                              type="button"
+                              onClick={handleMelhorarAnamnese}
+                              disabled={!texto.trim()}
+                            >
+                              {improvementButtonLabel}
+                            </button>
+                          </div>
+                        </div>
+                      )}
                     </>
                   ) : (
                     <div
