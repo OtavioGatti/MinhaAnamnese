@@ -345,11 +345,13 @@ function App() {
   const [loadingRecentAnamneses, setLoadingRecentAnamneses] = useState(false);
   const [loadingAnamneseStats, setLoadingAnamneseStats] = useState(false);
   const [loadingAnamneseActivity, setLoadingAnamneseActivity] = useState(false);
+  const [loadingFunnelMetrics, setLoadingFunnelMetrics] = useState(false);
   const [guiaAberto, setGuiaAberto] = useState(false);
   const [calculadoraAberta, setCalculadoraAberta] = useState(false);
   const [recentAnamneses, setRecentAnamneses] = useState([]);
   const [anamneseStats, setAnamneseStats] = useState(null);
   const [anamneseActivity, setAnamneseActivity] = useState([]);
+  const [funnelMetrics, setFunnelMetrics] = useState(null);
 
   const templateTemCalculadora = templateSelecionado === TEMPLATE_WITH_CALCULATORS;
   const userPlan = user?.user_metadata?.plan || 'basic';
@@ -583,6 +585,42 @@ function App() {
     }
 
     carregarAtividadeAnamneses();
+  }, [user?.id, resultado]);
+
+  useEffect(() => {
+    async function carregarMetricasFunil() {
+      if (!user?.id) {
+        setFunnelMetrics(null);
+        setLoadingFunnelMetrics(false);
+        return;
+      }
+
+      setLoadingFunnelMetrics(true);
+      const response = await api.get(`/metrics/funnel?userId=${encodeURIComponent(user.id)}`);
+
+      if (response.success && response.data && typeof response.data === 'object') {
+        const etapas = Array.isArray(response.data.etapas)
+          ? response.data.etapas.filter((item) => (
+            item &&
+            typeof item.nome === 'string' &&
+            typeof item.total === 'number' &&
+            typeof item.taxa_conversao === 'number' &&
+            typeof item.queda === 'number'
+          ))
+          : [];
+
+        setFunnelMetrics({
+          total_sessoes: typeof response.data.total_sessoes === 'number' ? response.data.total_sessoes : 0,
+          etapas,
+        });
+      } else {
+        setFunnelMetrics(null);
+      }
+
+      setLoadingFunnelMetrics(false);
+    }
+
+    carregarMetricasFunil();
   }, [user?.id, resultado]);
 
   useEffect(() => {
@@ -1516,6 +1554,72 @@ function App() {
                       </div>
                     </div>
                   ))}
+                </div>
+              )}
+            </div>
+          )}
+
+          {user && (
+            <div className="card">
+              <div className="card-header">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M4 6h16"/>
+                  <path d="M4 12h16"/>
+                  <path d="M4 18h16"/>
+                </svg>
+                <h2>Métricas do funil</h2>
+              </div>
+
+              {loadingFunnelMetrics ? (
+                <p className="field-helper">Carregando métricas do funil...</p>
+              ) : !funnelMetrics || funnelMetrics.total_sessoes === 0 || funnelMetrics.etapas.length === 0 ? (
+                <div className="empty-state-hint">
+                  As métricas do funil aparecerão aqui conforme novas sessões forem registradas
+                </div>
+              ) : (
+                <div style={{ display: 'grid', gap: '0.75rem' }}>
+                  <div style={{ fontSize: '0.88rem', color: '#4b5563' }}>
+                    Total de sessões: <strong style={{ color: '#111827' }}>{funnelMetrics.total_sessoes}</strong>
+                  </div>
+                  <div
+                    style={{
+                      display: 'grid',
+                      gridTemplateColumns: 'minmax(0, 1.6fr) minmax(72px, 0.6fr) minmax(92px, 0.7fr) minmax(72px, 0.6fr)',
+                      gap: '0.75rem',
+                      alignItems: 'center',
+                    }}
+                  >
+                    <div style={{ fontSize: '0.8rem', fontWeight: 700, color: '#111827' }}>Etapa</div>
+                    <div style={{ fontSize: '0.8rem', fontWeight: 700, color: '#111827' }}>Total</div>
+                    <div style={{ fontSize: '0.8rem', fontWeight: 700, color: '#111827' }}>Conversão</div>
+                    <div style={{ fontSize: '0.8rem', fontWeight: 700, color: '#111827' }}>Queda</div>
+
+                    {funnelMetrics.etapas.map((etapa) => (
+                      <div key={etapa.nome} style={{ display: 'contents' }}>
+                        <div
+                          style={{
+                            padding: '0.8rem 0.9rem',
+                            border: '1px solid #e5e7eb',
+                            borderRadius: '8px',
+                            backgroundColor: '#ffffff',
+                            fontSize: '0.88rem',
+                            color: '#1f2937',
+                          }}
+                        >
+                          {etapa.nome}
+                        </div>
+                        <div style={{ fontSize: '0.88rem', color: '#111827', fontWeight: 600 }}>
+                          {etapa.total}
+                        </div>
+                        <div style={{ fontSize: '0.88rem', color: '#111827', fontWeight: 600 }}>
+                          {etapa.taxa_conversao}%
+                        </div>
+                        <div style={{ fontSize: '0.88rem', color: '#4b5563' }}>
+                          {etapa.queda}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               )}
             </div>
