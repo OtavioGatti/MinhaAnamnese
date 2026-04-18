@@ -1879,32 +1879,6 @@ function App() {
               <div className="resultado-container">
                 <div className="resultado">{isPro ? insights : insightsPreview}</div>
 
-                <div
-                  style={{
-                    marginTop: '1rem',
-                    padding: '0.95rem 1rem',
-                    border: '1px solid #dbeafe',
-                    borderRadius: '8px',
-                    backgroundColor: '#f8fbff',
-                    display: 'grid',
-                    gap: '0.6rem',
-                  }}
-                >
-                  <span style={{ fontSize: '0.88rem', color: '#1f3b6d' }}>
-                    {improvementBoxCopy}
-                  </span>
-                  <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
-                    <button
-                      className="btn btn-secundario"
-                      type="button"
-                      onClick={handleMelhorarAnamnese}
-                      disabled={!texto.trim()}
-                    >
-                      {improvementButtonLabel}
-                    </button>
-                  </div>
-                </div>
-
                 {shouldShowPaywall && (
                   <div className="paywall-panel" style={{ marginTop: '1rem' }}>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
