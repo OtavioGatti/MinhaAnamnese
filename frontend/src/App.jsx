@@ -143,8 +143,26 @@ function isValidScoreValue(value) {
   return typeof value === 'number' && !Number.isNaN(value);
 }
 
-function getTodayUtcDateString() {
-  return new Date().toISOString().slice(0, 10);
+function getTodayUtcDate() {
+  return new Date(`${new Date().toISOString().slice(0, 10)}T00:00:00.000Z`);
+}
+
+function parseUtcDateString(value) {
+  if (typeof value !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(value)) {
+    return null;
+  }
+
+  const date = new Date(`${value}T00:00:00.000Z`);
+  return Number.isNaN(date.getTime()) ? null : date;
+}
+
+function getWeekStartUtc(date) {
+  const nextDate = new Date(date.getTime());
+  const dayOfWeek = nextDate.getUTCDay();
+  const diffToMonday = dayOfWeek === 0 ? -6 : 1 - dayOfWeek;
+  nextDate.setUTCDate(nextDate.getUTCDate() + diffToMonday);
+  nextDate.setUTCHours(0, 0, 0, 0);
+  return nextDate;
 }
 
 function normalizeUiText(value) {
@@ -218,12 +236,12 @@ function App() {
   const [loadingTemplates, setLoadingTemplates] = useState(true);
   const [loadingRecentAnamneses, setLoadingRecentAnamneses] = useState(false);
   const [loadingAnamneseStats, setLoadingAnamneseStats] = useState(false);
-  const [loadingAnamneseStreak, setLoadingAnamneseStreak] = useState(false);
+  const [loadingAnamneseActivity, setLoadingAnamneseActivity] = useState(false);
   const [guiaAberto, setGuiaAberto] = useState(false);
   const [calculadoraAberta, setCalculadoraAberta] = useState(false);
   const [recentAnamneses, setRecentAnamneses] = useState([]);
   const [anamneseStats, setAnamneseStats] = useState(null);
-  const [anamneseStreak, setAnamneseStreak] = useState(null);
+  const [anamneseActivity, setAnamneseActivity] = useState([]);
 
   const templateTemCalculadora = templateSelecionado === TEMPLATE_WITH_CALCULATORS;
   const userPlan = user?.user_metadata?.plan || 'basic';
@@ -432,29 +450,28 @@ function App() {
   }, [user?.id, resultado]);
 
   useEffect(() => {
-    async function carregarStreakAnamneses() {
+    async function carregarAtividadeAnamneses() {
       if (!user?.id) {
-        setAnamneseStreak(null);
-        setLoadingAnamneseStreak(false);
+        setAnamneseActivity([]);
+        setLoadingAnamneseActivity(false);
         return;
       }
 
-      setLoadingAnamneseStreak(true);
-      const response = await api.get(`/anamneses/streak?userId=${encodeURIComponent(user.id)}`);
+      setLoadingAnamneseActivity(true);
+      const response = await api.get(`/anamneses/activity?userId=${encodeURIComponent(user.id)}`);
 
-      if (response.success && response.data && typeof response.data === 'object') {
-        setAnamneseStreak({
-          current_streak: typeof response.data.current_streak === 'number' ? response.data.current_streak : 0,
-          last_active_date: typeof response.data.last_active_date === 'string' ? response.data.last_active_date : null,
-        });
+      if (response.success && Array.isArray(response.data)) {
+        setAnamneseActivity(
+          response.data.filter((item) => typeof item === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(item))
+        );
       } else {
-        setAnamneseStreak(null);
+        setAnamneseActivity([]);
       }
 
-      setLoadingAnamneseStreak(false);
+      setLoadingAnamneseActivity(false);
     }
 
-    carregarStreakAnamneses();
+    carregarAtividadeAnamneses();
   }, [user?.id, resultado]);
 
   useEffect(() => {
@@ -798,18 +815,46 @@ function App() {
     ? 'Use os pontos abaixo para revisar o texto e testar uma nova versão.'
     : 'Veja o principal ponto a revisar e avance para as orientações de melhoria.';
   const improvementButtonLabel = insights ? 'Ir para orientações de melhoria' : 'Ver como melhorar';
-  const hasPracticedToday = anamneseStreak?.last_active_date === getTodayUtcDateString();
-  const streakMessage = useMemo(() => {
-    if (!anamneseStreak || !user) {
+  const consistencySummary = useMemo(() => {
+    if (!user) {
       return null;
     }
 
-    if (anamneseStreak.current_streak > 0) {
-      return `VocÃª praticou por ${anamneseStreak.current_streak} ${anamneseStreak.current_streak === 1 ? 'dia seguido' : 'dias seguidos'}`;
+    const today = getTodayUtcDate();
+    const currentWeekStart = getWeekStartUtc(today);
+    const last30DaysStart = new Date(today.getTime());
+    last30DaysStart.setUTCDate(last30DaysStart.getUTCDate() - 29);
+
+    const validDates = anamneseActivity
+      .map((value) => parseUtcDateString(value))
+      .filter(Boolean)
+      .sort((left, right) => left.getTime() - right.getTime());
+
+    const activeDaysLast30 = validDates.filter((date) => date >= last30DaysStart && date <= today).length;
+    const activeWeeksLast4 = new Set(
+      validDates
+        .filter((date) => date >= new Date(currentWeekStart.getTime() - 21 * 86400000) && date <= today)
+        .map((date) => getWeekStartUtc(date).toISOString().slice(0, 10))
+    ).size;
+    const hasActivityThisWeek = validDates.some((date) => date >= currentWeekStart && date <= today);
+
+    if (activeDaysLast30 > 0) {
+      return {
+        title: `Voc\u00ea registrou atividade em ${activeDaysLast30} ${activeDaysLast30 === 1 ? 'dia' : 'dias'} nos \u00faltimos 30 dias`,
+        details: [
+          activeWeeksLast4 > 0
+            ? `Sua rotina apareceu em ${activeWeeksLast4} ${activeWeeksLast4 === 1 ? 'das \u00faltimas 4 semanas' : 'das \u00faltimas 4 semanas'}`
+            : null,
+          hasActivityThisWeek ? 'Voc\u00ea j\u00e1 registrou atividade nesta semana' : null,
+        ].filter(Boolean),
+      };
     }
 
-    return 'Seu ritmo de prÃ¡tica aparecerÃ¡ aqui conforme vocÃª usar o app';
-  }, [anamneseStreak, user]);
+    return {
+      title: 'Sua consist\u00eancia vai aparecer aqui conforme voc\u00ea voltar ao app',
+      details: ['Cada dia com atividade entra nessa leitura, sem exigir uso di\u00e1rio.'],
+    };
+  }, [anamneseActivity, user]);
   const scoreDelta = useMemo(() => {
     if (!isValidScoreValue(anamneseStats?.ultimo_score) || !isValidScoreValue(anamneseStats?.score_anterior)) {
       return null;
@@ -1545,7 +1590,7 @@ function App() {
                         </div>
                       )}
 
-                      {user && !loadingAnamneseStreak && streakMessage && (
+                      {user && !loadingAnamneseActivity && consistencySummary && (
                         <div
                           style={{
                             padding: '0.9rem 1rem',
@@ -1557,16 +1602,16 @@ function App() {
                           }}
                         >
                           <div style={{ fontSize: '0.92rem', fontWeight: 600, color: '#1d4ed8' }}>
-                            ConsistÃªncia de prÃ¡tica
+                            {'Consist\u00eancia recente'}
                           </div>
                           <div style={{ fontSize: '0.88rem', color: '#1f2937' }}>
-                            {streakMessage}
+                            {consistencySummary.title}
                           </div>
-                          {hasPracticedToday && (
-                            <div style={{ fontSize: '0.83rem', color: '#4b5563' }}>
-                              VocÃª jÃ¡ praticou hoje
+                          {consistencySummary.details.map((detail) => (
+                            <div key={detail} style={{ fontSize: '0.83rem', color: '#4b5563' }}>
+                              {detail}
                             </div>
-                          )}
+                          ))}
                         </div>
                       )}
                     </>
