@@ -8,6 +8,7 @@ import { evaluateAnamnesisQuality } from './utils/anamnesisQualityScore';
 
 const TEMPLATE_WITH_CALCULATORS = 'obstetricia';
 const INSIGHTS_PREVIEW_LINES = 6;
+const OTP_CODE_LENGTH = 8;
 const CHECKOUT_RETURN_STATE_KEY = 'checkout-return-state';
 const CHECKOUT_API_BASE_URL =
   import.meta.env.VITE_CHECKOUT_API_URL ||
@@ -221,7 +222,7 @@ function App() {
   const templateTemCalculadora = templateSelecionado === TEMPLATE_WITH_CALCULATORS;
   const userPlan = user?.user_metadata?.plan || 'basic';
   const isPro = userPlan === 'pro';
-  const otpIsComplete = otpCode.trim().length >= 6;
+  const otpIsComplete = otpCode.trim().length >= OTP_CODE_LENGTH;
 
   useEffect(() => {
     if (cooldownTimer <= 0) {
@@ -966,7 +967,7 @@ function App() {
                         value={otpCode}
                         onChange={(e) => {
                           autoSubmitTriggeredRef.current = false;
-                          setOtpCode(e.target.value.trim());
+                          setOtpCode(e.target.value.replace(/\s+/g, '').slice(0, OTP_CODE_LENGTH));
                           if (authError) {
                             setAuthError('');
                           }
@@ -976,7 +977,7 @@ function App() {
                           const pastedCode = e.clipboardData.getData('text').trim();
                           if (pastedCode) {
                             e.preventDefault();
-                            setOtpCode(pastedCode);
+                            setOtpCode(pastedCode.replace(/\s+/g, '').slice(0, OTP_CODE_LENGTH));
                             if (authError) {
                               setAuthError('');
                             }
@@ -1004,7 +1005,7 @@ function App() {
                           gap: '0.35rem',
                         }}
                       >
-                        {Array.from({ length: 6 }).map((_, index) => (
+                        {Array.from({ length: OTP_CODE_LENGTH }).map((_, index) => (
                           <div
                             key={index}
                             style={{
