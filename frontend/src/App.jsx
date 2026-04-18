@@ -186,6 +186,26 @@ function areMessagesRedundant(primary, secondary) {
   return overlapCount >= 3;
 }
 
+function getPerformanceMessage(score) {
+  if (!isValidScoreValue(score)) {
+    return '';
+  }
+
+  if (score < 50) {
+    return 'Existem falhas críticas que podem comprometer a avaliação clínica.';
+  }
+
+  if (score < 70) {
+    return 'Há lacunas importantes que podem alterar sua conduta.';
+  }
+
+  if (score < 85) {
+    return 'Pequenos ajustes podem aumentar a segurança da sua avaliação.';
+  }
+
+  return 'Sua anamnese já está bem estruturada, mas pode ficar ainda mais precisa.';
+}
+
 function getUserDisplayName(user) {
   const email = user?.email || '';
 
@@ -815,6 +835,7 @@ function App() {
     ? 'Use os pontos abaixo para revisar o texto e testar uma nova versão.'
     : 'Veja o principal ponto a revisar e avance para as orientações de melhoria.';
   const improvementButtonLabel = insights ? 'Ir para orientações de melhoria' : 'Ver como melhorar';
+  const performanceMessage = getPerformanceMessage(qualityScore.score);
   const consistencySummary = useMemo(() => {
     if (!user) {
       return null;
@@ -1679,6 +1700,23 @@ function App() {
                     </svg>
                     <div style={{ flex: 1 }}>
                       <div style={{ display: 'grid', gap: '0.7rem' }}>
+                        {performanceMessage && (
+                          <div
+                            style={{
+                              padding: '0.8rem 0.9rem',
+                              borderRadius: '8px',
+                              backgroundColor: '#eff6ff',
+                              border: '1px solid #bfdbfe',
+                              color: '#1e3a8a',
+                              fontSize: '0.9rem',
+                              lineHeight: 1.5,
+                              fontWeight: 500,
+                            }}
+                          >
+                            {performanceMessage}
+                          </div>
+                        )}
+
                         <div>
                           <div style={{ fontSize: '1rem', fontWeight: 600, color: '#1e3a8a' }}>
                             Veja exatamente o que pode ser melhorado na sua anamnese
