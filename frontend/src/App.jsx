@@ -1245,7 +1245,7 @@ function App() {
                         aria-hidden="true"
                         style={{
                           display: 'grid',
-                          gridTemplateColumns: 'repeat(6, minmax(0, 1fr))',
+                          gridTemplateColumns: 'repeat(8, minmax(0, 1fr))',
                           gap: '0.35rem',
                         }}
                       >
