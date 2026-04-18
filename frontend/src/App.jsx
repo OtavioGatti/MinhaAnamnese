@@ -9,6 +9,7 @@ import { evaluateAnamnesisQuality } from './utils/anamnesisQualityScore';
 const TEMPLATE_WITH_CALCULATORS = 'obstetricia';
 const OTP_CODE_LENGTH = 8;
 const CHECKOUT_RETURN_STATE_KEY = 'checkout-return-state';
+const TRACKING_SESSION_ID_KEY = 'tracking-session-id';
 const CHECKOUT_API_BASE_URL =
   import.meta.env.VITE_CHECKOUT_API_URL ||
   (window.location.hostname === 'localhost'
@@ -167,6 +168,32 @@ function clearCheckoutReturnState() {
   sessionStorage.removeItem(CHECKOUT_RETURN_STATE_KEY);
 }
 
+function createTrackingSessionId() {
+  if (window.crypto?.randomUUID) {
+    return window.crypto.randomUUID();
+  }
+
+  return `session-${Date.now()}-${Math.random().toString(16).slice(2)}`;
+}
+
+function getOrCreateTrackingSessionId() {
+  const existingSessionId = sessionStorage.getItem(TRACKING_SESSION_ID_KEY);
+
+  if (existingSessionId) {
+    return existingSessionId;
+  }
+
+  const nextSessionId = createTrackingSessionId();
+  sessionStorage.setItem(TRACKING_SESSION_ID_KEY, nextSessionId);
+  return nextSessionId;
+}
+
+function resetTrackingSessionId() {
+  const nextSessionId = createTrackingSessionId();
+  sessionStorage.setItem(TRACKING_SESSION_ID_KEY, nextSessionId);
+  return nextSessionId;
+}
+
 function formatRelativeTime(value) {
   const date = new Date(value);
 
@@ -293,6 +320,7 @@ function App() {
   const autoSubmitTriggeredRef = useRef(false);
   const improveActionLockRef = useRef(false);
   const trackedEventsRef = useRef(new Set());
+  const trackingSessionIdRef = useRef(getOrCreateTrackingSessionId());
   const [templates, setTemplates] = useState([]);
   const [templateSelecionado, setTemplateSelecionado] = useState('');
   const [texto, setTexto] = useState('');
@@ -400,6 +428,9 @@ function App() {
         setAuthFeedback('');
         setCooldownTimer(0);
         autoSubmitTriggeredRef.current = false;
+      } else {
+        trackingSessionIdRef.current = resetTrackingSessionId();
+        trackedEventsRef.current.clear();
       }
     });
 
@@ -860,6 +891,8 @@ function App() {
   const handleSair = async () => {
     setLoadingUser(true);
     await supabase.auth.signOut();
+    trackingSessionIdRef.current = resetTrackingSessionId();
+    trackedEventsRef.current.clear();
     setEmail('');
     setOtpCode('');
     setStep('email');
@@ -945,6 +978,7 @@ function App() {
 
   const trackEvent = async (eventName, metadata = {}, options = {}) => {
     const eventKey = options.eventKey || null;
+    const sessionId = trackingSessionIdRef.current || getOrCreateTrackingSessionId();
 
     if (window.location.hostname === 'localhost') {
       return;
@@ -963,7 +997,10 @@ function App() {
         body: JSON.stringify({
           userId: user?.id || null,
           eventName,
-          metadata,
+          metadata: {
+            ...metadata,
+            session_id: sessionId,
+          },
         }),
       });
 
