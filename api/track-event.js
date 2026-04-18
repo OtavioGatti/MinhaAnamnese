@@ -6,9 +6,14 @@ const ALLOWED_EVENTS = new Set([
   'insight_gerado',
   'upgrade_click',
 ]);
+const SESSION_ID_REGEX = /^[0-9a-fA-F-]{36}$/;
 
 function isValidUserId(userId) {
   return typeof userId === 'string' && /^[0-9a-fA-F-]{36}$/.test(userId);
+}
+
+function isValidSessionId(sessionId) {
+  return typeof sessionId === 'string' && SESSION_ID_REGEX.test(sessionId);
 }
 
 function sanitizeMetadata(metadata) {
@@ -48,11 +53,19 @@ module.exports = async function handler(req, res) {
   }
 
   const { userId, eventName, metadata } = req.body || {};
+  const sessionId = metadata?.session_id;
 
   if (!ALLOWED_EVENTS.has(eventName)) {
     return res.status(400).json({
       success: false,
       error: 'Evento invalido',
+    });
+  }
+
+  if (!isValidSessionId(sessionId)) {
+    return res.status(400).json({
+      success: false,
+      error: 'Session ID invalido',
     });
   }
 
@@ -77,6 +90,7 @@ module.exports = async function handler(req, res) {
       },
       body: JSON.stringify({
         user_id: isValidUserId(userId) ? userId : null,
+        session_id: sessionId,
         event_name: eventName,
         metadata: sanitizeMetadata(metadata),
       }),
