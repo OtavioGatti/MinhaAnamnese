@@ -63,6 +63,14 @@ function getInsightsPreview(content) {
   return `${truncatedPreview.replace(/[.!?…]+$/, '').trim()}... veja a análise completa`;
 }
 
+function getInsightsPreviewFallback(content) {
+  if (!content) {
+    return '';
+  }
+
+  return getInsightsPreview(content) || 'Veja a análise completa para revisar o principal ponto identificado.';
+}
+
 function getHiddenInsightsCount(content) {
   if (!content) {
     return 0;
@@ -862,7 +870,7 @@ function App() {
     setLoadingUser(false);
   };
 
-  const insightsPreview = insights ? getInsightsPreview(insights) : '';
+  const insightsPreview = insights ? getInsightsPreviewFallback(insights) : '';
   const shouldShowPaywall = insights && !isPro;
   const hiddenInsightsCount = getHiddenInsightsCount(insights);
   const displayedResultado = useMemo(() => sanitizeAnamnesisForDisplay(resultado), [resultado]);
@@ -1566,22 +1574,6 @@ function App() {
                         />
                       </div>
 
-                      {!isPro && qualityScore.criticalInsight && (
-                        <div
-                          style={{
-                            padding: '0.95rem 1rem',
-                            border: '1px solid #dbeafe',
-                            borderRadius: '8px',
-                            backgroundColor: '#f8fbff',
-                            color: '#1f3b6d',
-                            fontSize: '0.9rem',
-                            lineHeight: 1.55,
-                          }}
-                        >
-                          {qualityScore.criticalInsight}
-                        </div>
-                      )}
-
                       {showJustificationCard && (
                         <div
                           style={{
@@ -1595,6 +1587,22 @@ function App() {
                           }}
                         >
                           {qualityScore.justification}
+                        </div>
+                      )}
+
+                      {!isPro && qualityScore.criticalInsight && (
+                        <div
+                          style={{
+                            padding: '0.95rem 1rem',
+                            border: '1px solid #dbeafe',
+                            borderRadius: '8px',
+                            backgroundColor: '#f8fbff',
+                            color: '#1f3b6d',
+                            fontSize: '0.9rem',
+                            lineHeight: 1.55,
+                          }}
+                        >
+                          {qualityScore.criticalInsight}
                         </div>
                       )}
 
