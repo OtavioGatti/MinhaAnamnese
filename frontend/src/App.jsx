@@ -143,6 +143,10 @@ function isValidScoreValue(value) {
   return typeof value === 'number' && !Number.isNaN(value);
 }
 
+function getTodayUtcDateString() {
+  return new Date().toISOString().slice(0, 10);
+}
+
 function normalizeUiText(value) {
   return (value || '')
     .normalize('NFD')
@@ -214,10 +218,12 @@ function App() {
   const [loadingTemplates, setLoadingTemplates] = useState(true);
   const [loadingRecentAnamneses, setLoadingRecentAnamneses] = useState(false);
   const [loadingAnamneseStats, setLoadingAnamneseStats] = useState(false);
+  const [loadingAnamneseStreak, setLoadingAnamneseStreak] = useState(false);
   const [guiaAberto, setGuiaAberto] = useState(false);
   const [calculadoraAberta, setCalculadoraAberta] = useState(false);
   const [recentAnamneses, setRecentAnamneses] = useState([]);
   const [anamneseStats, setAnamneseStats] = useState(null);
+  const [anamneseStreak, setAnamneseStreak] = useState(null);
 
   const templateTemCalculadora = templateSelecionado === TEMPLATE_WITH_CALCULATORS;
   const userPlan = user?.user_metadata?.plan || 'basic';
@@ -423,6 +429,32 @@ function App() {
     }
 
     carregarStatsAnamneses();
+  }, [user?.id, resultado]);
+
+  useEffect(() => {
+    async function carregarStreakAnamneses() {
+      if (!user?.id) {
+        setAnamneseStreak(null);
+        setLoadingAnamneseStreak(false);
+        return;
+      }
+
+      setLoadingAnamneseStreak(true);
+      const response = await api.get(`/anamneses/streak?userId=${encodeURIComponent(user.id)}`);
+
+      if (response.success && response.data && typeof response.data === 'object') {
+        setAnamneseStreak({
+          current_streak: typeof response.data.current_streak === 'number' ? response.data.current_streak : 0,
+          last_active_date: typeof response.data.last_active_date === 'string' ? response.data.last_active_date : null,
+        });
+      } else {
+        setAnamneseStreak(null);
+      }
+
+      setLoadingAnamneseStreak(false);
+    }
+
+    carregarStreakAnamneses();
   }, [user?.id, resultado]);
 
   useEffect(() => {
@@ -766,6 +798,18 @@ function App() {
     ? 'Use os pontos abaixo para revisar o texto e testar uma nova versão.'
     : 'Veja o principal ponto a revisar e avance para as orientações de melhoria.';
   const improvementButtonLabel = insights ? 'Ir para orientações de melhoria' : 'Ver como melhorar';
+  const hasPracticedToday = anamneseStreak?.last_active_date === getTodayUtcDateString();
+  const streakMessage = useMemo(() => {
+    if (!anamneseStreak || !user) {
+      return null;
+    }
+
+    if (anamneseStreak.current_streak > 0) {
+      return `VocÃª praticou por ${anamneseStreak.current_streak} ${anamneseStreak.current_streak === 1 ? 'dia seguido' : 'dias seguidos'}`;
+    }
+
+    return 'Seu ritmo de prÃ¡tica aparecerÃ¡ aqui conforme vocÃª usar o app';
+  }, [anamneseStreak, user]);
   const scoreDelta = useMemo(() => {
     if (!isValidScoreValue(anamneseStats?.ultimo_score) || !isValidScoreValue(anamneseStats?.score_anterior)) {
       return null;
@@ -1496,6 +1540,31 @@ function App() {
                                 : scoreDelta < 0
                                   ? `Caiu ${Math.round(scoreDelta)}`
                                   : 'Você manteve estabilidade'}
+                            </div>
+                          )}
+                        </div>
+                      )}
+
+                      {user && !loadingAnamneseStreak && streakMessage && (
+                        <div
+                          style={{
+                            padding: '0.9rem 1rem',
+                            border: '1px solid #dbeafe',
+                            borderRadius: '8px',
+                            backgroundColor: '#f8fbff',
+                            display: 'grid',
+                            gap: '0.35rem',
+                          }}
+                        >
+                          <div style={{ fontSize: '0.92rem', fontWeight: 600, color: '#1d4ed8' }}>
+                            ConsistÃªncia de prÃ¡tica
+                          </div>
+                          <div style={{ fontSize: '0.88rem', color: '#1f2937' }}>
+                            {streakMessage}
+                          </div>
+                          {hasPracticedToday && (
+                            <div style={{ fontSize: '0.83rem', color: '#4b5563' }}>
+                              VocÃª jÃ¡ praticou hoje
                             </div>
                           )}
                         </div>
