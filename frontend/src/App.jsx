@@ -695,13 +695,22 @@ function App() {
   };
 
   const handleMelhorarAnamnese = async () => {
-    if (!texto.trim() || improveActionLockRef.current) {
+    if (!texto.trim() || loadingInsights || improveActionLockRef.current) {
       return;
     }
 
     improveActionLockRef.current = true;
 
     try {
+      if (!insights) {
+        await handleGerarInsights();
+
+        window.setTimeout(() => {
+          insightsSectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 50);
+        return;
+      }
+
       textoInputRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
       window.setTimeout(() => {
         textoInputRef.current?.focus();
