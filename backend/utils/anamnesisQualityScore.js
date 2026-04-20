@@ -1,57 +1,65 @@
-const CATEGORY_CONFIG = [
+const SECTION_CONFIG = [
   {
-    id: 'history',
-    weight: 7,
-    patterns: ['historia', 'queixa', 'qp', 'evolucao', 'hda', 'sintomas associados', 'dor', 'febre'],
+    id: 'identificacao',
+    label: 'Identificação',
+    weight: 15,
+    essential: true,
+    aliases: ['identificacao', 'identificação', 'id'],
+    evidence: ['anos', 'masculino', 'feminino', 'sexo', 'paciente'],
   },
   {
-    id: 'exam',
-    weight: 7,
-    patterns: ['exame fisico', 'ao exame', 'sinais vitais', 'ectoscopia', 'ausculta', 'palpacao', 'pressao arterial'],
+    id: 'queixa_principal',
+    label: 'Queixa principal',
+    weight: 15,
+    essential: true,
+    aliases: ['queixa principal', 'qp', 'qpd'],
+    evidence: ['dor', 'febre', 'tosse', 'dispneia', 'cefaleia', 'vomitos', 'vômitos', 'nausea', 'náusea'],
   },
   {
-    id: 'background',
-    weight: 6,
-    patterns: ['antecedentes', 'comorbidades', 'historia pregressa', 'doencas previas', 'cirurgias previas'],
+    id: 'hda',
+    label: 'HDA',
+    weight: 20,
+    essential: true,
+    aliases: ['hda', 'historia da doenca atual', 'história da doença atual', 'evolucao', 'evolução'],
+    evidence: ['ha ', 'há ', 'desde', 'inicio', 'início', 'evolucao', 'evolução', 'piora', 'melhora'],
   },
   {
-    id: 'medications',
-    weight: 6,
-    patterns: ['medicacoes', 'medicacao', 'medicamentos', 'alergias', 'alergia', 'uso continuo'],
+    id: 'antecedentes',
+    label: 'Antecedentes',
+    weight: 15,
+    essential: true,
+    aliases: ['antecedentes', 'comorbidades', 'historia pregressa', 'história pregressa'],
+    evidence: ['hipertensao', 'hipertensão', 'diabetes', 'cirurgia', 'alergia', 'alergias'],
   },
   {
-    id: 'plan',
-    weight: 5,
-    patterns: ['conduta', 'hipotese', 'impressao diagnostica', 'avaliacao', 'plano'],
+    id: 'medicacoes',
+    label: 'Medicações',
+    weight: 15,
+    essential: true,
+    aliases: ['medicacoes', 'medicações', 'medicacoes em uso', 'medicações em uso', 'uso de medicacoes', 'uso de medicações', 'muc'],
+    evidence: ['medicacao', 'medicação', 'medicamento', 'medicamentos', 'uso continuo', 'uso contínuo'],
+  },
+  {
+    id: 'exame_fisico',
+    label: 'Exame físico',
+    weight: 20,
+    essential: true,
+    aliases: ['exame fisico', 'exame físico', 'ao exame', 'sinais vitais', 'ex. fisico', 'ex. físico'],
+    evidence: ['pressao arterial', 'pressão arterial', 'fc', 'fr', 'saturacao', 'saturação', 'temperatura', 'ausculta'],
   },
 ];
 
-const SPECIALTY_OVERRIDES = {
-  pediatria: {
-    history: ['aceitacao alimentar', 'eliminacoes', 'vacinacao'],
-  },
-  obstetricia: {
-    history: ['ig', 'dum', 'usg', 'movimentacao fetal', 'contracoes'],
-    exam: ['bcf', 'batimentos cardiofetais', 'altura uterina'],
-  },
-  ginecologia: {
-    history: ['historia menstrual', 'historia sexual', 'corrimento', 'dor pelvica'],
-  },
-  upa_emergencia: {
-    exam: ['saturacao', 'frequencia cardiaca', 'frequencia respiratoria', 'glasgow'],
-    plan: ['sinais de gravidade', 'risco'],
-  },
-};
-
-const ABSENT_PATTERNS = ['nao informado', 'nao descrito', 'nao realizado', 'ignorado'];
-const TIME_PATTERNS = ['hora', 'horas', 'dia', 'dias', 'semana', 'semanas', 'mes', 'meses', 'inicio', 'desde', 'ontem', 'hoje'];
-const EVOLUTION_PATTERNS = ['evolucao', 'progressiva', 'progressivo', 'piora', 'piora progressiva', 'melhora', 'agravamento', 'intermitente', 'continua'];
-const OBJECTIVE_DESCRIPTION_PATTERNS = ['intensa', 'leve', 'moderada', 'forte', 'irradiacao', 'localizada', 'em aperto', 'pressao', 'pontada', 'queimacao', 'sudorese', 'dispneia', 'vomitos'];
-const SEVERITY_PATTERNS = ['dor toracica', 'sincope', 'perda de consciencia', 'idoso', 'idosa'];
-
-function clamp(value, min, max) {
-  return Math.min(Math.max(value, min), max);
-}
+const MAX_SCORE_WITH_ONE_MISSING_ESSENTIAL = 85;
+const MAX_SCORE_WITH_MULTIPLE_MISSING_ESSENTIALS = 70;
+const MISSING_MARKERS = [
+  'nao informado',
+  'não informado',
+  'nao descrito',
+  'não descrito',
+  '[dado ausente]',
+  '[informacao insuficiente]',
+  '[informação insuficiente]',
+];
 
 function normalizeText(value) {
   return (value || '')
@@ -60,30 +68,23 @@ function normalizeText(value) {
     .toLowerCase();
 }
 
-function containsAny(text, values) {
-  return values.some((value) => text.includes(value));
+function hasMeaningfulContent(value) {
+  const normalized = normalizeText(value).trim();
+
+  if (!normalized) {
+    return false;
+  }
+
+  return !MISSING_MARKERS.some((marker) => normalized.includes(normalizeText(marker)));
 }
 
-function hasAbsentMarker(value) {
-  const normalizedValue = normalizeText(value).trim();
-  return ABSENT_PATTERNS.some((pattern) => normalizedValue.includes(pattern));
-}
+function getLabeledFieldValue(text, aliases) {
+  const matches = text.replace(/\r/g, '').matchAll(/(^|[\n.])\s*([^:\n.]{2,60})\s*:\s*([^\n.]*)/g);
 
-function isCampoPreenchido(valor) {
-  if (!valor) return false;
-
-  const texto = normalizeText(valor).trim();
-  return !(texto === '' || hasAbsentMarker(texto));
-}
-
-function getLabeledFieldValue(text, fieldPatterns) {
-  const normalizedText = text.replace(/\r/g, '');
-  const labeledMatches = normalizedText.matchAll(/(^|[\n.])\s*([^:\n.]{2,40}):\s*([^\n.]*)/g);
-
-  for (const match of labeledMatches) {
+  for (const match of matches) {
     const label = normalizeText(match[2]);
 
-    if (fieldPatterns.some((pattern) => label.includes(pattern))) {
+    if (aliases.some((alias) => label.includes(normalizeText(alias)))) {
       return match[3] || '';
     }
   }
@@ -91,152 +92,87 @@ function getLabeledFieldValue(text, fieldPatterns) {
   return null;
 }
 
-function hasFilledField(text, directPatterns, evidencePatterns = []) {
-  const labeledValue = getLabeledFieldValue(text, directPatterns);
+function hasSectionContent(text, section) {
+  const labeledValue = getLabeledFieldValue(text, section.aliases);
 
   if (labeledValue !== null) {
-    return isCampoPreenchido(labeledValue);
+    return hasMeaningfulContent(labeledValue);
   }
 
   const normalizedText = normalizeText(text);
-  return containsAny(normalizedText, [...directPatterns, ...evidencePatterns]);
+  const hasAlias = section.aliases.some((alias) => normalizedText.includes(normalizeText(alias)));
+  const hasEvidence = section.evidence.some((alias) => normalizedText.includes(normalizeText(alias)));
+
+  return hasAlias || hasEvidence;
 }
 
-function fieldMarkedAbsent(text, fieldPatterns) {
-  const segments = text
-    .split(/[\n.]+/)
-    .map((line) => line.trim())
-    .filter(Boolean);
-
-  return segments.some((line) => {
-    const normalizedLine = normalizeText(line);
-    return fieldPatterns.some((pattern) => normalizedLine.includes(pattern)) && hasAbsentMarker(normalizedLine);
-  });
+function getCoverageStatus(present) {
+  return present ? 'presente' : 'ausente';
 }
 
-function detectCategory(text, category, templateId) {
-  const specialtyPatterns = SPECIALTY_OVERRIDES[templateId]?.[category.id] || [];
-  return containsAny(text, [...category.patterns, ...specialtyPatterns]);
+function buildStructuredAnalysis(sectionResults) {
+  const byId = Object.fromEntries(sectionResults.map((section) => [section.id, section]));
+  const missingEssentials = sectionResults
+    .filter((section) => section.essential && !section.present)
+    .map((section) => section.label);
+
+  return {
+    identificacao: getCoverageStatus(byId.identificacao?.present),
+    queixa_principal: getCoverageStatus(byId.queixa_principal?.present),
+    hda: getCoverageStatus(byId.hda?.present),
+    antecedentes: getCoverageStatus(byId.antecedentes?.present),
+    medicacoes: getCoverageStatus(byId.medicacoes?.present),
+    exame_fisico: getCoverageStatus(byId.exame_fisico?.present),
+    coerencia: missingEssentials.length === 0 ? 'coerente' : 'parcial',
+    blocos_essenciais_ausentes: missingEssentials,
+    principais_lacunas: missingEssentials.length > 0
+      ? missingEssentials.map((label) => `${label} ausente`)
+      : ['Todos os blocos essenciais estão presentes'],
+  };
 }
 
-function detectHistoriaVaga(text) {
-  const normalizedText = normalizeText(text);
-  const hasTime = containsAny(normalizedText, TIME_PATTERNS) || /\b\d+\s*(h|hs|min|dias?|semanas?|meses?|anos?)\b/.test(normalizedText);
-  const hasEvolution = containsAny(normalizedText, EVOLUTION_PATTERNS);
-  const hasObjectiveDescription = containsAny(normalizedText, OBJECTIVE_DESCRIPTION_PATTERNS);
-
-  return !(hasTime && hasEvolution && hasObjectiveDescription);
-}
-
-function detectGravidadeSemExame(normalizedText, temExameFisico) {
-  return !temExameFisico && containsAny(normalizedText, SEVERITY_PATTERNS);
-}
-
-function evaluateAnamnesisQuality(text, templateId = '') {
+function calculateAnamnesisQualityScore(text) {
   const rawText = (text || '').trim();
-  const normalizedText = normalizeText(rawText);
-  const words = normalizedText.split(/\s+/).filter(Boolean);
-  const wordCount = words.length;
-  const characterCount = rawText.length;
 
-  if (!rawText || characterCount < 20 || wordCount < 4) {
+  if (!rawText) {
     return {
-      shouldShowScore: false,
       score: null,
-      teaser: {
-        shouldShowTeaser: false,
-      },
+      sections: [],
+      missingEssentialSections: [],
+      structuredAnalysis: null,
     };
   }
 
-  const paragraphCount = rawText
-    .split(/\n+/)
-    .map((block) => block.trim())
-    .filter(Boolean).length;
-  const sentenceCount = rawText
-    .split(/[.!?]+/)
-    .map((sentence) => sentence.trim())
-    .filter(Boolean).length;
-  const hasSectionLabels = /(^|\n)\s*[a-z0-9/\- ]{2,30}\s*:/gim.test(normalizedText);
+  const sectionResults = SECTION_CONFIG.map((section) => ({
+    id: section.id,
+    label: section.label,
+    essential: section.essential,
+    present: hasSectionContent(rawText, section),
+    weight: section.weight,
+  }));
 
-  const historyCategory = CATEGORY_CONFIG.find((category) => category.id === 'history');
-  const examCategory = CATEGORY_CONFIG.find((category) => category.id === 'exam');
-  const backgroundCategory = CATEGORY_CONFIG.find((category) => category.id === 'background');
-  const medicationsCategory = CATEGORY_CONFIG.find((category) => category.id === 'medications');
+  const missingEssentialSections = sectionResults.filter((section) => section.essential && !section.present);
+  const rawScore = sectionResults.reduce(
+    (total, section) => total + (section.present ? section.weight : 0),
+    0,
+  );
 
-  const exameFisico = getLabeledFieldValue(rawText, ['exame fisico', 'exame', 'ao exame', 'sinais vitais']);
-  const medicacoes = getLabeledFieldValue(rawText, ['medicacoes', 'medicacao', 'medicamentos', 'alergias', 'alergia']);
-  const antecedentes = getLabeledFieldValue(rawText, ['antecedentes', 'comorbidades', 'historia pregressa']);
+  let score = rawScore;
 
-  const temExameFisico =
-    !fieldMarkedAbsent(rawText, ['exame fisico', 'exame', 'ao exame', 'sinais vitais']) &&
-    (isCampoPreenchido(exameFisico) ||
-      hasFilledField(rawText, ['exame fisico', 'ao exame', 'sinais vitais'], examCategory?.patterns || []));
-  const temMedicacoes =
-    !fieldMarkedAbsent(rawText, ['medicacoes', 'medicacao', 'medicamentos', 'alergias', 'alergia']) &&
-    (isCampoPreenchido(medicacoes) ||
-      hasFilledField(rawText, ['medicacoes', 'medicacao', 'medicamentos', 'alergias', 'alergia'], medicationsCategory?.patterns || []));
-  const temAntecedentes =
-    !fieldMarkedAbsent(rawText, ['antecedentes', 'comorbidades', 'historia pregressa']) &&
-    (isCampoPreenchido(antecedentes) ||
-      hasFilledField(rawText, ['antecedentes', 'comorbidades', 'historia pregressa'], backgroundCategory?.patterns || []));
-
-  const matchedCategories = CATEGORY_CONFIG.filter((category) => detectCategory(normalizedText, category, templateId));
-  const hasAge = /\b\d{1,3}\s*anos?\b/.test(normalizedText);
-  const hasSex = containsAny(normalizedText, [
-    'masculino',
-    'feminino',
-    'sexo masc',
-    'sexo fem',
-    'sexo masculino',
-    'sexo feminino',
-  ]);
-
-  let scoreBase = 42;
-  if (wordCount >= 25) scoreBase += 8;
-  if (wordCount >= 50) scoreBase += 8;
-  if (wordCount >= 80) scoreBase += 7;
-  if (characterCount >= 250) scoreBase += 4;
-  if (characterCount >= 500) scoreBase += 4;
-  if (hasAge || hasSex) scoreBase += 5;
-  if (detectCategory(normalizedText, historyCategory, templateId)) scoreBase += 8;
-
-  let scoreEstrutura = 0;
-  if (paragraphCount >= 2) scoreEstrutura += 6;
-  if (sentenceCount >= 3) scoreEstrutura += 6;
-  if (hasSectionLabels) scoreEstrutura += 8;
-  scoreEstrutura = Math.min(scoreEstrutura, 20);
-
-  const scoreCobertura = matchedCategories.reduce((total, category) => total + category.weight, 0);
-  const historiaVaga = detectHistoriaVaga(rawText);
-
-  let score = scoreBase + scoreEstrutura + scoreCobertura;
-
-  if (!temExameFisico) score -= 25;
-  if (!temMedicacoes) score -= 15;
-  if (!temAntecedentes) score -= 10;
-
-  const missingCritical = [!temExameFisico, !temMedicacoes, !temAntecedentes].filter(Boolean).length;
-  if (missingCritical >= 2) score -= 20;
-  if (missingCritical === 3) score -= 30;
-  if (historiaVaga) score -= 15;
-
-  const gravidadeSemExame = detectGravidadeSemExame(normalizedText, temExameFisico);
-  if (gravidadeSemExame) score -= 20;
-
-  score = clamp(Math.round(score), 30, 90);
-
-  const hasTeaser = !temExameFisico || !temMedicacoes || !temAntecedentes || historiaVaga || gravidadeSemExame;
+  if (missingEssentialSections.length === 1) {
+    score = Math.min(score, MAX_SCORE_WITH_ONE_MISSING_ESSENTIAL);
+  } else if (missingEssentialSections.length >= 2) {
+    score = Math.min(score, MAX_SCORE_WITH_MULTIPLE_MISSING_ESSENTIALS);
+  }
 
   return {
-    shouldShowScore: true,
-    score,
-    teaser: {
-      shouldShowTeaser: hasTeaser,
-    },
+    score: Math.round(score),
+    sections: sectionResults,
+    missingEssentialSections: missingEssentialSections.map((section) => section.label),
+    structuredAnalysis: buildStructuredAnalysis(sectionResults),
   };
 }
 
 module.exports = {
-  evaluateAnamnesisQuality,
+  calculateAnamnesisQualityScore,
 };

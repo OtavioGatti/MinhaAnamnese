@@ -1,44 +1,14 @@
-const { FUNNEL_STEPS, isValidUserId, getFunnelSessions } = require('./_funnel');
+const { isValidUserId, getFunnelSessions } = require('./_funnel');
+const { buildFunnelMetrics, getZeroFunnelMetrics } = require('../backend/services/funnelMetrics');
 
-function getZeroMetrics() {
+function toLegacyMetricsShape(metrics) {
   return {
-    total_sessoes: 0,
-    etapas: FUNNEL_STEPS.map((eventName, index) => ({
-      etapa: index + 1,
-      event_name: eventName,
-      sessoes: 0,
-      taxa_conversao: 0,
-    })),
-  };
-}
-
-function getConversionRate(currentCount, previousCount) {
-  if (!previousCount) {
-    return 0;
-  }
-
-  return Number(((currentCount / previousCount) * 100).toFixed(1));
-}
-
-function buildFunnelMetrics(funnelSessions) {
-  if (!Array.isArray(funnelSessions) || funnelSessions.length === 0) {
-    return getZeroMetrics();
-  }
-
-  const totalSessions = funnelSessions.length;
-  const stageCounts = FUNNEL_STEPS.map((_, index) => (
-    funnelSessions.filter((session) => session.funnel_level >= index + 1).length
-  ));
-
-  return {
-    total_sessoes: totalSessions,
-    etapas: FUNNEL_STEPS.map((eventName, index) => ({
-      etapa: index + 1,
-      event_name: eventName,
-      sessoes: stageCounts[index],
-      taxa_conversao: index === 0
-        ? getConversionRate(stageCounts[index], totalSessions)
-        : getConversionRate(stageCounts[index], stageCounts[index - 1]),
+    total_sessoes: metrics.total_sessoes,
+    etapas: metrics.etapas.map((etapa) => ({
+      etapa: etapa.etapa,
+      event_name: etapa.nome,
+      sessoes: etapa.total,
+      taxa_conversao: etapa.taxa_conversao,
     })),
   };
 }
@@ -56,13 +26,13 @@ module.exports = async function handler(req, res) {
   if (!isValidUserId(userId)) {
     return res.status(200).json({
       success: true,
-      data: getZeroMetrics(),
+      data: toLegacyMetricsShape(getZeroFunnelMetrics()),
     });
   }
 
   try {
     const funnelSessions = await getFunnelSessions(userId);
-    const metrics = buildFunnelMetrics(funnelSessions);
+    const metrics = toLegacyMetricsShape(buildFunnelMetrics(funnelSessions));
 
     return res.status(200).json({
       success: true,

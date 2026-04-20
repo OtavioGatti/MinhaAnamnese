@@ -1,21 +1,16 @@
-/**
- * Centralização de todos os templates médicos do sistema
- * Estrutura padronizada para fácil expansão
- */
-
 const templates = {
   psiquiatria: {
     nome: 'Psiquiatria',
     secoes: [
-      'Identificação',
+      'Identificacao',
       'Queixa Principal',
-      'História da Doença Atual',
-      'História Psiquiátrica Pregressa',
-      'História Familiar',
-      'Uso de Medicações',
-      'Uso de Substâncias',
+      'Historia da Doenca Atual',
+      'Historia Psiquiatrica Pregressa',
+      'Historia Familiar',
+      'Uso de Medicacoes',
+      'Uso de Substancias',
       'Exame do Estado Mental',
-      'Hipótese Diagnóstica',
+      'Hipotese Diagnostica',
       'Conduta',
     ],
   },
@@ -23,105 +18,84 @@ const templates = {
   pediatria: {
     nome: 'Pediatria',
     secoes: [
-      'Identificação',
+      'Identificacao',
       'Queixa Principal',
-      'História da Doença Atual',
+      'Historia da Doenca Atual',
       'Antecedentes Pessoais',
       'Antecedentes Familiares',
-      'Vacinação',
+      'Vacinacao',
       'Desenvolvimento Neuropsicomotor',
-      'Exame Físico',
-      'Hipótese Diagnóstica',
+      'Exame Fisico',
+      'Hipotese Diagnostica',
       'Conduta',
     ],
   },
 
   clinica_medica: {
-    nome: 'Clínica Médica',
+    nome: 'Clinica Medica',
     secoes: [
-      'Identificação',
+      'Identificacao',
       'Queixa Principal',
-      'História da Doença Atual',
-      'Revisão de Sistemas',
+      'Historia da Doenca Atual',
+      'Revisao de Sistemas',
       'Antecedentes',
-      'Medicações em Uso',
-      'Exame Físico',
-      'Hipótese Diagnóstica',
+      'Medicacoes em Uso',
+      'Exame Fisico',
+      'Hipotese Diagnostica',
       'Plano',
     ],
   },
 
   obstetricia: {
-    nome: 'Obstetrícia',
+    nome: 'Obstetricia',
     secoes: [
       'ID',
       'IG (USG) | (DUM)',
-      'Tipagem Sanguínea',
+      'Tipagem Sanguinea',
       'QPD',
-      'H. Obstétrico',
+      'H. Obstetrico',
       'HV',
       'Alergia',
-      'Doenças de Base',
+      'Doencas de Base',
       'MUC',
-      'Ex. Físico',
+      'Ex. Fisico',
       'HD',
       'Conduta',
     ],
-    promptSistema: `Você é um médico responsável por organizar registros clínicos obstétricos de forma técnica, objetiva e fiel às informações fornecidas.
-
-Sua função é estruturar o texto livre exatamente no modelo obstétrico solicitado.
-
-REGRAS OBRIGATÓRIAS:
-- NÃO inventar informações
-- NÃO inferir dados ausentes
-- NÃO sugerir diagnósticos ou condutas
-- NÃO completar automaticamente campos
-- Se a informação não estiver presente, escrever: "Não informado"
-- Manter linguagem médica técnica e concisa
-- Preservar todos os dados relevantes do texto original
-
-FORMATAÇÃO:
-- Seguir exatamente a estrutura do modelo fornecido
-- MANTER OS NOMES DAS SEÇÕES EXATAMENTE COMO APRESENTADOS (siglas, abreviações, tudo). NUNCA traduzir, expandir ou alterar. Ex: "QPD" continua "QPD", "HV" continua "HV", "MUC" continua "MUC"
-- TODAS as seções do modelo DEVEM aparecer no resultado, sem exceção
-- Se um campo não tem informação, escreva "Não informado" — NUNCA omita ou esconda a seção
-- Manter siglas médicas apropriadas (IG, DUM, BCF, etc.)
-- Não adicionar seções extras
-- Não remover seções do modelo
-- Escrever sempre em parágrafo dentro dos itens e não em tópicos (Ex: ID: Nome, 32 anos, Casada...)`,
+    promptVariant: 'obstetricia',
   },
 
   upa_emergencia: {
-    nome: 'UPA / Emergência',
+    nome: 'UPA / Emergencia',
     secoes: [
-      'Identificação',
+      'Identificacao',
       'Queixa Principal',
-      'História da Doença Atual (foco na queixa)',
-      'Tempo de evolução',
+      'Historia da Doenca Atual (foco na queixa)',
+      'Tempo de evolucao',
       'Sintomas associados',
       'Sinais de alarme',
       'Comorbidades',
-      'Medicações em uso',
-      'Exame Físico direcionado',
-      'Impressão clínica',
+      'Medicacoes em uso',
+      'Exame Fisico direcionado',
+      'Impressao clinica',
       'Conduta',
     ],
   },
 
   puerperio: {
-    nome: 'Puerpério',
+    nome: 'Puerperio',
     secoes: [
-      'Identificação',
+      'Identificacao',
       'Tipo de parto',
-      'Tempo de pós-parto',
+      'Tempo de pos-parto',
       'Queixa Principal',
-      'Evolução pós-parto',
-      'Amamentação',
-      'Loquiação',
+      'Evolucao pos-parto',
+      'Amamentacao',
+      'Loquiacao',
       'Dor / sinais infecciosos',
-      'Eliminações fisiológicas',
+      'Eliminacoes fisiologicas',
       'Estado emocional',
-      'Exame Físico',
+      'Exame Fisico',
       'Conduta',
     ],
   },
@@ -129,32 +103,32 @@ FORMATAÇÃO:
   ginecologia: {
     nome: 'Ginecologia',
     secoes: [
-      'Identificação',
+      'Identificacao',
       'Queixa Principal',
-      'História da Doença Atual',
-      'História menstrual (DUM, ciclo)',
+      'Historia da Doenca Atual',
+      'Historia menstrual (DUM, ciclo)',
       'Vida sexual',
-      'Método contraceptivo',
-      'Corrimento / dor pélvica',
-      'Antecedentes ginecológicos',
-      'Exame Físico',
-      'Hipótese Diagnóstica',
+      'Metodo contraceptivo',
+      'Corrimento / dor pelvica',
+      'Antecedentes ginecologicos',
+      'Exame Fisico',
+      'Hipotese Diagnostica',
       'Conduta',
     ],
   },
 
   triagem: {
-    nome: 'Triagem Rápida',
+    nome: 'Triagem Rapida',
     secoes: [
-      'Identificação',
+      'Identificacao',
       'Queixa Principal',
-      'Tempo de início',
+      'Tempo de inicio',
       'Sintomas associados',
       'Sinais de gravidade',
       'Comorbidades',
-      'Medicações em uso',
+      'Medicacoes em uso',
       'Sinais vitais',
-      'Impressão inicial',
+      'Impressao inicial',
     ],
   },
 };

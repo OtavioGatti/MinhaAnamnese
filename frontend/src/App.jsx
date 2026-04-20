@@ -1,94 +1,25 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+﻿import { useEffect, useMemo, useRef, useState } from 'react';
 import { api } from './apiClient';
-import CalculatorPanel from './components/CalculatorPanel';
-import GuidePanel from './components/GuidePanel';
+import { API_BASE_URL } from './config';
+import DetailedAnalysis from './components/DetailedAnalysis';
+import EvolutionPage from './components/EvolutionPage';
+import InputSection from './components/InputSection';
+import InsightBlock from './components/InsightBlock';
+import ProfilePage from './components/ProfilePage';
+import StructuralFeedback from './components/StructuralFeedback';
+import StructuredOutput from './components/StructuredOutput';
+import TemplatesPage from './components/TemplatesPage';
+import UserEvolution from './components/UserEvolution';
+import WorkspaceSidebar from './components/WorkspaceSidebar';
 import { guides } from './data/guides';
 import { supabase } from './lib/supabaseClient';
-import { evaluateAnamnesisQuality } from './utils/anamnesisQualityScore';
 
 const TEMPLATE_WITH_CALCULATORS = 'obstetricia';
-const OTP_CODE_LENGTH = 8;
 const CHECKOUT_RETURN_STATE_KEY = 'checkout-return-state';
 const TRACKING_SESSION_ID_KEY = 'tracking-session-id';
-const CHECKOUT_API_BASE_URL =
-  import.meta.env.VITE_CHECKOUT_API_URL ||
-  (window.location.hostname === 'localhost'
-    ? 'https://minha-anamnese.vercel.app'
-    : window.location.origin);
+const DEBUG_MODE = false;
 const DEFAULT_TEXT_PLACEHOLDER =
   'Ex: Paciente feminina, 32 anos, com dor abdominal há 2 dias, associada a náuseas, sem vômitos...';
-
-function getInsightsLines(content) {
-  return content
-    .split('\n')
-    .map((line) => line.trimEnd())
-    .filter((line, index, allLines) => line || (index > 0 && allLines[index - 1]));
-}
-
-function isInsightHeadingLine(line) {
-  const trimmedLine = line.trim();
-
-  return (
-    /^#{1,6}\s/.test(trimmedLine) ||
-    /^(\d+\.\s*)?\*\*.*\*\*$/.test(trimmedLine)
-  );
-}
-
-function getFirstInsightLine(content) {
-  const insightLines = getInsightsLines(content)
-    .map((line) => line.trim())
-    .filter(Boolean);
-
-  return (
-    insightLines.find((line) => !isInsightHeadingLine(line)) ||
-    insightLines.find(Boolean) ||
-    ''
-  );
-}
-
-function getInsightsPreview(content) {
-  const firstInsightLine = getFirstInsightLine(content);
-
-  if (!firstInsightLine) {
-    return '';
-  }
-
-  const cleanedLine = firstInsightLine
-    .replace(/^[-*]\s+/, '')
-    .replace(/^\d+\.\s+/, '')
-    .trim();
-  const sentenceMatch = cleanedLine.match(/^.*?[.!?](?=\s|$)/);
-  const previewBase = sentenceMatch ? sentenceMatch[0].trim() : cleanedLine;
-  const truncatedPreview = previewBase.length > 160 ? `${previewBase.slice(0, 157).trim()}...` : previewBase;
-
-  return `${truncatedPreview.replace(/[.!?…]+$/, '').trim()}... veja a análise completa`;
-}
-
-function getInsightsPreviewFallback(content) {
-  if (!content) {
-    return '';
-  }
-
-  return getInsightsPreview(content) || 'Veja a análise completa para revisar o principal ponto identificado.';
-}
-
-function getHiddenInsightsCount(content) {
-  if (!content) {
-    return 0;
-  }
-
-  const insightLines = getInsightsLines(content)
-    .map((line) => line.trim())
-    .filter(Boolean);
-  const firstPreviewLine = getFirstInsightLine(content);
-
-  if (!firstPreviewLine) {
-    return 0;
-  }
-
-  const previewIndex = insightLines.findIndex((line) => line === firstPreviewLine);
-  return Math.max(insightLines.length - previewIndex - 1, 0);
-}
 
 function isAbsentDisplayValue(value) {
   if (value == null) {
@@ -115,34 +46,7 @@ function sanitizeAnamnesisForDisplay(content) {
     return '';
   }
 
-  const cleanedLines = content
-    .split('\n')
-    .filter((line) => {
-      const trimmedLine = line.trim();
-
-      if (!trimmedLine) {
-        return true;
-      }
-
-      const labeledMatch = trimmedLine.match(/^([^:]+):\s*(.+)$/);
-
-      if (labeledMatch) {
-        return !isAbsentDisplayValue(labeledMatch[2]);
-      }
-
-      return !isAbsentDisplayValue(trimmedLine);
-    })
-    .filter((line, index, lines) => {
-      if (line.trim()) {
-        return true;
-      }
-
-      const previousLine = lines[index - 1];
-      const nextLine = lines[index + 1];
-      return Boolean(previousLine?.trim()) && Boolean(nextLine?.trim());
-    });
-
-  return cleanedLines.join('\n').trim();
+  return content.trim();
 }
 
 function saveCheckoutReturnState(state) {
@@ -222,6 +126,28 @@ function isValidScoreValue(value) {
   return typeof value === 'number' && !Number.isNaN(value);
 }
 
+function createEmptyQualityScore() {
+  return {
+    shouldShowScore: false,
+    score: null,
+    message: '',
+    justification: '',
+    criticalInsight: '',
+  };
+}
+
+function normalizeQualityScorePayload(payload) {
+  const score = isValidScoreValue(payload?.score) ? payload.score : null;
+
+  return {
+    shouldShowScore: isValidScoreValue(score),
+    score,
+    message: payload?.interpretation?.message || '',
+    justification: payload?.interpretation?.justification || '',
+    criticalInsight: payload?.interpretation?.criticalInsight || '',
+  };
+}
+
 function getTodayUtcDate() {
   return new Date(`${new Date().toISOString().slice(0, 10)}T00:00:00.000Z`);
 }
@@ -285,12 +211,40 @@ function getPerformanceMessage(score) {
   return 'Sua anamnese já está bem estruturada, mas pode ficar ainda mais precisa.';
 }
 
-function getUpgradeButtonLabel(score) {
-  if (!isValidScoreValue(score)) {
-    return 'Desbloquear análise completa';
+function getFriendlyInsightsError(response) {
+  if (response?.status === 401) {
+    return 'Entre na sua conta para visualizar a análise completa.';
   }
 
-  return score < 70 ? 'Melhorar minha avaliação clínica' : 'Refinar minha anamnese';
+  if (response?.status === 403) {
+    return 'A análise completa está disponível no plano profissional.';
+  }
+
+  if (response?.status >= 500) {
+    return 'A análise não ficou disponível agora. Seu resultado estruturado continua pronto para uso.';
+  }
+
+  return response?.error || 'A análise não ficou disponível agora. Seu resultado estruturado continua pronto para uso.';
+}
+
+function getRelevantGapsCount(score) {
+  if (!isValidScoreValue(score)) {
+    return 2;
+  }
+
+  if (score >= 85) {
+    return 1;
+  }
+
+  if (score >= 70) {
+    return 2;
+  }
+
+  if (score >= 55) {
+    return 3;
+  }
+
+  return 4;
 }
 
 function getUserDisplayName(user) {
@@ -312,12 +266,153 @@ function getUserDisplayName(user) {
   return normalizedName || 'Olá';
 }
 
+function isValidEmail(value) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test((value || '').trim().toLowerCase());
+}
+
+function getAuthErrorMessage(error, fallbackMessage) {
+  const message = String(error?.message || '').toLowerCase();
+  const status = error?.status;
+
+  if (message.includes('invalid login credentials')) {
+    return 'E-mail ou senha incorretos.';
+  }
+
+  if (message.includes('email not confirmed')) {
+    return 'Confirme seu e-mail antes de entrar.';
+  }
+
+  if (message.includes('user already registered') || message.includes('already been registered')) {
+    return 'Este e-mail já está cadastrado. Tente entrar na sua conta.';
+  }
+
+  if (message.includes('signup is disabled')) {
+    return 'O cadastro está indisponível no momento.';
+  }
+
+  if (message.includes('password should be at least')) {
+    return 'A senha deve ter pelo menos 6 caracteres.';
+  }
+
+  if (message.includes('unable to validate email address')) {
+    return 'Informe um e-mail válido.';
+  }
+
+  if (status === 429) {
+    return 'Muitas tentativas em sequência. Aguarde um momento e tente novamente.';
+  }
+
+  return fallbackMessage;
+}
+
+function readAuthReturnParams() {
+  const hashParams = new URLSearchParams(window.location.hash.replace(/^#/, ''));
+  const searchParams = new URLSearchParams(window.location.search);
+
+  return {
+    type: hashParams.get('type') || searchParams.get('type') || '',
+    error: hashParams.get('error') || searchParams.get('error') || '',
+    errorCode: hashParams.get('error_code') || searchParams.get('error_code') || '',
+    errorDescription:
+      hashParams.get('error_description') || searchParams.get('error_description') || '',
+  };
+}
+
+function safeDecodeUrlValue(value) {
+  try {
+    return decodeURIComponent(String(value || ''));
+  } catch {
+    return String(value || '');
+  }
+}
+
+function getRecoveryLinkState() {
+  const { type, error, errorCode, errorDescription } = readAuthReturnParams();
+  const normalizedError = String(error || '').toLowerCase();
+  const normalizedCode = String(errorCode || '').toLowerCase();
+  const normalizedDescription = safeDecodeUrlValue(errorDescription).toLowerCase();
+
+  const hasRecoveryError = Boolean(
+    normalizedError ||
+      normalizedCode ||
+      normalizedDescription.includes('invalid or has expired') ||
+      normalizedDescription.includes('expired') ||
+      normalizedDescription.includes('already') ||
+      normalizedDescription.includes('used')
+  );
+
+  if (hasRecoveryError) {
+    return {
+      kind: 'recovery_error',
+      message: 'O link de recuperação expirou ou já foi utilizado. Solicite um novo e-mail.',
+    };
+  }
+
+  if (type === 'recovery') {
+    return {
+      kind: 'recovery',
+      message: 'Defina uma nova senha para concluir a recuperação da sua conta.',
+    };
+  }
+
+  return {
+    kind: 'none',
+    message: '',
+  };
+}
+
+function clearAuthReturnStateFromUrl() {
+  const url = new URL(window.location.href);
+  const authSearchParams = [
+    'type',
+    'error',
+    'error_code',
+    'error_description',
+    'access_token',
+    'refresh_token',
+    'expires_in',
+    'expires_at',
+    'token_type',
+  ];
+
+  authSearchParams.forEach((param) => {
+    url.searchParams.delete(param);
+  });
+
+  window.history.replaceState({}, '', `${url.pathname}${url.search}`);
+}
+
+function openRecoveryResetFlow(message) {
+  return {
+    authMode: 'resetPassword',
+    authPanelAberto: true,
+    password: '',
+    confirmPassword: '',
+    authError: '',
+    authFeedback: message,
+  };
+}
+
+function openRecoveryRequestFlow(message) {
+  return {
+    authMode: 'forgotPassword',
+    authPanelAberto: true,
+    password: '',
+    confirmPassword: '',
+    authError: message,
+    authFeedback: '',
+  };
+}
+
+function isPasswordRecoveryFlow() {
+  return getRecoveryLinkState().kind === 'recovery';
+}
+
 function App() {
   const emailInputRef = useRef(null);
-  const otpInputRef = useRef(null);
+  const passwordInputRef = useRef(null);
   const textoInputRef = useRef(null);
   const insightsSectionRef = useRef(null);
-  const autoSubmitTriggeredRef = useRef(false);
   const improveActionLockRef = useRef(false);
   const trackedEventsRef = useRef(new Set());
   const trackingSessionIdRef = useRef(getOrCreateTrackingSessionId());
@@ -326,88 +421,65 @@ function App() {
   const [texto, setTexto] = useState('');
   const [resultado, setResultado] = useState('');
   const [user, setUser] = useState(null);
-  const [insights, setInsights] = useState('');
   const [email, setEmail] = useState('');
-  const [otpCode, setOtpCode] = useState('');
-  const [step, setStep] = useState('email');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [authMode, setAuthMode] = useState('login');
   const [loading, setLoading] = useState(false);
   const [loadingUser, setLoadingUser] = useState(true);
   const [loadingInsights, setLoadingInsights] = useState(false);
   const [loadingCheckout, setLoadingCheckout] = useState(false);
   const [loadingAuth, setLoadingAuth] = useState(false);
-  const [cooldownTimer, setCooldownTimer] = useState(0);
   const [animatedScore, setAnimatedScore] = useState(0);
   const [erro, setErro] = useState('');
+  const [insightError, setInsightError] = useState('');
   const [authError, setAuthError] = useState('');
   const [authFeedback, setAuthFeedback] = useState('');
   const [copiado, setCopiado] = useState(false);
   const [loadingTemplates, setLoadingTemplates] = useState(true);
-  const [loadingRecentAnamneses, setLoadingRecentAnamneses] = useState(false);
   const [loadingAnamneseStats, setLoadingAnamneseStats] = useState(false);
   const [loadingAnamneseActivity, setLoadingAnamneseActivity] = useState(false);
+  const [loadingRecentAnamneses, setLoadingRecentAnamneses] = useState(false);
   const [loadingFunnelMetrics, setLoadingFunnelMetrics] = useState(false);
-  const [guiaAberto, setGuiaAberto] = useState(false);
-  const [calculadoraAberta, setCalculadoraAberta] = useState(false);
-  const [recentAnamneses, setRecentAnamneses] = useState([]);
+  const [secaoSecundariaAberta, setSecaoSecundariaAberta] = useState(false);
+  const [authPanelAberto, setAuthPanelAberto] = useState(false);
+  const [activeSidebarTab, setActiveSidebarTab] = useState('guide');
+  const [currentPage, setCurrentPage] = useState('home');
   const [anamneseStats, setAnamneseStats] = useState(null);
   const [anamneseActivity, setAnamneseActivity] = useState([]);
+  const [recentAnamneses, setRecentAnamneses] = useState([]);
   const [funnelMetrics, setFunnelMetrics] = useState(null);
+  const [qualityScore, setQualityScore] = useState(() => createEmptyQualityScore());
 
   const templateTemCalculadora = templateSelecionado === TEMPLATE_WITH_CALCULATORS;
   const userPlan = user?.user_metadata?.plan || 'basic';
   const isPro = userPlan === 'pro';
-  const otpIsComplete = otpCode.trim().length >= OTP_CODE_LENGTH;
-
-  useEffect(() => {
-    if (cooldownTimer <= 0) {
-      return undefined;
-    }
-
-    const timer = window.setInterval(() => {
-      setCooldownTimer((current) => {
-        if (current <= 1) {
-          window.clearInterval(timer);
-          return 0;
-        }
-
-        return current - 1;
-      });
-    }, 1000);
-
-    return () => window.clearInterval(timer);
-  }, [cooldownTimer]);
 
   useEffect(() => {
     if (user) {
+      if (authMode === 'resetPassword') {
+        return;
+      }
+
       return;
     }
 
-    if (step === 'otp') {
-      otpInputRef.current?.focus();
-      otpInputRef.current?.select();
+    if (!authPanelAberto) {
       return;
     }
 
-    emailInputRef.current?.focus();
-  }, [step, user]);
-
-  useEffect(() => {
-    if (step !== 'otp') {
-      autoSubmitTriggeredRef.current = true;
+    if (authMode === 'login' || authMode === 'signup' || authMode === 'forgotPassword') {
+      emailInputRef.current?.focus();
       return;
     }
 
-    if (!otpIsComplete || loadingAuth || autoSubmitTriggeredRef.current) {
-      return;
-    }
-
-    autoSubmitTriggeredRef.current = true;
-    handleConfirmarCodigo();
-  }, [otpCode, step, loadingAuth]);
+    passwordInputRef.current?.focus();
+  }, [authMode, authPanelAberto, user]);
 
   useEffect(() => {
     async function carregarSessao() {
       setLoadingUser(true);
+      const recoveryState = getRecoveryLinkState();
       const { data, error } = await supabase.auth.getSession();
 
       if (error) {
@@ -415,21 +487,68 @@ function App() {
       }
 
       setUser(data.session?.user || null);
+
+      if (recoveryState.kind === 'recovery_error') {
+        setAuthMode(openRecoveryRequestFlow(recoveryState.message).authMode);
+        setAuthPanelAberto(true);
+        setPassword('');
+        setConfirmPassword('');
+        setAuthError(recoveryState.message);
+        setAuthFeedback('');
+        clearAuthReturnStateFromUrl();
+      } else if (recoveryState.kind === 'recovery' && data.session?.user) {
+        const nextState = openRecoveryResetFlow(recoveryState.message);
+        setAuthMode(nextState.authMode);
+        setAuthPanelAberto(nextState.authPanelAberto);
+        setPassword(nextState.password);
+        setConfirmPassword(nextState.confirmPassword);
+        setAuthError(nextState.authError);
+        setAuthFeedback(nextState.authFeedback);
+        clearAuthReturnStateFromUrl();
+      }
+
       setLoadingUser(false);
     }
 
-    const { data } = supabase.auth.onAuthStateChange((_event, session) => {
+    const { data } = supabase.auth.onAuthStateChange((event, session) => {
+      const recoveryState = getRecoveryLinkState();
       setUser(session?.user || null);
       setLoadingUser(false);
 
+      if (event === 'PASSWORD_RECOVERY') {
+        const nextState = openRecoveryResetFlow(
+          recoveryState.kind === 'recovery' ? recoveryState.message : 'Defina uma nova senha para concluir a recuperação da sua conta.'
+        );
+        setAuthMode(nextState.authMode);
+        setAuthPanelAberto(nextState.authPanelAberto);
+        setPassword(nextState.password);
+        setConfirmPassword(nextState.confirmPassword);
+        setAuthError(nextState.authError);
+        setAuthFeedback(nextState.authFeedback);
+        clearAuthReturnStateFromUrl();
+        return;
+      }
+
+      if (recoveryState.kind === 'recovery_error') {
+        const nextState = openRecoveryRequestFlow(recoveryState.message);
+        setAuthMode(nextState.authMode);
+        setAuthPanelAberto(nextState.authPanelAberto);
+        setPassword(nextState.password);
+        setConfirmPassword(nextState.confirmPassword);
+        setAuthError(nextState.authError);
+        setAuthFeedback(nextState.authFeedback);
+        clearAuthReturnStateFromUrl();
+        return;
+      }
+
       if (session?.user) {
         setEmail('');
-        setOtpCode('');
-        setStep('email');
+        setPassword('');
+        setConfirmPassword('');
+        setAuthMode('login');
         setAuthError('');
         setAuthFeedback('');
-        setCooldownTimer(0);
-        autoSubmitTriggeredRef.current = false;
+        setAuthPanelAberto(false);
       } else {
         trackingSessionIdRef.current = resetTrackingSessionId();
         trackedEventsRef.current.clear();
@@ -457,9 +576,7 @@ function App() {
         setTemplateSelecionado(returnState.templateSelecionado || '');
         setTexto(returnState.texto || '');
         setResultado(returnState.resultado || '');
-        setInsights(returnState.insights || '');
-        setGuiaAberto(Boolean(returnState.guiaAberto));
-        setCalculadoraAberta(Boolean(returnState.calculadoraAberta));
+        setQualityScore(normalizeQualityScorePayload(returnState.qualityScore));
       }
 
       const {
@@ -501,37 +618,6 @@ function App() {
   }, []);
 
   useEffect(() => {
-    async function carregarAnamnesesRecentes() {
-      if (!user?.id) {
-        setRecentAnamneses([]);
-        setLoadingRecentAnamneses(false);
-        return;
-      }
-
-      setLoadingRecentAnamneses(true);
-      const response = await api.get(`/anamneses?userId=${encodeURIComponent(user.id)}`);
-
-      if (response.success && Array.isArray(response.data)) {
-        const sanitized = response.data.filter((item) => (
-          item &&
-          typeof item.id === 'string' &&
-          typeof item.template === 'string' &&
-          typeof item.score === 'number' &&
-          typeof item.created_at === 'string'
-        ));
-
-        setRecentAnamneses(sanitized);
-      } else {
-        setRecentAnamneses([]);
-      }
-
-      setLoadingRecentAnamneses(false);
-    }
-
-    carregarAnamnesesRecentes();
-  }, [user?.id]);
-
-  useEffect(() => {
     async function carregarStatsAnamneses() {
       if (!user?.id) {
         setAnamneseStats(null);
@@ -540,7 +626,7 @@ function App() {
       }
 
       setLoadingAnamneseStats(true);
-      const response = await api.get(`/anamneses/stats?userId=${encodeURIComponent(user.id)}`);
+      const response = await api.get('/anamneses/stats');
 
       if (response.success && response.data && typeof response.data === 'object') {
         const nextStats = {
@@ -571,7 +657,7 @@ function App() {
       }
 
       setLoadingAnamneseActivity(true);
-      const response = await api.get(`/anamneses/activity?userId=${encodeURIComponent(user.id)}`);
+      const response = await api.get('/anamneses/activity');
 
       if (response.success && Array.isArray(response.data)) {
         setAnamneseActivity(
@@ -585,6 +671,37 @@ function App() {
     }
 
     carregarAtividadeAnamneses();
+  }, [user?.id, resultado]);
+
+  useEffect(() => {
+    async function carregarAnamnesesRecentes() {
+      if (!user?.id) {
+        setRecentAnamneses([]);
+        setLoadingRecentAnamneses(false);
+        return;
+      }
+
+      setLoadingRecentAnamneses(true);
+      const response = await api.get('/anamneses');
+
+      if (response.success && Array.isArray(response.data)) {
+        const sanitized = response.data.filter((item) => (
+          item &&
+          typeof item.id === 'string' &&
+          typeof item.template === 'string' &&
+          typeof item.score === 'number' &&
+          typeof item.created_at === 'string'
+        ));
+
+        setRecentAnamneses(sanitized);
+      } else {
+        setRecentAnamneses([]);
+      }
+
+      setLoadingRecentAnamneses(false);
+    }
+
+    carregarAnamnesesRecentes();
   }, [user?.id, resultado]);
 
   useEffect(() => {
@@ -624,28 +741,42 @@ function App() {
   }, [user?.id, resultado]);
 
   useEffect(() => {
-    if (!templateTemCalculadora) {
-      setCalculadoraAberta(false);
+    if (user) {
+      setAuthPanelAberto(false);
+      return;
     }
-  }, [templateTemCalculadora]);
 
-  useEffect(() => {
-    setGuiaAberto(Boolean(templateSelecionado));
-  }, [templateSelecionado]);
+    if (authError || authFeedback) {
+      setAuthPanelAberto(true);
+    }
+  }, [authError, authFeedback, user]);
 
   const handleTemplateChange = (e) => {
     const novoTemplate = e.target.value;
     setTemplateSelecionado(novoTemplate);
+    setActiveSidebarTab('guide');
+  };
 
-    if (novoTemplate === TEMPLATE_WITH_CALCULATORS) {
-      setCalculadoraAberta(true);
-    }
+  const handleNavigate = (page) => {
+    setCurrentPage(page);
+    setAuthPanelAberto(false);
+  };
 
+  const handleUseTemplateFromLibrary = (templateId) => {
+    setTemplateSelecionado(templateId);
+    setCurrentPage('home');
+    setActiveSidebarTab('guide');
+
+    window.setTimeout(() => {
+      textoInputRef.current?.focus();
+    }, 0);
   };
 
   const handleOrganizar = async () => {
     setErro('');
+    setInsightError('');
     setResultado('');
+    setQualityScore(createEmptyQualityScore());
 
     if (!templateSelecionado) {
       setErro('Selecione um modelo clínico para continuar.');
@@ -667,7 +798,9 @@ function App() {
       });
 
       if (response.success) {
-        setResultado(response.data.resultado);
+        const organizedResult = response.data.resultado || '';
+        setResultado(organizedResult);
+        setSecaoSecundariaAberta(false);
         trackEvent('anamnese_gerada', {
           template: templateSelecionado,
           text_length: texto.trim().length,
@@ -687,10 +820,10 @@ function App() {
     setTemplateSelecionado('');
     setTexto('');
     setResultado('');
-    setInsights('');
+    setQualityScore(createEmptyQualityScore());
     setErro('');
-    setCalculadoraAberta(false);
-    setGuiaAberto(false);
+    setInsightError('');
+    setActiveSidebarTab('guide');
     trackedEventsRef.current.clear();
   };
 
@@ -702,7 +835,7 @@ function App() {
     improveActionLockRef.current = true;
 
     try {
-      if (!insights) {
+      if (!qualityScore.criticalInsight && !qualityScore.justification) {
         await handleGerarInsights();
 
         window.setTimeout(() => {
@@ -744,48 +877,50 @@ function App() {
     }
   };
 
-  const handleGerarInsights = async () => {
-    if (!resultado.trim() || !templateSelecionado) {
-      setErro('Gere a anamnese estruturada antes de avaliar sua qualidade.');
+  const handleGerarInsights = async (organizedText = resultado) => {
+    const targetResultado = typeof organizedText === 'string' ? organizedText : resultado;
+
+    if (!targetResultado.trim() || !templateSelecionado) {
+      setInsightError('Gere a anamnese estruturada antes de pedir a análise.');
       return;
     }
 
-    setErro('');
+    setInsightError('');
     setLoadingInsights(true);
     trackEvent('cta_avaliacao_click', {
       template: templateSelecionado,
-      text_length: resultado.trim().length,
+      text_length: targetResultado.trim().length,
       score: qualityScore.score,
       is_pro: isPro,
-      has_teaser: qualityScore.teaser.shouldShowTeaser,
     });
 
     try {
       const response = await api.post('/insights', {
-        texto: resultado,
+        texto: targetResultado,
         templateId: templateSelecionado,
         userId: user?.id || null,
       });
 
       if (response.success) {
-        setInsights(response.data);
+        const normalizedQualityScore = normalizeQualityScorePayload(response.data);
+        setQualityScore(normalizedQualityScore);
         trackEvent('insight_gerado', {
           template: templateSelecionado,
-          text_length: resultado.trim().length,
+          text_length: targetResultado.trim().length,
           score: qualityScore.score,
           is_pro: isPro,
         });
       } else {
-        setErro(response.error || 'Não foi possível avaliar a qualidade da anamnese.');
+        setInsightError(getFriendlyInsightsError(response));
       }
     } catch (_err) {
-      setErro('Não foi possível avaliar a qualidade da anamnese.');
+      setInsightError('A análise não ficou disponível agora. Seu resultado estruturado continua pronto para uso.');
     } finally {
       setLoadingInsights(false);
     }
   };
 
-  const handleUpgradeInsights = () => {
+  const handleUpgradeInsights = async () => {
     if (!user?.id || !user?.email) {
       setErro('Acesse sua conta para liberar o plano profissional.');
       return;
@@ -798,38 +933,22 @@ function App() {
       text_length: resultado.trim().length || texto.trim().length,
       score: qualityScore.score,
       is_pro: isPro,
-      has_teaser: qualityScore.teaser.shouldShowTeaser,
     });
     saveCheckoutReturnState({
       templateSelecionado,
       texto,
       resultado,
-      insights,
-      guiaAberto,
-      calculadoraAberta,
+      qualityScore,
     });
 
-    fetch(`${CHECKOUT_API_BASE_URL}/api/create-checkout`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        userId: user.id,
-        email: user.email,
-      }),
-    })
-      .then(async (response) => {
-        const contentType = response.headers.get('content-type') || '';
-        const json = contentType.includes('application/json')
-          ? await response.json()
-          : null;
-
-        if (!response.ok || !json?.success || !json?.data?.init_point) {
-          throw new Error(json?.error || 'Não foi possível iniciar o pagamento');
+    api
+      .post('/create-checkout', {})
+      .then((response) => {
+        if (!response.success || !response.data?.init_point) {
+          throw new Error(response.error || 'Não foi possível iniciar o pagamento');
         }
 
-        window.location.href = json.data.init_point;
+        window.location.href = response.data.init_point;
       })
       .catch((error) => {
         setErro(error.message || 'Não foi possível iniciar o pagamento');
@@ -837,97 +956,190 @@ function App() {
       });
   };
 
-  const handleEnviarCodigo = async () => {
+  const resetAuthFormState = () => {
+    setEmail('');
+    setPassword('');
+    setConfirmPassword('');
+    setAuthError('');
+    setAuthFeedback('');
+    setLoadingAuth(false);
+  };
+
+  const handleChangeAuthMode = (nextMode) => {
+    setAuthMode(nextMode);
+    if (nextMode !== 'forgotPassword') {
+      setPassword('');
+      setConfirmPassword('');
+    }
+    setAuthError('');
+    setAuthFeedback('');
+  };
+
+  const handleLogin = async () => {
     const normalizedEmail = email.trim().toLowerCase();
 
-    if (!normalizedEmail || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(normalizedEmail)) {
+    if (!isValidEmail(normalizedEmail)) {
       setAuthError('Informe um e-mail válido.');
       return;
     }
 
-    if (loadingAuth || cooldownTimer > 0) {
+    if (!password.trim()) {
+      setAuthError('Informe sua senha.');
       return;
     }
 
-    setErro('');
-    setAuthError('');
-    setAuthFeedback('');
-    setLoadingAuth(true);
-
-    const { error } = await supabase.auth.signInWithOtp({
-      email: normalizedEmail,
-      options: {
-        shouldCreateUser: true,
-      },
-    });
-
-    if (error) {
-      setAuthError('Não foi possível enviar o código para o e-mail informado.');
-      setLoadingAuth(false);
-      return;
-    }
-
-    setEmail(normalizedEmail);
-    setOtpCode('');
-    setStep('otp');
-    setCooldownTimer(60);
-    autoSubmitTriggeredRef.current = false;
-    setAuthFeedback('Código enviado para seu e-mail');
-    setLoadingAuth(false);
-    return;
-  };
-
-  const handleConfirmarCodigo = async () => {
-    if (!email.trim() || !otpCode.trim() || loadingAuth) {
-      return;
-    }
-
-    setErro('');
-    setAuthError('');
-    setAuthFeedback('');
-    setLoadingAuth(true);
-
-    const { error } = await supabase.auth.verifyOtp({
-      email: email.trim().toLowerCase(),
-      token: otpCode.trim(),
-      type: 'email',
-    });
-
-    if (error) {
-      setAuthError('Código inválido ou expirado');
-      setLoadingAuth(false);
-      autoSubmitTriggeredRef.current = true;
-      return;
-    }
-
-    setEmail('');
-    setOtpCode('');
-    setStep('email');
-    setAuthError('');
-    setAuthFeedback('');
-    setCooldownTimer(0);
-    setLoadingAuth(false);
-    autoSubmitTriggeredRef.current = false;
-  };
-
-  const handleVoltarEtapaEmail = () => {
     if (loadingAuth) {
       return;
     }
 
-    setOtpCode('');
-    setStep('email');
+    setErro('');
     setAuthError('');
     setAuthFeedback('');
-    autoSubmitTriggeredRef.current = false;
-  };
+    setLoadingAuth(true);
 
-  const handleReenviarCodigo = async () => {
-    if (loadingAuth || cooldownTimer > 0) {
+    const { error } = await supabase.auth.signInWithPassword({
+      email: normalizedEmail,
+      password,
+    });
+
+    if (error) {
+      setAuthError(getAuthErrorMessage(error, 'Não foi possível entrar com este e-mail e senha.'));
+      setLoadingAuth(false);
       return;
     }
 
-    await handleEnviarCodigo();
+    resetAuthFormState();
+    setLoadingAuth(false);
+  };
+
+  const handleSignup = async () => {
+    const normalizedEmail = email.trim().toLowerCase();
+
+    if (!isValidEmail(normalizedEmail)) {
+      setAuthError('Informe um e-mail válido.');
+      return;
+    }
+
+    if (password.trim().length < 6) {
+      setAuthError('A senha deve ter pelo menos 6 caracteres.');
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      setAuthError('As senhas não coincidem.');
+      return;
+    }
+
+    if (loadingAuth) {
+      return;
+    }
+
+    setErro('');
+    setAuthError('');
+    setAuthFeedback('');
+    setLoadingAuth(true);
+
+    const { data, error } = await supabase.auth.signUp({
+      email: normalizedEmail,
+      password,
+    });
+
+    if (error) {
+      setAuthError(getAuthErrorMessage(error, 'Não foi possível criar sua conta agora.'));
+      setLoadingAuth(false);
+      return;
+    }
+
+    if (data?.session?.user) {
+      resetAuthFormState();
+      setLoadingAuth(false);
+      return;
+    }
+
+    if (data?.user && Array.isArray(data.user.identities) && data.user.identities.length === 0) {
+      setAuthError('Este e-mail já está cadastrado. Tente entrar na sua conta.');
+      setLoadingAuth(false);
+      return;
+    }
+
+    setAuthFeedback('Conta criada com sucesso. Agora entre com seu e-mail e senha.');
+    setPassword('');
+    setConfirmPassword('');
+    setAuthMode('login');
+    setLoadingAuth(false);
+  };
+
+  const handleForgotPassword = async () => {
+    const normalizedEmail = email.trim().toLowerCase();
+
+    if (!isValidEmail(normalizedEmail)) {
+      setAuthError('Informe um e-mail válido.');
+      return;
+    }
+
+    if (loadingAuth) {
+      return;
+    }
+
+    setErro('');
+    setAuthError('');
+    setAuthFeedback('');
+    setLoadingAuth(true);
+
+    const { error } = await supabase.auth.resetPasswordForEmail(normalizedEmail, {
+      redirectTo: window.location.origin,
+    });
+
+    if (error) {
+      setAuthError(getAuthErrorMessage(error, 'Não foi possível enviar a recuperação de senha.'));
+      setLoadingAuth(false);
+      return;
+    }
+
+    setAuthFeedback('Enviamos as instruções de recuperação para o seu e-mail.');
+    setLoadingAuth(false);
+  };
+
+  const handleResetPassword = async () => {
+    if (password.trim().length < 6) {
+      setAuthError('A nova senha deve ter pelo menos 6 caracteres.');
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      setAuthError('As senhas não coincidem.');
+      return;
+    }
+
+    if (loadingAuth) {
+      return;
+    }
+
+    setErro('');
+    setAuthError('');
+    setAuthFeedback('');
+    setLoadingAuth(true);
+
+    const { error } = await supabase.auth.updateUser({
+      password,
+    });
+
+    if (error) {
+      setAuthError(getAuthErrorMessage(error, 'Não foi possível salvar sua nova senha agora.'));
+      setLoadingAuth(false);
+      return;
+    }
+
+    setPassword('');
+    setConfirmPassword('');
+    setAuthFeedback('Senha atualizada com sucesso. Você já pode continuar usando sua conta normalmente.');
+    setLoadingAuth(false);
+
+    window.setTimeout(() => {
+      setAuthPanelAberto(false);
+      setAuthMode('login');
+      setAuthFeedback('');
+    }, 1200);
   };
 
   const handleSair = async () => {
@@ -935,39 +1147,28 @@ function App() {
     await supabase.auth.signOut();
     trackingSessionIdRef.current = resetTrackingSessionId();
     trackedEventsRef.current.clear();
-    setEmail('');
-    setOtpCode('');
-    setStep('email');
-    setAuthError('');
-    setAuthFeedback('');
-    setCooldownTimer(0);
-    autoSubmitTriggeredRef.current = false;
+    resetAuthFormState();
+    setAuthMode('login');
     setLoadingUser(false);
   };
 
-  const insightsPreview = insights ? getInsightsPreviewFallback(insights) : '';
-  const shouldShowPaywall = insights && !isPro;
-  const hiddenInsightsCount = getHiddenInsightsCount(insights);
+  const hasFinalInterpretation = Boolean(
+    qualityScore.message || qualityScore.justification || qualityScore.criticalInsight
+  );
+  const canRequestInsights = Boolean(user && isPro && resultado && templateSelecionado);
+  const shouldShowPaywall = hasFinalInterpretation && !isPro;
+  const analysisInputSection = qualityScore.justification;
+  const summarizedScoreJustification = qualityScore.message;
+  const insightPrincipalSection = qualityScore.criticalInsight;
+  const primaryGapsCopy = qualityScore.justification;
   const displayedResultado = useMemo(() => sanitizeAnamnesisForDisplay(resultado), [resultado]);
   const userDisplayName = user ? getUserDisplayName(user) : '';
-  const qualityScore = useMemo(
-    () => evaluateAnamnesisQuality(texto, templateSelecionado),
-    [texto, templateSelecionado]
-  );
   const templateAtual = templates.find((template) => template.id === templateSelecionado) || null;
   const possuiGuiaSelecionado = Boolean(guides[templateSelecionado]?.length);
-  const templateNameMap = useMemo(
-    () => Object.fromEntries(templates.map((template) => [template.id, template.nome])),
-    [templates]
-  );
-  const scoreSummaryText = !isPro && qualityScore.criticalInsight
-    ? qualityScore.criticalInsight
-    : qualityScore.justification;
-  const showScoreSummaryCard = Boolean(scoreSummaryText);
   const improvementBoxCopy = 'Revise o texto atual, faça ajustes e gere uma nova versão quando quiser.';
   const improvementButtonLabel = isPro ? 'Refinar minha anamnese' : 'Melhorar minha anamnese';
   const performanceMessage = getPerformanceMessage(qualityScore.score);
-  const upgradeButtonLabel = getUpgradeButtonLabel(qualityScore.score);
+  const relevantGapsCount = getRelevantGapsCount(qualityScore.score);
   const consistencySummary = useMemo(() => {
     if (!user) {
       return null;
@@ -1008,13 +1209,21 @@ function App() {
       details: ['Cada dia com atividade entra nessa leitura, sem exigir uso di\u00e1rio.'],
     };
   }, [anamneseActivity, user]);
-  const scoreDelta = useMemo(() => {
-    if (!isValidScoreValue(anamneseStats?.ultimo_score) || !isValidScoreValue(anamneseStats?.score_anterior)) {
-      return null;
-    }
-
-    return anamneseStats.ultimo_score - anamneseStats.score_anterior;
-  }, [anamneseStats]);
+  const hasEvolutionData = Boolean(
+    (anamneseStats?.total_anamneses || 0) > 0 ||
+    anamneseActivity.length > 0
+  );
+  const shouldShowUserEvolution = Boolean(
+    user && (loadingAnamneseStats || loadingAnamneseActivity || hasEvolutionData)
+  );
+  const shouldShowFunnelMetrics = Boolean(
+    user && (loadingFunnelMetrics || (funnelMetrics?.total_sessoes || 0) > 0)
+  );
+  const hasSecondaryContent = Boolean(
+    (hasFinalInterpretation && !shouldShowPaywall) ||
+    shouldShowFunnelMetrics
+  );
+  const shouldShowFeedback = Boolean(resultado);
 
   const trackEvent = async (eventName, metadata = {}, options = {}) => {
     const eventKey = options.eventKey || null;
@@ -1029,7 +1238,7 @@ function App() {
     }
 
     try {
-      const response = await fetch(`${CHECKOUT_API_BASE_URL}/api/track-event`, {
+      const response = await fetch(`${API_BASE_URL}/track-event`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -1052,28 +1261,29 @@ function App() {
         trackedEventsRef.current.add(eventKey);
       }
     } catch (error) {
-      console.error('tracking: failed to register event', error);
+      if (DEBUG_MODE) {
+        console.error('tracking: failed to register event', error);
+      }
     }
   };
 
   useEffect(() => {
-    if (!texto || !qualityScore.shouldShowScore || qualityScore.score == null) {
+    if (!resultado || !qualityScore.shouldShowScore || qualityScore.score == null) {
       return;
     }
 
-    const eventKey = `score_exibido:${templateSelecionado}:${texto.length}:${qualityScore.score}`;
+    const eventKey = `score_exibido:${templateSelecionado}:${resultado.length}:${qualityScore.score}`;
     trackEvent(
       'score_exibido',
       {
         template: templateSelecionado || null,
-        text_length: texto.length,
+        text_length: resultado.length,
         score: qualityScore.score,
         is_pro: isPro,
-        has_teaser: qualityScore.teaser.shouldShowTeaser,
-      },
+              },
       { eventKey }
     );
-  }, [texto, templateSelecionado, qualityScore.shouldShowScore, qualityScore.score, qualityScore.teaser.shouldShowTeaser, isPro]);
+  }, [resultado, templateSelecionado, qualityScore.shouldShowScore, qualityScore.score, isPro]);
 
   useEffect(() => {
     if (!qualityScore.shouldShowScore || qualityScore.score == null) {
@@ -1087,883 +1297,477 @@ function App() {
     });
 
     return () => window.cancelAnimationFrame(frameId);
-  }, [qualityScore.shouldShowScore, qualityScore.score, texto, templateSelecionado]);
+  }, [qualityScore.shouldShowScore, qualityScore.score, resultado, templateSelecionado]);
 
   return (
     <div className="container">
-      <header className="header">
-        <div className="header-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/>
-            <polyline points="14 2 14 8 20 8"/>
-            <line x1="16" y1="13" x2="8" y2="13"/>
-            <line x1="16" y1="17" x2="8" y2="17"/>
-            <line x1="10" y1="9" x2="8" y2="9"/>
-          </svg>
+      <div className="product-topbar">
+        <div className="product-topbar-brand">
+          <div className="product-topbar-logo">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
+              <polyline points="14 2 14 8 20 8" />
+              <line x1="16" y1="13" x2="8" y2="13" />
+              <line x1="16" y1="17" x2="8" y2="17" />
+              <line x1="10" y1="9" x2="8" y2="9" />
+            </svg>
+          </div>
+          <div>
+            <strong>Minha Anamnese</strong>
+            <span>Workspace clínico</span>
+          </div>
         </div>
-        <h1>Minha Anamnese</h1>
-        <p>Padronize e eleve a qualidade das suas anamneses clínicas</p>
-        <div style={{ marginTop: '1rem', display: 'flex', justifyContent: 'center' }}>
-          {loadingUser ? (
-            <span style={{ fontSize: '0.9rem', color: '#6b7280' }}>Carregando acesso...</span>
-          ) : user ? (
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexWrap: 'wrap', justifyContent: 'center' }}>
-              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', lineHeight: 1.4 }}>
-                <span style={{ fontSize: '0.95rem', color: '#1f2937', fontWeight: 500 }}>
-                  Olá, {userDisplayName}
-                </span>
-                <span style={{ fontSize: '0.82rem', color: '#6b7280' }}>
-                  {user.email} · Acesso {isPro ? 'profissional' : 'básico'}
+
+        <nav className="product-topbar-nav" aria-label="Navegação principal">
+          <button
+            type="button"
+            className={`product-nav-item ${currentPage === 'home' ? 'active' : ''}`}
+            onClick={() => handleNavigate('home')}
+          >
+            Home
+          </button>
+          <button
+            type="button"
+            className={`product-nav-item ${currentPage === 'templates' ? 'active' : ''}`}
+            onClick={() => handleNavigate('templates')}
+          >
+            Templates
+          </button>
+          <button
+            type="button"
+            className={`product-nav-item ${currentPage === 'evolution' ? 'active' : ''}`}
+            onClick={() => handleNavigate('evolution')}
+          >
+            Evolução
+          </button>
+        </nav>
+
+        <div className="product-topbar-actions">
+          {!user && (
+            <button
+              type="button"
+              className="btn btn-secundario"
+              onClick={() => setAuthPanelAberto((current) => !current)}
+            >
+              Entrar
+            </button>
+          )}
+
+          {user && !isPro && (
+            <button
+              type="button"
+              className="btn btn-primario"
+              onClick={handleUpgradeInsights}
+              disabled={loadingCheckout}
+            >
+              {loadingCheckout ? 'Abrindo checkout...' : 'Upgrade'}
+            </button>
+          )}
+
+          {user && (
+            <div className="product-profile-chip">
+              <button
+                type="button"
+                className="product-avatar"
+                onClick={() => handleNavigate('profile')}
+                title="Abrir perfil"
+              >
+                {(userDisplayName || 'P').charAt(0)}
+              </button>
+              <div className="product-profile-copy">
+                <strong>{userDisplayName}</strong>
+                <span>{isPro ? 'Plano profissional' : 'Plano básico'}</span>
+              </div>
+              <button
+                type="button"
+                className="btn btn-secundario"
+                onClick={() => handleNavigate('profile')}
+              >
+                Perfil
+              </button>
+              <button
+                type="button"
+                className="btn btn-secundario"
+                onClick={handleSair}
+              >
+                Sair
+              </button>
+            </div>
+          )}
+        </div>
+      </div>
+
+      {authPanelAberto && (!user || authMode === 'resetPassword') && (
+        <div className="topbar-auth-popover">
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+
+              if (authMode === 'login') {
+                handleLogin();
+                return;
+              }
+
+              if (authMode === 'signup') {
+                handleSignup();
+                return;
+              }
+
+              if (authMode === 'resetPassword') {
+                handleResetPassword();
+                return;
+              }
+
+              handleForgotPassword();
+            }}
+            className="topbar-auth-form"
+          >
+            <div className="topbar-auth-header">
+              <div>
+                <strong>
+                  {authMode === 'login'
+                    ? 'Entre na sua conta'
+                    : authMode === 'signup'
+                      ? 'Crie sua conta'
+                      : authMode === 'resetPassword'
+                        ? 'Defina sua nova senha'
+                        : 'Recuperar acesso'}
+                </strong>
+                <span>
+                  {authMode === 'login'
+                    ? 'Use seu e-mail e senha para acessar seu histórico e recursos profissionais.'
+                    : authMode === 'signup'
+                      ? 'Crie um acesso simples para continuar usando o produto com mais facilidade.'
+                      : authMode === 'resetPassword'
+                        ? 'Crie uma nova senha para concluir a recuperação e seguir usando sua conta normalmente.'
+                        : 'Informe seu e-mail para receber as instruções de recuperação de senha.'}
                 </span>
               </div>
               <button
                 type="button"
                 className="btn btn-secundario"
-                onClick={handleSair}
-                style={{ padding: '0.55rem 1rem' }}
+                onClick={() => setAuthPanelAberto(false)}
               >
-                Sair
+                Fechar
               </button>
             </div>
-          ) : (
-            <div
-              style={{
-                width: '100%',
-                maxWidth: '360px',
-                marginInline: 'auto',
-                padding: '1rem',
-                border: '1px solid #e2e8f0',
-                borderRadius: '8px',
-                backgroundColor: '#ffffff',
-                boxShadow: '0 10px 25px rgba(15, 23, 42, 0.05)',
-              }}
-            >
-              <form
-                onSubmit={(e) => {
-                  e.preventDefault();
 
-                  if (step === 'email') {
-                    handleEnviarCodigo();
-                    return;
+            {authMode !== 'resetPassword' && (
+              <input
+                ref={emailInputRef}
+                type="email"
+                value={email}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                  if (authError) {
+                    setAuthError('');
                   }
-
-                  handleConfirmarCodigo();
                 }}
-                style={{ display: 'flex', flexDirection: 'column', gap: '0.9rem' }}
+                placeholder="Seu e-mail"
+                disabled={loadingAuth}
+                className="topbar-auth-input"
+              />
+            )}
+
+            {authMode !== 'forgotPassword' && (
+              <input
+                ref={passwordInputRef}
+                type="password"
+                value={password}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                  if (authError) {
+                    setAuthError('');
+                  }
+                }}
+                placeholder={authMode === 'resetPassword' ? 'Nova senha' : 'Sua senha'}
+                disabled={loadingAuth}
+                className="topbar-auth-input"
+              />
+            )}
+
+            {(authMode === 'signup' || authMode === 'resetPassword') && (
+              <input
+                type="password"
+                value={confirmPassword}
+                onChange={(e) => {
+                  setConfirmPassword(e.target.value);
+                  if (authError) {
+                    setAuthError('');
+                  }
+                }}
+                placeholder="Confirmar nova senha"
+                disabled={loadingAuth}
+                className="topbar-auth-input"
+              />
+            )}
+
+            {authFeedback && <span className="topbar-auth-feedback">{authFeedback}</span>}
+            {authError && <div className="topbar-auth-error">{authError}</div>}
+
+            {authMode === 'login' ? (
+              <button
+                type="submit"
+                className="btn btn-secundario"
+                disabled={loadingAuth}
               >
-                <div
-                  style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    gap: '0.25rem',
-                    minHeight: '3.75rem',
-                    opacity: 1,
-                    transform: 'translateY(0)',
-                    transition: 'opacity 180ms ease, transform 180ms ease',
-                  }}
-                >
-                  <strong style={{ fontSize: '1rem', color: '#111827' }}>
-                    {step === 'email' ? 'Acesse sua conta' : 'Digite o código'}
-                  </strong>
-                  <span style={{ fontSize: '0.88rem', color: '#6b7280' }}>
-                    {step === 'email'
-                      ? 'Receba um código e continue rapidamente'
-                      : 'Enviamos um código para seu e-mail'}
-                  </span>
-                </div>
+                {loadingAuth ? 'Entrando...' : 'Entrar'}
+              </button>
+            ) : authMode === 'signup' ? (
+              <button
+                type="submit"
+                className="btn btn-secundario"
+                disabled={loadingAuth}
+              >
+                {loadingAuth ? 'Criando conta...' : 'Criar conta'}
+              </button>
+            ) : authMode === 'resetPassword' ? (
+              <button
+                type="submit"
+                className="btn btn-secundario"
+                disabled={loadingAuth}
+              >
+                {loadingAuth ? 'Salvando nova senha...' : 'Salvar nova senha'}
+              </button>
+            ) : (
+              <button
+                type="submit"
+                className="btn btn-secundario"
+                disabled={loadingAuth}
+              >
+                {loadingAuth ? 'Enviando recuperação...' : 'Enviar recuperação'}
+              </button>
+            )}
 
-                <div
-                  style={{
-                    display: 'grid',
-                    gap: '0.75rem',
-                    opacity: 1,
-                    transform: 'translateY(0)',
-                    transition: 'opacity 180ms ease, transform 180ms ease',
-                  }}
-                >
-                  <input
-                    ref={emailInputRef}
-                    type="email"
-                    value={email}
-                    onChange={(e) => {
-                      setEmail(e.target.value);
-                      if (authError) {
-                        setAuthError('');
-                      }
-                    }}
-                    placeholder="Seu e-mail"
-                    disabled={loadingAuth || step === 'otp'}
-                    style={{
-                      width: '100%',
-                      padding: '0.8rem 0.9rem',
-                      border: '1px solid #d7deea',
-                      borderRadius: '8px',
-                      fontSize: '0.95rem',
-                      backgroundColor: loadingAuth || step === 'otp' ? '#f8fafc' : '#ffffff',
-                    }}
-                  />
-
-                  {step === 'otp' && (
-                    <div style={{ display: 'grid', gap: '0.5rem' }}>
-                      <input
-                        ref={otpInputRef}
-                        type="text"
-                        inputMode="text"
-                        autoComplete="one-time-code"
-                        value={otpCode}
-                        onChange={(e) => {
-                          autoSubmitTriggeredRef.current = false;
-                          setOtpCode(e.target.value.replace(/\s+/g, '').slice(0, OTP_CODE_LENGTH));
-                          if (authError) {
-                            setAuthError('');
-                          }
-                        }}
-                        onPaste={(e) => {
-                          autoSubmitTriggeredRef.current = false;
-                          const pastedCode = e.clipboardData.getData('text').trim();
-                          if (pastedCode) {
-                            e.preventDefault();
-                            setOtpCode(pastedCode.replace(/\s+/g, '').slice(0, OTP_CODE_LENGTH));
-                            if (authError) {
-                              setAuthError('');
-                            }
-                          }
-                        }}
-                        placeholder="Digite o código"
-                        disabled={loadingAuth}
-                      style={{
-                          width: '100%',
-                          padding: '0.85rem 1rem',
-                          border: '1px solid #d7deea',
-                          borderRadius: '8px',
-                          fontSize: '1rem',
-                          letterSpacing: '0.14rem',
-                          textAlign: 'center',
-                          fontVariantNumeric: 'tabular-nums',
-                          fontFamily: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace',
-                        }}
-                      />
-                      <div
-                        aria-hidden="true"
-                        style={{
-                          display: 'grid',
-                          gridTemplateColumns: 'repeat(8, minmax(0, 1fr))',
-                          gap: '0.35rem',
-                        }}
-                      >
-                        {Array.from({ length: OTP_CODE_LENGTH }).map((_, index) => (
-                          <div
-                            key={index}
-                            style={{
-                              height: '0.28rem',
-                              borderRadius: '999px',
-                              backgroundColor: otpCode[index] ? '#2563eb' : '#d7deea',
-                              transition: 'background-color 160ms ease',
-                            }}
-                          />
-                        ))}
-                      </div>
-                    </div>
-                  )}
-                </div>
-
-                {authFeedback && (
-                  <span style={{ fontSize: '0.82rem', color: '#4b5563' }}>
-                    {authFeedback}
-                  </span>
-                )}
-
-                {authError && (
-                  <div
-                    style={{
-                      padding: '0.75rem 0.9rem',
-                      border: '1px solid #fecaca',
-                      borderRadius: '8px',
-                      backgroundColor: '#fef2f2',
-                      color: '#dc2626',
-                      fontSize: '0.84rem',
-                      lineHeight: 1.45,
-                    }}
-                  >
-                    {authError}
-                  </div>
-                )}
-
-                {step === 'email' ? (
+            <div className="topbar-auth-links">
+              {authMode === 'login' && (
+                <>
                   <button
-                    type="submit"
-                    className="btn btn-secundario"
-                    disabled={loadingAuth || cooldownTimer > 0}
-                    style={{ padding: '0.65rem 1rem' }}
+                    type="button"
+                    className="topbar-auth-link"
+                    onClick={() => handleChangeAuthMode('forgotPassword')}
+                    disabled={loadingAuth}
                   >
-                    {loadingAuth
-                      ? 'Enviando código...'
-                      : cooldownTimer > 0
-                        ? `Reenviar código em ${cooldownTimer}s`
-                        : 'Enviar código'}
+                    Esqueci minha senha
                   </button>
-                ) : (
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                    <button
-                      type="submit"
-                      className="btn btn-secundario"
-                      disabled={loadingAuth || !otpCode.trim()}
-                      style={{ padding: '0.65rem 1rem' }}
-                    >
-                      {loadingAuth ? 'Confirmando acesso...' : 'Confirmar acesso'}
-                    </button>
-
-                    <button
-                      type="button"
-                      className="btn btn-secundario"
-                      onClick={handleReenviarCodigo}
-                      disabled={loadingAuth || cooldownTimer > 0}
-                      style={{ padding: '0.65rem 1rem' }}
-                    >
-                      {cooldownTimer > 0
-                        ? `Reenviar código em ${cooldownTimer}s`
-                        : 'Reenviar código'}
-                    </button>
-
-                    <button
-                      type="button"
-                      className="btn btn-secundario"
-                      onClick={handleVoltarEtapaEmail}
-                      disabled={loadingAuth}
-                      style={{ padding: '0.65rem 1rem' }}
-                    >
-                      Alterar e-mail
-                    </button>
-                  </div>
-                )}
-              </form>
-            </div>
-          )}
-        </div>
-      </header>
-
-      <div className="aviso">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/>
-          <line x1="12" y1="9" x2="12" y2="13"/>
-          <line x1="12" y1="17" x2="12.01" y2="17"/>
-        </svg>
-        <span>Utilize apenas informações clínicas não identificáveis, conforme boas práticas de confidencialidade.</span>
-      </div>
-
-      <div className="layout-principal">
-        <GuidePanel templateSelecionado={templateSelecionado} templateNome={templateAtual?.nome} aberto={guiaAberto} />
-
-        <div className="conteudo-principal">
-          <div className="card">
-            <div className="card-header">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
-                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
-              </svg>
-              <h2>Dados da consulta</h2>
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="template">Modelo clínico</label>
-              <div className="input-wrapper">
-                <select
-                  id="template"
-                  value={templateSelecionado}
-                  onChange={handleTemplateChange}
-                  disabled={loadingTemplates}
-                >
-                  <option value="">
-                    {loadingTemplates ? 'Carregando modelos...' : 'Selecione um modelo clínico...'}
-                  </option>
-                  {templates.map((t) => (
-                    <option key={t.id} value={t.id}>
-                      {t.nome}
-                    </option>
-                  ))}
-                </select>
-              </div>
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="texto">Anotações clínicas</label>
-              <p className="field-helper">
-                Digite ou cole sua anamnese para organizar automaticamente.
-              </p>
-              <div className="input-wrapper">
-                <textarea
-                  ref={textoInputRef}
-                  id="texto"
-                  value={texto}
-                  onChange={(e) => setTexto(e.target.value)}
-                  placeholder={DEFAULT_TEXT_PLACEHOLDER}
-                />
-                {texto.length > 0 && (
-                  <span className="char-count">{texto.length} caracteres</span>
-                )}
-              </div>
-
-
-
-              {!texto.trim() && (
-                <div className="empty-state-hint">
-                  {possuiGuiaSelecionado
-                    ? 'Guia clínico do modelo selecionado disponível ao lado, com os tópicos esperados para esta coleta.'
-                    : 'Um registro inicial já é suficiente para começar. Depois, você pode revisar a qualidade e aprofundar pontos específicos.'}
-                </div>
+                  <button
+                    type="button"
+                    className="topbar-auth-link"
+                    onClick={() => handleChangeAuthMode('signup')}
+                    disabled={loadingAuth}
+                  >
+                    Criar conta
+                  </button>
+                </>
               )}
 
-
-              <div className="painel-acoes">
+              {authMode === 'signup' && (
                 <button
-                  className="btn-guia-toggle"
-                  onClick={() => setGuiaAberto(!guiaAberto)}
-                  title="Mostrar ou ocultar guia clínico"
+                  type="button"
+                  className="topbar-auth-link"
+                  onClick={() => handleChangeAuthMode('login')}
+                  disabled={loadingAuth}
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <circle cx="12" cy="12" r="10"/>
-                    <line x1="12" y1="16" x2="12" y2="12"/>
-                    <line x1="12" y1="8" x2="12.01" y2="8"/>
-                  </svg>
-                  {guiaAberto ? 'Ocultar guia clínico' : 'Mostrar guia clínico'}
+                  Já tenho conta
                 </button>
+              )}
 
-                {templateTemCalculadora && (
-                  <button
-                    className="btn-guia-toggle"
-                    onClick={() => setCalculadoraAberta(!calculadoraAberta)}
-                    title="Mostrar ou ocultar cálculos clínicos"
-                  >
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <rect x="4" y="2" width="16" height="20" rx="2"/>
-                      <line x1="8" y1="6" x2="16" y2="6"/>
-                      <line x1="8" y1="10" x2="8" y2="10"/>
-                      <line x1="12" y1="10" x2="12" y2="10"/>
-                      <line x1="16" y1="10" x2="16" y2="10"/>
-                      <line x1="8" y1="14" x2="8" y2="14"/>
-                      <line x1="12" y1="14" x2="12" y2="14"/>
-                      <line x1="16" y1="14" x2="16" y2="14"/>
-                      <line x1="8" y1="18" x2="16" y2="18"/>
-                    </svg>
-                    {calculadoraAberta ? 'Ocultar cálculos clínicos' : 'Mostrar cálculos clínicos'}
-                  </button>
-                )}
-              </div>
+              {authMode === 'forgotPassword' && (
+                <button
+                  type="button"
+                  className="topbar-auth-link"
+                  onClick={() => handleChangeAuthMode('login')}
+                  disabled={loadingAuth}
+                >
+                  Voltar para entrar
+                </button>
+              )}
+
+              {authMode === 'resetPassword' && (
+                <button
+                  type="button"
+                  className="topbar-auth-link"
+                  onClick={() => {
+                    setAuthPanelAberto(false);
+                    handleChangeAuthMode('login');
+                  }}
+                  disabled={loadingAuth}
+                >
+                  Fechar
+                </button>
+              )}
+            </div>
+          </form>
+        </div>
+      )}
+
+      {currentPage === 'home' && (
+        <div className="workspace-shell">
+          <div className="workspace-intro workspace-surface">
+            <div className="workspace-intro-copy">
+              <span className="workspace-kicker">Fluxo principal</span>
+              <h1>Monte sua anamnese</h1>
+              <p>Selecione o modelo, escreva a coleta em texto livre e transforme tudo em um resultado clínico mais claro e pronto para revisar.</p>
             </div>
 
-            <div className="botoes">
-              <button
-                className="btn btn-primario"
-                onClick={handleOrganizar}
-                disabled={loading}
-              >
-                {loading ? (
-                  <>
-                    <span className="spinner" />
-                    Organizando...
-                  </>
-                ) : (
-                  <>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M12 2v4"/>
-                      <path d="m16.2 7.8 2.9-2.9"/>
-                      <path d="M18 12h4"/>
-                      <path d="m16.2 16.2 2.9 2.9"/>
-                      <path d="M12 18v4"/>
-                      <path d="m4.9 19.1 2.9-2.9"/>
-                      <path d="M2 12h4"/>
-                      <path d="m4.9 4.9 2.9 2.9"/>
-                    </svg>
-                    Organizar e estruturar anamnese
-                  </>
-                )}
-              </button>
-              <button
-                className="btn btn-secundario"
-                onClick={handleLimpar}
-                disabled={loading}
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M3 6h18"/>
-                  <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/>
-                  <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/>
-                </svg>
-                Limpar campos
-              </button>
-            </div>
-
-            {erro && (
-              <div className="erro">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="12" cy="12" r="10"/>
-                  <line x1="12" y1="8" x2="12" y2="12"/>
-                  <line x1="12" y1="16" x2="12.01" y2="16"/>
-                </svg>
-                <span>{erro}</span>
-                <button
-                  className="btn-erro-dismiss"
-                  onClick={() => setErro('')}
-                  title="Fechar"
-                >
-                  ×
-                </button>
+            <div className="workspace-meta-list" aria-label="Resumo do workspace">
+              <div className="workspace-meta-item">
+                <span>Modelo</span>
+                <strong>{templateAtual?.nome || 'Selecione para começar'}</strong>
               </div>
-            )}
+              <div className="workspace-meta-item">
+                <span>Status</span>
+                <strong>{resultado ? 'Resultado pronto para revisão' : 'Pronto para começar'}</strong>
+              </div>
+            </div>
           </div>
 
-          {user && (
-            <div className="card">
-              <div className="card-header">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M3 3v18h18"/>
-                  <path d="M7 13l3-3 3 2 4-5"/>
-                </svg>
-                <h2>Suas avaliações recentes</h2>
-              </div>
+          <div className="workspace-grid">
+            <div className="conteudo-principal">
+              <InputSection
+                templates={templates}
+                templateSelecionado={templateSelecionado}
+                onTemplateChange={handleTemplateChange}
+                loadingTemplates={loadingTemplates}
+                texto={texto}
+                onTextoChange={setTexto}
+                inputRef={textoInputRef}
+                placeholder={DEFAULT_TEXT_PLACEHOLDER}
+                possuiGuiaSelecionado={possuiGuiaSelecionado}
+                templateTemCalculadora={templateTemCalculadora}
+                onOpenCalculadora={() => setActiveSidebarTab('calculator')}
+                loading={loading}
+                loadingInsights={loadingInsights}
+                onOrganizar={handleOrganizar}
+                onLimpar={handleLimpar}
+                erro={erro}
+                onDismissErro={() => setErro('')}
+              />
 
-              {loadingRecentAnamneses ? (
-                <p className="field-helper">Carregando avaliações recentes...</p>
-              ) : recentAnamneses.length === 0 ? (
-                <div className="empty-state-hint">
-                  Sua evolução aparecerá aqui conforme você usar o app
-                </div>
-              ) : (
-                <div style={{ display: 'grid', gap: '0.75rem' }}>
-                  {recentAnamneses.map((item) => (
-                    <div
-                      key={item.id}
-                      style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'space-between',
-                        gap: '1rem',
-                        padding: '0.9rem 1rem',
-                        border: '1px solid #e5e7eb',
-                        borderRadius: '8px',
-                        backgroundColor: '#ffffff',
-                      }}
-                    >
-                      <div style={{ minWidth: 0 }}>
-                        <div style={{ fontSize: '0.95rem', fontWeight: 600, color: '#111827' }}>
-                          {templateNameMap[item.template] || item.template}
-                        </div>
-                        <div style={{ marginTop: '0.2rem', fontSize: '0.82rem', color: '#6b7280' }}>
-                          {formatRelativeTime(item.created_at)}
-                        </div>
-                      </div>
-                      <div style={{ flexShrink: 0, fontSize: '1rem', fontWeight: 700, color: '#1f2937' }}>
-                        {Math.round(item.score)}%
-                      </div>
-                    </div>
-                  ))}
-                </div>
+              {resultado && (
+                <StructuredOutput
+                  displayedResultado={displayedResultado}
+                  copiado={copiado}
+                  onCopiar={handleCopiar}
+                />
+              )}
+
+              {shouldShowFeedback && (
+                <StructuralFeedback
+                  qualityScore={qualityScore}
+                  animatedScore={animatedScore}
+                  primaryGapsCopy={primaryGapsCopy}
+                  insightError={insightError}
+                  isProUser={isPro}
+                  hasFinalInterpretation={hasFinalInterpretation}
+                  improvementBoxCopy={improvementBoxCopy}
+                  improvementButtonLabel={improvementButtonLabel}
+                  onMelhorarAnamnese={handleMelhorarAnamnese}
+                  onUpgradeInsights={handleUpgradeInsights}
+                  canImprove={Boolean(texto.trim())}
+                  loadingCheckout={loadingCheckout}
+                  loadingInsights={loadingInsights}
+                  showAnalyzeAction={canRequestInsights && !hasFinalInterpretation}
+                  onGerarInsights={handleGerarInsights}
+                />
+              )}
+
+              {hasFinalInterpretation && (
+                <InsightBlock
+                  insightsSectionRef={insightsSectionRef}
+                  insightPrincipalSection={insightPrincipalSection}
+                  shouldShowPaywall={shouldShowPaywall}
+                  performanceMessage={performanceMessage}
+                  relevantGapsCount={relevantGapsCount}
+                  onUpgradeInsights={handleUpgradeInsights}
+                  loadingCheckout={loadingCheckout}
+                />
+              )}
+
+              {shouldShowUserEvolution && (
+                <UserEvolution
+                  loadingAnamneseStats={loadingAnamneseStats}
+                  anamneseStats={anamneseStats}
+                  isValidScoreValue={isValidScoreValue}
+                  loadingAnamneseActivity={loadingAnamneseActivity}
+                  consistencySummary={consistencySummary}
+                  currentScore={qualityScore.score}
+                />
+              )}
+
+              {hasSecondaryContent && (
+                <DetailedAnalysis
+                  aberto={secaoSecundariaAberta}
+                  onToggle={() => setSecaoSecundariaAberta((current) => !current)}
+                  showDetailedContent={hasFinalInterpretation && !shouldShowPaywall}
+                  analysisInputSection={analysisInputSection}
+                  summarizedScoreJustification={summarizedScoreJustification}
+                  insightPrincipalSection={insightPrincipalSection}
+                  user={user}
+                  loadingFunnelMetrics={loadingFunnelMetrics}
+                  funnelMetrics={funnelMetrics}
+                  shouldShowFunnelMetrics={shouldShowFunnelMetrics}
+                />
               )}
             </div>
-          )}
 
-          {user && (
-            <div className="card">
-              <div className="card-header">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M4 6h16"/>
-                  <path d="M4 12h16"/>
-                  <path d="M4 18h16"/>
-                </svg>
-                <h2>Métricas do funil</h2>
-              </div>
-
-              {loadingFunnelMetrics ? (
-                <p className="field-helper">Carregando métricas do funil...</p>
-              ) : !funnelMetrics || funnelMetrics.total_sessoes === 0 || funnelMetrics.etapas.length === 0 ? (
-                <div className="empty-state-hint">
-                  As métricas do funil aparecerão aqui conforme novas sessões forem registradas
-                </div>
-              ) : (
-                <div style={{ display: 'grid', gap: '0.75rem' }}>
-                  <div style={{ fontSize: '0.88rem', color: '#4b5563' }}>
-                    Total de sessões: <strong style={{ color: '#111827' }}>{funnelMetrics.total_sessoes}</strong>
-                  </div>
-                  <div
-                    style={{
-                      display: 'grid',
-                      gridTemplateColumns: 'minmax(0, 1.6fr) minmax(72px, 0.6fr) minmax(92px, 0.7fr) minmax(72px, 0.6fr)',
-                      gap: '0.75rem',
-                      alignItems: 'center',
-                    }}
-                  >
-                    <div style={{ fontSize: '0.8rem', fontWeight: 700, color: '#111827' }}>Etapa</div>
-                    <div style={{ fontSize: '0.8rem', fontWeight: 700, color: '#111827' }}>Total</div>
-                    <div style={{ fontSize: '0.8rem', fontWeight: 700, color: '#111827' }}>Conversão</div>
-                    <div style={{ fontSize: '0.8rem', fontWeight: 700, color: '#111827' }}>Queda</div>
-
-                    {funnelMetrics.etapas.map((etapa) => (
-                      <div key={etapa.nome} style={{ display: 'contents' }}>
-                        <div
-                          style={{
-                            padding: '0.8rem 0.9rem',
-                            border: '1px solid #e5e7eb',
-                            borderRadius: '8px',
-                            backgroundColor: '#ffffff',
-                            fontSize: '0.88rem',
-                            color: '#1f2937',
-                          }}
-                        >
-                          {etapa.nome}
-                        </div>
-                        <div style={{ fontSize: '0.88rem', color: '#111827', fontWeight: 600 }}>
-                          {etapa.total}
-                        </div>
-                        <div style={{ fontSize: '0.88rem', color: '#111827', fontWeight: 600 }}>
-                          {etapa.taxa_conversao}%
-                        </div>
-                        <div style={{ fontSize: '0.88rem', color: '#4b5563' }}>
-                          {etapa.queda}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-            </div>
-          )}
-
-          {resultado && (
-            <>
-              <div className="card">
-                <div className="card-header">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <polyline points="20 6 9 17 4 12"/>
-                  </svg>
-                  <h2>Anamnese estruturada</h2>
-                </div>
-
-                <p className="result-guidance">
-                  Analise a qualidade da anamnese e identifique pontos de melhoria.
-                </p>
-
-                <div className="resultado-container">
-                  <div className="resultado">{displayedResultado}</div>
-                  <button
-                    className={`btn btn-copiar ${copiado ? 'copiado' : ''}`}
-                    onClick={handleCopiar}
-                  >
-                    {copiado ? (
-                      <>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                          <polyline points="20 6 9 17 4 12"/>
-                        </svg>
-                        Copiado!
-                      </>
-                    ) : (
-                      <>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                          <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
-                          <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
-                        </svg>
-                        Copiar anamnese
-                      </>
-                    )}
-                  </button>
-                </div>
-              </div>
-
-              <div className="card reveal-block reveal-block-delayed">
-                <div className="card-header">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M3 12h18"/>
-                    <path d="M7 8h10"/>
-                    <path d="M7 16h6"/>
-                  </svg>
-                  <h2>Qualidade estimada da anamnese</h2>
-                </div>
-
-                <div style={{ display: 'grid', gap: '0.9rem' }}>
-                  {qualityScore.shouldShowScore ? (
-                    <>
-                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '1rem', flexWrap: 'wrap' }}>
-                        <div>
-                          <div style={{ fontSize: '1.9rem', fontWeight: 700, color: '#111827', lineHeight: 1 }}>
-                            {qualityScore.score}%
-                          </div>
-                          <div style={{ marginTop: '0.3rem', fontSize: '0.92rem', color: '#4b5563' }}>
-                            {qualityScore.message}
-                          </div>
-                        </div>
-                      </div>
-
-                      <div
-                        style={{
-                          width: '100%',
-                          height: '0.55rem',
-                          borderRadius: '999px',
-                          backgroundColor: '#e5e7eb',
-                          overflow: 'hidden',
-                        }}
-                      >
-                        <div
-                          style={{
-                            width: `${animatedScore}%`,
-                            height: '100%',
-                            borderRadius: '999px',
-                            background: qualityScore.score >= 75
-                              ? 'linear-gradient(90deg, #22c55e, #16a34a)'
-                              : qualityScore.score >= 55
-                                ? 'linear-gradient(90deg, #f59e0b, #d97706)'
-                                : 'linear-gradient(90deg, #f97316, #ef4444)',
-                            transition: 'width 600ms cubic-bezier(0.4, 0, 0.2, 1)',
-                          }}
-                        />
-                      </div>
-
-                      {showScoreSummaryCard && (
-                        <div
-                          style={{
-                            padding: '0.85rem 0.95rem',
-                            border: '1px solid #e5e7eb',
-                            borderRadius: '8px',
-                            backgroundColor: '#f9fafb',
-                            color: '#4b5563',
-                            fontSize: '0.88rem',
-                            lineHeight: 1.5,
-                          }}
-                        >
-                          {scoreSummaryText}
-                        </div>
-                      )}
-
-                      {user && !loadingAnamneseStats && anamneseStats && isValidScoreValue(anamneseStats.ultimo_score) && (
-                        <div
-                          style={{
-                            padding: '0.9rem 1rem',
-                            border: '1px solid #e5e7eb',
-                            borderRadius: '8px',
-                            backgroundColor: '#ffffff',
-                            display: 'grid',
-                            gap: '0.5rem',
-                          }}
-                        >
-                          <div style={{ fontSize: '0.92rem', fontWeight: 600, color: '#111827' }}>
-                            Evolução do score
-                          </div>
-                          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '0.5rem' }}>
-                            <div style={{ fontSize: '0.85rem', color: '#4b5563' }}>
-                              Último: <strong style={{ color: '#111827' }}>{Math.round(anamneseStats.ultimo_score)}</strong>
-                            </div>
-                            <div style={{ fontSize: '0.85rem', color: '#4b5563' }}>
-                              Melhor: <strong style={{ color: '#111827' }}>{isValidScoreValue(anamneseStats.melhor_score) ? Math.round(anamneseStats.melhor_score) : '-'}</strong>
-                            </div>
-                            <div style={{ fontSize: '0.85rem', color: '#4b5563' }}>
-                              Anterior: <strong style={{ color: '#111827' }}>{isValidScoreValue(anamneseStats.score_anterior) ? Math.round(anamneseStats.score_anterior) : '-'}</strong>
-                            </div>
-                            <div style={{ fontSize: '0.85rem', color: '#4b5563' }}>
-                              Média: <strong style={{ color: '#111827' }}>{isValidScoreValue(anamneseStats.score_medio) ? anamneseStats.score_medio.toFixed(1) : '-'}</strong>
-                            </div>
-                          </div>
-
-                          {anamneseStats.total_anamneses >= 2 && scoreDelta !== null && (
-                            <div style={{ fontSize: '0.84rem', color: '#1f2937' }}>
-                              {scoreDelta > 0
-                                ? `Você melhorou +${Math.round(scoreDelta)}`
-                                : scoreDelta < 0
-                                  ? `Caiu ${Math.round(scoreDelta)}`
-                                  : 'Você manteve estabilidade'}
-                            </div>
-                          )}
-                        </div>
-                      )}
-
-                      {user && !loadingAnamneseActivity && consistencySummary && (
-                        <div
-                          style={{
-                            padding: '0.9rem 1rem',
-                            border: '1px solid #dbeafe',
-                            borderRadius: '8px',
-                            backgroundColor: '#f8fbff',
-                            display: 'grid',
-                            gap: '0.35rem',
-                          }}
-                        >
-                          <div style={{ fontSize: '0.92rem', fontWeight: 600, color: '#1d4ed8' }}>
-                            {'Consist\u00eancia recente'}
-                          </div>
-                          <div style={{ fontSize: '0.88rem', color: '#1f2937' }}>
-                            {consistencySummary.title}
-                          </div>
-                          {consistencySummary.details.map((detail) => (
-                            <div key={detail} style={{ fontSize: '0.83rem', color: '#4b5563' }}>
-                              {detail}
-                            </div>
-                          ))}
-                        </div>
-                      )}
-
-                      {!insights && (
-                        <div
-                          style={{
-                            padding: '0.95rem 1rem',
-                            border: '1px solid #dbeafe',
-                            borderRadius: '8px',
-                            backgroundColor: '#f8fbff',
-                            display: 'grid',
-                            gap: '0.6rem',
-                          }}
-                        >
-                          <span style={{ fontSize: '0.88rem', color: '#1f3b6d' }}>
-                            {improvementBoxCopy}
-                          </span>
-                          <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
-                            <button
-                              className="btn btn-secundario"
-                              type="button"
-                              onClick={handleMelhorarAnamnese}
-                              disabled={!texto.trim()}
-                            >
-                              {improvementButtonLabel}
-                            </button>
-                          </div>
-                        </div>
-                      )}
-                    </>
-                  ) : (
-                    <div
-                      style={{
-                        padding: '0.95rem 1rem',
-                        border: '1px solid #e5e7eb',
-                        borderRadius: '8px',
-                        backgroundColor: '#f9fafb',
-                        color: '#4b5563',
-                        fontSize: '0.9rem',
-                        lineHeight: 1.55,
-                      }}
-                    >
-                      <strong style={{ display: 'block', color: '#1f2937', marginBottom: '0.2rem' }}>
-                        {'Estimativa ainda indispon\u00edvel'}
-                      </strong>
-                      <span>{qualityScore.message}</span>
-                      <div style={{ marginTop: '0.35rem' }}>{qualityScore.justification}</div>
-                    </div>
-                  )}
-
-                  {!isPro && !insights && (
-                    <>
-                      <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
-                        <button
-                          className="btn btn-secundario"
-                          type="button"
-                          onClick={handleGerarInsights}
-                          disabled={loadingInsights}
-                        >
-                          {loadingInsights ? 'Preparando an\u00e1lise detalhada...' : 'Ver an\u00e1lise detalhada \u2192'}
-                        </button>
-                      </div>
-                      <span style={{ fontSize: '0.82rem', color: '#6b7280', marginTop: '-0.2rem' }}>
-                        Identifique exatamente o que falta na sua anamnese
-                      </span>
-                    </>
-                  )}
-                </div>
-              </div>
-            </>
-          )}
-
-          {insights && (
-            <div ref={insightsSectionRef} className="card">
-              <div className="card-header">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M12 3a9 9 0 1 0 9 9"/>
-                  <path d="M12 7v5l3 3"/>
-                </svg>
-                <h2>Avaliação clínica da anamnese</h2>
-              </div>
-
-              <div className="resultado-container">
-                <div className="resultado">{isPro ? insights : insightsPreview}</div>
-
-                {shouldShowPaywall && (
-                  <div className="paywall-panel" style={{ marginTop: '1rem' }}>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <rect x="4" y="2" width="16" height="20" rx="2"/>
-                      <line x1="12" y1="11" x2="12" y2="17"/>
-                      <circle cx="12" cy="8" r="1"/>
-                    </svg>
-                    <div style={{ flex: 1 }}>
-                      <div style={{ display: 'grid', gap: '0.7rem' }}>
-                        {performanceMessage && (
-                          <div
-                            style={{
-                              padding: '0.8rem 0.9rem',
-                              borderRadius: '8px',
-                              backgroundColor: '#eff6ff',
-                              border: '1px solid #bfdbfe',
-                              color: '#1e3a8a',
-                              fontSize: '0.9rem',
-                              lineHeight: 1.5,
-                              fontWeight: 500,
-                            }}
-                          >
-                            {performanceMessage}
-                          </div>
-                        )}
-
-                        <div>
-                          <div style={{ fontSize: '1rem', fontWeight: 600, color: '#1e3a8a' }}>
-                            Veja exatamente o que pode ser melhorado na sua anamnese
-                          </div>
-                          <div style={{ marginTop: '0.35rem', fontSize: '0.9rem', lineHeight: 1.55 }}>
-                            Há pontos adicionais que podem ajudar a revisar a coleta clínica com mais clareza e objetividade.
-                          </div>
-                        </div>
-
-                        <div style={{ display: 'grid', gap: '0.35rem', fontSize: '0.88rem', lineHeight: 1.5 }}>
-                          <span>• Lacunas importantes identificadas</span>
-                          <span>• O que precisa ser melhorado</span>
-                          <span>• Direcionamento claro de revisão</span>
-                        </div>
-
-                        {hiddenInsightsCount > 0 && (
-                          <div className="paywall-points-highlight">
-                            <strong>
-                              {hiddenInsightsCount} ponto{hiddenInsightsCount > 1 ? 's' : ''} adicional{hiddenInsightsCount > 1 ? 's' : ''} identificado{hiddenInsightsCount > 1 ? 's' : ''} nesta avaliação
-                            </strong>
-                          </div>
-                        )}
-
-                        <div style={{ display: 'grid', gap: '0.25rem' }}>
-                          <span style={{ fontSize: '1rem', fontWeight: 700, color: '#1e3a8a' }}>
-                            Acesso completo por R$ 9,90
-                          </span>
-                          <span style={{ fontSize: '0.82rem', color: '#4b5563' }}>
-                            Veja exatamente o que ajustar para melhorar seu score
-                          </span>
-                        </div>
-                      </div>
-                      <div style={{ marginTop: '0.75rem' }}>
-                        <button
-                          className="btn btn-secundario"
-                          type="button"
-                          onClick={handleUpgradeInsights}
-                          disabled={loadingCheckout}
-                        >
-                          {loadingCheckout ? 'Redirecionando para o pagamento...' : upgradeButtonLabel}
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                )}
-              </div>
-            </div>
-          )}
+            <WorkspaceSidebar
+              activeTab={activeSidebarTab}
+              onChangeTab={setActiveSidebarTab}
+              templateSelecionado={templateSelecionado}
+              templateNome={templateAtual?.nome}
+              templateTemCalculadora={templateTemCalculadora}
+            />
+          </div>
         </div>
+      )}
 
-        {templateTemCalculadora && calculadoraAberta && <CalculatorPanel />}
-      </div>
+      {currentPage === 'templates' && (
+        <TemplatesPage
+          templates={templates}
+          loadingTemplates={loadingTemplates}
+          selectedTemplateId={templateSelecionado}
+          onUseTemplate={handleUseTemplateFromLibrary}
+        />
+      )}
+
+      {currentPage === 'evolution' && (
+        <EvolutionPage
+          user={user}
+          templates={templates}
+          loadingAnamneseStats={loadingAnamneseStats}
+          anamneseStats={anamneseStats}
+          loadingAnamneseActivity={loadingAnamneseActivity}
+          anamneseActivity={anamneseActivity}
+          loadingRecentAnamneses={loadingRecentAnamneses}
+          recentAnamneses={recentAnamneses}
+          consistencySummary={consistencySummary}
+          onGoHome={() => handleNavigate('home')}
+          onGoTemplates={() => handleNavigate('templates')}
+        />
+      )}
+
+      {currentPage === 'profile' && (
+        <ProfilePage
+          user={user}
+          isPro={isPro}
+          selectedTemplateName={templateAtual?.nome || ''}
+          activeSidebarTab={activeSidebarTab}
+          onUpgrade={handleUpgradeInsights}
+          onSignOut={handleSair}
+          onGoHome={() => handleNavigate('home')}
+          onGoTemplates={() => handleNavigate('templates')}
+          loadingCheckout={loadingCheckout}
+        />
+      )}
 
       <footer className="footer">
-        <p>Minha Anamnese &middot; Apoio à padronização clínica &middot; Nenhum dado é armazenado</p>
+        <p>Minha Anamnese &middot; Apoio à padronização clínica &middot; A anamnese não é armazenada; métricas agregadas podem ser registradas</p>
       </footer>
     </div>
   );
 }
 
 export default App;
+
 

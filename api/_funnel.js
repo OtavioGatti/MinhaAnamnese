@@ -1,18 +1,5 @@
-const FUNNEL_STEPS = [
-  'anamnese_gerada',
-  'score_exibido',
-  'cta_avaliacao_click',
-  'insight_gerado',
-  'upgrade_click',
-];
-
-function isValidUserId(userId) {
-  return typeof userId === 'string' && /^[0-9a-fA-F-]{36}$/.test(userId);
-}
-
-function isValidSessionId(sessionId) {
-  return typeof sessionId === 'string' && /^[0-9a-fA-F-]{36}$/.test(sessionId);
-}
+const { isValidSessionId, isValidUserId } = require('../backend/utils/idValidation');
+const { FUNNEL_STEPS } = require('../backend/utils/funnel');
 
 function sortEventsAsc(events) {
   return [...events].sort((left, right) => {
@@ -80,7 +67,7 @@ async function fetchEventsByUserId(userId) {
   const supabaseServiceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
   if (!supabaseUrl || !supabaseServiceRoleKey) {
-    throw new Error('Supabase not configured');
+    return [];
   }
 
   const query = new URLSearchParams({
@@ -99,7 +86,7 @@ async function fetchEventsByUserId(userId) {
   });
 
   if (!response.ok) {
-    throw new Error('failed to fetch events');
+    return [];
   }
 
   const json = await response.json();

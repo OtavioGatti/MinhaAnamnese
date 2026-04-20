@@ -1,3 +1,5 @@
+const { isValidSessionId, isValidUserId } = require('../backend/utils/idValidation');
+
 const ALLOWED_EVENTS = new Set([
   'anamnese_gerada',
   'score_exibido',
@@ -6,15 +8,6 @@ const ALLOWED_EVENTS = new Set([
   'insight_gerado',
   'upgrade_click',
 ]);
-const SESSION_ID_REGEX = /^[0-9a-fA-F-]{36}$/;
-
-function isValidUserId(userId) {
-  return typeof userId === 'string' && /^[0-9a-fA-F-]{36}$/.test(userId);
-}
-
-function isValidSessionId(sessionId) {
-  return typeof sessionId === 'string' && SESSION_ID_REGEX.test(sessionId);
-}
 
 function sanitizeMetadata(metadata) {
   if (!metadata || typeof metadata !== 'object' || Array.isArray(metadata)) {
@@ -73,9 +66,9 @@ module.exports = async function handler(req, res) {
   const supabaseServiceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
   if (!supabaseUrl || !supabaseServiceRoleKey) {
-    return res.status(500).json({
-      success: false,
-      error: 'Supabase nao configurado',
+    return res.status(200).json({
+      success: true,
+      skipped: true,
     });
   }
 
@@ -105,9 +98,9 @@ module.exports = async function handler(req, res) {
     });
   } catch (error) {
     console.error('events: failed to track event', error);
-    return res.status(500).json({
-      success: false,
-      error: 'Erro ao registrar evento',
+    return res.status(200).json({
+      success: true,
+      skipped: true,
     });
   }
 };

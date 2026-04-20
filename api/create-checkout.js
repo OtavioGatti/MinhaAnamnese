@@ -1,92 +1,197 @@
 const MERCADO_PAGO_API_URL = 'https://api.mercadopago.com/checkout/preferences';
 const PLAN_PRICE = 9.9;
 const PLAN_TITLE = 'Plano Profissional';
+const PLAN_PRODUCT = 'professional_plan';
+const BILLING_VERSION = 'v1';
+const PLAN_CURRENCY = 'BRL';
+const DEBUG_CHECKOUT = process.env.DEBUG_CHECKOUT === 'true';
+const { resolveSupabaseUser } = require('../backend/utils/supabaseAuth');
+
+function logCheckoutError(message, context = {}) {
+  if (!DEBUG_CHECKOUT) {
+    return;
+  }
+
+  console.error('checkout:', message, context);
+}
+
+function getMercadoPagoAccessToken() {
+  return (
+    process.env.MERCADO_PAGO_ACCESS_TOKEN ||
+    process.env.MP_ACCESS_TOKEN ||
+    process.env.MERCADOPAGO_ACCESS_TOKEN
+  );
+}
+
+function normalizeBaseUrl(value) {
+  const rawValue = String(value || '').trim();
+
+  if (!rawValue) {
+    return '';
+  }
+
+  return rawValue.startsWith('http://') || rawValue.startsWith('https://')
+    ? rawValue.replace(/\/+$/, '')
+    : `https://${rawValue.replace(/\/+$/, '')}`;
+}
+
+function getConfiguredAppBaseUrl() {
+  return normalizeBaseUrl(
+    process.env.PUBLIC_APP_URL ||
+      process.env.APP_BASE_URL ||
+      process.env.FRONTEND_APP_URL ||
+      process.env.VERCEL_PROJECT_PRODUCTION_URL ||
+      process.env.VERCEL_URL,
+  );
+}
 
 function getBaseUrl(req) {
-  const forwardedProto = req.headers['x-forwarded-proto'];
-  const protocol = forwardedProto || 'https';
-  const host = req.headers.host;
+  const configuredBaseUrl = getConfiguredAppBaseUrl();
 
-  return `${protocol}://${host}`;
+  if (configuredBaseUrl) {
+    return configuredBaseUrl;
+  }
+
+  const forwardedProto = Array.isArray(req.headers['x-forwarded-proto'])
+    ? req.headers['x-forwarded-proto'][0]
+    : req.headers['x-forwarded-proto'];
+  const host = req.headers.host || '';
+
+  if (host.startsWith('localhost:') || host.startsWith('127.0.0.1:')) {
+    return 'http://localhost:3000';
+  }
+
+  const protocol = forwardedProto || 'https';
+  return host ? `${protocol}://${host}` : '';
+}
+
+function createConfigError(message) {
+  const error = new Error(message);
+  error.code = 'CHECKOUT_CONFIG_ERROR';
+  return error;
+}
+
+function getCheckoutBaseUrl(req) {
+  const baseUrl = getBaseUrl(req);
+
+  if (!baseUrl) {
+    throw createConfigError('A URL base do aplicativo não está configurada para o checkout.');
+  }
+
+  return baseUrl;
+}
+
+function buildCheckoutPayload({ baseUrl, email, userId }) {
+  return {
+    items: [
+      {
+        title: PLAN_TITLE,
+        quantity: 1,
+        unit_price: PLAN_PRICE,
+        currency_id: PLAN_CURRENCY,
+      },
+    ],
+    payer: {
+      email,
+    },
+    metadata: {
+      userId,
+      email,
+      plan: 'pro',
+      product: PLAN_PRODUCT,
+      billing_version: BILLING_VERSION,
+    },
+    external_reference: userId,
+    notification_url: `${baseUrl}/api/webhook/mercadopago`,
+    back_urls: {
+      success: `${baseUrl}/?checkout=success`,
+      pending: `${baseUrl}/?checkout=pending`,
+      failure: `${baseUrl}/?checkout=failure`,
+    },
+    auto_return: 'approved',
+  };
 }
 
 module.exports = async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({
       success: false,
-      error: 'Método não permitido',
+      error: 'Método não permitido.',
     });
   }
 
-  const accessToken = process.env.MERCADO_PAGO_ACCESS_TOKEN || process.env.MP_ACCESS_TOKEN;
+  const accessToken = getMercadoPagoAccessToken();
 
   if (!accessToken) {
-    return res.status(500).json({
+    return res.status(503).json({
       success: false,
-      error: 'Pagamento indisponível no momento',
+      error: 'Checkout indisponível: configure o token do Mercado Pago no servidor.',
     });
   }
-
-  const { userId, email } = req.body || {};
-
-  if (!userId || typeof userId !== 'string') {
-    return res.status(400).json({
-      success: false,
-      error: 'Usuário inválido',
-    });
-  }
-
-  if (!email || typeof email !== 'string') {
-    return res.status(400).json({
-      success: false,
-      error: 'E-mail inválido',
-    });
-  }
-
-  const baseUrl = getBaseUrl(req);
 
   try {
+    const auth = await resolveSupabaseUser(req);
+
+    if (!auth.user) {
+      return res.status(auth.statusCode).json({
+        success: false,
+        error: auth.error,
+      });
+    }
+
+    const userId = auth.user.id;
+    const email = auth.user.email;
+
+    if (!email || typeof email !== 'string') {
+      return res.status(400).json({
+        success: false,
+        error: 'E-mail inválido para iniciar o checkout.',
+      });
+    }
+
+    const baseUrl = getCheckoutBaseUrl(req);
+    const payload = buildCheckoutPayload({
+      baseUrl,
+      email,
+      userId,
+    });
+
     const response = await fetch(MERCADO_PAGO_API_URL, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${accessToken}`,
       },
-      body: JSON.stringify({
-        items: [
-          {
-            title: PLAN_TITLE,
-            quantity: 1,
-            unit_price: PLAN_PRICE,
-            currency_id: 'BRL',
-          },
-        ],
-        payer: {
-          email,
-        },
-        metadata: {
-          userId,
-          email,
-        },
-        notification_url: `${baseUrl}/api/webhook/mercadopago`,
-        back_urls: {
-          success: `${baseUrl}/?checkout=success`,
-          pending: `${baseUrl}/?checkout=pending`,
-          failure: `${baseUrl}/?checkout=failure`,
-        },
-        auto_return: 'approved',
-      }),
+      body: JSON.stringify(payload),
     });
 
     if (!response.ok) {
-      throw new Error('Mercado Pago preference request failed');
+      const providerBody = await response.text();
+      logCheckoutError('Mercado Pago preference request failed', {
+        status: response.status,
+        userId,
+        providerBody,
+      });
+
+      return res.status(502).json({
+        success: false,
+        error: 'Não foi possível iniciar o checkout com o provedor de pagamento.',
+      });
     }
 
     const json = await response.json();
     const checkoutUrl = json?.init_point;
 
     if (!checkoutUrl) {
-      throw new Error('Missing init_point');
+      logCheckoutError('Mercado Pago response missing init_point', {
+        userId,
+        responseKeys: json && typeof json === 'object' ? Object.keys(json) : [],
+      });
+
+      return res.status(502).json({
+        success: false,
+        error: 'O provedor de pagamento não retornou um link de checkout válido.',
+      });
     }
 
     return res.status(200).json({
@@ -95,10 +200,21 @@ module.exports = async function handler(req, res) {
         init_point: checkoutUrl,
       },
     });
-  } catch (_error) {
+  } catch (error) {
+    if (error?.code === 'CHECKOUT_CONFIG_ERROR') {
+      return res.status(503).json({
+        success: false,
+        error: error.message,
+      });
+    }
+
+    logCheckoutError('Unexpected create-checkout failure', {
+      message: error?.message || 'unknown_error',
+    });
+
     return res.status(500).json({
       success: false,
-      error: 'Não foi possível iniciar o pagamento',
+      error: 'Não foi possível iniciar o pagamento no momento.',
     });
   }
 };

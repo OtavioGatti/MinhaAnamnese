@@ -1,5 +1,7 @@
 const MERCADO_PAGO_PAYMENT_API = 'https://api.mercadopago.com/v1/payments';
 const PLAN_PRICE = 9.9;
+const PLAN_CURRENCY = 'BRL';
+const PLAN_PRODUCT = 'professional_plan';
 
 function getMercadoPagoToken() {
   return process.env.MERCADO_PAGO_ACCESS_TOKEN || process.env.MP_ACCESS_TOKEN;
@@ -62,7 +64,19 @@ async function getSupabaseUserByEmail(email, { url, serviceRoleKey }) {
   return users.find((user) => user.email?.toLowerCase() === email.toLowerCase()) || null;
 }
 
-async function updateSupabaseUserPlan(userId, currentMetadata, { url, serviceRoleKey }) {
+function normalizeBillingMetadata(currentMetadata, payment) {
+  return {
+    ...(currentMetadata || {}),
+    last_payment_id: String(payment.id),
+    last_payment_status: payment.status || null,
+    last_approved_at: payment.date_approved || null,
+    last_transaction_amount: Number(payment.transaction_amount) || null,
+    last_currency_id: payment.currency_id || null,
+    product: PLAN_PRODUCT,
+  };
+}
+
+async function updateSupabaseUserPlan(userId, currentMetadata, payment, { url, serviceRoleKey }) {
   const response = await fetch(`${url}/auth/v1/admin/users/${userId}`, {
     method: 'PUT',
     headers: {
@@ -74,6 +88,7 @@ async function updateSupabaseUserPlan(userId, currentMetadata, { url, serviceRol
       user_metadata: {
         ...(currentMetadata || {}),
         plan: 'pro',
+        billing: normalizeBillingMetadata(currentMetadata?.billing, payment),
       },
     }),
   });
@@ -97,6 +112,48 @@ function getPaymentId(req) {
   );
 }
 
+function hasExpectedAmount(payment) {
+  const amount = Number(payment?.transaction_amount);
+  return Number.isFinite(amount) && Math.abs(amount - PLAN_PRICE) < 0.0001;
+}
+
+function hasExpectedCurrency(payment) {
+  return payment?.currency_id === PLAN_CURRENCY;
+}
+
+function hasExpectedProduct(payment) {
+  return payment?.metadata?.product === PLAN_PRODUCT || !payment?.metadata?.product;
+}
+
+function isApprovedPlanPayment(payment) {
+  return (
+    payment?.status === 'approved' &&
+    Boolean(payment?.date_approved) &&
+    hasExpectedAmount(payment) &&
+    hasExpectedCurrency(payment) &&
+    hasExpectedProduct(payment)
+  );
+}
+
+function isAlreadyProcessed(targetUser, payment) {
+  const currentPlan = targetUser?.user_metadata?.plan;
+  const billing = targetUser?.user_metadata?.billing;
+
+  return (
+    currentPlan === 'pro' &&
+    billing?.last_payment_id &&
+    String(billing.last_payment_id) === String(payment.id)
+  );
+}
+
+function getPaymentUserId(payment) {
+  return (
+    payment?.metadata?.userId ||
+    payment?.external_reference ||
+    null
+  );
+}
+
 module.exports = async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ success: false });
@@ -106,7 +163,7 @@ module.exports = async function handler(req, res) {
   const supabase = getSupabaseConfig();
 
   if (!accessToken || !supabase.url || !supabase.serviceRoleKey) {
-    return res.status(500).json({ success: false });
+    return res.status(200).json({ success: true, skipped: true });
   }
 
   const paymentId = getPaymentId(req);
@@ -118,16 +175,12 @@ module.exports = async function handler(req, res) {
   try {
     const payment = await getPaymentDetails(paymentId, accessToken);
 
-    const isApproved = payment?.status === 'approved';
-    const hasApprovedDate = Boolean(payment?.date_approved);
-    const hasExpectedAmount = Number(payment?.transaction_amount) === PLAN_PRICE;
-
-    if (!isApproved || !hasApprovedDate || !hasExpectedAmount) {
+    if (!isApprovedPlanPayment(payment)) {
       return res.status(200).json({ success: true });
     }
 
-    const userId = payment.metadata?.userId;
-    const email = payment.metadata?.email || payment.payer?.email;
+    const userId = getPaymentUserId(payment);
+    const email = payment?.metadata?.email || payment?.payer?.email;
 
     let targetUser = null;
 
@@ -141,7 +194,11 @@ module.exports = async function handler(req, res) {
       throw new Error('User not found');
     }
 
-    await updateSupabaseUserPlan(targetUser.id, targetUser.user_metadata, supabase);
+    if (isAlreadyProcessed(targetUser, payment)) {
+      return res.status(200).json({ success: true, already_processed: true });
+    }
+
+    await updateSupabaseUserPlan(targetUser.id, targetUser.user_metadata, payment, supabase);
 
     return res.status(200).json({ success: true });
   } catch (_error) {

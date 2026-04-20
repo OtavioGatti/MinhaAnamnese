@@ -1,0 +1,44 @@
+const { getAnamneseStats } = require('../../backend/services/anamneseMetrics');
+const { resolveSupabaseUser } = require('../../backend/utils/supabaseAuth');
+
+function getEmptyStats() {
+  return {
+    total_anamneses: 0,
+    score_medio: null,
+    melhor_score: null,
+    ultimo_score: null,
+    score_anterior: null,
+  };
+}
+
+module.exports = async function handler(req, res) {
+  if (req.method !== 'GET') {
+    return res.status(405).json({
+      success: false,
+      error: 'Metodo nao permitido',
+    });
+  }
+
+  try {
+    const auth = await resolveSupabaseUser(req);
+
+    if (!auth.user) {
+      return res.status(auth.statusCode).json({
+        success: false,
+        error: auth.error,
+      });
+    }
+
+    const data = await getAnamneseStats(auth.user.id);
+
+    return res.status(200).json({
+      success: true,
+      data,
+    });
+  } catch (_error) {
+    return res.status(200).json({
+      success: true,
+      data: getEmptyStats(),
+    });
+  }
+};
