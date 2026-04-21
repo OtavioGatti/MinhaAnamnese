@@ -6,6 +6,7 @@ function InsightBlock({
   relevantGapsCount,
   onUpgradeInsights,
   loadingCheckout,
+  checkoutError,
 }) {
   const gapsLabel = `${relevantGapsCount} ${relevantGapsCount === 1 ? 'lacuna relevante' : 'lacunas relevantes'}`;
 
@@ -58,6 +59,12 @@ function InsightBlock({
             >
               {loadingCheckout ? 'Redirecionando para o pagamento...' : 'Desbloquear por R$9,90'}
             </button>
+
+            {checkoutError ? (
+              <div className="feedback-secondary-error">
+                {checkoutError}
+              </div>
+            ) : null}
           </div>
         </div>
       )}

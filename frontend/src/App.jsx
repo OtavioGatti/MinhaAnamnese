@@ -428,12 +428,15 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [loadingUser, setLoadingUser] = useState(true);
   const [loadingInsights, setLoadingInsights] = useState(false);
-  const [loadingCheckout, setLoadingCheckout] = useState(false);
+  const [checkoutLoadingOrigin, setCheckoutLoadingOrigin] = useState(null);
   const [loadingAuth, setLoadingAuth] = useState(false);
   const [animatedScore, setAnimatedScore] = useState(0);
   const [erro, setErro] = useState('');
   const [insightError, setInsightError] = useState('');
-  const [checkoutError, setCheckoutError] = useState('');
+  const [checkoutErrors, setCheckoutErrors] = useState({
+    home: '',
+    profile: '',
+  });
   const [authError, setAuthError] = useState('');
   const [authFeedback, setAuthFeedback] = useState('');
   const [copiado, setCopiado] = useState(false);
@@ -761,6 +764,10 @@ function App() {
   const handleNavigate = (page) => {
     setCurrentPage(page);
     setAuthPanelAberto(false);
+    setCheckoutErrors({
+      home: '',
+      profile: '',
+    });
   };
 
   const handleUseTemplateFromLibrary = (templateId) => {
@@ -921,15 +928,21 @@ function App() {
     }
   };
 
-  const handleUpgradeInsights = async () => {
+  const handleUpgradeInsights = async (origin = 'home') => {
     if (!user?.id || !user?.email) {
-      setCheckoutError('Acesse sua conta para liberar o plano profissional.');
+      setCheckoutErrors((current) => ({
+        ...current,
+        [origin]: 'Acesse sua conta para liberar o plano profissional.',
+      }));
       return;
     }
 
     setErro('');
-    setCheckoutError('');
-    setLoadingCheckout(true);
+    setCheckoutErrors((current) => ({
+      ...current,
+      [origin]: '',
+    }));
+    setCheckoutLoadingOrigin(origin);
     trackEvent('upgrade_click', {
       template: templateSelecionado || null,
       text_length: resultado.trim().length || texto.trim().length,
@@ -953,8 +966,11 @@ function App() {
         window.location.href = response.data.init_point;
       })
       .catch((error) => {
-        setCheckoutError(error.message || 'Não foi possível iniciar o pagamento');
-        setLoadingCheckout(false);
+        setCheckoutErrors((current) => ({
+          ...current,
+          [origin]: error.message || 'Não foi possível iniciar o pagamento',
+        }));
+        setCheckoutLoadingOrigin(null);
       });
   };
 
@@ -1157,6 +1173,10 @@ function App() {
   const hasFinalInterpretation = Boolean(
     qualityScore.message || qualityScore.justification || qualityScore.criticalInsight
   );
+  const homeCheckoutError = checkoutErrors.home;
+  const profileCheckoutError = checkoutErrors.profile;
+  const isHomeCheckoutLoading = checkoutLoadingOrigin === 'home';
+  const isProfileCheckoutLoading = checkoutLoadingOrigin === 'profile';
   const canRequestInsights = Boolean(user && isPro && resultado && templateSelecionado);
   const shouldShowPaywall = hasFinalInterpretation && !isPro;
   const analysisInputSection = qualityScore.justification;
@@ -1240,13 +1260,15 @@ function App() {
     }
 
     try {
+      const { data: sessionData } = await supabase.auth.getSession();
+      const accessToken = sessionData?.session?.access_token || null;
       const response = await fetch(`${API_BASE_URL}/analytics`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          ...(accessToken ? { Authorization: `Bearer ${accessToken}` } : {}),
         },
         body: JSON.stringify({
-          userId: user?.id || null,
           eventName,
           metadata: {
             ...metadata,
@@ -1665,9 +1687,10 @@ function App() {
                   improvementBoxCopy={improvementBoxCopy}
                   improvementButtonLabel={improvementButtonLabel}
                   onMelhorarAnamnese={handleMelhorarAnamnese}
-                  onUpgradeInsights={handleUpgradeInsights}
+                  onUpgradeInsights={() => handleUpgradeInsights('home')}
+                  checkoutError={homeCheckoutError}
                   canImprove={Boolean(texto.trim())}
-                  loadingCheckout={loadingCheckout}
+                  loadingCheckout={isHomeCheckoutLoading}
                   loadingInsights={loadingInsights}
                   showAnalyzeAction={canRequestInsights && !hasFinalInterpretation}
                   onGerarInsights={handleGerarInsights}
@@ -1681,8 +1704,9 @@ function App() {
                   shouldShowPaywall={shouldShowPaywall}
                   performanceMessage={performanceMessage}
                   relevantGapsCount={relevantGapsCount}
-                  onUpgradeInsights={handleUpgradeInsights}
-                  loadingCheckout={loadingCheckout}
+                  onUpgradeInsights={() => handleUpgradeInsights('home')}
+                  loadingCheckout={isHomeCheckoutLoading}
+                  checkoutError={homeCheckoutError}
                 />
               )}
 
@@ -1755,12 +1779,12 @@ function App() {
           isPro={isPro}
           selectedTemplateName={templateAtual?.nome || ''}
           activeSidebarTab={activeSidebarTab}
-          onUpgrade={handleUpgradeInsights}
+          onUpgrade={() => handleUpgradeInsights('profile')}
           onSignOut={handleSair}
           onGoHome={() => handleNavigate('home')}
           onGoTemplates={() => handleNavigate('templates')}
-          loadingCheckout={loadingCheckout}
-          checkoutError={checkoutError}
+          loadingCheckout={isProfileCheckoutLoading}
+          checkoutError={profileCheckoutError}
         />
       )}
 

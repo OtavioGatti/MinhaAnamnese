@@ -1,7 +1,10 @@
 const { buildFunnelMetrics, getZeroFunnelMetrics } = require('../backend/services/funnelMetrics');
 const { getFunnelSessions } = require('../backend/services/funnelTracking');
-const { resolveSupabaseUser } = require('../backend/utils/supabaseAuth');
-const { isValidSessionId, isValidUserId } = require('../backend/utils/idValidation');
+const {
+  getAccessTokenFromRequest,
+  resolveSupabaseUser,
+} = require('../backend/utils/supabaseAuth');
+const { isValidSessionId } = require('../backend/utils/idValidation');
 
 const ALLOWED_EVENTS = new Set([
   'anamnese_gerada',
@@ -11,6 +14,15 @@ const ALLOWED_EVENTS = new Set([
   'insight_gerado',
   'upgrade_click',
 ]);
+const DEBUG_ANALYTICS = process.env.DEBUG_ANALYTICS === 'true';
+
+function logAnalyticsDebug(message, context = {}) {
+  if (!DEBUG_ANALYTICS) {
+    return;
+  }
+
+  console.error('analytics:', message, context);
+}
 
 function sanitizeMetadata(metadata) {
   if (!metadata || typeof metadata !== 'object' || Array.isArray(metadata)) {
@@ -57,7 +69,7 @@ function getAnalyticsView(req) {
 }
 
 async function handleTrackEvent(req, res) {
-  const { userId, eventName, metadata } = req.body || {};
+  const { eventName, metadata } = req.body || {};
   const sessionId = metadata?.session_id;
 
   if (!ALLOWED_EVENTS.has(eventName)) {
@@ -78,13 +90,29 @@ async function handleTrackEvent(req, res) {
   const supabaseServiceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
   if (!supabaseUrl || !supabaseServiceRoleKey) {
-    return res.status(200).json({
-      success: true,
-      skipped: true,
+    return res.status(503).json({
+      success: false,
+      error: 'Analytics indisponível no servidor no momento.',
     });
   }
 
   try {
+    let authenticatedUserId = null;
+    const accessToken = getAccessTokenFromRequest(req);
+
+    if (accessToken) {
+      const auth = await resolveSupabaseUser(req);
+
+      if (!auth.user) {
+        return res.status(auth.statusCode).json({
+          success: false,
+          error: auth.error,
+        });
+      }
+
+      authenticatedUserId = auth.user.id;
+    }
+
     const response = await fetch(`${supabaseUrl}/rest/v1/events`, {
       method: 'POST',
       headers: {
@@ -94,7 +122,7 @@ async function handleTrackEvent(req, res) {
         Prefer: 'return=minimal',
       },
       body: JSON.stringify({
-        user_id: isValidUserId(userId) ? userId : null,
+        user_id: authenticatedUserId,
         session_id: sessionId,
         event_name: eventName,
         metadata: sanitizeMetadata(metadata),
@@ -102,17 +130,33 @@ async function handleTrackEvent(req, res) {
     });
 
     if (!response.ok) {
-      throw new Error('failed to insert event');
+      logAnalyticsDebug('failed to insert event', {
+        status: response.status,
+        eventName,
+        hasAuthenticatedUser: Boolean(authenticatedUserId),
+      });
+
+      return res.status(503).json({
+        success: false,
+        error: 'Não foi possível registrar o evento no momento.',
+      });
     }
 
     return res.status(200).json({
       success: true,
+      data: {
+        scope: authenticatedUserId ? 'authenticated' : 'anonymous',
+      },
     });
   } catch (error) {
-    console.error('analytics: failed to track event', error);
-    return res.status(200).json({
-      success: true,
-      skipped: true,
+    logAnalyticsDebug('failed to track event', {
+      eventName,
+      message: error?.message || 'unknown_error',
+    });
+
+    return res.status(503).json({
+      success: false,
+      error: 'Não foi possível registrar o evento no momento.',
     });
   }
 }
@@ -160,9 +204,13 @@ module.exports = async function handler(req, res) {
     try {
       return await handleAnalyticsRead(req, res);
     } catch (error) {
-      console.error('analytics: failed to resolve funnel data', error);
-      return res.status(200).json({
-        success: true,
+      logAnalyticsDebug('failed to resolve funnel data', {
+        message: error?.message || 'unknown_error',
+      });
+
+      return res.status(503).json({
+        success: false,
+        error: 'Não foi possível carregar as métricas do funil no momento.',
         data: getZeroFunnelMetrics(),
       });
     }

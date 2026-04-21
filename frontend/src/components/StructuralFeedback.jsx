@@ -25,6 +25,7 @@ function StructuralFeedback({
   improvementButtonLabel,
   onMelhorarAnamnese,
   onUpgradeInsights,
+  checkoutError,
   canImprove,
   loadingCheckout,
   loadingInsights,
@@ -121,6 +122,11 @@ function StructuralFeedback({
                 {loadingCheckout ? 'Abrindo checkout...' : 'Desbloquear leitura completa'}
               </button>
             </div>
+            {checkoutError ? (
+              <div className="feedback-secondary-error">
+                {checkoutError}
+              </div>
+            ) : null}
           </div>
         ) : (
           <div className="feedback-placeholder">
