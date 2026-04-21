@@ -433,6 +433,7 @@ function App() {
   const [animatedScore, setAnimatedScore] = useState(0);
   const [erro, setErro] = useState('');
   const [insightError, setInsightError] = useState('');
+  const [checkoutError, setCheckoutError] = useState('');
   const [authError, setAuthError] = useState('');
   const [authFeedback, setAuthFeedback] = useState('');
   const [copiado, setCopiado] = useState(false);
@@ -922,11 +923,12 @@ function App() {
 
   const handleUpgradeInsights = async () => {
     if (!user?.id || !user?.email) {
-      setErro('Acesse sua conta para liberar o plano profissional.');
+      setCheckoutError('Acesse sua conta para liberar o plano profissional.');
       return;
     }
 
     setErro('');
+    setCheckoutError('');
     setLoadingCheckout(true);
     trackEvent('upgrade_click', {
       template: templateSelecionado || null,
@@ -951,7 +953,7 @@ function App() {
         window.location.href = response.data.init_point;
       })
       .catch((error) => {
-        setErro(error.message || 'Não foi possível iniciar o pagamento');
+        setCheckoutError(error.message || 'Não foi possível iniciar o pagamento');
         setLoadingCheckout(false);
       });
   };
@@ -1758,6 +1760,7 @@ function App() {
           onGoHome={() => handleNavigate('home')}
           onGoTemplates={() => handleNavigate('templates')}
           loadingCheckout={loadingCheckout}
+          checkoutError={checkoutError}
         />
       )}
 

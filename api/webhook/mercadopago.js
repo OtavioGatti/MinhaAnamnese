@@ -1,16 +1,136 @@
+const crypto = require('crypto');
+const { isValidUserId } = require('../../backend/utils/idValidation');
+const {
+  getBillingPaymentByPaymentId,
+  upsertBillingPayment,
+} = require('../../backend/services/billingPayments');
+
 const MERCADO_PAGO_PAYMENT_API = 'https://api.mercadopago.com/v1/payments';
 const PLAN_PRICE = 9.9;
 const PLAN_CURRENCY = 'BRL';
 const PLAN_PRODUCT = 'professional_plan';
+const DEBUG_BILLING = process.env.DEBUG_BILLING === 'true';
+
+function logBillingError(message, context = {}) {
+  if (!DEBUG_BILLING) {
+    return;
+  }
+
+  console.error('billing:', message, context);
+}
 
 function getMercadoPagoToken() {
-  return process.env.MERCADO_PAGO_ACCESS_TOKEN || process.env.MP_ACCESS_TOKEN;
+  return (
+    process.env.MERCADO_PAGO_ACCESS_TOKEN ||
+    process.env.MP_ACCESS_TOKEN ||
+    process.env.MERCADOPAGO_ACCESS_TOKEN
+  );
+}
+
+function getMercadoPagoWebhookSecret() {
+  return (
+    process.env.MERCADO_PAGO_WEBHOOK_SECRET ||
+    process.env.MP_WEBHOOK_SECRET ||
+    process.env.MERCADOPAGO_WEBHOOK_SECRET
+  );
 }
 
 function getSupabaseConfig() {
   return {
     url: process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL,
     serviceRoleKey: process.env.SUPABASE_SERVICE_ROLE_KEY,
+  };
+}
+
+function parseMercadoPagoSignature(signatureHeader) {
+  if (typeof signatureHeader !== 'string' || !signatureHeader.trim()) {
+    return {
+      ts: '',
+      v1: '',
+    };
+  }
+
+  return signatureHeader
+    .split(',')
+    .map((part) => part.trim())
+    .reduce(
+      (accumulator, part) => {
+        const [key, value] = part.split('=');
+
+        if (!key || !value) {
+          return accumulator;
+        }
+
+        accumulator[key.trim()] = value.trim();
+        return accumulator;
+      },
+      { ts: '', v1: '' },
+    );
+}
+
+function getPaymentId(req) {
+  const body = req.body || {};
+  const query = req.query || {};
+
+  return (
+    body?.data?.id ||
+    body?.resource?.id ||
+    body?.id ||
+    query['data.id'] ||
+    query.id ||
+    null
+  );
+}
+
+function isMercadoPagoWebhookSignatureValid(req, paymentId) {
+  const secret = getMercadoPagoWebhookSecret();
+
+  if (!secret) {
+    return {
+      valid: true,
+      enforced: false,
+    };
+  }
+
+  const signatureHeader =
+    req.headers['x-signature'] ||
+    req.headers['X-Signature'] ||
+    '';
+  const requestId =
+    req.headers['x-request-id'] ||
+    req.headers['X-Request-Id'] ||
+    '';
+  const { ts, v1 } = parseMercadoPagoSignature(signatureHeader);
+
+  if (!paymentId || !requestId || !ts || !v1) {
+    return {
+      valid: false,
+      enforced: true,
+    };
+  }
+
+  const manifest = `id:${paymentId};request-id:${requestId};ts:${ts};`;
+  const expected = crypto
+    .createHmac('sha256', secret)
+    .update(manifest)
+    .digest('hex');
+
+  const actual = String(v1).toLowerCase();
+  const normalizedExpected = String(expected).toLowerCase();
+
+  if (actual.length !== normalizedExpected.length) {
+    return {
+      valid: false,
+      enforced: true,
+    };
+  }
+
+  return {
+    valid: crypto.timingSafeEqual(
+      Buffer.from(actual),
+      Buffer.from(normalizedExpected),
+    ),
+    enforced: true,
   };
 }
 
@@ -23,7 +143,7 @@ async function getPaymentDetails(paymentId, accessToken) {
   });
 
   if (!response.ok) {
-    throw new Error('Failed to fetch payment');
+    throw new Error('failed to fetch payment');
   }
 
   return response.json();
@@ -39,29 +159,10 @@ async function getSupabaseUserById(userId, { url, serviceRoleKey }) {
   });
 
   if (!response.ok) {
-    throw new Error('Failed to fetch user by id');
+    throw new Error('failed to fetch user by id');
   }
 
   return response.json();
-}
-
-async function getSupabaseUserByEmail(email, { url, serviceRoleKey }) {
-  const response = await fetch(`${url}/auth/v1/admin/users?page=1&per_page=1000`, {
-    method: 'GET',
-    headers: {
-      apikey: serviceRoleKey,
-      Authorization: `Bearer ${serviceRoleKey}`,
-    },
-  });
-
-  if (!response.ok) {
-    throw new Error('Failed to list users');
-  }
-
-  const json = await response.json();
-  const users = json?.users || [];
-
-  return users.find((user) => user.email?.toLowerCase() === email.toLowerCase()) || null;
 }
 
 function normalizeBillingMetadata(currentMetadata, payment) {
@@ -94,22 +195,8 @@ async function updateSupabaseUserPlan(userId, currentMetadata, payment, { url, s
   });
 
   if (!response.ok) {
-    throw new Error('Failed to update user plan');
+    throw new Error('failed to update user plan');
   }
-}
-
-function getPaymentId(req) {
-  const body = req.body || {};
-  const query = req.query || {};
-
-  return (
-    body?.data?.id ||
-    body?.resource?.id ||
-    body?.id ||
-    query['data.id'] ||
-    query.id ||
-    null
-  );
 }
 
 function hasExpectedAmount(payment) {
@@ -122,7 +209,7 @@ function hasExpectedCurrency(payment) {
 }
 
 function hasExpectedProduct(payment) {
-  return payment?.metadata?.product === PLAN_PRODUCT || !payment?.metadata?.product;
+  return payment?.metadata?.product === PLAN_PRODUCT;
 }
 
 function isApprovedPlanPayment(payment) {
@@ -135,23 +222,28 @@ function isApprovedPlanPayment(payment) {
   );
 }
 
-function isAlreadyProcessed(targetUser, payment) {
-  const currentPlan = targetUser?.user_metadata?.plan;
-  const billing = targetUser?.user_metadata?.billing;
-
-  return (
-    currentPlan === 'pro' &&
-    billing?.last_payment_id &&
-    String(billing.last_payment_id) === String(payment.id)
-  );
-}
-
 function getPaymentUserId(payment) {
-  return (
+  const candidate =
     payment?.metadata?.userId ||
     payment?.external_reference ||
-    null
-  );
+    null;
+
+  return isValidUserId(candidate) ? candidate : null;
+}
+
+async function persistPaymentSnapshot(payment, userId) {
+  return upsertBillingPayment({
+    paymentId: payment.id,
+    userId,
+    status: payment.status || 'unknown',
+    amount: Number(payment.transaction_amount) || null,
+    currencyId: payment.currency_id || null,
+    product: payment?.metadata?.product || null,
+    externalReference: payment.external_reference || null,
+    payerEmail: payment?.metadata?.email || payment?.payer?.email || null,
+    providerCreatedAt: payment.date_created || null,
+    processedAt: null,
+  });
 }
 
 module.exports = async function handler(req, res) {
@@ -172,36 +264,68 @@ module.exports = async function handler(req, res) {
     return res.status(200).json({ success: true });
   }
 
+  const signatureCheck = isMercadoPagoWebhookSignatureValid(req, paymentId);
+
+  if (!signatureCheck.valid) {
+    logBillingError('invalid mercado pago webhook signature', {
+      paymentId: String(paymentId),
+      enforced: signatureCheck.enforced,
+    });
+
+    return res.status(401).json({ success: false });
+  }
+
   try {
-    const payment = await getPaymentDetails(paymentId, accessToken);
+    const existingPayment = await getBillingPaymentByPaymentId(paymentId);
 
-    if (!isApprovedPlanPayment(payment)) {
-      return res.status(200).json({ success: true });
-    }
-
-    const userId = getPaymentUserId(payment);
-    const email = payment?.metadata?.email || payment?.payer?.email;
-
-    let targetUser = null;
-
-    if (userId) {
-      targetUser = await getSupabaseUserById(userId, supabase);
-    } else if (email) {
-      targetUser = await getSupabaseUserByEmail(email, supabase);
-    }
-
-    if (!targetUser?.id) {
-      throw new Error('User not found');
-    }
-
-    if (isAlreadyProcessed(targetUser, payment)) {
+    if (existingPayment?.processed_at) {
       return res.status(200).json({ success: true, already_processed: true });
     }
 
+    const payment = await getPaymentDetails(paymentId, accessToken);
+    const userId = getPaymentUserId(payment);
+
+    await persistPaymentSnapshot(payment, userId);
+
+    if (!isApprovedPlanPayment(payment)) {
+      return res.status(200).json({ success: true, skipped: true });
+    }
+
+    if (!userId) {
+      logBillingError('payment missing deterministic user link', {
+        paymentId: String(payment.id),
+      });
+
+      return res.status(200).json({ success: true, skipped: true });
+    }
+
+    const targetUser = await getSupabaseUserById(userId, supabase);
+
+    if (!targetUser?.id) {
+      throw new Error('user not found');
+    }
+
     await updateSupabaseUserPlan(targetUser.id, targetUser.user_metadata, payment, supabase);
+    await upsertBillingPayment({
+      paymentId: payment.id,
+      userId: targetUser.id,
+      status: payment.status || 'approved',
+      amount: Number(payment.transaction_amount) || null,
+      currencyId: payment.currency_id || null,
+      product: payment?.metadata?.product || null,
+      externalReference: payment.external_reference || null,
+      payerEmail: payment?.metadata?.email || payment?.payer?.email || null,
+      providerCreatedAt: payment.date_created || null,
+      processedAt: new Date().toISOString(),
+    });
 
     return res.status(200).json({ success: true });
-  } catch (_error) {
+  } catch (error) {
+    logBillingError('mercado pago webhook processing failed', {
+      paymentId: String(paymentId),
+      message: error?.message || 'unknown_error',
+    });
+
     return res.status(500).json({ success: false });
   }
 };

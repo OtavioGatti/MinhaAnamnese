@@ -27,6 +27,7 @@ function ProfilePage({
   onGoHome,
   onGoTemplates,
   loadingCheckout,
+  checkoutError,
 }) {
   if (!user) {
     return (
@@ -121,14 +122,17 @@ function ProfilePage({
 
             <div className="profile-card-actions">
               {!isPro ? (
-                <button
-                  type="button"
-                  className="btn btn-primario"
-                  onClick={onUpgrade}
-                  disabled={loadingCheckout}
-                >
-                  {loadingCheckout ? 'Abrindo checkout...' : 'Fazer upgrade'}
-                </button>
+                <>
+                  <button
+                    type="button"
+                    className="btn btn-primario"
+                    onClick={onUpgrade}
+                    disabled={loadingCheckout}
+                  >
+                    {loadingCheckout ? 'Abrindo checkout...' : 'Fazer upgrade'}
+                  </button>
+                  {checkoutError && <div className="topbar-auth-error">{checkoutError}</div>}
+                </>
               ) : (
                 <button type="button" className="btn btn-secundario" disabled>
                   Gerenciar plano

@@ -1,3 +1,13 @@
+const DEBUG_AUTH = process.env.DEBUG_AUTH === 'true';
+
+function logAuthDebug(message, context = {}) {
+  if (!DEBUG_AUTH) {
+    return;
+  }
+
+  console.error('auth:', message, context);
+}
+
 function getSupabaseAuthConfig() {
   const url = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL;
   const anonKey =
@@ -25,41 +35,72 @@ function getAccessTokenFromRequest(req) {
   return match?.[1] || null;
 }
 
+function getMissingAuthConfigKeys({ url, anonKey }) {
+  const missing = [];
+
+  if (!url) {
+    missing.push('SUPABASE_URL');
+  }
+
+  if (!anonKey) {
+    missing.push('SUPABASE_ANON_KEY');
+  }
+
+  return missing;
+}
+
 async function resolveSupabaseUser(req) {
   const accessToken = getAccessTokenFromRequest(req);
 
   if (!accessToken) {
     return {
       user: null,
-      error: 'Autenticação obrigatória.',
+      error: 'Sessão ausente ou expirada. Entre novamente para continuar.',
       statusCode: 401,
     };
   }
 
-  const { url, anonKey } = getSupabaseAuthConfig();
+  const config = getSupabaseAuthConfig();
+  const missingConfigKeys = getMissingAuthConfigKeys(config);
 
-  if (!url || !anonKey) {
+  if (missingConfigKeys.length > 0) {
+    logAuthDebug('supabase auth config missing', {
+      missingConfigKeys,
+    });
+
     return {
       user: null,
-      error: 'Não foi possível validar sua sessão no momento.',
-      statusCode: 401,
+      error: `Autenticação indisponível no servidor: configure ${missingConfigKeys.join(' e ')} no Render.`,
+      statusCode: 503,
     };
   }
 
   try {
-    const response = await fetch(`${url}/auth/v1/user`, {
+    const response = await fetch(`${config.url}/auth/v1/user`, {
       method: 'GET',
       headers: {
-        apikey: anonKey,
+        apikey: config.anonKey,
         Authorization: `Bearer ${accessToken}`,
       },
     });
 
-    if (!response.ok) {
+    if (response.status === 401 || response.status === 403) {
       return {
         user: null,
-        error: 'Autenticação obrigatória.',
+        error: 'Sessão ausente, inválida ou expirada. Entre novamente para continuar.',
         statusCode: 401,
+      };
+    }
+
+    if (!response.ok) {
+      logAuthDebug('supabase auth validation failed', {
+        status: response.status,
+      });
+
+      return {
+        user: null,
+        error: 'Não foi possível validar sua sessão no momento.',
+        statusCode: 503,
       };
     }
 
@@ -68,7 +109,7 @@ async function resolveSupabaseUser(req) {
     if (!user?.id) {
       return {
         user: null,
-        error: 'Autenticação obrigatória.',
+        error: 'Sessão ausente, inválida ou expirada. Entre novamente para continuar.',
         statusCode: 401,
       };
     }
@@ -78,11 +119,15 @@ async function resolveSupabaseUser(req) {
       error: null,
       statusCode: 200,
     };
-  } catch (_error) {
+  } catch (error) {
+    logAuthDebug('supabase auth request threw', {
+      message: error?.message || 'unknown_error',
+    });
+
     return {
       user: null,
-      error: 'Não foi possível validar a sessão.',
-      statusCode: 401,
+      error: 'Não foi possível validar sua sessão no momento.',
+      statusCode: 503,
     };
   }
 }
@@ -93,6 +138,7 @@ function hasProPlan(user) {
 
 module.exports = {
   getAccessTokenFromRequest,
+  getSupabaseAuthConfig,
   hasProPlan,
   resolveSupabaseUser,
 };

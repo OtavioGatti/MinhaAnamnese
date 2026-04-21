@@ -65,6 +65,20 @@ function getBaseUrl(req) {
   return host ? `${protocol}://${host}` : '';
 }
 
+function getMissingCheckoutConfigKeys() {
+  const missing = [];
+
+  if (!getMercadoPagoAccessToken()) {
+    missing.push('MERCADO_PAGO_ACCESS_TOKEN');
+  }
+
+  if (!getConfiguredAppBaseUrl()) {
+    missing.push('PUBLIC_APP_URL');
+  }
+
+  return missing;
+}
+
 function createConfigError(message) {
   const error = new Error(message);
   error.code = 'CHECKOUT_CONFIG_ERROR';
@@ -75,7 +89,9 @@ function getCheckoutBaseUrl(req) {
   const baseUrl = getBaseUrl(req);
 
   if (!baseUrl) {
-    throw createConfigError('A URL base do aplicativo não está configurada para o checkout.');
+    throw createConfigError(
+      'Checkout indisponível: configure PUBLIC_APP_URL ou APP_BASE_URL no servidor.',
+    );
   }
 
   return baseUrl;
@@ -120,12 +136,12 @@ module.exports = async function handler(req, res) {
     });
   }
 
-  const accessToken = getMercadoPagoAccessToken();
+  const missingConfigKeys = getMissingCheckoutConfigKeys();
 
-  if (!accessToken) {
+  if (missingConfigKeys.length > 0) {
     return res.status(503).json({
       success: false,
-      error: 'Checkout indisponível: configure o token do Mercado Pago no servidor.',
+      error: `Checkout indisponível: configure ${missingConfigKeys.join(' e ')} no Render.`,
     });
   }
 
@@ -149,9 +165,8 @@ module.exports = async function handler(req, res) {
       });
     }
 
-    const baseUrl = getCheckoutBaseUrl(req);
     const payload = buildCheckoutPayload({
-      baseUrl,
+      baseUrl: getCheckoutBaseUrl(req),
       email,
       userId,
     });
@@ -160,14 +175,27 @@ module.exports = async function handler(req, res) {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${accessToken}`,
+        Authorization: `Bearer ${getMercadoPagoAccessToken()}`,
       },
       body: JSON.stringify(payload),
     });
 
+    if (response.status === 401 || response.status === 403) {
+      logCheckoutError('mercado pago auth failed', {
+        status: response.status,
+        userId,
+      });
+
+      return res.status(503).json({
+        success: false,
+        error: 'Checkout indisponível: token do Mercado Pago ausente ou inválido no servidor.',
+      });
+    }
+
     if (!response.ok) {
       const providerBody = await response.text();
-      logCheckoutError('Mercado Pago preference request failed', {
+
+      logCheckoutError('mercado pago preference request failed', {
         status: response.status,
         userId,
         providerBody,
@@ -183,7 +211,7 @@ module.exports = async function handler(req, res) {
     const checkoutUrl = json?.init_point;
 
     if (!checkoutUrl) {
-      logCheckoutError('Mercado Pago response missing init_point', {
+      logCheckoutError('mercado pago missing init_point', {
         userId,
         responseKeys: json && typeof json === 'object' ? Object.keys(json) : [],
       });
@@ -208,7 +236,7 @@ module.exports = async function handler(req, res) {
       });
     }
 
-    logCheckoutError('Unexpected create-checkout failure', {
+    logCheckoutError('unexpected create-checkout failure', {
       message: error?.message || 'unknown_error',
     });
 
