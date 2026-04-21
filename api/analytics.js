@@ -1,3 +1,6 @@
+const { buildFunnelMetrics, getZeroFunnelMetrics } = require('../backend/services/funnelMetrics');
+const { getFunnelSessions } = require('../backend/services/funnelTracking');
+const { resolveSupabaseUser } = require('../backend/utils/supabaseAuth');
 const { isValidSessionId, isValidUserId } = require('../backend/utils/idValidation');
 
 const ALLOWED_EVENTS = new Set([
@@ -37,14 +40,23 @@ function sanitizeMetadata(metadata) {
   return Object.keys(sanitized).length > 0 ? sanitized : null;
 }
 
-module.exports = async function handler(req, res) {
-  if (req.method !== 'POST') {
-    return res.status(405).json({
-      success: false,
-      error: 'Metodo nao permitido',
-    });
-  }
+function toLegacyMetricsShape(metrics) {
+  return {
+    total_sessoes: metrics.total_sessoes,
+    etapas: metrics.etapas.map((etapa) => ({
+      etapa: etapa.etapa,
+      event_name: etapa.nome,
+      sessoes: etapa.total,
+      taxa_conversao: etapa.taxa_conversao,
+    })),
+  };
+}
 
+function getAnalyticsView(req) {
+  return String(req.query?.view || '').trim().toLowerCase() || 'funnelmetrics';
+}
+
+async function handleTrackEvent(req, res) {
   const { userId, eventName, metadata } = req.body || {};
   const sessionId = metadata?.session_id;
 
@@ -97,10 +109,67 @@ module.exports = async function handler(req, res) {
       success: true,
     });
   } catch (error) {
-    console.error('events: failed to track event', error);
+    console.error('analytics: failed to track event', error);
     return res.status(200).json({
       success: true,
       skipped: true,
     });
   }
+}
+
+async function handleAnalyticsRead(req, res) {
+  const auth = await resolveSupabaseUser(req);
+
+  if (!auth.user) {
+    return res.status(auth.statusCode).json({
+      success: false,
+      error: auth.error,
+    });
+  }
+
+  const funnelSessions = await getFunnelSessions(auth.user.id);
+  const metrics = buildFunnelMetrics(funnelSessions);
+  const view = getAnalyticsView(req);
+
+  if (view === 'funnelsessions') {
+    return res.status(200).json({
+      success: true,
+      data: funnelSessions,
+    });
+  }
+
+  if (view === 'funnellegacy') {
+    return res.status(200).json({
+      success: true,
+      data: toLegacyMetricsShape(metrics),
+    });
+  }
+
+  return res.status(200).json({
+    success: true,
+    data: metrics || getZeroFunnelMetrics(),
+  });
+}
+
+module.exports = async function handler(req, res) {
+  if (req.method === 'POST') {
+    return handleTrackEvent(req, res);
+  }
+
+  if (req.method === 'GET') {
+    try {
+      return await handleAnalyticsRead(req, res);
+    } catch (error) {
+      console.error('analytics: failed to resolve funnel data', error);
+      return res.status(200).json({
+        success: true,
+        data: getZeroFunnelMetrics(),
+      });
+    }
+  }
+
+  return res.status(405).json({
+    success: false,
+    error: 'Metodo nao permitido',
+  });
 };

@@ -4,16 +4,10 @@ const cors = require('cors');
 
 const templatesHandler = require('../api/templates');
 const anamnesesHandler = require('../api/anamneses');
-const anamnesesStatsHandler = require('../api/anamneses/stats');
-const anamnesesActivityHandler = require('../api/anamneses/activity');
-const anamnesesStreakHandler = require('../api/anamneses/streak');
 const organizarHandler = require('../api/organizar');
 const insightsHandler = require('../api/insights');
 const healthHandler = require('../api/health');
-const metricsFunnelHandler = require('../api/metrics/funnel');
-const funnelHandler = require('../api/funnel');
-const funnelMetricsHandler = require('../api/funnel-metrics');
-const trackEventHandler = require('../api/track-event');
+const analyticsHandler = require('../api/analytics');
 const createCheckoutHandler = require('../api/create-checkout');
 const mercadoPagoWebhookHandler = require('../api/webhook/mercadopago');
 
@@ -43,16 +37,10 @@ function mountRoute(path, handler) {
 
 mountRoute('/api/templates', templatesHandler);
 mountRoute('/api/anamneses', anamnesesHandler);
-mountRoute('/api/anamneses/stats', anamnesesStatsHandler);
-mountRoute('/api/anamneses/activity', anamnesesActivityHandler);
-mountRoute('/api/anamneses/streak', anamnesesStreakHandler);
 mountRoute('/api/organizar', organizarHandler);
 mountRoute('/api/insights', insightsHandler);
 mountRoute('/api/health', healthHandler);
-mountRoute('/api/metrics/funnel', metricsFunnelHandler);
-mountRoute('/api/funnel', funnelHandler);
-mountRoute('/api/funnel-metrics', funnelMetricsHandler);
-mountRoute('/api/track-event', trackEventHandler);
+mountRoute('/api/analytics', analyticsHandler);
 mountRoute('/api/create-checkout', createCheckoutHandler);
 mountRoute('/api/webhook/mercadopago', mercadoPagoWebhookHandler);
 

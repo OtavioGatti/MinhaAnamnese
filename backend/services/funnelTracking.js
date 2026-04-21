@@ -1,5 +1,5 @@
-const { isValidSessionId, isValidUserId } = require('../backend/utils/idValidation');
-const { FUNNEL_STEPS } = require('../backend/utils/funnel');
+const { isValidSessionId, isValidUserId } = require('../utils/idValidation');
+const { FUNNEL_STEPS } = require('../utils/funnel');
 
 function sortEventsAsc(events) {
   return [...events].sort((left, right) => {
@@ -66,7 +66,7 @@ async function fetchEventsByUserId(userId) {
   const supabaseUrl = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL;
   const supabaseServiceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
-  if (!supabaseUrl || !supabaseServiceRoleKey) {
+  if (!supabaseUrl || !supabaseServiceRoleKey || !isValidUserId(userId)) {
     return [];
   }
 
@@ -135,7 +135,5 @@ async function getFunnelSessions(userId) {
 }
 
 module.exports = {
-  FUNNEL_STEPS,
-  isValidUserId,
   getFunnelSessions,
 };

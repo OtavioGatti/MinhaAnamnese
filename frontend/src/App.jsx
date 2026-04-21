@@ -626,7 +626,7 @@ function App() {
       }
 
       setLoadingAnamneseStats(true);
-      const response = await api.get('/anamneses/stats');
+      const response = await api.get('/anamneses?view=stats');
 
       if (response.success && response.data && typeof response.data === 'object') {
         const nextStats = {
@@ -657,7 +657,7 @@ function App() {
       }
 
       setLoadingAnamneseActivity(true);
-      const response = await api.get('/anamneses/activity');
+      const response = await api.get('/anamneses?view=activity');
 
       if (response.success && Array.isArray(response.data)) {
         setAnamneseActivity(
@@ -713,7 +713,7 @@ function App() {
       }
 
       setLoadingFunnelMetrics(true);
-      const response = await api.get(`/metrics/funnel?userId=${encodeURIComponent(user.id)}`);
+      const response = await api.get('/analytics?view=funnelMetrics');
 
       if (response.success && response.data && typeof response.data === 'object') {
         const etapas = Array.isArray(response.data.etapas)
@@ -1238,7 +1238,7 @@ function App() {
     }
 
     try {
-      const response = await fetch(`${API_BASE_URL}/track-event`, {
+      const response = await fetch(`${API_BASE_URL}/analytics`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
