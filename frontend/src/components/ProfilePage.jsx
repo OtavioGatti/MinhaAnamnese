@@ -17,8 +17,17 @@ function getSidebarPreferenceLabel(activeSidebarTab) {
   return labels[activeSidebarTab] || 'Guia clínico';
 }
 
+function getPlanLabel(currentPlan, isPro) {
+  if (currentPlan === 'pro') {
+    return 'Plano profissional';
+  }
+
+  return isPro ? 'Plano profissional' : 'Plano básico';
+}
+
 function ProfilePage({
   user,
+  profile,
   isPro,
   selectedTemplateName,
   activeSidebarTab,
@@ -58,6 +67,9 @@ function ProfilePage({
     );
   }
 
+  const planLabel = getPlanLabel(profile?.current_plan, isPro);
+  const profileEmail = profile?.email || user.email || 'Não informado';
+
   return (
     <div className="profile-page">
       <section className="workspace-surface profile-hero">
@@ -79,11 +91,15 @@ function ProfilePage({
             <div className="profile-info-list">
               <div className="profile-info-row">
                 <span>E-mail</span>
-                <strong>{user.email || 'Não informado'}</strong>
+                <strong>{profileEmail}</strong>
               </div>
               <div className="profile-info-row">
                 <span>Status da conta</span>
                 <strong>{getAccountStatus(user, isPro)}</strong>
+              </div>
+              <div className="profile-info-row">
+                <span>Fonte do plano</span>
+                <strong>{planLabel} sincronizado no perfil</strong>
               </div>
               <div className="profile-info-row">
                 <span>Nome do perfil</span>
@@ -105,9 +121,7 @@ function ProfilePage({
             </div>
 
             <div className="profile-plan-card">
-              <span className={`profile-plan-badge ${isPro ? 'pro' : 'free'}`}>
-                {isPro ? 'Plano profissional' : 'Plano básico'}
-              </span>
+              <span className={`profile-plan-badge ${isPro ? 'pro' : 'free'}`}>{planLabel}</span>
               <strong>
                 {isPro
                   ? 'Seu acesso profissional está ativo.'

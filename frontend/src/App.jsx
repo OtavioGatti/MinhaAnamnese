@@ -416,11 +416,14 @@ function App() {
   const improveActionLockRef = useRef(false);
   const trackedEventsRef = useRef(new Set());
   const trackingSessionIdRef = useRef(getOrCreateTrackingSessionId());
+  const profileHydratedUserRef = useRef(null);
+  const lastSavedProfileSnapshotRef = useRef(null);
   const [templates, setTemplates] = useState([]);
   const [templateSelecionado, setTemplateSelecionado] = useState('');
   const [texto, setTexto] = useState('');
   const [resultado, setResultado] = useState('');
   const [user, setUser] = useState(null);
+  const [profile, setProfile] = useState(null);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -456,7 +459,7 @@ function App() {
   const [qualityScore, setQualityScore] = useState(() => createEmptyQualityScore());
 
   const templateTemCalculadora = templateSelecionado === TEMPLATE_WITH_CALCULATORS;
-  const userPlan = user?.user_metadata?.plan || 'basic';
+  const userPlan = profile?.current_plan || user?.user_metadata?.plan || 'basic';
   const isPro = userPlan === 'pro';
 
   useEffect(() => {
@@ -554,6 +557,9 @@ function App() {
         setAuthFeedback('');
         setAuthPanelAberto(false);
       } else {
+        setProfile(null);
+        profileHydratedUserRef.current = null;
+        lastSavedProfileSnapshotRef.current = null;
         trackingSessionIdRef.current = resetTrackingSessionId();
         trackedEventsRef.current.clear();
       }
@@ -620,6 +626,88 @@ function App() {
 
     carregarTemplates();
   }, []);
+
+  useEffect(() => {
+    async function carregarPerfil() {
+      if (!user?.id) {
+        setProfile(null);
+        profileHydratedUserRef.current = null;
+        lastSavedProfileSnapshotRef.current = null;
+        return;
+      }
+
+      const response = await api.get('/profile');
+
+      if (!response.success || !response.data) {
+        return;
+      }
+
+      const nextProfile = response.data;
+      setProfile(nextProfile);
+      lastSavedProfileSnapshotRef.current = {
+        current_plan: nextProfile.current_plan || 'basic',
+        last_template_used: nextProfile.last_template_used || null,
+        default_contextual_tab: nextProfile.default_contextual_tab || 'guide',
+      };
+
+      if (profileHydratedUserRef.current === user.id) {
+        return;
+      }
+
+      if (!templateSelecionado && nextProfile.last_template_used) {
+        setTemplateSelecionado(nextProfile.last_template_used);
+      }
+
+      if (activeSidebarTab === 'guide' && nextProfile.default_contextual_tab) {
+        setActiveSidebarTab(nextProfile.default_contextual_tab);
+      }
+
+      profileHydratedUserRef.current = user.id;
+    }
+
+    carregarPerfil();
+  }, [user?.id, user?.user_metadata?.plan]);
+
+  useEffect(() => {
+    if (!user?.id || profileHydratedUserRef.current !== user.id) {
+      return;
+    }
+
+    const nextSnapshot = {
+      current_plan: profile?.current_plan || (user?.user_metadata?.plan === 'pro' ? 'pro' : 'basic'),
+      last_template_used: templateSelecionado || null,
+      default_contextual_tab: activeSidebarTab || 'guide',
+    };
+
+    const lastSnapshot = lastSavedProfileSnapshotRef.current;
+
+    if (
+      lastSnapshot &&
+      lastSnapshot.current_plan === nextSnapshot.current_plan &&
+      lastSnapshot.last_template_used === nextSnapshot.last_template_used &&
+      lastSnapshot.default_contextual_tab === nextSnapshot.default_contextual_tab
+    ) {
+      return;
+    }
+
+    const timeoutId = window.setTimeout(async () => {
+      const response = await api.post('/profile', {
+        last_template_used: nextSnapshot.last_template_used,
+        default_contextual_tab: nextSnapshot.default_contextual_tab,
+      });
+
+      if (response.success && response.data) {
+        setProfile(response.data);
+        lastSavedProfileSnapshotRef.current = {
+          current_plan: response.data.current_plan || nextSnapshot.current_plan,
+          last_template_used: response.data.last_template_used || null,
+          default_contextual_tab: response.data.default_contextual_tab || 'guide',
+        };
+      }
+    }, 400);
+
+    return () => window.clearTimeout(timeoutId);
+  }, [user?.id, user?.user_metadata?.plan, profile?.current_plan, templateSelecionado, activeSidebarTab]);
 
   useEffect(() => {
     async function carregarStatsAnamneses() {
@@ -1186,6 +1274,8 @@ function App() {
   const displayedResultado = useMemo(() => sanitizeAnamnesisForDisplay(resultado), [resultado]);
   const userDisplayName = user ? getUserDisplayName(user) : '';
   const templateAtual = templates.find((template) => template.id === templateSelecionado) || null;
+  const profileTemplateAtual =
+    templates.find((template) => template.id === profile?.last_template_used) || null;
   const possuiGuiaSelecionado = Boolean(guides[templateSelecionado]?.length);
   const improvementBoxCopy = 'Revise o texto atual, faça ajustes e gere uma nova versão quando quiser.';
   const improvementButtonLabel = isPro ? 'Refinar minha anamnese' : 'Melhorar minha anamnese';
@@ -1777,8 +1867,9 @@ function App() {
         <ProfilePage
           user={user}
           isPro={isPro}
-          selectedTemplateName={templateAtual?.nome || ''}
-          activeSidebarTab={activeSidebarTab}
+          profile={profile}
+          selectedTemplateName={templateAtual?.nome || profileTemplateAtual?.nome || ''}
+          activeSidebarTab={profile?.default_contextual_tab || activeSidebarTab}
           onUpgrade={() => handleUpgradeInsights('profile')}
           onSignOut={handleSair}
           onGoHome={() => handleNavigate('home')}
