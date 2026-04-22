@@ -1,18 +1,32 @@
 const DEFAULT_STRUCTURE = [
   'Identificação',
+  'Hipóteses diagnósticas / problemas ativos',
   'Queixa principal',
-  'HDA',
-  'Antecedentes',
+  'História da moléstia atual (HDA)',
+  'Medicações em uso contínuo',
+  'História pregressa',
+  'Doenças de base',
+  'História familiar',
+  'Hábitos de vida',
+  'Interrogatório sintomatológico',
+  'Exames complementares',
   'Exame físico',
-  'Hipóteses',
 ];
 
-function buildStructureInstructions(templateConfig) {
-  const sections = Array.isArray(templateConfig?.secoes) && templateConfig.secoes.length
+function getTemplateSections(templateConfig) {
+  return Array.isArray(templateConfig?.secoes) && templateConfig.secoes.length
     ? templateConfig.secoes
     : DEFAULT_STRUCTURE;
+}
 
-  return sections.map((section) => `* ${section}`).join('\n');
+function buildStructureInstructions(templateConfig) {
+  return getTemplateSections(templateConfig).map((section) => `* ${section}`).join('\n');
+}
+
+function buildOutputSkeleton(templateConfig) {
+  return getTemplateSections(templateConfig)
+    .map((section) => `${section}: ...`)
+    .join('\n');
 }
 
 function buildClinicalWritingRules() {
@@ -27,8 +41,8 @@ function buildClinicalWritingRules() {
 * Pode converter linguagem leiga em linguagem médica equivalente, sem alterar o sentido.
 * Preferir construções clínicas naturais como "Paciente refere", "Relata" e "Informa" quando isso melhorar a fluidez.
 * Evitar redação telegráfica quando for possível escrever em prosa clínica curta e fiel.
-* Na HDA, transformar anotações fragmentadas em um parágrafo clínico coeso, objetivo e elegante, sem acrescentar conteúdo novo.
-* Se a informação estiver incompleta, manter a incompletude explícita.`;
+* Na história da moléstia atual, transformar anotações fragmentadas em um parágrafo clínico coeso, objetivo e elegante, sem acrescentar conteúdo novo.
+* Se o texto já vier semi-estruturado, preservar a riqueza das informações em vez de comprimir o conteúdo em blocos genéricos.`;
 }
 
 function buildDefaultStructurePrompt(templateConfig) {
@@ -62,46 +76,46 @@ ${buildClinicalWritingRules()}
 
 ETAPA 2 - ESTRUTURAÇÃO
 
-Organize em:
+Organize o texto exatamente nas seções do template selecionado:
 ${buildStructureInstructions(templateConfig)}
 
 REGRAS DE ESTRUTURA
 
-* Usar [DADO AUSENTE] quando a seção existir mas a informação não tiver sido fornecida
-* Usar [INFORMAÇÃO INSUFICIENTE] quando houver menção parcial, vaga ou incompleta
-* Não inferir conteúdo
-* Não criar nenhuma seção fora da lista acima
-* Manter os títulos das seções exatamente na ordem definida
+* A saída deve ser dinâmica e respeitar exatamente as seções do template selecionado.
+* Não comprimir o conteúdo em 6 blocos fixos.
+* Não fundir várias seções do template em blocos genéricos se o texto trouxer riqueza suficiente para separá-las.
+* Usar [DADO AUSENTE] quando a seção existir, mas a informação não tiver sido fornecida.
+* Usar [INFORMAÇÃO INSUFICIENTE] quando houver menção parcial, vaga ou incompleta.
+* Não inferir conteúdo.
+* Não criar nenhuma seção fora da lista acima.
+* Manter os títulos das seções exatamente na ordem definida.
 
 CONTEXTO
 
 * Template selecionado: ${templateName}
-* O template serve apenas como contexto clínico.
+* O template serve como estrutura obrigatória da saída.
 
 FORMATO DE SAÍDA
 
 Responda apenas com:
 
-Identificação: ...
-Queixa principal: ...
-HDA: ...
-Antecedentes: ...
-Exame físico: ...
-Hipóteses: ...
+ANAMNESE ESTRUTURADA:
+
+${buildOutputSkeleton(templateConfig)}
 
 ESTILO ESPERADO
 
-* A saída deve parecer um prontuário real, limpo e médico
-* A redação deve ser natural, clínica e objetiva
-* A HDA deve soar como narrativa clínica e não como lista seca
-* Não usar tópicos internos dentro de cada seção
-* Não usar markdown adicional fora do formato acima
+* A saída deve parecer um prontuário real, limpo e médico.
+* A redação deve ser natural, clínica e objetiva.
+* A história da moléstia atual deve soar como narrativa clínica e não como lista seca.
+* Não usar tópicos internos dentro de cada seção.
+* Não usar markdown adicional fora do formato acima.
 
 Se faltar informação, isso deve aparecer explicitamente.
 Nunca oculte incerteza.`;
 }
 
-function buildObstetricStructurePrompt() {
+function buildObstetricStructurePrompt(templateConfig) {
   return `Você é um médico responsável por organizar registros clínicos obstétricos de forma técnica, objetiva, elegante e fiel às informações fornecidas.
 
 Sua função é estruturar o texto livre exatamente no modelo obstétrico solicitado.
@@ -127,15 +141,26 @@ FORMATAÇÃO
 - Não remover seções do modelo
 - Escrever sempre em parágrafo dentro dos itens e não em tópicos
 
+ESTRUTURA OBRIGATÓRIA
+${buildStructureInstructions(templateConfig)}
+
+FORMATO DE SAÍDA
+
+Responda apenas com:
+
+ANAMNESE ESTRUTURADA:
+
+${buildOutputSkeleton(templateConfig)}
+
 ESTILO CLÍNICO
-- Em QPD e H. Obstétrico, priorizar narrativa clínica curta, organizada e fiel
-- Em Ex. Físico, manter descrição técnica, direta e legível
+- Em QPD e H. obstétrico, priorizar narrativa clínica curta, organizada e fiel
+- Em Ex. físico, manter descrição técnica, direta e legível
 - Em todos os campos, priorizar prontuário fluido, médico e pronto para uso, sem acrescentar qualquer informação nova`;
 }
 
 function buildStructurePrompt(templateConfig) {
   if (templateConfig?.promptVariant === 'obstetricia') {
-    return buildObstetricStructurePrompt();
+    return buildObstetricStructurePrompt(templateConfig);
   }
 
   return buildDefaultStructurePrompt(templateConfig);
