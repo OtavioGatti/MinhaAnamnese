@@ -42,7 +42,7 @@ async function generateInsights({ texto, templateId, userId }) {
   const openai = new OpenAI({ apiKey });
   const templateConfig = getTemplateById(templateId);
   const trimmedText = sanitizeText(texto).trim();
-  const qualityScore = calculateAnamnesisQualityScore(trimmedText);
+  const qualityScore = calculateAnamnesisQualityScore(trimmedText, templateId, templateConfig);
   const analysis = qualityScore.structuredAnalysis;
 
   if (!analysis || typeof qualityScore.score !== 'number') {
@@ -114,6 +114,7 @@ async function generateInsights({ texto, templateId, userId }) {
       message: sanitizeText(parsed.scoreText),
       justification: sanitizeText(parsed.analise),
       criticalInsight: sanitizeText(parsed.insight),
+      otherGaps: Array.isArray(parsed.outrosList) ? parsed.outrosList.map((item) => sanitizeText(item)) : [],
     },
   };
 }

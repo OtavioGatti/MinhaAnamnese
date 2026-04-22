@@ -61,7 +61,7 @@ async function processAnamnesis({ template, texto, userId }) {
     throw error;
   }
 
-  const qualityScore = calculateAnamnesisQualityScore(sanitizedText);
+  const qualityScore = calculateAnamnesisQualityScore(sanitizedText, template, templateConfig);
 
   registerAnamneseMetric({
     userId,

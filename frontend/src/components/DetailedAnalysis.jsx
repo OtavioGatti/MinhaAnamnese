@@ -5,6 +5,7 @@ function DetailedAnalysis({
   analysisInputSection,
   summarizedScoreJustification,
   insightPrincipalSection,
+  secondaryGaps,
   user,
   loadingFunnelMetrics,
   funnelMetrics,
@@ -55,6 +56,17 @@ function DetailedAnalysis({
                   <h3 className="detailed-analysis-title">{'Ponto cr\u00edtico'}</h3>
                   <div className="resultado">{insightPrincipalSection}</div>
                 </div>
+
+                {Array.isArray(secondaryGaps) && secondaryGaps.length > 0 ? (
+                  <div className="detailed-analysis-block">
+                    <h3 className="detailed-analysis-title">Outras lacunas relevantes</h3>
+                    <div className="resultado">
+                      {secondaryGaps.slice(0, 4).map((gap) => (
+                        <div key={gap}>- {gap}</div>
+                      ))}
+                    </div>
+                  </div>
+                ) : null}
               </div>
             </div>
           )}

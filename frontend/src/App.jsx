@@ -133,6 +133,7 @@ function createEmptyQualityScore() {
     message: '',
     justification: '',
     criticalInsight: '',
+    otherGaps: [],
   };
 }
 
@@ -145,6 +146,7 @@ function normalizeQualityScorePayload(payload) {
     message: payload?.interpretation?.message || '',
     justification: payload?.interpretation?.justification || '',
     criticalInsight: payload?.interpretation?.criticalInsight || '',
+    otherGaps: Array.isArray(payload?.interpretation?.otherGaps) ? payload.interpretation.otherGaps : [],
   };
 }
 
@@ -1271,6 +1273,7 @@ function App() {
   const summarizedScoreJustification = qualityScore.message;
   const insightPrincipalSection = qualityScore.criticalInsight;
   const primaryGapsCopy = qualityScore.justification;
+  const secondaryGaps = qualityScore.otherGaps;
   const displayedResultado = useMemo(() => sanitizeAnamnesisForDisplay(resultado), [resultado]);
   const userDisplayName = user ? getUserDisplayName(user) : '';
   const templateAtual = templates.find((template) => template.id === templateSelecionado) || null;
@@ -1280,7 +1283,9 @@ function App() {
   const improvementBoxCopy = 'Revise o texto atual, faça ajustes e gere uma nova versão quando quiser.';
   const improvementButtonLabel = isPro ? 'Refinar minha anamnese' : 'Melhorar minha anamnese';
   const performanceMessage = getPerformanceMessage(qualityScore.score);
-  const relevantGapsCount = getRelevantGapsCount(qualityScore.score);
+  const relevantGapsCount = secondaryGaps.length > 0
+    ? secondaryGaps.length + (qualityScore.criticalInsight ? 1 : 0)
+    : getRelevantGapsCount(qualityScore.score);
   const consistencySummary = useMemo(() => {
     if (!user) {
       return null;
@@ -1771,6 +1776,7 @@ function App() {
                   qualityScore={qualityScore}
                   animatedScore={animatedScore}
                   primaryGapsCopy={primaryGapsCopy}
+                  secondaryGaps={secondaryGaps}
                   insightError={insightError}
                   isProUser={isPro}
                   hasFinalInterpretation={hasFinalInterpretation}
@@ -1794,6 +1800,7 @@ function App() {
                   shouldShowPaywall={shouldShowPaywall}
                   performanceMessage={performanceMessage}
                   relevantGapsCount={relevantGapsCount}
+                  secondaryGaps={secondaryGaps}
                   onUpgradeInsights={() => handleUpgradeInsights('home')}
                   loadingCheckout={isHomeCheckoutLoading}
                   checkoutError={homeCheckoutError}
@@ -1819,6 +1826,7 @@ function App() {
                   analysisInputSection={analysisInputSection}
                   summarizedScoreJustification={summarizedScoreJustification}
                   insightPrincipalSection={insightPrincipalSection}
+                  secondaryGaps={secondaryGaps}
                   user={user}
                   loadingFunnelMetrics={loadingFunnelMetrics}
                   funnelMetrics={funnelMetrics}

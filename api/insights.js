@@ -47,7 +47,10 @@ module.exports = async function handler(req, res) {
       data,
     });
   } catch (error) {
-    console.error('insights: failed to generate insights', error);
+    console.error('insights: failed to generate insights', {
+      statusCode: error?.statusCode || 500,
+      message: error?.message || 'unknown_error',
+    });
 
     return res.status(error.statusCode || 500).json({
       success: false,

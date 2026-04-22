@@ -4,6 +4,7 @@ function InsightBlock({
   shouldShowPaywall,
   performanceMessage,
   relevantGapsCount,
+  secondaryGaps,
   onUpgradeInsights,
   loadingCheckout,
   checkoutError,
@@ -29,6 +30,17 @@ function InsightBlock({
         <div className="insight-kicker">{'Pr\u00f3ximo passo'}</div>
         <p className="insight-primary-text">{insightPrincipalSection}</p>
       </div>
+
+      {Array.isArray(secondaryGaps) && secondaryGaps.length > 0 ? (
+        <div className="insight-secondary-points">
+          <strong>Outros pontos relevantes</strong>
+          <ul>
+            {secondaryGaps.slice(0, 3).map((gap) => (
+              <li key={gap}>{gap}</li>
+            ))}
+          </ul>
+        </div>
+      ) : null}
 
       {shouldShowPaywall && (
         <div className="paywall-panel insight-paywall-panel">

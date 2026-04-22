@@ -57,6 +57,8 @@ USO DA ANÁLISE ESTRUTURADA:
 - não transformar em JSON na saída
 - não citar campos técnicos como chave de sistema
 - não repetir automaticamente todos os blocos ausentes se eles não forem os mais relevantes
+- considerar a diferença entre lacunas essenciais, importantes e secundárias
+- usar fatores de gravidade estrutural/contextual apenas para priorização documental, nunca para sugerir diagnóstico
 
 REGRAS DE COERÊNCIA COM O SCORE:
 
@@ -220,6 +222,7 @@ INSTRUÇÕES PARA [OUTROS]:
 - sem explicação longa
 - não repetir literalmente o mesmo ponto do insight principal
 - evitar transformar a lista em checklist genérico previsível
+- priorizar pontos complementares realmente úteis para a próxima coleta
 
 Exemplos:
 - medicações em uso não registradas

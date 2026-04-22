@@ -9,11 +9,16 @@ function extractSection(text, section) {
 }
 
 function parseAIResponse(text) {
+  const outrosRaw = extractSection(text, "OUTROS");
   const parsed = {
     analise: extractSection(text, "ANALISE"),
     scoreText: extractSection(text, "SCORE"),
     insight: extractSection(text, "INSIGHT"),
-    outros: extractSection(text, "OUTROS"),
+    outros: outrosRaw,
+    outrosList: outrosRaw
+      .split('\n')
+      .map((line) => sanitizeText(line).replace(/^[-*]\s*/, '').trim())
+      .filter(Boolean),
   };
 
   if (DEBUG_MODE) {
@@ -22,6 +27,7 @@ function parseAIResponse(text) {
       scoreText: Boolean(parsed.scoreText),
       insight: Boolean(parsed.insight),
       outros: Boolean(parsed.outros),
+      outrosCount: parsed.outrosList.length,
     });
   }
 

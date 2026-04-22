@@ -18,6 +18,7 @@ function StructuralFeedback({
   qualityScore,
   animatedScore,
   primaryGapsCopy,
+  secondaryGaps,
   insightError,
   isProUser,
   hasFinalInterpretation,
@@ -86,6 +87,17 @@ function StructuralFeedback({
                   <strong>O que mais enfraqueceu esta anamnese</strong>
                   <span>{primaryGapsCopy}</span>
                 </div>
+
+                {Array.isArray(secondaryGaps) && secondaryGaps.length > 0 ? (
+                  <div className="feedback-secondary-list">
+                    <strong>Outras lacunas relevantes</strong>
+                    <ul>
+                      {secondaryGaps.slice(0, 3).map((gap) => (
+                        <li key={gap}>{gap}</li>
+                      ))}
+                    </ul>
+                  </div>
+                ) : null}
               </div>
             ) : null}
 
