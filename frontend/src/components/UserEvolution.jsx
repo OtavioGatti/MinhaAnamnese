@@ -29,7 +29,35 @@ function buildRecurringPatterns({ anamneseStats, currentScore, isValidScoreValue
   return patterns.slice(0, 2);
 }
 
-function getTrendData({ lastScore, currentScore, isValidScoreValue }) {
+function getTrendData({ lastScore, currentScore, immediateComparison, isValidScoreValue }) {
+  if (immediateComparison?.trend === 'up') {
+    return {
+      trendArrow: '\u2191',
+      trendLabel: 'melhora',
+    };
+  }
+
+  if (immediateComparison?.trend === 'down') {
+    return {
+      trendArrow: '\u2193',
+      trendLabel: 'queda',
+    };
+  }
+
+  if (immediateComparison?.trend === 'stable') {
+    return {
+      trendArrow: '\u2022',
+      trendLabel: 'est\u00e1vel',
+    };
+  }
+
+  if (immediateComparison?.trend === 'insufficient_data') {
+    return {
+      trendArrow: '\u2022',
+      trendLabel: 'sem base anterior',
+    };
+  }
+
   if (!isValidScoreValue(lastScore) || !isValidScoreValue(currentScore)) {
     return {
       trendArrow: '\u2022',
@@ -64,10 +92,13 @@ function UserEvolution({
   loadingAnamneseActivity,
   consistencySummary,
   currentScore,
+  immediateComparison,
 }) {
-  const lastScore = isValidScoreValue(anamneseStats?.score_anterior)
-    ? anamneseStats.score_anterior
-    : anamneseStats?.ultimo_score;
+  const lastScore = isValidScoreValue(immediateComparison?.previousScore)
+    ? immediateComparison.previousScore
+    : isValidScoreValue(anamneseStats?.score_anterior)
+      ? anamneseStats.score_anterior
+      : anamneseStats?.ultimo_score;
   const recurringPatterns = buildRecurringPatterns({
     anamneseStats,
     currentScore,
@@ -77,8 +108,12 @@ function UserEvolution({
   const trendData = getTrendData({
     lastScore,
     currentScore,
+    immediateComparison,
     isValidScoreValue,
   });
+  const shouldUseImmediateComparison = Boolean(immediateComparison);
+  const isInitialEvolutionState =
+    shouldUseImmediateComparison && !isValidScoreValue(immediateComparison?.previousScore);
 
   return (
     <div className="card section-evolution">
@@ -122,7 +157,7 @@ function UserEvolution({
 
         <div className="evolution-panel">
           <h3>{'Evolu\u00e7\u00e3o'}</h3>
-          {loadingAnamneseStats ? (
+          {loadingAnamneseStats && !shouldUseImmediateComparison ? (
             <p className="field-helper">{'Carregando evolu\u00e7\u00e3o...'}</p>
           ) : (
             <div className="evolution-summary">
@@ -140,6 +175,11 @@ function UserEvolution({
                   {trendData.trendArrow} {trendData.trendLabel}
                 </strong>
               </div>
+              {isInitialEvolutionState && (
+                <p className="field-helper">
+                  {'Esta \u00e9 a primeira anamnese persistida dispon\u00edvel para compara\u00e7\u00e3o imediata.'}
+                </p>
+              )}
             </div>
           )}
         </div>

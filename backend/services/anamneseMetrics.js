@@ -47,6 +47,57 @@ async function registerAnamneseMetric({ userId, template, score, textLength, has
   }
 }
 
+async function getLatestAnamneseMetric(userId) {
+  if (!isValidUserId(userId)) {
+    return null;
+  }
+
+  const { url, serviceRoleKey } = getSupabaseAdminConfig();
+
+  if (!url || !serviceRoleKey) {
+    return null;
+  }
+
+  const query = new URLSearchParams({
+    select: 'id,template,score,created_at',
+    user_id: `eq.${userId}`,
+    order: 'created_at.desc',
+    limit: '1',
+  });
+
+  const response = await fetch(`${url}/rest/v1/anamneses?${query.toString()}`, {
+    method: 'GET',
+    headers: {
+      apikey: serviceRoleKey,
+      Authorization: `Bearer ${serviceRoleKey}`,
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error('failed to fetch latest anamnese');
+  }
+
+  const json = await response.json();
+
+  if (!Array.isArray(json) || !json[0]) {
+    return null;
+  }
+
+  const item = json[0];
+
+  if (
+    !item ||
+    typeof item.id !== 'string' ||
+    typeof item.template !== 'string' ||
+    typeof item.score !== 'number' ||
+    typeof item.created_at !== 'string'
+  ) {
+    return null;
+  }
+
+  return item;
+}
+
 async function listRecentAnamneseMetrics(userId) {
   if (!isValidUserId(userId)) {
     return [];
@@ -225,6 +276,7 @@ module.exports = {
   getCurrentStreakFromActivityDates,
   getAnamneseActivity,
   getAnamneseStats,
+  getLatestAnamneseMetric,
   listRecentAnamneseMetrics,
   registerAnamneseMetric,
 };

@@ -2,7 +2,7 @@ const OpenAI = require('openai');
 const { getTemplateById } = require('./templates');
 const { calculateAnamnesisQualityScore } = require('../utils/anamnesisQualityScore');
 const { buildStructurePrompt } = require('../prompts/structurePrompt');
-const { registerAnamneseMetric } = require('./anamneseMetrics');
+const { getLatestAnamneseMetric, registerAnamneseMetric } = require('./anamneseMetrics');
 const { sanitizeText } = require('../utils/textSanitization');
 
 function validateProcessAnamnesisInput(payload) {
@@ -17,6 +17,22 @@ function validateProcessAnamnesisInput(payload) {
   }
 
   return null;
+}
+
+function getTrendFromScores(previousScore, currentScore) {
+  if (typeof previousScore !== 'number' || Number.isNaN(previousScore)) {
+    return 'insufficient_data';
+  }
+
+  if (currentScore > previousScore) {
+    return 'up';
+  }
+
+  if (currentScore < previousScore) {
+    return 'down';
+  }
+
+  return 'stable';
 }
 
 async function processAnamnesis({ template, texto, userId }) {
@@ -39,6 +55,7 @@ async function processAnamnesis({ template, texto, userId }) {
   const templateConfig = getTemplateById(template);
   const openai = new OpenAI({ apiKey });
   const sanitizedText = sanitizeText(texto).trim();
+  const previousMetric = await getLatestAnamneseMetric(userId).catch(() => null);
 
   const response = await openai.chat.completions.create({
     model: 'gpt-4o-mini',
@@ -63,7 +80,7 @@ async function processAnamnesis({ template, texto, userId }) {
 
   const qualityScore = calculateAnamnesisQualityScore(sanitizedText, template, templateConfig);
 
-  registerAnamneseMetric({
+  await registerAnamneseMetric({
     userId,
     template,
     score: qualityScore.score,
@@ -71,9 +88,27 @@ async function processAnamnesis({ template, texto, userId }) {
     hasTeaser: false,
   }).catch(() => {});
 
+  const previousScore = typeof previousMetric?.score === 'number' ? previousMetric.score : null;
+  const comparison = {
+    currentScore: qualityScore.score,
+    previousScore,
+    trend: getTrendFromScores(previousScore, qualityScore.score),
+    comparisonBase: previousMetric
+      ? {
+          source: 'immediate_previous_persisted_anamnese',
+          previousAnamneseId: previousMetric.id,
+          previousTemplate: previousMetric.template,
+          previousCreatedAt: previousMetric.created_at,
+        }
+      : {
+          source: 'no_previous_persisted_anamnese',
+        },
+  };
+
   return {
     resultado,
     score: qualityScore.score,
+    comparison,
   };
 }
 

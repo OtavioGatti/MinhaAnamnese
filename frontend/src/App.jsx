@@ -458,6 +458,7 @@ function App() {
   const [anamneseActivity, setAnamneseActivity] = useState([]);
   const [recentAnamneses, setRecentAnamneses] = useState([]);
   const [funnelMetrics, setFunnelMetrics] = useState(null);
+  const [latestScoreComparison, setLatestScoreComparison] = useState(null);
   const [qualityScore, setQualityScore] = useState(() => createEmptyQualityScore());
 
   const templateTemCalculadora = templateSelecionado === TEMPLATE_WITH_CALCULATORS;
@@ -874,6 +875,7 @@ function App() {
     setErro('');
     setInsightError('');
     setResultado('');
+    setLatestScoreComparison(null);
     setQualityScore(createEmptyQualityScore());
 
     if (!templateSelecionado) {
@@ -898,6 +900,7 @@ function App() {
       if (response.success) {
         const organizedResult = response.data.resultado || '';
         setResultado(organizedResult);
+        setLatestScoreComparison(response.data.comparison || null);
         setSecaoSecundariaAberta(false);
         trackEvent('anamnese_gerada', {
           template: templateSelecionado,
@@ -918,6 +921,7 @@ function App() {
     setTemplateSelecionado('');
     setTexto('');
     setResultado('');
+    setLatestScoreComparison(null);
     setQualityScore(createEmptyQualityScore());
     setErro('');
     setInsightError('');
@@ -1327,6 +1331,7 @@ function App() {
     };
   }, [anamneseActivity, user]);
   const hasEvolutionData = Boolean(
+    latestScoreComparison ||
     (anamneseStats?.total_anamneses || 0) > 0 ||
     anamneseActivity.length > 0
   );
@@ -1815,6 +1820,7 @@ function App() {
                   loadingAnamneseActivity={loadingAnamneseActivity}
                   consistencySummary={consistencySummary}
                   currentScore={qualityScore.score}
+                  immediateComparison={latestScoreComparison}
                 />
               )}
 
