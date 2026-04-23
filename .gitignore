@@ -29,3 +29,7 @@ Thumbs.db
 
 # Qwen
 .qwen/
+
+# Local eval artifacts
+test-results/
+tests/anamnese-evals/cases.semantic-check.json

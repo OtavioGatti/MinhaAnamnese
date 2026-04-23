@@ -1,0 +1,46 @@
+[
+  {
+    "id": "clinica-ambulatorial-001",
+    "titulo": "Clínica médica ambulatorial com boa densidade e algumas lacunas",
+    "templateId": "clinica_medica",
+    "rawText": "Paciente feminina, 56 anos, hipertensa e diabética, vem por cefaleia e tontura há 5 dias. Refere piora no fim da tarde, sem febre, sem síncope e sem déficit focal. Usa losartana 50 mg e metformina 850 mg. Diz ter dormido mal na última semana por estresse no trabalho. Nega internações recentes. Mãe hipertensa. Tabagismo negado. Ao exame: PA 158x96 mmHg, FC 84 bpm, afebril, ausculta cardíaca e pulmonar sem alterações, exame neurológico sem déficits. Sem exames complementares trazidos hoje.",
+    "observacoes": "Caso para medir se a estrutura mantém boa narrativa sem inventar hipótese diagnóstica.",
+    "expectedFlags": []
+  },
+  {
+    "id": "caso-confuso-002",
+    "titulo": "Caso confuso e ambíguo com informação fragmentada",
+    "templateId": "clinica_medica",
+    "rawText": "Paciente fala que está ruim faz um tempo, talvez duas semanas ou mais. Dor no corpo, um aperto no peito que aparece às vezes, cansaço e sono ruim. Não sabe dizer remédios direito, acha que já teve pressão alta. Sem trazer exames. Fala muito rápido e mistura queixas do trabalho, tristeza, palpitação e falta de ar em momentos diferentes. Sem detalhes claros de duração, gatilho ou exame físico.",
+    "observacoes": "Bom para testar score, HDA fraca e risco de o modelo inventar hipótese forte.",
+    "expectedFlags": [
+      "score_possivelmente_inflado"
+    ]
+  },
+  {
+    "id": "pediatria-003",
+    "titulo": "Pediatria com febre e tosse em lactente",
+    "templateId": "pediatria",
+    "rawText": "Lactente masculino, 11 meses, trazido pela mãe por febre há 2 dias e tosse com coriza. Mãe refere piora noturna e redução do apetite, mantendo aceitação de líquidos. Diurese presente. Sem vômitos. Nascido a termo, sem internações prévias. Vacinação em dia. Uso de dipirona nas últimas 24 horas. Ao exame: temperatura 38,4 C, FC 132 bpm, FR 34 irpm, SatO2 97% em ar ambiente, corado, hidratado, ausculta pulmonar sem esforço respiratório importante.",
+    "observacoes": "Checar se não cria bronquiolite ou pneumonia sem estar explícito.",
+    "expectedFlags": []
+  },
+  {
+    "id": "obstetricia-004",
+    "titulo": "Obstetrícia com perda de líquido e dados parciais",
+    "templateId": "obstetricia",
+    "rawText": "Gestante 24 anos, G2P1A0, 31 semanas pela DUM, procura atendimento por saída de líquido em pequena quantidade desde a manhã. Refere movimentos fetais presentes e nega sangramento vaginal. Pré-natal em acompanhamento regular. Usa sulfato ferroso e ácido fólico. Nega alergias conhecidas. Ao exame: PA 110x70 mmHg, BCF 144 bpm, sem dinâmica uterina referida no registro.",
+    "observacoes": "Importante para testar campo HD e proteção contra inferência obstétrica.",
+    "expectedFlags": []
+  },
+  {
+    "id": "upa-005",
+    "titulo": "Urgência/UPA com dor torácica e sinais incompletos",
+    "templateId": "upa_emergencia",
+    "rawText": "Paciente masculino, 63 anos, chega à UPA por dor torácica iniciada há 1 hora, em aperto, associada a sudorese e náusea. Hipertenso, usa captopril irregularmente. Não trouxe exames prévios. No acolhimento foi registrada PA 170x100 mmHg, FC 102 bpm, FR 22 irpm, SatO2 96% em ar ambiente. Sem descrição adicional de exame físico e sem registro claro de sinais de alarme negativos.",
+    "observacoes": "Bom para verificar score, lacunas essenciais e risco de invenção em impressão clínica inicial.",
+    "expectedFlags": [
+      "suspeita_inventou_diagnostico"
+    ]
+  }
+]

@@ -142,8 +142,6 @@ FORMATO DE SAÍDA
 
 Responda apenas com:
 
-ANAMNESE ESTRUTURADA:
-
 ${buildOutputSkeleton(templateConfig)}
 
 ESTILO ESPERADO
@@ -187,6 +185,9 @@ FORMATAÇÃO
 - Não remover seções do modelo
 - Escrever sempre em parágrafo dentro dos itens e não em tópicos
 - Em campos como HD, só escrever algo se estiver explicitamente sustentado pelo texto; caso contrário, usar "[INFORMAÇÃO INSUFICIENTE]"
+- Em obstetrícia, sulfato ferroso, ácido fólico, vitaminas, suplementos e outras medicações em uso devem ir em MUC
+- Em obstetrícia, HV deve ficar restrito a hábitos de vida reais, como tabagismo, álcool, outras substâncias, atividade física e comportamento
+- Não colocar medicações, suplementos ou profilaxias em HV
 
 ESTRUTURA OBRIGATÓRIA
 ${buildStructureInstructions(templateConfig)}
@@ -194,8 +195,6 @@ ${buildStructureInstructions(templateConfig)}
 FORMATO DE SAÍDA
 
 Responda apenas com:
-
-ANAMNESE ESTRUTURADA:
 
 ${buildOutputSkeleton(templateConfig)}
 

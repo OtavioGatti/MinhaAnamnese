@@ -1,0 +1,278 @@
+[
+  {
+    "id": "cm-001",
+    "titulo": "Ambulatório - cefaleia e tontura com boa densidade",
+    "templateId": "clinica_medica",
+    "rawText": "ID: Ana Paula Ribeiro, 56 anos, casada, professora, residente em Assis. HD: HAS / DM2. QP: Cefaleia e tontura. HMA: Refere cefaleia e tontura há 5 dias, com piora no fim da tarde. Nega febre, síncope e déficit focal. Dormiu mal na última semana por estresse no trabalho. MUC: losartana 50 mg 1x/dia, metformina 850 mg 2x/dia. HP: nega internações recentes. HF: mãe hipertensa. HV: nega tabagismo, sono ruim na última semana. EXAMES: sem exames trazidos hoje. EXAME FÍSICO: PA 158/96 mmHg, FC 84 bpm, afebril, ausculta cardíaca e pulmonar sem alterações, exame neurológico sem déficits.",
+    "observacoes": "Caso para ambulatório completo sem hipótese explícita."
+  },
+  {
+    "id": "cm-002",
+    "titulo": "Ambulatório - dor abdominal com sinais colestáticos ambíguos",
+    "templateId": "clinica_medica",
+    "rawText": "ID: Roberto Lima, 63 anos, aposentado. QP: Dor abdominal. HMA: Dor abdominal difusa há semanas, às vezes mais intensa em hipocôndrio direito, com náuseas, diminuição do apetite, fezes mais claras em alguns dias e urina mais escura em uma ocasião. Nega febre. HP: refere pedra na vesícula antiga. MUC: não usa medicações contínuas. HV: nega etilismo, dieta gordurosa frequente. EXAME FÍSICO: não realizado.",
+    "observacoes": "Bom para testar fidelidade sem inventar hipótese."
+  },
+  {
+    "id": "cm-003",
+    "titulo": "Ambulatório - cansaço crônico com elementos sugestivos de anemia",
+    "templateId": "clinica_medica",
+    "rawText": "ID: Fernanda Souza, 31 anos, solteira, professora. QP: Cansaço. HMA: Cansaço há meses, pior ao fim do dia, palpitações, fraqueza, queda de cabelo, unhas fracas, tontura ao levantar e perda de peso leve após mudar alimentação. Nega febre. MUC: nenhum. HF: mãe com anemia não especificada. HV: alimentação irregular, sono ruim. EXAME FÍSICO: não realizado.",
+    "observacoes": "Teste de score sem exame físico mas com boa narrativa."
+  },
+  {
+    "id": "cm-004",
+    "titulo": "Ambulatório - retorno endocrinologia com texto semi-estruturado FEMA",
+    "templateId": "clinica_medica",
+    "rawText": "ID: Michele Carina dos Santos Silva, 45 anos, casada, residente em Assis, doméstica. HD: Bócio não tóxico multinodular / Ansiedade / Tremor essencial / Dislipidemia / Queda de cabelo. QP: Retorno para acompanhamento. HMA: Após redução da levotiroxina de 125 mcg para 100 mcg, refere cefaleia intensa contínua com melhora ao retornar para dose anterior. Teve aumento do tremor. Refere melhora do formigamento nos pés, manutenção da queda de cabelo e bastante sono durante o dia. Não realizou exames da consulta passada. MUC: propranolol, sertralina, levotiroxina, carbonato de cálcio, clonazepam em crises. HP: G2P2A1, duas cesáreas, tireoidectomia em 05/2025, nega alergias. HF: pai faleceu com câncer de laringe e era fumante. HV: alimentação com embutidos e refrigerante diariamente, ingesta hídrica 2 litros por dia, nega atividade física. ISDA: nega demais alterações. EXAMES: TSH 0,02 em 07/07/2025, T4 1,75, LDL 182,4. EXAME FÍSICO: PA não informada, SatO2 94% em ar ambiente, FC 72 bpm, T 36,4 C, BEG, normocorada, hidratada, tireoide normopalpável, MV+FD, BRNF2T.",
+    "observacoes": "Caso importante para ver preservação de estrutura rica."
+  },
+  {
+    "id": "cm-005",
+    "titulo": "Ambulatório - dor torácica aos esforços com fatores de risco",
+    "templateId": "clinica_medica",
+    "rawText": "ID: João Carlos Pereira, 58 anos, casado, pedreiro. HD: HAS / DM2 / Obesidade / Dislipidemia. QP: Dor no peito aos esforços. HMA: Dor em aperto no peito há cerca de 2 meses, principalmente ao subir ladeiras ou carregar peso, melhora com repouso em alguns minutos. Nos últimos dias episódios mais frequentes e um deles ocorreu em repouso enquanto assistia TV. Nega síncope. Refere cansaço fácil e sudorese junto com a dor. Nunca investigou antes. MUC: losartana 50 mg 2x/dia, metformina 850 mg 2x/dia, sinvastatina 20 mg à noite. HP: nega cirurgias e alergias. HF: pai faleceu por infarto aos 60 anos. HV: sedentário, dieta rica em gordura, tabagista 1 maço/dia há 30 anos, nega etilismo. EXAME FÍSICO: PA 150/95, FC 88, Sat 96%, T 36,5, bulhas normais sem sopros, MV presente.",
+    "observacoes": "Não deve inventar angina/infarto."
+  },
+  {
+    "id": "cm-006",
+    "titulo": "Ambulatório - hipertensão de difícil controle em retorno",
+    "templateId": "clinica_medica",
+    "rawText": "ID: Carlos Henrique, 62 anos, aposentado. HD: HAS / DRC estágio não informado. QP: Retorno de pressão alta. HMA: Refere que nas últimas duas semanas mediu pressão em casa e encontrou valores acima de 160/100 em vários dias, com cefaleia occipital e sensação de peso na nuca. Nega dor no peito e falta de ar. MUC: anlodipino 10 mg 1x/dia, losartana 50 mg 2x/dia, hidroclorotiazida 25 mg 1x/dia. HP: internação por crise hipertensiva há 1 ano. HF: irmão hipertenso. HV: dieta com muito sal, sedentário. EXAMES: creatinina antiga 1,6 segundo paciente. EXAME FÍSICO: PA 168/102, FC 78, ausculta cardíaca sem sopros, edema ausente.",
+    "observacoes": "Bom para testar ambulatório bem preenchido."
+  },
+  {
+    "id": "cm-007",
+    "titulo": "Ambulatório - confuso e fragmentado com sintomas múltiplos",
+    "templateId": "clinica_medica",
+    "rawText": "Paciente fala que está ruim faz um tempo, talvez duas semanas ou mais. Dor no corpo, aperto no peito às vezes, cansaço e sono ruim. Não sabe dizer remédios direito, acha que já teve pressão alta. Sem trazer exames. Mistura queixas do trabalho, tristeza, palpitação e falta de ar em momentos diferentes. Sem detalhes claros de duração, gatilho ou exame físico.",
+    "observacoes": "Caso confuso e ambíguo.",
+    "expectedFlags": ["score_possivelmente_inflado"]
+  },
+  {
+    "id": "cm-008",
+    "titulo": "Ambulatório - lombalgia crônica com impacto funcional",
+    "templateId": "clinica_medica",
+    "rawText": "ID: José Antônio, 49 anos, servente. QP: Dor lombar. HMA: Dor lombar há 8 meses, piora ao fim do dia e após carregar peso, melhora parcial com repouso e dipirona. Refere irradiação ocasional para nádega direita, sem perda de força, sem alteração urinária e sem febre. MUC: dipirona eventual. HP: nega cirurgias. HV: trabalha carregando peso, sedentário fora do trabalho, tabagista 10 cigarros/dia. EXAME FÍSICO: dor à palpação lombar, sem déficit motor evidente, marcha preservada.",
+    "observacoes": "Teste de caso ortopédico de ambulatório."
+  },
+  {
+    "id": "cm-009",
+    "titulo": "Ambulatório - dor de cabeça crônica com alerta neurológico transitório",
+    "templateId": "clinica_medica",
+    "rawText": "ID: Paulo Henrique, 44 anos. QP: Dor de cabeça. HMA: Dor de cabeça há anos, piorou recentemente, sem tempo exato. Às vezes com fotofobia e náusea, outras vezes só pressão. Ontem teve formigamento no braço direito que passou rápido. Não sabe se foi ansiedade. Já bateu a cabeça há algum tempo. MUC: analgésico eventual. EXAME FÍSICO: não realizado.",
+    "observacoes": "Não deve inventar AVC ou enxaqueca."
+  },
+  {
+    "id": "cm-010",
+    "titulo": "Ambulatório - ombro pós-esforço extremamente incompleto",
+    "templateId": "clinica_medica",
+    "rawText": "ID: não informado. QP: Dor no ombro. HMA: Dor no ombro após carregar peso, sem mais detalhes. Exame físico não realizado.",
+    "observacoes": "Caso crítico e muito incompleto."
+  },
+
+  {
+    "id": "upa-001",
+    "titulo": "UPA - dor torácica com sinais incompletos",
+    "templateId": "upa_emergencia",
+    "rawText": "Paciente masculino, 63 anos, chega à UPA por dor torácica iniciada há 1 hora, em aperto, associada a sudorese e náusea. Hipertenso, usa captopril irregularmente. Não trouxe exames prévios. No acolhimento foi registrada PA 170/100, FC 102 bpm, FR 22 irpm, SatO2 96% em ar ambiente. Sem descrição adicional de exame físico e sem registro claro de sinais de alarme negativos.",
+    "observacoes": "UPA grave, precisa sensibilidade alta.",
+    "expectedFlags": ["score_possivelmente_inflado"]
+  },
+  {
+    "id": "upa-002",
+    "titulo": "UPA - dispneia com uso de musculatura acessória",
+    "templateId": "upa_emergencia",
+    "rawText": "ID: Antônio Ferreira, 72 anos, viúvo, aposentado. HD: DPOC / HAS. QP: Falta de ar. HMA: Dispneia há 3 dias, piora progressiva, hoje dificuldade para falar frases completas. Tosse com secreção amarelada, febre não aferida. Família notou confusão mental e prostração. Já teve internações prévias por exacerbação de DPOC. MUC: salbutamol spray, losartana. EXAME FÍSICO: dispneico, uso de musculatura acessória, Sat 88% em ar ambiente.",
+    "observacoes": "Bom para testar gravidade respiratória sem inventar impressão clínica."
+  },
+  {
+    "id": "upa-003",
+    "titulo": "UPA - tontura e quase síncope de início incerto",
+    "templateId": "upa_emergencia",
+    "rawText": "ID: Maria Aparecida, 49 anos, diarista. QP: Tontura. HMA: Tontura desde ontem ou talvez antes, começou ao levantar da cama mas talvez já vinha sentindo dias antes. Sensação de cabeça leve e escurecimento visual, não sabe se chegou a desmaiar. Fala de dor no peito mas depois diz que era ansiedade. Nega vômitos mas lembra enjoo. MUC: usa remédio de pressão que não lembra o nome. HV: fuma de vez em quando, bebe socialmente. EXAME FÍSICO: não realizado.",
+    "observacoes": "Não deve inventar distúrbio vestibular."
+  },
+  {
+    "id": "upa-004",
+    "titulo": "UPA - dor abdominal aguda em FID",
+    "templateId": "upa_emergencia",
+    "rawText": "ID: Marcelo Silva, 27 anos. QP: Dor abdominal. HMA: Dor abdominal há 10 horas, começou peri-umbilical e agora está mais forte no lado direito inferior, associada a náuseas e anorexia. Nega diarreia. Refere piora ao caminhar. MUC: nenhum. EXAME FÍSICO: PA 118/74, FC 96, T 37,8, dor à palpação em fossa ilíaca direita, sem outros detalhes.",
+    "observacoes": "Caso agudo sem permitir hipótese inventada."
+  },
+  {
+    "id": "upa-005",
+    "titulo": "UPA - crise asmática com relato parcial",
+    "templateId": "upa_emergencia",
+    "rawText": "ID: Beatriz, 19 anos. HD: asma. QP: Falta de ar. HMA: Falta de ar desde a madrugada com chiado e aperto no peito, sem melhora completa após bombinha em casa. Nega febre. MUC: salbutamol spray eventual. EXAME FÍSICO: fala frases curtas, sibilos difusos, FC 118, FR 30, Sat 92% em ar ambiente.",
+    "observacoes": "Teste de UPA respiratória."
+  },
+
+  {
+    "id": "ped-001",
+    "titulo": "Pediatria - febre e tosse em lactente com bom preenchimento",
+    "templateId": "pediatria",
+    "rawText": "ID: Lactente masculino, 11 meses, trazido pela mãe. QP: Febre e tosse. HMA: Febre há 2 dias e tosse com coriza, piora noturna, redução do apetite, mantendo aceitação de líquidos. Diurese presente. Sem vômitos. AP: nascido a termo, sem internações prévias. Vacinação em dia. MUC: dipirona nas últimas 24 horas. EXAME FÍSICO: T 38,4 C, FC 132, FR 34, SatO2 97% em ar ambiente, corado, hidratado, ausculta pulmonar sem esforço respiratório importante.",
+    "observacoes": "Não deve inventar bronquiolite ou pneumonia."
+  },
+  {
+    "id": "ped-002",
+    "titulo": "Pediatria - febre em criança com avó e poucas informações",
+    "templateId": "pediatria",
+    "rawText": "ID: Criança 2 anos, acompanhada pela avó. QP: Febre. HMA: Febre há alguns dias, sem medição, mais quieta, pouco apetite, um episódio de vômito ontem. Avó não soube informar mais detalhes. EXAME FÍSICO: não realizado.",
+    "observacoes": "Caso pediátrico incompleto."
+  },
+  {
+    "id": "ped-003",
+    "titulo": "Pediatria - sibilância recorrente em pré-escolar",
+    "templateId": "pediatria",
+    "rawText": "ID: Menino 4 anos, acompanhado pela mãe. QP: Chiado no peito. HMA: Chiado e tosse há 1 dia, piora à noite, sem febre, já teve episódios parecidos antes. Mãe diz que melhora um pouco com bombinha antiga do irmão. AP: rinite. AF: pai asmático. Vacinação em dia. DNPM sem queixas segundo mãe. EXAME FÍSICO: FC 118, FR 32, Sat 95%, sibilos expiratórios difusos, sem cianose.",
+    "observacoes": "Não deve inventar asma se não estiver explicitada como diagnóstico."
+  },
+  {
+    "id": "ped-004",
+    "titulo": "Pediatria - lactente com dificuldade respiratória e arroxeamento",
+    "templateId": "pediatria",
+    "rawText": "ID: Lactente 6 meses, prematuro 34 semanas. QP: Dificuldade para respirar. HMA: Desde ontem respiração rápida, pior hoje, gemência, dificuldade para mamar, episódio de arroxeamento por alguns segundos, febre ontem. AP: internação prévia por bronquiolite. EXAME FÍSICO: não realizado.",
+    "observacoes": "Caso pediátrico grave, boa sensibilidade esperada."
+  },
+
+  {
+    "id": "obs-001",
+    "titulo": "Obstetrícia - perda de líquido em gestante de 31 semanas",
+    "templateId": "obstetricia",
+    "rawText": "Gestante 24 anos, G2P1A0, 31 semanas pela DUM, procura atendimento por saída de líquido em pequena quantidade desde a manhã. Refere movimentos fetais presentes e nega sangramento vaginal. Pré-natal em acompanhamento regular. Usa sulfato ferroso e ácido fólico. Nega alergias conhecidas. Ao exame: PA 110/70 mmHg, BCF 144 bpm, sem dinâmica uterina referida no registro.",
+    "observacoes": "Teste de MUC vs HV em obstetrícia."
+  },
+  {
+    "id": "obs-002",
+    "titulo": "Obstetrícia - edema em gestante de 32 semanas",
+    "templateId": "obstetricia",
+    "rawText": "ID: Juliana Martins, 26 anos, gestante. HD: gestação 32 semanas. QP: Inchaço nas pernas. HMA: Edema em membros inferiores há 2 semanas, pior ao final do dia, melhora com repouso. Nega cefaleia, escotomas e dor epigástrica. Movimentos fetais presentes. MUC: sulfato ferroso e ácido fólico. HP: G1P0. EXAME FÍSICO: PA 120/80, edema +/4 em MMII.",
+    "observacoes": "Caso obstétrico de retorno simples."
+  },
+  {
+    "id": "obs-003",
+    "titulo": "Obstetrícia - redução de movimentos fetais",
+    "templateId": "obstetricia",
+    "rawText": "Gestante 29 anos, G3P2, 35 semanas por ultrassom do primeiro trimestre, vem por diminuição dos movimentos fetais desde ontem. Nega perda de líquido e nega sangramento. Refere contrações esporádicas. Usa sulfato ferroso. Nega alergias. Ao exame: PA 118/76, BCF 138 bpm.",
+    "observacoes": "Teste de estrutura obstétrica com dados parciais."
+  },
+  {
+    "id": "obs-004",
+    "titulo": "Obstetrícia - cefaleia e escotomas em gestante",
+    "templateId": "obstetricia",
+    "rawText": "Gestante 33 anos, 30 semanas pela DUM, procura atendimento por cefaleia e visão embaçada desde hoje. Refere escotomas e inchaço em mãos. Nega sangramento e perda de líquido. MUC: metildopa, sulfato ferroso. HP: hipertensão crônica. EXAME FÍSICO: PA 160/100, edema em mãos, BCF 142.",
+    "observacoes": "Caso obstétrico mais sensível."
+  },
+
+  {
+    "id": "gin-001",
+    "titulo": "Ginecologia - corrimento vaginal e dor pélvica",
+    "templateId": "ginecologia",
+    "rawText": "ID: Camila Ferreira, 28 anos, solteira. QP: Corrimento. HMA: Corrimento vaginal amarelado há 1 semana, com odor forte e dor pélvica leve. Nega febre. História menstrual: ciclos irregulares, DUM há cerca de 40 dias. Vida sexual ativa com parceiro fixo. Método contraceptivo: preservativo às vezes. Antecedentes ginecológicos: candidíase prévia. EXAME FÍSICO: não realizado.",
+    "observacoes": "Teste de estrutura ginecológica."
+  },
+  {
+    "id": "gin-002",
+    "titulo": "Ginecologia - sangramento uterino anormal",
+    "templateId": "ginecologia",
+    "rawText": "ID: Patrícia Gomes, 41 anos, casada. QP: Sangramento fora de época. HMA: Sangramento vaginal há 12 dias, em pequena quantidade diária, sem cólicas intensas. História menstrual: ciclos antes regulares, DUM há 20 dias. Vida sexual ativa. Método contraceptivo: laqueadura. Antecedentes ginecológicos: mioma referido há anos. EXAME FÍSICO: não realizado.",
+    "observacoes": "Não deve inventar hipótese."
+  },
+  {
+    "id": "gin-003",
+    "titulo": "Ginecologia - dor pélvica crônica",
+    "templateId": "ginecologia",
+    "rawText": "ID: Renata Lopes, 34 anos. QP: Dor pélvica. HMA: Dor pélvica há meses, pior no período menstrual e durante relação sexual. História menstrual: fluxo aumentado, ciclos de 30 dias, DUM há 12 dias. Vida sexual ativa. Método contraceptivo: nenhum. Antecedentes ginecológicos: cesárea prévia. EXAME FÍSICO: não realizado.",
+    "observacoes": "Caso bom para ver riqueza da HMA."
+  },
+
+  {
+    "id": "psiq-001",
+    "titulo": "Psiquiatria - ansiedade com insônia e prejuízo funcional",
+    "templateId": "psiquiatria",
+    "rawText": "ID: Luciana, 37 anos, advogada. QP: Ansiedade. HDA: Refere ansiedade diária há meses, pior com demandas do trabalho, associada a insônia inicial, irritabilidade e palpitações em situações de estresse. História psiquiátrica pregressa: acompanhamento anterior por ansiedade, sem internações. História familiar: mãe com depressão. Uso de medicações: sertralina interrompida por conta própria há 2 meses. Uso de substâncias: café em excesso, nega álcool e drogas. Exame do estado mental: lúcida, orientada, humor ansioso, sem ideação suicida.",
+    "observacoes": "Psiquiatria bem preenchida."
+  },
+  {
+    "id": "psiq-002",
+    "titulo": "Psiquiatria - humor deprimido com dados parciais",
+    "templateId": "psiquiatria",
+    "rawText": "Paciente 23 anos refere tristeza, desânimo, choro fácil e sono ruim há algumas semanas. Diz que às vezes falta à faculdade. Não sabe dizer medicações, nega uso de drogas ilícitas. Exame do estado mental não realizado.",
+    "observacoes": "Caso psiquiátrico incompleto."
+  },
+
+  {
+    "id": "puer-001",
+    "titulo": "Puerpério - dor mamária e febre baixa",
+    "templateId": "puerperio",
+    "rawText": "ID: Mariana Alves, 29 anos. Tipo de parto: cesárea. Tempo de pós-parto: 12 dias. QP: Dor na mama esquerda. Evolução pós-parto: dor e endurecimento na mama esquerda há 2 dias, com febre baixa em casa. Amamentação: com dificuldade na pega. Loquiação: pequena quantidade, sem odor forte. Dor / sinais infecciosos: dor local e febre baixa. Eliminações fisiológicas preservadas. Estado emocional: cansada, mas sem tristeza persistente. EXAME FÍSICO: mama esquerda dolorosa à palpação, área endurecida sem secreção purulenta visível.",
+    "observacoes": "Puerpério relativamente bem preenchido."
+  },
+
+  {
+    "id": "tri-001",
+    "titulo": "Triagem - cefaleia intensa e vômitos",
+    "templateId": "triagem",
+    "rawText": "ID: Mulher, 36 anos. QP: Dor de cabeça. Tempo de início: começou hoje de manhã. Sintomas associados: vômitos e fotofobia. Sinais de gravidade: relata pior dor da vida. Comorbidades: enxaqueca prévia referida. Medicações em uso: dipirona em casa sem melhora. Sinais vitais: PA 140/90, FC 96, T 36,7.",
+    "observacoes": "Triagem com sinal de gravidade claro."
+  },
+  {
+    "id": "tri-002",
+    "titulo": "Triagem - dor lombar simples",
+    "templateId": "triagem",
+    "rawText": "ID: Homem, 32 anos. QP: Dor lombar. Tempo de início: ontem após carregar peso. Sintomas associados: sem febre, sem alteração urinária, sem perda de força. Comorbidades: nenhuma referida. Medicações em uso: nenhuma. Sinais vitais: PA 122/78, FC 80, T 36,5.",
+    "observacoes": "Triagem simples para contraste."
+  },
+
+  {
+    "id": "cm-011",
+    "titulo": "Ambulatório - revisão de exames com dislipidemia",
+    "templateId": "clinica_medica",
+    "rawText": "ID: Sonia Regina, 52 anos. HD: Dislipidemia. QP: Retorno de exames. HMA: Veio para revisão de exames, sem queixas novas. Refere adesão irregular à dieta e dificuldade para atividade física. MUC: rosuvastatina 10 mg à noite. HP: sem internações. HF: pai com AVC. HV: sedentarismo, dieta rica em frituras. EXAMES: colesterol total 278, LDL 190, triglicerídeos 210, glicemia 96. EXAME FÍSICO: PA 132/84, IMC elevado, sem outras alterações descritas.",
+    "observacoes": "Caso de retorno de rotina."
+  },
+  {
+    "id": "cm-012",
+    "titulo": "Ambulatório - palpitações e ansiedade com pouca objetividade",
+    "templateId": "clinica_medica",
+    "rawText": "ID: Daniela, 29 anos. QP: Palpitações. HMA: Refere palpitações esporádicas há cerca de 1 mês, mais frequentes quando está ansiosa ou dorme mal. Nega dor no peito e nega síncope. MUC: nenhum. HV: café em excesso, sono ruim. EXAME FÍSICO: não realizado.",
+    "observacoes": "Caso com pouco dado, mas narrativa razoável."
+  },
+  {
+    "id": "upa-006",
+    "titulo": "UPA - febre e rigidez de nuca com exame incompleto",
+    "templateId": "upa_emergencia",
+    "rawText": "ID: Homem, 22 anos. QP: Febre e dor de cabeça. HMA: Febre alta desde ontem, cefaleia intensa e dor para mexer o pescoço. Refere um episódio de vômito. MUC: nenhum. EXAME FÍSICO: T 39,2, FC 112, PA 118/76. Sem descrição neurológica adicional.",
+    "observacoes": "Caso para ver sensibilidade estrutural alta."
+  },
+  {
+    "id": "ped-005",
+    "titulo": "Pediatria - diarreia aguda com sinais de hidratação descritos parcialmente",
+    "templateId": "pediatria",
+    "rawText": "ID: Criança 1 ano e 8 meses, acompanhada pela mãe. QP: Diarreia. HMA: Diarreia há 2 dias, 6 episódios no último dia, sem sangue, com vômito 1 vez ontem. Mantém aceitação parcial de líquidos e diurese diminuída segundo mãe. AP: sem doenças conhecidas. Vacinação em dia. MUC: soro de reidratação oral em casa. EXAME FÍSICO: sonolenta, mucosas levemente secas, FC 128, sem outros dados.",
+    "observacoes": "Pediatria aguda com hidratação parcial."
+  },
+  {
+    "id": "gin-004",
+    "titulo": "Ginecologia - amenorreia e dúvida gestacional",
+    "templateId": "ginecologia",
+    "rawText": "ID: Bruna, 24 anos. QP: Atraso menstrual. HMA: Atraso menstrual há 2 meses, náuseas matinais leves e sensibilidade mamária. História menstrual: ciclos antes regulares, DUM há cerca de 9 semanas. Vida sexual ativa. Método contraceptivo: interrompeu anticoncepcional há 4 meses. EXAME FÍSICO: não realizado.",
+    "observacoes": "Não deve inventar gestação como diagnóstico."
+  },
+  {
+    "id": "obs-005",
+    "titulo": "Obstetrícia - sangramento leve no primeiro trimestre",
+    "templateId": "obstetricia",
+    "rawText": "Gestante 30 anos, G2P1, 9 semanas por DUM, procura por pequeno sangramento vaginal há algumas horas. Nega dor forte. Nega febre. Usa ácido fólico. Nega alergias. Ao exame: PA 112/68, sem outros dados.",
+    "observacoes": "Obstetrícia inicial, dados parciais."
+  },
+  {
+    "id": "cm-013",
+    "titulo": "Ambulatório - edema de membros inferiores em idosa",
+    "templateId": "clinica_medica",
+    "rawText": "ID: Margarida, 71 anos, viúva. HD: HAS. QP: Inchaço nas pernas. HMA: Edema em membros inferiores há 1 mês, pior no fim do dia, melhora parcialmente ao elevar as pernas. Nega dor no peito e nega falta de ar ao repouso. MUC: losartana 50 mg 2x/dia. HP: varizes antigas. HV: sedentarismo. EXAME FÍSICO: edema ++/4 bilateral em MMII, PA 146/88, FC 76.",
+    "observacoes": "Caso clínico simples de ambulatório."
+  }
+]
