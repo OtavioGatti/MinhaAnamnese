@@ -29,6 +29,42 @@ function buildOutputSkeleton(templateConfig) {
     .join('\n');
 }
 
+function buildInterpretiveFieldRules(templateConfig) {
+  const sections = getTemplateSections(templateConfig).map((section) => String(section || ''));
+  const interpretiveSections = sections.filter((section) => {
+    const normalized = section
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .toLowerCase();
+
+    return (
+      normalized.includes('hipotese') ||
+      normalized.includes('problemas ativos') ||
+      normalized.includes('impressao clinica') ||
+      normalized === 'hd'
+    );
+  });
+
+  if (!interpretiveSections.length) {
+    return '';
+  }
+
+  return `CAMPOS INTERPRETATIVOS SENSÍVEIS
+
+Os campos abaixo exigem blindagem máxima contra inferência:
+${interpretiveSections.map((section) => `* ${section}`).join('\n')}
+
+Regras obrigatórias para esses campos:
+* Só preencher se o problema, diagnóstico, hipótese ou impressão estiver explicitamente declarado no texto original.
+* Não transformar sinais, sintomas ou queixas em doença.
+* Não converter dor torácica em angina, infarto ou síndrome coronariana se isso não estiver escrito.
+* Não converter tontura em distúrbio vestibular se isso não estiver escrito.
+* Não converter parestesia, cefaleia ou déficit referido em AVC, AIT ou outra hipótese se isso não estiver escrito.
+* Não criar "impressão clínica inicial" interpretativa além do que foi dito.
+* Não completar duração, antecedentes ou detalhes ausentes.
+* Se não houver base textual explícita para preencher esses campos, usar [INFORMAÇÃO INSUFICIENTE].`;
+}
+
 function buildClinicalWritingRules() {
   return `REGRAS DE REDAÇÃO CLÍNICA
 
@@ -37,6 +73,10 @@ function buildClinicalWritingRules() {
 * Não adicionar dados sociodemográficos ausentes.
 * Não adicionar negativas não mencionadas.
 * Não criar antecedentes, hipóteses ou condutas ausentes.
+* Não inferir diagnóstico.
+* Não inferir hipótese.
+* Não inferir impressão clínica.
+* Não transformar sinais ou sintomas em doença.
 * Pode reorganizar e sintetizar com fidelidade.
 * Pode converter linguagem leiga em linguagem médica equivalente, sem alterar o sentido.
 * Preferir construções clínicas naturais como "Paciente refere", "Relata" e "Informa" quando isso melhorar a fluidez.
@@ -74,6 +114,8 @@ REGRAS CRÍTICAS
 
 ${buildClinicalWritingRules()}
 
+${buildInterpretiveFieldRules(templateConfig)}
+
 ETAPA 2 - ESTRUTURAÇÃO
 
 Organize o texto exatamente nas seções do template selecionado:
@@ -89,6 +131,7 @@ REGRAS DE ESTRUTURA
 * Não inferir conteúdo.
 * Não criar nenhuma seção fora da lista acima.
 * Manter os títulos das seções exatamente na ordem definida.
+* Se uma seção pedir hipóteses diagnósticas, problemas ativos ou impressão clínica e isso não estiver explicitamente no texto, usar [INFORMAÇÃO INSUFICIENTE].
 
 CONTEXTO
 
@@ -124,6 +167,9 @@ REGRAS OBRIGATÓRIAS
 - Não inventar informações
 - Não inferir dados ausentes
 - Não sugerir diagnósticos ou condutas
+- Não inferir hipótese diagnóstica
+- Não inferir impressão clínica
+- Não transformar sinal ou sintoma em doença
 - Não completar automaticamente campos
 - Se a informação não estiver presente, escrever: "Não informado"
 - Preservar todos os dados relevantes do texto original
@@ -140,6 +186,7 @@ FORMATAÇÃO
 - Não adicionar seções extras
 - Não remover seções do modelo
 - Escrever sempre em parágrafo dentro dos itens e não em tópicos
+- Em campos como HD, só escrever algo se estiver explicitamente sustentado pelo texto; caso contrário, usar "[INFORMAÇÃO INSUFICIENTE]"
 
 ESTRUTURA OBRIGATÓRIA
 ${buildStructureInstructions(templateConfig)}
