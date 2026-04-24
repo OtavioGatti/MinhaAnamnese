@@ -143,8 +143,69 @@ async function listRecentAnamneseMetrics(userId) {
   ));
 }
 
+async function listAnamneseScoresForStats(userId) {
+  if (!isValidUserId(userId)) {
+    return [];
+  }
+
+  const { url, serviceRoleKey } = getSupabaseAdminConfig();
+
+  if (!url || !serviceRoleKey) {
+    return [];
+  }
+
+  const pageSize = 1000;
+  const results = [];
+  let offset = 0;
+
+  while (true) {
+    const query = new URLSearchParams({
+      select: 'score,created_at',
+      user_id: `eq.${userId}`,
+      order: 'created_at.desc',
+      limit: String(pageSize),
+      offset: String(offset),
+    });
+
+    const response = await fetch(`${url}/rest/v1/anamneses?${query.toString()}`, {
+      method: 'GET',
+      headers: {
+        apikey: serviceRoleKey,
+        Authorization: `Bearer ${serviceRoleKey}`,
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error('failed to fetch anamneses stats');
+    }
+
+    const json = await response.json();
+
+    if (!Array.isArray(json) || json.length === 0) {
+      break;
+    }
+
+    results.push(
+      ...json.filter((item) => (
+        item &&
+        typeof item.score === 'number' &&
+        !Number.isNaN(item.score) &&
+        typeof item.created_at === 'string'
+      )),
+    );
+
+    if (json.length < pageSize) {
+      break;
+    }
+
+    offset += pageSize;
+  }
+
+  return results;
+}
+
 async function getAnamneseStats(userId) {
-  const anamneses = await listRecentAnamneseMetrics(userId);
+  const anamneses = await listAnamneseScoresForStats(userId);
 
   if (!anamneses.length) {
     return {

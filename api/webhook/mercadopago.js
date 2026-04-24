@@ -36,6 +36,10 @@ function getMercadoPagoWebhookSecret() {
   );
 }
 
+function isProductionEnvironment() {
+  return process.env.NODE_ENV === 'production';
+}
+
 function getSupabaseConfig() {
   return {
     url: process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL,
@@ -88,8 +92,9 @@ function isMercadoPagoWebhookSignatureValid(req, paymentId) {
 
   if (!secret) {
     return {
-      valid: true,
+      valid: !isProductionEnvironment(),
       enforced: false,
+      missingSecret: true,
     };
   }
 
@@ -107,6 +112,7 @@ function isMercadoPagoWebhookSignatureValid(req, paymentId) {
     return {
       valid: false,
       enforced: true,
+      missingSecret: false,
     };
   }
 
@@ -123,6 +129,7 @@ function isMercadoPagoWebhookSignatureValid(req, paymentId) {
     return {
       valid: false,
       enforced: true,
+      missingSecret: false,
     };
   }
 
@@ -132,6 +139,7 @@ function isMercadoPagoWebhookSignatureValid(req, paymentId) {
       Buffer.from(normalizedExpected),
     ),
     enforced: true,
+    missingSecret: false,
   };
 }
 
@@ -273,6 +281,14 @@ module.exports = async function handler(req, res) {
   }
 
   const signatureCheck = isMercadoPagoWebhookSignatureValid(req, paymentId);
+
+  if (signatureCheck.missingSecret && isProductionEnvironment()) {
+    logBillingError('mercado pago webhook secret missing in production', {
+      paymentId: String(paymentId),
+    });
+
+    return res.status(503).json({ success: false, error: 'webhook_config_unavailable' });
+  }
 
   if (!signatureCheck.valid) {
     logBillingError('invalid mercado pago webhook signature', {

@@ -3,6 +3,7 @@ const { getTemplateById } = require('./templates');
 const { calculateAnamnesisQualityScore } = require('../utils/anamnesisQualityScore');
 const { buildStructurePrompt } = require('../prompts/structurePrompt');
 const { getLatestAnamneseMetric, registerAnamneseMetric } = require('./anamneseMetrics');
+const { getTextLimitError } = require('../utils/requestLimits');
 const { sanitizeText } = require('../utils/textSanitization');
 
 function validateProcessAnamnesisInput(payload) {
@@ -14,6 +15,12 @@ function validateProcessAnamnesisInput(payload) {
 
   if (!texto || typeof texto !== 'string' || !texto.trim()) {
     return 'O texto não pode estar vazio.';
+  }
+
+  const textLimitError = getTextLimitError(texto, 'texto da anamnese');
+
+  if (textLimitError) {
+    return textLimitError.message;
   }
 
   return null;

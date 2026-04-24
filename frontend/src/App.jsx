@@ -994,7 +994,6 @@ function App() {
       const response = await api.post('/organizar', {
         template: templateSelecionado,
         texto,
-        userId: user?.id || null,
       });
 
       if (response.success) {
@@ -1101,7 +1100,6 @@ function App() {
       const response = await api.post('/insights', {
         texto: targetResultado,
         templateId: templateSelecionado,
-        userId: user?.id || null,
       });
 
       if (response.success) {
@@ -1114,7 +1112,7 @@ function App() {
         trackEvent('insight_gerado', {
           template: templateSelecionado,
           text_length: targetResultado.trim().length,
-          score: qualityScore.score,
+          score: normalizedQualityScore.score,
           is_pro: isPro,
         });
       } else {
@@ -2097,7 +2095,7 @@ function App() {
       )}
 
       <footer className="footer">
-        <p>Minha Anamnese &middot; Apoio à padronização clínica &middot; A anamnese não é armazenada; métricas agregadas podem ser registradas</p>
+        <p>Minha Anamnese &middot; Apoio à padronização clínica &middot; Evite dados identificáveis; o texto é processado por IA e não é salvo como prontuário</p>
       </footer>
 
       <FreeInsightConfirmModal

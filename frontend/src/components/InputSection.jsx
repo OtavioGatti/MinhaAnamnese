@@ -78,7 +78,7 @@ function InputSection({
         )}
 
         <div className="field-helper input-privacy-copy">
-          {'O texto da anamnese n\u00e3o \u00e9 armazenado. M\u00e9tricas agregadas de uso e evolu\u00e7\u00e3o podem ser registradas.'}
+          {'Evite dados identific\u00e1veis. O texto \u00e9 processado por IA para gerar a organiza\u00e7\u00e3o e n\u00e3o \u00e9 salvo como prontu\u00e1rio.'}
         </div>
       </div>
 

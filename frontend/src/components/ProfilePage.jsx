@@ -276,9 +276,9 @@ function ProfilePage({
             </div>
 
             <div className="profile-privacy-list">
-              <div className="profile-privacy-item">A anamnese nao e armazenada pelo produto.</div>
-              <div className="profile-privacy-item">Metricas agregadas de uso e evolucao podem ser registradas.</div>
               <div className="profile-privacy-item">Evite inserir dados identificaveis do paciente no texto.</div>
+              <div className="profile-privacy-item">O texto e processado por IA para gerar a organizacao e a analise.</div>
+              <div className="profile-privacy-item">O produto nao salva o texto como prontuario; metricas agregadas de uso e evolucao podem ser registradas.</div>
               <div className="profile-privacy-item">Espaco preparado para politica de privacidade e controles adicionais no futuro.</div>
             </div>
           </section>

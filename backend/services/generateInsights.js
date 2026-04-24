@@ -4,6 +4,7 @@ const { buildInsightPrompt } = require('../prompts/insightPrompt');
 const { calculateAnamnesisQualityScore } = require('../utils/anamnesisQualityScore');
 const { updateUserHistory } = require('../utils/userHistory');
 const { parseAIResponse } = require('../utils/parseAIResponse');
+const { getTextLimitError } = require('../utils/requestLimits');
 const { sanitizeText } = require('../utils/textSanitization');
 
 const DEBUG_MODE = process.env.DEBUG_INSIGHTS === 'true';
@@ -186,6 +187,12 @@ function validateGenerateInsightsInput(payload) {
 
   if (!texto || typeof texto !== 'string' || !texto.trim()) {
     return 'Texto invÃ¡lido';
+  }
+
+  const textLimitError = getTextLimitError(texto, 'texto da anamnese');
+
+  if (textLimitError) {
+    return textLimitError.message;
   }
 
   if (!templateId || typeof templateId !== 'string' || !getTemplateById(templateId)) {

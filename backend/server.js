@@ -14,9 +14,28 @@ const mercadoPagoWebhookHandler = require('../api/webhook/mercadopago');
 const app = express();
 const PORT = process.env.PORT || 3001;
 const FRONTEND_URL = process.env.FRONTEND_URL || '*';
+const JSON_BODY_LIMIT = process.env.JSON_BODY_LIMIT || '1mb';
 
-app.use(cors({ origin: FRONTEND_URL, credentials: true }));
-app.use(express.json({ limit: '10mb' }));
+app.set('trust proxy', 1);
+app.use(cors({ origin: FRONTEND_URL, credentials: FRONTEND_URL !== '*' }));
+app.use(express.json({ limit: JSON_BODY_LIMIT }));
+app.use((error, _req, res, next) => {
+  if (error?.type === 'entity.too.large') {
+    return res.status(413).json({
+      success: false,
+      error: 'Payload muito grande. Reduza o texto enviado e tente novamente.',
+    });
+  }
+
+  if (error instanceof SyntaxError && 'body' in error) {
+    return res.status(400).json({
+      success: false,
+      error: 'JSON inválido na requisição.',
+    });
+  }
+
+  return next(error);
+});
 
 function mountRoute(path, handler) {
   app.all(path, async (req, res) => {
