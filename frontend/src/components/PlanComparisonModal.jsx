@@ -1,3 +1,6 @@
+const PLAN_PRICE_COPY = 'R$ 9,90';
+const PLAN_PERIOD_COPY = '30 dias';
+
 function PlanComparisonModal({ open, loading, onClose, onConfirm }) {
   if (!open) {
     return null;
@@ -15,8 +18,8 @@ function PlanComparisonModal({ open, loading, onClose, onConfirm }) {
         <div className="app-modal-header">
           <div>
             <span className="workspace-kicker">Planos</span>
-            <h2 id="plan-comparison-title">Escolha como voce quer evoluir sua revisao clinica</h2>
-            <p>Veja claramente o que voce ja ganhou e o que o plano profissional destrava antes de seguir para o checkout.</p>
+            <h2 id="plan-comparison-title">Libere a analise completa por {PLAN_PRICE_COPY}</h2>
+            <p>Veja exatamente o que muda na sua revisao clinica antes de seguir para o checkout.</p>
           </div>
           <button type="button" className="btn btn-secundario" onClick={onClose}>
             Fechar
@@ -36,7 +39,13 @@ function PlanComparisonModal({ open, loading, onClose, onConfirm }) {
           </section>
 
           <section className="plan-comparison-column featured">
-            <span className="plan-comparison-badge pro">Plano profissional</span>
+            <div className="plan-comparison-featured-top">
+              <span className="plan-comparison-badge pro">Plano profissional</span>
+              <div className="plan-comparison-price">
+                <strong>{PLAN_PRICE_COPY}</strong>
+                <span>{PLAN_PERIOD_COPY}</span>
+              </div>
+            </div>
             <h3>Para revisar melhor e evoluir mais rapido</h3>
             <ul>
               <li>analise completa de cada caso</li>
@@ -49,7 +58,12 @@ function PlanComparisonModal({ open, loading, onClose, onConfirm }) {
         </div>
 
         <div className="plan-comparison-highlight">
-          Mais escolhido por quem quer melhorar a qualidade da coleta clinica
+          Mais escolhido por quem quer transformar cada anamnese em uma oportunidade clara de evolucao.
+        </div>
+
+        <div className="plan-comparison-reassurance">
+          <strong>Por que costuma valer a pena?</strong>
+          <span>Um unico caso melhor revisado ja pode economizar tempo, reduzir retrabalho e mostrar exatamente o que perguntar melhor na proxima coleta.</span>
         </div>
 
         <div className="app-modal-actions">
@@ -57,7 +71,7 @@ function PlanComparisonModal({ open, loading, onClose, onConfirm }) {
             Ainda nao
           </button>
           <button type="button" className="btn btn-primario" onClick={onConfirm} disabled={loading}>
-            {loading ? 'Abrindo checkout...' : 'Quero liberar minha analise completa'}
+            {loading ? 'Abrindo checkout...' : `Liberar por ${PLAN_PRICE_COPY}`}
           </button>
         </div>
       </div>

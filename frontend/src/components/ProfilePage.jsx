@@ -68,6 +68,10 @@ function getPlanLabel(accessState) {
 
 function getPlanSummary(accessState) {
   if (accessState?.hasActiveProAccess) {
+    if (!accessState.planExpiresAt) {
+      return 'Acesso profissional ativo.';
+    }
+
     return `Acesso profissional ativo ate ${formatPlanExpiry(accessState.planExpiresAt)}.`;
   }
 
@@ -88,14 +92,14 @@ function getPlanDescription(accessState) {
   }
 
   if (accessState?.billingStatus === 'expired') {
-    return 'A organizacao continua liberada, mas a analise completa voltou a ficar indisponivel.';
+    return 'A organizacao continua liberada. Reative o profissional por R$ 9,90 para recuperar a analise completa por 30 dias.';
   }
 
   if (accessState?.hasFreeFullInsightAvailable) {
-    return 'Voce ainda tem 1 analise completa gratis para experimentar antes de decidir pelo plano profissional.';
+    return 'Voce ainda tem 1 analise completa gratis para experimentar. Depois, o profissional custa R$ 9,90 por 30 dias.';
   }
 
-  return 'A organizacao da anamnese continua liberada. Quando quiser aprofundar a revisao, voce pode destravar a analise completa.';
+  return 'A organizacao da anamnese continua liberada. Quando quiser aprofundar a revisao, destrave a analise completa por R$ 9,90.';
 }
 
 function getFreeInsightLabel(accessState) {
@@ -231,8 +235,8 @@ function ProfilePage({
                     {loadingCheckout
                       ? 'Abrindo checkout...'
                       : accessState?.billingStatus === 'expired'
-                        ? 'Reativar plano profissional'
-                        : 'Quero liberar minha analise completa'}
+                        ? 'Reativar por R$ 9,90'
+                        : 'Liberar analise completa por R$ 9,90'}
                   </button>
                   {checkoutError ? <div className="topbar-auth-error">{checkoutError}</div> : null}
                 </>

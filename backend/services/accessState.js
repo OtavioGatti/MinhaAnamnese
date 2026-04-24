@@ -37,11 +37,15 @@ function shouldUseLegacyMetadataFallback(user, profile) {
     return true;
   }
 
-  return (
-    normalizePlan(profile.current_plan) !== 'pro' &&
-    normalizeBillingStatus(profile.billing_status) === 'inactive' &&
-    !normalizePlanExpiresAt(profile.plan_expires_at)
-  );
+  if (normalizeBillingStatus(profile.billing_status) !== 'inactive') {
+    return false;
+  }
+
+  if (normalizePlanExpiresAt(profile.plan_expires_at)) {
+    return false;
+  }
+
+  return true;
 }
 
 function resolveUserAccessState({ user, profile }) {

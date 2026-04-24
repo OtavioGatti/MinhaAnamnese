@@ -21,6 +21,8 @@ const TEMPLATE_WITH_CALCULATORS = 'obstetricia';
 const CHECKOUT_RETURN_STATE_KEY = 'checkout-return-state';
 const TRACKING_SESSION_ID_KEY = 'tracking-session-id';
 const DEBUG_MODE = false;
+const PRO_PLAN_PRICE_COPY = 'R$ 9,90';
+const PRO_PLAN_PERIOD_COPY = '30 dias';
 const DEFAULT_TEXT_PLACEHOLDER =
   'Ex: Paciente feminina, 32 anos, com dor abdominal há 2 dias, associada a náuseas, sem vômitos...';
 
@@ -183,7 +185,6 @@ function deriveAccessState(user, profile) {
   const expiredByDate = planExpiresAt ? new Date(planExpiresAt).getTime() <= Date.now() : false;
   const hasLegacyMetadataAccess =
     normalizePlan(user?.user_metadata?.plan) === 'pro' &&
-    currentPlan !== 'pro' &&
     billingStatus === 'inactive' &&
     !planExpiresAt;
   const hasActiveProAccess =
@@ -227,9 +228,9 @@ function getPaywallUiConfig(user, accessState) {
     return {
       title: 'Você ganhou 1 análise completa grátis',
       description:
-        'Use agora para ver como o sistema identifica lacunas, impacto na leitura clínica e o próximo passo mais útil para este caso.',
+        `Use agora para ver como o sistema identifica lacunas, impacto na leitura clínica e o próximo passo mais útil. Depois, continue por ${PRO_PLAN_PRICE_COPY} a cada ${PRO_PLAN_PERIOD_COPY}.`,
       buttonLabel: 'Usar minha análise grátis',
-      highlights: ['Justificativa da nota', 'Principal lacuna do caso', 'Ação prática para a próxima coleta'],
+      highlights: ['Justificativa da nota', 'Principal lacuna do caso', `Plano profissional por ${PRO_PLAN_PRICE_COPY}`],
     };
   }
 
@@ -237,18 +238,18 @@ function getPaywallUiConfig(user, accessState) {
     return {
       title: 'Seu acesso profissional expirou',
       description:
-        'A organização continua liberada, mas a análise completa ficou indisponível até a reativação do plano.',
-      buttonLabel: 'Reativar plano profissional',
-      highlights: ['Análise completa dos casos', 'Próximo passo clínico', 'Evolução do seu histórico'],
+        `A organização continua liberada. Reative por ${PRO_PLAN_PRICE_COPY} para recuperar a análise completa por ${PRO_PLAN_PERIOD_COPY}.`,
+      buttonLabel: `Reativar por ${PRO_PLAN_PRICE_COPY}`,
+      highlights: ['Análise completa dos casos', 'Próximo passo clínico', `Acesso por ${PRO_PLAN_PERIOD_COPY}`],
     };
   }
 
   return {
     title: 'Desbloqueie a análise completa',
     description:
-      'Sua anamnese já está organizada. Agora veja a principal lacuna do caso, o impacto na leitura clínica e o próximo passo para evoluir sua coleta.',
-    buttonLabel: 'Desbloquear análise completa',
-    highlights: ['Principal lacuna do caso', 'Impacto na leitura clínica', 'Próximo passo para evoluir sua coleta'],
+      `Sua anamnese já está organizada. Por ${PRO_PLAN_PRICE_COPY}, veja a principal lacuna, o impacto na leitura clínica e o próximo passo para evoluir sua coleta nos próximos ${PRO_PLAN_PERIOD_COPY}.`,
+    buttonLabel: `Desbloquear por ${PRO_PLAN_PRICE_COPY}`,
+    highlights: ['Principal lacuna do caso', 'Impacto na leitura clínica', `${PRO_PLAN_PRICE_COPY} por ${PRO_PLAN_PERIOD_COPY}`],
   };
 }
 
@@ -1201,6 +1202,15 @@ function App() {
     setPlanComparisonState({ open: true, origin });
   };
 
+  const handleAnalysisAccessAction = async (origin = 'home') => {
+    if (accessState?.hasActiveProAccess && resultado && templateSelecionado) {
+      await handleGerarInsights();
+      return;
+    }
+
+    handleUpgradeInsights(origin);
+  };
+
   const handleConfirmFreeInsight = async () => {
     setFreeInsightConfirmState((current) => ({
       ...current,
@@ -1973,14 +1983,7 @@ function App() {
                   improvementBoxCopy={improvementBoxCopy}
                   improvementButtonLabel={improvementButtonLabel}
                   onMelhorarAnamnese={handleMelhorarAnamnese}
-                  onPaywallAction={() => {
-                    if (user && (accessState?.hasActiveProAccess || accessState?.hasFreeFullInsightAvailable)) {
-                      handleUpgradeInsights('home');
-                      return;
-                    }
-
-                    handleUpgradeInsights('home');
-                  }}
+                  onPaywallAction={() => handleAnalysisAccessAction('home')}
                   paywallTitle={paywallUi.title}
                   paywallDescription={paywallUi.description}
                   paywallButtonLabel={paywallUi.buttonLabel}
@@ -2019,7 +2022,7 @@ function App() {
                   shouldShowPaywall={shouldShowPaywall}
                   performanceMessage={performanceMessage}
                   relevantGapsCount={relevantGapsCount}
-                  onPaywallAction={() => handleUpgradeInsights('home')}
+                  onPaywallAction={() => handleAnalysisAccessAction('home')}
                   loadingCheckout={isHomeCheckoutLoading}
                   checkoutError={homeCheckoutError}
                   paywallTitle={paywallUi.title}
