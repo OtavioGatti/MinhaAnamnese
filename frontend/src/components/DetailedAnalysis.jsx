@@ -1,3 +1,31 @@
+function cleanInsightSegment(value) {
+  return String(value || '').replace(/\s+/g, ' ').trim();
+}
+
+function parseCriticalInsight(insightText) {
+  const parts = String(insightText || '')
+    .split('->')
+    .map((part) => cleanInsightSegment(part))
+    .filter(Boolean);
+
+  if (parts.length < 3) {
+    return {
+      point: cleanInsightSegment(insightText),
+      readingImpact: '',
+    };
+  }
+
+  return {
+    point: parts[0].replace(/^FALHA\s*/i, '').trim(),
+    readingImpact: [
+      parts[1].replace(/^CONSEQUENCIA NA LEITURA\s*/i, '').trim(),
+      parts[2].replace(/^IMPACTO NA QUALIDADE\s*/i, '').trim(),
+    ]
+      .filter(Boolean)
+      .join(' '),
+  };
+}
+
 function DetailedAnalysis({
   aberto,
   onToggle,
@@ -7,6 +35,8 @@ function DetailedAnalysis({
   insightPrincipalSection,
   secondaryGaps,
 }) {
+  const criticalReading = parseCriticalInsight(insightPrincipalSection);
+
   return (
     <div className="card section-secondary">
       <button
@@ -49,7 +79,10 @@ function DetailedAnalysis({
 
               <div className="detailed-analysis-block">
                 <h3 className="detailed-analysis-title">Ponto crítico</h3>
-                <div className="resultado">{insightPrincipalSection}</div>
+                <div className="resultado">
+                  <div>{criticalReading.point || insightPrincipalSection}</div>
+                  {criticalReading.readingImpact ? <div>{criticalReading.readingImpact}</div> : null}
+                </div>
               </div>
 
               {Array.isArray(secondaryGaps) && secondaryGaps.length > 0 ? (

@@ -51,7 +51,7 @@ function StructuralFeedback({
         <div>
           <h2>Como elevar a qualidade da sua anamnese</h2>
           <p className="card-subtitle">
-            Entenda onde a estrutura perdeu força, o impacto disso na leitura clínica e qual ajuste mais aumenta a qualidade da próxima coleta.
+            Entenda onde a estrutura perdeu força, o impacto disso na leitura clínica e qual ajuste mais melhora a próxima coleta.
           </p>
         </div>
       </div>
@@ -141,7 +141,7 @@ function StructuralFeedback({
             <strong>{loadingInsights ? 'Gerando leitura estrutural' : 'Análise ainda indisponível'}</strong>
             <span>
               {loadingInsights
-                ? 'Estamos preparando a nota, as falhas principais e a ação com maior ganho para a próxima coleta.'
+                ? 'Estamos preparando a nota, a principal lacuna e o ajuste com maior impacto para a próxima coleta.'
                 : qualityScore.message || 'Gere a análise para ver onde a estrutura enfraqueceu e o que vale corrigir primeiro.'}
             </span>
           </div>
@@ -161,7 +161,7 @@ function StructuralFeedback({
               </button>
             </div>
             <span className="feedback-helper-copy">
-              Veja as lacunas mais relevantes e receba uma orientação mais clara para a próxima coleta.
+              Veja a leitura estrutural completa e receba uma orientação mais clara para a próxima coleta.
             </span>
           </>
         )}
