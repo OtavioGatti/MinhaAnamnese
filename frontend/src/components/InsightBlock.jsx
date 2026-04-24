@@ -88,6 +88,7 @@ function InsightBlock({
   paywallTitle,
   paywallDescription,
   paywallButtonLabel,
+  paywallHighlights = [],
 }) {
   const gapsLabel = `${relevantGapsCount} ${relevantGapsCount === 1 ? 'lacuna relevante' : 'lacunas relevantes'}`;
   const structuredAction = parseStructuredAction(insightPrincipalSection);
@@ -150,6 +151,14 @@ function InsightBlock({
 
             <div className="insight-paywall-label">{paywallTitle}</div>
             <div className="feedback-helper-copy">{paywallDescription}</div>
+
+            {paywallHighlights.length > 0 ? (
+              <ul className="insight-paywall-list">
+                {paywallHighlights.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            ) : null}
 
             <button
               className="btn btn-secundario insight-paywall-button"

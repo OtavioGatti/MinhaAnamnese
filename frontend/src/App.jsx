@@ -3,14 +3,17 @@ import { api } from './apiClient';
 import { API_BASE_URL } from './config';
 import DetailedAnalysis from './components/DetailedAnalysis';
 import EvolutionPage from './components/EvolutionPage';
+import FreeInsightConfirmModal from './components/FreeInsightConfirmModal';
 import InputSection from './components/InputSection';
 import InsightBlock from './components/InsightBlock';
+import PlanComparisonModal from './components/PlanComparisonModal';
 import ProfilePage from './components/ProfilePage';
 import StructuralFeedback from './components/StructuralFeedback';
 import StructuredOutput from './components/StructuredOutput';
 import TemplatesPage from './components/TemplatesPage';
 import UserEvolution from './components/UserEvolution';
 import WorkspaceSidebar from './components/WorkspaceSidebar';
+import CheckoutSuccessBanner from './components/CheckoutSuccessBanner';
 import { guides } from './data/guides';
 import { supabase } from './lib/supabaseClient';
 
@@ -204,40 +207,66 @@ function getPaywallUiConfig(user, accessState) {
   if (!user) {
     return {
       title: 'Entre para liberar a análise completa',
-      description: 'A organização continua disponível sem login. Entre na sua conta para testar a análise completa e acompanhar seu acesso.',
-      buttonLabel: 'Entrar para analisar',
+      description:
+        'Seu resultado estruturado já está pronto. Faça login para ver onde a anamnese perdeu força e qual ajuste mais melhora a próxima coleta.',
+      buttonLabel: 'Entrar para continuar',
+      highlights: ['Leitura completa da anamnese', 'Principal lacuna do caso', 'Próximo passo mais útil'],
     };
   }
 
   if (accessState?.hasActiveProAccess) {
     return {
-      title: 'Análise completa disponível',
-      description: 'Veja nota, lacunas mais relevantes, impacto documental e o próximo passo mais útil para a próxima coleta.',
+      title: 'Análise completa liberada',
+      description: 'Veja a leitura detalhada do caso e use o feedback para melhorar sua próxima coleta.',
       buttonLabel: 'Ver análise completa',
+      highlights: ['Justificativa da nota', 'Ponto crítico do caso', 'Próximo passo clínico'],
     };
   }
 
   if (accessState?.hasFreeFullInsightAvailable) {
     return {
-      title: 'Você tem 1 análise completa grátis para experimentar',
-      description: 'Use sua análise grátis para ver nota, lacunas relevantes, impacto documental e o próximo passo mais útil.',
+      title: 'Você ganhou 1 análise completa grátis',
+      description:
+        'Use agora para ver como o sistema identifica lacunas, impacto na leitura clínica e o próximo passo mais útil para este caso.',
       buttonLabel: 'Usar minha análise grátis',
+      highlights: ['Justificativa da nota', 'Principal lacuna do caso', 'Ação prática para a próxima coleta'],
     };
   }
 
   if (accessState?.billingStatus === 'expired') {
     return {
       title: 'Seu acesso profissional expirou',
-      description: 'Seu resultado estruturado já está pronto. Reative o plano para voltar a ver a análise completa com lacunas, impacto e próximo passo clínico.',
+      description:
+        'A organização continua liberada, mas a análise completa ficou indisponível até a reativação do plano.',
       buttonLabel: 'Reativar plano profissional',
+      highlights: ['Análise completa dos casos', 'Próximo passo clínico', 'Evolução do seu histórico'],
     };
   }
 
   return {
-    title: 'Seu resultado estruturado já está pronto',
-    description: 'Desbloqueie a análise completa para ver lacunas, impacto e próximo passo clínico.',
+    title: 'Desbloqueie a análise completa',
+    description:
+      'Sua anamnese já está organizada. Agora veja a principal lacuna do caso, o impacto na leitura clínica e o próximo passo para evoluir sua coleta.',
     buttonLabel: 'Desbloquear análise completa',
+    highlights: ['Principal lacuna do caso', 'Impacto na leitura clínica', 'Próximo passo para evoluir sua coleta'],
   };
+}
+
+function isPlanExpiringSoon(value, thresholdInDays = 5) {
+  if (!value) {
+    return false;
+  }
+
+  const expiresAt = new Date(value);
+
+  if (Number.isNaN(expiresAt.getTime())) {
+    return false;
+  }
+
+  const diffMs = expiresAt.getTime() - Date.now();
+  const diffDays = diffMs / 86400000;
+
+  return diffDays > 0 && diffDays <= thresholdInDays;
 }
 
 function getTodayUtcDate() {
@@ -552,6 +581,10 @@ function App() {
   const [recentAnamneses, setRecentAnamneses] = useState([]);
   const [latestScoreComparison, setLatestScoreComparison] = useState(null);
   const [qualityScore, setQualityScore] = useState(() => createEmptyQualityScore());
+  const [planComparisonState, setPlanComparisonState] = useState({ open: false, origin: 'home' });
+  const [freeInsightConfirmState, setFreeInsightConfirmState] = useState({ open: false, origin: 'home' });
+  const [checkoutSuccessBannerVisible, setCheckoutSuccessBannerVisible] = useState(false);
+  const [currentInsightsUnlocked, setCurrentInsightsUnlocked] = useState(false);
 
   const templateTemCalculadora = templateSelecionado === TEMPLATE_WITH_CALCULATORS;
   const accessState = useMemo(() => deriveAccessState(user, profile), [profile, user]);
@@ -682,6 +715,7 @@ function App() {
         setTexto(returnState.texto || '');
         setResultado(returnState.resultado || '');
         setQualityScore(normalizeQualityScorePayload(returnState.qualityScore));
+        setCurrentPage(returnState.page || 'home');
       }
 
       const {
@@ -699,6 +733,7 @@ function App() {
       const nextUrl = new URL(window.location.href);
       nextUrl.searchParams.delete('checkout');
       window.history.replaceState({}, '', nextUrl.toString());
+      setCheckoutSuccessBannerVisible(true);
       clearCheckoutReturnState();
     }
 
@@ -913,6 +948,7 @@ function App() {
     const novoTemplate = e.target.value;
     setTemplateSelecionado(novoTemplate);
     setActiveSidebarTab('guide');
+    setCurrentInsightsUnlocked(false);
   };
 
   const handleNavigate = (page) => {
@@ -940,6 +976,7 @@ function App() {
     setResultado('');
     setLatestScoreComparison(null);
     setQualityScore(createEmptyQualityScore());
+    setCurrentInsightsUnlocked(false);
 
     if (!templateSelecionado) {
       setErro('Selecione um modelo clínico para continuar.');
@@ -989,6 +1026,7 @@ function App() {
     setErro('');
     setInsightError('');
     setActiveSidebarTab('guide');
+    setCurrentInsightsUnlocked(false);
     trackedEventsRef.current.clear();
   };
 
@@ -1069,6 +1107,7 @@ function App() {
       if (response.success) {
         const normalizedQualityScore = normalizeQualityScorePayload(response.data);
         setQualityScore(normalizedQualityScore);
+        setCurrentInsightsUnlocked(true);
         if (response.data?.profile) {
           setProfile(response.data.profile);
         }
@@ -1083,16 +1122,18 @@ function App() {
           setProfile(response.data.profile);
         }
         setQualityScore(createEmptyQualityScore());
+        setCurrentInsightsUnlocked(false);
         setInsightError(getFriendlyInsightsError(response));
       }
     } catch (_err) {
+      setCurrentInsightsUnlocked(false);
       setInsightError('A análise não ficou disponível agora. Seu resultado estruturado continua pronto para uso.');
     } finally {
       setLoadingInsights(false);
     }
   };
 
-  const handleUpgradeInsights = async (origin = 'home') => {
+  const startCheckoutFlow = async (origin = 'home') => {
     if (!user?.id || !user?.email) {
       setAuthPanelAberto(true);
       setAuthMode('login');
@@ -1117,6 +1158,7 @@ function App() {
       is_pro: isPro,
     });
     saveCheckoutReturnState({
+      page: origin === 'profile' ? 'profile' : currentPage,
       templateSelecionado,
       texto,
       resultado,
@@ -1139,6 +1181,43 @@ function App() {
         }));
         setCheckoutLoadingOrigin(null);
       });
+  };
+
+  const handleUpgradeInsights = (origin = 'home') => {
+    if (!user?.id || !user?.email) {
+      setAuthPanelAberto(true);
+      setAuthMode('login');
+      setAuthError('');
+      setCheckoutErrors((current) => ({
+        ...current,
+        [origin]: '',
+      }));
+      return;
+    }
+
+    if (origin === 'home' && accessState?.hasFreeFullInsightAvailable && resultado && templateSelecionado) {
+      setFreeInsightConfirmState({ open: true, origin });
+      return;
+    }
+
+    setPlanComparisonState({ open: true, origin });
+  };
+
+  const handleConfirmFreeInsight = async () => {
+    setFreeInsightConfirmState((current) => ({
+      ...current,
+      open: false,
+    }));
+    await handleGerarInsights();
+  };
+
+  const handleConfirmPlanComparison = async () => {
+    const origin = planComparisonState.origin || 'home';
+    setPlanComparisonState((current) => ({
+      ...current,
+      open: false,
+    }));
+    await startCheckoutFlow(origin);
   };
 
   const resetAuthFormState = () => {
@@ -1345,13 +1424,15 @@ function App() {
   const isHomeCheckoutLoading = checkoutLoadingOrigin === 'home';
   const isProfileCheckoutLoading = checkoutLoadingOrigin === 'profile';
   const paywallUi = getPaywallUiConfig(user, accessState);
+  const isProExpiringSoon = accessState?.hasActiveProAccess && isPlanExpiringSoon(accessState?.planExpiresAt);
   const canRequestInsights = Boolean(
     user &&
     (accessState?.hasActiveProAccess || accessState?.hasFreeFullInsightAvailable) &&
     resultado &&
     templateSelecionado
   );
-  const shouldShowPaywall = hasFinalInterpretation && !accessState?.hasActiveProAccess;
+  const shouldShowPaywall =
+    hasFinalInterpretation && !accessState?.hasActiveProAccess && !currentInsightsUnlocked;
   const analysisInputSection = qualityScore.justification;
   const summarizedScoreJustification = qualityScore.message;
   const insightPrincipalSection = qualityScore.criticalInsight;
@@ -1564,20 +1645,13 @@ function App() {
             <button
               type="button"
               className="btn btn-primario"
-              onClick={() => {
-                if (accessState?.hasFreeFullInsightAvailable && resultado && templateSelecionado) {
-                  handleGerarInsights();
-                  return;
-                }
-
-                handleUpgradeInsights('home');
-              }}
+              onClick={() => handleUpgradeInsights('home')}
               disabled={isHomeCheckoutLoading}
             >
               {isHomeCheckoutLoading
                 ? 'Abrindo checkout...'
                 : accessState?.hasFreeFullInsightAvailable
-                  ? '1 análise grátis'
+                  ? 'Usar análise grátis'
                   : accessState?.billingStatus === 'expired'
                     ? 'Reativar plano'
                     : 'Upgrade'}
@@ -1842,6 +1916,24 @@ function App() {
             </div>
           </div>
 
+          {checkoutSuccessBannerVisible && accessState?.hasActiveProAccess && (
+            <CheckoutSuccessBanner
+              isExpiringSoon={isProExpiringSoon}
+              planExpiresAt={accessState?.planExpiresAt}
+              onDismiss={() => setCheckoutSuccessBannerVisible(false)}
+              onViewAnalysis={() => {
+                setCheckoutSuccessBannerVisible(false);
+                if (resultado && templateSelecionado) {
+                  handleGerarInsights();
+                }
+              }}
+              onGoProfile={() => {
+                setCheckoutSuccessBannerVisible(false);
+                handleNavigate('profile');
+              }}
+            />
+          )}
+
           <div className="workspace-grid">
             <div className="conteudo-principal">
               <InputSection
@@ -1885,7 +1977,7 @@ function App() {
                   onMelhorarAnamnese={handleMelhorarAnamnese}
                   onPaywallAction={() => {
                     if (user && (accessState?.hasActiveProAccess || accessState?.hasFreeFullInsightAvailable)) {
-                      handleGerarInsights();
+                      handleUpgradeInsights('home');
                       return;
                     }
 
@@ -1899,7 +1991,14 @@ function App() {
                   loadingCheckout={isHomeCheckoutLoading}
                   loadingInsights={loadingInsights}
                   showAnalyzeAction={canRequestInsights && !hasFinalInterpretation}
-                  onGerarInsights={handleGerarInsights}
+                  onGerarInsights={() => {
+                    if (accessState?.hasFreeFullInsightAvailable) {
+                      handleUpgradeInsights('home');
+                      return;
+                    }
+
+                    handleGerarInsights();
+                  }}
                 />
               )}
 
@@ -1928,6 +2027,7 @@ function App() {
                   paywallTitle={paywallUi.title}
                   paywallDescription={paywallUi.description}
                   paywallButtonLabel={paywallUi.buttonLabel}
+                  paywallHighlights={paywallUi.highlights}
                 />
               )}
 
@@ -1999,6 +2099,20 @@ function App() {
       <footer className="footer">
         <p>Minha Anamnese &middot; Apoio à padronização clínica &middot; A anamnese não é armazenada; métricas agregadas podem ser registradas</p>
       </footer>
+
+      <FreeInsightConfirmModal
+        open={freeInsightConfirmState.open}
+        loading={loadingInsights}
+        onClose={() => setFreeInsightConfirmState((current) => ({ ...current, open: false }))}
+        onConfirm={handleConfirmFreeInsight}
+      />
+
+      <PlanComparisonModal
+        open={planComparisonState.open}
+        loading={checkoutLoadingOrigin === planComparisonState.origin}
+        onClose={() => setPlanComparisonState((current) => ({ ...current, open: false }))}
+        onConfirm={handleConfirmPlanComparison}
+      />
     </div>
   );
 }

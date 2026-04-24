@@ -12,9 +12,24 @@ function formatPlanExpiry(value) {
   return parsed.toLocaleDateString('pt-BR');
 }
 
+function isPlanExpiringSoon(value, thresholdInDays = 5) {
+  if (!value) {
+    return false;
+  }
+
+  const parsed = new Date(value);
+
+  if (Number.isNaN(parsed.getTime())) {
+    return false;
+  }
+
+  const diffDays = (parsed.getTime() - Date.now()) / 86400000;
+  return diffDays > 0 && diffDays <= thresholdInDays;
+}
+
 function getAccountStatus(user, accessState) {
   if (!user) {
-    return 'Aguardando autenticação';
+    return 'Aguardando autenticacao';
   }
 
   if (accessState?.hasActiveProAccess) {
@@ -25,18 +40,18 @@ function getAccountStatus(user, accessState) {
     return 'Conta ativa com acesso profissional expirado';
   }
 
-  return 'Conta ativa no plano básico';
+  return 'Conta ativa no plano basico';
 }
 
 function getSidebarPreferenceLabel(activeSidebarTab) {
   const labels = {
-    guide: 'Guia clínico',
+    guide: 'Guia clinico',
     checklist: 'Checklist',
     calculator: 'Calculadoras',
     structure: 'Estrutura',
   };
 
-  return labels[activeSidebarTab] || 'Guia clínico';
+  return labels[activeSidebarTab] || 'Guia clinico';
 }
 
 function getPlanLabel(accessState) {
@@ -48,35 +63,39 @@ function getPlanLabel(accessState) {
     return 'Profissional expirado';
   }
 
-  return 'Plano básico';
+  return 'Plano basico';
 }
 
 function getPlanSummary(accessState) {
   if (accessState?.hasActiveProAccess) {
-    return `Acesso profissional ativo até ${formatPlanExpiry(accessState.planExpiresAt)}.`;
+    return `Acesso profissional ativo ate ${formatPlanExpiry(accessState.planExpiresAt)}.`;
   }
 
   if (accessState?.billingStatus === 'expired') {
     return 'Seu acesso profissional expirou.';
   }
 
-  return 'Você está no plano básico.';
+  return 'Voce esta no plano basico.';
 }
 
 function getPlanDescription(accessState) {
   if (accessState?.hasActiveProAccess) {
-    return 'Insights completos e recursos profissionais continuam liberados durante o período ativo do seu plano.';
+    if (isPlanExpiringSoon(accessState.planExpiresAt)) {
+      return 'Renove agora para continuar com analise completa e evolucao sem interrupcoes.';
+    }
+
+    return 'Sua conta segue com analise completa, proximo passo clinico e historico liberados durante o periodo ativo.';
   }
 
   if (accessState?.billingStatus === 'expired') {
-    return 'A organização da anamnese continua disponível. Reative o plano para voltar a ver a análise completa.';
+    return 'A organizacao continua liberada, mas a analise completa voltou a ficar indisponivel.';
   }
 
   if (accessState?.hasFreeFullInsightAvailable) {
-    return 'Você ainda tem 1 análise completa grátis para experimentar antes de decidir pelo plano profissional.';
+    return 'Voce ainda tem 1 analise completa gratis para experimentar antes de decidir pelo plano profissional.';
   }
 
-  return 'A organização da anamnese continua liberada, com teaser útil e opção de destravar a análise completa quando quiser.';
+  return 'A organizacao da anamnese continua liberada. Quando quiser aprofundar a revisao, voce pode destravar a analise completa.';
 }
 
 function getFreeInsightLabel(accessState) {
@@ -85,10 +104,10 @@ function getFreeInsightLabel(accessState) {
   }
 
   if (accessState.hasFreeFullInsightAvailable) {
-    return '1 análise completa grátis disponível';
+    return '1 analise completa gratis disponivel';
   }
 
-  return 'Análise grátis já utilizada';
+  return 'Analise gratis ja utilizada';
 }
 
 function ProfilePage({
@@ -111,14 +130,14 @@ function ProfilePage({
           <div className="profile-hero-copy">
             <span className="workspace-kicker">Conta</span>
             <h1>Seu perfil</h1>
-            <p>Centralize informações da sua conta, plano, preferências de uso e orientações de privacidade em um só lugar.</p>
+            <p>Centralize informacoes da sua conta, plano, preferencias de uso e orientacoes de privacidade em um so lugar.</p>
           </div>
         </section>
 
         <section className="profile-empty-state">
           <strong>Entre na sua conta para acessar seu perfil.</strong>
           <span>
-            Aqui você poderá acompanhar o plano atual, preferências de uso, privacidade e futuros recursos pessoais do produto.
+            Aqui voce podera acompanhar o plano atual, preferencias de uso, privacidade e futuros recursos pessoais do produto.
           </span>
           <div className="profile-empty-actions">
             <button type="button" className="btn btn-primario" onClick={onGoHome}>
@@ -134,9 +153,10 @@ function ProfilePage({
   }
 
   const planLabel = getPlanLabel(accessState);
-  const profileEmail = profile?.email || user.email || 'Não informado';
+  const profileEmail = profile?.email || user.email || 'Nao informado';
   const planSummary = getPlanSummary(accessState);
   const freeInsightLabel = getFreeInsightLabel(accessState);
+  const showExpiringSoon = accessState?.hasActiveProAccess && isPlanExpiringSoon(accessState?.planExpiresAt);
 
   return (
     <div className="profile-page">
@@ -144,7 +164,7 @@ function ProfilePage({
         <div className="profile-hero-copy">
           <span className="workspace-kicker">Conta</span>
           <h1>Seu perfil</h1>
-          <p>Centralize sua conta, plano, preferências de uso e orientações de privacidade em uma área simples e confiável.</p>
+          <p>Centralize sua conta, plano, preferencias de uso e orientacoes de privacidade em uma area simples e confiavel.</p>
         </div>
       </section>
 
@@ -153,7 +173,7 @@ function ProfilePage({
           <section className="profile-card">
             <div className="profile-card-header">
               <h2>Conta</h2>
-              <p>Informações principais da sua conta e espaço para evolução futura do perfil.</p>
+              <p>Informacoes principais da sua conta e espaco para evolucao futura do perfil.</p>
             </div>
 
             <div className="profile-info-list">
@@ -171,7 +191,7 @@ function ProfilePage({
               </div>
               {freeInsightLabel ? (
                 <div className="profile-info-row">
-                  <span>Teste da análise</span>
+                  <span>Teste da analise</span>
                   <strong>{freeInsightLabel}</strong>
                 </div>
               ) : null}
@@ -187,11 +207,14 @@ function ProfilePage({
           <section className="profile-card">
             <div className="profile-card-header">
               <h2>Plano</h2>
-              <p>Resumo do acesso atual com status real de ativação e validade.</p>
+              <p>Resumo do acesso atual com status real de ativacao e validade.</p>
             </div>
 
             <div className="profile-plan-card">
               <span className={`profile-plan-badge ${accessState?.hasActiveProAccess ? 'pro' : 'free'}`}>{planLabel}</span>
+              {showExpiringSoon ? (
+                <span className="profile-plan-alert">Seu acesso profissional termina em breve</span>
+              ) : null}
               <strong>{planSummary}</strong>
               <p>{getPlanDescription(accessState)}</p>
             </div>
@@ -209,7 +232,7 @@ function ProfilePage({
                       ? 'Abrindo checkout...'
                       : accessState?.billingStatus === 'expired'
                         ? 'Reativar plano profissional'
-                        : 'Desbloquear análise completa'}
+                        : 'Quero liberar minha analise completa'}
                   </button>
                   {checkoutError ? <div className="topbar-auth-error">{checkoutError}</div> : null}
                 </>
@@ -226,21 +249,21 @@ function ProfilePage({
         <div className="profile-column">
           <section className="profile-card">
             <div className="profile-card-header">
-              <h2>Preferências</h2>
+              <h2>Preferencias</h2>
               <p>Estrutura inicial para personalizar o uso do produto ao longo do tempo.</p>
             </div>
 
             <div className="profile-info-list">
               <div className="profile-info-row">
-                <span>Modelo padrão</span>
-                <strong>Em breve você poderá definir um modelo padrão.</strong>
+                <span>Modelo padrao</span>
+                <strong>Em breve voce podera definir um modelo padrao.</strong>
               </div>
               <div className="profile-info-row">
-                <span>Último template usado</span>
-                <strong>{selectedTemplateName || 'Ainda não há template recente selecionado.'}</strong>
+                <span>Ultimo template usado</span>
+                <strong>{selectedTemplateName || 'Ainda nao ha template recente selecionado.'}</strong>
               </div>
               <div className="profile-info-row">
-                <span>Apoio contextual por padrão</span>
+                <span>Apoio contextual por padrao</span>
                 <strong>{getSidebarPreferenceLabel(activeSidebarTab)}</strong>
               </div>
             </div>
@@ -249,14 +272,14 @@ function ProfilePage({
           <section className="profile-card">
             <div className="profile-card-header">
               <h2>Privacidade e dados</h2>
-              <p>Comunicação clara sobre como usar o produto com mais segurança.</p>
+              <p>Comunicacao clara sobre como usar o produto com mais seguranca.</p>
             </div>
 
             <div className="profile-privacy-list">
-              <div className="profile-privacy-item">A anamnese não é armazenada pelo produto.</div>
-              <div className="profile-privacy-item">Métricas agregadas de uso e evolução podem ser registradas.</div>
-              <div className="profile-privacy-item">Evite inserir dados identificáveis do paciente no texto.</div>
-              <div className="profile-privacy-item">Espaço preparado para política de privacidade e controles adicionais no futuro.</div>
+              <div className="profile-privacy-item">A anamnese nao e armazenada pelo produto.</div>
+              <div className="profile-privacy-item">Metricas agregadas de uso e evolucao podem ser registradas.</div>
+              <div className="profile-privacy-item">Evite inserir dados identificaveis do paciente no texto.</div>
+              <div className="profile-privacy-item">Espaco preparado para politica de privacidade e controles adicionais no futuro.</div>
             </div>
           </section>
         </div>
