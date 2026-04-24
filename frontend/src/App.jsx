@@ -1356,7 +1356,17 @@ function App() {
   const summarizedScoreJustification = qualityScore.message;
   const insightPrincipalSection = qualityScore.criticalInsight;
   const primaryGapsCopy = qualityScore.justification;
-  const secondaryGaps = qualityScore.otherGaps;
+  const secondaryGaps = qualityScore.otherGaps.filter((gap) => {
+    if (!gap) {
+      return false;
+    }
+
+    if (!primaryGapsCopy) {
+      return true;
+    }
+
+    return !areMessagesRedundant(primaryGapsCopy, gap);
+  });
   const displayedResultado = useMemo(() => sanitizeAnamnesisForDisplay(resultado), [resultado]);
   const userDisplayName = user ? getUserDisplayName(user) : '';
   const templateAtual = templates.find((template) => template.id === templateSelecionado) || null;
@@ -1893,6 +1903,18 @@ function App() {
                 />
               )}
 
+              {hasSecondaryContent && (
+                <DetailedAnalysis
+                  aberto={secaoSecundariaAberta}
+                  onToggle={() => setSecaoSecundariaAberta((current) => !current)}
+                  showDetailedContent={hasFinalInterpretation && !shouldShowPaywall}
+                  analysisInputSection={analysisInputSection}
+                  summarizedScoreJustification={summarizedScoreJustification}
+                  insightPrincipalSection={insightPrincipalSection}
+                  secondaryGaps={secondaryGaps}
+                />
+              )}
+
               {hasFinalInterpretation && (
                 <InsightBlock
                   insightsSectionRef={insightsSectionRef}
@@ -1900,7 +1922,6 @@ function App() {
                   shouldShowPaywall={shouldShowPaywall}
                   performanceMessage={performanceMessage}
                   relevantGapsCount={relevantGapsCount}
-                  secondaryGaps={secondaryGaps}
                   onPaywallAction={() => handleUpgradeInsights('home')}
                   loadingCheckout={isHomeCheckoutLoading}
                   checkoutError={homeCheckoutError}
@@ -1919,18 +1940,6 @@ function App() {
                   consistencySummary={consistencySummary}
                   currentScore={qualityScore.score}
                   immediateComparison={latestScoreComparison}
-                />
-              )}
-
-              {hasSecondaryContent && (
-                <DetailedAnalysis
-                  aberto={secaoSecundariaAberta}
-                  onToggle={() => setSecaoSecundariaAberta((current) => !current)}
-                  showDetailedContent={hasFinalInterpretation && !shouldShowPaywall}
-                  analysisInputSection={analysisInputSection}
-                  summarizedScoreJustification={summarizedScoreJustification}
-                  insightPrincipalSection={insightPrincipalSection}
-                  secondaryGaps={secondaryGaps}
                 />
               )}
             </div>

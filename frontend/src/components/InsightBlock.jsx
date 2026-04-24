@@ -1,10 +1,87 @@
+function normalizeText(value) {
+  return String(value || '')
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .trim();
+}
+
+function cleanInsightSegment(value) {
+  return String(value || '').replace(/\s+/g, ' ').trim();
+}
+
+function removeImperativePrefix(value) {
+  return String(value || '')
+    .replace(/^(inclua|detalhe|registre|descreva|acrescente)\s+/i, '')
+    .trim();
+}
+
+function buildActionItems(actionText) {
+  const sanitized = removeImperativePrefix(actionText.replace(/\.$/, ''));
+
+  if (!sanitized) {
+    return [];
+  }
+
+  const normalized = normalizeText(sanitized);
+
+  if (normalized.includes(' e ')) {
+    return sanitized
+      .split(/\s+e\s+/i)
+      .map((item) => item.trim())
+      .filter(Boolean);
+  }
+
+  if (sanitized.includes(';')) {
+    return sanitized
+      .split(';')
+      .map((item) => item.trim())
+      .filter(Boolean);
+  }
+
+  if (sanitized.includes(',')) {
+    return sanitized
+      .split(',')
+      .map((item) => item.trim())
+      .filter(Boolean);
+  }
+
+  return [sanitized];
+}
+
+function parseStructuredAction(insightText) {
+  const fallbackText = cleanInsightSegment(insightText);
+  const parts = String(insightText || '')
+    .split('->')
+    .map((part) => cleanInsightSegment(part))
+    .filter(Boolean);
+
+  if (parts.length < 4) {
+    return {
+      priority: fallbackText,
+      whyItMatters: '',
+      actionItems: [],
+    };
+  }
+
+  const priority = parts[0].replace(/^FALHA\s*/i, '').trim();
+  const consequence = parts[1].replace(/^CONSEQUENCIA NA LEITURA\s*/i, '').trim();
+  const impact = parts[2].replace(/^IMPACTO NA QUALIDADE\s*/i, '').trim();
+  const action = parts[3].replace(/^ACAO DIRETA\s*/i, '').trim();
+
+  return {
+    priority,
+    whyItMatters: [consequence, impact].filter(Boolean).join(' '),
+    actionItems: buildActionItems(action),
+  };
+}
+
 function InsightBlock({
   insightsSectionRef,
   insightPrincipalSection,
   shouldShowPaywall,
   performanceMessage,
   relevantGapsCount,
-  secondaryGaps,
   onPaywallAction,
   loadingCheckout,
   checkoutError,
@@ -13,6 +90,7 @@ function InsightBlock({
   paywallButtonLabel,
 }) {
   const gapsLabel = `${relevantGapsCount} ${relevantGapsCount === 1 ? 'lacuna relevante' : 'lacunas relevantes'}`;
+  const structuredAction = parseStructuredAction(insightPrincipalSection);
 
   return (
     <div ref={insightsSectionRef} className="card section-insight insight-block">
@@ -31,19 +109,29 @@ function InsightBlock({
 
       <div className="insight-highlight">
         <div className="insight-kicker">Próximo passo</div>
-        <p className="insight-primary-text">{insightPrincipalSection}</p>
-      </div>
-
-      {Array.isArray(secondaryGaps) && secondaryGaps.length > 0 ? (
-        <div className="insight-secondary-points">
-          <strong>Outros pontos relevantes</strong>
-          <ul>
-            {secondaryGaps.slice(0, 3).map((gap) => (
-              <li key={gap}>{gap}</li>
-            ))}
-          </ul>
+        <div className="feedback-highlight-block">
+          <strong>Prioridade principal</strong>
+          <span>{structuredAction.priority || insightPrincipalSection}</span>
         </div>
-      ) : null}
+
+        {structuredAction.whyItMatters ? (
+          <div className="feedback-highlight-block">
+            <strong>Por que isso importa</strong>
+            <span>{structuredAction.whyItMatters}</span>
+          </div>
+        ) : null}
+
+        {structuredAction.actionItems.length > 0 ? (
+          <div className="feedback-secondary-list">
+            <strong>Na próxima coleta, inclua</strong>
+            <ul>
+              {structuredAction.actionItems.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </div>
+        ) : null}
+      </div>
 
       {shouldShowPaywall && (
         <div className="paywall-panel insight-paywall-panel">
