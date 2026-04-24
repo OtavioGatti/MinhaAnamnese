@@ -150,6 +150,96 @@ function normalizeQualityScorePayload(payload) {
   };
 }
 
+function normalizeBillingStatus(value) {
+  return ['inactive', 'active', 'expired'].includes(value) ? value : 'inactive';
+}
+
+function normalizePlan(value) {
+  return value === 'pro' ? 'pro' : 'basic';
+}
+
+function normalizePlanExpiresAt(value) {
+  if (!value) {
+    return null;
+  }
+
+  const parsed = new Date(value);
+  return Number.isNaN(parsed.getTime()) ? null : parsed.toISOString();
+}
+
+function deriveAccessState(user, profile) {
+  const embeddedState = profile?.access_state;
+
+  if (embeddedState) {
+    return embeddedState;
+  }
+
+  const currentPlan = normalizePlan(profile?.current_plan);
+  const billingStatus = normalizeBillingStatus(profile?.billing_status);
+  const planExpiresAt = normalizePlanExpiresAt(profile?.plan_expires_at);
+  const expiredByDate = planExpiresAt ? new Date(planExpiresAt).getTime() <= Date.now() : false;
+  const hasLegacyMetadataAccess =
+    normalizePlan(user?.user_metadata?.plan) === 'pro' &&
+    currentPlan !== 'pro' &&
+    billingStatus === 'inactive' &&
+    !planExpiresAt;
+  const hasActiveProAccess =
+    (currentPlan === 'pro' && billingStatus === 'active' && !expiredByDate) || hasLegacyMetadataAccess;
+  const freeFullInsightsUsedCount = Math.max(0, Number(profile?.free_full_insights_used_count) || 0);
+  const freeFullInsightsRemaining = user && !hasActiveProAccess ? Math.max(0, 1 - freeFullInsightsUsedCount) : 0;
+
+  return {
+    effectivePlan: hasActiveProAccess ? 'pro' : 'basic',
+    hasActiveProAccess,
+    hasFreeFullInsightAvailable: Boolean(user) && freeFullInsightsRemaining > 0,
+    freeFullInsightsRemaining,
+    freeFullInsightsUsedCount,
+    billingStatus: currentPlan === 'pro' && (billingStatus === 'expired' || expiredByDate) ? 'expired' : billingStatus,
+    planExpiresAt,
+    isProExpired: currentPlan === 'pro' && (billingStatus === 'expired' || expiredByDate),
+  };
+}
+
+function getPaywallUiConfig(user, accessState) {
+  if (!user) {
+    return {
+      title: 'Entre para liberar a análise completa',
+      description: 'A organização continua disponível sem login. Entre na sua conta para testar a análise completa e acompanhar seu acesso.',
+      buttonLabel: 'Entrar para analisar',
+    };
+  }
+
+  if (accessState?.hasActiveProAccess) {
+    return {
+      title: 'Análise completa disponível',
+      description: 'Veja nota, lacunas mais relevantes, impacto documental e o próximo passo mais útil para a próxima coleta.',
+      buttonLabel: 'Ver análise completa',
+    };
+  }
+
+  if (accessState?.hasFreeFullInsightAvailable) {
+    return {
+      title: 'Você tem 1 análise completa grátis para experimentar',
+      description: 'Use sua análise grátis para ver nota, lacunas relevantes, impacto documental e o próximo passo mais útil.',
+      buttonLabel: 'Usar minha análise grátis',
+    };
+  }
+
+  if (accessState?.billingStatus === 'expired') {
+    return {
+      title: 'Seu acesso profissional expirou',
+      description: 'Seu resultado estruturado já está pronto. Reative o plano para voltar a ver a análise completa com lacunas, impacto e próximo passo clínico.',
+      buttonLabel: 'Reativar plano profissional',
+    };
+  }
+
+  return {
+    title: 'Seu resultado estruturado já está pronto',
+    description: 'Desbloqueie a análise completa para ver lacunas, impacto e próximo passo clínico.',
+    buttonLabel: 'Desbloquear análise completa',
+  };
+}
+
 function getTodayUtcDate() {
   return new Date(`${new Date().toISOString().slice(0, 10)}T00:00:00.000Z`);
 }
@@ -218,8 +308,12 @@ function getFriendlyInsightsError(response) {
     return 'Entre na sua conta para visualizar a análise completa.';
   }
 
+  if (response?.status === 402 && response?.data?.paywall) {
+    return response.error || 'A análise completa está disponível no plano profissional.';
+  }
+
   if (response?.status === 403) {
-    return 'A análise completa está disponível no plano profissional.';
+    return response?.error || 'A análise completa está disponível no plano profissional.';
   }
 
   if (response?.status >= 500) {
@@ -449,7 +543,6 @@ function App() {
   const [loadingAnamneseStats, setLoadingAnamneseStats] = useState(false);
   const [loadingAnamneseActivity, setLoadingAnamneseActivity] = useState(false);
   const [loadingRecentAnamneses, setLoadingRecentAnamneses] = useState(false);
-  const [loadingFunnelMetrics, setLoadingFunnelMetrics] = useState(false);
   const [secaoSecundariaAberta, setSecaoSecundariaAberta] = useState(false);
   const [authPanelAberto, setAuthPanelAberto] = useState(false);
   const [activeSidebarTab, setActiveSidebarTab] = useState('guide');
@@ -457,13 +550,12 @@ function App() {
   const [anamneseStats, setAnamneseStats] = useState(null);
   const [anamneseActivity, setAnamneseActivity] = useState([]);
   const [recentAnamneses, setRecentAnamneses] = useState([]);
-  const [funnelMetrics, setFunnelMetrics] = useState(null);
   const [latestScoreComparison, setLatestScoreComparison] = useState(null);
   const [qualityScore, setQualityScore] = useState(() => createEmptyQualityScore());
 
   const templateTemCalculadora = templateSelecionado === TEMPLATE_WITH_CALCULATORS;
-  const userPlan = profile?.current_plan || user?.user_metadata?.plan || 'basic';
-  const isPro = userPlan === 'pro';
+  const accessState = useMemo(() => deriveAccessState(user, profile), [profile, user]);
+  const isPro = Boolean(accessState?.hasActiveProAccess);
 
   useEffect(() => {
     if (user) {
@@ -800,42 +892,6 @@ function App() {
   }, [user?.id, resultado]);
 
   useEffect(() => {
-    async function carregarMetricasFunil() {
-      if (!user?.id) {
-        setFunnelMetrics(null);
-        setLoadingFunnelMetrics(false);
-        return;
-      }
-
-      setLoadingFunnelMetrics(true);
-      const response = await api.get('/analytics?view=funnelMetrics');
-
-      if (response.success && response.data && typeof response.data === 'object') {
-        const etapas = Array.isArray(response.data.etapas)
-          ? response.data.etapas.filter((item) => (
-            item &&
-            typeof item.nome === 'string' &&
-            typeof item.total === 'number' &&
-            typeof item.taxa_conversao === 'number' &&
-            typeof item.queda === 'number'
-          ))
-          : [];
-
-        setFunnelMetrics({
-          total_sessoes: typeof response.data.total_sessoes === 'number' ? response.data.total_sessoes : 0,
-          etapas,
-        });
-      } else {
-        setFunnelMetrics(null);
-      }
-
-      setLoadingFunnelMetrics(false);
-    }
-
-    carregarMetricasFunil();
-  }, [user?.id, resultado]);
-
-  useEffect(() => {
     if (user) {
       setAuthPanelAberto(false);
       return;
@@ -845,6 +901,13 @@ function App() {
       setAuthPanelAberto(true);
     }
   }, [authError, authFeedback, user]);
+
+  useEffect(() => {
+    setCheckoutErrors({
+      home: '',
+      profile: '',
+    });
+  }, [currentPage]);
 
   const handleTemplateChange = (e) => {
     const novoTemplate = e.target.value;
@@ -1006,6 +1069,9 @@ function App() {
       if (response.success) {
         const normalizedQualityScore = normalizeQualityScorePayload(response.data);
         setQualityScore(normalizedQualityScore);
+        if (response.data?.profile) {
+          setProfile(response.data.profile);
+        }
         trackEvent('insight_gerado', {
           template: templateSelecionado,
           text_length: targetResultado.trim().length,
@@ -1013,6 +1079,10 @@ function App() {
           is_pro: isPro,
         });
       } else {
+        if (response.data?.profile) {
+          setProfile(response.data.profile);
+        }
+        setQualityScore(createEmptyQualityScore());
         setInsightError(getFriendlyInsightsError(response));
       }
     } catch (_err) {
@@ -1024,9 +1094,12 @@ function App() {
 
   const handleUpgradeInsights = async (origin = 'home') => {
     if (!user?.id || !user?.email) {
+      setAuthPanelAberto(true);
+      setAuthMode('login');
+      setAuthError('');
       setCheckoutErrors((current) => ({
         ...current,
-        [origin]: 'Acesse sua conta para liberar o plano profissional.',
+        [origin]: '',
       }));
       return;
     }
@@ -1271,8 +1344,14 @@ function App() {
   const profileCheckoutError = checkoutErrors.profile;
   const isHomeCheckoutLoading = checkoutLoadingOrigin === 'home';
   const isProfileCheckoutLoading = checkoutLoadingOrigin === 'profile';
-  const canRequestInsights = Boolean(user && isPro && resultado && templateSelecionado);
-  const shouldShowPaywall = hasFinalInterpretation && !isPro;
+  const paywallUi = getPaywallUiConfig(user, accessState);
+  const canRequestInsights = Boolean(
+    user &&
+    (accessState?.hasActiveProAccess || accessState?.hasFreeFullInsightAvailable) &&
+    resultado &&
+    templateSelecionado
+  );
+  const shouldShowPaywall = hasFinalInterpretation && !accessState?.hasActiveProAccess;
   const analysisInputSection = qualityScore.justification;
   const summarizedScoreJustification = qualityScore.message;
   const insightPrincipalSection = qualityScore.criticalInsight;
@@ -1338,13 +1417,7 @@ function App() {
   const shouldShowUserEvolution = Boolean(
     user && (loadingAnamneseStats || loadingAnamneseActivity || hasEvolutionData)
   );
-  const shouldShowFunnelMetrics = Boolean(
-    user && (loadingFunnelMetrics || (funnelMetrics?.total_sessoes || 0) > 0)
-  );
-  const hasSecondaryContent = Boolean(
-    (hasFinalInterpretation && !shouldShowPaywall) ||
-    shouldShowFunnelMetrics
-  );
+  const hasSecondaryContent = Boolean(hasFinalInterpretation && !shouldShowPaywall);
   const shouldShowFeedback = Boolean(resultado);
 
   const trackEvent = async (eventName, metadata = {}, options = {}) => {
@@ -1481,10 +1554,23 @@ function App() {
             <button
               type="button"
               className="btn btn-primario"
-              onClick={handleUpgradeInsights}
-              disabled={loadingCheckout}
+              onClick={() => {
+                if (accessState?.hasFreeFullInsightAvailable && resultado && templateSelecionado) {
+                  handleGerarInsights();
+                  return;
+                }
+
+                handleUpgradeInsights('home');
+              }}
+              disabled={isHomeCheckoutLoading}
             >
-              {loadingCheckout ? 'Abrindo checkout...' : 'Upgrade'}
+              {isHomeCheckoutLoading
+                ? 'Abrindo checkout...'
+                : accessState?.hasFreeFullInsightAvailable
+                  ? '1 análise grátis'
+                  : accessState?.billingStatus === 'expired'
+                    ? 'Reativar plano'
+                    : 'Upgrade'}
             </button>
           )}
 
@@ -1500,7 +1586,7 @@ function App() {
               </button>
               <div className="product-profile-copy">
                 <strong>{userDisplayName}</strong>
-                <span>{isPro ? 'Plano profissional' : 'Plano básico'}</span>
+                <span>{accessState?.hasActiveProAccess ? 'Plano profissional' : accessState?.billingStatus === 'expired' ? 'Profissional expirado' : 'Plano básico'}</span>
               </div>
               <button
                 type="button"
@@ -1783,12 +1869,21 @@ function App() {
                   primaryGapsCopy={primaryGapsCopy}
                   secondaryGaps={secondaryGaps}
                   insightError={insightError}
-                  isProUser={isPro}
                   hasFinalInterpretation={hasFinalInterpretation}
                   improvementBoxCopy={improvementBoxCopy}
                   improvementButtonLabel={improvementButtonLabel}
                   onMelhorarAnamnese={handleMelhorarAnamnese}
-                  onUpgradeInsights={() => handleUpgradeInsights('home')}
+                  onPaywallAction={() => {
+                    if (user && (accessState?.hasActiveProAccess || accessState?.hasFreeFullInsightAvailable)) {
+                      handleGerarInsights();
+                      return;
+                    }
+
+                    handleUpgradeInsights('home');
+                  }}
+                  paywallTitle={paywallUi.title}
+                  paywallDescription={paywallUi.description}
+                  paywallButtonLabel={paywallUi.buttonLabel}
                   checkoutError={homeCheckoutError}
                   canImprove={Boolean(texto.trim())}
                   loadingCheckout={isHomeCheckoutLoading}
@@ -1806,9 +1901,12 @@ function App() {
                   performanceMessage={performanceMessage}
                   relevantGapsCount={relevantGapsCount}
                   secondaryGaps={secondaryGaps}
-                  onUpgradeInsights={() => handleUpgradeInsights('home')}
+                  onPaywallAction={() => handleUpgradeInsights('home')}
                   loadingCheckout={isHomeCheckoutLoading}
                   checkoutError={homeCheckoutError}
+                  paywallTitle={paywallUi.title}
+                  paywallDescription={paywallUi.description}
+                  paywallButtonLabel={paywallUi.buttonLabel}
                 />
               )}
 
@@ -1833,10 +1931,6 @@ function App() {
                   summarizedScoreJustification={summarizedScoreJustification}
                   insightPrincipalSection={insightPrincipalSection}
                   secondaryGaps={secondaryGaps}
-                  user={user}
-                  loadingFunnelMetrics={loadingFunnelMetrics}
-                  funnelMetrics={funnelMetrics}
-                  shouldShowFunnelMetrics={shouldShowFunnelMetrics}
                 />
               )}
             </div>
@@ -1880,8 +1974,8 @@ function App() {
       {currentPage === 'profile' && (
         <ProfilePage
           user={user}
-          isPro={isPro}
           profile={profile}
+          accessState={accessState}
           selectedTemplateName={templateAtual?.nome || profileTemplateAtual?.nome || ''}
           activeSidebarTab={profile?.default_contextual_tab || activeSidebarTab}
           onUpgrade={() => handleUpgradeInsights('profile')}

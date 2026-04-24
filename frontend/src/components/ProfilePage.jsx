@@ -1,9 +1,31 @@
-function getAccountStatus(user, isPro) {
+function formatPlanExpiry(value) {
+  if (!value) {
+    return '';
+  }
+
+  const parsed = new Date(value);
+
+  if (Number.isNaN(parsed.getTime())) {
+    return '';
+  }
+
+  return parsed.toLocaleDateString('pt-BR');
+}
+
+function getAccountStatus(user, accessState) {
   if (!user) {
     return 'Aguardando autenticação';
   }
 
-  return isPro ? 'Conta ativa com acesso profissional' : 'Conta ativa no plano básico';
+  if (accessState?.hasActiveProAccess) {
+    return 'Conta ativa com acesso profissional';
+  }
+
+  if (accessState?.billingStatus === 'expired') {
+    return 'Conta ativa com acesso profissional expirado';
+  }
+
+  return 'Conta ativa no plano básico';
 }
 
 function getSidebarPreferenceLabel(activeSidebarTab) {
@@ -17,18 +39,62 @@ function getSidebarPreferenceLabel(activeSidebarTab) {
   return labels[activeSidebarTab] || 'Guia clínico';
 }
 
-function getPlanLabel(currentPlan, isPro) {
-  if (currentPlan === 'pro') {
+function getPlanLabel(accessState) {
+  if (accessState?.hasActiveProAccess) {
     return 'Plano profissional';
   }
 
-  return isPro ? 'Plano profissional' : 'Plano básico';
+  if (accessState?.billingStatus === 'expired') {
+    return 'Profissional expirado';
+  }
+
+  return 'Plano básico';
+}
+
+function getPlanSummary(accessState) {
+  if (accessState?.hasActiveProAccess) {
+    return `Acesso profissional ativo até ${formatPlanExpiry(accessState.planExpiresAt)}.`;
+  }
+
+  if (accessState?.billingStatus === 'expired') {
+    return 'Seu acesso profissional expirou.';
+  }
+
+  return 'Você está no plano básico.';
+}
+
+function getPlanDescription(accessState) {
+  if (accessState?.hasActiveProAccess) {
+    return 'Insights completos e recursos profissionais continuam liberados durante o período ativo do seu plano.';
+  }
+
+  if (accessState?.billingStatus === 'expired') {
+    return 'A organização da anamnese continua disponível. Reative o plano para voltar a ver a análise completa.';
+  }
+
+  if (accessState?.hasFreeFullInsightAvailable) {
+    return 'Você ainda tem 1 análise completa grátis para experimentar antes de decidir pelo plano profissional.';
+  }
+
+  return 'A organização da anamnese continua liberada, com teaser útil e opção de destravar a análise completa quando quiser.';
+}
+
+function getFreeInsightLabel(accessState) {
+  if (!accessState || accessState.hasActiveProAccess) {
+    return '';
+  }
+
+  if (accessState.hasFreeFullInsightAvailable) {
+    return '1 análise completa grátis disponível';
+  }
+
+  return 'Análise grátis já utilizada';
 }
 
 function ProfilePage({
   user,
   profile,
-  isPro,
+  accessState,
   selectedTemplateName,
   activeSidebarTab,
   onUpgrade,
@@ -67,8 +133,10 @@ function ProfilePage({
     );
   }
 
-  const planLabel = getPlanLabel(profile?.current_plan, isPro);
+  const planLabel = getPlanLabel(accessState);
   const profileEmail = profile?.email || user.email || 'Não informado';
+  const planSummary = getPlanSummary(accessState);
+  const freeInsightLabel = getFreeInsightLabel(accessState);
 
   return (
     <div className="profile-page">
@@ -95,16 +163,18 @@ function ProfilePage({
               </div>
               <div className="profile-info-row">
                 <span>Status da conta</span>
-                <strong>{getAccountStatus(user, isPro)}</strong>
+                <strong>{getAccountStatus(user, accessState)}</strong>
               </div>
               <div className="profile-info-row">
-                <span>Fonte do plano</span>
-                <strong>{planLabel} sincronizado no perfil</strong>
+                <span>Plano atual</span>
+                <strong>{planSummary}</strong>
               </div>
-              <div className="profile-info-row">
-                <span>Nome do perfil</span>
-                <strong>Em breve você poderá editar seu nome e identidade de uso.</strong>
-              </div>
+              {freeInsightLabel ? (
+                <div className="profile-info-row">
+                  <span>Teste da análise</span>
+                  <strong>{freeInsightLabel}</strong>
+                </div>
+              ) : null}
             </div>
 
             <div className="profile-card-actions">
@@ -117,25 +187,17 @@ function ProfilePage({
           <section className="profile-card">
             <div className="profile-card-header">
               <h2>Plano</h2>
-              <p>Resumo do acesso atual e espaço preparado para futuros controles de assinatura.</p>
+              <p>Resumo do acesso atual com status real de ativação e validade.</p>
             </div>
 
             <div className="profile-plan-card">
-              <span className={`profile-plan-badge ${isPro ? 'pro' : 'free'}`}>{planLabel}</span>
-              <strong>
-                {isPro
-                  ? 'Seu acesso profissional está ativo.'
-                  : 'Você está no plano básico com acesso ao fluxo principal.'}
-              </strong>
-              <p>
-                {isPro
-                  ? 'Insights completos e recursos profissionais estão liberados na sua conta.'
-                  : 'A organização da anamnese continua liberada, com opção de evoluir para recursos profissionais quando quiser.'}
-              </p>
+              <span className={`profile-plan-badge ${accessState?.hasActiveProAccess ? 'pro' : 'free'}`}>{planLabel}</span>
+              <strong>{planSummary}</strong>
+              <p>{getPlanDescription(accessState)}</p>
             </div>
 
             <div className="profile-card-actions">
-              {!isPro ? (
+              {!accessState?.hasActiveProAccess ? (
                 <>
                   <button
                     type="button"
@@ -143,9 +205,13 @@ function ProfilePage({
                     onClick={onUpgrade}
                     disabled={loadingCheckout}
                   >
-                    {loadingCheckout ? 'Abrindo checkout...' : 'Fazer upgrade'}
+                    {loadingCheckout
+                      ? 'Abrindo checkout...'
+                      : accessState?.billingStatus === 'expired'
+                        ? 'Reativar plano profissional'
+                        : 'Desbloquear análise completa'}
                   </button>
-                  {checkoutError && <div className="topbar-auth-error">{checkoutError}</div>}
+                  {checkoutError ? <div className="topbar-auth-error">{checkoutError}</div> : null}
                 </>
               ) : (
                 <button type="button" className="btn btn-secundario" disabled>
@@ -191,28 +257,6 @@ function ProfilePage({
               <div className="profile-privacy-item">Métricas agregadas de uso e evolução podem ser registradas.</div>
               <div className="profile-privacy-item">Evite inserir dados identificáveis do paciente no texto.</div>
               <div className="profile-privacy-item">Espaço preparado para política de privacidade e controles adicionais no futuro.</div>
-            </div>
-          </section>
-
-          <section className="profile-card profile-future-card">
-            <div className="profile-card-header">
-              <h2>Futuro</h2>
-              <p>Recursos pessoais já previstos para a evolução natural do produto.</p>
-            </div>
-
-            <div className="profile-future-list">
-              <div className="profile-future-item">
-                <strong>Meus templates</strong>
-                <span>Em breve</span>
-              </div>
-              <div className="profile-future-item">
-                <strong>Favoritos</strong>
-                <span>Em breve</span>
-              </div>
-              <div className="profile-future-item">
-                <strong>Preferências clínicas</strong>
-                <span>Em breve</span>
-              </div>
             </div>
           </section>
         </div>

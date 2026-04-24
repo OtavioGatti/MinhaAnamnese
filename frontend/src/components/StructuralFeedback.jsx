@@ -20,12 +20,14 @@ function StructuralFeedback({
   primaryGapsCopy,
   secondaryGaps,
   insightError,
-  isProUser,
   hasFinalInterpretation,
   improvementBoxCopy,
   improvementButtonLabel,
   onMelhorarAnamnese,
-  onUpgradeInsights,
+  onPaywallAction,
+  paywallTitle,
+  paywallDescription,
+  paywallButtonLabel,
   checkoutError,
   canImprove,
   loadingCheckout,
@@ -36,7 +38,7 @@ function StructuralFeedback({
   const structureLabel = qualityScore.shouldShowScore
     ? `Estrutura: ${getStructureLabel(qualityScore.score)} (${qualityScore.score})`
     : '';
-  const showFreeTeaser = !isProUser && !qualityScore.shouldShowScore;
+  const showTeaser = !qualityScore.shouldShowScore && !loadingInsights;
 
   return (
     <div className="card reveal-block reveal-block-delayed section-feedback workspace-panel">
@@ -49,7 +51,7 @@ function StructuralFeedback({
         <div>
           <h2>Como elevar a qualidade da sua anamnese</h2>
           <p className="card-subtitle">
-            {'Entenda onde a estrutura perdeu força, o impacto disso na leitura cl\u00ednica e qual ajuste mais aumenta a qualidade da pr\u00f3xima coleta.'}
+            Entenda onde a estrutura perdeu força, o impacto disso na leitura clínica e qual ajuste mais aumenta a qualidade da próxima coleta.
           </p>
         </div>
       </div>
@@ -118,33 +120,25 @@ function StructuralFeedback({
               </div>
             )}
           </>
-        ) : showFreeTeaser ? (
+        ) : showTeaser ? (
           <div className="feedback-placeholder feedback-placeholder-highlight">
-            <strong>Veja onde sua anamnese perde qualidade</strong>
-            <span>
-              {'Desbloqueie a leitura estrutural para enxergar a nota, os pontos que mais enfraquecem o texto e a a\u00e7\u00e3o com maior impacto cl\u00ednico.'}
-            </span>
+            <strong>{paywallTitle}</strong>
+            <span>{paywallDescription}</span>
             <div className="feedback-action-row">
               <button
                 className="btn btn-secundario"
                 type="button"
-                onClick={onUpgradeInsights}
+                onClick={onPaywallAction}
                 disabled={loadingCheckout}
               >
-                {loadingCheckout ? 'Abrindo checkout...' : 'Desbloquear leitura completa'}
+                {loadingCheckout ? 'Abrindo checkout...' : paywallButtonLabel}
               </button>
             </div>
-            {checkoutError ? (
-              <div className="feedback-secondary-error">
-                {checkoutError}
-              </div>
-            ) : null}
+            {checkoutError ? <div className="feedback-secondary-error">{checkoutError}</div> : null}
           </div>
         ) : (
           <div className="feedback-placeholder">
-            <strong>
-              {loadingInsights ? 'Gerando leitura estrutural' : 'Análise ainda indisponível'}
-            </strong>
+            <strong>{loadingInsights ? 'Gerando leitura estrutural' : 'Análise ainda indisponível'}</strong>
             <span>
               {loadingInsights
                 ? 'Estamos preparando a nota, as falhas principais e a ação com maior ganho para a próxima coleta.'
@@ -153,13 +147,9 @@ function StructuralFeedback({
           </div>
         )}
 
-        {showAnalyzeAction && (
+        {showAnalyzeAction && !showTeaser && (
           <>
-            {insightError ? (
-              <div className="feedback-secondary-error">
-                {insightError}
-              </div>
-            ) : null}
+            {insightError ? <div className="feedback-secondary-error">{insightError}</div> : null}
             <div className="feedback-action-row">
               <button
                 className="btn btn-secundario"
@@ -167,11 +157,11 @@ function StructuralFeedback({
                 onClick={onGerarInsights}
                 disabled={loadingInsights}
               >
-                {loadingInsights ? 'Gerando análise...' : 'Ver leitura completa →'}
+                {loadingInsights ? 'Gerando análise...' : paywallButtonLabel}
               </button>
             </div>
             <span className="feedback-helper-copy">
-              {'Veja as lacunas mais relevantes e receba uma orienta\u00e7\u00e3o mais clara para a pr\u00f3xima coleta.'}
+              Veja as lacunas mais relevantes e receba uma orientação mais clara para a próxima coleta.
             </span>
           </>
         )}

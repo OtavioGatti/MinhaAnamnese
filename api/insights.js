@@ -1,5 +1,25 @@
 const { generateInsights, validateGenerateInsightsInput } = require('../backend/services/generateInsights');
-const { hasProPlan, resolveSupabaseUser } = require('../backend/utils/supabaseAuth');
+const { ensureUserProfile, incrementFreeFullInsightsUsedCount } = require('../backend/services/profiles');
+const { resolveSupabaseUser } = require('../backend/utils/supabaseAuth');
+
+function buildPaywallResponse(profile, reason) {
+  const accessState = profile?.access_state || null;
+  const isExpired = accessState?.billingStatus === 'expired';
+
+  return {
+    success: false,
+    error: isExpired
+      ? 'Seu acesso profissional expirou. Reative o plano para continuar vendo a análise completa.'
+      : 'Seu resultado estruturado já está pronto. Desbloqueie a análise completa para ver lacunas, impacto e próximo passo clínico.',
+    code: 'INSIGHTS_PAYWALL',
+    data: {
+      paywall: true,
+      reason,
+      profile,
+      accessState,
+    },
+  };
+}
 
 module.exports = async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -29,11 +49,15 @@ module.exports = async function handler(req, res) {
       });
     }
 
-    if (!hasProPlan(auth.user)) {
-      return res.status(403).json({
-        success: false,
-        error: 'Plano profissional obrigatório para acessar insights completos.',
-      });
+    const profile = await ensureUserProfile(auth.user);
+    const accessState = profile?.access_state || null;
+    const hasActiveProAccess = Boolean(accessState?.hasActiveProAccess);
+    const hasFreeFullInsightAvailable = Boolean(accessState?.hasFreeFullInsightAvailable);
+
+    if (!hasActiveProAccess && !hasFreeFullInsightAvailable) {
+      return res
+        .status(402)
+        .json(buildPaywallResponse(profile, accessState?.billingStatus === 'expired' ? 'expired' : 'trial_consumed'));
     }
 
     const data = await generateInsights({
@@ -42,9 +66,23 @@ module.exports = async function handler(req, res) {
       userId: auth.user.id,
     });
 
+    let nextProfile = profile;
+
+    if (!hasActiveProAccess && hasFreeFullInsightAvailable) {
+      await incrementFreeFullInsightsUsedCount(
+        auth.user.id,
+        accessState?.freeFullInsightsUsedCount || 0,
+      ).catch(() => null);
+      nextProfile = await ensureUserProfile(auth.user).catch(() => profile);
+    }
+
     return res.status(200).json({
       success: true,
-      data,
+      data: {
+        ...data,
+        profile: nextProfile || profile || null,
+        accessState: nextProfile?.access_state || profile?.access_state || null,
+      },
     });
   } catch (error) {
     console.error('insights: failed to generate insights', {

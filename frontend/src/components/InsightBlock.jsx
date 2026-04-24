@@ -5,9 +5,12 @@ function InsightBlock({
   performanceMessage,
   relevantGapsCount,
   secondaryGaps,
-  onUpgradeInsights,
+  onPaywallAction,
   loadingCheckout,
   checkoutError,
+  paywallTitle,
+  paywallDescription,
+  paywallButtonLabel,
 }) {
   const gapsLabel = `${relevantGapsCount} ${relevantGapsCount === 1 ? 'lacuna relevante' : 'lacunas relevantes'}`;
 
@@ -19,15 +22,15 @@ function InsightBlock({
           <path d="M12 7v5l3 3" />
         </svg>
         <div>
-          <h2>{'A\u00e7\u00e3o recomendada'}</h2>
+          <h2>Ação recomendada</h2>
           <p className="card-subtitle">
-            {'Traduza a leitura cl\u00ednica em um pr\u00f3ximo passo claro para a pr\u00f3xima coleta.'}
+            Traduza a leitura clínica em um próximo passo claro para a próxima coleta.
           </p>
         </div>
       </div>
 
       <div className="insight-highlight">
-        <div className="insight-kicker">{'Pr\u00f3ximo passo'}</div>
+        <div className="insight-kicker">Próximo passo</div>
         <p className="insight-primary-text">{insightPrincipalSection}</p>
       </div>
 
@@ -51,32 +54,25 @@ function InsightBlock({
           </svg>
 
           <div className="insight-paywall-content">
-            {performanceMessage ? (
-              <div className="insight-performance-copy">{performanceMessage}</div>
-            ) : null}
+            {performanceMessage ? <div className="insight-performance-copy">{performanceMessage}</div> : null}
 
             <div className="insight-gap-copy">
-              {'Voc\u00ea ainda tem '}<strong>{gapsLabel}</strong>{' nesta anamnese.'}
+              Você ainda tem <strong>{gapsLabel}</strong> nesta anamnese.
             </div>
 
-            <div className="insight-paywall-label">
-              {'\u{1F512} Ver todas as melhorias detalhadas'}
-            </div>
+            <div className="insight-paywall-label">{paywallTitle}</div>
+            <div className="feedback-helper-copy">{paywallDescription}</div>
 
             <button
               className="btn btn-secundario insight-paywall-button"
               type="button"
-              onClick={onUpgradeInsights}
+              onClick={onPaywallAction}
               disabled={loadingCheckout}
             >
-              {loadingCheckout ? 'Redirecionando para o pagamento...' : 'Desbloquear por R$9,90'}
+              {loadingCheckout ? 'Redirecionando para o pagamento...' : paywallButtonLabel}
             </button>
 
-            {checkoutError ? (
-              <div className="feedback-secondary-error">
-                {checkoutError}
-              </div>
-            ) : null}
+            {checkoutError ? <div className="feedback-secondary-error">{checkoutError}</div> : null}
           </div>
         </div>
       )}

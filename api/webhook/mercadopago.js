@@ -4,7 +4,7 @@ const {
   getBillingPaymentByPaymentId,
   upsertBillingPayment,
 } = require('../../backend/services/billingPayments');
-const { upsertProfile } = require('../../backend/services/profiles');
+const { upsertProfile, getProfileByUserId: getStoredProfileByUserId } = require('../../backend/services/profiles');
 
 const MERCADO_PAGO_PAYMENT_API = 'https://api.mercadopago.com/v1/payments';
 const PLAN_PRICE = 9.9;
@@ -178,6 +178,13 @@ function normalizeBillingMetadata(currentMetadata, payment) {
   };
 }
 
+function getNextPlanExpirationDate(currentPlanExpiresAt) {
+  const now = Date.now();
+  const currentExpiry = currentPlanExpiresAt ? new Date(currentPlanExpiresAt).getTime() : 0;
+  const baseTimestamp = Number.isFinite(currentExpiry) && currentExpiry > now ? currentExpiry : now;
+  return new Date(baseTimestamp + (30 * 24 * 60 * 60 * 1000)).toISOString();
+}
+
 async function updateSupabaseUserPlan(userId, currentMetadata, payment, { url, serviceRoleKey }) {
   const response = await fetch(`${url}/auth/v1/admin/users/${userId}`, {
     method: 'PUT',
@@ -306,11 +313,16 @@ module.exports = async function handler(req, res) {
       throw new Error('user not found');
     }
 
+    const existingProfile = await getStoredProfileByUserId(targetUser.id).catch(() => null);
+
     await updateSupabaseUserPlan(targetUser.id, targetUser.user_metadata, payment, supabase);
     await upsertProfile({
       id: targetUser.id,
       email: targetUser.email || payment?.payer?.email || null,
       current_plan: 'pro',
+      billing_status: 'active',
+      plan_expires_at: getNextPlanExpirationDate(existingProfile?.plan_expires_at),
+      last_payment_id: String(payment.id),
     });
     await upsertBillingPayment({
       paymentId: payment.id,

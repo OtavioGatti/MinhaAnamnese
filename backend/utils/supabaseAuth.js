@@ -1,4 +1,5 @@
 const DEBUG_AUTH = process.env.DEBUG_AUTH === 'true';
+const { resolveUserAccessState } = require('../services/accessState');
 
 function logAuthDebug(message, context = {}) {
   if (!DEBUG_AUTH) {
@@ -132,8 +133,8 @@ async function resolveSupabaseUser(req) {
   }
 }
 
-function hasProPlan(user) {
-  return user?.user_metadata?.plan === 'pro';
+function hasProPlan(user, profile = null) {
+  return resolveUserAccessState({ user, profile }).hasActiveProAccess;
 }
 
 module.exports = {

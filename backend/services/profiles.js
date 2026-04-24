@@ -1,4 +1,10 @@
 const { isValidUserId } = require('../utils/idValidation');
+const {
+  normalizeBillingStatus,
+  normalizeFreeInsightsCount,
+  normalizePlanExpiresAt,
+  resolveUserAccessState,
+} = require('./accessState');
 
 const ALLOWED_CONTEXTUAL_TABS = new Set(['guide', 'checklist', 'calculator', 'structure']);
 
@@ -32,7 +38,7 @@ function normalizeTemplateId(value) {
 }
 
 function buildProfileFallback(user, existingProfile = null, overrides = {}) {
-  return {
+  const profile = {
     id: user?.id || existingProfile?.id || null,
     email: user?.email || existingProfile?.email || null,
     current_plan: normalizePlan(
@@ -46,8 +52,29 @@ function buildProfileFallback(user, existingProfile = null, overrides = {}) {
     default_contextual_tab: normalizeContextualTab(
       overrides.default_contextual_tab ?? existingProfile?.default_contextual_tab,
     ),
+    billing_status: normalizeBillingStatus(
+      overrides.billing_status ?? existingProfile?.billing_status,
+    ),
+    plan_expires_at: normalizePlanExpiresAt(
+      overrides.plan_expires_at ?? existingProfile?.plan_expires_at,
+    ),
+    free_full_insights_used_count: normalizeFreeInsightsCount(
+      overrides.free_full_insights_used_count ?? existingProfile?.free_full_insights_used_count,
+    ),
+    trial_started_at: normalizePlanExpiresAt(
+      overrides.trial_started_at ?? existingProfile?.trial_started_at,
+    ),
+    last_payment_id:
+      Object.prototype.hasOwnProperty.call(overrides, 'last_payment_id')
+        ? overrides.last_payment_id || null
+        : existingProfile?.last_payment_id || null,
     created_at: existingProfile?.created_at || null,
     updated_at: existingProfile?.updated_at || null,
+  };
+
+  return {
+    ...profile,
+    access_state: resolveUserAccessState({ user, profile }),
   };
 }
 
@@ -58,7 +85,7 @@ async function getProfileByUserId(userId) {
 
   const { url, serviceRoleKey } = getProfilesAdminConfig();
   const query = new URLSearchParams({
-    select: 'id,email,current_plan,last_template_used,default_contextual_tab,created_at,updated_at',
+    select: 'id,email,current_plan,last_template_used,default_contextual_tab,billing_status,plan_expires_at,free_full_insights_used_count,trial_started_at,last_payment_id,created_at,updated_at',
     id: `eq.${userId}`,
     limit: '1',
   });
@@ -104,6 +131,26 @@ async function upsertProfile(fields) {
     payload.default_contextual_tab = normalizeContextualTab(fields.default_contextual_tab);
   }
 
+  if ('billing_status' in fields) {
+    payload.billing_status = normalizeBillingStatus(fields.billing_status);
+  }
+
+  if ('plan_expires_at' in fields) {
+    payload.plan_expires_at = normalizePlanExpiresAt(fields.plan_expires_at);
+  }
+
+  if ('free_full_insights_used_count' in fields) {
+    payload.free_full_insights_used_count = normalizeFreeInsightsCount(fields.free_full_insights_used_count);
+  }
+
+  if ('trial_started_at' in fields) {
+    payload.trial_started_at = normalizePlanExpiresAt(fields.trial_started_at);
+  }
+
+  if ('last_payment_id' in fields) {
+    payload.last_payment_id = fields.last_payment_id || null;
+  }
+
   const { url, serviceRoleKey } = getProfilesAdminConfig();
   const query = new URLSearchParams({
     on_conflict: 'id',
@@ -139,8 +186,49 @@ function shouldUpdateProfile(existingProfile, nextProfile) {
     normalizeTemplateId(existingProfile.last_template_used) !==
       normalizeTemplateId(nextProfile.last_template_used) ||
     normalizeContextualTab(existingProfile.default_contextual_tab) !==
-      normalizeContextualTab(nextProfile.default_contextual_tab)
+      normalizeContextualTab(nextProfile.default_contextual_tab) ||
+    normalizeBillingStatus(existingProfile.billing_status) !== normalizeBillingStatus(nextProfile.billing_status) ||
+    normalizePlanExpiresAt(existingProfile.plan_expires_at) !== normalizePlanExpiresAt(nextProfile.plan_expires_at) ||
+    normalizeFreeInsightsCount(existingProfile.free_full_insights_used_count) !==
+      normalizeFreeInsightsCount(nextProfile.free_full_insights_used_count) ||
+    normalizePlanExpiresAt(existingProfile.trial_started_at) !== normalizePlanExpiresAt(nextProfile.trial_started_at) ||
+    (existingProfile.last_payment_id || null) !== (nextProfile.last_payment_id || null)
   );
+}
+
+async function expireProfileAccessIfNeeded(user, profile) {
+  const accessState = resolveUserAccessState({ user, profile });
+
+  if (!accessState.isProExpired || !isProfilesStorageAvailable() || !isValidUserId(profile?.id)) {
+    return {
+      ...profile,
+      access_state: accessState,
+    };
+  }
+
+  const persistedProfile = await upsertProfile({
+    id: profile.id,
+    email: profile.email,
+    current_plan: 'basic',
+    billing_status: 'expired',
+    plan_expires_at: profile.plan_expires_at,
+    free_full_insights_used_count: profile.free_full_insights_used_count,
+    trial_started_at: profile.trial_started_at,
+    last_payment_id: profile.last_payment_id,
+    last_template_used: profile.last_template_used,
+    default_contextual_tab: profile.default_contextual_tab,
+  }).catch(() => null);
+
+  const nextProfile = persistedProfile || {
+    ...profile,
+    current_plan: 'basic',
+    billing_status: 'expired',
+  };
+
+  return {
+    ...nextProfile,
+    access_state: resolveUserAccessState({ user, profile: nextProfile }),
+  };
 }
 
 async function ensureUserProfile(user, overrides = {}) {
@@ -152,7 +240,7 @@ async function ensureUserProfile(user, overrides = {}) {
   }
 
   if (!shouldUpdateProfile(existingProfile, fallbackProfile)) {
-    return fallbackProfile;
+    return expireProfileAccessIfNeeded(user, fallbackProfile);
   }
 
   const persistedProfile = await upsertProfile({
@@ -161,9 +249,26 @@ async function ensureUserProfile(user, overrides = {}) {
     current_plan: fallbackProfile.current_plan,
     last_template_used: fallbackProfile.last_template_used,
     default_contextual_tab: fallbackProfile.default_contextual_tab,
+    billing_status: fallbackProfile.billing_status,
+    plan_expires_at: fallbackProfile.plan_expires_at,
+    free_full_insights_used_count: fallbackProfile.free_full_insights_used_count,
+    trial_started_at: fallbackProfile.trial_started_at,
+    last_payment_id: fallbackProfile.last_payment_id,
   });
 
-  return buildProfileFallback(user, persistedProfile || fallbackProfile);
+  return expireProfileAccessIfNeeded(user, buildProfileFallback(user, persistedProfile || fallbackProfile));
+}
+
+async function incrementFreeFullInsightsUsedCount(userId, currentCount = 0) {
+  if (!isValidUserId(userId) || !isProfilesStorageAvailable()) {
+    return null;
+  }
+
+  return upsertProfile({
+    id: userId,
+    free_full_insights_used_count: normalizeFreeInsightsCount(currentCount) + 1,
+    trial_started_at: new Date().toISOString(),
+  });
 }
 
 module.exports = {
@@ -171,6 +276,7 @@ module.exports = {
   buildProfileFallback,
   ensureUserProfile,
   getProfileByUserId,
+  incrementFreeFullInsightsUsedCount,
   isProfilesStorageAvailable,
   normalizeContextualTab,
   normalizePlan,
