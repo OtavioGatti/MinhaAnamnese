@@ -16,8 +16,62 @@ function removeImperativePrefix(value) {
     .trim();
 }
 
+function getInsightLabelKey(value) {
+  const normalized = normalizeText(value).replace(/[:.-]+$/g, '');
+
+  if (normalized === 'falha' || normalized === 'ponto critico') {
+    return 'priority';
+  }
+
+  if (normalized === 'consequencia na leitura') {
+    return 'consequence';
+  }
+
+  if (normalized === 'impacto na qualidade') {
+    return 'impact';
+  }
+
+  if (normalized === 'acao direta' || normalized === 'proximo passo') {
+    return 'action';
+  }
+
+  return '';
+}
+
+function extractLabeledPrefix(value) {
+  const labels = [
+    ['FALHA', 'priority'],
+    ['PONTO CRITICO', 'priority'],
+    ['CONSEQUENCIA NA LEITURA', 'consequence'],
+    ['IMPACTO NA QUALIDADE', 'impact'],
+    ['ACAO DIRETA', 'action'],
+    ['PROXIMO PASSO', 'action'],
+  ];
+  const normalized = normalizeText(value);
+
+  for (const [label, key] of labels) {
+    const normalizedLabel = normalizeText(label);
+
+    if (normalized === normalizedLabel) {
+      return { key, rest: '' };
+    }
+
+    if (normalized.startsWith(`${normalizedLabel} `)) {
+      return {
+        key,
+        rest: value.slice(label.length).replace(/^[:\s-]+/, '').trim(),
+      };
+    }
+  }
+
+  return { key: '', rest: value };
+}
+
 function buildActionItems(actionText) {
-  const sanitized = removeImperativePrefix(actionText.replace(/\.$/, ''));
+  const sanitized = removeImperativePrefix(actionText.replace(/\.$/, ''))
+    .replace(/\s+na proxima coleta$/i, '')
+    .replace(/\s+na próxima coleta$/i, '')
+    .trim();
 
   if (!sanitized) {
     return [];
@@ -51,28 +105,58 @@ function buildActionItems(actionText) {
 
 function parseStructuredAction(insightText) {
   const fallbackText = cleanInsightSegment(insightText);
-  const parts = String(insightText || '')
-    .split('->')
+  const parsed = {
+    priority: '',
+    consequence: '',
+    impact: '',
+    action: '',
+  };
+  let activeKey = '';
+  const parts = fallbackText
+    .replace(/[→⇒]/g, '->')
+    .split(/\s*->\s*/)
     .map((part) => cleanInsightSegment(part))
     .filter(Boolean);
 
-  if (parts.length < 4) {
+  for (const part of parts) {
+    const directKey = getInsightLabelKey(part);
+
+    if (directKey) {
+      activeKey = directKey;
+      continue;
+    }
+
+    const labeledPart = extractLabeledPrefix(part);
+    const targetKey = labeledPart.key || activeKey;
+    const value = cleanInsightSegment(labeledPart.rest);
+
+    if (targetKey && value) {
+      parsed[targetKey] = parsed[targetKey]
+        ? `${parsed[targetKey]} ${value}`
+        : value;
+      activeKey = '';
+      continue;
+    }
+
+    if (!parsed.priority) {
+      parsed.priority = value || part;
+    }
+  }
+
+  if (!parsed.priority && !parsed.consequence && !parsed.impact && !parsed.action) {
     return {
       priority: fallbackText,
-      whyItMatters: '',
+      consequence: '',
+      impact: '',
       actionItems: [],
     };
   }
 
-  const priority = parts[0].replace(/^FALHA\s*/i, '').trim();
-  const consequence = parts[1].replace(/^CONSEQUENCIA NA LEITURA\s*/i, '').trim();
-  const impact = parts[2].replace(/^IMPACTO NA QUALIDADE\s*/i, '').trim();
-  const action = parts[3].replace(/^ACAO DIRETA\s*/i, '').trim();
-
   return {
-    priority,
-    whyItMatters: [consequence, impact].filter(Boolean).join(' '),
-    actionItems: buildActionItems(action),
+    priority: parsed.priority,
+    consequence: parsed.consequence,
+    impact: parsed.impact,
+    actionItems: buildActionItems(parsed.action),
   };
 }
 
@@ -110,20 +194,31 @@ function InsightBlock({
 
       <div className="insight-highlight">
         <div className="insight-kicker">Próximo passo</div>
-        <div className="feedback-highlight-block">
-          <strong>Prioridade principal</strong>
+        <div className="insight-priority-card">
+          <strong>{'Ajuste priorit\u00e1rio'}</strong>
           <span>{structuredAction.priority || insightPrincipalSection}</span>
         </div>
 
-        {structuredAction.whyItMatters ? (
-          <div className="feedback-highlight-block">
-            <strong>Por que isso importa</strong>
-            <span>{structuredAction.whyItMatters}</span>
+        {structuredAction.consequence || structuredAction.impact ? (
+          <div className="insight-reason-grid">
+            {structuredAction.consequence ? (
+              <div className="insight-reason-card">
+                <strong>Impacto na leitura</strong>
+                <span>{structuredAction.consequence}</span>
+              </div>
+            ) : null}
+
+            {structuredAction.impact ? (
+              <div className="insight-reason-card">
+                <strong>Impacto na qualidade</strong>
+                <span>{structuredAction.impact}</span>
+              </div>
+            ) : null}
           </div>
         ) : null}
 
         {structuredAction.actionItems.length > 0 ? (
-          <div className="feedback-secondary-list">
+          <div className="insight-action-list">
             <strong>Na próxima coleta, inclua</strong>
             <ul>
               {structuredAction.actionItems.map((item) => (

@@ -2003,18 +2003,6 @@ function App() {
                 />
               )}
 
-              {hasSecondaryContent && (
-                <DetailedAnalysis
-                  aberto={secaoSecundariaAberta}
-                  onToggle={() => setSecaoSecundariaAberta((current) => !current)}
-                  showDetailedContent={hasFinalInterpretation && !shouldShowPaywall}
-                  analysisInputSection={analysisInputSection}
-                  summarizedScoreJustification={summarizedScoreJustification}
-                  insightPrincipalSection={insightPrincipalSection}
-                  secondaryGaps={secondaryGaps}
-                />
-              )}
-
               {hasFinalInterpretation && (
                 <InsightBlock
                   insightsSectionRef={insightsSectionRef}
@@ -2029,6 +2017,18 @@ function App() {
                   paywallDescription={paywallUi.description}
                   paywallButtonLabel={paywallUi.buttonLabel}
                   paywallHighlights={paywallUi.highlights}
+                />
+              )}
+
+              {hasSecondaryContent && (
+                <DetailedAnalysis
+                  aberto={secaoSecundariaAberta}
+                  onToggle={() => setSecaoSecundariaAberta((current) => !current)}
+                  showDetailedContent={hasFinalInterpretation && !shouldShowPaywall}
+                  analysisInputSection={analysisInputSection}
+                  summarizedScoreJustification={summarizedScoreJustification}
+                  insightPrincipalSection={insightPrincipalSection}
+                  secondaryGaps={secondaryGaps}
                 />
               )}
 

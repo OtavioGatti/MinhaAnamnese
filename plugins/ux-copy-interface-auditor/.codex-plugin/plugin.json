@@ -1,0 +1,39 @@
+{
+  "name": "ux-copy-interface-auditor",
+  "version": "0.1.0",
+  "description": "Audits UI code for UX clarity, copy quality, visual hierarchy, consistency, professionalism, and conversion risks.",
+  "author": {
+    "name": "MinhaAnamnese",
+    "email": "support@example.com",
+    "url": "https://example.com/"
+  },
+  "homepage": "https://example.com/",
+  "repository": "https://example.com/",
+  "license": "MIT",
+  "keywords": [
+    "ux",
+    "copy",
+    "interface",
+    "audit",
+    "conversion",
+    "accessibility",
+    "frontend"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "UX Copy & Interface Auditor",
+    "shortDescription": "Finds unclear copy, weak CTAs, messy hierarchy, inconsistent UI patterns, and low-trust interface details.",
+    "longDescription": "Use UX Copy & Interface Auditor to review screens, components, HTML, React, text, CSS and Tailwind classes with a strict product-design lens. It produces structured diagnostics, scores, prioritized fixes, and suggested rewrites.",
+    "developerName": "MinhaAnamnese",
+    "category": "Coding",
+    "capabilities": ["Read", "Write"],
+    "websiteURL": "https://example.com/",
+    "privacyPolicyURL": "https://example.com/privacy",
+    "termsOfServiceURL": "https://example.com/terms",
+    "defaultPrompt": [
+      "Audit this React screen for UX clarity, copy, hierarchy, consistency, and conversion."
+    ],
+    "brandColor": "#1f6f68",
+    "screenshots": []
+  }
+}
