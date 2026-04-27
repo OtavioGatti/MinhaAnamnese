@@ -57,7 +57,9 @@ function WorkspaceSidebar({
       </div>
     ) : (
       <div className="workspace-sidebar-empty">
-        {'Selecione um modelo para abrir o guia cl\u00ednico correspondente.'}
+        {hasTemplate
+          ? 'Este template personalizado ainda não possui guia clínico vinculado.'
+          : 'Selecione um modelo para abrir o guia clínico correspondente.'}
       </div>
     );
   };

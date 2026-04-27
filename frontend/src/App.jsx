@@ -763,22 +763,22 @@ function App() {
     atualizarSessaoAposCheckout();
   }, []);
 
-  useEffect(() => {
-    async function carregarTemplates() {
-      setLoadingTemplates(true);
-      const response = await api.get('/templates');
+  async function carregarTemplates() {
+    setLoadingTemplates(true);
+    const response = await api.get('/templates');
 
-      if (response.success) {
-        setTemplates(response.data);
-      } else {
-        setErro(response.error || 'Não foi possível carregar os modelos clínicos.');
-      }
-
-      setLoadingTemplates(false);
+    if (response.success) {
+      setTemplates(response.data);
+    } else {
+      setErro(response.error || 'Não foi possível carregar os modelos clínicos.');
     }
 
+    setLoadingTemplates(false);
+  }
+
+  useEffect(() => {
     carregarTemplates();
-  }, []);
+  }, [user?.id]);
 
   useEffect(() => {
     async function carregarPerfil() {
@@ -2086,6 +2086,7 @@ function App() {
           loadingTemplates={loadingTemplates}
           selectedTemplateId={templateSelecionado}
           onUseTemplate={handleUseTemplateFromLibrary}
+          onTemplatesRefresh={carregarTemplates}
         />
       )}
 

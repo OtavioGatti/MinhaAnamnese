@@ -69,6 +69,17 @@ class ApiClient {
       body: JSON.stringify(body),
     });
   }
+
+  async put(path, body) {
+    return this.request(path, {
+      method: 'PUT',
+      body: JSON.stringify(body),
+    });
+  }
+
+  async delete(path) {
+    return this.request(path, { method: 'DELETE' });
+  }
 }
 
 export const api = new ApiClient(API_BASE_URL);

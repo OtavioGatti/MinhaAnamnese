@@ -1,15 +1,16 @@
 const OpenAI = require('openai');
-const { getTemplateById } = require('./templates');
+const { getTemplateById, resolveTemplateById } = require('./templates');
 const { calculateAnamnesisQualityScore } = require('../utils/anamnesisQualityScore');
 const { buildStructurePrompt } = require('../prompts/structurePrompt');
 const { getLatestAnamneseMetric, registerAnamneseMetric } = require('./anamneseMetrics');
 const { getTextLimitError } = require('../utils/requestLimits');
 const { sanitizeText } = require('../utils/textSanitization');
+const { isCustomTemplateId } = require('./userTemplates');
 
 function validateProcessAnamnesisInput(payload) {
   const { template, texto } = payload || {};
 
-  if (!template || !getTemplateById(template)) {
+  if (!template || typeof template !== 'string' || (!getTemplateById(template) && !isCustomTemplateId(template))) {
     return 'Template inválido. Escolha um dos templates disponíveis.';
   }
 
@@ -59,7 +60,14 @@ async function processAnamnesis({ template, texto, userId }) {
     throw error;
   }
 
-  const templateConfig = getTemplateById(template);
+  const templateConfig = await resolveTemplateById(template, userId);
+
+  if (!templateConfig) {
+    const error = new Error('Template invÃ¡lido. Escolha um dos templates disponÃ­veis.');
+    error.statusCode = 400;
+    throw error;
+  }
+
   const openai = new OpenAI({ apiKey });
   const sanitizedText = sanitizeText(texto).trim();
   const previousMetric = await getLatestAnamneseMetric(userId).catch(() => null);

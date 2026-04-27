@@ -2235,6 +2235,76 @@ body {
   margin-bottom: 0.5rem;
 }
 
+.templates-my-section {
+  border-color: rgba(191, 219, 254, 0.95);
+}
+
+.custom-templates-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 0.9rem;
+}
+
+.custom-template-actions {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.templates-inline-error {
+  padding: 0.8rem 0.95rem;
+  border: 1px solid rgba(248, 113, 113, 0.32);
+  border-radius: 14px;
+  background: rgba(254, 242, 242, 0.9);
+  color: #991b1b;
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.template-editor-modal {
+  max-height: min(92vh, 760px);
+  overflow: auto;
+}
+
+.template-editor-field {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.template-editor-field span {
+  color: var(--gray-700);
+  font-size: 0.84rem;
+  font-weight: 700;
+}
+
+.template-editor-field input,
+.template-editor-field textarea {
+  width: 100%;
+  padding: 0.82rem 0.95rem;
+  border: 1px solid rgba(209, 213, 219, 0.95);
+  border-radius: 14px;
+  background: white;
+  color: var(--gray-800);
+  font: inherit;
+}
+
+.template-editor-field textarea {
+  min-height: 220px;
+  resize: vertical;
+  line-height: 1.55;
+}
+
+.template-editor-field input:focus,
+.template-editor-field textarea:focus {
+  outline: none;
+  border-color: var(--primary-500);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.12);
+}
+
+.template-editor-helper {
+  color: var(--gray-500);
+  font-size: 0.86rem;
+  line-height: 1.5;
+}
+
 .templates-future-empty {
   display: flex;
   align-items: center;

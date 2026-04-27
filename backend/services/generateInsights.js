@@ -1,11 +1,12 @@
 const OpenAI = require('openai');
-const { getTemplateById } = require('./templates');
+const { getTemplateById, resolveTemplateById } = require('./templates');
 const { buildInsightPrompt } = require('../prompts/insightPrompt');
 const { calculateAnamnesisQualityScore } = require('../utils/anamnesisQualityScore');
 const { updateUserHistory } = require('../utils/userHistory');
 const { parseAIResponse } = require('../utils/parseAIResponse');
 const { getTextLimitError } = require('../utils/requestLimits');
 const { sanitizeText } = require('../utils/textSanitization');
+const { isCustomTemplateId } = require('./userTemplates');
 
 const DEBUG_MODE = process.env.DEBUG_INSIGHTS === 'true';
 
@@ -195,7 +196,7 @@ function validateGenerateInsightsInput(payload) {
     return textLimitError.message;
   }
 
-  if (!templateId || typeof templateId !== 'string' || !getTemplateById(templateId)) {
+  if (!templateId || typeof templateId !== 'string' || (!getTemplateById(templateId) && !isCustomTemplateId(templateId))) {
     return 'Template inv\u00e1lido';
   }
 
@@ -220,7 +221,14 @@ async function generateInsights({ texto, templateId, userId }) {
   }
 
   const openai = new OpenAI({ apiKey });
-  const templateConfig = getTemplateById(templateId);
+  const templateConfig = await resolveTemplateById(templateId, userId);
+
+  if (!templateConfig) {
+    const error = new Error('Template inv\u00e1lido');
+    error.statusCode = 400;
+    throw error;
+  }
+
   const trimmedText = sanitizeText(texto).trim();
   const qualityScore = calculateAnamnesisQualityScore(trimmedText, templateId, templateConfig);
   const analysis = qualityScore.structuredAnalysis;
