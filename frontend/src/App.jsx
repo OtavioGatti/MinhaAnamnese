@@ -195,12 +195,6 @@ function normalizePlanExpiresAt(value) {
 }
 
 function deriveAccessState(user, profile) {
-  const embeddedState = profile?.access_state;
-
-  if (embeddedState) {
-    return embeddedState;
-  }
-
   const currentPlan = normalizePlan(profile?.current_plan);
   const billingStatus = normalizeBillingStatus(profile?.billing_status);
   const planExpiresAt = normalizePlanExpiresAt(profile?.plan_expires_at);
@@ -1111,7 +1105,7 @@ function App() {
 
     if (!targetResultado.trim() || !templateSelecionado) {
       setInsightError('Gere a anamnese estruturada antes de pedir a análise.');
-      return;
+      return { success: false, status: 400 };
     }
 
     setInsightError('');
@@ -1142,6 +1136,7 @@ function App() {
           score: normalizedQualityScore.score,
           is_pro: isPro,
         });
+        return { success: true, status: response.status };
       } else {
         if (response.data?.profile) {
           setProfile(response.data.profile);
@@ -1149,10 +1144,12 @@ function App() {
         setQualityScore(createEmptyQualityScore());
         setCurrentInsightsUnlocked(false);
         setInsightError(getFriendlyInsightsError(response));
+        return { success: false, status: response.status, response };
       }
     } catch (_err) {
       setCurrentInsightsUnlocked(false);
       setInsightError('A análise não ficou disponível agora. Seu resultado estruturado continua pronto para uso.');
+      return { success: false, status: 0 };
     } finally {
       setLoadingInsights(false);
     }
@@ -1236,6 +1233,14 @@ function App() {
     if (accessState?.hasActiveProAccess && resultado && templateSelecionado) {
       await handleGerarInsights();
       return;
+    }
+
+    if (user?.id && resultado && templateSelecionado) {
+      const insightsResult = await handleGerarInsights();
+
+      if (insightsResult?.success || insightsResult?.status !== 402) {
+        return;
+      }
     }
 
     handleUpgradeInsights(origin);
