@@ -1,8 +1,8 @@
 export const officialTemplateCatalog = {
   psiquiatria: {
     category: 'Saúde mental',
-    description: 'Organiza a anamnese psiquiátrica com foco em sintomas, histórico e exame do estado mental.',
-    whenToUse: 'Use em consultas psiquiátricas ambulatoriais, pronto atendimento em saúde mental e reavaliações clínicas.',
+    description: 'Organiza a anamnese psiquiátrica com foco em narrativa livre, funcionalidade, desenvolvimento, risco, substâncias e exame do estado mental.',
+    whenToUse: 'Use em consultas psiquiátricas, primeiras avaliações, reavaliações clínicas e atendimentos em saúde mental que exigem história detalhada.',
     hasCalculators: false,
   },
   pediatria: {

@@ -587,6 +587,7 @@ function App() {
   const [checkoutErrors, setCheckoutErrors] = useState({
     home: '',
     profile: '',
+    templates: '',
   });
   const [authError, setAuthError] = useState('');
   const [authFeedback, setAuthFeedback] = useState('');
@@ -965,6 +966,7 @@ function App() {
     setCheckoutErrors({
       home: '',
       profile: '',
+      templates: '',
     });
   }, [currentPage]);
 
@@ -981,6 +983,7 @@ function App() {
     setCheckoutErrors({
       home: '',
       profile: '',
+      templates: '',
     });
   };
 
@@ -1225,6 +1228,10 @@ function App() {
     setPlanComparisonState({ open: true, origin });
   };
 
+  const handleUpgradeTemplates = () => {
+    handleUpgradeInsights('templates');
+  };
+
   const handleAnalysisAccessAction = async (origin = 'home') => {
     if (accessState?.hasActiveProAccess && resultado && templateSelecionado) {
       await handleGerarInsights();
@@ -1452,6 +1459,7 @@ function App() {
   );
   const homeCheckoutError = checkoutErrors.home;
   const profileCheckoutError = checkoutErrors.profile;
+  const templatesCheckoutError = checkoutErrors.templates;
   const isHomeCheckoutLoading = checkoutLoadingOrigin === 'home';
   const isProfileCheckoutLoading = checkoutLoadingOrigin === 'profile';
   const paywallUi = getPaywallUiConfig(user, accessState);
@@ -2087,6 +2095,10 @@ function App() {
           selectedTemplateId={templateSelecionado}
           onUseTemplate={handleUseTemplateFromLibrary}
           onTemplatesRefresh={carregarTemplates}
+          isPro={isPro}
+          loadingCheckout={checkoutLoadingOrigin === 'templates'}
+          checkoutError={templatesCheckoutError}
+          onRequestUpgrade={handleUpgradeTemplates}
         />
       )}
 

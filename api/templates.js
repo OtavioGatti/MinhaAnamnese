@@ -4,6 +4,7 @@ const {
   deleteUserTemplate,
   updateUserTemplate,
 } = require('../backend/services/userTemplates');
+const { ensureUserProfile } = require('../backend/services/profiles');
 const {
   getAccessTokenFromRequest,
   resolveSupabaseUser,
@@ -32,6 +33,32 @@ async function requireUser(req, res) {
   return auth.user;
 }
 
+async function requireProUser(req, res) {
+  const user = await requireUser(req, res);
+
+  if (!user) {
+    return null;
+  }
+
+  const profile = await ensureUserProfile(user);
+
+  if (!profile?.access_state?.hasActiveProAccess) {
+    res.status(402).json({
+      success: false,
+      error: 'Templates próprios são um recurso do plano profissional.',
+      code: 'TEMPLATES_PRO_REQUIRED',
+      data: {
+        paywall: true,
+        profile,
+        accessState: profile?.access_state || null,
+      },
+    });
+    return null;
+  }
+
+  return user;
+}
+
 function getTemplateIdFromRequest(req) {
   if (typeof req.query?.id === 'string') {
     return req.query.id;
@@ -57,7 +84,7 @@ module.exports = async function handler(req, res) {
     }
 
     if (req.method === 'POST') {
-      const user = await requireUser(req, res);
+      const user = await requireProUser(req, res);
 
       if (!user) {
         return null;
@@ -70,7 +97,7 @@ module.exports = async function handler(req, res) {
     }
 
     if (req.method === 'PUT' || req.method === 'PATCH') {
-      const user = await requireUser(req, res);
+      const user = await requireProUser(req, res);
 
       if (!user) {
         return null;
@@ -85,7 +112,7 @@ module.exports = async function handler(req, res) {
     }
 
     if (req.method === 'DELETE') {
-      const user = await requireUser(req, res);
+      const user = await requireProUser(req, res);
 
       if (!user) {
         return null;

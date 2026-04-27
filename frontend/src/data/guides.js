@@ -5,15 +5,17 @@
 
 export const guides = {
   psiquiatria: [
-    'Identificação do paciente',
-    'Queixa principal',
-    'Início e evolução do quadro',
-    'Sintomas associados',
-    'História psiquiátrica pregressa',
-    'Medicações em uso',
-    'Uso de substâncias',
-    'História familiar',
-    'Risco psíquico atual descrito no texto',
+    'Identificação: nome, idade, escolaridade, estado civil, filhos, moradia, trabalho atual, trabalhos prévios e religião',
+    'Queixa principal com fala espontânea do paciente preservada',
+    'HMA com caracterização detalhada de cada queixa, impacto funcional e contexto de vida',
+    'Infância: nascimento, desenvolvimento neuropsicomotor, socialização, escolarização, alfabetização e comportamento',
+    'Adolescência: pertencimento, amizades, namoro, conflitos e experimentações com álcool ou drogas',
+    'Vida adulta: faculdade/trabalho, relações, casamento, socialização e desempenho laboral',
+    'História psiquiátrica pregressa, internações, tentativas de suicídio, ideação e autolesão',
+    'Uso de substâncias psicoativas',
+    'Antecedentes pessoais patológicos gerais',
+    'Antecedentes familiares psiquiátricos, internações e tentativas de suicídio',
+    'Medicações em uso com dose e tempo de uso',
     'Exame do estado mental',
   ],
 

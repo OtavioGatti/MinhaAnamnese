@@ -23,6 +23,40 @@ function buildStructureInstructions(templateConfig) {
   return getTemplateSections(templateConfig).map((section) => `* ${section}`).join('\n');
 }
 
+function buildSectionGuidance(templateConfig) {
+  const guidance = templateConfig?.sectionGuidance;
+
+  if (!guidance || typeof guidance !== 'object') {
+    return '';
+  }
+
+  const lines = getTemplateSections(templateConfig)
+    .map((section) => {
+      const sectionGuidance = Array.isArray(guidance[section]) ? guidance[section] : [];
+
+      if (!sectionGuidance.length) {
+        return '';
+      }
+
+      return [
+        `* ${section}:`,
+        ...sectionGuidance.map((item) => `  - ${item}`),
+      ].join('\n');
+    })
+    .filter(Boolean);
+
+  if (!lines.length) {
+    return '';
+  }
+
+  return `ORIENTAÇÕES ESPECÍFICAS DO TEMPLATE
+
+Use estas orientações para decidir o que pertence a cada seção quando a informação estiver no texto original.
+Elas não autorizam inventar dados ausentes.
+
+${lines.join('\n')}`;
+}
+
 function buildOutputSkeleton(templateConfig) {
   return getTemplateSections(templateConfig)
     .map((section) => `${section}: ...`)
@@ -116,6 +150,8 @@ ${buildClinicalWritingRules()}
 
 ${buildInterpretiveFieldRules(templateConfig)}
 
+${buildSectionGuidance(templateConfig)}
+
 ETAPA 2 - ESTRUTURAÇÃO
 
 Organize o texto exatamente nas seções do template selecionado:
@@ -191,6 +227,8 @@ FORMATAÇÃO
 
 ESTRUTURA OBRIGATÓRIA
 ${buildStructureInstructions(templateConfig)}
+
+${buildSectionGuidance(templateConfig)}
 
 FORMATO DE SAÍDA
 

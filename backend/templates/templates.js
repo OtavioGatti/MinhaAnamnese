@@ -20,11 +20,12 @@ function createSectionDefinition({
   };
 }
 
-function createTemplateConfig({ nome, secoes, promptVariant, evaluation }) {
+function createTemplateConfig({ nome, secoes, promptVariant, sectionGuidance, evaluation }) {
   return {
     nome,
     secoes,
     ...(promptVariant ? { promptVariant } : {}),
+    ...(sectionGuidance ? { sectionGuidance } : {}),
     evaluation,
   };
 }
@@ -166,14 +167,51 @@ const templates = {
       'Identificação',
       'Queixa principal',
       'História da moléstia atual',
-      'História psiquiátrica pregressa',
-      'História familiar',
-      'Medicações em uso',
+      'Antecedentes pessoais e desenvolvimento',
+      'História psiquiátrica pregressa e internações',
       'Uso de substâncias',
+      'Antecedentes pessoais patológicos',
+      'Antecedentes familiares',
+      'Medicações em uso',
       'Exame do estado mental',
       'Hipóteses diagnósticas / problemas ativos',
       'Conduta',
     ],
+    sectionGuidance: {
+      'Identificação': [
+        'Incluir, quando informado: nome, idade, escolaridade, estado civil, filhos, idade dos filhos, com quem mora, trabalho atual, trabalhos anteriores e religião.',
+      ],
+      'Queixa principal': [
+        'Registrar a queixa com as palavras do paciente, preservando o conteúdo espontâneo relatado.',
+        'Não reduzir a queixa a um diagnóstico ou rótulo se o texto original trouxer apenas experiência subjetiva.',
+      ],
+      'História da moléstia atual': [
+        'Caracterizar cada queixa ou sintoma de forma detalhada.',
+        'Descrever como o paciente entende o que sente, impacto funcional, contexto de vida e elementos que ajudem a caracterizar a psicopatologia.',
+        'Quando o paciente disser termos como ansiedade, tristeza, irritabilidade ou medo, preservar a caracterização concreta do sentimento se ela estiver no texto.',
+      ],
+      'Antecedentes pessoais e desenvolvimento': [
+        'Em pacientes novos, incluir dados da infância quando informados: nascimento, desenvolvimento neuropsicomotor, socialização e escolarização.',
+        'Registrar relações com amigos, brincadeiras, entrada na escola, alfabetização, dificuldades acadêmicas e comportamentais quando aparecerem no texto.',
+        'Na adolescência, incluir habilidade social, pertencimento a grupos, amizades, namoro, conflitos e experimentações com álcool ou drogas quando informados.',
+        'Na vida adulta, incluir trajetória após escola, faculdade, transição para vida adulta, socialização, desempenho acadêmico/laboral, casamento e relações.',
+      ],
+      'História psiquiátrica pregressa e internações': [
+        'Registrar tratamentos psiquiátricos anteriores, internações psiquiátricas, tentativas de suicídio, ideação de autoagressão e comportamentos autolesivos quando informados.',
+      ],
+      'Uso de substâncias': [
+        'Registrar uso de substâncias psicoativas, incluindo álcool e outras drogas, com padrão de uso quando informado.',
+      ],
+      'Antecedentes pessoais patológicos': [
+        'Registrar antecedentes clínicos, cirúrgicos, alergias, comorbidades e outros dados patológicos gerais quando informados.',
+      ],
+      'Antecedentes familiares': [
+        'Registrar histórico familiar de transtornos psiquiátricos, internações psiquiátricas e tentativas de suicídio quando informados.',
+      ],
+      'Medicações em uso': [
+        'Registrar nome, dose, tempo de uso, adesão e resposta percebida quando essas informações estiverem no texto.',
+      ],
+    },
     evaluation: {
       sensitivity: 'psychiatry',
       severitySignals: ['agitação', 'agressividade', 'ideação suicida', 'alucinação', 'psicose'],
@@ -184,7 +222,7 @@ const templates = {
           weight: 8,
           priority: 'important',
           aliases: ['identificação', 'identificacao'],
-          evidence: ['paciente', 'anos'],
+          evidence: ['paciente', 'anos', 'escolaridade', 'estado civil', 'filhos', 'mora', 'trabalho', 'religião'],
         }),
         createSectionDefinition({
           id: 'queixa_principal',
@@ -204,20 +242,44 @@ const templates = {
           narrative: true,
         }),
         createSectionDefinition({
-          id: 'historia_psiquiatrica',
-          label: 'História psiquiátrica pregressa',
+          id: 'antecedentes_desenvolvimento',
+          label: 'Antecedentes pessoais e desenvolvimento',
           weight: 10,
           priority: 'important',
-          aliases: ['história psiquiátrica pregressa', 'historia psiquiatrica pregressa'],
-          evidence: ['internação psiquiátrica', 'internacao psiquiatrica', 'tratamento anterior', 'episódio prévio', 'episodio previo'],
+          aliases: ['antecedentes pessoais e desenvolvimento', 'infância', 'infancia', 'adolescência', 'adolescencia', 'vida adulta'],
+          evidence: ['nascimento', 'neuropsicomotor', 'escola', 'alfabetização', 'amigos', 'socialização', 'faculdade', 'trabalho'],
+        }),
+        createSectionDefinition({
+          id: 'historia_psiquiatrica',
+          label: 'História psiquiátrica pregressa e internações',
+          weight: 10,
+          priority: 'essential',
+          aliases: ['história psiquiátrica pregressa', 'historia psiquiatrica pregressa', 'internações', 'internacoes'],
+          evidence: ['internação psiquiátrica', 'internacao psiquiatrica', 'tratamento anterior', 'episódio prévio', 'suicídio', 'suicidio', 'autolesão', 'autolesao'],
+        }),
+        createSectionDefinition({
+          id: 'substancias',
+          label: 'Uso de substâncias',
+          weight: 7,
+          priority: 'important',
+          aliases: ['uso de substâncias', 'uso de substancias', 'drogas', 'substâncias psicoativas'],
+          evidence: ['álcool', 'alcool', 'maconha', 'cocaína', 'cocaina', 'tabagismo', 'drogas'],
+        }),
+        createSectionDefinition({
+          id: 'antecedentes_patologicos',
+          label: 'Antecedentes pessoais patológicos',
+          weight: 6,
+          priority: 'important',
+          aliases: ['antecedentes pessoais patológicos', 'antecedentes patologicos', 'doenças de base', 'doencas de base', 'comorbidades'],
+          evidence: ['cirurgia', 'alergia', 'hipertensão', 'diabetes', 'asma', 'comorbidade'],
         }),
         createSectionDefinition({
           id: 'historia_familiar',
-          label: 'História familiar',
+          label: 'Antecedentes familiares',
           weight: 7,
           priority: 'important',
-          aliases: ['história familiar', 'historia familiar'],
-          evidence: ['mãe', 'pai', 'familiar'],
+          aliases: ['antecedentes familiares', 'história familiar', 'historia familiar'],
+          evidence: ['mãe', 'pai', 'familiar', 'família', 'internado', 'suicídio', 'psiquiátrica'],
         }),
         createSectionDefinition({
           id: 'medicacoes',
@@ -225,15 +287,7 @@ const templates = {
           weight: 8,
           priority: 'important',
           aliases: ['medicações em uso', 'medicacoes em uso'],
-          evidence: ['sertralina', 'fluoxetina', 'clonazepam', 'medicação', 'medicacao'],
-        }),
-        createSectionDefinition({
-          id: 'substancias',
-          label: 'Uso de substâncias',
-          weight: 7,
-          priority: 'important',
-          aliases: ['uso de substâncias', 'uso de substancias'],
-          evidence: ['álcool', 'alcool', 'maconha', 'cocaína', 'cocaina', 'tabagismo'],
+          evidence: ['sertralina', 'fluoxetina', 'clonazepam', 'dose', 'mg', 'tempo de uso', 'medicação', 'medicacao'],
         }),
         createSectionDefinition({
           id: 'exame_estado_mental',

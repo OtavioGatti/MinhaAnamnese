@@ -28,6 +28,10 @@ function TemplatesPage({
   selectedTemplateId,
   onUseTemplate,
   onTemplatesRefresh,
+  isPro,
+  loadingCheckout,
+  checkoutError,
+  onRequestUpgrade,
 }) {
   const [search, setSearch] = useState('');
   const [categoryFilter, setCategoryFilter] = useState('Todos');
@@ -95,6 +99,7 @@ function TemplatesPage({
   }, [categoryFilter, officialTemplates, search]);
 
   const previewTemplate = allTemplates.find((template) => template.id === previewTemplateId) || null;
+  const canManageTemplates = Boolean(isPro);
 
   const openPreview = (templateId) => {
     setPreviewTemplateId(templateId);
@@ -106,6 +111,12 @@ function TemplatesPage({
   };
 
   const openTemplateEditor = (template = null) => {
+    if (!canManageTemplates) {
+      setTemplateError('Templates próprios são um recurso do plano profissional.');
+      onRequestUpgrade?.();
+      return;
+    }
+
     setTemplateError('');
     setFormState(template
       ? {
@@ -137,6 +148,13 @@ function TemplatesPage({
 
   const handleSaveTemplate = async (event) => {
     event.preventDefault();
+
+    if (!canManageTemplates) {
+      setTemplateError('Templates próprios são um recurso do plano profissional.');
+      onRequestUpgrade?.();
+      return;
+    }
+
     setSavingTemplate(true);
     setTemplateError('');
 
@@ -165,6 +183,12 @@ function TemplatesPage({
   };
 
   const handleDeleteTemplate = async (template) => {
+    if (!canManageTemplates) {
+      setTemplateError('Templates próprios são um recurso do plano profissional.');
+      onRequestUpgrade?.();
+      return;
+    }
+
     const confirmed = window.confirm(`Excluir o template "${template.name}"?`);
 
     if (!confirmed) {
@@ -209,8 +233,12 @@ function TemplatesPage({
           </label>
 
           <div className="templates-toolbar-actions">
-            <button type="button" className="btn btn-primario" onClick={() => openTemplateEditor()}>
-              Novo template
+            <button type="button" className="btn btn-primario" onClick={() => openTemplateEditor()} disabled={loadingCheckout}>
+              {canManageTemplates
+                ? 'Novo template'
+                : loadingCheckout
+                  ? 'Abrindo checkout...'
+                  : 'Liberar templates'}
             </button>
           </div>
         </div>
@@ -240,8 +268,8 @@ function TemplatesPage({
           </span>
         </div>
 
-        {templateError ? (
-          <div className="templates-inline-error">{templateError}</div>
+        {templateError || checkoutError ? (
+          <div className="templates-inline-error">{templateError || checkoutError}</div>
         ) : null}
 
         {customTemplates.length ? (
@@ -287,20 +315,33 @@ function TemplatesPage({
                   >
                     Ver
                   </button>
-                  <button
-                    type="button"
-                    className="btn btn-secundario"
-                    onClick={() => openTemplateEditor(template)}
-                  >
-                    Editar
-                  </button>
-                  <button
-                    type="button"
-                    className="btn btn-secundario"
-                    onClick={() => handleDeleteTemplate(template)}
-                  >
-                    Excluir
-                  </button>
+                  {canManageTemplates ? (
+                    <>
+                      <button
+                        type="button"
+                        className="btn btn-secundario"
+                        onClick={() => openTemplateEditor(template)}
+                      >
+                        Editar
+                      </button>
+                      <button
+                        type="button"
+                        className="btn btn-secundario"
+                        onClick={() => handleDeleteTemplate(template)}
+                      >
+                        Excluir
+                      </button>
+                    </>
+                  ) : (
+                    <button
+                      type="button"
+                      className="btn btn-secundario"
+                      onClick={() => openTemplateEditor(template)}
+                      disabled={loadingCheckout}
+                    >
+                      {loadingCheckout ? 'Abrindo checkout...' : 'Editar no Pro'}
+                    </button>
+                  )}
                 </div>
               </article>
             ))}
@@ -308,13 +349,19 @@ function TemplatesPage({
         ) : (
           <div className="templates-future-empty">
             <div>
-              <strong>Crie sua biblioteca própria de modelos.</strong>
+              <strong>{canManageTemplates ? 'Crie sua biblioteca própria de modelos.' : 'Templates próprios fazem parte do plano profissional.'}</strong>
               <span>
-                Use uma estrutura que já faz parte da sua rotina, salve uma vez e aplique sempre que precisar organizar uma anamnese nesse formato.
+                {canManageTemplates
+                  ? 'Use uma estrutura que já faz parte da sua rotina, salve uma vez e aplique sempre que precisar organizar uma anamnese nesse formato.'
+                  : 'No Pro você salva seus modelos de rotina e usa essas estruturas diretamente na Home, sem depender apenas dos templates oficiais.'}
               </span>
             </div>
-            <button type="button" className="btn btn-primario" onClick={() => openTemplateEditor()}>
-              Criar template
+            <button type="button" className="btn btn-primario" onClick={() => openTemplateEditor()} disabled={loadingCheckout}>
+              {canManageTemplates
+                ? 'Criar template'
+                : loadingCheckout
+                  ? 'Abrindo checkout...'
+                  : 'Liberar plano profissional'}
             </button>
           </div>
         )}
