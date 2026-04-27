@@ -46,9 +46,7 @@ function getAccountStatus(user, accessState) {
 function getSidebarPreferenceLabel(activeSidebarTab) {
   const labels = {
     guide: 'Guia cl\u00ednico',
-    checklist: 'Checklist',
     calculator: 'Calculadoras',
-    structure: 'Estrutura',
   };
 
   return labels[activeSidebarTab] || 'Guia cl\u00ednico';

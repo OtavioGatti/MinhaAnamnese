@@ -25,6 +25,28 @@ const PRO_PLAN_PRICE_COPY = 'R$ 9,90';
 const PRO_PLAN_PERIOD_COPY = '30 dias';
 const DEFAULT_TEXT_PLACEHOLDER =
   'Ex: Paciente feminina, 32 anos, com dor abdominal há 2 dias, associada a náuseas, sem vômitos...';
+const TEMPLATE_TEXT_PLACEHOLDERS = {
+  psiquiatria:
+    'Ex: Paciente 37 anos, refere ansiedade diária há meses, insônia inicial, irritabilidade e prejuízo no trabalho...',
+  pediatria:
+    'Ex: Criança 4 anos, acompanhada pela mãe, com febre e tosse há 2 dias, redução do apetite e vacinação em dia...',
+  clinica_medica:
+    'Ex: Paciente feminina, 32 anos, com dor abdominal há 2 dias, associada a náuseas, sem vômitos...',
+  obstetricia:
+    'Ex: Gestante 30 anos, G2P1, 31 semanas pela DUM, refere contrações esporádicas e movimentos fetais presentes...',
+  upa_emergencia:
+    'Ex: Paciente masculino, 63 anos, dor torácica há 1 hora, sudorese, náusea, PA 170/100 e FC 102...',
+  puerperio:
+    'Ex: Puérpera 29 anos, 12 dias pós-cesárea, dor mamária esquerda há 2 dias, febre baixa e dificuldade na pega...',
+  ginecologia:
+    'Ex: Paciente 28 anos, corrimento vaginal há 1 semana, odor forte, dor pélvica leve, DUM há 40 dias...',
+  triagem:
+    'Ex: Paciente 36 anos, cefaleia intensa iniciada hoje, vômitos, fotofobia, PA 140/90 e relato de pior dor da vida...',
+};
+
+function normalizeContextualTab(value) {
+  return value === 'calculator' ? 'calculator' : 'guide';
+}
 
 function isAbsentDisplayValue(value) {
   if (value == null) {
@@ -774,11 +796,12 @@ function App() {
       }
 
       const nextProfile = response.data;
+      const nextContextualTab = normalizeContextualTab(nextProfile.default_contextual_tab);
       setProfile(nextProfile);
       lastSavedProfileSnapshotRef.current = {
         current_plan: nextProfile.current_plan || 'basic',
         last_template_used: nextProfile.last_template_used || null,
-        default_contextual_tab: nextProfile.default_contextual_tab || 'guide',
+        default_contextual_tab: nextContextualTab,
       };
 
       if (profileHydratedUserRef.current === user.id) {
@@ -789,8 +812,8 @@ function App() {
         setTemplateSelecionado(nextProfile.last_template_used);
       }
 
-      if (activeSidebarTab === 'guide' && nextProfile.default_contextual_tab) {
-        setActiveSidebarTab(nextProfile.default_contextual_tab);
+      if (activeSidebarTab === 'guide' && nextContextualTab) {
+        setActiveSidebarTab(nextContextualTab);
       }
 
       profileHydratedUserRef.current = user.id;
@@ -807,7 +830,7 @@ function App() {
     const nextSnapshot = {
       current_plan: profile?.current_plan || (user?.user_metadata?.plan === 'pro' ? 'pro' : 'basic'),
       last_template_used: templateSelecionado || null,
-      default_contextual_tab: activeSidebarTab || 'guide',
+      default_contextual_tab: normalizeContextualTab(activeSidebarTab),
     };
 
     const lastSnapshot = lastSavedProfileSnapshotRef.current;
@@ -832,7 +855,7 @@ function App() {
         lastSavedProfileSnapshotRef.current = {
           current_plan: response.data.current_plan || nextSnapshot.current_plan,
           last_template_used: response.data.last_template_used || null,
-          default_contextual_tab: response.data.default_contextual_tab || 'guide',
+          default_contextual_tab: normalizeContextualTab(response.data.default_contextual_tab),
         };
       }
     }, 400);
@@ -1461,6 +1484,7 @@ function App() {
   const templateAtual = templates.find((template) => template.id === templateSelecionado) || null;
   const profileTemplateAtual =
     templates.find((template) => template.id === profile?.last_template_used) || null;
+  const textPlaceholder = TEMPLATE_TEXT_PLACEHOLDERS[templateSelecionado] || DEFAULT_TEXT_PLACEHOLDER;
   const possuiGuiaSelecionado = Boolean(guides[templateSelecionado]?.length);
   const improvementBoxCopy = 'Revise o texto atual, faça ajustes e gere uma nova versão quando quiser.';
   const improvementButtonLabel = isPro ? 'Refinar minha anamnese' : 'Melhorar minha anamnese';
@@ -1952,7 +1976,7 @@ function App() {
                 texto={texto}
                 onTextoChange={setTexto}
                 inputRef={textoInputRef}
-                placeholder={DEFAULT_TEXT_PLACEHOLDER}
+                placeholder={textPlaceholder}
                 possuiGuiaSelecionado={possuiGuiaSelecionado}
                 templateTemCalculadora={templateTemCalculadora}
                 onOpenCalculadora={() => setActiveSidebarTab('calculator')}
