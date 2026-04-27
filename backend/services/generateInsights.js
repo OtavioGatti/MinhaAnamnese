@@ -186,7 +186,7 @@ function validateGenerateInsightsInput(payload) {
   const { texto, templateId } = payload || {};
 
   if (!texto || typeof texto !== 'string' || !texto.trim()) {
-    return 'Texto invÃ¡lido';
+    return 'Texto inv\u00e1lido';
   }
 
   const textLimitError = getTextLimitError(texto, 'texto da anamnese');
@@ -196,7 +196,7 @@ function validateGenerateInsightsInput(payload) {
   }
 
   if (!templateId || typeof templateId !== 'string' || !getTemplateById(templateId)) {
-    return 'Template invÃ¡lido';
+    return 'Template inv\u00e1lido';
   }
 
   return null;

@@ -20,7 +20,7 @@ module.exports = async function handler(req, res) {
   if (req.method !== 'GET' && req.method !== 'POST') {
     return res.status(405).json({
       success: false,
-      error: 'Metodo nao permitido',
+      error: 'M\u00e9todo n\u00e3o permitido',
     });
   }
 
@@ -46,7 +46,7 @@ module.exports = async function handler(req, res) {
   } catch (_error) {
     return res.status(503).json({
       success: false,
-      error: 'Nao foi possivel sincronizar o perfil agora.',
+      error: 'N\u00e3o foi poss\u00edvel sincronizar o perfil agora.',
     });
   }
 };

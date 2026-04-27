@@ -619,11 +619,11 @@ function detectContextualSeverityFactors(fullText, templateEvaluation, sectionRe
   const alarmSection = byId.sinais_alarme || byId.sinais_gravidade;
 
   if (hmaSection && hmaSection.status === 'missing') {
-    factors.push('Texto com sinal potencialmente relevante sem detalhamento suficiente da historia atual');
+    factors.push('Texto com sinal potencialmente relevante sem detalhamento suficiente da hist\u00f3ria atual');
   }
 
   if (examSection && examSection.status === 'missing') {
-    factors.push('Texto com possivel gravidade sem exame fisico ou sinais objetivos suficientes para leitura segura');
+    factors.push('Texto com poss\u00edvel gravidade sem exame f\u00edsico ou sinais objetivos suficientes para leitura segura');
   }
 
   if ((byId.sinais_alarme && byId.sinais_alarme.status === 'missing') || (byId.sinais_gravidade && byId.sinais_gravidade.status === 'missing')) {

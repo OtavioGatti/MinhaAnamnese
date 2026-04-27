@@ -14,22 +14,22 @@ function FreeInsightConfirmModal({ open, loading, onClose, onConfirm }) {
       >
         <div className="app-modal-header">
           <div className="free-insight-confirm-copy">
-            <span className="workspace-kicker">Analise gratis</span>
-            <h2 id="free-insight-title">Usar sua analise gratis agora?</h2>
-            <p>Ela libera a leitura completa deste caso, com justificativa da nota, principal lacuna e proximo passo clinico.</p>
+            <span className="workspace-kicker">{'An\u00e1lise gr\u00e1tis'}</span>
+            <h2 id="free-insight-title">{'Usar sua an\u00e1lise gr\u00e1tis agora?'}</h2>
+            <p>{'Ela libera a leitura completa deste caso, com justificativa da nota, principal lacuna e pr\u00f3ximo passo cl\u00ednico.'}</p>
           </div>
         </div>
 
         <div className="free-insight-confirm-note">
-          Esse beneficio unico foi pensado para mostrar o valor completo da revisao antes do upgrade.
+          {'Esse benef\u00edcio \u00fanico foi pensado para mostrar o valor completo da revis\u00e3o antes do upgrade.'}
         </div>
 
         <div className="app-modal-actions">
           <button type="button" className="btn btn-secundario" onClick={onClose}>
-            Ainda nao
+            {'Ainda n\u00e3o'}
           </button>
           <button type="button" className="btn btn-primario" onClick={onConfirm} disabled={loading}>
-            {loading ? 'Liberando analise...' : 'Sim, usar agora'}
+            {loading ? 'Liberando an\u00e1lise...' : 'Sim, usar agora'}
           </button>
         </div>
       </div>

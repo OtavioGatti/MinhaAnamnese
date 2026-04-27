@@ -75,14 +75,14 @@ async function handleTrackEvent(req, res) {
   if (!ALLOWED_EVENTS.has(eventName)) {
     return res.status(400).json({
       success: false,
-      error: 'Evento invalido',
+      error: 'Evento inv\u00e1lido',
     });
   }
 
   if (!isValidSessionId(sessionId)) {
     return res.status(400).json({
       success: false,
-      error: 'Session ID invalido',
+      error: 'Session ID inv\u00e1lido',
     });
   }
 
@@ -218,6 +218,6 @@ module.exports = async function handler(req, res) {
 
   return res.status(405).json({
     success: false,
-    error: 'Metodo nao permitido',
+    error: 'M\u00e9todo n\u00e3o permitido',
   });
 };

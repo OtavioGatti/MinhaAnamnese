@@ -62,7 +62,7 @@ module.exports = async function handler(req, res) {
   if (req.method !== 'GET') {
     return res.status(405).json({
       success: false,
-      error: 'Metodo nao permitido',
+      error: 'M\u00e9todo n\u00e3o permitido',
     });
   }
 

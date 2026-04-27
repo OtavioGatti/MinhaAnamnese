@@ -23,3 +23,7 @@ services:
         sync: false
       - key: PUBLIC_APP_URL
         sync: false
+      - key: PUBLIC_API_URL
+        sync: false
+      - key: MERCADO_PAGO_WEBHOOK_URL
+        sync: false

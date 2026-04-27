@@ -35,6 +35,22 @@ function normalizeBaseUrl(value) {
     : `https://${rawValue.replace(/\/+$/, '')}`;
 }
 
+function buildApiRouteUrl(baseUrl, routePath) {
+  const normalizedBaseUrl = normalizeBaseUrl(baseUrl);
+
+  if (!normalizedBaseUrl) {
+    return '';
+  }
+
+  const normalizedRoutePath = String(routePath || '').replace(/^\/+/, '');
+
+  if (normalizedBaseUrl.endsWith('/api')) {
+    return `${normalizedBaseUrl}/${normalizedRoutePath.replace(/^api\//, '')}`;
+  }
+
+  return `${normalizedBaseUrl}/${normalizedRoutePath}`;
+}
+
 function getConfiguredAppBaseUrl() {
   return normalizeBaseUrl(
     process.env.PUBLIC_APP_URL ||
@@ -42,6 +58,15 @@ function getConfiguredAppBaseUrl() {
       process.env.FRONTEND_APP_URL ||
       process.env.VERCEL_PROJECT_PRODUCTION_URL ||
       process.env.VERCEL_URL,
+  );
+}
+
+function getConfiguredApiBaseUrl() {
+  return normalizeBaseUrl(
+    process.env.PUBLIC_API_URL ||
+      process.env.BACKEND_PUBLIC_URL ||
+      process.env.API_BASE_URL ||
+      process.env.VITE_API_URL,
   );
 }
 
@@ -63,6 +88,22 @@ function getBaseUrl(req) {
 
   const protocol = forwardedProto || 'https';
   return host ? `${protocol}://${host}` : '';
+}
+
+function getWebhookUrl(req) {
+  const configuredWebhookUrl = normalizeBaseUrl(process.env.MERCADO_PAGO_WEBHOOK_URL);
+
+  if (configuredWebhookUrl) {
+    return configuredWebhookUrl;
+  }
+
+  const configuredApiBaseUrl = getConfiguredApiBaseUrl();
+
+  if (configuredApiBaseUrl) {
+    return buildApiRouteUrl(configuredApiBaseUrl, 'api/webhook/mercadopago');
+  }
+
+  return buildApiRouteUrl(getBaseUrl(req), 'api/webhook/mercadopago');
 }
 
 function getMissingCheckoutConfigKeys() {
@@ -97,7 +138,7 @@ function getCheckoutBaseUrl(req) {
   return baseUrl;
 }
 
-function buildCheckoutPayload({ baseUrl, email, userId }) {
+function buildCheckoutPayload({ baseUrl, webhookUrl, email, userId }) {
   return {
     items: [
       {
@@ -118,7 +159,7 @@ function buildCheckoutPayload({ baseUrl, email, userId }) {
       billing_version: BILLING_VERSION,
     },
     external_reference: userId,
-    notification_url: `${baseUrl}/api/webhook/mercadopago`,
+    notification_url: webhookUrl,
     back_urls: {
       success: `${baseUrl}/?checkout=success`,
       pending: `${baseUrl}/?checkout=pending`,
@@ -167,6 +208,7 @@ module.exports = async function handler(req, res) {
 
     const payload = buildCheckoutPayload({
       baseUrl: getCheckoutBaseUrl(req),
+      webhookUrl: getWebhookUrl(req),
       email,
       userId,
     });

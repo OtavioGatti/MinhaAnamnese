@@ -6,7 +6,7 @@ const isSupabaseConfigured = Boolean(supabaseUrl && supabaseAnonKey);
 
 function createFallbackSupabaseClient() {
   const unsupportedError = {
-    message: 'Supabase nao configurado',
+    message: 'Supabase n\u00e3o configurado',
   };
 
   return {
