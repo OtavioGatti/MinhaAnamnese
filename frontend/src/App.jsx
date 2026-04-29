@@ -205,13 +205,16 @@ function deriveAccessState(user, profile) {
     !planExpiresAt;
   const hasActiveProAccess =
     (currentPlan === 'pro' && billingStatus === 'active' && !expiredByDate) || hasLegacyMetadataAccess;
+  const hasLoadedProfile = Boolean(profile?.id);
   const freeFullInsightsUsedCount = Math.max(0, Number(profile?.free_full_insights_used_count) || 0);
-  const freeFullInsightsRemaining = user && !hasActiveProAccess ? Math.max(0, 1 - freeFullInsightsUsedCount) : 0;
+  const freeFullInsightsRemaining = user && hasLoadedProfile && !hasActiveProAccess
+    ? Math.max(0, 1 - freeFullInsightsUsedCount)
+    : 0;
 
   return {
     effectivePlan: hasActiveProAccess ? 'pro' : 'basic',
     hasActiveProAccess,
-    hasFreeFullInsightAvailable: Boolean(user) && freeFullInsightsRemaining > 0,
+    hasFreeFullInsightAvailable: Boolean(user) && hasLoadedProfile && freeFullInsightsRemaining > 0,
     freeFullInsightsRemaining,
     freeFullInsightsUsedCount,
     billingStatus: currentPlan === 'pro' && (billingStatus === 'expired' || expiredByDate) ? 'expired' : billingStatus,
@@ -1235,7 +1238,7 @@ function App() {
       return;
     }
 
-    if (user?.id && resultado && templateSelecionado) {
+    if (accessState?.hasFreeFullInsightAvailable && user?.id && resultado && templateSelecionado) {
       const insightsResult = await handleGerarInsights();
 
       if (insightsResult?.success || insightsResult?.status !== 402) {

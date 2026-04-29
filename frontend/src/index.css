@@ -2718,6 +2718,23 @@ body {
   line-height: 1.55;
 }
 
+.profile-plan-note {
+  display: grid;
+  gap: 0.18rem;
+  margin-top: 0.25rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(226, 232, 240, 0.9);
+}
+
+.profile-plan-note span {
+  color: var(--gray-500);
+  font-size: 0.78rem;
+}
+
+.profile-plan-note strong {
+  font-size: 0.92rem;
+}
+
 .profile-plan-badge {
   display: inline-flex;
   align-items: center;

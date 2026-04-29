@@ -27,22 +27,6 @@ function isPlanExpiringSoon(value, thresholdInDays = 5) {
   return diffDays > 0 && diffDays <= thresholdInDays;
 }
 
-function getAccountStatus(user, accessState) {
-  if (!user) {
-    return 'Aguardando autentica\u00e7\u00e3o';
-  }
-
-  if (accessState?.hasActiveProAccess) {
-    return 'Conta ativa com acesso profissional';
-  }
-
-  if (accessState?.billingStatus === 'expired') {
-    return 'Conta ativa com acesso profissional expirado';
-  }
-
-  return 'Conta ativa no plano b\u00e1sico';
-}
-
 function getSidebarPreferenceLabel(activeSidebarTab) {
   const labels = {
     guide: 'Guia cl\u00ednico',
@@ -175,7 +159,7 @@ function ProfilePage({
           <section className="profile-card">
             <div className="profile-card-header">
               <h2>Conta</h2>
-              <p>{'Informa\u00e7\u00f5es principais da sua conta e espa\u00e7o para evolu\u00e7\u00e3o futura do perfil.'}</p>
+              <p>{'Informa\u00e7\u00f5es b\u00e1sicas de acesso ao produto.'}</p>
             </div>
 
             <div className="profile-info-list">
@@ -183,20 +167,6 @@ function ProfilePage({
                 <span>E-mail</span>
                 <strong>{profileEmail}</strong>
               </div>
-              <div className="profile-info-row">
-                <span>Status da conta</span>
-                <strong>{getAccountStatus(user, accessState)}</strong>
-              </div>
-              <div className="profile-info-row">
-                <span>Plano atual</span>
-                <strong>{planSummary}</strong>
-              </div>
-              {freeInsightLabel ? (
-                <div className="profile-info-row">
-                  <span>{'Teste da an\u00e1lise'}</span>
-                  <strong>{freeInsightLabel}</strong>
-                </div>
-              ) : null}
             </div>
 
             <div className="profile-card-actions">
@@ -219,6 +189,12 @@ function ProfilePage({
               ) : null}
               <strong>{planSummary}</strong>
               <p>{getPlanDescription(accessState)}</p>
+              {freeInsightLabel ? (
+                <div className="profile-plan-note">
+                  <span>{'Teste da an\u00e1lise'}</span>
+                  <strong>{freeInsightLabel}</strong>
+                </div>
+              ) : null}
             </div>
 
             <div className="profile-card-actions">
