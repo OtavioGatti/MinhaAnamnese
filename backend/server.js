@@ -10,7 +10,9 @@ const profileHandler = require('../api/profile');
 const healthHandler = require('../api/health');
 const analyticsHandler = require('../api/analytics');
 const createCheckoutHandler = require('../api/create-checkout');
+const templatesSyncHandler = require('../api/admin/templates-sync');
 const mercadoPagoWebhookHandler = require('../api/webhook/mercadopago');
+const notionTemplatesWebhookHandler = require('../api/webhook/notion/templates');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -19,7 +21,12 @@ const JSON_BODY_LIMIT = process.env.JSON_BODY_LIMIT || '1mb';
 
 app.set('trust proxy', 1);
 app.use(cors({ origin: FRONTEND_URL, credentials: FRONTEND_URL !== '*' }));
-app.use(express.json({ limit: JSON_BODY_LIMIT }));
+app.use(express.json({
+  limit: JSON_BODY_LIMIT,
+  verify: (req, _res, buffer) => {
+    req.rawBody = buffer?.toString('utf8') || '';
+  },
+}));
 app.use((error, _req, res, next) => {
   if (error?.type === 'entity.too.large') {
     return res.status(413).json({
@@ -63,7 +70,9 @@ mountRoute('/api/profile', profileHandler);
 mountRoute('/api/health', healthHandler);
 mountRoute('/api/analytics', analyticsHandler);
 mountRoute('/api/create-checkout', createCheckoutHandler);
+mountRoute('/api/admin/templates/sync', templatesSyncHandler);
 mountRoute('/api/webhook/mercadopago', mercadoPagoWebhookHandler);
+mountRoute('/api/webhook/notion/templates', notionTemplatesWebhookHandler);
 
 app.listen(PORT, () => {
   console.log(`Backend rodando em http://localhost:${PORT}`);

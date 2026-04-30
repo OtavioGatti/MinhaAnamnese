@@ -22,10 +22,11 @@ function WorkspaceSidebar({
   onChangeTab,
   templateSelecionado,
   templateNome,
+  guideItems,
   templateTemCalculadora,
 }) {
-  const guideItems = guides[templateSelecionado] || [];
-  const hasGuide = guideItems.length > 0;
+  const resolvedGuideItems = Array.isArray(guideItems) ? guideItems : guides[templateSelecionado] || [];
+  const hasGuide = resolvedGuideItems.length > 0;
   const availableTabs = TABS.filter((tab) => tab.id !== 'calculator' || templateTemCalculadora);
   const safeActiveTab = availableTabs.some((tab) => tab.id === activeTab) ? activeTab : 'guide';
   const selectedTab = TABS.find((tab) => tab.id === safeActiveTab);
@@ -51,6 +52,7 @@ function WorkspaceSidebar({
         <GuidePanel
           templateSelecionado={templateSelecionado}
           templateNome={templateNome}
+          items={resolvedGuideItems}
           aberto
           secondary
         />

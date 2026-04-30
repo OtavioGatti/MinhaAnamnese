@@ -1,5 +1,5 @@
 const OpenAI = require('openai');
-const { getTemplateById, resolveTemplateById } = require('./templates');
+const { getTemplateById, isPotentialOfficialTemplateId, resolveTemplateById } = require('./templates');
 const { buildInsightPrompt } = require('../prompts/insightPrompt');
 const { calculateAnamnesisQualityScore } = require('../utils/anamnesisQualityScore');
 const { updateUserHistory } = require('../utils/userHistory');
@@ -196,7 +196,11 @@ function validateGenerateInsightsInput(payload) {
     return textLimitError.message;
   }
 
-  if (!templateId || typeof templateId !== 'string' || (!getTemplateById(templateId) && !isCustomTemplateId(templateId))) {
+  if (
+    !templateId ||
+    typeof templateId !== 'string' ||
+    (!getTemplateById(templateId) && !isPotentialOfficialTemplateId(templateId) && !isCustomTemplateId(templateId))
+  ) {
     return 'Template inv\u00e1lido';
   }
 

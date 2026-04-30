@@ -327,6 +327,7 @@ async function deleteUserTemplate(userId, templateId) {
 }
 
 module.exports = {
+  buildCustomEvaluation,
   createUserTemplate,
   deleteUserTemplate,
   getUserTemplateConfig,

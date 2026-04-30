@@ -44,6 +44,16 @@ const TEMPLATE_TEXT_PLACEHOLDERS = {
     'Ex: Paciente 36 anos, cefaleia intensa iniciada hoje, vômitos, fotofobia, PA 140/90 e relato de pior dor da vida...',
 };
 
+function formatBaseExamplePlaceholder(value) {
+  const text = String(value || '').trim();
+
+  if (!text) {
+    return '';
+  }
+
+  return /^ex[:\s]/i.test(text) ? text : `Ex: ${text}`;
+}
+
 function normalizeContextualTab(value) {
   return value === 'calculator' ? 'calculator' : 'guide';
 }
@@ -1500,8 +1510,14 @@ function App() {
   const templateAtual = templates.find((template) => template.id === templateSelecionado) || null;
   const profileTemplateAtual =
     templates.find((template) => template.id === profile?.last_template_used) || null;
-  const textPlaceholder = TEMPLATE_TEXT_PLACEHOLDERS[templateSelecionado] || DEFAULT_TEXT_PLACEHOLDER;
-  const possuiGuiaSelecionado = Boolean(guides[templateSelecionado]?.length);
+  const selectedGuideItems = Array.isArray(templateAtual?.guide) && templateAtual.guide.length
+    ? templateAtual.guide
+    : guides[templateSelecionado] || [];
+  const textPlaceholder =
+    formatBaseExamplePlaceholder(templateAtual?.baseExample) ||
+    TEMPLATE_TEXT_PLACEHOLDERS[templateSelecionado] ||
+    DEFAULT_TEXT_PLACEHOLDER;
+  const possuiGuiaSelecionado = selectedGuideItems.length > 0;
   const improvementBoxCopy = 'Revise o texto atual, faça ajustes e gere uma nova versão quando quiser.';
   const improvementButtonLabel = isPro ? 'Refinar minha anamnese' : 'Melhorar minha anamnese';
   const performanceMessage = getPerformanceMessage(qualityScore.score);
@@ -2090,6 +2106,7 @@ function App() {
               onChangeTab={setActiveSidebarTab}
               templateSelecionado={templateSelecionado}
               templateNome={templateAtual?.nome}
+              guideItems={selectedGuideItems}
               templateTemCalculadora={templateTemCalculadora}
             />
           </div>

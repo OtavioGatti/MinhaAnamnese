@@ -46,15 +46,17 @@ function TemplatesPage({
       .filter((template) => template.source !== 'custom')
       .map((template) => {
         const catalogEntry = officialTemplateCatalog[template.id] || {};
-        const structure = templateStructures[template.id] || template.secoes || [];
-        const checklist = guides[template.id] || [];
+        const structure = template.secoes || templateStructures[template.id] || [];
+        const checklist = Array.isArray(template.guide) && template.guide.length
+          ? template.guide
+          : guides[template.id] || [];
 
         return {
           id: template.id,
           name: template.nome,
-          category: catalogEntry.category || 'Template oficial',
-          description: catalogEntry.description || 'Template oficial disponível para organizar este tipo de anamnese.',
-          whenToUse: catalogEntry.whenToUse || 'Use este template quando precisar de uma estrutura clínica padronizada.',
+          category: template.category || catalogEntry.category || 'Template oficial',
+          description: template.description || catalogEntry.description || 'Template oficial disponível para organizar este tipo de anamnese.',
+          whenToUse: template.whenToUse || catalogEntry.whenToUse || 'Use este template quando precisar de uma estrutura clínica padronizada.',
           hasCalculators: Boolean(catalogEntry.hasCalculators),
           structure,
           checklist,

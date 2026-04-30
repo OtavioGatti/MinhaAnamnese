@@ -1,5 +1,5 @@
 const OpenAI = require('openai');
-const { getTemplateById, resolveTemplateById } = require('./templates');
+const { getTemplateById, isPotentialOfficialTemplateId, resolveTemplateById } = require('./templates');
 const { calculateAnamnesisQualityScore } = require('../utils/anamnesisQualityScore');
 const { buildStructurePrompt } = require('../prompts/structurePrompt');
 const { getLatestAnamneseMetric, registerAnamneseMetric } = require('./anamneseMetrics');
@@ -10,7 +10,11 @@ const { isCustomTemplateId } = require('./userTemplates');
 function validateProcessAnamnesisInput(payload) {
   const { template, texto } = payload || {};
 
-  if (!template || typeof template !== 'string' || (!getTemplateById(template) && !isCustomTemplateId(template))) {
+  if (
+    !template ||
+    typeof template !== 'string' ||
+    (!getTemplateById(template) && !isPotentialOfficialTemplateId(template) && !isCustomTemplateId(template))
+  ) {
     return 'Template inválido. Escolha um dos templates disponíveis.';
   }
 

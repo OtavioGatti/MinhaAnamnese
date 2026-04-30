@@ -27,3 +27,11 @@ services:
         sync: false
       - key: MERCADO_PAGO_WEBHOOK_URL
         sync: false
+      - key: NOTION_API_KEY
+        sync: false
+      - key: NOTION_TEMPLATES_DATA_SOURCE_ID
+        sync: false
+      - key: TEMPLATE_SYNC_SECRET
+        sync: false
+      - key: NOTION_WEBHOOK_VERIFICATION_TOKEN
+        sync: false

@@ -1,7 +1,7 @@
 import { guides } from '../data/guides';
 
-function GuidePanel({ templateSelecionado, templateNome, aberto, secondary = false }) {
-  const guia = guides[templateSelecionado];
+function GuidePanel({ templateSelecionado, templateNome, aberto, secondary = false, items = null }) {
+  const guia = Array.isArray(items) && items.length ? items : guides[templateSelecionado];
 
   if (!guia || !aberto) return null;
 
