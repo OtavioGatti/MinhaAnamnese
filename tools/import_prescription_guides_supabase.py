@@ -3,6 +3,7 @@ import csv
 import json
 import re
 import time
+import socket
 import unicodedata
 import urllib.error
 import urllib.parse
@@ -12,6 +13,31 @@ from pathlib import Path
 
 
 HIDDEN_REVIEW_STATUS = "Não usar sem validação"
+QUALIFIER_CONDITIONS = {
+    "aguda",
+    "agudo",
+    "alergica",
+    "alergico",
+    "alérgica",
+    "alérgico",
+    "bacteriana",
+    "bacteriano",
+    "complicada",
+    "complicado",
+    "cronica",
+    "cronico",
+    "crônica",
+    "crônico",
+    "grave",
+    "leve",
+    "moderada",
+    "moderado",
+    "nao complicada",
+    "nao complicado",
+    "não complicada",
+    "não complicado",
+    "viral",
+}
 
 
 def clean_text(value):
@@ -34,6 +60,10 @@ def slugify(value):
     base = strip_accents(clean_text(value)).lower()
     base = re.sub(r"[^a-z0-9]+", "-", base).strip("-")
     return base[:120] or "guia-prescricao"
+
+
+def normalize_key(value):
+    return strip_accents(clean_text(value)).lower()
 
 
 def load_env(path):
@@ -78,6 +108,31 @@ def extract_order(row, fallback):
     return parsed
 
 
+def build_group_title(row):
+    condition = clean_text(row.get("condicao_clinica"))
+    subcondition = clean_text(row.get("subcondicao"))
+
+    if not condition:
+        return subcondition
+
+    if not subcondition:
+        return condition
+
+    condition_key = normalize_key(condition)
+    subcondition_key = normalize_key(subcondition)
+
+    if subcondition_key and subcondition_key in condition_key:
+        return condition
+
+    if condition_key in QUALIFIER_CONDITIONS:
+        return f"{subcondition} {condition}"
+
+    if condition_key.startswith(("perfil ", "classe ", "tipo ", "grupo ")):
+        return f"{subcondition} - {condition}"
+
+    return condition
+
+
 def build_copy_text(row):
     mode = long_text(row.get("modo_de_uso"))
     medication = clean_text(row.get("medicamento"))
@@ -112,10 +167,12 @@ def build_payloads(rows):
         is_active_item = review_status != HIDDEN_REVIEW_STATUS
         group_has_active_item[group_slug] = group_has_active_item[group_slug] or is_active_item
 
+        group_title = build_group_title(row) or group_name
+
         groups[group_slug] = {
             "slug": group_slug,
-            "title": clean_text(row.get("condicao_clinica")) or group_name,
-            "condition_name": clean_text(row.get("condicao_clinica")) or group_name,
+            "title": group_title,
+            "condition_name": group_title,
             "specialty": clean_text(row.get("especialidade")) or None,
             "subcondition": clean_text(row.get("subcondicao")) or None,
             "contexts": [],
@@ -171,13 +228,22 @@ def supabase_request(url, key, table, method="GET", query="", payload=None, pref
             **({"Prefer": prefer} if prefer else {}),
         },
     )
-    try:
-        with urllib.request.urlopen(request, timeout=60) as response:
-            body = response.read().decode("utf-8")
-            return json.loads(body) if body else None
-    except urllib.error.HTTPError as exc:
-        body = exc.read().decode("utf-8", errors="ignore")
-        raise RuntimeError(f"Supabase {method} {table}{query} failed with {exc.code}: {body[:700]}") from exc
+    for attempt in range(1, 5):
+        try:
+            with urllib.request.urlopen(request, timeout=90) as response:
+                body = response.read().decode("utf-8")
+                return json.loads(body) if body else None
+        except urllib.error.HTTPError as exc:
+            body = exc.read().decode("utf-8", errors="ignore")
+            if exc.code in {429, 500, 502, 503, 504} and attempt < 4:
+                time.sleep(attempt * 1.5)
+                continue
+            raise RuntimeError(f"Supabase {method} {table}{query} failed with {exc.code}: {body[:700]}") from exc
+        except (TimeoutError, socket.timeout, urllib.error.URLError):
+            if attempt < 4:
+                time.sleep(attempt * 1.5)
+                continue
+            raise
 
 
 def chunks(items, size):

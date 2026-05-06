@@ -71,6 +71,9 @@ create index if not exists prescription_guides_condition_trgm_idx
 create index if not exists prescription_guides_title_trgm_idx
   on public.prescription_guides using gin (title extensions.gin_trgm_ops);
 
+create index if not exists prescription_guides_subcondition_trgm_idx
+  on public.prescription_guides using gin (subcondition extensions.gin_trgm_ops);
+
 create index if not exists prescription_guide_items_guide_order_idx
   on public.prescription_guide_items (guide_id, active, order_index);
 

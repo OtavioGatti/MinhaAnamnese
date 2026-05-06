@@ -53,7 +53,21 @@ function normalizeSearchQuery(value) {
 }
 
 function sanitizePostgrestPattern(value) {
-  return normalizeSearchQuery(value).replace(/[(),*]/g, ' ');
+  return normalizeSearchQuery(value).replace(/[(),*]/g, ' ').trim();
+}
+
+function stripAccents(value) {
+  return String(value || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+}
+
+function getSearchTerms(value) {
+  const raw = sanitizePostgrestPattern(value);
+  const accentless = stripAccents(raw);
+  const terms = [raw, accentless]
+    .map((term) => normalizeText(term))
+    .filter(Boolean);
+
+  return Array.from(new Set(terms));
 }
 
 function normalizeLimit(value) {
@@ -113,6 +127,29 @@ function mapGuideRow(row) {
   };
 }
 
+function guideMatchesQuery(guide, query) {
+  const normalizedQuery = stripAccents(query).toLowerCase();
+
+  if (!normalizedQuery) {
+    return true;
+  }
+
+  const haystack = stripAccents([
+    guide.title,
+    guide.conditionName,
+    guide.subcondition,
+    guide.specialty,
+    ...(guide.contexts || []),
+  ].join(' ')).toLowerCase();
+
+  if (haystack.includes(normalizedQuery)) {
+    return true;
+  }
+
+  const queryTokens = normalizedQuery.split(/\s+/).filter((token) => token.length >= 3);
+  return queryTokens.length > 0 && queryTokens.every((token) => haystack.includes(token));
+}
+
 function mapItemRow(row) {
   if (!row?.id || !row?.copy_text) {
     return null;
@@ -162,7 +199,7 @@ async function listPrescriptionGuides({ query = '', specialty = '', context = ''
     return [];
   }
 
-  const search = sanitizePostgrestPattern(query);
+  const searchTerms = getSearchTerms(query);
   const params = new URLSearchParams({
     select: GUIDE_SELECT,
     active: 'eq.true',
@@ -171,8 +208,14 @@ async function listPrescriptionGuides({ query = '', specialty = '', context = ''
     limit: String(normalizeLimit(limit)),
   });
 
-  if (search) {
-    params.set('or', `(condition_name.ilike.*${search}*,title.ilike.*${search}*,specialty.ilike.*${search}*)`);
+  if (searchTerms.length > 0) {
+    const orParts = searchTerms.flatMap((term) => [
+      `condition_name.ilike.*${term}*`,
+      `title.ilike.*${term}*`,
+      `subcondition.ilike.*${term}*`,
+      `specialty.ilike.*${term}*`,
+    ]);
+    params.set('or', `(${orParts.join(',')})`);
   }
 
   if (specialty) {
@@ -184,7 +227,36 @@ async function listPrescriptionGuides({ query = '', specialty = '', context = ''
   }
 
   const json = await requestPrescriptionGuides(`prescription_guides?${params.toString()}`, { method: 'GET' });
-  return Array.isArray(json) ? json.map(mapGuideRow).filter(Boolean) : [];
+  const directMatches = Array.isArray(json) ? json.map(mapGuideRow).filter(Boolean) : [];
+
+  if (directMatches.length > 0 || searchTerms.length === 0) {
+    return directMatches;
+  }
+
+  const fallbackParams = new URLSearchParams({
+    select: GUIDE_SELECT,
+    active: 'eq.true',
+    status: 'eq.published',
+    order: 'condition_name.asc',
+    limit: '500',
+  });
+
+  if (specialty) {
+    fallbackParams.set('specialty', `eq.${normalizeText(specialty)}`);
+  }
+
+  if (context) {
+    fallbackParams.set('contexts', `cs.{${normalizeText(context)}}`);
+  }
+
+  const fallbackJson = await requestPrescriptionGuides(`prescription_guides?${fallbackParams.toString()}`, { method: 'GET' });
+  const fallbackGuides = Array.isArray(fallbackJson)
+    ? fallbackJson.map(mapGuideRow).filter(Boolean)
+    : [];
+
+  return fallbackGuides
+    .filter((guide) => guideMatchesQuery(guide, query))
+    .slice(0, normalizeLimit(limit));
 }
 
 async function getPrescriptionGuideBySlug(slug) {
