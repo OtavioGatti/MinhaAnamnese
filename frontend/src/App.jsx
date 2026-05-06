@@ -8,6 +8,7 @@ import InputSection from './components/InputSection';
 import InsightBlock from './components/InsightBlock';
 import PlanComparisonModal from './components/PlanComparisonModal';
 import ProfilePage from './components/ProfilePage';
+import PrescriptionGuidePage from './components/PrescriptionGuidePage';
 import StructuralFeedback from './components/StructuralFeedback';
 import StructuredOutput from './components/StructuredOutput';
 import TemplatesPage from './components/TemplatesPage';
@@ -594,6 +595,7 @@ function App() {
   const [checkoutErrors, setCheckoutErrors] = useState({
     home: '',
     profile: '',
+    prescriptionGuide: '',
     templates: '',
   });
   const [authError, setAuthError] = useState('');
@@ -973,6 +975,7 @@ function App() {
     setCheckoutErrors({
       home: '',
       profile: '',
+      prescriptionGuide: '',
       templates: '',
     });
   }, [currentPage]);
@@ -990,6 +993,7 @@ function App() {
     setCheckoutErrors({
       home: '',
       profile: '',
+      prescriptionGuide: '',
       templates: '',
     });
   };
@@ -1242,6 +1246,10 @@ function App() {
     handleUpgradeInsights('templates');
   };
 
+  const handleUpgradePrescriptionGuide = () => {
+    handleUpgradeInsights('prescriptionGuide');
+  };
+
   const handleAnalysisAccessAction = async (origin = 'home') => {
     if (accessState?.hasActiveProAccess && resultado && templateSelecionado) {
       await handleGerarInsights();
@@ -1477,9 +1485,11 @@ function App() {
   );
   const homeCheckoutError = checkoutErrors.home;
   const profileCheckoutError = checkoutErrors.profile;
+  const prescriptionGuideCheckoutError = checkoutErrors.prescriptionGuide;
   const templatesCheckoutError = checkoutErrors.templates;
   const isHomeCheckoutLoading = checkoutLoadingOrigin === 'home';
   const isProfileCheckoutLoading = checkoutLoadingOrigin === 'profile';
+  const isPrescriptionGuideCheckoutLoading = checkoutLoadingOrigin === 'prescriptionGuide';
   const paywallUi = getPaywallUiConfig(user, accessState);
   const isProExpiringSoon = accessState?.hasActiveProAccess && isPlanExpiringSoon(accessState?.planExpiresAt);
   const canRequestInsights = Boolean(
@@ -1691,6 +1701,13 @@ function App() {
             onClick={() => handleNavigate('evolution')}
           >
             Evolução
+          </button>
+          <button
+            type="button"
+            className={`product-nav-item ${currentPage === 'prescriptionGuide' ? 'active' : ''}`}
+            onClick={() => handleNavigate('prescriptionGuide')}
+          >
+            Prescrições
           </button>
         </nav>
 
@@ -2140,6 +2157,21 @@ function App() {
           consistencySummary={consistencySummary}
           onGoHome={() => handleNavigate('home')}
           onGoTemplates={() => handleNavigate('templates')}
+        />
+      )}
+
+      {currentPage === 'prescriptionGuide' && (
+        <PrescriptionGuidePage
+          user={user}
+          isPro={isPro}
+          onLogin={() => {
+            setAuthMode('login');
+            setAuthError('');
+            setAuthPanelAberto(true);
+          }}
+          onRequestUpgrade={handleUpgradePrescriptionGuide}
+          loadingCheckout={isPrescriptionGuideCheckoutLoading}
+          checkoutError={prescriptionGuideCheckoutError}
         />
       )}
 
