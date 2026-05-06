@@ -8,8 +8,20 @@ const EMPTY_TEMPLATE_FORM = {
   id: null,
   name: '',
   description: '',
+  clinicalCategory: 'general',
   sections: '',
 };
+
+const CLINICAL_CATEGORY_OPTIONS = [
+  { value: 'general', label: 'Clínica geral', description: 'Usa o comportamento clínico geral do sistema.' },
+  { value: 'psychiatry', label: 'Psiquiatria', description: 'Herde foco em funcionalidade, risco, substâncias e estado mental.' },
+  { value: 'pediatrics', label: 'Pediatria', description: 'Herde foco em vacinação, desenvolvimento, sinais de alarme e exame pediátrico.' },
+  { value: 'obstetrics', label: 'Obstetrícia', description: 'Herde o prompt obstétrico personalizado para idade gestacional e sinais de alerta.' },
+  { value: 'emergency', label: 'Urgência / Emergência', description: 'Herde foco em tempo de evolução, gravidade, sinais vitais e conduta imediata.' },
+  { value: 'gynecology', label: 'Ginecologia', description: 'Herde foco em história menstrual, vida sexual, contracepção e exame ginecológico.' },
+  { value: 'postpartum', label: 'Puerpério', description: 'Herde foco em pós-parto, amamentação, loquiação e sinais infecciosos.' },
+  { value: 'triage', label: 'Triagem', description: 'Herde foco em classificação inicial, sinais de gravidade e sinais vitais.' },
+];
 
 function normalizeText(value) {
   return (value || '')
@@ -20,6 +32,10 @@ function normalizeText(value) {
 
 function getSectionsText(template) {
   return (template?.secoes || template?.structure || []).join('\n');
+}
+
+function getClinicalCategoryOption(value) {
+  return CLINICAL_CATEGORY_OPTIONS.find((option) => option.value === value) || CLINICAL_CATEGORY_OPTIONS[0];
 }
 
 function TemplatesPage({
@@ -68,17 +84,23 @@ function TemplatesPage({
   const customTemplates = useMemo(() => (
     templates
       .filter((template) => template.source === 'custom')
-      .map((template) => ({
-        id: template.id,
-        name: template.nome,
-        category: 'Meu template',
-        description: template.description || 'Estrutura personalizada salva para sua rotina.',
-        whenToUse: 'Use quando quiser organizar a anamnese seguindo sua estrutura própria.',
-        hasCalculators: false,
-        structure: template.secoes || [],
-        checklist: [],
-        source: 'custom',
-      }))
+      .map((template) => {
+        const clinicalCategory = template.clinicalCategory || template.clinical_category || 'general';
+
+        return {
+          id: template.id,
+          name: template.nome,
+          category: 'Meu template',
+          clinicalCategory,
+          clinicalCategoryLabel: getClinicalCategoryOption(clinicalCategory).label,
+          description: template.description || 'Estrutura personalizada salva para sua rotina.',
+          whenToUse: 'Use quando quiser organizar a anamnese seguindo sua estrutura própria.',
+          hasCalculators: false,
+          structure: template.secoes || [],
+          checklist: [],
+          source: 'custom',
+        };
+      })
   ), [templates]);
 
   const allTemplates = useMemo(() => (
@@ -125,6 +147,7 @@ function TemplatesPage({
           id: template.id,
           name: template.name,
           description: template.description,
+          clinicalCategory: template.clinicalCategory || 'general',
           sections: getSectionsText(template),
         }
       : EMPTY_TEMPLATE_FORM);
@@ -163,6 +186,7 @@ function TemplatesPage({
     const payload = {
       name: formState.name,
       description: formState.description,
+      clinicalCategory: formState.clinicalCategory,
       sections: formState.sections
         .split(/\r?\n/g)
         .map((section) => section.trim())
@@ -284,6 +308,7 @@ function TemplatesPage({
                 <div className="template-card-top">
                   <div>
                     <span className="template-category-chip">Personalizado</span>
+                    <span className="template-category-chip">{template.clinicalCategoryLabel}</span>
                     <h3>{template.name}</h3>
                   </div>
                 </div>
@@ -542,6 +567,24 @@ function TemplatesPage({
                 maxLength={240}
               />
             </label>
+
+            <label className="template-editor-field">
+              <span>Categoria clínica</span>
+              <select
+                value={formState.clinicalCategory}
+                onChange={(event) => handleTemplateFormChange('clinicalCategory', event.target.value)}
+              >
+                {CLINICAL_CATEGORY_OPTIONS.map((option) => (
+                  <option key={option.value} value={option.value}>
+                    {option.label}
+                  </option>
+                ))}
+              </select>
+            </label>
+
+            <div className="template-editor-helper">
+              {getClinicalCategoryOption(formState.clinicalCategory).description}
+            </div>
 
             <label className="template-editor-field">
               <span>Seções do resultado</span>

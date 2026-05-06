@@ -2276,6 +2276,7 @@ body {
 }
 
 .template-editor-field input,
+.template-editor-field select,
 .template-editor-field textarea {
   width: 100%;
   padding: 0.82rem 0.95rem;
@@ -2293,6 +2294,7 @@ body {
 }
 
 .template-editor-field input:focus,
+.template-editor-field select:focus,
 .template-editor-field textarea:focus {
   outline: none;
   border-color: var(--primary-500);
