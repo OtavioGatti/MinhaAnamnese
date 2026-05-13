@@ -1,5 +1,5 @@
 -- Prescription guide catalog used by the backend for paid professional users.
--- Source/audit columns stay server-side and must not be rendered to users.
+-- The protocol columns support the Notion CMS model where one row is one copyable protocol.
 
 create extension if not exists pg_trgm with schema extensions;
 
@@ -14,6 +14,28 @@ create table if not exists public.prescription_guides (
   status text not null default 'published',
   active boolean not null default true,
   source text,
+  tipo_protocolo text,
+  status_revisao text,
+  nivel_risco text,
+  resumo_clinico text,
+  quando_usar text,
+  quando_nao_usar text,
+  conduta_procedimento text,
+  prescricao_medicamentos text,
+  orientacoes_paciente text,
+  sinais_alerta text,
+  criterios_encaminhamento text,
+  observacoes_clinicas text,
+  texto_copiavel_conduta text,
+  texto_copiavel_prescricao text,
+  texto_copiavel_orientacoes text,
+  texto_copiavel_completo text,
+  fonte text,
+  fonte_pagina text,
+  fonte_secao text,
+  ultima_revisao date,
+  revisor text,
+  tags text[] not null default '{}'::text[],
   display_order integer not null default 1000,
   created_at timestamptz not null default timezone('utc', now()),
   updated_at timestamptz not null default timezone('utc', now()),
@@ -26,6 +48,30 @@ create table if not exists public.prescription_guides (
   constraint prescription_guides_condition_not_empty_check
     check (char_length(trim(condition_name)) > 0)
 );
+
+alter table public.prescription_guides
+  add column if not exists tipo_protocolo text,
+  add column if not exists status_revisao text,
+  add column if not exists nivel_risco text,
+  add column if not exists resumo_clinico text,
+  add column if not exists quando_usar text,
+  add column if not exists quando_nao_usar text,
+  add column if not exists conduta_procedimento text,
+  add column if not exists prescricao_medicamentos text,
+  add column if not exists orientacoes_paciente text,
+  add column if not exists sinais_alerta text,
+  add column if not exists criterios_encaminhamento text,
+  add column if not exists observacoes_clinicas text,
+  add column if not exists texto_copiavel_conduta text,
+  add column if not exists texto_copiavel_prescricao text,
+  add column if not exists texto_copiavel_orientacoes text,
+  add column if not exists texto_copiavel_completo text,
+  add column if not exists fonte text,
+  add column if not exists fonte_pagina text,
+  add column if not exists fonte_secao text,
+  add column if not exists ultima_revisao date,
+  add column if not exists revisor text,
+  add column if not exists tags text[] not null default '{}'::text[];
 
 create table if not exists public.prescription_guide_items (
   id uuid primary key default gen_random_uuid(),
@@ -73,6 +119,9 @@ create index if not exists prescription_guides_title_trgm_idx
 
 create index if not exists prescription_guides_subcondition_trgm_idx
   on public.prescription_guides using gin (subcondition extensions.gin_trgm_ops);
+
+create index if not exists prescription_guides_tags_idx
+  on public.prescription_guides using gin (tags);
 
 create index if not exists prescription_guide_items_guide_order_idx
   on public.prescription_guide_items (guide_id, active, order_index);

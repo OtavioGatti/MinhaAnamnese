@@ -1,7 +1,7 @@
 const MAX_SEARCH_RESULTS = 60;
 const MAX_QUERY_LENGTH = 80;
 
-const GUIDE_SELECT = [
+const BASE_GUIDE_COLUMNS = [
   'id',
   'slug',
   'title',
@@ -9,8 +9,37 @@ const GUIDE_SELECT = [
   'specialty',
   'subcondition',
   'contexts',
+  'source',
   'updated_at',
-].join(',');
+];
+
+const PROTOCOL_GUIDE_COLUMNS = [
+  'tipo_protocolo',
+  'status_revisao',
+  'nivel_risco',
+  'resumo_clinico',
+  'quando_usar',
+  'quando_nao_usar',
+  'conduta_procedimento',
+  'prescricao_medicamentos',
+  'orientacoes_paciente',
+  'sinais_alerta',
+  'criterios_encaminhamento',
+  'observacoes_clinicas',
+  'texto_copiavel_conduta',
+  'texto_copiavel_prescricao',
+  'texto_copiavel_orientacoes',
+  'texto_copiavel_completo',
+  'fonte',
+  'fonte_pagina',
+  'fonte_secao',
+  'ultima_revisao',
+  'revisor',
+  'tags',
+];
+
+const GUIDE_SELECT = BASE_GUIDE_COLUMNS.join(',');
+const GUIDE_PROTOCOL_SELECT = [...BASE_GUIDE_COLUMNS, ...PROTOCOL_GUIDE_COLUMNS].join(',');
 
 const ITEM_SELECT = [
   'id',
@@ -31,6 +60,29 @@ const ITEM_SELECT = [
   'review_status',
   'copy_text',
 ].join(',');
+
+const NON_MEDICATION_CATEGORIES = new Set([
+  'conduta',
+  'conduta/procedimento',
+  'conduta / procedimento',
+  'procedimento',
+  'cuidados gerais',
+  'controle',
+  'monitorizacao',
+  'monitorização',
+  'orientacao',
+  'orientação',
+  'orientacoes',
+  'orientações',
+  'encaminhamento',
+  'encaminhamento/retorno',
+  'encaminhamento / retorno',
+  'retorno',
+  'exame',
+  'exames',
+  'dieta',
+  'jejum',
+]);
 
 function getPrescriptionGuidesConfig() {
   return {
@@ -58,6 +110,10 @@ function sanitizePostgrestPattern(value) {
 
 function stripAccents(value) {
   return String(value || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+}
+
+function normalizeKey(value) {
+  return stripAccents(value).toLowerCase().trim();
 }
 
 function getSearchTerms(value) {
@@ -99,8 +155,10 @@ async function requestPrescriptionGuides(path, options = {}) {
   });
 
   if (!response.ok) {
+    const responseBody = await response.text().catch(() => '');
     const error = new Error('Não foi possível acessar os guias de prescrição.');
     error.statusCode = response.status >= 500 ? 503 : response.status;
+    error.responseBody = responseBody;
     throw error;
   }
 
@@ -111,19 +169,65 @@ async function requestPrescriptionGuides(path, options = {}) {
   return response.json();
 }
 
+function isMissingColumnError(error) {
+  const body = String(error?.responseBody || '').toLowerCase();
+  return error?.statusCode === 400 && (
+    body.includes('could not find') ||
+    body.includes('schema cache') ||
+    body.includes('column') ||
+    body.includes('42703')
+  );
+}
+
+async function requestWithSchemaFallback(primaryPath, fallbackPath, options = {}) {
+  try {
+    return await requestPrescriptionGuides(primaryPath, options);
+  } catch (error) {
+    if (!isMissingColumnError(error)) {
+      throw error;
+    }
+
+    return requestPrescriptionGuides(fallbackPath, options);
+  }
+}
+
 function mapGuideRow(row) {
   if (!row?.slug || !row?.condition_name) {
     return null;
   }
 
   return {
+    id: row.id,
     slug: row.slug,
     title: row.title || row.condition_name,
     conditionName: row.condition_name,
     specialty: row.specialty || '',
     subcondition: row.subcondition || '',
     contexts: Array.isArray(row.contexts) ? row.contexts.filter(Boolean) : [],
+    source: row.fonte || row.source || '',
     updatedAt: row.updated_at || null,
+    tipoProtocolo: row.tipo_protocolo || '',
+    statusRevisao: row.status_revisao || '',
+    nivelRisco: row.nivel_risco || '',
+    resumoClinico: row.resumo_clinico || '',
+    quandoUsar: row.quando_usar || '',
+    quandoNaoUsar: row.quando_nao_usar || '',
+    condutaProcedimento: row.conduta_procedimento || '',
+    prescricaoMedicamentos: row.prescricao_medicamentos || '',
+    orientacoesPaciente: row.orientacoes_paciente || '',
+    sinaisAlerta: row.sinais_alerta || '',
+    criteriosEncaminhamento: row.criterios_encaminhamento || '',
+    observacoesClinicas: row.observacoes_clinicas || '',
+    textoCopiavelConduta: row.texto_copiavel_conduta || '',
+    textoCopiavelPrescricao: row.texto_copiavel_prescricao || '',
+    textoCopiavelOrientacoes: row.texto_copiavel_orientacoes || '',
+    textoCopiavelCompleto: row.texto_copiavel_completo || '',
+    fonte: row.fonte || row.source || '',
+    fontePagina: row.fonte_pagina || '',
+    fonteSecao: row.fonte_secao || '',
+    ultimaRevisao: row.ultima_revisao || '',
+    revisor: row.revisor || '',
+    tags: Array.isArray(row.tags) ? row.tags.filter(Boolean) : [],
   };
 }
 
@@ -139,7 +243,10 @@ function guideMatchesQuery(guide, query) {
     guide.conditionName,
     guide.subcondition,
     guide.specialty,
+    guide.tipoProtocolo,
+    guide.nivelRisco,
     ...(guide.contexts || []),
+    ...(guide.tags || []),
   ].join(' ')).toLowerCase();
 
   if (haystack.includes(normalizedQuery)) {
@@ -194,14 +301,108 @@ function groupItemsByCategory(items) {
   }));
 }
 
-async function listPrescriptionGuides({ query = '', specialty = '', context = '', limit = MAX_SEARCH_RESULTS } = {}) {
-  if (!isPrescriptionGuidesStorageAvailable()) {
-    return [];
+function uniqueLines(values) {
+  const seen = new Set();
+
+  return values
+    .flatMap((value) => String(value || '').split(/\r?\n/))
+    .map((line) => line.trim())
+    .filter(Boolean)
+    .filter((line) => {
+      const key = normalizeKey(line);
+      if (seen.has(key)) {
+        return false;
+      }
+      seen.add(key);
+      return true;
+    })
+    .join('\n');
+}
+
+function isMedicationItem(item) {
+  if (normalizeKey(item.itemType) === 'conduta') {
+    return false;
   }
 
+  return !NON_MEDICATION_CATEGORIES.has(normalizeKey(item.category));
+}
+
+function formatLegacyItem(item) {
+  return normalizeText(item.copyText || item.instructions || item.title);
+}
+
+function buildLegacySectionText(items) {
+  return items
+    .map(formatLegacyItem)
+    .filter(Boolean)
+    .map((line, index) => `${index + 1}. ${line}`)
+    .join('\n\n');
+}
+
+function buildSourceReviewText(guide) {
+  const rows = [
+    guide.fonte ? `Fonte: ${guide.fonte}` : '',
+    guide.fontePagina ? `Página: ${guide.fontePagina}` : '',
+    guide.fonteSecao ? `Seção: ${guide.fonteSecao}` : '',
+    guide.statusRevisao ? `Status de revisão: ${guide.statusRevisao}` : '',
+    guide.ultimaRevisao ? `Última revisão: ${guide.ultimaRevisao}` : '',
+    guide.revisor ? `Revisor: ${guide.revisor}` : '',
+  ].filter(Boolean);
+
+  return rows.join('\n');
+}
+
+function buildProtocolSections(guide, items) {
+  const medicationItems = items.filter(isMedicationItem);
+  const conductItems = items.filter((item) => !isMedicationItem(item));
+
+  const prescription = guide.prescricaoMedicamentos || buildLegacySectionText(medicationItems);
+  const conduct = guide.condutaProcedimento || buildLegacySectionText(conductItems);
+  const orientations = guide.orientacoesPaciente || uniqueLines(items.map((item) => item.careNotes));
+  const warnings = guide.sinaisAlerta || uniqueLines(items.map((item) => item.warnings));
+  const sourceReview = buildSourceReviewText(guide);
+
+  return {
+    prescription,
+    conduct,
+    orientations,
+    warnings,
+    whenUse: guide.quandoUsar || '',
+    whenNotUse: guide.quandoNaoUsar || '',
+    referral: guide.criteriosEncaminhamento || '',
+    observations: guide.observacoesClinicas || '',
+    sourceReview,
+  };
+}
+
+function buildCopyPayload(guide, sections) {
+  const prescription = guide.textoCopiavelPrescricao || sections.prescription;
+  const conduct = guide.textoCopiavelConduta || sections.conduct;
+  const orientations = guide.textoCopiavelOrientacoes || sections.orientations;
+  const all = guide.textoCopiavelCompleto || [
+    guide.title,
+    sections.prescription ? `Prescrição medicamentosa:\n${sections.prescription}` : '',
+    sections.conduct ? `Conduta / Procedimento:\n${sections.conduct}` : '',
+    sections.orientations ? `Orientações ao paciente:\n${sections.orientations}` : '',
+    sections.warnings ? `Sinais de alerta:\n${sections.warnings}` : '',
+    sections.whenUse ? `Quando usar:\n${sections.whenUse}` : '',
+    sections.whenNotUse ? `Quando não usar:\n${sections.whenNotUse}` : '',
+    sections.referral ? `Encaminhamento / Retorno:\n${sections.referral}` : '',
+    sections.observations ? `Observações clínicas:\n${sections.observations}` : '',
+  ].filter(Boolean).join('\n\n');
+
+  return {
+    all,
+    prescription,
+    conduct,
+    orientations,
+  };
+}
+
+function buildGuideParams({ select, query = '', specialty = '', context = '', limit = MAX_SEARCH_RESULTS }) {
   const searchTerms = getSearchTerms(query);
   const params = new URLSearchParams({
-    select: GUIDE_SELECT,
+    select,
     active: 'eq.true',
     status: 'eq.published',
     order: 'condition_name.asc',
@@ -226,7 +427,27 @@ async function listPrescriptionGuides({ query = '', specialty = '', context = ''
     params.set('contexts', `cs.{${normalizeText(context)}}`);
   }
 
-  const json = await requestPrescriptionGuides(`prescription_guides?${params.toString()}`, { method: 'GET' });
+  return params;
+}
+
+async function fetchGuideList(args) {
+  const protocolParams = buildGuideParams({ ...args, select: GUIDE_PROTOCOL_SELECT });
+  const fallbackParams = buildGuideParams({ ...args, select: GUIDE_SELECT });
+
+  return requestWithSchemaFallback(
+    `prescription_guides?${protocolParams.toString()}`,
+    `prescription_guides?${fallbackParams.toString()}`,
+    { method: 'GET' },
+  );
+}
+
+async function listPrescriptionGuides({ query = '', specialty = '', context = '', limit = MAX_SEARCH_RESULTS } = {}) {
+  if (!isPrescriptionGuidesStorageAvailable()) {
+    return [];
+  }
+
+  const searchTerms = getSearchTerms(query);
+  const json = await fetchGuideList({ query, specialty, context, limit });
   const directMatches = Array.isArray(json) ? json.map(mapGuideRow).filter(Boolean) : [];
 
   if (directMatches.length > 0 || searchTerms.length === 0) {
@@ -234,6 +455,14 @@ async function listPrescriptionGuides({ query = '', specialty = '', context = ''
   }
 
   const fallbackParams = new URLSearchParams({
+    select: GUIDE_PROTOCOL_SELECT,
+    active: 'eq.true',
+    status: 'eq.published',
+    order: 'condition_name.asc',
+    limit: '500',
+  });
+
+  const legacyFallbackParams = new URLSearchParams({
     select: GUIDE_SELECT,
     active: 'eq.true',
     status: 'eq.published',
@@ -243,13 +472,19 @@ async function listPrescriptionGuides({ query = '', specialty = '', context = ''
 
   if (specialty) {
     fallbackParams.set('specialty', `eq.${normalizeText(specialty)}`);
+    legacyFallbackParams.set('specialty', `eq.${normalizeText(specialty)}`);
   }
 
   if (context) {
     fallbackParams.set('contexts', `cs.{${normalizeText(context)}}`);
+    legacyFallbackParams.set('contexts', `cs.{${normalizeText(context)}}`);
   }
 
-  const fallbackJson = await requestPrescriptionGuides(`prescription_guides?${fallbackParams.toString()}`, { method: 'GET' });
+  const fallbackJson = await requestWithSchemaFallback(
+    `prescription_guides?${fallbackParams.toString()}`,
+    `prescription_guides?${legacyFallbackParams.toString()}`,
+    { method: 'GET' },
+  );
   const fallbackGuides = Array.isArray(fallbackJson)
     ? fallbackJson.map(mapGuideRow).filter(Boolean)
     : [];
@@ -266,14 +501,26 @@ async function getPrescriptionGuideBySlug(slug) {
     return null;
   }
 
-  const guideParams = new URLSearchParams({
+  const guideProtocolParams = new URLSearchParams({
+    select: GUIDE_PROTOCOL_SELECT,
+    slug: `eq.${normalizedSlug}`,
+    active: 'eq.true',
+    status: 'eq.published',
+    limit: '1',
+  });
+  const guideFallbackParams = new URLSearchParams({
     select: GUIDE_SELECT,
     slug: `eq.${normalizedSlug}`,
     active: 'eq.true',
     status: 'eq.published',
     limit: '1',
   });
-  const guideRows = await requestPrescriptionGuides(`prescription_guides?${guideParams.toString()}`, { method: 'GET' });
+
+  const guideRows = await requestWithSchemaFallback(
+    `prescription_guides?${guideProtocolParams.toString()}`,
+    `prescription_guides?${guideFallbackParams.toString()}`,
+    { method: 'GET' },
+  );
   const guide = Array.isArray(guideRows) ? mapGuideRow(guideRows[0]) : null;
 
   if (!guide) {
@@ -289,13 +536,16 @@ async function getPrescriptionGuideBySlug(slug) {
   });
   const itemRows = await requestPrescriptionGuides(`prescription_guide_items?${itemParams.toString()}`, { method: 'GET' });
   const items = Array.isArray(itemRows) ? itemRows.map(mapItemRow).filter(Boolean) : [];
-  const copyText = items.map((item) => item.copyText).filter(Boolean).join('\n');
+  const sections = buildProtocolSections(guide, items);
+  const copy = buildCopyPayload(guide, sections);
 
   return {
     ...guide,
     items,
     categories: groupItemsByCategory(items),
-    copyText,
+    sections,
+    copy,
+    copyText: copy.all,
   };
 }
 

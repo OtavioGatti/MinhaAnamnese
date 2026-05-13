@@ -3,24 +3,301 @@ import { api } from '../apiClient';
 
 const DEFAULT_QUERY = '';
 const SEARCH_DEBOUNCE_MS = 320;
+const SAFETY_TEXT = 'Confirmar dose, alergias, contraindicações, idade, peso quando aplicável, gestação, função renal/hepática, gravidade do caso e protocolo local.';
 
-function getItemCopyText(item) {
-  return item?.copyText || item?.instructions || item?.title || '';
+const SECTION_DEFINITIONS = [
+  {
+    key: 'prescription',
+    title: 'Prescrição medicamentosa',
+    copyLabel: 'Copiar prescrição',
+    copyKey: 'prescription',
+  },
+  {
+    key: 'conduct',
+    title: 'Conduta / Procedimento',
+    copyLabel: 'Copiar conduta',
+    copyKey: 'conduct',
+  },
+  {
+    key: 'orientations',
+    title: 'Orientações ao paciente',
+    copyLabel: 'Copiar orientações',
+    copyKey: 'orientations',
+  },
+  {
+    key: 'warnings',
+    title: 'Sinais de alerta',
+  },
+  {
+    key: 'whenUse',
+    title: 'Quando usar',
+  },
+  {
+    key: 'whenNotUse',
+    title: 'Quando não usar',
+  },
+  {
+    key: 'referral',
+    title: 'Encaminhamento / Retorno',
+  },
+  {
+    key: 'observations',
+    title: 'Observações clínicas',
+  },
+  {
+    key: 'sourceReview',
+    title: 'Fonte e revisão',
+  },
+];
+
+function getGuideTitle(guide) {
+  return guide?.title || guide?.conditionName || 'Protocolo';
 }
 
-function buildSectionCopy(items) {
-  return items
-    .map((item) => getItemCopyText(item))
-    .filter(Boolean)
-    .join('\n');
+function getContextText(guide) {
+  return (guide?.contexts || []).filter(Boolean).join(' / ');
 }
 
-function getGuideCopyText(guide) {
-  if (guide?.copyText) {
-    return guide.copyText;
+function getGuideMetaParts(guide) {
+  return [
+    guide?.specialty,
+    getContextText(guide),
+    guide?.subcondition,
+  ].filter(Boolean);
+}
+
+function getStatusLabel(guide) {
+  return guide?.statusRevisao || guide?.nivelRisco || '';
+}
+
+function getRiskClass(guide) {
+  const value = String(guide?.nivelRisco || guide?.statusRevisao || '').toLowerCase();
+  if (value.includes('alto') || value.includes('não usar')) {
+    return 'danger';
+  }
+  if (value.includes('validado')) {
+    return 'success';
+  }
+  return 'warning';
+}
+
+function getCopyText(guide, key) {
+  if (!guide) {
+    return '';
   }
 
-  return Array.isArray(guide?.items) ? buildSectionCopy(guide.items) : '';
+  const copy = guide.copy || {};
+  const sections = guide.sections || {};
+
+  if (key === 'all') {
+    return copy.all || guide.copyText || '';
+  }
+
+  return copy[key] || sections[key] || '';
+}
+
+function getSectionText(guide, key) {
+  return String(guide?.sections?.[key] || '').trim();
+}
+
+function countMeaningfulLines(text) {
+  return String(text || '')
+    .split(/\r?\n/)
+    .map((line) => line.trim())
+    .filter(Boolean).length;
+}
+
+function getDefaultExpandedSections(guide) {
+  const defaults = {
+    prescription: true,
+    conduct: true,
+  };
+
+  if (String(guide?.nivelRisco || '').toLowerCase().includes('alto')) {
+    defaults.warnings = true;
+    defaults.whenNotUse = true;
+  }
+
+  return defaults;
+}
+
+function CopyButton({
+  text,
+  copyKey,
+  copiedKey,
+  onCopy,
+  children,
+  className = 'btn btn-secundario',
+}) {
+  const disabled = !String(text || '').trim();
+
+  return (
+    <button
+      type="button"
+      className={className}
+      onClick={() => onCopy(text, copyKey)}
+      disabled={disabled}
+    >
+      {copiedKey === copyKey ? 'Copiado' : children}
+    </button>
+  );
+}
+
+function ProtocolSidebar({
+  query,
+  setQuery,
+  guides,
+  selectedSlug,
+  setSelectedSlug,
+  loadingGuides,
+  error,
+}) {
+  return (
+    <aside className="protocol-sidebar">
+      <label className="protocol-search-label" htmlFor="prescription-search">
+        Buscar protocolo
+      </label>
+      <input
+        id="prescription-search"
+        className="protocol-search-input"
+        value={query}
+        onChange={(event) => {
+          setQuery(event.target.value);
+          setSelectedSlug('');
+        }}
+        placeholder="Ex: conjuntivite, alergica, abdome obstrutivo"
+      />
+
+      {error ? <div className="prescription-error">{error}</div> : null}
+
+      <div className="protocol-results-list" aria-live="polite">
+        {loadingGuides ? (
+          <div className="prescription-empty">Buscando protocolos...</div>
+        ) : guides.length > 0 ? (
+          guides.map((guide) => {
+            const status = getStatusLabel(guide);
+
+            return (
+              <button
+                key={guide.slug}
+                type="button"
+                className={`protocol-result-item ${guide.slug === selectedSlug ? 'active' : ''}`}
+                onClick={() => setSelectedSlug(guide.slug)}
+              >
+                <strong>{getGuideTitle(guide)}</strong>
+                <span>
+                  {[...getGuideMetaParts(guide), status]
+                    .filter(Boolean)
+                    .join(' · ')}
+                </span>
+              </button>
+            );
+          })
+        ) : (
+          <div className="prescription-empty">Nenhum protocolo encontrado.</div>
+        )}
+      </div>
+    </aside>
+  );
+}
+
+function ProtocolHeader({ guide, copiedKey, onCopy }) {
+  const status = getStatusLabel(guide);
+  const source = [guide?.fonte || guide?.source, guide?.fontePagina ? `pág. ${guide.fontePagina}` : '']
+    .filter(Boolean)
+    .join(' · ');
+
+  return (
+    <header className="protocol-header">
+      <div className="protocol-header-copy">
+        <h2>{getGuideTitle(guide)}</h2>
+        <p>{getGuideMetaParts(guide).join(' · ')}</p>
+        <div className="protocol-meta-row">
+          {status ? (
+            <span className={`protocol-status-badge ${getRiskClass(guide)}`}>
+              {status}
+            </span>
+          ) : null}
+          {source ? <span className="protocol-source-chip">{source}</span> : null}
+        </div>
+      </div>
+
+      <div className="protocol-copy-actions">
+        <CopyButton text={getCopyText(guide, 'all')} copyKey="all" copiedKey={copiedKey} onCopy={onCopy}>
+          Copiar tudo
+        </CopyButton>
+        <CopyButton text={getCopyText(guide, 'prescription')} copyKey="prescription-top" copiedKey={copiedKey} onCopy={onCopy}>
+          Copiar prescrição
+        </CopyButton>
+        <CopyButton text={getCopyText(guide, 'conduct')} copyKey="conduct-top" copiedKey={copiedKey} onCopy={onCopy}>
+          Copiar conduta
+        </CopyButton>
+        <CopyButton text={getCopyText(guide, 'orientations')} copyKey="orientations-top" copiedKey={copiedKey} onCopy={onCopy}>
+          Copiar orientações
+        </CopyButton>
+      </div>
+    </header>
+  );
+}
+
+function SafetyNotice() {
+  return (
+    <div className="protocol-safety-notice">
+      <strong>Antes de prescrever:</strong>
+      <span>{SAFETY_TEXT}</span>
+    </div>
+  );
+}
+
+function ProtocolAccordionSection({
+  definition,
+  guide,
+  expanded,
+  onToggle,
+  copiedKey,
+  onCopy,
+}) {
+  const sectionText = getSectionText(guide, definition.key);
+  const copyText = definition.copyKey ? getCopyText(guide, definition.copyKey) : sectionText;
+  const itemCount = countMeaningfulLines(sectionText);
+
+  return (
+    <section className="protocol-accordion-section">
+      <button
+        type="button"
+        className="protocol-accordion-trigger"
+        aria-expanded={expanded}
+        onClick={onToggle}
+      >
+        <span className="protocol-accordion-title">
+          <span className="protocol-chevron">{expanded ? '▾' : '▸'}</span>
+          {definition.title}
+        </span>
+        {itemCount > 0 ? <span className="protocol-section-count">{itemCount} itens</span> : null}
+      </button>
+
+      {expanded ? (
+        <div className="protocol-accordion-content">
+          {sectionText ? (
+            <pre>{sectionText}</pre>
+          ) : (
+            <div className="protocol-section-empty">Campo ainda não preenchido no CMS.</div>
+          )}
+          {definition.copyLabel ? (
+            <CopyButton
+              text={copyText}
+              copyKey={`${definition.key}-section`}
+              copiedKey={copiedKey}
+              onCopy={onCopy}
+              className="protocol-section-copy"
+            >
+              {definition.copyLabel}
+            </CopyButton>
+          ) : null}
+        </div>
+      ) : null}
+    </section>
+  );
 }
 
 function PrescriptionGuidePage({
@@ -35,20 +312,15 @@ function PrescriptionGuidePage({
   const [guides, setGuides] = useState([]);
   const [selectedSlug, setSelectedSlug] = useState('');
   const [selectedGuide, setSelectedGuide] = useState(null);
+  const [expandedSections, setExpandedSections] = useState({});
   const [loadingGuides, setLoadingGuides] = useState(false);
   const [loadingDetail, setLoadingDetail] = useState(false);
   const [error, setError] = useState('');
   const [copiedKey, setCopiedKey] = useState('');
 
-  const selectedGuideItems = Array.isArray(selectedGuide?.items) ? selectedGuide.items : [];
-  const prescriptionItems = useMemo(
-    () => selectedGuideItems.filter((item) => item.itemType === 'Prescrição'),
-    [selectedGuideItems],
-  );
-  const conductItems = useMemo(
-    () => selectedGuideItems.filter((item) => item.itemType === 'Conduta'),
-    [selectedGuideItems],
-  );
+  const populatedSectionCount = useMemo(() => (
+    SECTION_DEFINITIONS.filter((section) => getSectionText(selectedGuide, section.key)).length
+  ), [selectedGuide]);
 
   useEffect(() => {
     if (!user?.id || !isPro) {
@@ -113,6 +385,7 @@ function PrescriptionGuidePage({
 
       if (response.success && response.data) {
         setSelectedGuide(response.data);
+        setExpandedSections(getDefaultExpandedSections(response.data));
       } else {
         setSelectedGuide(null);
         setError(response.error || 'Não foi possível abrir este guia de prescrição.');
@@ -138,6 +411,13 @@ function PrescriptionGuidePage({
     await navigator.clipboard.writeText(content);
     setCopiedKey(key);
     window.setTimeout(() => setCopiedKey(''), 1400);
+  }
+
+  function toggleSection(key) {
+    setExpandedSections((current) => ({
+      ...current,
+      [key]: !current[key],
+    }));
   }
 
   if (!user?.id) {
@@ -181,140 +461,62 @@ function PrescriptionGuidePage({
       <section className="prescription-guide-header">
         <div>
           <span className="workspace-kicker">Guia de Prescrição</span>
-          <h1>Modelos por patologia</h1>
-          <p>Busque uma condição clínica e copie a conduta completa ou partes específicas do modelo.</p>
+          <h1>Protocolos por patologia</h1>
+          <p>Busque uma condição clínica e copie a prescrição, conduta ou orientação pronta para uso.</p>
         </div>
         <div className="prescription-guide-summary">
-          <strong>{selectedGuideItems.length || guides.length}</strong>
-          <span>{selectedGuide ? 'itens no modelo' : 'resultados'}</span>
+          <strong>{selectedGuide ? populatedSectionCount : guides.length}</strong>
+          <span>{selectedGuide ? 'seções preenchidas' : 'resultados'}</span>
         </div>
       </section>
 
       <section className="prescription-guide-grid">
-        <div className="prescription-search-panel">
-          <label className="prescription-search-label" htmlFor="prescription-search">
-            Patologia
-          </label>
-          <input
-            id="prescription-search"
-            className="prescription-search-input"
-            value={query}
-            onChange={(event) => {
-              setQuery(event.target.value);
-              setSelectedSlug('');
-              setSelectedGuide(null);
-            }}
-            placeholder="Ex: cistite, rinossinusite, abdome obstrutivo"
-          />
+        <ProtocolSidebar
+          query={query}
+          setQuery={(value) => {
+            setQuery(value);
+            setSelectedGuide(null);
+          }}
+          guides={guides}
+          selectedSlug={selectedSlug}
+          setSelectedSlug={setSelectedSlug}
+          loadingGuides={loadingGuides}
+          error={error}
+        />
 
-          {error ? <div className="prescription-error">{error}</div> : null}
-
-          <div className="prescription-results-list" aria-live="polite">
-            {loadingGuides ? (
-              <div className="prescription-empty">Buscando modelos...</div>
-            ) : guides.length > 0 ? (
-              guides.map((guide) => (
-                <button
-                  key={guide.slug}
-                  type="button"
-                  className={`prescription-result-item ${guide.slug === selectedSlug ? 'active' : ''}`}
-                  onClick={() => setSelectedSlug(guide.slug)}
-                >
-                  <strong>{guide.conditionName}</strong>
-                  <span>
-                    {[guide.specialty, guide.subcondition, ...(guide.contexts || [])]
-                      .filter(Boolean)
-                      .join(' · ')}
-                  </span>
-                </button>
-              ))
-            ) : (
-              <div className="prescription-empty">Nenhum modelo encontrado.</div>
-            )}
-          </div>
-        </div>
-
-        <div className="prescription-detail-panel">
+        <article className="protocol-detail-panel">
           {loadingDetail ? (
-            <div className="prescription-empty">Carregando prescrição...</div>
+            <div className="prescription-empty">Carregando protocolo...</div>
           ) : selectedGuide ? (
             <>
-              <div className="prescription-detail-header">
-                <div>
-                  <h2>{selectedGuide.conditionName}</h2>
-                  <p>
-                    {[selectedGuide.specialty, selectedGuide.subcondition, ...(selectedGuide.contexts || [])]
-                      .filter(Boolean)
-                      .join(' · ')}
-                  </p>
-                </div>
-                <div className="prescription-copy-actions">
-                  <button
-                    type="button"
-                    className="btn btn-secundario"
-                    onClick={() => copyText(getGuideCopyText(selectedGuide), 'all')}
-                  >
-                    {copiedKey === 'all' ? 'Copiado' : 'Copiar tudo'}
-                  </button>
-                  <button
-                    type="button"
-                    className="btn btn-secundario"
-                    onClick={() => copyText(buildSectionCopy(conductItems), 'conducts')}
-                    disabled={conductItems.length === 0}
-                  >
-                    {copiedKey === 'conducts' ? 'Copiado' : 'Copiar condutas'}
-                  </button>
-                  <button
-                    type="button"
-                    className="btn btn-secundario"
-                    onClick={() => copyText(buildSectionCopy(prescriptionItems), 'prescriptions')}
-                    disabled={prescriptionItems.length === 0}
-                  >
-                    {copiedKey === 'prescriptions' ? 'Copiado' : 'Copiar prescrições'}
-                  </button>
-                </div>
-              </div>
+              <ProtocolHeader guide={selectedGuide} copiedKey={copiedKey} onCopy={copyText} />
+              <SafetyNotice />
 
-              <div className="prescription-safety-note">
-                Modelo de apoio. Confirme dose, alergias, contraindicações, idade, peso, gestação, função renal/hepática e protocolo local antes de prescrever.
-              </div>
+              {selectedGuide.resumoClinico ? (
+                <div className="protocol-summary-block">
+                  <strong>Resumo clínico</strong>
+                  <p>{selectedGuide.resumoClinico}</p>
+                </div>
+              ) : null}
 
-              <div className="prescription-category-list">
-                {(selectedGuide.categories || []).map((categoryGroup) => (
-                  <section key={categoryGroup.category} className="prescription-category-section">
-                    <h3>{categoryGroup.category}</h3>
-                    <div className="prescription-item-list">
-                      {categoryGroup.items.map((item) => (
-                        <article key={item.id} className="prescription-item">
-                          <div className="prescription-item-index">{item.orderIndex}</div>
-                          <div className="prescription-item-body">
-                            <div className="prescription-item-heading">
-                              <strong>{getItemCopyText(item)}</strong>
-                              <span>{item.itemType}</span>
-                            </div>
-                            {item.reviewStatus === 'Revisão pendente' ? (
-                              <p className="prescription-review-note">Revisão clínica pendente.</p>
-                            ) : null}
-                          </div>
-                          <button
-                            type="button"
-                            className="prescription-item-copy"
-                            onClick={() => copyText(getItemCopyText(item), item.id)}
-                            title="Copiar item"
-                          >
-                            {copiedKey === item.id ? 'Copiado' : 'Copiar'}
-                          </button>
-                        </article>
-                      ))}
-                    </div>
-                  </section>
+              <div className="protocol-accordion-list">
+                {SECTION_DEFINITIONS.map((definition) => (
+                  <ProtocolAccordionSection
+                    key={definition.key}
+                    definition={definition}
+                    guide={selectedGuide}
+                    expanded={Boolean(expandedSections[definition.key])}
+                    onToggle={() => toggleSection(definition.key)}
+                    copiedKey={copiedKey}
+                    onCopy={copyText}
+                  />
                 ))}
               </div>
             </>
           ) : (
-            <div className="prescription-empty">Selecione uma patologia para ver o modelo.</div>
+            <div className="prescription-empty">Selecione uma patologia para ver o protocolo.</div>
           )}
-        </div>
+        </article>
       </section>
     </main>
   );

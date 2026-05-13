@@ -39,6 +39,22 @@ QUALIFIER_CONDITIONS = {
     "viral",
 }
 
+PROTOCOL_FIELD_NAMES = {
+    "resumo_clinico",
+    "quando_usar",
+    "quando_nao_usar",
+    "conduta_procedimento",
+    "prescricao_medicamentos",
+    "orientacoes_paciente",
+    "sinais_alerta",
+    "criterios_encaminhamento",
+    "observacoes_clinicas",
+    "texto_copiavel_conduta",
+    "texto_copiavel_prescricao",
+    "texto_copiavel_orientacoes",
+    "texto_copiavel_completo",
+}
+
 
 def clean_text(value):
     return re.sub(r"\s+", " ", str(value or "")).strip()
@@ -63,7 +79,24 @@ def slugify(value):
 
 
 def normalize_key(value):
-    return strip_accents(clean_text(value)).lower()
+    return re.sub(r"[^a-z0-9]+", "_", strip_accents(clean_text(value)).lower()).strip("_")
+
+
+def row_value(row, *names):
+    normalized = {normalize_key(key): value for key, value in row.items()}
+    for name in names:
+        key = normalize_key(name)
+        if key in normalized:
+            return normalized[key]
+    return ""
+
+
+def split_list(value):
+    return [
+        clean_text(part)
+        for part in re.split(r"[,;|]", str(value or ""))
+        if clean_text(part)
+    ]
 
 
 def load_env(path):
@@ -124,10 +157,10 @@ def build_group_title(row):
     if subcondition_key and subcondition_key in condition_key:
         return condition
 
-    if condition_key in QUALIFIER_CONDITIONS:
+    if condition_key in {normalize_key(value) for value in QUALIFIER_CONDITIONS}:
         return f"{subcondition} {condition}"
 
-    if condition_key.startswith(("perfil ", "classe ", "tipo ", "grupo ")):
+    if condition_key.startswith(("perfil_", "classe_", "tipo_", "grupo_")):
         return f"{subcondition} - {condition}"
 
     return condition
@@ -151,6 +184,9 @@ def build_copy_text(row):
 
 
 def build_payloads(rows):
+    if rows and any(PROTOCOL_FIELD_NAMES.intersection({normalize_key(key) for key in row.keys()}) for row in rows):
+        return build_protocol_payloads(rows)
+
     groups = {}
     items = []
     group_contexts = defaultdict(set)
@@ -213,6 +249,59 @@ def build_payloads(rows):
         group["active"] = group_has_active_item[slug]
 
     return list(groups.values()), items
+
+
+def build_protocol_payloads(rows):
+    groups = []
+
+    for index, row in enumerate(rows, start=1):
+        title = clean_text(row_value(row, "titulo", "title", "condicao_clinica", "patologia"))
+        condition = clean_text(row_value(row, "condicao_clinica", "patologia", "condition_name")) or title
+        subcondition = clean_text(row_value(row, "subcondicao", "subcondição", "subcondition"))
+        specialty = clean_text(row_value(row, "especialidade", "specialty"))
+        protocol_type = clean_text(row_value(row, "tipo_protocolo", "tipo de protocolo"))
+        raw_slug = clean_text(row_value(row, "slug"))
+        slug_seed = " ".join(part for part in [title or condition, subcondition, protocol_type] if part)
+        source = clean_text(row_value(row, "fonte", "fonte_arquivo", "source")) or "notion_protocols"
+        status = clean_text(row_value(row, "status")) or "published"
+        active_raw = clean_text(row_value(row, "active", "ativo")).lower()
+
+        groups.append({
+            "slug": raw_slug or slugify(slug_seed or f"protocolo-{index}"),
+            "title": title or condition,
+            "condition_name": condition or title,
+            "specialty": specialty or None,
+            "subcondition": subcondition or None,
+            "contexts": split_list(row_value(row, "contexto", "contexts", "contextos")),
+            "status": status if status in {"draft", "published", "archived"} else "published",
+            "active": active_raw not in {"false", "0", "nao", "não", "inativo"},
+            "source": source,
+            "tipo_protocolo": protocol_type or None,
+            "status_revisao": clean_text(row_value(row, "status_revisao", "status de revisão")) or None,
+            "nivel_risco": clean_text(row_value(row, "nivel_risco", "nível de risco")) or None,
+            "resumo_clinico": long_text(row_value(row, "resumo_clinico", "resumo clínico")) or None,
+            "quando_usar": long_text(row_value(row, "quando_usar", "quando usar")) or None,
+            "quando_nao_usar": long_text(row_value(row, "quando_nao_usar", "quando não usar")) or None,
+            "conduta_procedimento": long_text(row_value(row, "conduta_procedimento", "conduta / procedimento")) or None,
+            "prescricao_medicamentos": long_text(row_value(row, "prescricao_medicamentos", "prescrição medicamentosa")) or None,
+            "orientacoes_paciente": long_text(row_value(row, "orientacoes_paciente", "orientações ao paciente")) or None,
+            "sinais_alerta": long_text(row_value(row, "sinais_alerta", "sinais de alerta")) or None,
+            "criterios_encaminhamento": long_text(row_value(row, "criterios_encaminhamento", "encaminhamento / retorno")) or None,
+            "observacoes_clinicas": long_text(row_value(row, "observacoes_clinicas", "observações clínicas")) or None,
+            "texto_copiavel_conduta": long_text(row_value(row, "texto_copiavel_conduta")) or None,
+            "texto_copiavel_prescricao": long_text(row_value(row, "texto_copiavel_prescricao")) or None,
+            "texto_copiavel_orientacoes": long_text(row_value(row, "texto_copiavel_orientacoes")) or None,
+            "texto_copiavel_completo": long_text(row_value(row, "texto_copiavel_completo")) or None,
+            "fonte": clean_text(row_value(row, "fonte")) or source,
+            "fonte_pagina": clean_text(row_value(row, "fonte_pagina", "página", "pagina")) or None,
+            "fonte_secao": clean_text(row_value(row, "fonte_secao", "seção", "secao")) or None,
+            "ultima_revisao": clean_text(row_value(row, "ultima_revisao", "última revisão")) or None,
+            "revisor": clean_text(row_value(row, "revisor")) or None,
+            "tags": split_list(row_value(row, "tags")),
+            "display_order": index,
+        })
+
+    return groups, []
 
 
 def supabase_request(url, key, table, method="GET", query="", payload=None, prefer=None):
