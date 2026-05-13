@@ -100,6 +100,26 @@ function normalizeText(value) {
   return String(value || '').replace(/\s+/g, ' ').trim();
 }
 
+function normalizeProtocolText(value) {
+  const text = String(value || '')
+    .replace(/\r\n/g, '\n')
+    .replace(/\r/g, '\n')
+    .trim();
+
+  if (!text) {
+    return '';
+  }
+
+  return text
+    .replace(/[ \t]+/g, ' ')
+    .replace(/([^\n])\s*(?=\d{1,2}\.\s+\S)/g, '$1\n')
+    .replace(/([^\n])(?=-\s+\S)/g, '$1\n')
+    .replace(/([^\n])\s+(?=-\s+\S)/g, '$1\n')
+    .replace(/\n[ \t]+/g, '\n')
+    .replace(/\n{3,}/g, '\n\n')
+    .trim();
+}
+
 function normalizeSearchQuery(value) {
   return normalizeText(value).slice(0, MAX_QUERY_LENGTH);
 }
@@ -209,19 +229,19 @@ function mapGuideRow(row) {
     tipoProtocolo: row.tipo_protocolo || '',
     statusRevisao: row.status_revisao || '',
     nivelRisco: row.nivel_risco || '',
-    resumoClinico: row.resumo_clinico || '',
-    quandoUsar: row.quando_usar || '',
-    quandoNaoUsar: row.quando_nao_usar || '',
-    condutaProcedimento: row.conduta_procedimento || '',
-    prescricaoMedicamentos: row.prescricao_medicamentos || '',
-    orientacoesPaciente: row.orientacoes_paciente || '',
-    sinaisAlerta: row.sinais_alerta || '',
-    criteriosEncaminhamento: row.criterios_encaminhamento || '',
-    observacoesClinicas: row.observacoes_clinicas || '',
-    textoCopiavelConduta: row.texto_copiavel_conduta || '',
-    textoCopiavelPrescricao: row.texto_copiavel_prescricao || '',
-    textoCopiavelOrientacoes: row.texto_copiavel_orientacoes || '',
-    textoCopiavelCompleto: row.texto_copiavel_completo || '',
+    resumoClinico: normalizeProtocolText(row.resumo_clinico),
+    quandoUsar: normalizeProtocolText(row.quando_usar),
+    quandoNaoUsar: normalizeProtocolText(row.quando_nao_usar),
+    condutaProcedimento: normalizeProtocolText(row.conduta_procedimento),
+    prescricaoMedicamentos: normalizeProtocolText(row.prescricao_medicamentos),
+    orientacoesPaciente: normalizeProtocolText(row.orientacoes_paciente),
+    sinaisAlerta: normalizeProtocolText(row.sinais_alerta),
+    criteriosEncaminhamento: normalizeProtocolText(row.criterios_encaminhamento),
+    observacoesClinicas: normalizeProtocolText(row.observacoes_clinicas),
+    textoCopiavelConduta: normalizeProtocolText(row.texto_copiavel_conduta),
+    textoCopiavelPrescricao: normalizeProtocolText(row.texto_copiavel_prescricao),
+    textoCopiavelOrientacoes: normalizeProtocolText(row.texto_copiavel_orientacoes),
+    textoCopiavelCompleto: normalizeProtocolText(row.texto_copiavel_completo),
     fonte: row.fonte || row.source || '',
     fontePagina: row.fonte_pagina || '',
     fonteSecao: row.fonte_secao || '',
@@ -356,10 +376,10 @@ function buildProtocolSections(guide, items) {
   const medicationItems = items.filter(isMedicationItem);
   const conductItems = items.filter((item) => !isMedicationItem(item));
 
-  const prescription = guide.prescricaoMedicamentos || buildLegacySectionText(medicationItems);
-  const conduct = guide.condutaProcedimento || buildLegacySectionText(conductItems);
-  const orientations = guide.orientacoesPaciente || uniqueLines(items.map((item) => item.careNotes));
-  const warnings = guide.sinaisAlerta || uniqueLines(items.map((item) => item.warnings));
+  const prescription = normalizeProtocolText(guide.prescricaoMedicamentos || buildLegacySectionText(medicationItems));
+  const conduct = normalizeProtocolText(guide.condutaProcedimento || buildLegacySectionText(conductItems));
+  const orientations = normalizeProtocolText(guide.orientacoesPaciente || uniqueLines(items.map((item) => item.careNotes)));
+  const warnings = normalizeProtocolText(guide.sinaisAlerta || uniqueLines(items.map((item) => item.warnings)));
   const sourceReview = buildSourceReviewText(guide);
 
   return {
@@ -367,19 +387,19 @@ function buildProtocolSections(guide, items) {
     conduct,
     orientations,
     warnings,
-    whenUse: guide.quandoUsar || '',
-    whenNotUse: guide.quandoNaoUsar || '',
-    referral: guide.criteriosEncaminhamento || '',
-    observations: guide.observacoesClinicas || '',
+    whenUse: normalizeProtocolText(guide.quandoUsar),
+    whenNotUse: normalizeProtocolText(guide.quandoNaoUsar),
+    referral: normalizeProtocolText(guide.criteriosEncaminhamento),
+    observations: normalizeProtocolText(guide.observacoesClinicas),
     sourceReview,
   };
 }
 
 function buildCopyPayload(guide, sections) {
-  const prescription = guide.textoCopiavelPrescricao || sections.prescription;
-  const conduct = guide.textoCopiavelConduta || sections.conduct;
-  const orientations = guide.textoCopiavelOrientacoes || sections.orientations;
-  const all = guide.textoCopiavelCompleto || [
+  const prescription = normalizeProtocolText(guide.textoCopiavelPrescricao || sections.prescription);
+  const conduct = normalizeProtocolText(guide.textoCopiavelConduta || sections.conduct);
+  const orientations = normalizeProtocolText(guide.textoCopiavelOrientacoes || sections.orientations);
+  const all = normalizeProtocolText(guide.textoCopiavelCompleto || [
     guide.title,
     sections.prescription ? `Prescrição medicamentosa:\n${sections.prescription}` : '',
     sections.conduct ? `Conduta / Procedimento:\n${sections.conduct}` : '',
@@ -389,7 +409,7 @@ function buildCopyPayload(guide, sections) {
     sections.whenNotUse ? `Quando não usar:\n${sections.whenNotUse}` : '',
     sections.referral ? `Encaminhamento / Retorno:\n${sections.referral}` : '',
     sections.observations ? `Observações clínicas:\n${sections.observations}` : '',
-  ].filter(Boolean).join('\n\n');
+  ].filter(Boolean).join('\n\n'));
 
   return {
     all,

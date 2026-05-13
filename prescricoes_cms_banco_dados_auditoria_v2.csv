@@ -1,0 +1,1251 @@
+﻿linha_original,acao,motivo,texto
+1,mantida,,"Nitroprussiato de Sódio (50 mg/2 ml) Diluição: Diluir 01 ampola (2ml) em 248 ml de Soro Glicosado 5% Dose: 0,3 a 10 mcg/kg/min - IV em BIC. Infusão: Iniciar a 5mL/h e reavaliar Vasodilatador"
+2,mantida,,"Nitroglicerina (25mg/5ml) Diluição: Diluir 2 ampolas em 240 ml de SF 0,9%. Dose: 5 a 200 mcg/min - IV em BIC Infusão: Iniciar com 1,5 ml/h (5 mcg/min). Aumentar 1,5 ml/h a cada 5 minutos (máximo de 60 ml/h)."
+3,mantida,,"Captopril 25 mg - cp Administrar 01 cp, VO. Reavaliar após 1 hora. OU"
+4,mantida,,"Clonidina 0,1 mg - cp Administrar 01 cp, VO. Reavaliar após 1 hora. Na alta, orientar retorno ambulatorial precoce em até 07 dias."
+5,mantida,,Dipirona 1 g - EV lento
+6,mantida,,"Cetoprofeno 100 mg + 100 ml SF 0,9 % - EV em 30 min SE ANSIEDADE Benzodiazepínicos"
+7,mantida,via_nao_identificada,"Diazepam 5 mg - cp Tomar 01 cp agora. OU Clonazepam 0,5 mg - cp Tomar 01 cp agora."
+8,mantida,conduta_sem_medicamento,Alta para casa com encaminhamento ao cardiologista.
+9,mantida,conduta_sem_medicamento,Orientar uso correto de medicações.
+10,mantida,conduta_sem_medicamento,Considerar introduzir antihipertensivos caso não faça uso.
+11,mantida,,"Furosemida (20mg/2ml) Dose: 0,5-1 mg/kg IV bolus Repetir se necessário, máximo de 240 mg/dia Vasodilatador"
+12,mantida,,"Nitroglicerina (25mg/5ml) Diluição: Diluir 2 ampolas em 240 ml de SF 0,9%. Dose: 5 a 200 mcg/min - IV em BIC Infusão: Iniciar com 1,5 ml/h (5 mcg/min). Aumentar 1,5 ml/h a cada 5 minutos (máximo de 60 ml/h)."
+13,mantida,,"Dobutamina (250mg/20ml) Diluição: 1 ampola + 230 ml de SF 0,9% - IV em BIC Dose: 2 a 20 mcg/kg/min. Vazão por Peso:"
+14,fundida_na_linha_anterior,fragmento,kg: 6 a 60 ml/h
+15,fundida_na_linha_anterior,fragmento,"kg: 8,4 a 84 ml/h"
+16,fundida_na_linha_anterior,fragmento,kg: 10 a 108 ml/h Diurético
+17,mantida,,"Furosemida (20mg/2ml) Dose: 0,5-1 mg/kg IV bolus Repetir se necessário, máximo de 240 mg/dia Vasodilatador"
+18,mantida,,"Nitroglicerina (25mg/5ml) Diluição: 2 ampolas em 240 ml de SF 0,9%. Dose: 5 a 200 mcg/min - IV em BIC Infusão: Iniciar com 1,5 ml/h (5 mcg/min). Aumentar 1,5 ml/h a cada 5 minutos (máximo de 60 ml/h)."
+19,mantida,,"Soro Fisiológico 0,9% (20mg/2ml) Alíquotas de 250 ml, IV lento. Reavaliar (ausculta) após administração. Repetir alíquotas se necessário e tolerado. Se ausência de melhora com SF 0,9%"
+20,mantida,,"Dobutamina (250mg/20ml) Diluição: 1 ampola + 230 ml de SF 0,9% - IV em BIC Dose: 2 a 20 mcg/kg/min. Vazão por Peso:"
+21,fundida_na_linha_anterior,fragmento,kg: 6 a 60 ml/h
+22,fundida_na_linha_anterior,fragmento,"kg: 8,4 a 84 ml/h"
+23,fundida_na_linha_anterior,fragmento,kg: 10 a 108 ml/h
+24,mantida,conduta_sem_medicamento,Internação
+25,mantida,conduta_sem_medicamento,Avaliação da cirurgia geral
+26,mantida,conduta_sem_medicamento,Jejum
+27,mantida,conduta_sem_medicamento,Sondagem nasogástrica
+28,mantida,conduta_sem_medicamento,Correção de distúrbios hidroeletrolíticos
+29,mantida,conduta_sem_medicamento,Antibioticoterapia
+30,mantida,conduta_sem_medicamento,Controle de sintomas
+31,mantida,,"SF 0,9% 1000 ml - EV em 1 hora, se desidratação"
+32,mantida,,"SG 5% 1.000ml + NaCl 20% 40ml + KCl 19,1% 10ml EV 12/12h"
+33,mantida,,Ceftriaxone 1g EV 12/12h
+34,mantida,,Metronidazol 500mg EV 8/8h
+35,mantida,,Dipirona 1g EV 6/6h se dor ou febre
+36,mantida,,Tramadol 100mg EV 8/8h se dor intensa
+37,mantida,,Ondansetrona 8mg EV 8/8h se náuseas/vômitos
+38,mantida,,Omeprazol 40 mg - EV
+39,mantida,,"Escopolamina 20 mg - EV, de 8/8h"
+40,mantida,conduta_sem_medicamento,Controle de sinais vitais 6/6h
+41,mantida,"dose_nao_identificada,via_nao_identificada",Dextro 4/4h enquanto permanecer em jejum
+42,mantida,,Soro glicosado 50% 40ml EV se dextro < 70
+43,mantida,"dose_nao_identificada,via_nao_identificada",Cabeceira elevada em 45º
+44,mantida,"dose_nao_identificada,via_nao_identificada",Passagem de sonda nasogástrica Prescrição
+45,mantida,"dose_nao_identificada,via_nao_identificada",Assepsia e antissepsia;
+46,mantida,"dose_nao_identificada,via_nao_identificada",Colocação de campos estéreis;
+47,mantida,"dose_nao_identificada,via_nao_identificada",Infiltração com lidocaína 2%;
+48,mantida,"dose_nao_identificada,via_nao_identificada",Incisão única (se for possível) e linear para drenagem;
+49,mantida,"dose_nao_identificada,via_nao_identificada",Fechamento por segunda intenção;
+50,mantida,dose_nao_identificada,Curativo estéril. USO ORAL Se indicação de antibiótico:
+51,mantida,via_nao_identificada,Amoxicilina + clavulanato 875+125mg Tomar 01 cp de 12 em 12 horas por 07 dias. Sintomáticos:
+52,mantida,via_nao_identificada,Dipirona 1 g - cp Tomar 01 cp de 6 em 6 horas se dor ou febre
+53,mantida,via_nao_identificada,Ibuprofeno 600 mg - cp Tomar 01 cp de 8 em 8 horas se dor por até 05 dias.
+54,mantida,via_nao_identificada,Ondansetrona 4 mg - cp Tomar 01 cp de 8 em 8 horas se náuseas ou vômitos.
+55,mantida,via_nao_identificada,Amoxicilina + clavulanato 875+125mg - cp Tomar 01 cp de 12 em 12 horas por 07 dias. OU
+56,mantida,via_nao_identificada,Cefalexina 500mg - cp Tomar 01 cp de 6 em 6 horas por 07-10 dias. OU
+57,mantida,via_nao_identificada,SMX+TMP 400+80mg - cp Tomar 02 cp de 12 em 12 horas por 07-10 dias. OU
+58,mantida,via_nao_identificada,Clindamicina 300mg - cp Tomar 02 cp de 8 em 8 horas por 07-10 dias.
+59,mantida,conduta_sem_medicamento,Jejum
+60,mantida,,"SG 5% 1.000ml + NaCl 20% 40ml + KCl 19,1% 10ml EV 12/12h"
+61,mantida,,Ceftriaxone 1g EV 12/12h
+62,mantida,,Metronidazol 500mg EV 8/8h
+63,mantida,,Dipirona 1g EV 6/6h se dor ou febre
+64,mantida,,Tramadol 100mg EV 8/8h se dor intensa
+65,mantida,,Ondansetrona 8mg EV 8/8h se náuseas/vômitos
+66,mantida,conduta_sem_medicamento,Controle de sinais vitais 6/6h
+67,mantida,"dose_nao_identificada,via_nao_identificada",Dextro 4/4h enquanto permanecer em jejum
+68,mantida,,Soro glicosado 50% 40ml EV se dextro < 70
+69,mantida,"dose_nao_identificada,via_nao_identificada",Cabeceira elevada em 45º Conduta no PS
+70,mantida,conduta_sem_medicamento,Internação
+71,mantida,conduta_sem_medicamento,Avaliação da cirurgia geral
+72,mantida,conduta_sem_medicamento,Antibioticoterapia EV
+73,mantida,conduta_sem_medicamento,Controle de sintomas
+74,mantida,conduta_sem_medicamento,Jejum
+75,mantida,,"SG 5% 1.000ml + NaCl 20% 40ml + KCl 19,1% 10ml EV 12/12h"
+76,mantida,,Ceftriaxone 1g EV 12/12h
+77,mantida,,Metronidazol 500mg EV 8/8h
+78,mantida,,Dipirona 1g EV 6/6h se dor ou febre
+79,mantida,,Tramadol 100mg EV 8/8h se dor intensa
+80,mantida,,Ondansetrona 8mg EV 8/8h se náuseas/vômitos
+81,mantida,conduta_sem_medicamento,Controle de sinais vitais 6/6h
+82,mantida,"dose_nao_identificada,via_nao_identificada",Dextro 4/4h enquanto permanecer em jejum
+83,mantida,,Soro glicosado 50% 40ml EV se dextro < 70
+84,mantida,"dose_nao_identificada,via_nao_identificada",Cabeceira elevada em 45º Prescrição
+85,mantida,conduta_sem_medicamento,Internação
+86,mantida,conduta_sem_medicamento,Avaliação da cirurgia geral
+87,mantida,conduta_sem_medicamento,Antibioticoterapia EV
+88,mantida,conduta_sem_medicamento,Controle de sintomas
+89,mantida,via_nao_identificada,Furosemida 40 mg - cp Tomar 01 cp Aumentar conforme tolerância e resposta clínica Dose máxima: 160 mg/dia
+90,mantida,via_nao_identificada,"Espironolactona 100 mg - cp Tomar 01 cp Aumentar conforme tolerância e resposta clínica Dose máxima: 400 mg/dia Restrição Hídrica Não é necessária restrição hídrica, exceto se hiponatremia Ingestão de 1.500 a 2.000 ml/dia. Se hiponatremia, "
+91,mantida,,"Lactulose 667mg/ml Administrar 30 ml, VO, de 8/8h Meta: 2-3 evacuações pastosas Aumentar para 4/4h se ausência de evacuação Se ausência de evacuação"
+92,mantida,"dose_nao_identificada,via_nao_identificada",Enema de lactulose 30%
+93,mantida,,"mL de lactulose em 700 mL de solução para uso retal (soro, água, glicerina ou manitol) O enema deve ser retido por no mínimo 30 minutos e repetido, se necessário. Antibioticoterapia"
+94,mantida,via_nao_identificada,"Rifaximina 550 mg - cp Tomar 01 cp, de 12/12h, por 14 dias Usar em associação à lactulose, ou em caso de refratariedade"
+95,mantida,via_nao_identificada,"Metronidazol 500mg - cp Tomar 01 cp, de 08/08h, por 14 dias Usar em caso de indisponibilidade da rifamixicina Aminoácidos"
+96,mantida,via_nao_identificada,Aspartato de Ornitina 5g Diluir em 1 copo de água (200mL) e tomar 1x ao dia. Usar em caso de refratariedades às medidas iniciais Se agitação psicomotora
+97,mantida,,Haloperidol 5mg/1ml Administrar 01 ampola (5mg) IM
+98,mantida,"dose_nao_identificada,via_nao_identificada",Paracentese
+99,mantida,conduta_sem_medicamento,Antibioticoterapia
+100,mantida,"dose_nao_identificada,via_nao_identificada",Antibioticoprofilaxia
+101,mantida,"dose_nao_identificada,via_nao_identificada",Prevenção de Síndrome Hepatorrenal
+102,mantida,,Cefotaxime 2 g - EV Administrar a cada 8 horas por 5 dias. OU
+103,mantida,,Ceftriaxone 2 g - EV Administrar 1 vez ao dia por 5 dias. Antibioticoprofilaxia
+104,mantida,,"Norfloxacino 400 mg - cp Tomar 1 cp VO diariamente, uso contínuo OU"
+105,mantida,,"Ciprofloxacino 500 mg - cp Tomar 1 cp VO diariamente, uso contínuo"
+106,mantida,via_nao_identificada,"Albumina 0,2g/ml (20%) Administrar 1,5 g/kg no 1ºdia e 1g/kg no terceiro dia OBS: Após a retirada de mais de 5 litros em uma paracentese é necessário repor albumina numa proporção de 6-8g por litro retirado, independentemente de critérios l"
+107,mantida,via_nao_identificada,Amoxicilina + clavulanato 875+125mg Tomar 01 cp de 12 em 12 horas por 07 dias. OU
+108,mantida,via_nao_identificada,Ciprofloxacino 500mg Tomar 01 cp de 12 em 12 horas por 07 dias.
+109,mantida,via_nao_identificada,Metronidazol 500mg Tomar 01 cp de 8 em 8 horas por 07 dias. OU
+110,mantida,via_nao_identificada,Sulfametoxazol + trimetoprima 800+160mg Tomar 01 cp de 12 em 12 horas por 07 dias.
+111,mantida,via_nao_identificada,Metronidazol 500mg Tomar 01 cp de 8 em 8 horas por 07 dias. Sintomáticos
+112,mantida,via_nao_identificada,Dipirona 1g Tomar 01 cp de 6 em 6 horas se dor ou febre.
+113,mantida,,Buscopan composto 10+250mg Tomar 01 cp de 8 em 8 horas se dor abdominal.
+114,mantida,via_nao_identificada,Tramadol 50mg Tomar 01 cp de 8 em 8 horas se dor intensa.
+115,mantida,conduta_sem_medicamento,Jejum
+116,mantida,,Ciprofloxacino 500mg EV 12/12h
+117,mantida,,Metronidazol 500mg EV 8/8h
+118,mantida,,Dipirona 1g EV 6/6h se dor ou febre
+119,mantida,,Tramadol 100mg EV 8/8h se dor intensa
+120,mantida,,Ondansetrona 8mg EV 8/8h se náuseas/vômitos
+121,mantida,conduta_sem_medicamento,Avaliação da cirurgia geral para drenagem
+122,mantida,conduta_sem_medicamento,Antibioticoterapia EV quando indicado: sepse celulite diabéticos imunodeprimidos portadores de próteses cardíacas
+123,mantida,conduta_sem_medicamento,Controle de sintomas
+124,mantida,,"Proctyl - pomada Aplicar na região afetada, 3x ao dia, até consulta com Proctologista Relaxantes de esfíncter"
+125,mantida,,"Diltiazem 2 % - gel Aplicar na região afetada, 2x ao dia, até consulta com Proctologista"
+126,mantida,via_nao_identificada,Dipirona 1 g - cp Tomar 01 cp de 6 em 6 horas se dor
+127,mantida,via_nao_identificada,Ibuprofeno 600mg - cp Tomar 01 cp de 8 em 8 horas se dor por até 05 dias. Se constipação
+128,mantida,,"Metamucil (P. ovata) - sachês Diluir 01 sachê em 300 ml de água Tomar 2x ao dia, por 05 dias Orientações Banho de assento em água morna 2–3×/dia (10–15 min) Ingerir ≥ 2 L de água ao longo do dia Higiene: jato de água ou lenços umedecidos se"
+129,mantida,,Dipirona 1g - EV
+130,mantida,,Diclofenaco 75 mg - IM Receita de Alta USO ORAL Venotônico
+131,mantida,via_nao_identificada,"Daflon 500 (450 mg + 50 mg) - cp Tomar 2 comprimidos, 3x/dia, por 4 dias Depois 2 comprimidos, 2x/dia, por mais 3 dias. Sintomáticos"
+132,mantida,via_nao_identificada,Dipirona 1 g - cp Tomar 01 cp de 6 em 6 horas se dor
+133,mantida,via_nao_identificada,Ibuprofeno 600 mg - cp Tomar 01 cp de 8 em 8 horas se dor por até 05 dias.
+134,mantida,,"Metamucil (P. ovata) - sachês Diluir 01 sachê em 300 ml de água Tomar 2x ao dia, por 05 dias USO TÓPICO"
+135,mantida,,"Proctyl - pomada Aplicar na região afetada, 3x ao dia, até melhora Orientações Banho de assento, 3x ao dia, em água morna Ingerir 2L de água por dia Evitar papel higiênico Agendar retorno com Proctologista"
+136,mantida,"dose_nao_identificada,via_nao_identificada",Manejo da ferida: Lavar com SF 0.9% Remover sujidades e corpos estranhos Desinfecção com clorexidina
+137,mantida,"dose_nao_identificada,via_nao_identificada",Classificar o acidente em: Leve Grave Contato indireto
+138,mantida,"dose_nao_identificada,via_nao_identificada",Avaliar necessidade de: Sutura Profilaxia de raiva Profilaxia de tétano Antibiótico Conduta no PS
+139,mantida,,UI Intramuscular Aplicar em grupo muscular diferente daquele no qual foi aplicada a vacina que contém o toxoide tetânico. Soro antitetânico (SAT)
+140,mantida,,"000 UI Intramuscular ou endovenosa Se intramuscular, administrar em duas massas musculares diferentes.Diluir em soro fisiológico ou glicosado a 5%. Avaliar necessidade profilaxia de tétano"
+141,mantida,"dose_nao_identificada,via_nao_identificada","dias, sem suspeita de raiva GRAVE"
+142,mantida,"dose_nao_identificada,via_nao_identificada",doses de vacina +
+143,mantida,"dose_nao_identificada,via_nao_identificada",soro vivo/ saudavel Cão e gato morto desaparece doente encerra o caso LEVE:
+144,mantida,"dose_nao_identificada,via_nao_identificada",doses de vacina Cão e gato Agir de imediato LEVE:
+145,mantida,"dose_nao_identificada,via_nao_identificada",doses de vacina GRAVE
+146,mantida,"dose_nao_identificada,via_nao_identificada",soro não observável ou suspeita de raiva OBS: CONTATO INDIRETO NÃO HÁ NECESSIDE DE PROFILAXIAS
+147,mantida,"dose_nao_identificada,via_nao_identificada","soro Bovídeos, equídeos, caprinos, suínos e ovino OBS: CONTATO INDIRETO NÃO HÁ NECESSIDE DE PROFILAXIAS Agir de imediato GRAVE"
+148,mantida,"dose_nao_identificada,via_nao_identificada",soro Morcegos e mamíferos silvestres OBS: AGIR DE IMEDIATO MESMO NO CONTATO INDIRETO
+149,mantida,"dose_nao_identificada,via_nao_identificada",UI/kg de peso.
+150,mantida,conduta_sem_medicamento,Jejum
+151,mantida,,Ringer Lactato 20-30 ml/kg - EV em 30 min se hipotensão
+152,mantida,via_nao_identificada,"Ringer Lactato 1,5 - 3 ml/kg/h por 8-12 horas"
+153,mantida,,Dipirona 1g EV 6/6h se dor ou febre
+154,mantida,,Tramadol 100mg EV 8/8h se dor intensa
+155,mantida,,Ondansetrona 8mg EV 8/8h se náuseas/vômitos
+156,mantida,,Omprazol 40 mg - EV
+157,mantida,conduta_sem_medicamento,Controle de sinais vitais 6/6h
+158,mantida,"dose_nao_identificada,via_nao_identificada",Dextro 4/4h enquanto permanecer em jejum
+159,mantida,,Soro glicosado 50% 40ml EV se dextro < 70
+160,mantida,"dose_nao_identificada,via_nao_identificada",Cabeceira elevada em 45º
+161,mantida,"dose_nao_identificada,via_nao_identificada",Quantificar débito urinário
+162,mantida,conduta_sem_medicamento,Internação
+163,mantida,conduta_sem_medicamento,Avaliação da cirurgia geral
+164,mantida,conduta_sem_medicamento,Controle de sintomas
+165,mantida,,Difenidramina (50mg/mL) Fazer 1 mL (1 ampola) - EV em bólus Corticoide
+166,mantida,,Hidrocortisona (100mg/mL) Fazer 100mg - EV USO ORAL Antihistamínico
+167,mantida,via_nao_identificada,"Loratadina 10 mg - cp Tomar 01 cp, 1x ao dia, por 05 dias Corticoide"
+168,mantida,via_nao_identificada,"Prednisona 20 mg - cp Tomar 01 cp, 1x ao dia, por 05 dias Receita de Alta Prescrição no PS"
+169,mantida,,"Adrenalina 1mg/mL - ampola Fazer 0,5 mL - IM no músculo vasto - lateral Repetir mais 2x a cada 5~15 min se necessário Se broncoespasmo"
+170,mantida,via_nao_identificada,Salbutamol 5 mg/ml
+171,mantida,,"gotas em 5 ml de SF 0,9 % Inalar a cada 20 min, em 1 hora"
+172,mantida,via_nao_identificada,"Ipratrópio 0,25 mg/ml"
+173,mantida,,"gotas em 5 ml de SF 0,9 % Inalar a cada 20 min, em 1 hora Fluidoterapia"
+174,mantida,"dose_nao_identificada,via_nao_identificada","SF 0,9 %"
+175,fundida_na_linha_anterior,fragmento,ml - EV Conduta no PS
+176,mantida,,Difenidramina (50mg/mL) Fazer 1 mL (1 ampola) - EV em bólus Corticoide
+177,mantida,,Hidrocortisona (100mg/mL) Fazer 200mg (02 ampolas) - EV lento Conduta no PS
+178,mantida,,"Adrenalina 1mg/mL - ampola Adrenalina (1 mg/ml) 6 mg + SF 0,9% 94 ml Iniciar em 0,1 micrograma/kg/minuto (dose usual: 1 a 20 ml/h) EV em BIC Conduta no PS SE USO DE BETABLOQUEADOR"
+179,mantida,,Glucagon (1mg/ml) Administrar 01 ampola IM
+180,mantida,via_nao_identificada,"Loratadina 10 mg - cp Tomar 01 cp, 1x ao dia, por 05 dias Corticoide"
+181,mantida,via_nao_identificada,"Prednisona 20 mg - cp Tomar 02 cp, 1x ao dia, por 05 dias Orientações Prescrever EpiPen® e treinar uso domiciliar Encaminhar ao alergista para investigação de gatilhos e plano de ação personalizado"
+182,mantida,via_nao_identificada,"Amoxicilina + Clavulanato (875+125mg) - cp Tomar 01 cp, de 12/12h, por 7 dias OU"
+183,mantida,via_nao_identificada,"Cefadroxila 500 mg - cp Tomar 01 cp, de 12/12h, por 7 dias OU"
+184,mantida,via_nao_identificada,"Cefalexina 500 mg - cp Tomar 01 cp, de 6/6h, por 7 dias Sintomáticos"
+185,mantida,via_nao_identificada,"Ibuprofeno 600 mg - cp Tomar 01 cp, de 8/8h, por até 03 dias"
+186,mantida,via_nao_identificada,"Dipirona 1g - cp Tomar 01 cp, de 6/6h, se dor"
+187,mantida,via_nao_identificada,"Tramadol 50 mg - cp Tomar 01 cp, de 8/8h, se dor muito intensa Receita de Alta"
+188,mantida,via_nao_identificada,Oxacilina 500 mg/fr
+189,mantida,dose_nao_identificada,"g,EV, 4/4h, por 7 dias OU"
+190,mantida,,"Ceftriaxona 1 g EV, 12/12h, por 7 dias OU"
+191,mantida,,"Clindamicina 600 mg EV, 8/8h, por 7 dias Sintomáticos"
+192,mantida,,"Cetoprofeno 100mg + SF 0,9 % 100 ml - EV em"
+193,fundida_na_linha_anterior,fragmento,min
+194,mantida,,"Dipirona 1 g - EV, 6/6h , se dor ou febre"
+195,mantida,,"Tramadol 50 mg + SF 0,9 % 100 ml - EV em 30 min, se dor muito intensa"
+196,mantida,,Permetrina 5% (emulsão ou loção 60 mL) Aplique na pele do pescoço para baixo Evite o contato com boca os olhos. Secar por 10 minutos antes de se vestir. Aguardar 6 horas antes do banho. Repetir aplicação após 01 semana. OU USO ORAL
+197,mantida,via_nao_identificada,"Ivermectina 6mg - cp Tomar 02 comprimidos, 1x ao dia, dose única Após 07 dias, tomar mais 02 comprimidos OBS: calcular a dose total para corresponder a 200 mcg/kg Antihistamínico"
+198,mantida,via_nao_identificada,"Hidroxizina 25 mg (Hixizine®) - cp Tomar 01 comprimido, de 12/12h, por 05 dias"
+199,mantida,via_nao_identificada,"Aciclovir 200mg - cp Tomar 01 comprimido, de 4/4h, 5x ao dia, por"
+200,mantida,dose_nao_identificada,dias. Horários: 08h - 12h - 16h - 20h - 24h USO TÓPICO Se feridas intensas
+201,mantida,via_nao_identificada,Cicaplast Baume B5+ - 20ml Aplicar nas lesões quantas vezes necessário
+202,mantida,via_nao_identificada,"Aciclovir 400 mg - cp Tomar 02 cp, de 4/4h, 5x ao dia, por 7 dias Horários: 08h - 12h - 16h - 20h - 24h Analgesia simples"
+203,mantida,via_nao_identificada,"Dipirona 500 mg - cp Tomar 02 cp, de 6/6h, por 05 dias AINE"
+204,mantida,via_nao_identificada,"Ibuprofeno 600 mg - cp Tomar 01 cp, de 8/8h, por 05 dias Opidóide"
+205,mantida,via_nao_identificada,"Tramadol 50 mg - cp Tomar 01 cp, de 8/8h, se dor muito intensa Receita de Alta"
+206,mantida,,"Caladryl (calamina) 8% - loção Aplicar nas lesões, 3x ao dia, por 05 dias USO ORAL Analgesia simples"
+207,mantida,via_nao_identificada,"Dipirona 500 mg - cp Tomar 02 cp, de 6/6h, por 05 dias AINE"
+208,mantida,via_nao_identificada,"Ibuprofeno 600 mg - cp Tomar 01 cp, de 8/8h, por 05 dias Antihistamínico"
+209,mantida,via_nao_identificada,"Loratadina 10 mg - cp Tomar 01 cp, 1x ao dia, por 05 dias, se coceira Receita de Alta"
+210,mantida,via_nao_identificada,15g de carboidrato (se condições de deglutir):
+211,mantida,"dose_nao_identificada,via_nao_identificada",colher de sopa rasa de açúcar (ou mel) ou
+212,mantida,"dose_nao_identificada,via_nao_identificada",ml de refrigerante comum (não pode ser zero açúcar) ou
+213,mantida,"dose_nao_identificada,via_nao_identificada",ml de suco de laranja ou
+214,mantida,"dose_nao_identificada,via_nao_identificada",balas de caramelo Parenteral (SEM condições de deglutir):
+215,mantida,,"SG 50% 10ml Administrar 04 ampolas EV em bôlus Obs: haverá situações (exemplo: diabético insulino- dependente) nas quais as 04 ampolas poderá subir demais o dextro. Então, avalie caso a caso. Nesse caso, prescreva 02 ampolas, faça um novo d"
+216,mantida,,Glicose 50% 10ml Aplicar 04 ampolas (40ml) EV em bôlus
+217,mantida,,SG 5% 500ml Administrar 100ml/h EV até estabilidade clínica Após reversão de hipoglicemia (dx > 70mg/dL):
+218,mantida,"dose_nao_identificada,via_nao_identificada",Oferecer um lanche SEM acesso venoso:
+219,mantida,,"Glucagon (1mg/ml) Administrar 01 ampola IM Dextro < 54 mg/dL Se risco de Encefalopatia de Wernicke (hepatopata, desnutrido, etilista):"
+220,mantida,,Tiamina 100mg/ml Administrar 01 ampola (1ml) IM antes da glicose.
+221,mantida,via_nao_identificada,mg 4/4 h ou 6/5 horas OU Metimazol - 20mg a cada 4-8 horas
+222,mantida,via_nao_identificada,"horas Lítio Carbonato de lítio - 300mg 6/6 horas, devendo ser medida a litemia sérica objetivando níveis de"
+223,mantida,"dose_nao_identificada,via_nao_identificada",mg/dL Conduta no PS
+224,mantida,,"Levotiroxina inj. 100mcg/5ml Ataque: aplicar 10 a 20ml (200 - 400mcg) EV em 5 a 10 min Manutenção: aplicar 2,5 a 5ml (50 a 100mcg) EV 1x/dia Transicionar para vo após estabilidade clínica. dose vo = dose EV / 0,75 T3"
+225,mantida,,"Liotironina sódica 10mcg/1ml Ataque: aplicar 0,5 a 2 ml (5 a 20mcg) iv em 5 a"
+226,fundida_na_linha_anterior,fragmento,"min Manutenção: aplicar 0,25 a 1 ml (2,5 a 10mcg) iv de 8/8h Manter até atingir estabilidade clínica Corticoide"
+227,mantida,,"Hidrocortisona pó inj. 100mg ou 500mg Aplicar 1 amp (de 100mg) iv bolus lento de 8/8h, por 2 dias - max 500mg /dia Conduta no PS"
+228,mantida,,"Hidraplex - sais de reidratação oral Dissolver 01 envelope em 1 litro de água e tomar ao longo de 01 dia, até melhora do quadro. Antidiarreico"
+229,mantida,via_nao_identificada,"Racecadotrila 100 mg - cp Tomar 01 cp, de 12/12h, por 03 dias Probiótico"
+230,mantida,via_nao_identificada,"Floratil 200 mcg - cp Tomar 01 cp, de 12/12h, por 03 dias Sintomáticos:"
+231,mantida,via_nao_identificada,Dipirona 1 g - cp Tomar 01 cp de 6 em 6 horas se dor ou febre
+232,mantida,via_nao_identificada,Ondansetrona 4 mg - cp Tomar 01 cp de 8 em 8 horas se náuseas ou vômitos. Receita de Alta
+233,mantida,,"Hidraplex - sais de reidratação oral Dissolver 01 envelope em 1 litro de água e tomar ao longo de 01 dia, até melhora do quadro. Antibiótico"
+234,mantida,via_nao_identificada,"Ciprofloxacino 500 mg - cp Tomar 01 cp, de 12/12h, por 05 dias Probiótico"
+235,mantida,via_nao_identificada,Dipirona 1g - cp Tomar 01 cp de 6 em 6 horas se dor ou febre
+236,mantida,via_nao_identificada,Ondansetrona 8 mg - cp Tomar 01 cp de 8 em 8 horas se náuseas ou vômitos.
+237,mantida,via_nao_identificada,"Omeprazol 20 mg - cp Tomar 01 cp, 1 vez ao dia, de manhã em jejum, até consulta com gastroenterologista Antiácido"
+238,mantida,via_nao_identificada,"Hidróxido de Alumínio - suspensão Tomar 01 colher de chá (5 mL), em meio copo de água ou leite, cerca de uma hora após as refeições, em caso de queimação Antiflatulento"
+239,mantida,via_nao_identificada,"Simeticona 40 mg - cp Tomar 01 cp, de 8/8h, se gases Procinéticos"
+240,mantida,via_nao_identificada,"Metoclopramida 10 mg - cp Tomar 01 cp, de 8/8h, se empachamento pós-prandial (sensação de estômago cheio) Receita de Alta"
+241,mantida,via_nao_identificada,"Omeprazol 20 mg - cp Tomar 01 cp, 1 vez ao dia, de manhã em jejum, até consulta com gastroenterologista Antiácido"
+242,mantida,via_nao_identificada,"Hidróxido de Alumínio - suspensão Tomar 01 colher de chá(5 mL), em meio copo de água ou leite, cerca de uma hora após as refeições, em caso de queimação Receita de Alta Elevação da cabeceira do leito. Fracionar refeições. Evitar café, álcoo"
+243,mantida,,"Levonorgestrel 0,75mg (comprimido) Tomar 2 comprimidos, via oral, em dose única Dicas Rápidas Iniciada preferencialmente nas primeiras 72 horas após relação sexual. Pode ser considerado até 05 após o contato sexual desprotegido. Se vômito n"
+244,mantida,,Ceftriaxona 500 mg - IM Dose única USO ORAL Antibioticoterapia
+245,mantida,via_nao_identificada,"Doxiciclina 100 mg - cp Tomar 01 cp, de, 12/12h, por 14 dias"
+246,mantida,via_nao_identificada,"Metronidazol 500 mg - cp Tomar 01 cp, de 12/12h, por 14 dias Sintomáticos"
+247,mantida,via_nao_identificada,"Ibuprofeno 600 mg - cp Tomar 01 cp, de 8/8h, por até 03 dias"
+248,mantida,via_nao_identificada,"Dipirona 1g - cp Tomar 01 cp, de 6/6h, se dor"
+249,mantida,via_nao_identificada,"Levofloxacino 500 mg - cp Tomar 01 cp, de, 12/12h, por 14 dias"
+250,mantida,via_nao_identificada,"Metronidazol 500 mg - cp Tomar 01 cp, de 12/12h, por 14 dias OU"
+251,mantida,via_nao_identificada,"Moxifloxacino 400 mg - cp Tomar 01 cp, de, 12/12h, por 14 dias"
+252,mantida,via_nao_identificada,"Metronidazol 500 mg - cp Tomar 01 cp, de 12/12h, por 14 dias"
+253,mantida,,Ceftriaxona 500 mg - IM Dose única
+254,mantida,via_nao_identificada,"Azitromicina 500 mg - cp Tomar 02 cp, dose única OU"
+255,mantida,via_nao_identificada,"Doxiciclina 100 mg - cp Tomar 01 cp, de, 12/12h, por 14 dias Tratamento das parcerias"
+256,mantida,via_nao_identificada,"Levonorgestrel 0,15+ Etinilestradiol 0,03 - cp Tomar 01 cp ao dia por 21 dias, pausa de 07 dias, e reiniciar no 8º dia. Iniciar uso no primeiro dia do ciclo. OU Progestagênio isolado"
+257,mantida,,"Acetato de medroxiprogesterona 150mg/1ml Aplicar 1 amp (150 mg) IM, no 1º dia do ciclo menstrual, e em seguida de 3/3 meses. Sintomáticos"
+258,mantida,via_nao_identificada,"Dipirona 500mg - cp Tomar 02 cp, de 6/6h, se dor"
+259,mantida,via_nao_identificada,"Ibuprofeno 600 mg - cp Tomar 01 cp, de 8/8h, por 05 dias Receita de Alta"
+260,mantida,via_nao_identificada,"Levonorgestrel 0,15+ Etinilestradiol 0,03 - cp Tomar 01 cp, de 8/8h, até redução de sangramento (máximo 07 dias). Após, tomar 01 cp, 1x ao dia, por 03 semanas OU Progestagênio isolado"
+261,mantida,via_nao_identificada,"Acetato de medroxiprogesterona 10 mg - cp Tomar 02 cp, de 8/8 h, por 7 dias. Após, tomar 01 cp, 1x ao dia, por 03 semanas OU Antifibrinolítco"
+262,mantida,via_nao_identificada,"Ácido tranexâmico 250 mg - cp Tomar 02 cp, de 8/8 h, por no máximo 04 dias. Receita de Alta"
+263,mantida,via_nao_identificada,"Diclofenaco sódico 50 mg - cp Tomar 01 cp, 8/8 h, por até 05 dias. Orientações"
+264,mantida,"dose_nao_identificada,via_nao_identificada",Acolhimento
+265,mantida,"dose_nao_identificada,via_nao_identificada",Notificação
+266,mantida,"dose_nao_identificada,via_nao_identificada","Exame físico, coleta de vestígios e tratamento de lesões corporais"
+267,mantida,"dose_nao_identificada,via_nao_identificada",Quimioprofilaxia
+268,mantida,"dose_nao_identificada,via_nao_identificada",Prevenção de gravidez
+269,mantida,"dose_nao_identificada,via_nao_identificada",Atendimento psicológico
+270,mantida,conduta_sem_medicamento,",75 mg (2 comprimidos) Oral Dose única"
+271,mantida,conduta_sem_medicamento,",5 mg (1 comprimido) Oral Dose única Anticoncepção de emergência Iniciada preferencialmente nas primeiras 72 horas após o abuso sexual. Pode ser eficaz até cinco dias após o contato sexual desprotegido. Se vômito nas primeiras 1 a 2 horas a"
+272,mantida,conduta_sem_medicamento,",4 milhões de UI, IM, dose única (dividida em duas injeções) Gonorréia Ceftriaxona Ceftriaxona 500 mg, 1 g ampola, IM dose única Clamídia Azitromicina"
+273,mantida,,"mg, 2 comprimidos, VO dose única (dose total: 1 g) Tricomoníase Metronidazol"
+274,mantida,,"mg, 4 comprimidos VO, dose única (dose total: 2 g) IST não virais"
+275,mantida,"dose_nao_identificada,via_nao_identificada","comprimido ao dia, por"
+276,mantida,via_nao_identificada,dias Dolutegravir (DTG) 50 mg
+277,mantida,via_nao_identificada,dias Não indicado para pessoas com insuficiência renal aguda Gestantes Lamivudina (3TC) 300 mg + Tenofovir (TDF) 300 mg
+278,mantida,via_nao_identificada,dias Raltegravir (RAL) 400 mg
+279,mantida,"dose_nao_identificada,via_nao_identificada","comprimido 2 vezes ao dia, por 28 dias RAL indicado a partir de 14 semanas de gestação. Em caso de gestação com menos de 14 semanas, recomenda-se o uso de ATV/r (Atazanavir/Ritonavir). HIV"
+280,mantida,,"Nitrato de Miconazol 20 mg/g - creme Aplicar 01 medida, intravaginal, à noite, por 07 dias OU"
+281,mantida,,"Clotrimazol 10mg/g - creme Aplicar 01 medida, intravaginal, à noite, por 07 dias Alternativa oral USO ORAL Antifúngico"
+282,mantida,,"Fluconazol 150 mg - cp Tomar 01 cp, VO, dose única OU"
+283,mantida,via_nao_identificada,"Itraconazol 100 mg - cp Tomar 02 cp, de 12/12 horas, por 1 dia Receita de Alta"
+284,mantida,via_nao_identificada,"Metronidazol 500 mg - cp Tomar 04 cp, dose única OU"
+285,mantida,via_nao_identificada,"Metronidazol 500 mg - cp Tomar 01 cp, de 12/12h, por 07 dias OU"
+286,mantida,via_nao_identificada,"Tinidazol 500 mg - cp Tomar 04 cp, dose única"
+287,mantida,via_nao_identificada,"Metronidazol 500 mg - cp Tomar 01 cp, de 12/12h, por 07 dias OU"
+288,mantida,via_nao_identificada,"Clindamicina 300 mg - cp Tomar 01 cp, de 12/12h, por 07 dias OU"
+289,mantida,via_nao_identificada,"Tinidazol 500 mg - cp Tomar 04 cp, 1x ao dia, por 02 dias OU"
+290,mantida,via_nao_identificada,"Secnidazol 1 g - cp Tomar 02 cp, dose única."
+291,mantida,,"Metronidazol 100 mg/g - gel vaginal Aplicar 01 medida, intravaginal, à noite, por"
+292,mantida,"dose_nao_identificada,via_nao_identificada",dias
+293,mantida,,"Hidraplex - sais de reidratação oral Dissolver 01 envelope em 1 litro de água e tomar ao longo de 01 dia, até melhora Líquidos caseiros"
+294,mantida,"dose_nao_identificada,via_nao_identificada","Líquidos caseiros (3 litros restantes) Opções: água, suco de frutas, chás, água de coco, etc. Sintomáticos"
+295,mantida,via_nao_identificada,"Loratadina 10 mg - cp Tomar 01 cp, 1x ao dia, se coceira"
+296,mantida,via_nao_identificada,"Dipirona 1 g - cp Tomar 01 cp de, 6/6 horas, se dor ou febre"
+297,mantida,via_nao_identificada,"Ondansetrona 4mg - cp Tomar 01 cp, de 8/8 horas, se náuseas ou vômitos. Receita de Alta"
+298,mantida,via_nao_identificada,"Dipirona 500 mg - cp Tomar 02 cp, de 6/6h, se dor ou febre Antiinflamatório"
+299,mantida,via_nao_identificada,"Nimesulida 100 mg - cp Tomar 01 cp, de 12/12h, por até 05 dias Se indicado"
+300,mantida,via_nao_identificada,"Oseltamivir 75 mg - cp Tomar 01 cp, de 12/12h, por 05 dias Se tosse"
+301,mantida,,"Acetilcisteína 40mg/ml - xarope Tomar 15ml, 1x ao dia, por 05 dias USO TÓPICO Lavagem nasal"
+302,mantida,"dose_nao_identificada,via_nao_identificada","Soro Fisiológico 0.9% Lavar o nariz, 6 vezes ao dia, com soro morno Receita de Alta"
+303,mantida,"dose_nao_identificada,via_nao_identificada",Tenofovir/Lamivudina (TDF/3TC)
+304,mantida,via_nao_identificada,"mg/300 mg - cp Tomar 01 cp, 1 vez por dia, por 28 dias."
+305,mantida,via_nao_identificada,"Dolutegravir (DTG) 50 mg - cp Tomar 01 cp, 1 vez por dia, por 28 dias. Os comprimidos devem ser tomados juntos. A PEP deve ser iniciada idealmente nas primeiras"
+306,mantida,"dose_nao_identificada,via_nao_identificada",horas após a exposição e tendo como limite 72 horas subsequentes à exposição. Receita de Alta
+307,mantida,via_nao_identificada,"Azitromicina 500 mg - cp Tomar 02 cp, dose única OU"
+308,mantida,via_nao_identificada,"Ciprofloxacino 500 mg - cp Tomar 01 cp, de 12/12h, por 03 dias OU USO INJETÁVEL"
+309,mantida,,"Ceftriaxone 250 mg IM, dose única Orientações Tratar parcerias sexuais dos últimos 10 dias, mesmo assintomáticas: Azitromicina 1g, dose única; OU Ceftriaxona, 250 mg - IM dose única Receita de Alta"
+310,mantida,via_nao_identificada,"Azitromicina 500 mg - cp Tomar 02 cp, 1x/semana, por 3 semanas ou até a cicatrização das lesões. OU"
+311,mantida,via_nao_identificada,"Doxiciclina 100 mg - cp Tomar 01 cp, de 12/12h, por 3 semanas ou até a cicatrização das lesões. OU"
+312,mantida,via_nao_identificada,"Ciprofloxacino 500 mg - cp Tomar 01 comprimido e meio, de 12/12h, por 3 semanas ou até a cicatrização das lesões. OU"
+313,mantida,via_nao_identificada,"Sulfametoxazol+trimetoprima 400/80mg -cp Tomar 02 cp, de 12/12h, por 3 semanas ou até a cicatrização das lesões. Receita de Alta"
+314,mantida,via_nao_identificada,"Aciclovir 200 mg - cp Tomar 02 cp, 3 x/dia, por 07 dias SE RECIDIVA"
+315,mantida,via_nao_identificada,"Aciclovir 200 mg - cp Tomar 02 cp, 3 x/dia, por 05 dias SE MAIS 6 EPISÓDIOS NO ANO"
+316,mantida,via_nao_identificada,"Aciclovir 200 mg - cp Tomar 02 cp, 2 x/dia, por 06 meses Tratar parcerias se sintomáticas Receita de Alta Orientações"
+317,mantida,via_nao_identificada,"Doxiciclina 100 mg - cp Tomar 01 cp, de 12/12h, por 21 dias. OU"
+318,mantida,via_nao_identificada,"Azitromicina 500 mg - cp Tomar 02 comprimido, 1x/semana, por 21 dias"
+319,mantida,"dose_nao_identificada,via_nao_identificada",Penicilina G benzatina
+320,mantida,,"400.000 UI, intramuscular, dose única SÍFILIS LATENTE TARDIA, INDETERMINADA E TERCIÁRIA"
+321,mantida,,"400.000 UI, intramuscular, semanal, por três semanas. Receita de Alta"
+322,mantida,,"400.000 UI, intramuscular, dose única. Teste reagente: tratar conforme avaliação clínica e diagnóstico. Teste indisponível ou risco de perda de seguimento: tratar presuntivamente com Penicilina G benzatina, 2.400.000 UI, intramuscular, dose"
+323,mantida,,Tiamina 100mg/ml Administrar 01 ampola (1ml) IM antes da glicose.
+324,mantida,,Glicose 50% 10ml Aplicar 04 ampolas (40ml) EV em bôlus
+325,mantida,,SG 5% 500ml Administrar 100ml/h EV até estabilidade clínica Conduta no PS Se desidratação
+326,mantida,,"SF 0.9% - 1000ml Administrar 1000 ml EV, em 1h"
+327,mantida,,Haloperidol 5mg/1ml Administrar 01 ampola (5mg) IM Se náusea
+328,mantida,,"Ondansetrona 8mg/4ml Aplicar 01 ampola, EV"
+329,mantida,,"Flumazenil 0,5mg/5ml Aplicar 0,1 mg (1mg) IV bolus em 1 minuto Repetir até máximo de 1 mg/dia"
+330,mantida,,Diazepam (10mg/2ml) Aplicar 1 amp (10mg) IV em 2 min. Se hipertensão Nitrato
+331,mantida,,"Nitroprussiato de sódio (50mg/2ml) Diluir 1 amp (2ml) em 248 ml de SG 5% EV em BIC: iniciar em 2,1 mL/h Conduta no PS"
+332,mantida,,"Naloxona 0,4mg/1ml Aplicar 1 amp (0,4mg) IV bolus e reavaliar em"
+333,fundida_na_linha_anterior,fragmento,min Repetir a cada 3min em doses dobradas até resposta (max 10mg)
+334,mantida,,"Gluconato de Cálcio 10% Diluir 10 ml em 100 ml de SG % - EV em 5 min Repetir em 5 min, se necessário OU"
+335,mantida,,Cloreto de Cálcio 10% Diluir 3 ml em 100 ml de SG % - EV em 5 min Conduta no PS
+336,mantida,,Glicose 50% + Insulina R Diluir 10 UI de Insulina em 100 ml de G50% - EV em 30 min B2 Agonista
+337,mantida,,Salbutamol 5mg/ml Diluir 40 gotas em 5 ml de SF 0.9% - nebulização Bicarbonato
+338,mantida,,"Bicarbonato de sódio 8,4% Diluir 850 de Bicarbonato em 150 ml de SG 5% - EV em 4h OBS: não usar em monoterapia Conduta no PS"
+339,mantida,,Furosemida 20mg/2ml Fazer 40mg - EV Obs: não usar em monoterapia Resina de troca
+340,mantida,,Poliestirenossulfonato de sódio (Sorcal) Diluir 30g de Sorcal em 100ml de Manitol - VO Não indicado na fase aguda. Evitar se obstrução intestinal OU
+341,mantida,,Ciclossilicato de Zircônio (Lokelma) Diluir 10g em 100ml de água - VO Diálise
+342,mantida,"dose_nao_identificada,via_nao_identificada",Hemodiálise Indicado em disfunção renal grave Conduta no PS
+343,mantida,via_nao_identificada,"Cloreto de potássio 600 mg - cp Tomar 02 cp no café da manhã, 02 cp no almoço e 01 cap na janta, junto das refeições, por 05 dias OU"
+344,mantida,via_nao_identificada,"Cloreto de potássio xarope 6% Tomar 15 ml, 3x ao dia, por 05 dias Receita de Alta"
+345,mantida,,"KCl 19,1% 20ml + 480ml SF 0,9%, EV em BIC, em 4h ACESSO CENTRAL"
+346,mantida,,"KCl 19,1% 40ml + 460ml SF 0,9%, EV em BIC, em 4h Conduta no PS"
+347,mantida,,"NaCl 3% Ataque: Fazer 100 ml - EV em 10 min Pode repetir até 3x, se necessário Manutenção: BIC a 15-30 ml/h Dosar Na de 2/2h Aumentar Na de 6-8 mEq/L em 24h (incluindo dose de ataque) Conduta no PS"
+348,mantida,via_nao_identificada,NaCl 3% Ataque: Não é necessário dose de ataque Manutenção: BIC a 15-30 ml/h Dosar Na de 2/2h Aumentar Na de 6-8 mEq/L em 24h (incluindo dose de ataque SINTOMÁTICA
+349,mantida,"dose_nao_identificada,via_nao_identificada","%, então temos que preparar a solução:"
+350,mantida,via_nao_identificada,"ml NaCl 20% + 445ml SF 0,9% = 500ml NaCl 3% Cada 1 ml/kg aumenta natremia em 1 mEq/L Pacientes com hiponatremia hipervolêmica (insuficiência cardíaca congestiva, cirrose, insuficiência renal crônica avançada) não se usa NaCl a 3% isoladamen"
+351,mantida,conduta_sem_medicamento,ponto B. Pressão Arterial (Blood Pressure) PA sistólica ≥ 140 mmHg ou PA diastólica ≥ 90 mmHg
+352,mantida,conduta_sem_medicamento,ponto C. Características Clínicas (Clinical Features) Fraqueza unilateral
+353,mantida,conduta_sem_medicamento,pontos Distúrbio de fala sem fraqueza
+354,mantida,conduta_sem_medicamento,ponto D. Duração dos Sintomas (Duration) ≥ 60 minutos
+355,mantida,conduta_sem_medicamento,pontos
+356,mantida,conduta_sem_medicamento,a 59 minutos
+357,mantida,conduta_sem_medicamento,ponto <10 minutos
+358,mantida,conduta_sem_medicamento,ponto D². Diabetes (Diabetes) História de diabetes
+359,mantida,conduta_sem_medicamento,ponto Pontuação Total Risco Chance de AVC em 2 dias
+360,mantida,conduta_sem_medicamento,3 pontos Baixo
+361,fundida_na_linha_anterior,fragmento,",0%"
+362,mantida,conduta_sem_medicamento,5 pontos Moderado
+363,fundida_na_linha_anterior,fragmento,",1%"
+364,mantida,conduta_sem_medicamento,7 pontos Alto
+365,fundida_na_linha_anterior,fragmento,",1% Score ABCD2"
+366,mantida,via_nao_identificada,AAS Dose de ataque: 300 mg Manutenção: 100 mg / dia ABCD > 4
+367,mantida,via_nao_identificada,AAS Dose de ataque: 300 mg Manutenção: 100 mg / dia
+368,mantida,via_nao_identificada,"Clopidogrel Dose de ataque: 300 mg Manutenção: 75 mg / dia, por 21 dias"
+369,mantida,"dose_nao_identificada,via_nao_identificada",horas Ataques com duração de 15 a
+370,mantida,dose_nao_identificada,"minutos Intensidade Leve a moderada Moderada a grave Muito intensa e severa Sintomas Associados Raramente há náuseas ou vômitos; fotofobia e fonofobia discretas em alguns casos Frequentemente acompanhada de náuseas, vômitos, fotofobia, fono"
+371,fundida_na_linha_anterior,fragmento,":1) Fisiopatologia Envolve sensibilização central e tensão muscular pericraniana Relacionada a alterações neurovasculares e disfunção na regulação de neurotransmissores (ex. serotonina) Acredita-se que haja disfunção do hipotálamo com ativação do sistema trigeminal-autonômico Tratamento Uso de AINEs, analgésicos simples e relaxantes musculares; na forma crônica, profilaxia com amitriptilina Tratamento agudo com AINEs, triptanos e antieméticos; profilaxia com beta- bloqueadores, anticonvulsivantes, entre outros, conforme a frequência das crises Manejo agudo com oxigenoterapia e triptanos (ex.: sumatriptano subcutâneo); medidas preventivas com bloqueios nervosos, verapamil, lítio ou corticosteroides Dicas Rápidas"
+372,mantida,via_nao_identificada,Prednisona 20mg - cp Tomar 03 cp por 5 dias (60 mg).
+373,fundida_na_linha_anterior,fragmento,dia: 2 cp inteiros + metade de 01 cp (50 mg)
+374,fundida_na_linha_anterior,fragmento,dia: 2 cp inteiros (40 mg)
+375,fundida_na_linha_anterior,fragmento,dia: 1 cp inteiro + metade de 01 cp (30 mg)
+376,fundida_na_linha_anterior,fragmento,dia: 1 cp inteiro (20 mg)
+377,fundida_na_linha_anterior,fragmento,dia: metade de 01 cp (10 mg)
+378,mantida,,"Verapamil 80 mg - cp Tomar 01 cp, de 8/8h, até consulta ambulatorial Conduta no PS Via inalatória"
+379,mantida,dose_nao_identificada,"O2 100 %, 12-15 L/min, por 15-20 min - máscara não reinalante Via subcutânea"
+380,mantida,,Sumatriptano 6 mg - SC
+381,mantida,,Dipirona 1 g - EV lento
+382,mantida,,"Cetoprofeno 100 mg + 100 ml SF 0,9 % - EV em 30 min Antiemético"
+383,mantida,,"Metoclopramida 10 mg + 100 ml SF 0,9 % - EV em"
+384,fundida_na_linha_anterior,fragmento,min OU Ondansetrona 8 mg - EV Conduta no PS Receita de Alta USO ORAL AINE
+385,mantida,via_nao_identificada,"Naproxeno 250 mg - cp Tomar 01 cp, de 12/12h, por 3 dias Profilaxia de novas crises (SE >15 crises/mês nos últimos 03 meses)"
+386,mantida,via_nao_identificada,"Amitriptilina 10mg - cp Tomar 01 cp, 1x ao dia, até consulta com neurologista"
+387,mantida,,Dipirona 1 g - EV lento
+388,mantida,,"Cetoprofeno 100 mg + 100 ml SF 0,9 % - EV em 30 min Antiemético"
+389,mantida,,"Metoclopramida 10 mg + 100 ml SF 0,9 % - EV em"
+390,fundida_na_linha_anterior,fragmento,min OU Ondansetrona 8 mg - EV Se dor > 72h
+391,mantida,,Dexametasona 10 mg - EV lento Se dor refratária
+392,mantida,,"Clorpromazina (25mg/5ml) Aplicar 02 ml IM + SF 0,9 % 1000 ml EV, em 1h (evitar hipotensão) OU Sumatriptano 6mg - SC *Pouco disponível Conduta no PS"
+393,mantida,via_nao_identificada,"Naproxeno 250 mg - cp Tomar 01 cp, de 12/12h, por 3 dias. Antiemético"
+394,mantida,via_nao_identificada,"Metoclopramida 10 mg - cp Tomar 01 cp, de 12/12h, por 3 dias. Se nova crise"
+395,mantida,via_nao_identificada,Sumatriptano 50 mg - cp Tomar 01 cp se nova crise. Tomar mais 01 cp se dor após 2h. Retorno ao PS se persistir dor. Receita de Alta
+396,mantida,dose_nao_identificada,Cateter nasal - até 6 L Se hipoglicemia
+397,mantida,,Glicose 50% 10ml Aplicar 04 ampolas (40ml) EV em bôlus
+398,mantida,,SG 5% 500ml Administrar 100ml/h EV até estabilidade clínica
+399,mantida,,"Tiamina 100mg/ml Administrar 01 ampola (1ml) IM antes da glicose (se hepatopata, desnutrido, etilista)"
+400,mantida,,"Glucagon (1mg/ml) Administrar 01 ampola IM, se não obtiver acesso venoso Conduta no PS"
+401,mantida,,"Diazepam (10mg/2ml) Aplicar 1 amp (10mg) IV em 2 min. Se persistência após 5 min, repetir a dose (10 mg), mais uma vez. SEM ACESSO VENOSO"
+402,mantida,,Midazolam (50mg/10ml) Aplicar 2 ml (10 mg) IM
+403,mantida,,"Fenitoína (250mg/5ml) Diluir 20 mg/kg em 250ml SF0,9% Dose: 20 mg/kg Para cada ampola, acrescentar 5 min de infusão Exemplo 70 kg: Diluir 6 amp em 250 mL SF0,9% IV em 30 min SE REFRATARIEDADE MANTIVER"
+404,mantida,,"Fenobarbital (200mg/2ml) Diluir 20 mg/kg amp + 200 ml sf0,9%, iv lento Dose: 20 mg/kg Infusão: máximo de 50 mg/min. Exemplo 70 kg: Diluir 7 amp em 200ml SF 0,9% IV em 30 min"
+405,mantida,via_nao_identificada,"Midazolam (50mg/10ml) Diluir 30 ml em 150 ml de SF 0,9% Ataque: Bolus de 0,2 mg/kg Manutenção: 0,2 a 2 mg/kg/h em BIC"
+406,mantida,via_nao_identificada,Prednisona 20mg - cp Tomar 03 cp por 5 dias (60 mg).
+407,fundida_na_linha_anterior,fragmento,dia: 2 cp inteiros + metade de 01 cp (50 mg)
+408,fundida_na_linha_anterior,fragmento,dia: 2 cp inteiros (40 mg)
+409,fundida_na_linha_anterior,fragmento,dia: 1 cp inteiro + metade de 01 cp (30 mg)
+410,fundida_na_linha_anterior,fragmento,dia: 1 cp inteiro (20 mg)
+411,fundida_na_linha_anterior,fragmento,dia: metade de 01 cp (10 mg) Antiviral
+412,mantida,via_nao_identificada,"Aciclovir 400mg - cp Tomar 02 cp, de 4/4h, 5x ao dia, por 7 dias Horários: 06h - 10h - 14h - 18h - 22h Receita de Alta"
+413,mantida,,"Lacrifilm (carmelose sódica) - colírio Aplicar 3 gts no olho afetado, 6x ao dia, até resolução do quadro Proteção ocular noturna"
+414,mantida,,"Epitegel (dexpantenol) - gel oftálmico Aplicar no olho afetado ao dormir, até resolução do quadro. Fechar o olho com gaze e esparadrapo, sem apertar. Orientações"
+415,mantida,dose_nao_identificada,"dias após aparecimento dos sintomas Aciclovir é indicado em lesões herpéticas. Pode ser considerado em casos mais acentuados (score de House-Brackman ≥ 4, vide abaixo). Escore de House-Brackmann Grau I: Normal (nenhuma fraqueza). Grau II: L"
+416,mantida,via_nao_identificada,"Metoclopramida 10 mg Tomar 01 cp, de 8/8h, por 05 dias OU"
+417,mantida,via_nao_identificada,"Amplictil 25 mg - cp Tomar 01 cp, de 8/8h, por até 07 dias OU"
+418,mantida,via_nao_identificada,"Haloperidol 1 mg- cp Tomar 01 cp, de 8/8h, por até 07 dias"
+419,mantida,via_nao_identificada,"Cloridrato de Betaistina 8 mg - cp Tomar 01 cp, de 8/8h, até consulta com Otorrino/Neuro. OU Diurético tiazídico"
+420,mantida,via_nao_identificada,"Hidroclorotiazida 25 mg - cp Tomar 01 cp, 1 vez ao dia, até consulta com Otorrino/Neuro."
+421,mantida,via_nao_identificada,"Metoclopramida 10 mg - cp Tomar 01 cp, de 8/8h, se náusea ou vômitos OU"
+422,mantida,via_nao_identificada,"Ondansetrona 8 mg - cp Tomar 01 cp, de 8/8h, se náusea ou vômitos Supressor vestibular"
+423,mantida,via_nao_identificada,"Dimenidrato 50 mg - cp Tomar 01 cp, de 6/6h, por até 03 dias Benzodiazepínico"
+424,mantida,via_nao_identificada,"Clonazepam 0,5 mg - cp Tomar 01 cp, de 12/12h, se vertigem persistir após dimenidrato"
+425,mantida,via_nao_identificada,Prednisona 20mg - cp Tomar 03 cp por 5 dias (60 mg).
+426,fundida_na_linha_anterior,fragmento,dia: 2 cp inteiros + metade de 01 cp (50 mg)
+427,fundida_na_linha_anterior,fragmento,dia: 2 cp inteiros (40 mg)
+428,fundida_na_linha_anterior,fragmento,dia: 1 cp inteiro + metade de 01 cp (30 mg)
+429,fundida_na_linha_anterior,fragmento,dia: 1 cp inteiro (20 mg)
+430,fundida_na_linha_anterior,fragmento,dia: metade de 01 cp (10 mg) Se lesões herpéticas
+431,mantida,via_nao_identificada,"Aciclovir 400mg - cp Tomar 02 cp, de 4/4h, 5x ao dia, por 7 dias Horários: 06h - 10h - 14h - 18h - 22h"
+432,mantida,via_nao_identificada,"Metoclopramida 10 mg - cp Tomar 01 cp, de 8/8h, se náusea ou vômitos OU"
+433,mantida,via_nao_identificada,"Ondansetrona 8 mg - cp Tomar 01 cp, de 8/8h, se náusea ou vômitos Supressor vestibular"
+434,mantida,via_nao_identificada,"Dimenidrato 50 mg - cp Tomar 01 cp, de 6/6h, por até 03 dias Benzodiazepínico"
+435,mantida,via_nao_identificada,"Clonazepam 0,5 mg - cp Tomar 01 cp, de 12/12h, se vertigem persistir após dimenidrato Receita de Alta"
+436,mantida,,"Vancomicina 1g - EV , de 12/12h"
+437,mantida,,"Ceftriaxone 1g - EV, de 12/12h se suspeita de acometimento de SNC, associar:"
+438,mantida,,"Metronidazol 500 mg - EV, de 8/8h"
+439,mantida,conduta_sem_medicamento,Internação
+440,mantida,conduta_sem_medicamento,Avaliação de oftalmo e otorrino
+441,mantida,conduta_sem_medicamento,Antibioticoterapia EV
+442,mantida,conduta_sem_medicamento,Jejum
+443,mantida,conduta_sem_medicamento,Controle de sintomas
+444,mantida,via_nao_identificada,"Amoxicilina+clavulanato (875+125mg) - cp Tomar 01 cp, de 12/12h, por 10 dias"
+445,mantida,,"Ibuprofeno 600 mg - cp Tomar 01 cp, de 8/8h, por 05 dias SUSPEITA DE MRSA USO ORAL"
+446,mantida,via_nao_identificada,"Sulfametoxazol + Trimetoprima 800+160mg, 12/12h OU Clindamicina 300mg, 6/6h; Associado a:"
+447,mantida,via_nao_identificada,"Amoxicilina+clavulanato 875+125mg 12/12h OU Cefuroxima 500mg, 12/12h"
+448,mantida,,"Lacrifilm (carmelose sódica) - colírio Aplicar 3 gts no olho afetado, 6x ao dia, até consulta com Oftalmologista Antihistamínico tópico"
+449,mantida,,"Olopatadina 0,1% - colírio Aplicar 1 gota nos dois olhos, de 12/12h, até consulta com Oftalmologista Orientações"
+450,mantida,,"Lacrifilm (carmelose sódica) - colírio Aplicar 3 gts no olho afetado, 6x ao dia, até resolução do quadro Antibiotico tópico"
+451,mantida,,"Tobramicina (Tobrex) 0,3% - solução oftálmica Aplicar 1 gota em olho afetado, de 6/6 h, por 7 dias. Orientações Realizar compressas frias sobre as pálpebras, várias vezes ao dia Lavar os olhos com SF 0,9% gelado várias vezes ao dia."
+452,mantida,,"Lacrifilm (carmelose sódica) - colírio Aplicar 3 gts no olho afetado, 6x ao dia, até resolução do quadro. . Orientações Realizar compressas frias sobre as pálpebras, várias vezes ao dia Lavar os olhos com SF 0,9% gelado várias vezes ao dia."
+453,mantida,,Colírio anestésico: Cloridrato de proximetacaína 0.5% - 02 gotas
+454,mantida,"dose_nao_identificada,via_nao_identificada",Irrigação abundante Lavagem com SF 0.9% Fragmentos superficias podem ser removidos durante a própria lavagem
+455,mantida,"dose_nao_identificada,via_nao_identificada",Inspeção minuciosa Eversão de pálpebras superior e inferior
+456,mantida,dose_nao_identificada,"Avaliar remoção de corpo estranho Supercial: tentativa de remoção com cotonete Aderido: encaminhamento oftalmológico OBS: Em caso de suspeita de perfuração ocular, não devem ser feitas aplicação de colírio, irrigação e manipulação ocular. M"
+457,mantida,,"Tobramicina 0,3% - solução oftálmica Aplicar 1 gota em olho afetado"
+458,mantida,conduta_sem_medicamento,Encaminhar para emergência oftalmológica SE PERFURAÇÃO OCULAR
+459,mantida,conduta_sem_medicamento,Avaliação oftalmológica urgente
+460,mantida,dose_nao_identificada,Proteção ocular não oclusiva
+461,mantida,,Ciprofloxacino 400 mg - EV
+462,mantida,,Morfina(1mg/1ml) + 9ml de AD - 4ml EV
+463,mantida,,Ondansetrona 8mg - EV
+464,mantida,,"Lacrifilm (carmelose sódica) - colírio Aplicar 3 gts no olho afetado, 6x ao dia, por"
+465,mantida,dose_nao_identificada,dias. Antibiotico tópico
+466,mantida,,"Tobramicina (Tobrex) 0,3% - solução oftálmica Aplicar 1 gota em olho afetado, de 6/6 h, por 7 dias. Em caso de dúvida se houve perfuração, maneje sempre como perfuração ocular e encaminhe com urgência ao oftalmologista"
+467,mantida,dose_nao_identificada,Medidas de orientações gerais são suficientes HORDÉOLO USO OCULAR Antibiotico tópico
+468,mantida,,"Tobracin 0,3% Pomada Oftálmica 3,5g Aplicar fina camada em saco conjuntival, 3 vezes ao dia, por 05 dias. Receita de Alta"
+469,mantida,via_nao_identificada,Manitol 20% 200mg/ml
+470,fundida_na_linha_anterior,fragmento,",5 - 2 g/kg, EV Inibidor da anidrase carbônica"
+471,mantida,,"Acetazolamida 250 mg cp Ataque: 500 mg (2cp) VO Manutenção: 250 mg (1cp), de 6/6h Manejo inicial Conduta no PS"
+472,mantida,conduta_sem_medicamento,Avaliação oftalmológica urgente
+473,mantida,"dose_nao_identificada,via_nao_identificada",Não atrasar o manejo inicial se encaminhamento não for imediato
+474,mantida,conduta_sem_medicamento,Controle de sintomas
+475,mantida,dose_nao_identificada,Pilocarpina 2% colírio
+476,mantida,,ciclo: 1 gota de 15/15 min (3 vezes)
+477,mantida,,ciclo: 1 gota de 1/1h (3 vezes)
+478,mantida,,ciclo: 1 gota de 6/6h Beta blqueador
+479,mantida,dose_nao_identificada,"Maleato de Timolol 0,1% - colírio"
+480,mantida,dose_nao_identificada,"gota, de 12/12h Corticoide tópico"
+481,mantida,dose_nao_identificada,"Acetato de Prednisolona 0,1% - colírio"
+482,mantida,dose_nao_identificada,"gota, de 2/2h nas primeiras 24h Manejo inicial"
+483,mantida,,Ondansetrona 8 mg - EV Se náusea ou vômito Analgesia
+484,mantida,,"Morfina (1mg/1ml) + 9 ml de AD Fazer 4ml EV Manejo inicial Dicas Rápidas O tratamento medicamentoso interrompe a crise em grande parte dos casos nas primeiras horas, usualmente acompanhado de: Redução na PIO Miose Diminuição do edema cornea"
+485,mantida,,"Cetoprofeno 100 mg + 100 ml SF 0,9 % - EV em 30 min"
+486,mantida,,"Tramadol 50 mg + SF 0,9% 100 ml - EV em 30 min, se dor muito intensa Se contraindicação ao AINE"
+487,mantida,,"Dexametasona 10 mg - EV lento As manifestações iniciais da gota tipicamente se apresentam como podagra, caracterizadas por dor intensa, calor local, eritema e edema na articulação metatarsofalângica do hálux."
+488,mantida,via_nao_identificada,"Colchicina 0,5mg - cp Dia 1: tomar 02 cp. Após 1h, tomar mais 01 cp Dia 2 em diante: tomar 01 cp, de 12/12h, até melhora do quadro ou até diarreia"
+489,mantida,via_nao_identificada,"Naproxeno 250 mg - cp Tomar 01 cp, de 12/12h, por 05 dias Proteção gástrica"
+490,mantida,via_nao_identificada,"Omeprazol 20mg - cp Tomar 01 cp, em jejum pela manhã, por 07 dias Se contraindicação ao AINE e/ou colchicina"
+491,mantida,via_nao_identificada,"Prednisona 20 mg - cp Tomar 02 cp por 03 dias. Após, tomar meio comprimido por mais 03 dias."
+492,mantida,,Dipirona 1 g - EV lento AINE
+493,mantida,,"Cetoprofeno 100 mg + 100 ml SF 0,9 % - EV em 30 min Opioide"
+494,mantida,,"Tramadol 50 mg + SF 0,9% 100 ml - EV em 30 min, se dor muito intensa Relaxante muscular"
+495,mantida,,"Tiocolchicolsídeo 2mg/2ml - 01 ampola, IM"
+496,mantida,via_nao_identificada,"Dipirona 500 mg - cp Tomar 02 cp, de 6/6h, por 05 dias AINE"
+497,mantida,via_nao_identificada,"Ibuprofeno 600 mg - cp Tomar 01 cp, de 8/8h, por 05 dias Opidóide"
+498,mantida,via_nao_identificada,"Tramadol 50 mg - cp Tomar 01 cp, de 8/8h, se dor muito intensa Relaxante muscular"
+499,mantida,via_nao_identificada,"Ciclobezaprina 5 mg - cp Tomar 01 cp, de 12/12h, por 05 dias"
+500,mantida,,"Omcilon-A Orabase (triancinolona) - pomada Aplicar nas lesões, 3x ao dia, após refeições, por 07 dias Analgesia tópica"
+501,mantida,,"Bismu-Jet (neomicina + bismuto e sódio + procaína) Pingar 02 gotas nas lesões, 3 vezes ao dia, por 07 dias Se xerostomia associada"
+502,mantida,,Kin Hidrat 40ml - Spray Oral Pulverize na boca quantas vezes forem necessárias
+503,mantida,"dose_nao_identificada,via_nao_identificada",Compressão manual e cabeça inclinada para frente (5-10 min)
+504,mantida,"dose_nao_identificada,via_nao_identificada","SF 0.9 % gelado: irrigação, remoção de coágulos e localização do sangramento"
+505,mantida,"dose_nao_identificada,via_nao_identificada",Instilar cloridrato de oximetazolina
+506,mantida,,Algodão embebido em Adrenalina + Lidocaína Solução de 10 ampolas de adrenalina + 10 ml de lidocaína Molhar o algodão na solução e remover o excesso Manter o algodão na fossa nasal por 10-15 min
+507,mantida,"dose_nao_identificada,via_nao_identificada",Cauterização química com bastão de nitrato de prata Evite cauterização bilateral do septo Aplique cuidadosamente o nitrato de prata apenas na mucosa Comece na área ao redor e depois na fonte do sangramento
+508,mantida,dose_nao_identificada,Tamponamento nasal anterior com dedo de luva + gaze ou dispositivo próprio (Merocel) Lubrificar com lidocaína Manter por 24h - 48h
+509,mantida,conduta_sem_medicamento,F):
+510,mantida,"dose_nao_identificada,via_nao_identificada",Alguns cortam a ponta além do balão (pode estimular o reflexo de vômito).
+511,mantida,dose_nao_identificada,Lubrifique o terço distal do cateter com gel de lidocaína.
+512,mantida,dose_nao_identificada,Avance a ponta de Foley ao longo do assoalho nasal até que a extremidade seja vista na orofaringe posterior.
+513,mantida,dose_nao_identificada,Infle com ar (< 10 cc para evitar necrose por pressão) e depois retraia contra a coana nasal posterior.
+514,mantida,dose_nao_identificada,"Fixe na asa nasal, com acolchoamento para evitar lesões por pressão."
+515,mantida,conduta_sem_medicamento,Avaliação urgente com Otorrinolaringologia
+516,mantida,via_nao_identificada,"Dipirona 500mg - cp Tomar 02 cp, de 6/6h, se dor ou febre Antiinflamatório"
+517,mantida,via_nao_identificada,"Nimesulida 100 mg - cp Tomar 01 cp, de 12/12h, por 05 dias Anestésico local"
+518,mantida,via_nao_identificada,"Neopiridin (benzocaína + cetilpiridíneo) Dissolver 01 cp na boca, de 8/8h, por 03 dias"
+519,mantida,via_nao_identificada,"Dipirona 500mg - cp Tomar 02 cp, de 6/6h, se dor ou febre Antiinflamatório"
+520,mantida,via_nao_identificada,"Nimesulida 100 mg - cp Tomar 01 cp, de 12/12h, por 05 dias Anestésico local"
+521,mantida,via_nao_identificada,"Neopiridin (benzocaína + cetilpiridíneo) Dissolver 01 cp na boca, de 8/8h, por 03 dias Antibioticoterapia"
+522,mantida,via_nao_identificada,"Amoxicilina 500 mg - cp Tomar 01 cp, de 8/8h, por 10 dias"
+523,mantida,,"OTOCIRIAX (ciprofloxacino+hidrocortisona) - suspensão Pingar 3 gotas na orelha afetada, de 12/12h, por 07 dias. Receita de Alta"
+524,mantida,via_nao_identificada,"Dipirona 500mg - cp Tomar 02 cp, de 6/6h, se dor ou febre Antiinflamatório"
+525,mantida,via_nao_identificada,"Nimesulida 100 mg - cp Tomar 01 cp, de 12/12h, por 05 dias Antibioticoterapia"
+526,mantida,via_nao_identificada,"Amoxicilina 500 mg - cp Tomar 01 cp, de 8/8h, por 10 dias Receita de Alta"
+527,mantida,,"Loratadina 10 mg - cp Tomar 01 cp, 1x ao dia, por 05 dias USO TÓPICO Lavagem nasal"
+528,mantida,dose_nao_identificada,"Soro Fisiológico 0.9% Lavar o nariz, 6 vezes ao dia, com soro morno Corticoide tópico"
+529,mantida,,"Budesonida 50 mcg - spray nasal Aplicar 1 jato em cada narina, de 12/12 horas, por 10 dias. Se prurido ocular associado"
+530,mantida,,"Olopatadina 0,1% - colírio Aplicar 1 gota nos dois olhos, de 12/12h, por 05 dias Receita de Alta"
+531,mantida,via_nao_identificada,"Nimesulida 100 mg - cp Tomar 01 cp, de 12/12h, por 05 dias Se rinite associada"
+532,mantida,,"Loratadina 10 mg - cp Tomar 01 cp, 1x ao dia, por 05 dias USO TÓPICO Lavagem nasal"
+533,mantida,"dose_nao_identificada,via_nao_identificada","Soro Fisiológico 0.9% Lavar o nariz, 6 vezes ao dia, com soro morno Se rinite associada"
+534,mantida,,"Budesonida 50 mcg - spray nasal Aplicar 1 jato em cada narina, de 12/12 horas, por 10 dias."
+535,mantida,via_nao_identificada,"Nimesulida 100 mg - cp Tomar 01 cp, de 12/12h, por 05 dias Se rinite associada"
+536,mantida,via_nao_identificada,"Loratadina 10 mg - cp Tomar 01 cp, 1x ao dia, por 05 dias Antibioticoterapia"
+537,mantida,via_nao_identificada,"Amoxacilina+Clavulanato (875/125mg) – cp Tomar 01 cp, de 12/12h por 7 dias OU"
+538,mantida,via_nao_identificada,"Levofloxacino 750mg – cp Tomar 01 cp, 1x ao dia, por 7 dias"
+539,mantida,"dose_nao_identificada,via_nao_identificada","Soro Fisiológico 0.9% Lavar o nariz, 6 vezes ao dia, com soro morno Se rinite associada"
+540,mantida,,"Budesonida 50 mcg - spray nasal Aplicar 1 jato em cada narina, de 12/12 horas, por 10 dias. SINAIS SUGESTIVOS DE ORIGEM BACTERIANA Sintomas > 10 dias Dupla piora (sinais vinham melhorando, com nova piora após 4-5 dias) Rinorreia purulenta D"
+541,mantida,via_nao_identificada,Salbutamol 100 mcg/dose
+542,mantida,conduta_sem_medicamento,"10 puffs, a cada 20 min, em 1 hora"
+543,mantida,via_nao_identificada,Ipratrópio 200 mcg/dose
+544,mantida,conduta_sem_medicamento,"10 puffs, a cada 20 min, em 1 hora Se nebulização"
+545,mantida,via_nao_identificada,Salbutamol 5 mg/ml
+546,mantida,,"gotas em 5 ml de SF 0,9 % Inalar a cada 20 min, em 1 hora"
+547,mantida,via_nao_identificada,"Ipratrópio 0,25 mg/ml"
+548,mantida,,"gotas em 5 ml de SF 0,9 % Inalar a cada 20 min, em 1 hora Conduta no PS"
+549,mantida,,"Prednisona 20 mg - cp Tomar 02 cp, via oral Se muito agitado"
+550,mantida,,"Hidrocortisona 100 mg/frasco Diluir 2 frascos em 50 ml de SF 0,9 % - EV lento OU Metilprednisolona 125 mg/ 2 ml Diluir 01 ml em 50 ml de SF 0,9 % - EV lento Conduta no PS"
+551,mantida,,"Sulfato de Mg 50% (5g/10ml) Diluir 4ml em 100 ml de SF 0.9 % - EV em 30 min ou Sulfato de Mg 10% (1g/10 ml) Diluir 20 ml em 100 ml de SF 0,9 % - EV em 30 min Intubação Orotraqueal Considerar se: Rebaixamento do nível de consciência Acidose "
+552,mantida,,"Prednisona 20mg - cp Tomar 02 cp, 1x ao dia, por 5 dias. USO INALATÓRIO LABA + Corticoide"
+553,mantida,,"Alenia formoterol + budesonida (12+400mcg) Fazer uma inalação, de 12/12h, até consulta ambulatorial SABA - se nova crise (SOS)"
+554,mantida,,"Salbutamol 100 mcg/dose Inalar 02 (dois) jatos, em caso de falta de ar ou chiado. Pode repetir a cada 4 horas, se necessário."
+555,mantida,via_nao_identificada,Salbutamol 100 mcg/dose
+556,mantida,conduta_sem_medicamento,"10 puffs, a cada 20 min, em 1 hora"
+557,mantida,via_nao_identificada,Ipratrópio 200 mcg/dose
+558,mantida,conduta_sem_medicamento,"10 puffs, a cada 20 min, em 1 hora Se nebulização"
+559,mantida,via_nao_identificada,Salbutamol 5 mg/ml
+560,mantida,,"gotas em 5 ml de SF 0,9 % Inalar a cada 20 min, em 1 hora"
+561,mantida,via_nao_identificada,"Ipratrópio 0,25 mg/ml"
+562,mantida,,"gotas em 5 ml de SF 0,9 % Inalar a cada 20 min, em 1 hora Conduta no PS"
+563,mantida,,"Prednisona 20 mg - cp Tomar 02 cp, via oral Se muito agitado"
+564,mantida,,"Hidrocortisona 100 mg/frasco Diluir 2 frascos em 50 ml de SF 0,9 % - EV lento OU Metilprednisolona 125 mg/ 2 ml Diluir 01 ml em 50 ml de SF 0,9 % - EV lento Conduta no PS"
+565,mantida,dose_nao_identificada,O2 Cateter nasal baixo fluxo (1-3 L/minuto) Máscara de Venturi com FiO2 de até 50% VNI
+566,mantida,"dose_nao_identificada,via_nao_identificada",Indicações de VNI em BIPAP: Acidose respiratória (PaCO2 > 45 mmHg e pH <
+567,fundida_na_linha_anterior,fragmento,",35) Dispneia severa com sinais de esforço respiratório Hipoxemia a despeito da oxigenioterapia IOT"
+568,mantida,"dose_nao_identificada,via_nao_identificada",Indicações de IOT: Falha de VNI (ou não tolerância); Pós PCR; Rebaixamento do nível de consciência ou agitação psicomotora (não revertida com sedativos); Aspiração importante ou vômitos persistentes; Instabilidade hemodinâmica (não revertid
+569,mantida,via_nao_identificada,"Prednisona 20mg - cp Tomar 02 cp, 1x ao dia, por 5 dias. Antibioticoterapia"
+570,mantida,via_nao_identificada,"Amoxicilina + Clavulanato 875mg+125mg - cp Tomar 01 cp, de 12/12h, por 07 dias OU Azitromicina 500m - cp Tomar 01 cp, uma vez ao dia, por 05 dias OU Claritromicina 500mg - cp Tomar 01 cp, de 12/12h, por 07 dias OU Levofloxacino 500mg - cp T"
+571,mantida,,"Tiotrópio (18mcg/cápsula) Inalar o conteúdo de 1 cápsula, 1x/dia. Combinação LAMA + LABA (preferido na maioria dos casos de alta após exacerbação)"
+572,mantida,,"Glicopirrônio + Indacaterol (50mcg + 110mcg) Inalar o conteúdo de 1 cápsula, 1x/dia. ou"
+573,mantida,,"Umeclidínio + Vilanterol (62,5mcg + 25mcg) Inalar 1 dose, 1x/dia."
+574,mantida,,"Clenil - Beclometasona 250 mcg/dose Fazer uma inalação, de 12/12h, até consulta ambulatorial SABA - se nova crise (SOS)"
+575,mantida,,"Salbutamol 100 mcg/dose Inalar 02 (dois) jatos, em caso de falta de ar ou chiado. Pode repetir a cada 4 horas, se necessário."
+576,mantida,via_nao_identificada,"Amoxacilina+Clavulanato (875/125mg) – cp Tomar 01 cp, de 12/12h por 10 dias OU Claritromicina 500 mg - cp Tomar 01 cp, de 12/12h, por 10 dias OU Azitromicina 500 mg - cp Tomar 01 cp, 1x ao dia, por 10 dias Receita de Alta"
+577,mantida,via_nao_identificada,"Amoxacilina+Clavulanato (875/125mg) – cp Tomar 01 cp, de 12/12h por 10 dias +"
+578,mantida,via_nao_identificada,"Azitromicina 500 mg - cp Tomar 01 cp, 1x ao dia, por 10 dias OU"
+579,mantida,via_nao_identificada,"Levofloxacino 750 mg - cp Tomar 01 cp, 1x ao dia, por 10 dias Receita de Alta"
+580,mantida,,ponto U (Ureia Elevada) Ureia > 7 mmol/L (ou ≈ 19 mg/dL)
+581,mantida,conduta_sem_medicamento,ponto R (Frequência Respiratória) FR ≥ 30/minuto
+582,mantida,conduta_sem_medicamento,ponto B (Pressão Arterial Baixa) PAS < 90 mmHg ou PAD ≤ 60 mmHg
+583,mantida,conduta_sem_medicamento,ponto
+584,mantida,"dose_nao_identificada,via_nao_identificada",(Idade) Idade ≥ 65 anos
+585,mantida,conduta_sem_medicamento,ponto Considerada para todo paciente com escore CURB-65 ≥ 2. Indicações relativas para internação: DPOC DM ICC Neoplasias DRC intolerância a medicação oral baixo nível socioeconômico acesso à rede de saúde. Critérios de Internação
+586,mantida,,Haloperidol (5mg/1mL) Fazer 1mL IM Repetir a cada 30 minutos(dose máxima de
+587,mantida,"dose_nao_identificada,via_nao_identificada",mg/dia)
+588,mantida,,"Prometazina (50mg/2mL) Fazer 2mL IM OBS: Na intoxicação alcoólica, fazer somente haloperidol Conduta no PS"
+589,mantida,via_nao_identificada,"Diazepam 5 mg - cp Tomar 01 cp OU Clonazepam 0,5 mg - cp Tomar 01 cp OU Alprazolam 0,5 mg - cp Tomar 01 cp Conduta no PS"
+590,mantida,via_nao_identificada,"Ansiodorom (passiflora+valeriana+avena sativa) Tomar 02 cp, 2 vezes ao dia Receita de Alta Orientações Reavaliação com Psiquiatra/Psicólogo."
+591,mantida,,Dipirona 1 g - EV lento
+592,mantida,,"Cetoprofeno 100 mg + 100 ml SF 0,9 % - EV em 30 min"
+593,mantida,,"Tramadol 50 mg + 100 ml SF 0,9 % - EV em 30 min Se dor muito intensa"
+594,mantida,,Morfina (1 mg/1ml): 1 ampola + 9 ml de AD - 4 ml EV Antiemético
+595,mantida,,"Ondansetrona 8 mg - EV (30 min antes dos opioides) OU Metoclopramida 10 mg + 100 ml SF 0,9 % - EV em"
+596,fundida_na_linha_anterior,fragmento,min Antibiótico Se suspeita de ITU associada
+597,mantida,,Ceftriaxone 2g - EV
+598,mantida,via_nao_identificada,"Dipirona 500mg - cp Tomar 02 cp, de 6/6h, se dor"
+599,mantida,via_nao_identificada,"Cetoprofeno 100mg - cp Tomar 01 cp, de 12/12h, por 05 dias Antiemético"
+600,mantida,via_nao_identificada,"Metoclopramida 10mg - cp Tomar 01 cp, de 8/8h, se náusea ou vômito Terapia expulsiva"
+601,mantida,via_nao_identificada,"Tansulosina 0,4mg - cp Tomar 01 cp, à noite, por 30 dias Orientações Ingerir 2 a 3 litros de água por dia"
+602,mantida,via_nao_identificada,"Tansulosina 0,4 mg - cp Tomar 01 cp, à noite, até consulta com Urologista Inibidor 5 alfa-redutase"
+603,mantida,via_nao_identificada,"Finasterida 5 mg - cp Tomar 01 cp, 1x ao dia, até consulta com Urologista Orientações Encaminhamento ao urologista Evitar líquidos antes de dormir Reduzir o consumo de cafeína e álcool Urinar duas vezes para esvaziar a bexiga completamente"
+604,mantida,,Ceftriaxona 1g - IM Dose única USO ORAL Antibioticoterapia
+605,mantida,via_nao_identificada,"Doxiciclina 100 mg - cp Tomar 01 cp, de, 12/12h, por 10 dias Sintomáticos"
+606,mantida,via_nao_identificada,"Ibuprofeno 600 mg - cp Tomar 01 cp, de 8/8h, por até 03 dias"
+607,mantida,via_nao_identificada,"Dipirona 1g - cp Tomar 01 cp, de 6/6h, se dor"
+608,mantida,via_nao_identificada,"Levofloxacino 500 mg - cp Tomar 01 cp, de, 1x ao dia, por 10 dias Sintomáticos"
+609,mantida,"dose_nao_identificada,via_nao_identificada","cp, de 12/12 h, por 10 dias."
+610,mantida,,"Ceftriaxona 1g - IM ou EV Dose única, agora USO ORAL Antibioticoterapia"
+611,mantida,via_nao_identificada,"Ciprofloxacino 500mg - cp Tomar 01 cp, de 12/12h, por 14 dias."
+612,mantida,,Ceftriaxona 1g - IM Dose única USO ORAL Antibioticoterapia
+613,mantida,via_nao_identificada,"Doxiciclina 100 mg - cp Tomar 01 cp, de, 12/12h, por 07dias Sintomáticos"
+614,mantida,via_nao_identificada,"Pyridium 100 mg - cp Tomar 01 cp, de 8/8h, por 03 dias, se dor ao urinar."
+615,mantida,,"Enoxaparina 40mg/0,4ml - Ampola Aplicar 1 mg/kg SC 12/12 horas por 05 dias Se INR entre 2-3 por 02 dias consecutivos, suspender enoxaparina após 5 dias e manter apenas varfarina."
+616,mantida,,"Varfarina 5mg - cp Tomar 01 cp VO, 1x ao dia Iniciar junto com a enoxaparina Se INR entre 2-3 por 02 dias consecutivos, manter apenas varfarina por no mínimo"
+617,mantida,"dose_nao_identificada,via_nao_identificada",meses.
+618,mantida,,Enoxaparina 40mg/04ml - Ampola Aplicar 1 mg/kg SC 12/12 horas por 05 a
+619,mantida,"dose_nao_identificada,via_nao_identificada",dias
+620,mantida,,"Dabigatrana (Pradaxa) 150 mg - cp Tomar 01 cp VO, de 12/12h ao dia, por no mínimo 03 meses. Iniciar após a suspensão da enoxaparina. OU"
+621,mantida,,"Edoxabana (Lixiana) 60 mg - cp Tomar 01 cp VO, 1x ao dia, por no mínimo"
+622,mantida,"dose_nao_identificada,via_nao_identificada",meses. Iniciar após a suspensão da enoxaparina.
+623,mantida,via_nao_identificada,"Rivaroxabana 15mg e 20mg - cp Tomar 01 cp de 15 mg, de 12/12 h por 21 dias. No 22º dia, mudar para 20 mg, 1x ao dia, por pelo menos 3 meses. OU"
+624,mantida,via_nao_identificada,"Apixabana 10mg e 5mg - cp Tomar 01 cp de 10 mg, de 12/12 h por 07 dias. No 8º dia, mudar para 5 mg, de 12/12h, por pelo menos 3 meses."
+625,mantida,,"Heparina não fracionada 25.000 unidades/5 ml Diluir 5 ml (25.000 UI) em SF 0,9 % 245 mL (concentração: 100 UI/mL) Ataque: 80 UI/kg EV Manutenção de 18 UI/kg/hora EV, em BIC Ajustar conforme dosagem de TTPA a cada 6 horas (relação 1,5-2,5)"
+626,mantida,conduta_sem_medicamento,";111(3):436-59. MARTINS, M. R. Manual do Residente de Clínica Médica. 2a edição. Barueri: Manole, 2017. CIRURGIA GERAL ABDOMEN AGUDO OBSTRUTIVO DETZ DJ, et al. Small bowel obstruction. Current Problems in Surgery, 2020; 58 (7): 100893 Gama "
+627,mantida,,"Dimedrinato + piridoxina 50 mg – VO, 1 comp, 8/8h, se náuseas ( Categoria B"
+628,mantida,,"Metoclopramida 10 mg – VO, 1 comp, 8/8h, se náuseas ( Categoria B"
+629,mantida,,"Meclizina 25 mg – VO, 1 comp, 8/8h, se náuseas ( Categoria B"
+630,mantida,,"Prometazina 25 mg – VO, 1 comp à noite, podendo repetir pela manhã ( Categoria C 📌 Se sintoma predominante for pirose Antiácidos (hidróxido de magnésio + hidróxido de alumínio ± simeticona) ( Categoria B Fadiga CIAP-2: A04 – Debilidade / fa"
+631,mantida,via_nao_identificada,Paracetamol 500mg
+632,fundida_na_linha_anterior,fragmento,": Tomar 1 comprimido, VO, de 4/4h, se dor (pode associar com prednisona 5mg VO de 12/12h se dor intensa). 📍 preferência que sejam prescritos em ambiente de urgência/emergência, com monitorização:"
+633,mantida,,"Miosan 5mg : Tomar 1 comprimido, VO, à noite, por 3 dias, se cefaleia intensa."
+634,mantida,,"Dipirona 500mg EV se dor intensa. Decadron 01 amp IM se dor intensa. Tramal 01 amp EV se dor refratária. 📄 MODELO DE ENCAMINHAMENTO – PRONTO-SOCORRO / HOSPITAL Gestante ___ anos, IG ___ semanas (DUM /___ ), G_P_A , comparece ao serviço com "
+635,mantida,,"Dimeticona 40–80 mg – VO, a cada 6 horas, se flatulência."
+636,mantida,,"Hioscina 10 mg – VO, a cada 8 horas, se dor abdominal tipo cólica. Supositório de glicerina – uso retal, se constipação refratária às medidas não farmacológicas. Observação clínica: Priorizar sempre medidas não farmacológicas . Uso de medic"
+637,mantida,via_nao_identificada,Nitrofurantoína 100 mg Tomar
+638,mantida,,"1 comprimido, VO, a cada 6 horas, por 7 dias ⚠️ Evitar no final da gestação (próximo ao termo) pelo risco de hemólise neonatal (Categoria B)"
+639,mantida,via_nao_identificada,Amoxicilina + clavulanato de potássio 500 mg + 125 mg Tomar
+640,mantida,,"1 comprimido, VO, a cada 8 horas, por 7 a 10 dias"
+641,mantida,via_nao_identificada,Cefalexina 500 mg Tomar
+642,mantida,,"1 comprimido, VO, a cada 6 horas, por 7 a 10 dias"
+643,mantida,via_nao_identificada,Cefuroxima 250 mg Tomar
+644,mantida,,"Sulfato Ferroso 40 mg: tomar 1 comprimido, 1 a 3 vezes ao dia, 1 hora antes ou 2 horas após as refeições. Horário Sugerido: Manhã: 1 comprimido às 07:00, 1 hora antes do café da manhã; Almoço: 1 comprimido às 12:00, 1 hora antes do almoço; "
+645,mantida,via_nao_identificada,Concentração: 20 mg/mL. Dose máxima por aplicação
+646,fundida_na_linha_anterior,fragmento,": 200 mg (10 mL) diluídos em 100 mL de SF 0,9% EV, infusão lenta em 30–60 min."
+647,mantida,via_nao_identificada,"Esquema habitual: 200 mg, 1–3 vezes por semana, até atingir a dose total calculada. Ferro carboximaltose (Ferinject®) Dose única elevada"
+648,fundida_na_linha_anterior,fragmento,": até 1.000 mg em infusão de 15 min (diluído em 250 mL de SF 0,9%). Dose calculada pelo peso e nível de Hb. Vantagem: reposição completa em 1–2 aplicações. Ferro dextrano de baixo peso molecular (CosmoFer®) Pode ser administrado em infusão total única (“total dose infusion”). Maior risco de reação anafilática — exige teste prévio e monitorização rigorosa. Apresentação Concentração Dose máxima por aplicação Frequência Tempo de infusão Principais vantagens Cuidados/Observações Ferro sacarose (Venofer® e genéricos)"
+649,mantida,via_nao_identificada,20 mg/mL
+650,mantida,via_nao_identificada,"200 mg (10 mL) diluídos em 100 mL SF 0,9% 1–3×/semana até completar dose total 30–60 min Boa tolerabilidade, baixo risco de reação grave Necessário várias aplicações para reposição completa Ferro carboximaltose (Ferinject®)"
+651,mantida,via_nao_identificada,50 mg/mL
+652,mantida,via_nao_identificada,Até 1.000 mg por aplicação (máx. 15 mg/kg) Intervalo mínimo de 7 dias
+653,mantida,via_nao_identificada,"15 min (250 mL SF 0,9%) Reposição rápida, 1–2 doses Mais caro, risco de hipofosfatemia Ferro dextrano de baixo peso molecular (CosmoFer®)"
+654,mantida,via_nao_identificada,50 mg/mL Dose total única calculada (fórmula de Ganzoni)
+655,mantida,conduta_sem_medicamento,"4–6 h (diluir em 500 mL SF 0,9%) Permite reposição completa de uma vez Maior risco de reação anafilática, exige teste prévio Ferro isomaltosídeo (Monoferric®)"
+656,mantida,via_nao_identificada,100 mg/mL
+657,mantida,via_nao_identificada,"Até 20 mg/kg (máx. 1.500 mg) Única ou fracionada 30–60 min Alta dose em 1 infusão, perfil seguro Disponibilidade limitada no Brasil Conjuntivite"
+658,mantida,dose_nao_identificada,"Ciprofloxacino 0,3% colírio"
+659,mantida,,"1 a 2 gotas no saco conjuntival, a cada 2 horas durante o dia nas primeiras 48 h; depois, reduzir para 1 a 2 gotas a cada 4 horas durante os próximos 5 dias. Tobramicina 0,3% colírio Em casos leves a moderados: 1 a 2 gotas a cada 4 horas at"
+660,mantida,,"Colírio lubrificante (artificial tears) : 1 gota no(s) olho(s) afetado(s) 4 a 10 vezes ao dia por 7 a 10 dias. (Ex: Systane UL, Fresh Tears, Artelac) Lembrar de trocar fronhas e lençóis diariamente até resolução do quadro."
+661,mantida,,"Lorata­dina 10 mg VO à noite por até 5 dias , se houver prurido ocular importante (antialérgico como adjuvante)."
+662,mantida,dose_nao_identificada,"Colírio anti‑alérgico (antihistamínico + estabilizador de mastócitos): Olopatadina 0,1%"
+663,mantida,,"1 gota em cada olho 2x/dia (manhã e noite) OU Cetotifen 0,025% (Zaditor®, Alaway®) 1 gota em cada olho 2x/dia ≥ eficácia rápida e segurança comparada a monoterapia Anti-histamínico oral, se sintomas sistêmicos ou rinoconjuntivite concomitan"
+664,mantida,,"Loratadina 10 mg VO, 1x/dia à noite por até 7 dias Lubrificante ocular sem conservantes: Lágrimas artificiais (Ex: Systane UL, Artelac, Fresh Tears), conforme necessidade até 4–6x/dia Compressas frias ou geladas aplicadas sobre os olhos vár"
+665,mantida,,"500–1000 mg VO: tomar 1 comprimido (500 mg) a 2 comprimidos (1 g) a cada 6 horas se dor, máximo 4 g/dia. Escopolamina"
+666,mantida,,"10 mg VO: tomar 1 comprimido a cada 8 horas se dor tipo cólica. SRO (soro caseiro ou industrializado): ingerir pequenos volumes ao longo do dia, até atingir 2–3 L/dia. Horário Sugerido: Dipirona: 06:00 / 12:00 / 18:00 / 24:00 Escopolamina ("
+667,mantida,,"750 mg VO a cada 6h se febre ou dor, máximo 4 g/dia. SRO para hidratação, ingerir pequenos volumes ao longo do dia. Fadiga / cansaço persistente CIAP-2: A04 – Fraqueza/Fadiga Geral | CID-10: R53.8 – Outros sintomas e sinais relativos ao est"
+668,mantida,,"500–1000 mg VO: tomar 1 a 2 comprimidos (500 mg cada) a cada 6 horas, se dor ou febre, máximo de 4 g/dia. Solução de Reidratação Oral (SRO) : ingerir em pequenos volumes ao longo do dia, até atingir 2–3 litros/dia, alternando com água e chá"
+669,mantida,,"500–1000 mg VO: tomar 1 a 2 comprimidos (500 mg cada) a cada 6 horas, se dor ou febre, máximo de 4 g/dia. Solução de Reidratação Oral (SRO) : ingerir pequenos volumes ao longo do dia, até atingir 2–3 L/dia, alternando com água e chás claros"
+670,mantida,,3 gotas no ouvido 2x/dia por 7 dias. Observação: Não utilizar se o tímpano estiver perfurado. Oto-Betnovate (Betametasona + Clorfenesina):
+671,mantida,,3 gotas no ouvido 3x/dia por 7 dias. USO ORAL
+672,mantida,,Cefalexina 500 mg: Tomar 1 comprimido VO a cada 6 horas por 7-14 dias.
+673,mantida,,Claritromicina 500 mg: Tomar 1 comprimido VO a cada 12 horas. Analgésicos:
+674,mantida,,"Paracetamol 750 mg - 1 g: Tomar 1 comprimido por via oral a cada 6 horas, por até 5 dias."
+675,mantida,,"Dipirona 500 mg - 1 g: Tomar 1 comprimido por via oral a cada 6 horas, por até 5 dias."
+676,mantida,via_nao_identificada,Amoxicilina 500 mg:
+677,mantida,,"1 comprimido por via oral a cada 8 horas, por 10 dias."
+678,mantida,via_nao_identificada,Azitromicina 500 mg:
+679,mantida,,"1 comprimido por via oral a cada 24 horas, por 3 a 5 dias (dependendo da gravidade)."
+680,mantida,via_nao_identificada,Ibuprofeno 300 mg:
+681,mantida,,"1 comprimido por via oral a cada 8 horas, por 3 dias (para controle de dor e inflamação). Alternativa em Caso de Alergia ou Intolerância:"
+682,mantida,via_nao_identificada,Sulfametoxazol + Trimetoprima (400 mg + 80 mg):
+683,mantida,,"2 comprimidos por via oral a cada 12 horas, por 10 dias. Se Falha Terapêutica ou Recorrência:"
+684,mantida,via_nao_identificada,Amoxicilina + Clavulanato de Potássio (500 mg + 125 mg):
+685,mantida,,"1 comprimido por via oral a cada 8 horas, por 10 dias."
+686,mantida,,"Ciprofloxacino Otológico 0,3%: aplicar 4 gotas no ouvido afetado a cada 12 horas, por 14 dias."
+687,mantida,via_nao_identificada,Ibuprofeno 300 mg:
+688,mantida,,"1 comprimido por via oral a cada 8 horas, por 3 dias (para controle de dor e inflamação) Perda de apetite (investigação inicial) CIAP-2: T02 – Perda de apetite | CID-10: R63.0 – Anorexia"
+689,mantida,,"Complexo vitamínico polimineral (quando indicado pela avaliação nutricional): 1 comprimido VO/dia por 30 dias. Solução de Reidratação Oral (SRO) : ingerir pequenos volumes ao longo do dia, até atingir 2–3 L/dia. Orientações alimentares Frac"
+690,mantida,,"Complexo vitamínico polimineral (quando indicado) : 1 comprimido VO/dia por 30 dias. Solução de Reidratação Oral (SRO) : ingerir pequenos volumes ao longo do dia, até atingir 2–3 L/dia. Orientações alimentares Fracionar refeições em 5–6 por"
+691,mantida,,"(ex.: loratadina 10 mg VO 1x/dia, por até 7 dias, se prurido intenso). Solução de Reidratação Oral (SRO) : ingerir pequenos volumes ao longo do dia, até atingir 2–3 L/dia. Orientações gerais Evitar banhos quentes e demorados. Usar sabonete "
+692,mantida,,"50 mg VO: tomar 1 comprimido a cada 8 horas se tontura intensa ou náuseas (uso por no máximo 3 dias). Solução de Reidratação Oral (SRO) : ingerir pequenos volumes ao longo do dia, até atingir 2–3 L/dia. Orientações gerais Evitar mudanças br"
+693,mantida,,"Vacina antirrábica: Esquema de 4 doses, via intramuscular, no músculo deltóide (adultos) ou vasto lateral da coxa (crianças pequenas). Aplicações nos dias 0, 3, 7 e 14. 1ª dose: aplicada hoje (D0) em deltóide direito; 2ª dose: programada pa"
+694,mantida,,"0,5 mL via intramuscular em deltóide esquerdo. Se esquema vacinal prévio completo → reforço a cada 10 anos (ou a cada 5 anos em situações de risco). Se vacinação incompleta ou desconhecida → iniciar/atualizar esquema de 3 doses (0, 2 e 6 me"
+695,mantida,,"Analgésico se dor: Paracetamol 500 mg VO, 1 cp 6/6h se necessário (máx 4 g/dia). Soro antirrábico heterólogo/humano (quando indicado): dose calculada de acordo com o peso (40 UI/kg – soro heterólogo; 20 UI/kg – soro humano), aplicada infilt"
+696,mantida,,"Vacina antirrábica (VeroCell ou equivalente): esquema de 4 doses IM, aplicadas em deltóide (adultos) ou vasto lateral da coxa (crianças). 1ª dose (D0): aplicada hoje em deltóide direito; 2ª dose (D3); 3ª dose (D7); 4ª dose (D14). Soro antir"
+697,mantida,,"0,5 mL IM em deltóide esquerdo. Se esquema prévio completo → reforço a cada 10 anos (ou 5 anos em acidentes). Se vacinação incompleta ou desconhecida → iniciar/atualizar 3 doses (0, 2 e 6 meses). PVPI tópico: aplicar 2x/dia após higienizaçã"
+698,mantida,,"Paracetamol 500 mg VO, 1 cp 6/6h se necessário, máximo 4 g/dia. 📁 CID/CIAP Comuns Rotina: Rotina CID CIAP Descrição Puericultura Z00.1 A98 Exame geral completo Anticoncepcional Z30 W14 Orientação sobre contracepção Pré-natal Z36 W78 Supervi"
+699,mantida,,"Dimenidrinato + piridoxina 50 mg – VO, 1 comp, 8/8h, se náuseas ( Categoria B"
+700,mantida,,"1 comprimido, VO, a cada 12 horas, por 7 a 10 dias , preferencialmente após resultado de urocultura com antibiograma Gravidez planejada? Desejada? MUC: Participação do parceiro: sim/não Profissão: Endereço: Telefone: Escolaridade: Estado Ci"
+701,mantida,via_nao_identificada,Paracetamol 500mg
+702,fundida_na_linha_anterior,fragmento,": Tomar 1 comprimido, VO, de 4/4h, se dor (pode associar com prednisona 5mg VO de 12/12h se dor intensa)."
+703,mantida,,"Miosan 5mg : Tomar 1 comprimido, VO, à noite, por 3 dias, se cefaleia intensa."
+704,mantida,,Dipirona 500mg EV se dor intensa. Uso deve ser cauteloso devido ao risco de doenças hematológicas em filhos de mães que fizeram uso. Decadron 01 amp IM se dor intensa. Tramal 01 amp EV se dor refratária. Constipação intestinal O aumento dos
+705,mantida,via_nao_identificada,"Dimeticona (40-80 mg) , de 6/6 horas, para flatulência."
+706,mantida,,"Hioscina (10 mg) , de 8/8 horas, para dor abdominal. Supositório de glicerina Sintomas urinários (ITU) São frequentes durante a gestação devido a alterações hormonais e anatômicas que ocorrem no sistema urinário. A progesterona relaxa a mus"
+707,mantida,,"Nitrofurantoína 100 mg: tomar 1 COMPRIMIDO, via oral, de 6/6 horas, por 7 dias. (evitar no final da gestação devido ao risco de hemólise neonatal) (B)."
+708,mantida,,"Amoxicilina + Clavulanato de Potássio (500 mg + 125 mg): tomar 1 COMPRIMIDO, via oral, a cada 8 horas, por 7 a 10 dias."
+709,mantida,,"Cefalexina 500 mg: tomar 1 COMPRIMIDO, via oral, a cada 6 horas, por 10 dias."
+710,mantida,,"Cefuroxima 250 mg: tomar 1 COMPRIMIDO, via oral, a cada 12 horas, por 7 a 10 dias (após urocultura com antibiograma). Medicamentos Frequentes Anti-hipertensivos I. Medicamentos de Primeira Linha"
+711,mantida,via_nao_identificada,"750 mg a 2.000 mg/dia, fracionada em 2 a 4 administrações diárias Dose máxima:"
+712,mantida,via_nao_identificada,"2 g/dia Efeitos adversos: Hipotensão postural, sonolência, retenção hídrica Observações clínicas: – O efeito hipotensor pleno ocorre após 2 a 3 dias de uso contínuo. – Fármaco de escolha inicial para controle da hipertensão em gestantes. II"
+713,mantida,via_nao_identificada,"50 mg a 150 mg/dia, fracionada em 2 a 3 administrações diárias Dose máxima:"
+714,mantida,via_nao_identificada,"200 mg/dia Efeitos adversos: Cefaleia, palpitações, taquicardia reflexa Observações clínicas: – A monoterapia não é recomendada devido à taquicardia reflexa. – Pode ser associada à metildopa como terapia adjuvante."
+715,mantida,via_nao_identificada,"– Doses ≥100 mg/dia, quando utilizadas cronicamente, estão associadas a risco aumentado de desenvolvimento de lúpus eritematoso sistêmico."
+716,mantida,via_nao_identificada,"20 mg a 120 mg/dia, podendo ser fracionada em até 3 doses diárias Ajuste posológico: A dose pode ser titulada a cada 7 a 14 dias Dose máxima:"
+717,mantida,via_nao_identificada,"120 mg/dia Efeitos adversos: Cefaleia, fadiga, tontura, edema periférico, constipação Observações clínicas: – Recomendado fracionar em 2 tomadas diárias para reduzir risco de hipotensão acentuada. – Alternativa eficaz em casos de intolerânc"
+718,mantida,via_nao_identificada,"Conduta: se risco aumentado, iniciar AAS 100 mg/dia + cálcio 1g/dia (até 36 semanas) Objetivo (O) Bebê: 👧 Nome (menina) / 👶 Nome (menino) TS gestante: Se Rh – (negativo) Solicitar Coombs indireto , tipagem sanguínea e fator Rh do parceiro. "
+719,mantida,,"Hioscina (10 mg) , de 8/8 horas, para dor abdominal. Supositório de glicerina ITU São frequentes durante a gestação devido a alterações hormonais e anatômicas que ocorrem no sistema urinário. A progesterona relaxa a musculatura lisa, o que "
+720,mantida,"dose_nao_identificada,via_nao_identificada","28 semanas de gestação. Se parceiro Rh + ou desconhecido Repetir COOMBS INDIRETO mensalmente até 28 semanas, e quinzenalmente > 28 semanas. Se CI positivo (> 1:16) Encaminhar para PNAR para investigação de anemia fetal (pesquisa de anticorp"
+721,mantida,,"Orientações Gerais ao Prescritor A conduta terapêutica deve ser individualizada conforme o desejo reprodutivo da usuária, intensidade das queixas e resposta clínica ao tratamento. O objetivo do tratamento na APS é bloquear a menstruação , r"
+722,mantida,,"Didrogesterona 10 mg, 1 comprimido por via oral, a cada 24 horas, em uso contínuo. Desogestrel 75 microgramas, 1 comprimido por via oral, a cada 24 horas, em uso contínuo. Levonorgestrel (DIU), inserir dispositivo intrauterino conforme prot"
+723,mantida,,"Drospirenona + etinilestradiol 3 mg + 0,02 mg, 1 comprimido por via oral, a cada 24 horas, em uso contínuo."
+724,mantida,,"Desogestrel + etinilestradiol 0,15 mg + 0,03 mg, 1 comprimido por via oral, a cada 24 horas, em uso contínuo, desprezando os comprimidos placebo."
+725,mantida,,"Drospirenona + etinilestradiol 3 mg + 0,03 mg, 1 comprimido por via oral, a cada 24 horas, em uso contínuo."
+726,mantida,,"Levonorgestrel + etinilestradiol 0,15 mg + 0,03 mg, 1 comprimido por via oral, a cada 24 horas, em uso contínuo, desprezando os comprimidos placebo."
+727,mantida,,"Ciproterona + etinilestradiol 2 mg + 0,035 mg, 1 comprimido por via oral, a cada 24 horas, em uso contínuo. Classe D – Agonista do GnRH"
+728,mantida,,"Acetato de gosserrelina 3,6 mg, por via intramuscular, dose mensal,"
+729,mantida,,"Acetato de gosserrelina 10,8 mg, por via intramuscular, dose trimestral. ⚠️ Não utilizar por período superior a 6 meses devido ao risco de perda de massa óssea. Síndrome dos Ovários Policísticos (SOP) Usuária em idade reprodutiva refere cic"
+730,mantida,"dose_nao_identificada,via_nao_identificada","Orientações Gerais ao Prescritor A prescrição deve ser individualizada conforme queixa principal (irregularidade menstrual, hiperandrogenismo, resistência insulínica ou infertilidade) e desejo reprodutivo. Avaliar sempre contraindicações ao"
+731,mantida,via_nao_identificada,Metformina 850 mg
+732,mantida,,"– VO, iniciar com 1 comprimido ao dia, com progressão gradual até 850 mg de 8/8 horas, conforme tolerância gastrointestinal;"
+733,mantida,via_nao_identificada,Metformina XR 500 mg
+734,mantida,,"– VO, 500 a 1.000 mg de 12/12 a 24/24 horas, dose máxima de 2.000 mg/dia;"
+735,mantida,via_nao_identificada,Pioglitazona 15–30 mg
+736,mantida,,"– VO, dose única diária junto às refeições, podendo aumentar até 45 mg/dia. Observação: Liraglutida ou Lixisenatida podem auxiliar na perda ponderal em casos selecionados, conforme disponibilidade e protocolos locais. Tratamento Não Farmaco"
+737,mantida,,"Acetato de ciproterona + etinilestradiol (2 mg + 0,035 mg) – VO, 1 comprimido ao dia;"
+738,mantida,,"Drospirenona + etinilestradiol (3 mg + 0,03 mg) – VO, 1 comprimido ao dia;"
+739,mantida,,"Drospirenona + etinilestradiol (3 mg + 0,02 mg) – VO, 1 comprimido ao dia. Associação em Caso de Falha após 6 Meses (Hiperandrogenismo Persistente)"
+740,mantida,,"Espironolactona 50–100 mg – VO, de 12/12 horas;"
+741,mantida,,"Finasterida 5 mg – VO, 1 comprimido ao dia;"
+742,mantida,,"Dexametasona 0,75 mg – VO, 1 comprimido ao dia (uso restrito e criterioso). 📌 Associar sempre método contraceptivo eficaz durante uso de antiandrogênicos. Infertilidade – Manejo Inicial na APS Indutor de ovulação:"
+743,mantida,,"Citrato de clomifeno 50 mg – VO, 1 comprimido ao dia por 5 dias, iniciando entre o 3º e o 5º dia do ciclo menstrual."
+744,mantida,,"Em caso de insucesso, aumentar progressivamente em 50 mg por ciclo, até dose máxima de 200 mg/dia. 📌 Encaminhar para ginecologia/reprodução humana em caso de falha terapêutica, necessidade de gonadotrofinas ou indicação de técnicas de repro"
+745,mantida,,"Ibuprofeno 400–600 mg – VO, 8/8h se dor, após refeições, por até 5 dias consecutivos Opção 2"
+746,mantida,,"Naproxeno 500 mg – VO, 12/12h se dor, após refeições ⚠️ Evitar em pacientes com úlcera gástrica ativa, insuficiência renal ou alergia a AINE. Redução do Sangramento Uterino"
+747,mantida,,"Ácido Tranexâmico 250–500 mg – VO, 1 a 2 comprimidos de 8/8h durante os dias de fluxo menstrual intenso (máx. 5 dias por ciclo) ⚠️ Contraindicado em história de trombose ativa ou alto risco trombótico. Controle Hormonal do Sangramento (se i"
+748,mantida,,"Acetato de Medroxiprogesterona 10 mg – VO, 1x/dia do 15º ao 25º dia do ciclo Opção 2 – Uso contínuo"
+749,mantida,,"Acetato de Medroxiprogesterona 10 mg – VO, 1x/dia contínuo, reavaliar em 3 meses Opção 3 – Anticoncepcional hormonal combinado (uso contínuo) Etinilestradiol + levonorgestrel / drospirenona / gestodeno – 1 comprimido ao dia ⚠️ Avaliar contr"
+750,mantida,,"Sulfato Ferroso (40–60 mg de ferro elementar) – VO, 1 comprimido 1–2x/dia Orientações para uso do ferro oral: Administrar preferencialmente em jejum ou com intervalo de pelo menos 1 hora antes ou 2 horas após refeições. Evitar ingestão conc"
+751,mantida,,"Ácido Tranexâmico 500 mg – VO, 3–4x/dia por até 4 dias durante o sangramento ⚠️ Contraindicado em história de trombose ativa. Controle da Dor e Redução do Fluxo (AINEs) Opção 1"
+752,mantida,,"Ibuprofeno 600 mg – VO, 8/8h por 4–5 dias Opção 2"
+753,mantida,,"Diclofenaco 50 mg – VO, 8/8h por 4–5 dias Opção 3"
+754,mantida,,"Ácido mefenâmico 500 mg – VO, 8/8h por 4–5 dias Controle Hormonal do Sangramento Opção 1 – Contraceptivo oral combinado (esquema hemostático)"
+755,mantida,via_nao_identificada,"Levonorgestrel + Etinilestradiol (0,15 mg + 0,03 mg)"
+756,mantida,dose_nao_identificada,1 comp VO 12/12h por 7 dias → depois 1 comp/dia por 21 dias ou outras formulações equivalentes com gestodeno ou desogestrel ⚠️ Avaliar contraindicações ao estrogênio. Opção 2 – Progestagênio isolado
+757,mantida,,"Acetato de Medroxiprogesterona 10–20 mg – VO, de 4/4h até cessar sangramento, depois reduzir progressivamente"
+758,mantida,,"Noretisterona 5–10 mg – VO, de 4/4h até cessar sangramento, depois reduzir progressivamente Opção de Longo Prazo DIU com Levonorgestrel (SIU-LNG) – Inserção por profissional habilitado Tratamento da Anemia Ferropriva (se confirmada)"
+759,mantida,,"Sulfato Ferroso (40–60 mg de ferro elementar) – VO, 1 comprimido 1–2x/dia Orientações para uso do ferro oral: Administrar preferencialmente em jejum ou com intervalo de pelo menos 1 hora antes ou 2 horas após refeições. Evitar ingestão conc"
+760,mantida,conduta_sem_medicamento,"3. RASTREAMENTO E PREVENÇÃO Citopatológico – PCCU S – Subjetivo Nome: Data de Nascimento: CNS: CPF: Prontuário: Paciente de 36 anos, G2P2A0, menarca aos 12 anos, sexarca aos 17. Nega queixas atuais. Refere última menstruação há 15 dias, com"
+761,mantida,,"Metformina 500 mg Tomar 1 comprimido VO 2x/dia após as principais refeições Reavaliar tolerância gastrintestinal e ajustar dose se necessário DM2 com HbA1c <7,5% e sobrepeso/obesidade S – Subjetivo"
+762,mantida,via_nao_identificada,"Paciente de ___ anos, com sobrepeso (IMC 31), relata dificuldade para perder peso. Adere parcialmente ao plano alimentar. Glicemia de jejum média de 125–130 mg/dL. Nega episódios de hipoglicemia. O – Objetivo PA: / mmHg | IMC: AR: MV presen"
+763,mantida,,Metformina 500 mg Tomar 1 comprimido VO 2x/dia após refeições Reavaliar em 3 meses
+764,mantida,conduta_sem_medicamento,"➡️ Aumentar dose para 850–1000 mg se tolerado DM2 com HbA1c ≥7,5% – Terapia dupla oral S – Subjetivo"
+765,mantida,,"Paciente com adesão irregular. Relata glicemias elevadas no pós-prandial (>200 mg/dL). Dificuldade para seguir dieta e rotina de exercícios. Nega hipoglicemias. IMC: O – Objetivo HbA1c: AR: MV presente bilateralmente, sem RA, sem sinais de "
+766,mantida,,"Metformina 850 mg: Tomar 1 comprimido VO 2x/dia, após refeições"
+767,mantida,,"Gliclazida MR 30 mg: Tomar 1 comprimido VO pela manhã ➡️ Avaliar risco de hipoglicemia e suspender se iniciar insulina DM2 com HbA1c ≥7,0% após 3 meses – Início de Insulina S – Subjetivo"
+768,mantida,,"Paciente com controle glicêmico insatisfatório mesmo após terapia tripla oral. Relata cansaço, visão embaçada ocasional, glicemias em jejum frequentemente acima de 180 mg/dL. Adere parcialmente à dieta e medicações. O – Objetivo HbA1c: IMC:"
+769,mantida,,Metformina 850 mg Tomar 1 comprimido VO 2x/dia Insulina NPH – frasco 100 UI/mL Iniciar com 10 UI SC às 21h
+770,mantida,conduta_sem_medicamento,➡️ Aumentar 2 UI a cada 3 dias se glicemia de jejum >130 mg/dL
+771,mantida,conduta_sem_medicamento,➡️ Reduzir 2–4 UI se glicemia <70 mg/dL ou hipoglicemia noturna Realizar rodízio de aplicação (abdome preferencial) Orientações adicionais (não farmacológicas): Glicemia capilar em jejum por 7 dias Anotar valores em papel ou caderneta Volta
+772,mantida,,"Metformina 500 mg VO, 1 comprimido 2x/dia após as principais refeições"
+773,mantida,via_nao_identificada,"→ Aumentar gradualmente até 850–1000 mg 2x/dia conforme tolerância Justificativa: Alta eficácia, baixo risco de hipoglicemia, custo baixo ✅ Paciente com sobrepeso/obesidade e HbA1c <7,5%"
+774,mantida,,Metformina 500 mg VO 2x/dia Associar estilo de vida + reavaliar em 3 meses OU (se disponível):
+775,mantida,via_nao_identificada,iSGLT2 (Dapagliflozina 10 mg)
+776,mantida,,"AR GLP-1 (Liraglutida 0,6–1,8 mg SC/dia) (mais comum em nível secundário, mas deve ser solicitado conforme protocolo clínico estadual) ✅ Paciente com HbA1c ≥7,5% (com ou sem obesidade) Terapia dupla inicial recomendada:"
+777,mantida,,Metformina 850 mg VO 2x/dia
+778,mantida,via_nao_identificada,iSGLT2 (Empagliflozina 10 mg ou Dapagliflozina 10 mg) → onde disponível Sulfonilureia
+779,mantida,via_nao_identificada,Gliclazida MR 30–60 mg/dia
+780,mantida,via_nao_identificada,"Glimepirida 1–4 mg/dia Evitar sulfonilureias em pacientes com risco de hipoglicemia (idosos, renal crônico, má nutrição) Fármaco Disponível no SUS Observações Metformina ✅ Sim"
+781,mantida,,500/850 mg Glibenclamida ✅ Sim Maior risco de hipoglicemia Gliclazida MR ✅ Sim Menor risco de hipoglicemia Insulina NPH ✅ Sim Início com 10 UI à noite Insulina Regular ✅ Sim Para hiperglicemia aguda Dapagliflozina ☑️* Alguma oferta PCDT esp
+782,mantida,,"Sinvastatina 40 mg – 1 comprimido à noite, via oral. Se alvo não atingido após 3 meses: Associar"
+783,mantida,,"Ezetimiba 10 mg – 1 comprimido à noite, via oral."
+784,mantida,via_nao_identificada,2. Opção – Hipertrigliceridemia (> 500 mg/dL):
+785,mantida,,"Fenofibrato 160 mg – 1 comprimido ao dia, via oral, após a refeição principal. Considerar redução de álcool, carboidratos simples e reavaliar em 8–12 semanas."
+786,mantida,via_nao_identificada,"Ômega‑3 (EPA/DHA ≥ 2 g/dia) – disponível comercialmente ou orientar consumo alimentar (peixes de água fria, linhaça, chia). Educação e estilo de vida: Dieta hipolipemiante e hipoglicídica, conforme orientação nutricional. Atividade física r"
+787,mantida,conduta_sem_medicamento,", salvo se triglicerídeos > 440 mg/dL (quando exigir jejum) Fazer rastreamento oportunístico em adultos ≥ 35 anos (homens) e ≥ 45 anos (mulheres) com fatores de risco (tabagismo, hipertensão, obesidade, diabetes, história familiar precoce);"
+788,fundida_na_linha_anterior,fragmento,": indicado especialmente para triglicerídeos >500 mg/dL (previne pancreatite); Colestiramina : alternativa em crianças ou mulheres em idade fértil com contraindicações a outras drogas; Ácido nicotínico : pouco usado devido aos efeitos adversos, opção rara. Novas Terapias e Panorama Futuro (2025) Inibidores de PCSK9 inclisiran ácido bempedoico em evidência internacional (AACE 2025); ainda aguardando incorporação no SUS via CONITEC. Principais Inibidores de PCSK9 aprovados Alirocumabe (Praluent®) Tipo: anticorpo monoclonal. Via: subcutânea."
+789,mantida,,"Dose: geralmente 75 mg a cada 2 semanas ou 150 mg conforme resposta. Indicação: hipercolesterolemia familiar, alto risco CV. Evolocumabe (Repatha®) Tipo: anticorpo monoclonal. Via: subcutânea."
+790,mantida,via_nao_identificada,Dose: 140 mg a cada 2 semanas ou 420 mg 1x/mês.
+791,mantida,via_nao_identificada,Losartana 50 mg – tomar
+792,mantida,,1 comprimido VO a cada 12 horas Pode aumentar gradualmente até
+793,mantida,via_nao_identificada,"100 mg/dia conforme PA e tolerância. ⚠️ Monitorar creatinina e potássio 2–4 semanas após início ou ajuste. ⚠️ Suspender se creatinina aumentar >30% ou K⁺ >5,5 persistente."
+794,mantida,,Enalapril 10 mg – VO a cada 12 horas
+795,mantida,via_nao_identificada,(pode ajustar até 40 mg/dia)
+796,mantida,,"Dapagliflozina 10 mg – VO 1x ao dia pela manhã ⚠️ Manter mesmo com leve queda da TFG. ⚠️ Suspender temporariamente em jejum prolongado, cirurgias ou infecção grave."
+797,mantida,,Empagliflozina 10 mg – VO 1x ao dia
+798,mantida,,Finerenona 10 mg – VO 1x/dia se TFG 25–60
+799,mantida,,Finerenona 20 mg – VO 1x/dia se TFG ≥60 ⚠️ Iniciar apenas se potássio normal ⚠️ Monitorar K⁺ em 4 semanas
+800,mantida,conduta_sem_medicamento,"0,25 mg SC 1x/semana por 4 semanas → 0,5 mg/semana por 4 semanas → 1 mg/semana manutenção ⚠️ Aplicar no mesmo dia da semana ⚠️ Pode causar náuseas iniciais"
+801,mantida,via_nao_identificada,Sulfato ferroso 300 mg
+802,mantida,,"(≈60 mg ferro elementar) – VO 8/8h Administrar em jejum ou 1h antes/2h após refeições. Evitar leite, café, chá ou antiácidos próximos. Associar fonte de vitamina C (ex.: suco cítrico). ⚠️ Pode escurecer fezes e causar constipação. Se ferro "
+803,mantida,via_nao_identificada,Sacarato de hidróxido férrico 100 mg
+804,mantida,,"+ SF 0,9% 100 mL EV em 15 min, 1x/semana por 4–12 semanas"
+805,mantida,,"6. Eritropoetina (se Hb baixa após ferro) Eritropoetina 4.000 UI 50–100 UI/kg SC , até 3x/semana Meta Hb:"
+806,mantida,,"10–11,5 g/dL ⚠️ Monitorar PA e estoques de ferro"
+807,mantida,"dose_nao_identificada,via_nao_identificada",7. Acidose metabólica
+808,mantida,via_nao_identificada,Bicarbonato de sódio 500 mg – tomar
+809,mantida,,2 cápsulas VO 2x/dia Meta: HCO₃⁻ ≥18 mEq/L ⚠️ Monitorar PA e edema
+810,mantida,,"Carbonato de cálcio 500–1.000 mg – VO junto às refeições, 2–3x/dia ⚠️ Evitar se hipercalcemia"
+811,mantida,,"Ceftriaxona 500 mg: IM, dose única."
+812,mantida,via_nao_identificada,Azitromicina 500 mg:
+813,mantida,,"2 comprimidos via oral, dose única. Segunda Opção:"
+814,mantida,via_nao_identificada,Doxiciclina 100 mg:
+815,mantida,,"1 comprimido via oral, a cada 12 horas, por 7 dias. >>> Gonorreia:"
+816,mantida,,"2 comprimidos via oral, dose única. >>> Clamídia:"
+817,mantida,,"2 comprimidos via oral, dose única."
+818,mantida,,"1 comprimido via oral, a cada 12 horas, por 7 dias Gonorreia (Neisseria gonorrhoeae)"
+819,mantida,,"Ceftriaxona 500 mg: Via intramuscular, dose única."
+820,mantida,,"Ciprofloxacina 500 mg: Via oral, dose única (não recomendada para menores de 18 anos). Tratamento Alternativo:"
+821,mantida,,"Cefotaxima 1.000 mg: Via intramuscular, dose única."
+822,mantida,,"Ofloxacina 400 mg: Via oral, dose única."
+823,mantida,,"Cefixima 400 mg: Via oral, dose única."
+824,mantida,,"Espectrinomicina 2 g: Via intramuscular, dose única."
+825,mantida,,"Ampicilina 2 ou 3 g + Probenecida 1 g: Via oral, dose única."
+826,mantida,via_nao_identificada,"Tianfenicol 2,5 g:"
+827,mantida,,"Via oral, duas doses de 1,25 g a cada 12 horas. Tratamento para Gestantes: Primeira Escolha:"
+828,mantida,,"Ceftriaxona 500 mg IM, dose única. Segunda Escolha:"
+829,mantida,,"Espectrinomicina 2 g: IM, Dose única."
+830,mantida,,"Cefixima 400 mg: via oral, dose única. Herpes Genital (Herpes simplex vírus tipo 1 e 2)"
+831,mantida,,Aciclovir 200 mg VO:
+832,mantida,via_nao_identificada,"1 cp, 5 vezes ao dia (intervalos de 4 horas durante vigília), por 7 a 10 dias;"
+833,mantida,,Aciclovir 400 mg VO:
+834,mantida,via_nao_identificada,"1 cp, 3 vezes ao dia, por 7 a 10 dias. Recidivas:"
+835,mantida,via_nao_identificada,"2 cp, a cada 8 horas, por 5 dias;"
+836,mantida,via_nao_identificada,"1 cp, a cada 12 horas, por 5 dias. Terapia Supressiva (opcional, em casos de recorrência frequente):"
+837,mantida,via_nao_identificada,"1 cp, a cada 12 horas, por até 6 meses com reavaliação periódica. Sintomáticos:"
+838,mantida,,Paracetamol 750–1.000 mg VO 6/6h PRN (se febre ou algia local);
+839,mantida,,"Dipirona 500–1.000 mg VO 6/6h PRN , alternativa analgésica. Papilomavírus Humano (HPV) – verrugas genitais"
+840,mantida,,"Metronidazol 2 g: Via oral, dose única;"
+841,mantida,,"Metronidazol 400 a 500 mg: Via oral, a cada 12 horas, por 7 dias;"
+842,mantida,,"Metronidazol 250 mg: Via oral, a cada 8 horas, por 7 dias;"
+843,mantida,,"Secnidazol 2 g: Via oral, dose única;"
+844,mantida,,"Tinidazol 2 g: Via oral, dose única. Tratamento para Gestantes e Nutrizes:"
+845,mantida,,"Metronidazol 400 a 500 mg: Via oral, a cada 12 horas, por 7 dias. Hepatites Virais (principalmente B e C, transmissão sexual possível)"
+846,mantida,dose_nao_identificada,"Vacina contra hepatite A – 1ª dose via IM (deltoide), reforço em 6 meses, se não imunizado previamente (importante em portadores de HBV ou HCV para prevenção de coinfecção). Vacina contra hepatite B – apenas se diagnóstico for de hepatite C"
+847,mantida,,"conforme necessidade (paracetamol 500–750 mg VO a cada 6–8h, máximo 3 g/dia). Evitar álcool e fármacos hepatotóxicos (ex.: alguns anti-inflamatórios e medicamentos fitoterápicos). Manter dieta equilibrada e hidratação adequada. Encaminhamen"
+848,mantida,conduta_sem_medicamento,1. Confirmação Diagnóstica HBsAg reagente confirmado por teste de repetição - Anti-HBc total reagente - Anti-HBs não reagente (infecção ativa) Anti-HCV reagente - HCV-RNA detectável (confirma infecção ativa)
+849,mantida,"dose_nao_identificada,via_nao_identificada","3. Exames Complementares Iniciais (APS) Função hepática (ALT, AST, BT, BD, FA, GGT) - Hemograma, creatinina, ureia - Coagulograma (TP/INR) - Sorologias para HIV, sífilis, hepatite A e D Mesmos exames do HBV - Genotipagem do HCV (se disponív"
+850,mantida,"dose_nao_identificada,via_nao_identificada",7. Seguimento Conjunto APS + Infectologia Monitorar adesão ao tratamento e evolução clínica - Reforçar medidas preventivas Monitorar adesão ao tratamento e evolução clínica - Reforçar medidas preventivas HIV/AIDS
+851,mantida,,Antifúngico tópico ou sistêmico Se candidíase oral sintomática: Nistatina suspensão oral 100.000 UI/mL
+852,fundida_na_linha_anterior,fragmento,: bochechar e engolir 5 mL 4x/dia por 7 a 14 dias
+853,mantida,,Fluconazol 150 mg VO 1x/dia por 7 a 14 dias (avaliar gravidade) Vitaminas e suporte nutricional (se perda de peso importante) Polivitamínico VO 1x/dia Encaminhamento para avaliação nutricional (se disponível) Manutenção do esquema TARV Esqu
+854,mantida,,"Tenofovir 300 mg + Lamivudina 300 mg + Dolutegravir 50 mg Posologia: 1 comprimido VO, 1x ao dia (esquema combinando em dose única) Importante: reavaliar exames antes da reintrodução formal da TARV em pacientes sintomáticos, e avaliar risco "
+855,mantida,,"Tenofovir + Lamivudina + Dolutegravir (TDF/3TC/DTG) – Esquema preferencial TARV Tomar 1 comprimido por via oral, 1x ao dia, em horário fixo Início somente após confirmação diagnóstica + exames iniciais coletados Preservativos masculinos e f"
+856,mantida,,"TARV - Início do esquema preferencial em dose fixa combinada (DFC): TDF 300 mg + 3TC 300 mg + DTG 50 mg – 1 comprimido VO 1x/dia, à noite, com ou sem alimentos; Realizado aconselhamento individual: reforço sobre adesão, eficácia da TARV, to"
+857,mantida,,"Tenofovir + Lamivudina + Dolutegravir (TDF/3TC/DTG) 1 comprimido VO, 1x ao dia, à noite Uso contínuo e diário Observar possíveis efeitos adversos (náuseas, insônia leve nas primeiras semanas) Linfogranuloma Venéreo (Chlamydia trachomatis, s"
+858,mantida,,"HAS em uso contínuo de losartana 50 mg/dia. Nega diagnóstico prévio de tuberculose, diabetes mellitus, cardiopatias ou neoplasias. História ocupacional e social: Trabalhador da construção civil, exposto à inalação de poeira e partículas. Re"
+859,mantida,,"Paracetamol 500 mg VO, 1 cp 6/6h se necessário, máximo 4 g/dia. Sistema Tegumentar (pele, anexos e tecido subcutâneo) Abscesso cutâneo"
+860,mantida,,"Dipirona 500 mg VO de 6/6h, se dor ou febre."
+861,mantida,,Cefalexina 500 mg VO de 6/6h por 7 a 10 dias
+862,mantida,,Clindamicina 300 mg VO de 6/6h por 7 a 10 dias (em caso de alergia a penicilinas ou suspeita de MRSA).
+863,mantida,"dose_nao_identificada,via_nao_identificada",3. Cuidados locais: Lavagem com água e sabão 2x/dia. Curativo seco com gaze estéril até resolução completa. Atendimento Antirrábico Acidente LEVE CIAP-2: A71 – Exposição ao risco de infecção | CID-10: Z20.3 – Contato com e exposição à raiva
+864,mantida,,"Paracetamol 500 mg VO, 1 cp 6/6h se necessário, máximo 4 g/dia. Aftas Orais (Estomatite Aftosa)"
+865,mantida,,"2 - Tratamento Tópico Adicional: Triancinolona Acetonida Tópica: Aplicar uma fina camada sobre a lesão, sem esfregar, três vezes ao dia por 7 dias. Gingilone Tópico: Aplicar uma fina camada sobre a lesão, sem esfregar, três vezes ao dia por"
+866,mantida,,Cefalexina 500 mg VO 6/6h por 10 dias (total: 40 comprimidos) Alternativa:
+867,mantida,,Clindamicina 300 mg VO 6/6h se alergia a betalactâmicos
+868,mantida,,"Dipirona 1 g VO 6/6h PRN dor ou febre (>37,8°C) Alternativa:"
+869,mantida,,Paracetamol 750 mg VO 6/6h PRN 2. Tratamento Tópico / Adjuvante
+870,mantida,,"Neomicina tópica (pomada 20g): aplicar 3x/dia, camada fina sobre área íntegra Compressas mornas:"
+871,mantida,,Cefalexina 500 mg VO 6/6h por 10 dias (total: 40 comprimidos) Alternativa:
+872,mantida,,Clindamicina 300 mg VO 6/6h se alergia a betalactâmicos
+873,mantida,,"Dipirona 1 g VO 6/6h PRN dor ou febre (>37,8°C) Alternativa:"
+874,mantida,,Paracetamol 750 mg VO 6/6h PRN 2. Tratamento Tópico / Adjuvante
+875,mantida,,"Neomicina tópica (pomada 20g): aplicar 3x/dia, camada fina sobre área íntegra Compressas mornas:"
+876,mantida,dose_nao_identificada,"15 minutos, 3-6x/dia Encaminhamento para Urgência Paciente: Idade: Data: Encaminhado para: Motivo: Avaliação e conduta devido a infecção cutânea grave (erisipela bolhosa) Paciente com diagnóstico de erisipela bolhosa em MID, com início súbi"
+877,mantida,,"(itraconazol 200 mg/dia por 2–4 semanas) pode ser indicado; fluconazol como alternativa em dose semanal por várias semanas Terapia adjuvante e medidas complementares: Fototerapia UV (ou LED/laser) pode reduzir inflamação e controlar flocos,"
+878,mantida,,Hidratante corporal sem fragrância (ex.: base de ureia 5% ou glicerina): aplicar 2x/dia sobre a área afetada. Corticoide tópico de baixa/média potência (ex.: hidrocortisona 1% creme): aplicar fina camada sobre a área afetada 2x/dia por até 
+879,mantida,,"(ex.: loratadina 10 mg VO 1x/dia) se prurido intenso, por até 7 dias. Orientações gerais Evitar coçar ou friccionar a pele. Lavar a região apenas com sabonete neutro. Evitar contato com produtos químicos, detergentes e metais até melhora co"
+880,mantida,,Clotrimazol Creme 20 mg/g
+881,mantida,,Miconazol Creme Dermatológico 20 mg/g -
+882,mantida,,Cetoconazol Creme 20 mg/g -
+883,mantida,,"Hidratante corporal sem fragrância (ex.: base de ureia 5% ou glicerina): aplicar 2–3x/dia sobre a área afetada, especialmente após o banho. Corticoide tópico de baixa potência (ex.: hidrocortisona 1% creme): aplicar fina camada na lesão 2x/"
+884,mantida,,"(ex.: loratadina 10 mg VO 1x/dia) se prurido intenso, por até 7 dias. Orientações gerais Evitar coçar ou friccionar a área. Reduzir tempo e temperatura do banho. Usar roupas de algodão e evitar tecidos sintéticos. Retorno em até 14 dias ou "
+885,mantida,,(ex.: loratadina 10 mg VO 1x/dia) por até 7 dias se prurido. Paracetamol
+886,mantida,,"500–1000 mg VO: 1 a 2 comprimidos (500 mg cada) a cada 6h se febre ou dor, máximo de 4 g/dia. Hidratante corporal sem fragrância : aplicar 2x/dia nas áreas afetadas. Orientações gerais Evitar banhos quentes e prolongados. Não coçar as lesõe"
+887,mantida,dose_nao_identificada,"1. Uso Oral: Ivermectina 200 µg/kg VO em dose única , com alimento; repetir após 7 a 14 dias, conforme avaliação clínica."
+888,mantida,,"2. Uso Tópico (Primeira linha): Permetrina 5% creme : aplicar do pescoço para baixo, incluindo áreas interdigitais, genitais e sob as unhas; manter por 8–14 horas antes de lavar; repetir aplicação após 7 dias, mesmo que assintomático."
+889,mantida,dose_nao_identificada,"3. Esquema Combinado (casos extensos ou falha terapêutica): Permetrina 5% creme conforme indicado acima + Ivermectina VO nos dias 1, 2 e 8 (avaliar necessidade de doses adicionais nos dias 9 e 15)."
+890,mantida,,(ex. Loratadina 10 mg VO 1x/dia). Emolientes ou corticoide tópico leve : aplicar à noite nas áreas afetadas.
+891,mantida,,"Higiene local : lavar a área afetada com sabonete antisséptico (ex.: clorexidina degermante 2%) 2x/dia. Compressas mornas : aplicar na lesão por 15 minutos, 3–4x/dia. Pomada antibiótica tópica (ex.: mupirocina 2%): aplicar fina camada na le"
+892,mantida,,"(casos múltiplos, recorrentes ou com celulite associada): cefalexina 500 mg VO a cada 6h por 7–10 dias; considerar alternativa conforme alergias ou padrão local de resistência. Analgésico"
+893,fundida_na_linha_anterior,fragmento,": paracetamol 500–1000 mg VO a cada 6h se dor, máximo de 4 g/dia. Retorno : em até 48–72h para reavaliação ou antes se houver piora. Impetigo"
+894,mantida,,"Cefalexina 500 mg : 1 comprimido VO de 6/6h, por 7 dias. Prescrição para uso tópico Mupirocina 2% Pomada : Aplicar diretamente sobre as lesões, 2 vezes ao dia, até melhora das mesmas. Larva migrans cutânea (bicho geográfico) CIAP-2: S74 – I"
+895,mantida,,Tiabendazol creme 5% : aplicar três vezes ao dia por 10 dias.
+896,mantida,,"Albendazol 400 mg VO : uma vez ao dia, durante 3 dias ( contraindicado em gestantes Se houver muitas lesões: Tiabendazol VO"
+897,mantida,via_nao_identificada,"25 mg/kg de peso corporal, duas vezes ao dia, durante 5 dias. Miíase ( Dermatobia hominis – berne) CIAP-2: S73 – Infestação por insetos e outros artrópodes | CID-10: B87.0 – Miíase cutânea"
+898,mantida,,"Remoção da Larva: Preparação da Oclusão: Aplique vaselina, parafina líquida, esmalte de unha ou fita adesiva sobre o orifício da pele para criar uma oclusão. Mantenha a oclusão por 24 horas para forçar a larva a se aproximar da superfície p"
+899,mantida,,"Clotrimazol creme 1% : aplicar fina camada sobre a lesão e 2 cm além das bordas, 2x/dia, por 14–21 dias (mesmo após desaparecimento das lesões). Higienização : lavar a região afetada com sabonete neutro, secar bem antes da aplicação do medi"
+900,mantida,,"terbinafina VO 250 mg 1x/dia por 14 dias (avaliar função hepática antes). Orientações gerais Evitar roupas apertadas e tecidos sintéticos. Trocar roupas íntimas e meias diariamente. Manter pele seca, especialmente em áreas de dobra. Retorno"
+901,mantida,,"Ivermectina 6 mg: Tomar 1/2 comprimido (3 mg) via oral uma vez ao dia, em dose única. Uso Tópico: Deltametrina Shampoo Aplicar o shampoo e friccionar levemente. Manter a espuma sem enxaguar por 10 minutos. Em seguida, enxaguar bem. Repetiçã"
+902,mantida,,(ex.: loratadina 10 mg VO 1x/dia) por até 5–7 dias se prurido. Analgésico
+903,fundida_na_linha_anterior,fragmento,": paracetamol 500–1000 mg VO a cada 6h se dor, máximo de 4 g/dia. Pomada de corticosteroide leve (ex.: hidrocortisona 1% creme): aplicar fina camada sobre a lesão 2x/dia por até 5 dias. Compressas frias : aplicar por 15 minutos, 3–4x/dia. Se ferrão visível : remover imediatamente com lâmina/cartão rígido, evitar pinçar. Retorno em até 48h se não houver melhora ou antes se surgirem sinais de infecção ou reação sistêmica. Pitiríase versicolor (pano branco) CIAP2: B89 – Alteração cutânea difusa por fungo | CID-10: B37.0 – Pitiríase versicolor"
+904,mantida,,"Clotrimazol 1% OU Miconazol creme dermatológico: aplicar em todo o pescoço, tronco, braços e pernas 2x/dia por 2 semanas. Cetoconazol Shampoo: aplicar em todo o corpo após fazer espuma lavando os cabelos, deixar agir por 5 minutos antes de "
+905,mantida,,Itraconazol 200 mg VO 1x/dia por 7 dias
+906,mantida,,Fluconazol 300 mg VO 1x/semana por 2–4 semanas. Piodermite CIAP-2: S84 – Infecção bacteriana da pele | CID-10: L08.0 – Piodermite não especificada
+907,mantida,,"Pomada de mupirocina 2% : aplicar fina camada sobre as lesões 3x/dia por 7–10 dias. Higienização local : lavar as áreas afetadas com sabonete antisséptico (ex.: clorexidina degermante 2%) 2x/dia, secar bem antes da aplicação da pomada. Anti"
+908,mantida,,(casos múltiplos/extensos): cefalexina 500 mg VO a cada 6h por 7 dias (avaliar alergia a betalactâmicos). Analgésico
+909,fundida_na_linha_anterior,fragmento,": paracetamol 500–1000 mg VO a cada 6h se dor, máximo de 4 g/dia. Retorno em até 72h para reavaliação clínica ou antes se houver piora. Queimaduras de 1º grau (solar ou térmica) CIAP-2: S14 – Queimadura/escaldadura | CID-10: T30.0 – Queimadura de área corporal não especificada, grau I"
+910,fundida_na_linha_anterior,fragmento,": paracetamol 500–1000 mg VO a cada 6h se dor, máximo de 4 g/dia. Protetor solar FPS ≥ 30 : aplicar após cicatrização completa, especialmente em queimaduras solares, para evitar hiperpigmentação. Evitar uso de manteiga, pasta de dente ou substâncias caseiras sobre a queimadura. Retorno em até 72h se não houver melhora ou antes se houver piora. Queimaduras de 2º grau superficiais"
+911,mantida,,Paracetamol 750 mg VO 6/6h se dor
+912,mantida,conduta_sem_medicamento,", máximo de 4 g/dia; Petrolato: aplicar sobre a lesão e manter curativo limpo e seco; Hidratante tópico neutro (vaselina branca ou creme com aloe vera), aplicar 3x/dia após limpeza local; Compressas frias se dor intensa nas primeiras 24–48h"
+913,mantida,,"Tiabendazol 25 mg/kg , via oral, uma vez ao dia, durante 10 dias, para erradicação do parasita e controle da infecção Urticária aguda / reação alérgica cutânea (sem anafilaxia)"
+914,mantida,,"Cetirizina 10 mg, via oral, 1 comprimido à noite, por 5 a 7 dias."
+915,mantida,via_nao_identificada,"Em casos de prurido persistente, pode-se considerar aumento da dose até 10 mg a cada 12 horas, conforme tolerância."
+916,mantida,,"Prednisona 20 mg, via oral, 1 comprimido ao dia, pela manhã, por 5 dias. Indicado em casos de urticária extensa, refratária ao anti-histamínico ou com sintomatologia intensa; Compressas frias, aplicar sobre as áreas com prurido 3 a 4 vezes "
+917,mantida,via_nao_identificada,Ambroxol 6 mg/ml:
+918,mantida,,"5 ml por via oral, 3 vezes ao dia. Anti-histamínico:"
+919,mantida,via_nao_identificada,Loratadina 10 mg:
+920,mantida,,1 comprimido por via oral ao dia. Dor/Febre:
+921,mantida,via_nao_identificada,Paracetamol 750-1.000 mg:
+922,mantida,,"1 comprimido por via oral, a cada 6 horas, por até 5 dias."
+923,mantida,via_nao_identificada,Dipirona 500-1.000 mg:
+924,mantida,via_nao_identificada,Ibuprofeno 400-800 mg:
+925,mantida,,"1 comprimido por via oral, a cada 6 horas. Uso Intranasal:"
+926,mantida,via_nao_identificada,Seringa de 10 ml:
+927,mantida,dose_nao_identificada,"01 unidade Solução Fisiológica 0,9%: 01 frasco Aspirar o soro com a seringa, retirar a agulha e injetar em cada narina (sem tapar a outra), estando com a boca aberta, três vezes ao dia. É normal engolir ou a secreção sair pelo outro lado. V"
+928,mantida,,"500 mg (genérico) ou Amoxil® Posologia: 1 cápsula VO a cada 8 horas Duração: 7 a 10 dias >>> Alternativa em caso de falha terapêutica, quadro mais grave ou risco de resistência Amoxicilina + Clavulanato"
+929,mantida,,875/125 mg (genérico) ou Augmentin® Posologia: 1 comprimido VO a cada 12 horas por 7 dias Paracetamol
+930,mantida,,500–750 mg (genérico) ou Tylenol®:
+931,mantida,,"1 comprimido VO a cada 6–8 horas, se dor ou febre"
+932,mantida,via_nao_identificada,"Dose máxima: 4 g/dia Duração: conforme necessidade, até melhora Ibuprofeno"
+933,mantida,via_nao_identificada,400 mg (genérico) ou Advil® / Motrin®:
+934,mantida,,"1 comprimido VO a cada 8 horas, se dor persistente Duração: até 5 dias Observações: evitar em gestantes no 3º trimestre, pacientes com úlcera péptica ou insuficiência renal Soro fisiológico 0,9%"
+935,mantida,via_nao_identificada,(frasco 500 mL) +
+936,mantida,via_nao_identificada,seringa 10 mL sem agulha
+937,mantida,,"Posologia: irrigar cada narina com 5–10 mL, 3–4 vezes ao dia, até melhora dos sintomas Faringite/amigdalite viral"
+938,mantida,,"Penicilina V 500 mg VO, 8/8h por 10 dias;"
+939,mantida,,"Amoxicilina 875 mg VO, 12/12h por 10 dias; Alergia à penicilina:"
+940,mantida,,"Azitromicina 500 mg VO, 1x/dia por 5 dias. Analgésicos e antipiréticos:"
+941,mantida,,"Paracetamol 750 mg VO, 6/6h se febre ou dor, por até 5 dias;"
+942,mantida,,"Dipirona 1.000 mg VO, 6/6h se necessário;"
+943,mantida,,"Ibuprofeno 600 mg VO, 8/8h, por até 5 dias se sem contraindicação."
+944,mantida,,"Paracetamol 750 mg - 1 g: Tomar 1 comprimido por via oral a cada 6 horas, por até 5 dias."
+945,mantida,,"Dipirona 500 mg - 1 g: Tomar 1 comprimido por via oral a cada 6 horas, por até 5 dias."
+946,mantida,,Ibuprofeno 400-800 mg: Tomar 1 comprimido por via oral a cada 6 horas. Amigdalite bacteriana não complicada CIAP2: R76 – Amigdalite aguda | CID-10: J03.0 – Amigdalite estreptocócica aguda
+947,mantida,,"Penicilina Benzatina 1.200.000 UI: 1 dose IM, dose única. OU"
+948,mantida,,"Amoxicilina 500 mg: 1 comprimido VO a cada 8h, por 10 dias. OU"
+949,mantida,,"Azitromicina 500 mg: 1 comprimido VO a cada 24h, por 5 dias. OU"
+950,mantida,,"Cefalexina 500 mg: 1 comprimido VO a cada 6h, por 10 dias. Se Falha Terapêutica ou Recorrência:"
+951,mantida,,"Amoxicilina + Clavulanato de Potássio (500 mg + 125 mg): 1 comprimido VO a cada 8h, por 10 dias. Controle da Dor e Febre:"
+952,mantida,,"Paracetamol 500 mg a 1 g: 1 comprimido VO a cada 4-6h, conforme necessidade."
+953,mantida,,"Ibuprofeno 400-600 mg: 1 comprimido VO a cada 6-8h, conforme necessidade. Laringite aguda (viral)"
+954,mantida,,"500 mg (genérico) ou Tylenol® Posologia: 1 a 1½ comprimido VO a cada 6–8 horas, se dor ou febre"
+955,mantida,via_nao_identificada,Dose máxima: 4 g/dia | Duração: até melhora dos sintomas (máx. 7 dias) Ibuprofeno
+956,mantida,,"400 mg (genérico) ou Advil® / Motrin® Posologia: 1 comprimido VO a cada 8 horas, se dor persistente Duração: até 5 dias | * Observações: evitar em gestantes no 3º trimestre, pacientes com história de úlcera péptica ou insuficiência renal So"
+957,mantida,via_nao_identificada,(frasco 500 mL) +
+958,mantida,via_nao_identificada,seringa de 10 mL sem agulha
+959,mantida,,"Posologia: irrigar cada narina com 5 mL, 3 vezes ao dia, conforme necessidade Sinusite"
+960,mantida,,"Lavar as narinas com 20 mL de soro, 4 vezes ao dia. Uso Oral:"
+961,mantida,,"Prednisona 20 mg (10 comprimidos) Tomar 2 comprimidos por via oral, de manhã, por 5 dias."
+962,mantida,via_nao_identificada,Amoxicilina 500 mg + Clavulanato de Potássio 125 mg (
+963,mantida,,"21 comprimidos) Tomar 1 comprimido por via oral a cada 8 horas, por 7 dias. Tratamento Medicamentoso Alternativo:"
+964,mantida,,"Amoxicilina 500 mg (30 comprimidos) Tomar comprimido por via oral a cada 8 horas, por 10 dias."
+965,mantida,via_nao_identificada,Sulfametoxazol + Trimetoprima (400 mg + 80 mg) (
+966,mantida,,"20 comprimidos) Tomar 2 comprimidos por via oral a cada 12 horas, por 10 dias."
+967,mantida,,"Azitromicina 500 mg Tomar 1 comprimido por via oral a cada 24 horas, por 5 dias. Se falha terapêutica ou recorrência:"
+968,mantida,,"Amoxicilina + Clavulanato de Potássio (500 mg + 125 mg) (30 comprimidos) Tomar 1 comprimido por via oral a cada 8 horas, por 10 a 14 dias. Síndrome gripal influenza e outros vírus respiratórios) Síndrome Gripal sem fator de risco e sem sina"
+969,mantida,,"Dipirona 500 mg VO 6/6h se febre ou dor (máx. 4g/dia) Hidratação oral fracionada ≥ 2L/dia Repouso relativo domiciliar Isolamento por 7 dias ou até 24h após remissão total dos sintomas Orientar sinais de alarme: febre persistente, dispneia, "
+970,mantida,,Oseltamivir 75 mg VO 12/12h por 5 dias
+971,mantida,,"Dipirona 500 mg VO 6/6h se febre/dor Repouso, hidratação oral, isolamento domiciliar Retorno na UBS em até 72h, ou antes, se piora Orientar sinais de alarme Sem necessidade de exames neste momento 📌 Referência: MS – Protocolo de Influenza ("
+972,mantida,via_nao_identificada,75 mg cápsulas (genérico) ou Tamiflu®
+973,fundida_na_linha_anterior,fragmento,"75 mg: Tomar 1 cápsula VO a cada 12 horas por 5 dias Iniciar o mais precoce possível, preferencialmente nas primeiras 48 horas após início dos sintomas. Paracetamol"
+974,mantida,,"500–1.000 mg VO a cada 6–8 horas, se febre ou dor"
+975,mantida,via_nao_identificada,"Máximo de 3–4 g/dia. Evitar AINEs durante a gestação, especialmente no 3º trimestre Soro fisiológico 0,9%"
+976,mantida,,"(frasco 500 mL) + seringa 10 mL (sem agulha): Irrigar cada narina com 5 mL, 3 vezes ao dia (manhã, tarde e noite) Não utilizar vasoconstritores nasais sistêmicos ou tópicos na gestação Medidas de suporte Hidratação oral adequada (2–3 L/dia)"
+977,mantida,conduta_sem_medicamento,"Encaminha-se paciente com quadro de SRAG, apresentando febre persistente, sintomas respiratórios intensos (tosse produtiva, dispneia progressiva), dessaturação em ar ambiente (SatO₂ < 93%) e comorbidades associadas, sem critérios clínicos d"
+978,mantida,,Oseltamivir 75 mg VO 12/12h por 5 dias
+979,mantida,,"Dipirona 1g IV, se febre Hidratação EV e oxigenoterapia se SatO₂ < 94% Encaminhar para UPA ou hospital de referência para internação clínica Notificar como SRAG Relato clínico e prescrição inicial enviados com o paciente 📌 Referência: MS – "
+980,mantida,,500–750 mg (genérico) ou Tylenol®:
+981,mantida,,"1 comprimido VO a cada 6–8 horas, se dor ou febre até 5–7 dias ou melhora dos sintomas. Ibuprofeno"
+982,mantida,via_nao_identificada,400 mg (genérico) ou Advil® / Motrin®:
+983,mantida,,"1 comprimido VO a cada 8 horas, se dor persistente ou febre que não cede com paracetamol, até 5 dias. Observações: evitar em gestantes no 3º trimestre, pacientes com história de úlcera péptica ou insuficiência renal. Soro fisiológico 0,9%"
+984,mantida,via_nao_identificada,(frasco 500 mL) +
+985,mantida,via_nao_identificada,seringa 10 mL
+986,mantida,,"sem agulha: irrigar cada narina com 5–10 mL, 3–4 vezes ao dia, conforme necessidade até melhora da congestão. Pneumonia adquirida na comunidade (PAC leve – manejo ambulatorial)"
+987,mantida,via_nao_identificada,"Amoxicilina 500 mg,"
+988,mantida,,"1 comprimido por via oral a cada 8 horas, por 7 dias (total de 21 comprimidos)."
+989,mantida,via_nao_identificada,"Dipirona 500 mg,"
+990,mantida,,"2 comprimidos por via oral a cada 6 horas, se dor ou febre (total de 20 comprimidos). Com Comorbidades, Fatores de Risco para Doença Mais Grave ou Uso de Antibiótico nos Últimos 3 Meses:"
+991,mantida,via_nao_identificada,"Amoxicilina + Clavulanato 500 mg + 125 mg,"
+992,mantida,via_nao_identificada,"Azitromicina 500 mg,"
+993,mantida,,"1 comprimido por via oral, uma vez ao dia, por 5 dias."
+994,mantida,,"Dipirona 500 mg, até 2 comprimidos por via oral a cada 6 horas, se dor ou febre (total de 20 comprimidos). Coqueluche ( Bordetella pertussis CIAP-2: R71 – Tosse convulsiva / Coqueluche | CID-10: A37 – Coqueluche (pertussis)"
+995,mantida,conduta_sem_medicamento,": Adultos ≥ 1 ano — 500 mg VO no 1º dia, seguido de 250 mg VO/dia nos dias 2 a 5 Eliminam B. pertussis rapidamente e reduzem transmissibilidade Claritromicina"
+996,fundida_na_linha_anterior,fragmento,": 1 g VO/dia divididos em 2 doses por 7 dias Eritromicina : alternativa se as outras estiverem indisponíveis (14 dias de tratamento) TMP-SMX : alternativa para alergia a macrolídeos após 2 meses de idade Profilaxia pós-exposição (a partir de diagnóstico ou contato recente): Mesmos antibióticos nas mesmas dosagens para contatos de alto risco (gestantes no 3º trimestre, neonatos, pessoas imunossuprimidas) até 21 dias após exposição. Cuidados de suporte: Não há evidências de eficácia para antitussígenos, broncodilatadores ou corticosteroides sistêmicos para aliviar a tosse, e seu uso não é recomendado Tuberculose"
+997,mantida,"dose_nao_identificada,via_nao_identificada",Fase Intensiva – 2 meses (60 doses) Fase de Manutenção – 4 meses (120 doses)
+998,mantida,"dose_nao_identificada,via_nao_identificada",1. Fase Intensiva – 2 meses Comprimido 4 em 1 (RHZE)
+999,mantida,via_nao_identificada,Rifampicina 150 mg + Isoniazida 75 mg + Pirazinamida 400 mg + Etambutol 275 mg Peso (kg) Nº de comprimidos/dia 20–35 kg
+1000,mantida,dose_nao_identificada,"2 comp. VO, 1x/dia 36–50 kg"
+1001,mantida,dose_nao_identificada,"3 comp. VO, 1x/dia 51–70 kg"
+1002,mantida,dose_nao_identificada,"4 comp. VO, 1x/dia > 70 kg"
+1003,mantida,dose_nao_identificada,"5 comp. VO, 1x/dia Horário: pela manhã, em jejum, com água. Exemplo comercial: Rifazina® 4 em 1 | RHZE FDC"
+1004,mantida,"dose_nao_identificada,via_nao_identificada",2. Fase de Manutenção – 4 meses Comprimido 2 em 1 (RH)
+1005,mantida,via_nao_identificada,Rifampicina 150 mg + Isoniazida 75 mg Peso (kg) Nº de comprimidos/dia 20–35 kg
+1006,mantida,,"5 comp. VO, 1x/dia Horário: pela manhã, em jejum, com água. Exemplo comercial: Rifazina® 2 em 1 | RH FDC Orientações ao paciente: Tomar a medicação sempre no mesmo horário , em jejum; Evitar álcool e outros medicamentos hepatotóxicos sem or"
+1007,mantida,via_nao_identificada,Loratadina 10 mg:
+1008,mantida,,"1 comprimido por via oral, uma vez ao dia. Descongestionantes:"
+1009,mantida,via_nao_identificada,Pseudoefedrina 120 mg:
+1010,mantida,,"1 comprimido por via oral, a cada 12 horas, por no máximo 7 dias. Oximetazolina 0,05% spray nasal:"
+1011,mantida,,Fluticasona 50 mcg spray nasal:
+1012,mantida,,Budesonida 32 mcg spray nasal:
+1013,mantida,via_nao_identificada,"Tratamento Medicamentoso da Asma (GINA 2025) Terapia de Crise (Aguda) ICS-formoterol (Budesonida-formoterol ou equivalente): usar conforme necessidade (1–2 doses extras além da manutenção), especialmente nas fases leves e moderadas."
+1014,mantida,,"Salbutamol spray (SABA 100 mcg): 2–4 jatos VO a cada 4–6h, quando ICS-formoterol não está disponível ou para alívio rápido. Nebulização (alternativa):"
+1015,mantida,,"Fenoterol 5 mg/mL (10 a 20 gotas) + SF 3 mL, a cada 20 minutos conforme gravidade. Corticoide oral sistêmico:"
+1016,mantida,,"Prednisona ou Prednisolona 1 mg/kg/dia (máximo 60 mg/dia), por 5–7 dias em casos de crise moderada a grave. Oxigenoterapia: se SatO₂ < 93% (adultos) ou < 95% (crianças), com fluxo de 6 L/min por máscara. Terapia de Controle (Manutenção) ICS"
+1017,mantida,,Salbutamol Spray (100 mcg/jato): Crianças: 1 jato/2-3 kg a cada 20 minutos (máx. 10 jatos); Adolescentes e Adultos: 4 a 10 jatos a cada 20 minutos. Nebulização:
+1018,mantida,via_nao_identificada,Soro Fisiológico 3 ml + Fenoterol (5 mg/ml):
+1019,mantida,via_nao_identificada,"Crianças: 0,07-0,15 mg/kg a cada 20 minutos (máx. 5 mg);"
+1020,mantida,,"Adolescentes e Adultos: 2,5 – 5 mg a cada 20 minutos (dose usual: 10 a 20 gotas). Oxigênio:"
+1021,mantida,via_nao_identificada,40 a 50 mg/dia. Alta β2 Agonista de Curta Ação:
+1022,mantida,,Salbutamol Spray (100 mcg/jato):
+1023,mantida,via_nao_identificada,Prednisona 1 mg/kg/dia (máx. 60 mg) por 5 a 7 dias. Situação clínica Medicação Nome genérico / Comercial Dose e posologia Horários Observações 1️⃣ Suspeita de asma (sem diagnóstico) Broncodilatador de resgate Salbutamol
+1024,mantida,conduta_sem_medicamento,"/ Aerolin® Spray 100 mcg/dose 1–2 jatos sob demanda Ao surgimento dos sintomas, podendo repetir a cada 4–6h Usar espaçador; procurar atendimento se uso for diário ou >2×/semana Higiene nasal"
+1025,mantida,via_nao_identificada,"Soro fisiológico 0,9% + seringa 10 mL"
+1026,mantida,,"5 mL por narina 3×/dia (manhã, tarde, noite) Irrigação nasal para controle de sintomas associados Exames Espirometria + broncodilatador; FeNO; hemograma com eosinófilos; PFE seriado Visar confirmação diagnóstica 2️⃣ Asma diagnosticada e con"
+1027,mantida,conduta_sem_medicamento,"/ Symbicort® Turbuhaler 160/4,5 mcg/dose"
+1028,mantida,dose_nao_identificada,1 inalação manutenção + 1 inalação sob demanda Manutenção 08h; alívio quando necessário Lavar boca após uso; não exceder 6 doses/dia Higiene nasal
+1029,mantida,,"5 mL por narina 2×/dia (manhã, noite)"
+1030,mantida,,"Salbutamol spray 100 mcg/dose Usar 2 inalações por via oral a cada 6 horas se dispneia, com espaçador. Higiene nasal com soro fisiológico 3x/dia se secreção aumentada."
+1031,mantida,,"Paracetamol 500–750 mg VO a cada 6–8h se cefaleia ou mal-estar leve. Não prescrito antibiótico ou corticoide oral neste momento , salvo piora clínica. Retorno programado em 72h ou antes se sinais de agravamento. Tosse aguda ou subaguda pós-"
+1032,mantida,,01 frasco: 1 e 1/2 copo medidor (15 ml) a cada 12 horas Observação: Não utilizar por mais de 10 dias. Para Tosse Secretiva: Lavagem Abundante com Solução Salina (SF) ou NaCl 3%. Realizar lavagem nasal abundante conforme necessidade. Budeson
+1033,mantida,,Fluimucil (N-Acetilcisteína) 200 mg – 01 embalagem - Dissolver 1 envelope em um copo de água e tomar a cada 8 horas por 3 dias. Outras Condições Respiratórias Epistaxe anterior leve (controlada no atendimento primário) CIAP-2: R04 – Hemorra
+1034,mantida,,"Soro fisiológico 0,9% (spray ou ampola) Aplicar 3 a 5x/dia em ambas as narinas. Pomada nasal com vaselina sólida ou dexpantenol Aplicar pequena quantidade 2x/dia nas narinas para hidratação local."
+1035,mantida,,"Paracetamol 500–750 mg VO Se cefaleia leve ou desconforto nasal. Evitar uso de ácido acetilsalicílico ou anti-inflamatórios, se não forem essenciais. Sistema Cardiovascular Arritmias benignas (ex.: extrassístoles ventriculares ou supraventr"
+1036,mantida,,"Metoprolol 25 mg Posologia: Tomar 1 comprimido, por via oral, 2 vezes ao dia. Observações:"
+1037,mantida,via_nao_identificada,"Avaliar resposta clínica e frequência cardíaca. Pode ser ajustado para 50 mg 2x/dia, se necessário e tolerado."
+1038,mantida,,"Propranolol 20 mg Posologia: Tomar 1 comprimido, por via oral, 2 a 3 vezes ao dia. Observações: Opção com ação mais curta; observar efeitos adversos como bradicardia ou fadiga. Alternativa se contraindicação a betabloqueadores:"
+1039,mantida,,"Verapamil 80 mg Posologia: Tomar 1 comprimido, por via oral, 2 vezes ao dia. Observações: Preferencial em extrassístoles supraventriculares com origem adrenérgica. Evitar em pacientes com disfunção ventricular. Correção de eletrólitos (se i"
+1040,mantida,,"Cloreto de Potássio 600 mg (8 mEq) Posologia: Tomar 1 a 2 comprimidos por dia, por via oral, conforme orientação médica e controle laboratorial. Observações: Corrigir hipocalemia leve. Acompanhar função renal."
+1041,mantida,,"Sulfato de Magnésio 500 mg (10 mEq) Posologia: Tomar 1 comprimido ao dia, por via oral, conforme necessidade. Observações: Usar com cautela em pacientes com insuficiência renal. Seguimento ECG de controle se sintomas persistirem; Repetir Ho"
+1042,mantida,,"Enalapril 5–10 mg VO, 12/12h (ou outro IECA/ARA-II em uso)"
+1043,mantida,,"Carvedilol 12,5–25 mg VO, 12/12h (ou betabloqueador equivalente em uso)"
+1044,mantida,,Espironolactona 25 mg VO/dia (se K+ e função renal adequados)
+1045,mantida,,Furosemida 20–40 mg VO/dia (se sinais de congestão ou conforme prescrição de base) Exacerbação leve de insuficiência cardíaca crônica (sem congestão grave) (será incluído em breve) Crise hipertensiva leve/moderada (sem lesão de órgão-alvo) 
+1046,mantida,,"Captopril 25 mg (VO) Tomar 1 comprimido via oral imediatamente, em dose única. Reavaliar PA em 1 hora. Repetir dose se necessário até 50 mg/dia. Evitar uso sublingual; monitorar função renal e potássio. 2."
+1047,mantida,,"Clonidina 0,1–0,2 mg (VO) Tomar 1 comprimido via oral, dose inicial."
+1048,mantida,via_nao_identificada,"Repetir após 1–2h, se necessário. Dose máxima: 0,6–0,8 mg/dia. Pode causar sedação, boca seca; evitar suspensão abrupta. 3."
+1049,mantida,,"Anlodipino 5–10 mg (VO) Tomar 1 comprimido via oral, dose única diária. Efeito mais lento, ideal para manutenção. Início em 6–12h. Bom perfil em idosos ou risco de hipotensão reflexa. Seguimento Observar na unidade por 1–2h após a medicação"
+1050,mantida,via_nao_identificada,"Glicemia ≤ 70 mg/dL Sintomas autonômicos: tremor, sudorese, palpitação, fome. Conduta: correção imediata com"
+1051,mantida,,15 g de carboidrato simples VO Nível 2 (Clinicamente significativa):
+1052,mantida,,"Glicemia < 54 mg/dL Sintomas neuroglicopênicos possíveis (confusão, irritabilidade, visão turva). Conduta: correção rápida com carboidrato VO (se consciente) + monitoramento. Nível 3 (Grave):"
+1053,mantida,,"Glicemia geralmente <54 mg/dL, mas com alteração de consciência, convulsão ou necessidade de ajuda de terceiros Conduta: Se possível → glicose EV 20% ou 50% em unidade de urgência. Alternativa: glucagon IM/SC"
+1054,mantida,via_nao_identificada,"(1 mg adulto; 0,5 mg criança <25 kg). Encaminhar imediatamente à urgência. 🔹 Regra dos 15 (hipoglicemia leve/moderada) Administrar"
+1055,mantida,via_nao_identificada,15 g de carboidrato simples
+1056,mantida,via_nao_identificada,"(ex.: 150 ml de suco, 1 colher de sopa de açúcar/mel, 3 tabletes de glicose). Reavaliar glicemia em"
+1057,mantida,,"Cefalexina 500 mg VO a cada 6 horas, por 7 dias."
+1058,mantida,,"Amoxicilina 500 mg VO a cada 8 horas, por 7 dias."
+1059,mantida,,"Nitrofurantoína 100 mg VO a cada 6 horas, por 7 dias."
+1060,mantida,via_nao_identificada,Sulfametoxazol + Trimetoprima (400 mg + 80 mg)
+1061,mantida,,"2 comprimidos VO a cada 12 horas, por 3 a 7 dias. Gestantes:"
+1062,mantida,via_nao_identificada,Amoxicilina + Clavulanato de Potássio (500 mg + 125 mg)
+1063,mantida,,"1 comprimido VO a cada 8 horas, por 7 a 10 dias."
+1064,mantida,,"Cefalexina 500 mg VO a cada 6 horas, por 10 dias."
+1065,mantida,,"Cefuroxima 250 mg VO a cada 12 horas, por 7 a 10 dias (após urocultura com antibiograma) Incontinência urinária feminina (leve, avaliação inicial) CIAP-2: U04 – Incontinência urinária | CID-10: N39.3 – Incontinência de esforço (stress incon"
+1066,mantida,,Ciprofloxacino 500 mg Tomar 1 comprimido VO a cada 12 horas Duração: 7 a 10 dias Opção 2:
+1067,mantida,,"Amoxicilina + Clavulanato 875/125 mg Tomar 1 comprimido VO a cada 8 horas Duração: 10 dias Importante: iniciar após coleta de urocultura, se possível."
+1068,mantida,,Dipirona 500 mg/ml (gotas ou comprimidos) Tomar 1 g VO a cada 6/6h se febre ou dor
+1069,mantida,via_nao_identificada,Máximo: 4 g/dia
+1070,mantida,via_nao_identificada,Paracetamol 750 mg (opcional)
+1071,mantida,,1 comprimido VO a cada 6/6h se febre
+1072,mantida,via_nao_identificada,Máximo: 3 g/dia Drágea de escopolamina + dipirona (Buscopan composto)
+1073,mantida,dose_nao_identificada,1 drágea VO a cada 8h se dor abdominal Se necessário
+1074,mantida,conduta_sem_medicamento,3. Hidratação oral 📌 Incentivar ingestão de líquidos: 2–3 L/dia (salvo contraindicação)
+1075,mantida,dose_nao_identificada,"4. Acompanhamento / Orientações Retornar em 48–72 horas para reavaliação clínica Voltar imediatamente se: piora dos sintomas, febre persistente, vômitos ou sinais de alarme Resultado da urocultura : revisar em até 72 horas para possível aju"
+1076,mantida,,"500–1.000 mg VO, de 4/4 horas, se dor Dipirona sódica gotas"
+1077,mantida,,"(500 mg/mL): 20–40 gotas VO, de 4/4 horas, se dor Paracetamol"
+1078,mantida,,"500–750 mg VO, de 6/6 horas, se dor Paracetamol gotas"
+1079,mantida,,"(200 mg/mL): 35–55 gotas VO, de 6/6 horas, se dor Cetorolaco de trometamol"
+1080,mantida,,"10 mg SL, de 6/6 horas"
+1081,mantida,conduta_sem_medicamento,", por até 3–5 dias (evitar se TFG < 30 mL/min ou suspeita de disfunção renal) Diclofenaco sódico"
+1082,mantida,,"75 mg IM, de 12/12 horas , se dor intensa Tenoxicam"
+1083,mantida,,"20 mg IM ou EV, 1x/dia , se dor intensa"
+1084,mantida,conduta_sem_medicamento,"50–100 mg EV, diluído em 100 mL de SF 0,9%, infundir em 20 minutos, de 6/6 horas , se necessário"
+1085,mantida,,"50 mg VO de 6/6 horas , se dor moderada a intensa Tramadol"
+1086,mantida,,"4–8 mg SL, de 8/8 horas, se náuseas/vômitos Metoclopramida"
+1087,mantida,,"10 mg VO ou EV, de 8/8 horas, se necessário Bromoprida"
+1088,mantida,,"10 mg VO ou EV, de 8/8 horas, se necessário"
+1089,mantida,,"20 mg VO, 1x/dia , pela manhã Pantoprazol"
+1090,mantida,,"20–40 mg VO, 1x/dia , em jejum"
+1091,mantida,,"10–20 mg VO, de 8/8 horas , por até 4–6 semanas ENCAMINHAR IMEDIATAMENTE PARA URGÊNCIA SE QUALQUER UM PRESENTE: Febre ≥ 37,8 °C ou calafrios Dor refratária à analgesia oral Vômitos incoercíveis Anúria ou oligúria"
+1092,mantida,,"0,4 mg VO, 1x/dia , por até 4–6 semanas Nifedipino"
+1093,mantida,,Sertralina 50 mg VO/dia
+1094,mantida,conduta_sem_medicamento,", iniciar com 25 mg por 7 dias, aumentar conforme tolerância"
+1095,mantida,,Escitalopram 10 mg VO/dia
+1096,mantida,conduta_sem_medicamento,", iniciar com 5 mg por 7 dias SOS (curto prazo, se necessário):"
+1097,mantida,,"Clonazepam 0,25 mg VO , 1 cp à noite por no máx. 7 dias (avaliar risco de dependência, evitar uso contínuo) Insônia associada:"
+1098,mantida,,"Melatonina 3-5 mg VO , à noite"
+1099,mantida,,"Amitriptilina 10-25 mg VO , à noite (se dor crônica associada) Transtorno de Pânico (será incluído em breve) TOC – Transtorno Obsessivo‑Compulsivo"
+1100,mantida,,"Fluoxetina 20 mg VO/dia Tomar 1 cp pela manhã, por 7 dias."
+1101,mantida,via_nao_identificada,"Aumentar para 40 mg após 1 semana, conforme tolerância."
+1102,mantida,via_nao_identificada,Ajustar até 60 mg/dia se necessário. TCC estruturada com ERP – 1x/semana por psicólogo especializado. Se refratário após 12 semanas:
+1103,mantida,,"Aripiprazol 2 mg VO/dia , iniciar e ajustar conforme resposta. Avaliação inicial de crise convulsiva isolada (após estabilização, sem sinais de estado epiléptico)"
+1104,mantida,,Sumatriptano 50-100 mg VO
+1105,mantida,conduta_sem_medicamento,", 1 cp no início da dor. Pode repetir após 2h (máx. 200 mg/dia)"
+1106,mantida,,"Naproxeno 550 mg VO , 1 cp a cada 12h, por até 5 dias"
+1107,mantida,,"Paracetamol 750-1000 mg VO , a cada 6h se dor leve Antiemético:"
+1108,mantida,,"Metoclopramida 10 mg VO , a cada 8h, se náuseas Tensional – Crise:"
+1109,mantida,,"Dipirona 1 g VO , a cada 6h se dor"
+1110,mantida,,"Ibuprofeno 400 mg VO , a cada 6h se necessário Profilático (se indicado posteriormente):"
+1111,mantida,via_nao_identificada,Propranolol 40-80 mg/dia
+1112,mantida,via_nao_identificada,"Amitriptilina 10-25 mg à noite (uso conforme perfil do paciente) Cefaleia secundária leve (sinusite, tensão muscular, uso excessivo de analgésicos) (será incluído em breve) Depressão leve a moderada (avaliação, acompanhamento e encaminhamen"
+1113,mantida,,"Paracetamol 750–1.000 mg — tomar 1 comprimido VO a cada 6 horas, se dor;"
+1114,mantida,,"Ibuprofeno 400–800 mg — tomar 1 comprimido VO a cada 6/8 horas, por até 5 dias;"
+1115,mantida,,"Ciclobenzaprina 10 mg — tomar 1 comprimido VO a cada 8 horas, por até 5 dias;"
+1116,mantida,,"Diclofenaco 50 mg — tomar 1 comprimido VO a cada 8 horas, se necessário, máximo 5 dias. Fascite plantar (fase inicial) CIAP-2: L99 – Outras doenças do sistema músculo-esquelético | CID-10: M72.2 – Fascite plantar"
+1117,mantida,,Dipirona 500–1.000 mg VO a cada 6/8h se dor
+1118,mantida,,Ibuprofeno 400–600 mg VO a cada 8h por até 5 dias (se sem contraindicação). Compressa fria local 2–3x/dia por 15–20 min. Resumo prático: Fase inicial = foco em alongamento + gelo + calçado adequado Analgésico/AINE apenas se dor limitante. E
+1119,mantida,,"Paracetamol 750–1.000 mg — tomar 1 comprimido VO a cada 6/8h, se dor;"
+1120,mantida,,"Ibuprofeno 400–600 mg — tomar 1 comprimido VO a cada 8h, por até 5 dias;"
+1121,mantida,,"Diclofenaco 50 mg — tomar 1 comprimido VO a cada 8h, se necessário, máximo 5 dias; Distensão muscular (esporte ou esforço) (será incluído em breve) Cãibras recorrentes (investigação inicial, hidratação, reposição) (será incluído em breve) S"
+1122,mantida,,Soro de Reidratação Oral (SRO) — ( ) envelopes; dissolver 1 envelope em 1 litro de água filtrada ou fervida e utilizar em até 24 horas (⅓ da TRO: 60 mL/kg/dia);
+1123,mantida,,"Dipirona 500 mg/mL — tomar 40 gotas VO de 6/6h, se febre e/ou dor;"
+1124,mantida,,"Paracetamol 500 mg — tomar 1 comprimido VO de 6/6h, se dor e/ou febre;"
+1125,mantida,,"Dexclorfeniramina 2 mg — tomar 1 comprimido VO de 12/12h, se coceira;"
+1126,mantida,,"Ondansetrona 8 mg — tomar 1 comprimido VO de 8/8h, se náuseas ou vômitos. Prescrição – Criança Soro de Reidratação Oral (SRO) — ( ) envelopes; dissolver 1 envelope em 1 litro de água filtrada/fervida, usar em até 24 horas; volumes recomenda"
+1127,mantida,via_nao_identificada,até 10 kg: 130 mL/kg/dia;
+1128,mantida,,10 a 20 kg: 100 mL/kg/dia;
+1129,mantida,via_nao_identificada,> 20 kg: 80 mL/kg/dia;
+1130,mantida,,"Dipirona 500 mg/mL — tomar ____ gotas VO de 6/6h, se febre e/ou dor;"
+1131,mantida,,"Paracetamol 200 mg/mL — tomar ____ gotas VO de 6/6h, se febre e/ou dor;"
+1132,mantida,,"Dexclorfeniramina 0,4 mg/mL — tomar _____ mL VO de 12/12h, se coceira;"
+1133,mantida,,"Bromoprida 4 mg/mL — tomar ____ gotas VO de 8/8h, se náuseas ou vômitos. GRUPO B"
+1134,mantida,,"Soro de Reidratação Oral (SRO) — ( ) envelopes; dissolver 1 envelope em 1 L de água filtrada/fervida, usar em até 24 h; volume total ⅓ TRO (60 mL/kg/dia);"
+1135,mantida,,"Dipirona 500 mg/mL — tomar 40 gotas VO a cada 6 h, se febre ou dor;"
+1136,mantida,,"Paracetamol 500 mg — tomar 1 comprimido VO a cada 6 h, se febre ou dor;"
+1137,mantida,,"Dexclorfeniramina 2 mg — tomar 1 comprimido VO a cada 12 h, se coceira;"
+1138,mantida,,"Ondansetrona 8 mg — tomar 1 comprimido VO a cada 8 h, se náuseas ou vômitos. Prescrição – Criança"
+1139,mantida,,"Soro de Reidratação Oral (SRO) — ( ) envelopes; dissolver 1 envelope em 1 L de água filtrada/fervida, usar em até 24 h; volume ⅓ TRO conforme peso: até 10 kg = 130 mL/kg/dia; 10–20 kg = 100 mL/kg/dia; > 20 kg = 80 mL/kg/dia;"
+1140,mantida,,"Dipirona 500 mg/mL — tomar ____ gotas VO a cada 6 h, se febre ou dor;"
+1141,mantida,,"Paracetamol 200 mg/mL — tomar ____ gotas VO a cada 6 h, se febre ou dor;"
+1142,mantida,,"Dexclorfeniramina 0,4 mg/mL — tomar _____ mL VO a cada 12 h, se coceira;"
+1143,mantida,,"Bromoprida 4 mg/mL — tomar ____ gotas VO a cada 8 h, se náuseas ou vômitos. 📌 Pontos de alerta para o profissional Prova do laço positiva em presença de comorbidades já classifica no Grupo B, mesmo sem sinais de alarme Hiponatremia, hipocal"
+1144,mantida,,"Doxiciclina 100 mg VO, a cada 12 horas, por 5 a 7 dias. Alternativa:"
+1145,mantida,,"Amoxicilina 500 mg VO, a cada 8 horas, por 5 a 7 dias. Malária (suspeita em área endêmica, coleta de exame) (será incluído em breve) Sarampo"
+1146,mantida,via_nao_identificada,Vitamina A (150.000 UI/mL):
+1147,mantida,,20 gotas VO 1x/dia por 2 dias
+1148,mantida,,Paracetamol (200 mg/mL – gotas):
+1149,mantida,,"1 gota/kg/dose VO a cada 6h, se febre ≥ 37,8 °C Solução Nasal (SF 0,9%): Aplicar 10 mL com seringa sem agulha, 3x/dia em cada narina Zika vírus (será incluído em breve) Sistema Digestório Colite / Gastroenterite aguda (será incluído em brev"
+1150,mantida,,"Omeprazol 20 mg , por via oral, uma vez ao dia, antes do café da manhã; Hidróxido de alumínio e magnésio"
+1151,mantida,,"10 ml, por via oral, a cada 4 a 6 horas, conforme necessário. Diarreia Estado Sinais clínicos Hidratado (Plano A) Estado geral alerta, sede ausente, olhos normais, lágrimas presentes, boca úmida, pulso cheio, prega abdominal desaparece imed"
+1152,mantida,via_nao_identificada,Até 6 meses: 10 mg/dia
+1153,mantida,,"6 meses a 5 anos: 20 mg/dia Sinais de alerta : piora da diarreia, sangue nas fezes, vômitos, diminuição da diurese, recusa alimentar Acompanhamento: retorno se não melhorar em 2 dias ou surgirem sinais de alerta. PLANO B – Reidratação oral "
+1154,mantida,via_nao_identificada,SRO: 50–100 mL/kg em 4 a 6h
+1155,fundida_na_linha_anterior,fragmento,(ex: 75 mL/kg como média) Pode administrar ondansetrona se vômitos persistentes:
+1156,mantida,via_nao_identificada,6m a 2a: 2 mg
+1157,mantida,via_nao_identificada,2a a 10a (até 30kg): 4 mg
+1158,mantida,,10a (>30kg): 8 mg Reavaliar: Se hidratado: Plano A Se persistir desidratação: sonda ou Plano C Manter paciente em observação até reidratação completa. PLANO C – Reidratação endovenosa < 1 ano
+1159,mantida,via_nao_identificada,30 mL/kg SF ou RL – 1h
+1160,mantida,via_nao_identificada,70 mL/kg – 5h ≥ 1 ano
+1161,mantida,via_nao_identificada,30 mL/kg – 30 min
+1162,mantida,via_nao_identificada,"70 mL/kg – 2h30 Fase de manutenção SG5% + SF 0,9% na proporção 4:1 (manutenção) e 1:1 (reposição)"
+1163,mantida,via_nao_identificada,Adicionar KCl a 10%: 2 mL para cada 100 mL de solução ✳️ Observar por no mínimo 6h antes da alta e iniciar SRO assim que possível.
+1164,mantida,,"Omeprazol 20–40 mg VO, 1x/dia, pela manhã em jejum"
+1165,mantida,,"Pantoprazol 40 mg VO, 1x/dia, pela manhã em jejum"
+1166,mantida,,"Lansoprazol 30 mg VO, 1x/dia, pela manhã em jejum"
+1167,mantida,,"Dexlansoprazol 30 mg VO, 1x/dia"
+1168,mantida,,"Rabeprazol 20 mg VO, 1x/dia, pela manhã em jejum"
+1169,mantida,,"Esomeprazol 40 mg VO, 1x/dia, pela manhã em jejum Antidepressivo (modulador visceral) (iniciar em baixa dose, conforme tolerância)"
+1170,mantida,,Amitriptilina 10–25 mg VO à noite
+1171,mantida,,Nortriptilina 10–25 mg VO à noite
+1172,mantida,,Sertralina 25–50 mg VO pela manhã
+1173,mantida,,Fluoxetina 20 mg VO pela manhã
+1174,mantida,,Mirtazapina 15–30 mg VO à noite Agente procinético (se plenitude pós-prandial predominante)
+1175,mantida,,"Metoclopramida 10 mg VO, até 8/8h, 10–30 min antes das refeições"
+1176,mantida,,"Bromoprida 10 mg VO, até 8/8h, 10–30 min antes das refeições"
+1177,mantida,,"Domperidona 10 mg VO, até 8/8h, 10–30 min antes das refeições Orientações gerais ao paciente Evitar alimentos que desencadeiem desconforto (gordurosos, condimentados, cafeína, álcool); Realizar refeições fracionadas e em menor volume; Evita"
+1178,mantida,via_nao_identificada,Muvinlax® (Sachê 14g)
+1179,fundida_na_linha_anterior,fragmento,": Diluir 1 sachê em 125 ml de água, chá ou suco. Ingerir 1 a 2 sachês pela manhã. Se constipação severa, usar até 5 sachês à noite."
+1180,mantida,via_nao_identificada,Lactulose (667 mg/ml)
+1181,fundida_na_linha_anterior,fragmento,: 15 ml VO de 12/12h (máximo 6 vezes ao dia).
+1182,mantida,,"Cetoprofeno 150 mg : 1 comprimido VO de 12/12h, por até 5 dias. Se trombose hemorroidária associada:"
+1183,mantida,,"Daflon® (450 mg + 50 mg) : 1 comprimido VO de 8/8h por 14 dias. Prescrição para uso retal Proctyl® Pomada Retal : Aplicar na área afetada, massageando o local, ou utilizar o bico dosador após evacuação prévia, 3 vezes ao dia até melhora dos"
+1184,mantida,,"Metoclopramida 10 mg, por via oral, a cada 6 a 8 horas, conforme necessário."
+1185,mantida,,"Ondansetrona 8 mg , por via oral, a cada 8 horas, conforme necessário. Analgésicos:"
+1186,mantida,,"Paracetamol 750 mg - 1 g: Tomar 1 comprimido por via oral a cada 6 horas, por até 5 dias."
+1187,mantida,,"Dipirona 500 mg - 1 g: Tomar 1 comprimido por via oral a cada 6 horas, por até 5 dias Parasitoses Intestinais Ancilostomíase"
+1188,mantida,via_nao_identificada,Mebendazol 100 mg: duas vezes ao dia por 3 dias.
+1189,mantida,,"Albendazol 400 mg: dose única. Anemia: Se necessário, suplementar ferro e vitaminas. Enterobíase (Enterobius vermicularis – oxiúros) S (Subjetivo): Paciente de ___ anos relata prurido anal intenso, principalmente no período noturno, com pio"
+1190,mantida,,"Albendazol 400 mg VO, dose única , repetir após 14 dias. Crianças de 1 a < 2 anos:"
+1191,mantida,,"Albendazol 200 mg VO, dose única , repetir após 14 dias. Crianças < 1 ano: Não recomendado uso rotineiro;"
+1192,mantida,,"Mebendazol 100 mg VO, 12/12h, por 3 dias , repetir após 14 dias. Crianças de 1 a < 2 anos:"
+1193,mantida,,"Mebendazol 50 mg VO, 12/12h, por 3 dias , repetir após 14 dias. Crianças < 1 ano: Uso contraindicado Observações Importantes: Tratar todos os contactantes domiciliares , mesmo assintomáticos; Repetir a dose após 14 dias é fundamental para e"
+1194,mantida,,"USO Tópico: Clotrimazol creme 1%: aplicar uma camada fina nos mamilos e áreas afetadas 2-3 vezes ao dia, após cada mamada, por 1-2 semanas. Miconazol creme 2%: aplicar uma camada fina nos mamilos e áreas afetadas 2-3 vezes ao dia, após cada"
+1195,mantida,via_nao_identificada,Fluconazol 200 mg -
+1196,mantida,via_nao_identificada,1 comprimido ao dia no primeiro dia (casos graves).
+1197,mantida,via_nao_identificada,Fluconazol 100 mg -
+1198,mantida,via_nao_identificada,1 comprimido ao dia durante 13 dias (casos graves).
+1199,mantida,,"Itraconazol 100 mg 2 comprimidos, 1 vez ao dia, por 14 dias (casos graves). Nistatina Oral: 100.000-600.000 UI"
+1200,mantida,,"(1-6 mL) de suspensão oral a cada 6 horas. Observação : Continuar o tratamento por 48 horas após a cura clínica. Para candidíase orofaríngea, recomenda-se que a suspensão seja bochechada o maior tempo possível antes de engolir Reavaliação: "
+1201,mantida,,Casos leves (1ª linha) Nistatina 500.000 UI VO : 1 cp a cada 6h por 10 dias Nistatina suspensão oral 100.000 UI/mL
+1202,fundida_na_linha_anterior,fragmento,": 1 a 2 mL em cada lado da boca, 3–5x/dia por 7 dias (manter em contato com mucosa antes de deglutir) Casos moderados a graves (sistêmico)"
+1203,mantida,,"Fluconazol 200 mg VO, dose única inicial seguido de"
+1204,mantida,via_nao_identificada,Fluconazol 100 mg/dia por até 13 dias
+1205,mantida,,"Itraconazol 100 mg , 2 cp VO, 1x/dia por 14 dias"
+1206,mantida,,"🔹 1ª LINHA – TRATAMENTO TÓPICO (PREFERENCIAL) Escolher APENAS UMA opção Miconazol creme vaginal 2%: usar 1 aplicador cheio (≈5 g) por via intravaginal, à noite, por 7 dias consecutivos Orientações: aplicar deitada antes de dormir; usar abso"
+1207,mantida,,"Fluconazol 150 mg VO: tomar 01 comprimido por via oral, dose única Orientações: ingerir com água; pode ser tomado com ou sem alimento; evitar bebida alcoólica no dia do uso; retornar se os sintomas persistirem após 3 a 5 dias; não usar se h"
+1208,mantida,,Itraconazol 200 mg VO: tomar 01 comprimido por via oral a cada 12 horas por 1 dia (total de 2 comprimidos); Orientações: tomar após refeição para melhor absorção; não ingerir com antiácidos ou omeprazol no mesmo horário; evitar álcool; reto
+1209,mantida,,"Fluconazol 150 mg VO: tomar 01 comprimido por via oral, 1 vez por semana, por 6 meses (total de 24 comprimidos). Orientações: manter uso regular no mesmo dia da semana; não interromper por conta própria; informar se houver atraso menstrual "
+1210,mantida,,"Itraconazol 400 mg VO: tomar 02 comprimidos de 200 mg por via oral, 1 vez ao mês, por 6 meses (total de 12 comprimidos de 200 mg). Orientações: tomar após refeição; evitar álcool; relatar qualquer sintoma hepático como náuseas persistentes,"
+1211,mantida,,"Cetoconazol 100 mg VO: tomar 01 comprimido por via oral, 1 vez ao dia, por 6 meses (total de 180 comprimidos). Orientações: usar após refeição; evitar bebida alcoólica; suspender e procurar atendimento se houver mal-estar intenso, náuseas p"
+1212,mantida,,"2. Sintomáticos para insônia/ansiedade leve Florais de Bach Valeriana : 2 a 3 comprimidos VO, 1 a 2 vezes ao dia."
+1213,mantida,dose_nao_identificada,3. Tratamento local para sintomas geniturinários (uso vulvovaginal)
+1214,mantida,,Estriol creme vaginal 1 mg/g
+1215,fundida_na_linha_anterior,fragmento,": aplicar 0,5 g ao dia, por 21 dias consecutivos, seguido de uma pausa de 7 dias. O ciclo pode ser repetido por até 3 meses, conforme resposta clínica. Cólica menstrual (dismenorreia primária)"
+1216,mantida,,"Ibuprofeno 400 a 800 mg VO a cada 6 a 8 horas , por até 3 dias, iniciando no início das cólicas"
+1217,mantida,,Paracetamol 750‑1000 mg VO a cada 6 horas
+1218,mantida,,Dipirona 500‑1000 mg VO a cada 6 horas Opções Adjuvantes ou Alternativas Contraceptivos hormonais combinados DIU com levonorgestrel (Mirena®) recomendados em casos refratários ou associados à necessidade contraceptiva ou hipotensão menstrua
+1219,mantida,,"Cefixima 400 mg: via oral, dose única. Sífilis (Treponema pallidum)"
+1220,mantida,,"Penicilina Benzatina: 2.400.000 UI, IM, em dose única Alternativa para alérgicos:"
+1221,mantida,,Doxiciclina 100 mg VO 2x/dia por 14 dias (em casos de alergia à penicilina)
+1222,mantida,,Doxiciclina 100 mg VO 2x/dia por 14 dias (em casos de alergia à penicilina)
+1223,mantida,"dose_nao_identificada,via_nao_identificada","Penicilina G Benzatina: 1,2 milhões UI em cada nádega, 1 vez por semana, durante 3 semanas Alternativa para alérgicos:"
+1224,mantida,,"Doxiciclina 100 mg VO 2x/dia por 28 dias (em casos de alergia à penicilina) Sífilis na Gestação – Roteiro SOAP com Abordagem Completa S (Subjetivo): Gestante de ___ anos, GPA, na ___ª semana de gestação, comparece à consulta referindo apare"
+1225,mantida,,"Sífilis primária, secundária ou latente recente : Penicilina G benzatina 2.400.000 UI IM, dose única (1,2 milhão UI em cada glúteo); Sífilis terciária ou latente tardia : Penicilina G benzatina 2.400.000 UI IM, 1x/semana por 3 semanas; Herp"
+1226,mantida,,"Metronidazol 500 mg: via oral, a cada 12 horas, por 7 dias."
+1227,mantida,,"Clindamicina 300 mg: via oral, a cada 12 horas, por 7 dias. Tratamento Intravaginal:"
+1228,mantida,,"Metronidazol Gel Vaginal 100 mg/g: aplicar um aplicador (5 g) intravaginal, uma vez ao dia, por 5 dias."
+1229,mantida,,"Clindamicina Creme 2%: aplicar um aplicador (5 g) intravaginal, uma vez ao dia, por 7 dias."
+1230,mantida,,"Metronidazol 250 mg: via oral, a cada 8 horas, por 7 dias."
+1231,mantida,,"Clindamicina Óvulos 100 mg: aplicar um óvulo intravaginal, uma vez ao dia, por 3 dias. Metronidazol Gel 0,75%: aplicar um aplicador (5 g) intravaginal, uma vez ao dia, por 5 dias. CID/CIAP Rotina: Rotina CID CIAP Descrição Puericultura Z00."
+1232,mantida,,
+1233,mantida,,
+1234,mantida,,
+1235,mantida,,
+1236,mantida,,
+1237,mantida,,
+1238,mantida,,
+1239,mantida,,
+1240,mantida,,
+1241,mantida,,
+1242,mantida,,
+1243,mantida,,
+1244,mantida,,
+1245,mantida,,
+1246,mantida,,
+1247,mantida,,
+1248,mantida,,
+1249,mantida,,
+1250,mantida,,

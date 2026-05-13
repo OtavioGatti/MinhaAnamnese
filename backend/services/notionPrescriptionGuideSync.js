@@ -40,6 +40,23 @@ function normalizeLongText(value) {
   return String(value || '').replace(/\r\n/g, '\n').replace(/\r/g, '\n').trim();
 }
 
+function normalizeProtocolText(value) {
+  const text = normalizeLongText(value);
+
+  if (!text) {
+    return '';
+  }
+
+  return text
+    .replace(/[ \t]+/g, ' ')
+    .replace(/([^\n])\s*(?=\d{1,2}\.\s+\S)/g, '$1\n')
+    .replace(/([^\n])(?=-\s+\S)/g, '$1\n')
+    .replace(/([^\n])\s+(?=-\s+\S)/g, '$1\n')
+    .replace(/\n[ \t]+/g, '\n')
+    .replace(/\n{3,}/g, '\n\n')
+    .trim();
+}
+
 function stripAccents(value) {
   return String(value || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 }
@@ -248,19 +265,19 @@ function mapNotionPageToPrescriptionGuide(page, index) {
     tipo_protocolo: normalizeText(readSelectProperty(properties, 'tipo_protocolo')) || null,
     status_revisao: statusRevisao || null,
     nivel_risco: normalizeText(readSelectProperty(properties, 'nivel_risco')) || null,
-    resumo_clinico: normalizeLongText(readTextProperty(properties, 'resumo_clinico')) || null,
-    quando_usar: normalizeLongText(readTextProperty(properties, 'quando_usar')) || null,
-    quando_nao_usar: normalizeLongText(readTextProperty(properties, 'quando_nao_usar')) || null,
-    conduta_procedimento: normalizeLongText(readTextProperty(properties, 'conduta_procedimento')) || null,
-    prescricao_medicamentos: normalizeLongText(readTextProperty(properties, 'prescricao_medicamentos')) || null,
-    orientacoes_paciente: normalizeLongText(readTextProperty(properties, 'orientacoes_paciente')) || null,
-    sinais_alerta: normalizeLongText(readTextProperty(properties, 'sinais_alerta')) || null,
-    criterios_encaminhamento: normalizeLongText(readTextProperty(properties, 'criterios_encaminhamento')) || null,
-    observacoes_clinicas: normalizeLongText(readTextProperty(properties, 'observacoes_clinicas')) || null,
-    texto_copiavel_conduta: normalizeLongText(readTextProperty(properties, 'texto_copiavel_conduta')) || null,
-    texto_copiavel_prescricao: normalizeLongText(readTextProperty(properties, 'texto_copiavel_prescricao')) || null,
-    texto_copiavel_orientacoes: normalizeLongText(readTextProperty(properties, 'texto_copiavel_orientacoes')) || null,
-    texto_copiavel_completo: normalizeLongText(readTextProperty(properties, 'texto_copiavel_completo')) || null,
+    resumo_clinico: normalizeProtocolText(readTextProperty(properties, 'resumo_clinico')) || null,
+    quando_usar: normalizeProtocolText(readTextProperty(properties, 'quando_usar')) || null,
+    quando_nao_usar: normalizeProtocolText(readTextProperty(properties, 'quando_nao_usar')) || null,
+    conduta_procedimento: normalizeProtocolText(readTextProperty(properties, 'conduta_procedimento')) || null,
+    prescricao_medicamentos: normalizeProtocolText(readTextProperty(properties, 'prescricao_medicamentos')) || null,
+    orientacoes_paciente: normalizeProtocolText(readTextProperty(properties, 'orientacoes_paciente')) || null,
+    sinais_alerta: normalizeProtocolText(readTextProperty(properties, 'sinais_alerta')) || null,
+    criterios_encaminhamento: normalizeProtocolText(readTextProperty(properties, 'criterios_encaminhamento')) || null,
+    observacoes_clinicas: normalizeProtocolText(readTextProperty(properties, 'observacoes_clinicas')) || null,
+    texto_copiavel_conduta: normalizeProtocolText(readTextProperty(properties, 'texto_copiavel_conduta')) || null,
+    texto_copiavel_prescricao: normalizeProtocolText(readTextProperty(properties, 'texto_copiavel_prescricao')) || null,
+    texto_copiavel_orientacoes: normalizeProtocolText(readTextProperty(properties, 'texto_copiavel_orientacoes')) || null,
+    texto_copiavel_completo: normalizeProtocolText(readTextProperty(properties, 'texto_copiavel_completo')) || null,
     fonte: normalizeLongText(readTextProperty(properties, 'fonte')) || null,
     fonte_pagina: normalizeText(readTextProperty(properties, 'fonte_pagina')) || null,
     fonte_secao: normalizeText(readTextProperty(properties, 'fonte_secao')) || null,
