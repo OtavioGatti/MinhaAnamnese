@@ -100,6 +100,21 @@ function normalizeText(value) {
   return String(value || '').replace(/\s+/g, ' ').trim();
 }
 
+function cleanPrescriptionSeparatorArtifacts(value) {
+  return String(value || '')
+    .replace(/(-{3,}[—–-]?)[ \t]+(?:-[ \t]+)+(?=\S)/g, '$1\n')
+    .replace(/(-{3,}[—–-]?)[ \t]*(?=[A-Za-zÀ-ÖØ-öø-ÿ])/g, '$1\n')
+    .split('\n')
+    .filter((line) => line.trim() !== '-')
+    .join('\n');
+}
+
+function splitFlattenedNumberedItems(value) {
+  return String(value || '')
+    .replace(/([^\n])[ \t]*(?=\d{1,2}\.[ \t]*[A-Za-zÀ-ÖØ-öø-ÿ])/g, '$1\n')
+    .replace(/(^|\n)(\d{1,2})\.[ \t]*/g, '$1$2. ');
+}
+
 function normalizeProtocolText(value) {
   const text = String(value || '')
     .replace(/\r\n/g, '\n')
@@ -110,14 +125,36 @@ function normalizeProtocolText(value) {
     return '';
   }
 
-  return text
-    .replace(/[ \t]+/g, ' ')
-    .replace(/([^\n])\s*(?=\d{1,2}\.\s+\S)/g, '$1\n')
-    .replace(/([^\n])(?=-\s+\S)/g, '$1\n')
-    .replace(/([^\n])\s+(?=-\s+\S)/g, '$1\n')
+  const normalized = cleanPrescriptionSeparatorArtifacts(splitFlattenedNumberedItems(text.replace(/[ \t]+/g, ' ')))
+    .replace(/([^\n \t])[ \t]*(?=\d{1,2}\.[ \t]*[A-Za-zÀ-ÖØ-öø-ÿ])/g, '$1\n')
+    .replace(/([^\n \t-])[ \t]+(?=-[ \t]+\S)/g, '$1\n')
+    .replace(/([^\n \t-])(?=-[ \t]+\S)/g, '$1\n');
+
+  return splitFlattenedNumberedItems(cleanPrescriptionSeparatorArtifacts(normalized))
     .replace(/\n[ \t]+/g, '\n')
+    .replace(/[ \t]+\n/g, '\n')
     .replace(/\n{3,}/g, '\n\n')
     .trim();
+}
+
+function normalizePrescriptionText(value) {
+  const text = normalizeProtocolText(value);
+
+  if (!text) {
+    return '';
+  }
+
+  return text
+    .replace(/[ \t]*-{3,}[—–-]*/g, ' ----------------------------------------')
+    .replace(/(----------------------------------------)[ \t]*(?=\S)/g, '$1\n')
+    .replace(/([.!?])[ \t]*(?=(Respeitar|Evitar|Utilizar|Observar|Orientar|Considerar|Ajustar|Nao|Não)\b)/g, '$1\n')
+    .replace(/\n(?=\d{1,2}\.[ \t]+\S)/g, '\n\n')
+    .replace(/\n{3,}/g, '\n\n')
+    .trim();
+}
+
+function normalizePrescriptionCopyText(value) {
+  return normalizePrescriptionText(value);
 }
 
 function normalizeSearchQuery(value) {
@@ -233,13 +270,13 @@ function mapGuideRow(row) {
     quandoUsar: normalizeProtocolText(row.quando_usar),
     quandoNaoUsar: normalizeProtocolText(row.quando_nao_usar),
     condutaProcedimento: normalizeProtocolText(row.conduta_procedimento),
-    prescricaoMedicamentos: normalizeProtocolText(row.prescricao_medicamentos),
+    prescricaoMedicamentos: normalizePrescriptionText(row.prescricao_medicamentos),
     orientacoesPaciente: normalizeProtocolText(row.orientacoes_paciente),
     sinaisAlerta: normalizeProtocolText(row.sinais_alerta),
     criteriosEncaminhamento: normalizeProtocolText(row.criterios_encaminhamento),
     observacoesClinicas: normalizeProtocolText(row.observacoes_clinicas),
     textoCopiavelConduta: normalizeProtocolText(row.texto_copiavel_conduta),
-    textoCopiavelPrescricao: normalizeProtocolText(row.texto_copiavel_prescricao),
+    textoCopiavelPrescricao: normalizePrescriptionText(row.texto_copiavel_prescricao),
     textoCopiavelOrientacoes: normalizeProtocolText(row.texto_copiavel_orientacoes),
     textoCopiavelCompleto: normalizeProtocolText(row.texto_copiavel_completo),
     fonte: row.fonte || row.source || '',
@@ -396,12 +433,12 @@ function buildProtocolSections(guide, items) {
 }
 
 function buildCopyPayload(guide, sections) {
-  const prescription = normalizeProtocolText(guide.textoCopiavelPrescricao || sections.prescription);
+  const prescription = normalizePrescriptionCopyText(guide.textoCopiavelPrescricao || sections.prescription);
   const conduct = normalizeProtocolText(guide.textoCopiavelConduta || sections.conduct);
   const orientations = normalizeProtocolText(guide.textoCopiavelOrientacoes || sections.orientations);
   const all = normalizeProtocolText(guide.textoCopiavelCompleto || [
     guide.title,
-    sections.prescription ? `Prescrição medicamentosa:\n${sections.prescription}` : '',
+    prescription ? `Prescrição medicamentosa:\n${prescription}` : '',
     sections.conduct ? `Conduta / Procedimento:\n${sections.conduct}` : '',
     sections.orientations ? `Orientações ao paciente:\n${sections.orientations}` : '',
     sections.warnings ? `Sinais de alerta:\n${sections.warnings}` : '',

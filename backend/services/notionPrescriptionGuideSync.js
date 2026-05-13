@@ -40,6 +40,21 @@ function normalizeLongText(value) {
   return String(value || '').replace(/\r\n/g, '\n').replace(/\r/g, '\n').trim();
 }
 
+function cleanPrescriptionSeparatorArtifacts(value) {
+  return String(value || '')
+    .replace(/(-{3,}[—–-]?)[ \t]+(?:-[ \t]+)+(?=\S)/g, '$1\n')
+    .replace(/(-{3,}[—–-]?)[ \t]*(?=[A-Za-zÀ-ÖØ-öø-ÿ])/g, '$1\n')
+    .split('\n')
+    .filter((line) => line.trim() !== '-')
+    .join('\n');
+}
+
+function splitFlattenedNumberedItems(value) {
+  return String(value || '')
+    .replace(/([^\n])[ \t]*(?=\d{1,2}\.[ \t]*[A-Za-zÀ-ÖØ-öø-ÿ])/g, '$1\n')
+    .replace(/(^|\n)(\d{1,2})\.[ \t]*/g, '$1$2. ');
+}
+
 function normalizeProtocolText(value) {
   const text = normalizeLongText(value);
 
@@ -47,12 +62,30 @@ function normalizeProtocolText(value) {
     return '';
   }
 
-  return text
-    .replace(/[ \t]+/g, ' ')
-    .replace(/([^\n])\s*(?=\d{1,2}\.\s+\S)/g, '$1\n')
-    .replace(/([^\n])(?=-\s+\S)/g, '$1\n')
-    .replace(/([^\n])\s+(?=-\s+\S)/g, '$1\n')
+  const normalized = cleanPrescriptionSeparatorArtifacts(splitFlattenedNumberedItems(text.replace(/[ \t]+/g, ' ')))
+    .replace(/([^\n \t])[ \t]*(?=\d{1,2}\.[ \t]*[A-Za-zÀ-ÖØ-öø-ÿ])/g, '$1\n')
+    .replace(/([^\n \t-])[ \t]+(?=-[ \t]+\S)/g, '$1\n')
+    .replace(/([^\n \t-])(?=-[ \t]+\S)/g, '$1\n');
+
+  return splitFlattenedNumberedItems(cleanPrescriptionSeparatorArtifacts(normalized))
     .replace(/\n[ \t]+/g, '\n')
+    .replace(/[ \t]+\n/g, '\n')
+    .replace(/\n{3,}/g, '\n\n')
+    .trim();
+}
+
+function normalizePrescriptionText(value) {
+  const text = normalizeProtocolText(value);
+
+  if (!text) {
+    return '';
+  }
+
+  return text
+    .replace(/[ \t]*-{3,}[—–-]*/g, ' ----------------------------------------')
+    .replace(/(----------------------------------------)[ \t]*(?=\S)/g, '$1\n')
+    .replace(/([.!?])[ \t]*(?=(Respeitar|Evitar|Utilizar|Observar|Orientar|Considerar|Ajustar|Nao|Não)\b)/g, '$1\n')
+    .replace(/\n(?=\d{1,2}\.[ \t]+\S)/g, '\n\n')
     .replace(/\n{3,}/g, '\n\n')
     .trim();
 }
@@ -269,13 +302,13 @@ function mapNotionPageToPrescriptionGuide(page, index) {
     quando_usar: normalizeProtocolText(readTextProperty(properties, 'quando_usar')) || null,
     quando_nao_usar: normalizeProtocolText(readTextProperty(properties, 'quando_nao_usar')) || null,
     conduta_procedimento: normalizeProtocolText(readTextProperty(properties, 'conduta_procedimento')) || null,
-    prescricao_medicamentos: normalizeProtocolText(readTextProperty(properties, 'prescricao_medicamentos')) || null,
+    prescricao_medicamentos: normalizePrescriptionText(readTextProperty(properties, 'prescricao_medicamentos')) || null,
     orientacoes_paciente: normalizeProtocolText(readTextProperty(properties, 'orientacoes_paciente')) || null,
     sinais_alerta: normalizeProtocolText(readTextProperty(properties, 'sinais_alerta')) || null,
     criterios_encaminhamento: normalizeProtocolText(readTextProperty(properties, 'criterios_encaminhamento')) || null,
     observacoes_clinicas: normalizeProtocolText(readTextProperty(properties, 'observacoes_clinicas')) || null,
     texto_copiavel_conduta: normalizeProtocolText(readTextProperty(properties, 'texto_copiavel_conduta')) || null,
-    texto_copiavel_prescricao: normalizeProtocolText(readTextProperty(properties, 'texto_copiavel_prescricao')) || null,
+    texto_copiavel_prescricao: normalizePrescriptionText(readTextProperty(properties, 'texto_copiavel_prescricao')) || null,
     texto_copiavel_orientacoes: normalizeProtocolText(readTextProperty(properties, 'texto_copiavel_orientacoes')) || null,
     texto_copiavel_completo: normalizeProtocolText(readTextProperty(properties, 'texto_copiavel_completo')) || null,
     fonte: normalizeLongText(readTextProperty(properties, 'fonte')) || null,

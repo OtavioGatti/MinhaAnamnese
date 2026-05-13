@@ -2516,7 +2516,7 @@ body {
 }
 
 .protocol-status-badge,
-.protocol-source-chip {
+.protocol-format-badge {
   display: inline-flex;
   align-items: center;
   width: fit-content;
@@ -2543,12 +2543,6 @@ body {
   color: #166534;
   background: var(--green-50);
   border: 1px solid var(--green-100);
-}
-
-.protocol-source-chip {
-  color: var(--gray-600);
-  background: var(--gray-50);
-  border: 1px solid var(--gray-200);
 }
 
 .protocol-copy-actions {
@@ -2630,10 +2624,17 @@ body {
 .protocol-accordion-title {
   display: inline-flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 0.55rem;
   color: var(--gray-900);
   font-size: 0.94rem;
   font-weight: 700;
+}
+
+.protocol-format-badge {
+  color: #166534;
+  background: var(--green-50);
+  border: 1px solid var(--green-100);
 }
 
 .protocol-chevron {

@@ -11,6 +11,7 @@ const SECTION_DEFINITIONS = [
     title: 'Prescrição medicamentosa',
     copyLabel: 'Copiar prescrição',
     copyKey: 'prescription',
+    copyFormatLabel: 'Formato de prescrição',
   },
   {
     key: 'conduct',
@@ -203,23 +204,19 @@ function ProtocolSidebar({
 
 function ProtocolHeader({ guide, copiedKey, onCopy }) {
   const status = getStatusLabel(guide);
-  const source = [guide?.fonte || guide?.source, guide?.fontePagina ? `pág. ${guide.fontePagina}` : '']
-    .filter(Boolean)
-    .join(' · ');
 
   return (
     <header className="protocol-header">
       <div className="protocol-header-copy">
         <h2>{getGuideTitle(guide)}</h2>
         <p>{getGuideMetaParts(guide).join(' · ')}</p>
-        <div className="protocol-meta-row">
-          {status ? (
+        {status ? (
+          <div className="protocol-meta-row">
             <span className={`protocol-status-badge ${getRiskClass(guide)}`}>
               {status}
             </span>
-          ) : null}
-          {source ? <span className="protocol-source-chip">{source}</span> : null}
-        </div>
+          </div>
+        ) : null}
       </div>
 
       <div className="protocol-copy-actions">
@@ -259,6 +256,8 @@ function ProtocolAccordionSection({
 }) {
   const sectionText = getSectionText(guide, definition.key);
   const copyText = definition.copyKey ? getCopyText(guide, definition.copyKey) : sectionText;
+  const showsCopyFormat = definition.key === 'prescription' && Boolean(String(copyText || '').trim());
+  const displayText = showsCopyFormat ? copyText : sectionText;
   const itemCount = countMeaningfulLines(sectionText);
 
   return (
@@ -272,14 +271,17 @@ function ProtocolAccordionSection({
         <span className="protocol-accordion-title">
           <span className="protocol-chevron">{expanded ? '▾' : '▸'}</span>
           {definition.title}
+          {showsCopyFormat && definition.copyFormatLabel ? (
+            <span className="protocol-format-badge">{definition.copyFormatLabel}</span>
+          ) : null}
         </span>
         {itemCount > 0 ? <span className="protocol-section-count">{itemCount} itens</span> : null}
       </button>
 
       {expanded ? (
         <div className="protocol-accordion-content">
-          {sectionText ? (
-            <pre>{sectionText}</pre>
+          {displayText ? (
+            <pre>{displayText}</pre>
           ) : (
             <div className="protocol-section-empty">Campo ainda não preenchido no CMS.</div>
           )}
