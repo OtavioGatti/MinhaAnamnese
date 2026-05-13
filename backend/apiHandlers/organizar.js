@@ -1,10 +1,10 @@
-const { processAnamnesis, validateProcessAnamnesisInput } = require('../backend/services/processAnamnesis');
-const { consumeRateLimit, sendRateLimitResponse } = require('../backend/utils/rateLimit');
-const { getTextLimitError, sendTextLimitError } = require('../backend/utils/requestLimits');
+const { processAnamnesis, validateProcessAnamnesisInput } = require('../services/processAnamnesis');
+const { consumeRateLimit, sendRateLimitResponse } = require('../utils/rateLimit');
+const { getTextLimitError, sendTextLimitError } = require('../utils/requestLimits');
 const {
   getAccessTokenFromRequest,
   resolveSupabaseUser,
-} = require('../backend/utils/supabaseAuth');
+} = require('../utils/supabaseAuth');
 
 const ORGANIZAR_RATE_LIMIT = {
   limit: 20,

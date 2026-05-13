@@ -1,8 +1,8 @@
-const { generateInsights, validateGenerateInsightsInput } = require('../backend/services/generateInsights');
-const { ensureUserProfile, incrementFreeFullInsightsUsedCount } = require('../backend/services/profiles');
-const { consumeRateLimit, sendRateLimitResponse } = require('../backend/utils/rateLimit');
-const { getTextLimitError, sendTextLimitError } = require('../backend/utils/requestLimits');
-const { resolveSupabaseUser } = require('../backend/utils/supabaseAuth');
+const { generateInsights, validateGenerateInsightsInput } = require('../services/generateInsights');
+const { ensureUserProfile, incrementFreeFullInsightsUsedCount } = require('../services/profiles');
+const { consumeRateLimit, sendRateLimitResponse } = require('../utils/rateLimit');
+const { getTextLimitError, sendTextLimitError } = require('../utils/requestLimits');
+const { resolveSupabaseUser } = require('../utils/supabaseAuth');
 
 const INSIGHTS_RATE_LIMIT = {
   limit: 10,

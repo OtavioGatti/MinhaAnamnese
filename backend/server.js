@@ -1,21 +1,7 @@
 require('dotenv').config({ override: true });
 const express = require('express');
 const cors = require('cors');
-
-const templatesHandler = require('../api/templates');
-const anamnesesHandler = require('../api/anamneses');
-const organizarHandler = require('../api/organizar');
-const insightsHandler = require('../api/insights');
-const profileHandler = require('../api/profile');
-const healthHandler = require('../api/health');
-const analyticsHandler = require('../api/analytics');
-const createCheckoutHandler = require('../api/create-checkout');
-const prescriptionGuidesHandler = require('../api/prescription-guides');
-const prescriptionGuidesSyncHandler = require('../api/admin/prescription-guides-sync');
-const templatesSyncHandler = require('../api/admin/templates-sync');
-const mercadoPagoWebhookHandler = require('../api/webhook/mercadopago');
-const notionPrescriptionGuidesWebhookHandler = require('../api/webhook/notion/prescription-guides');
-const notionTemplatesWebhookHandler = require('../api/webhook/notion/templates');
+const { apiRoutes } = require('./apiHandlers');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -65,20 +51,9 @@ function mountRoute(path, handler) {
   });
 }
 
-mountRoute('/api/templates', templatesHandler);
-mountRoute('/api/anamneses', anamnesesHandler);
-mountRoute('/api/organizar', organizarHandler);
-mountRoute('/api/insights', insightsHandler);
-mountRoute('/api/profile', profileHandler);
-mountRoute('/api/health', healthHandler);
-mountRoute('/api/analytics', analyticsHandler);
-mountRoute('/api/create-checkout', createCheckoutHandler);
-mountRoute('/api/prescription-guides', prescriptionGuidesHandler);
-mountRoute('/api/admin/prescription-guides/sync', prescriptionGuidesSyncHandler);
-mountRoute('/api/admin/templates/sync', templatesSyncHandler);
-mountRoute('/api/webhook/mercadopago', mercadoPagoWebhookHandler);
-mountRoute('/api/webhook/notion/prescription-guides', notionPrescriptionGuidesWebhookHandler);
-mountRoute('/api/webhook/notion/templates', notionTemplatesWebhookHandler);
+Object.entries(apiRoutes).forEach(([path, handler]) => {
+  mountRoute(path, handler);
+});
 
 app.listen(PORT, () => {
   console.log(`Backend rodando em http://localhost:${PORT}`);

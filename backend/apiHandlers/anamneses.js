@@ -3,8 +3,8 @@ const {
   getAnamneseStats,
   getCurrentStreakFromActivityDates,
   listRecentAnamneseMetrics,
-} = require('../backend/services/anamneseMetrics');
-const { resolveSupabaseUser } = require('../backend/utils/supabaseAuth');
+} = require('../services/anamneseMetrics');
+const { resolveSupabaseUser } = require('../utils/supabaseAuth');
 
 function getEmptyStats() {
   return {

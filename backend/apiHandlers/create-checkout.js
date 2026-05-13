@@ -5,7 +5,7 @@ const PLAN_PRODUCT = 'professional_plan';
 const BILLING_VERSION = 'v1';
 const PLAN_CURRENCY = 'BRL';
 const DEBUG_CHECKOUT = process.env.DEBUG_CHECKOUT === 'true';
-const { resolveSupabaseUser } = require('../backend/utils/supabaseAuth');
+const { resolveSupabaseUser } = require('../utils/supabaseAuth');
 
 function logCheckoutError(message, context = {}) {
   if (!DEBUG_CHECKOUT) {

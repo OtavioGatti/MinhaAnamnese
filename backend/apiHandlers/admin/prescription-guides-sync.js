@@ -1,11 +1,11 @@
 const {
-  isNotionTemplateSyncConfigured,
-  syncNotionTemplates,
-} = require('../../backend/services/notionTemplateSync');
+  isNotionPrescriptionGuidesSyncConfigured,
+  syncNotionPrescriptionGuides,
+} = require('../../services/notionPrescriptionGuideSync');
 const {
   consumeRateLimit,
   sendRateLimitResponse,
-} = require('../../backend/utils/rateLimit');
+} = require('../../utils/rateLimit');
 
 const SYNC_RATE_LIMIT = {
   limit: 10,
@@ -29,11 +29,16 @@ function getBearerToken(req) {
 }
 
 function getSyncSecretFromRequest(req) {
-  return getHeaderValue(req, 'x-template-sync-secret').trim() || getBearerToken(req);
+  return getHeaderValue(req, 'x-prescription-guides-sync-secret').trim() ||
+    getHeaderValue(req, 'x-template-sync-secret').trim() ||
+    getBearerToken(req);
 }
 
 function getExpectedSyncSecret() {
-  return process.env.TEMPLATE_SYNC_SECRET || process.env.ADMIN_SYNC_SECRET || '';
+  return process.env.PRESCRIPTION_GUIDES_SYNC_SECRET ||
+    process.env.TEMPLATE_SYNC_SECRET ||
+    process.env.ADMIN_SYNC_SECRET ||
+    '';
 }
 
 function isAuthorizedSyncRequest(req) {
@@ -53,7 +58,7 @@ module.exports = async function handler(req, res) {
 
   const rateLimit = consumeRateLimit({
     req,
-    scope: 'templates_sync',
+    scope: 'prescription_guides_sync',
     limit: SYNC_RATE_LIMIT.limit,
     windowMs: SYNC_RATE_LIMIT.windowMs,
   });
@@ -65,7 +70,7 @@ module.exports = async function handler(req, res) {
   if (!getExpectedSyncSecret()) {
     return res.status(503).json({
       success: false,
-      error: 'Sincronizacao de templates nao configurada.',
+      error: 'Sincronizacao de guias de prescricao nao configurada.',
     });
   }
 
@@ -76,14 +81,14 @@ module.exports = async function handler(req, res) {
     });
   }
 
-  if (!isNotionTemplateSyncConfigured()) {
+  if (!isNotionPrescriptionGuidesSyncConfigured()) {
     return res.status(503).json({
       success: false,
-      error: 'Integracao com Notion nao configurada.',
+      error: 'Integracao Notion -> Supabase dos guias nao configurada.',
     });
   }
 
-  const result = await syncNotionTemplates();
+  const result = await syncNotionPrescriptionGuides();
 
   return res.status(200).json({
     success: true,

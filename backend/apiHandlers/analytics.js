@@ -1,10 +1,10 @@
-const { buildFunnelMetrics, getZeroFunnelMetrics } = require('../backend/services/funnelMetrics');
-const { getFunnelSessions } = require('../backend/services/funnelTracking');
+const { buildFunnelMetrics, getZeroFunnelMetrics } = require('../services/funnelMetrics');
+const { getFunnelSessions } = require('../services/funnelTracking');
 const {
   getAccessTokenFromRequest,
   resolveSupabaseUser,
-} = require('../backend/utils/supabaseAuth');
-const { isValidSessionId } = require('../backend/utils/idValidation');
+} = require('../utils/supabaseAuth');
+const { isValidSessionId } = require('../utils/idValidation');
 
 const ALLOWED_EVENTS = new Set([
   'anamnese_gerada',

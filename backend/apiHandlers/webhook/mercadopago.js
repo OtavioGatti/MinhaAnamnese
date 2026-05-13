@@ -1,10 +1,10 @@
 const crypto = require('crypto');
-const { isValidUserId } = require('../../backend/utils/idValidation');
+const { isValidUserId } = require('../../utils/idValidation');
 const {
   getBillingPaymentByPaymentId,
   upsertBillingPayment,
-} = require('../../backend/services/billingPayments');
-const { upsertProfile, getProfileByUserId: getStoredProfileByUserId } = require('../../backend/services/profiles');
+} = require('../../services/billingPayments');
+const { upsertProfile, getProfileByUserId: getStoredProfileByUserId } = require('../../services/profiles');
 
 const MERCADO_PAGO_PAYMENT_API = 'https://api.mercadopago.com/v1/payments';
 const PLAN_PRICE = 9.9;

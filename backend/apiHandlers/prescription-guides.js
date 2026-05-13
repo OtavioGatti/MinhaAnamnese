@@ -1,9 +1,9 @@
-const { ensureUserProfile } = require('../backend/services/profiles');
+const { ensureUserProfile } = require('../services/profiles');
 const {
   getPrescriptionGuideBySlug,
   listPrescriptionGuides,
-} = require('../backend/services/prescriptionGuides');
-const { resolveSupabaseUser } = require('../backend/utils/supabaseAuth');
+} = require('../services/prescriptionGuides');
+const { resolveSupabaseUser } = require('../utils/supabaseAuth');
 
 function getQueryParam(req, name) {
   if (typeof req.query?.[name] === 'string') {

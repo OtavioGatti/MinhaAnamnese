@@ -1,9 +1,9 @@
 const crypto = require('crypto');
 const {
-  getNotionPrescriptionGuidesConfig,
-  isNotionPrescriptionGuidesSyncConfigured,
-  syncNotionPrescriptionGuides,
-} = require('../../../backend/services/notionPrescriptionGuideSync');
+  getNotionTemplatesConfig,
+  isNotionTemplateSyncConfigured,
+  syncNotionTemplates,
+} = require('../../../services/notionTemplateSync');
 
 const HANDLED_EVENT_TYPES = new Set([
   'page.created',
@@ -30,9 +30,7 @@ function normalizeNotionId(value) {
 }
 
 function getNotionWebhookVerificationToken() {
-  return process.env.NOTION_PRESCRIPTION_GUIDES_WEBHOOK_VERIFICATION_TOKEN ||
-    process.env.NOTION_WEBHOOK_VERIFICATION_TOKEN ||
-    '';
+  return process.env.NOTION_WEBHOOK_VERIFICATION_TOKEN || '';
 }
 
 function safeCompare(firstValue, secondValue) {
@@ -70,12 +68,12 @@ function isNotionWebhookSignatureValid(req) {
   return safeCompare(expectedSignature, signatureHeader);
 }
 
-function isRelevantPrescriptionGuideEvent(body) {
+function isRelevantTemplateEvent(body) {
   if (!HANDLED_EVENT_TYPES.has(body?.type)) {
     return false;
   }
 
-  const configuredDataSourceId = normalizeNotionId(getNotionPrescriptionGuidesConfig().dataSourceId);
+  const configuredDataSourceId = normalizeNotionId(getNotionTemplatesConfig().dataSourceId);
   const entityId = normalizeNotionId(body?.entity?.id);
   const parentDataSourceId = normalizeNotionId(
     body?.data?.parent?.data_source_id ||
@@ -124,14 +122,14 @@ module.exports = async function handler(req, res) {
     });
   }
 
-  if (!isNotionPrescriptionGuidesSyncConfigured()) {
+  if (!isNotionTemplateSyncConfigured()) {
     return res.status(503).json({
       success: false,
-      error: 'Integracao Notion -> Supabase dos guias nao configurada.',
+      error: 'Integracao com Notion nao configurada.',
     });
   }
 
-  if (!isRelevantPrescriptionGuideEvent(req.body)) {
+  if (!isRelevantTemplateEvent(req.body)) {
     return res.status(200).json({
       success: true,
       data: {
@@ -140,7 +138,7 @@ module.exports = async function handler(req, res) {
     });
   }
 
-  const result = await syncNotionPrescriptionGuides();
+  const result = await syncNotionTemplates();
 
   return res.status(200).json({
     success: true,

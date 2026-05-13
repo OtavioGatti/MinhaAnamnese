@@ -1,5 +1,5 @@
-const { ensureUserProfile } = require('../backend/services/profiles');
-const { resolveSupabaseUser } = require('../backend/utils/supabaseAuth');
+const { ensureUserProfile } = require('../services/profiles');
+const { resolveSupabaseUser } = require('../utils/supabaseAuth');
 
 function getProfileUpdatesFromRequest(req) {
   const body = req.body || {};

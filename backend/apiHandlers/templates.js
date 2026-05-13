@@ -1,14 +1,14 @@
-const { listTemplatesForUser } = require('../backend/services/templates');
+const { listTemplatesForUser } = require('../services/templates');
 const {
   createUserTemplate,
   deleteUserTemplate,
   updateUserTemplate,
-} = require('../backend/services/userTemplates');
-const { ensureUserProfile } = require('../backend/services/profiles');
+} = require('../services/userTemplates');
+const { ensureUserProfile } = require('../services/profiles');
 const {
   getAccessTokenFromRequest,
   resolveSupabaseUser,
-} = require('../backend/utils/supabaseAuth');
+} = require('../utils/supabaseAuth');
 
 async function resolveOptionalUser(req) {
   if (!getAccessTokenFromRequest(req)) {

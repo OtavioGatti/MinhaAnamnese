@@ -11,7 +11,7 @@ const SECTION_DEFINITIONS = [
     title: 'Prescrição medicamentosa',
     copyLabel: 'Copiar prescrição',
     copyKey: 'prescription',
-    copyFormatLabel: 'Formato de prescrição',
+    copyHint: 'A cópia é formatada para receituário.',
   },
   {
     key: 'conduct',
@@ -256,8 +256,8 @@ function ProtocolAccordionSection({
 }) {
   const sectionText = getSectionText(guide, definition.key);
   const copyText = definition.copyKey ? getCopyText(guide, definition.copyKey) : sectionText;
-  const showsCopyFormat = definition.key === 'prescription' && Boolean(String(copyText || '').trim());
-  const displayText = showsCopyFormat ? copyText : sectionText;
+  const showsCopyHint = definition.key === 'prescription' && Boolean(String(copyText || '').trim());
+  const displayText = sectionText || copyText;
   const itemCount = countMeaningfulLines(sectionText);
 
   return (
@@ -271,9 +271,6 @@ function ProtocolAccordionSection({
         <span className="protocol-accordion-title">
           <span className="protocol-chevron">{expanded ? '▾' : '▸'}</span>
           {definition.title}
-          {showsCopyFormat && definition.copyFormatLabel ? (
-            <span className="protocol-format-badge">{definition.copyFormatLabel}</span>
-          ) : null}
         </span>
         {itemCount > 0 ? <span className="protocol-section-count">{itemCount} itens</span> : null}
       </button>
@@ -286,15 +283,20 @@ function ProtocolAccordionSection({
             <div className="protocol-section-empty">Campo ainda não preenchido no CMS.</div>
           )}
           {definition.copyLabel ? (
-            <CopyButton
-              text={copyText}
-              copyKey={`${definition.key}-section`}
-              copiedKey={copiedKey}
-              onCopy={onCopy}
-              className="protocol-section-copy"
-            >
-              {definition.copyLabel}
-            </CopyButton>
+            <div className="protocol-section-copy-row">
+              <CopyButton
+                text={copyText}
+                copyKey={`${definition.key}-section`}
+                copiedKey={copiedKey}
+                onCopy={onCopy}
+                className="protocol-section-copy"
+              >
+                {definition.copyLabel}
+              </CopyButton>
+              {showsCopyHint && definition.copyHint ? (
+                <span className="protocol-copy-hint">{definition.copyHint}</span>
+              ) : null}
+            </div>
           ) : null}
         </div>
       ) : null}
