@@ -11,8 +11,10 @@ const healthHandler = require('../api/health');
 const analyticsHandler = require('../api/analytics');
 const createCheckoutHandler = require('../api/create-checkout');
 const prescriptionGuidesHandler = require('../api/prescription-guides');
+const prescriptionGuidesSyncHandler = require('../api/admin/prescription-guides-sync');
 const templatesSyncHandler = require('../api/admin/templates-sync');
 const mercadoPagoWebhookHandler = require('../api/webhook/mercadopago');
+const notionPrescriptionGuidesWebhookHandler = require('../api/webhook/notion/prescription-guides');
 const notionTemplatesWebhookHandler = require('../api/webhook/notion/templates');
 
 const app = express();
@@ -72,8 +74,10 @@ mountRoute('/api/health', healthHandler);
 mountRoute('/api/analytics', analyticsHandler);
 mountRoute('/api/create-checkout', createCheckoutHandler);
 mountRoute('/api/prescription-guides', prescriptionGuidesHandler);
+mountRoute('/api/admin/prescription-guides/sync', prescriptionGuidesSyncHandler);
 mountRoute('/api/admin/templates/sync', templatesSyncHandler);
 mountRoute('/api/webhook/mercadopago', mercadoPagoWebhookHandler);
+mountRoute('/api/webhook/notion/prescription-guides', notionPrescriptionGuidesWebhookHandler);
 mountRoute('/api/webhook/notion/templates', notionTemplatesWebhookHandler);
 
 app.listen(PORT, () => {
