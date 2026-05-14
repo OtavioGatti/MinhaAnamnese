@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { api } from '../apiClient';
 
 const DEFAULT_QUERY = '';
@@ -161,13 +161,6 @@ function getCopyText(guide, key) {
 
 function getSectionText(guide, key) {
   return String(guide?.sections?.[key] || '').trim();
-}
-
-function countMeaningfulLines(text) {
-  return String(text || '')
-    .split(/\r?\n/)
-    .map((line) => line.trim())
-    .filter(Boolean).length;
 }
 
 function normalizeOptionHeading(value) {
@@ -476,7 +469,7 @@ function ProtocolHeaderMeta({ guide }) {
   );
 }
 
-function ProtocolHeader({ guide, copiedKey, onCopy }) {
+function ProtocolHeader({ guide }) {
   const status = getStatusLabel(guide);
 
   return (
@@ -491,21 +484,6 @@ function ProtocolHeader({ guide, copiedKey, onCopy }) {
             </span>
           </div>
         ) : null}
-      </div>
-
-      <div className="protocol-copy-actions">
-        <CopyButton text={getCopyText(guide, 'all')} copyKey="all" copiedKey={copiedKey} onCopy={onCopy}>
-          Copiar tudo
-        </CopyButton>
-        <CopyButton text={getCopyText(guide, 'prescription')} copyKey="prescription-top" copiedKey={copiedKey} onCopy={onCopy}>
-          Copiar prescrição
-        </CopyButton>
-        <CopyButton text={getCopyText(guide, 'conduct')} copyKey="conduct-top" copiedKey={copiedKey} onCopy={onCopy}>
-          Copiar conduta
-        </CopyButton>
-        <CopyButton text={getCopyText(guide, 'orientations')} copyKey="orientations-top" copiedKey={copiedKey} onCopy={onCopy}>
-          Copiar orientações
-        </CopyButton>
       </div>
     </header>
   );
@@ -534,8 +512,6 @@ function ProtocolAccordionSection({
   const prescriptionOptions = definition.key === 'prescription' ? buildPrescriptionOptions(sectionText, copyText) : [];
   const hasPrescriptionOptions = prescriptionOptions.length > 0;
   const displayText = sectionText || copyText;
-  const itemCount = countMeaningfulLines(sectionText);
-  const countLabel = hasPrescriptionOptions ? `${prescriptionOptions.length} opções` : `${itemCount} itens`;
 
   return (
     <section className="protocol-accordion-section">
@@ -549,7 +525,6 @@ function ProtocolAccordionSection({
           <span className="protocol-chevron">{expanded ? '▾' : '▸'}</span>
           {definition.title}
         </span>
-        {hasPrescriptionOptions || itemCount > 0 ? <span className="protocol-section-count">{countLabel}</span> : null}
       </button>
 
       {expanded ? (
@@ -658,10 +633,6 @@ function PrescriptionGuidePage({
   const [loadingDetail, setLoadingDetail] = useState(false);
   const [error, setError] = useState('');
   const [copiedKey, setCopiedKey] = useState('');
-
-  const populatedSectionCount = useMemo(() => (
-    SECTION_DEFINITIONS.filter((section) => getSectionText(selectedGuide, section.key)).length
-  ), [selectedGuide]);
 
   useEffect(() => {
     if (!user?.id || !isPro) {
@@ -805,10 +776,6 @@ function PrescriptionGuidePage({
           <h1>Protocolos por patologia</h1>
           <p>Busque uma condição clínica e copie a prescrição, conduta ou orientação pronta para uso.</p>
         </div>
-        <div className="prescription-guide-summary">
-          <strong>{selectedGuide ? populatedSectionCount : guides.length}</strong>
-          <span>{selectedGuide ? 'seções preenchidas' : 'resultados'}</span>
-        </div>
       </section>
 
       <section className="prescription-guide-grid">
@@ -830,7 +797,7 @@ function PrescriptionGuidePage({
             <div className="prescription-empty">Carregando protocolo...</div>
           ) : selectedGuide ? (
             <>
-              <ProtocolHeader guide={selectedGuide} copiedKey={copiedKey} onCopy={copyText} />
+              <ProtocolHeader guide={selectedGuide} />
               <SafetyNotice />
 
               {selectedGuide.resumoClinico ? (
