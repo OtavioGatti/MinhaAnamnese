@@ -9,6 +9,7 @@ import InsightBlock from './components/InsightBlock';
 import PlanComparisonModal from './components/PlanComparisonModal';
 import ProfilePage from './components/ProfilePage';
 import PrescriptionGuidePage from './components/PrescriptionGuidePage';
+import ReferralLetterCard from './components/ReferralLetterCard';
 import StructuralFeedback from './components/StructuralFeedback';
 import StructuredOutput from './components/StructuredOutput';
 import TemplatesPage from './components/TemplatesPage';
@@ -85,6 +86,24 @@ function sanitizeAnamnesisForDisplay(content) {
   }
 
   return content.trim();
+}
+
+async function copyTextToClipboard(text) {
+  try {
+    if (navigator.clipboard?.writeText) {
+      await navigator.clipboard.writeText(text);
+      return;
+    }
+  } catch {
+    // Fall back to the legacy path below.
+  }
+
+  const textarea = document.createElement('textarea');
+  textarea.value = text;
+  document.body.appendChild(textarea);
+  textarea.select();
+  document.execCommand('copy');
+  document.body.removeChild(textarea);
 }
 
 function saveCheckoutReturnState(state) {
@@ -618,6 +637,12 @@ function App() {
   const [freeInsightConfirmState, setFreeInsightConfirmState] = useState({ open: false, origin: 'home' });
   const [checkoutSuccessBannerVisible, setCheckoutSuccessBannerVisible] = useState(false);
   const [currentInsightsUnlocked, setCurrentInsightsUnlocked] = useState(false);
+  const [referralSpecialty, setReferralSpecialty] = useState('');
+  const [referralReason, setReferralReason] = useState('');
+  const [referralLetter, setReferralLetter] = useState('');
+  const [referralError, setReferralError] = useState('');
+  const [loadingReferralLetter, setLoadingReferralLetter] = useState(false);
+  const [referralCopied, setReferralCopied] = useState(false);
 
   const templateTemCalculadora = templateSelecionado === TEMPLATE_WITH_CALCULATORS;
   const accessState = useMemo(() => deriveAccessState(user, profile), [profile, user]);
@@ -985,6 +1010,30 @@ function App() {
     setTemplateSelecionado(novoTemplate);
     setActiveSidebarTab('guide');
     setCurrentInsightsUnlocked(false);
+    setReferralLetter('');
+    setReferralError('');
+    setReferralCopied(false);
+  };
+
+  const handleTextoChange = (nextText) => {
+    setTexto(nextText);
+    setReferralLetter('');
+    setReferralError('');
+    setReferralCopied(false);
+  };
+
+  const handleReferralSpecialtyChange = (nextSpecialty) => {
+    setReferralSpecialty(nextSpecialty);
+    setReferralLetter('');
+    setReferralError('');
+    setReferralCopied(false);
+  };
+
+  const handleReferralReasonChange = (nextReason) => {
+    setReferralReason(nextReason);
+    setReferralLetter('');
+    setReferralError('');
+    setReferralCopied(false);
   };
 
   const handleNavigate = (page) => {
@@ -1002,6 +1051,9 @@ function App() {
     setTemplateSelecionado(templateId);
     setCurrentPage('home');
     setActiveSidebarTab('guide');
+    setReferralLetter('');
+    setReferralError('');
+    setReferralCopied(false);
 
     window.setTimeout(() => {
       textoInputRef.current?.focus();
@@ -1015,6 +1067,9 @@ function App() {
     setLatestScoreComparison(null);
     setQualityScore(createEmptyQualityScore());
     setCurrentInsightsUnlocked(false);
+    setReferralLetter('');
+    setReferralError('');
+    setReferralCopied(false);
 
     if (!templateSelecionado) {
       setErro('Selecione um modelo clínico para continuar.');
@@ -1062,6 +1117,12 @@ function App() {
     setQualityScore(createEmptyQualityScore());
     setErro('');
     setInsightError('');
+    setReferralSpecialty('');
+    setReferralReason('');
+    setReferralLetter('');
+    setReferralError('');
+    setLoadingReferralLetter(false);
+    setReferralCopied(false);
     setActiveSidebarTab('guide');
     setCurrentInsightsUnlocked(false);
     trackedEventsRef.current.clear();
@@ -1102,18 +1163,77 @@ function App() {
     const textToCopy = displayedResultado || resultado;
 
     try {
-      await navigator.clipboard.writeText(textToCopy);
+      await copyTextToClipboard(textToCopy);
       setCopiado(true);
       setTimeout(() => setCopiado(false), 2000);
     } catch {
-      const textarea = document.createElement('textarea');
-      textarea.value = textToCopy;
-      document.body.appendChild(textarea);
-      textarea.select();
-      document.execCommand('copy');
-      document.body.removeChild(textarea);
-      setCopiado(true);
-      setTimeout(() => setCopiado(false), 2000);
+      setErro('Nao foi possivel copiar o resultado agora.');
+    }
+  };
+
+  const handleGenerateReferralLetter = async () => {
+    const sourceText = texto.trim();
+    const structuredText = (displayedResultado || resultado || '').trim();
+    const specialty = referralSpecialty.trim();
+
+    if (!sourceText) {
+      setReferralError('Preencha a anamnese antes de gerar a carta.');
+      return;
+    }
+
+    if (!specialty) {
+      setReferralError('Informe a especialidade de destino.');
+      return;
+    }
+
+    setReferralError('');
+    setReferralCopied(false);
+    setLoadingReferralLetter(true);
+
+    try {
+      const response = await api.post('/referral-letter', {
+        texto: sourceText,
+        structuredText,
+        specialty,
+        reason: referralReason.trim(),
+      });
+
+      if (response.success) {
+        const nextLetter = response.data?.letter || '';
+        setReferralLetter(nextLetter);
+        trackEvent('carta_encaminhamento_gerada', {
+          specialty,
+          has_structured_result: Boolean(structuredText),
+          text_length: sourceText.length,
+          is_pro: isPro,
+        });
+        return;
+      }
+
+      setReferralError(response.error || 'Nao foi possivel gerar a carta agora.');
+    } catch (err) {
+      setReferralError(err.message || 'Nao foi possivel gerar a carta agora.');
+    } finally {
+      setLoadingReferralLetter(false);
+    }
+  };
+
+  const handleCopyReferralLetter = async () => {
+    if (!referralLetter) {
+      return;
+    }
+
+    try {
+      await copyTextToClipboard(referralLetter);
+      setReferralCopied(true);
+      setTimeout(() => setReferralCopied(false), 2000);
+      trackEvent('carta_encaminhamento_copiada', {
+        specialty: referralSpecialty.trim(),
+        text_length: referralLetter.length,
+        is_pro: isPro,
+      });
+    } catch {
+      setReferralError('Nao foi possivel copiar a carta agora.');
     }
   };
 
@@ -2023,7 +2143,7 @@ function App() {
                 onTemplateChange={handleTemplateChange}
                 loadingTemplates={loadingTemplates}
                 texto={texto}
-                onTextoChange={setTexto}
+                onTextoChange={handleTextoChange}
                 inputRef={textoInputRef}
                 placeholder={textPlaceholder}
                 possuiGuiaSelecionado={possuiGuiaSelecionado}
@@ -2044,6 +2164,20 @@ function App() {
                   onCopiar={handleCopiar}
                 />
               )}
+
+              <ReferralLetterCard
+                specialty={referralSpecialty}
+                reason={referralReason}
+                letter={referralLetter}
+                loading={loadingReferralLetter}
+                error={referralError}
+                copied={referralCopied}
+                onSpecialtyChange={handleReferralSpecialtyChange}
+                onReasonChange={handleReferralReasonChange}
+                onGenerate={handleGenerateReferralLetter}
+                onCopy={handleCopyReferralLetter}
+                onDismissError={() => setReferralError('')}
+              />
 
               {shouldShowFeedback && (
                 <StructuralFeedback

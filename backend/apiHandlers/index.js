@@ -3,6 +3,7 @@ const apiRoutes = {
   '/api/anamneses': require('./anamneses'),
   '/api/organizar': require('./organizar'),
   '/api/insights': require('./insights'),
+  '/api/referral-letter': require('./referral-letter'),
   '/api/profile': require('./profile'),
   '/api/health': require('./health'),
   '/api/analytics': require('./analytics'),

@@ -637,6 +637,10 @@ body {
   order: 2;
 }
 
+.section-referral {
+  order: 3;
+}
+
 .section-feedback {
   order: 4;
 }
@@ -963,6 +967,103 @@ body {
   text-wrap: pretty;
 }
 
+.referral-letter-card {
+  display: grid;
+  gap: 1rem;
+  padding: 1.25rem 1.35rem 1.4rem;
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  border-radius: 20px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.96) 0%, rgba(248, 250, 252, 0.96) 100%);
+  box-shadow: 0 18px 38px rgba(15, 23, 42, 0.06);
+}
+
+.referral-letter-header {
+  margin-bottom: 0;
+}
+
+.referral-letter-header svg {
+  color: var(--primary-600);
+}
+
+.referral-letter-grid {
+  display: grid;
+  grid-template-columns: minmax(180px, 0.85fr) minmax(240px, 1.15fr);
+  gap: 1rem;
+}
+
+.referral-field {
+  margin-bottom: 0;
+}
+
+.referral-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.referral-generate-button {
+  flex: 0 0 auto;
+}
+
+.referral-helper {
+  max-width: 34rem;
+  color: var(--gray-500);
+  font-size: 0.82rem;
+  line-height: 1.45;
+}
+
+.referral-error {
+  margin-top: 0;
+}
+
+.referral-letter-output {
+  display: grid;
+  gap: 0.9rem;
+  padding: 1rem;
+  border: 1px solid rgba(219, 234, 254, 0.9);
+  border-radius: 16px;
+  background: #f8fbff;
+}
+
+.referral-letter-output-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.referral-letter-output-header div {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.referral-letter-output-header strong {
+  color: var(--gray-900);
+  font-size: 0.9rem;
+}
+
+.referral-letter-output-header span {
+  color: var(--gray-500);
+  font-size: 0.8rem;
+}
+
+.referral-letter-text {
+  margin: 0;
+  min-height: 180px;
+  padding: 1.15rem 1.2rem;
+  border: 1px solid rgba(226, 232, 240, 0.95);
+  border-radius: 14px;
+  background: #ffffff;
+  color: var(--gray-900);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 0.95rem;
+  line-height: 1.68;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
 .secondary-toggle {
   width: 100%;
   display: flex;
@@ -1223,6 +1324,7 @@ body {
 }
 
 .input-wrapper select,
+.input-wrapper input,
 .input-wrapper textarea,
 .calculator-field input {
   width: 100%;
@@ -1265,6 +1367,7 @@ body {
 }
 
 .input-wrapper select:focus,
+.input-wrapper input:focus,
 .input-wrapper textarea:focus,
 .calculator-field input:focus {
   outline: none;
@@ -1272,7 +1375,8 @@ body {
   box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.12);
 }
 
-.input-wrapper textarea::placeholder {
+.input-wrapper textarea::placeholder,
+.input-wrapper input::placeholder {
   color: var(--gray-400);
 }
 
@@ -3543,6 +3647,20 @@ body {
 
   .workspace-meta-list {
     grid-template-columns: 1fr;
+  }
+
+  .referral-letter-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .referral-actions,
+  .referral-letter-output-header {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .referral-generate-button {
+    width: 100%;
   }
 
   .insight-reason-grid {
