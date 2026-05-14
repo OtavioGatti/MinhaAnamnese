@@ -59,11 +59,73 @@ function getContextText(guide) {
   return (guide?.contexts || []).filter(Boolean).join(' / ');
 }
 
+function stripListMarker(value) {
+  return String(value || '').replace(/^\s*[-•]\s*/, '').trim();
+}
+
+function parseSimpleListText(value) {
+  const text = String(value || '').trim();
+
+  if (!text) {
+    return [];
+  }
+
+  return text
+    .split(/\r?\n/)
+    .flatMap((line) => {
+      const trimmedLine = line.trim();
+
+      if (!trimmedLine) {
+        return [];
+      }
+
+      if (/^\s*[-•]/.test(trimmedLine) || /\s-\S/.test(trimmedLine)) {
+        return trimmedLine
+          .split(/(?:^|\s)-(?=\S)/)
+          .map(stripListMarker)
+          .filter(Boolean);
+      }
+
+      return [stripListMarker(trimmedLine)];
+    })
+    .filter(Boolean);
+}
+
+function isSimpleListText(value) {
+  const text = String(value || '').trim();
+
+  if (!text) {
+    return false;
+  }
+
+  const lines = text.split(/\r?\n/).map((line) => line.trim()).filter(Boolean);
+
+  if (lines.length < 2) {
+    return /\s-\S/.test(text);
+  }
+
+  return lines.every((line) => /^[-•]\s*/.test(line)) || lines.some((line) => /\s-\S/.test(line));
+}
+
+function getSubconditionItems(guide) {
+  return parseSimpleListText(guide?.subcondition);
+}
+
+function getSidebarSubconditionLabel(guide) {
+  const items = getSubconditionItems(guide);
+
+  if (items.length > 1) {
+    return `${items.length} subcondicoes`;
+  }
+
+  return items[0] || '';
+}
+
 function getGuideMetaParts(guide) {
   return [
     guide?.specialty,
     getContextText(guide),
-    guide?.subcondition,
+    getSidebarSubconditionLabel(guide),
   ].filter(Boolean);
 }
 
@@ -116,7 +178,14 @@ function normalizeOptionHeading(value) {
     .toUpperCase();
 }
 
-function parsePrescriptionOptions(text) {
+function stripOptionHeadingText(line, optionNumber) {
+  return String(line || '')
+    .trim()
+    .replace(new RegExp(`^-?\\s*\\S+\\s+${optionNumber}\\s*[:\\-–—]\\s*`, 'i'), '')
+    .trim();
+}
+
+function parsePrescriptionOptionBlocks(text) {
   const lines = String(text || '').split(/\r?\n/);
   const options = [];
   let currentOption = null;
@@ -124,7 +193,7 @@ function parsePrescriptionOptions(text) {
   lines.forEach((line) => {
     const trimmedLine = line.trim();
     const normalizedLine = normalizeOptionHeading(trimmedLine);
-    const headingMatch = normalizedLine.match(/^OPCAO\s+(\d+)\s*[:\-–—]\s*(.+)$/);
+    const headingMatch = normalizedLine.match(/^-?\s*OPCAO\s+(\d+)\s*[:\-–—]\s*(.+)$/);
 
     if (headingMatch) {
       if (currentOption) {
@@ -134,7 +203,7 @@ function parsePrescriptionOptions(text) {
 
       currentOption = {
         number: headingMatch[1],
-        title: trimmedLine.replace(/^OP[ÇC][ÃA]O\s+\d+\s*[:\-–—]\s*/i, '').trim(),
+        title: stripOptionHeadingText(trimmedLine, headingMatch[1]) || headingMatch[2],
         lines: [],
         text: '',
       };
@@ -152,6 +221,109 @@ function parsePrescriptionOptions(text) {
   }
 
   return options.filter((option) => option.title && option.text);
+}
+
+function normalizeOptionLabel(value) {
+  return String(value || '')
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .trim()
+    .toLowerCase();
+}
+
+function getDecisionFieldKey(label) {
+  const normalizedLabel = normalizeOptionLabel(label);
+
+  if (normalizedLabel === 'quando usar') {
+    return 'whenUse';
+  }
+
+  if (normalizedLabel === 'o que contem') {
+    return 'contents';
+  }
+
+  if (normalizedLabel === 'resumo' || normalizedLabel === 'resumo da prescricao') {
+    return 'summary';
+  }
+
+  return '';
+}
+
+function parseDecisionOption(option) {
+  const fields = {
+    whenUse: '',
+    contents: '',
+    summary: '',
+  };
+  const unstructuredLines = [];
+  let currentField = '';
+
+  option.lines.forEach((line) => {
+    const cleanedLine = stripListMarker(line);
+
+    if (!cleanedLine) {
+      return;
+    }
+
+    const fieldMatch = cleanedLine.match(/^(.{2,80}?):\s*(.*)$/);
+    const fieldKey = fieldMatch ? getDecisionFieldKey(fieldMatch[1]) : '';
+
+    if (fieldKey) {
+      fields[fieldKey] = fieldMatch[2]?.trim() || '';
+      currentField = fieldKey;
+      return;
+    }
+
+    if (currentField) {
+      fields[currentField] = [fields[currentField], cleanedLine].filter(Boolean).join(' ');
+      return;
+    }
+
+    unstructuredLines.push(cleanedLine);
+  });
+
+  return {
+    ...option,
+    ...fields,
+    decisionText: unstructuredLines.join('\n').trim(),
+  };
+}
+
+function getPreviewLines(text, maxLines = 4) {
+  return String(text || '')
+    .split(/\r?\n/)
+    .map((line) => line.trim())
+    .filter(Boolean)
+    .slice(0, maxLines);
+}
+
+function buildPrescriptionOptions(sectionText, copyText) {
+  const copyOptions = parsePrescriptionOptionBlocks(copyText);
+
+  if (!copyOptions.length) {
+    return [];
+  }
+
+  const decisionOptionsByNumber = new Map(
+    parsePrescriptionOptionBlocks(sectionText)
+      .map(parseDecisionOption)
+      .map((option) => [option.number, option])
+  );
+
+  return copyOptions.map((copyOption) => {
+    const decisionOption = decisionOptionsByNumber.get(copyOption.number);
+
+    return {
+      number: copyOption.number,
+      title: decisionOption?.title || copyOption.title || `Opcao ${copyOption.number}`,
+      whenUse: decisionOption?.whenUse || '',
+      contents: decisionOption?.contents || '',
+      summary: decisionOption?.summary || '',
+      decisionText: decisionOption?.decisionText || '',
+      copyText: copyOption.text,
+      previewLines: getPreviewLines(copyOption.text),
+    };
+  });
 }
 
 function getDefaultExpandedSections(guide) {
@@ -248,6 +420,62 @@ function ProtocolSidebar({
   );
 }
 
+function ProtocolSimpleText({ text }) {
+  if (isSimpleListText(text)) {
+    const items = parseSimpleListText(text);
+
+    if (items.length > 1) {
+      return (
+        <ul className="protocol-simple-list">
+          {items.map((item, index) => (
+            <li key={`${item}-${index}`}>{item}</li>
+          ))}
+        </ul>
+      );
+    }
+  }
+
+  return <pre>{text}</pre>;
+}
+
+function ProtocolHeaderMeta({ guide }) {
+  const contexts = guide?.contexts || [];
+  const subconditionItems = getSubconditionItems(guide);
+
+  return (
+    <div className="protocol-header-meta">
+      {guide?.specialty ? (
+        <div className="protocol-meta-group">
+          <span>Especialidade</span>
+          <strong>{guide.specialty}</strong>
+        </div>
+      ) : null}
+
+      {contexts.length > 0 ? (
+        <div className="protocol-meta-group">
+          <span>Contexto</span>
+          <div className="protocol-meta-chips">
+            {contexts.map((context) => (
+              <span className="protocol-meta-chip" key={context}>{context}</span>
+            ))}
+          </div>
+        </div>
+      ) : null}
+
+      {subconditionItems.length > 0 ? (
+        <div className="protocol-meta-group protocol-meta-group-wide">
+          <span>Subcondicoes</span>
+          <div className="protocol-meta-chips">
+            {subconditionItems.map((item) => (
+              <span className="protocol-meta-chip" key={item}>{item}</span>
+            ))}
+          </div>
+        </div>
+      ) : null}
+    </div>
+  );
+}
+
 function ProtocolHeader({ guide, copiedKey, onCopy }) {
   const status = getStatusLabel(guide);
 
@@ -255,7 +483,7 @@ function ProtocolHeader({ guide, copiedKey, onCopy }) {
     <header className="protocol-header">
       <div className="protocol-header-copy">
         <h2>{getGuideTitle(guide)}</h2>
-        <p>{getGuideMetaParts(guide).join(' · ')}</p>
+        <ProtocolHeaderMeta guide={guide} />
         {status ? (
           <div className="protocol-meta-row">
             <span className={`protocol-status-badge ${getRiskClass(guide)}`}>
@@ -303,7 +531,7 @@ function ProtocolAccordionSection({
   const sectionText = getSectionText(guide, definition.key);
   const copyText = definition.copyKey ? getCopyText(guide, definition.copyKey) : sectionText;
   const showsCopyHint = definition.key === 'prescription' && Boolean(String(copyText || '').trim());
-  const prescriptionOptions = definition.key === 'prescription' ? parsePrescriptionOptions(copyText) : [];
+  const prescriptionOptions = definition.key === 'prescription' ? buildPrescriptionOptions(sectionText, copyText) : [];
   const hasPrescriptionOptions = prescriptionOptions.length > 0;
   const displayText = sectionText || copyText;
   const itemCount = countMeaningfulLines(sectionText);
@@ -328,28 +556,66 @@ function ProtocolAccordionSection({
         <div className="protocol-accordion-content">
           {hasPrescriptionOptions ? (
             <div className="protocol-prescription-options">
-              <span className="protocol-copy-hint">Copie apenas a opção correspondente ao caso.</span>
+              <span className="protocol-copy-hint">Escolha o cenario clinico, confira a prescricao e copie somente aquela opcao.</span>
               {prescriptionOptions.map((option) => (
-                <article className="protocol-prescription-option" key={`${definition.key}-${option.number}-${option.title}`}>
-                  <div className="protocol-prescription-option-header">
-                    <span>Opção {option.number}</span>
+                <details className="protocol-prescription-option" key={`${definition.key}-${option.number}-${option.title}`} open={option.number === prescriptionOptions[0]?.number}>
+                  <summary className="protocol-prescription-option-header">
+                    <span>Opcao {option.number}</span>
                     <strong>{option.title}</strong>
+                    <em>Ver prescricao</em>
+                  </summary>
+
+                  {option.whenUse || option.summary || option.contents ? (
+                    <div className="protocol-prescription-decision-grid">
+                      {option.whenUse ? (
+                        <div>
+                          <span>Quando usar</span>
+                          <p>{option.whenUse}</p>
+                        </div>
+                      ) : null}
+                      {option.summary ? (
+                        <div>
+                          <span>Resumo</span>
+                          <p>{option.summary}</p>
+                        </div>
+                      ) : null}
+                      {option.contents ? (
+                        <div>
+                          <span>O que contem</span>
+                          <p>{option.contents}</p>
+                        </div>
+                      ) : null}
+                    </div>
+                  ) : null}
+
+                  {option.decisionText ? <p className="protocol-prescription-note">{option.decisionText}</p> : null}
+
+                  {option.previewLines?.length ? (
+                    <div className="protocol-prescription-preview">
+                      <span>Preview da prescricao</span>
+                      <pre>{option.previewLines.join('\n')}</pre>
+                    </div>
+                  ) : null}
+
+                  <div className="protocol-prescription-full">
+                    <span>Prescricao copiavel</span>
+                    <pre>{option.copyText}</pre>
                   </div>
-                  <pre>{option.text}</pre>
+
                   <CopyButton
-                    text={option.text}
+                    text={option.copyText}
                     copyKey={`${definition.key}-option-${option.number}`}
                     copiedKey={copiedKey}
                     onCopy={onCopy}
-                    className="protocol-section-copy"
+                    className="protocol-section-copy protocol-section-copy-primary"
                   >
-                    Copiar esta opção
+                    Copiar esta prescricao
                   </CopyButton>
-                </article>
+                </details>
               ))}
             </div>
           ) : displayText ? (
-            <pre>{displayText}</pre>
+            <ProtocolSimpleText text={displayText} />
           ) : (
             <div className="protocol-section-empty">Campo ainda não preenchido no CMS.</div>
           )}
