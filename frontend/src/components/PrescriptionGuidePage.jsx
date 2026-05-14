@@ -108,6 +108,52 @@ function countMeaningfulLines(text) {
     .filter(Boolean).length;
 }
 
+function normalizeOptionHeading(value) {
+  return String(value || '')
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .trim()
+    .toUpperCase();
+}
+
+function parsePrescriptionOptions(text) {
+  const lines = String(text || '').split(/\r?\n/);
+  const options = [];
+  let currentOption = null;
+
+  lines.forEach((line) => {
+    const trimmedLine = line.trim();
+    const normalizedLine = normalizeOptionHeading(trimmedLine);
+    const headingMatch = normalizedLine.match(/^OPCAO\s+(\d+)\s*[:\-–—]\s*(.+)$/);
+
+    if (headingMatch) {
+      if (currentOption) {
+        currentOption.text = currentOption.lines.join('\n').trim();
+        options.push(currentOption);
+      }
+
+      currentOption = {
+        number: headingMatch[1],
+        title: trimmedLine.replace(/^OP[ÇC][ÃA]O\s+\d+\s*[:\-–—]\s*/i, '').trim(),
+        lines: [],
+        text: '',
+      };
+      return;
+    }
+
+    if (currentOption) {
+      currentOption.lines.push(line);
+    }
+  });
+
+  if (currentOption) {
+    currentOption.text = currentOption.lines.join('\n').trim();
+    options.push(currentOption);
+  }
+
+  return options.filter((option) => option.title && option.text);
+}
+
 function getDefaultExpandedSections(guide) {
   const defaults = {
     prescription: true,
@@ -257,8 +303,11 @@ function ProtocolAccordionSection({
   const sectionText = getSectionText(guide, definition.key);
   const copyText = definition.copyKey ? getCopyText(guide, definition.copyKey) : sectionText;
   const showsCopyHint = definition.key === 'prescription' && Boolean(String(copyText || '').trim());
+  const prescriptionOptions = definition.key === 'prescription' ? parsePrescriptionOptions(copyText) : [];
+  const hasPrescriptionOptions = prescriptionOptions.length > 0;
   const displayText = sectionText || copyText;
   const itemCount = countMeaningfulLines(sectionText);
+  const countLabel = hasPrescriptionOptions ? `${prescriptionOptions.length} opções` : `${itemCount} itens`;
 
   return (
     <section className="protocol-accordion-section">
@@ -272,12 +321,34 @@ function ProtocolAccordionSection({
           <span className="protocol-chevron">{expanded ? '▾' : '▸'}</span>
           {definition.title}
         </span>
-        {itemCount > 0 ? <span className="protocol-section-count">{itemCount} itens</span> : null}
+        {hasPrescriptionOptions || itemCount > 0 ? <span className="protocol-section-count">{countLabel}</span> : null}
       </button>
 
       {expanded ? (
         <div className="protocol-accordion-content">
-          {displayText ? (
+          {hasPrescriptionOptions ? (
+            <div className="protocol-prescription-options">
+              <span className="protocol-copy-hint">Copie apenas a opção correspondente ao caso.</span>
+              {prescriptionOptions.map((option) => (
+                <article className="protocol-prescription-option" key={`${definition.key}-${option.number}-${option.title}`}>
+                  <div className="protocol-prescription-option-header">
+                    <span>Opção {option.number}</span>
+                    <strong>{option.title}</strong>
+                  </div>
+                  <pre>{option.text}</pre>
+                  <CopyButton
+                    text={option.text}
+                    copyKey={`${definition.key}-option-${option.number}`}
+                    copiedKey={copiedKey}
+                    onCopy={onCopy}
+                    className="protocol-section-copy"
+                  >
+                    Copiar esta opção
+                  </CopyButton>
+                </article>
+              ))}
+            </div>
+          ) : displayText ? (
             <pre>{displayText}</pre>
           ) : (
             <div className="protocol-section-empty">Campo ainda não preenchido no CMS.</div>
@@ -291,9 +362,9 @@ function ProtocolAccordionSection({
                 onCopy={onCopy}
                 className="protocol-section-copy"
               >
-                {definition.copyLabel}
+                {hasPrescriptionOptions ? 'Copiar todas as opções' : definition.copyLabel}
               </CopyButton>
-              {showsCopyHint && definition.copyHint ? (
+              {showsCopyHint && definition.copyHint && !hasPrescriptionOptions ? (
                 <span className="protocol-copy-hint">{definition.copyHint}</span>
               ) : null}
             </div>

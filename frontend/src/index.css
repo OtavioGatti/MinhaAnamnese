@@ -2694,6 +2694,43 @@ body {
   line-height: 1.35;
 }
 
+.protocol-prescription-options {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.protocol-prescription-option {
+  display: grid;
+  gap: 0.75rem;
+  padding: 0.82rem;
+  border: 1px solid var(--gray-200);
+  border-radius: 8px;
+  background: var(--gray-50);
+}
+
+.protocol-prescription-option-header {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.protocol-prescription-option-header span {
+  color: var(--gray-500);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.protocol-prescription-option-header strong {
+  color: var(--gray-900);
+  font-size: 0.88rem;
+  line-height: 1.35;
+}
+
+.protocol-prescription-option .protocol-section-copy {
+  background: #fff;
+}
+
 .protocol-section-copy:disabled {
   opacity: 0.55;
   cursor: not-allowed;
