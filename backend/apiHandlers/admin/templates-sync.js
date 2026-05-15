@@ -47,7 +47,7 @@ module.exports = async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({
       success: false,
-      error: 'Metodo nao permitido',
+      error: 'Método não permitido',
     });
   }
 
@@ -65,21 +65,21 @@ module.exports = async function handler(req, res) {
   if (!getExpectedSyncSecret()) {
     return res.status(503).json({
       success: false,
-      error: 'Sincronizacao de templates nao configurada.',
+      error: 'Sincronização de templates não configurada.',
     });
   }
 
   if (!isAuthorizedSyncRequest(req)) {
     return res.status(401).json({
       success: false,
-      error: 'Acesso nao autorizado.',
+      error: 'Acesso não autorizado.',
     });
   }
 
   if (!isNotionTemplateSyncConfigured()) {
     return res.status(503).json({
       success: false,
-      error: 'Integracao com Notion nao configurada.',
+      error: 'Integração com Notion não configurada.',
     });
   }
 

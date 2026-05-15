@@ -308,7 +308,7 @@ function buildPrescriptionOptions(sectionText, copyText) {
 
     return {
       number: copyOption.number,
-      title: decisionOption?.title || copyOption.title || `Opcao ${copyOption.number}`,
+      title: decisionOption?.title || copyOption.title || `Opção ${copyOption.number}`,
       whenUse: decisionOption?.whenUse || '',
       contents: decisionOption?.contents || '',
       summary: decisionOption?.summary || '',
@@ -531,13 +531,13 @@ function ProtocolAccordionSection({
         <div className="protocol-accordion-content">
           {hasPrescriptionOptions ? (
             <div className="protocol-prescription-options">
-              <span className="protocol-copy-hint">Escolha o cenario clinico, confira a prescricao e copie somente aquela opcao.</span>
+              <span className="protocol-copy-hint">Escolha o cenário clínico, confira a prescrição e copie somente aquela opção.</span>
               {prescriptionOptions.map((option) => (
                 <details className="protocol-prescription-option" key={`${definition.key}-${option.number}-${option.title}`} open={option.number === prescriptionOptions[0]?.number}>
                   <summary className="protocol-prescription-option-header">
-                    <span>Opcao {option.number}</span>
+                    <span>Opção {option.number}</span>
                     <strong>{option.title}</strong>
-                    <em>Ver prescricao</em>
+                    <em>Ver prescrição</em>
                   </summary>
 
                   {option.whenUse || option.summary || option.contents ? (
@@ -556,7 +556,7 @@ function ProtocolAccordionSection({
                       ) : null}
                       {option.contents ? (
                         <div>
-                          <span>O que contem</span>
+                          <span>O que contém</span>
                           <p>{option.contents}</p>
                         </div>
                       ) : null}
@@ -567,13 +567,13 @@ function ProtocolAccordionSection({
 
                   {option.previewLines?.length ? (
                     <div className="protocol-prescription-preview">
-                      <span>Preview da prescricao</span>
+                      <span>Preview da prescrição</span>
                       <pre>{option.previewLines.join('\n')}</pre>
                     </div>
                   ) : null}
 
                   <div className="protocol-prescription-full">
-                    <span>Prescricao copiavel</span>
+                    <span>Prescrição copiável</span>
                     <pre>{option.copyText}</pre>
                   </div>
 
@@ -584,7 +584,7 @@ function ProtocolAccordionSection({
                     onCopy={onCopy}
                     className="protocol-section-copy protocol-section-copy-primary"
                   >
-                    Copiar esta prescricao
+                    Copiar esta prescrição
                   </CopyButton>
                 </details>
               ))}
@@ -795,7 +795,7 @@ function PrescriptionGuidePage({
         <div>
           <span className="workspace-kicker">Guia de Prescrição</span>
           <h1>Protocolos por patologia</h1>
-          {trialCounter ? <p className="protocol-copy-hint">{trialCounter}. A lista nao consome limite; o uso conta quando voce abre um protocolo.</p> : null}
+          {trialCounter ? <p className="protocol-copy-hint">{trialCounter}. A lista não consome limite; o uso conta quando você abre um protocolo.</p> : null}
           {accessState?.isTrialAccess && trialRemaining === 0 ? (
             <button type="button" className="btn btn-primario prescription-access-action" onClick={onRequestUpgrade} disabled={loadingCheckout}>
               {loadingCheckout ? 'Abrindo checkout...' : 'Assinar Pro'}

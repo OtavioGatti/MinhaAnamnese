@@ -34,12 +34,12 @@ function PlanComparisonModal({ open, loading, isTrialAccess, onClose, onConfirm 
 
         <div className="plan-comparison-grid">
           <section className="plan-comparison-column">
-            <span className="plan-comparison-badge basic">Plano basico</span>
+            <span className="plan-comparison-badge basic">Plano básico</span>
             <h3>Para organizar rapidamente</h3>
             <ul>
-              <li>organiza a anamnese em formato clinico</li>
-              <li>mantem modelos oficiais no fluxo principal</li>
-              <li>preserva seus dados e preferencias basicas</li>
+              <li>organiza a anamnese em formato clínico</li>
+              <li>mantém modelos oficiais no fluxo principal</li>
+              <li>preserva seus dados e preferências básicas</li>
               <li>ideal para uso pontual sem recursos de IA pagos</li>
             </ul>
           </section>
@@ -54,27 +54,27 @@ function PlanComparisonModal({ open, loading, isTrialAccess, onClose, onConfirm 
             </div>
             <h3>Para usar o workspace completo</h3>
             <ul>
-              <li>avaliacao completa de anamneses</li>
+              <li>avaliação completa de anamneses</li>
               <li>cartas de encaminhamento com IA</li>
-              <li>guias de prescricao por patologia</li>
-              <li>templates proprios para sua rotina</li>
-              <li>historico da sua evolucao</li>
+              <li>guias de prescrição por patologia</li>
+              <li>templates próprios para sua rotina</li>
+              <li>histórico da sua evolução</li>
             </ul>
           </section>
         </div>
 
         <div className="plan-comparison-highlight">
-          O teste profissional libera uma amostra real do fluxo completo; a assinatura mantem esse acesso sem os limites do teste.
+          O teste profissional libera uma amostra real do fluxo completo; a assinatura mantém esse acesso sem os limites do teste.
         </div>
 
         <div className="plan-comparison-reassurance">
           <strong>Por que costuma valer a pena?</strong>
-          <span>Um unico caso melhor revisado ja pode economizar tempo, reduzir retrabalho e mostrar exatamente o que perguntar melhor na proxima coleta.</span>
+          <span>Um único caso melhor revisado já pode economizar tempo, reduzir retrabalho e mostrar exatamente o que perguntar melhor na próxima coleta.</span>
         </div>
 
         <div className="app-modal-actions">
           <button type="button" className="btn btn-secundario" onClick={onClose}>
-            Ainda nao
+            Ainda não
           </button>
           <button type="button" className="btn btn-primario" onClick={onConfirm} disabled={loading}>
             {loading ? 'Abrindo checkout...' : isTrialAccess ? `Assinar por ${PLAN_PRICE_COPY}` : `Continuar por ${PLAN_PRICE_COPY}`}

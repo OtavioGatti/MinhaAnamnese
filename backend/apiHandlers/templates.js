@@ -110,7 +110,7 @@ module.exports = async function handler(req, res) {
 
         return res.status(trialError.statusCode).json({
           success: false,
-          error: 'Voce ja criou 2 templates durante o teste profissional. Assine para criar mais templates.',
+          error: 'Você já criou 2 templates durante o teste profissional. Assine para criar mais templates.',
           code: 'TEMPLATES_TRIAL_LIMIT_REACHED',
           data: {
             paywall: true,

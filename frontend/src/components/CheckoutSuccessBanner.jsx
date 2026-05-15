@@ -26,25 +26,25 @@ function CheckoutSuccessBanner({
       <div className="checkout-success-copy">
         <span className="workspace-kicker">Pagamento aprovado</span>
         <h2>Plano profissional ativado com sucesso</h2>
-        <p>Sua conta ja esta com acesso completo liberado.</p>
+        <p>Sua conta já está com acesso completo liberado.</p>
 
         <ul className="checkout-success-list">
-          <li>analise completa dos casos</li>
+          <li>análise completa dos casos</li>
           <li>encaminhamentos com IA</li>
-          <li>protocolos de prescricao e templates proprios</li>
-          <li>{expiryLabel ? `acesso profissional garantido ate ${expiryLabel}` : 'acesso profissional por 30 dias'}</li>
+          <li>protocolos de prescrição e templates próprios</li>
+          <li>{expiryLabel ? `acesso profissional garantido até ${expiryLabel}` : 'acesso profissional por 30 dias'}</li>
         </ul>
 
         {isExpiringSoon ? (
           <div className="checkout-success-note">
-            Seu acesso profissional termina em breve. Renove a tempo para continuar com analise completa e recursos Pro sem interrupcoes.
+            Seu acesso profissional termina em breve. Renove a tempo para continuar com análise completa e recursos Pro sem interrupções.
           </div>
         ) : null}
       </div>
 
       <div className="checkout-success-actions">
         <button type="button" className="btn btn-primario" onClick={onViewAnalysis}>
-          Ver minha analise completa
+          Ver minha análise completa
         </button>
         <button type="button" className="btn btn-secundario" onClick={onGoProfile}>
           Ir para Perfil

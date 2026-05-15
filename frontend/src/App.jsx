@@ -294,9 +294,9 @@ function getPaywallUiConfig(user, accessState) {
     return {
       title: 'Crie sua conta para testar o Profissional',
       description:
-        `Seu resultado estruturado ja esta pronto. Entre para iniciar ${TRIAL_DAYS_COPY} de teste profissional com avaliacoes, encaminhamentos e guias.`,
+        `Seu resultado estruturado já está pronto. Entre para iniciar ${TRIAL_DAYS_COPY} de teste profissional com avaliações, encaminhamentos e guias.`,
       buttonLabel: 'Entrar para testar',
-      highlights: ['Avaliacao completa', 'Encaminhamentos com IA', 'Guias de prescricao'],
+      highlights: ['Avaliação completa', 'Encaminhamentos com IA', 'Guias de prescrição'],
     };
   }
 
@@ -304,9 +304,9 @@ function getPaywallUiConfig(user, accessState) {
     if (accessState?.isTrialAccess) {
       return {
         title: 'Teste profissional ativo',
-        description: `Voce esta testando o Profissional por ${TRIAL_DAYS_COPY}. Use suas avaliacoes do teste para ver lacunas, impacto e proximo passo clinico.`,
-        buttonLabel: 'Gerar analise do teste',
-        highlights: ['Avaliacao completa', 'Encaminhamentos com IA', 'Guias e templates Pro'],
+        description: `Você está testando o Profissional por ${TRIAL_DAYS_COPY}. Use suas avaliações do teste para ver lacunas, impacto e próximo passo clínico.`,
+        buttonLabel: 'Gerar análise do teste',
+        highlights: ['Avaliação completa', 'Encaminhamentos com IA', 'Guias e templates Pro'],
       };
     }
 
@@ -322,18 +322,18 @@ function getPaywallUiConfig(user, accessState) {
     return {
       title: accessState?.isTrialExpired ? 'Seu teste profissional terminou' : 'Seu acesso profissional expirou',
       description:
-        `A organizacao basica continua liberada. Assine por ${PRO_PLAN_PRICE_COPY} para usar avaliacoes completas, encaminhamentos e prescricoes por ${PRO_PLAN_PERIOD_COPY}.`,
+        `A organização básica continua liberada. Assine por ${PRO_PLAN_PRICE_COPY} para usar avaliações completas, encaminhamentos e prescrições por ${PRO_PLAN_PERIOD_COPY}.`,
       buttonLabel: `Assinar por ${PRO_PLAN_PRICE_COPY}`,
-      highlights: ['Avaliacoes completas', 'Encaminhamentos com IA', `Acesso por ${PRO_PLAN_PERIOD_COPY}`],
+      highlights: ['Avaliações completas', 'Encaminhamentos com IA', `Acesso por ${PRO_PLAN_PERIOD_COPY}`],
     };
   }
 
   return {
     title: 'Desbloqueie o Plano Profissional',
     description:
-      `Sua anamnese ja esta organizada. Assine por ${PRO_PLAN_PRICE_COPY} para usar avaliacoes completas, encaminhamentos, guias de prescricao e templates proprios.`,
+      `Sua anamnese já está organizada. Assine por ${PRO_PLAN_PRICE_COPY} para usar avaliações completas, encaminhamentos, guias de prescrição e templates próprios.`,
     buttonLabel: `Assinar por ${PRO_PLAN_PRICE_COPY}`,
-    highlights: ['Avaliacoes completas', 'Cartas de encaminhamento', `${PRO_PLAN_PRICE_COPY} por ${PRO_PLAN_PERIOD_COPY}`],
+    highlights: ['Avaliações completas', 'Cartas de encaminhamento', `${PRO_PLAN_PRICE_COPY} por ${PRO_PLAN_PERIOD_COPY}`],
   };
 }
 
@@ -1234,7 +1234,7 @@ function App() {
       setCopiado(true);
       setTimeout(() => setCopiado(false), 2000);
     } catch {
-      setErro('Nao foi possivel copiar o resultado agora.');
+      setErro('Não foi possível copiar o resultado agora.');
     }
   };
 
@@ -1295,9 +1295,9 @@ function App() {
       if (response.data?.profile) {
         setProfile(response.data.profile);
       }
-      setReferralError(response.error || 'Nao foi possivel gerar a carta agora.');
+      setReferralError(response.error || 'Não foi possível gerar a carta agora.');
     } catch (err) {
-      setReferralError(err.message || 'Nao foi possivel gerar a carta agora.');
+      setReferralError(err.message || 'Não foi possível gerar a carta agora.');
     } finally {
       setLoadingReferralLetter(false);
     }
@@ -1318,7 +1318,7 @@ function App() {
         is_pro: isPro,
       });
     } catch {
-      setReferralError('Nao foi possivel copiar a carta agora.');
+      setReferralError('Não foi possível copiar a carta agora.');
     }
   };
 

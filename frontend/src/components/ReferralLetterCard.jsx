@@ -10,7 +10,7 @@ function getReferralAccessCopy({ user, accessState, remainingTrialUses }) {
   if (accessState?.isTrialAccess && remainingTrialUses === 0) {
     return {
       title: 'Limite do teste atingido',
-      description: 'Voce usou os 5 encaminhamentos do teste profissional. Assine para continuar gerando cartas.',
+      description: 'Você usou os 5 encaminhamentos do teste profissional. Assine para continuar gerando cartas.',
       buttonLabel: 'Assinar Pro',
     };
   }
@@ -18,7 +18,7 @@ function getReferralAccessCopy({ user, accessState, remainingTrialUses }) {
   if (!accessState?.hasActiveProAccess) {
     return {
       title: accessState?.isTrialExpired ? 'Teste profissional encerrado' : 'Recurso do Plano Profissional',
-      description: 'Cartas de encaminhamento usam IA e ficam disponiveis no Profissional.',
+      description: 'Cartas de encaminhamento usam IA e ficam disponíveis no Profissional.',
       buttonLabel: 'Assinar Pro',
     };
   }
@@ -65,7 +65,7 @@ function ReferralLetterCard({
         <div>
           <h2>Carta de encaminhamento</h2>
           <p className="card-subtitle">
-            {'O texto considera a historia clinica e prioriza dados relevantes para a especialidade escolhida.'}
+            {'O texto considera a história clínica e prioriza dados relevantes para a especialidade escolhida.'}
           </p>
         </div>
       </div>
@@ -97,7 +97,7 @@ function ReferralLetterCard({
               type="text"
               value={reason}
               onChange={(event) => onReasonChange(event.target.value)}
-              placeholder="Ex: otorragia, perda auditiva, cefaleia refrataria"
+              placeholder="Ex: otorragia, perda auditiva, cefaleia refratária"
               disabled={loading}
             />
           </div>
@@ -137,7 +137,7 @@ function ReferralLetterCard({
           )}
         </button>
         <span className="referral-helper">
-          {'Use o motivo para orientar o recorte clinico quando a anamnese tiver muitas informacoes.'}
+          {'Use o motivo para orientar o recorte clínico quando a anamnese tiver muitas informações.'}
         </span>
       </div>
 
@@ -168,7 +168,7 @@ function ReferralLetterCard({
           <div className="referral-letter-output-header">
             <div>
               <strong>Carta pronta para revisar</strong>
-              <span>{'A copia mantem o formato abaixo.'}</span>
+              <span>{'A cópia mantém o formato abaixo.'}</span>
             </div>
             <button
               type="button"

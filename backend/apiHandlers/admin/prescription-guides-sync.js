@@ -52,7 +52,7 @@ module.exports = async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({
       success: false,
-      error: 'Metodo nao permitido',
+      error: 'Método não permitido',
     });
   }
 
@@ -70,21 +70,21 @@ module.exports = async function handler(req, res) {
   if (!getExpectedSyncSecret()) {
     return res.status(503).json({
       success: false,
-      error: 'Sincronizacao de guias de prescricao nao configurada.',
+      error: 'Sincronização de guias de prescrição não configurada.',
     });
   }
 
   if (!isAuthorizedSyncRequest(req)) {
     return res.status(401).json({
       success: false,
-      error: 'Acesso nao autorizado.',
+      error: 'Acesso não autorizado.',
     });
   }
 
   if (!isNotionPrescriptionGuidesSyncConfigured()) {
     return res.status(503).json({
       success: false,
-      error: 'Integracao Notion -> Supabase dos guias nao configurada.',
+      error: 'Integração Notion -> Supabase dos guias não configurada.',
     });
   }
 

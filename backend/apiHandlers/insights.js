@@ -22,10 +22,10 @@ function buildPaywallResponse(profile, reason) {
   return {
     success: false,
     error: isTrialLimit
-      ? 'Voce usou as 5 avaliacoes completas do teste profissional. Assine para continuar avaliando anamneses.'
+      ? 'Você usou as 5 avaliações completas do teste profissional. Assine para continuar avaliando anamneses.'
       : isExpired
-        ? 'Seu acesso profissional expirou. Reative o plano para continuar vendo a analise completa.'
-        : 'Seu resultado estruturado ja esta pronto. Assine o plano profissional para ver lacunas, impacto e proximo passo clinico.',
+        ? 'Seu acesso profissional expirou. Reative o plano para continuar vendo a análise completa.'
+        : 'Seu resultado estruturado já está pronto. Assine o plano profissional para ver lacunas, impacto e próximo passo clínico.',
     code: 'INSIGHTS_PAYWALL',
     data: {
       paywall: true,
@@ -40,7 +40,7 @@ module.exports = async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({
       success: false,
-      error: 'Metodo nao permitido',
+      error: 'Método não permitido',
     });
   }
 

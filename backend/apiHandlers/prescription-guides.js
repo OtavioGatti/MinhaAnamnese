@@ -26,8 +26,8 @@ function buildPaywallResponse(profile, reason = 'pro_required') {
   return {
     success: false,
     error: isTrialLimit
-      ? 'Voce abriu os 5 guias de prescricao do teste profissional. Assine para continuar consultando protocolos.'
-      : 'O Guia de Prescricao esta disponivel no plano profissional.',
+      ? 'Você abriu os 5 guias de prescrição do teste profissional. Assine para continuar consultando protocolos.'
+      : 'O Guia de Prescrição está disponível no plano profissional.',
     code: 'PRESCRIPTION_GUIDES_PRO_REQUIRED',
     data: {
       paywall: true,
@@ -42,7 +42,7 @@ module.exports = async function handler(req, res) {
   if (req.method !== 'GET') {
     return res.status(405).json({
       success: false,
-      error: 'Metodo nao permitido',
+      error: 'Método não permitido',
     });
   }
 
@@ -86,7 +86,7 @@ module.exports = async function handler(req, res) {
       if (!guide) {
         return res.status(404).json({
           success: false,
-          error: 'Guia de prescricao nao encontrado.',
+          error: 'Guia de prescrição não encontrado.',
         });
       }
 
@@ -131,7 +131,7 @@ module.exports = async function handler(req, res) {
       success: false,
       error: error.statusCode && error.statusCode < 500
         ? error.message
-        : 'Nao foi possivel carregar o Guia de Prescricao agora.',
+        : 'Não foi possível carregar o Guia de Prescrição agora.',
     });
   }
 };

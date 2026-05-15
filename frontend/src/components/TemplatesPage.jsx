@@ -154,7 +154,7 @@ function TemplatesPage({
     }
 
     if (!template && !canCreateTemplate) {
-      setTemplateError('Voce ja criou 2 templates durante o teste profissional. Assine para criar mais templates.');
+      setTemplateError('Você já criou 2 templates durante o teste profissional. Assine para criar mais templates.');
       onRequestUpgrade?.();
       return;
     }
@@ -199,7 +199,7 @@ function TemplatesPage({
     }
 
     if (!formState.id && !canCreateTemplate) {
-      setTemplateError('Voce ja criou 2 templates durante o teste profissional. Assine para criar mais templates.');
+      setTemplateError('Você já criou 2 templates durante o teste profissional. Assine para criar mais templates.');
       onRequestUpgrade?.();
       return;
     }

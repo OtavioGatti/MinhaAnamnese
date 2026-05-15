@@ -22,7 +22,7 @@ function buildPaywallResponse(profile, reason) {
   return {
     success: false,
     error: isTrialLimit
-      ? 'Voce usou os 5 encaminhamentos do teste profissional. Assine para continuar gerando cartas.'
+      ? 'Você usou os 5 encaminhamentos do teste profissional. Assine para continuar gerando cartas.'
       : isExpired
         ? 'Seu acesso profissional expirou. Reative o plano para gerar cartas de encaminhamento.'
         : 'Cartas de encaminhamento com IA fazem parte do plano profissional.',
@@ -40,7 +40,7 @@ module.exports = async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({
       success: false,
-      error: 'Metodo nao permitido',
+      error: 'Método não permitido',
     });
   }
 

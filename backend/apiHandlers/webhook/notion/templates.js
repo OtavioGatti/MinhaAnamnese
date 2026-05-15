@@ -95,7 +95,7 @@ module.exports = async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({
       success: false,
-      error: 'Metodo nao permitido',
+      error: 'Método não permitido',
     });
   }
 
@@ -111,7 +111,7 @@ module.exports = async function handler(req, res) {
   if (!getNotionWebhookVerificationToken()) {
     return res.status(503).json({
       success: false,
-      error: 'Webhook do Notion nao configurado.',
+      error: 'Webhook do Notion não configurado.',
     });
   }
 
@@ -125,7 +125,7 @@ module.exports = async function handler(req, res) {
   if (!isNotionTemplateSyncConfigured()) {
     return res.status(503).json({
       success: false,
-      error: 'Integracao com Notion nao configurada.',
+      error: 'Integração com Notion não configurada.',
     });
   }
 
