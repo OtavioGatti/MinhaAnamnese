@@ -6,6 +6,11 @@ const {
 } = require('../services/userTemplates');
 const { ensureUserProfile } = require('../services/profiles');
 const {
+  buildTrialLimitError,
+  ensureTrialFeatureAccess,
+  recordTrialUsage,
+} = require('../services/trialUsage');
+const {
   getAccessTokenFromRequest,
   resolveSupabaseUser,
 } = require('../utils/supabaseAuth');
@@ -56,7 +61,10 @@ async function requireProUser(req, res) {
     return null;
   }
 
-  return user;
+  return {
+    user,
+    profile,
+  };
 }
 
 function getTemplateIdFromRequest(req) {
@@ -84,22 +92,65 @@ module.exports = async function handler(req, res) {
     }
 
     if (req.method === 'POST') {
-      const user = await requireProUser(req, res);
+      const access = await requireProUser(req, res);
 
-      if (!user) {
+      if (!access) {
         return null;
+      }
+
+      const trialAccess = await ensureTrialFeatureAccess({
+        userId: access.user.id,
+        profile: access.profile,
+        feature: 'userTemplates',
+      });
+
+      if (!trialAccess.allowed) {
+        const trialError = buildTrialLimitError('userTemplates', trialAccess.usage);
+        const nextProfile = await ensureUserProfile(access.user).catch(() => access.profile);
+
+        return res.status(trialError.statusCode).json({
+          success: false,
+          error: 'Voce ja criou 2 templates durante o teste profissional. Assine para criar mais templates.',
+          code: 'TEMPLATES_TRIAL_LIMIT_REACHED',
+          data: {
+            paywall: true,
+            reason: 'trial_limit_reached',
+            profile: nextProfile,
+            accessState: nextProfile?.access_state || null,
+          },
+        });
+      }
+
+      const template = await createUserTemplate(access.user.id, req.body);
+      let nextProfile = access.profile;
+
+      if (access.profile?.access_state?.isTrialAccess) {
+        await recordTrialUsage({
+          userId: access.user.id,
+          profile: access.profile,
+          feature: 'userTemplates',
+          resourceKey: template?.id,
+          metadata: {
+            templateName: template?.nome || template?.name || null,
+          },
+        }).catch(() => null);
+        nextProfile = await ensureUserProfile(access.user).catch(() => access.profile);
       }
 
       return res.status(201).json({
         success: true,
-        data: await createUserTemplate(user.id, req.body),
+        data: {
+          template,
+          profile: nextProfile,
+          accessState: nextProfile?.access_state || null,
+        },
       });
     }
 
     if (req.method === 'PUT' || req.method === 'PATCH') {
-      const user = await requireProUser(req, res);
+      const access = await requireProUser(req, res);
 
-      if (!user) {
+      if (!access) {
         return null;
       }
 
@@ -107,18 +158,18 @@ module.exports = async function handler(req, res) {
 
       return res.status(200).json({
         success: true,
-        data: await updateUserTemplate(user.id, templateId, req.body),
+        data: await updateUserTemplate(access.user.id, templateId, req.body),
       });
     }
 
     if (req.method === 'DELETE') {
-      const user = await requireProUser(req, res);
+      const access = await requireProUser(req, res);
 
-      if (!user) {
+      if (!access) {
         return null;
       }
 
-      await deleteUserTemplate(user.id, getTemplateIdFromRequest(req));
+      await deleteUserTemplate(access.user.id, getTemplateIdFromRequest(req));
 
       return res.status(200).json({
         success: true,

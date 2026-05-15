@@ -15,6 +15,7 @@ alter table public.profiles
   add column if not exists default_contextual_tab text not null default 'guide',
   add column if not exists billing_status text not null default 'inactive',
   add column if not exists plan_expires_at timestamptz,
+  add column if not exists access_source text not null default 'none',
   add column if not exists free_full_insights_used_count integer not null default 0,
   add column if not exists trial_started_at timestamptz,
   add column if not exists last_payment_id text,
@@ -31,6 +32,9 @@ alter table public.profiles
   alter column billing_status set default 'inactive';
 
 alter table public.profiles
+  alter column access_source set default 'none';
+
+alter table public.profiles
   alter column free_full_insights_used_count set default 0;
 
 update public.profiles
@@ -40,6 +44,15 @@ where billing_status is null;
 update public.profiles
 set free_full_insights_used_count = 0
 where free_full_insights_used_count is null;
+
+update public.profiles
+set access_source = case
+  when current_plan = 'pro' and billing_status = 'active' and last_payment_id is not null then 'paid'
+  when current_plan = 'pro' and billing_status = 'active' and trial_started_at is not null then 'trial'
+  else 'none'
+end
+where access_source is null
+   or access_source not in ('none', 'trial', 'paid', 'legacy');
 
 do $$
 begin
@@ -71,6 +84,16 @@ begin
     alter table public.profiles
       add constraint profiles_billing_status_check
       check (billing_status in ('inactive', 'active', 'expired'));
+  end if;
+
+  if not exists (
+    select 1
+    from pg_constraint
+    where conname = 'profiles_access_source_check'
+  ) then
+    alter table public.profiles
+      add constraint profiles_access_source_check
+      check (access_source in ('none', 'trial', 'paid', 'legacy'));
   end if;
 
   if not exists (

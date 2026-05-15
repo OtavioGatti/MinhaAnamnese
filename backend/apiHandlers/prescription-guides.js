@@ -3,6 +3,11 @@ const {
   getPrescriptionGuideBySlug,
   listPrescriptionGuides,
 } = require('../services/prescriptionGuides');
+const {
+  buildTrialLimitError,
+  ensureTrialFeatureAccess,
+  recordTrialUsage,
+} = require('../services/trialUsage');
 const { resolveSupabaseUser } = require('../utils/supabaseAuth');
 
 function getQueryParam(req, name) {
@@ -14,15 +19,21 @@ function getQueryParam(req, name) {
   return url.searchParams.get(name) || '';
 }
 
-function buildPaywallResponse(profile) {
+function buildPaywallResponse(profile, reason = 'pro_required') {
+  const accessState = profile?.access_state || null;
+  const isTrialLimit = reason === 'trial_limit_reached';
+
   return {
     success: false,
-    error: 'O Guia de Prescrição está disponível no plano profissional.',
+    error: isTrialLimit
+      ? 'Voce abriu os 5 guias de prescricao do teste profissional. Assine para continuar consultando protocolos.'
+      : 'O Guia de Prescricao esta disponivel no plano profissional.',
     code: 'PRESCRIPTION_GUIDES_PRO_REQUIRED',
     data: {
       paywall: true,
+      reason,
       profile,
-      accessState: profile?.access_state || null,
+      accessState,
     },
   };
 }
@@ -31,7 +42,7 @@ module.exports = async function handler(req, res) {
   if (req.method !== 'GET') {
     return res.status(405).json({
       success: false,
-      error: 'Método não permitido',
+      error: 'Metodo nao permitido',
     });
   }
 
@@ -54,18 +65,53 @@ module.exports = async function handler(req, res) {
     const slug = getQueryParam(req, 'slug');
 
     if (slug) {
+      const trialAccess = await ensureTrialFeatureAccess({
+        userId: auth.user.id,
+        profile,
+        feature: 'prescriptionGuides',
+        resourceKey: slug,
+      });
+
+      if (!trialAccess.allowed) {
+        const trialError = buildTrialLimitError('prescriptionGuides', trialAccess.usage);
+        const nextProfile = await ensureUserProfile(auth.user).catch(() => profile);
+
+        return res
+          .status(trialError.statusCode)
+          .json(buildPaywallResponse(nextProfile, 'trial_limit_reached'));
+      }
+
       const guide = await getPrescriptionGuideBySlug(slug);
 
       if (!guide) {
         return res.status(404).json({
           success: false,
-          error: 'Guia de prescrição não encontrado.',
+          error: 'Guia de prescricao nao encontrado.',
         });
+      }
+
+      let nextProfile = profile;
+
+      if (profile?.access_state?.isTrialAccess) {
+        await recordTrialUsage({
+          userId: auth.user.id,
+          profile,
+          feature: 'prescriptionGuides',
+          resourceKey: slug,
+          metadata: {
+            title: guide.title,
+          },
+        }).catch(() => null);
+        nextProfile = await ensureUserProfile(auth.user).catch(() => profile);
       }
 
       return res.status(200).json({
         success: true,
-        data: guide,
+        data: {
+          guide,
+          profile: nextProfile,
+          accessState: nextProfile?.access_state || null,
+        },
       });
     }
 
@@ -85,7 +131,7 @@ module.exports = async function handler(req, res) {
       success: false,
       error: error.statusCode && error.statusCode < 500
         ? error.message
-        : 'Não foi possível carregar o Guia de Prescrição agora.',
+        : 'Nao foi possivel carregar o Guia de Prescricao agora.',
     });
   }
 };

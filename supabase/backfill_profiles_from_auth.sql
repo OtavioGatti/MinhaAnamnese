@@ -9,6 +9,7 @@ insert into public.profiles (
   email,
   current_plan,
   billing_status,
+  access_source,
   free_full_insights_used_count,
   default_contextual_tab,
   created_at,
@@ -25,6 +26,10 @@ select
     when users.raw_user_meta_data->>'plan' = 'pro' then 'active'
     else 'inactive'
   end as billing_status,
+  case
+    when users.raw_user_meta_data->>'plan' = 'pro' then 'legacy'
+    else 'none'
+  end as access_source,
   0 as free_full_insights_used_count,
   'guide' as default_contextual_tab,
   timezone('utc', now()) as created_at,

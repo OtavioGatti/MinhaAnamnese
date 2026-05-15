@@ -6,6 +6,10 @@ function normalizeBillingStatus(value) {
   return ['inactive', 'active', 'expired'].includes(value) ? value : 'inactive';
 }
 
+function normalizeAccessSource(value) {
+  return ['none', 'trial', 'paid', 'legacy'].includes(value) ? value : 'none';
+}
+
 function normalizeFreeInsightsCount(value) {
   const parsed = Number.parseInt(value, 10);
   return Number.isFinite(parsed) && parsed > 0 ? parsed : 0;
@@ -51,6 +55,7 @@ function shouldUseLegacyMetadataFallback(user, profile) {
 function resolveUserAccessState({ user, profile }) {
   const normalizedCurrentPlan = normalizePlan(profile?.current_plan);
   const normalizedBillingStatus = normalizeBillingStatus(profile?.billing_status);
+  const normalizedAccessSource = normalizeAccessSource(profile?.access_source);
   const normalizedPlanExpiresAt = normalizePlanExpiresAt(profile?.plan_expires_at);
   const freeFullInsightsUsedCount = normalizeFreeInsightsCount(profile?.free_full_insights_used_count);
   const expiredByDate = isPlanExpired(normalizedPlanExpiresAt);
@@ -63,14 +68,30 @@ function resolveUserAccessState({ user, profile }) {
   const hasLegacyMetadataAccess = shouldUseLegacyMetadataFallback(user, profile);
   const hasActiveProAccess = hasProfileProAccess || hasLegacyMetadataAccess;
   const effectivePlan = hasActiveProAccess ? 'pro' : 'basic';
-  const freeFullInsightsRemaining = user && !hasActiveProAccess
-    ? Math.max(0, 1 - freeFullInsightsUsedCount)
+  const accessSource = hasLegacyMetadataAccess
+    ? 'legacy'
+    : hasProfileProAccess
+      ? (normalizedAccessSource === 'none' ? 'paid' : normalizedAccessSource)
+      : normalizedAccessSource;
+  const isTrialAccess = hasProfileProAccess && accessSource === 'trial';
+  const isPaidProAccess = hasActiveProAccess && !isTrialAccess;
+  const trialEndsAt = isTrialAccess ? normalizedPlanExpiresAt : null;
+  const trialDaysRemaining = trialEndsAt
+    ? Math.max(0, Math.ceil((new Date(trialEndsAt).getTime() - Date.now()) / 86400000))
     : 0;
+  const isTrialExpired = accessSource === 'trial' && (expiredProfile || normalizedBillingStatus === 'expired');
+  const freeFullInsightsRemaining = 0;
 
   return {
     effectivePlan,
     hasActiveProAccess,
-    hasFreeFullInsightAvailable: Boolean(user) && freeFullInsightsRemaining > 0,
+    isTrialAccess,
+    isPaidProAccess,
+    isTrialExpired,
+    accessSource,
+    trialEndsAt,
+    trialDaysRemaining,
+    hasFreeFullInsightAvailable: false,
     freeFullInsightsRemaining,
     freeFullInsightsUsedCount,
     billingStatus: expiredProfile ? 'expired' : normalizedBillingStatus,
@@ -80,6 +101,7 @@ function resolveUserAccessState({ user, profile }) {
 }
 
 module.exports = {
+  normalizeAccessSource,
   normalizeBillingStatus,
   normalizeFreeInsightsCount,
   normalizePlanExpiresAt,

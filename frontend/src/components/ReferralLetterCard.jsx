@@ -1,16 +1,57 @@
+function getReferralAccessCopy({ user, accessState, remainingTrialUses }) {
+  if (!user?.id) {
+    return {
+      title: 'Entre para gerar encaminhamentos',
+      description: 'Crie uma conta para iniciar o teste profissional e experimentar cartas de encaminhamento com IA.',
+      buttonLabel: 'Entrar',
+    };
+  }
+
+  if (accessState?.isTrialAccess && remainingTrialUses === 0) {
+    return {
+      title: 'Limite do teste atingido',
+      description: 'Voce usou os 5 encaminhamentos do teste profissional. Assine para continuar gerando cartas.',
+      buttonLabel: 'Assinar Pro',
+    };
+  }
+
+  if (!accessState?.hasActiveProAccess) {
+    return {
+      title: accessState?.isTrialExpired ? 'Teste profissional encerrado' : 'Recurso do Plano Profissional',
+      description: 'Cartas de encaminhamento usam IA e ficam disponiveis no Profissional.',
+      buttonLabel: 'Assinar Pro',
+    };
+  }
+
+  return null;
+}
+
 function ReferralLetterCard({
   specialty,
   reason,
   letter,
   loading,
   error,
+  checkoutError,
   copied,
+  user,
+  accessState,
+  remainingTrialUses,
+  trialLimit,
+  loadingCheckout,
   onSpecialtyChange,
   onReasonChange,
   onGenerate,
   onCopy,
+  onRequestUpgrade,
   onDismissError,
 }) {
+  const accessCopy = getReferralAccessCopy({ user, accessState, remainingTrialUses });
+  const shouldUseUpgradeAction = Boolean(accessCopy);
+  const trialCounter = accessState?.isTrialAccess && typeof remainingTrialUses === 'number' && typeof trialLimit === 'number'
+    ? `${remainingTrialUses}/${trialLimit} encaminhamentos do teste`
+    : '';
+
   return (
     <section className="card referral-letter-card section-referral workspace-panel">
       <div className="card-header card-header-with-copy referral-letter-header">
@@ -24,10 +65,14 @@ function ReferralLetterCard({
         <div>
           <h2>Carta de encaminhamento</h2>
           <p className="card-subtitle">
-            {'O texto considera a hist\u00f3ria cl\u00ednica e prioriza dados relevantes para a especialidade escolhida.'}
+            {'O texto considera a historia clinica e prioriza dados relevantes para a especialidade escolhida.'}
           </p>
         </div>
       </div>
+
+      {trialCounter ? (
+        <div className="referral-helper">{trialCounter}</div>
+      ) : null}
 
       <div className="referral-letter-grid">
         <div className="form-group referral-field">
@@ -59,12 +104,22 @@ function ReferralLetterCard({
         </div>
       </div>
 
+      {accessCopy ? (
+        <div className="paywall-panel">
+          <div>
+            <strong>{accessCopy.title}</strong>
+            <span>{accessCopy.description}</span>
+          </div>
+          {checkoutError ? <div className="feedback-secondary-error">{checkoutError}</div> : null}
+        </div>
+      ) : null}
+
       <div className="referral-actions">
         <button
           type="button"
           className="btn btn-primario referral-generate-button"
-          onClick={onGenerate}
-          disabled={loading}
+          onClick={shouldUseUpgradeAction ? onRequestUpgrade : onGenerate}
+          disabled={loading || loadingCheckout}
         >
           {loading ? (
             <>
@@ -77,12 +132,12 @@ function ReferralLetterCard({
                 <path d="M5 12h14" />
                 <path d="m12 5 7 7-7 7" />
               </svg>
-              Gerar carta
+              {loadingCheckout ? 'Abrindo checkout...' : shouldUseUpgradeAction ? accessCopy.buttonLabel : 'Gerar carta'}
             </>
           )}
         </button>
         <span className="referral-helper">
-          {'Use o motivo para orientar o recorte cl\u00ednico quando a anamnese tiver muitas informa\u00e7\u00f5es.'}
+          {'Use o motivo para orientar o recorte clinico quando a anamnese tiver muitas informacoes.'}
         </span>
       </div>
 
@@ -113,7 +168,7 @@ function ReferralLetterCard({
           <div className="referral-letter-output-header">
             <div>
               <strong>Carta pronta para revisar</strong>
-              <span>{'A c\u00f3pia mant\u00e9m o formato abaixo.'}</span>
+              <span>{'A copia mantem o formato abaixo.'}</span>
             </div>
             <button
               type="button"

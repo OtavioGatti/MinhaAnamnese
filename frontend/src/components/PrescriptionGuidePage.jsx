@@ -619,7 +619,10 @@ function ProtocolAccordionSection({
 function PrescriptionGuidePage({
   user,
   isPro,
+  accessState,
+  trialUsage,
   onLogin,
+  onProfileUpdate,
   onRequestUpgrade,
   loadingCheckout,
   checkoutError,
@@ -661,7 +664,7 @@ function PrescriptionGuidePage({
 
       if (response.success && Array.isArray(response.data)) {
         setGuides(response.data);
-        if (!selectedSlug && response.data[0]?.slug) {
+        if (!selectedSlug && !accessState?.isTrialAccess && response.data[0]?.slug) {
           setSelectedSlug(response.data[0].slug);
         }
       } else {
@@ -676,7 +679,7 @@ function PrescriptionGuidePage({
       ignore = true;
       window.clearTimeout(timeoutId);
     };
-  }, [isPro, query, selectedSlug, user?.id]);
+  }, [accessState?.isTrialAccess, isPro, query, selectedSlug, user?.id]);
 
   useEffect(() => {
     if (!user?.id || !isPro || !selectedSlug) {
@@ -696,9 +699,19 @@ function PrescriptionGuidePage({
       }
 
       if (response.success && response.data) {
-        setSelectedGuide(response.data);
-        setExpandedSections(getDefaultExpandedSections(response.data));
+        const nextGuide = response.data?.guide || response.data;
+
+        if (response.data?.profile) {
+          onProfileUpdate?.(response.data.profile);
+        }
+
+        setSelectedGuide(nextGuide);
+        setExpandedSections(getDefaultExpandedSections(nextGuide));
       } else {
+        if (response.data?.profile) {
+          onProfileUpdate?.(response.data.profile);
+        }
+
         setSelectedGuide(null);
         setError(response.error || 'Não foi possível abrir este guia de prescrição.');
       }
@@ -711,7 +724,7 @@ function PrescriptionGuidePage({
     return () => {
       ignore = true;
     };
-  }, [isPro, selectedSlug, user?.id]);
+  }, [isPro, onProfileUpdate, selectedSlug, user?.id]);
 
   async function copyText(text, key) {
     const content = String(text || '').trim();
@@ -731,6 +744,14 @@ function PrescriptionGuidePage({
       [key]: !current[key],
     }));
   }
+
+  const trialRemaining = trialUsage?.remaining?.prescriptionGuides;
+  const trialLimit = trialUsage?.limits?.prescriptionGuides;
+  const trialCounter = accessState?.isTrialAccess &&
+    typeof trialRemaining === 'number' &&
+    typeof trialLimit === 'number'
+    ? `${trialRemaining}/${trialLimit} guias do teste`
+    : '';
 
   if (!user?.id) {
     return (
@@ -774,6 +795,12 @@ function PrescriptionGuidePage({
         <div>
           <span className="workspace-kicker">Guia de Prescrição</span>
           <h1>Protocolos por patologia</h1>
+          {trialCounter ? <p className="protocol-copy-hint">{trialCounter}. A lista nao consome limite; o uso conta quando voce abre um protocolo.</p> : null}
+          {accessState?.isTrialAccess && trialRemaining === 0 ? (
+            <button type="button" className="btn btn-primario prescription-access-action" onClick={onRequestUpgrade} disabled={loadingCheckout}>
+              {loadingCheckout ? 'Abrindo checkout...' : 'Assinar Pro'}
+            </button>
+          ) : null}
           <p>Busque uma condição clínica e copie a prescrição, conduta ou orientação pronta para uso.</p>
         </div>
       </section>

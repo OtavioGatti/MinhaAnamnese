@@ -337,6 +337,7 @@ module.exports = async function handler(req, res) {
       email: targetUser.email || payment?.payer?.email || null,
       current_plan: 'pro',
       billing_status: 'active',
+      access_source: 'paid',
       plan_expires_at: getNextPlanExpirationDate(existingProfile?.plan_expires_at),
       last_payment_id: String(payment.id),
     });

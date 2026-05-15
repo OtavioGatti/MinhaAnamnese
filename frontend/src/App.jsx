@@ -3,7 +3,6 @@ import { api } from './apiClient';
 import { API_BASE_URL } from './config';
 import DetailedAnalysis from './components/DetailedAnalysis';
 import EvolutionPage from './components/EvolutionPage';
-import FreeInsightConfirmModal from './components/FreeInsightConfirmModal';
 import InputSection from './components/InputSection';
 import InsightBlock from './components/InsightBlock';
 import PlanComparisonModal from './components/PlanComparisonModal';
@@ -25,6 +24,7 @@ const TRACKING_SESSION_ID_KEY = 'tracking-session-id';
 const DEBUG_MODE = false;
 const PRO_PLAN_PRICE_COPY = 'R$ 9,90';
 const PRO_PLAN_PERIOD_COPY = '30 dias';
+const TRIAL_DAYS_COPY = '3 dias';
 const DEFAULT_TEXT_PLACEHOLDER =
   'Ex: Paciente feminina, 32 anos, com dor abdominal há 2 dias, associada a náuseas, sem vômitos...';
 const TEMPLATE_TEXT_PLACEHOLDERS = {
@@ -215,6 +215,10 @@ function normalizePlan(value) {
   return value === 'pro' ? 'pro' : 'basic';
 }
 
+function normalizeAccessSource(value) {
+  return ['none', 'trial', 'paid', 'legacy'].includes(value) ? value : 'none';
+}
+
 function normalizePlanExpiresAt(value) {
   if (!value) {
     return null;
@@ -225,8 +229,30 @@ function normalizePlanExpiresAt(value) {
 }
 
 function deriveAccessState(user, profile) {
+  if (profile?.access_state) {
+    const serverAccessState = profile.access_state;
+
+    return {
+      effectivePlan: serverAccessState.effectivePlan || 'basic',
+      hasActiveProAccess: Boolean(serverAccessState.hasActiveProAccess),
+      isTrialAccess: Boolean(serverAccessState.isTrialAccess),
+      isPaidProAccess: Boolean(serverAccessState.isPaidProAccess),
+      isTrialExpired: Boolean(serverAccessState.isTrialExpired),
+      accessSource: normalizeAccessSource(serverAccessState.accessSource),
+      trialEndsAt: normalizePlanExpiresAt(serverAccessState.trialEndsAt),
+      trialDaysRemaining: Math.max(0, Number(serverAccessState.trialDaysRemaining) || 0),
+      hasFreeFullInsightAvailable: false,
+      freeFullInsightsRemaining: 0,
+      freeFullInsightsUsedCount: Math.max(0, Number(serverAccessState.freeFullInsightsUsedCount) || 0),
+      billingStatus: normalizeBillingStatus(serverAccessState.billingStatus),
+      planExpiresAt: normalizePlanExpiresAt(serverAccessState.planExpiresAt),
+      isProExpired: Boolean(serverAccessState.isProExpired),
+    };
+  }
+
   const currentPlan = normalizePlan(profile?.current_plan);
   const billingStatus = normalizeBillingStatus(profile?.billing_status);
+  const accessSource = normalizeAccessSource(profile?.access_source);
   const planExpiresAt = normalizePlanExpiresAt(profile?.plan_expires_at);
   const expiredByDate = planExpiresAt ? new Date(planExpiresAt).getTime() <= Date.now() : false;
   const hasLegacyMetadataAccess =
@@ -235,17 +261,27 @@ function deriveAccessState(user, profile) {
     !planExpiresAt;
   const hasActiveProAccess =
     (currentPlan === 'pro' && billingStatus === 'active' && !expiredByDate) || hasLegacyMetadataAccess;
-  const hasLoadedProfile = Boolean(profile?.id);
   const freeFullInsightsUsedCount = Math.max(0, Number(profile?.free_full_insights_used_count) || 0);
-  const freeFullInsightsRemaining = user && hasLoadedProfile && !hasActiveProAccess
-    ? Math.max(0, 1 - freeFullInsightsUsedCount)
-    : 0;
+  const effectiveAccessSource = hasLegacyMetadataAccess
+    ? 'legacy'
+    : hasActiveProAccess
+      ? (accessSource === 'none' ? 'paid' : accessSource)
+      : accessSource;
+  const isTrialAccess = hasActiveProAccess && effectiveAccessSource === 'trial';
 
   return {
     effectivePlan: hasActiveProAccess ? 'pro' : 'basic',
     hasActiveProAccess,
-    hasFreeFullInsightAvailable: Boolean(user) && hasLoadedProfile && freeFullInsightsRemaining > 0,
-    freeFullInsightsRemaining,
+    isTrialAccess,
+    isPaidProAccess: hasActiveProAccess && !isTrialAccess,
+    isTrialExpired: effectiveAccessSource === 'trial' && (billingStatus === 'expired' || expiredByDate),
+    accessSource: effectiveAccessSource,
+    trialEndsAt: isTrialAccess ? planExpiresAt : null,
+    trialDaysRemaining: isTrialAccess && planExpiresAt
+      ? Math.max(0, Math.ceil((new Date(planExpiresAt).getTime() - Date.now()) / 86400000))
+      : 0,
+    hasFreeFullInsightAvailable: false,
+    freeFullInsightsRemaining: 0,
     freeFullInsightsUsedCount,
     billingStatus: currentPlan === 'pro' && (billingStatus === 'expired' || expiredByDate) ? 'expired' : billingStatus,
     planExpiresAt,
@@ -256,15 +292,24 @@ function deriveAccessState(user, profile) {
 function getPaywallUiConfig(user, accessState) {
   if (!user) {
     return {
-      title: 'Entre para liberar a análise completa',
+      title: 'Crie sua conta para testar o Profissional',
       description:
-        'Seu resultado estruturado já está pronto. Faça login para ver onde a anamnese perdeu força e qual ajuste mais melhora a próxima coleta.',
-      buttonLabel: 'Entrar para continuar',
-      highlights: ['Leitura completa da anamnese', 'Principal lacuna do caso', 'Próximo passo mais útil'],
+        `Seu resultado estruturado ja esta pronto. Entre para iniciar ${TRIAL_DAYS_COPY} de teste profissional com avaliacoes, encaminhamentos e guias.`,
+      buttonLabel: 'Entrar para testar',
+      highlights: ['Avaliacao completa', 'Encaminhamentos com IA', 'Guias de prescricao'],
     };
   }
 
   if (accessState?.hasActiveProAccess) {
+    if (accessState?.isTrialAccess) {
+      return {
+        title: 'Teste profissional ativo',
+        description: `Voce esta testando o Profissional por ${TRIAL_DAYS_COPY}. Use suas avaliacoes do teste para ver lacunas, impacto e proximo passo clinico.`,
+        buttonLabel: 'Gerar analise do teste',
+        highlights: ['Avaliacao completa', 'Encaminhamentos com IA', 'Guias e templates Pro'],
+      };
+    }
+
     return {
       title: 'Análise completa liberada',
       description: 'Veja a leitura detalhada do caso e use o feedback para melhorar sua próxima coleta.',
@@ -273,32 +318,22 @@ function getPaywallUiConfig(user, accessState) {
     };
   }
 
-  if (accessState?.hasFreeFullInsightAvailable) {
-    return {
-      title: 'Você ganhou 1 análise completa grátis',
-      description:
-        `Use agora para ver como o sistema identifica lacunas, impacto na leitura clínica e o próximo passo mais útil. Depois, continue por ${PRO_PLAN_PRICE_COPY} a cada ${PRO_PLAN_PERIOD_COPY}.`,
-      buttonLabel: 'Usar minha análise grátis',
-      highlights: ['Justificativa da nota', 'Principal lacuna do caso', `Plano profissional por ${PRO_PLAN_PRICE_COPY}`],
-    };
-  }
-
   if (accessState?.billingStatus === 'expired') {
     return {
-      title: 'Seu acesso profissional expirou',
+      title: accessState?.isTrialExpired ? 'Seu teste profissional terminou' : 'Seu acesso profissional expirou',
       description:
-        `A organização continua liberada. Reative por ${PRO_PLAN_PRICE_COPY} para recuperar a análise completa por ${PRO_PLAN_PERIOD_COPY}.`,
-      buttonLabel: `Reativar por ${PRO_PLAN_PRICE_COPY}`,
-      highlights: ['Análise completa dos casos', 'Próximo passo clínico', `Acesso por ${PRO_PLAN_PERIOD_COPY}`],
+        `A organizacao basica continua liberada. Assine por ${PRO_PLAN_PRICE_COPY} para usar avaliacoes completas, encaminhamentos e prescricoes por ${PRO_PLAN_PERIOD_COPY}.`,
+      buttonLabel: `Assinar por ${PRO_PLAN_PRICE_COPY}`,
+      highlights: ['Avaliacoes completas', 'Encaminhamentos com IA', `Acesso por ${PRO_PLAN_PERIOD_COPY}`],
     };
   }
 
   return {
-    title: 'Desbloqueie a análise completa',
+    title: 'Desbloqueie o Plano Profissional',
     description:
-      `Sua anamnese já está organizada. Por ${PRO_PLAN_PRICE_COPY}, veja a principal lacuna, o impacto na leitura clínica e o próximo passo para evoluir sua coleta nos próximos ${PRO_PLAN_PERIOD_COPY}.`,
-    buttonLabel: `Desbloquear por ${PRO_PLAN_PRICE_COPY}`,
-    highlights: ['Principal lacuna do caso', 'Impacto na leitura clínica', `${PRO_PLAN_PRICE_COPY} por ${PRO_PLAN_PERIOD_COPY}`],
+      `Sua anamnese ja esta organizada. Assine por ${PRO_PLAN_PRICE_COPY} para usar avaliacoes completas, encaminhamentos, guias de prescricao e templates proprios.`,
+    buttonLabel: `Assinar por ${PRO_PLAN_PRICE_COPY}`,
+    highlights: ['Avaliacoes completas', 'Cartas de encaminhamento', `${PRO_PLAN_PRICE_COPY} por ${PRO_PLAN_PERIOD_COPY}`],
   };
 }
 
@@ -317,6 +352,35 @@ function isPlanExpiringSoon(value, thresholdInDays = 5) {
   const diffDays = diffMs / 86400000;
 
   return diffDays > 0 && diffDays <= thresholdInDays;
+}
+
+function getTrialFeatureRemaining(profile, feature) {
+  const remaining = profile?.trial_usage?.remaining?.[feature];
+
+  if (typeof remaining !== 'number' || Number.isNaN(remaining)) {
+    return null;
+  }
+
+  return Math.max(0, remaining);
+}
+
+function getTrialFeatureLimit(profile, feature) {
+  const limit = profile?.trial_usage?.limits?.[feature];
+
+  if (typeof limit !== 'number' || Number.isNaN(limit)) {
+    return null;
+  }
+
+  return Math.max(0, limit);
+}
+
+function canUseTrialFeature(accessState, profile, feature) {
+  if (!accessState?.isTrialAccess) {
+    return true;
+  }
+
+  const remaining = getTrialFeatureRemaining(profile, feature);
+  return remaining == null || remaining > 0;
 }
 
 function getTodayUtcDate() {
@@ -615,6 +679,7 @@ function App() {
     home: '',
     profile: '',
     prescriptionGuide: '',
+    referralLetter: '',
     templates: '',
   });
   const [authError, setAuthError] = useState('');
@@ -634,7 +699,6 @@ function App() {
   const [latestScoreComparison, setLatestScoreComparison] = useState(null);
   const [qualityScore, setQualityScore] = useState(() => createEmptyQualityScore());
   const [planComparisonState, setPlanComparisonState] = useState({ open: false, origin: 'home' });
-  const [freeInsightConfirmState, setFreeInsightConfirmState] = useState({ open: false, origin: 'home' });
   const [checkoutSuccessBannerVisible, setCheckoutSuccessBannerVisible] = useState(false);
   const [currentInsightsUnlocked, setCurrentInsightsUnlocked] = useState(false);
   const [referralSpecialty, setReferralSpecialty] = useState('');
@@ -647,6 +711,7 @@ function App() {
   const templateTemCalculadora = templateSelecionado === TEMPLATE_WITH_CALCULATORS;
   const accessState = useMemo(() => deriveAccessState(user, profile), [profile, user]);
   const isPro = Boolean(accessState?.hasActiveProAccess);
+  const trialUsage = profile?.trial_usage || null;
 
   useEffect(() => {
     if (user) {
@@ -1001,6 +1066,7 @@ function App() {
       home: '',
       profile: '',
       prescriptionGuide: '',
+      referralLetter: '',
       templates: '',
     });
   }, [currentPage]);
@@ -1043,6 +1109,7 @@ function App() {
       home: '',
       profile: '',
       prescriptionGuide: '',
+      referralLetter: '',
       templates: '',
     });
   };
@@ -1176,6 +1243,18 @@ function App() {
     const structuredText = (displayedResultado || resultado || '').trim();
     const specialty = referralSpecialty.trim();
 
+    if (!user?.id) {
+      setAuthPanelAberto(true);
+      setAuthMode('login');
+      setAuthError('');
+      return;
+    }
+
+    if (!accessState?.hasActiveProAccess || !canUseTrialFeature(accessState, profile, 'referralLetters')) {
+      handleUpgradeInsights('referralLetter');
+      return;
+    }
+
     if (!sourceText) {
       setReferralError('Preencha a anamnese antes de gerar a carta.');
       return;
@@ -1201,6 +1280,9 @@ function App() {
       if (response.success) {
         const nextLetter = response.data?.letter || '';
         setReferralLetter(nextLetter);
+        if (response.data?.profile) {
+          setProfile(response.data.profile);
+        }
         trackEvent('carta_encaminhamento_gerada', {
           specialty,
           has_structured_result: Boolean(structuredText),
@@ -1210,6 +1292,9 @@ function App() {
         return;
       }
 
+      if (response.data?.profile) {
+        setProfile(response.data.profile);
+      }
       setReferralError(response.error || 'Nao foi possivel gerar a carta agora.');
     } catch (err) {
       setReferralError(err.message || 'Nao foi possivel gerar a carta agora.');
@@ -1354,11 +1439,6 @@ function App() {
       return;
     }
 
-    if (origin === 'home' && accessState?.hasFreeFullInsightAvailable && resultado && templateSelecionado) {
-      setFreeInsightConfirmState({ open: true, origin });
-      return;
-    }
-
     setPlanComparisonState({ open: true, origin });
   };
 
@@ -1371,28 +1451,17 @@ function App() {
   };
 
   const handleAnalysisAccessAction = async (origin = 'home') => {
-    if (accessState?.hasActiveProAccess && resultado && templateSelecionado) {
+    if (
+      accessState?.hasActiveProAccess &&
+      canUseTrialFeature(accessState, profile, 'insights') &&
+      resultado &&
+      templateSelecionado
+    ) {
       await handleGerarInsights();
       return;
     }
 
-    if (accessState?.hasFreeFullInsightAvailable && user?.id && resultado && templateSelecionado) {
-      const insightsResult = await handleGerarInsights();
-
-      if (insightsResult?.success || insightsResult?.status !== 402) {
-        return;
-      }
-    }
-
     handleUpgradeInsights(origin);
-  };
-
-  const handleConfirmFreeInsight = async () => {
-    setFreeInsightConfirmState((current) => ({
-      ...current,
-      open: false,
-    }));
-    await handleGerarInsights();
   };
 
   const handleConfirmPlanComparison = async () => {
@@ -1606,20 +1675,24 @@ function App() {
   const homeCheckoutError = checkoutErrors.home;
   const profileCheckoutError = checkoutErrors.profile;
   const prescriptionGuideCheckoutError = checkoutErrors.prescriptionGuide;
+  const referralLetterCheckoutError = checkoutErrors.referralLetter;
   const templatesCheckoutError = checkoutErrors.templates;
   const isHomeCheckoutLoading = checkoutLoadingOrigin === 'home';
   const isProfileCheckoutLoading = checkoutLoadingOrigin === 'profile';
   const isPrescriptionGuideCheckoutLoading = checkoutLoadingOrigin === 'prescriptionGuide';
+  const isReferralLetterCheckoutLoading = checkoutLoadingOrigin === 'referralLetter';
   const paywallUi = getPaywallUiConfig(user, accessState);
   const isProExpiringSoon = accessState?.hasActiveProAccess && isPlanExpiringSoon(accessState?.planExpiresAt);
+  const canUseInsightsNow = canUseTrialFeature(accessState, profile, 'insights');
   const canRequestInsights = Boolean(
     user &&
-    (accessState?.hasActiveProAccess || accessState?.hasFreeFullInsightAvailable) &&
+    accessState?.hasActiveProAccess &&
+    canUseInsightsNow &&
     resultado &&
     templateSelecionado
   );
   const shouldShowPaywall =
-    hasFinalInterpretation && !accessState?.hasActiveProAccess && !currentInsightsUnlocked;
+    hasFinalInterpretation && (!accessState?.hasActiveProAccess || !canUseInsightsNow) && !currentInsightsUnlocked;
   const analysisInputSection = qualityScore.justification;
   const summarizedScoreJustification = qualityScore.message;
   const insightPrincipalSection = qualityScore.criticalInsight;
@@ -1842,7 +1915,7 @@ function App() {
             </button>
           )}
 
-          {user && !isPro && (
+          {user && (!isPro || accessState?.isTrialAccess) && (
             <button
               type="button"
               className="btn btn-primario"
@@ -1851,8 +1924,8 @@ function App() {
             >
               {isHomeCheckoutLoading
                 ? 'Abrindo checkout...'
-                : accessState?.hasFreeFullInsightAvailable
-                  ? 'Usar análise grátis'
+                : accessState?.isTrialAccess
+                  ? 'Assinar Pro'
                   : accessState?.billingStatus === 'expired'
                     ? 'Reativar plano'
                     : 'Upgrade'}
@@ -1871,7 +1944,7 @@ function App() {
               </button>
               <div className="product-profile-copy">
                 <strong>{userDisplayName}</strong>
-                <span>{accessState?.hasActiveProAccess ? 'Plano profissional' : accessState?.billingStatus === 'expired' ? 'Profissional expirado' : 'Plano básico'}</span>
+                <span>{accessState?.isTrialAccess ? 'Teste profissional' : accessState?.hasActiveProAccess ? 'Plano profissional' : accessState?.isTrialExpired ? 'Teste encerrado' : accessState?.billingStatus === 'expired' ? 'Profissional expirado' : 'Plano básico'}</span>
               </div>
               <button
                 type="button"
@@ -2171,11 +2244,18 @@ function App() {
                 letter={referralLetter}
                 loading={loadingReferralLetter}
                 error={referralError}
+                checkoutError={referralLetterCheckoutError}
                 copied={referralCopied}
+                user={user}
+                accessState={accessState}
+                remainingTrialUses={getTrialFeatureRemaining(profile, 'referralLetters')}
+                trialLimit={getTrialFeatureLimit(profile, 'referralLetters')}
+                loadingCheckout={isReferralLetterCheckoutLoading}
                 onSpecialtyChange={handleReferralSpecialtyChange}
                 onReasonChange={handleReferralReasonChange}
                 onGenerate={handleGenerateReferralLetter}
                 onCopy={handleCopyReferralLetter}
+                onRequestUpgrade={() => handleUpgradeInsights('referralLetter')}
                 onDismissError={() => setReferralError('')}
               />
 
@@ -2199,14 +2279,7 @@ function App() {
                   loadingCheckout={isHomeCheckoutLoading}
                   loadingInsights={loadingInsights}
                   showAnalyzeAction={canRequestInsights && !hasFinalInterpretation}
-                  onGerarInsights={() => {
-                    if (accessState?.hasFreeFullInsightAvailable) {
-                      handleUpgradeInsights('home');
-                      return;
-                    }
-
-                    handleGerarInsights();
-                  }}
+                  onGerarInsights={() => handleGerarInsights()}
                 />
               )}
 
@@ -2272,8 +2345,11 @@ function App() {
           onUseTemplate={handleUseTemplateFromLibrary}
           onTemplatesRefresh={carregarTemplates}
           isPro={isPro}
+          accessState={accessState}
+          trialUsage={trialUsage}
           loadingCheckout={checkoutLoadingOrigin === 'templates'}
           checkoutError={templatesCheckoutError}
+          onProfileUpdate={setProfile}
           onRequestUpgrade={handleUpgradeTemplates}
         />
       )}
@@ -2298,11 +2374,14 @@ function App() {
         <PrescriptionGuidePage
           user={user}
           isPro={isPro}
+          accessState={accessState}
+          trialUsage={trialUsage}
           onLogin={() => {
             setAuthMode('login');
             setAuthError('');
             setAuthPanelAberto(true);
           }}
+          onProfileUpdate={setProfile}
           onRequestUpgrade={handleUpgradePrescriptionGuide}
           loadingCheckout={isPrescriptionGuideCheckoutLoading}
           checkoutError={prescriptionGuideCheckoutError}
@@ -2314,6 +2393,7 @@ function App() {
           user={user}
           profile={profile}
           accessState={accessState}
+          trialUsage={trialUsage}
           selectedTemplateName={templateAtual?.nome || profileTemplateAtual?.nome || ''}
           activeSidebarTab={profile?.default_contextual_tab || activeSidebarTab}
           onUpgrade={() => handleUpgradeInsights('profile')}
@@ -2329,16 +2409,10 @@ function App() {
         <p>Minha Anamnese &middot; Apoio à padronização clínica &middot; Evite dados identificáveis; o texto é processado por IA e não é salvo como prontuário</p>
       </footer>
 
-      <FreeInsightConfirmModal
-        open={freeInsightConfirmState.open}
-        loading={loadingInsights}
-        onClose={() => setFreeInsightConfirmState((current) => ({ ...current, open: false }))}
-        onConfirm={handleConfirmFreeInsight}
-      />
-
       <PlanComparisonModal
         open={planComparisonState.open}
         loading={checkoutLoadingOrigin === planComparisonState.origin}
+        isTrialAccess={Boolean(accessState?.isTrialAccess)}
         onClose={() => setPlanComparisonState((current) => ({ ...current, open: false }))}
         onConfirm={handleConfirmPlanComparison}
       />

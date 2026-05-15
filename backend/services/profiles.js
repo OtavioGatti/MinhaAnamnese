@@ -1,12 +1,16 @@
 const { isValidUserId } = require('../utils/idValidation');
 const {
+  normalizeAccessSource,
   normalizeBillingStatus,
   normalizeFreeInsightsCount,
   normalizePlanExpiresAt,
   resolveUserAccessState,
 } = require('./accessState');
+const { getTrialUsageSummary } = require('./trialUsage');
 
 const ALLOWED_CONTEXTUAL_TABS = new Set(['guide', 'checklist', 'calculator', 'structure']);
+const DEFAULT_TRIAL_DAYS = 3;
+const DEFAULT_TRIAL_ROLLOUT_AT = '2026-05-14T00:00:00.000Z';
 
 function getProfilesAdminConfig() {
   return {
@@ -22,6 +26,72 @@ function isProfilesStorageAvailable() {
 
 function normalizePlan(value) {
   return value === 'pro' ? 'pro' : 'basic';
+}
+
+function parsePositiveInteger(value, fallback) {
+  const parsed = Number.parseInt(value, 10);
+  return Number.isFinite(parsed) && parsed > 0 ? parsed : fallback;
+}
+
+function getTrialDays() {
+  return parsePositiveInteger(process.env.PRO_TRIAL_DAYS, DEFAULT_TRIAL_DAYS);
+}
+
+function getTrialRolloutTimestamp() {
+  const configured = process.env.PRO_TRIAL_ROLLOUT_AT || DEFAULT_TRIAL_ROLLOUT_AT;
+  const parsed = new Date(configured).getTime();
+  return Number.isFinite(parsed) ? parsed : new Date(DEFAULT_TRIAL_ROLLOUT_AT).getTime();
+}
+
+function getUserCreatedAtTimestamp(user) {
+  const candidates = [
+    user?.created_at,
+    user?.createdAt,
+    user?.user_metadata?.created_at,
+  ];
+
+  for (const candidate of candidates) {
+    if (!candidate) {
+      continue;
+    }
+
+    const parsed = new Date(candidate).getTime();
+
+    if (Number.isFinite(parsed)) {
+      return parsed;
+    }
+  }
+
+  return 0;
+}
+
+function shouldStartAutomaticTrial(user, existingProfile, overrides = {}) {
+  if (existingProfile || !isValidUserId(user?.id)) {
+    return false;
+  }
+
+  if (Object.prototype.hasOwnProperty.call(overrides, 'current_plan')) {
+    return false;
+  }
+
+  if (normalizePlan(user?.user_metadata?.plan) === 'pro') {
+    return false;
+  }
+
+  return getUserCreatedAtTimestamp(user) >= getTrialRolloutTimestamp();
+}
+
+function buildTrialOverrides() {
+  const now = new Date();
+  const planExpiresAt = new Date(now.getTime() + getTrialDays() * 86400000);
+
+  return {
+    current_plan: 'pro',
+    billing_status: 'active',
+    access_source: 'trial',
+    trial_started_at: now.toISOString(),
+    plan_expires_at: planExpiresAt.toISOString(),
+  };
 }
 
 function normalizeContextualTab(value) {
@@ -55,6 +125,9 @@ function buildProfileFallback(user, existingProfile = null, overrides = {}) {
     billing_status: normalizeBillingStatus(
       overrides.billing_status ?? existingProfile?.billing_status,
     ),
+    access_source: normalizeAccessSource(
+      overrides.access_source ?? existingProfile?.access_source,
+    ),
     plan_expires_at: normalizePlanExpiresAt(
       overrides.plan_expires_at ?? existingProfile?.plan_expires_at,
     ),
@@ -85,7 +158,7 @@ async function getProfileByUserId(userId) {
 
   const { url, serviceRoleKey } = getProfilesAdminConfig();
   const query = new URLSearchParams({
-    select: 'id,email,current_plan,last_template_used,default_contextual_tab,billing_status,plan_expires_at,free_full_insights_used_count,trial_started_at,last_payment_id,created_at,updated_at',
+    select: 'id,email,current_plan,last_template_used,default_contextual_tab,billing_status,access_source,plan_expires_at,free_full_insights_used_count,trial_started_at,last_payment_id,created_at,updated_at',
     id: `eq.${userId}`,
     limit: '1',
   });
@@ -133,6 +206,10 @@ async function upsertProfile(fields) {
 
   if ('billing_status' in fields) {
     payload.billing_status = normalizeBillingStatus(fields.billing_status);
+  }
+
+  if ('access_source' in fields) {
+    payload.access_source = normalizeAccessSource(fields.access_source);
   }
 
   if ('plan_expires_at' in fields) {
@@ -188,6 +265,7 @@ function shouldUpdateProfile(existingProfile, nextProfile) {
     normalizeContextualTab(existingProfile.default_contextual_tab) !==
       normalizeContextualTab(nextProfile.default_contextual_tab) ||
     normalizeBillingStatus(existingProfile.billing_status) !== normalizeBillingStatus(nextProfile.billing_status) ||
+    normalizeAccessSource(existingProfile.access_source) !== normalizeAccessSource(nextProfile.access_source) ||
     normalizePlanExpiresAt(existingProfile.plan_expires_at) !== normalizePlanExpiresAt(nextProfile.plan_expires_at) ||
     normalizeFreeInsightsCount(existingProfile.free_full_insights_used_count) !==
       normalizeFreeInsightsCount(nextProfile.free_full_insights_used_count) ||
@@ -211,6 +289,7 @@ async function expireProfileAccessIfNeeded(user, profile) {
     email: profile.email,
     current_plan: 'basic',
     billing_status: 'expired',
+    access_source: profile.access_source,
     plan_expires_at: profile.plan_expires_at,
     free_full_insights_used_count: profile.free_full_insights_used_count,
     trial_started_at: profile.trial_started_at,
@@ -233,14 +312,20 @@ async function expireProfileAccessIfNeeded(user, profile) {
 
 async function ensureUserProfile(user, overrides = {}) {
   const existingProfile = await getProfileByUserId(user?.id).catch(() => null);
-  const fallbackProfile = buildProfileFallback(user, existingProfile, overrides);
+  const nextOverrides = shouldStartAutomaticTrial(user, existingProfile, overrides)
+    ? {
+        ...buildTrialOverrides(),
+        ...overrides,
+      }
+    : overrides;
+  const fallbackProfile = buildProfileFallback(user, existingProfile, nextOverrides);
 
   if (!isProfilesStorageAvailable()) {
-    return fallbackProfile;
+    return withTrialUsageSummary(fallbackProfile);
   }
 
   if (!shouldUpdateProfile(existingProfile, fallbackProfile)) {
-    return expireProfileAccessIfNeeded(user, fallbackProfile);
+    return withTrialUsageSummary(await expireProfileAccessIfNeeded(user, fallbackProfile));
   }
 
   const persistedProfile = await upsertProfile({
@@ -250,25 +335,29 @@ async function ensureUserProfile(user, overrides = {}) {
     last_template_used: fallbackProfile.last_template_used,
     default_contextual_tab: fallbackProfile.default_contextual_tab,
     billing_status: fallbackProfile.billing_status,
+    access_source: fallbackProfile.access_source,
     plan_expires_at: fallbackProfile.plan_expires_at,
     free_full_insights_used_count: fallbackProfile.free_full_insights_used_count,
     trial_started_at: fallbackProfile.trial_started_at,
     last_payment_id: fallbackProfile.last_payment_id,
   });
 
-  return expireProfileAccessIfNeeded(user, buildProfileFallback(user, persistedProfile || fallbackProfile));
+  return withTrialUsageSummary(
+    await expireProfileAccessIfNeeded(user, buildProfileFallback(user, persistedProfile || fallbackProfile)),
+  );
 }
 
-async function incrementFreeFullInsightsUsedCount(userId, currentCount = 0) {
-  if (!isValidUserId(userId) || !isProfilesStorageAvailable()) {
-    return null;
+async function withTrialUsageSummary(profile) {
+  if (!profile?.id || (!profile?.access_state?.isTrialAccess && !profile?.access_state?.isTrialExpired)) {
+    return profile;
   }
 
-  return upsertProfile({
-    id: userId,
-    free_full_insights_used_count: normalizeFreeInsightsCount(currentCount) + 1,
-    trial_started_at: new Date().toISOString(),
-  });
+  const trialUsage = await getTrialUsageSummary(profile.id).catch(() => null);
+
+  return {
+    ...profile,
+    trial_usage: trialUsage,
+  };
 }
 
 module.exports = {
@@ -276,10 +365,11 @@ module.exports = {
   buildProfileFallback,
   ensureUserProfile,
   getProfileByUserId,
-  incrementFreeFullInsightsUsedCount,
+  getTrialDays,
   isProfilesStorageAvailable,
   normalizeContextualTab,
   normalizePlan,
   normalizeTemplateId,
   upsertProfile,
+  withTrialUsageSummary,
 };

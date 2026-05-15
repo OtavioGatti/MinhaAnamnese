@@ -45,8 +45,11 @@ function TemplatesPage({
   onUseTemplate,
   onTemplatesRefresh,
   isPro,
+  accessState,
+  trialUsage,
   loadingCheckout,
   checkoutError,
+  onProfileUpdate,
   onRequestUpgrade,
 }) {
   const [search, setSearch] = useState('');
@@ -124,6 +127,15 @@ function TemplatesPage({
 
   const previewTemplate = allTemplates.find((template) => template.id === previewTemplateId) || null;
   const canManageTemplates = Boolean(isPro);
+  const remainingTrialTemplates = trialUsage?.remaining?.userTemplates;
+  const trialTemplateLimit = trialUsage?.limits?.userTemplates;
+  const canCreateTemplate = canManageTemplates &&
+    (!accessState?.isTrialAccess || typeof remainingTrialTemplates !== 'number' || remainingTrialTemplates > 0);
+  const trialTemplateCounter = accessState?.isTrialAccess &&
+    typeof remainingTrialTemplates === 'number' &&
+    typeof trialTemplateLimit === 'number'
+    ? `${remainingTrialTemplates}/${trialTemplateLimit} templates do teste`
+    : '';
 
   const openPreview = (templateId) => {
     setPreviewTemplateId(templateId);
@@ -137,6 +149,12 @@ function TemplatesPage({
   const openTemplateEditor = (template = null) => {
     if (!canManageTemplates) {
       setTemplateError('Templates próprios são um recurso do plano profissional.');
+      onRequestUpgrade?.();
+      return;
+    }
+
+    if (!template && !canCreateTemplate) {
+      setTemplateError('Voce ja criou 2 templates durante o teste profissional. Assine para criar mais templates.');
       onRequestUpgrade?.();
       return;
     }
@@ -180,6 +198,12 @@ function TemplatesPage({
       return;
     }
 
+    if (!formState.id && !canCreateTemplate) {
+      setTemplateError('Voce ja criou 2 templates durante o teste profissional. Assine para criar mais templates.');
+      onRequestUpgrade?.();
+      return;
+    }
+
     setSavingTemplate(true);
     setTemplateError('');
 
@@ -197,9 +221,17 @@ function TemplatesPage({
       : await api.post('/templates', payload);
 
     if (!response.success) {
+      if (response.data?.profile) {
+        onProfileUpdate?.(response.data.profile);
+      }
+
       setTemplateError(response.error || 'Não foi possível salvar o template.');
       setSavingTemplate(false);
       return;
+    }
+
+    if (response.data?.profile) {
+      onProfileUpdate?.(response.data.profile);
     }
 
     await onTemplatesRefresh?.();
@@ -261,13 +293,19 @@ function TemplatesPage({
           <div className="templates-toolbar-actions">
             <button type="button" className="btn btn-primario" onClick={() => openTemplateEditor()} disabled={loadingCheckout}>
               {canManageTemplates
-                ? 'Novo template'
+                ? canCreateTemplate
+                  ? 'Novo template'
+                  : 'Limite do teste'
                 : loadingCheckout
                   ? 'Abrindo checkout...'
                   : 'Liberar templates'}
             </button>
           </div>
         </div>
+
+        {trialTemplateCounter ? (
+          <div className="templates-inline-note">{trialTemplateCounter}. Edicoes em templates existentes continuam liberadas durante o teste.</div>
+        ) : null}
 
         <div className="templates-filters" aria-label="Filtrar templates por categoria">
           {templateCategories.map((category) => (
