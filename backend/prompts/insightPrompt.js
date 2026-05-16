@@ -1,4 +1,15 @@
-function buildInsightPrompt(texto, templateName, score, structuredAnalysis) {
+const { renderPromptTemplate } = require('./promptTemplate');
+
+function buildInsightPrompt(texto, templateName, score, structuredAnalysis, promptTemplate = null) {
+  if (promptTemplate) {
+    return renderPromptTemplate(promptTemplate, {
+      texto,
+      template_name: templateName,
+      score,
+      structured_analysis_json: JSON.stringify(structuredAnalysis),
+    });
+  }
+
   return `
 SYSTEM ROLE:
 

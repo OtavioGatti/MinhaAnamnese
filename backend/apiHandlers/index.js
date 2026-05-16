@@ -9,6 +9,7 @@ const apiRoutes = {
   '/api/analytics': require('./analytics'),
   '/api/create-checkout': require('./create-checkout'),
   '/api/prescription-guides': require('./prescription-guides'),
+  '/api/admin/prompts/sync': require('./admin/prompts-sync'),
   '/api/admin/prescription-guides/sync': require('./admin/prescription-guides-sync'),
   '/api/admin/templates/sync': require('./admin/templates-sync'),
   '/api/webhook/mercadopago': require('./webhook/mercadopago'),

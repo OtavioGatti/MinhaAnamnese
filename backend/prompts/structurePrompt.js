@@ -1,3 +1,5 @@
+const { renderPromptTemplate } = require('./promptTemplate');
+
 const DEFAULT_STRUCTURE = [
   'Identificação',
   'Hipóteses diagnósticas / problemas ativos',
@@ -119,8 +121,19 @@ function buildClinicalWritingRules() {
 * Se o texto já vier semi-estruturado, preservar a riqueza das informações em vez de comprimir o conteúdo em blocos genéricos.`;
 }
 
-function buildDefaultStructurePrompt(templateConfig) {
+function buildDefaultStructurePrompt(templateConfig, promptTemplate = null) {
   const templateName = templateConfig?.nome || String(templateConfig || '');
+
+  if (promptTemplate) {
+    return renderPromptTemplate(promptTemplate, {
+      clinical_writing_rules: buildClinicalWritingRules(),
+      interpretive_field_rules: buildInterpretiveFieldRules(templateConfig),
+      section_guidance: buildSectionGuidance(templateConfig),
+      structure_instructions: buildStructureInstructions(templateConfig),
+      template_name: templateName,
+      output_skeleton: buildOutputSkeleton(templateConfig),
+    });
+  }
 
   return `### SYSTEM PROMPT - MOTOR DE COERÊNCIA CLÍNICA
 
@@ -192,7 +205,15 @@ Se faltar informação, isso deve aparecer explicitamente.
 Nunca oculte incerteza.`;
 }
 
-function buildObstetricStructurePrompt(templateConfig) {
+function buildObstetricStructurePrompt(templateConfig, promptTemplate = null) {
+  if (promptTemplate) {
+    return renderPromptTemplate(promptTemplate, {
+      section_guidance: buildSectionGuidance(templateConfig),
+      structure_instructions: buildStructureInstructions(templateConfig),
+      output_skeleton: buildOutputSkeleton(templateConfig),
+    });
+  }
+
   return `Você é um médico responsável por organizar registros clínicos obstétricos de forma técnica, objetiva, elegante e fiel às informações fornecidas.
 
 Sua função é estruturar o texto livre exatamente no modelo obstétrico solicitado.
@@ -242,12 +263,18 @@ ESTILO CLÍNICO
 - Em todos os campos, priorizar prontuário fluido, médico e pronto para uso, sem acrescentar qualquer informação nova`;
 }
 
-function buildStructurePrompt(templateConfig) {
+function buildStructurePrompt(templateConfig, promptTemplates = {}) {
   if (templateConfig?.promptVariant === 'obstetricia') {
-    return buildObstetricStructurePrompt(templateConfig);
+    return buildObstetricStructurePrompt(
+      templateConfig,
+      promptTemplates.structureObstetricia || null,
+    );
   }
 
-  return buildDefaultStructurePrompt(templateConfig);
+  return buildDefaultStructurePrompt(
+    templateConfig,
+    promptTemplates.structureDefault || null,
+  );
 }
 
 module.exports = {

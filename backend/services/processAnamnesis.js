@@ -2,6 +2,7 @@ const OpenAI = require('openai');
 const { getTemplateById, isPotentialOfficialTemplateId, resolveTemplateById } = require('./templates');
 const { calculateAnamnesisQualityScore } = require('../utils/anamnesisQualityScore');
 const { buildStructurePrompt } = require('../prompts/structurePrompt');
+const { getSyncedOfficialPrompt } = require('./officialPrompts');
 const { getLatestAnamneseMetric, registerAnamneseMetric } = require('./anamneseMetrics');
 const { getTextLimitError } = require('../utils/requestLimits');
 const { sanitizeText } = require('../utils/textSanitization');
@@ -75,11 +76,21 @@ async function processAnamnesis({ template, texto, userId }) {
   const openai = new OpenAI({ apiKey });
   const sanitizedText = sanitizeText(texto).trim();
   const previousMetric = await getLatestAnamneseMetric(userId).catch(() => null);
+  const [structureDefaultPrompt, structureObstetriciaPrompt] = await Promise.all([
+    getSyncedOfficialPrompt('structure_default_system').catch(() => null),
+    getSyncedOfficialPrompt('structure_obstetricia_system').catch(() => null),
+  ]);
 
   const response = await openai.chat.completions.create({
     model: 'gpt-4o-mini',
     messages: [
-      { role: 'system', content: buildStructurePrompt(templateConfig) },
+      {
+        role: 'system',
+        content: buildStructurePrompt(templateConfig, {
+          structureDefault: structureDefaultPrompt?.promptBody || null,
+          structureObstetricia: structureObstetriciaPrompt?.promptBody || null,
+        }),
+      },
       {
         role: 'user',
         content: `Template: ${templateConfig.nome}\n\nTexto:\n${sanitizedText}`,

@@ -1,6 +1,7 @@
 const OpenAI = require('openai');
 const { getTextLimitError } = require('../utils/requestLimits');
 const { sanitizeText } = require('../utils/textSanitization');
+const { getSyncedOfficialPrompt } = require('./officialPrompts');
 
 const MAX_SPECIALTY_LENGTH = 80;
 const MAX_REASON_LENGTH = 240;
@@ -43,7 +44,11 @@ function validateReferralLetterInput(payload) {
   return null;
 }
 
-function buildReferralLetterPrompt() {
+function buildReferralLetterPrompt(promptTemplate = null) {
+  if (promptTemplate) {
+    return promptTemplate;
+  }
+
   return `Voce e um assistente editorial medico para redigir cartas de encaminhamento clinicas, objetivas e copiaveis.
 
 Objetivo:
@@ -105,11 +110,12 @@ async function generateReferralLetter({ texto, structuredText = '', specialty, r
   const sanitizedStructuredText = sanitizeText(structuredText).trim();
   const sanitizedSpecialty = normalizeShortText(specialty);
   const sanitizedReason = normalizeShortText(reason);
+  const syncedPrompt = await getSyncedOfficialPrompt('referral_letter_system').catch(() => null);
 
   const response = await openai.chat.completions.create({
     model: 'gpt-4o-mini',
     messages: [
-      { role: 'system', content: buildReferralLetterPrompt() },
+      { role: 'system', content: buildReferralLetterPrompt(syncedPrompt?.promptBody || null) },
       {
         role: 'user',
         content: [

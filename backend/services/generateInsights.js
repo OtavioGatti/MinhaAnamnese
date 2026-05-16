@@ -1,6 +1,7 @@
 const OpenAI = require('openai');
 const { getTemplateById, isPotentialOfficialTemplateId, resolveTemplateById } = require('./templates');
 const { buildInsightPrompt } = require('../prompts/insightPrompt');
+const { getSyncedOfficialPrompt } = require('./officialPrompts');
 const { calculateAnamnesisQualityScore } = require('../utils/anamnesisQualityScore');
 const { updateUserHistory } = require('../utils/userHistory');
 const { parseAIResponse } = require('../utils/parseAIResponse');
@@ -243,11 +244,13 @@ async function generateInsights({ texto, templateId, userId }) {
     throw error;
   }
 
+  const syncedPrompt = await getSyncedOfficialPrompt('insight_analysis_user').catch(() => null);
   const prompt = buildInsightPrompt(
     trimmedText,
     templateConfig.nome,
     qualityScore.score,
     analysis,
+    syncedPrompt?.promptBody || null,
   );
 
   const response = await openai.chat.completions.create({
