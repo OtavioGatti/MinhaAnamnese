@@ -137,6 +137,9 @@ function buildProfileFallback(user, existingProfile = null, overrides = {}) {
     trial_started_at: normalizePlanExpiresAt(
       overrides.trial_started_at ?? existingProfile?.trial_started_at,
     ),
+    welcome_onboarding_seen_at: normalizePlanExpiresAt(
+      overrides.welcome_onboarding_seen_at ?? existingProfile?.welcome_onboarding_seen_at,
+    ),
     last_payment_id:
       Object.prototype.hasOwnProperty.call(overrides, 'last_payment_id')
         ? overrides.last_payment_id || null
@@ -158,7 +161,7 @@ async function getProfileByUserId(userId) {
 
   const { url, serviceRoleKey } = getProfilesAdminConfig();
   const query = new URLSearchParams({
-    select: 'id,email,current_plan,last_template_used,default_contextual_tab,billing_status,access_source,plan_expires_at,free_full_insights_used_count,trial_started_at,last_payment_id,created_at,updated_at',
+    select: 'id,email,current_plan,last_template_used,default_contextual_tab,billing_status,access_source,plan_expires_at,free_full_insights_used_count,trial_started_at,welcome_onboarding_seen_at,last_payment_id,created_at,updated_at',
     id: `eq.${userId}`,
     limit: '1',
   });
@@ -224,6 +227,10 @@ async function upsertProfile(fields) {
     payload.trial_started_at = normalizePlanExpiresAt(fields.trial_started_at);
   }
 
+  if ('welcome_onboarding_seen_at' in fields) {
+    payload.welcome_onboarding_seen_at = normalizePlanExpiresAt(fields.welcome_onboarding_seen_at);
+  }
+
   if ('last_payment_id' in fields) {
     payload.last_payment_id = fields.last_payment_id || null;
   }
@@ -270,6 +277,8 @@ function shouldUpdateProfile(existingProfile, nextProfile) {
     normalizeFreeInsightsCount(existingProfile.free_full_insights_used_count) !==
       normalizeFreeInsightsCount(nextProfile.free_full_insights_used_count) ||
     normalizePlanExpiresAt(existingProfile.trial_started_at) !== normalizePlanExpiresAt(nextProfile.trial_started_at) ||
+    normalizePlanExpiresAt(existingProfile.welcome_onboarding_seen_at) !==
+      normalizePlanExpiresAt(nextProfile.welcome_onboarding_seen_at) ||
     (existingProfile.last_payment_id || null) !== (nextProfile.last_payment_id || null)
   );
 }
@@ -293,6 +302,7 @@ async function expireProfileAccessIfNeeded(user, profile) {
     plan_expires_at: profile.plan_expires_at,
     free_full_insights_used_count: profile.free_full_insights_used_count,
     trial_started_at: profile.trial_started_at,
+    welcome_onboarding_seen_at: profile.welcome_onboarding_seen_at,
     last_payment_id: profile.last_payment_id,
     last_template_used: profile.last_template_used,
     default_contextual_tab: profile.default_contextual_tab,
@@ -339,6 +349,7 @@ async function ensureUserProfile(user, overrides = {}) {
     plan_expires_at: fallbackProfile.plan_expires_at,
     free_full_insights_used_count: fallbackProfile.free_full_insights_used_count,
     trial_started_at: fallbackProfile.trial_started_at,
+    welcome_onboarding_seen_at: fallbackProfile.welcome_onboarding_seen_at,
     last_payment_id: fallbackProfile.last_payment_id,
   });
 

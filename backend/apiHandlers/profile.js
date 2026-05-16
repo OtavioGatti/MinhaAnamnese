@@ -13,6 +13,10 @@ function getProfileUpdatesFromRequest(req) {
       Object.prototype.hasOwnProperty.call(body, 'default_contextual_tab')
         ? body.default_contextual_tab
         : undefined,
+    welcome_onboarding_seen_at:
+      body.welcome_onboarding_seen === true
+        ? new Date().toISOString()
+        : undefined,
   };
 }
 

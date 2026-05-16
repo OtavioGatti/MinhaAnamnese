@@ -18,6 +18,7 @@ alter table public.profiles
   add column if not exists access_source text not null default 'none',
   add column if not exists free_full_insights_used_count integer not null default 0,
   add column if not exists trial_started_at timestamptz,
+  add column if not exists welcome_onboarding_seen_at timestamptz,
   add column if not exists last_payment_id text,
   add column if not exists created_at timestamptz not null default timezone('utc', now()),
   add column if not exists updated_at timestamptz not null default timezone('utc', now());

@@ -15,6 +15,7 @@ import TemplatesPage from './components/TemplatesPage';
 import UserEvolution from './components/UserEvolution';
 import WorkspaceSidebar from './components/WorkspaceSidebar';
 import CheckoutSuccessBanner from './components/CheckoutSuccessBanner';
+import WelcomeOnboardingModal from './components/WelcomeOnboardingModal';
 import { guides } from './data/guides';
 import { supabase } from './lib/supabaseClient';
 
@@ -700,6 +701,7 @@ function App() {
   const [qualityScore, setQualityScore] = useState(() => createEmptyQualityScore());
   const [planComparisonState, setPlanComparisonState] = useState({ open: false, origin: 'home' });
   const [checkoutSuccessBannerVisible, setCheckoutSuccessBannerVisible] = useState(false);
+  const [welcomeOnboardingOpen, setWelcomeOnboardingOpen] = useState(false);
   const [currentInsightsUnlocked, setCurrentInsightsUnlocked] = useState(false);
   const [referralSpecialty, setReferralSpecialty] = useState('');
   const [referralReason, setReferralReason] = useState('');
@@ -962,6 +964,24 @@ function App() {
 
     return () => window.clearTimeout(timeoutId);
   }, [user?.id, user?.user_metadata?.plan, profile?.current_plan, templateSelecionado, activeSidebarTab]);
+
+  useEffect(() => {
+    if (
+      !user?.id ||
+      profileHydratedUserRef.current !== user.id ||
+      !profile ||
+      authMode === 'resetPassword'
+    ) {
+      return;
+    }
+
+    if (!accessState?.isTrialAccess || profile.welcome_onboarding_seen_at) {
+      setWelcomeOnboardingOpen(false);
+      return;
+    }
+
+    setWelcomeOnboardingOpen(true);
+  }, [accessState?.isTrialAccess, authMode, profile, user?.id]);
 
   useEffect(() => {
     async function carregarStatsAnamneses() {
@@ -1559,6 +1579,9 @@ function App() {
     const { data, error } = await supabase.auth.signUp({
       email: normalizedEmail,
       password,
+      options: {
+        emailRedirectTo: window.location.origin,
+      },
     });
 
     if (error) {
@@ -1579,7 +1602,7 @@ function App() {
       return;
     }
 
-    setAuthFeedback('Conta criada com sucesso. Agora entre com seu e-mail e senha.');
+    setAuthFeedback('Conta criada com sucesso. Enviamos um link de confirmação para o seu e-mail. Depois de confirmar, entre para iniciar seu teste profissional.');
     setPassword('');
     setConfirmPassword('');
     setAuthMode('login');
@@ -1667,6 +1690,49 @@ function App() {
     resetAuthFormState();
     setAuthMode('login');
     setLoadingUser(false);
+  };
+
+  const markWelcomeOnboardingSeen = async (eventName) => {
+    if (!user?.id) {
+      setWelcomeOnboardingOpen(false);
+      return;
+    }
+
+    const seenAt = new Date().toISOString();
+
+    setWelcomeOnboardingOpen(false);
+    setProfile((current) => (
+      current
+        ? {
+            ...current,
+            welcome_onboarding_seen_at: seenAt,
+          }
+        : current
+    ));
+
+    trackEvent(eventName, { is_trial: Boolean(accessState?.isTrialAccess) }, {
+      eventKey: `${eventName}:${user.id}`,
+    });
+
+    const response = await api.post('/profile', {
+      welcome_onboarding_seen: true,
+    });
+
+    if (response.success && response.data) {
+      setProfile(response.data);
+    }
+  };
+
+  const handleCloseWelcomeOnboarding = async () => {
+    await markWelcomeOnboardingSeen('onboarding_fechado');
+  };
+
+  const handleStartWelcomeOnboarding = async () => {
+    await markWelcomeOnboardingSeen('onboarding_cta_click');
+    handleNavigate('home');
+    window.requestAnimationFrame(() => {
+      textoInputRef.current?.focus();
+    });
   };
 
   const hasFinalInterpretation = Boolean(
@@ -1839,6 +1905,16 @@ function App() {
       { eventKey }
     );
   }, [resultado, templateSelecionado, qualityScore.shouldShowScore, qualityScore.score, isPro]);
+
+  useEffect(() => {
+    if (!welcomeOnboardingOpen || !user?.id) {
+      return;
+    }
+
+    trackEvent('onboarding_exibido', { is_trial: Boolean(accessState?.isTrialAccess) }, {
+      eventKey: `onboarding_exibido:${user.id}`,
+    });
+  }, [accessState?.isTrialAccess, user?.id, welcomeOnboardingOpen]);
 
   useEffect(() => {
     if (!qualityScore.shouldShowScore || qualityScore.score == null) {
@@ -2415,6 +2491,14 @@ function App() {
         isTrialAccess={Boolean(accessState?.isTrialAccess)}
         onClose={() => setPlanComparisonState((current) => ({ ...current, open: false }))}
         onConfirm={handleConfirmPlanComparison}
+      />
+
+      <WelcomeOnboardingModal
+        open={welcomeOnboardingOpen}
+        trialDaysCopy={TRIAL_DAYS_COPY}
+        priceCopy={PRO_PLAN_PRICE_COPY}
+        onClose={handleCloseWelcomeOnboarding}
+        onStart={handleStartWelcomeOnboarding}
       />
     </div>
   );

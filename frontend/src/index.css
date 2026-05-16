@@ -3496,6 +3496,102 @@ body {
   flex-wrap: wrap;
 }
 
+.welcome-onboarding-modal {
+  width: min(100%, 620px);
+  gap: 1.05rem;
+}
+
+.welcome-onboarding-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.welcome-onboarding-header h2 {
+  margin-top: 0.35rem;
+  color: var(--gray-900);
+  font-size: 1.35rem;
+  line-height: 1.25;
+}
+
+.welcome-onboarding-close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid rgba(226, 232, 240, 0.96);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.96);
+  color: var(--gray-500);
+  cursor: pointer;
+}
+
+.welcome-onboarding-close svg {
+  width: 16px;
+  height: 16px;
+}
+
+.welcome-onboarding-copy {
+  max-width: 34rem;
+  color: var(--gray-600);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.welcome-onboarding-trial {
+  display: grid;
+  gap: 0.2rem;
+  padding: 0.95rem 1rem;
+  border: 1px solid rgba(187, 247, 208, 0.92);
+  border-radius: 16px;
+  background: linear-gradient(180deg, rgba(240, 253, 244, 0.96) 0%, rgba(255, 255, 255, 0.98) 100%);
+}
+
+.welcome-onboarding-trial strong {
+  color: #166534;
+  font-size: 1rem;
+}
+
+.welcome-onboarding-trial span {
+  color: #315747;
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.welcome-onboarding-list {
+  display: grid;
+  gap: 0.6rem;
+  list-style: none;
+  color: var(--gray-700);
+  font-size: 0.9rem;
+}
+
+.welcome-onboarding-list li {
+  position: relative;
+  padding-left: 1.6rem;
+  line-height: 1.5;
+}
+
+.welcome-onboarding-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.34rem;
+  width: 0.92rem;
+  height: 0.92rem;
+  border-radius: 999px;
+  background:
+    radial-gradient(circle at center, #16a34a 0 38%, transparent 40%),
+    rgba(220, 252, 231, 0.96);
+  box-shadow: inset 0 0 0 1px rgba(34, 197, 94, 0.18);
+}
+
+.welcome-onboarding-actions .btn {
+  min-width: 170px;
+}
+
 .plan-comparison-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -3865,6 +3961,10 @@ body {
 
   .app-modal-actions,
   .checkout-success-actions {
+    width: 100%;
+  }
+
+  .welcome-onboarding-actions .btn {
     width: 100%;
   }
 
