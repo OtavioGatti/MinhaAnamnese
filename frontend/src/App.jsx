@@ -550,6 +550,7 @@ function readAuthReturnParams() {
   const searchParams = new URLSearchParams(window.location.search);
 
   return {
+    authFlow: hashParams.get('auth') || searchParams.get('auth') || '',
     type: hashParams.get('type') || searchParams.get('type') || '',
     error: hashParams.get('error') || searchParams.get('error') || '',
     errorCode: hashParams.get('error_code') || searchParams.get('error_code') || '',
@@ -567,7 +568,7 @@ function safeDecodeUrlValue(value) {
 }
 
 function getRecoveryLinkState() {
-  const { type, error, errorCode, errorDescription } = readAuthReturnParams();
+  const { authFlow, type, error, errorCode, errorDescription } = readAuthReturnParams();
   const normalizedError = String(error || '').toLowerCase();
   const normalizedCode = String(errorCode || '').toLowerCase();
   const normalizedDescription = safeDecodeUrlValue(errorDescription).toLowerCase();
@@ -588,7 +589,7 @@ function getRecoveryLinkState() {
     };
   }
 
-  if (type === 'recovery') {
+  if (authFlow === 'recovery' || type === 'recovery') {
     return {
       kind: 'recovery',
       message: 'Defina uma nova senha para concluir a recuperação da sua conta.',
@@ -604,10 +605,12 @@ function getRecoveryLinkState() {
 function clearAuthReturnStateFromUrl() {
   const url = new URL(window.location.href);
   const authSearchParams = [
+    'auth',
     'type',
     'error',
     'error_code',
     'error_description',
+    'code',
     'access_token',
     'refresh_token',
     'expires_in',
@@ -619,7 +622,14 @@ function clearAuthReturnStateFromUrl() {
     url.searchParams.delete(param);
   });
 
+  url.hash = '';
   window.history.replaceState({}, '', `${url.pathname}${url.search}`);
+}
+
+function getRecoveryRedirectUrl() {
+  const url = new URL(window.location.origin);
+  url.searchParams.set('auth', 'recovery');
+  return url.toString();
 }
 
 function openRecoveryResetFlow(message) {
@@ -642,10 +652,6 @@ function openRecoveryRequestFlow(message) {
     authError: message,
     authFeedback: '',
   };
-}
-
-function isPasswordRecoveryFlow() {
-  return getRecoveryLinkState().kind === 'recovery';
 }
 
 function App() {
@@ -716,11 +722,7 @@ function App() {
   const trialUsage = profile?.trial_usage || null;
 
   useEffect(() => {
-    if (user) {
-      if (authMode === 'resetPassword') {
-        return;
-      }
-
+    if (user && authMode !== 'resetPassword') {
       return;
     }
 
@@ -779,6 +781,18 @@ function App() {
         const nextState = openRecoveryResetFlow(
           recoveryState.kind === 'recovery' ? recoveryState.message : 'Defina uma nova senha para concluir a recuperação da sua conta.'
         );
+        setAuthMode(nextState.authMode);
+        setAuthPanelAberto(nextState.authPanelAberto);
+        setPassword(nextState.password);
+        setConfirmPassword(nextState.confirmPassword);
+        setAuthError(nextState.authError);
+        setAuthFeedback(nextState.authFeedback);
+        clearAuthReturnStateFromUrl();
+        return;
+      }
+
+      if (recoveryState.kind === 'recovery' && session?.user) {
+        const nextState = openRecoveryResetFlow(recoveryState.message);
         setAuthMode(nextState.authMode);
         setAuthPanelAberto(nextState.authPanelAberto);
         setPassword(nextState.password);
@@ -1627,7 +1641,7 @@ function App() {
     setLoadingAuth(true);
 
     const { error } = await supabase.auth.resetPasswordForEmail(normalizedEmail, {
-      redirectTo: window.location.origin,
+      redirectTo: getRecoveryRedirectUrl(),
     });
 
     if (error) {
