@@ -84,9 +84,15 @@ module.exports = async function handler(req, res) {
       success: true,
       data,
     });
-  } catch (_error) {
-    return res.status(200).json({
-      success: true,
+  } catch (error) {
+    console.error('anamneses: failed to load data', {
+      view,
+      message: error?.message || 'unknown_error',
+    });
+
+    return res.status(503).json({
+      success: false,
+      error: 'N\u00e3o foi poss\u00edvel carregar sua evolu\u00e7\u00e3o agora.',
       data: getFallbackDataByView(view),
     });
   }

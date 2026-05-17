@@ -112,15 +112,22 @@ async function processAnamnesis({ template, texto, userId }) {
     throw error;
   }
 
-  const qualityScore = calculateAnamnesisQualityScore(sanitizedText, template, templateConfig);
+  const qualityScore = calculateAnamnesisQualityScore(resultado, template, templateConfig);
 
-  await registerAnamneseMetric({
+  const metricRecorded = await registerAnamneseMetric({
     userId,
     template,
     score: qualityScore.score,
     textLength: sanitizedText.length,
     hasTeaser: false,
-  }).catch(() => {});
+  }).catch((error) => {
+    console.error('processAnamnesis: failed to persist metric', {
+      userId: userId || null,
+      template,
+      message: error?.message || 'unknown_error',
+    });
+    return false;
+  });
 
   const previousScore = typeof previousMetric?.score === 'number' ? previousMetric.score : null;
   const comparison = {
@@ -143,6 +150,7 @@ async function processAnamnesis({ template, texto, userId }) {
     resultado,
     score: qualityScore.score,
     comparison,
+    metricRecorded,
   };
 }
 

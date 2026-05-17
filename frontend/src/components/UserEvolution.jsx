@@ -96,9 +96,7 @@ function UserEvolution({
 }) {
   const lastScore = isValidScoreValue(immediateComparison?.previousScore)
     ? immediateComparison.previousScore
-    : isValidScoreValue(anamneseStats?.score_anterior)
-      ? anamneseStats.score_anterior
-      : anamneseStats?.ultimo_score;
+    : anamneseStats?.ultimo_score;
   const recurringPatterns = buildRecurringPatterns({
     anamneseStats,
     currentScore,

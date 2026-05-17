@@ -705,6 +705,7 @@ function App() {
   const [anamneseActivity, setAnamneseActivity] = useState([]);
   const [recentAnamneses, setRecentAnamneses] = useState([]);
   const [latestScoreComparison, setLatestScoreComparison] = useState(null);
+  const [evolutionRefreshToken, setEvolutionRefreshToken] = useState(0);
   const [qualityScore, setQualityScore] = useState(() => createEmptyQualityScore());
   const [planComparisonState, setPlanComparisonState] = useState({ open: false, origin: 'home' });
   const [checkoutSuccessBannerVisible, setCheckoutSuccessBannerVisible] = useState(false);
@@ -1033,7 +1034,7 @@ function App() {
     }
 
     carregarStatsAnamneses();
-  }, [user?.id, resultado]);
+  }, [user?.id, evolutionRefreshToken]);
 
   useEffect(() => {
     async function carregarAtividadeAnamneses() {
@@ -1058,7 +1059,7 @@ function App() {
     }
 
     carregarAtividadeAnamneses();
-  }, [user?.id, resultado]);
+  }, [user?.id, evolutionRefreshToken]);
 
   useEffect(() => {
     async function carregarAnamnesesRecentes() {
@@ -1089,7 +1090,7 @@ function App() {
     }
 
     carregarAnamnesesRecentes();
-  }, [user?.id, resultado]);
+  }, [user?.id, evolutionRefreshToken]);
 
   useEffect(() => {
     if (user) {
@@ -1201,6 +1202,7 @@ function App() {
         const organizedResult = response.data.resultado || '';
         setResultado(organizedResult);
         setLatestScoreComparison(response.data.comparison || null);
+        setEvolutionRefreshToken((current) => current + 1);
         setSecaoSecundariaAberta(false);
         trackEvent('anamnese_gerada', {
           template: templateSelecionado,

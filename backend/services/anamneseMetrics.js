@@ -12,17 +12,17 @@ function getSupabaseAdminConfig() {
 
 async function registerAnamneseMetric({ userId, template, score, textLength, hasTeaser }) {
   if (!isValidUserId(userId)) {
-    return;
+    return false;
   }
 
   if (typeof score !== 'number' || Number.isNaN(score)) {
-    return;
+    return false;
   }
 
   const { url, serviceRoleKey } = getSupabaseAdminConfig();
 
   if (!url || !serviceRoleKey) {
-    return;
+    return false;
   }
 
   const response = await fetch(`${url}/rest/v1/anamneses`, {
@@ -45,6 +45,8 @@ async function registerAnamneseMetric({ userId, template, score, textLength, has
   if (!response.ok) {
     throw new Error('failed to insert anamnese metric');
   }
+
+  return true;
 }
 
 async function getLatestAnamneseMetric(userId) {
