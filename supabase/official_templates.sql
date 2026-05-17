@@ -8,6 +8,7 @@ create table if not exists public.official_templates (
   notion_page_id text unique,
   name text not null,
   category text,
+  category_key text,
   description text,
   when_to_use text,
   base_example text,
@@ -31,6 +32,7 @@ alter table public.official_templates
   add column if not exists notion_page_id text,
   add column if not exists name text,
   add column if not exists category text,
+  add column if not exists category_key text,
   add column if not exists description text,
   add column if not exists when_to_use text,
   add column if not exists base_example text,
@@ -65,6 +67,7 @@ where metadata is null;
 
 alter table public.official_templates
   drop constraint if exists official_templates_slug_format_check,
+  drop constraint if exists official_templates_category_key_format_check,
   drop constraint if exists official_templates_name_not_empty_check,
   drop constraint if exists official_templates_status_check,
   drop constraint if exists official_templates_sync_status_check,
@@ -74,6 +77,8 @@ alter table public.official_templates
 alter table public.official_templates
   add constraint official_templates_slug_format_check
     check (slug is not null and slug = lower(slug) and slug ~ '^[a-z0-9_]+$'),
+  add constraint official_templates_category_key_format_check
+    check (category_key is null or (category_key = lower(category_key) and category_key ~ '^[a-z0-9_]+$')),
   add constraint official_templates_name_not_empty_check
     check (name is not null and char_length(trim(name)) > 0),
   add constraint official_templates_status_check
@@ -97,6 +102,9 @@ create unique index if not exists official_templates_notion_page_id_idx
 
 create index if not exists official_templates_status_order_idx
   on public.official_templates (status, display_order, name);
+
+create index if not exists official_templates_category_status_idx
+  on public.official_templates (category_key, status, display_order, name);
 
 create or replace function public.set_official_templates_updated_at()
 returns trigger

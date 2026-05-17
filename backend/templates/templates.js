@@ -20,10 +20,12 @@ function createSectionDefinition({
   };
 }
 
-function createTemplateConfig({ nome, secoes, promptVariant, sectionGuidance, evaluation }) {
+function createTemplateConfig({ nome, secoes, category, categoryKey, promptVariant, sectionGuidance, evaluation }) {
   return {
     nome,
     secoes,
+    ...(category ? { category } : {}),
+    ...(categoryKey ? { categoryKey } : {}),
     ...(promptVariant ? { promptVariant } : {}),
     ...(sectionGuidance ? { sectionGuidance } : {}),
     evaluation,
@@ -163,6 +165,8 @@ const BASE_CLINICAL_EVALUATION = {
 const templates = {
   psiquiatria: createTemplateConfig({
     nome: 'Psiquiatria',
+    category: 'Saúde mental',
+    categoryKey: 'saude_mental',
     secoes: [
       'Identificação',
       'Queixa principal',
@@ -303,6 +307,8 @@ const templates = {
 
   pediatria: createTemplateConfig({
     nome: 'Pediatria',
+    category: 'Pediatria',
+    categoryKey: 'pediatria',
     secoes: [
       'Identificação',
       'Queixa principal',
@@ -337,12 +343,16 @@ const templates = {
 
   clinica_medica: createTemplateConfig({
     nome: 'Clínica médica / Ambulatório',
+    category: 'Clínica médica',
+    categoryKey: 'clinica_medica',
     secoes: BASE_CLINICAL_SECTIONS,
     evaluation: BASE_CLINICAL_EVALUATION,
   }),
 
   obstetricia: createTemplateConfig({
     nome: 'Obstetrícia',
+    category: 'Obstetrícia',
+    categoryKey: 'obstetricia',
     secoes: [
       'ID',
       'IG (USG) | (DUM)',
@@ -379,6 +389,8 @@ const templates = {
 
   upa_emergencia: createTemplateConfig({
     nome: 'UPA / Emergência',
+    category: 'Urgência e emergência',
+    categoryKey: 'urgencia_e_emergencia',
     secoes: [
       'Identificação',
       'Queixa principal',
@@ -413,6 +425,8 @@ const templates = {
 
   puerperio: createTemplateConfig({
     nome: 'Puerpério',
+    category: 'Puerpério',
+    categoryKey: 'puerperio',
     secoes: [
       'Identificação',
       'Tipo de parto',
@@ -450,6 +464,8 @@ const templates = {
 
   ginecologia: createTemplateConfig({
     nome: 'Ginecologia',
+    category: 'Ginecologia',
+    categoryKey: 'ginecologia',
     secoes: [
       'Identificação',
       'Queixa principal',
@@ -486,6 +502,8 @@ const templates = {
 
   triagem: createTemplateConfig({
     nome: 'Triagem rápida',
+    category: 'Triagem',
+    categoryKey: 'triagem',
     secoes: [
       'Identificação',
       'Queixa principal',

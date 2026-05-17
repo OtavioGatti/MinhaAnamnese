@@ -3,6 +3,7 @@ const {
   normalizeVariables,
   upsertOfficialPrompts,
 } = require('./officialPrompts');
+const { normalizeCategoryKey } = require('../utils/categoryKeys');
 
 const NOTION_API_BASE_URL = 'https://api.notion.com/v1';
 const DEFAULT_NOTION_VERSION = '2026-03-11';
@@ -130,6 +131,7 @@ function mapNotionPageToPrompt(page) {
     name: readTextProperty(properties, 'Name'),
     status: readSelectProperty(properties, 'Status'),
     category: readSelectProperty(properties, 'Category'),
+    categoryKey: normalizeCategoryKey(readSelectProperty(properties, 'Category')),
     promptType: readSelectProperty(properties, 'Prompt type'),
     model: readSelectProperty(properties, 'Model'),
     version: readNumberProperty(properties, 'Version', 1),

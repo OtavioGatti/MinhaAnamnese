@@ -665,6 +665,7 @@ function App() {
   const profileHydratedUserRef = useRef(null);
   const lastSavedProfileSnapshotRef = useRef(null);
   const [templates, setTemplates] = useState([]);
+  const [templateCategories, setTemplateCategories] = useState([]);
   const [templateSelecionado, setTemplateSelecionado] = useState('');
   const [texto, setTexto] = useState('');
   const [resultado, setResultado] = useState('');
@@ -884,7 +885,13 @@ function App() {
     const response = await api.get('/templates');
 
     if (response.success) {
-      setTemplates(response.data);
+      if (Array.isArray(response.data)) {
+        setTemplates(response.data);
+        setTemplateCategories([]);
+      } else {
+        setTemplates(Array.isArray(response.data?.templates) ? response.data.templates : []);
+        setTemplateCategories(Array.isArray(response.data?.categories) ? response.data.categories : []);
+      }
     } else {
       setErro(response.error || 'Não foi possível carregar os modelos clínicos.');
     }
@@ -2430,6 +2437,7 @@ function App() {
       {currentPage === 'templates' && (
         <TemplatesPage
           templates={templates}
+          templateCategories={templateCategories}
           loadingTemplates={loadingTemplates}
           selectedTemplateId={templateSelecionado}
           onUseTemplate={handleUseTemplateFromLibrary}

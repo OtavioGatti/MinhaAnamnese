@@ -1,12 +1,16 @@
 const { isValidUserId } = require('../utils/idValidation');
 const officialTemplates = require('../templates/templates');
+const {
+  getLegacyClinicalCategoryKey,
+  getLegacyClinicalCategoryKeyByCategoryKey,
+  resolveCategory,
+} = require('../utils/categoryKeys');
 
 const CUSTOM_TEMPLATE_PREFIX = 'custom:';
 const MAX_TEMPLATE_NAME_LENGTH = 80;
 const MAX_TEMPLATE_DESCRIPTION_LENGTH = 240;
 const MAX_SECTION_LENGTH = 80;
 const MAX_SECTIONS = 24;
-const DEFAULT_CLINICAL_CATEGORY = 'general';
 const CLINICAL_CATEGORY_SOURCE_TEMPLATE = {
   general: 'clinica_medica',
   psychiatry: 'psiquiatria',
@@ -16,23 +20,6 @@ const CLINICAL_CATEGORY_SOURCE_TEMPLATE = {
   gynecology: 'ginecologia',
   postpartum: 'puerperio',
   triage: 'triagem',
-};
-const ALLOWED_CLINICAL_CATEGORIES = new Set(Object.keys(CLINICAL_CATEGORY_SOURCE_TEMPLATE));
-const CLINICAL_CATEGORY_ALIASES = {
-  clinica_medica: 'general',
-  clinica: 'general',
-  geral: 'general',
-  psiquiatria: 'psychiatry',
-  pediatria: 'pediatrics',
-  obstetricia: 'obstetrics',
-  obstetrica: 'obstetrics',
-  upa_emergencia: 'emergency',
-  emergencia: 'emergency',
-  urgencia: 'emergency',
-  ginecologia: 'gynecology',
-  puerperio: 'postpartum',
-  pos_parto: 'postpartum',
-  triagem: 'triage',
 };
 
 function getUserTemplatesAdminConfig() {
@@ -68,21 +55,11 @@ function normalizeText(value) {
   return String(value || '').replace(/\s+/g, ' ').trim();
 }
 
-function normalizeClinicalCategory(value) {
-  const normalized = String(value || '')
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .toLowerCase()
-    .trim();
-
-  return ALLOWED_CLINICAL_CATEGORIES.has(normalized)
-    ? normalized
-    : CLINICAL_CATEGORY_ALIASES[normalized] || DEFAULT_CLINICAL_CATEGORY;
-}
-
 function getClinicalCategoryTemplate(category) {
-  const normalizedCategory = normalizeClinicalCategory(category);
-  const sourceTemplateId = CLINICAL_CATEGORY_SOURCE_TEMPLATE[normalizedCategory];
+  const legacyCategoryKey = getLegacyClinicalCategoryKey(category);
+  const sourceTemplateId = legacyCategoryKey
+    ? CLINICAL_CATEGORY_SOURCE_TEMPLATE[legacyCategoryKey]
+    : null;
 
   return officialTemplates[sourceTemplateId] || officialTemplates.clinica_medica || null;
 }
@@ -117,9 +94,11 @@ function validateTemplatePayload(payload) {
   const name = normalizeText(payload?.name || payload?.nome).slice(0, MAX_TEMPLATE_NAME_LENGTH);
   const description = normalizeText(payload?.description).slice(0, MAX_TEMPLATE_DESCRIPTION_LENGTH);
   const sections = normalizeSections(payload?.sections || payload?.secoes);
-  const clinicalCategory = normalizeClinicalCategory(
-    payload?.clinicalCategory || payload?.clinical_category,
-  );
+  const category = resolveCategory({
+    key: payload?.clinicalCategoryKey || payload?.clinical_category_key || payload?.clinicalCategory,
+    label: payload?.clinicalCategoryLabel || payload?.clinical_category_label,
+    legacyValue: payload?.clinicalCategory || payload?.clinical_category,
+  });
 
   if (!name) {
     const error = new Error('Informe um nome para o template.');
@@ -137,7 +116,8 @@ function validateTemplatePayload(payload) {
     name,
     description,
     sections,
-    clinicalCategory,
+    clinicalCategoryKey: category.key,
+    clinicalCategoryLabel: category.label,
   };
 }
 
@@ -206,15 +186,23 @@ function buildCustomEvaluation(sections, inheritedEvaluation = null) {
 
 function mapTemplateRow(row) {
   const sections = normalizeSections(row?.sections);
-  const clinicalCategory = normalizeClinicalCategory(row?.clinical_category);
+  const category = resolveCategory({
+    key: row?.clinical_category_key,
+    label: row?.clinical_category_label,
+    legacyValue: row?.clinical_category,
+  });
 
   return {
     id: formatCustomTemplateId(row.id),
     nome: row.name,
     description: row.description || '',
     secoes: sections,
-    clinicalCategory,
-    clinical_category: clinicalCategory,
+    clinicalCategory: category.key,
+    clinicalCategoryKey: category.key,
+    clinicalCategoryLabel: category.label,
+    clinical_category: row?.clinical_category || null,
+    clinical_category_key: category.key,
+    clinical_category_label: category.label,
     source: 'custom',
     created_at: row.created_at,
     updated_at: row.updated_at,
@@ -228,8 +216,14 @@ function buildRuntimeTemplateConfig(row) {
     return null;
   }
 
-  const clinicalCategory = normalizeClinicalCategory(row?.clinical_category);
-  const categoryTemplate = getClinicalCategoryTemplate(clinicalCategory);
+  const category = resolveCategory({
+    key: row?.clinical_category_key,
+    label: row?.clinical_category_label,
+    legacyValue: row?.clinical_category,
+  });
+  const categoryTemplate = getClinicalCategoryTemplate(
+    row?.clinical_category || getLegacyClinicalCategoryKeyByCategoryKey(category.key),
+  );
 
   return {
     nome: row.name,
@@ -237,7 +231,9 @@ function buildRuntimeTemplateConfig(row) {
     promptVariant: categoryTemplate?.promptVariant || 'custom',
     sectionGuidance: categoryTemplate?.sectionGuidance,
     evaluation: buildCustomEvaluation(sections, categoryTemplate?.evaluation),
-    clinicalCategory,
+    clinicalCategory: category.key,
+    clinicalCategoryKey: category.key,
+    clinicalCategoryLabel: category.label,
   };
 }
 
@@ -279,7 +275,7 @@ async function listUserTemplates(userId) {
   }
 
   const query = new URLSearchParams({
-    select: 'id,user_id,name,description,sections,clinical_category,created_at,updated_at',
+    select: 'id,user_id,name,description,sections,clinical_category,clinical_category_key,clinical_category_label,created_at,updated_at',
     user_id: `eq.${userId}`,
     order: 'updated_at.desc',
   });
@@ -296,7 +292,7 @@ async function getUserTemplateConfig(templateId, userId) {
   }
 
   const query = new URLSearchParams({
-    select: 'id,user_id,name,description,sections,clinical_category,created_at,updated_at',
+    select: 'id,user_id,name,description,sections,clinical_category,clinical_category_key,clinical_category_label,created_at,updated_at',
     id: `eq.${rowId}`,
     user_id: `eq.${userId}`,
     limit: '1',
@@ -325,7 +321,9 @@ async function createUserTemplate(userId, payload) {
       name: fields.name,
       description: fields.description || null,
       sections: fields.sections,
-      clinical_category: fields.clinicalCategory,
+      clinical_category: getLegacyClinicalCategoryKeyByCategoryKey(fields.clinicalCategoryKey),
+      clinical_category_key: fields.clinicalCategoryKey,
+      clinical_category_label: fields.clinicalCategoryLabel,
     }),
   });
 
@@ -355,7 +353,9 @@ async function updateUserTemplate(userId, templateId, payload) {
       name: fields.name,
       description: fields.description || null,
       sections: fields.sections,
-      clinical_category: fields.clinicalCategory,
+      clinical_category: getLegacyClinicalCategoryKeyByCategoryKey(fields.clinicalCategoryKey),
+      clinical_category_key: fields.clinicalCategoryKey,
+      clinical_category_label: fields.clinicalCategoryLabel,
     }),
   });
 
@@ -393,7 +393,6 @@ async function deleteUserTemplate(userId, templateId) {
 }
 
 module.exports = {
-  ALLOWED_CLINICAL_CATEGORIES,
   buildCustomEvaluation,
   CLINICAL_CATEGORY_SOURCE_TEMPLATE,
   createUserTemplate,
@@ -401,7 +400,6 @@ module.exports = {
   getUserTemplateConfig,
   isCustomTemplateId,
   listUserTemplates,
-  normalizeClinicalCategory,
   parseCustomTemplateId,
   updateUserTemplate,
 };

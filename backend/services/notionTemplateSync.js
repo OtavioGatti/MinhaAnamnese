@@ -3,6 +3,7 @@ const {
   normalizeOfficialTemplatePayload,
   upsertOfficialTemplates,
 } = require('./officialTemplates');
+const { normalizeCategoryKey } = require('../utils/categoryKeys');
 
 const NOTION_API_BASE_URL = 'https://api.notion.com/v1';
 const DEFAULT_NOTION_VERSION = '2026-03-11';
@@ -156,6 +157,7 @@ function mapNotionPageToTemplate(page) {
     name: readTextProperty(properties, 'Name'),
     status: readSelectProperty(properties, 'Status'),
     category: readSelectProperty(properties, 'Category'),
+    categoryKey: normalizeCategoryKey(readSelectProperty(properties, 'Category')),
     displayOrder: readNumberProperty(properties, 'Order', 1000),
     version: readNumberProperty(properties, 'Version', 1),
     description: readTextProperty(properties, 'Description'),

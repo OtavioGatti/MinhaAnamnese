@@ -2,7 +2,10 @@ const OpenAI = require('openai');
 const { getTemplateById, isPotentialOfficialTemplateId, resolveTemplateById } = require('./templates');
 const { calculateAnamnesisQualityScore } = require('../utils/anamnesisQualityScore');
 const { buildStructurePrompt } = require('../prompts/structurePrompt');
-const { getSyncedOfficialPrompt } = require('./officialPrompts');
+const {
+  getPublishedDefaultPromptByType,
+  getPublishedPromptByCategoryAndType,
+} = require('./officialPrompts');
 const { getLatestAnamneseMetric, registerAnamneseMetric } = require('./anamneseMetrics');
 const { getTextLimitError } = require('../utils/requestLimits');
 const { sanitizeText } = require('../utils/textSanitization');
@@ -76,9 +79,10 @@ async function processAnamnesis({ template, texto, userId }) {
   const openai = new OpenAI({ apiKey });
   const sanitizedText = sanitizeText(texto).trim();
   const previousMetric = await getLatestAnamneseMetric(userId).catch(() => null);
-  const [structureDefaultPrompt, structureObstetriciaPrompt] = await Promise.all([
-    getSyncedOfficialPrompt('structure_default_system').catch(() => null),
-    getSyncedOfficialPrompt('structure_obstetricia_system').catch(() => null),
+  const categoryKey = templateConfig.categoryKey || templateConfig.clinicalCategoryKey || '';
+  const [categoryStructurePrompt, defaultStructurePrompt] = await Promise.all([
+    getPublishedPromptByCategoryAndType(categoryKey, 'structure_system').catch(() => null),
+    getPublishedDefaultPromptByType('structure_system').catch(() => null),
   ]);
 
   const response = await openai.chat.completions.create({
@@ -87,8 +91,8 @@ async function processAnamnesis({ template, texto, userId }) {
       {
         role: 'system',
         content: buildStructurePrompt(templateConfig, {
-          structureDefault: structureDefaultPrompt?.promptBody || null,
-          structureObstetricia: structureObstetriciaPrompt?.promptBody || null,
+          categoryPrompt: categoryStructurePrompt?.promptBody || null,
+          defaultPrompt: defaultStructurePrompt?.promptBody || null,
         }),
       },
       {

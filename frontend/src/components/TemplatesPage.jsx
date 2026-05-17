@@ -1,27 +1,17 @@
 import { useMemo, useState } from 'react';
 import { api } from '../apiClient';
 import { guides } from '../data/guides';
-import { officialTemplateCatalog, templateCategories } from '../data/officialTemplateCatalog';
+import { officialTemplateCatalog } from '../data/officialTemplateCatalog';
 import { templateStructures } from '../data/templateStructures';
 
 const EMPTY_TEMPLATE_FORM = {
   id: null,
   name: '',
   description: '',
-  clinicalCategory: 'general',
+  clinicalCategoryKey: 'clinica_medica',
+  clinicalCategoryLabel: 'Clínica médica',
   sections: '',
 };
-
-const CLINICAL_CATEGORY_OPTIONS = [
-  { value: 'general', label: 'Clínica geral', description: 'Usa o comportamento clínico geral do sistema.' },
-  { value: 'psychiatry', label: 'Psiquiatria', description: 'Herde foco em funcionalidade, risco, substâncias e estado mental.' },
-  { value: 'pediatrics', label: 'Pediatria', description: 'Herde foco em vacinação, desenvolvimento, sinais de alarme e exame pediátrico.' },
-  { value: 'obstetrics', label: 'Obstetrícia', description: 'Herde o prompt obstétrico personalizado para idade gestacional e sinais de alerta.' },
-  { value: 'emergency', label: 'Urgência / Emergência', description: 'Herde foco em tempo de evolução, gravidade, sinais vitais e conduta imediata.' },
-  { value: 'gynecology', label: 'Ginecologia', description: 'Herde foco em história menstrual, vida sexual, contracepção e exame ginecológico.' },
-  { value: 'postpartum', label: 'Puerpério', description: 'Herde foco em pós-parto, amamentação, loquiação e sinais infecciosos.' },
-  { value: 'triage', label: 'Triagem', description: 'Herde foco em classificação inicial, sinais de gravidade e sinais vitais.' },
-];
 
 function normalizeText(value) {
   return (value || '')
@@ -34,12 +24,9 @@ function getSectionsText(template) {
   return (template?.secoes || template?.structure || []).join('\n');
 }
 
-function getClinicalCategoryOption(value) {
-  return CLINICAL_CATEGORY_OPTIONS.find((option) => option.value === value) || CLINICAL_CATEGORY_OPTIONS[0];
-}
-
 function TemplatesPage({
   templates,
+  templateCategories = [],
   loadingTemplates,
   selectedTemplateId,
   onUseTemplate,
@@ -53,7 +40,7 @@ function TemplatesPage({
   onRequestUpgrade,
 }) {
   const [search, setSearch] = useState('');
-  const [categoryFilter, setCategoryFilter] = useState('Todos');
+  const [categoryFilter, setCategoryFilter] = useState('all');
   const [previewTemplateId, setPreviewTemplateId] = useState(null);
   const [editorOpen, setEditorOpen] = useState(false);
   const [formState, setFormState] = useState(EMPTY_TEMPLATE_FORM);
@@ -73,6 +60,9 @@ function TemplatesPage({
         return {
           id: template.id,
           name: template.nome,
+          categoryKey: template.categoryKey || normalizeText(
+            template.category || catalogEntry.category || 'Template oficial',
+          ).replace(/\s+/g, '_'),
           category: template.category || catalogEntry.category || 'Template oficial',
           description: template.description || catalogEntry.description || 'Template oficial disponível para organizar este tipo de anamnese.',
           whenToUse: template.whenToUse || catalogEntry.whenToUse || 'Use este template quando precisar de uma estrutura clínica padronizada.',
@@ -84,18 +74,71 @@ function TemplatesPage({
       })
   ), [templates]);
 
+  const availableCategoryOptions = useMemo(() => {
+    const sourceCategories = [
+      ...(Array.isArray(templateCategories) ? templateCategories : []),
+      ...officialTemplates.map((template) => ({
+        key: template.categoryKey,
+        label: template.category,
+      })),
+      ...templates
+        .filter((template) => template.source === 'custom')
+        .map((template) => ({
+          key:
+            template.clinicalCategoryKey ||
+            template.clinical_category_key ||
+            template.clinicalCategory ||
+            '',
+          label:
+            template.clinicalCategoryLabel ||
+            template.clinical_category_label ||
+            '',
+        })),
+    ];
+    const categories = new Map();
+
+    sourceCategories.forEach((category) => {
+      const label = category?.label || category?.category || '';
+      const key = category?.key || normalizeText(label).replace(/\s+/g, '_');
+
+      if (!key || !label || categories.has(key)) {
+        return;
+      }
+
+      categories.set(key, { key, label });
+    });
+
+    if (!categories.size) {
+      categories.set('clinica_medica', {
+        key: 'clinica_medica',
+        label: 'Clínica médica',
+      });
+    }
+
+    return [...categories.values()];
+  }, [officialTemplates, templateCategories, templates]);
+
   const customTemplates = useMemo(() => (
     templates
       .filter((template) => template.source === 'custom')
       .map((template) => {
-        const clinicalCategory = template.clinicalCategory || template.clinical_category || 'general';
+        const clinicalCategoryKey =
+          template.clinicalCategoryKey ||
+          template.clinical_category_key ||
+          template.clinicalCategory ||
+          'clinica_medica';
+        const clinicalCategoryLabel =
+          template.clinicalCategoryLabel ||
+          template.clinical_category_label ||
+          availableCategoryOptions.find((option) => option.key === clinicalCategoryKey)?.label ||
+          'Clínica médica';
 
         return {
           id: template.id,
           name: template.nome,
           category: 'Meu template',
-          clinicalCategory,
-          clinicalCategoryLabel: getClinicalCategoryOption(clinicalCategory).label,
+          clinicalCategoryKey,
+          clinicalCategoryLabel,
           description: template.description || 'Estrutura personalizada salva para sua rotina.',
           whenToUse: 'Use quando quiser organizar a anamnese seguindo sua estrutura própria.',
           hasCalculators: false,
@@ -104,7 +147,7 @@ function TemplatesPage({
           source: 'custom',
         };
       })
-  ), [templates]);
+  ), [availableCategoryOptions, templates]);
 
   const allTemplates = useMemo(() => (
     [...officialTemplates, ...customTemplates]
@@ -114,7 +157,7 @@ function TemplatesPage({
     const normalizedSearch = normalizeText(search);
 
     return officialTemplates.filter((template) => {
-      const matchesCategory = categoryFilter === 'Todos' || template.category === categoryFilter;
+      const matchesCategory = categoryFilter === 'all' || template.categoryKey === categoryFilter;
       const matchesSearch = !normalizedSearch || [
         template.name,
         template.category,
@@ -165,7 +208,8 @@ function TemplatesPage({
           id: template.id,
           name: template.name,
           description: template.description,
-          clinicalCategory: template.clinicalCategory || 'general',
+          clinicalCategoryKey: template.clinicalCategoryKey || 'clinica_medica',
+          clinicalCategoryLabel: template.clinicalCategoryLabel || 'Clínica médica',
           sections: getSectionsText(template),
         }
       : EMPTY_TEMPLATE_FORM);
@@ -210,7 +254,8 @@ function TemplatesPage({
     const payload = {
       name: formState.name,
       description: formState.description,
-      clinicalCategory: formState.clinicalCategory,
+      clinicalCategoryKey: formState.clinicalCategoryKey,
+      clinicalCategoryLabel: formState.clinicalCategoryLabel,
       sections: formState.sections
         .split(/\r?\n/g)
         .map((section) => section.trim())
@@ -308,14 +353,14 @@ function TemplatesPage({
         ) : null}
 
         <div className="templates-filters" aria-label="Filtrar templates por categoria">
-          {templateCategories.map((category) => (
+          {[{ key: 'all', label: 'Todos' }, ...availableCategoryOptions].map((category) => (
             <button
-              key={category}
+              key={category.key}
               type="button"
-              className={`templates-filter-chip ${categoryFilter === category ? 'active' : ''}`}
-              onClick={() => setCategoryFilter(category)}
+              className={`templates-filter-chip ${categoryFilter === category.key ? 'active' : ''}`}
+              onClick={() => setCategoryFilter(category.key)}
             >
-              {category}
+              {category.label}
             </button>
           ))}
         </div>
@@ -609,11 +654,19 @@ function TemplatesPage({
             <label className="template-editor-field">
               <span>Categoria clínica</span>
               <select
-                value={formState.clinicalCategory}
-                onChange={(event) => handleTemplateFormChange('clinicalCategory', event.target.value)}
+                value={formState.clinicalCategoryKey}
+                onChange={(event) => {
+                  const selectedCategory = availableCategoryOptions.find((option) => option.key === event.target.value);
+
+                  setFormState((current) => ({
+                    ...current,
+                    clinicalCategoryKey: selectedCategory?.key || 'clinica_medica',
+                    clinicalCategoryLabel: selectedCategory?.label || 'Clínica médica',
+                  }));
+                }}
               >
-                {CLINICAL_CATEGORY_OPTIONS.map((option) => (
-                  <option key={option.value} value={option.value}>
+                {availableCategoryOptions.map((option) => (
+                  <option key={option.key} value={option.key}>
                     {option.label}
                   </option>
                 ))}
@@ -621,7 +674,7 @@ function TemplatesPage({
             </label>
 
             <div className="template-editor-helper">
-              {getClinicalCategoryOption(formState.clinicalCategory).description}
+              O template herdará o prompt clínico publicado para esta categoria.
             </div>
 
             <label className="template-editor-field">

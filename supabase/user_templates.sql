@@ -4,6 +4,9 @@ create table if not exists public.user_templates (
   name text not null,
   description text,
   sections jsonb not null default '[]'::jsonb,
+  clinical_category text,
+  clinical_category_key text not null default 'clinica_medica',
+  clinical_category_label text not null default 'Clínica médica',
   created_at timestamptz not null default timezone('utc', now()),
   updated_at timestamptz not null default timezone('utc', now())
 );
@@ -13,12 +16,22 @@ alter table public.user_templates
   add column if not exists name text,
   add column if not exists description text,
   add column if not exists sections jsonb not null default '[]'::jsonb,
+  add column if not exists clinical_category text,
+  add column if not exists clinical_category_key text not null default 'clinica_medica',
+  add column if not exists clinical_category_label text not null default 'Clínica médica',
   add column if not exists created_at timestamptz not null default timezone('utc', now()),
   add column if not exists updated_at timestamptz not null default timezone('utc', now());
 
 update public.user_templates
 set sections = '[]'::jsonb
 where sections is null;
+
+update public.user_templates
+set
+  clinical_category_key = 'clinica_medica',
+  clinical_category_label = 'Clínica médica'
+where clinical_category_key is null
+   or clinical_category_label is null;
 
 do $$
 begin
@@ -44,10 +57,37 @@ begin
         and jsonb_array_length(sections) between 2 and 24
       );
   end if;
+
+  if not exists (
+    select 1
+    from pg_constraint
+    where conname = 'user_templates_clinical_category_key_format_check'
+  ) then
+    alter table public.user_templates
+      add constraint user_templates_clinical_category_key_format_check
+      check (
+        char_length(trim(clinical_category_key)) > 0
+        and clinical_category_key = lower(clinical_category_key)
+        and clinical_category_key ~ '^[a-z0-9_]+$'
+      );
+  end if;
+
+  if not exists (
+    select 1
+    from pg_constraint
+    where conname = 'user_templates_clinical_category_label_not_empty_check'
+  ) then
+    alter table public.user_templates
+      add constraint user_templates_clinical_category_label_not_empty_check
+      check (char_length(trim(clinical_category_label)) > 0);
+  end if;
 end $$;
 
 create index if not exists user_templates_user_id_updated_at_idx
   on public.user_templates (user_id, updated_at desc);
+
+create index if not exists user_templates_category_key_idx
+  on public.user_templates (clinical_category_key);
 
 create or replace function public.set_user_templates_updated_at()
 returns trigger

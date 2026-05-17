@@ -264,16 +264,20 @@ ESTILO CLÍNICO
 }
 
 function buildStructurePrompt(templateConfig, promptTemplates = {}) {
+  if (promptTemplates.categoryPrompt) {
+    return buildDefaultStructurePrompt(templateConfig, promptTemplates.categoryPrompt);
+  }
+
   if (templateConfig?.promptVariant === 'obstetricia') {
     return buildObstetricStructurePrompt(
       templateConfig,
-      promptTemplates.structureObstetricia || null,
+      promptTemplates.defaultPrompt || null,
     );
   }
 
   return buildDefaultStructurePrompt(
     templateConfig,
-    promptTemplates.structureDefault || null,
+    promptTemplates.defaultPrompt || null,
   );
 }
 

@@ -1,4 +1,7 @@
-const { listTemplatesForUser } = require('../services/templates');
+const {
+  listOfficialTemplateCategories,
+  listTemplatesForUser,
+} = require('../services/templates');
 const {
   createUserTemplate,
   deleteUserTemplate,
@@ -84,10 +87,17 @@ module.exports = async function handler(req, res) {
   try {
     if (req.method === 'GET') {
       const user = await resolveOptionalUser(req);
+      const [templates, categories] = await Promise.all([
+        listTemplatesForUser(user?.id || null),
+        listOfficialTemplateCategories(),
+      ]);
 
       return res.status(200).json({
         success: true,
-        data: await listTemplatesForUser(user?.id || null),
+        data: {
+          templates,
+          categories,
+        },
       });
     }
 

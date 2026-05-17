@@ -8,6 +8,7 @@ const OFFICIAL_TEMPLATE_SELECT = [
   'notion_page_id',
   'name',
   'category',
+  'category_key',
   'description',
   'when_to_use',
   'base_example',
@@ -22,6 +23,7 @@ const OFFICIAL_TEMPLATE_SELECT = [
   'synced_at',
   'updated_at',
 ].join(',');
+const { normalizeCategoryKey } = require('../utils/categoryKeys');
 
 function getOfficialTemplatesAdminConfig() {
   return {
@@ -129,6 +131,7 @@ function mapOfficialTemplateRow(row) {
     source: 'official',
     description: row.description || '',
     category: row.category || '',
+    categoryKey: row.category_key || '',
     whenToUse: row.when_to_use || '',
     baseExample: row.base_example || '',
     guide: normalizeList(row.guide, { maxItems: 60, maxLength: 240 }),
@@ -155,6 +158,7 @@ function buildRuntimeOfficialTemplateConfig(row, fallbackTemplate = null) {
       : fallbackTemplate?.evaluation || buildCustomEvaluation(mapped.secoes),
     description: mapped.description,
     category: mapped.category,
+    categoryKey: mapped.categoryKey,
     whenToUse: mapped.whenToUse,
     baseExample: mapped.baseExample,
     guide: mapped.guide,
@@ -270,6 +274,7 @@ function normalizeOfficialTemplatePayload(template) {
       notion_page_id: normalizeText(template?.notionPageId) || null,
       name,
       category: normalizeText(template?.category) || null,
+      category_key: normalizeCategoryKey(template?.categoryKey || template?.category) || null,
       description: normalizeLongText(template?.description) || null,
       when_to_use: normalizeLongText(template?.whenToUse) || null,
       base_example: normalizeLongText(template?.baseExample) || null,

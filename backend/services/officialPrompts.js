@@ -4,6 +4,7 @@ const OFFICIAL_PROMPT_SELECT = [
   'notion_page_id',
   'name',
   'category',
+  'category_key',
   'prompt_type',
   'model',
   'description',
@@ -19,6 +20,7 @@ const OFFICIAL_PROMPT_SELECT = [
   'synced_at',
   'updated_at',
 ].join(',');
+const DEFAULT_STRUCTURE_PROMPT_SLUG = 'structure_default_system';
 
 function getOfficialPromptsAdminConfig() {
   return {
@@ -49,6 +51,8 @@ function normalizeSlug(value) {
     .replace(/^_+|_+$/g, '')
     .slice(0, 120);
 }
+
+const { normalizeCategoryKey } = require('../utils/categoryKeys');
 
 function normalizeStatus(value) {
   const normalized = normalizeText(value)
@@ -107,6 +111,7 @@ function mapOfficialPromptRow(row) {
     slug: row.slug,
     name: row.name,
     category: row.category || '',
+    categoryKey: row.category_key || '',
     promptType: row.prompt_type || '',
     model: row.model || '',
     description: row.description || '',
@@ -115,6 +120,7 @@ function mapOfficialPromptRow(row) {
     promptBody: normalizeLongText(row.prompt_body),
     source: row.source || '',
     internalNotes: row.internal_notes || '',
+    status: row.status || '',
     version: normalizeNumber(row.version, 1),
     displayOrder: normalizeNumber(row.display_order, 1000),
     updatedAt: row.updated_at || row.synced_at || null,
@@ -174,6 +180,37 @@ async function getSyncedOfficialPrompt(slug) {
   return mapOfficialPromptRow(row);
 }
 
+async function getPublishedPromptByCategoryAndType(categoryKey, promptType) {
+  const normalizedCategoryKey = normalizeCategoryKey(categoryKey);
+  const normalizedPromptType = normalizeText(promptType);
+
+  if (!normalizedCategoryKey || !normalizedPromptType || !isOfficialPromptsStorageAvailable()) {
+    return null;
+  }
+
+  const query = new URLSearchParams({
+    select: OFFICIAL_PROMPT_SELECT,
+    category_key: `eq.${normalizedCategoryKey}`,
+    prompt_type: `eq.${normalizedPromptType}`,
+    status: 'eq.published',
+    order: 'display_order.asc,name.asc',
+    limit: '1',
+  });
+  const json = await requestOfficialPrompts(`?${query.toString()}`, { method: 'GET' });
+  const row = Array.isArray(json) ? json[0] : null;
+
+  return mapOfficialPromptRow(row);
+}
+
+async function getPublishedDefaultPromptByType(promptType) {
+  if (promptType === 'structure_system') {
+    const prompt = await getSyncedOfficialPrompt(DEFAULT_STRUCTURE_PROMPT_SLUG);
+    return prompt?.status === 'published' ? prompt : null;
+  }
+
+  return null;
+}
+
 function normalizeOfficialPromptPayload(prompt) {
   const name = normalizeText(prompt?.name);
   const slug = normalizeSlug(prompt?.slug);
@@ -210,6 +247,7 @@ function normalizeOfficialPromptPayload(prompt) {
       notion_page_id: normalizeText(prompt?.notionPageId) || null,
       name,
       category: normalizeText(prompt?.category) || null,
+      category_key: normalizeCategoryKey(prompt?.categoryKey || prompt?.category) || null,
       prompt_type: normalizeText(prompt?.promptType) || null,
       model: normalizeText(prompt?.model) || null,
       description: normalizeLongText(prompt?.description) || null,
@@ -258,6 +296,8 @@ async function upsertOfficialPrompts(prompts) {
 }
 
 module.exports = {
+  getPublishedDefaultPromptByType,
+  getPublishedPromptByCategoryAndType,
   getSyncedOfficialPrompt,
   isOfficialPromptsStorageAvailable,
   normalizeOfficialPromptPayload,

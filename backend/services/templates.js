@@ -4,6 +4,7 @@ const {
   listSyncedOfficialTemplates,
   normalizeSlug,
 } = require('./officialTemplates');
+const { DEFAULT_CATEGORY, resolveCategory } = require('../utils/categoryKeys');
 const {
   getUserTemplateConfig,
   isCustomTemplateId,
@@ -23,6 +24,8 @@ function listTemplates() {
     id,
     nome: template.nome,
     secoes: template.secoes,
+    category: template.category || '',
+    categoryKey: template.categoryKey || '',
     source: 'official',
   }));
 }
@@ -95,9 +98,43 @@ async function listTemplatesForUser(userId = null) {
   ];
 }
 
+async function listOfficialTemplateCategories() {
+  const officialTemplatesById = new Map(listTemplates().map((template) => [template.id, template]));
+  const syncedOfficialTemplates = await listSyncedOfficialTemplates().catch(() => []);
+
+  syncedOfficialTemplates.forEach((template) => {
+    const fallback = officialTemplatesById.get(template.id) || {};
+    officialTemplatesById.set(template.id, {
+      ...fallback,
+      ...template,
+      source: 'official',
+    });
+  });
+
+  const categories = new Map();
+
+  officialTemplatesById.forEach((template) => {
+    const category = resolveCategory({
+      key: template.categoryKey,
+      label: template.category,
+    });
+
+    categories.set(category.key, category);
+  });
+
+  if (!categories.size) {
+    categories.set(DEFAULT_CATEGORY.key, DEFAULT_CATEGORY);
+  }
+
+  return [...categories.values()].sort((left, right) => (
+    String(left.label).localeCompare(String(right.label), 'pt-BR')
+  ));
+}
+
 module.exports = {
   getTemplateById,
   isPotentialOfficialTemplateId,
+  listOfficialTemplateCategories,
   listTemplates,
   listTemplatesForUser,
   resolveTemplateById,

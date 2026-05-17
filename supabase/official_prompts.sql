@@ -8,6 +8,7 @@ create table if not exists public.official_prompts (
   notion_page_id text unique,
   name text not null,
   category text,
+  category_key text,
   prompt_type text,
   model text,
   description text,
@@ -32,6 +33,7 @@ alter table public.official_prompts
   add column if not exists notion_page_id text,
   add column if not exists name text,
   add column if not exists category text,
+  add column if not exists category_key text,
   add column if not exists prompt_type text,
   add column if not exists model text,
   add column if not exists description text,
@@ -57,6 +59,7 @@ where variables is null;
 
 alter table public.official_prompts
   drop constraint if exists official_prompts_slug_format_check,
+  drop constraint if exists official_prompts_category_key_format_check,
   drop constraint if exists official_prompts_name_not_empty_check,
   drop constraint if exists official_prompts_prompt_body_not_empty_check,
   drop constraint if exists official_prompts_status_check,
@@ -66,6 +69,8 @@ alter table public.official_prompts
 alter table public.official_prompts
   add constraint official_prompts_slug_format_check
     check (slug is not null and slug = lower(slug) and slug ~ '^[a-z0-9_]+$'),
+  add constraint official_prompts_category_key_format_check
+    check (category_key is null or (category_key = lower(category_key) and category_key ~ '^[a-z0-9_]+$')),
   add constraint official_prompts_name_not_empty_check
     check (name is not null and char_length(trim(name)) > 0),
   add constraint official_prompts_prompt_body_not_empty_check
@@ -86,6 +91,15 @@ create unique index if not exists official_prompts_notion_page_id_idx
 
 create index if not exists official_prompts_status_order_idx
   on public.official_prompts (status, display_order, name);
+
+create index if not exists official_prompts_type_category_status_idx
+  on public.official_prompts (prompt_type, category_key, status, display_order, name);
+
+create unique index if not exists official_prompts_published_type_category_uidx
+  on public.official_prompts (prompt_type, category_key)
+  where status = 'published'
+    and prompt_type is not null
+    and category_key is not null;
 
 create or replace function public.set_official_prompts_updated_at()
 returns trigger
