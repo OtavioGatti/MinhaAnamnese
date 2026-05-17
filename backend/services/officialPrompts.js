@@ -71,6 +71,31 @@ function normalizeStatus(value) {
   return 'draft';
 }
 
+function normalizePromptType(value) {
+  const normalized = normalizeText(value)
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '_')
+    .replace(/^_+|_+$/g, '');
+
+  if (normalized === 'system' || normalized === 'structure_system') {
+    return 'structure_system';
+  }
+
+  return normalized || '';
+}
+
+function getPromptTypeAliases(value) {
+  const normalizedPromptType = normalizePromptType(value);
+
+  if (normalizedPromptType === 'structure_system') {
+    return ['structure_system', 'system', 'System'];
+  }
+
+  return normalizedPromptType ? [normalizedPromptType] : [];
+}
+
 function normalizeNumber(value, fallback) {
   const parsed = Number(value);
   return Number.isFinite(parsed) ? Math.trunc(parsed) : fallback;
@@ -112,7 +137,7 @@ function mapOfficialPromptRow(row) {
     name: row.name,
     category: row.category || '',
     categoryKey: row.category_key || '',
-    promptType: row.prompt_type || '',
+    promptType: normalizePromptType(row.prompt_type),
     model: row.model || '',
     description: row.description || '',
     whenToUse: row.when_to_use || '',
@@ -182,16 +207,16 @@ async function getSyncedOfficialPrompt(slug) {
 
 async function getPublishedPromptByCategoryAndType(categoryKey, promptType) {
   const normalizedCategoryKey = normalizeCategoryKey(categoryKey);
-  const normalizedPromptType = normalizeText(promptType);
+  const promptTypeAliases = getPromptTypeAliases(promptType);
 
-  if (!normalizedCategoryKey || !normalizedPromptType || !isOfficialPromptsStorageAvailable()) {
+  if (!normalizedCategoryKey || !promptTypeAliases.length || !isOfficialPromptsStorageAvailable()) {
     return null;
   }
 
   const query = new URLSearchParams({
     select: OFFICIAL_PROMPT_SELECT,
     category_key: `eq.${normalizedCategoryKey}`,
-    prompt_type: `eq.${normalizedPromptType}`,
+    prompt_type: `in.(${promptTypeAliases.join(',')})`,
     status: 'eq.published',
     order: 'display_order.asc,name.asc',
     limit: '1',
@@ -203,7 +228,7 @@ async function getPublishedPromptByCategoryAndType(categoryKey, promptType) {
 }
 
 async function getPublishedDefaultPromptByType(promptType) {
-  if (promptType === 'structure_system') {
+  if (normalizePromptType(promptType) === 'structure_system') {
     const prompt = await getSyncedOfficialPrompt(DEFAULT_STRUCTURE_PROMPT_SLUG);
     return prompt?.status === 'published' ? prompt : null;
   }
@@ -248,7 +273,7 @@ function normalizeOfficialPromptPayload(prompt) {
       name,
       category: normalizeText(prompt?.category) || null,
       category_key: normalizeCategoryKey(prompt?.categoryKey || prompt?.category) || null,
-      prompt_type: normalizeText(prompt?.promptType) || null,
+      prompt_type: normalizePromptType(prompt?.promptType) || null,
       model: normalizeText(prompt?.model) || null,
       description: normalizeLongText(prompt?.description) || null,
       when_to_use: normalizeLongText(prompt?.whenToUse) || null,
@@ -301,6 +326,7 @@ module.exports = {
   getSyncedOfficialPrompt,
   isOfficialPromptsStorageAvailable,
   normalizeOfficialPromptPayload,
+  normalizePromptType,
   normalizeSlug,
   normalizeStatus,
   normalizeVariables,
