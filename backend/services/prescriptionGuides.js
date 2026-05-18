@@ -6,8 +6,10 @@ const BASE_GUIDE_COLUMNS = [
   'slug',
   'title',
   'condition_name',
+  'cid10_primary',
   'specialty',
   'subcondition',
+  'prescription_option_cids',
   'contexts',
   'source',
   'updated_at',
@@ -40,6 +42,11 @@ const PROTOCOL_GUIDE_COLUMNS = [
 
 const GUIDE_SELECT = BASE_GUIDE_COLUMNS.join(',');
 const GUIDE_PROTOCOL_SELECT = [...BASE_GUIDE_COLUMNS, ...PROTOCOL_GUIDE_COLUMNS].join(',');
+const LEGACY_BASE_GUIDE_COLUMNS = BASE_GUIDE_COLUMNS.filter((column) => (
+  column !== 'cid10_primary' && column !== 'prescription_option_cids'
+));
+const LEGACY_GUIDE_SELECT = LEGACY_BASE_GUIDE_COLUMNS.join(',');
+const LEGACY_GUIDE_PROTOCOL_SELECT = [...LEGACY_BASE_GUIDE_COLUMNS, ...PROTOCOL_GUIDE_COLUMNS].join(',');
 
 const ITEM_SELECT = [
   'id',
@@ -236,16 +243,34 @@ function isMissingColumnError(error) {
   );
 }
 
-async function requestWithSchemaFallback(primaryPath, fallbackPath, options = {}) {
-  try {
-    return await requestPrescriptionGuides(primaryPath, options);
-  } catch (error) {
-    if (!isMissingColumnError(error)) {
-      throw error;
-    }
+async function requestWithSchemaFallbacks(paths, options = {}) {
+  let lastMissingColumnError = null;
 
-    return requestPrescriptionGuides(fallbackPath, options);
+  for (const path of paths) {
+    try {
+      return await requestPrescriptionGuides(path, options);
+    } catch (error) {
+      if (!isMissingColumnError(error)) {
+        throw error;
+      }
+
+      lastMissingColumnError = error;
+    }
   }
+
+  throw lastMissingColumnError;
+}
+
+function normalizeOptionCidMap(value) {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) {
+    return {};
+  }
+
+  return Object.fromEntries(
+    Object.entries(value)
+      .map(([key, code]) => [String(key).trim(), normalizeText(code).toUpperCase()])
+      .filter(([key, code]) => key && code),
+  );
 }
 
 function mapGuideRow(row) {
@@ -258,8 +283,10 @@ function mapGuideRow(row) {
     slug: row.slug,
     title: row.title || row.condition_name,
     conditionName: row.condition_name,
+    cid10Primary: row.cid10_primary || '',
     specialty: row.specialty || '',
     subcondition: row.subcondition || '',
+    prescriptionOptionCids: normalizeOptionCidMap(row.prescription_option_cids),
     contexts: Array.isArray(row.contexts) ? row.contexts.filter(Boolean) : [],
     source: row.fonte || row.source || '',
     updatedAt: row.updated_at || null,
@@ -298,12 +325,14 @@ function guideMatchesQuery(guide, query) {
   const haystack = stripAccents([
     guide.title,
     guide.conditionName,
+    guide.cid10Primary,
     guide.subcondition,
     guide.specialty,
     guide.tipoProtocolo,
     guide.nivelRisco,
     ...(guide.contexts || []),
     ...(guide.tags || []),
+    ...Object.values(guide.prescriptionOptionCids || {}),
   ].join(' ')).toLowerCase();
 
   if (haystack.includes(normalizedQuery)) {
@@ -456,7 +485,14 @@ function buildCopyPayload(guide, sections) {
   };
 }
 
-function buildGuideParams({ select, query = '', specialty = '', context = '', limit = MAX_SEARCH_RESULTS }) {
+function buildGuideParams({
+  select,
+  query = '',
+  specialty = '',
+  context = '',
+  limit = MAX_SEARCH_RESULTS,
+  includeCid10Search = true,
+}) {
   const searchTerms = getSearchTerms(query);
   const params = new URLSearchParams({
     select,
@@ -470,6 +506,7 @@ function buildGuideParams({ select, query = '', specialty = '', context = '', li
     const orParts = searchTerms.flatMap((term) => [
       `condition_name.ilike.*${term}*`,
       `title.ilike.*${term}*`,
+      ...(includeCid10Search ? [`cid10_primary.ilike.*${term}*`] : []),
       `subcondition.ilike.*${term}*`,
       `specialty.ilike.*${term}*`,
     ]);
@@ -489,11 +526,23 @@ function buildGuideParams({ select, query = '', specialty = '', context = '', li
 
 async function fetchGuideList(args) {
   const protocolParams = buildGuideParams({ ...args, select: GUIDE_PROTOCOL_SELECT });
-  const fallbackParams = buildGuideParams({ ...args, select: GUIDE_SELECT });
+  const legacyProtocolParams = buildGuideParams({
+    ...args,
+    select: LEGACY_GUIDE_PROTOCOL_SELECT,
+    includeCid10Search: false,
+  });
+  const fallbackParams = buildGuideParams({
+    ...args,
+    select: LEGACY_GUIDE_SELECT,
+    includeCid10Search: false,
+  });
 
-  return requestWithSchemaFallback(
-    `prescription_guides?${protocolParams.toString()}`,
-    `prescription_guides?${fallbackParams.toString()}`,
+  return requestWithSchemaFallbacks(
+    [
+      `prescription_guides?${protocolParams.toString()}`,
+      `prescription_guides?${legacyProtocolParams.toString()}`,
+      `prescription_guides?${fallbackParams.toString()}`,
+    ],
     { method: 'GET' },
   );
 }
@@ -520,7 +569,14 @@ async function listPrescriptionGuides({ query = '', specialty = '', context = ''
   });
 
   const legacyFallbackParams = new URLSearchParams({
-    select: GUIDE_SELECT,
+    select: LEGACY_GUIDE_PROTOCOL_SELECT,
+    active: 'eq.true',
+    status: 'eq.published',
+    order: 'condition_name.asc',
+    limit: '500',
+  });
+  const minimalFallbackParams = new URLSearchParams({
+    select: LEGACY_GUIDE_SELECT,
     active: 'eq.true',
     status: 'eq.published',
     order: 'condition_name.asc',
@@ -530,16 +586,21 @@ async function listPrescriptionGuides({ query = '', specialty = '', context = ''
   if (specialty) {
     fallbackParams.set('specialty', `eq.${normalizeText(specialty)}`);
     legacyFallbackParams.set('specialty', `eq.${normalizeText(specialty)}`);
+    minimalFallbackParams.set('specialty', `eq.${normalizeText(specialty)}`);
   }
 
   if (context) {
     fallbackParams.set('contexts', `cs.{${normalizeText(context)}}`);
     legacyFallbackParams.set('contexts', `cs.{${normalizeText(context)}}`);
+    minimalFallbackParams.set('contexts', `cs.{${normalizeText(context)}}`);
   }
 
-  const fallbackJson = await requestWithSchemaFallback(
-    `prescription_guides?${fallbackParams.toString()}`,
-    `prescription_guides?${legacyFallbackParams.toString()}`,
+  const fallbackJson = await requestWithSchemaFallbacks(
+    [
+      `prescription_guides?${fallbackParams.toString()}`,
+      `prescription_guides?${legacyFallbackParams.toString()}`,
+      `prescription_guides?${minimalFallbackParams.toString()}`,
+    ],
     { method: 'GET' },
   );
   const fallbackGuides = Array.isArray(fallbackJson)
@@ -566,16 +627,26 @@ async function getPrescriptionGuideBySlug(slug) {
     limit: '1',
   });
   const guideFallbackParams = new URLSearchParams({
-    select: GUIDE_SELECT,
+    select: LEGACY_GUIDE_PROTOCOL_SELECT,
+    slug: `eq.${normalizedSlug}`,
+    active: 'eq.true',
+    status: 'eq.published',
+    limit: '1',
+  });
+  const guideMinimalFallbackParams = new URLSearchParams({
+    select: LEGACY_GUIDE_SELECT,
     slug: `eq.${normalizedSlug}`,
     active: 'eq.true',
     status: 'eq.published',
     limit: '1',
   });
 
-  const guideRows = await requestWithSchemaFallback(
-    `prescription_guides?${guideProtocolParams.toString()}`,
-    `prescription_guides?${guideFallbackParams.toString()}`,
+  const guideRows = await requestWithSchemaFallbacks(
+    [
+      `prescription_guides?${guideProtocolParams.toString()}`,
+      `prescription_guides?${guideFallbackParams.toString()}`,
+      `prescription_guides?${guideMinimalFallbackParams.toString()}`,
+    ],
     { method: 'GET' },
   );
   const guide = Array.isArray(guideRows) ? mapGuideRow(guideRows[0]) : null;

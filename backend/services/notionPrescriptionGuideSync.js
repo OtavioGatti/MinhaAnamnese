@@ -123,6 +123,43 @@ function splitList(value) {
     .filter(Boolean);
 }
 
+function normalizeCid10Code(value) {
+  return normalizeText(value).toUpperCase().replace(/\s+/g, '');
+}
+
+function parsePrescriptionOptionCids(value) {
+  const optionCids = {};
+  const invalidLines = [];
+
+  normalizeLongText(value)
+    .split(/\r?\n/)
+    .map((line) => line.trim())
+    .filter(Boolean)
+    .forEach((line) => {
+      const match = stripAccents(line).match(/^(?:opcao\s*)?(\d{1,2})\s*(?:[|:;\-])\s*(.+)$/i);
+
+      if (!match) {
+        invalidLines.push(line);
+        return;
+      }
+
+      const optionNumber = String(Number.parseInt(match[1], 10));
+      const cid10Code = normalizeCid10Code(match[2]);
+
+      if (!optionNumber || !cid10Code) {
+        invalidLines.push(line);
+        return;
+      }
+
+      optionCids[optionNumber] = cid10Code;
+    });
+
+  return {
+    optionCids,
+    invalidLines,
+  };
+}
+
 async function requestNotion(path, options = {}) {
   const { apiKey, notionVersion } = getNotionPrescriptionGuidesConfig();
 
@@ -284,13 +321,16 @@ function mapNotionPageToPrescriptionGuide(page, index) {
   const ready = readCheckboxProperty(properties, 'pronto_para_supabase');
   const slug = normalizeSlug(readTextProperty(properties, 'slug') || title);
   const contexts = readMultiSelectProperty(properties, 'contexto');
+  const parsedOptionCids = parsePrescriptionOptionCids(readTextProperty(properties, 'cid10_opcoes'));
 
   const guide = {
     slug,
     title,
     condition_name: conditionName,
+    cid10_primary: normalizeCid10Code(readTextProperty(properties, 'cid10_principal')) || null,
     specialty: normalizeText(readSelectProperty(properties, 'especialidade')) || null,
     subcondition: normalizeText(readTextProperty(properties, 'subcondicao')) || null,
+    prescription_option_cids: parsedOptionCids.optionCids,
     contexts,
     status: normalizeStatusForGuide(statusRevisao, ready),
     active: ready && !stripAccents(statusRevisao).toLowerCase().includes('nao usar'),
@@ -329,6 +369,7 @@ function mapNotionPageToPrescriptionGuide(page, index) {
     notionPageId: page?.id || null,
     notionUrl: page?.url || null,
     ready,
+    optionCidParseErrors: parsedOptionCids.invalidLines,
   };
 }
 
@@ -352,12 +393,17 @@ function validateGuidePayload(mapped) {
     reasons.push('missing_protocol_content');
   }
 
+  if (mapped.optionCidParseErrors.length > 0) {
+    reasons.push('invalid_cid10_option_lines');
+  }
+
   return reasons.length > 0
     ? {
         slug: guide.slug || null,
         title: guide.title || null,
         notionPageId: mapped.notionPageId,
         reasons,
+        invalidCid10OptionLines: mapped.optionCidParseErrors,
       }
     : null;
 }

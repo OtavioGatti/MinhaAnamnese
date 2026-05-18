@@ -290,7 +290,7 @@ function getPreviewLines(text, maxLines = 4) {
     .slice(0, maxLines);
 }
 
-function buildPrescriptionOptions(sectionText, copyText) {
+function buildPrescriptionOptions(sectionText, copyText, optionCids = {}) {
   const copyOptions = parsePrescriptionOptionBlocks(copyText);
 
   if (!copyOptions.length) {
@@ -308,6 +308,7 @@ function buildPrescriptionOptions(sectionText, copyText) {
 
     return {
       number: copyOption.number,
+      cid10Code: optionCids?.[copyOption.number] || '',
       title: decisionOption?.title || copyOption.title || `Opção ${copyOption.number}`,
       whenUse: decisionOption?.whenUse || '',
       contents: decisionOption?.contents || '',
@@ -437,6 +438,13 @@ function ProtocolHeaderMeta({ guide }) {
 
   return (
     <div className="protocol-header-meta">
+      {guide?.cid10Primary ? (
+        <div className="protocol-meta-group">
+          <span>CID-10</span>
+          <strong>{guide.cid10Primary}</strong>
+        </div>
+      ) : null}
+
       {guide?.specialty ? (
         <div className="protocol-meta-group">
           <span>Especialidade</span>
@@ -509,7 +517,9 @@ function ProtocolAccordionSection({
   const sectionText = getSectionText(guide, definition.key);
   const copyText = definition.copyKey ? getCopyText(guide, definition.copyKey) : sectionText;
   const showsCopyHint = definition.key === 'prescription' && Boolean(String(copyText || '').trim());
-  const prescriptionOptions = definition.key === 'prescription' ? buildPrescriptionOptions(sectionText, copyText) : [];
+  const prescriptionOptions = definition.key === 'prescription'
+    ? buildPrescriptionOptions(sectionText, copyText, guide?.prescriptionOptionCids)
+    : [];
   const hasPrescriptionOptions = prescriptionOptions.length > 0;
   const displayText = sectionText || copyText;
 
@@ -536,7 +546,10 @@ function ProtocolAccordionSection({
                 <details className="protocol-prescription-option" key={`${definition.key}-${option.number}-${option.title}`} open={option.number === prescriptionOptions[0]?.number}>
                   <summary className="protocol-prescription-option-header">
                     <span>Opção {option.number}</span>
-                    <strong>{option.title}</strong>
+                    <div className="protocol-prescription-option-title">
+                      <strong>{option.title}</strong>
+                      {option.cid10Code ? <small className="protocol-cid-chip">CID-10 {option.cid10Code}</small> : null}
+                    </div>
                     <em>Ver prescrição</em>
                   </summary>
 

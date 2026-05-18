@@ -2878,6 +2878,27 @@ body {
   line-height: 1.35;
 }
 
+.protocol-prescription-option-title {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.protocol-cid-chip {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  padding: 0.18rem 0.42rem;
+  border: 1px solid rgba(191, 219, 254, 0.95);
+  border-radius: 999px;
+  background: rgba(239, 246, 255, 0.96);
+  color: var(--primary-700);
+  font-size: 0.68rem;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
 .protocol-prescription-option-header em {
   grid-column: 2;
   grid-row: 1 / span 2;

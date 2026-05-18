@@ -8,8 +8,10 @@ create table if not exists public.prescription_guides (
   slug text not null unique,
   title text not null,
   condition_name text not null,
+  cid10_primary text,
   specialty text,
   subcondition text,
+  prescription_option_cids jsonb not null default '{}'::jsonb,
   contexts text[] not null default '{}'::text[],
   status text not null default 'published',
   active boolean not null default true,
@@ -46,10 +48,14 @@ create table if not exists public.prescription_guides (
   constraint prescription_guides_title_not_empty_check
     check (char_length(trim(title)) > 0),
   constraint prescription_guides_condition_not_empty_check
-    check (char_length(trim(condition_name)) > 0)
+    check (char_length(trim(condition_name)) > 0),
+  constraint prescription_guides_option_cids_object_check
+    check (jsonb_typeof(prescription_option_cids) = 'object')
 );
 
 alter table public.prescription_guides
+  add column if not exists cid10_primary text,
+  add column if not exists prescription_option_cids jsonb not null default '{}'::jsonb,
   add column if not exists tipo_protocolo text,
   add column if not exists status_revisao text,
   add column if not exists nivel_risco text,
@@ -72,6 +78,23 @@ alter table public.prescription_guides
   add column if not exists ultima_revisao date,
   add column if not exists revisor text,
   add column if not exists tags text[] not null default '{}'::text[];
+
+update public.prescription_guides
+set prescription_option_cids = '{}'::jsonb
+where prescription_option_cids is null;
+
+do $$
+begin
+  if not exists (
+    select 1
+    from pg_constraint
+    where conname = 'prescription_guides_option_cids_object_check'
+  ) then
+    alter table public.prescription_guides
+      add constraint prescription_guides_option_cids_object_check
+      check (jsonb_typeof(prescription_option_cids) = 'object');
+  end if;
+end $$;
 
 create table if not exists public.prescription_guide_items (
   id uuid primary key default gen_random_uuid(),
@@ -119,6 +142,9 @@ create index if not exists prescription_guides_title_trgm_idx
 
 create index if not exists prescription_guides_subcondition_trgm_idx
   on public.prescription_guides using gin (subcondition extensions.gin_trgm_ops);
+
+create index if not exists prescription_guides_cid10_primary_trgm_idx
+  on public.prescription_guides using gin (cid10_primary extensions.gin_trgm_ops);
 
 create index if not exists prescription_guides_tags_idx
   on public.prescription_guides using gin (tags);
