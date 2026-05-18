@@ -3496,6 +3496,24 @@ body {
   flex-wrap: wrap;
 }
 
+.plan-comparison-modal {
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  max-height: min(calc(100dvh - 2.5rem), 760px);
+  overflow: hidden;
+}
+
+.plan-comparison-scroll-region {
+  min-height: 0;
+  display: grid;
+  gap: 1rem;
+  overflow-y: auto;
+  padding-right: 0.15rem;
+}
+
+.plan-comparison-actions {
+  flex-shrink: 0;
+}
+
 .welcome-onboarding-modal {
   width: min(100%, 620px);
   gap: 1.05rem;
@@ -3957,6 +3975,33 @@ body {
 
   .app-modal-card {
     padding: 1rem;
+  }
+
+  .app-modal-backdrop {
+    align-items: flex-start;
+    overflow-y: auto;
+    padding:
+      max(0.75rem, env(safe-area-inset-top))
+      0.75rem
+      max(0.75rem, env(safe-area-inset-bottom));
+  }
+
+  .plan-comparison-modal {
+    width: 100%;
+    max-height: calc(100dvh - 1.5rem);
+  }
+
+  .plan-comparison-actions {
+    position: sticky;
+    bottom: 0;
+    margin: 0 -1rem -1rem;
+    padding: 0.85rem 1rem 1rem;
+    border-top: 1px solid rgba(226, 232, 240, 0.96);
+    background: rgba(255, 255, 255, 0.98);
+  }
+
+  .plan-comparison-actions .btn {
+    width: 100%;
   }
 
   .app-modal-actions,

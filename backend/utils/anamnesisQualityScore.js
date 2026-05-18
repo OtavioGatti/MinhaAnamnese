@@ -7,12 +7,16 @@ const MAX_SCORE_WITH_ONE_PARTIAL_ESSENTIAL = 88;
 const MAX_SCORE_WITH_MULTIPLE_PARTIAL_ESSENTIALS = 80;
 const MAX_SCORE_WITH_EMERGENCY_STRUCTURAL_RISK = 74;
 const PARTIAL_STATUS_MULTIPLIER = 0.72;
+
+// 1. UNIFICAÇÃO DOS MARCADORES OFICIAIS
 const MISSING_MARKERS = [
   'nao informado',
   'nao descrito',
   '[dado ausente]',
   '[informacao insuficiente]',
+  '[nao relatado]' // MANTIDO APENAS COM COLCHETES para não apagar negativas clínicas reais (Ex: "febre não relatada")
 ];
+
 const INLINE_FIELD_ALIASES = [
   'id',
   'identificacao',
@@ -65,29 +69,53 @@ function normalizeText(value) {
     .toLowerCase();
 }
 
+// ... RESTO DO CÓDIGO PERMANECE EXATAMENTE IGUAL ...
+
 function tokenizeText(value) {
   return normalizeText(value)
     .split(/[^a-z0-9]+/g)
     .filter(Boolean);
 }
 
+function escapeRegex(value) {
+  return String(value || '').replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+// 2. FUNÇÃO HELPER: LIMPA OS MARCADORES DE LUGAR-TENENTE
+function stripPlaceholderMarkers(text) {
+  let cleanedText = normalizeText(text);
+  MISSING_MARKERS.forEach((marker) => {
+    const escapedMarker = escapeRegex(marker);
+    const regex = new RegExp(escapedMarker, 'g');
+    cleanedText = cleanedText.replace(regex, ' ');
+  });
+  return cleanedText.trim();
+}
+
+// 3. NOVA REGRA "SÊNIOR": AVALIA CONTEÚDO REAL RESTANTE
 function hasMeaningfulContent(value) {
   const normalized = normalizeText(value).trim();
 
+  // Vazio óbvio
   if (!normalized) {
     return false;
   }
 
-  return !MISSING_MARKERS.some((marker) => normalized.includes(marker));
+  // É estritamente apenas o placeholder?
+  if (MISSING_MARKERS.includes(normalized)) {
+    return false;
+  }
+
+  // Remove os marcadores de ausência e checa se sobrou texto clínico real
+  const textWithoutMarkers = stripPlaceholderMarkers(value).replace(/[^a-z0-9]/g, '');
+
+  // Exige ao menos 3 caracteres alfanuméricos de conteúdo real para validar
+  return textWithoutMarkers.length >= 3;
 }
 
 function getTemplateEvaluationConfig(templateId, templateConfig) {
   const resolvedTemplate = templateConfig || getTemplateById(templateId);
   return resolvedTemplate?.evaluation || null;
-}
-
-function escapeRegex(value) {
-  return String(value || '').replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
 function trimValueAtNextInlineLabel(value) {
@@ -524,7 +552,7 @@ function getPresenceStatus(sectionDefinition, fullText) {
 
   if (labeledValue !== null) {
     if (!hasMeaningfulContent(labeledValue)) {
-      return 'missing';
+      return 'missing'; // Se sobrou apenas o placeholder [Não relatado], corta aqui!
     }
 
     if (sectionDefinition.narrative) {

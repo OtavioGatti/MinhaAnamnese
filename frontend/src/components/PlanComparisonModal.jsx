@@ -32,7 +32,8 @@ function PlanComparisonModal({ open, loading, isTrialAccess, onClose, onConfirm 
           </button>
         </div>
 
-        <div className="plan-comparison-grid">
+        <div className="plan-comparison-scroll-region">
+          <div className="plan-comparison-grid">
           <section className="plan-comparison-column">
             <span className="plan-comparison-badge basic">Plano básico</span>
             <h3>Para organizar rapidamente</h3>
@@ -61,18 +62,19 @@ function PlanComparisonModal({ open, loading, isTrialAccess, onClose, onConfirm 
               <li>histórico da sua evolução</li>
             </ul>
           </section>
-        </div>
+          </div>
 
-        <div className="plan-comparison-highlight">
+          <div className="plan-comparison-highlight">
           O teste profissional libera uma amostra real do fluxo completo; a assinatura mantém esse acesso sem os limites do teste.
-        </div>
+          </div>
 
-        <div className="plan-comparison-reassurance">
+          <div className="plan-comparison-reassurance">
           <strong>Por que costuma valer a pena?</strong>
           <span>Um único caso melhor revisado já pode economizar tempo, reduzir retrabalho e mostrar exatamente o que perguntar melhor na próxima coleta.</span>
+          </div>
         </div>
 
-        <div className="app-modal-actions">
+        <div className="app-modal-actions plan-comparison-actions">
           <button type="button" className="btn btn-secundario" onClick={onClose}>
             Ainda não
           </button>
