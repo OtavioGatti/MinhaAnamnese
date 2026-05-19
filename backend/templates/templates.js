@@ -305,42 +305,6 @@ const templates = {
     },
   }),
 
-  pediatria: createTemplateConfig({
-    nome: 'Pediatria',
-    category: 'Pediatria',
-    categoryKey: 'pediatria',
-    secoes: [
-      'Identificação',
-      'Queixa principal',
-      'História da moléstia atual',
-      'Antecedentes pessoais',
-      'Antecedentes familiares',
-      'Vacinação',
-      'Desenvolvimento neuropsicomotor',
-      'Medicações em uso',
-      'Exames complementares',
-      'Exame físico',
-      'Hipóteses diagnósticas / problemas ativos',
-      'Conduta',
-    ],
-    evaluation: {
-      sensitivity: 'pediatrics',
-      severitySignals: ['prostração', 'letargia', 'desidratação', 'tiragem', 'convulsão', 'convulsao'],
-      sections: [
-        createSectionDefinition({ id: 'identificacao', label: 'Identificação', weight: 8, priority: 'important', aliases: ['identificação'], evidence: ['meses', 'anos', 'criança', 'lactente'] }),
-        createSectionDefinition({ id: 'queixa_principal', label: 'Queixa principal', weight: 12, priority: 'essential', aliases: ['queixa principal'], evidence: ['febre', 'tosse', 'vômito', 'vomito', 'diarreia'] }),
-        createSectionDefinition({ id: 'hma', label: 'História da moléstia atual', weight: 16, priority: 'essential', aliases: ['história da moléstia atual', 'hda'], evidence: ['desde', 'evolução', 'recusa alimentar', 'piora'], narrative: true }),
-        createSectionDefinition({ id: 'antecedentes_pessoais', label: 'Antecedentes pessoais', weight: 8, priority: 'important', aliases: ['antecedentes pessoais'], evidence: ['prematuridade', 'alergia', 'internação', 'internacao'] }),
-        createSectionDefinition({ id: 'antecedentes_familiares', label: 'Antecedentes familiares', weight: 6, priority: 'contextual', aliases: ['antecedentes familiares'], evidence: ['asma', 'alergia', 'mãe', 'pai'] }),
-        createSectionDefinition({ id: 'vacinacao', label: 'Vacinação', weight: 10, priority: 'important', aliases: ['vacinação', 'vacinacao'], evidence: ['vacinas', 'calendário vacinal', 'calendario vacinal'] }),
-        createSectionDefinition({ id: 'desenvolvimento', label: 'Desenvolvimento neuropsicomotor', weight: 8, priority: 'important', aliases: ['desenvolvimento neuropsicomotor'], evidence: ['marcos', 'desenvolvimento', 'escola'] }),
-        createSectionDefinition({ id: 'medicacoes', label: 'Medicações em uso', weight: 6, priority: 'important', aliases: ['medicações em uso', 'medicacoes em uso'], evidence: ['dipirona', 'paracetamol', 'inalador', 'medicação'] }),
-        createSectionDefinition({ id: 'exames_complementares', label: 'Exames complementares', weight: 4, priority: 'contextual', aliases: ['exames complementares'], evidence: ['hemograma', 'rx', 'usg'] }),
-        createSectionDefinition({ id: 'exame_fisico', label: 'Exame físico', weight: 12, priority: 'essential', aliases: ['exame físico', 'exame fisico'], evidence: ['otoscopia', 'fc', 'fr', 'temperatura', 'ausculta'], vitals: true }),
-      ],
-    },
-  }),
-
   clinica_medica: createTemplateConfig({
     nome: 'Clínica médica / Ambulatório',
     category: 'Clínica médica',
