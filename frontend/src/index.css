@@ -2830,6 +2830,94 @@ body {
   line-height: 1.35;
 }
 
+.clinical-drug-page {
+  display: grid;
+  gap: 1rem;
+}
+
+.clinical-drug-header p {
+  max-width: 680px;
+}
+
+.clinical-drug-sidebar .protocol-result-item strong {
+  text-transform: none;
+}
+
+.clinical-drug-detail-panel {
+  gap: 0.9rem;
+}
+
+.clinical-drug-detail-header {
+  align-items: flex-start;
+}
+
+.clinical-drug-eyebrow {
+  color: var(--primary-600);
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.clinical-drug-actions {
+  display: flex;
+  flex: 0 0 auto;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.55rem;
+}
+
+.clinical-drug-source-link {
+  text-decoration: none;
+}
+
+.clinical-drug-section-list {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.clinical-drug-section {
+  display: grid;
+  gap: 0.55rem;
+  padding: 0.9rem;
+  border: 1px solid var(--gray-200);
+  border-radius: 10px;
+  background: #fff;
+}
+
+.clinical-drug-section h3 {
+  color: var(--gray-900);
+  font-size: 0.95rem;
+  letter-spacing: 0;
+}
+
+.clinical-drug-section pre {
+  margin: 0;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  color: var(--gray-800);
+  font: inherit;
+  font-size: 0.9rem;
+  line-height: 1.58;
+}
+
+.clinical-drug-source-box {
+  display: grid;
+  gap: 0.35rem;
+  padding: 0.88rem 0.95rem;
+  border: 1px dashed rgba(148, 163, 184, 0.75);
+  border-radius: 10px;
+  background: var(--gray-50);
+  color: var(--gray-600);
+  font-size: 0.84rem;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.clinical-drug-source-box strong {
+  color: var(--gray-900);
+}
+
 .protocol-prescription-options {
   display: grid;
   gap: 0.75rem;
@@ -4047,8 +4135,14 @@ body {
   }
 
   .prescription-guide-header,
-  .protocol-header {
+  .protocol-header,
+  .clinical-drug-detail-header {
     flex-direction: column;
+  }
+
+  .clinical-drug-actions,
+  .clinical-drug-actions .btn {
+    width: 100%;
   }
 
   .product-topbar-brand,

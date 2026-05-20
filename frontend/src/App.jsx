@@ -15,6 +15,7 @@ import TemplatesPage from './components/TemplatesPage';
 import UserEvolution from './components/UserEvolution';
 import WorkspaceSidebar from './components/WorkspaceSidebar';
 import CheckoutSuccessBanner from './components/CheckoutSuccessBanner';
+import ClinicalDrugPage from './components/ClinicalDrugPage';
 import WelcomeOnboardingModal from './components/WelcomeOnboardingModal';
 import { guides } from './data/guides';
 import { supabase } from './lib/supabaseClient';
@@ -687,6 +688,7 @@ function App() {
     home: '',
     profile: '',
     prescriptionGuide: '',
+    clinicalDrugs: '',
     referralLetter: '',
     templates: '',
   });
@@ -1493,6 +1495,10 @@ function App() {
     handleUpgradeInsights('prescriptionGuide');
   };
 
+  const handleUpgradeClinicalDrugs = () => {
+    handleUpgradeInsights('clinicalDrugs');
+  };
+
   const handleAnalysisAccessAction = async (origin = 'home') => {
     if (
       accessState?.hasActiveProAccess &&
@@ -1764,11 +1770,13 @@ function App() {
   const homeCheckoutError = checkoutErrors.home;
   const profileCheckoutError = checkoutErrors.profile;
   const prescriptionGuideCheckoutError = checkoutErrors.prescriptionGuide;
+  const clinicalDrugsCheckoutError = checkoutErrors.clinicalDrugs;
   const referralLetterCheckoutError = checkoutErrors.referralLetter;
   const templatesCheckoutError = checkoutErrors.templates;
   const isHomeCheckoutLoading = checkoutLoadingOrigin === 'home';
   const isProfileCheckoutLoading = checkoutLoadingOrigin === 'profile';
   const isPrescriptionGuideCheckoutLoading = checkoutLoadingOrigin === 'prescriptionGuide';
+  const isClinicalDrugsCheckoutLoading = checkoutLoadingOrigin === 'clinicalDrugs';
   const isReferralLetterCheckoutLoading = checkoutLoadingOrigin === 'referralLetter';
   const paywallUi = getPaywallUiConfig(user, accessState);
   const isProExpiringSoon = accessState?.hasActiveProAccess && isPlanExpiringSoon(accessState?.planExpiresAt);
@@ -2000,6 +2008,13 @@ function App() {
             onClick={() => handleNavigate('prescriptionGuide')}
           >
             Prescrições
+          </button>
+          <button
+            type="button"
+            className={`product-nav-item ${currentPage === 'clinicalDrugs' ? 'active' : ''}`}
+            onClick={() => handleNavigate('clinicalDrugs')}
+          >
+            Bulário
           </button>
         </nav>
 
@@ -2485,6 +2500,22 @@ function App() {
           onRequestUpgrade={handleUpgradePrescriptionGuide}
           loadingCheckout={isPrescriptionGuideCheckoutLoading}
           checkoutError={prescriptionGuideCheckoutError}
+        />
+      )}
+
+      {currentPage === 'clinicalDrugs' && (
+        <ClinicalDrugPage
+          user={user}
+          isPro={isPro}
+          accessState={accessState}
+          onLogin={() => {
+            setAuthMode('login');
+            setAuthError('');
+            setAuthPanelAberto(true);
+          }}
+          onRequestUpgrade={handleUpgradeClinicalDrugs}
+          loadingCheckout={isClinicalDrugsCheckoutLoading}
+          checkoutError={clinicalDrugsCheckoutError}
         />
       )}
 
