@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 function normalizeDisplayText(value) {
   return String(value || '').trim();
@@ -299,16 +299,69 @@ function QuickHighlight({ title, text, empty }) {
   );
 }
 
-function QuickSection({ title, text, empty = 'Campo ainda não preenchido no Bulário.' }) {
+function QuickSection({
+  title,
+  text,
+  empty = 'Campo ainda não preenchido no Bulário.',
+  expanded,
+  onToggle,
+}) {
   const content = normalizeDisplayText(text);
 
   return (
-    <details className="clinical-drug-quick-section">
-      <summary>{title}</summary>
-      <div className="clinical-drug-quick-section-content">
-        {content ? <pre>{content}</pre> : <p>{empty}</p>}
-      </div>
-    </details>
+    <section className="clinical-drug-quick-section">
+      <button
+        type="button"
+        className="clinical-drug-quick-section-trigger"
+        aria-expanded={expanded}
+        onClick={onToggle}
+      >
+        <span className="clinical-drug-quick-section-title">
+          <span className="protocol-chevron">{expanded ? '▾' : '▸'}</span>
+          {title}
+        </span>
+      </button>
+
+      {expanded ? (
+        <div className="clinical-drug-quick-section-content">
+          {content ? <pre>{content}</pre> : <p>{empty}</p>}
+        </div>
+      ) : null}
+    </section>
+  );
+}
+
+function QuickSourceSection({ items, expanded, onToggle }) {
+  if (!items.length) {
+    return null;
+  }
+
+  return (
+    <section className="clinical-drug-quick-source">
+      <button
+        type="button"
+        className="clinical-drug-quick-section-trigger"
+        aria-expanded={expanded}
+        onClick={onToggle}
+      >
+        <span className="clinical-drug-quick-section-title">
+          <span className="protocol-chevron">{expanded ? '▾' : '▸'}</span>
+          Fonte
+        </span>
+      </button>
+
+      {expanded ? (
+        <div className="clinical-drug-quick-section-content clinical-drug-quick-source-content">
+          {items.map((item, index) => (
+            /^https?:\/\//i.test(item) ? (
+              <a href={item} target="_blank" rel="noreferrer" key={`${item}-${index}`}>{item}</a>
+            ) : (
+              <span key={`${item}-${index}`}>{item}</span>
+            )
+          ))}
+        </div>
+      ) : null}
+    </section>
   );
 }
 
@@ -317,6 +370,14 @@ function ClinicalDrugQuickModal({ drug, onClose, onOpenCatalog }) {
   const sourceItems = splitDisplayLines(source);
   const presentations = getDrugPresentationText(drug);
   const hasMeta = Boolean(drug?.pregnancyRisk || drug?.classCategory);
+  const [expandedSections, setExpandedSections] = useState({});
+
+  function toggleQuickSection(key) {
+    setExpandedSections((currentSections) => ({
+      ...currentSections,
+      [key]: !currentSections[key],
+    }));
+  }
 
   useEffect(() => {
     function handleKeyDown(event) {
@@ -328,6 +389,10 @@ function ClinicalDrugQuickModal({ drug, onClose, onOpenCatalog }) {
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [onClose]);
+
+  useEffect(() => {
+    setExpandedSections({});
+  }, [drug?.slug]);
 
   return (
     <div className="app-modal-backdrop" role="presentation" onClick={onClose}>
@@ -377,26 +442,53 @@ function ClinicalDrugQuickModal({ drug, onClose, onOpenCatalog }) {
         </div>
 
         <div className="clinical-drug-quick-scroll">
-          <QuickSection title="Resumo" text={drug?.summaryText} />
-          <QuickSection title="Posologia adulto" text={drug?.adultDosage} />
-          <QuickSection title="Posologia pediátrica" text={drug?.pediatricDosage} />
-          <QuickSection title="Contraindicações" text={drug?.contraindications} />
-          <QuickSection title="Advertências" text={drug?.warnings} />
-          <QuickSection title="Interações" text={drug?.interactions} />
-          <QuickSection title="Apresentações / nomes comerciais" text={presentations} />
-
-          {source ? (
-            <details className="clinical-drug-quick-source">
-              <summary>Fonte</summary>
-              {sourceItems.map((item, index) => (
-                /^https?:\/\//i.test(item) ? (
-                  <a href={item} target="_blank" rel="noreferrer" key={`${item}-${index}`}>{item}</a>
-                ) : (
-                  <span key={`${item}-${index}`}>{item}</span>
-                )
-              ))}
-            </details>
-          ) : null}
+          <QuickSection
+            title="Resumo"
+            text={drug?.summaryText}
+            expanded={Boolean(expandedSections.summary)}
+            onToggle={() => toggleQuickSection('summary')}
+          />
+          <QuickSection
+            title="Posologia adulto"
+            text={drug?.adultDosage}
+            expanded={Boolean(expandedSections.adultDosage)}
+            onToggle={() => toggleQuickSection('adultDosage')}
+          />
+          <QuickSection
+            title="Posologia pediátrica"
+            text={drug?.pediatricDosage}
+            expanded={Boolean(expandedSections.pediatricDosage)}
+            onToggle={() => toggleQuickSection('pediatricDosage')}
+          />
+          <QuickSection
+            title="Contraindicações"
+            text={drug?.contraindications}
+            expanded={Boolean(expandedSections.contraindications)}
+            onToggle={() => toggleQuickSection('contraindications')}
+          />
+          <QuickSection
+            title="Advertências"
+            text={drug?.warnings}
+            expanded={Boolean(expandedSections.warnings)}
+            onToggle={() => toggleQuickSection('warnings')}
+          />
+          <QuickSection
+            title="Interações"
+            text={drug?.interactions}
+            expanded={Boolean(expandedSections.interactions)}
+            onToggle={() => toggleQuickSection('interactions')}
+          />
+          <QuickSection
+            title="Apresentações / nomes comerciais"
+            text={presentations}
+            expanded={Boolean(expandedSections.presentations)}
+            onToggle={() => toggleQuickSection('presentations')}
+          />
+          <QuickSourceSection
+            items={sourceItems}
+            expanded={Boolean(expandedSections.source)}
+            onToggle={() => toggleQuickSection('source')}
+          />
         </div>
 
         <footer className="clinical-drug-quick-actions">
