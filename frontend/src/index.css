@@ -3308,10 +3308,19 @@ body {
 }
 
 .clinical-drug-quick-modal {
-  grid-template-rows: auto auto auto minmax(0, 1fr) auto;
+  grid-template-rows: auto minmax(0, 1fr) auto;
   width: min(100%, 780px);
   max-height: min(calc(100dvh - 2.5rem), 780px);
   overflow: hidden;
+}
+
+.clinical-drug-quick-body {
+  min-height: 0;
+  display: grid;
+  align-content: start;
+  gap: 0.82rem;
+  overflow-y: auto;
+  padding-right: 0.15rem;
 }
 
 .clinical-drug-quick-meta {
@@ -3352,13 +3361,10 @@ body {
   line-height: 1.5;
 }
 
-.clinical-drug-quick-scroll {
-  min-height: 0;
+.clinical-drug-quick-sections {
   display: grid;
   align-content: start;
   gap: 0.7rem;
-  overflow-y: auto;
-  padding-right: 0.15rem;
 }
 
 .clinical-drug-quick-section,
@@ -3369,51 +3375,14 @@ body {
   overflow: hidden;
 }
 
-.clinical-drug-quick-section summary,
-.clinical-drug-quick-source summary {
-  display: flex;
-  align-items: center;
-  min-height: 44px;
-  padding: 0.72rem 0.85rem;
-  background: var(--gray-50);
-  color: var(--gray-900);
-  font-size: 0.92rem;
-  font-weight: 750;
-  letter-spacing: 0;
-  cursor: pointer;
-}
-
-.clinical-drug-quick-section summary::-webkit-details-marker,
-.clinical-drug-quick-source summary::-webkit-details-marker {
-  display: none;
-}
-
-.clinical-drug-quick-section summary::before,
-.clinical-drug-quick-source summary::before {
-  content: '▸';
-  margin-right: 0.48rem;
-  color: var(--gray-500);
-}
-
-.clinical-drug-quick-section[open] summary::before,
-.clinical-drug-quick-source[open] summary::before {
-  content: '▾';
-}
-
 .clinical-drug-quick-section-content {
-  padding: 0.85rem 0.9rem;
-}
-
-.clinical-drug-quick-source a,
-.clinical-drug-quick-source span {
-  display: block;
   padding: 0.85rem 0.9rem;
 }
 
 .clinical-drug-quick-section pre,
 .clinical-drug-quick-section p,
-.clinical-drug-quick-source span,
-.clinical-drug-quick-source a {
+.clinical-drug-quick-source-content span,
+.clinical-drug-quick-source-content a {
   margin: 0;
   color: var(--gray-700);
   font: inherit;
@@ -3427,7 +3396,7 @@ body {
   color: var(--gray-500);
 }
 
-.clinical-drug-quick-source a {
+.clinical-drug-quick-source-content a {
   color: var(--primary-700);
   font-weight: 700;
 }

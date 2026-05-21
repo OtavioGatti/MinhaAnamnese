@@ -414,81 +414,83 @@ function ClinicalDrugQuickModal({ drug, onClose, onOpenCatalog }) {
           </button>
         </header>
 
-        <div className="clinical-drug-quick-meta">
-          {drug?.classCategory ? (
-            <span className="protocol-meta-chip">
-              {drug.classCategory}
-            </span>
-          ) : null}
-          {drug?.pregnancyRisk ? (
-            <span className={`protocol-status-badge ${getRiskClass(drug.pregnancyRisk)}`}>
-              Risco gestacional {drug.pregnancyRisk}
-            </span>
-          ) : null}
-          {!hasMeta ? <span className="protocol-meta-chip">Bulário clínico</span> : null}
-        </div>
+        <div className="clinical-drug-quick-body">
+          <div className="clinical-drug-quick-meta">
+            {drug?.classCategory ? (
+              <span className="protocol-meta-chip">
+                {drug.classCategory}
+              </span>
+            ) : null}
+            {drug?.pregnancyRisk ? (
+              <span className={`protocol-status-badge ${getRiskClass(drug.pregnancyRisk)}`}>
+                Risco gestacional {drug.pregnancyRisk}
+              </span>
+            ) : null}
+            {!hasMeta ? <span className="protocol-meta-chip">Bulário clínico</span> : null}
+          </div>
 
-        <div className="clinical-drug-quick-highlights">
-          <QuickHighlight
-            title="Posologia adulto"
-            text={drug?.adultDosage}
-            empty="Sem posologia adulta preenchida."
-          />
-          <QuickHighlight
-            title="Contraindicações"
-            text={drug?.contraindications}
-            empty="Sem contraindicações preenchidas."
-          />
-        </div>
+          <div className="clinical-drug-quick-highlights">
+            <QuickHighlight
+              title="Posologia adulto"
+              text={drug?.adultDosage}
+              empty="Sem posologia adulta preenchida."
+            />
+            <QuickHighlight
+              title="Contraindicações"
+              text={drug?.contraindications}
+              empty="Sem contraindicações preenchidas."
+            />
+          </div>
 
-        <div className="clinical-drug-quick-scroll">
-          <QuickSection
-            title="Resumo"
-            text={drug?.summaryText}
-            expanded={Boolean(expandedSections.summary)}
-            onToggle={() => toggleQuickSection('summary')}
-          />
-          <QuickSection
-            title="Posologia adulto"
-            text={drug?.adultDosage}
-            expanded={Boolean(expandedSections.adultDosage)}
-            onToggle={() => toggleQuickSection('adultDosage')}
-          />
-          <QuickSection
-            title="Posologia pediátrica"
-            text={drug?.pediatricDosage}
-            expanded={Boolean(expandedSections.pediatricDosage)}
-            onToggle={() => toggleQuickSection('pediatricDosage')}
-          />
-          <QuickSection
-            title="Contraindicações"
-            text={drug?.contraindications}
-            expanded={Boolean(expandedSections.contraindications)}
-            onToggle={() => toggleQuickSection('contraindications')}
-          />
-          <QuickSection
-            title="Advertências"
-            text={drug?.warnings}
-            expanded={Boolean(expandedSections.warnings)}
-            onToggle={() => toggleQuickSection('warnings')}
-          />
-          <QuickSection
-            title="Interações"
-            text={drug?.interactions}
-            expanded={Boolean(expandedSections.interactions)}
-            onToggle={() => toggleQuickSection('interactions')}
-          />
-          <QuickSection
-            title="Apresentações / nomes comerciais"
-            text={presentations}
-            expanded={Boolean(expandedSections.presentations)}
-            onToggle={() => toggleQuickSection('presentations')}
-          />
-          <QuickSourceSection
-            items={sourceItems}
-            expanded={Boolean(expandedSections.source)}
-            onToggle={() => toggleQuickSection('source')}
-          />
+          <div className="clinical-drug-quick-sections">
+            <QuickSection
+              title="Resumo"
+              text={drug?.summaryText}
+              expanded={Boolean(expandedSections.summary)}
+              onToggle={() => toggleQuickSection('summary')}
+            />
+            <QuickSection
+              title="Posologia adulto"
+              text={drug?.adultDosage}
+              expanded={Boolean(expandedSections.adultDosage)}
+              onToggle={() => toggleQuickSection('adultDosage')}
+            />
+            <QuickSection
+              title="Posologia pediátrica"
+              text={drug?.pediatricDosage}
+              expanded={Boolean(expandedSections.pediatricDosage)}
+              onToggle={() => toggleQuickSection('pediatricDosage')}
+            />
+            <QuickSection
+              title="Contraindicações"
+              text={drug?.contraindications}
+              expanded={Boolean(expandedSections.contraindications)}
+              onToggle={() => toggleQuickSection('contraindications')}
+            />
+            <QuickSection
+              title="Advertências"
+              text={drug?.warnings}
+              expanded={Boolean(expandedSections.warnings)}
+              onToggle={() => toggleQuickSection('warnings')}
+            />
+            <QuickSection
+              title="Interações"
+              text={drug?.interactions}
+              expanded={Boolean(expandedSections.interactions)}
+              onToggle={() => toggleQuickSection('interactions')}
+            />
+            <QuickSection
+              title="Apresentações / nomes comerciais"
+              text={presentations}
+              expanded={Boolean(expandedSections.presentations)}
+              onToggle={() => toggleQuickSection('presentations')}
+            />
+            <QuickSourceSection
+              items={sourceItems}
+              expanded={Boolean(expandedSections.source)}
+              onToggle={() => toggleQuickSection('source')}
+            />
+          </div>
         </div>
 
         <footer className="clinical-drug-quick-actions">
