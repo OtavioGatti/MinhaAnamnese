@@ -1579,10 +1579,10 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 0.42rem;
-  min-height: 34px;
-  padding: 0.42rem 0.56rem 0.42rem 0.68rem;
+  min-height: 42px;
+  padding: 0.44rem 0.58rem 0.44rem 0.72rem;
   border: 1px solid rgba(191, 219, 254, 0.96);
-  border-radius: 999px;
+  border-radius: 14px;
   background: white;
   color: var(--gray-700);
   font: inherit;
@@ -1596,12 +1596,43 @@ body {
   box-shadow: 0 10px 22px rgba(37, 99, 235, 0.08);
 }
 
-.drug-detected-chip strong {
+.drug-detected-chip:disabled {
+  cursor: default;
+}
+
+.drug-detected-chip.loading {
+  color: var(--gray-500);
+  background: var(--gray-50);
+}
+
+.drug-detected-chip.missing {
+  border-color: var(--red-100);
+  color: var(--red-700);
+  background: var(--red-50);
+}
+
+.drug-detected-chip-copy {
+  display: grid;
+  gap: 0.08rem;
+  min-width: 0;
+}
+
+.drug-detected-chip-copy strong {
   max-width: 220px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   font-size: 0.8rem;
+}
+
+.drug-detected-chip-copy small {
+  max-width: 240px;
+  overflow: hidden;
+  color: var(--gray-500);
+  font-size: 0.7rem;
+  line-height: 1.25;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .empty-state-hint {
@@ -3204,6 +3235,38 @@ body {
   gap: 0.45rem;
 }
 
+.clinical-drug-quick-highlights {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.7rem;
+}
+
+.clinical-drug-quick-highlight {
+  display: grid;
+  align-content: start;
+  gap: 0.35rem;
+  min-height: 96px;
+  padding: 0.85rem 0.9rem;
+  border: 1px solid rgba(191, 219, 254, 0.9);
+  border-radius: 12px;
+  background: linear-gradient(180deg, #eff6ff 0%, #fff 100%);
+}
+
+.clinical-drug-quick-highlight span {
+  color: var(--primary-700);
+  font-size: 0.76rem;
+  font-weight: 850;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.clinical-drug-quick-highlight p {
+  margin: 0;
+  color: var(--gray-800);
+  font-size: 0.86rem;
+  line-height: 1.5;
+}
+
 .clinical-drug-quick-scroll {
   min-height: 0;
   display: grid;
@@ -3284,6 +3347,9 @@ body {
 }
 
 .clinical-drug-quick-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.65rem;
   padding-top: 0.1rem;
 }
 
@@ -4444,8 +4510,18 @@ body {
   }
 
   .drug-detected-chip,
-  .drug-detected-chip strong {
+  .drug-detected-chip-copy,
+  .drug-detected-chip-copy strong,
+  .drug-detected-chip-copy small {
     max-width: 100%;
+  }
+
+  .clinical-drug-quick-highlights {
+    grid-template-columns: 1fr;
+  }
+
+  .clinical-drug-quick-actions {
+    flex-direction: column-reverse;
   }
 
   .painel-acoes {

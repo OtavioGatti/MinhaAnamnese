@@ -15,6 +15,44 @@ function getDrugSubtitle(drug) {
   ].filter(Boolean).join(' · ');
 }
 
+function getDrugPresentationText(drug) {
+  return [
+    drug?.presentations,
+    drug?.commercialNamesAnvisa,
+    drug?.commercialNamesOpenai,
+  ]
+    .map(normalizeDisplayText)
+    .filter(Boolean)
+    .join('\n');
+}
+
+function getDrugSourceText(drug) {
+  return [
+    drug?.sourceBula,
+    drug?.pdfFile,
+  ]
+    .map(normalizeDisplayText)
+    .filter(Boolean)
+    .join('\n');
+}
+
+function getShortText(value, maxLength = 180) {
+  const text = normalizeDisplayText(value).replace(/\s+/g, ' ');
+
+  if (text.length <= maxLength) {
+    return text;
+  }
+
+  return `${text.slice(0, maxLength).trim()}...`;
+}
+
+function splitDisplayLines(value) {
+  return normalizeDisplayText(value)
+    .split(/\r?\n/)
+    .map((item) => item.trim())
+    .filter(Boolean);
+}
+
 function getRiskClass(value) {
   const normalized = normalizeDisplayText(value).toUpperCase();
 
@@ -55,7 +93,7 @@ function ClinicalDrugAutocomplete({ mention }) {
     <div className="drug-mention-popover" role="listbox" aria-label="Sugestões de medicamentos">
       <div className="drug-mention-popover-header">
         <strong>Inserir medicamento</strong>
-        <span>{trigger.type === 'command' ? '/remedio' : '@'} busca no Bulário</span>
+        <span>@ busca no Bulário</span>
       </div>
 
       {shouldTypeMore ? (
@@ -79,7 +117,9 @@ function ClinicalDrugAutocomplete({ mention }) {
             >
               <span>
                 <strong>{getDrugTitle(drug)}</strong>
-                <small>{getDrugSubtitle(drug) || 'Medicamento publicado'}</small>
+                <small>
+                  @{drug.slug}{getDrugSubtitle(drug) ? ` · ${getDrugSubtitle(drug)}` : ''}
+                </small>
               </span>
               {drug.pregnancyRisk ? (
                 <em className={`drug-risk-pill ${getRiskClass(drug.pregnancyRisk)}`}>
@@ -110,22 +150,47 @@ function DetectedDrugChips({ mention }) {
         {loadingActiveDrug ? <small>Carregando detalhes...</small> : null}
       </div>
       <div className="drug-detected-list">
-        {detectedMentions.map(({ slug, drug }) => (
-          <button
-            key={slug}
-            type="button"
-            className="drug-detected-chip"
-            onClick={() => openDrugDetail(slug)}
-          >
-            <strong>{getDrugTitle(drug, slug)}</strong>
-            {drug?.pregnancyRisk ? (
-              <span className={`drug-risk-dot ${getRiskClass(drug.pregnancyRisk)}`}>
-                {drug.pregnancyRisk}
+        {detectedMentions.map(({ slug, drug, status }) => {
+          const isMissing = status === 'missing';
+          const isLoading = status === 'loading' || status === 'pending';
+          const subtitle = drug
+            ? getDrugSubtitle(drug) || 'Medicamento no Bulário'
+            : isMissing
+              ? 'Não encontrado no Bulário'
+              : 'Carregando dados do Bulário';
+
+          return (
+            <button
+              key={slug}
+              type="button"
+              className={`drug-detected-chip ${isMissing ? 'missing' : ''} ${isLoading ? 'loading' : ''}`}
+              onClick={() => openDrugDetail(slug)}
+              disabled={isMissing}
+            >
+              <span className="drug-detected-chip-copy">
+                <strong>{getDrugTitle(drug, slug)}</strong>
+                <small>{subtitle}</small>
               </span>
-            ) : null}
-          </button>
-        ))}
+              {drug?.pregnancyRisk ? (
+                <span className={`drug-risk-dot ${getRiskClass(drug.pregnancyRisk)}`}>
+                  {drug.pregnancyRisk}
+                </span>
+              ) : null}
+            </button>
+          );
+        })}
       </div>
+    </div>
+  );
+}
+
+function QuickHighlight({ title, text, empty }) {
+  const content = normalizeDisplayText(text);
+
+  return (
+    <div className="clinical-drug-quick-highlight">
+      <span>{title}</span>
+      <p>{content ? getShortText(content) : empty}</p>
     </div>
   );
 }
@@ -143,8 +208,11 @@ function QuickSection({ title, text, empty = 'Campo ainda não preenchido no Bul
   );
 }
 
-function ClinicalDrugQuickModal({ drug, onClose }) {
-  const source = normalizeDisplayText(drug?.sourceBula || drug?.pdfFile);
+function ClinicalDrugQuickModal({ drug, onClose, onOpenCatalog }) {
+  const source = getDrugSourceText(drug);
+  const sourceItems = splitDisplayLines(source);
+  const presentations = getDrugPresentationText(drug);
+  const hasMeta = Boolean(drug?.pregnancyRisk || drug?.classCategory);
 
   useEffect(() => {
     function handleKeyDown(event) {
@@ -178,11 +246,30 @@ function ClinicalDrugQuickModal({ drug, onClose }) {
         </header>
 
         <div className="clinical-drug-quick-meta">
+          {drug?.classCategory ? (
+            <span className="protocol-meta-chip">
+              {drug.classCategory}
+            </span>
+          ) : null}
           {drug?.pregnancyRisk ? (
             <span className={`protocol-status-badge ${getRiskClass(drug.pregnancyRisk)}`}>
               Risco gestacional {drug.pregnancyRisk}
             </span>
           ) : null}
+          {!hasMeta ? <span className="protocol-meta-chip">Bulário clínico</span> : null}
+        </div>
+
+        <div className="clinical-drug-quick-highlights">
+          <QuickHighlight
+            title="Posologia adulto"
+            text={drug?.adultDosage}
+            empty="Sem posologia adulta preenchida."
+          />
+          <QuickHighlight
+            title="Contraindicações"
+            text={drug?.contraindications}
+            empty="Sem contraindicações preenchidas."
+          />
         </div>
 
         <div className="clinical-drug-quick-scroll">
@@ -192,18 +279,39 @@ function ClinicalDrugQuickModal({ drug, onClose }) {
           <QuickSection title="Contraindicações" text={drug?.contraindications} />
           <QuickSection title="Advertências" text={drug?.warnings} />
           <QuickSection title="Interações" text={drug?.interactions} />
+          <QuickSection title="Apresentações / nomes comerciais" text={presentations} />
 
           {source ? (
             <details className="clinical-drug-quick-source">
               <summary>Fonte</summary>
-              {/^https?:\/\//i.test(source) ? (
-                <a href={source} target="_blank" rel="noreferrer">{source}</a>
-              ) : (
-                <span>{source}</span>
-              )}
+              {sourceItems.map((item, index) => (
+                /^https?:\/\//i.test(item) ? (
+                  <a href={item} target="_blank" rel="noreferrer" key={`${item}-${index}`}>{item}</a>
+                ) : (
+                  <span key={`${item}-${index}`}>{item}</span>
+                )
+              ))}
             </details>
           ) : null}
         </div>
+
+        <footer className="clinical-drug-quick-actions">
+          {onOpenCatalog ? (
+            <button
+              type="button"
+              className="btn btn-secundario"
+              onClick={() => {
+                onClose();
+                onOpenCatalog();
+              }}
+            >
+              Abrir Bulário completo
+            </button>
+          ) : null}
+          <button type="button" className="btn btn-primario" onClick={onClose}>
+            Continuar escrevendo
+          </button>
+        </footer>
       </article>
     </div>
   );
@@ -219,7 +327,7 @@ function ClinicalDrugMentionAssist({ enabled, mention, onOpenCatalog }) {
       <ClinicalDrugAutocomplete mention={mention} />
 
       <div className="drug-mention-helper-row">
-        <span>Digite <strong>@</strong> ou <strong>/remedio</strong> para inserir medicamentos do Bulário.</span>
+        <span>Digite <strong>@</strong> para inserir medicamentos do Bulário.</span>
         {onOpenCatalog ? (
           <button type="button" onClick={onOpenCatalog}>
             Abrir Bulário
@@ -230,7 +338,11 @@ function ClinicalDrugMentionAssist({ enabled, mention, onOpenCatalog }) {
       <DetectedDrugChips mention={mention} />
 
       {mention.activeDrug ? (
-        <ClinicalDrugQuickModal drug={mention.activeDrug} onClose={mention.closeActiveDrug} />
+        <ClinicalDrugQuickModal
+          drug={mention.activeDrug}
+          onClose={mention.closeActiveDrug}
+          onOpenCatalog={onOpenCatalog}
+        />
       ) : null}
     </>
   );

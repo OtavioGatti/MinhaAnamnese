@@ -41,19 +41,6 @@ function findMentionTrigger(text, cursorPosition) {
     };
   }
 
-  const remedyMatch = prefix.match(/(^|\s)\/remedio(?:\s+([^\n@]{0,80}))?$/i);
-
-  if (remedyMatch) {
-    const markerIndex = prefix.toLowerCase().lastIndexOf('/remedio');
-
-    return {
-      type: 'command',
-      start: markerIndex,
-      end: cursor,
-      query: remedyMatch[2] || '',
-    };
-  }
-
   return null;
 }
 
@@ -99,13 +86,26 @@ export function useClinicalDrugMentions({
   const [searchError, setSearchError] = useState('');
   const [highlightedIndex, setHighlightedIndex] = useState(0);
   const [drugCache, setDrugCache] = useState({});
+  const [missingDrugSlugs, setMissingDrugSlugs] = useState(() => new Set());
+  const [loadingDetectedSlugs, setLoadingDetectedSlugs] = useState(() => new Set());
   const [activeDrug, setActiveDrug] = useState(null);
   const [loadingActiveDrug, setLoadingActiveDrug] = useState(false);
 
   const mentionedSlugs = useMemo(() => extractMentionSlugs(text), [text]);
   const detectedMentions = useMemo(
-    () => mentionedSlugs.map((slug) => ({ slug, drug: drugCache[slug] || null })),
-    [drugCache, mentionedSlugs],
+    () => mentionedSlugs.map((slug) => {
+      const drug = drugCache[slug] || null;
+      const status = drug
+        ? 'ready'
+        : loadingDetectedSlugs.has(slug)
+          ? 'loading'
+          : missingDrugSlugs.has(slug)
+            ? 'missing'
+            : 'pending';
+
+      return { slug, drug, status };
+    }),
+    [drugCache, loadingDetectedSlugs, mentionedSlugs, missingDrugSlugs],
   );
 
   const rememberDrugs = useCallback((drugs) => {
@@ -116,6 +116,11 @@ export function useClinicalDrugMentions({
     }
 
     setDrugCache((currentCache) => normalizedDrugs.reduce(mergeDrugIntoCache, currentCache));
+    setMissingDrugSlugs((currentSlugs) => {
+      const nextSlugs = new Set(currentSlugs);
+      normalizedDrugs.forEach((drug) => nextSlugs.delete(drug.slug));
+      return nextSlugs;
+    });
   }, []);
 
   const updateTriggerFromCursor = useCallback((nextText, cursorPosition) => {
@@ -229,16 +234,22 @@ export function useClinicalDrugMentions({
       return;
     }
 
+    if (missingDrugSlugs.has(normalizedSlug)) {
+      return;
+    }
+
     setLoadingActiveDrug(true);
     const response = await api.get(`/clinical-drugs?slug=${encodeURIComponent(normalizedSlug)}`);
 
     if (response.success && response.data) {
       rememberDrugs(response.data);
       setActiveDrug(response.data);
+    } else if (response.status === 404 || response.code === 'NOT_FOUND') {
+      setMissingDrugSlugs((currentSlugs) => new Set(currentSlugs).add(normalizedSlug));
     }
 
     setLoadingActiveDrug(false);
-  }, [drugCache, enabled, rememberDrugs]);
+  }, [drugCache, enabled, missingDrugSlugs, rememberDrugs]);
 
   useEffect(() => {
     if (!enabled) {
@@ -298,18 +309,26 @@ export function useClinicalDrugMentions({
       return undefined;
     }
 
-    const missingSlugs = mentionedSlugs.filter((slug) => !drugCache[slug]);
+    const missingSlugs = mentionedSlugs.filter((slug) => !drugCache[slug] && !missingDrugSlugs.has(slug));
 
     if (missingSlugs.length === 0) {
       return undefined;
     }
 
     let ignore = false;
+    const slugsToLoad = missingSlugs.slice(0, MAX_DETECTED_MENTIONS);
 
     async function loadMissingDrugs() {
       const loadedDrugs = [];
+      const notFoundSlugs = [];
 
-      for (const slug of missingSlugs.slice(0, MAX_DETECTED_MENTIONS)) {
+      setLoadingDetectedSlugs((currentSlugs) => {
+        const nextSlugs = new Set(currentSlugs);
+        slugsToLoad.forEach((slug) => nextSlugs.add(slug));
+        return nextSlugs;
+      });
+
+      for (const slug of slugsToLoad) {
         const response = await api.get(`/clinical-drugs?slug=${encodeURIComponent(slug)}`);
 
         if (ignore) {
@@ -318,11 +337,25 @@ export function useClinicalDrugMentions({
 
         if (response.success && response.data) {
           loadedDrugs.push(response.data);
+        } else if (response.status === 404 || response.code === 'NOT_FOUND') {
+          notFoundSlugs.push(slug);
         }
       }
 
       if (!ignore) {
         rememberDrugs(loadedDrugs);
+        if (notFoundSlugs.length > 0) {
+          setMissingDrugSlugs((currentSlugs) => {
+            const nextSlugs = new Set(currentSlugs);
+            notFoundSlugs.forEach((slug) => nextSlugs.add(slug));
+            return nextSlugs;
+          });
+        }
+        setLoadingDetectedSlugs((currentSlugs) => {
+          const nextSlugs = new Set(currentSlugs);
+          slugsToLoad.forEach((slug) => nextSlugs.delete(slug));
+          return nextSlugs;
+        });
       }
     }
 
@@ -330,8 +363,13 @@ export function useClinicalDrugMentions({
 
     return () => {
       ignore = true;
+      setLoadingDetectedSlugs((currentSlugs) => {
+        const nextSlugs = new Set(currentSlugs);
+        slugsToLoad.forEach((slug) => nextSlugs.delete(slug));
+        return nextSlugs;
+      });
     };
-  }, [drugCache, enabled, mentionedSlugs, rememberDrugs]);
+  }, [drugCache, enabled, mentionedSlugs, missingDrugSlugs, rememberDrugs]);
 
   return {
     activeDrug,

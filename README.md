@@ -1,52 +1,137 @@
 # Minha Anamnese
 
-Aplicativo web para organizar anamneses médicas com apoio de inteligência artificial, templates clínicos e recursos profissionais para revisão, evolução e documentação complementar.
+Aplicativo web para organizar anamneses médicas com apoio de IA, templates clínicos, análise estrutural, guias de prescrição e bulário clínico. O foco do produto é acelerar a escrita clínica sem substituir julgamento médico, prontuário oficial ou revisão profissional.
+
+## Visão Geral
+
+O Minha Anamnese é composto por:
+
+- Frontend React/Vite com workspace clínico, templates, evolução, prescrições, bulário e perfil.
+- Backend Node.js/Express com rotas de IA, autenticação via Supabase, sincronização com Notion, checkout e métricas.
+- Supabase para autenticação, perfis, planos, templates, prompts oficiais, guias de prescrição, bulário e logs de uso.
+- Notion como CMS editorial para templates, prompts, protocolos de prescrição e bulário clínico.
+- OpenAI para organização de anamnese, insights estruturais e cartas de encaminhamento.
+- Mercado Pago para checkout e liberação de plano profissional.
 
 ## Funcionalidades
 
-- Organização de anamneses com IA a partir de templates clínicos
-- Templates oficiais para Psiquiatria, Pediatria, Clínica Médica, Obstetrícia, Urgência e Emergência, Puerpério, Ginecologia e Triagem
-- Biblioteca de templates próprios para usuários do plano profissional
-- Avaliação estrutural da anamnese com pontuação, lacunas e acompanhamento de evolução
-- Cartas de encaminhamento geradas com IA
-- Guias de prescrição por patologia
-- Autenticação de usuários com confirmação por e-mail
-- Perfis com controle de plano, período de teste e preferências
-- Checkout e liberação de acesso profissional
-- Interface responsiva voltada para uso clínico no dia a dia
+- Organização de anamneses com IA a partir de templates clínicos oficiais ou personalizados.
+- Prompts por categoria clínica, permitindo vincular templates e prompts por `category_key`.
+- Score estrutural da anamnese com seções ausentes, evidências, lacunas e acompanhamento de evolução.
+- Cartas de encaminhamento geradas com IA.
+- Guias de prescrição por patologia, com CID-10 principal e CID-10 por opção quando preenchidos.
+- Bulário clínico com busca por princípio ativo, nome comercial, classe/categoria e tags.
+- Autocomplete textual de medicamentos na anamnese com chips de consulta rápida.
+- Templates próprios para usuários.
+- Onboarding de boas-vindas, trial profissional e paywall.
+- Perfil com dados de plano, preferências e controle de acesso.
+- Sincronização administrativa com Notion para templates, prompts, prescrições e bulário.
 
 ## Stack
 
-- Frontend: React + Vite
+- Frontend: React 18 + Vite
 - Backend: Node.js + Express
 - Banco e autenticação: Supabase
+- CMS editorial: Notion
 - IA: OpenAI
 - Pagamentos: Mercado Pago
-- Deploy: Vercel
+- Frontend em produção: Vercel
+- Backend em produção: Render
+
+## Estrutura
+
+```text
+backend/
+  apiHandlers/        Rotas HTTP organizadas por domínio
+  services/           Regras de negócio, Supabase, Notion e OpenAI
+  prompts/            Prompts locais de fallback
+  utils/              Score, sanitização, autenticação e limites
+  server.js           App Express
+
+frontend/src/
+  components/         Telas e componentes do workspace
+  hooks/              Hooks de UI e domínio
+  lib/                Cliente Supabase
+  data/               Dados locais de fallback
+  apiClient.js        Cliente HTTP do backend
+
+supabase/
+  *.sql               Tabelas, migrações manuais, RLS e backfills
+
+tests/anamnese-evals/
+  README.md           Avaliações manuais/semiautomatizadas da análise de anamnese
+```
 
 ## Requisitos
 
-- [Node.js](https://nodejs.org/) v18 ou superior
-- Chave de API da OpenAI
+- Node.js 18 ou superior
 - Projeto Supabase configurado
-- Credenciais do Mercado Pago para checkout
+- Chave da OpenAI
+- Integração Notion com acesso às bases editoriais
+- Credenciais Mercado Pago
+- SMTP configurado no Supabase para e-mails de autenticação
 
-## Como Rodar
+## Variáveis de Ambiente
 
-### 1. Configurar o Backend
+### Frontend
+
+```env
+VITE_API_URL=http://localhost:3001/api
+VITE_SUPABASE_URL=
+VITE_SUPABASE_ANON_KEY=
+```
+
+### Backend
+
+```env
+PORT=3001
+FRONTEND_URL=http://localhost:3000
+PUBLIC_APP_URL=http://localhost:3000
+PUBLIC_API_URL=http://localhost:3001
+
+OPENAI_API_KEY=
+
+SUPABASE_URL=
+SUPABASE_ANON_KEY=
+SUPABASE_SERVICE_ROLE_KEY=
+
+MERCADO_PAGO_ACCESS_TOKEN=
+MERCADO_PAGO_WEBHOOK_SECRET=
+MERCADO_PAGO_WEBHOOK_URL=
+
+NOTION_API_KEY=
+NOTION_TEMPLATES_DATA_SOURCE_ID=
+NOTION_PROMPTS_DATA_SOURCE_ID=
+NOTION_PRESCRIPTION_GUIDES_DATA_SOURCE_ID=
+NOTION_CLINICAL_DRUGS_DATA_SOURCE_ID=
+
+TEMPLATE_SYNC_SECRET=
+PROMPT_SYNC_SECRET=
+PRESCRIPTION_GUIDES_SYNC_SECRET=
+CLINICAL_DRUGS_SYNC_SECRET=
+ADMIN_SYNC_SECRET=
+NOTION_WEBHOOK_VERIFICATION_TOKEN=
+
+PRO_TRIAL_DAYS=3
+TRIAL_INSIGHTS_LIMIT=5
+TRIAL_REFERRAL_LETTERS_LIMIT=5
+TRIAL_PRESCRIPTION_GUIDES_LIMIT=5
+TRIAL_USER_TEMPLATES_LIMIT=2
+```
+
+## Como Rodar Localmente
+
+### Backend
 
 ```bash
 cd backend
-copy .env.example .env
 npm install
-npm start
+npm run dev
 ```
-
-Preencha as variáveis de ambiente necessárias antes de iniciar o servidor, incluindo credenciais de OpenAI, Supabase e Mercado Pago.
 
 Backend local: `http://localhost:3001`
 
-### 2. Configurar o Frontend
+### Frontend
 
 ```bash
 cd frontend
@@ -56,43 +141,110 @@ npm run dev
 
 Frontend local: `http://localhost:3000`
 
-### 3. Usar
+## Build
 
-1. Abra `http://localhost:3000`
-2. Crie uma conta ou entre com seu e-mail
-3. Escolha um template clínico
-4. Cole as anotações da consulta
-5. Clique em **Organizar Anamnese**
+```bash
+cd frontend
+npm run build
+```
 
-## Estrutura do Produto
+O backend não possui build separado; ele roda diretamente com Node.js.
 
-- **Home:** organização da anamnese, score estrutural, insights e encaminhamento
-- **Templates:** biblioteca oficial e templates personalizados
-- **Evolução:** métricas e histórico recente de desempenho
-- **Guias de Prescrição:** protocolos clínicos por patologia
-- **Perfil:** plano, período de teste, preferências e informações da conta
+## Rotas e Fluxos Principais
 
-## Persistência e Privacidade
+- `POST /api/organizar`: organiza a anamnese com IA.
+- `POST /api/insights`: gera análise estrutural e score.
+- `POST /api/referral-letter`: gera carta de encaminhamento.
+- `GET /api/templates`: lista templates oficiais e do usuário.
+- `GET /api/prescription-guides`: lista guias de prescrição publicados.
+- `GET /api/clinical-drugs`: lista medicamentos do bulário clínico.
+- `POST /api/create-checkout`: cria checkout no Mercado Pago.
+- `POST /api/webhook/mercadopago`: recebe confirmação de pagamento.
 
-- O produto armazena dados de conta, plano, preferências, métricas de uso e histórico agregado de evolução
-- O texto clínico não deve ser usado como prontuário oficial
-- Evite inserir dados identificáveis do paciente, como nome, CPF, endereço ou outros dados sensíveis
+## Sincronização com Notion
+
+As bases editoriais vivem no Notion e são sincronizadas para o Supabase por rotas administrativas protegidas por bearer token.
+
+Exemplos em PowerShell:
+
+```powershell
+Invoke-RestMethod `
+  -Method Post `
+  -Uri "https://minhaanamnese.onrender.com/api/admin/templates/sync" `
+  -Headers @{ Authorization = "Bearer SEU_SECRET" }
+
+Invoke-RestMethod `
+  -Method Post `
+  -Uri "https://minhaanamnese.onrender.com/api/admin/prompts/sync" `
+  -Headers @{ Authorization = "Bearer SEU_SECRET" }
+
+Invoke-RestMethod `
+  -Method Post `
+  -Uri "https://minhaanamnese.onrender.com/api/admin/prescription-guides/sync" `
+  -Headers @{ Authorization = "Bearer SEU_SECRET" }
+
+Invoke-RestMethod `
+  -Method Post `
+  -Uri "https://minhaanamnese.onrender.com/api/admin/clinical-drugs/sync" `
+  -Headers @{ Authorization = "Bearer SEU_SECRET" }
+```
+
+## Supabase
+
+Os arquivos SQL ficam em `supabase/` e devem ser aplicados manualmente no SQL Editor quando necessário. Principais tabelas:
+
+- `profiles`: perfil, plano, trial, onboarding e preferências.
+- `anamneses`: histórico e métricas de análises.
+- `usage_logs`: controle de uso e limites.
+- `official_templates`: templates oficiais sincronizados do Notion.
+- `user_templates`: templates criados pelo usuário.
+- `official_prompts`: prompts oficiais sincronizados do Notion.
+- `prescription_guides`: protocolos de prescrição.
+- `clinical_drugs`: bulário clínico.
+- `billing_payments`: pagamentos e auditoria de checkout.
+- `events`: eventos de funil e produto.
+
+## Onde Ficam as Regras Importantes
+
+- Score e evidências da anamnese: `backend/utils/anamnesisQualityScore.js`
+- Geração de insights: `backend/services/generateInsights.js`
+- Organização da anamnese: `backend/services/processAnamnesis.js`
+- Templates oficiais: `backend/services/officialTemplates.js`
+- Prompts oficiais por categoria: `backend/services/officialPrompts.js`
+- Guias de prescrição: `backend/services/prescriptionGuides.js`
+- Bulário clínico: `backend/services/clinicalDrugs.js`
+- Controle de acesso/trial: `backend/services/accessState.js` e `backend/services/trialUsage.js`
+
+## Boas Práticas do Projeto
+
+- Não usar este produto como prontuário oficial.
+- Não inserir dados identificáveis do paciente, como nome completo, CPF, endereço ou telefone.
+- Conferir dose, alergias, contraindicações, idade, peso, gestação, função renal/hepática e protocolo local antes de prescrever.
+- Manter dados editoriais publicados no Notion apenas após revisão adequada.
+- Rodar `npm run build` no frontend antes de publicar alterações de UI.
+- Para mudanças de banco, criar SQL idempotente em `supabase/` e aplicar manualmente.
 
 ## Roadmap
 
-- [x] Autenticação de usuários
-- [x] Sistema de assinatura e pagamento
-- [x] Histórico e evolução de anamneses
-- [x] Templates clínicos adicionais
-- [x] Deploy em produção
-- [ ] Exportação para PDF
+- [x] Autenticação e recuperação de senha
+- [x] Onboarding de boas-vindas
+- [x] Plano profissional, trial e paywall
+- [x] Templates oficiais e personalizados
+- [x] Prompts por categoria clínica
+- [x] Score estrutural e evolução
+- [x] Cartas de encaminhamento
+- [x] Guias de prescrição com CID-10
+- [x] Bulário clínico
+- [ ] Interações medicamentosas no bulário
+- [ ] Alertas por contraindicação/comorbidade
+- [ ] Exportação PDF
 - [ ] Testes automatizados de regressão
 - [ ] Controles avançados de privacidade e gestão de conta
 
-## Aviso
+## Aviso Clínico
 
-> Não insira dados sensíveis identificáveis do paciente. Utilize apenas informações clínicas necessárias para apoio à organização do registro.
+O Minha Anamnese é uma ferramenta de apoio à escrita e revisão clínica. Todo conteúdo gerado deve ser revisado por profissional habilitado antes de uso assistencial. O sistema não substitui julgamento clínico, diretrizes locais, bula oficial, prescrição médica individualizada ou prontuário institucional.
 
-## License
+## Licença
 
 MIT
