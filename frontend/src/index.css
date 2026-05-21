@@ -2862,21 +2862,22 @@ body {
 
 .protocol-cid-header-card {
   flex: 0 0 auto;
-  min-width: 112px;
-  display: grid;
-  gap: 0.18rem;
-  justify-items: end;
-  padding: 0.72rem 0.82rem;
-  border: 1px solid rgba(191, 219, 254, 0.9);
-  border-radius: 12px;
-  background: linear-gradient(180deg, #eff6ff 0%, #fff 100%);
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.42rem;
+  min-height: 2.15rem;
+  padding: 0.42rem 0.66rem;
+  border: 1px solid rgba(191, 219, 254, 0.95);
+  border-radius: 999px;
+  background: #f8fbff;
   color: var(--primary-700);
-  text-align: right;
+  white-space: nowrap;
 }
 
 .protocol-cid-header-card span {
   color: var(--gray-500);
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   font-weight: 800;
   letter-spacing: 0;
   text-transform: uppercase;
@@ -2884,7 +2885,8 @@ body {
 
 .protocol-cid-header-card strong {
   color: var(--primary-700);
-  font-size: 1rem;
+  font-size: 0.9rem;
+  font-weight: 800;
   line-height: 1.2;
 }
 
@@ -4532,9 +4534,7 @@ body {
   }
 
   .protocol-cid-header-card {
-    width: 100%;
-    justify-items: start;
-    text-align: left;
+    width: fit-content;
   }
 
   .clinical-drug-actions,
