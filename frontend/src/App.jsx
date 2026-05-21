@@ -1110,6 +1110,7 @@ function App() {
       home: '',
       profile: '',
       prescriptionGuide: '',
+      clinicalDrugs: '',
       referralLetter: '',
       templates: '',
     });
@@ -2342,6 +2343,8 @@ function App() {
                 onLimpar={handleLimpar}
                 erro={erro}
                 onDismissErro={() => setErro('')}
+                drugMentionsEnabled={Boolean(user?.id && isPro)}
+                onOpenDrugCatalog={() => handleNavigate('clinicalDrugs')}
               />
 
               {resultado && (

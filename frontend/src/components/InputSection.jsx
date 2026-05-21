@@ -1,3 +1,6 @@
+import ClinicalDrugMentionAssist from './ClinicalDrugMentionAssist';
+import { useClinicalDrugMentions } from '../hooks/useClinicalDrugMentions';
+
 function InputSection({
   templates,
   templateSelecionado,
@@ -16,7 +19,16 @@ function InputSection({
   onLimpar,
   erro,
   onDismissErro,
+  drugMentionsEnabled = false,
+  onOpenDrugCatalog,
 }) {
+  const drugMentions = useClinicalDrugMentions({
+    enabled: drugMentionsEnabled,
+    inputRef,
+    onTextChange: onTextoChange,
+    text: texto,
+  });
+
   return (
     <div className="card section-input workspace-panel workspace-panel-primary">
       <div className="card-header card-header-with-copy">
@@ -61,12 +73,20 @@ function InputSection({
             ref={inputRef}
             id="texto"
             value={texto}
-            onChange={(event) => onTextoChange(event.target.value)}
+            onChange={drugMentions.handleTextChange}
+            onClick={drugMentions.handleCursorActivity}
+            onKeyDown={drugMentions.handleTextKeyDown}
+            onKeyUp={drugMentions.handleCursorActivity}
             placeholder={placeholder}
           />
           {texto.length > 0 && (
             <span className="char-count">{texto.length} caracteres</span>
           )}
+          <ClinicalDrugMentionAssist
+            enabled={drugMentionsEnabled}
+            mention={drugMentions}
+            onOpenCatalog={onOpenDrugCatalog}
+          />
         </div>
 
         {!texto.trim() && (
