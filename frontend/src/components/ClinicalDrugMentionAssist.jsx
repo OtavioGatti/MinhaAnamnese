@@ -71,6 +71,78 @@ function getRiskClass(value) {
   return '';
 }
 
+function formatLabelList(labels) {
+  if (labels.length <= 1) {
+    return labels[0] || '';
+  }
+
+  if (labels.length === 2) {
+    return `${labels[0]} e ${labels[1]}`;
+  }
+
+  return `${labels.slice(0, -1).join(', ')} e ${labels[labels.length - 1]}`;
+}
+
+function getClinicalSafetyLabels(drug) {
+  return [
+    normalizeDisplayText(drug?.contraindications) ? 'contraindicações' : '',
+    normalizeDisplayText(drug?.warnings) ? 'advertências' : '',
+    normalizeDisplayText(drug?.interactions) ? 'interações' : '',
+  ].filter(Boolean);
+}
+
+function buildClinicalDrugAlerts(detectedMentions) {
+  return detectedMentions.flatMap(({ slug, drug, status }) => {
+    if (status !== 'ready' || !drug) {
+      return [];
+    }
+
+    const alerts = [];
+    const drugTitle = getDrugTitle(drug, slug);
+    const pregnancyRisk = normalizeDisplayText(drug.pregnancyRisk).toUpperCase();
+    const riskClass = getRiskClass(pregnancyRisk);
+    const safetyLabels = getClinicalSafetyLabels(drug);
+
+    if (riskClass === 'danger') {
+      alerts.push({
+        id: `${slug}-pregnancy-danger`,
+        slug,
+        severity: 'danger',
+        title: 'Risco gestacional alto',
+        message: `${drugTitle}: risco ${pregnancyRisk}. Revise bula, gestação e alternativa terapêutica antes de usar.`,
+      });
+    } else if (riskClass === 'warning') {
+      alerts.push({
+        id: `${slug}-pregnancy-warning`,
+        slug,
+        severity: 'warning',
+        title: 'Risco gestacional a revisar',
+        message: `${drugTitle}: risco ${pregnancyRisk}. Confirme benefício, contexto clínico e bula antes de prescrever.`,
+      });
+    }
+
+    if (safetyLabels.length > 0) {
+      alerts.push({
+        id: `${slug}-safety-fields`,
+        slug,
+        severity: 'warning',
+        title: 'Dados de segurança cadastrados',
+        message: `${drugTitle}: há ${formatLabelList(safetyLabels)} no Bulário. Abra para revisar antes de prescrever.`,
+      });
+    } else {
+      alerts.push({
+        id: `${slug}-safety-incomplete`,
+        slug,
+        severity: 'info',
+        title: 'Dados de segurança incompletos',
+        message: `${drugTitle}: contraindicações, advertências e interações ainda não estão preenchidas no Bulário.`,
+      });
+    }
+
+    return alerts;
+  });
+}
+
 function ClinicalDrugAutocomplete({ mention }) {
   const {
     highlightedIndex,
@@ -179,6 +251,38 @@ function DetectedDrugChips({ mention }) {
             </button>
           );
         })}
+      </div>
+    </div>
+  );
+}
+
+function ClinicalDrugSafetyAlerts({ mention }) {
+  const { detectedMentions, openDrugDetail } = mention;
+  const alerts = buildClinicalDrugAlerts(detectedMentions);
+
+  if (alerts.length === 0) {
+    return null;
+  }
+
+  return (
+    <div className="drug-safety-alert-panel" aria-live="polite">
+      <div className="drug-safety-alert-header">
+        <span>Atenção clínica</span>
+        <small>Alertas informativos, sem bloqueio do fluxo.</small>
+      </div>
+
+      <div className="drug-safety-alert-list">
+        {alerts.map((alert) => (
+          <button
+            key={alert.id}
+            type="button"
+            className={`drug-safety-alert-item ${alert.severity}`}
+            onClick={() => openDrugDetail(alert.slug)}
+          >
+            <span>{alert.title}</span>
+            <p>{alert.message}</p>
+          </button>
+        ))}
       </div>
     </div>
   );
@@ -336,6 +440,7 @@ function ClinicalDrugMentionAssist({ enabled, mention, onOpenCatalog }) {
       </div>
 
       <DetectedDrugChips mention={mention} />
+      <ClinicalDrugSafetyAlerts mention={mention} />
 
       {mention.activeDrug ? (
         <ClinicalDrugQuickModal
