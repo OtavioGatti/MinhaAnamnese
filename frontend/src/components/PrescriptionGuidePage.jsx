@@ -107,25 +107,10 @@ function isSimpleListText(value) {
   return lines.every((line) => /^[-•]\s*/.test(line)) || lines.some((line) => /\s-\S/.test(line));
 }
 
-function getSubconditionItems(guide) {
-  return parseSimpleListText(guide?.subcondition);
-}
-
-function getSidebarSubconditionLabel(guide) {
-  const items = getSubconditionItems(guide);
-
-  if (items.length > 1) {
-    return `${items.length} subcondicoes`;
-  }
-
-  return items[0] || '';
-}
-
 function getGuideMetaParts(guide) {
   return [
     guide?.specialty,
     getContextText(guide),
-    getSidebarSubconditionLabel(guide),
   ].filter(Boolean);
 }
 
@@ -382,10 +367,7 @@ function ProtocolSidebar({
         {loadingGuides ? (
           <div className="prescription-empty">Buscando protocolos...</div>
         ) : guides.length > 0 ? (
-          guides.map((guide) => {
-            const status = getStatusLabel(guide);
-
-            return (
+          guides.map((guide) => (
               <button
                 key={guide.slug}
                 type="button"
@@ -394,13 +376,12 @@ function ProtocolSidebar({
               >
                 <strong>{getGuideTitle(guide)}</strong>
                 <span>
-                  {[...getGuideMetaParts(guide), status]
+                  {getGuideMetaParts(guide)
                     .filter(Boolean)
                     .join(' · ')}
                 </span>
               </button>
-            );
-          })
+          ))
         ) : (
           <div className="prescription-empty">Nenhum protocolo encontrado.</div>
         )}
@@ -427,19 +408,102 @@ function ProtocolSimpleText({ text }) {
   return <pre>{text}</pre>;
 }
 
+function normalizeSourceReviewLabel(value) {
+  return String(value || '')
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .trim()
+    .toLowerCase();
+}
+
+function parseSourceReviewText(text) {
+  const groups = {
+    source: [],
+    page: [],
+    section: [],
+  };
+  let currentGroup = 'source';
+
+  parseSimpleListText(text).forEach((item) => {
+    const cleanItem = stripListMarker(item);
+    if (!cleanItem) {
+      return;
+    }
+
+    const [rawLabel, ...restParts] = cleanItem.split(':');
+    const normalizedLabel = normalizeSourceReviewLabel(rawLabel);
+    const rest = restParts.join(':').trim();
+
+    if (normalizedLabel === 'fonte') {
+      currentGroup = 'source';
+      if (rest) {
+        groups.source.push(rest);
+      }
+      return;
+    }
+
+    if (normalizedLabel === 'pagina') {
+      currentGroup = 'page';
+      if (rest) {
+        groups.page.push(rest);
+      }
+      return;
+    }
+
+    if (normalizedLabel === 'secao') {
+      currentGroup = 'section';
+      if (rest) {
+        groups.section.push(rest);
+      }
+      return;
+    }
+
+    if (
+      normalizedLabel === 'status de revisao'
+      || normalizedLabel === 'ultima revisao'
+      || normalizedLabel === 'revisor'
+    ) {
+      return;
+    }
+
+    groups[currentGroup].push(cleanItem);
+  });
+
+  return [
+    { key: 'source', title: 'Fontes principais', items: groups.source },
+    { key: 'page', title: 'Páginas de referência', items: groups.page },
+    { key: 'section', title: 'Seções consultadas', items: groups.section },
+  ].filter((group) => group.items.length > 0);
+}
+
+function ProtocolSourceReviewContent({ text }) {
+  const groups = parseSourceReviewText(text);
+
+  if (groups.length === 0) {
+    return <ProtocolSimpleText text={text} />;
+  }
+
+  return (
+    <div className="protocol-source-review-grid">
+      {groups.map((group) => (
+        <section className="protocol-source-review-group" key={group.key}>
+          <h4>{group.title}</h4>
+          <ul className="protocol-simple-list">
+            {group.items.map((item, index) => (
+              <li key={`${group.key}-${item}-${index}`}>{item}</li>
+            ))}
+          </ul>
+        </section>
+      ))}
+    </div>
+  );
+}
+
 function ProtocolHeaderMeta({ guide }) {
   const contexts = guide?.contexts || [];
-  const subconditionItems = getSubconditionItems(guide);
 
   return (
     <div className="protocol-header-meta">
-      {guide?.cid10Primary ? (
-        <div className="protocol-meta-group">
-          <span>CID-10</span>
-          <strong>{guide.cid10Primary}</strong>
-        </div>
-      ) : null}
-
       {guide?.specialty ? (
         <div className="protocol-meta-group">
           <span>Especialidade</span>
@@ -457,37 +521,23 @@ function ProtocolHeaderMeta({ guide }) {
           </div>
         </div>
       ) : null}
-
-      {subconditionItems.length > 0 ? (
-        <div className="protocol-meta-group protocol-meta-group-wide">
-          <span>Subcondicoes</span>
-          <div className="protocol-meta-chips">
-            {subconditionItems.map((item) => (
-              <span className="protocol-meta-chip" key={item}>{item}</span>
-            ))}
-          </div>
-        </div>
-      ) : null}
     </div>
   );
 }
 
 function ProtocolHeader({ guide }) {
-  const status = getStatusLabel(guide);
-
   return (
     <header className="protocol-header">
       <div className="protocol-header-copy">
         <h2>{getGuideTitle(guide)}</h2>
         <ProtocolHeaderMeta guide={guide} />
-        {status ? (
-          <div className="protocol-meta-row">
-            <span className={`protocol-status-badge ${getRiskClass(guide)}`}>
-              {status}
-            </span>
-          </div>
-        ) : null}
       </div>
+      {guide?.cid10Primary ? (
+        <div className="protocol-cid-header-card" aria-label={`CID-10 ${guide.cid10Primary}`}>
+          <span>CID-10</span>
+          <strong>{guide.cid10Primary}</strong>
+        </div>
+      ) : null}
     </header>
   );
 }
@@ -626,7 +676,11 @@ function ProtocolAccordionSection({
               ))}
             </div>
           ) : displayText ? (
-            <ProtocolSimpleText text={displayText} />
+            definition.key === 'sourceReview' ? (
+              <ProtocolSourceReviewContent text={displayText} />
+            ) : (
+              <ProtocolSimpleText text={displayText} />
+            )
           ) : (
             <div className="protocol-section-empty">Campo ainda não preenchido no CMS.</div>
           )}
