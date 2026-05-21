@@ -1,6 +1,6 @@
 const NOTION_API_BASE_URL = 'https://api.notion.com/v1';
 const DEFAULT_NOTION_VERSION = '2026-03-11';
-const DEFAULT_CLINICAL_DRUGS_DATA_SOURCE_ID = 'feb27773-3979-4b2c-a3f5-0186096711f5';
+const CLINICO_REVISADO_DATA_SOURCE_ID = '366da8a92980802a839ccbd8d2d7f111';
 const MAX_SYNC_PAGES = 1000;
 
 function normalizeNotionId(value) {
@@ -14,10 +14,8 @@ function getNotionClinicalDrugsConfig() {
   return {
     apiKey: process.env.NOTION_API_KEY || process.env.NOTION_TOKEN || process.env.NOTION_ACCESS_TOKEN,
     dataSourceId: normalizeNotionId(
-      process.env.NOTION_CLINICAL_DRUGS_DATA_SOURCE_ID ||
-        process.env.NOTION_BULARIO_DATA_SOURCE_ID ||
-        process.env.NOTION_BULARIO_CLINICO_DATA_SOURCE_ID ||
-        DEFAULT_CLINICAL_DRUGS_DATA_SOURCE_ID,
+      process.env.NOTION_CLINICO_REVISADO_DATA_SOURCE_ID ||
+        CLINICO_REVISADO_DATA_SOURCE_ID,
     ),
     notionVersion: process.env.NOTION_VERSION || DEFAULT_NOTION_VERSION,
     supabaseUrl: process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL,
