@@ -3308,7 +3308,7 @@ body {
 }
 
 .clinical-drug-quick-modal {
-  grid-template-rows: auto auto minmax(0, 1fr) auto;
+  grid-template-rows: auto auto auto minmax(0, 1fr) auto;
   width: min(100%, 780px);
   max-height: min(calc(100dvh - 2.5rem), 780px);
   overflow: hidden;
@@ -3355,6 +3355,7 @@ body {
 .clinical-drug-quick-scroll {
   min-height: 0;
   display: grid;
+  align-content: start;
   gap: 0.7rem;
   overflow-y: auto;
   padding-right: 0.15rem;
