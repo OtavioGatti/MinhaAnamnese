@@ -90,7 +90,30 @@ module.exports = async function handler(req, res) {
     });
   }
 
-  const result = await syncNotionClinicalDrugs();
+  let result;
+  try {
+    result = await syncNotionClinicalDrugs();
+  } catch (error) {
+    const statusCode = Number(error?.statusCode) || 500;
+    const responseBody = String(error?.responseBody || '');
+    const isNotionAccessError = responseBody.includes('Could not find database')
+      || responseBody.includes('shared with your integration')
+      || responseBody.includes('object_not_found');
+
+    if (isNotionAccessError) {
+      return res.status(502).json({
+        success: false,
+        error: 'A integracao do Notion usada pelo backend nao tem acesso a tabela Clinico Revisado.',
+        details: 'Compartilhe a tabela 366da8a92980802a839ccbd8d2d7f111 com a integracao correta ou configure NOTION_CLINICO_REVISADO_TOKEN no Render.',
+      });
+    }
+
+    return res.status(statusCode >= 400 && statusCode < 600 ? statusCode : 500).json({
+      success: false,
+      error: 'Falha ao sincronizar o Bulario Clinico.',
+      details: responseBody.slice(0, 1000) || error?.message || 'Erro desconhecido',
+    });
+  }
 
   return res.status(200).json({
     success: true,
