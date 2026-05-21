@@ -2915,26 +2915,6 @@ body {
   color: var(--amber-800);
 }
 
-.protocol-summary-block {
-  display: grid;
-  gap: 0.35rem;
-  padding: 0.9rem 0.95rem;
-  border: 1px solid var(--gray-200);
-  border-radius: 10px;
-  background: var(--gray-50);
-}
-
-.protocol-summary-block strong {
-  color: var(--gray-900);
-  font-size: 0.88rem;
-}
-
-.protocol-summary-block p {
-  color: var(--gray-600);
-  font-size: 0.88rem;
-  line-height: 1.55;
-}
-
 .protocol-accordion-list {
   display: grid;
   gap: 0.65rem;

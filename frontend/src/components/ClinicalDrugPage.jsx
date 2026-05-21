@@ -161,7 +161,7 @@ function ClinicalDrugSidebar({
   );
 }
 
-function createExpandedSectionsState(expanded = true) {
+function createExpandedSectionsState(expanded = false) {
   return SECTION_DEFINITIONS.reduce((accumulator, definition) => ({
     ...accumulator,
     [definition.key]: expanded,
@@ -277,7 +277,7 @@ function ClinicalDrugPage({
   const [loadingDrugs, setLoadingDrugs] = useState(false);
   const [loadingDetail, setLoadingDetail] = useState(false);
   const [error, setError] = useState('');
-  const [expandedSections, setExpandedSections] = useState(() => createExpandedSectionsState(true));
+  const [expandedSections, setExpandedSections] = useState(() => createExpandedSectionsState(false));
 
   useEffect(() => {
     if (!user?.id || !isPro) {
@@ -342,7 +342,7 @@ function ClinicalDrugPage({
 
       if (response.success && response.data) {
         setSelectedDrug(response.data);
-        setExpandedSections(createExpandedSectionsState(true));
+        setExpandedSections(createExpandedSectionsState(false));
       } else {
         setSelectedDrug(null);
         setError(response.error || 'Não foi possível abrir este medicamento.');

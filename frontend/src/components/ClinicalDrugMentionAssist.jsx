@@ -134,7 +134,7 @@ function QuickSection({ title, text, empty = 'Campo ainda não preenchido no Bul
   const content = normalizeDisplayText(text);
 
   return (
-    <details className="clinical-drug-quick-section" open>
+    <details className="clinical-drug-quick-section">
       <summary>{title}</summary>
       <div className="clinical-drug-quick-section-content">
         {content ? <pre>{content}</pre> : <p>{empty}</p>}
@@ -194,7 +194,7 @@ function ClinicalDrugQuickModal({ drug, onClose }) {
           <QuickSection title="Interações" text={drug?.interactions} />
 
           {source ? (
-            <details className="clinical-drug-quick-source" open>
+            <details className="clinical-drug-quick-source">
               <summary>Fonte</summary>
               {/^https?:\/\//i.test(source) ? (
                 <a href={source} target="_blank" rel="noreferrer">{source}</a>

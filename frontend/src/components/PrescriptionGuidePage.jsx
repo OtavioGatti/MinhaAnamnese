@@ -320,18 +320,13 @@ function buildPrescriptionOptions(sectionText, copyText, optionCids = {}) {
   });
 }
 
-function getDefaultExpandedSections(guide) {
-  const defaults = {
-    prescription: true,
-    conduct: true,
-  };
-
-  if (String(guide?.nivelRisco || '').toLowerCase().includes('alto')) {
-    defaults.warnings = true;
-    defaults.whenNotUse = true;
-  }
-
-  return defaults;
+function getDefaultExpandedSections() {
+  return SECTION_DEFINITIONS.reduce((accumulator, definition) => ({
+    ...accumulator,
+    [definition.key]: false,
+  }), {
+    summary: false,
+  });
 }
 
 function CopyButton({
@@ -506,6 +501,34 @@ function SafetyNotice() {
   );
 }
 
+function ProtocolSummarySection({ text, expanded, onToggle }) {
+  if (!text) {
+    return null;
+  }
+
+  return (
+    <section className="protocol-accordion-section protocol-summary-accordion">
+      <button
+        type="button"
+        className="protocol-accordion-trigger"
+        aria-expanded={expanded}
+        onClick={onToggle}
+      >
+        <span className="protocol-accordion-title">
+          <span className="protocol-chevron">{expanded ? '▾' : '▸'}</span>
+          Resumo clínico
+        </span>
+      </button>
+
+      {expanded ? (
+        <div className="protocol-accordion-content">
+          <ProtocolSimpleText text={text} />
+        </div>
+      ) : null}
+    </section>
+  );
+}
+
 function ProtocolAccordionSection({
   definition,
   guide,
@@ -543,7 +566,7 @@ function ProtocolAccordionSection({
             <div className="protocol-prescription-options">
               <span className="protocol-copy-hint">Escolha o cenário clínico, confira a prescrição e copie somente aquela opção.</span>
               {prescriptionOptions.map((option) => (
-                <details className="protocol-prescription-option" key={`${definition.key}-${option.number}-${option.title}`} open={option.number === prescriptionOptions[0]?.number}>
+                <details className="protocol-prescription-option" key={`${definition.key}-${option.number}-${option.title}`}>
                   <summary className="protocol-prescription-option-header">
                     <span>Opção {option.number}</span>
                     <div className="protocol-prescription-option-title">
@@ -840,12 +863,11 @@ function PrescriptionGuidePage({
               <ProtocolHeader guide={selectedGuide} />
               <SafetyNotice />
 
-              {selectedGuide.resumoClinico ? (
-                <div className="protocol-summary-block">
-                  <strong>Resumo clínico</strong>
-                  <p>{selectedGuide.resumoClinico}</p>
-                </div>
-              ) : null}
+              <ProtocolSummarySection
+                text={selectedGuide.resumoClinico}
+                expanded={Boolean(expandedSections.summary)}
+                onToggle={() => toggleSection('summary')}
+              />
 
               <div className="protocol-accordion-list">
                 {SECTION_DEFINITIONS.map((definition) => (
