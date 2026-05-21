@@ -3093,17 +3093,42 @@ body {
 
 .clinical-drug-section {
   display: grid;
-  gap: 0.55rem;
-  padding: 0.9rem;
   border: 1px solid var(--gray-200);
   border-radius: 10px;
   background: #fff;
+  overflow: hidden;
 }
 
-.clinical-drug-section h3 {
+.clinical-drug-section-trigger {
+  width: 100%;
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.8rem 0.9rem;
+  border: none;
+  background: var(--gray-50);
+  color: var(--gray-900);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.clinical-drug-section-trigger span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
   color: var(--gray-900);
   font-size: 0.95rem;
+  font-weight: 750;
   letter-spacing: 0;
+}
+
+.clinical-drug-section-content {
+  display: grid;
+  gap: 0.55rem;
+  padding: 0.9rem;
 }
 
 .clinical-drug-section pre {
@@ -3156,19 +3181,51 @@ body {
 
 .clinical-drug-quick-section,
 .clinical-drug-quick-source {
-  display: grid;
-  gap: 0.4rem;
-  padding: 0.85rem 0.9rem;
   border: 1px solid var(--gray-200);
   border-radius: 10px;
   background: #fff;
+  overflow: hidden;
 }
 
-.clinical-drug-quick-section h3,
-.clinical-drug-quick-source h3 {
+.clinical-drug-quick-section summary,
+.clinical-drug-quick-source summary {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0.72rem 0.85rem;
+  background: var(--gray-50);
   color: var(--gray-900);
   font-size: 0.92rem;
+  font-weight: 750;
   letter-spacing: 0;
+  cursor: pointer;
+}
+
+.clinical-drug-quick-section summary::-webkit-details-marker,
+.clinical-drug-quick-source summary::-webkit-details-marker {
+  display: none;
+}
+
+.clinical-drug-quick-section summary::before,
+.clinical-drug-quick-source summary::before {
+  content: '▸';
+  margin-right: 0.48rem;
+  color: var(--gray-500);
+}
+
+.clinical-drug-quick-section[open] summary::before,
+.clinical-drug-quick-source[open] summary::before {
+  content: '▾';
+}
+
+.clinical-drug-quick-section-content {
+  padding: 0.85rem 0.9rem;
+}
+
+.clinical-drug-quick-source a,
+.clinical-drug-quick-source span {
+  display: block;
+  padding: 0.85rem 0.9rem;
 }
 
 .clinical-drug-quick-section pre,

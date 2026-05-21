@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 function normalizeDisplayText(value) {
   return String(value || '').trim();
@@ -12,7 +12,6 @@ function getDrugSubtitle(drug) {
   return [
     drug?.classCategory,
     drug?.pregnancyRisk ? `Gestação ${drug.pregnancyRisk}` : '',
-    drug?.reviewStatus,
   ].filter(Boolean).join(' · ');
 }
 
@@ -32,52 +31,6 @@ function getRiskClass(value) {
   }
 
   return '';
-}
-
-function buildDrugSummaryCopy(drug) {
-  if (!drug) {
-    return '';
-  }
-
-  return [
-    `Medicamento: ${getDrugTitle(drug)}`,
-    drug.classCategory ? `Classe: ${drug.classCategory}` : '',
-    drug.pregnancyRisk ? `Risco gestacional: ${drug.pregnancyRisk}` : '',
-    drug.summaryText ? `Resumo: ${drug.summaryText}` : '',
-    drug.adultDosage ? `Posologia adulto: ${drug.adultDosage}` : '',
-    drug.pediatricDosage ? `Posologia pediátrica: ${drug.pediatricDosage}` : '',
-    drug.contraindications ? `Contraindicações: ${drug.contraindications}` : '',
-    drug.warnings ? `Advertências: ${drug.warnings}` : '',
-    drug.interactions ? `Interações: ${drug.interactions}` : '',
-  ].filter(Boolean).join('\n\n');
-}
-
-async function copyTextToClipboard(text) {
-  const content = normalizeDisplayText(text);
-
-  if (!content) {
-    return false;
-  }
-
-  try {
-    if (navigator.clipboard?.writeText) {
-      await navigator.clipboard.writeText(content);
-      return true;
-    }
-  } catch {
-    // Use the textarea fallback below.
-  }
-
-  const textarea = document.createElement('textarea');
-  textarea.value = content;
-  textarea.setAttribute('readonly', '');
-  textarea.style.position = 'fixed';
-  textarea.style.opacity = '0';
-  document.body.appendChild(textarea);
-  textarea.select();
-  const copied = document.execCommand('copy');
-  document.body.removeChild(textarea);
-  return copied;
 }
 
 function ClinicalDrugAutocomplete({ mention }) {
@@ -181,15 +134,16 @@ function QuickSection({ title, text, empty = 'Campo ainda não preenchido no Bul
   const content = normalizeDisplayText(text);
 
   return (
-    <section className="clinical-drug-quick-section">
-      <h3>{title}</h3>
-      {content ? <pre>{content}</pre> : <p>{empty}</p>}
-    </section>
+    <details className="clinical-drug-quick-section" open>
+      <summary>{title}</summary>
+      <div className="clinical-drug-quick-section-content">
+        {content ? <pre>{content}</pre> : <p>{empty}</p>}
+      </div>
+    </details>
   );
 }
 
 function ClinicalDrugQuickModal({ drug, onClose }) {
-  const [copied, setCopied] = useState(false);
   const source = normalizeDisplayText(drug?.sourceBula || drug?.pdfFile);
 
   useEffect(() => {
@@ -202,15 +156,6 @@ function ClinicalDrugQuickModal({ drug, onClose }) {
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [onClose]);
-
-  async function handleCopy() {
-    const didCopy = await copyTextToClipboard(buildDrugSummaryCopy(drug));
-
-    if (didCopy) {
-      setCopied(true);
-      window.setTimeout(() => setCopied(false), 1400);
-    }
-  }
 
   return (
     <div className="app-modal-backdrop" role="presentation" onClick={onClose}>
@@ -238,7 +183,6 @@ function ClinicalDrugQuickModal({ drug, onClose }) {
               Risco gestacional {drug.pregnancyRisk}
             </span>
           ) : null}
-          {drug?.reviewStatus ? <span className="protocol-meta-chip">{drug.reviewStatus}</span> : null}
         </div>
 
         <div className="clinical-drug-quick-scroll">
@@ -250,21 +194,15 @@ function ClinicalDrugQuickModal({ drug, onClose }) {
           <QuickSection title="Interações" text={drug?.interactions} />
 
           {source ? (
-            <section className="clinical-drug-quick-source">
-              <h3>Fonte</h3>
+            <details className="clinical-drug-quick-source" open>
+              <summary>Fonte</summary>
               {/^https?:\/\//i.test(source) ? (
                 <a href={source} target="_blank" rel="noreferrer">{source}</a>
               ) : (
                 <span>{source}</span>
               )}
-            </section>
+            </details>
           ) : null}
-        </div>
-
-        <div className="app-modal-actions clinical-drug-quick-actions">
-          <button type="button" className="btn btn-primario" onClick={handleCopy}>
-            {copied ? 'Resumo copiado' : 'Copiar resumo'}
-          </button>
         </div>
       </article>
     </div>

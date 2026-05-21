@@ -65,7 +65,6 @@ function getDrugMetaParts(drug) {
   return [
     drug?.classCategory,
     drug?.pregnancyRisk ? `Gestação ${drug.pregnancyRisk}` : '',
-    drug?.reviewStatus,
   ].filter(Boolean);
 }
 
@@ -87,26 +86,6 @@ function isLikelyList(value) {
   const items = splitListText(text);
 
   return items.length > 1 && (text.includes('\n') || text.includes(';') || /^\s*[-•]/.test(text));
-}
-
-function buildCopyText(drug) {
-  if (!drug) {
-    return '';
-  }
-
-  return [
-    `Medicamento: ${getDrugTitle(drug)}`,
-    drug.classCategory ? `Classe: ${drug.classCategory}` : '',
-    drug.pregnancyRisk ? `Risco gestacional: ${drug.pregnancyRisk}` : '',
-    drug.summaryText ? `Resumo: ${drug.summaryText}` : '',
-    drug.adultDosage ? `Posologia adulto: ${drug.adultDosage}` : '',
-    drug.pediatricDosage ? `Posologia pediátrica: ${drug.pediatricDosage}` : '',
-    drug.contraindications ? `Contraindicações: ${drug.contraindications}` : '',
-    drug.warnings ? `Advertências: ${drug.warnings}` : '',
-    drug.interactions ? `Interações: ${drug.interactions}` : '',
-  ]
-    .filter(Boolean)
-    .join('\n\n');
 }
 
 function getPregnancyRiskClass(value) {
@@ -182,33 +161,54 @@ function ClinicalDrugSidebar({
   );
 }
 
-function ClinicalDrugSection({ title, text, empty }) {
+function createExpandedSectionsState(expanded = true) {
+  return SECTION_DEFINITIONS.reduce((accumulator, definition) => ({
+    ...accumulator,
+    [definition.key]: expanded,
+  }), {});
+}
+
+function ClinicalDrugSection({ title, text, empty, expanded, onToggle }) {
   const content = normalizeDisplayText(text);
 
   return (
     <section className="clinical-drug-section">
-      <h3>{title}</h3>
-      {content ? (
-        isLikelyList(content) ? (
-          <ul className="protocol-simple-list">
-            {splitListText(content).map((item, index) => (
-              <li key={`${title}-${item}-${index}`}>{item}</li>
-            ))}
-          </ul>
-        ) : (
-          <pre>{content}</pre>
-        )
-      ) : (
-        <div className="protocol-section-empty">{empty}</div>
-      )}
+      <button
+        type="button"
+        className="clinical-drug-section-trigger"
+        aria-expanded={expanded}
+        onClick={onToggle}
+      >
+        <span>
+          <span className="protocol-chevron">{expanded ? '▾' : '▸'}</span>
+          {title}
+        </span>
+      </button>
+
+      {expanded ? (
+        <div className="clinical-drug-section-content">
+          {content ? (
+            isLikelyList(content) ? (
+              <ul className="protocol-simple-list">
+                {splitListText(content).map((item, index) => (
+                  <li key={`${title}-${item}-${index}`}>{item}</li>
+                ))}
+              </ul>
+            ) : (
+              <pre>{content}</pre>
+            )
+          ) : (
+            <div className="protocol-section-empty">{empty}</div>
+          )}
+        </div>
+      ) : null}
     </section>
   );
 }
 
-function ClinicalDrugHeader({ drug, copiedKey, onCopy }) {
+function ClinicalDrugHeader({ drug }) {
   const sourceUrl = getSourceUrl(drug);
   const riskClass = getPregnancyRiskClass(drug?.pregnancyRisk);
-  const commercialNames = getCommercialNames(drug);
 
   return (
     <header className="protocol-header clinical-drug-detail-header">
@@ -230,33 +230,12 @@ function ClinicalDrugHeader({ drug, copiedKey, onCopy }) {
                 Risco gestacional {drug.pregnancyRisk}
               </span>
             ) : null}
-            {drug?.reviewStatus ? (
-              <span className="protocol-meta-chip">{drug.reviewStatus}</span>
-            ) : null}
-            {drug?.extractionStatus ? (
-              <span className="protocol-meta-chip">{drug.extractionStatus}</span>
-            ) : null}
           </div>
-
-          {commercialNames ? (
-            <div className="protocol-meta-group protocol-meta-group-wide">
-              <span>Nomes e apresentações</span>
-              <strong>{commercialNames}</strong>
-            </div>
-          ) : null}
         </div>
       </div>
 
-      <div className="clinical-drug-actions">
-        <button
-          type="button"
-          className="btn btn-secundario"
-          onClick={() => onCopy(buildCopyText(drug), 'drug-summary')}
-          disabled={!buildCopyText(drug)}
-        >
-          {copiedKey === 'drug-summary' ? 'Copiado' : 'Copiar resumo'}
-        </button>
-        {sourceUrl ? (
+      {sourceUrl ? (
+        <div className="clinical-drug-actions">
           <a
             className="btn btn-secundario clinical-drug-source-link"
             href={sourceUrl}
@@ -265,8 +244,8 @@ function ClinicalDrugHeader({ drug, copiedKey, onCopy }) {
           >
             Abrir fonte
           </a>
-        ) : null}
-      </div>
+        </div>
+      ) : null}
     </header>
   );
 }
@@ -298,7 +277,7 @@ function ClinicalDrugPage({
   const [loadingDrugs, setLoadingDrugs] = useState(false);
   const [loadingDetail, setLoadingDetail] = useState(false);
   const [error, setError] = useState('');
-  const [copiedKey, setCopiedKey] = useState('');
+  const [expandedSections, setExpandedSections] = useState(() => createExpandedSectionsState(true));
 
   useEffect(() => {
     if (!user?.id || !isPro) {
@@ -317,7 +296,7 @@ function ClinicalDrugPage({
 
       const params = new URLSearchParams({
         q: query.trim(),
-        limit: '40',
+        limit: query.trim() ? '80' : '250',
       });
       const response = await api.get(`/clinical-drugs?${params.toString()}`);
 
@@ -363,6 +342,7 @@ function ClinicalDrugPage({
 
       if (response.success && response.data) {
         setSelectedDrug(response.data);
+        setExpandedSections(createExpandedSectionsState(true));
       } else {
         setSelectedDrug(null);
         setError(response.error || 'Não foi possível abrir este medicamento.');
@@ -386,16 +366,11 @@ function ClinicalDrugPage({
     return 'Pesquise por princípio ativo, nome comercial, classe farmacológica ou tag de busca.';
   }, [accessState?.isTrialAccess]);
 
-  async function copyText(text, key) {
-    const content = normalizeDisplayText(text);
-
-    if (!content) {
-      return;
-    }
-
-    await navigator.clipboard.writeText(content);
-    setCopiedKey(key);
-    window.setTimeout(() => setCopiedKey(''), 1400);
+  function toggleSection(key) {
+    setExpandedSections((current) => ({
+      ...current,
+      [key]: !current[key],
+    }));
   }
 
   if (!user?.id) {
@@ -460,7 +435,7 @@ function ClinicalDrugPage({
             <div className="prescription-empty">Carregando medicamento...</div>
           ) : selectedDrug ? (
             <>
-              <ClinicalDrugHeader drug={selectedDrug} copiedKey={copiedKey} onCopy={copyText} />
+              <ClinicalDrugHeader drug={selectedDrug} />
               <SafetyNotice />
 
               <div className="clinical-drug-section-list">
@@ -475,6 +450,8 @@ function ClinicalDrugPage({
                       title={definition.title}
                       text={sectionText}
                       empty={definition.empty}
+                      expanded={Boolean(expandedSections[definition.key])}
+                      onToggle={() => toggleSection(definition.key)}
                     />
                   );
                 })}
