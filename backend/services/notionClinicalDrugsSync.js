@@ -357,7 +357,7 @@ async function upsertClinicalDrugs(drugs) {
 async function syncNotionClinicalDrugs() {
   const pages = await queryNotionClinicalDrugPages();
   const mapped = pages.map(mapNotionPageToClinicalDrug);
-  const prepared = [];
+  const preparedBySlug = new Map();
   const skipped = [];
 
   mapped.forEach((drug) => {
@@ -366,9 +366,23 @@ async function syncNotionClinicalDrugs() {
       return;
     }
 
-    prepared.push(drug.payload);
+    const slug = drug.payload.slug;
+    if (preparedBySlug.has(slug)) {
+      const previous = preparedBySlug.get(slug);
+      skipped.push({
+        notionPageId: drug.payload.notion_page_id,
+        activeIngredient: drug.payload.active_ingredient,
+        slug,
+        reasons: ['duplicate_slug_in_notion_batch'],
+        keptNotionPageId: previous.notion_page_id,
+      });
+      return;
+    }
+
+    preparedBySlug.set(slug, drug.payload);
   });
 
+  const prepared = [...preparedBySlug.values()];
   const persisted = await upsertClinicalDrugs(prepared);
 
   return {
