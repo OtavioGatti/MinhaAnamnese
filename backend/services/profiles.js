@@ -11,6 +11,15 @@ const { getTrialUsageSummary } = require('./trialUsage');
 const ALLOWED_CONTEXTUAL_TABS = new Set(['guide', 'checklist', 'calculator', 'structure']);
 const DEFAULT_TRIAL_DAYS = 3;
 const DEFAULT_TRIAL_ROLLOUT_AT = '2026-05-14T00:00:00.000Z';
+const OPTIONAL_COMPLIANCE_COLUMNS = [
+  'terms_accepted_at',
+  'terms_version',
+  'privacy_accepted_at',
+  'privacy_version',
+  'cookie_consent_status',
+  'cookie_consent_at',
+  'cookie_consent_version',
+];
 
 function getProfilesAdminConfig() {
   return {
@@ -107,6 +116,43 @@ function normalizeTemplateId(value) {
   return normalized ? normalized : null;
 }
 
+function normalizeLegalVersion(value) {
+  if (typeof value !== 'string') {
+    return null;
+  }
+
+  const normalized = value.trim();
+  return normalized ? normalized.slice(0, 32) : null;
+}
+
+function normalizeCookieConsentStatus(value) {
+  return value === 'accepted' || value === 'rejected' ? value : null;
+}
+
+function getMetadataTimestamp(user, ...keys) {
+  for (const key of keys) {
+    const normalized = normalizePlanExpiresAt(user?.user_metadata?.[key]);
+
+    if (normalized) {
+      return normalized;
+    }
+  }
+
+  return null;
+}
+
+function getMetadataText(user, ...keys) {
+  for (const key of keys) {
+    const normalized = normalizeLegalVersion(user?.user_metadata?.[key]);
+
+    if (normalized) {
+      return normalized;
+    }
+  }
+
+  return null;
+}
+
 function buildProfileFallback(user, existingProfile = null, overrides = {}) {
   const profile = {
     id: user?.id || existingProfile?.id || null,
@@ -140,6 +186,35 @@ function buildProfileFallback(user, existingProfile = null, overrides = {}) {
     welcome_onboarding_seen_at: normalizePlanExpiresAt(
       overrides.welcome_onboarding_seen_at ?? existingProfile?.welcome_onboarding_seen_at,
     ),
+    terms_accepted_at: normalizePlanExpiresAt(
+      overrides.terms_accepted_at ??
+        existingProfile?.terms_accepted_at ??
+        getMetadataTimestamp(user, 'terms_accepted_at', 'termsAcceptedAt'),
+    ),
+    terms_version: normalizeLegalVersion(
+      overrides.terms_version ??
+        existingProfile?.terms_version ??
+        getMetadataText(user, 'terms_version', 'termsVersion'),
+    ),
+    privacy_accepted_at: normalizePlanExpiresAt(
+      overrides.privacy_accepted_at ??
+        existingProfile?.privacy_accepted_at ??
+        getMetadataTimestamp(user, 'privacy_accepted_at', 'privacyAcceptedAt'),
+    ),
+    privacy_version: normalizeLegalVersion(
+      overrides.privacy_version ??
+        existingProfile?.privacy_version ??
+        getMetadataText(user, 'privacy_version', 'privacyVersion'),
+    ),
+    cookie_consent_status: normalizeCookieConsentStatus(
+      overrides.cookie_consent_status ?? existingProfile?.cookie_consent_status,
+    ),
+    cookie_consent_at: normalizePlanExpiresAt(
+      overrides.cookie_consent_at ?? existingProfile?.cookie_consent_at,
+    ),
+    cookie_consent_version: normalizeLegalVersion(
+      overrides.cookie_consent_version ?? existingProfile?.cookie_consent_version,
+    ),
     last_payment_id:
       Object.prototype.hasOwnProperty.call(overrides, 'last_payment_id')
         ? overrides.last_payment_id || null
@@ -161,7 +236,7 @@ async function getProfileByUserId(userId) {
 
   const { url, serviceRoleKey } = getProfilesAdminConfig();
   const query = new URLSearchParams({
-    select: 'id,email,current_plan,last_template_used,default_contextual_tab,billing_status,access_source,plan_expires_at,free_full_insights_used_count,trial_started_at,welcome_onboarding_seen_at,last_payment_id,created_at,updated_at',
+    select: '*',
     id: `eq.${userId}`,
     limit: '1',
   });
@@ -231,6 +306,34 @@ async function upsertProfile(fields) {
     payload.welcome_onboarding_seen_at = normalizePlanExpiresAt(fields.welcome_onboarding_seen_at);
   }
 
+  if ('terms_accepted_at' in fields) {
+    payload.terms_accepted_at = normalizePlanExpiresAt(fields.terms_accepted_at);
+  }
+
+  if ('terms_version' in fields) {
+    payload.terms_version = normalizeLegalVersion(fields.terms_version);
+  }
+
+  if ('privacy_accepted_at' in fields) {
+    payload.privacy_accepted_at = normalizePlanExpiresAt(fields.privacy_accepted_at);
+  }
+
+  if ('privacy_version' in fields) {
+    payload.privacy_version = normalizeLegalVersion(fields.privacy_version);
+  }
+
+  if ('cookie_consent_status' in fields) {
+    payload.cookie_consent_status = normalizeCookieConsentStatus(fields.cookie_consent_status);
+  }
+
+  if ('cookie_consent_at' in fields) {
+    payload.cookie_consent_at = normalizePlanExpiresAt(fields.cookie_consent_at);
+  }
+
+  if ('cookie_consent_version' in fields) {
+    payload.cookie_consent_version = normalizeLegalVersion(fields.cookie_consent_version);
+  }
+
   if ('last_payment_id' in fields) {
     payload.last_payment_id = fields.last_payment_id || null;
   }
@@ -240,23 +343,49 @@ async function upsertProfile(fields) {
     on_conflict: 'id',
   });
 
-  const response = await fetch(`${url}/rest/v1/profiles?${query.toString()}`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      apikey: serviceRoleKey,
-      Authorization: `Bearer ${serviceRoleKey}`,
-      Prefer: 'resolution=merge-duplicates,return=representation',
-    },
-    body: JSON.stringify(payload),
-  });
-
-  if (!response.ok) {
-    throw new Error('failed to upsert profile');
+  function omitOptionalComplianceFields(source) {
+    return Object.fromEntries(
+      Object.entries(source).filter(([key]) => !OPTIONAL_COMPLIANCE_COLUMNS.includes(key)),
+    );
   }
 
-  const json = await response.json();
-  return Array.isArray(json) && json[0] ? json[0] : null;
+  async function sendProfileUpsert(nextPayload) {
+    const response = await fetch(`${url}/rest/v1/profiles?${query.toString()}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        apikey: serviceRoleKey,
+        Authorization: `Bearer ${serviceRoleKey}`,
+        Prefer: 'resolution=merge-duplicates,return=representation',
+      },
+      body: JSON.stringify(nextPayload),
+    });
+
+    if (!response.ok) {
+      const details = await response.text().catch(() => '');
+      const error = new Error('failed to upsert profile');
+      error.statusCode = response.status;
+      error.details = details;
+      throw error;
+    }
+
+    const json = await response.json();
+    return Array.isArray(json) && json[0] ? json[0] : null;
+  }
+
+  try {
+    return await sendProfileUpsert(payload);
+  } catch (error) {
+    const hasOptionalComplianceFields = OPTIONAL_COMPLIANCE_COLUMNS.some((key) =>
+      Object.prototype.hasOwnProperty.call(payload, key),
+    );
+
+    if (!hasOptionalComplianceFields || error.statusCode !== 400) {
+      throw error;
+    }
+
+    return sendProfileUpsert(omitOptionalComplianceFields(payload));
+  }
 }
 
 function shouldUpdateProfile(existingProfile, nextProfile) {
@@ -279,6 +408,18 @@ function shouldUpdateProfile(existingProfile, nextProfile) {
     normalizePlanExpiresAt(existingProfile.trial_started_at) !== normalizePlanExpiresAt(nextProfile.trial_started_at) ||
     normalizePlanExpiresAt(existingProfile.welcome_onboarding_seen_at) !==
       normalizePlanExpiresAt(nextProfile.welcome_onboarding_seen_at) ||
+    normalizePlanExpiresAt(existingProfile.terms_accepted_at) !==
+      normalizePlanExpiresAt(nextProfile.terms_accepted_at) ||
+    normalizeLegalVersion(existingProfile.terms_version) !== normalizeLegalVersion(nextProfile.terms_version) ||
+    normalizePlanExpiresAt(existingProfile.privacy_accepted_at) !==
+      normalizePlanExpiresAt(nextProfile.privacy_accepted_at) ||
+    normalizeLegalVersion(existingProfile.privacy_version) !== normalizeLegalVersion(nextProfile.privacy_version) ||
+    normalizeCookieConsentStatus(existingProfile.cookie_consent_status) !==
+      normalizeCookieConsentStatus(nextProfile.cookie_consent_status) ||
+    normalizePlanExpiresAt(existingProfile.cookie_consent_at) !==
+      normalizePlanExpiresAt(nextProfile.cookie_consent_at) ||
+    normalizeLegalVersion(existingProfile.cookie_consent_version) !==
+      normalizeLegalVersion(nextProfile.cookie_consent_version) ||
     (existingProfile.last_payment_id || null) !== (nextProfile.last_payment_id || null)
   );
 }
@@ -303,6 +444,13 @@ async function expireProfileAccessIfNeeded(user, profile) {
     free_full_insights_used_count: profile.free_full_insights_used_count,
     trial_started_at: profile.trial_started_at,
     welcome_onboarding_seen_at: profile.welcome_onboarding_seen_at,
+    terms_accepted_at: profile.terms_accepted_at,
+    terms_version: profile.terms_version,
+    privacy_accepted_at: profile.privacy_accepted_at,
+    privacy_version: profile.privacy_version,
+    cookie_consent_status: profile.cookie_consent_status,
+    cookie_consent_at: profile.cookie_consent_at,
+    cookie_consent_version: profile.cookie_consent_version,
     last_payment_id: profile.last_payment_id,
     last_template_used: profile.last_template_used,
     default_contextual_tab: profile.default_contextual_tab,
@@ -350,6 +498,13 @@ async function ensureUserProfile(user, overrides = {}) {
     free_full_insights_used_count: fallbackProfile.free_full_insights_used_count,
     trial_started_at: fallbackProfile.trial_started_at,
     welcome_onboarding_seen_at: fallbackProfile.welcome_onboarding_seen_at,
+    terms_accepted_at: fallbackProfile.terms_accepted_at,
+    terms_version: fallbackProfile.terms_version,
+    privacy_accepted_at: fallbackProfile.privacy_accepted_at,
+    privacy_version: fallbackProfile.privacy_version,
+    cookie_consent_status: fallbackProfile.cookie_consent_status,
+    cookie_consent_at: fallbackProfile.cookie_consent_at,
+    cookie_consent_version: fallbackProfile.cookie_consent_version,
     last_payment_id: fallbackProfile.last_payment_id,
   });
 

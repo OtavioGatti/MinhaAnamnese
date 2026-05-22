@@ -3,6 +3,7 @@ const { resolveSupabaseUser } = require('../utils/supabaseAuth');
 
 function getProfileUpdatesFromRequest(req) {
   const body = req.body || {};
+  const now = new Date().toISOString();
 
   return {
     last_template_used:
@@ -16,6 +17,18 @@ function getProfileUpdatesFromRequest(req) {
     welcome_onboarding_seen_at:
       body.welcome_onboarding_seen === true
         ? new Date().toISOString()
+        : undefined,
+    cookie_consent_status:
+      Object.prototype.hasOwnProperty.call(body, 'cookie_consent_status')
+        ? body.cookie_consent_status
+        : undefined,
+    cookie_consent_at:
+      Object.prototype.hasOwnProperty.call(body, 'cookie_consent_status')
+        ? now
+        : undefined,
+    cookie_consent_version:
+      Object.prototype.hasOwnProperty.call(body, 'cookie_consent_version')
+        ? body.cookie_consent_version
         : undefined,
   };
 }

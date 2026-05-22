@@ -4,6 +4,13 @@ create table if not exists public.profiles (
   current_plan text not null default 'basic',
   last_template_used text,
   default_contextual_tab text not null default 'guide',
+  terms_accepted_at timestamptz,
+  terms_version text,
+  privacy_accepted_at timestamptz,
+  privacy_version text,
+  cookie_consent_status text,
+  cookie_consent_at timestamptz,
+  cookie_consent_version text,
   created_at timestamptz not null default timezone('utc', now()),
   updated_at timestamptz not null default timezone('utc', now())
 );
@@ -19,6 +26,13 @@ alter table public.profiles
   add column if not exists free_full_insights_used_count integer not null default 0,
   add column if not exists trial_started_at timestamptz,
   add column if not exists welcome_onboarding_seen_at timestamptz,
+  add column if not exists terms_accepted_at timestamptz,
+  add column if not exists terms_version text,
+  add column if not exists privacy_accepted_at timestamptz,
+  add column if not exists privacy_version text,
+  add column if not exists cookie_consent_status text,
+  add column if not exists cookie_consent_at timestamptz,
+  add column if not exists cookie_consent_version text,
   add column if not exists last_payment_id text,
   add column if not exists created_at timestamptz not null default timezone('utc', now()),
   add column if not exists updated_at timestamptz not null default timezone('utc', now());
@@ -105,6 +119,16 @@ begin
     alter table public.profiles
       add constraint profiles_free_full_insights_used_count_check
       check (free_full_insights_used_count >= 0);
+  end if;
+
+  if not exists (
+    select 1
+    from pg_constraint
+    where conname = 'profiles_cookie_consent_status_check'
+  ) then
+    alter table public.profiles
+      add constraint profiles_cookie_consent_status_check
+      check (cookie_consent_status is null or cookie_consent_status in ('accepted', 'rejected'));
   end if;
 end $$;
 

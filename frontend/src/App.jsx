@@ -16,6 +16,8 @@ import UserEvolution from './components/UserEvolution';
 import WorkspaceSidebar from './components/WorkspaceSidebar';
 import CheckoutSuccessBanner from './components/CheckoutSuccessBanner';
 import ClinicalDrugPage from './components/ClinicalDrugPage';
+import CookieConsentBanner from './components/CookieConsentBanner';
+import LegalDocumentPage from './components/LegalDocumentPage';
 import WelcomeOnboardingModal from './components/WelcomeOnboardingModal';
 import { guides } from './data/guides';
 import { supabase } from './lib/supabaseClient';
@@ -23,6 +25,8 @@ import { supabase } from './lib/supabaseClient';
 const TEMPLATE_WITH_CALCULATORS = 'obstetricia';
 const CHECKOUT_RETURN_STATE_KEY = 'checkout-return-state';
 const TRACKING_SESSION_ID_KEY = 'tracking-session-id';
+const COOKIE_CONSENT_KEY = 'minha-anamnese-cookie-consent';
+const LEGAL_DOCUMENT_VERSION = '2026-05-22';
 const DEBUG_MODE = false;
 const PRO_PLAN_PRICE_COPY = 'R$ 9,90';
 const PRO_PLAN_PERIOD_COPY = '30 dias';
@@ -151,10 +155,57 @@ function getOrCreateTrackingSessionId() {
   return nextSessionId;
 }
 
-function resetTrackingSessionId() {
-  const nextSessionId = createTrackingSessionId();
-  sessionStorage.setItem(TRACKING_SESSION_ID_KEY, nextSessionId);
-  return nextSessionId;
+function getLegalPageFromPath() {
+  const path = window.location.pathname.replace(/\/+$/, '') || '/';
+
+  if (path === '/termos') {
+    return 'terms';
+  }
+
+  if (path === '/privacidade') {
+    return 'privacy';
+  }
+
+  return null;
+}
+
+function buildCookieConsent(status) {
+  return {
+    status,
+    version: LEGAL_DOCUMENT_VERSION,
+    decidedAt: new Date().toISOString(),
+  };
+}
+
+function readCookieConsent() {
+  const rawConsent = localStorage.getItem(COOKIE_CONSENT_KEY);
+
+  if (!rawConsent) {
+    return null;
+  }
+
+  try {
+    const parsed = JSON.parse(rawConsent);
+
+    if (
+      (parsed?.status === 'accepted' || parsed?.status === 'rejected') &&
+      parsed.version === LEGAL_DOCUMENT_VERSION
+    ) {
+      return parsed;
+    }
+  } catch {
+    localStorage.removeItem(COOKIE_CONSENT_KEY);
+  }
+
+  return null;
+}
+
+function saveCookieConsent(consent) {
+  localStorage.setItem(COOKIE_CONSENT_KEY, JSON.stringify(consent));
+}
+
+function canTrackNonEssentialCookies(consent) {
+  return consent?.status === 'accepted' && consent?.version === LEGAL_DOCUMENT_VERSION;
 }
 
 function formatRelativeTime(value) {
@@ -662,7 +713,8 @@ function App() {
   const insightsSectionRef = useRef(null);
   const improveActionLockRef = useRef(false);
   const trackedEventsRef = useRef(new Set());
-  const trackingSessionIdRef = useRef(getOrCreateTrackingSessionId());
+  const trackingSessionIdRef = useRef(null);
+  const cookieConsentSyncedRef = useRef('');
   const profileHydratedUserRef = useRef(null);
   const lastSavedProfileSnapshotRef = useRef(null);
   const [templates, setTemplates] = useState([]);
@@ -675,6 +727,9 @@ function App() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [termsAccepted, setTermsAccepted] = useState(false);
+  const [cookieConsent, setCookieConsent] = useState(() => readCookieConsent());
+  const [legalPage, setLegalPage] = useState(() => getLegalPageFromPath());
   const [authMode, setAuthMode] = useState('login');
   const [loading, setLoading] = useState(false);
   const [loadingUser, setLoadingUser] = useState(true);
@@ -741,6 +796,15 @@ function App() {
 
     passwordInputRef.current?.focus();
   }, [authMode, authPanelAberto, user]);
+
+  useEffect(() => {
+    function handlePopState() {
+      setLegalPage(getLegalPageFromPath());
+    }
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
 
   useEffect(() => {
     async function carregarSessao() {
@@ -823,6 +887,7 @@ function App() {
         setEmail('');
         setPassword('');
         setConfirmPassword('');
+        setTermsAccepted(false);
         setAuthMode('login');
         setAuthError('');
         setAuthFeedback('');
@@ -831,7 +896,7 @@ function App() {
         setProfile(null);
         profileHydratedUserRef.current = null;
         lastSavedProfileSnapshotRef.current = null;
-        trackingSessionIdRef.current = resetTrackingSessionId();
+        trackingSessionIdRef.current = null;
         trackedEventsRef.current.clear();
       }
     });
@@ -988,6 +1053,37 @@ function App() {
 
     return () => window.clearTimeout(timeoutId);
   }, [user?.id, user?.user_metadata?.plan, profile?.current_plan, templateSelecionado, activeSidebarTab]);
+
+  useEffect(() => {
+    if (!user?.id || !cookieConsent?.status) {
+      return;
+    }
+
+    const syncKey = `${user.id}:${cookieConsent.status}:${cookieConsent.version}`;
+
+    if (cookieConsentSyncedRef.current === syncKey) {
+      return;
+    }
+
+    if (
+      profile?.cookie_consent_status === cookieConsent.status &&
+      profile?.cookie_consent_version === cookieConsent.version
+    ) {
+      cookieConsentSyncedRef.current = syncKey;
+      return;
+    }
+
+    cookieConsentSyncedRef.current = syncKey;
+
+    api.post('/profile', {
+      cookie_consent_status: cookieConsent.status,
+      cookie_consent_version: cookieConsent.version,
+    }).then((response) => {
+      if (response.success && response.data) {
+        setProfile(response.data);
+      }
+    }).catch(() => null);
+  }, [cookieConsent?.status, cookieConsent?.version, profile?.cookie_consent_status, profile?.cookie_consent_version, user?.id]);
 
   useEffect(() => {
     if (
@@ -1157,6 +1253,18 @@ function App() {
       referralLetter: '',
       templates: '',
     });
+  };
+
+  const handleCookieConsentDecision = (status) => {
+    const nextConsent = buildCookieConsent(status);
+    saveCookieConsent(nextConsent);
+    setCookieConsent(nextConsent);
+
+    if (status === 'rejected') {
+      trackingSessionIdRef.current = null;
+      sessionStorage.removeItem(TRACKING_SESSION_ID_KEY);
+      trackedEventsRef.current.clear();
+    }
   };
 
   const handleUseTemplateFromLibrary = (templateId) => {
@@ -1527,6 +1635,7 @@ function App() {
     setEmail('');
     setPassword('');
     setConfirmPassword('');
+    setTermsAccepted(false);
     setAuthError('');
     setAuthFeedback('');
     setLoadingAuth(false);
@@ -1537,6 +1646,9 @@ function App() {
     if (nextMode !== 'forgotPassword') {
       setPassword('');
       setConfirmPassword('');
+    }
+    if (nextMode !== 'signup') {
+      setTermsAccepted(false);
     }
     setAuthError('');
     setAuthFeedback('');
@@ -1597,6 +1709,11 @@ function App() {
       return;
     }
 
+    if (!termsAccepted) {
+      setAuthError('Para criar sua conta, aceite os Termos de Uso e a Política de Privacidade.');
+      return;
+    }
+
     if (loadingAuth) {
       return;
     }
@@ -1606,11 +1723,20 @@ function App() {
     setAuthFeedback('');
     setLoadingAuth(true);
 
+    const acceptedAt = new Date().toISOString();
     const { data, error } = await supabase.auth.signUp({
       email: normalizedEmail,
       password,
       options: {
         emailRedirectTo: window.location.origin,
+        data: {
+          terms_accepted: true,
+          terms_accepted_at: acceptedAt,
+          terms_version: LEGAL_DOCUMENT_VERSION,
+          privacy_accepted: true,
+          privacy_accepted_at: acceptedAt,
+          privacy_version: LEGAL_DOCUMENT_VERSION,
+        },
       },
     });
 
@@ -1715,7 +1841,7 @@ function App() {
   const handleSair = async () => {
     setLoadingUser(true);
     await supabase.auth.signOut();
-    trackingSessionIdRef.current = resetTrackingSessionId();
+    trackingSessionIdRef.current = null;
     trackedEventsRef.current.clear();
     resetAuthFormState();
     setAuthMode('login');
@@ -1878,15 +2004,21 @@ function App() {
 
   const trackEvent = async (eventName, metadata = {}, options = {}) => {
     const eventKey = options.eventKey || null;
-    const sessionId = trackingSessionIdRef.current || getOrCreateTrackingSessionId();
 
     if (window.location.hostname === 'localhost') {
+      return;
+    }
+
+    if (!canTrackNonEssentialCookies(cookieConsent)) {
       return;
     }
 
     if (eventKey && trackedEventsRef.current.has(eventKey)) {
       return;
     }
+
+    const sessionId = trackingSessionIdRef.current || getOrCreateTrackingSessionId();
+    trackingSessionIdRef.current = sessionId;
 
     try {
       const { data: sessionData } = await supabase.auth.getSession();
@@ -1961,6 +2093,19 @@ function App() {
 
     return () => window.cancelAnimationFrame(frameId);
   }, [qualityScore.shouldShowScore, qualityScore.score, resultado, templateSelecionado]);
+
+  if (legalPage) {
+    return (
+      <>
+        <LegalDocumentPage type={legalPage} />
+        <CookieConsentBanner
+          visible={!cookieConsent}
+          onAccept={() => handleCookieConsentDecision('accepted')}
+          onReject={() => handleCookieConsentDecision('rejected')}
+        />
+      </>
+    );
+  }
 
   return (
     <div className="container">
@@ -2185,6 +2330,28 @@ function App() {
               />
             )}
 
+            {authMode === 'signup' && (
+              <label className="terms-consent-control">
+                <input
+                  type="checkbox"
+                  checked={termsAccepted}
+                  onChange={(e) => {
+                    setTermsAccepted(e.target.checked);
+                    if (authError) {
+                      setAuthError('');
+                    }
+                  }}
+                  disabled={loadingAuth}
+                />
+                <span>
+                  Li e concordo com os{' '}
+                  <a href="/termos" target="_blank" rel="noreferrer">Termos de Uso</a>
+                  {' '}e a{' '}
+                  <a href="/privacidade" target="_blank" rel="noreferrer">Política de Privacidade</a>.
+                </span>
+              </label>
+            )}
+
             {authFeedback && <span className="topbar-auth-feedback">{authFeedback}</span>}
             {authError && <div className="topbar-auth-error">{authError}</div>}
 
@@ -2200,7 +2367,7 @@ function App() {
               <button
                 type="submit"
                 className="btn btn-secundario"
-                disabled={loadingAuth}
+                disabled={loadingAuth || !termsAccepted}
               >
                 {loadingAuth ? 'Criando conta...' : 'Criar conta'}
               </button>
@@ -2541,6 +2708,10 @@ function App() {
 
       <footer className="footer">
         <p>Minha Anamnese &middot; Apoio à padronização clínica &middot; Evite dados identificáveis; o texto é processado por IA e não é salvo como prontuário</p>
+        <div className="footer-links">
+          <a href="/termos">Termos de Uso</a>
+          <a href="/privacidade">Política de Privacidade</a>
+        </div>
       </footer>
 
       <PlanComparisonModal
@@ -2557,6 +2728,12 @@ function App() {
         priceCopy={PRO_PLAN_PRICE_COPY}
         onClose={handleCloseWelcomeOnboarding}
         onStart={handleStartWelcomeOnboarding}
+      />
+
+      <CookieConsentBanner
+        visible={!cookieConsent}
+        onAccept={() => handleCookieConsentDecision('accepted')}
+        onReject={() => handleCookieConsentDecision('rejected')}
       />
     </div>
   );
