@@ -1,14 +1,67 @@
 const { renderPromptTemplate } = require('./promptTemplate');
 
-function buildInsightPrompt(texto, templateName, score, structuredAnalysis, promptTemplate = null) {
+const GUARDRAIL_PLACEHOLDERS = [
+  'section_status_contract',
+  'forbidden_claims',
+  'priority_recommendation',
+];
+
+function buildGuardrailPromptBlock(guardrailContext, keys = GUARDRAIL_PLACEHOLDERS) {
+  if (!guardrailContext) {
+    return '';
+  }
+
+  const blockByKey = {
+    section_status_contract: guardrailContext.sectionStatusContract,
+    forbidden_claims: guardrailContext.forbiddenClaims,
+    priority_recommendation: guardrailContext.priorityRecommendation,
+  };
+  const parts = keys
+    .map((key) => blockByKey[key])
+    .filter((value) => typeof value === 'string' && value.trim());
+
+  if (!parts.length) {
+    return '';
+  }
+
+  return [
+    'GUARDRAILS DETERMINÍSTICOS:',
+    ...parts,
+  ].join('\n\n');
+}
+
+function getMissingGuardrailPlaceholders(promptTemplate = '') {
+  return GUARDRAIL_PLACEHOLDERS.filter((key) => !String(promptTemplate).includes(`{{${key}}}`));
+}
+
+function appendGuardrailPromptBlock(prompt, guardrailContext, keys) {
+  const guardrailBlock = buildGuardrailPromptBlock(guardrailContext, keys);
+
+  if (!guardrailBlock) {
+    return prompt;
+  }
+
+  return `${prompt.trim()}\n\n---\n\n${guardrailBlock}`;
+}
+
+function buildInsightPrompt(texto, templateName, score, structuredAnalysis, promptTemplate = null, guardrailContext = null) {
   if (promptTemplate) {
-    return renderPromptTemplate(promptTemplate, {
+    const renderedPrompt = renderPromptTemplate(promptTemplate, {
       texto,
       template_name: templateName,
       score,
+      structured_analysis: JSON.stringify(structuredAnalysis, null, 2),
       structured_analysis_json: JSON.stringify(structuredAnalysis),
+      section_status_contract: guardrailContext?.sectionStatusContract || '',
+      forbidden_claims: guardrailContext?.forbiddenClaims || '',
+      priority_recommendation: guardrailContext?.priorityRecommendation || '',
     });
+    const missingGuardrailKeys = getMissingGuardrailPlaceholders(promptTemplate);
+
+    return appendGuardrailPromptBlock(renderedPrompt, guardrailContext, missingGuardrailKeys);
   }
+
+  const guardrailBlock = buildGuardrailPromptBlock(guardrailContext);
 
   return `
 SYSTEM ROLE:
@@ -41,6 +94,8 @@ ${score}
 
 ANALISE ESTRUTURADA:
 ${JSON.stringify(structuredAnalysis)}
+
+${guardrailBlock}
 
 ---
 

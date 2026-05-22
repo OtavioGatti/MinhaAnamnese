@@ -3,6 +3,10 @@ const { getTemplateById, isPotentialOfficialTemplateId, resolveTemplateById } = 
 const { buildInsightPrompt } = require('../prompts/insightPrompt');
 const { getSyncedOfficialPrompt } = require('./officialPrompts');
 const { calculateAnamnesisQualityScore } = require('../utils/anamnesisQualityScore');
+const {
+  buildInsightGuardrailContext,
+  sanitizeParsedInsightResponse,
+} = require('../utils/insightGuardrails');
 const { updateUserHistory } = require('../utils/userHistory');
 const { parseAIResponse } = require('../utils/parseAIResponse');
 const { getTextLimitError } = require('../utils/requestLimits');
@@ -143,6 +147,16 @@ function shouldUseDeterministicInterpretation(parsed, analysis) {
   return hasSemanticContradiction(combinedText, analysis);
 }
 
+function hasUsableCriticalInsight(insight) {
+  const normalizedInsight = normalizeText(insight);
+
+  return (
+    normalizedInsight.length >= 40 &&
+    normalizedInsight.includes('falha') &&
+    normalizedInsight.includes('acao')
+  );
+}
+
 function findMentionedSection(gap, sectionReadout) {
   const normalizedGap = normalizeText(gap);
 
@@ -244,6 +258,11 @@ async function generateInsights({ texto, templateId, userId }) {
     throw error;
   }
 
+  const guardrailContext = buildInsightGuardrailContext({
+    structuredAnalysis: analysis,
+    structuredText: trimmedText,
+    score: qualityScore.score,
+  });
   const syncedPrompt = await getSyncedOfficialPrompt('insight_analysis_user').catch(() => null);
   const prompt = buildInsightPrompt(
     trimmedText,
@@ -251,6 +270,7 @@ async function generateInsights({ texto, templateId, userId }) {
     qualityScore.score,
     analysis,
     syncedPrompt?.promptBody || null,
+    guardrailContext,
   );
 
   const response = await openai.chat.completions.create({
@@ -282,6 +302,7 @@ async function generateInsights({ texto, templateId, userId }) {
     throw error;
   }
 
+  const sanitizedParsed = sanitizeParsedInsightResponse(parsed, guardrailContext.statusMap);
   const history = updateUserHistory(userId, {
     score: qualityScore.score,
     erros: [],
@@ -293,27 +314,31 @@ async function generateInsights({ texto, templateId, userId }) {
       templateName: templateConfig.nome,
       score: qualityScore.score,
       hasStructuredAnalysis: Boolean(analysis),
+      guardrailSections: Object.keys(guardrailContext.statusMap || {}).length,
       parsedSections: {
-        analise: Boolean(parsed.analise),
-        scoreText: Boolean(parsed.scoreText),
-        insight: Boolean(parsed.insight),
-        outros: Boolean(parsed.outros),
+        analise: Boolean(sanitizedParsed.analise),
+        scoreText: Boolean(sanitizedParsed.scoreText),
+        insight: Boolean(sanitizedParsed.insight),
+        outros: Boolean(sanitizedParsed.outros),
       },
       historySize: history.length,
     });
   }
 
   const filteredOtherGaps = filterOtherGapsByAnalysis(
-    Array.isArray(parsed.outrosList) ? parsed.outrosList.map((item) => sanitizeText(item)) : [],
+    Array.isArray(sanitizedParsed.outrosList)
+      ? sanitizedParsed.outrosList.map((item) => sanitizeText(item))
+      : [],
     analysis,
   );
   const deterministicInterpretation = buildDeterministicInterpretation(qualityScore.score, analysis);
-  const interpretation = shouldUseDeterministicInterpretation(parsed, analysis)
+  const interpretation = shouldUseDeterministicInterpretation(sanitizedParsed, analysis) ||
+    !hasUsableCriticalInsight(sanitizedParsed.insight)
     ? deterministicInterpretation
     : {
-        message: sanitizeText(parsed.scoreText),
-        justification: sanitizeText(parsed.analise),
-        criticalInsight: sanitizeText(parsed.insight),
+        message: sanitizeText(sanitizedParsed.scoreText),
+        justification: sanitizeText(sanitizedParsed.analise),
+        criticalInsight: sanitizeText(sanitizedParsed.insight),
         otherGaps: filteredOtherGaps,
       };
 
