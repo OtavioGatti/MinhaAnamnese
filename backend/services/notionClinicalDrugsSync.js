@@ -357,7 +357,9 @@ async function upsertClinicalDrugs(drugs) {
 async function syncNotionClinicalDrugs() {
   const pages = await queryNotionClinicalDrugPages();
   const mapped = pages.map(mapNotionPageToClinicalDrug);
-  const preparedBySlug = new Map();
+  const prepared = [];
+  const seenBySlug = new Map();
+  const duplicateSlugs = [];
   const skipped = [];
 
   mapped.forEach((drug) => {
@@ -367,22 +369,40 @@ async function syncNotionClinicalDrugs() {
     }
 
     const slug = drug.payload.slug;
-    if (preparedBySlug.has(slug)) {
-      const previous = preparedBySlug.get(slug);
-      skipped.push({
-        notionPageId: drug.payload.notion_page_id,
-        activeIngredient: drug.payload.active_ingredient,
+    if (seenBySlug.has(slug)) {
+      const previous = seenBySlug.get(slug);
+      duplicateSlugs.push({
         slug,
-        reasons: ['duplicate_slug_in_notion_batch'],
-        keptNotionPageId: previous.notion_page_id,
+        first: {
+          notionPageId: previous.notion_page_id,
+          activeIngredient: previous.active_ingredient,
+          sourceUpdatedAt: previous.source_updated_at,
+        },
+        duplicate: {
+          notionPageId: drug.payload.notion_page_id,
+          activeIngredient: drug.payload.active_ingredient,
+          sourceUpdatedAt: drug.payload.source_updated_at,
+        },
       });
       return;
     }
 
-    preparedBySlug.set(slug, drug.payload);
+    seenBySlug.set(slug, drug.payload);
+    prepared.push(drug.payload);
   });
 
-  const prepared = [...preparedBySlug.values()];
+  if (duplicateSlugs.length > 0) {
+    const error = new Error('Duplicate clinical drug slugs found in Notion.');
+    error.statusCode = 409;
+    error.responseBody = JSON.stringify({
+      code: 'duplicate_slug_in_notion_batch',
+      message: 'Existem linhas duplicadas no Notion. Corrija manualmente antes de sincronizar com o Supabase.',
+      totalDuplicates: duplicateSlugs.length,
+      duplicates: duplicateSlugs,
+    });
+    throw error;
+  }
+
   const persisted = await upsertClinicalDrugs(prepared);
 
   return {

@@ -108,6 +108,21 @@ module.exports = async function handler(req, res) {
       });
     }
 
+    if (responseBody.includes('duplicate_slug_in_notion_batch')) {
+      let duplicateDetails = responseBody;
+      try {
+        duplicateDetails = JSON.parse(responseBody);
+      } catch (_parseError) {
+        // Mantem texto bruto se a resposta nao estiver em JSON.
+      }
+
+      return res.status(409).json({
+        success: false,
+        error: 'Existem medicamentos duplicados no Notion. O sync foi interrompido antes de gravar no Supabase.',
+        details: duplicateDetails,
+      });
+    }
+
     return res.status(statusCode >= 400 && statusCode < 600 ? statusCode : 500).json({
       success: false,
       error: 'Falha ao sincronizar o Bulario Clinico.',
