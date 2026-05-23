@@ -88,7 +88,71 @@ module.exports = async function handler(req, res) {
     });
   }
 
-  const result = await syncNotionPrompts();
+  let result;
+  try {
+    result = await syncNotionPrompts();
+  } catch (error) {
+    const statusCode = Number(error?.statusCode) || 500;
+    const responseBody = String(error?.responseBody || '');
+    const isNotionAccessError = responseBody.includes('Could not find database')
+      || responseBody.includes('shared with your integration')
+      || responseBody.includes('object_not_found');
+
+    if (isNotionAccessError) {
+      return res.status(502).json({
+        success: false,
+        error: 'A integracao do Notion usada pelo backend nao tem acesso a tabela de Prompts.',
+        details: responseBody.slice(0, 1000),
+      });
+    }
+
+    if (responseBody.includes('duplicate_published_prompt_scope_in_notion')) {
+      let duplicateDetails = responseBody;
+      try {
+        duplicateDetails = JSON.parse(responseBody);
+      } catch (_parseError) {
+        // Mantem texto bruto se a resposta nao estiver em JSON.
+      }
+
+      return res.status(409).json({
+        success: false,
+        error: 'Existem prompts publicados duplicados no Notion para o mesmo escopo.',
+        details: duplicateDetails,
+      });
+    }
+
+    if (responseBody.includes('duplicate_published_prompt_scope_in_supabase')) {
+      let conflictDetails = responseBody;
+      try {
+        conflictDetails = JSON.parse(responseBody);
+      } catch (_parseError) {
+        // Mantem texto bruto se a resposta nao estiver em JSON.
+      }
+
+      return res.status(409).json({
+        success: false,
+        error: 'Existem prompts publicados duplicados no Supabase para o mesmo escopo.',
+        details: conflictDetails,
+      });
+    }
+
+    if (
+      responseBody.includes('official_prompts_published_type_category_uidx') ||
+      responseBody.includes('duplicate key value violates unique constraint')
+    ) {
+      return res.status(409).json({
+        success: false,
+        error: 'O Supabase recusou prompts publicados duplicados para o mesmo prompt_type/category_key.',
+        details: responseBody.slice(0, 1000),
+      });
+    }
+
+    return res.status(statusCode >= 400 && statusCode < 600 ? statusCode : 500).json({
+      success: false,
+      error: 'Falha ao sincronizar Prompts.',
+      details: responseBody.slice(0, 1000) || error?.message || 'Erro desconhecido',
+    });
+  }
 
   return res.status(200).json({
     success: true,

@@ -205,6 +205,19 @@ async function getSyncedOfficialPrompt(slug) {
   return mapOfficialPromptRow(row);
 }
 
+async function listPublishedOfficialPromptRows() {
+  if (!isOfficialPromptsStorageAvailable()) {
+    return [];
+  }
+
+  const query = new URLSearchParams({
+    select: 'slug,name,prompt_type,category_key,notion_page_id,source_updated_at,status',
+    status: 'eq.published',
+  });
+  const json = await requestOfficialPrompts(`?${query.toString()}`, { method: 'GET' });
+  return Array.isArray(json) ? json : [];
+}
+
 async function getPublishedPromptByCategoryAndType(categoryKey, promptType) {
   const normalizedCategoryKey = normalizeCategoryKey(categoryKey);
   const promptTypeAliases = getPromptTypeAliases(promptType);
@@ -325,6 +338,7 @@ module.exports = {
   getPublishedPromptByCategoryAndType,
   getSyncedOfficialPrompt,
   isOfficialPromptsStorageAvailable,
+  listPublishedOfficialPromptRows,
   normalizeOfficialPromptPayload,
   normalizePromptType,
   normalizeSlug,

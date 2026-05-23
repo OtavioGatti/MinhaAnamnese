@@ -1,4 +1,5 @@
 const {
+  listPublishedOfficialPromptRows,
   normalizeOfficialPromptPayload,
   normalizeVariables,
   upsertOfficialPrompts,
@@ -190,6 +191,9 @@ async function syncNotionPrompts() {
   const pages = await queryNotionPromptPages();
   const prompts = pages.map(mapNotionPageToPrompt);
   const prepared = [];
+  const preparedPayloads = [];
+  const seenPublishedScope = new Map();
+  const duplicatePublishedScopes = [];
   const skipped = [];
   let publishedAvailable = 0;
 
@@ -201,12 +205,120 @@ async function syncNotionPrompts() {
       return;
     }
 
-    prepared.push(prompt);
+    const payload = normalized.payload;
+    if (payload.status === 'published' && payload.prompt_type && payload.category_key) {
+      const scopeKey = `${payload.prompt_type}::${payload.category_key}`;
+      if (seenPublishedScope.has(scopeKey)) {
+        const previous = seenPublishedScope.get(scopeKey);
+        duplicatePublishedScopes.push({
+          promptType: payload.prompt_type,
+          categoryKey: payload.category_key,
+          first: {
+            slug: previous.slug,
+            name: previous.name,
+            notionPageId: previous.notion_page_id,
+            sourceUpdatedAt: previous.source_updated_at,
+          },
+          duplicate: {
+            slug: payload.slug,
+            name: payload.name,
+            notionPageId: payload.notion_page_id,
+            sourceUpdatedAt: payload.source_updated_at,
+          },
+        });
+        return;
+      }
 
-    if (normalized.payload.status === 'published') {
+      seenPublishedScope.set(scopeKey, payload);
+    }
+
+    prepared.push(prompt);
+    preparedPayloads.push(payload);
+
+    if (payload.status === 'published') {
       publishedAvailable += 1;
     }
   });
+
+  if (duplicatePublishedScopes.length > 0) {
+    const error = new Error('Duplicate published prompt scopes found in Notion.');
+    error.statusCode = 409;
+    error.responseBody = JSON.stringify({
+      code: 'duplicate_published_prompt_scope_in_notion',
+      message: 'Existe mais de um prompt publicado para o mesmo prompt_type/category_key no Notion. Deixe apenas um como published.',
+      totalDuplicates: duplicatePublishedScopes.length,
+      duplicates: duplicatePublishedScopes,
+    });
+    throw error;
+  }
+
+  const existingPublishedRows = await listPublishedOfficialPromptRows();
+  const preparedBySlug = new Map(preparedPayloads.map((payload) => [payload.slug, payload]));
+  const prioritySlugs = new Set();
+  const supabaseScopeConflicts = [];
+
+  preparedPayloads
+    .filter((payload) => payload.status === 'published' && payload.prompt_type && payload.category_key)
+    .forEach((payload) => {
+      const conflict = existingPublishedRows.find((row) => (
+        row.prompt_type === payload.prompt_type &&
+        row.category_key === payload.category_key &&
+        row.slug !== payload.slug
+      ));
+
+      if (!conflict) {
+        return;
+      }
+
+      const conflictReplacement = preparedBySlug.get(conflict.slug);
+      const conflictWillMoveAway = conflictReplacement && (
+        conflictReplacement.status !== 'published' ||
+        conflictReplacement.prompt_type !== conflict.prompt_type ||
+        conflictReplacement.category_key !== conflict.category_key
+      );
+
+      if (conflictWillMoveAway) {
+        prioritySlugs.add(conflict.slug);
+        return;
+      }
+
+      supabaseScopeConflicts.push({
+        promptType: payload.prompt_type,
+        categoryKey: payload.category_key,
+        incoming: {
+          slug: payload.slug,
+          name: payload.name,
+          notionPageId: payload.notion_page_id,
+          sourceUpdatedAt: payload.source_updated_at,
+        },
+        existing: {
+          slug: conflict.slug,
+          name: conflict.name,
+          notionPageId: conflict.notion_page_id,
+          sourceUpdatedAt: conflict.source_updated_at,
+        },
+      });
+    });
+
+  if (supabaseScopeConflicts.length > 0) {
+    const error = new Error('Published prompt scopes already exist in Supabase.');
+    error.statusCode = 409;
+    error.responseBody = JSON.stringify({
+      code: 'duplicate_published_prompt_scope_in_supabase',
+      message: 'O Supabase ja possui outro prompt published para o mesmo prompt_type/category_key.',
+      totalConflicts: supabaseScopeConflicts.length,
+      conflicts: supabaseScopeConflicts,
+    });
+    throw error;
+  }
+
+  if (prioritySlugs.size > 0) {
+    const migrationPrompts = prepared.filter((prompt) => {
+      const normalized = normalizeOfficialPromptPayload(prompt);
+      return normalized.payload && prioritySlugs.has(normalized.payload.slug);
+    });
+    await upsertOfficialPrompts(migrationPrompts);
+  }
 
   await upsertOfficialPrompts(prepared);
 
