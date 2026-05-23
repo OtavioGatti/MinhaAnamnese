@@ -472,6 +472,8 @@ async function syncNotionPrescriptionGuides() {
   const pages = await queryNotionPrescriptionGuidePages();
   const mapped = pages.map(mapNotionPageToPrescriptionGuide);
   const prepared = [];
+  const seenBySlug = new Map();
+  const duplicateSlugs = [];
   const skipped = [];
 
   mapped.forEach((guide) => {
@@ -482,8 +484,45 @@ async function syncNotionPrescriptionGuides() {
       return;
     }
 
+    const slug = guide.payload.slug;
+    if (seenBySlug.has(slug)) {
+      const previous = seenBySlug.get(slug);
+      duplicateSlugs.push({
+        slug,
+        first: {
+          notionPageId: previous.notionPageId,
+          title: previous.title,
+          status: previous.status,
+          active: previous.active,
+        },
+        duplicate: {
+          notionPageId: guide.notionPageId,
+          title: guide.payload.title,
+          status: guide.payload.status,
+          active: guide.payload.active,
+        },
+      });
+      return;
+    }
+
+    seenBySlug.set(slug, {
+      ...guide.payload,
+      notionPageId: guide.notionPageId,
+    });
     prepared.push(guide.payload);
   });
+
+  if (duplicateSlugs.length > 0) {
+    const error = new Error('Duplicate prescription guide slugs found in Notion.');
+    error.statusCode = 409;
+    error.responseBody = JSON.stringify({
+      code: 'duplicate_slug_in_notion_batch',
+      message: 'Existem guias duplicados no Notion. Corrija manualmente antes de sincronizar com o Supabase.',
+      totalDuplicates: duplicateSlugs.length,
+      duplicates: duplicateSlugs,
+    });
+    throw error;
+  }
 
   const persisted = await upsertPrescriptionGuides(prepared);
 
