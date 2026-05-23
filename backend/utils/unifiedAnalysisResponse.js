@@ -1,9 +1,42 @@
 const { sanitizeText } = require('./textSanitization');
 
 const ALLOWED_SECTION_STATUSES = new Set(['present', 'partial', 'missing', 'not_applicable']);
+const EMERGENCY_RISK_PATTERNS = [
+  /dor\s+tor[aá]cica/i,
+  /precordialgia/i,
+  /dispneia/i,
+  /s[ií]ncope/i,
+  /sangramento/i,
+  /hemorragia/i,
+  /rebaixamento/i,
+  /d[eé]ficit\s+neurol[oó]gico/i,
+  /instabilidade/i,
+  /sudorese/i,
+  /dor\s+opressiva/i,
+];
+const OBJECTIVE_EXAM_PATTERNS = [
+  /\bpa\b/i,
+  /press[aã]o\s+arterial/i,
+  /\bfc\b/i,
+  /frequ[eê]ncia\s+card[ií]aca/i,
+  /\bfr\b/i,
+  /frequ[eê]ncia\s+respirat[oó]ria/i,
+  /temperatura/i,
+  /satura[cç][aã]o/i,
+  /\bspo2\b/i,
+  /exame\s+f[ií]sico/i,
+  /ao\s+exame/i,
+];
 
 function normalizeText(value) {
   return sanitizeText(String(value || '')).replace(/\s+/g, ' ').trim();
+}
+
+function normalizeForSearch(value) {
+  return normalizeText(value)
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase();
 }
 
 function normalizeScore(value) {
@@ -166,6 +199,142 @@ function normalizeSections(value) {
   });
 }
 
+function getScoreLabel(score) {
+  if (score <= 30) {
+    return 'Estrutura crítica';
+  }
+
+  if (score <= 50) {
+    return 'Estrutura insuficiente';
+  }
+
+  if (score <= 70) {
+    return 'Estrutura parcial';
+  }
+
+  if (score <= 85) {
+    return 'Boa estrutura com lacunas relevantes';
+  }
+
+  return 'Estrutura consistente';
+}
+
+function getSectionStatusCounts(sections) {
+  return sections.reduce((counts, section) => {
+    const status = section.status || 'partial';
+    counts[status] = (counts[status] || 0) + 1;
+    return counts;
+  }, {
+    present: 0,
+    partial: 0,
+    missing: 0,
+    not_applicable: 0,
+  });
+}
+
+function sectionLooksLike(section, patterns) {
+  const haystack = normalizeForSearch([
+    section?.id,
+    section?.label,
+    section?.issue,
+    section?.recommendation,
+  ].filter(Boolean).join(' '));
+
+  return patterns.some((pattern) => pattern.test(haystack));
+}
+
+function findObjectiveExamSection(sections) {
+  return sections.find((section) => sectionLooksLike(section, [
+    /exame\s+fisico/i,
+    /sinais\s+vitais/i,
+    /\bpa\b/i,
+    /\bfc\b/i,
+    /\bfr\b/i,
+    /saturacao/i,
+  ])) || null;
+}
+
+function calculateSectionBasedScore(sections) {
+  const scorableSections = sections.filter((section) => (
+    section.status !== 'not_applicable' &&
+    typeof section.score === 'number' &&
+    typeof section.maxScore === 'number' &&
+    section.maxScore > 0
+  ));
+
+  if (!scorableSections.length) {
+    return null;
+  }
+
+  const earned = scorableSections.reduce((sum, section) => sum + Math.max(0, section.score), 0);
+  const possible = scorableSections.reduce((sum, section) => sum + Math.max(0, section.maxScore), 0);
+
+  if (!possible) {
+    return null;
+  }
+
+  return normalizeScore((earned / possible) * 100);
+}
+
+function detectEmergencyRisk(contextText) {
+  const normalized = normalizeForSearch(contextText);
+
+  return EMERGENCY_RISK_PATTERNS.some((pattern) => pattern.test(normalized));
+}
+
+function detectObjectiveExamEvidence(contextText) {
+  const normalized = normalizeForSearch(contextText);
+
+  return OBJECTIVE_EXAM_PATTERNS.some((pattern) => pattern.test(normalized));
+}
+
+function getScoreCap({ sections, contextText }) {
+  const counts = getSectionStatusCounts(sections);
+  const hasEmergencyRisk = detectEmergencyRisk(contextText);
+  const hasObjectiveExamEvidence = detectObjectiveExamEvidence(contextText);
+  const objectiveExamSection = findObjectiveExamSection(sections);
+  const objectiveExamMissing = objectiveExamSection?.status === 'missing' || (
+    hasEmergencyRisk &&
+    !hasObjectiveExamEvidence &&
+    !objectiveExamSection
+  );
+  const caps = [];
+
+  if (hasEmergencyRisk && objectiveExamMissing) {
+    caps.push(68);
+  }
+
+  if (counts.missing >= 2) {
+    caps.push(70);
+  }
+
+  if (counts.missing >= 1 && counts.partial >= 1) {
+    caps.push(78);
+  }
+
+  return caps.length ? Math.min(...caps) : null;
+}
+
+function recalibrateScore({ score, sections, contextText }) {
+  const sectionScore = calculateSectionBasedScore(sections);
+  const scoreCap = getScoreCap({ sections, contextText });
+  const candidates = [score];
+
+  if (sectionScore !== null) {
+    candidates.push(sectionScore);
+  }
+
+  if (scoreCap !== null) {
+    candidates.push(scoreCap);
+  }
+
+  return {
+    score: Math.min(...candidates),
+    sectionScore,
+    scoreCap,
+  };
+}
+
 function firstText(...values) {
   for (const value of values) {
     const text = normalizeText(value);
@@ -178,7 +347,7 @@ function firstText(...values) {
   return '';
 }
 
-function normalizeUnifiedAnalysisPayload(payload) {
+function normalizeUnifiedAnalysisPayload(payload, context = {}) {
   const score = normalizeScore(payload?.score);
 
   if (score === null) {
@@ -204,22 +373,39 @@ function normalizeUnifiedAnalysisPayload(payload) {
   );
   const otherGaps = normalizeArray(payload?.otherGaps || payload?.other_gaps, 4);
   const confidence = normalizeConfidence(payload?.confidence);
+  const recalibrated = recalibrateScore({
+    score,
+    sections,
+    contextText: [
+      context.originalText,
+      context.structuredText,
+    ].filter(Boolean).join('\n'),
+  });
+  const finalScore = recalibrated.score;
+  const scoreLabel = getScoreLabel(finalScore);
+  const scoreAdjusted = finalScore !== score;
 
   if (!message || !justification || !criticalInsight) {
     throw new Error('incomplete_unified_analysis_payload');
   }
 
   return {
-    score,
+    score: finalScore,
     interpretation: {
-      message,
+      message: scoreAdjusted
+        ? `${scoreLabel}. Lacunas estruturais relevantes limitaram a nota final.`
+        : message,
       justification,
       criticalInsight,
       otherGaps,
     },
     unifiedAnalysis: {
-      score,
-      scoreLabel: firstText(payload?.scoreLabel, payload?.score_label, message),
+      score: finalScore,
+      rawScore: score,
+      sectionScore: recalibrated.sectionScore,
+      scoreCap: recalibrated.scoreCap,
+      scoreAdjusted,
+      scoreLabel,
       confidence,
       sections,
       otherGaps,
@@ -227,8 +413,8 @@ function normalizeUnifiedAnalysisPayload(payload) {
   };
 }
 
-function parseUnifiedAnalysisResponse(rawText) {
-  return normalizeUnifiedAnalysisPayload(extractJsonObject(rawText));
+function parseUnifiedAnalysisResponse(rawText, context = {}) {
+  return normalizeUnifiedAnalysisPayload(extractJsonObject(rawText), context);
 }
 
 module.exports = {

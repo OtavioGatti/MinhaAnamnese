@@ -268,7 +268,10 @@ async function generateUnifiedInsights({
     response_format: { type: 'json_object' },
   });
   const rawAnalysis = sanitizeText(response.choices?.[0]?.message?.content || '').trim();
-  const data = parseUnifiedAnalysisResponse(rawAnalysis);
+  const data = parseUnifiedAnalysisResponse(rawAnalysis, {
+    originalText,
+    structuredText: trimmedText,
+  });
   const history = updateUserHistory(userId, {
     score: data.score,
     erros: [],

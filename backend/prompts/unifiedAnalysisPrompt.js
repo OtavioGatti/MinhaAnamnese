@@ -1,8 +1,8 @@
 const { renderPromptTemplate } = require('./promptTemplate');
 
 const OUTPUT_SCHEMA = {
-  score: 82,
-  scoreLabel: 'Boa estrutura com lacunas relevantes',
+  score: 0,
+  scoreLabel: 'Estrutura parcial',
   message: 'Frase curta que traduz a nota estrutural.',
   justification: 'Texto curto explicando a principal perda de qualidade documental.',
   criticalInsight: 'FALHA -> ... -> CONSEQUENCIA NA LEITURA -> ... -> IMPACTO NA QUALIDADE -> ... -> ACAO DIRETA -> ...',
@@ -13,8 +13,8 @@ const OUTPUT_SCHEMA = {
       id: 'hma',
       label: 'História da moléstia atual',
       status: 'present',
-      score: 18,
-      maxScore: 18,
+      score: 0,
+      maxScore: 0,
       evidence: 'Trecho curto que sustenta a avaliação.',
       issue: '',
       recommendation: '',
