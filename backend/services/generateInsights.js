@@ -1,12 +1,14 @@
 const OpenAI = require('openai');
 const { getTemplateById, isPotentialOfficialTemplateId, resolveTemplateById } = require('./templates');
 const { buildInsightPrompt } = require('../prompts/insightPrompt');
+const { buildUnifiedAnalysisPrompt } = require('../prompts/unifiedAnalysisPrompt');
 const { getSyncedOfficialPrompt } = require('./officialPrompts');
 const { calculateAnamnesisQualityScore } = require('../utils/anamnesisQualityScore');
 const {
   buildInsightGuardrailContext,
   sanitizeParsedInsightResponse,
 } = require('../utils/insightGuardrails');
+const { parseUnifiedAnalysisResponse } = require('../utils/unifiedAnalysisResponse');
 const { updateUserHistory } = require('../utils/userHistory');
 const { parseAIResponse } = require('../utils/parseAIResponse');
 const { getTextLimitError } = require('../utils/requestLimits');
@@ -14,6 +16,13 @@ const { sanitizeText } = require('../utils/textSanitization');
 const { isCustomTemplateId } = require('./userTemplates');
 
 const DEBUG_MODE = process.env.DEBUG_INSIGHTS === 'true';
+const UNIFIED_ANALYSIS_PROMPT_SLUG = 'unified_anamnesis_analysis_user';
+
+function resolveOpenAiModel(value, fallback = 'gpt-4o') {
+  const model = String(value || '').trim();
+
+  return /^gpt-[a-z0-9.-]+$/i.test(model) ? model : fallback;
+}
 
 function normalizeText(value) {
   return sanitizeText(String(value || ''))
@@ -222,33 +231,74 @@ function validateGenerateInsightsInput(payload) {
   return null;
 }
 
-async function generateInsights({ texto, templateId, userId }) {
-  const validationError = validateGenerateInsightsInput({ texto, templateId });
+function shouldUseUnifiedAnalysisEngine() {
+  const configuredEngine = String(process.env.ANALYSIS_ENGINE || 'unified_ai')
+    .trim()
+    .toLowerCase();
 
-  if (validationError) {
-    const error = new Error(validationError);
-    error.statusCode = 400;
-    throw error;
+  return !['legacy', 'legacy_deterministic', 'deterministic', 'off', 'false'].includes(configuredEngine);
+}
+
+async function generateUnifiedInsights({
+  openai,
+  trimmedText,
+  originalText,
+  templateConfig,
+  templateId,
+  userId,
+}) {
+  const syncedPrompt = await getSyncedOfficialPrompt(UNIFIED_ANALYSIS_PROMPT_SLUG).catch(() => null);
+  const prompt = buildUnifiedAnalysisPrompt({
+    originalText,
+    structuredText: trimmedText,
+    templateConfig,
+    promptTemplate: syncedPrompt?.promptBody || null,
+  });
+  const response = await openai.chat.completions.create({
+    model: resolveOpenAiModel(syncedPrompt?.model),
+    messages: [
+      {
+        role: 'user',
+        content: prompt,
+      },
+    ],
+    temperature: 0,
+    top_p: 1,
+    max_tokens: 2200,
+    response_format: { type: 'json_object' },
+  });
+  const rawAnalysis = sanitizeText(response.choices?.[0]?.message?.content || '').trim();
+  const data = parseUnifiedAnalysisResponse(rawAnalysis);
+  const history = updateUserHistory(userId, {
+    score: data.score,
+    erros: [],
+  });
+
+  if (DEBUG_MODE) {
+    console.log('insights: unified analysis debug summary', {
+      templateId,
+      templateName: templateConfig.nome,
+      score: data.score,
+      promptSource: syncedPrompt ? 'official_prompt' : 'runtime_fallback',
+      sections: data.unifiedAnalysis.sections.length,
+      confidence: data.unifiedAnalysis.confidence,
+      historySize: history.length,
+    });
   }
 
-  const apiKey = process.env.OPENAI_API_KEY;
+  return {
+    ...data,
+    analysisEngine: 'unified_ai',
+  };
+}
 
-  if (!apiKey) {
-    const error = new Error('Erro ao gerar insights');
-    error.statusCode = 500;
-    throw error;
-  }
-
-  const openai = new OpenAI({ apiKey });
-  const templateConfig = await resolveTemplateById(templateId, userId);
-
-  if (!templateConfig) {
-    const error = new Error('Template inv\u00e1lido');
-    error.statusCode = 400;
-    throw error;
-  }
-
-  const trimmedText = sanitizeText(texto).trim();
+async function generateLegacyInsights({
+  openai,
+  trimmedText,
+  templateConfig,
+  templateId,
+  userId,
+}) {
   const qualityScore = calculateAnamnesisQualityScore(trimmedText, templateId, templateConfig);
   const analysis = qualityScore.structuredAnalysis;
 
@@ -345,7 +395,63 @@ async function generateInsights({ texto, templateId, userId }) {
   return {
     score: qualityScore.score,
     interpretation,
+    analysisEngine: 'legacy',
   };
+}
+
+async function generateInsights({ texto, templateId, userId, originalText }) {
+  const validationError = validateGenerateInsightsInput({ texto, templateId });
+
+  if (validationError) {
+    const error = new Error(validationError);
+    error.statusCode = 400;
+    throw error;
+  }
+
+  const apiKey = process.env.OPENAI_API_KEY;
+
+  if (!apiKey) {
+    const error = new Error('Erro ao gerar insights');
+    error.statusCode = 500;
+    throw error;
+  }
+
+  const openai = new OpenAI({ apiKey });
+  const templateConfig = await resolveTemplateById(templateId, userId);
+
+  if (!templateConfig) {
+    const error = new Error('Template inv\u00e1lido');
+    error.statusCode = 400;
+    throw error;
+  }
+
+  const trimmedText = sanitizeText(texto).trim();
+  const sanitizedOriginalText = sanitizeText(originalText || '').trim();
+  const legacyInput = {
+    openai,
+    trimmedText,
+    templateConfig,
+    templateId,
+    userId,
+  };
+
+  if (!shouldUseUnifiedAnalysisEngine()) {
+    return generateLegacyInsights(legacyInput);
+  }
+
+  try {
+    return await generateUnifiedInsights({
+      ...legacyInput,
+      originalText: sanitizedOriginalText,
+    });
+  } catch (error) {
+    console.error('insights: unified analysis failed, falling back to legacy engine', {
+      templateId,
+      message: error?.message || 'unknown_error',
+    });
+
+    return generateLegacyInsights(legacyInput);
+  }
 }
 
 module.exports = {

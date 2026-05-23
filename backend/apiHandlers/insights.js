@@ -44,11 +44,17 @@ module.exports = async function handler(req, res) {
     });
   }
 
-  const { texto, templateId } = req.body || {};
+  const { texto, templateId, originalText } = req.body || {};
   const textLimitError = getTextLimitError(texto, 'texto da anamnese');
 
   if (textLimitError) {
     return sendTextLimitError(res, textLimitError);
+  }
+
+  const originalTextLimitError = getTextLimitError(originalText, 'texto original da anamnese');
+
+  if (originalTextLimitError) {
+    return sendTextLimitError(res, originalTextLimitError);
   }
 
   const validationError = validateGenerateInsightsInput({ texto, templateId });
@@ -109,6 +115,7 @@ module.exports = async function handler(req, res) {
       texto,
       templateId,
       userId: auth.user.id,
+      originalText,
     });
 
     let nextProfile = profile;

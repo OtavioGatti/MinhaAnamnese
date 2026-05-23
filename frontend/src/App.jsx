@@ -1583,6 +1583,7 @@ function App() {
       const response = await api.post('/insights', {
         texto: targetResultado,
         templateId: templateSelecionado,
+        originalText: texto,
       });
 
       if (response.success) {

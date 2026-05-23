@@ -90,6 +90,7 @@ PUBLIC_APP_URL=http://localhost:3000
 PUBLIC_API_URL=http://localhost:3001
 
 OPENAI_API_KEY=
+ANALYSIS_ENGINE=unified_ai
 
 SUPABASE_URL=
 SUPABASE_ANON_KEY=
@@ -118,6 +119,8 @@ TRIAL_REFERRAL_LETTERS_LIMIT=5
 TRIAL_PRESCRIPTION_GUIDES_LIMIT=5
 TRIAL_USER_TEMPLATES_LIMIT=2
 ```
+
+`ANALYSIS_ENGINE` controla o motor da avaliação estrutural: use `unified_ai` para a análise única por IA ou `legacy` para voltar ao score determinístico anterior com interpretação por IA.
 
 ## Como Rodar Localmente
 
