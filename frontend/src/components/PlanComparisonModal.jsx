@@ -102,10 +102,6 @@ function PlanComparisonModal({
             O Profissional libera avaliações completas, encaminhamentos, prescrições, bulário e templates próprios sem os limites do teste.
           </div>
 
-          <div className="plan-comparison-reassurance">
-            <strong>Afiliado indicado?</strong>
-            <span>Se você chegou por um link de indicação, a comissão é contabilizada automaticamente quando o pagamento for aprovado.</span>
-          </div>
         </div>
 
         <div className="app-modal-actions plan-comparison-actions">
