@@ -359,12 +359,15 @@ function deriveAccessState(user, profile) {
   const accessSource = normalizeAccessSource(profile?.access_source);
   const planExpiresAt = normalizePlanExpiresAt(profile?.plan_expires_at);
   const expiredByDate = planExpiresAt ? new Date(planExpiresAt).getTime() <= Date.now() : false;
+  const isAffiliate = currentPlan === 'affiliate';
   const hasLegacyMetadataAccess =
     normalizePlan(user?.user_metadata?.plan) === 'pro' &&
     billingStatus === 'inactive' &&
     !planExpiresAt;
   const hasActiveProAccess =
-    (currentPlan === 'pro' && billingStatus === 'active' && !expiredByDate) || hasLegacyMetadataAccess;
+    isAffiliate ||
+    (currentPlan === 'pro' && billingStatus === 'active' && !expiredByDate) ||
+    hasLegacyMetadataAccess;
   const freeFullInsightsUsedCount = Math.max(0, Number(profile?.free_full_insights_used_count) || 0);
   const effectiveAccessSource = hasLegacyMetadataAccess
     ? 'legacy'
@@ -374,9 +377,9 @@ function deriveAccessState(user, profile) {
   const isTrialAccess = hasActiveProAccess && effectiveAccessSource === 'trial';
 
   return {
-    effectivePlan: hasActiveProAccess ? 'pro' : 'basic',
+    effectivePlan: isAffiliate ? 'affiliate' : hasActiveProAccess ? 'pro' : 'basic',
     hasActiveProAccess,
-    isAffiliate: currentPlan === 'affiliate',
+    isAffiliate,
     isTrialAccess,
     isPaidProAccess: hasActiveProAccess && !isTrialAccess,
     isTrialExpired: effectiveAccessSource === 'trial' && (billingStatus === 'expired' || expiredByDate),

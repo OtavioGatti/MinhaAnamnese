@@ -165,6 +165,56 @@ async function createAffiliate(user) {
   throw new Error('failed to create affiliate');
 }
 
+async function createAffiliateWithCode(user, requestedCode) {
+  if (!isValidUserId(user?.id)) {
+    throw new Error('valid user required');
+  }
+
+  const existing = await getAffiliateByUserId(user.id);
+
+  if (existing) {
+    return existing;
+  }
+
+  const code = normalizeAffiliateCode(requestedCode);
+
+  if (code.length < 3) {
+    const error = new Error('affiliate code too short');
+    error.code = 'INVALID_AFFILIATE_CODE';
+    throw error;
+  }
+
+  const payload = {
+    user_id: user.id,
+    code,
+    status: 'active',
+    commission_rate: COMMISSION_RATE,
+  };
+  const response = await fetch(`${getSupabaseAdminConfig().url}/rest/v1/affiliates`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      apikey: getSupabaseAdminConfig().serviceRoleKey,
+      Authorization: `Bearer ${getSupabaseAdminConfig().serviceRoleKey}`,
+      Prefer: 'return=representation',
+    },
+    body: JSON.stringify(payload),
+  });
+
+  if (response.status === 409) {
+    const error = new Error('affiliate code already exists');
+    error.code = 'AFFILIATE_CODE_TAKEN';
+    throw error;
+  }
+
+  if (!response.ok) {
+    throw new Error('failed to create affiliate');
+  }
+
+  const json = await response.json();
+  return normalizeAffiliate(Array.isArray(json) ? json[0] : null);
+}
+
 async function createAffiliateAttribution({ affiliate, buyerUserId, sourceUrl }) {
   if (!affiliate?.id || !isValidUserId(buyerUserId)) {
     return null;
@@ -295,6 +345,7 @@ async function createAffiliateCommission({
 
 module.exports = {
   createAffiliate,
+  createAffiliateWithCode,
   createAffiliateCommission,
   getAffiliateByCode,
   getAffiliateByUserId,

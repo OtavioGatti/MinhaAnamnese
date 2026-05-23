@@ -13,12 +13,24 @@ function buildAffiliateLink(code) {
   return `${origin}/afiliado?ref=${encodeURIComponent(code)}`;
 }
 
+function normalizeAffiliateCode(value) {
+  return String(value || '')
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '')
+    .slice(0, 48);
+}
+
 function AffiliatePage({ user, referralCode, onLogin }) {
   const [affiliateData, setAffiliateData] = useState(null);
   const [loading, setLoading] = useState(Boolean(user));
   const [creating, setCreating] = useState(false);
   const [error, setError] = useState('');
   const [copied, setCopied] = useState(false);
+  const [desiredCode, setDesiredCode] = useState('');
 
   useEffect(() => {
     if (!user) {
@@ -62,13 +74,22 @@ function AffiliatePage({ user, referralCode, onLogin }) {
   const affiliate = affiliateData?.affiliate || null;
   const stats = affiliateData?.stats || null;
   const affiliateLink = useMemo(() => (affiliate?.code ? buildAffiliateLink(affiliate.code) : ''), [affiliate?.code]);
+  const normalizedDesiredCode = normalizeAffiliateCode(desiredCode);
+  const previewLink = normalizedDesiredCode ? buildAffiliateLink(normalizedDesiredCode) : '';
 
   const handleCreateAffiliate = async () => {
+    if (!normalizedDesiredCode || normalizedDesiredCode.length < 3) {
+      setError('Escolha um código com pelo menos 3 caracteres.');
+      return;
+    }
+
     setCreating(true);
     setError('');
 
     try {
-      const response = await api.post('/affiliate', {});
+      const response = await api.post('/affiliate', {
+        code: normalizedDesiredCode,
+      });
 
       if (!response.success) {
         throw new Error(response.error || 'Não foi possível gerar seu link.');
@@ -145,9 +166,32 @@ function AffiliatePage({ user, referralCode, onLogin }) {
                 </div>
               </>
             ) : (
-              <button type="button" className="btn btn-primario" onClick={handleCreateAffiliate} disabled={creating}>
-                {creating ? 'Gerando...' : 'Gerar meu link'}
-              </button>
+              <div className="affiliate-code-form">
+                <label htmlFor="affiliate-code">Escolha seu código</label>
+                <div className="affiliate-code-input-row">
+                  <span>ref=</span>
+                  <input
+                    id="affiliate-code"
+                    type="text"
+                    value={desiredCode}
+                    onChange={(event) => {
+                      setDesiredCode(event.target.value);
+                      setError('');
+                    }}
+                    placeholder="seu-nome"
+                    maxLength={48}
+                  />
+                </div>
+                {previewLink ? (
+                  <div className="affiliate-link-preview">
+                    <span>Prévia</span>
+                    <strong>{previewLink}</strong>
+                  </div>
+                ) : null}
+                <button type="button" className="btn btn-primario" onClick={handleCreateAffiliate} disabled={creating}>
+                  {creating ? 'Gerando...' : 'Gerar meu link'}
+                </button>
+              </div>
             )}
 
             {error ? <div className="templates-inline-error">{error}</div> : null}

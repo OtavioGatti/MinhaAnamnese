@@ -1,4 +1,10 @@
-const { createAffiliate, getAffiliateByUserId, getAffiliateStats } = require('../services/affiliates');
+const {
+  createAffiliate,
+  createAffiliateWithCode,
+  getAffiliateByUserId,
+  getAffiliateStats,
+  normalizeAffiliateCode,
+} = require('../services/affiliates');
 const { ensureUserProfile } = require('../services/profiles');
 const { resolveSupabaseUser } = require('../utils/supabaseAuth');
 
@@ -45,14 +51,31 @@ module.exports = async function handler(req, res) {
 
   if (req.method === 'POST') {
     try {
-      const affiliate = await createAffiliate(auth.user);
+      const requestedCode = normalizeAffiliateCode(req.body?.code);
+      const affiliate = requestedCode
+        ? await createAffiliateWithCode(auth.user, requestedCode)
+        : await createAffiliate(auth.user);
       const stats = affiliate?.id ? await getAffiliateStats(affiliate.id).catch(() => null) : null;
 
       return res.status(200).json({
         success: true,
         data: buildAffiliateResponse(affiliate, stats),
       });
-    } catch (_error) {
+    } catch (error) {
+      if (error?.code === 'INVALID_AFFILIATE_CODE') {
+        return res.status(400).json({
+          success: false,
+          error: 'Escolha um codigo com pelo menos 3 caracteres.',
+        });
+      }
+
+      if (error?.code === 'AFFILIATE_CODE_TAKEN') {
+        return res.status(409).json({
+          success: false,
+          error: 'Esse codigo ja esta em uso. Tente outro.',
+        });
+      }
+
       return res.status(503).json({
         success: false,
         error: 'Programa de afiliados indisponivel no momento.',
