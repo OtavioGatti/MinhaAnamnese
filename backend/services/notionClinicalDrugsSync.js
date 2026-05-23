@@ -340,7 +340,7 @@ async function upsertClinicalDrugs(drugs) {
   }
 
   const query = new URLSearchParams({
-    on_conflict: 'slug',
+    on_conflict: 'notion_page_id',
   });
 
   const json = await requestSupabase('clinical_drugs', `?${query.toString()}`, {
@@ -352,6 +352,38 @@ async function upsertClinicalDrugs(drugs) {
   });
 
   return Array.isArray(json) ? json : [];
+}
+
+function chunkArray(items, size) {
+  const chunks = [];
+  for (let index = 0; index < items.length; index += size) {
+    chunks.push(items.slice(index, index + size));
+  }
+  return chunks;
+}
+
+async function listExistingClinicalDrugsBySlugs(slugs) {
+  const uniqueSlugs = [...new Set((slugs || []).filter(Boolean))];
+
+  if (uniqueSlugs.length === 0) {
+    return [];
+  }
+
+  const rows = [];
+  for (const chunk of chunkArray(uniqueSlugs, 80)) {
+    const query = new URLSearchParams({
+      select: 'slug,active_ingredient,notion_page_id,source_updated_at',
+      slug: `in.(${chunk.join(',')})`,
+    });
+    const json = await requestSupabase('clinical_drugs', `?${query.toString()}`, {
+      method: 'GET',
+    });
+    if (Array.isArray(json)) {
+      rows.push(...json);
+    }
+  }
+
+  return rows;
 }
 
 async function syncNotionClinicalDrugs() {
@@ -399,6 +431,45 @@ async function syncNotionClinicalDrugs() {
       message: 'Existem linhas duplicadas no Notion. Corrija manualmente antes de sincronizar com o Supabase.',
       totalDuplicates: duplicateSlugs.length,
       duplicates: duplicateSlugs,
+    });
+    throw error;
+  }
+
+  const existingRowsBySlug = await listExistingClinicalDrugsBySlugs(
+    prepared.map((drug) => drug.slug),
+  );
+  const existingBySlug = new Map(existingRowsBySlug.map((row) => [row.slug, row]));
+  const staleSlugConflicts = prepared
+    .map((drug) => {
+      const existing = existingBySlug.get(drug.slug);
+      if (!existing || existing.notion_page_id === drug.notion_page_id) {
+        return null;
+      }
+
+      return {
+        slug: drug.slug,
+        incoming: {
+          notionPageId: drug.notion_page_id,
+          activeIngredient: drug.active_ingredient,
+          sourceUpdatedAt: drug.source_updated_at,
+        },
+        existing: {
+          notionPageId: existing.notion_page_id,
+          activeIngredient: existing.active_ingredient,
+          sourceUpdatedAt: existing.source_updated_at,
+        },
+      };
+    })
+    .filter(Boolean);
+
+  if (staleSlugConflicts.length > 0) {
+    const error = new Error('Clinical drug slugs already exist in Supabase with different Notion page IDs.');
+    error.statusCode = 409;
+    error.responseBody = JSON.stringify({
+      code: 'duplicate_slug_in_supabase',
+      message: 'Existem slugs ja gravados no Supabase para outro page_id do Notion. Remova ou ajuste a linha antiga antes de sincronizar.',
+      totalConflicts: staleSlugConflicts.length,
+      conflicts: staleSlugConflicts,
     });
     throw error;
   }

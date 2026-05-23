@@ -123,6 +123,36 @@ module.exports = async function handler(req, res) {
       });
     }
 
+    if (responseBody.includes('duplicate_notion_page_id_in_supabase')) {
+      let conflictDetails = responseBody;
+      try {
+        conflictDetails = JSON.parse(responseBody);
+      } catch (_parseError) {
+        // Mantem texto bruto se a resposta nao estiver em JSON.
+      }
+
+      return res.status(409).json({
+        success: false,
+        error: 'Existem page_ids do Notion ja gravados no Supabase com outro slug.',
+        details: conflictDetails,
+      });
+    }
+
+    if (responseBody.includes('duplicate_slug_in_supabase')) {
+      let conflictDetails = responseBody;
+      try {
+        conflictDetails = JSON.parse(responseBody);
+      } catch (_parseError) {
+        // Mantem texto bruto se a resposta nao estiver em JSON.
+      }
+
+      return res.status(409).json({
+        success: false,
+        error: 'Existem slugs ja gravados no Supabase para outro page_id do Notion.',
+        details: conflictDetails,
+      });
+    }
+
     return res.status(statusCode >= 400 && statusCode < 600 ? statusCode : 500).json({
       success: false,
       error: 'Falha ao sincronizar o Bulario Clinico.',
