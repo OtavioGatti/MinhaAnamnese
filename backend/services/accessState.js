@@ -1,5 +1,13 @@
 function normalizePlan(value) {
-  return value === 'pro' ? 'pro' : 'basic';
+  if (value === 'pro') {
+    return 'pro';
+  }
+
+  if (value === 'affiliate' || value === 'afiliado') {
+    return 'affiliate';
+  }
+
+  return 'basic';
 }
 
 function normalizeBillingStatus(value) {
@@ -85,6 +93,7 @@ function resolveUserAccessState({ user, profile }) {
   return {
     effectivePlan,
     hasActiveProAccess,
+    isAffiliate: normalizedCurrentPlan === 'affiliate',
     isTrialAccess,
     isPaidProAccess,
     isTrialExpired,
@@ -104,6 +113,7 @@ module.exports = {
   normalizeAccessSource,
   normalizeBillingStatus,
   normalizeFreeInsightsCount,
+  normalizePlan,
   normalizePlanExpiresAt,
   resolveUserAccessState,
 };

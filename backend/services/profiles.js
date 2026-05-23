@@ -34,7 +34,15 @@ function isProfilesStorageAvailable() {
 }
 
 function normalizePlan(value) {
-  return value === 'pro' ? 'pro' : 'basic';
+  if (value === 'pro') {
+    return 'pro';
+  }
+
+  if (value === 'affiliate' || value === 'afiliado') {
+    return 'affiliate';
+  }
+
+  return 'basic';
 }
 
 function parsePositiveInteger(value, fallback) {

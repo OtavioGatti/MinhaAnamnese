@@ -307,7 +307,15 @@ function normalizeBillingStatus(value) {
 }
 
 function normalizePlan(value) {
-  return value === 'pro' ? 'pro' : 'basic';
+  if (value === 'pro') {
+    return 'pro';
+  }
+
+  if (value === 'affiliate' || value === 'afiliado') {
+    return 'affiliate';
+  }
+
+  return 'basic';
 }
 
 function normalizeAccessSource(value) {
@@ -330,6 +338,7 @@ function deriveAccessState(user, profile) {
     return {
       effectivePlan: serverAccessState.effectivePlan || 'basic',
       hasActiveProAccess: Boolean(serverAccessState.hasActiveProAccess),
+      isAffiliate: Boolean(serverAccessState.isAffiliate),
       isTrialAccess: Boolean(serverAccessState.isTrialAccess),
       isPaidProAccess: Boolean(serverAccessState.isPaidProAccess),
       isTrialExpired: Boolean(serverAccessState.isTrialExpired),
@@ -367,6 +376,7 @@ function deriveAccessState(user, profile) {
   return {
     effectivePlan: hasActiveProAccess ? 'pro' : 'basic',
     hasActiveProAccess,
+    isAffiliate: currentPlan === 'affiliate',
     isTrialAccess,
     isPaidProAccess: hasActiveProAccess && !isTrialAccess,
     isTrialExpired: effectiveAccessSource === 'trial' && (billingStatus === 'expired' || expiredByDate),
@@ -822,6 +832,7 @@ function App() {
   const templateTemCalculadora = templateSelecionado === TEMPLATE_WITH_CALCULATORS;
   const accessState = useMemo(() => deriveAccessState(user, profile), [profile, user]);
   const isPro = Boolean(accessState?.hasActiveProAccess);
+  const isAffiliate = Boolean(accessState?.isAffiliate);
   const trialUsage = profile?.trial_usage || null;
 
   useEffect(() => {
@@ -831,6 +842,24 @@ function App() {
       saveAffiliateReferralCode(referralCode);
     }
   }, []);
+
+  useEffect(() => {
+    if (currentPage !== 'affiliate') {
+      return;
+    }
+
+    if (loadingUser) {
+      return;
+    }
+
+    if (user && !profile) {
+      return;
+    }
+
+    if (!user || !isAffiliate) {
+      setCurrentPage('home');
+    }
+  }, [currentPage, isAffiliate, loadingUser, profile, user]);
 
   useEffect(() => {
     if (user && authMode !== 'resetPassword') {
@@ -2223,13 +2252,15 @@ function App() {
           >
             Bulário
           </button>
-          <button
-            type="button"
-            className={`product-nav-item ${currentPage === 'affiliate' ? 'active' : ''}`}
-            onClick={() => handleNavigate('affiliate')}
-          >
-            Afiliados
-          </button>
+          {user && isAffiliate ? (
+            <button
+              type="button"
+              className={`product-nav-item ${currentPage === 'affiliate' ? 'active' : ''}`}
+              onClick={() => handleNavigate('affiliate')}
+            >
+              Afiliados
+            </button>
+          ) : null}
         </nav>
 
         <div className="product-topbar-actions">
@@ -2774,7 +2805,7 @@ function App() {
         />
       )}
 
-      {currentPage === 'affiliate' && (
+      {currentPage === 'affiliate' && user && isAffiliate && (
         <AffiliatePage
           user={user}
           referralCode={readAffiliateReferralCode()}
@@ -2789,7 +2820,7 @@ function App() {
       <footer className="footer">
         <p>Minha Anamnese &middot; Apoio à padronização clínica &middot; Evite dados identificáveis; o texto é processado por IA e não é salvo como prontuário</p>
         <div className="footer-links">
-          <a href="/afiliado">Afiliados</a>
+          {user && isAffiliate ? <a href="/afiliado">Afiliados</a> : null}
           <a href="/termos">Termos de Uso</a>
           <a href="/privacidade">Política de Privacidade</a>
         </div>

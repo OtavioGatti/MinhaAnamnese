@@ -69,6 +69,9 @@ end
 where access_source is null
    or access_source not in ('none', 'trial', 'paid', 'legacy');
 
+alter table public.profiles
+  drop constraint if exists profiles_current_plan_check;
+
 do $$
 begin
   if not exists (
@@ -78,7 +81,7 @@ begin
   ) then
     alter table public.profiles
       add constraint profiles_current_plan_check
-      check (current_plan in ('basic', 'pro'));
+      check (current_plan in ('basic', 'pro', 'affiliate', 'afiliado'));
   end if;
 
   if not exists (

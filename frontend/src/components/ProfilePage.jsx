@@ -39,6 +39,10 @@ function getSidebarPreferenceLabel(activeSidebarTab) {
 }
 
 function getPlanLabel(accessState) {
+  if (accessState?.isAffiliate) {
+    return 'Afiliado';
+  }
+
   if (accessState?.isTrialAccess) {
     return 'Teste profissional';
   }
@@ -59,6 +63,10 @@ function getPlanLabel(accessState) {
 }
 
 function getPlanSummary(accessState) {
+  if (accessState?.isAffiliate) {
+    return 'Acesso ao programa de afiliados liberado.';
+  }
+
   if (accessState?.isTrialAccess) {
     return `Teste profissional ativo até ${formatPlanExpiry(accessState.trialEndsAt || accessState.planExpiresAt)}.`;
   }
@@ -83,6 +91,10 @@ function getPlanSummary(accessState) {
 }
 
 function getPlanDescription(accessState) {
+  if (accessState?.isAffiliate) {
+    return 'Você pode acessar a área de afiliados, gerar seu link de indicação e acompanhar comissões registradas.';
+  }
+
   if (accessState?.isTrialAccess) {
     const days = accessState.trialDaysRemaining || 1;
     return `Você está testando os recursos profissionais por mais ${days} ${days === 1 ? 'dia' : 'dias'}. Ao final, sua conta volta ao básico.`;
@@ -172,7 +184,8 @@ function ProfilePage({
   const planSummary = getPlanSummary(accessState);
   const showExpiringSoon = accessState?.hasActiveProAccess && isPlanExpiringSoon(accessState?.planExpiresAt);
   const trialRows = accessState?.isTrialAccess ? getTrialUsageRows(trialUsage || profile?.trial_usage) : [];
-  const shouldShowUpgradeAction = !accessState?.hasActiveProAccess || accessState?.isTrialAccess;
+  const shouldShowUpgradeAction =
+    (!accessState?.hasActiveProAccess || accessState?.isTrialAccess) && !accessState?.isAffiliate;
 
   return (
     <div className="profile-page">

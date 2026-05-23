@@ -1,4 +1,5 @@
 const { createAffiliate, getAffiliateByUserId, getAffiliateStats } = require('../services/affiliates');
+const { ensureUserProfile } = require('../services/profiles');
 const { resolveSupabaseUser } = require('../utils/supabaseAuth');
 
 function buildAffiliateResponse(affiliate, stats = null) {
@@ -20,6 +21,15 @@ module.exports = async function handler(req, res) {
     return res.status(auth.statusCode).json({
       success: false,
       error: auth.error,
+    });
+  }
+
+  const profile = await ensureUserProfile(auth.user).catch(() => null);
+
+  if (!profile?.access_state?.isAffiliate) {
+    return res.status(403).json({
+      success: false,
+      error: 'Area de afiliados restrita.',
     });
   }
 
