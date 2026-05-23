@@ -23,6 +23,17 @@ function normalizePaymentRecord(record) {
     amount: typeof record.amount === 'number' ? record.amount : null,
     currency_id: typeof record.currency_id === 'string' ? record.currency_id : null,
     product: typeof record.product === 'string' ? record.product : null,
+    plan_key: typeof record.plan_key === 'string' ? record.plan_key : null,
+    billing_kind: typeof record.billing_kind === 'string' ? record.billing_kind : null,
+    preapproval_id: typeof record.preapproval_id === 'string' ? record.preapproval_id : null,
+    affiliate_id: typeof record.affiliate_id === 'string' ? record.affiliate_id : null,
+    affiliate_code: typeof record.affiliate_code === 'string' ? record.affiliate_code : null,
+    commission_amount:
+      typeof record.commission_amount === 'number'
+        ? record.commission_amount
+        : record.commission_amount != null
+          ? Number(record.commission_amount)
+          : null,
     external_reference: typeof record.external_reference === 'string' ? record.external_reference : null,
     payer_email: typeof record.payer_email === 'string' ? record.payer_email : null,
     provider_created_at: typeof record.provider_created_at === 'string' ? record.provider_created_at : null,
@@ -79,6 +90,12 @@ async function upsertBillingPayment({
   amount,
   currencyId,
   product,
+  planKey,
+  billingKind,
+  preapprovalId,
+  affiliateId,
+  affiliateCode,
+  commissionAmount,
   externalReference,
   payerEmail,
   providerCreatedAt,
@@ -103,6 +120,15 @@ async function upsertBillingPayment({
     amount: typeof amount === 'number' && !Number.isNaN(amount) ? amount : null,
     currency_id: currencyId || null,
     product: product || null,
+    plan_key: planKey || null,
+    billing_kind: billingKind || null,
+    preapproval_id: preapprovalId || null,
+    affiliate_id: affiliateId || null,
+    affiliate_code: affiliateCode || null,
+    commission_amount:
+      typeof commissionAmount === 'number' && !Number.isNaN(commissionAmount)
+        ? commissionAmount
+        : null,
     external_reference: externalReference || null,
     payer_email: payerEmail || null,
     provider_created_at: providerCreatedAt || null,
@@ -113,16 +139,31 @@ async function upsertBillingPayment({
     on_conflict: 'payment_id',
   });
 
-  const response = await fetch(`${url}/rest/v1/billing_payments?${query.toString()}`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      apikey: serviceRoleKey,
-      Authorization: `Bearer ${serviceRoleKey}`,
-      Prefer: 'resolution=merge-duplicates,return=representation',
-    },
-    body: JSON.stringify(payload),
-  });
+  async function sendPaymentUpsert(nextPayload) {
+    return fetch(`${url}/rest/v1/billing_payments?${query.toString()}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        apikey: serviceRoleKey,
+        Authorization: `Bearer ${serviceRoleKey}`,
+        Prefer: 'resolution=merge-duplicates,return=representation',
+      },
+      body: JSON.stringify(nextPayload),
+    });
+  }
+
+  let response = await sendPaymentUpsert(payload);
+
+  if (!response.ok) {
+    const legacyPayload = { ...payload };
+    delete legacyPayload.plan_key;
+    delete legacyPayload.billing_kind;
+    delete legacyPayload.preapproval_id;
+    delete legacyPayload.affiliate_id;
+    delete legacyPayload.affiliate_code;
+    delete legacyPayload.commission_amount;
+    response = await sendPaymentUpsert(legacyPayload);
+  }
 
   if (!response.ok) {
     throw new Error('failed to upsert billing payment');

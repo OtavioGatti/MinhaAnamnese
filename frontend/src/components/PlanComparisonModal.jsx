@@ -1,10 +1,48 @@
-const PLAN_PRICE_COPY = 'R$ 9,90';
-const PLAN_PERIOD_COPY = '30 dias';
+import { BILLING_PLANS } from '../billingPlans';
 
-function PlanComparisonModal({ open, loading, isTrialAccess, onClose, onConfirm }) {
+function PlanOptionCard({ plan, featured, loading, onConfirm }) {
+  return (
+    <section className={`plan-comparison-column ${featured ? 'featured' : ''}`}>
+      <div className="plan-comparison-featured-top">
+        <div className="plan-comparison-title-stack">
+          <span className={`plan-comparison-badge ${featured ? 'pro' : 'basic'}`}>{plan.badge}</span>
+          <h3>{plan.title}</h3>
+        </div>
+        <div className="plan-comparison-price">
+          <strong>{plan.priceCopy}</strong>
+          <span>{plan.periodCopy}</span>
+        </div>
+      </div>
+      <p>{plan.description}</p>
+      {plan.savingsCopy ? <span className="plan-comparison-saving">{plan.savingsCopy}</span> : null}
+      <ul>
+        <li>avaliação completa de anamneses</li>
+        <li>cartas de encaminhamento com IA</li>
+        <li>guias de prescrição e bulário clínico</li>
+        <li>templates próprios para sua rotina</li>
+      </ul>
+      <button type="button" className="btn btn-primario" onClick={() => onConfirm(plan.key)} disabled={loading}>
+        {loading ? 'Abrindo checkout...' : `Escolher ${plan.label}`}
+      </button>
+    </section>
+  );
+}
+
+function PlanComparisonModal({
+  open,
+  loading,
+  loadingPlanKey,
+  plans = BILLING_PLANS,
+  isTrialAccess,
+  onClose,
+  onConfirm,
+}) {
   if (!open) {
     return null;
   }
+
+  const monthlyPlan = plans.monthly;
+  const semiannualPlan = plans.semiannual;
 
   return (
     <div className="app-modal-backdrop" role="presentation" onClick={onClose}>
@@ -19,12 +57,12 @@ function PlanComparisonModal({ open, loading, isTrialAccess, onClose, onConfirm 
           <div>
             <span className="workspace-kicker">Planos</span>
             <h2 id="plan-comparison-title">
-              {isTrialAccess ? 'Mantenha o Plano Profissional depois do teste' : `Assine o Plano Profissional por ${PLAN_PRICE_COPY}`}
+              {isTrialAccess ? 'Mantenha o Plano Profissional depois do teste' : 'Escolha seu Plano Profissional'}
             </h2>
             <p>
               {isTrialAccess
-                ? 'A assinatura preserva o acesso atual e adiciona 30 dias ao fim do teste.'
-                : 'Veja o que muda antes de seguir para o checkout.'}
+                ? 'O pagamento preserva os dias restantes do teste e soma o período do plano escolhido.'
+                : 'Mensal recorrente para não lembrar de pagar todo mês, ou semestral com melhor custo.'}
             </p>
           </div>
           <button type="button" className="btn btn-secundario" onClick={onClose}>
@@ -34,52 +72,45 @@ function PlanComparisonModal({ open, loading, isTrialAccess, onClose, onConfirm 
 
         <div className="plan-comparison-scroll-region">
           <div className="plan-comparison-grid">
-          <section className="plan-comparison-column">
-            <span className="plan-comparison-badge basic">Plano básico</span>
-            <h3>Para organizar rapidamente</h3>
-            <ul>
-              <li>organiza a anamnese em formato clínico</li>
-              <li>mantém modelos oficiais no fluxo principal</li>
-              <li>preserva seus dados e preferências básicas</li>
-              <li>ideal para uso pontual sem recursos de IA pagos</li>
-            </ul>
-          </section>
+            <section className="plan-comparison-column basic-summary">
+              <span className="plan-comparison-badge basic">Plano básico</span>
+              <h3>Para organizar rapidamente</h3>
+              <ul>
+                <li>organiza a anamnese em formato clínico</li>
+                <li>mantém modelos oficiais no fluxo principal</li>
+                <li>preserva seus dados e preferências básicas</li>
+                <li>ideal para uso pontual sem recursos Pro</li>
+              </ul>
+            </section>
 
-          <section className="plan-comparison-column featured">
-            <div className="plan-comparison-featured-top">
-              <span className="plan-comparison-badge pro">Plano profissional</span>
-              <div className="plan-comparison-price">
-                <strong>{PLAN_PRICE_COPY}</strong>
-                <span>{PLAN_PERIOD_COPY}</span>
-              </div>
-            </div>
-            <h3>Para usar o workspace completo</h3>
-            <ul>
-              <li>avaliação completa de anamneses</li>
-              <li>cartas de encaminhamento com IA</li>
-              <li>guias de prescrição por patologia</li>
-              <li>templates próprios para sua rotina</li>
-              <li>histórico da sua evolução</li>
-            </ul>
-          </section>
+            <PlanOptionCard
+              plan={monthlyPlan}
+              featured={false}
+              loading={loading && loadingPlanKey === monthlyPlan.key}
+              onConfirm={onConfirm}
+            />
+
+            <PlanOptionCard
+              plan={semiannualPlan}
+              featured
+              loading={loading && loadingPlanKey === semiannualPlan.key}
+              onConfirm={onConfirm}
+            />
           </div>
 
           <div className="plan-comparison-highlight">
-          O teste profissional libera uma amostra real do fluxo completo; a assinatura mantém esse acesso sem os limites do teste.
+            O Profissional libera avaliações completas, encaminhamentos, prescrições, bulário e templates próprios sem os limites do teste.
           </div>
 
           <div className="plan-comparison-reassurance">
-          <strong>Por que costuma valer a pena?</strong>
-          <span>Um único caso melhor revisado já pode economizar tempo, reduzir retrabalho e mostrar exatamente o que perguntar melhor na próxima coleta.</span>
+            <strong>Afiliado indicado?</strong>
+            <span>Se você chegou por um link de indicação, a comissão é contabilizada automaticamente quando o pagamento for aprovado.</span>
           </div>
         </div>
 
         <div className="app-modal-actions plan-comparison-actions">
           <button type="button" className="btn btn-secundario" onClick={onClose}>
             Ainda não
-          </button>
-          <button type="button" className="btn btn-primario" onClick={onConfirm} disabled={loading}>
-            {loading ? 'Abrindo checkout...' : isTrialAccess ? `Assinar por ${PLAN_PRICE_COPY}` : `Continuar por ${PLAN_PRICE_COPY}`}
           </button>
         </div>
       </div>

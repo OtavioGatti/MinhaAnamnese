@@ -43,7 +43,7 @@ function WelcomeOnboardingModal({
 
         <div className="welcome-onboarding-trial">
           <strong>{trialDaysCopy} grátis no Plano Profissional</strong>
-          <span>Depois do teste, você decide se quer continuar por {priceCopy} a cada 30 dias.</span>
+          <span>Depois do teste, você decide se quer continuar a partir de {priceCopy} por mês ou escolher o semestral.</span>
         </div>
 
         <ul className="welcome-onboarding-list">

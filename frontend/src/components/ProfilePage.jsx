@@ -1,5 +1,4 @@
-const PLAN_PRICE_COPY = 'R$ 9,90';
-const PLAN_PERIOD_COPY = '30 dias';
+import { PRO_PLAN_PERIOD_COPY, PRO_PLAN_PRICE_COPY } from '../billingPlans';
 
 function formatPlanExpiry(value) {
   if (!value) {
@@ -98,14 +97,14 @@ function getPlanDescription(accessState) {
   }
 
   if (accessState?.isTrialExpired) {
-    return `A organização básica continua liberada. Assine por ${PLAN_PRICE_COPY} para recuperar os recursos profissionais por ${PLAN_PERIOD_COPY}.`;
+    return `A organização básica continua liberada. Assine a partir de ${PRO_PLAN_PRICE_COPY} ${PRO_PLAN_PERIOD_COPY} para recuperar os recursos profissionais.`;
   }
 
   if (accessState?.billingStatus === 'expired') {
-    return `A organização básica continua liberada. Reative o profissional por ${PLAN_PRICE_COPY} para recuperar os recursos Pro por ${PLAN_PERIOD_COPY}.`;
+    return `A organização básica continua liberada. Reative o profissional a partir de ${PRO_PLAN_PRICE_COPY} ${PRO_PLAN_PERIOD_COPY} para recuperar os recursos Pro.`;
   }
 
-  return `A organização básica continua liberada. Assine por ${PLAN_PRICE_COPY} para usar IA, encaminhamentos, guias e templates próprios.`;
+  return `A organização básica continua liberada. Assine a partir de ${PRO_PLAN_PRICE_COPY} ${PRO_PLAN_PERIOD_COPY} para usar IA, encaminhamentos, guias e templates próprios.`;
 }
 
 function getTrialUsageRows(trialUsage) {
@@ -242,8 +241,8 @@ function ProfilePage({
                       : accessState?.isTrialAccess
                         ? 'Assinar e manter o Profissional'
                         : accessState?.billingStatus === 'expired'
-                          ? `Reativar por ${PLAN_PRICE_COPY}`
-                          : `Assinar por ${PLAN_PRICE_COPY}`}
+                          ? `Reativar por ${PRO_PLAN_PRICE_COPY}`
+                          : `Assinar por ${PRO_PLAN_PRICE_COPY}`}
                   </button>
                   {checkoutError ? <div className="topbar-auth-error">{checkoutError}</div> : null}
                 </>

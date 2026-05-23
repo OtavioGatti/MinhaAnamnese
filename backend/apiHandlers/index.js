@@ -10,6 +10,7 @@ const apiRoutes = {
   '/api/create-checkout': require('./create-checkout'),
   '/api/prescription-guides': require('./prescription-guides'),
   '/api/clinical-drugs': require('./clinical-drugs'),
+  '/api/affiliate': require('./affiliate'),
   '/api/admin/prompts/sync': require('./admin/prompts-sync'),
   '/api/admin/prescription-guides/sync': require('./admin/prescription-guides-sync'),
   '/api/admin/clinical-drugs/sync': require('./admin/clinical-drugs-sync'),

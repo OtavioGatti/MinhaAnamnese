@@ -19,6 +19,8 @@ import ClinicalDrugPage from './components/ClinicalDrugPage';
 import CookieConsentBanner from './components/CookieConsentBanner';
 import LegalDocumentPage from './components/LegalDocumentPage';
 import WelcomeOnboardingModal from './components/WelcomeOnboardingModal';
+import AffiliatePage from './components/AffiliatePage';
+import { BILLING_PLANS, DEFAULT_PLAN_KEY, PRO_PLAN_PERIOD_COPY, PRO_PLAN_PRICE_COPY } from './billingPlans';
 import { guides } from './data/guides';
 import { supabase } from './lib/supabaseClient';
 
@@ -26,10 +28,9 @@ const TEMPLATE_WITH_CALCULATORS = 'obstetricia';
 const CHECKOUT_RETURN_STATE_KEY = 'checkout-return-state';
 const TRACKING_SESSION_ID_KEY = 'tracking-session-id';
 const COOKIE_CONSENT_KEY = 'minha-anamnese-cookie-consent';
+const AFFILIATE_REFERRAL_KEY = 'minha-anamnese-affiliate-ref';
 const LEGAL_DOCUMENT_VERSION = '2026-05-22';
 const DEBUG_MODE = false;
-const PRO_PLAN_PRICE_COPY = 'R$ 9,90';
-const PRO_PLAN_PERIOD_COPY = '30 dias';
 const TRIAL_DAYS_COPY = '3 dias';
 const DEFAULT_TEXT_PLACEHOLDER =
   'Ex: Paciente feminina, 32 anos, com dor abdominal há 2 dias, associada a náuseas, sem vômitos...';
@@ -167,6 +168,47 @@ function getLegalPageFromPath() {
   }
 
   return null;
+}
+
+function getInitialWorkspacePageFromPath() {
+  const path = window.location.pathname.replace(/\/+$/, '') || '/';
+
+  if (path === '/afiliado') {
+    return 'affiliate';
+  }
+
+  return 'home';
+}
+
+function normalizeAffiliateReferralCode(value) {
+  return String(value || '')
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9-]+/g, '-')
+    .replace(/^-+|-+$/g, '')
+    .slice(0, 48);
+}
+
+function getAffiliateReferralCodeFromUrl() {
+  const params = new URLSearchParams(window.location.search);
+  return normalizeAffiliateReferralCode(params.get('ref'));
+}
+
+function readAffiliateReferralCode() {
+  return normalizeAffiliateReferralCode(localStorage.getItem(AFFILIATE_REFERRAL_KEY));
+}
+
+function saveAffiliateReferralCode(code) {
+  const normalizedCode = normalizeAffiliateReferralCode(code);
+
+  if (!normalizedCode) {
+    return '';
+  }
+
+  localStorage.setItem(AFFILIATE_REFERRAL_KEY, normalizedCode);
+  return normalizedCode;
 }
 
 function buildCookieConsent(status) {
@@ -375,18 +417,18 @@ function getPaywallUiConfig(user, accessState) {
     return {
       title: accessState?.isTrialExpired ? 'Seu teste profissional terminou' : 'Seu acesso profissional expirou',
       description:
-        `A organização básica continua liberada. Assine por ${PRO_PLAN_PRICE_COPY} para usar avaliações completas, encaminhamentos e prescrições por ${PRO_PLAN_PERIOD_COPY}.`,
+        `A organização básica continua liberada. Assine a partir de ${PRO_PLAN_PRICE_COPY} ${PRO_PLAN_PERIOD_COPY} para usar avaliações completas, encaminhamentos e prescrições.`,
       buttonLabel: `Assinar por ${PRO_PLAN_PRICE_COPY}`,
-      highlights: ['Avaliações completas', 'Encaminhamentos com IA', `Acesso por ${PRO_PLAN_PERIOD_COPY}`],
+      highlights: ['Avaliações completas', 'Encaminhamentos com IA', 'Mensal ou semestral'],
     };
   }
 
   return {
     title: 'Desbloqueie o Plano Profissional',
     description:
-      `Sua anamnese já está organizada. Assine por ${PRO_PLAN_PRICE_COPY} para usar avaliações completas, encaminhamentos, guias de prescrição e templates próprios.`,
+      `Sua anamnese já está organizada. Assine a partir de ${PRO_PLAN_PRICE_COPY} ${PRO_PLAN_PERIOD_COPY} para usar avaliações completas, encaminhamentos, guias de prescrição e templates próprios.`,
     buttonLabel: `Assinar por ${PRO_PLAN_PRICE_COPY}`,
-    highlights: ['Avaliações completas', 'Cartas de encaminhamento', `${PRO_PLAN_PRICE_COPY} por ${PRO_PLAN_PERIOD_COPY}`],
+    highlights: ['Avaliações completas', 'Cartas de encaminhamento', `${PRO_PLAN_PRICE_COPY} ${PRO_PLAN_PERIOD_COPY}`],
   };
 }
 
@@ -735,6 +777,7 @@ function App() {
   const [loadingUser, setLoadingUser] = useState(true);
   const [loadingInsights, setLoadingInsights] = useState(false);
   const [checkoutLoadingOrigin, setCheckoutLoadingOrigin] = useState(null);
+  const [checkoutLoadingPlanKey, setCheckoutLoadingPlanKey] = useState(null);
   const [loadingAuth, setLoadingAuth] = useState(false);
   const [animatedScore, setAnimatedScore] = useState(0);
   const [erro, setErro] = useState('');
@@ -746,6 +789,7 @@ function App() {
     clinicalDrugs: '',
     referralLetter: '',
     templates: '',
+    affiliate: '',
   });
   const [authError, setAuthError] = useState('');
   const [authFeedback, setAuthFeedback] = useState('');
@@ -757,7 +801,7 @@ function App() {
   const [secaoSecundariaAberta, setSecaoSecundariaAberta] = useState(false);
   const [authPanelAberto, setAuthPanelAberto] = useState(false);
   const [activeSidebarTab, setActiveSidebarTab] = useState('guide');
-  const [currentPage, setCurrentPage] = useState('home');
+  const [currentPage, setCurrentPage] = useState(() => getInitialWorkspacePageFromPath());
   const [anamneseStats, setAnamneseStats] = useState(null);
   const [anamneseActivity, setAnamneseActivity] = useState([]);
   const [recentAnamneses, setRecentAnamneses] = useState([]);
@@ -779,6 +823,14 @@ function App() {
   const accessState = useMemo(() => deriveAccessState(user, profile), [profile, user]);
   const isPro = Boolean(accessState?.hasActiveProAccess);
   const trialUsage = profile?.trial_usage || null;
+
+  useEffect(() => {
+    const referralCode = getAffiliateReferralCodeFromUrl();
+
+    if (referralCode) {
+      saveAffiliateReferralCode(referralCode);
+    }
+  }, []);
 
   useEffect(() => {
     if (user && authMode !== 'resetPassword') {
@@ -1250,8 +1302,10 @@ function App() {
       home: '',
       profile: '',
       prescriptionGuide: '',
+      clinicalDrugs: '',
       referralLetter: '',
       templates: '',
+      affiliate: '',
     });
   };
 
@@ -1531,7 +1585,7 @@ function App() {
     }
   };
 
-  const startCheckoutFlow = async (origin = 'home') => {
+  const startCheckoutFlow = async (origin = 'home', planKey = DEFAULT_PLAN_KEY) => {
     if (!user?.id || !user?.email) {
       setAuthPanelAberto(true);
       setAuthMode('login');
@@ -1549,11 +1603,13 @@ function App() {
       [origin]: '',
     }));
     setCheckoutLoadingOrigin(origin);
+    setCheckoutLoadingPlanKey(planKey);
     trackEvent('upgrade_click', {
       template: templateSelecionado || null,
       text_length: resultado.trim().length || texto.trim().length,
       score: qualityScore.score,
       is_pro: isPro,
+      plan_key: planKey,
     });
     saveCheckoutReturnState({
       page: origin === 'profile' ? 'profile' : currentPage,
@@ -1564,7 +1620,11 @@ function App() {
     });
 
     api
-      .post('/create-checkout', {})
+      .post('/create-checkout', {
+        planKey,
+        affiliateCode: readAffiliateReferralCode() || null,
+        sourceUrl: window.location.href,
+      })
       .then((response) => {
         if (!response.success || !response.data?.init_point) {
           throw new Error(response.error || 'Não foi possível iniciar o pagamento');
@@ -1578,6 +1638,7 @@ function App() {
           [origin]: error.message || 'Não foi possível iniciar o pagamento',
         }));
         setCheckoutLoadingOrigin(null);
+        setCheckoutLoadingPlanKey(null);
       });
   };
 
@@ -1622,13 +1683,13 @@ function App() {
     handleUpgradeInsights(origin);
   };
 
-  const handleConfirmPlanComparison = async () => {
+  const handleConfirmPlanComparison = async (planKey = DEFAULT_PLAN_KEY) => {
     const origin = planComparisonState.origin || 'home';
     setPlanComparisonState((current) => ({
       ...current,
       open: false,
     }));
-    await startCheckoutFlow(origin);
+    await startCheckoutFlow(origin, planKey);
   };
 
   const resetAuthFormState = () => {
@@ -2161,6 +2222,13 @@ function App() {
             onClick={() => handleNavigate('clinicalDrugs')}
           >
             Bulário
+          </button>
+          <button
+            type="button"
+            className={`product-nav-item ${currentPage === 'affiliate' ? 'active' : ''}`}
+            onClick={() => handleNavigate('affiliate')}
+          >
+            Afiliados
           </button>
         </nav>
 
@@ -2706,9 +2774,22 @@ function App() {
         />
       )}
 
+      {currentPage === 'affiliate' && (
+        <AffiliatePage
+          user={user}
+          referralCode={readAffiliateReferralCode()}
+          onLogin={() => {
+            setAuthMode('login');
+            setAuthError('');
+            setAuthPanelAberto(true);
+          }}
+        />
+      )}
+
       <footer className="footer">
         <p>Minha Anamnese &middot; Apoio à padronização clínica &middot; Evite dados identificáveis; o texto é processado por IA e não é salvo como prontuário</p>
         <div className="footer-links">
+          <a href="/afiliado">Afiliados</a>
           <a href="/termos">Termos de Uso</a>
           <a href="/privacidade">Política de Privacidade</a>
         </div>
@@ -2717,6 +2798,8 @@ function App() {
       <PlanComparisonModal
         open={planComparisonState.open}
         loading={checkoutLoadingOrigin === planComparisonState.origin}
+        loadingPlanKey={checkoutLoadingPlanKey}
+        plans={BILLING_PLANS}
         isTrialAccess={Boolean(accessState?.isTrialAccess)}
         onClose={() => setPlanComparisonState((current) => ({ ...current, open: false }))}
         onConfirm={handleConfirmPlanComparison}

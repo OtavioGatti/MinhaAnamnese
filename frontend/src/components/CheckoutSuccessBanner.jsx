@@ -32,7 +32,7 @@ function CheckoutSuccessBanner({
           <li>análise completa dos casos</li>
           <li>encaminhamentos com IA</li>
           <li>protocolos de prescrição e templates próprios</li>
-          <li>{expiryLabel ? `acesso profissional garantido até ${expiryLabel}` : 'acesso profissional por 30 dias'}</li>
+          <li>{expiryLabel ? `acesso profissional garantido até ${expiryLabel}` : 'acesso profissional ativo após confirmação do pagamento'}</li>
         </ul>
 
         {isExpiringSoon ? (
