@@ -42,11 +42,18 @@ function normalizeForSearch(value) {
 const ACUTE_CONTEXT_PATTERNS = [
   ...EMERGENCY_RISK_PATTERNS,
   /dor\s+abdominal/i,
+  /pronto\s+atendimento/i,
   /inicio\s+agudo/i,
   /hipocondrio/i,
+  /fossa\s+iliaca/i,
+  /quadrante\s+inferior/i,
+  /mcburney/i,
+  /blumberg/i,
+  /rovsing/i,
   /murphy/i,
   /defesa\s+muscular/i,
   /irritacao\s+peritoneal/i,
+  /febr(?:e|il)/i,
   /nauseas?/i,
   /vomitos?/i,
 ];
@@ -250,8 +257,6 @@ const SECTION_EVIDENCE_RULES = [
       /nega\s+uso\s+recente/i,
       /nega\s+medicacoes/i,
       /sem\s+medicacoes/i,
-      /alergias?\s+medicamentosas?/i,
-      /nega\s+alergias?/i,
     ],
   },
   {
@@ -275,6 +280,171 @@ const SECTION_EVIDENCE_RULES = [
       /crepitacoes/i,
       /murmurio/i,
       /taquipneic/i,
+    ],
+  },
+];
+
+const NEGATIVE_CLOSURE_RULES = [
+  {
+    key: 'medicationsNegative',
+    sectionPatterns: [
+      /medicacoes?/i,
+      /medicamentos?/i,
+      /uso\s+continuo/i,
+      /\bmuc\b/i,
+      /remedios?/i,
+    ],
+    evidencePatterns: [
+      {
+        pattern: /\bnega\s+muc\b/i,
+        evidence: 'Nega MUC.',
+      },
+      {
+        pattern: /\bnega\s+(?:uso\s+de\s+)?(?:medicacoes?|medicamentos?|remedios?)\s+(?:em\s+)?uso\s+continuo\b/i,
+        evidence: 'Nega uso de medicações contínuas.',
+      },
+      {
+        pattern: /\bnega[^.\n;]{0,120}uso\s+de\s+(?:medicacoes?|medicamentos?|remedios?)\s+(?:em\s+)?uso\s+continuo\b/i,
+        evidence: 'Nega uso de medicações contínuas.',
+      },
+      {
+        pattern: /\b(?:sem|nao\s+(?:faz|esta\s+em|usa|utiliza))\s+(?:uso\s+de\s+)?(?:medicacoes?|medicamentos?|remedios?)\s+(?:em\s+)?uso\s+continuo\b/i,
+        evidence: 'Sem uso de medicações contínuas.',
+      },
+      {
+        pattern: /\bnega\s+(?:medicacoes?|medicamentos?|remedios?)\s+continu[oa]s?\b/i,
+        evidence: 'Nega medicações contínuas.',
+      },
+    ],
+  },
+  {
+    key: 'antecedentsNegative',
+    sectionPatterns: [
+      /antecedentes/i,
+      /comorbidades/i,
+      /historia\s+pregressa/i,
+      /\bhpp\b/i,
+      /doencas?\s+de\s+base/i,
+    ],
+    evidencePatterns: [
+      {
+        pattern: /\bnega\s+comorbidades(?!\s+na\s+familia)\b/i,
+        evidence: 'Nega comorbidades.',
+      },
+      {
+        pattern: /\bsem\s+comorbidades(?:\s+previas?\s+conhecidas?)?\b/i,
+        evidence: 'Sem comorbidades prévias conhecidas.',
+      },
+      {
+        pattern: /\bnega\s+antecedentes(?:\s+pessoais)?(?:\s+relevantes)?\b/i,
+        evidence: 'Nega antecedentes pessoais relevantes.',
+      },
+      {
+        pattern: /\bsem\s+antecedentes(?:\s+pessoais)?(?:\s+relevantes)?\b/i,
+        evidence: 'Sem antecedentes pessoais relevantes.',
+      },
+    ],
+  },
+  {
+    key: 'allergiesNegative',
+    sectionPatterns: [
+      /alergias?/i,
+      /hipersensibilidade/i,
+    ],
+    evidencePatterns: [
+      {
+        pattern: /\bnega\s+alergias?(?:\s+medicamentosas?)?\b/i,
+        evidence: 'Nega alergias medicamentosas.',
+      },
+      {
+        pattern: /\bsem\s+alergias?(?:\s+medicamentosas?)?(?:\s+conhecidas?)?\b/i,
+        evidence: 'Sem alergias conhecidas.',
+      },
+    ],
+  },
+  {
+    key: 'familyHistoryNegative',
+    sectionPatterns: [
+      /historia\s+familiar/i,
+      /antecedentes\s+familiares/i,
+      /\bhf\b/i,
+    ],
+    evidencePatterns: [
+      {
+        pattern: /\bnega\s+(?:historia\s+familiar|antecedentes\s+familiares?)(?:\s+relevantes?)?\b/i,
+        evidence: 'Nega história familiar relevante.',
+      },
+      {
+        pattern: /\bsem\s+(?:historia\s+familiar|antecedentes\s+familiares?)(?:\s+relevantes?)?\b/i,
+        evidence: 'Sem história familiar relevante.',
+      },
+      {
+        pattern: /\bnega\s+comorbidades\s+na\s+familia\b/i,
+        evidence: 'Nega comorbidades na família.',
+      },
+      {
+        pattern: /\bsem\s+comorbidades\s+familiares?\b/i,
+        evidence: 'Sem comorbidades familiares relevantes.',
+      },
+    ],
+  },
+  {
+    key: 'habitsNegative',
+    sectionPatterns: [
+      /habitos?/i,
+      /vida/i,
+      /tabagismo/i,
+      /etilismo/i,
+      /drogas?/i,
+    ],
+    evidencePatterns: [
+      {
+        pattern: /\b(?:nega|sem)\s+habitos?\s+de\s+risco\b/i,
+        evidence: 'Nega hábitos de risco.',
+      },
+      {
+        pattern: /\bnega\s+tabagismo[^.\n;]{0,80}(?:etilismo|alcool|drogas?)/i,
+        evidence: 'Nega tabagismo, etilismo ou uso de drogas.',
+      },
+      {
+        pattern: /\bnega\s+etilismo[^.\n;]{0,80}(?:tabagismo|drogas?)/i,
+        evidence: 'Nega etilismo, tabagismo ou uso de drogas.',
+      },
+      {
+        pattern: /\bnao\s+fuma[^.\n;]{0,80}nao\s+(?:bebe|usa\s+drogas?)\b/i,
+        evidence: 'Não fuma e não usa álcool/drogas.',
+      },
+      {
+        pattern: /\bsem\s+tabagismo[^.\n;]{0,80}(?:etilismo|alcool|drogas?)/i,
+        evidence: 'Sem tabagismo, etilismo ou uso de drogas.',
+      },
+    ],
+  },
+  {
+    key: 'symptomReviewNegative',
+    sectionPatterns: [
+      /interrogatorio/i,
+      /sintomatologico/i,
+      /revisao\s+de\s+sistemas/i,
+      /sintomas?\s+associados?/i,
+    ],
+    evidencePatterns: [
+      {
+        pattern: /\bnega\s+demais\s+sintomas\b/i,
+        evidence: 'Nega demais sintomas.',
+      },
+      {
+        pattern: /\b(?:nega|sem)\s+sintomas?\s+associados?\b/i,
+        evidence: 'Nega sintomas associados.',
+      },
+      {
+        pattern: /\bnega\s+(?:vomitos?|diarreia|disuria|alteracoes?\s+urinarias?|febre|dor\s+toracica|dispneia)[^.\n;]{0,120}(?:vomitos?|diarreia|disuria|alteracoes?\s+urinarias?|febre|dor\s+toracica|dispneia)\b/i,
+        evidence: 'Nega sintomas associados relevantes.',
+      },
+      {
+        pattern: /\bnega\s+sinais?\s+de\s+alarme\b/i,
+        evidence: 'Nega sinais de alarme.',
+      },
     ],
   },
 ];
@@ -517,6 +687,81 @@ function applySectionEvidenceGuards(sections, contextText) {
   };
 }
 
+function findNegativeClosureEvidence(section, contextText) {
+  const evidenceText = stripMissingPlaceholders(contextText);
+  const normalized = normalizeForSearch(evidenceText);
+
+  if (!normalized) {
+    return null;
+  }
+
+  for (const rule of NEGATIVE_CLOSURE_RULES) {
+    if (!sectionLooksLike(section, rule.sectionPatterns)) {
+      continue;
+    }
+
+    for (const evidenceRule of rule.evidencePatterns) {
+      if (evidenceRule.pattern.test(normalized)) {
+        return {
+          key: rule.key,
+          evidence: evidenceRule.evidence,
+        };
+      }
+    }
+  }
+
+  return null;
+}
+
+function applyNegativeClosureGuards(sections, contextText) {
+  if (!Array.isArray(sections) || !sections.length) {
+    return {
+      sections,
+      adjustments: [],
+    };
+  }
+
+  const adjustments = [];
+  const nextSections = sections.map((section) => {
+    if (!section || section.status === 'not_applicable') {
+      return section;
+    }
+
+    const closure = findNegativeClosureEvidence(section, contextText);
+
+    if (!closure) {
+      return section;
+    }
+
+    const nextScore = getStatusScore('present', section.maxScore);
+    const shouldAdjust = section.status !== 'present' || Boolean(section.issue || section.recommendation);
+
+    if (shouldAdjust) {
+      adjustments.push({
+        sectionId: section.id,
+        sectionLabel: section.label,
+        fromStatus: section.status,
+        toStatus: 'present',
+        reason: `negative_closure:${closure.key}`,
+      });
+    }
+
+    return {
+      ...section,
+      status: 'present',
+      score: nextScore === null ? section.score : nextScore,
+      evidence: closure.evidence,
+      issue: '',
+      recommendation: '',
+    };
+  });
+
+  return {
+    sections: nextSections,
+    adjustments,
+  };
+}
+
 const HMA_DETAIL_PATTERNS = [
   /\bha\s+(?:cerca\s+de\s+)?\d+/i,
   /\bultim[ao]s?\s+\d+/i,
@@ -555,6 +800,10 @@ function getSectionQualityDowngrade(section, contextText = '') {
   const label = normalizeForSearch(section.label);
   const evidence = normalizeText(section.evidence);
   const evidenceSearch = normalizeForSearch(evidence);
+
+  if (findNegativeClosureEvidence(section, contextText)) {
+    return null;
+  }
 
   if ((id.includes('identificacao') || label.includes('identificacao')) && evidence.length < 35) {
     return {
@@ -779,13 +1028,33 @@ function findPrioritySection(sections) {
 }
 
 function findTextPriorityGroup(value) {
+  const normalized = normalizeForSearch(value);
+  let bestMatch = null;
+
   for (const group of ACUTE_PRIORITY_SECTION_GROUPS) {
-    if (textMatchesAny(value, group.patterns)) {
-      return group;
+    for (const pattern of group.patterns) {
+      const match = normalized.match(pattern);
+
+      if (!match) {
+        continue;
+      }
+
+      const index = match.index ?? 0;
+
+      if (
+        !bestMatch ||
+        index < bestMatch.index ||
+        (index === bestMatch.index && group.priority < bestMatch.group.priority)
+      ) {
+        bestMatch = {
+          index,
+          group,
+        };
+      }
     }
   }
 
-  return null;
+  return bestMatch?.group || null;
 }
 
 function buildAcuteCriticalInsight(candidate) {
@@ -957,6 +1226,30 @@ function insightMatchesEvidenceAdjustment(insightText, sectionEvidenceAdjustment
   return false;
 }
 
+function insightMatchesNegativeClosureAdjustment(insightText, negativeClosureAdjustments) {
+  if (!negativeClosureAdjustments.length) {
+    return false;
+  }
+
+  const resolvedKeys = new Set(
+    negativeClosureAdjustments
+      .map((adjustment) => String(adjustment.reason || '').replace(/^negative_closure:/, ''))
+      .filter(Boolean),
+  );
+
+  for (const rule of NEGATIVE_CLOSURE_RULES) {
+    if (!resolvedKeys.has(rule.key)) {
+      continue;
+    }
+
+    if (textMatchesAny(insightText, rule.sectionPatterns)) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
 function buildResolvedInsightFallback({ sections, contextText, fallbackJustification }) {
   const candidate = detectAcuteContext(contextText) ? findPrioritySection(sections) : null;
 
@@ -998,34 +1291,40 @@ function prioritizeOtherGaps(otherGaps, criticalInsight, contextText) {
     });
 }
 
-function removeResolvedOtherGaps(otherGaps, sectionEvidenceAdjustments) {
-  if (!sectionEvidenceAdjustments.length) {
-    return otherGaps;
-  }
-
-  const resolvedKeys = new Set(
-    sectionEvidenceAdjustments
-      .map((adjustment) => String(adjustment.reason || '').replace(/^evidence_detected:/, ''))
+function collectResolvedAdjustmentKeys(adjustments, prefix) {
+  return new Set(
+    adjustments
+      .map((adjustment) => String(adjustment.reason || '').replace(prefix, ''))
       .filter(Boolean),
   );
+}
 
-  if (!resolvedKeys.size) {
+function gapMatchesResolvedRule(gap, resolvedKeys, rules) {
+  for (const rule of rules) {
+    if (!resolvedKeys.has(rule.key)) {
+      continue;
+    }
+
+    if (textMatchesAny(gap, rule.sectionPatterns)) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
+function removeResolvedOtherGaps(otherGaps, sectionEvidenceAdjustments, negativeClosureAdjustments = []) {
+  if (!sectionEvidenceAdjustments.length && !negativeClosureAdjustments.length) {
     return otherGaps;
   }
 
-  return otherGaps.filter((gap) => {
-    for (const rule of SECTION_EVIDENCE_RULES) {
-      if (!resolvedKeys.has(rule.key)) {
-        continue;
-      }
+  const evidenceKeys = collectResolvedAdjustmentKeys(sectionEvidenceAdjustments, /^evidence_detected:/);
+  const negativeKeys = collectResolvedAdjustmentKeys(negativeClosureAdjustments, /^negative_closure:/);
 
-      if (textMatchesAny(gap, rule.sectionPatterns)) {
-        return false;
-      }
-    }
-
-    return true;
-  });
+  return otherGaps.filter((gap) => (
+    !gapMatchesResolvedRule(gap, evidenceKeys, SECTION_EVIDENCE_RULES) &&
+    !gapMatchesResolvedRule(gap, negativeKeys, NEGATIVE_CLOSURE_RULES)
+  ));
 }
 
 function findObjectiveExamSection(sections) {
@@ -1187,13 +1486,14 @@ function normalizeUnifiedAnalysisPayload(payload, context = {}) {
     context.structuredText,
   ].filter(Boolean).join('\n');
   const sectionEvidenceGuard = applySectionEvidenceGuards(rawSections, contextText);
-  const sectionQualityGuard = applySectionQualityGuards(sectionEvidenceGuard.sections, contextText);
+  const negativeClosureGuard = applyNegativeClosureGuards(sectionEvidenceGuard.sections, contextText);
+  const sectionQualityGuard = applySectionQualityGuards(negativeClosureGuard.sections, contextText);
   const sections = sectionQualityGuard.sections;
   const recalibrated = recalibrateScore({
     score,
     sections,
     contextText,
-    allowEvidenceScoreBoost: sectionEvidenceGuard.adjustments.length > 0,
+    allowEvidenceScoreBoost: sectionEvidenceGuard.adjustments.length > 0 || negativeClosureGuard.adjustments.length > 0,
   });
   let prioritized = prioritizeCriticalInsight({
     criticalInsight,
@@ -1201,14 +1501,21 @@ function normalizeUnifiedAnalysisPayload(payload, context = {}) {
     sections,
     contextText,
   });
-  if (insightMatchesEvidenceAdjustment(prioritized.criticalInsight, sectionEvidenceGuard.adjustments)) {
+  if (
+    insightMatchesEvidenceAdjustment(prioritized.criticalInsight, sectionEvidenceGuard.adjustments) ||
+    insightMatchesNegativeClosureAdjustment(prioritized.criticalInsight, negativeClosureGuard.adjustments)
+  ) {
     prioritized = buildResolvedInsightFallback({
       sections,
       contextText,
       fallbackJustification: prioritized.justification,
     });
   }
-  const unresolvedOtherGaps = removeResolvedOtherGaps(otherGaps, sectionEvidenceGuard.adjustments);
+  const unresolvedOtherGaps = removeResolvedOtherGaps(
+    otherGaps,
+    sectionEvidenceGuard.adjustments,
+    negativeClosureGuard.adjustments,
+  );
   const prioritizedOtherGaps = prioritizeOtherGaps(unresolvedOtherGaps, prioritized.criticalInsight, contextText).slice(0, 4);
   const finalScore = recalibrated.score;
   const scoreLabel = getScoreLabel(finalScore);
@@ -1244,6 +1551,8 @@ function normalizeUnifiedAnalysisPayload(payload, context = {}) {
       priorityInsightAdjusted: prioritized.adjusted,
       sectionEvidenceAdjusted: sectionEvidenceGuard.adjustments.length > 0,
       sectionEvidenceAdjustments: sectionEvidenceGuard.adjustments,
+      sectionNegativeClosureAdjusted: negativeClosureGuard.adjustments.length > 0,
+      sectionNegativeClosureAdjustments: negativeClosureGuard.adjustments,
       sectionQualityAdjusted: sectionQualityGuard.adjustments.length > 0,
       sectionQualityAdjustments: sectionQualityGuard.adjustments,
     },
