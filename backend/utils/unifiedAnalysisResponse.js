@@ -195,11 +195,8 @@ const SECTION_EVIDENCE_RULES = [
       /historia\s+familiar\s*:\s*(?!\[?nao\s+relatado\]?)(?!\[?não\s+relatado\]?)[^.\n]+/i,
       /\bpai\b[^.\n]*(?:hipertens|infarto|diabetes|avc|neoplasia|falec)/i,
       /\bmae\b[^.\n]*(?:hipertens|infarto|diabetes|avc|neoplasia|falec)/i,
-      /irmaos?/i,
-      /familiares?/i,
+      /irmaos?[^.\n]*(?:hipertens|infarto|diabetes|avc|neoplasia|falec)/i,
       /familiar[^.\n]*(?:infarto|diabetes|hipertens|avc|neoplasia)/i,
-      /tromboembolismo/i,
-      /neoplasia/i,
       /sem\s+historia\s+familiar/i,
       /nega\s+historia\s+familiar/i,
     ],
@@ -590,6 +587,18 @@ function getSectionQualityDowngrade(section, contextText = '') {
     };
   }
 
+  if (
+    (id.includes('interrogatorio') || label.includes('interrogatorio') || label.includes('sintomatologico')) &&
+    (evidence.length < 55 || /^nega\s+demais\s+sintomas\.?$/i.test(evidenceSearch))
+  ) {
+    return {
+      status: 'partial',
+      reason: 'insufficient_symptom_review_detail',
+      issue: 'Interrogatório sintomatológico muito genérico.',
+      recommendation: 'Inclua revisão dirigida de sintomas associados, negativos relevantes e sinais de alarme.',
+    };
+  }
+
   if ((id.includes('queixa') || label.includes('queixa principal')) && evidenceSearch.split(/\s+/).filter(Boolean).length <= 2) {
     return {
       status: 'partial',
@@ -686,10 +695,58 @@ function textMatchesAny(value, patterns) {
   return patterns.some((pattern) => pattern.test(normalized));
 }
 
+const MISSING_SECTION_LINE_PATTERNS = [
+  /^historia\s+familiar\s*:?\s*(?:\[?\s*nao\s+relatado\s*\]?)?\s*$/,
+  /^habitos?\s+de\s+vida\s*:?\s*(?:\[?\s*nao\s+relatado\s*\]?)?\s*$/,
+  /^interrogatorio\s+sintomatologico\s*:?\s*(?:\[?\s*nao\s+relatado\s*\]?)?\s*$/,
+  /^exames?\s+complementares\s*:?\s*(?:\[?\s*nao\s+relatado\s*\]?)?\s*$/,
+  /^exame\s+fisico\s*:?\s*(?:\[?\s*nao\s+relatado\s*\]?)?\s*$/,
+  /^(?:pessoais\s+e\s+)?comorbidades\s*:?\s*(?:\[?\s*nao\s+relatado\s*\]?)?\s*$/,
+  /^antecedentes\s+pessoais\s*:?\s*(?:\[?\s*nao\s+relatado\s*\]?)?\s*$/,
+];
+
+function lineHasMissingPlaceholder(line) {
+  return /\[?\s*nao\s+relatado\s*\]?/.test(normalizeForSearch(line));
+}
+
+function lineIsMissingOnlySection(line) {
+  const normalized = normalizeForSearch(line).trim();
+
+  return MISSING_SECTION_LINE_PATTERNS.some((pattern) => pattern.test(normalized));
+}
+
 function stripMissingPlaceholders(value) {
-  return normalizeText(value)
+  const text = sanitizeText(String(value || '')).replace(/\r\n/g, '\n').replace(/\r/g, '\n');
+  const lines = text.split('\n');
+  const keptLines = [];
+
+  for (let index = 0; index < lines.length; index += 1) {
+    const line = lines[index];
+    const nextLine = lines[index + 1] || '';
+
+    if (lineIsMissingOnlySection(line)) {
+      if (lineHasMissingPlaceholder(nextLine)) {
+        index += 1;
+      }
+      continue;
+    }
+
+    if (lineHasMissingPlaceholder(line)) {
+      const withoutPlaceholder = line.replace(/\[[^\]]*(?:nao|não)\s+relatado[^\]]*\]/gi, '').trim();
+
+      if (!withoutPlaceholder || lineIsMissingOnlySection(withoutPlaceholder)) {
+        continue;
+      }
+
+      keptLines.push(withoutPlaceholder);
+      continue;
+    }
+
+    keptLines.push(line);
+  }
+
+  return normalizeText(keptLines.join('\n'))
     .replace(/\[[^\]]*(?:nao|não)\s+relatado[^\]]*\]/gi, ' ')
-    .replace(/(?:hist[oó]ria familiar|h[aá]bitos de vida|exames complementares|exame f[ií]sico)\s*:\s*(?:n[aã]o relatado|não informado)/gi, ' ')
     .replace(/\s+/g, ' ')
     .trim();
 }
