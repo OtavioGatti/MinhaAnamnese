@@ -39,6 +39,121 @@ function normalizeForSearch(value) {
     .toLowerCase();
 }
 
+const ACUTE_CONTEXT_PATTERNS = [
+  ...EMERGENCY_RISK_PATTERNS,
+  /dor\s+abdominal/i,
+  /inicio\s+agudo/i,
+  /hipocondrio/i,
+  /murphy/i,
+  /defesa\s+muscular/i,
+  /irritacao\s+peritoneal/i,
+  /nauseas?/i,
+  /vomitos?/i,
+];
+const LOW_PRIORITY_ACUTE_PATTERNS = [
+  /historia\s+familiar/i,
+  /habitos?\s+de\s+vida/i,
+  /dados\s+sociais/i,
+  /tabagismo/i,
+  /etilismo/i,
+  /sedentar/i,
+];
+const HIGH_PRIORITY_INSIGHT_PATTERNS = [
+  /medicacoes?/i,
+  /medicamentos?/i,
+  /remedios?/i,
+  /alergias?/i,
+  /exame\s+fisico/i,
+  /sinais\s+vitais/i,
+  /interrogatorio/i,
+  /sintomas?\s+associados?/i,
+  /sinais?\s+de\s+alarme/i,
+  /gravidade/i,
+  /\bhma\b/i,
+  /\bhda\b/i,
+  /historia\s+da\s+molestia/i,
+  /tempo\s+de\s+evolucao/i,
+  /evolucao/i,
+  /queixa\s+principal/i,
+];
+const ACUTE_PRIORITY_SECTION_GROUPS = [
+  {
+    key: 'objectiveExam',
+    priority: 0,
+    patterns: [
+      /exame\s+fisico/i,
+      /sinais\s+vitais/i,
+      /\bpa\b/i,
+      /\bfc\b/i,
+      /\bfr\b/i,
+      /saturacao/i,
+      /temperatura/i,
+    ],
+  },
+  {
+    key: 'medications',
+    priority: 1,
+    patterns: [
+      /medicacoes?/i,
+      /medicamentos?/i,
+      /remedios?/i,
+      /uso\s+continuo/i,
+      /alergias?/i,
+    ],
+  },
+  {
+    key: 'symptoms',
+    priority: 2,
+    patterns: [
+      /interrogatorio/i,
+      /sintomatologico/i,
+      /sintomas?\s+associados?/i,
+      /sinais?\s+de\s+alarme/i,
+      /gravidade/i,
+      /revisao\s+de\s+sistemas/i,
+    ],
+  },
+  {
+    key: 'clinicalHistory',
+    priority: 3,
+    patterns: [
+      /\bhma\b/i,
+      /\bhda\b/i,
+      /historia\s+da\s+molestia/i,
+      /historia\s+da\s+doenca/i,
+      /tempo\s+de\s+evolucao/i,
+      /evolucao/i,
+      /queixa\s+principal/i,
+    ],
+  },
+  {
+    key: 'antecedents',
+    priority: 4,
+    patterns: [
+      /antecedentes/i,
+      /comorbidades/i,
+      /doencas?\s+de\s+base/i,
+      /historia\s+pregressa/i,
+    ],
+  },
+  {
+    key: 'exams',
+    priority: 5,
+    patterns: [
+      /exames?\s+complementares/i,
+      /laboratorio/i,
+      /imagem/i,
+      /ultrassom/i,
+      /\busg\b/i,
+    ],
+  },
+  {
+    key: 'lowPriority',
+    priority: 9,
+    patterns: LOW_PRIORITY_ACUTE_PATTERNS,
+  },
+];
+
 function normalizeScore(value) {
   const parsed = Number(value);
 
@@ -243,6 +358,215 @@ function sectionLooksLike(section, patterns) {
   return patterns.some((pattern) => pattern.test(haystack));
 }
 
+function textMatchesAny(value, patterns) {
+  const normalized = normalizeForSearch(value);
+
+  return patterns.some((pattern) => pattern.test(normalized));
+}
+
+function detectAcuteContext(contextText) {
+  return textMatchesAny(contextText, ACUTE_CONTEXT_PATTERNS);
+}
+
+function sectionNeedsAttention(section) {
+  return section?.status === 'missing' || section?.status === 'partial';
+}
+
+function findPrioritySection(sections) {
+  for (const group of ACUTE_PRIORITY_SECTION_GROUPS) {
+    if (group.key === 'lowPriority') {
+      continue;
+    }
+
+    const section = sections.find((item) => sectionNeedsAttention(item) && sectionLooksLike(item, group.patterns));
+
+    if (section) {
+      return {
+        ...group,
+        section,
+      };
+    }
+  }
+
+  return null;
+}
+
+function findTextPriorityGroup(value) {
+  for (const group of ACUTE_PRIORITY_SECTION_GROUPS) {
+    if (textMatchesAny(value, group.patterns)) {
+      return group;
+    }
+  }
+
+  return null;
+}
+
+function buildAcuteCriticalInsight(candidate) {
+  if (!candidate?.section) {
+    return '';
+  }
+
+  const isMissing = candidate.section.status === 'missing';
+
+  if (candidate.key === 'objectiveExam') {
+    return [
+      `FALHA -> ${isMissing ? 'Exame físico e sinais vitais não documentados' : 'Exame físico ou sinais vitais pouco detalhados'} em contexto agudo`,
+      'CONSEQUENCIA NA LEITURA -> Limita a leitura objetiva de gravidade, estabilidade clínica e evolução do quadro',
+      'IMPACTO NA QUALIDADE -> Reduz a segurança documental e a utilidade da anamnese para revisão clínica',
+      'ACAO DIRETA -> Registre sinais vitais e achados objetivos relevantes na próxima coleta',
+    ].join(' -> ');
+  }
+
+  if (candidate.key === 'medications') {
+    return [
+      `FALHA -> ${isMissing ? 'Medicações em uso e alergias não documentadas' : 'Medicações em uso ou alergias pouco detalhadas'} em contexto agudo`,
+      'CONSEQUENCIA NA LEITURA -> Limita a avaliação de segurança medicamentosa, exposições recentes, alergias e riscos na continuidade do cuidado',
+      'IMPACTO NA QUALIDADE -> Reduz a completude documental de segurança do registro',
+      'ACAO DIRETA -> Registre medicações em uso, alergias e uso recente de medicamentos na próxima coleta',
+    ].join(' -> ');
+  }
+
+  if (candidate.key === 'symptoms') {
+    return [
+      `FALHA -> ${isMissing ? 'Interrogatório sintomatológico não documentado' : 'Interrogatório sintomatológico pouco detalhado'} em contexto agudo`,
+      'CONSEQUENCIA NA LEITURA -> Dificulta identificar sintomas associados, sinais de alarme e elementos de gravidade',
+      'IMPACTO NA QUALIDADE -> Reduz a capacidade de acompanhar progressão e risco clínico do quadro',
+      'ACAO DIRETA -> Inclua revisão dirigida de sintomas associados e sinais de alarme na próxima coleta',
+    ].join(' -> ');
+  }
+
+  if (candidate.key === 'clinicalHistory') {
+    return [
+      `FALHA -> ${isMissing ? 'História da queixa atual não documentada' : 'História da queixa atual pouco detalhada'} em contexto agudo`,
+      'CONSEQUENCIA NA LEITURA -> Prejudica a leitura de início, evolução, irradiação, fatores associados e resposta inicial',
+      'IMPACTO NA QUALIDADE -> Reduz a coerência temporal e a capacidade de revisão clínica do caso',
+      'ACAO DIRETA -> Detalhe início, evolução, intensidade, irradiação, fatores de melhora ou piora e sintomas associados',
+    ].join(' -> ');
+  }
+
+  if (candidate.key === 'antecedents') {
+    return [
+      `FALHA -> ${isMissing ? 'Antecedentes e comorbidades não documentados' : 'Antecedentes e comorbidades pouco detalhados'} em contexto agudo`,
+      'CONSEQUENCIA NA LEITURA -> Dificulta reconhecer fatores de risco e condições que mudam a interpretação do quadro',
+      'IMPACTO NA QUALIDADE -> Reduz a contextualização clínica e a segurança da revisão',
+      'ACAO DIRETA -> Registre comorbidades, antecedentes relevantes, cirurgias, internações e alergias quando aplicável',
+    ].join(' -> ');
+  }
+
+  if (candidate.key === 'exams') {
+    return [
+      `FALHA -> ${isMissing ? 'Exames complementares não documentados' : 'Exames complementares pouco detalhados'} em contexto agudo`,
+      'CONSEQUENCIA NA LEITURA -> Limita o suporte documental para acompanhar hipóteses, gravidade e evolução',
+      'IMPACTO NA QUALIDADE -> Reduz a rastreabilidade da avaliação clínica',
+      'ACAO DIRETA -> Registre exames solicitados ou disponíveis, com achados relevantes e pendências',
+    ].join(' -> ');
+  }
+
+  return '';
+}
+
+function buildAcuteJustification(candidate, fallbackJustification) {
+  if (!candidate?.section) {
+    return fallbackJustification;
+  }
+
+  if (candidate.key === 'medications') {
+    return 'A anamnese traz dados relevantes da queixa atual, mas em contexto agudo a principal lacuna estrutural é a ausência de medicações em uso, alergias e uso recente de medicamentos, pois isso afeta a segurança da leitura clínica e da continuidade do cuidado. Lacunas como história familiar ou hábitos de vida podem ser completadas depois, mas têm menor prioridade documental neste cenário.';
+  }
+
+  if (candidate.key === 'symptoms') {
+    return 'A anamnese apresenta elementos centrais do quadro, mas em contexto agudo a ausência de interrogatório sintomatológico dirigido limita a avaliação de sintomas associados, sinais de alarme e gravidade. Lacunas de menor impacto, como história familiar ou hábitos de vida, não devem ser tratadas como o principal enfraquecedor quando há pendências de segurança clínica.';
+  }
+
+  if (candidate.key === 'objectiveExam') {
+    return 'A anamnese descreve a história clínica, mas em contexto agudo a principal limitação é a falta de exame físico objetivo ou sinais vitais suficientes. Esses dados são prioritários para estimar gravidade, estabilidade e evolução do quadro.';
+  }
+
+  if (candidate.key === 'clinicalHistory') {
+    return 'A anamnese tem estrutura parcial, mas a principal lacuna em contexto agudo está na história da queixa atual, que precisa sustentar início, evolução, intensidade, irradiação, fatores associados e resposta inicial.';
+  }
+
+  if (candidate.key === 'antecedents') {
+    return 'A anamnese possui dados úteis da queixa atual, mas os antecedentes e comorbidades ainda limitam a contextualização clínica e a segurança da revisão em contexto agudo.';
+  }
+
+  if (candidate.key === 'exams') {
+    return 'A anamnese possui dados clínicos relevantes, mas a documentação de exames complementares limita o suporte objetivo para acompanhar hipóteses, gravidade e evolução do quadro.';
+  }
+
+  return fallbackJustification;
+}
+
+function prioritizeCriticalInsight({ criticalInsight, justification, sections, contextText }) {
+  if (!detectAcuteContext(contextText)) {
+    return {
+      criticalInsight,
+      justification,
+      adjusted: false,
+    };
+  }
+
+  const candidate = findPrioritySection(sections);
+
+  if (!candidate) {
+    return {
+      criticalInsight,
+      justification,
+      adjusted: false,
+    };
+  }
+
+  const insightHasLowPriority = textMatchesAny(criticalInsight, LOW_PRIORITY_ACUTE_PATTERNS);
+  const insightHasHighPriority = textMatchesAny(criticalInsight, HIGH_PRIORITY_INSIGHT_PATTERNS);
+
+  if (!insightHasLowPriority && insightHasHighPriority) {
+    return {
+      criticalInsight,
+      justification,
+      adjusted: false,
+    };
+  }
+
+  const replacement = buildAcuteCriticalInsight(candidate);
+
+  if (!replacement) {
+    return {
+      criticalInsight,
+      justification,
+      adjusted: false,
+    };
+  }
+
+  return {
+    criticalInsight: replacement,
+    justification: buildAcuteJustification(candidate, justification),
+    adjusted: true,
+  };
+}
+
+function prioritizeOtherGaps(otherGaps, criticalInsight, contextText) {
+  if (!detectAcuteContext(contextText)) {
+    return otherGaps;
+  }
+
+  const criticalGroup = findTextPriorityGroup(criticalInsight);
+
+  return [...otherGaps]
+    .filter((gap) => {
+      const gapGroup = findTextPriorityGroup(gap);
+
+      return !criticalGroup || !gapGroup || gapGroup.key !== criticalGroup.key;
+    })
+    .sort((a, b) => {
+      const aGroup = findTextPriorityGroup(a);
+      const bGroup = findTextPriorityGroup(b);
+      const aPriority = aGroup?.priority ?? 6;
+      const bPriority = bGroup?.priority ?? 6;
+
+      return aPriority - bPriority;
+    });
+}
+
 function findObjectiveExamSection(sections) {
   return sections.find((section) => sectionLooksLike(section, [
     /exame\s+fisico/i,
@@ -371,16 +695,24 @@ function normalizeUnifiedAnalysisPayload(payload, context = {}) {
     payload?.summary,
     payload?.analysis,
   );
-  const otherGaps = normalizeArray(payload?.otherGaps || payload?.other_gaps, 4);
+  const otherGaps = normalizeArray(payload?.otherGaps || payload?.other_gaps, 12);
   const confidence = normalizeConfidence(payload?.confidence);
+  const contextText = [
+    context.originalText,
+    context.structuredText,
+  ].filter(Boolean).join('\n');
   const recalibrated = recalibrateScore({
     score,
     sections,
-    contextText: [
-      context.originalText,
-      context.structuredText,
-    ].filter(Boolean).join('\n'),
+    contextText,
   });
+  const prioritized = prioritizeCriticalInsight({
+    criticalInsight,
+    justification,
+    sections,
+    contextText,
+  });
+  const prioritizedOtherGaps = prioritizeOtherGaps(otherGaps, prioritized.criticalInsight, contextText).slice(0, 4);
   const finalScore = recalibrated.score;
   const scoreLabel = getScoreLabel(finalScore);
   const scoreAdjusted = finalScore !== score;
@@ -395,9 +727,9 @@ function normalizeUnifiedAnalysisPayload(payload, context = {}) {
       message: scoreAdjusted
         ? `${scoreLabel}. Lacunas estruturais relevantes limitaram a nota final.`
         : message,
-      justification,
-      criticalInsight,
-      otherGaps,
+      justification: prioritized.justification,
+      criticalInsight: prioritized.criticalInsight,
+      otherGaps: prioritizedOtherGaps,
     },
     unifiedAnalysis: {
       score: finalScore,
@@ -408,7 +740,8 @@ function normalizeUnifiedAnalysisPayload(payload, context = {}) {
       scoreLabel,
       confidence,
       sections,
-      otherGaps,
+      otherGaps: prioritizedOtherGaps,
+      priorityInsightAdjusted: prioritized.adjusted,
     },
   };
 }
