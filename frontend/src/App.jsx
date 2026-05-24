@@ -1589,6 +1589,8 @@ function App() {
       if (response.success) {
         const normalizedQualityScore = normalizeQualityScorePayload(response.data);
         setQualityScore(normalizedQualityScore);
+        setLatestScoreComparison(response.data?.comparison || null);
+        setEvolutionRefreshToken((current) => current + 1);
         setCurrentInsightsUnlocked(true);
         if (response.data?.profile) {
           setProfile(response.data.profile);

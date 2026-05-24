@@ -6,7 +6,11 @@ const {
   getPublishedDefaultPromptByType,
   getPublishedPromptByCategoryAndType,
 } = require('./officialPrompts');
-const { getLatestAnamneseMetric, registerAnamneseMetric } = require('./anamneseMetrics');
+const {
+  LEGACY_ANALYSIS_ENGINE,
+  getLatestAnamneseMetric,
+  registerAnamneseMetric,
+} = require('./anamneseMetrics');
 const { getTextLimitError } = require('../utils/requestLimits');
 const { sanitizeText } = require('../utils/textSanitization');
 const { isCustomTemplateId } = require('./userTemplates');
@@ -51,6 +55,14 @@ function getTrendFromScores(previousScore, currentScore) {
   return 'stable';
 }
 
+function shouldRecordOrganizationMetric() {
+  const configuredEngine = String(process.env.ANALYSIS_ENGINE || 'unified_ai')
+    .trim()
+    .toLowerCase();
+
+  return ['legacy', 'legacy_deterministic', 'deterministic', 'off', 'false'].includes(configuredEngine);
+}
+
 async function processAnamnesis({ template, texto, userId }) {
   const validationError = validateProcessAnamnesisInput({ template, texto });
 
@@ -78,7 +90,10 @@ async function processAnamnesis({ template, texto, userId }) {
 
   const openai = new OpenAI({ apiKey });
   const sanitizedText = sanitizeText(texto).trim();
-  const previousMetric = await getLatestAnamneseMetric(userId).catch(() => null);
+  const shouldRecordMetric = shouldRecordOrganizationMetric();
+  const previousMetric = shouldRecordMetric
+    ? await getLatestAnamneseMetric(userId, { analysisEngine: LEGACY_ANALYSIS_ENGINE }).catch(() => null)
+    : null;
   const categoryKey = templateConfig.categoryKey || templateConfig.clinicalCategoryKey || '';
   const [categoryStructurePrompt, defaultStructurePrompt] = await Promise.all([
     getPublishedPromptByCategoryAndType(categoryKey, 'structure_system').catch(() => null),
@@ -114,12 +129,13 @@ async function processAnamnesis({ template, texto, userId }) {
 
   const qualityScore = calculateAnamnesisQualityScore(resultado, template, templateConfig);
 
-  const metricRecorded = await registerAnamneseMetric({
+  const metricRecorded = shouldRecordMetric ? await registerAnamneseMetric({
     userId,
     template,
     score: qualityScore.score,
     textLength: sanitizedText.length,
     hasTeaser: false,
+    analysisEngine: LEGACY_ANALYSIS_ENGINE,
   }).catch((error) => {
     console.error('processAnamnesis: failed to persist metric', {
       userId: userId || null,
@@ -127,10 +143,10 @@ async function processAnamnesis({ template, texto, userId }) {
       message: error?.message || 'unknown_error',
     });
     return false;
-  });
+  }) : false;
 
   const previousScore = typeof previousMetric?.score === 'number' ? previousMetric.score : null;
-  const comparison = {
+  const comparison = shouldRecordMetric ? {
     currentScore: qualityScore.score,
     previousScore,
     trend: getTrendFromScores(previousScore, qualityScore.score),
@@ -144,7 +160,7 @@ async function processAnamnesis({ template, texto, userId }) {
       : {
           source: 'no_previous_persisted_anamnese',
         },
-  };
+  } : null;
 
   return {
     resultado,

@@ -5,8 +5,12 @@ create table if not exists public.anamneses (
   score double precision not null,
   text_length integer not null,
   has_teaser boolean not null default false,
+  analysis_engine text not null default 'legacy_structure',
   created_at timestamptz not null default now()
 );
+
+alter table public.anamneses
+  add column if not exists analysis_engine text not null default 'legacy_structure';
 
 create index if not exists anamneses_user_id_idx
   on public.anamneses (user_id);
@@ -16,3 +20,6 @@ create index if not exists anamneses_template_idx
 
 create index if not exists anamneses_created_at_idx
   on public.anamneses (created_at desc);
+
+create index if not exists anamneses_user_engine_created_at_idx
+  on public.anamneses (user_id, analysis_engine, created_at desc);

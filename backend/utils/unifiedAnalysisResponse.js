@@ -153,6 +153,135 @@ const ACUTE_PRIORITY_SECTION_GROUPS = [
     patterns: LOW_PRIORITY_ACUTE_PATTERNS,
   },
 ];
+const SECTION_EVIDENCE_RULES = [
+  {
+    key: 'exams',
+    targetStatus: 'present',
+    sectionPatterns: [
+      /exames?\s+complementares/i,
+      /exames?/i,
+      /laboratorio/i,
+      /imagem/i,
+    ],
+    evidencePatterns: [
+      /hemograma/i,
+      /proteina\s+c\s+reativa/i,
+      /\bpcr\b/i,
+      /funcao\s+renal/i,
+      /eletrolitos/i,
+      /gasometria/i,
+      /radiografia/i,
+      /raio\s*x/i,
+      /\brx\b/i,
+      /tomografia/i,
+      /ressonancia/i,
+      /ultrassom/i,
+      /ultrassonografia/i,
+      /\busg\b/i,
+      /\becg\b/i,
+      /bilirrubinas?/i,
+      /provas?\s+de\s+funcao\s+hepatica/i,
+      /solicitad[oa]s?/i,
+    ],
+  },
+  {
+    key: 'familyHistory',
+    targetStatus: 'present',
+    sectionPatterns: [
+      /historia\s+familiar/i,
+      /\bhf\b/i,
+    ],
+    evidencePatterns: [
+      /historia\s+familiar/i,
+      /\bpai\b/i,
+      /\bmae\b/i,
+      /irmaos?/i,
+      /familiares?/i,
+      /infarto/i,
+      /diabetes/i,
+      /hipertens/i,
+      /tromboembolismo/i,
+      /neoplasia/i,
+      /sem\s+historia\s+familiar/i,
+      /nega\s+historia\s+familiar/i,
+    ],
+  },
+  {
+    key: 'habits',
+    targetStatus: 'present',
+    sectionPatterns: [
+      /habitos?/i,
+      /vida/i,
+      /tabagismo/i,
+      /etilismo/i,
+    ],
+    evidencePatterns: [
+      /tabagista/i,
+      /ex-tabagista/i,
+      /anos-maco/i,
+      /anos\s+maco/i,
+      /etilismo/i,
+      /alcool/i,
+      /drogas?\s+ilicitas?/i,
+      /sedentario/i,
+      /atividade\s+fisica/i,
+      /cessou/i,
+      /nega\s+etilismo/i,
+      /nega\s+uso\s+de\s+drogas/i,
+    ],
+  },
+  {
+    key: 'medications',
+    targetStatus: 'partial',
+    upgradePartial: false,
+    sectionPatterns: [
+      /medicacoes?/i,
+      /medicamentos?/i,
+      /uso\s+continuo/i,
+      /remedios?/i,
+    ],
+    evidencePatterns: [
+      /medicacoes?\s+em\s+uso/i,
+      /uso\s+continuo/i,
+      /losartana/i,
+      /sinvastatina/i,
+      /formoterol/i,
+      /budesonida/i,
+      /salbutamol/i,
+      /inaladores?/i,
+      /antibioticos?/i,
+      /corticoide/i,
+      /nega\s+uso\s+recente/i,
+      /nega\s+medicacoes/i,
+      /sem\s+medicacoes/i,
+      /alergias?\s+medicamentosas?/i,
+      /nega\s+alergias?/i,
+    ],
+  },
+  {
+    key: 'physicalExam',
+    targetStatus: 'present',
+    sectionPatterns: [
+      /exame\s+fisico/i,
+      /sinais\s+vitais/i,
+    ],
+    evidencePatterns: [
+      /ao\s+exame/i,
+      /exame\s+fisico/i,
+      /\bpa\b/i,
+      /\bfc\b/i,
+      /\bfr\b/i,
+      /spo2/i,
+      /saturacao/i,
+      /ausculta/i,
+      /abdome/i,
+      /murphy/i,
+      /crepitacoes/i,
+      /murmurio/i,
+      /taquipneic/i,
+    ],
+  },
+];
 
 function normalizeScore(value) {
   const parsed = Number(value);
@@ -312,6 +441,83 @@ function normalizeSections(value) {
       recommendation: normalizeText(section?.recommendation || section?.action),
     };
   });
+}
+
+function getStatusScore(status, maxScore) {
+  if (typeof maxScore !== 'number' || maxScore <= 0) {
+    return null;
+  }
+
+  if (status === 'present') {
+    return maxScore;
+  }
+
+  if (status === 'partial') {
+    return Math.max(1, Math.round(maxScore * 0.65));
+  }
+
+  if (status === 'missing') {
+    return 0;
+  }
+
+  return null;
+}
+
+function applySectionEvidenceGuards(sections, contextText) {
+  if (!Array.isArray(sections) || !sections.length) {
+    return {
+      sections,
+      adjustments: [],
+    };
+  }
+
+  const adjustments = [];
+  const nextSections = sections.map((section) => {
+    if (!sectionNeedsAttention(section)) {
+      return section;
+    }
+
+    for (const rule of SECTION_EVIDENCE_RULES) {
+      if (!sectionLooksLike(section, rule.sectionPatterns)) {
+        continue;
+      }
+
+      if (!textMatchesAny(contextText, rule.evidencePatterns)) {
+        continue;
+      }
+
+      if (section.status === 'partial' && rule.upgradePartial === false) {
+        return section;
+      }
+
+      const nextStatus = rule.targetStatus || 'partial';
+      const nextScore = getStatusScore(nextStatus, section.maxScore);
+
+      adjustments.push({
+        sectionId: section.id,
+        sectionLabel: section.label,
+        fromStatus: section.status,
+        toStatus: nextStatus,
+        reason: `evidence_detected:${rule.key}`,
+      });
+
+      return {
+        ...section,
+        status: nextStatus,
+        score: nextScore === null ? section.score : nextScore,
+        evidence: section.evidence || 'Evidência identificada no texto original ou estruturado.',
+        issue: '',
+        recommendation: '',
+      };
+    }
+
+    return section;
+  });
+
+  return {
+    sections: nextSections,
+    adjustments,
+  };
 }
 
 function getScoreLabel(score) {
@@ -544,6 +750,48 @@ function prioritizeCriticalInsight({ criticalInsight, justification, sections, c
   };
 }
 
+function insightMatchesEvidenceAdjustment(insightText, sectionEvidenceAdjustments) {
+  if (!sectionEvidenceAdjustments.length) {
+    return false;
+  }
+
+  const resolvedKeys = new Set(
+    sectionEvidenceAdjustments
+      .map((adjustment) => String(adjustment.reason || '').replace(/^evidence_detected:/, ''))
+      .filter(Boolean),
+  );
+
+  for (const rule of SECTION_EVIDENCE_RULES) {
+    if (!resolvedKeys.has(rule.key)) {
+      continue;
+    }
+
+    if (textMatchesAny(insightText, rule.sectionPatterns)) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
+function buildResolvedInsightFallback({ sections, contextText, fallbackJustification }) {
+  const candidate = detectAcuteContext(contextText) ? findPrioritySection(sections) : null;
+
+  if (candidate) {
+    return {
+      criticalInsight: buildAcuteCriticalInsight(candidate),
+      justification: buildAcuteJustification(candidate, fallbackJustification),
+      adjusted: true,
+    };
+  }
+
+  return {
+    criticalInsight: 'FALHA -> Nenhuma lacuna estrutural dominante identificada -> CONSEQUENCIA NA LEITURA -> A documentação atual sustenta boa leitura clínica do caso -> IMPACTO NA QUALIDADE -> Mantém a rastreabilidade e a consistência da anamnese -> ACAO DIRETA -> Preserve esse padrão e refine apenas detalhes contextuais quando necessário',
+    justification: 'A anamnese apresenta os blocos essenciais bem documentados. As lacunas inicialmente apontadas foram reavaliadas contra o texto original e não se sustentaram como ausências estruturais prioritárias.',
+    adjusted: true,
+  };
+}
+
 function prioritizeOtherGaps(otherGaps, criticalInsight, contextText) {
   if (!detectAcuteContext(contextText)) {
     return otherGaps;
@@ -565,6 +813,36 @@ function prioritizeOtherGaps(otherGaps, criticalInsight, contextText) {
 
       return aPriority - bPriority;
     });
+}
+
+function removeResolvedOtherGaps(otherGaps, sectionEvidenceAdjustments) {
+  if (!sectionEvidenceAdjustments.length) {
+    return otherGaps;
+  }
+
+  const resolvedKeys = new Set(
+    sectionEvidenceAdjustments
+      .map((adjustment) => String(adjustment.reason || '').replace(/^evidence_detected:/, ''))
+      .filter(Boolean),
+  );
+
+  if (!resolvedKeys.size) {
+    return otherGaps;
+  }
+
+  return otherGaps.filter((gap) => {
+    for (const rule of SECTION_EVIDENCE_RULES) {
+      if (!resolvedKeys.has(rule.key)) {
+        continue;
+      }
+
+      if (textMatchesAny(gap, rule.sectionPatterns)) {
+        return false;
+      }
+    }
+
+    return true;
+  });
 }
 
 function findObjectiveExamSection(sections) {
@@ -639,12 +917,15 @@ function getScoreCap({ sections, contextText }) {
   return caps.length ? Math.min(...caps) : null;
 }
 
-function recalibrateScore({ score, sections, contextText }) {
+function recalibrateScore({ score, sections, contextText, allowEvidenceScoreBoost = false }) {
   const sectionScore = calculateSectionBasedScore(sections);
   const scoreCap = getScoreCap({ sections, contextText });
-  const candidates = [score];
+  const baseScore = allowEvidenceScoreBoost && sectionScore !== null && sectionScore > score
+    ? Math.min(sectionScore, 96)
+    : score;
+  const candidates = [baseScore];
 
-  if (sectionScore !== null) {
+  if (sectionScore !== null && !allowEvidenceScoreBoost) {
     candidates.push(sectionScore);
   }
 
@@ -678,7 +959,7 @@ function normalizeUnifiedAnalysisPayload(payload, context = {}) {
     throw new Error('invalid_unified_analysis_score');
   }
 
-  const sections = normalizeSections(payload?.sections);
+  const rawSections = normalizeSections(payload?.sections);
   const criticalInsight = firstText(
     payload?.criticalInsight,
     payload?.critical_insight,
@@ -701,21 +982,33 @@ function normalizeUnifiedAnalysisPayload(payload, context = {}) {
     context.originalText,
     context.structuredText,
   ].filter(Boolean).join('\n');
+  const sectionEvidenceGuard = applySectionEvidenceGuards(rawSections, contextText);
+  const sections = sectionEvidenceGuard.sections;
   const recalibrated = recalibrateScore({
     score,
     sections,
     contextText,
+    allowEvidenceScoreBoost: sectionEvidenceGuard.adjustments.length > 0,
   });
-  const prioritized = prioritizeCriticalInsight({
+  let prioritized = prioritizeCriticalInsight({
     criticalInsight,
     justification,
     sections,
     contextText,
   });
-  const prioritizedOtherGaps = prioritizeOtherGaps(otherGaps, prioritized.criticalInsight, contextText).slice(0, 4);
+  if (insightMatchesEvidenceAdjustment(prioritized.criticalInsight, sectionEvidenceGuard.adjustments)) {
+    prioritized = buildResolvedInsightFallback({
+      sections,
+      contextText,
+      fallbackJustification: prioritized.justification,
+    });
+  }
+  const unresolvedOtherGaps = removeResolvedOtherGaps(otherGaps, sectionEvidenceGuard.adjustments);
+  const prioritizedOtherGaps = prioritizeOtherGaps(unresolvedOtherGaps, prioritized.criticalInsight, contextText).slice(0, 4);
   const finalScore = recalibrated.score;
   const scoreLabel = getScoreLabel(finalScore);
   const scoreAdjusted = finalScore !== score;
+  const scoreRaisedByEvidence = finalScore > score;
 
   if (!message || !justification || !criticalInsight) {
     throw new Error('incomplete_unified_analysis_payload');
@@ -725,7 +1018,9 @@ function normalizeUnifiedAnalysisPayload(payload, context = {}) {
     score: finalScore,
     interpretation: {
       message: scoreAdjusted
-        ? `${scoreLabel}. Lacunas estruturais relevantes limitaram a nota final.`
+        ? scoreRaisedByEvidence
+          ? `${scoreLabel}. Seções reconhecidas no texto corrigiram a leitura da nota final.`
+          : `${scoreLabel}. Lacunas estruturais relevantes limitaram a nota final.`
         : message,
       justification: prioritized.justification,
       criticalInsight: prioritized.criticalInsight,
@@ -742,6 +1037,8 @@ function normalizeUnifiedAnalysisPayload(payload, context = {}) {
       sections,
       otherGaps: prioritizedOtherGaps,
       priorityInsightAdjusted: prioritized.adjusted,
+      sectionEvidenceAdjusted: sectionEvidenceGuard.adjustments.length > 0,
+      sectionEvidenceAdjustments: sectionEvidenceGuard.adjustments,
     },
   };
 }

@@ -94,8 +94,9 @@ function UserEvolution({
   currentScore,
   immediateComparison,
 }) {
-  const lastScore = isValidScoreValue(immediateComparison?.previousScore)
-    ? immediateComparison.previousScore
+  const shouldUseImmediateComparison = Boolean(immediateComparison);
+  const lastScore = shouldUseImmediateComparison
+    ? (isValidScoreValue(immediateComparison?.previousScore) ? immediateComparison.previousScore : null)
     : anamneseStats?.ultimo_score;
   const recurringPatterns = buildRecurringPatterns({
     anamneseStats,
@@ -109,7 +110,6 @@ function UserEvolution({
     immediateComparison,
     isValidScoreValue,
   });
-  const shouldUseImmediateComparison = Boolean(immediateComparison);
   const isInitialEvolutionState =
     shouldUseImmediateComparison && !isValidScoreValue(immediateComparison?.previousScore);
 

@@ -14,6 +14,11 @@ const { parseAIResponse } = require('../utils/parseAIResponse');
 const { getTextLimitError } = require('../utils/requestLimits');
 const { sanitizeText } = require('../utils/textSanitization');
 const { isCustomTemplateId } = require('./userTemplates');
+const {
+  DEFAULT_ANALYSIS_ENGINE,
+  getLatestAnamneseMetric,
+  registerAnamneseMetric,
+} = require('./anamneseMetrics');
 
 const DEBUG_MODE = process.env.DEBUG_INSIGHTS === 'true';
 const UNIFIED_ANALYSIS_PROMPT_SLUG = 'unified_anamnesis_analysis_user';
@@ -22,6 +27,42 @@ function resolveOpenAiModel(value, fallback = 'gpt-4o') {
   const model = String(value || '').trim();
 
   return /^gpt-[a-z0-9.-]+$/i.test(model) ? model : fallback;
+}
+
+function getTrendFromScores(previousScore, currentScore) {
+  if (typeof previousScore !== 'number' || Number.isNaN(previousScore)) {
+    return 'insufficient_data';
+  }
+
+  if (currentScore > previousScore) {
+    return 'up';
+  }
+
+  if (currentScore < previousScore) {
+    return 'down';
+  }
+
+  return 'stable';
+}
+
+function buildMetricComparison(previousMetric, currentScore) {
+  const previousScore = typeof previousMetric?.score === 'number' ? previousMetric.score : null;
+
+  return {
+    currentScore,
+    previousScore,
+    trend: getTrendFromScores(previousScore, currentScore),
+    comparisonBase: previousMetric
+      ? {
+          source: 'immediate_previous_unified_analysis',
+          previousAnamneseId: previousMetric.id,
+          previousTemplate: previousMetric.template,
+          previousCreatedAt: previousMetric.created_at,
+        }
+      : {
+          source: 'no_previous_unified_analysis',
+        },
+  };
 }
 
 function normalizeText(value) {
@@ -272,6 +313,25 @@ async function generateUnifiedInsights({
     originalText,
     structuredText: trimmedText,
   });
+  const previousMetric = await getLatestAnamneseMetric(userId, {
+    analysisEngine: DEFAULT_ANALYSIS_ENGINE,
+  }).catch(() => null);
+  const metricRecorded = await registerAnamneseMetric({
+    userId,
+    template: templateId,
+    score: data.score,
+    textLength: sanitizeText(originalText || trimmedText).trim().length,
+    hasTeaser: false,
+    analysisEngine: DEFAULT_ANALYSIS_ENGINE,
+  }).catch((error) => {
+    console.error('insights: failed to persist unified analysis metric', {
+      userId: userId || null,
+      templateId,
+      message: error?.message || 'unknown_error',
+    });
+    return false;
+  });
+  const comparison = buildMetricComparison(previousMetric, data.score);
   const history = updateUserHistory(userId, {
     score: data.score,
     erros: [],
@@ -286,11 +346,14 @@ async function generateUnifiedInsights({
       sections: data.unifiedAnalysis.sections.length,
       confidence: data.unifiedAnalysis.confidence,
       historySize: history.length,
+      metricRecorded,
     });
   }
 
   return {
     ...data,
+    comparison,
+    metricRecorded,
     analysisEngine: 'unified_ai',
   };
 }

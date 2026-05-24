@@ -1,5 +1,8 @@
 const { isValidUserId } = require('../utils/idValidation');
 
+const DEFAULT_ANALYSIS_ENGINE = 'unified_ai';
+const LEGACY_ANALYSIS_ENGINE = 'legacy_structure';
+
 function getSupabaseAdminConfig() {
   const url = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL;
   const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
@@ -10,7 +13,63 @@ function getSupabaseAdminConfig() {
   };
 }
 
-async function registerAnamneseMetric({ userId, template, score, textLength, hasTeaser }) {
+function normalizeAnalysisEngine(value, fallback = DEFAULT_ANALYSIS_ENGINE) {
+  const normalized = String(value || '')
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9_]+/g, '_')
+    .replace(/^_+|_+$/g, '');
+
+  return normalized || fallback;
+}
+
+function isMissingAnalysisEngineColumnError(responseText) {
+  return /analysis_engine/i.test(responseText || '') && (
+    /column/i.test(responseText || '') ||
+    /schema cache/i.test(responseText || '') ||
+    /pgrst204/i.test(responseText || '')
+  );
+}
+
+async function fetchAnamneseJson(query, { allowEngineFallback = true } = {}) {
+  const { url, serviceRoleKey } = getSupabaseAdminConfig();
+
+  if (!url || !serviceRoleKey) {
+    return [];
+  }
+
+  const response = await fetch(`${url}/rest/v1/anamneses?${query.toString()}`, {
+    method: 'GET',
+    headers: {
+      apikey: serviceRoleKey,
+      Authorization: `Bearer ${serviceRoleKey}`,
+    },
+  });
+
+  if (response.ok) {
+    const json = await response.json();
+    return Array.isArray(json) ? json : [];
+  }
+
+  const responseText = await response.text().catch(() => '');
+
+  if (allowEngineFallback && query.has('analysis_engine') && isMissingAnalysisEngineColumnError(responseText)) {
+    const fallbackQuery = new URLSearchParams(query);
+    fallbackQuery.delete('analysis_engine');
+    return fetchAnamneseJson(fallbackQuery, { allowEngineFallback: false });
+  }
+
+  throw new Error('failed to fetch anamneses');
+}
+
+async function registerAnamneseMetric({
+  userId,
+  template,
+  score,
+  textLength,
+  hasTeaser,
+  analysisEngine = LEGACY_ANALYSIS_ENGINE,
+}) {
   if (!isValidUserId(userId)) {
     return false;
   }
@@ -25,7 +84,16 @@ async function registerAnamneseMetric({ userId, template, score, textLength, has
     return false;
   }
 
-  const response = await fetch(`${url}/rest/v1/anamneses`, {
+  const payload = {
+    user_id: userId,
+    template,
+    score,
+    text_length: textLength,
+    has_teaser: Boolean(hasTeaser),
+    analysis_engine: normalizeAnalysisEngine(analysisEngine, LEGACY_ANALYSIS_ENGINE),
+  };
+
+  let response = await fetch(`${url}/rest/v1/anamneses`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -33,30 +101,39 @@ async function registerAnamneseMetric({ userId, template, score, textLength, has
       Authorization: `Bearer ${serviceRoleKey}`,
       Prefer: 'return=minimal',
     },
-    body: JSON.stringify({
-      user_id: userId,
-      template,
-      score,
-      text_length: textLength,
-      has_teaser: Boolean(hasTeaser),
-    }),
+    body: JSON.stringify(payload),
   });
 
   if (!response.ok) {
+    const responseText = await response.text().catch(() => '');
+
+    if (isMissingAnalysisEngineColumnError(responseText)) {
+      const { analysis_engine: _analysisEngine, ...fallbackPayload } = payload;
+
+      response = await fetch(`${url}/rest/v1/anamneses`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          apikey: serviceRoleKey,
+          Authorization: `Bearer ${serviceRoleKey}`,
+          Prefer: 'return=minimal',
+        },
+        body: JSON.stringify(fallbackPayload),
+      });
+
+      if (response.ok) {
+        return true;
+      }
+    }
+
     throw new Error('failed to insert anamnese metric');
   }
 
   return true;
 }
 
-async function getLatestAnamneseMetric(userId) {
+async function getLatestAnamneseMetric(userId, { analysisEngine = DEFAULT_ANALYSIS_ENGINE } = {}) {
   if (!isValidUserId(userId)) {
-    return null;
-  }
-
-  const { url, serviceRoleKey } = getSupabaseAdminConfig();
-
-  if (!url || !serviceRoleKey) {
     return null;
   }
 
@@ -67,19 +144,11 @@ async function getLatestAnamneseMetric(userId) {
     limit: '1',
   });
 
-  const response = await fetch(`${url}/rest/v1/anamneses?${query.toString()}`, {
-    method: 'GET',
-    headers: {
-      apikey: serviceRoleKey,
-      Authorization: `Bearer ${serviceRoleKey}`,
-    },
-  });
-
-  if (!response.ok) {
-    throw new Error('failed to fetch latest anamnese');
+  if (analysisEngine) {
+    query.set('analysis_engine', `eq.${normalizeAnalysisEngine(analysisEngine)}`);
   }
 
-  const json = await response.json();
+  const json = await fetchAnamneseJson(query);
 
   if (!Array.isArray(json) || !json[0]) {
     return null;
@@ -100,14 +169,8 @@ async function getLatestAnamneseMetric(userId) {
   return item;
 }
 
-async function listRecentAnamneseMetrics(userId) {
+async function listRecentAnamneseMetrics(userId, { analysisEngine = DEFAULT_ANALYSIS_ENGINE } = {}) {
   if (!isValidUserId(userId)) {
-    return [];
-  }
-
-  const { url, serviceRoleKey } = getSupabaseAdminConfig();
-
-  if (!url || !serviceRoleKey) {
     return [];
   }
 
@@ -118,23 +181,11 @@ async function listRecentAnamneseMetrics(userId) {
     limit: '20',
   });
 
-  const response = await fetch(`${url}/rest/v1/anamneses?${query.toString()}`, {
-    method: 'GET',
-    headers: {
-      apikey: serviceRoleKey,
-      Authorization: `Bearer ${serviceRoleKey}`,
-    },
-  });
-
-  if (!response.ok) {
-    throw new Error('failed to fetch anamneses');
+  if (analysisEngine) {
+    query.set('analysis_engine', `eq.${normalizeAnalysisEngine(analysisEngine)}`);
   }
 
-  const json = await response.json();
-
-  if (!Array.isArray(json)) {
-    return [];
-  }
+  const json = await fetchAnamneseJson(query);
 
   return json.filter((item) => (
     item &&
@@ -145,14 +196,8 @@ async function listRecentAnamneseMetrics(userId) {
   ));
 }
 
-async function listAnamneseScoresForStats(userId) {
+async function listAnamneseScoresForStats(userId, { analysisEngine = DEFAULT_ANALYSIS_ENGINE } = {}) {
   if (!isValidUserId(userId)) {
-    return [];
-  }
-
-  const { url, serviceRoleKey } = getSupabaseAdminConfig();
-
-  if (!url || !serviceRoleKey) {
     return [];
   }
 
@@ -169,19 +214,11 @@ async function listAnamneseScoresForStats(userId) {
       offset: String(offset),
     });
 
-    const response = await fetch(`${url}/rest/v1/anamneses?${query.toString()}`, {
-      method: 'GET',
-      headers: {
-        apikey: serviceRoleKey,
-        Authorization: `Bearer ${serviceRoleKey}`,
-      },
-    });
-
-    if (!response.ok) {
-      throw new Error('failed to fetch anamneses stats');
+    if (analysisEngine) {
+      query.set('analysis_engine', `eq.${normalizeAnalysisEngine(analysisEngine)}`);
     }
 
-    const json = await response.json();
+    const json = await fetchAnamneseJson(query);
 
     if (!Array.isArray(json) || json.length === 0) {
       break;
@@ -206,8 +243,8 @@ async function listAnamneseScoresForStats(userId) {
   return results;
 }
 
-async function getAnamneseStats(userId) {
-  const anamneses = await listAnamneseScoresForStats(userId);
+async function getAnamneseStats(userId, options = {}) {
+  const anamneses = await listAnamneseScoresForStats(userId, options);
 
   if (!anamneses.length) {
     return {
@@ -245,14 +282,8 @@ async function getAnamneseStats(userId) {
   };
 }
 
-async function getAnamneseActivity(userId) {
+async function getAnamneseActivity(userId, { analysisEngine = DEFAULT_ANALYSIS_ENGINE } = {}) {
   if (!isValidUserId(userId)) {
-    return [];
-  }
-
-  const { url, serviceRoleKey } = getSupabaseAdminConfig();
-
-  if (!url || !serviceRoleKey) {
     return [];
   }
 
@@ -262,23 +293,11 @@ async function getAnamneseActivity(userId) {
     order: 'created_at.asc',
   });
 
-  const response = await fetch(`${url}/rest/v1/anamneses?${query.toString()}`, {
-    method: 'GET',
-    headers: {
-      apikey: serviceRoleKey,
-      Authorization: `Bearer ${serviceRoleKey}`,
-    },
-  });
-
-  if (!response.ok) {
-    throw new Error('failed to fetch anamneses activity');
+  if (analysisEngine) {
+    query.set('analysis_engine', `eq.${normalizeAnalysisEngine(analysisEngine)}`);
   }
 
-  const json = await response.json();
-
-  if (!Array.isArray(json)) {
-    return [];
-  }
+  const json = await fetchAnamneseJson(query);
 
   const uniqueDates = Array.from(
     new Set(
@@ -336,6 +355,8 @@ function getCurrentStreakFromActivityDates(activityDates) {
 }
 
 module.exports = {
+  DEFAULT_ANALYSIS_ENGINE,
+  LEGACY_ANALYSIS_ENGINE,
   getCurrentStreakFromActivityDates,
   getAnamneseActivity,
   getAnamneseStats,
