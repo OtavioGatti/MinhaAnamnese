@@ -29,6 +29,8 @@ const CHECKOUT_RETURN_STATE_KEY = 'checkout-return-state';
 const TRACKING_SESSION_ID_KEY = 'tracking-session-id';
 const COOKIE_CONSENT_KEY = 'minha-anamnese-cookie-consent';
 const AFFILIATE_REFERRAL_KEY = 'minha-anamnese-affiliate-ref';
+const PASSWORD_RECOVERY_PATH = '/redefinir-senha';
+const PASSWORD_RECOVERY_INTENT_KEY = 'minha-anamnese-password-recovery-intent';
 const LEGAL_DOCUMENT_VERSION = '2026-05-22';
 const DEBUG_MODE = false;
 const TRIAL_DAYS_COPY = '3 dias';
@@ -170,8 +172,16 @@ function getLegalPageFromPath() {
   return null;
 }
 
+function getNormalizedPathname() {
+  return window.location.pathname.replace(/\/+$/, '') || '/';
+}
+
+function isPasswordRecoveryPath() {
+  return getNormalizedPathname() === PASSWORD_RECOVERY_PATH;
+}
+
 function getInitialWorkspacePageFromPath() {
-  const path = window.location.pathname.replace(/\/+$/, '') || '/';
+  const path = getNormalizedPathname();
 
   if (path === '/afiliado') {
     return 'affiliate';
@@ -676,6 +686,7 @@ function safeDecodeUrlValue(value) {
 
 function getRecoveryLinkState() {
   const { authFlow, type, error, errorCode, errorDescription } = readAuthReturnParams();
+  const isRecoveryPath = isPasswordRecoveryPath();
   const normalizedError = String(error || '').toLowerCase();
   const normalizedCode = String(errorCode || '').toLowerCase();
   const normalizedDescription = safeDecodeUrlValue(errorDescription).toLowerCase();
@@ -696,7 +707,7 @@ function getRecoveryLinkState() {
     };
   }
 
-  if (authFlow === 'recovery' || type === 'recovery') {
+  if (isRecoveryPath || authFlow === 'recovery' || type === 'recovery') {
     return {
       kind: 'recovery',
       message: 'Defina uma nova senha para concluir a recuperação da sua conta.',
@@ -733,9 +744,26 @@ function clearAuthReturnStateFromUrl() {
   window.history.replaceState({}, '', `${url.pathname}${url.search}`);
 }
 
+function clearRecoveryRoute() {
+  if (isPasswordRecoveryPath()) {
+    window.history.replaceState({}, '', '/');
+  }
+}
+
+function rememberPasswordRecoveryIntent() {
+  sessionStorage.setItem(PASSWORD_RECOVERY_INTENT_KEY, '1');
+}
+
+function clearPasswordRecoveryIntent() {
+  sessionStorage.removeItem(PASSWORD_RECOVERY_INTENT_KEY);
+}
+
+function hasPasswordRecoveryIntent() {
+  return sessionStorage.getItem(PASSWORD_RECOVERY_INTENT_KEY) === '1' || isPasswordRecoveryPath();
+}
+
 function getRecoveryRedirectUrl() {
-  const url = new URL(window.location.origin);
-  url.searchParams.set('auth', 'recovery');
+  const url = new URL(PASSWORD_RECOVERY_PATH, window.location.origin);
   return url.toString();
 }
 
@@ -895,6 +923,7 @@ function App() {
       setLoadingUser(true);
       const recoveryState = getRecoveryLinkState();
       const { data, error } = await supabase.auth.getSession();
+      const hasRecoveryIntent = recoveryState.kind === 'recovery' || hasPasswordRecoveryIntent();
 
       if (error) {
         setErro('Não foi possível carregar sua sessão.');
@@ -910,8 +939,13 @@ function App() {
         setAuthError(recoveryState.message);
         setAuthFeedback('');
         clearAuthReturnStateFromUrl();
-      } else if (recoveryState.kind === 'recovery' && data.session?.user) {
-        const nextState = openRecoveryResetFlow(recoveryState.message);
+      } else if (hasRecoveryIntent && data.session?.user) {
+        rememberPasswordRecoveryIntent();
+        const nextState = openRecoveryResetFlow(
+          recoveryState.kind === 'recovery'
+            ? recoveryState.message
+            : 'Defina uma nova senha para concluir a recuperação da sua conta.'
+        );
         setAuthMode(nextState.authMode);
         setAuthPanelAberto(nextState.authPanelAberto);
         setPassword(nextState.password);
@@ -926,10 +960,15 @@ function App() {
 
     const { data } = supabase.auth.onAuthStateChange((event, session) => {
       const recoveryState = getRecoveryLinkState();
+      const hasRecoveryIntent =
+        recoveryState.kind === 'recovery' ||
+        hasPasswordRecoveryIntent() ||
+        event === 'PASSWORD_RECOVERY';
       setUser(session?.user || null);
       setLoadingUser(false);
 
-      if (event === 'PASSWORD_RECOVERY') {
+      if (hasRecoveryIntent && session?.user) {
+        rememberPasswordRecoveryIntent();
         const nextState = openRecoveryResetFlow(
           recoveryState.kind === 'recovery' ? recoveryState.message : 'Defina uma nova senha para concluir a recuperação da sua conta.'
         );
@@ -943,19 +982,8 @@ function App() {
         return;
       }
 
-      if (recoveryState.kind === 'recovery' && session?.user) {
-        const nextState = openRecoveryResetFlow(recoveryState.message);
-        setAuthMode(nextState.authMode);
-        setAuthPanelAberto(nextState.authPanelAberto);
-        setPassword(nextState.password);
-        setConfirmPassword(nextState.confirmPassword);
-        setAuthError(nextState.authError);
-        setAuthFeedback(nextState.authFeedback);
-        clearAuthReturnStateFromUrl();
-        return;
-      }
-
       if (recoveryState.kind === 'recovery_error') {
+        clearPasswordRecoveryIntent();
         const nextState = openRecoveryRequestFlow(recoveryState.message);
         setAuthMode(nextState.authMode);
         setAuthPanelAberto(nextState.authPanelAberto);
@@ -1738,6 +1766,11 @@ function App() {
   };
 
   const handleChangeAuthMode = (nextMode) => {
+    if (nextMode !== 'resetPassword') {
+      clearPasswordRecoveryIntent();
+      clearRecoveryRoute();
+    }
+
     setAuthMode(nextMode);
     if (nextMode !== 'forgotPassword') {
       setPassword('');
@@ -1925,6 +1958,8 @@ function App() {
     setPassword('');
     setConfirmPassword('');
     setAuthFeedback('Senha atualizada com sucesso. Você já pode continuar usando sua conta normalmente.');
+    clearPasswordRecoveryIntent();
+    clearRecoveryRoute();
     setLoadingAuth(false);
 
     window.setTimeout(() => {
@@ -1937,6 +1972,8 @@ function App() {
   const handleSair = async () => {
     setLoadingUser(true);
     await supabase.auth.signOut();
+    clearPasswordRecoveryIntent();
+    clearRecoveryRoute();
     trackingSessionIdRef.current = null;
     trackedEventsRef.current.clear();
     resetAuthFormState();

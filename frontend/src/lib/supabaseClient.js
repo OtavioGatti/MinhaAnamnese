@@ -3,6 +3,34 @@ import { createClient } from '@supabase/supabase-js';
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 const isSupabaseConfigured = Boolean(supabaseUrl && supabaseAnonKey);
+const PASSWORD_RECOVERY_PATH = '/redefinir-senha';
+const PASSWORD_RECOVERY_INTENT_KEY = 'minha-anamnese-password-recovery-intent';
+
+function rememberPasswordRecoveryIntentFromUrl() {
+  if (typeof window === 'undefined') {
+    return;
+  }
+
+  try {
+    const path = window.location.pathname.replace(/\/+$/, '') || '/';
+    const hashParams = new URLSearchParams(window.location.hash.replace(/^#/, ''));
+    const searchParams = new URLSearchParams(window.location.search);
+    const authFlow = hashParams.get('auth') || searchParams.get('auth') || '';
+    const type = hashParams.get('type') || searchParams.get('type') || '';
+    const hasRecoverySignal =
+      path === PASSWORD_RECOVERY_PATH ||
+      authFlow === 'recovery' ||
+      type === 'recovery';
+
+    if (hasRecoverySignal) {
+      window.sessionStorage.setItem(PASSWORD_RECOVERY_INTENT_KEY, '1');
+    }
+  } catch {
+    // Ignore storage access errors; the app can still rely on Supabase events.
+  }
+}
+
+rememberPasswordRecoveryIntentFromUrl();
 
 function createFallbackSupabaseClient() {
   const unsupportedError = {
