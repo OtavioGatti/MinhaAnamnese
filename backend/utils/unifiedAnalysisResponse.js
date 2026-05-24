@@ -81,7 +81,7 @@ const ACUTE_PRIORITY_SECTION_GROUPS = [
     key: 'objectiveExam',
     priority: 0,
     patterns: [
-      /exame\s+fisico/i,
+      /exame[_\s]+fisico/i,
       /sinais\s+vitais/i,
       /\bpa\b/i,
       /\bfc\b/i,
@@ -181,7 +181,7 @@ const SECTION_EVIDENCE_RULES = [
       /\becg\b/i,
       /bilirrubinas?/i,
       /provas?\s+de\s+funcao\s+hepatica/i,
-      /solicitad[oa]s?/i,
+      /solicitad[oa]s?\s+(?:radiografia|hemograma|exames?|gasometria|tomografia|ultrassom|usg|ecg|funcao\s+renal|eletrolitos)/i,
     ],
   },
   {
@@ -192,14 +192,12 @@ const SECTION_EVIDENCE_RULES = [
       /\bhf\b/i,
     ],
     evidencePatterns: [
-      /historia\s+familiar/i,
-      /\bpai\b/i,
-      /\bmae\b/i,
+      /historia\s+familiar\s*:\s*(?!\[?nao\s+relatado\]?)(?!\[?não\s+relatado\]?)[^.\n]+/i,
+      /\bpai\b[^.\n]*(?:hipertens|infarto|diabetes|avc|neoplasia|falec)/i,
+      /\bmae\b[^.\n]*(?:hipertens|infarto|diabetes|avc|neoplasia|falec)/i,
       /irmaos?/i,
       /familiares?/i,
-      /infarto/i,
-      /diabetes/i,
-      /hipertens/i,
+      /familiar[^.\n]*(?:infarto|diabetes|hipertens|avc|neoplasia)/i,
       /tromboembolismo/i,
       /neoplasia/i,
       /sem\s+historia\s+familiar/i,
@@ -216,6 +214,7 @@ const SECTION_EVIDENCE_RULES = [
       /etilismo/i,
     ],
     evidencePatterns: [
+      /habitos?\s+de\s+vida\s*:\s*(?!\[?nao\s+relatado\]?)(?!\[?não\s+relatado\]?)[^.\n]+/i,
       /tabagista/i,
       /ex-tabagista/i,
       /anos-maco/i,
@@ -241,8 +240,8 @@ const SECTION_EVIDENCE_RULES = [
       /remedios?/i,
     ],
     evidencePatterns: [
-      /medicacoes?\s+em\s+uso/i,
-      /uso\s+continuo/i,
+      /medicacoes?\s+em\s+uso[^:\n]*:\s*(?!\[?nao\s+relatado\]?)(?!\[?não\s+relatado\]?)[^.\n]+/i,
+      /uso\s+continuo[^:\n]*:\s*(?!\[?nao\s+relatado\]?)(?!\[?não\s+relatado\]?)[^.\n]+/i,
       /losartana/i,
       /sinvastatina/i,
       /formoterol/i,
@@ -262,12 +261,12 @@ const SECTION_EVIDENCE_RULES = [
     key: 'physicalExam',
     targetStatus: 'present',
     sectionPatterns: [
-      /exame\s+fisico/i,
+      /exame[_\s]+fisico/i,
       /sinais\s+vitais/i,
     ],
     evidencePatterns: [
-      /ao\s+exame/i,
-      /exame\s+fisico/i,
+      /ao\s+exame[^.\n]*(?:pa|fc|fr|spo2|saturacao|ausculta|abdome|murphy|crepitacoes|murmurio|taquipneic)/i,
+      /exame\s+fisico\s*:\s*(?!\[?nao\s+relatado\]?)(?!\[?não\s+relatado\]?)[^.\n]+/i,
       /\bpa\b/i,
       /\bfc\b/i,
       /\bfr\b/i,
@@ -471,6 +470,7 @@ function applySectionEvidenceGuards(sections, contextText) {
     };
   }
 
+  const evidenceText = stripMissingPlaceholders(contextText);
   const adjustments = [];
   const nextSections = sections.map((section) => {
     if (!sectionNeedsAttention(section)) {
@@ -482,7 +482,7 @@ function applySectionEvidenceGuards(sections, contextText) {
         continue;
       }
 
-      if (!textMatchesAny(contextText, rule.evidencePatterns)) {
+      if (!textMatchesAny(evidenceText, rule.evidencePatterns)) {
         continue;
       }
 
@@ -512,6 +512,122 @@ function applySectionEvidenceGuards(sections, contextText) {
     }
 
     return section;
+  });
+
+  return {
+    sections: nextSections,
+    adjustments,
+  };
+}
+
+const HMA_DETAIL_PATTERNS = [
+  /\bha\s+(?:cerca\s+de\s+)?\d+/i,
+  /\bultim[ao]s?\s+\d+/i,
+  /\bin[ií]cio\b|\biniciou\b|\bdesde\b/i,
+  /\bevolu[cç][aã]o\b|\bpiora\b|\bprogressiv/i,
+  /\bintensidade\b|\bcar[aá]ter\b|\birradia/i,
+  /\bacompanhad[ao]\b|\bassociad[ao]\b/i,
+  /\bnega\b|\bsem\s+sinais\b/i,
+  /\btosse\b|\bfebre\b|\bn[aá]usea\b|\bv[oô]mit/i,
+  /\bdor\b|\bdispneia\b|\bsudorese\b/i,
+  /\brepouso\b|\besfor[cç]o\b|\bap[oó]s\b|\brefei[cç][aã]o\b/i,
+];
+
+function countTextMatches(value, patterns) {
+  const normalized = normalizeForSearch(value);
+
+  return patterns.reduce((count, pattern) => count + (pattern.test(normalized) ? 1 : 0), 0);
+}
+
+function hasDetailedHmaContext(contextText) {
+  const documentedText = stripMissingPlaceholders(contextText);
+
+  if (documentedText.length < 260) {
+    return false;
+  }
+
+  return countTextMatches(documentedText, HMA_DETAIL_PATTERNS) >= 4;
+}
+
+function getSectionQualityDowngrade(section, contextText = '') {
+  if (section?.status !== 'present') {
+    return null;
+  }
+
+  const id = normalizeForSearch(section.id);
+  const label = normalizeForSearch(section.label);
+  const evidence = normalizeText(section.evidence);
+  const evidenceSearch = normalizeForSearch(evidence);
+
+  if ((id.includes('identificacao') || label.includes('identificacao')) && evidence.length < 35) {
+    return {
+      status: 'partial',
+      reason: 'insufficient_identification_detail',
+      issue: 'Identificação incompleta.',
+      recommendation: 'Inclua sexo, idade e dados contextuais relevantes quando disponíveis.',
+    };
+  }
+
+  if (
+    (id === 'hma' || label.includes('historia da molestia') || label.includes('historia da doenca')) &&
+    evidence.length < 120 &&
+    !hasDetailedHmaContext(contextText)
+  ) {
+    return {
+      status: 'partial',
+      reason: 'insufficient_hma_detail',
+      issue: 'História da moléstia atual pouco detalhada.',
+      recommendation: 'Detalhe início, duração, evolução, intensidade, fatores associados, sinais de alarme e resposta a medidas iniciais.',
+    };
+  }
+
+  if ((id.includes('medic') || label.includes('medic')) && !/\b\d/.test(evidence) && evidence.length < 70) {
+    return {
+      status: 'partial',
+      reason: 'insufficient_medication_detail',
+      issue: 'Medicações citadas sem dose, frequência ou contexto de uso.',
+      recommendation: 'Inclua dose, frequência, adesão e uso recente de medicamentos relevantes.',
+    };
+  }
+
+  if ((id.includes('queixa') || label.includes('queixa principal')) && evidenceSearch.split(/\s+/).filter(Boolean).length <= 2) {
+    return {
+      status: 'partial',
+      reason: 'brief_chief_complaint',
+      issue: 'Queixa principal muito breve.',
+      recommendation: 'Inclua queixa principal com tempo de evolução ou contexto mínimo.',
+    };
+  }
+
+  return null;
+}
+
+function applySectionQualityGuards(sections, contextText = '') {
+  const adjustments = [];
+  const nextSections = sections.map((section) => {
+    const downgrade = getSectionQualityDowngrade(section, contextText);
+
+    if (!downgrade) {
+      return section;
+    }
+
+    const nextScore = getStatusScore(downgrade.status, section.maxScore);
+
+    adjustments.push({
+      sectionId: section.id,
+      sectionLabel: section.label,
+      fromStatus: section.status,
+      toStatus: downgrade.status,
+      reason: downgrade.reason,
+    });
+
+    return {
+      ...section,
+      status: downgrade.status,
+      score: nextScore === null ? section.score : nextScore,
+      issue: section.issue || downgrade.issue,
+      recommendation: section.recommendation || downgrade.recommendation,
+    };
   });
 
   return {
@@ -568,6 +684,14 @@ function textMatchesAny(value, patterns) {
   const normalized = normalizeForSearch(value);
 
   return patterns.some((pattern) => pattern.test(normalized));
+}
+
+function stripMissingPlaceholders(value) {
+  return normalizeText(value)
+    .replace(/\[[^\]]*(?:nao|não)\s+relatado[^\]]*\]/gi, ' ')
+    .replace(/(?:hist[oó]ria familiar|h[aá]bitos de vida|exames complementares|exame f[ií]sico)\s*:\s*(?:n[aã]o relatado|não informado)/gi, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
 }
 
 function detectAcuteContext(contextText) {
@@ -724,8 +848,10 @@ function prioritizeCriticalInsight({ criticalInsight, justification, sections, c
 
   const insightHasLowPriority = textMatchesAny(criticalInsight, LOW_PRIORITY_ACUTE_PATTERNS);
   const insightHasHighPriority = textMatchesAny(criticalInsight, HIGH_PRIORITY_INSIGHT_PATTERNS);
+  const insightPriorityGroup = findTextPriorityGroup(criticalInsight);
+  const candidateHasHigherPriority = insightPriorityGroup && candidate.priority < insightPriorityGroup.priority;
 
-  if (!insightHasLowPriority && insightHasHighPriority) {
+  if (!insightHasLowPriority && insightHasHighPriority && !candidateHasHigherPriority) {
     return {
       criticalInsight,
       justification,
@@ -847,7 +973,7 @@ function removeResolvedOtherGaps(otherGaps, sectionEvidenceAdjustments) {
 
 function findObjectiveExamSection(sections) {
   return sections.find((section) => sectionLooksLike(section, [
-    /exame\s+fisico/i,
+    /exame[_\s]+fisico/i,
     /sinais\s+vitais/i,
     /\bpa\b/i,
     /\bfc\b/i,
@@ -893,6 +1019,7 @@ function detectObjectiveExamEvidence(contextText) {
 function getScoreCap({ sections, contextText }) {
   const counts = getSectionStatusCounts(sections);
   const hasEmergencyRisk = detectEmergencyRisk(contextText);
+  const documentedTextLength = stripMissingPlaceholders(contextText).length;
   const hasObjectiveExamEvidence = detectObjectiveExamEvidence(contextText);
   const objectiveExamSection = findObjectiveExamSection(sections);
   const objectiveExamMissing = objectiveExamSection?.status === 'missing' || (
@@ -904,6 +1031,26 @@ function getScoreCap({ sections, contextText }) {
 
   if (hasEmergencyRisk && objectiveExamMissing) {
     caps.push(68);
+  }
+
+  if (documentedTextLength < 450 && counts.missing >= 3) {
+    caps.push(55);
+  }
+
+  if (documentedTextLength < 300 && counts.missing >= 2) {
+    caps.push(50);
+  }
+
+  if (hasEmergencyRisk && counts.missing >= 4) {
+    caps.push(54);
+  }
+
+  if (hasEmergencyRisk && counts.missing >= 3) {
+    caps.push(60);
+  }
+
+  if (hasEmergencyRisk && counts.missing >= 2) {
+    caps.push(64);
   }
 
   if (counts.missing >= 2) {
@@ -983,7 +1130,8 @@ function normalizeUnifiedAnalysisPayload(payload, context = {}) {
     context.structuredText,
   ].filter(Boolean).join('\n');
   const sectionEvidenceGuard = applySectionEvidenceGuards(rawSections, contextText);
-  const sections = sectionEvidenceGuard.sections;
+  const sectionQualityGuard = applySectionQualityGuards(sectionEvidenceGuard.sections, contextText);
+  const sections = sectionQualityGuard.sections;
   const recalibrated = recalibrateScore({
     score,
     sections,
@@ -1039,6 +1187,8 @@ function normalizeUnifiedAnalysisPayload(payload, context = {}) {
       priorityInsightAdjusted: prioritized.adjusted,
       sectionEvidenceAdjusted: sectionEvidenceGuard.adjustments.length > 0,
       sectionEvidenceAdjustments: sectionEvidenceGuard.adjustments,
+      sectionQualityAdjusted: sectionQualityGuard.adjustments.length > 0,
+      sectionQualityAdjustments: sectionQualityGuard.adjustments,
     },
   };
 }
