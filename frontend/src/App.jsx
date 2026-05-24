@@ -31,6 +31,7 @@ const COOKIE_CONSENT_KEY = 'minha-anamnese-cookie-consent';
 const AFFILIATE_REFERRAL_KEY = 'minha-anamnese-affiliate-ref';
 const PASSWORD_RECOVERY_PATH = '/redefinir-senha';
 const PASSWORD_RECOVERY_INTENT_KEY = 'minha-anamnese-password-recovery-intent';
+const PRODUCTION_APP_ORIGIN = 'https://www.minhaanamnese.com.br';
 const LEGAL_DOCUMENT_VERSION = '2026-05-22';
 const DEBUG_MODE = false;
 const TRIAL_DAYS_COPY = '3 dias';
@@ -763,7 +764,9 @@ function hasPasswordRecoveryIntent() {
 }
 
 function getRecoveryRedirectUrl() {
-  const url = new URL(PASSWORD_RECOVERY_PATH, window.location.origin);
+  const isLocalhost = ['localhost', '127.0.0.1'].includes(window.location.hostname);
+  const origin = isLocalhost ? window.location.origin : PRODUCTION_APP_ORIGIN;
+  const url = new URL(PASSWORD_RECOVERY_PATH, origin);
   return url.toString();
 }
 
@@ -1303,7 +1306,7 @@ function App() {
   }, [user?.id, evolutionRefreshToken]);
 
   useEffect(() => {
-    if (user) {
+    if (user && authMode !== 'resetPassword') {
       setAuthPanelAberto(false);
       return;
     }
@@ -1311,7 +1314,7 @@ function App() {
     if (authError || authFeedback) {
       setAuthPanelAberto(true);
     }
-  }, [authError, authFeedback, user]);
+  }, [authError, authFeedback, authMode, user]);
 
   useEffect(() => {
     setCheckoutErrors({
