@@ -4,8 +4,6 @@ const {
   listPrescriptionGuides,
 } = require('../services/prescriptionGuides');
 const {
-  buildTrialLimitError,
-  ensureTrialFeatureAccess,
   recordTrialUsage,
 } = require('../services/trialUsage');
 const { resolveSupabaseUser } = require('../utils/supabaseAuth');
@@ -21,13 +19,10 @@ function getQueryParam(req, name) {
 
 function buildPaywallResponse(profile, reason = 'pro_required') {
   const accessState = profile?.access_state || null;
-  const isTrialLimit = reason === 'trial_limit_reached';
 
   return {
     success: false,
-    error: isTrialLimit
-      ? 'Você abriu os 5 guias de prescrição do teste profissional. Assine para continuar consultando protocolos.'
-      : 'O Guia de Prescrição está disponível no plano profissional.',
+    error: 'O Guia de Prescrição está disponível no plano profissional.',
     code: 'PRESCRIPTION_GUIDES_PRO_REQUIRED',
     data: {
       paywall: true,
@@ -65,22 +60,6 @@ module.exports = async function handler(req, res) {
     const slug = getQueryParam(req, 'slug');
 
     if (slug) {
-      const trialAccess = await ensureTrialFeatureAccess({
-        userId: auth.user.id,
-        profile,
-        feature: 'prescriptionGuides',
-        resourceKey: slug,
-      });
-
-      if (!trialAccess.allowed) {
-        const trialError = buildTrialLimitError('prescriptionGuides', trialAccess.usage);
-        const nextProfile = await ensureUserProfile(auth.user).catch(() => profile);
-
-        return res
-          .status(trialError.statusCode)
-          .json(buildPaywallResponse(nextProfile, 'trial_limit_reached'));
-      }
-
       const guide = await getPrescriptionGuideBySlug(slug);
 
       if (!guide) {

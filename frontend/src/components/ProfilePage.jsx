@@ -97,7 +97,7 @@ function getPlanDescription(accessState) {
 
   if (accessState?.isTrialAccess) {
     const days = accessState.trialDaysRemaining || 1;
-    return `Você está testando os recursos profissionais por mais ${days} ${days === 1 ? 'dia' : 'dias'}. Ao final, sua conta volta ao básico.`;
+    return `Você está com acesso completo aos recursos profissionais por mais ${days} ${days === 1 ? 'dia' : 'dias'}. Ao final, sua conta volta ao básico.`;
   }
 
   if (accessState?.hasActiveProAccess) {
@@ -119,28 +119,10 @@ function getPlanDescription(accessState) {
   return `A organização básica continua liberada. Assine a partir de ${PRO_PLAN_PRICE_COPY} ${PRO_PLAN_PERIOD_COPY} para usar IA, encaminhamentos, guias e templates próprios.`;
 }
 
-function getTrialUsageRows(trialUsage) {
-  if (!trialUsage?.limits || !trialUsage?.remaining) {
-    return [];
-  }
-
-  return [
-    ['Avaliações completas', 'insights'],
-    ['Encaminhamentos', 'referralLetters'],
-    ['Guias de prescrição', 'prescriptionGuides'],
-    ['Templates próprios', 'userTemplates'],
-  ].map(([label, key]) => ({
-    label,
-    remaining: trialUsage.remaining[key] ?? 0,
-    limit: trialUsage.limits[key] ?? 0,
-  }));
-}
-
 function ProfilePage({
   user,
   profile,
   accessState,
-  trialUsage,
   selectedTemplateName,
   activeSidebarTab,
   onUpgrade,
@@ -183,7 +165,6 @@ function ProfilePage({
   const profileEmail = profile?.email || user.email || 'Não informado';
   const planSummary = getPlanSummary(accessState);
   const showExpiringSoon = accessState?.hasActiveProAccess && isPlanExpiringSoon(accessState?.planExpiresAt);
-  const trialRows = accessState?.isTrialAccess ? getTrialUsageRows(trialUsage || profile?.trial_usage) : [];
   const shouldShowUpgradeAction =
     (!accessState?.hasActiveProAccess || accessState?.isTrialAccess) && !accessState?.isAffiliate;
 
@@ -232,10 +213,10 @@ function ProfilePage({
               ) : null}
               <strong>{planSummary}</strong>
               <p>{getPlanDescription(accessState)}</p>
-              {trialRows.length ? (
+              {accessState?.isTrialAccess ? (
                 <div className="profile-plan-note">
-                  <span>{'Uso do teste'}</span>
-                  <strong>{trialRows.map((row) => `${row.remaining}/${row.limit} ${row.label}`).join(' | ')}</strong>
+                  <span>{'Teste profissional'}</span>
+                  <strong>{'Acesso completo liberado durante o período gratuito.'}</strong>
                 </div>
               ) : null}
             </div>

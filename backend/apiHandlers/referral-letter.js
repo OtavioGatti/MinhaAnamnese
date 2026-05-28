@@ -1,8 +1,6 @@
 const { generateReferralLetter, validateReferralLetterInput } = require('../services/referralLetters');
 const { ensureUserProfile } = require('../services/profiles');
 const {
-  buildTrialLimitError,
-  ensureTrialFeatureAccess,
   recordTrialUsage,
 } = require('../services/trialUsage');
 const { consumeRateLimit, sendRateLimitResponse } = require('../utils/rateLimit');
@@ -17,13 +15,10 @@ const REFERRAL_LETTER_RATE_LIMIT = {
 function buildPaywallResponse(profile, reason) {
   const accessState = profile?.access_state || null;
   const isExpired = accessState?.billingStatus === 'expired';
-  const isTrialLimit = reason === 'trial_limit_reached';
 
   return {
     success: false,
-    error: isTrialLimit
-      ? 'Você usou os 5 encaminhamentos do teste profissional. Assine para continuar gerando cartas.'
-      : isExpired
+    error: isExpired
         ? 'Seu acesso profissional expirou. Reative o plano para gerar cartas de encaminhamento.'
         : 'Cartas de encaminhamento com IA fazem parte do plano profissional.',
     code: 'REFERRAL_LETTER_PRO_REQUIRED',
@@ -94,21 +89,6 @@ module.exports = async function handler(req, res) {
       return res
         .status(402)
         .json(buildPaywallResponse(profile, accessState?.billingStatus === 'expired' ? 'expired' : 'pro_required'));
-    }
-
-    const trialAccess = await ensureTrialFeatureAccess({
-      userId: auth.user.id,
-      profile,
-      feature: 'referralLetters',
-    });
-
-    if (!trialAccess.allowed) {
-      const trialError = buildTrialLimitError('referralLetters', trialAccess.usage);
-      const nextProfile = await ensureUserProfile(auth.user).catch(() => profile);
-
-      return res
-        .status(trialError.statusCode)
-        .json(buildPaywallResponse(nextProfile, 'trial_limit_reached'));
     }
 
     const data = await generateReferralLetter({

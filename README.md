@@ -113,11 +113,7 @@ CLINICAL_DRUGS_SYNC_SECRET=
 ADMIN_SYNC_SECRET=
 NOTION_WEBHOOK_VERIFICATION_TOKEN=
 
-PRO_TRIAL_DAYS=3
-TRIAL_INSIGHTS_LIMIT=5
-TRIAL_REFERRAL_LETTERS_LIMIT=5
-TRIAL_PRESCRIPTION_GUIDES_LIMIT=5
-TRIAL_USER_TEMPLATES_LIMIT=2
+PRO_TRIAL_DAYS=7
 ```
 
 `ANALYSIS_ENGINE` controla o motor da avaliação estrutural: use `unified_ai` para a análise única por IA ou `legacy` para voltar ao score determinístico anterior com interpretação por IA.
@@ -198,7 +194,7 @@ Os arquivos SQL ficam em `supabase/` e devem ser aplicados manualmente no SQL Ed
 
 - `profiles`: perfil, plano, trial, onboarding e preferências.
 - `anamneses`: histórico e métricas de análises.
-- `usage_logs`: controle de uso e limites.
+- `usage_logs`: auditoria e telemetria de uso do trial.
 - `official_templates`: templates oficiais sincronizados do Notion.
 - `user_templates`: templates criados pelo usuário.
 - `official_prompts`: prompts oficiais sincronizados do Notion.
@@ -216,7 +212,7 @@ Os arquivos SQL ficam em `supabase/` e devem ser aplicados manualmente no SQL Ed
 - Prompts oficiais por categoria: `backend/services/officialPrompts.js`
 - Guias de prescrição: `backend/services/prescriptionGuides.js`
 - Bulário clínico: `backend/services/clinicalDrugs.js`
-- Controle de acesso/trial: `backend/services/accessState.js` e `backend/services/trialUsage.js`
+- Controle de acesso/trial: `backend/services/accessState.js`; telemetria do trial: `backend/services/trialUsage.js`
 
 ## Boas Práticas do Projeto
 

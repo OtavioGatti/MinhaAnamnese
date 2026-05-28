@@ -9,8 +9,6 @@ const {
 } = require('../services/userTemplates');
 const { ensureUserProfile } = require('../services/profiles');
 const {
-  buildTrialLimitError,
-  ensureTrialFeatureAccess,
   recordTrialUsage,
 } = require('../services/trialUsage');
 const {
@@ -106,29 +104,6 @@ module.exports = async function handler(req, res) {
 
       if (!access) {
         return null;
-      }
-
-      const trialAccess = await ensureTrialFeatureAccess({
-        userId: access.user.id,
-        profile: access.profile,
-        feature: 'userTemplates',
-      });
-
-      if (!trialAccess.allowed) {
-        const trialError = buildTrialLimitError('userTemplates', trialAccess.usage);
-        const nextProfile = await ensureUserProfile(access.user).catch(() => access.profile);
-
-        return res.status(trialError.statusCode).json({
-          success: false,
-          error: 'Você já criou 2 templates durante o teste profissional. Assine para criar mais templates.',
-          code: 'TEMPLATES_TRIAL_LIMIT_REACHED',
-          data: {
-            paywall: true,
-            reason: 'trial_limit_reached',
-            profile: nextProfile,
-            accessState: nextProfile?.access_state || null,
-          },
-        });
       }
 
       const template = await createUserTemplate(access.user.id, req.body);

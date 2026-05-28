@@ -9,7 +9,7 @@ const {
 const { getTrialUsageSummary } = require('./trialUsage');
 
 const ALLOWED_CONTEXTUAL_TABS = new Set(['guide', 'checklist', 'calculator', 'structure']);
-const DEFAULT_TRIAL_DAYS = 3;
+const DEFAULT_TRIAL_DAYS = 7;
 const DEFAULT_TRIAL_ROLLOUT_AT = '2026-05-14T00:00:00.000Z';
 const OPTIONAL_COMPLIANCE_COLUMNS = [
   'terms_accepted_at',

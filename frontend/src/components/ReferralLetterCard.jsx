@@ -1,17 +1,9 @@
-function getReferralAccessCopy({ user, accessState, remainingTrialUses }) {
+function getReferralAccessCopy({ user, accessState }) {
   if (!user?.id) {
     return {
       title: 'Entre para gerar encaminhamentos',
-      description: 'Crie uma conta para iniciar o teste profissional e experimentar cartas de encaminhamento com IA.',
+      description: 'Crie uma conta para iniciar o teste profissional completo e experimentar cartas de encaminhamento com IA.',
       buttonLabel: 'Entrar',
-    };
-  }
-
-  if (accessState?.isTrialAccess && remainingTrialUses === 0) {
-    return {
-      title: 'Limite do teste atingido',
-      description: 'Você usou os 5 encaminhamentos do teste profissional. Assine para continuar gerando cartas.',
-      buttonLabel: 'Assinar Pro',
     };
   }
 
@@ -36,8 +28,6 @@ function ReferralLetterCard({
   copied,
   user,
   accessState,
-  remainingTrialUses,
-  trialLimit,
   loadingCheckout,
   onSpecialtyChange,
   onReasonChange,
@@ -46,12 +36,8 @@ function ReferralLetterCard({
   onRequestUpgrade,
   onDismissError,
 }) {
-  const accessCopy = getReferralAccessCopy({ user, accessState, remainingTrialUses });
+  const accessCopy = getReferralAccessCopy({ user, accessState });
   const shouldUseUpgradeAction = Boolean(accessCopy);
-  const trialCounter = accessState?.isTrialAccess && typeof remainingTrialUses === 'number' && typeof trialLimit === 'number'
-    ? `${remainingTrialUses}/${trialLimit} encaminhamentos do teste`
-    : '';
-
   return (
     <section className="card referral-letter-card section-referral workspace-panel">
       <div className="card-header card-header-with-copy referral-letter-header">
@@ -69,10 +55,6 @@ function ReferralLetterCard({
           </p>
         </div>
       </div>
-
-      {trialCounter ? (
-        <div className="referral-helper">{trialCounter}</div>
-      ) : null}
 
       <div className="referral-letter-grid">
         <div className="form-group referral-field">

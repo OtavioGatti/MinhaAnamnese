@@ -99,7 +99,7 @@ function PlanComparisonModal({
           </div>
 
           <div className="plan-comparison-highlight">
-            O Profissional libera avaliações completas, encaminhamentos, prescrições, bulário e templates próprios sem os limites do teste.
+            O teste profissional libera avaliações completas, encaminhamentos, prescrições, bulário e templates próprios por 7 dias.
           </div>
 
         </div>

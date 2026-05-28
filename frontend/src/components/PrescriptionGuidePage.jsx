@@ -710,7 +710,6 @@ function PrescriptionGuidePage({
   user,
   isPro,
   accessState,
-  trialUsage,
   onLogin,
   onProfileUpdate,
   onRequestUpgrade,
@@ -835,14 +834,6 @@ function PrescriptionGuidePage({
     }));
   }
 
-  const trialRemaining = trialUsage?.remaining?.prescriptionGuides;
-  const trialLimit = trialUsage?.limits?.prescriptionGuides;
-  const trialCounter = accessState?.isTrialAccess &&
-    typeof trialRemaining === 'number' &&
-    typeof trialLimit === 'number'
-    ? `${trialRemaining}/${trialLimit} guias do teste`
-    : '';
-
   if (!user?.id) {
     return (
       <main className="prescription-guide-page">
@@ -885,12 +876,6 @@ function PrescriptionGuidePage({
         <div>
           <span className="workspace-kicker">Guia de Prescrição</span>
           <h1>Protocolos por patologia</h1>
-          {trialCounter ? <p className="protocol-copy-hint">{trialCounter}. A lista não consome limite; o uso conta quando você abre um protocolo.</p> : null}
-          {accessState?.isTrialAccess && trialRemaining === 0 ? (
-            <button type="button" className="btn btn-primario prescription-access-action" onClick={onRequestUpgrade} disabled={loadingCheckout}>
-              {loadingCheckout ? 'Abrindo checkout...' : 'Assinar Pro'}
-            </button>
-          ) : null}
           <p>Busque uma condição clínica e copie a prescrição, conduta ou orientação pronta para uso.</p>
         </div>
       </section>

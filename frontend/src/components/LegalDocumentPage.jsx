@@ -23,7 +23,7 @@ const TERMS_SECTIONS = [
     title: '3. Planos, Assinaturas e Pagamentos',
     paragraphs: [
       'O Minha Anamnese oferece um período de trial (teste) e um plano profissional.',
-      'Durante o trial, aplicam-se limites de uso para geração de insights, cartas de encaminhamento, guias de prescrição e templates de usuário.',
+      'Durante o trial, o acesso aos recursos profissionais é liberado pelo período promocional vigente, sujeito apenas a limites técnicos de segurança, estabilidade e disponibilidade.',
       'O processamento de pagamentos para a liberação do plano profissional e o checkout são realizados de forma segura pela integração com o Mercado Pago.',
       'Em caso de cancelamento da assinatura, o acesso às funcionalidades premium será suspenso ao final do ciclo de faturamento vigente.',
     ],

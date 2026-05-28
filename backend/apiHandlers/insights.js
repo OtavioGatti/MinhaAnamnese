@@ -1,8 +1,6 @@
 const { generateInsights, validateGenerateInsightsInput } = require('../services/generateInsights');
 const { ensureUserProfile } = require('../services/profiles');
 const {
-  buildTrialLimitError,
-  ensureTrialFeatureAccess,
   recordTrialUsage,
 } = require('../services/trialUsage');
 const { consumeRateLimit, sendRateLimitResponse } = require('../utils/rateLimit');
@@ -17,13 +15,10 @@ const INSIGHTS_RATE_LIMIT = {
 function buildPaywallResponse(profile, reason) {
   const accessState = profile?.access_state || null;
   const isExpired = accessState?.billingStatus === 'expired';
-  const isTrialLimit = reason === 'trial_limit_reached';
 
   return {
     success: false,
-    error: isTrialLimit
-      ? 'Você usou as 5 avaliações completas do teste profissional. Assine para continuar avaliando anamneses.'
-      : isExpired
+    error: isExpired
         ? 'Seu acesso profissional expirou. Reative o plano para continuar vendo a análise completa.'
         : 'Seu resultado estruturado já está pronto. Assine o plano profissional para ver lacunas, impacto e próximo passo clínico.',
     code: 'INSIGHTS_PAYWALL',
@@ -94,21 +89,6 @@ module.exports = async function handler(req, res) {
       return res
         .status(402)
         .json(buildPaywallResponse(profile, accessState?.billingStatus === 'expired' ? 'expired' : 'pro_required'));
-    }
-
-    const trialAccess = await ensureTrialFeatureAccess({
-      userId: auth.user.id,
-      profile,
-      feature: 'insights',
-    });
-
-    if (!trialAccess.allowed) {
-      const trialError = buildTrialLimitError('insights', trialAccess.usage);
-      const nextProfile = await ensureUserProfile(auth.user).catch(() => profile);
-
-      return res
-        .status(trialError.statusCode)
-        .json(buildPaywallResponse(nextProfile, 'trial_limit_reached'));
     }
 
     const data = await generateInsights({

@@ -34,7 +34,7 @@ const PASSWORD_RECOVERY_INTENT_KEY = 'minha-anamnese-password-recovery-intent';
 const PRODUCTION_APP_ORIGIN = 'https://www.minhaanamnese.com.br';
 const LEGAL_DOCUMENT_VERSION = '2026-05-22';
 const DEBUG_MODE = false;
-const TRIAL_DAYS_COPY = '3 dias';
+const TRIAL_DAYS_COPY = '7 dias';
 const DEFAULT_TEXT_PLACEHOLDER =
   'Ex: Paciente feminina, 32 anos, com dor abdominal há 2 dias, associada a náuseas, sem vômitos...';
 const TEMPLATE_TEXT_PLACEHOLDERS = {
@@ -413,7 +413,7 @@ function getPaywallUiConfig(user, accessState) {
     return {
       title: 'Crie sua conta para testar o Profissional',
       description:
-        `Seu resultado estruturado já está pronto. Entre para iniciar ${TRIAL_DAYS_COPY} de teste profissional com avaliações, encaminhamentos e guias.`,
+        `Seu resultado estruturado já está pronto. Entre para iniciar ${TRIAL_DAYS_COPY} de teste profissional completo, sem limites comerciais de uso.`,
       buttonLabel: 'Entrar para testar',
       highlights: ['Avaliação completa', 'Encaminhamentos com IA', 'Guias de prescrição'],
     };
@@ -423,7 +423,7 @@ function getPaywallUiConfig(user, accessState) {
     if (accessState?.isTrialAccess) {
       return {
         title: 'Teste profissional ativo',
-        description: `Você está testando o Profissional por ${TRIAL_DAYS_COPY}. Use suas avaliações do teste para ver lacunas, impacto e próximo passo clínico.`,
+        description: `Você está testando o Profissional por ${TRIAL_DAYS_COPY}, com acesso completo durante o período gratuito.`,
         buttonLabel: 'Gerar análise do teste',
         highlights: ['Avaliação completa', 'Encaminhamentos com IA', 'Guias e templates Pro'],
       };
@@ -471,35 +471,6 @@ function isPlanExpiringSoon(value, thresholdInDays = 5) {
   const diffDays = diffMs / 86400000;
 
   return diffDays > 0 && diffDays <= thresholdInDays;
-}
-
-function getTrialFeatureRemaining(profile, feature) {
-  const remaining = profile?.trial_usage?.remaining?.[feature];
-
-  if (typeof remaining !== 'number' || Number.isNaN(remaining)) {
-    return null;
-  }
-
-  return Math.max(0, remaining);
-}
-
-function getTrialFeatureLimit(profile, feature) {
-  const limit = profile?.trial_usage?.limits?.[feature];
-
-  if (typeof limit !== 'number' || Number.isNaN(limit)) {
-    return null;
-  }
-
-  return Math.max(0, limit);
-}
-
-function canUseTrialFeature(accessState, profile, feature) {
-  if (!accessState?.isTrialAccess) {
-    return true;
-  }
-
-  const remaining = getTrialFeatureRemaining(profile, feature);
-  return remaining == null || remaining > 0;
 }
 
 function getTodayUtcDate() {
@@ -867,7 +838,6 @@ function App() {
   const accessState = useMemo(() => deriveAccessState(user, profile), [profile, user]);
   const isPro = Boolean(accessState?.hasActiveProAccess);
   const isAffiliate = Boolean(accessState?.isAffiliate);
-  const trialUsage = profile?.trial_usage || null;
 
   useEffect(() => {
     const referralCode = getAffiliateReferralCodeFromUrl();
@@ -1521,7 +1491,7 @@ function App() {
       return;
     }
 
-    if (!accessState?.hasActiveProAccess || !canUseTrialFeature(accessState, profile, 'referralLetters')) {
+    if (!accessState?.hasActiveProAccess) {
       handleUpgradeInsights('referralLetter');
       return;
     }
@@ -1738,7 +1708,6 @@ function App() {
   const handleAnalysisAccessAction = async (origin = 'home') => {
     if (
       accessState?.hasActiveProAccess &&
-      canUseTrialFeature(accessState, profile, 'insights') &&
       resultado &&
       templateSelecionado
     ) {
@@ -2043,16 +2012,14 @@ function App() {
   const isReferralLetterCheckoutLoading = checkoutLoadingOrigin === 'referralLetter';
   const paywallUi = getPaywallUiConfig(user, accessState);
   const isProExpiringSoon = accessState?.hasActiveProAccess && isPlanExpiringSoon(accessState?.planExpiresAt);
-  const canUseInsightsNow = canUseTrialFeature(accessState, profile, 'insights');
   const canRequestInsights = Boolean(
     user &&
     accessState?.hasActiveProAccess &&
-    canUseInsightsNow &&
     resultado &&
     templateSelecionado
   );
   const shouldShowPaywall =
-    hasFinalInterpretation && (!accessState?.hasActiveProAccess || !canUseInsightsNow) && !currentInsightsUnlocked;
+    hasFinalInterpretation && !accessState?.hasActiveProAccess && !currentInsightsUnlocked;
   const analysisInputSection = qualityScore.justification;
   const summarizedScoreJustification = qualityScore.message;
   const insightPrincipalSection = qualityScore.criticalInsight;
@@ -2677,8 +2644,6 @@ function App() {
                 copied={referralCopied}
                 user={user}
                 accessState={accessState}
-                remainingTrialUses={getTrialFeatureRemaining(profile, 'referralLetters')}
-                trialLimit={getTrialFeatureLimit(profile, 'referralLetters')}
                 loadingCheckout={isReferralLetterCheckoutLoading}
                 onSpecialtyChange={handleReferralSpecialtyChange}
                 onReasonChange={handleReferralReasonChange}
@@ -2775,8 +2740,6 @@ function App() {
           onUseTemplate={handleUseTemplateFromLibrary}
           onTemplatesRefresh={carregarTemplates}
           isPro={isPro}
-          accessState={accessState}
-          trialUsage={trialUsage}
           loadingCheckout={checkoutLoadingOrigin === 'templates'}
           checkoutError={templatesCheckoutError}
           onProfileUpdate={setProfile}
@@ -2805,7 +2768,6 @@ function App() {
           user={user}
           isPro={isPro}
           accessState={accessState}
-          trialUsage={trialUsage}
           onLogin={() => {
             setAuthMode('login');
             setAuthError('');
@@ -2839,7 +2801,6 @@ function App() {
           user={user}
           profile={profile}
           accessState={accessState}
-          trialUsage={trialUsage}
           selectedTemplateName={templateAtual?.nome || profileTemplateAtual?.nome || ''}
           activeSidebarTab={profile?.default_contextual_tab || activeSidebarTab}
           onUpgrade={() => handleUpgradeInsights('profile')}

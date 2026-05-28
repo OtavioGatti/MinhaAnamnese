@@ -6,20 +6,9 @@ const TRIAL_USAGE_ACTIONS = {
   prescriptionGuides: 'trial_prescription_guide',
   userTemplates: 'trial_user_template',
 };
-
-const TRIAL_USAGE_LIMITS = {
-  insights: parseTrialLimit(process.env.TRIAL_INSIGHTS_LIMIT, 5),
-  referralLetters: parseTrialLimit(process.env.TRIAL_REFERRAL_LETTERS_LIMIT, 5),
-  prescriptionGuides: parseTrialLimit(process.env.TRIAL_PRESCRIPTION_GUIDES_LIMIT, 5),
-  userTemplates: parseTrialLimit(process.env.TRIAL_USER_TEMPLATES_LIMIT, 2),
-};
+const TRIAL_USAGE_FEATURES = Object.keys(TRIAL_USAGE_ACTIONS);
 
 const UNIQUE_RESOURCE_FEATURES = new Set(['prescriptionGuides']);
-
-function parseTrialLimit(value, fallback) {
-  const parsed = Number.parseInt(value, 10);
-  return Number.isFinite(parsed) && parsed >= 0 ? parsed : fallback;
-}
 
 function getTrialUsageConfig() {
   return {
@@ -112,7 +101,6 @@ function countUsageRows(feature, rows) {
 }
 
 async function getTrialFeatureUsage(userId, feature, resourceKey = null) {
-  const limit = TRIAL_USAGE_LIMITS[feature] ?? 0;
   const normalizedResourceKey = normalizeResourceKey(resourceKey);
   const rows = await listTrialUsageRows(userId, feature);
   const used = countUsageRows(feature, rows);
@@ -122,9 +110,7 @@ async function getTrialFeatureUsage(userId, feature, resourceKey = null) {
   );
 
   return {
-    limit,
     used,
-    remaining: Math.max(0, limit - used),
     hasResourceUsage,
   };
 }
@@ -132,70 +118,29 @@ async function getTrialFeatureUsage(userId, feature, resourceKey = null) {
 async function getTrialUsageSummary(userId) {
   if (!isValidUserId(userId) || !isTrialUsageStorageAvailable()) {
     return {
-      limits: { ...TRIAL_USAGE_LIMITS },
       used: {
         insights: 0,
         referralLetters: 0,
         prescriptionGuides: 0,
         userTemplates: 0,
       },
-      remaining: { ...TRIAL_USAGE_LIMITS },
     };
   }
 
   const entries = await Promise.all(
-    Object.keys(TRIAL_USAGE_LIMITS).map(async (feature) => {
+    TRIAL_USAGE_FEATURES.map(async (feature) => {
       const usage = await getTrialFeatureUsage(userId, feature);
       return [feature, usage];
     }),
   );
   const used = {};
-  const remaining = {};
 
   entries.forEach(([feature, usage]) => {
     used[feature] = usage.used;
-    remaining[feature] = usage.remaining;
   });
 
   return {
-    limits: { ...TRIAL_USAGE_LIMITS },
     used,
-    remaining,
-  };
-}
-
-async function ensureTrialFeatureAccess({ userId, profile, feature, resourceKey = null }) {
-  if (!profile?.access_state?.isTrialAccess) {
-    return {
-      allowed: true,
-      usage: null,
-    };
-  }
-
-  if (!isTrialUsageStorageAvailable()) {
-    return {
-      allowed: false,
-      usage: {
-        limit: TRIAL_USAGE_LIMITS[feature] ?? 0,
-        used: TRIAL_USAGE_LIMITS[feature] ?? 0,
-        remaining: 0,
-        hasResourceUsage: false,
-      },
-    };
-  }
-
-  const usage = await getTrialFeatureUsage(userId, feature, resourceKey);
-
-  if (usage.hasResourceUsage || usage.remaining > 0) {
-    return {
-      allowed: true,
-      usage,
-    };
-  }
-
-  return {
-    allowed: false,
-    usage,
   };
 }
 
@@ -236,25 +181,9 @@ async function recordTrialUsage({ userId, profile, feature, resourceKey = null, 
   });
 }
 
-function buildTrialLimitError(feature, usage = null) {
-  const limit = usage?.limit ?? TRIAL_USAGE_LIMITS[feature] ?? 0;
-  const error = new Error(`Limite do teste profissional atingido para este recurso.`);
-  error.statusCode = 402;
-  error.code = 'TRIAL_LIMIT_REACHED';
-  error.data = {
-    feature,
-    limit,
-    used: usage?.used ?? limit,
-    remaining: 0,
-  };
-  return error;
-}
-
 module.exports = {
-  buildTrialLimitError,
-  ensureTrialFeatureAccess,
   getTrialFeatureUsage,
   getTrialUsageSummary,
   recordTrialUsage,
-  TRIAL_USAGE_LIMITS,
+  TRIAL_USAGE_ACTIONS,
 };
