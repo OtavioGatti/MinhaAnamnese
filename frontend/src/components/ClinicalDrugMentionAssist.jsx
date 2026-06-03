@@ -85,6 +85,65 @@ function escapeRegExp(value) {
   return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
+const PHARMACEUTICAL_SUFFIX_WORDS = new Set([
+  'acido',
+  'acetato',
+  'anhidro',
+  'base',
+  'besilato',
+  'brometo',
+  'bromidrato',
+  'calcio',
+  'cloridrato',
+  'cloreto',
+  'de',
+  'di',
+  'dihidratado',
+  'dissodico',
+  'fosfato',
+  'hemihidratado',
+  'hidrobrometo',
+  'hidrocloreto',
+  'magnesio',
+  'maleato',
+  'mesilato',
+  'monoidratado',
+  'nitrato',
+  'potassico',
+  'sodico',
+  'succinato',
+  'sulfato',
+]);
+
+const INTERACTION_ALIAS_STOPWORDS = new Set([
+  'analgesico',
+  'analgesicos',
+  'analgesico opioide',
+  'anti inflamatorio',
+  'antiinflamatorio',
+  'antiinflamatorios',
+  'antibiotico',
+  'antibioticos',
+  'antidepressivo',
+  'antidepressivos',
+  'antitermico',
+  'antitermicos',
+  'antiviral',
+  'antivirais',
+  'capsula',
+  'comprimido',
+  'comprimidos',
+  'dor',
+  'fraco',
+  'generico',
+  'genericos',
+  'moderada',
+  'opioide',
+  'opioides',
+  'suspensao',
+  'xarope',
+]);
+
 function splitDrugAliasCandidates(value) {
   const text = normalizeDisplayText(value);
 
@@ -98,6 +157,20 @@ function splitDrugAliasCandidates(value) {
   ];
 }
 
+function getReducedDrugAlias(alias) {
+  const parts = normalizeSearchText(alias)
+    .split(' ')
+    .filter((part) => part && !PHARMACEUTICAL_SUFFIX_WORDS.has(part));
+
+  return parts.join(' ').trim();
+}
+
+function isUsefulInteractionAlias(alias) {
+  return alias.length >= 3 &&
+    /[a-z]/.test(alias) &&
+    !INTERACTION_ALIAS_STOPWORDS.has(alias);
+}
+
 function getDrugInteractionAliases(drug, slug = '') {
   const aliases = [
     slug,
@@ -109,10 +182,22 @@ function getDrugInteractionAliases(drug, slug = '') {
     drug?.commercialNamesOpenai,
   ]
     .flatMap(splitDrugAliasCandidates)
-    .map(normalizeSearchText)
-    .filter((alias) => alias.length >= 3 && /[a-z]/.test(alias));
+    .flatMap((alias) => [
+      normalizeSearchText(alias),
+      getReducedDrugAlias(alias),
+    ])
+    .filter(isUsefulInteractionAlias);
 
   return Array.from(new Set(aliases));
+}
+
+function normalizeSlug(value) {
+  return normalizeDisplayText(value)
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
 }
 
 function interactionTextMentionsDrug(interactionText, aliases) {
@@ -130,6 +215,103 @@ function interactionTextMentionsDrug(interactionText, aliases) {
 
 function getReadyDrugMentions(detectedMentions) {
   return detectedMentions.filter(({ drug, status }) => status === 'ready' && drug);
+}
+
+function getDrugStructuredInteractionPairs(drug) {
+  const pairs = drug?.interactionPairs;
+
+  if (Array.isArray(pairs)) {
+    return pairs;
+  }
+
+  if (typeof pairs === 'string' && pairs.trim()) {
+    try {
+      const parsed = JSON.parse(pairs);
+      return Array.isArray(parsed) ? parsed : [];
+    } catch (_error) {
+      return [];
+    }
+  }
+
+  return [];
+}
+
+function getInteractionPairTargetSlug(pair) {
+  return pair?.targetSlug ||
+    pair?.target_slug ||
+    pair?.drugSlug ||
+    pair?.drug_slug ||
+    pair?.slug ||
+    '';
+}
+
+function interactionPairNeedsReview(pair) {
+  return pair?.needsReview === true || pair?.needs_review === true;
+}
+
+function normalizeInteractionSeverity(value) {
+  const severity = normalizeDisplayText(value).toLowerCase();
+
+  if (['danger', 'high', 'grave', 'contraindicated', 'contraindicado'].includes(severity)) {
+    return 'danger';
+  }
+
+  if (['info', 'low', 'baixo'].includes(severity)) {
+    return 'info';
+  }
+
+  return 'warning';
+}
+
+function getInteractionSeverityRank(severity) {
+  if (severity === 'danger') {
+    return 3;
+  }
+
+  if (severity === 'warning') {
+    return 2;
+  }
+
+  return 1;
+}
+
+function findStructuredInteractionPair(source, targetSlug) {
+  const normalizedTargetSlug = normalizeSlug(targetSlug);
+
+  if (!normalizedTargetSlug) {
+    return null;
+  }
+
+  return getDrugStructuredInteractionPairs(source.drug).find((pair) => {
+    if (!pair || interactionPairNeedsReview(pair)) {
+      return false;
+    }
+
+    return normalizeSlug(getInteractionPairTargetSlug(pair)) === normalizedTargetSlug;
+  }) || null;
+}
+
+function buildStructuredInteractionAlert({
+  first,
+  firstTitle,
+  second,
+  secondTitle,
+  structuredPair,
+  structuredPairOwner,
+}) {
+  const pairKey = [first.slug, second.slug].sort().join('-');
+  const severity = normalizeInteractionSeverity(structuredPair?.severity);
+  const mechanism = normalizeDisplayText(structuredPair?.mechanism);
+  const message = normalizeDisplayText(structuredPair?.message) ||
+    `${firstTitle} + ${secondTitle}: ${mechanism || 'interaÃ§Ã£o medicamentosa documentada no BulÃ¡rio'}. Revise antes de prescrever.`;
+
+  return {
+    id: `${pairKey}-structured-interaction`,
+    slug: structuredPairOwner.slug,
+    severity,
+    title: severity === 'danger' ? 'InteraÃ§Ã£o medicamentosa relevante' : 'PossÃ­vel interaÃ§Ã£o medicamentosa',
+    message,
+  };
 }
 
 function buildPregnancyRiskAlerts(readyMentions) {
@@ -162,6 +344,33 @@ function buildInteractionPairAlerts(readyMentions) {
     for (let nextIndex = index + 1; nextIndex < readyMentions.length; nextIndex += 1) {
       const first = readyMentions[index];
       const second = readyMentions[nextIndex];
+      const firstTitle = getDrugTitle(first.drug, first.slug);
+      const secondTitle = getDrugTitle(second.drug, second.slug);
+      const pairKey = [first.slug, second.slug].sort().join('-');
+      const firstStructuredPair = findStructuredInteractionPair(first, second.slug);
+      const secondStructuredPair = findStructuredInteractionPair(second, first.slug);
+
+      if (firstStructuredPair || secondStructuredPair) {
+        const firstStructuredSeverity = normalizeInteractionSeverity(firstStructuredPair?.severity);
+        const secondStructuredSeverity = normalizeInteractionSeverity(secondStructuredPair?.severity);
+        const useSecondStructuredPair =
+          secondStructuredPair &&
+          (
+            !firstStructuredPair ||
+            getInteractionSeverityRank(secondStructuredSeverity) > getInteractionSeverityRank(firstStructuredSeverity)
+          );
+
+        alerts.push(buildStructuredInteractionAlert({
+          first,
+          firstTitle,
+          second,
+          secondTitle,
+          structuredPair: useSecondStructuredPair ? secondStructuredPair : firstStructuredPair,
+          structuredPairOwner: useSecondStructuredPair ? second : first,
+        }));
+        continue;
+      }
+
       const firstAliases = getDrugInteractionAliases(first.drug, first.slug);
       const secondAliases = getDrugInteractionAliases(second.drug, second.slug);
       const firstMentionsSecond = interactionTextMentionsDrug(
@@ -176,10 +385,6 @@ function buildInteractionPairAlerts(readyMentions) {
       if (!firstMentionsSecond && !secondMentionsFirst) {
         continue;
       }
-
-      const firstTitle = getDrugTitle(first.drug, first.slug);
-      const secondTitle = getDrugTitle(second.drug, second.slug);
-      const pairKey = [first.slug, second.slug].sort().join('-');
 
       alerts.push({
         id: `${pairKey}-interaction`,

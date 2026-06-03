@@ -140,9 +140,36 @@ function readTextProperty(properties, name) {
   return '';
 }
 
+function readFirstTextProperty(properties, names) {
+  for (const name of names) {
+    const value = readTextProperty(properties, name);
+
+    if (value) {
+      return value;
+    }
+  }
+
+  return '';
+}
+
 function readDateProperty(properties, name) {
   const property = readProperty(properties, name);
   return property?.date?.start || null;
+}
+
+function parseJsonArrayProperty(properties, names) {
+  const value = normalizeLongText(readFirstTextProperty(properties, names));
+
+  if (!value) {
+    return [];
+  }
+
+  try {
+    const parsed = JSON.parse(value);
+    return Array.isArray(parsed) ? parsed : [];
+  } catch (_error) {
+    return [];
+  }
 }
 
 function buildSearchTerms(drug) {
@@ -240,7 +267,11 @@ function mapNotionPageToClinicalDrug(page) {
     pediatric_dosage: normalizeLongText(readTextProperty(properties, 'Posologia Pediátrica')) || null,
     warnings: normalizeLongText(readTextProperty(properties, 'Advertências')) || null,
     interactions: normalizeLongText(readTextProperty(properties, 'Interações')) || null,
-    presentations: normalizeLongText(readTextProperty(properties, 'Apresentações / nomes comerciais')) || null,
+    interaction_pairs: parseJsonArrayProperty(properties, ['Interações Estruturadas']),
+    presentations: normalizeLongText(readFirstTextProperty(properties, [
+      'Apresentações / nomes comerciais',
+      'Apresentações / Nomes Comerciais',
+    ])) || null,
     commercial_names_anvisa: normalizeLongText(readTextProperty(properties, 'Nomes Comerciais / Produtos ANVISA')) || null,
     commercial_names_openai: normalizeLongText(readTextProperty(properties, 'Nomes Comerciais OpenAI')) || null,
     anvisa_presentations: normalizeLongText(readTextProperty(properties, 'Apresentações ANVISA')) || null,

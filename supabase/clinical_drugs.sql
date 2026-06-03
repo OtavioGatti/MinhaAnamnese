@@ -15,6 +15,7 @@ create table if not exists public.clinical_drugs (
   pediatric_dosage text,
   warnings text,
   interactions text,
+  interaction_pairs jsonb not null default '[]'::jsonb,
   presentations text,
   commercial_names_anvisa text,
   commercial_names_openai text,
@@ -62,6 +63,7 @@ alter table public.clinical_drugs
   add column if not exists pediatric_dosage text,
   add column if not exists warnings text,
   add column if not exists interactions text,
+  add column if not exists interaction_pairs jsonb not null default '[]'::jsonb,
   add column if not exists presentations text,
   add column if not exists commercial_names_anvisa text,
   add column if not exists commercial_names_openai text,
@@ -99,12 +101,18 @@ set
   search_terms = ''
 where search_terms is null;
 
+update public.clinical_drugs
+set
+  interaction_pairs = '[]'::jsonb
+where interaction_pairs is null;
+
 alter table public.clinical_drugs
   drop constraint if exists clinical_drugs_slug_check,
   drop constraint if exists clinical_drugs_active_ingredient_not_empty_check,
   drop constraint if exists clinical_drugs_publication_status_check,
   drop constraint if exists clinical_drugs_pregnancy_risk_check,
-  drop constraint if exists clinical_drugs_sync_status_check;
+  drop constraint if exists clinical_drugs_sync_status_check,
+  drop constraint if exists clinical_drugs_interaction_pairs_array_check;
 
 alter table public.clinical_drugs
   add constraint clinical_drugs_slug_check
@@ -116,7 +124,9 @@ alter table public.clinical_drugs
   add constraint clinical_drugs_pregnancy_risk_check
     check (pregnancy_risk is null or pregnancy_risk in ('A', 'B', 'C', 'D', 'X', 'Indefinido', 'Evitar')),
   add constraint clinical_drugs_sync_status_check
-    check (sync_status in ('synced', 'skipped', 'failed'));
+    check (sync_status in ('synced', 'skipped', 'failed')),
+  add constraint clinical_drugs_interaction_pairs_array_check
+    check (jsonb_typeof(interaction_pairs) = 'array');
 
 create unique index if not exists clinical_drugs_slug_idx
   on public.clinical_drugs (slug);
@@ -136,6 +146,9 @@ create index if not exists clinical_drugs_class_category_trgm_idx
 
 create index if not exists clinical_drugs_search_terms_trgm_idx
   on public.clinical_drugs using gin (search_terms extensions.gin_trgm_ops);
+
+create index if not exists clinical_drugs_interaction_pairs_gin_idx
+  on public.clinical_drugs using gin (interaction_pairs);
 
 create or replace function public.set_clinical_drugs_updated_at()
 returns trigger
