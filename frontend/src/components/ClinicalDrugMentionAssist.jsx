@@ -303,13 +303,13 @@ function buildStructuredInteractionAlert({
   const severity = normalizeInteractionSeverity(structuredPair?.severity);
   const mechanism = normalizeDisplayText(structuredPair?.mechanism);
   const message = normalizeDisplayText(structuredPair?.message) ||
-    `${firstTitle} + ${secondTitle}: ${mechanism || 'interacao medicamentosa documentada no Bulario'}. Revise antes de prescrever.`;
+    `${firstTitle} + ${secondTitle}: ${mechanism || 'interação medicamentosa documentada no Bulário'}. Revise antes de prescrever.`;
 
   return {
     id: `${pairKey}-structured-interaction`,
     slug: structuredPairOwner.slug,
     severity,
-    title: severity === 'danger' ? 'Interacao medicamentosa relevante' : 'Possivel interacao medicamentosa',
+    title: severity === 'danger' ? 'Interação medicamentosa relevante' : 'Possível interação medicamentosa',
     message,
   };
 }
