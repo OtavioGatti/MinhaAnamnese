@@ -3,7 +3,7 @@ import { api } from '../apiClient';
 
 const DEFAULT_QUERY = '';
 const SEARCH_DEBOUNCE_MS = 320;
-const SAFETY_TEXT = 'Confirmar dose, alergias, contraindicações, idade, peso quando aplicável, gestação, função renal/hepática, gravidade do caso e protocolo local.';
+const SAFETY_TEXT = 'Conteúdo apenas informativo e de apoio. Confirme dose, via, duração, alergias, contraindicações, idade, peso quando aplicável, gestação, função renal/hepática, gravidade do caso, bula oficial e protocolo local antes de qualquer uso assistencial.';
 
 const SECTION_DEFINITIONS = [
   {

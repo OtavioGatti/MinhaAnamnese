@@ -255,7 +255,8 @@ function SafetyNotice() {
     <div className="protocol-safety-notice">
       <strong>Uso clínico seguro:</strong>
       <span>
-        Confira alergias, gestação, idade, peso, função renal/hepática, interações e bula oficial antes de prescrever.
+        Conteúdo apenas informativo e de apoio. Confira alergias, gestação, idade, peso, função renal/hepática, interações,
+        bula oficial e protocolo local antes de qualquer uso assistencial.
       </span>
     </div>
   );

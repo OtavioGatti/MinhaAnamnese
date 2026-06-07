@@ -273,6 +273,59 @@ body {
   text-decoration: underline;
 }
 
+.legal-consent-summary {
+  background: #f8fbff;
+}
+
+.legal-consent-summary.completed {
+  border-color: rgba(134, 239, 172, 0.9);
+  background: #f0fdf4;
+}
+
+.legal-consent-summary-icon {
+  width: 1.35rem;
+  height: 1.35rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: #dbeafe;
+  color: var(--primary-700);
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.legal-consent-summary.completed .legal-consent-summary-icon {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.legal-consent-summary strong,
+.legal-consent-summary small,
+.legal-consent-summary-links {
+  display: block;
+}
+
+.legal-consent-summary strong {
+  color: var(--gray-900);
+  font-size: 0.82rem;
+}
+
+.legal-consent-summary small {
+  margin-top: 0.18rem;
+  color: var(--gray-500);
+  font-size: 0.76rem;
+  line-height: 1.45;
+}
+
+.legal-consent-summary-links {
+  margin-top: 0.38rem;
+}
+
+.legal-consent-summary-links a + a {
+  margin-left: 0.75rem;
+}
+
 .topbar-auth-actions {
   display: grid;
   gap: 0.7rem;
@@ -3672,6 +3725,16 @@ body {
   padding: 0;
 }
 
+.clinical-drug-quick-disclaimer {
+  padding: 0.78rem 0.9rem;
+  border: 1px solid rgba(253, 230, 138, 0.92);
+  border-radius: 12px;
+  background: #fffbeb;
+  color: #92400e;
+  font-size: 0.78rem;
+  line-height: 1.45;
+}
+
 .clinical-drug-quick-actions {
   display: flex;
   justify-content: flex-end;
@@ -4537,7 +4600,7 @@ body {
 .app-modal-backdrop {
   position: fixed;
   inset: 0;
-  z-index: 60;
+  z-index: 120;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -4580,6 +4643,123 @@ body {
   display: flex;
   gap: 0.75rem;
   flex-wrap: wrap;
+}
+
+.legal-consent-modal {
+  width: min(100%, 860px);
+  grid-template-rows: auto auto auto minmax(0, 1fr) auto auto;
+  max-height: min(calc(100dvh - 2rem), 820px);
+  overflow: hidden;
+}
+
+.legal-consent-header .workspace-kicker {
+  width: fit-content;
+  margin-bottom: 0.45rem;
+}
+
+.legal-consent-progress {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.6rem;
+}
+
+.legal-consent-progress span {
+  padding: 0.62rem 0.75rem;
+  border: 1px solid rgba(226, 232, 240, 0.95);
+  border-radius: 12px;
+  background: #f8fafc;
+  color: var(--gray-500);
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.legal-consent-progress span.active {
+  border-color: rgba(147, 197, 253, 0.92);
+  background: #eff6ff;
+  color: var(--primary-700);
+}
+
+.legal-consent-progress span.done {
+  border-color: rgba(134, 239, 172, 0.9);
+  background: #f0fdf4;
+  color: #15803d;
+}
+
+.legal-consent-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.85rem;
+  color: var(--gray-500);
+  font-size: 0.78rem;
+}
+
+.legal-consent-meta a {
+  color: var(--primary-700);
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.legal-consent-meta a:hover {
+  text-decoration: underline;
+}
+
+.legal-consent-scroll-region {
+  min-height: 0;
+  max-height: 46vh;
+  overflow: auto;
+  padding: 1rem;
+  border: 1px solid rgba(226, 232, 240, 0.95);
+  border-radius: 16px;
+  background: #ffffff;
+  color: var(--gray-700);
+  line-height: 1.62;
+  scroll-behavior: smooth;
+}
+
+.legal-consent-scroll-region:focus {
+  outline: 2px solid rgba(37, 99, 235, 0.22);
+  outline-offset: 2px;
+}
+
+.legal-consent-scroll-region p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.legal-consent-scroll-region p + p,
+.legal-consent-section {
+  margin-top: 0.85rem;
+}
+
+.legal-consent-section h3 {
+  margin-bottom: 0.45rem;
+  color: var(--gray-900);
+  font-size: 0.96rem;
+}
+
+.legal-consent-section p + p {
+  margin-top: 0.55rem;
+}
+
+.legal-consent-read-status {
+  padding: 0.72rem 0.85rem;
+  border: 1px solid rgba(253, 230, 138, 0.95);
+  border-radius: 12px;
+  background: #fffbeb;
+  color: #92400e;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.legal-consent-read-status.done {
+  border-color: rgba(134, 239, 172, 0.9);
+  background: #f0fdf4;
+  color: #15803d;
+}
+
+.legal-consent-actions {
+  justify-content: flex-end;
 }
 
 .plan-comparison-modal {
@@ -5147,6 +5327,29 @@ body {
     max-height: calc(100dvh - 1.5rem);
   }
 
+  .legal-consent-modal {
+    width: 100%;
+    max-height: calc(100dvh - 1.5rem);
+  }
+
+  .legal-consent-progress,
+  .legal-consent-meta {
+    grid-template-columns: 1fr;
+  }
+
+  .legal-consent-progress {
+    display: grid;
+  }
+
+  .legal-consent-meta {
+    display: grid;
+    justify-items: start;
+  }
+
+  .legal-consent-scroll-region {
+    max-height: 45dvh;
+  }
+
   .plan-comparison-actions {
     position: sticky;
     bottom: 0;
@@ -5162,6 +5365,7 @@ body {
 
   .app-modal-actions,
   .checkout-success-actions,
+  .legal-consent-actions .btn,
   .clinical-drug-quick-actions .btn {
     width: 100%;
   }

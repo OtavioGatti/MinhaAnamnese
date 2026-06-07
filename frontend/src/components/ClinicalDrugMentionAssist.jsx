@@ -758,6 +758,11 @@ function ClinicalDrugQuickModal({ drug, onClose, onOpenCatalog }) {
           </div>
         </div>
 
+        <div className="clinical-drug-quick-disclaimer">
+          Conteúdo apenas informativo e de apoio. Confirme bula oficial, contraindicações, alergias, gestação,
+          interações, função renal/hepática e protocolo local antes de qualquer uso assistencial.
+        </div>
+
         <footer className="clinical-drug-quick-actions">
           {onOpenCatalog ? (
             <button

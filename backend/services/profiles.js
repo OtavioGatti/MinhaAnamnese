@@ -13,8 +13,10 @@ const DEFAULT_TRIAL_DAYS = 7;
 const DEFAULT_TRIAL_ROLLOUT_AT = '2026-05-14T00:00:00.000Z';
 const OPTIONAL_COMPLIANCE_COLUMNS = [
   'terms_accepted_at',
+  'terms_scrolled_at',
   'terms_version',
   'privacy_accepted_at',
+  'privacy_scrolled_at',
   'privacy_version',
   'cookie_consent_status',
   'cookie_consent_at',
@@ -199,6 +201,11 @@ function buildProfileFallback(user, existingProfile = null, overrides = {}) {
         existingProfile?.terms_accepted_at ??
         getMetadataTimestamp(user, 'terms_accepted_at', 'termsAcceptedAt'),
     ),
+    terms_scrolled_at: normalizePlanExpiresAt(
+      overrides.terms_scrolled_at ??
+        existingProfile?.terms_scrolled_at ??
+        getMetadataTimestamp(user, 'terms_scrolled_at', 'termsScrolledAt'),
+    ),
     terms_version: normalizeLegalVersion(
       overrides.terms_version ??
         existingProfile?.terms_version ??
@@ -208,6 +215,11 @@ function buildProfileFallback(user, existingProfile = null, overrides = {}) {
       overrides.privacy_accepted_at ??
         existingProfile?.privacy_accepted_at ??
         getMetadataTimestamp(user, 'privacy_accepted_at', 'privacyAcceptedAt'),
+    ),
+    privacy_scrolled_at: normalizePlanExpiresAt(
+      overrides.privacy_scrolled_at ??
+        existingProfile?.privacy_scrolled_at ??
+        getMetadataTimestamp(user, 'privacy_scrolled_at', 'privacyScrolledAt'),
     ),
     privacy_version: normalizeLegalVersion(
       overrides.privacy_version ??
@@ -318,12 +330,20 @@ async function upsertProfile(fields) {
     payload.terms_accepted_at = normalizePlanExpiresAt(fields.terms_accepted_at);
   }
 
+  if ('terms_scrolled_at' in fields) {
+    payload.terms_scrolled_at = normalizePlanExpiresAt(fields.terms_scrolled_at);
+  }
+
   if ('terms_version' in fields) {
     payload.terms_version = normalizeLegalVersion(fields.terms_version);
   }
 
   if ('privacy_accepted_at' in fields) {
     payload.privacy_accepted_at = normalizePlanExpiresAt(fields.privacy_accepted_at);
+  }
+
+  if ('privacy_scrolled_at' in fields) {
+    payload.privacy_scrolled_at = normalizePlanExpiresAt(fields.privacy_scrolled_at);
   }
 
   if ('privacy_version' in fields) {
@@ -418,9 +438,13 @@ function shouldUpdateProfile(existingProfile, nextProfile) {
       normalizePlanExpiresAt(nextProfile.welcome_onboarding_seen_at) ||
     normalizePlanExpiresAt(existingProfile.terms_accepted_at) !==
       normalizePlanExpiresAt(nextProfile.terms_accepted_at) ||
+    normalizePlanExpiresAt(existingProfile.terms_scrolled_at) !==
+      normalizePlanExpiresAt(nextProfile.terms_scrolled_at) ||
     normalizeLegalVersion(existingProfile.terms_version) !== normalizeLegalVersion(nextProfile.terms_version) ||
     normalizePlanExpiresAt(existingProfile.privacy_accepted_at) !==
       normalizePlanExpiresAt(nextProfile.privacy_accepted_at) ||
+    normalizePlanExpiresAt(existingProfile.privacy_scrolled_at) !==
+      normalizePlanExpiresAt(nextProfile.privacy_scrolled_at) ||
     normalizeLegalVersion(existingProfile.privacy_version) !== normalizeLegalVersion(nextProfile.privacy_version) ||
     normalizeCookieConsentStatus(existingProfile.cookie_consent_status) !==
       normalizeCookieConsentStatus(nextProfile.cookie_consent_status) ||
@@ -453,8 +477,10 @@ async function expireProfileAccessIfNeeded(user, profile) {
     trial_started_at: profile.trial_started_at,
     welcome_onboarding_seen_at: profile.welcome_onboarding_seen_at,
     terms_accepted_at: profile.terms_accepted_at,
+    terms_scrolled_at: profile.terms_scrolled_at,
     terms_version: profile.terms_version,
     privacy_accepted_at: profile.privacy_accepted_at,
+    privacy_scrolled_at: profile.privacy_scrolled_at,
     privacy_version: profile.privacy_version,
     cookie_consent_status: profile.cookie_consent_status,
     cookie_consent_at: profile.cookie_consent_at,
@@ -507,8 +533,10 @@ async function ensureUserProfile(user, overrides = {}) {
     trial_started_at: fallbackProfile.trial_started_at,
     welcome_onboarding_seen_at: fallbackProfile.welcome_onboarding_seen_at,
     terms_accepted_at: fallbackProfile.terms_accepted_at,
+    terms_scrolled_at: fallbackProfile.terms_scrolled_at,
     terms_version: fallbackProfile.terms_version,
     privacy_accepted_at: fallbackProfile.privacy_accepted_at,
+    privacy_scrolled_at: fallbackProfile.privacy_scrolled_at,
     privacy_version: fallbackProfile.privacy_version,
     cookie_consent_status: fallbackProfile.cookie_consent_status,
     cookie_consent_at: fallbackProfile.cookie_consent_at,

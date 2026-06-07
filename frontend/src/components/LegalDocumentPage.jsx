@@ -1,4 +1,5 @@
-const LAST_UPDATED = '22/05/2026';
+export const LEGAL_DOCUMENT_VERSION = '2026-06-07';
+export const LEGAL_LAST_UPDATED = '07/06/2026';
 
 const TERMS_SECTIONS = [
   {
@@ -95,11 +96,32 @@ const PRIVACY_SECTIONS = [
   },
 ];
 
+export const LEGAL_DOCUMENTS = {
+  terms: {
+    type: 'terms',
+    title: 'Termos e Condições de Uso',
+    eyebrow: 'Condições de uso',
+    lastUpdated: LEGAL_LAST_UPDATED,
+    sections: TERMS_SECTIONS,
+    intro: [
+      'Bem-vindo(a) ao Minha Anamnese. Este documento estabelece as regras e condições para a utilização do nosso aplicativo web, desenvolvido para organizar anamneses médicas com apoio de IA, templates clínicos e guias de prescrição.',
+      'Ao criar uma conta e utilizar o Minha Anamnese, você concorda expressamente com os termos descritos abaixo.',
+    ],
+  },
+  privacy: {
+    type: 'privacy',
+    title: 'Política de Privacidade',
+    eyebrow: 'Privacidade e LGPD',
+    lastUpdated: LEGAL_LAST_UPDATED,
+    sections: PRIVACY_SECTIONS,
+    intro: [
+      'A sua privacidade é fundamental para nós. Esta Política de Privacidade explica como o Minha Anamnese coleta, utiliza, compartilha e protege as suas informações, em conformidade com a Lei Geral de Proteção de Dados (LGPD).',
+    ],
+  },
+};
+
 function LegalDocumentPage({ type = 'terms' }) {
-  const isPrivacy = type === 'privacy';
-  const title = isPrivacy ? 'Política de Privacidade' : 'Termos e Condições de Uso';
-  const eyebrow = isPrivacy ? 'Privacidade e LGPD' : 'Condições de uso';
-  const sections = isPrivacy ? PRIVACY_SECTIONS : TERMS_SECTIONS;
+  const document = LEGAL_DOCUMENTS[type] || LEGAL_DOCUMENTS.terms;
 
   return (
     <main className="legal-page">
@@ -120,33 +142,17 @@ function LegalDocumentPage({ type = 'terms' }) {
       </header>
 
       <section className="legal-hero">
-        <span className="workspace-kicker">{eyebrow}</span>
-        <h1>{title}</h1>
-        <p>Última atualização: {LAST_UPDATED}</p>
+        <span className="workspace-kicker">{document.eyebrow}</span>
+        <h1>{document.title}</h1>
+        <p>Última atualização: {document.lastUpdated}</p>
       </section>
 
       <article className="legal-document">
-        {!isPrivacy && (
-          <p>
-            Bem-vindo(a) ao Minha Anamnese. Este documento estabelece as regras e condições para a utilização do nosso aplicativo web,
-            desenvolvido para organizar anamneses médicas com apoio de IA, templates clínicos e guias de prescrição.
-          </p>
-        )}
+        {document.intro.map((paragraph) => (
+          <p key={paragraph}>{paragraph}</p>
+        ))}
 
-        {!isPrivacy && (
-          <p>
-            Ao criar uma conta e utilizar o Minha Anamnese, você concorda expressamente com os termos descritos abaixo.
-          </p>
-        )}
-
-        {isPrivacy && (
-          <p>
-            A sua privacidade é fundamental para nós. Esta Política de Privacidade explica como o Minha Anamnese coleta,
-            utiliza, compartilha e protege as suas informações, em conformidade com a Lei Geral de Proteção de Dados (LGPD).
-          </p>
-        )}
-
-        {sections.map((section) => (
+        {document.sections.map((section) => (
           <section key={section.title} className="legal-section">
             <h2>{section.title}</h2>
             {section.paragraphs.map((paragraph) => (

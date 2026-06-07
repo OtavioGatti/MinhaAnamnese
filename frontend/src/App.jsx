@@ -17,7 +17,8 @@ import WorkspaceSidebar from './components/WorkspaceSidebar';
 import CheckoutSuccessBanner from './components/CheckoutSuccessBanner';
 import ClinicalDrugPage from './components/ClinicalDrugPage';
 import CookieConsentBanner from './components/CookieConsentBanner';
-import LegalDocumentPage from './components/LegalDocumentPage';
+import LegalConsentModal from './components/LegalConsentModal';
+import LegalDocumentPage, { LEGAL_DOCUMENT_VERSION } from './components/LegalDocumentPage';
 import WelcomeOnboardingModal from './components/WelcomeOnboardingModal';
 import AffiliatePage from './components/AffiliatePage';
 import { BILLING_PLANS, DEFAULT_PLAN_KEY, PRO_PLAN_PERIOD_COPY, PRO_PLAN_PRICE_COPY } from './billingPlans';
@@ -32,7 +33,6 @@ const AFFILIATE_REFERRAL_KEY = 'minha-anamnese-affiliate-ref';
 const PASSWORD_RECOVERY_PATH = '/redefinir-senha';
 const PASSWORD_RECOVERY_INTENT_KEY = 'minha-anamnese-password-recovery-intent';
 const PRODUCTION_APP_ORIGIN = 'https://www.minhaanamnese.com.br';
-const LEGAL_DOCUMENT_VERSION = '2026-05-22';
 const DEBUG_MODE = false;
 const TRIAL_DAYS_COPY = '7 dias';
 const DEFAULT_TEXT_PLACEHOLDER =
@@ -785,6 +785,8 @@ function App() {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [termsAccepted, setTermsAccepted] = useState(false);
+  const [signupLegalConsent, setSignupLegalConsent] = useState(null);
+  const [legalConsentModalOpen, setLegalConsentModalOpen] = useState(false);
   const [cookieConsent, setCookieConsent] = useState(() => readCookieConsent());
   const [legalPage, setLegalPage] = useState(() => getLegalPageFromPath());
   const [authMode, setAuthMode] = useState('login');
@@ -1732,6 +1734,8 @@ function App() {
     setPassword('');
     setConfirmPassword('');
     setTermsAccepted(false);
+    setSignupLegalConsent(null);
+    setLegalConsentModalOpen(false);
     setAuthError('');
     setAuthFeedback('');
     setLoadingAuth(false);
@@ -1750,6 +1754,8 @@ function App() {
     }
     if (nextMode !== 'signup') {
       setTermsAccepted(false);
+      setSignupLegalConsent(null);
+      setLegalConsentModalOpen(false);
     }
     setAuthError('');
     setAuthFeedback('');
@@ -1792,7 +1798,7 @@ function App() {
     setLoadingAuth(false);
   };
 
-  const handleSignup = async () => {
+  const handleSignup = async (legalConsent = signupLegalConsent) => {
     const normalizedEmail = email.trim().toLowerCase();
 
     if (!isValidEmail(normalizedEmail)) {
@@ -1810,8 +1816,10 @@ function App() {
       return;
     }
 
-    if (!termsAccepted) {
-      setAuthError('Para criar sua conta, aceite os Termos de Uso e a Política de Privacidade.');
+    if (!legalConsent) {
+      setAuthError('');
+      setAuthFeedback('');
+      setLegalConsentModalOpen(true);
       return;
     }
 
@@ -1824,7 +1832,8 @@ function App() {
     setAuthFeedback('');
     setLoadingAuth(true);
 
-    const acceptedAt = new Date().toISOString();
+    const acceptedAt = legalConsent.acceptedAt || new Date().toISOString();
+    const legalVersion = legalConsent.version || LEGAL_DOCUMENT_VERSION;
     const { data, error } = await supabase.auth.signUp({
       email: normalizedEmail,
       password,
@@ -1833,16 +1842,20 @@ function App() {
         data: {
           terms_accepted: true,
           terms_accepted_at: acceptedAt,
-          terms_version: LEGAL_DOCUMENT_VERSION,
+          terms_scrolled_at: legalConsent.termsScrolledAt || acceptedAt,
+          terms_version: legalVersion,
           privacy_accepted: true,
           privacy_accepted_at: acceptedAt,
-          privacy_version: LEGAL_DOCUMENT_VERSION,
+          privacy_scrolled_at: legalConsent.privacyScrolledAt || acceptedAt,
+          privacy_version: legalVersion,
+          legal_acceptance_flow: 'signup_scroll_modal',
         },
       },
     });
 
     if (error) {
       setAuthError(getAuthErrorMessage(error, 'Não foi possível criar sua conta agora.'));
+      setLegalConsentModalOpen(false);
       setLoadingAuth(false);
       return;
     }
@@ -1855,6 +1868,7 @@ function App() {
 
     if (data?.user && Array.isArray(data.user.identities) && data.user.identities.length === 0) {
       setAuthError('Este e-mail já está cadastrado. Tente entrar na sua conta.');
+      setLegalConsentModalOpen(false);
       setLoadingAuth(false);
       return;
     }
@@ -1862,8 +1876,17 @@ function App() {
     setAuthFeedback('Conta criada com sucesso. Enviamos um link de confirmação para o seu e-mail. Depois de confirmar, entre para iniciar seu teste profissional.');
     setPassword('');
     setConfirmPassword('');
+    setTermsAccepted(false);
+    setSignupLegalConsent(null);
+    setLegalConsentModalOpen(false);
     setAuthMode('login');
     setLoadingAuth(false);
+  };
+
+  const handleLegalConsentComplete = async (legalConsent) => {
+    setTermsAccepted(true);
+    setSignupLegalConsent(legalConsent);
+    await handleSignup(legalConsent);
   };
 
   const handleForgotPassword = async () => {
@@ -2443,25 +2466,23 @@ function App() {
             )}
 
             {authMode === 'signup' && (
-              <label className="terms-consent-control">
-                <input
-                  type="checkbox"
-                  checked={termsAccepted}
-                  onChange={(e) => {
-                    setTermsAccepted(e.target.checked);
-                    if (authError) {
-                      setAuthError('');
-                    }
-                  }}
-                  disabled={loadingAuth}
-                />
-                <span>
-                  Li e concordo com os{' '}
-                  <a href="/termos" target="_blank" rel="noreferrer">Termos de Uso</a>
-                  {' '}e a{' '}
-                  <a href="/privacidade" target="_blank" rel="noreferrer">Política de Privacidade</a>.
+              <div className={`terms-consent-control legal-consent-summary ${termsAccepted ? 'completed' : ''}`}>
+                <span className="legal-consent-summary-icon" aria-hidden="true">
+                  {termsAccepted ? '✓' : 'i'}
                 </span>
-              </label>
+                <span>
+                  <strong>{termsAccepted ? 'Leitura legal concluída' : 'Leitura obrigatória antes do cadastro'}</strong>
+                  <small>
+                    {termsAccepted
+                      ? 'Termos de Uso e Política de Privacidade foram rolados até o final nesta tentativa de cadastro.'
+                      : 'Ao clicar em Criar conta, você lerá os Termos de Uso e a Política de Privacidade em um popup antes do envio.'}
+                  </small>
+                  <span className="legal-consent-summary-links">
+                    <a href="/termos" target="_blank" rel="noreferrer">Termos de Uso</a>
+                    <a href="/privacidade" target="_blank" rel="noreferrer">Política de Privacidade</a>
+                  </span>
+                </span>
+              </div>
             )}
 
             {authFeedback && <span className="topbar-auth-feedback">{authFeedback}</span>}
@@ -2479,7 +2500,7 @@ function App() {
               <button
                 type="submit"
                 className="btn btn-secundario"
-                disabled={loadingAuth || !termsAccepted}
+                disabled={loadingAuth}
               >
                 {loadingAuth ? 'Criando conta...' : 'Criar conta'}
               </button>
@@ -2825,7 +2846,10 @@ function App() {
       )}
 
       <footer className="footer">
-        <p>Minha Anamnese &middot; Apoio à padronização clínica &middot; Evite dados identificáveis; o texto é processado por IA e não é salvo como prontuário</p>
+        <p>
+          Minha Anamnese &middot; Ferramenta de apoio à escrita e revisão clínica. O conteúdo não substitui julgamento médico,
+          bula oficial, protocolos locais, prontuário institucional ou revisão por profissional habilitado.
+        </p>
         <div className="footer-links">
           {user && isAffiliate ? <a href="/afiliado">Afiliados</a> : null}
           <a href="/termos">Termos de Uso</a>
@@ -2849,6 +2873,17 @@ function App() {
         priceCopy={PRO_PLAN_PRICE_COPY}
         onClose={handleCloseWelcomeOnboarding}
         onStart={handleStartWelcomeOnboarding}
+      />
+
+      <LegalConsentModal
+        open={legalConsentModalOpen}
+        loading={loadingAuth}
+        onCancel={() => {
+          if (!loadingAuth) {
+            setLegalConsentModalOpen(false);
+          }
+        }}
+        onComplete={handleLegalConsentComplete}
       />
 
       <CookieConsentBanner

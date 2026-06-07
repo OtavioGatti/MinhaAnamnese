@@ -83,7 +83,7 @@ async function processAnamnesis({ template, texto, userId }) {
   const templateConfig = await resolveTemplateById(template, userId);
 
   if (!templateConfig) {
-    const error = new Error('Template invÃ¡lido. Escolha um dos templates disponÃ­veis.');
+    const error = new Error('Template inválido. Escolha um dos templates disponíveis.');
     error.statusCode = 400;
     throw error;
   }
