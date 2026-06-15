@@ -57,6 +57,61 @@ function getOptionNumericValue(option) {
   return Number.isFinite(number) ? number : 0;
 }
 
+function getFieldNumericValue(field, value) {
+  if (field?.inputType === 'number') {
+    const number = Number(value);
+    return Number.isFinite(number) ? number : 0;
+  }
+
+  if (field?.inputType === 'checkbox') {
+    const selectedValues = Array.isArray(value) ? value : [];
+
+    return selectedValues.reduce((total, selectedValue) => {
+      return total + getOptionNumericValue(getOptionByValue(field, selectedValue));
+    }, 0);
+  }
+
+  return getOptionNumericValue(getOptionByValue(field, value));
+}
+
+function getFieldSelectedItems(field, value) {
+  if (field?.inputType === 'checkbox') {
+    const selectedValues = Array.isArray(value) ? value : [];
+
+    return selectedValues
+      .map((selectedValue) => getOptionByValue(field, selectedValue))
+      .filter(Boolean)
+      .map((option) => ({
+        fieldLabel: field.label,
+        optionLabel: option.label,
+        numericValue: getOptionNumericValue(option),
+      }));
+  }
+
+  if (field?.inputType === 'number') {
+    const numericValue = getFieldNumericValue(field, value);
+    const labelSuffix = field.unit ? ` ${field.unit}` : '';
+
+    return [{
+      fieldLabel: field.label,
+      optionLabel: `${formatResultValue(numericValue)}${labelSuffix}`,
+      numericValue,
+    }];
+  }
+
+  const option = getOptionByValue(field, value);
+
+  if (!option) {
+    return [];
+  }
+
+  return [{
+    fieldLabel: field.label,
+    optionLabel: option.label,
+    numericValue: getOptionNumericValue(option),
+  }];
+}
+
 function isFieldMissing(field, value) {
   if (!field?.required) {
     return false;
@@ -156,7 +211,7 @@ function calculateToolResult(tool, values) {
   if (tool.toolType === 'math_formula') {
     const variables = fields.reduce((accumulator, field) => ({
       ...accumulator,
-      [field.id]: Number(values[field.id] || 0),
+      [field.id]: getFieldNumericValue(field, values[field.id]),
     }), {});
     const value = evaluateSafeFormula(tool.engineConfig?.formula, variables);
 
@@ -165,44 +220,14 @@ function calculateToolResult(tool, values) {
       missingFields: [],
       value,
       range: findResultRange(value, tool.resultRanges),
-      selectedItems: [],
+      selectedItems: fields.flatMap((field) => getFieldSelectedItems(field, values[field.id])),
     };
   }
 
-  const selectedItems = [];
   const value = fields.reduce((total, field) => {
-    if (field.inputType === 'checkbox') {
-      const selectedValues = Array.isArray(values[field.id]) ? values[field.id] : [];
-
-      selectedValues.forEach((selectedValue) => {
-        const option = getOptionByValue(field, selectedValue);
-
-        if (option) {
-          selectedItems.push({
-            fieldLabel: field.label,
-            optionLabel: option.label,
-            numericValue: getOptionNumericValue(option),
-          });
-        }
-      });
-
-      return total + selectedValues.reduce((subtotal, selectedValue) => {
-        return subtotal + getOptionNumericValue(getOptionByValue(field, selectedValue));
-      }, 0);
-    }
-
-    const option = getOptionByValue(field, values[field.id]);
-
-    if (option) {
-      selectedItems.push({
-        fieldLabel: field.label,
-        optionLabel: option.label,
-        numericValue: getOptionNumericValue(option),
-      });
-    }
-
-    return total + getOptionNumericValue(option);
+    return total + getFieldNumericValue(field, values[field.id]);
   }, 0);
+  const selectedItems = fields.flatMap((field) => getFieldSelectedItems(field, values[field.id]));
 
   return {
     ready: true,
