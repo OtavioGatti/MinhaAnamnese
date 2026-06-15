@@ -4,6 +4,19 @@ const MAX_QUERY_LENGTH = 80;
 const TOOL_TYPES = new Set(['sum_points', 'math_formula', 'conditional_logic']);
 const INPUT_TYPES = new Set(['select', 'radio', 'number', 'checkbox']);
 const ALERT_COLORS = new Set(['green', 'yellow', 'red', 'blue', 'gray']);
+const ALLOWED_FORMULA_FUNCTIONS = new Set([
+  'abs',
+  'ceil',
+  'exp',
+  'floor',
+  'ln',
+  'log',
+  'max',
+  'min',
+  'pow',
+  'round',
+  'sqrt',
+]);
 
 const CLINICAL_TOOL_SELECT = [
   'id',
@@ -226,10 +239,14 @@ function validateFormula(formula, fields) {
     return false;
   }
 
+  if (!/^[0-9+\-*/().,\s_a-zA-Z]+$/.test(normalizedFormula)) {
+    return false;
+  }
+
   const fieldIds = new Set(fields.map((field) => field.id));
   const tokens = normalizedFormula.match(/[a-zA-Z_][a-zA-Z0-9_]*/g) || [];
 
-  return tokens.every((token) => fieldIds.has(token));
+  return tokens.every((token) => fieldIds.has(token) || ALLOWED_FORMULA_FUNCTIONS.has(token));
 }
 
 function validateClinicalToolSchema(tool) {

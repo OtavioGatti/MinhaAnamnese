@@ -18,6 +18,20 @@ const RESULT_COLOR_LABELS = {
   gray: 'neutro',
 };
 
+const ALLOWED_FORMULA_FUNCTIONS = {
+  abs: Math.abs,
+  ceil: Math.ceil,
+  exp: Math.exp,
+  floor: Math.floor,
+  ln: Math.log,
+  log: Math.log10,
+  max: Math.max,
+  min: Math.min,
+  pow: Math.pow,
+  round: Math.round,
+  sqrt: Math.sqrt,
+};
+
 function normalizeDisplayText(value) {
   return String(value || '').trim();
 }
@@ -79,12 +93,16 @@ function formatResultValue(value, precision = 1) {
 function evaluateSafeFormula(formula, variables) {
   const text = normalizeDisplayText(formula);
 
-  if (!text || !/^[0-9+\-*/().\s_a-zA-Z]+$/.test(text)) {
+  if (!text || !/^[0-9+\-*/().,\s_a-zA-Z]+$/.test(text)) {
     return null;
   }
 
   let hasUnknownToken = false;
   const expression = text.replace(/\b[a-zA-Z_][a-zA-Z0-9_]*\b/g, (token) => {
+    if (Object.prototype.hasOwnProperty.call(ALLOWED_FORMULA_FUNCTIONS, token)) {
+      return token;
+    }
+
     if (!Object.prototype.hasOwnProperty.call(variables, token)) {
       hasUnknownToken = true;
       return '0';
@@ -94,12 +112,14 @@ function evaluateSafeFormula(formula, variables) {
     return Number.isFinite(value) ? `(${value})` : '0';
   });
 
-  if (hasUnknownToken || !/^[0-9+\-*/().\s]+$/.test(expression)) {
+  if (hasUnknownToken || !/^[0-9+\-*/().,\s_a-zA-Z]+$/.test(expression)) {
     return null;
   }
 
   try {
-    const result = Function(`"use strict"; return (${expression});`)();
+    const functionNames = Object.keys(ALLOWED_FORMULA_FUNCTIONS);
+    const functionValues = functionNames.map((name) => ALLOWED_FORMULA_FUNCTIONS[name]);
+    const result = Function(...functionNames, `"use strict"; return (${expression});`)(...functionValues);
     return Number.isFinite(result) ? result : null;
   } catch {
     return null;
