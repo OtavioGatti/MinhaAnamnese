@@ -476,6 +476,58 @@ function findDuplicateSlugs(tools) {
   return duplicates;
 }
 
+function explainClinicalToolReason(reason) {
+  const normalized = String(reason || '').trim();
+  const explanations = {
+    missing_slug: 'Slug vazio ou invalido. Preencha a propriedade Slug ou um titulo capaz de gerar slug.',
+    missing_title: 'Titulo vazio. Preencha a propriedade de titulo da ferramenta.',
+    invalid_schema: 'Schema/configuracao invalida para publicacao.',
+  };
+
+  if (explanations[normalized]) {
+    return explanations[normalized];
+  }
+
+  if (normalized.startsWith('JSON invalido')) {
+    return 'Um campo JSON da ferramenta esta mal formatado. Corrija aspas, virgulas, colchetes/chaves e tente novamente.';
+  }
+
+  if (normalized.includes('fields') || normalized.includes('campos')) {
+    return 'A lista de campos esta ausente ou fora do formato esperado.';
+  }
+
+  if (normalized.includes('result') || normalized.includes('faixas')) {
+    return 'As faixas de resultado estao ausentes ou fora do formato esperado.';
+  }
+
+  if (normalized.includes('engine') || normalized.includes('config')) {
+    return 'A configuracao do motor esta ausente ou fora do formato esperado.';
+  }
+
+  return normalized || 'Motivo nao informado pelo validador.';
+}
+
+function buildClinicalToolsDebug(skipped) {
+  const problems = (skipped || []).map((item) => {
+    const reasons = Array.isArray(item.reasons) ? item.reasons : ['mapping_error'];
+
+    return {
+      type: 'skipped',
+      notionPageId: item.notionPageId || null,
+      title: item.title || null,
+      slug: item.slug || null,
+      reasons,
+      explanations: reasons.map(explainClinicalToolReason),
+    };
+  });
+
+  return {
+    skippedCount: problems.length,
+    errorCount: 0,
+    problems,
+  };
+}
+
 async function syncNotionClinicalTools() {
   const pages = await queryNotionClinicalToolPages();
   const mapped = [];
@@ -512,11 +564,13 @@ async function syncNotionClinicalTools() {
   }
 
   const persisted = await upsertClinicalTools(mapped);
+  const debug = buildClinicalToolsDebug(skipped);
 
   return {
     totalFromNotion: pages.length,
     synced: persisted.length,
     skipped,
+    debug,
   };
 }
 
