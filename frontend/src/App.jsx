@@ -16,6 +16,7 @@ import UserEvolution from './components/UserEvolution';
 import WorkspaceSidebar from './components/WorkspaceSidebar';
 import CheckoutSuccessBanner from './components/CheckoutSuccessBanner';
 import ClinicalDrugPage from './components/ClinicalDrugPage';
+import ClinicalToolsPage from './components/ClinicalToolsPage';
 import CookieConsentBanner from './components/CookieConsentBanner';
 import LegalConsentModal from './components/LegalConsentModal';
 import LegalDocumentPage, { LEGAL_DOCUMENT_VERSION } from './components/LegalDocumentPage';
@@ -186,6 +187,10 @@ function getInitialWorkspacePageFromPath() {
 
   if (path === '/afiliado') {
     return 'affiliate';
+  }
+
+  if (path === '/ferramentas') {
+    return 'clinicalTools';
   }
 
   return 'home';
@@ -804,6 +809,7 @@ function App() {
     profile: '',
     prescriptionGuide: '',
     clinicalDrugs: '',
+    clinicalTools: '',
     referralLetter: '',
     templates: '',
     affiliate: '',
@@ -1338,6 +1344,7 @@ function App() {
       profile: '',
       prescriptionGuide: '',
       clinicalDrugs: '',
+      clinicalTools: '',
       referralLetter: '',
       templates: '',
       affiliate: '',
@@ -1707,6 +1714,10 @@ function App() {
     handleUpgradeInsights('clinicalDrugs');
   };
 
+  const handleUpgradeClinicalTools = () => {
+    handleUpgradeInsights('clinicalTools');
+  };
+
   const handleAnalysisAccessAction = async (origin = 'home') => {
     if (
       accessState?.hasActiveProAccess &&
@@ -2026,12 +2037,14 @@ function App() {
   const profileCheckoutError = checkoutErrors.profile;
   const prescriptionGuideCheckoutError = checkoutErrors.prescriptionGuide;
   const clinicalDrugsCheckoutError = checkoutErrors.clinicalDrugs;
+  const clinicalToolsCheckoutError = checkoutErrors.clinicalTools;
   const referralLetterCheckoutError = checkoutErrors.referralLetter;
   const templatesCheckoutError = checkoutErrors.templates;
   const isHomeCheckoutLoading = checkoutLoadingOrigin === 'home';
   const isProfileCheckoutLoading = checkoutLoadingOrigin === 'profile';
   const isPrescriptionGuideCheckoutLoading = checkoutLoadingOrigin === 'prescriptionGuide';
   const isClinicalDrugsCheckoutLoading = checkoutLoadingOrigin === 'clinicalDrugs';
+  const isClinicalToolsCheckoutLoading = checkoutLoadingOrigin === 'clinicalTools';
   const isReferralLetterCheckoutLoading = checkoutLoadingOrigin === 'referralLetter';
   const paywallUi = getPaywallUiConfig(user, accessState);
   const isProExpiringSoon = accessState?.hasActiveProAccess && isPlanExpiringSoon(accessState?.planExpiresAt);
@@ -2287,6 +2300,13 @@ function App() {
             onClick={() => handleNavigate('clinicalDrugs')}
           >
             Bulário
+          </button>
+          <button
+            type="button"
+            className={`product-nav-item ${currentPage === 'clinicalTools' ? 'active' : ''}`}
+            onClick={() => handleNavigate('clinicalTools')}
+          >
+            Ferramentas
           </button>
           {user && isAffiliate ? (
             <button
@@ -2814,6 +2834,22 @@ function App() {
           onRequestUpgrade={handleUpgradeClinicalDrugs}
           loadingCheckout={isClinicalDrugsCheckoutLoading}
           checkoutError={clinicalDrugsCheckoutError}
+        />
+      )}
+
+      {currentPage === 'clinicalTools' && (
+        <ClinicalToolsPage
+          user={user}
+          isPro={isPro}
+          accessState={accessState}
+          onLogin={() => {
+            setAuthMode('login');
+            setAuthError('');
+            setAuthPanelAberto(true);
+          }}
+          onRequestUpgrade={handleUpgradeClinicalTools}
+          loadingCheckout={isClinicalToolsCheckoutLoading}
+          checkoutError={clinicalToolsCheckoutError}
         />
       )}
 
