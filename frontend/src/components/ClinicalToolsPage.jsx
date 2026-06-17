@@ -537,7 +537,7 @@ function ClinicalToolResult({ tool, result, copied, onCopy }) {
   function renderResultCard(item) {
     const resultLabel = item.resultLabel || item.label || tool?.engineConfig?.resultLabel || 'Resultado';
 
-    if (!item.ready) {
+    if (item.ready === false) {
       return (
         <section key={item.id || resultLabel} className="clinical-tool-result-card neutral">
           <div className="clinical-tool-result-header">
@@ -596,6 +596,7 @@ function ClinicalToolResult({ tool, result, copied, onCopy }) {
     <div className="clinical-tool-result-stack">
       {renderResultCard({
         id: 'single_result',
+        ready: result.ready,
         value: result.value,
         range: result.range,
       })}
