@@ -23,6 +23,7 @@ const ALLOWED_FORMULA_FUNCTIONS = {
   ceil: Math.ceil,
   exp: Math.exp,
   floor: Math.floor,
+  ifelse: (condition, whenTrue, whenFalse) => (condition ? whenTrue : whenFalse),
   ln: Math.log,
   log: Math.log10,
   max: Math.max,
@@ -148,7 +149,11 @@ function formatResultValue(value, precision = 1) {
 function evaluateSafeFormula(formula, variables) {
   const text = normalizeDisplayText(formula);
 
-  if (!text || !/^[0-9+\-*/().,\s_a-zA-Z]+$/.test(text)) {
+  if (!text || !/^[0-9+\-*/().,\s_a-zA-Z<>!=]+$/.test(text)) {
+    return null;
+  }
+
+  if (/(^|[^<>=!])=([^=]|$)/.test(text) || /={3,}|!={2,}/.test(text)) {
     return null;
   }
 
@@ -167,7 +172,7 @@ function evaluateSafeFormula(formula, variables) {
     return Number.isFinite(value) ? `(${value})` : '0';
   });
 
-  if (hasUnknownToken || !/^[0-9+\-*/().,\s_a-zA-Z]+$/.test(expression)) {
+  if (hasUnknownToken || !/^[0-9+\-*/().,\s_a-zA-Z<>!=]+$/.test(expression)) {
     return null;
   }
 
@@ -194,6 +199,20 @@ function findResultRange(result, resultRanges) {
   }) || null;
 }
 
+function calculateFormulaOutput(output, variables, fallbackRanges = []) {
+  const value = evaluateSafeFormula(output.formula, variables);
+  const resultRanges = Array.isArray(output.resultRanges) && output.resultRanges.length > 0
+    ? output.resultRanges
+    : fallbackRanges;
+
+  return {
+    ...output,
+    value,
+    range: findResultRange(value, resultRanges),
+    ready: value != null,
+  };
+}
+
 function calculateToolResult(tool, values) {
   const fields = tool?.fields || [];
   const missingFields = fields.filter((field) => isFieldMissing(field, values[field.id]));
@@ -213,13 +232,23 @@ function calculateToolResult(tool, values) {
       ...accumulator,
       [field.id]: getFieldNumericValue(field, values[field.id]),
     }), {});
-    const value = evaluateSafeFormula(tool.engineConfig?.formula, variables);
+    const configuredOutputs = Array.isArray(tool.engineConfig?.outputs) ? tool.engineConfig.outputs : [];
+    const outputFallbackRanges = configuredOutputs.length === 1 ? tool.resultRanges : [];
+    const outputs = configuredOutputs.map((output) => calculateFormulaOutput(output, variables, outputFallbackRanges));
+    const primaryOutput = outputs[0] || null;
+    const value = primaryOutput
+      ? primaryOutput.value
+      : evaluateSafeFormula(tool.engineConfig?.formula, variables);
+    const ready = outputs.length > 0
+      ? outputs.every((output) => output.ready)
+      : value != null;
 
     return {
-      ready: value != null,
+      ready,
       missingFields: [],
       value,
-      range: findResultRange(value, tool.resultRanges),
+      range: primaryOutput?.range || findResultRange(value, tool.resultRanges),
+      outputs,
       selectedItems: fields.flatMap((field) => getFieldSelectedItems(field, values[field.id])),
     };
   }
@@ -241,6 +270,26 @@ function calculateToolResult(tool, values) {
 function buildCopyText(tool, result) {
   if (!tool || !result?.ready) {
     return '';
+  }
+
+  if (Array.isArray(result.outputs) && result.outputs.length > 0) {
+    const lines = [getToolTitle(tool)];
+
+    result.outputs.forEach((output) => {
+      const precision = output.precision ?? tool.engineConfig?.precision;
+      const unit = output.unit ? ` ${output.unit}` : '';
+      lines.push(`${output.label || output.resultLabel || 'Resultado'}: ${formatResultValue(output.value, precision)}${unit}`);
+
+      if (output.range?.classification) {
+        lines.push(`Classificação: ${output.range.classification}`);
+      }
+
+      if (output.range?.orientation) {
+        lines.push(`Orientação: ${output.range.orientation}`);
+      }
+    });
+
+    return lines.join('\n');
   }
 
   const valueText = formatResultValue(result.value, tool.engineConfig?.precision);
@@ -434,14 +483,6 @@ function ClinicalToolField({ field, value, onChange }) {
 }
 
 function ClinicalToolResult({ tool, result, copied, onCopy }) {
-  const precision = tool?.engineConfig?.precision ?? 1;
-  const unit = tool?.engineConfig?.unit ? ` ${tool.engineConfig.unit}` : '';
-  const resultLabel = tool?.engineConfig?.resultLabel || 'Resultado';
-  const scoreLabel = tool?.engineConfig?.scoreLabel || 'pontos';
-  const valueText = result?.ready
-    ? `${formatResultValue(result.value, precision)}${unit || (tool.toolType === 'math_formula' ? '' : ` ${scoreLabel}`)}`
-    : '--';
-
   if (!result?.ready) {
     return (
       <section className="clinical-tool-result-card neutral">
@@ -454,29 +495,56 @@ function ClinicalToolResult({ tool, result, copied, onCopy }) {
     );
   }
 
-  const color = result.range?.alertColor || 'gray';
+  function renderResultCard(item) {
+    const precision = item.precision ?? tool?.engineConfig?.precision ?? 1;
+    const unit = item.unit ? ` ${item.unit}` : (tool?.engineConfig?.unit ? ` ${tool.engineConfig.unit}` : '');
+    const resultLabel = item.resultLabel || item.label || tool?.engineConfig?.resultLabel || 'Resultado';
+    const scoreLabel = tool?.engineConfig?.scoreLabel || 'pontos';
+    const valueText = `${formatResultValue(item.value, precision)}${unit || (tool.toolType === 'math_formula' ? '' : ` ${scoreLabel}`)}`;
+    const color = item.range?.alertColor || 'gray';
+
+    return (
+      <section key={item.id || resultLabel} className={`clinical-tool-result-card ${color}`}>
+        <div className="clinical-tool-result-header">
+          <div>
+            <span>{resultLabel}</span>
+            <h3>{valueText}</h3>
+          </div>
+          {item.range?.classification ? (
+            <strong>{item.range.classification}</strong>
+          ) : null}
+        </div>
+
+        {item.range?.orientation ? <p>{item.range.orientation}</p> : null}
+        {RESULT_COLOR_LABELS[color] ? (
+          <small>Categoria visual: {RESULT_COLOR_LABELS[color]}.</small>
+        ) : null}
+      </section>
+    );
+  }
+
+  if (Array.isArray(result.outputs) && result.outputs.length > 0) {
+    return (
+      <div className="clinical-tool-result-stack">
+        {result.outputs.map(renderResultCard)}
+        <button type="button" className="btn btn-secundario" onClick={onCopy}>
+          {copied ? 'Copiado' : 'Copiar resultados'}
+        </button>
+      </div>
+    );
+  }
 
   return (
-    <section className={`clinical-tool-result-card ${color}`}>
-      <div className="clinical-tool-result-header">
-        <div>
-          <span>{resultLabel}</span>
-          <h3>{valueText}</h3>
-        </div>
-        {result.range?.classification ? (
-          <strong>{result.range.classification}</strong>
-        ) : null}
-      </div>
-
-      {result.range?.orientation ? <p>{result.range.orientation}</p> : null}
-      {RESULT_COLOR_LABELS[color] ? (
-        <small>Categoria visual: {RESULT_COLOR_LABELS[color]}.</small>
-      ) : null}
-
+    <div className="clinical-tool-result-stack">
+      {renderResultCard({
+        id: 'single_result',
+        value: result.value,
+        range: result.range,
+      })}
       <button type="button" className="btn btn-secundario" onClick={onCopy}>
         {copied ? 'Copiado' : 'Copiar resultado'}
       </button>
-    </section>
+    </div>
   );
 }
 

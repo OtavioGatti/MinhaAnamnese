@@ -3743,6 +3743,15 @@ body {
   gap: 0.8rem;
 }
 
+.clinical-tool-result-stack {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.clinical-tool-result-stack > .btn {
+  width: fit-content;
+}
+
 .clinical-tool-result-card,
 .clinical-tool-breakdown,
 .clinical-tool-source {

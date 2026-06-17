@@ -9,6 +9,7 @@ const ALLOWED_FORMULA_FUNCTIONS = new Set([
   'ceil',
   'exp',
   'floor',
+  'ifelse',
   'ln',
   'log',
   'max',
@@ -220,8 +221,30 @@ function normalizeResultRange(range, index) {
   };
 }
 
+function normalizeEngineOutput(output, index) {
+  const config = safeJsonObject(output);
+  const label = normalizeText(config.label || config.title || config.name || config.result_label || config.resultLabel);
+  const id = normalizeKey(config.id || label || `output_${index + 1}`) || `output_${index + 1}`;
+  const resultRanges = safeJsonArray(config.result_ranges || config.resultRanges || config.faixas_resultado)
+    .map(normalizeResultRange)
+    .filter(Boolean);
+
+  return {
+    id,
+    label: label || `Resultado ${index + 1}`,
+    formula: normalizeText(config.formula),
+    precision: Math.min(Math.max(Number.parseInt(config.precision ?? config.decimals ?? 1, 10) || 1, 0), 6),
+    unit: normalizeText(config.unit || config.unidade),
+    resultLabel: normalizeText(config.result_label || config.resultLabel) || label || `Resultado ${index + 1}`,
+    resultRanges,
+  };
+}
+
 function normalizeEngineConfig(value) {
   const config = safeJsonObject(value);
+  const outputs = safeJsonArray(config.outputs || config.resultados || config.saidas)
+    .map(normalizeEngineOutput)
+    .filter((output) => output.formula);
 
   return {
     formula: normalizeText(config.formula),
@@ -229,6 +252,7 @@ function normalizeEngineConfig(value) {
     unit: normalizeText(config.unit || config.unidade),
     scoreLabel: normalizeText(config.score_label || config.scoreLabel || config.label) || 'pontos',
     resultLabel: normalizeText(config.result_label || config.resultLabel) || 'Resultado',
+    outputs,
   };
 }
 
@@ -239,7 +263,11 @@ function validateFormula(formula, fields) {
     return false;
   }
 
-  if (!/^[0-9+\-*/().,\s_a-zA-Z]+$/.test(normalizedFormula)) {
+  if (!/^[0-9+\-*/().,\s_a-zA-Z<>!=]+$/.test(normalizedFormula)) {
+    return false;
+  }
+
+  if (/(^|[^<>=!])=([^=]|$)/.test(normalizedFormula) || /={3,}|!={2,}/.test(normalizedFormula)) {
     return false;
   }
 
@@ -268,8 +296,15 @@ function validateClinicalToolSchema(tool) {
     errors.push('campos ausentes ou inválidos');
   }
 
-  if (tool.toolType === 'math_formula' && !validateFormula(tool.engineConfig.formula, tool.fields)) {
-    errors.push('fórmula ausente ou com variáveis incompatíveis');
+  if (tool.toolType === 'math_formula') {
+    const formulas = [
+      tool.engineConfig.formula,
+      ...safeJsonArray(tool.engineConfig.outputs).map((output) => output.formula),
+    ].filter(Boolean);
+
+    if (formulas.length === 0 || formulas.some((formula) => !validateFormula(formula, tool.fields))) {
+      errors.push('fórmula ausente ou com variáveis incompatíveis');
+    }
   }
 
   if (tool.toolType !== 'math_formula' && !tool.fields.some((field) => field.options.length > 0)) {
