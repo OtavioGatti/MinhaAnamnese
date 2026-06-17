@@ -199,7 +199,32 @@ function findResultRange(result, resultRanges) {
   }) || null;
 }
 
-function calculateFormulaOutput(output, variables, fallbackRanges = []) {
+function getFieldById(fields, fieldId) {
+  return fields.find((field) => field.id === fieldId) || null;
+}
+
+function getOutputRequiredFields(output, fields) {
+  const configuredFields = Array.isArray(output.requiredFields) ? output.requiredFields : [];
+
+  return configuredFields
+    .map((fieldId) => getFieldById(fields, fieldId))
+    .filter(Boolean);
+}
+
+function calculateFormulaOutput(output, variables, fields, values, fallbackRanges = []) {
+  const requiredFields = getOutputRequiredFields(output, fields);
+  const missingFields = requiredFields.filter((field) => isFieldMissing(field, values[field.id]));
+
+  if (missingFields.length > 0) {
+    return {
+      ...output,
+      value: null,
+      range: null,
+      ready: false,
+      missingFields,
+    };
+  }
+
   const value = evaluateSafeFormula(output.formula, variables);
   const resultRanges = Array.isArray(output.resultRanges) && output.resultRanges.length > 0
     ? output.resultRanges
@@ -210,14 +235,16 @@ function calculateFormulaOutput(output, variables, fallbackRanges = []) {
     value,
     range: findResultRange(value, resultRanges),
     ready: value != null,
+    missingFields: [],
   };
 }
 
 function calculateToolResult(tool, values) {
   const fields = tool?.fields || [];
   const missingFields = fields.filter((field) => isFieldMissing(field, values[field.id]));
+  const configuredOutputs = Array.isArray(tool?.engineConfig?.outputs) ? tool.engineConfig.outputs : [];
 
-  if (missingFields.length > 0) {
+  if (missingFields.length > 0 && !(tool.toolType === 'math_formula' && configuredOutputs.length > 0)) {
     return {
       ready: false,
       missingFields,
@@ -232,15 +259,16 @@ function calculateToolResult(tool, values) {
       ...accumulator,
       [field.id]: getFieldNumericValue(field, values[field.id]),
     }), {});
-    const configuredOutputs = Array.isArray(tool.engineConfig?.outputs) ? tool.engineConfig.outputs : [];
     const outputFallbackRanges = configuredOutputs.length === 1 ? tool.resultRanges : [];
-    const outputs = configuredOutputs.map((output) => calculateFormulaOutput(output, variables, outputFallbackRanges));
+    const outputs = configuredOutputs.map((output) => {
+      return calculateFormulaOutput(output, variables, fields, values, outputFallbackRanges);
+    });
     const primaryOutput = outputs[0] || null;
     const value = primaryOutput
       ? primaryOutput.value
       : evaluateSafeFormula(tool.engineConfig?.formula, variables);
     const ready = outputs.length > 0
-      ? outputs.every((output) => output.ready)
+      ? outputs.some((output) => output.ready)
       : value != null;
 
     return {
@@ -268,14 +296,19 @@ function calculateToolResult(tool, values) {
 }
 
 function buildCopyText(tool, result) {
-  if (!tool || !result?.ready) {
+  if (!tool) {
     return '';
   }
 
   if (Array.isArray(result.outputs) && result.outputs.length > 0) {
     const lines = [getToolTitle(tool)];
+    const readyOutputs = result.outputs.filter((output) => output.ready);
 
-    result.outputs.forEach((output) => {
+    if (readyOutputs.length === 0) {
+      return '';
+    }
+
+    readyOutputs.forEach((output) => {
       const precision = output.precision ?? tool.engineConfig?.precision;
       const unit = output.unit ? ` ${output.unit}` : '';
       lines.push(`${output.label || output.resultLabel || 'Resultado'}: ${formatResultValue(output.value, precision)}${unit}`);
@@ -290,6 +323,10 @@ function buildCopyText(tool, result) {
     });
 
     return lines.join('\n');
+  }
+
+  if (!result?.ready) {
+    return '';
   }
 
   const valueText = formatResultValue(result.value, tool.engineConfig?.precision);
@@ -483,7 +520,9 @@ function ClinicalToolField({ field, value, onChange }) {
 }
 
 function ClinicalToolResult({ tool, result, copied, onCopy }) {
-  if (!result?.ready) {
+  const hasOutputs = Array.isArray(result?.outputs) && result.outputs.length > 0;
+
+  if (!result?.ready && !hasOutputs) {
     return (
       <section className="clinical-tool-result-card neutral">
         <span>Resultado</span>
@@ -496,9 +535,26 @@ function ClinicalToolResult({ tool, result, copied, onCopy }) {
   }
 
   function renderResultCard(item) {
+    const resultLabel = item.resultLabel || item.label || tool?.engineConfig?.resultLabel || 'Resultado';
+
+    if (!item.ready) {
+      return (
+        <section key={item.id || resultLabel} className="clinical-tool-result-card neutral">
+          <div className="clinical-tool-result-header">
+            <div>
+              <span>{resultLabel}</span>
+              <h3>Preencha os campos</h3>
+            </div>
+          </div>
+          {item.missingFields?.length ? (
+            <p>Faltam: {item.missingFields.map((field) => field.label).join(', ')}.</p>
+          ) : null}
+        </section>
+      );
+    }
+
     const precision = item.precision ?? tool?.engineConfig?.precision ?? 1;
     const unit = item.unit ? ` ${item.unit}` : (tool?.engineConfig?.unit ? ` ${tool.engineConfig.unit}` : '');
-    const resultLabel = item.resultLabel || item.label || tool?.engineConfig?.resultLabel || 'Resultado';
     const scoreLabel = tool?.engineConfig?.scoreLabel || 'pontos';
     const valueText = `${formatResultValue(item.value, precision)}${unit || (tool.toolType === 'math_formula' ? '' : ` ${scoreLabel}`)}`;
     const color = item.range?.alertColor || 'gray';
@@ -523,11 +579,13 @@ function ClinicalToolResult({ tool, result, copied, onCopy }) {
     );
   }
 
-  if (Array.isArray(result.outputs) && result.outputs.length > 0) {
+  if (hasOutputs) {
+    const hasReadyOutput = result.outputs.some((output) => output.ready);
+
     return (
       <div className="clinical-tool-result-stack">
         {result.outputs.map(renderResultCard)}
-        <button type="button" className="btn btn-secundario" onClick={onCopy}>
+        <button type="button" className="btn btn-secundario" onClick={onCopy} disabled={!hasReadyOutput}>
           {copied ? 'Copiado' : 'Copiar resultados'}
         </button>
       </div>

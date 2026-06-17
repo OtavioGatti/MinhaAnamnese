@@ -225,6 +225,9 @@ function normalizeEngineOutput(output, index) {
   const config = safeJsonObject(output);
   const label = normalizeText(config.label || config.title || config.name || config.result_label || config.resultLabel);
   const id = normalizeKey(config.id || label || `output_${index + 1}`) || `output_${index + 1}`;
+  const requiredFields = safeJsonArray(config.required_fields || config.requiredFields || config.campos_obrigatorios)
+    .map(normalizeKey)
+    .filter(Boolean);
   const resultRanges = safeJsonArray(config.result_ranges || config.resultRanges || config.faixas_resultado)
     .map(normalizeResultRange)
     .filter(Boolean);
@@ -236,6 +239,7 @@ function normalizeEngineOutput(output, index) {
     precision: Math.min(Math.max(Number.parseInt(config.precision ?? config.decimals ?? 1, 10) || 1, 0), 6),
     unit: normalizeText(config.unit || config.unidade),
     resultLabel: normalizeText(config.result_label || config.resultLabel) || label || `Resultado ${index + 1}`,
+    requiredFields,
     resultRanges,
   };
 }
@@ -297,6 +301,7 @@ function validateClinicalToolSchema(tool) {
   }
 
   if (tool.toolType === 'math_formula') {
+    const fieldIds = new Set(tool.fields.map((field) => field.id));
     const formulas = [
       tool.engineConfig.formula,
       ...safeJsonArray(tool.engineConfig.outputs).map((output) => output.formula),
@@ -304,6 +309,12 @@ function validateClinicalToolSchema(tool) {
 
     if (formulas.length === 0 || formulas.some((formula) => !validateFormula(formula, tool.fields))) {
       errors.push('fórmula ausente ou com variáveis incompatíveis');
+    }
+
+    if (safeJsonArray(tool.engineConfig.outputs).some((output) => {
+      return safeJsonArray(output.requiredFields).some((fieldId) => !fieldIds.has(fieldId));
+    })) {
+      errors.push('required_fields com campos inexistentes');
     }
   }
 
