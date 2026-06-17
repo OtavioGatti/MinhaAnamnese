@@ -10,14 +10,6 @@ const TOOL_TYPE_LABELS = {
   conditional_logic: 'Lógica condicional',
 };
 
-const RESULT_COLOR_LABELS = {
-  green: 'baixo',
-  yellow: 'atenção',
-  red: 'alto',
-  blue: 'informativo',
-  gray: 'neutro',
-};
-
 const ALLOWED_FORMULA_FUNCTIONS = {
   abs: Math.abs,
   ceil: Math.ceil,
@@ -572,9 +564,6 @@ function ClinicalToolResult({ tool, result, copied, onCopy }) {
         </div>
 
         {item.range?.orientation ? <p>{item.range.orientation}</p> : null}
-        {RESULT_COLOR_LABELS[color] ? (
-          <small>Categoria visual: {RESULT_COLOR_LABELS[color]}.</small>
-        ) : null}
       </section>
     );
   }
