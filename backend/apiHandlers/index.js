@@ -4,6 +4,7 @@ const apiRoutes = {
   '/api/organizar': require('./organizar'),
   '/api/insights': require('./insights'),
   '/api/referral-letter': require('./referral-letter'),
+  '/api/diagnostic-hypotheses': require('./diagnostic-hypotheses'),
   '/api/profile': require('./profile'),
   '/api/health': require('./health'),
   '/api/analytics': require('./analytics'),

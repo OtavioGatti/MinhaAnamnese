@@ -180,6 +180,34 @@ function normalizeKey(value) {
   return stripAccents(value).toLowerCase().trim();
 }
 
+function normalizeGuideMatchKey(value) {
+  return normalizeKey(value)
+    .replace(/[^a-z0-9]+/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function findExactPrescriptionGuideMatch(hypothesisName, guides) {
+  const hypothesisKey = normalizeGuideMatchKey(hypothesisName);
+
+  if (!hypothesisKey || !Array.isArray(guides)) {
+    return null;
+  }
+
+  return guides.find((guide) => {
+    const candidateKeys = [
+      guide?.conditionName,
+      guide?.title,
+      guide?.subcondition,
+      String(guide?.slug || '').replace(/-/g, ' '),
+    ]
+      .map(normalizeGuideMatchKey)
+      .filter(Boolean);
+
+    return candidateKeys.includes(hypothesisKey);
+  }) || null;
+}
+
 function getSearchTerms(value) {
   const raw = sanitizePostgrestPattern(value);
   const accentless = stripAccents(raw);
@@ -612,6 +640,28 @@ async function listPrescriptionGuides({ query = '', specialty = '', context = ''
     .slice(0, normalizeLimit(limit));
 }
 
+async function findPrescriptionGuideForHypothesis(hypothesisName) {
+  const normalizedName = normalizeText(hypothesisName);
+
+  if (!normalizedName || !isPrescriptionGuidesStorageAvailable()) {
+    return null;
+  }
+
+  const guides = await listPrescriptionGuides({ query: normalizedName, limit: 12 });
+  const match = findExactPrescriptionGuideMatch(normalizedName, guides);
+
+  if (!match) {
+    return null;
+  }
+
+  return {
+    slug: match.slug,
+    title: match.title,
+    conditionName: match.conditionName,
+    matchType: 'exact',
+  };
+}
+
 async function getPrescriptionGuideBySlug(slug) {
   const normalizedSlug = normalizeText(slug);
 
@@ -678,6 +728,8 @@ async function getPrescriptionGuideBySlug(slug) {
 }
 
 module.exports = {
+  findExactPrescriptionGuideMatch,
+  findPrescriptionGuideForHypothesis,
   getPrescriptionGuideBySlug,
   isPrescriptionGuidesStorageAvailable,
   listPrescriptionGuides,

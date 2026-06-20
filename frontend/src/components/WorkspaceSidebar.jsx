@@ -15,6 +15,12 @@ const TABS = [
     shortLabel: 'Calculadoras',
     description: 'Acesse ferramentas de apoio sem sair do fluxo principal.',
   },
+  {
+    id: 'diagnostic',
+    label: 'Hipóteses diagnósticas',
+    shortLabel: 'Hipóteses',
+    description: 'Revise hipóteses diferenciais sugeridas a partir da história organizada.',
+  },
 ];
 
 function WorkspaceSidebar({
@@ -24,15 +30,31 @@ function WorkspaceSidebar({
   templateNome,
   guideItems,
   templateTemCalculadora,
+  diagnosticEnabled = false,
+  diagnosticContent = null,
 }) {
   const resolvedGuideItems = Array.isArray(guideItems) ? guideItems : guides[templateSelecionado] || [];
   const hasGuide = resolvedGuideItems.length > 0;
-  const availableTabs = TABS.filter((tab) => tab.id !== 'calculator' || templateTemCalculadora);
+  const availableTabs = TABS.filter((tab) => {
+    if (tab.id === 'calculator') {
+      return templateTemCalculadora;
+    }
+
+    if (tab.id === 'diagnostic') {
+      return diagnosticEnabled;
+    }
+
+    return true;
+  });
   const safeActiveTab = availableTabs.some((tab) => tab.id === activeTab) ? activeTab : 'guide';
   const selectedTab = TABS.find((tab) => tab.id === safeActiveTab);
   const hasTemplate = Boolean(templateSelecionado);
 
   const renderContent = () => {
+    if (safeActiveTab === 'diagnostic') {
+      return diagnosticContent;
+    }
+
     if (safeActiveTab === 'calculator') {
       return (
         <div className="workspace-sidebar-section workspace-sidebar-calculator">

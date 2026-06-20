@@ -513,7 +513,7 @@ body {
 
 .workspace-sidebar-tabs {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(92px, 1fr));
   gap: 0.4rem;
 }
 
@@ -961,6 +961,44 @@ body {
   display: grid;
   justify-items: end;
   gap: 0.4rem;
+}
+
+.document-action-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.btn-diagnostic-hypotheses {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: 1px solid rgba(109, 40, 217, 0.24);
+  background: linear-gradient(180deg, #faf5ff 0%, #f5f3ff 100%);
+  color: #6d28d9;
+  box-shadow: 0 6px 14px rgba(109, 40, 217, 0.08);
+}
+
+.btn-diagnostic-hypotheses:hover:not(:disabled) {
+  border-color: rgba(109, 40, 217, 0.4);
+  background: #f3e8ff;
+}
+
+.btn-diagnostic-hypotheses span,
+.diagnostic-pro-badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 20px;
+  padding: 0.15rem 0.42rem;
+  border-radius: 999px;
+  background: #6d28d9;
+  color: #fff;
+  font-size: 0.63rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
 }
 
 .document-action-hint {
@@ -5351,6 +5389,184 @@ body {
   to { transform: rotate(360deg); }
 }
 
+.diagnostic-access-card,
+.diagnostic-start-card,
+.diagnostic-loading,
+.diagnostic-error,
+.diagnostic-status-notice {
+  display: grid;
+  gap: 0.72rem;
+  padding: 1rem;
+  border: 1px solid rgba(167, 139, 250, 0.34);
+  border-radius: 16px;
+  background: linear-gradient(180deg, rgba(250, 245, 255, 0.95) 0%, rgba(255, 255, 255, 0.98) 100%);
+}
+
+.diagnostic-access-card p,
+.diagnostic-start-card p,
+.diagnostic-loading p,
+.diagnostic-error p,
+.diagnostic-status-notice p,
+.diagnostic-hypothesis-card p,
+.diagnostic-disclaimer {
+  margin: 0;
+  color: var(--gray-600);
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+.diagnostic-access-card .btn,
+.diagnostic-start-card .btn,
+.diagnostic-error .btn {
+  width: 100%;
+}
+
+.diagnostic-loading {
+  justify-items: center;
+  text-align: center;
+}
+
+.diagnostic-loading .spinner {
+  width: 24px;
+  height: 24px;
+}
+
+.diagnostic-error,
+.diagnostic-status-notice {
+  border-color: rgba(245, 158, 11, 0.28);
+  background: #fffbeb;
+}
+
+.diagnostic-results {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.diagnostic-hypothesis-card {
+  display: grid;
+  gap: 0.65rem;
+  padding: 0.95rem;
+  border: 1px solid rgba(148, 163, 184, 0.24);
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.045);
+}
+
+.diagnostic-hypothesis-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.diagnostic-hypothesis-card h3 {
+  margin: 0;
+  color: var(--gray-900);
+  font-size: 0.94rem;
+  line-height: 1.35;
+}
+
+.diagnostic-priority {
+  display: inline-flex;
+  width: fit-content;
+  padding: 0.22rem 0.48rem;
+  border-radius: 999px;
+  background: #eef2ff;
+  color: #4338ca;
+  font-size: 0.66rem;
+  font-weight: 750;
+}
+
+.diagnostic-priority-most_compatible {
+  background: #ecfdf5;
+  color: #047857;
+}
+
+.diagnostic-priority-cannot_miss {
+  background: #fff1f2;
+  color: #be123c;
+}
+
+.diagnostic-hypothesis-index {
+  display: grid;
+  width: 24px;
+  height: 24px;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--gray-100);
+  color: var(--gray-600);
+  font-size: 0.7rem;
+  font-weight: 750;
+}
+
+.diagnostic-hypothesis-card details {
+  border-top: 1px solid var(--gray-100);
+  padding-top: 0.65rem;
+}
+
+.diagnostic-hypothesis-card summary {
+  color: var(--primary-700);
+  cursor: pointer;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.diagnostic-hypothesis-list {
+  display: grid;
+  gap: 0.35rem;
+  margin-top: 0.7rem;
+}
+
+.diagnostic-hypothesis-list > strong {
+  color: var(--gray-800);
+  font-size: 0.74rem;
+}
+
+.diagnostic-hypothesis-list ul {
+  display: grid;
+  gap: 0.32rem;
+  padding-left: 1.05rem;
+  margin: 0;
+  color: var(--gray-600);
+  font-size: 0.75rem;
+  line-height: 1.45;
+}
+
+.diagnostic-hypothesis-list-support li::marker {
+  color: #059669;
+}
+
+.diagnostic-hypothesis-list-warning li::marker {
+  color: #dc2626;
+}
+
+.diagnostic-guide-action {
+  width: 100%;
+  padding: 0.62rem 0.75rem;
+  border: 1px solid rgba(37, 99, 235, 0.24);
+  border-radius: 10px;
+  background: #eff6ff;
+  color: var(--primary-700);
+  cursor: pointer;
+  font-size: 0.76rem;
+  font-weight: 750;
+}
+
+.diagnostic-guide-action:hover {
+  border-color: rgba(37, 99, 235, 0.42);
+  background: #dbeafe;
+}
+
+.diagnostic-regenerate {
+  width: 100%;
+}
+
+.diagnostic-disclaimer {
+  padding: 0 0.25rem;
+  text-align: center;
+  font-size: 0.72rem;
+}
+
 @media (max-width: 1120px) {
   .container {
     max-width: 100%;
@@ -5517,6 +5733,16 @@ body {
   .document-actions {
     width: 100%;
     justify-items: stretch;
+  }
+
+  .document-action-buttons {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 1fr;
+  }
+
+  .document-action-buttons .btn {
+    width: 100%;
   }
 
   .protocol-prescription-option-header {

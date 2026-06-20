@@ -53,7 +53,15 @@ function buildDocumentParts(texto) {
     });
 }
 
-function StructuredOutput({ displayedResultado, copiado, onCopiar }) {
+function StructuredOutput({
+  displayedResultado,
+  copiado,
+  onCopiar,
+  onSuggestHypotheses,
+  diagnosticLoading = false,
+  diagnosticEnabled = false,
+  diagnosticProAccess = false,
+}) {
   const documentParts = buildDocumentParts(displayedResultado || '');
 
   return (
@@ -73,13 +81,26 @@ function StructuredOutput({ displayedResultado, copiado, onCopiar }) {
           </div>
 
           <div className="document-actions">
-            <button
-              className={`btn btn-copiar btn-copiar-inline ${copiado ? 'copiado' : ''}`}
-              onClick={onCopiar}
-              type="button"
-            >
-              {copiado ? 'Copiado!' : 'Copiar resultado'}
-            </button>
+            <div className="document-action-buttons">
+              <button
+                className={`btn btn-copiar btn-copiar-inline ${copiado ? 'copiado' : ''}`}
+                onClick={onCopiar}
+                type="button"
+              >
+                {copiado ? 'Copiado!' : 'Copiar resultado'}
+              </button>
+              {diagnosticEnabled ? (
+                <button
+                  className="btn btn-diagnostic-hypotheses"
+                  onClick={onSuggestHypotheses}
+                  disabled={diagnosticLoading}
+                  type="button"
+                >
+                  {diagnosticLoading ? 'Analisando...' : 'Sugerir hipóteses'}
+                  {!diagnosticProAccess ? <span>PRO</span> : null}
+                </button>
+              ) : null}
+            </div>
             <span className="document-action-hint">1 clique para usar no atendimento</span>
           </div>
         </div>

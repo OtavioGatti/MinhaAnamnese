@@ -19,6 +19,7 @@ O Minha Anamnese é composto por:
 - Prompts por categoria clínica, permitindo vincular templates e prompts por `category_key`.
 - Score estrutural da anamnese com seções ausentes, evidências, lacunas e acompanhamento de evolução.
 - Cartas de encaminhamento geradas com IA.
+- Sugestão de hipóteses diagnósticas para usuários profissionais, com evidências, dados ausentes, diferenciais e sinais de alerta.
 - Guias de prescrição por patologia, com CID-10 principal e CID-10 por opção quando preenchidos.
 - Bulário clínico com busca por princípio ativo, nome comercial, classe/categoria e tags.
 - Autocomplete textual de medicamentos na anamnese com chips de consulta rápida.
@@ -91,6 +92,8 @@ PUBLIC_API_URL=http://localhost:3001
 
 OPENAI_API_KEY=
 ANALYSIS_ENGINE=unified_ai
+DIAGNOSTIC_HYPOTHESES_ENABLED=true
+DIAGNOSTIC_MODEL=gpt-4o
 
 SUPABASE_URL=
 SUPABASE_ANON_KEY=
@@ -154,6 +157,7 @@ O backend não possui build separado; ele roda diretamente com Node.js.
 - `POST /api/organizar`: organiza a anamnese com IA.
 - `POST /api/insights`: gera análise estrutural e score.
 - `POST /api/referral-letter`: gera carta de encaminhamento.
+- `POST /api/diagnostic-hypotheses`: sugere hipóteses diagnósticas a partir da anamnese organizada para usuários profissionais.
 - `GET /api/templates`: lista templates oficiais e do usuário.
 - `GET /api/prescription-guides`: lista guias de prescrição publicados.
 - `GET /api/clinical-drugs`: lista medicamentos do bulário clínico.
@@ -207,6 +211,7 @@ Os arquivos SQL ficam em `supabase/` e devem ser aplicados manualmente no SQL Ed
 
 - Score e evidências da anamnese: `backend/utils/anamnesisQualityScore.js`
 - Geração de insights: `backend/services/generateInsights.js`
+- Hipóteses diagnósticas: `backend/services/generateDiagnosticHypotheses.js`
 - Organização da anamnese: `backend/services/processAnamnesis.js`
 - Templates oficiais: `backend/services/officialTemplates.js`
 - Prompts oficiais por categoria: `backend/services/officialPrompts.js`
@@ -219,6 +224,7 @@ Os arquivos SQL ficam em `supabase/` e devem ser aplicados manualmente no SQL Ed
 - Não usar este produto como prontuário oficial.
 - Não inserir dados identificáveis do paciente, como nome completo, CPF, endereço ou telefone.
 - Conferir dose, alergias, contraindicações, idade, peso, gestação, função renal/hepática e protocolo local antes de prescrever.
+- Tratar hipóteses geradas como apoio ao raciocínio, nunca como diagnóstico confirmado ou substituto da avaliação profissional.
 - Manter dados editoriais publicados no Notion apenas após revisão adequada.
 - Rodar `npm run build` no frontend antes de publicar alterações de UI.
 - Para mudanças de banco, criar SQL idempotente em `supabase/` e aplicar manualmente.

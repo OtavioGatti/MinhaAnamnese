@@ -1,7 +1,8 @@
 ﻿import { useEffect, useMemo, useRef, useState } from 'react';
 import { api } from './apiClient';
-import { API_BASE_URL } from './config';
+import { API_BASE_URL, DIAGNOSTIC_HYPOTHESES_ENABLED } from './config';
 import DetailedAnalysis from './components/DetailedAnalysis';
+import DiagnosticHypothesesPanel from './components/DiagnosticHypothesesPanel';
 import EvolutionPage from './components/EvolutionPage';
 import InputSection from './components/InputSection';
 import InsightBlock from './components/InsightBlock';
@@ -25,6 +26,7 @@ import AffiliatePage from './components/AffiliatePage';
 import { BILLING_PLANS, DEFAULT_PLAN_KEY, PRO_PLAN_PERIOD_COPY, PRO_PLAN_PRICE_COPY } from './billingPlans';
 import { guides } from './data/guides';
 import { supabase } from './lib/supabaseClient';
+import useDiagnosticHypotheses from './hooks/useDiagnosticHypotheses';
 
 const TEMPLATE_WITH_CALCULATORS = 'obstetricia';
 const CHECKOUT_RETURN_STATE_KEY = 'checkout-return-state';
@@ -825,6 +827,7 @@ function App() {
   const [authPanelAberto, setAuthPanelAberto] = useState(false);
   const [activeSidebarTab, setActiveSidebarTab] = useState('guide');
   const [currentPage, setCurrentPage] = useState(() => getInitialWorkspacePageFromPath());
+  const [prescriptionGuideTarget, setPrescriptionGuideTarget] = useState(null);
   const [anamneseStats, setAnamneseStats] = useState(null);
   const [anamneseActivity, setAnamneseActivity] = useState([]);
   const [recentAnamneses, setRecentAnamneses] = useState([]);
@@ -841,6 +844,11 @@ function App() {
   const [referralError, setReferralError] = useState('');
   const [loadingReferralLetter, setLoadingReferralLetter] = useState(false);
   const [referralCopied, setReferralCopied] = useState(false);
+  const diagnosticHypotheses = useDiagnosticHypotheses({
+    templateId: templateSelecionado,
+    structuredText: resultado,
+    onProfileUpdate: setProfile,
+  });
 
   const templateTemCalculadora = templateSelecionado === TEMPLATE_WITH_CALCULATORS;
   const accessState = useMemo(() => deriveAccessState(user, profile), [profile, user]);
@@ -1336,9 +1344,14 @@ function App() {
     setReferralCopied(false);
   };
 
-  const handleNavigate = (page) => {
+  const handleNavigate = (page, options = {}) => {
     setCurrentPage(page);
     setAuthPanelAberto(false);
+
+    if (page === 'prescriptionGuide') {
+      setPrescriptionGuideTarget(options.prescriptionTarget || null);
+    }
+
     setCheckoutErrors({
       home: '',
       profile: '',
@@ -2191,6 +2204,39 @@ function App() {
     }
   };
 
+  const handleRequestDiagnosticHypotheses = async () => {
+    setActiveSidebarTab('diagnostic');
+
+    if (!user?.id || !accessState?.hasActiveProAccess) {
+      handleUpgradeInsights('home');
+      return;
+    }
+
+    const data = await diagnosticHypotheses.generate();
+
+    if (data) {
+      trackEvent('hipoteses_diagnosticas_geradas', {
+        template: templateSelecionado,
+        hypothesis_count: Array.isArray(data.hypotheses) ? data.hypotheses.length : 0,
+        result_status: data.status,
+        prompt_source: data.generation?.promptSource || null,
+      });
+    }
+  };
+
+  const handleOpenHypothesisPrescription = (hypothesis) => {
+    const guide = hypothesis?.prescriptionGuide || null;
+    const prescriptionTarget = guide?.slug
+      ? { slug: guide.slug, query: '' }
+      : { slug: '', query: hypothesis?.name || '' };
+
+    trackEvent('hipotese_prescricao_click', {
+      hypothesis: hypothesis?.name || null,
+      has_exact_guide: Boolean(guide?.slug),
+    });
+    handleNavigate('prescriptionGuide', { prescriptionTarget });
+  };
+
   useEffect(() => {
     if (!resultado || !qualityScore.shouldShowScore || qualityScore.score == null) {
       return;
@@ -2672,6 +2718,10 @@ function App() {
                   displayedResultado={displayedResultado}
                   copiado={copiado}
                   onCopiar={handleCopiar}
+                  onSuggestHypotheses={handleRequestDiagnosticHypotheses}
+                  diagnosticLoading={diagnosticHypotheses.loading}
+                  diagnosticEnabled={DIAGNOSTIC_HYPOTHESES_ENABLED}
+                  diagnosticProAccess={Boolean(user?.id && isPro)}
                 />
               )}
 
@@ -2767,6 +2817,20 @@ function App() {
               templateNome={templateAtual?.nome}
               guideItems={selectedGuideItems}
               templateTemCalculadora={templateTemCalculadora}
+              diagnosticEnabled={DIAGNOSTIC_HYPOTHESES_ENABLED}
+              diagnosticContent={(
+                <DiagnosticHypothesesPanel
+                  hasStructuredResult={Boolean(resultado)}
+                  user={user}
+                  isPro={isPro}
+                  data={diagnosticHypotheses.data}
+                  error={diagnosticHypotheses.error}
+                  loading={diagnosticHypotheses.loading}
+                  onGenerate={handleRequestDiagnosticHypotheses}
+                  onRequestUpgrade={() => handleUpgradeInsights('home')}
+                  onOpenPrescriptionGuide={handleOpenHypothesisPrescription}
+                />
+              )}
             />
           </div>
         </div>
@@ -2818,6 +2882,8 @@ function App() {
           onRequestUpgrade={handleUpgradePrescriptionGuide}
           loadingCheckout={isPrescriptionGuideCheckoutLoading}
           checkoutError={prescriptionGuideCheckoutError}
+          initialSlug={prescriptionGuideTarget?.slug || ''}
+          initialQuery={prescriptionGuideTarget?.query || ''}
         />
       )}
 

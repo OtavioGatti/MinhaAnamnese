@@ -715,6 +715,8 @@ function PrescriptionGuidePage({
   onRequestUpgrade,
   loadingCheckout,
   checkoutError,
+  initialSlug = '',
+  initialQuery = '',
 }) {
   const [query, setQuery] = useState(DEFAULT_QUERY);
   const [guides, setGuides] = useState([]);
@@ -725,6 +727,12 @@ function PrescriptionGuidePage({
   const [loadingDetail, setLoadingDetail] = useState(false);
   const [error, setError] = useState('');
   const [copiedKey, setCopiedKey] = useState('');
+
+  useEffect(() => {
+    setQuery(initialQuery || '');
+    setSelectedSlug(initialSlug || '');
+    setSelectedGuide(null);
+  }, [initialQuery, initialSlug]);
 
   useEffect(() => {
     if (!user?.id || !isPro) {

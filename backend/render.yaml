@@ -9,6 +9,8 @@ services:
         value: production
       - key: OPENAI_API_KEY
         sync: false
+      - key: DIAGNOSTIC_HYPOTHESES_ENABLED
+        value: true
       - key: FRONTEND_URL
         sync: false
       - key: SUPABASE_URL

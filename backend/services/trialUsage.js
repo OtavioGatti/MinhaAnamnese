@@ -3,6 +3,7 @@ const { isValidUserId } = require('../utils/idValidation');
 const TRIAL_USAGE_ACTIONS = {
   insights: 'trial_insight',
   referralLetters: 'trial_referral_letter',
+  diagnosticHypotheses: 'trial_diagnostic_hypotheses',
   prescriptionGuides: 'trial_prescription_guide',
   userTemplates: 'trial_user_template',
 };
@@ -121,6 +122,7 @@ async function getTrialUsageSummary(userId) {
       used: {
         insights: 0,
         referralLetters: 0,
+        diagnosticHypotheses: 0,
         prescriptionGuides: 0,
         userTemplates: 0,
       },
