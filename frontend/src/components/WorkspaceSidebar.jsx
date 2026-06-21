@@ -113,7 +113,13 @@ function WorkspaceSidebar({
         </div>
       ) : null}
 
-      <div className="workspace-sidebar-body">
+      <div
+        key={safeActiveTab}
+        className="workspace-sidebar-body"
+        role="region"
+        aria-label={`${selectedTab?.label || 'Guia clínico'} — conteúdo do apoio contextual`}
+        tabIndex={0}
+      >
         <div className="workspace-sidebar-current-tab">
           <strong>{selectedTab?.label || 'Guia cl\u00ednico'}</strong>
           <span>

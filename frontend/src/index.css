@@ -488,13 +488,22 @@ body {
 .workspace-sidebar {
   position: sticky;
   top: 1.5rem;
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 0.9rem;
+  max-height: calc(100vh - 3rem);
+  max-height: calc(100dvh - 3rem);
+  overflow: hidden;
   padding: 1rem;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.96) 0%, rgba(248, 250, 252, 0.96) 100%);
   border: 1px solid rgba(229, 231, 235, 0.95);
   border-radius: 20px;
   box-shadow: 0 16px 34px rgba(15, 23, 42, 0.055);
+}
+
+.workspace-sidebar-header,
+.workspace-sidebar-tabs {
+  flex-shrink: 0;
 }
 
 .workspace-sidebar-header h2 {
@@ -562,9 +571,48 @@ body {
 }
 
 .workspace-sidebar-body {
-  min-height: 350px;
+  min-height: 0;
+  flex: 1;
   display: grid;
+  align-content: start;
   gap: 0.9rem;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+  padding-right: 0.3rem;
+  scrollbar-color: rgba(100, 116, 139, 0.34) transparent;
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+}
+
+.workspace-sidebar-body:hover,
+.workspace-sidebar-body:focus-within {
+  scrollbar-color: rgba(71, 85, 105, 0.48) transparent;
+}
+
+.workspace-sidebar-body:focus-visible {
+  border-radius: 12px;
+  outline: 2px solid rgba(37, 99, 235, 0.22);
+  outline-offset: 2px;
+}
+
+.workspace-sidebar-body::-webkit-scrollbar {
+  width: 6px;
+}
+
+.workspace-sidebar-body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.workspace-sidebar-body::-webkit-scrollbar-thumb {
+  min-height: 36px;
+  border-radius: 999px;
+  background: rgba(100, 116, 139, 0.32);
+}
+
+.workspace-sidebar-body:hover::-webkit-scrollbar-thumb,
+.workspace-sidebar-body:focus-within::-webkit-scrollbar-thumb {
+  background: rgba(71, 85, 105, 0.46);
 }
 
 .workspace-sidebar-section {
@@ -5615,6 +5663,15 @@ body {
 
   .workspace-sidebar {
     position: static;
+    max-height: none;
+    overflow: visible;
+  }
+
+  .workspace-sidebar-body {
+    overflow: visible;
+    overscroll-behavior: auto;
+    padding-right: 0;
+    scrollbar-gutter: auto;
   }
 
   .template-preview-panel {
