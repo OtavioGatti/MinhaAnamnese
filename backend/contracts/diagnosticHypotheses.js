@@ -26,7 +26,7 @@ const DIAGNOSTIC_HYPOTHESES_SCHEMA = {
           name: { type: 'string' },
           priority: {
             type: 'string',
-            enum: ['most_compatible', 'differential', 'cannot_miss'],
+            enum: ['documented_problem', 'most_compatible', 'differential', 'cannot_miss'],
           },
           rationale: { type: 'string' },
           supportingEvidence: {
@@ -65,7 +65,12 @@ const DIAGNOSTIC_HYPOTHESES_SCHEMA = {
   },
 };
 
-const PRIORITIES = new Set(['most_compatible', 'differential', 'cannot_miss']);
+const PRIORITIES = new Set([
+  'documented_problem',
+  'most_compatible',
+  'differential',
+  'cannot_miss',
+]);
 
 function normalizeText(value, maxLength = 600) {
   return String(value || '')

@@ -6,7 +6,14 @@ const { generateDiagnosticHypotheses } = require('../services/generateDiagnostic
 const DEFAULT_CASES_PATH = path.resolve(__dirname, '../../tests/diagnostic-hypotheses-evals/cases.json');
 const OUTPUT_DIR = path.resolve(__dirname, '../../test-results');
 
-function analyzeResult(result, expectedStatus) {
+function normalizeForMatch(value) {
+  return String(value || '')
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase();
+}
+
+function analyzeResult(result, expectedStatus, expectedConcepts = []) {
   const flags = [];
   const count = Array.isArray(result?.hypotheses) ? result.hypotheses.length : 0;
 
@@ -25,6 +32,19 @@ function analyzeResult(result, expectedStatus) {
 
   if ((result?.hypotheses || []).some((item) => /\b\d{1,3}%\b/.test(item.rationale || ''))) {
     flags.push('numeric_probability');
+  }
+
+  const hypothesisNames = normalizeForMatch(
+    (result?.hypotheses || []).map((item) => item?.name || '').join(' | '),
+  );
+
+  for (const expectedConcept of expectedConcepts) {
+    const aliases = Array.isArray(expectedConcept?.anyOf) ? expectedConcept.anyOf : [];
+    const found = aliases.some((alias) => hypothesisNames.includes(normalizeForMatch(alias)));
+
+    if (!found) {
+      flags.push(`missing_expected_concept:${expectedConcept?.label || 'unnamed'}`);
+    }
   }
 
   return flags;
@@ -47,7 +67,7 @@ async function main() {
         title: evalCase.title,
         expectedStatus: evalCase.expectedStatus || null,
         output,
-        flags: analyzeResult(output, evalCase.expectedStatus),
+        flags: analyzeResult(output, evalCase.expectedStatus, evalCase.expectedConcepts),
       });
     } catch (error) {
       results.push({
@@ -63,8 +83,13 @@ async function main() {
   const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
   const outputPath = path.join(OUTPUT_DIR, `diagnostic-hypotheses-evals-${timestamp}.json`);
   fs.writeFileSync(outputPath, `${JSON.stringify(results, null, 2)}\n`, 'utf8');
+  const flaggedCount = results.filter((item) => item.flags.length > 0).length;
   console.log(`Avaliação concluída: ${outputPath}`);
-  console.log(`Casos com flags: ${results.filter((item) => item.flags.length > 0).length}/${results.length}`);
+  console.log(`Casos com flags: ${flaggedCount}/${results.length}`);
+
+  if (flaggedCount > 0) {
+    process.exitCode = 1;
+  }
 }
 
 main().catch((error) => {

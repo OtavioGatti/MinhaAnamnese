@@ -53,11 +53,27 @@ test('limita hipóteses, listas e prioridades fora do contrato', () => {
   assert.equal(result.hypotheses[0].priority, 'differential');
 });
 
+test('preserva a classificação de problema ativo documentado', () => {
+  const result = normalizeDiagnosticHypotheses({
+    status: 'ok',
+    hypotheses: [
+      hypothesis('Lesão por pressão grau 4', 'documented_problem'),
+      hypothesis('Hipótese B'),
+      hypothesis('Hipótese C'),
+    ],
+    missingData: [],
+    generalWarnings: [],
+  });
+
+  assert.equal(result.hypotheses[0].priority, 'documented_problem');
+});
+
 test('guardrails imutáveis permanecem mesmo com prompt editorial curto', () => {
   const instructions = buildDiagnosticHypothesesInstructions('Seja objetivo.');
 
   assert.match(instructions, /CONTRATO DE SEGURANÇA IMUTÁVEL/);
   assert.match(instructions, /não invente hipóteses/i);
+  assert.match(instructions, /problemas ativos explicitamente documentados/i);
   assert.match(instructions, /Seja objetivo/);
 });
 

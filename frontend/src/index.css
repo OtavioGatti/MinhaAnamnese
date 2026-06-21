@@ -5482,6 +5482,11 @@ body {
   color: #047857;
 }
 
+.diagnostic-priority-documented_problem {
+  background: #eff6ff;
+  color: #1d4ed8;
+}
+
 .diagnostic-priority-cannot_miss {
   background: #fff1f2;
   color: #be123c;
@@ -5499,16 +5504,33 @@ body {
   font-weight: 750;
 }
 
-.diagnostic-hypothesis-card details {
+.diagnostic-reasoning {
   border-top: 1px solid var(--gray-100);
   padding-top: 0.65rem;
 }
 
-.diagnostic-hypothesis-card summary {
+.diagnostic-reasoning-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
   color: var(--primary-700);
   cursor: pointer;
+  font-family: inherit;
   font-size: 0.78rem;
   font-weight: 700;
+}
+
+.diagnostic-reasoning-toggle:hover {
+  color: var(--primary-800);
+}
+
+.diagnostic-reasoning-toggle:focus-visible {
+  border-radius: 4px;
+  outline: 2px solid var(--primary-500);
+  outline-offset: 3px;
 }
 
 .diagnostic-hypothesis-list {

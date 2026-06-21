@@ -1,4 +1,7 @@
+import { useId, useState } from 'react';
+
 const PRIORITY_LABELS = {
+  documented_problem: 'Problema ativo documentado',
   most_compatible: 'Mais compatível',
   differential: 'Diferencial',
   cannot_miss: 'Não pode ser ignorado',
@@ -21,6 +24,8 @@ function ClinicalList({ title, items, tone = 'default' }) {
 
 function HypothesisCard({ hypothesis, index, onOpenPrescriptionGuide }) {
   const guide = hypothesis.prescriptionGuide;
+  const [isReasoningExpanded, setIsReasoningExpanded] = useState(false);
+  const reasoningId = useId();
 
   return (
     <article className="diagnostic-hypothesis-card">
@@ -33,13 +38,24 @@ function HypothesisCard({ hypothesis, index, onOpenPrescriptionGuide }) {
       <h3>{hypothesis.name}</h3>
       {hypothesis.rationale ? <p>{hypothesis.rationale}</p> : null}
 
-      <details>
-        <summary>Ver raciocínio clínico</summary>
-        <ClinicalList title="Evidências na história" items={hypothesis.supportingEvidence} tone="support" />
-        <ClinicalList title="Dados ausentes ou conflitantes" items={hypothesis.missingOrConflictingData} />
-        <ClinicalList title="Como diferenciar" items={hypothesis.differentiatingSteps} />
-        <ClinicalList title="Sinais de alerta" items={hypothesis.redFlags} tone="warning" />
-      </details>
+      <div className="diagnostic-reasoning">
+        <button
+          type="button"
+          className="diagnostic-reasoning-toggle"
+          aria-expanded={isReasoningExpanded}
+          aria-controls={reasoningId}
+          onClick={() => setIsReasoningExpanded((expanded) => !expanded)}
+        >
+          <span aria-hidden="true">{isReasoningExpanded ? '▾' : '▸'}</span>
+          {isReasoningExpanded ? 'Ocultar raciocínio clínico' : 'Ver raciocínio clínico'}
+        </button>
+        <div id={reasoningId} className="diagnostic-reasoning-content" hidden={!isReasoningExpanded}>
+          <ClinicalList title="Evidências na história" items={hypothesis.supportingEvidence} tone="support" />
+          <ClinicalList title="Dados ausentes ou conflitantes" items={hypothesis.missingOrConflictingData} />
+          <ClinicalList title="Como diferenciar" items={hypothesis.differentiatingSteps} />
+          <ClinicalList title="Sinais de alerta" items={hypothesis.redFlags} tone="warning" />
+        </div>
+      </div>
 
       <button
         type="button"

@@ -26,5 +26,27 @@
     "templateId": "upa_emergencia",
     "expectedStatus": "ok",
     "structuredText": "Paciente de 46 anos com cefaleia súbita, descrita como a pior da vida, iniciada há 40 minutos durante esforço. Apresentou vômito e rigidez de nuca. PA 178/104 mmHg, FC 92 bpm, Glasgow 15, sem déficit focal no exame inicial."
+  },
+  {
+    "id": "problemas-ativos-aspiracao-lpp-001",
+    "title": "Problemas ativos documentados em paciente com risco de aspiração",
+    "templateId": "clinica_medica",
+    "expectedStatus": "ok",
+    "expectedConcepts": [
+      {
+        "label": "lesao_por_pressao",
+        "anyOf": ["lesão por pressão", "lpp"]
+      },
+      {
+        "label": "broncopneumonia_aspirativa",
+        "anyOf": [
+          "broncopneumonia",
+          "pneumonia aspirativa",
+          "pneumonia por aspiração",
+          "pneumonia por broncoaspiração"
+        ]
+      }
+    ],
+    "structuredText": "Paciente com doença neuromuscular degenerativa, dependência total de cuidados e uso de sonda nasogástrica há cinco meses. Tem histórico de múltiplas internações por broncoaspiração, com alta recente após permanência em UTI. Deu entrada com dispneia, desconforto e esforço respiratório, coriza e roncos. Familiar refere melhora respiratória, sem febre ou calafrios no momento. Emagrecimento progressivo desde a introdução da sonda. Ao exame: FC 101 bpm, SpO2 94% em ar ambiente, FR 19 irpm, afebril, dispneico sem musculatura acessória; murmúrio vesicular presente com estertores crepitantes predominantes em tórax posterior. Abdome escavado. Lesão por pressão grau 4 em região de trocânter maior esquerdo. Exames: hemoglobina 10,1 g/dL, leucócitos 7.070/mm³, sódio 145 mEq/L."
   }
 ]
