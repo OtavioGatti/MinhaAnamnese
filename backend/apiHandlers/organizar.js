@@ -46,7 +46,7 @@ module.exports = async function handler(req, res) {
 
   try {
     const resolvedUserId = await resolveOptionalUserId(req);
-    const rateLimit = consumeRateLimit({
+    const rateLimit = await consumeRateLimit({
       req,
       scope: 'organizar',
       userId: resolvedUserId,

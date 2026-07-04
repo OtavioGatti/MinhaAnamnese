@@ -71,7 +71,7 @@ module.exports = async function handler(req, res) {
       });
     }
 
-    const rateLimit = consumeRateLimit({
+    const rateLimit = await consumeRateLimit({
       req,
       scope: 'insights',
       userId: auth.user.id,

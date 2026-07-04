@@ -9,6 +9,10 @@ node_modules/
 *.env
 backend/.env
 frontend/.env
+!.env.example
+
+# Dumps editoriais do CMS (dados vivem no Notion/Supabase, não no git)
+/prescricoes_cms_*
 
 # Build output
 dist/

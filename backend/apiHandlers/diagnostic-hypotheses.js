@@ -60,7 +60,7 @@ module.exports = async function handler(req, res) {
       return res.status(auth.statusCode).json({ success: false, error: auth.error });
     }
 
-    const rateLimit = consumeRateLimit({
+    const rateLimit = await consumeRateLimit({
       req,
       scope: 'diagnostic-hypotheses',
       userId: auth.user.id,

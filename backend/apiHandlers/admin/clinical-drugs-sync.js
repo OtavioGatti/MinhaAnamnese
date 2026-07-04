@@ -58,7 +58,7 @@ module.exports = async function handler(req, res) {
     });
   }
 
-  const rateLimit = consumeRateLimit({
+  const rateLimit = await consumeRateLimit({
     req,
     scope: 'clinical_drugs_sync',
     limit: SYNC_RATE_LIMIT.limit,

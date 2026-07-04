@@ -39,6 +39,19 @@ O Minha Anamnese é composto por:
 - Frontend em produção: Vercel
 - Backend em produção: Render
 
+## Arquitetura de Deploy
+
+- O frontend estático fica na Vercel (CDN, sempre ativo, sem cold start).
+- O backend canônico fica no Render (`backend/server.js`). Todas as rotas de IA (`/organizar`, `/insights`, `/diagnostic-hypotheses`, `/referral-letter`) rodam exclusivamente nele, pois podem exceder o timeout de functions serverless.
+- O diretório `api/` na raiz expõe os mesmos handlers como functions da Vercel. Ele é um fallback opcional apenas para rotas GET de leitura (templates, bulário, prescrições), ativado no frontend via `VITE_API_FALLBACK_URL`. Sem essa variável, o fallback fica desativado.
+
+### Cold start do Render (plano free)
+
+O Render hiberna o backend após ~15 minutos ocioso. Duas mitigações:
+
+1. O frontend dispara um `GET /api/health` em background assim que o app carrega (`frontend/src/lib/backendWarmup.js`), acordando o backend enquanto o usuário digita.
+2. Opcionalmente, configure um ping externo (UptimeRobot, cron-job.org) em `GET /api/health` a cada 10–14 minutos durante o horário de uso. Atenção ao teto de 750h/mês do plano free: pings 24/7 consomem ~730h; restrinja ao horário ativo.
+
 ## Estrutura
 
 ```text
@@ -78,9 +91,14 @@ tests/anamnese-evals/
 
 ```env
 VITE_API_URL=http://localhost:3001/api
+VITE_API_FALLBACK_URL=
 VITE_SUPABASE_URL=
 VITE_SUPABASE_ANON_KEY=
 ```
+
+`VITE_API_FALLBACK_URL` (opcional) habilita retry de rotas GET de leitura contra um segundo backend (ex.: `/api` da Vercel) quando o primário estiver inacessível. Vazio = desativado.
+
+Há um `.env.example` em `frontend/` e outro em `backend/` para copiar como ponto de partida.
 
 ### Backend
 
@@ -117,9 +135,13 @@ ADMIN_SYNC_SECRET=
 NOTION_WEBHOOK_VERIFICATION_TOKEN=
 
 PRO_TRIAL_DAYS=7
+
+RATE_LIMIT_STORE=
 ```
 
 `ANALYSIS_ENGINE` controla o motor da avaliação estrutural: use `unified_ai` para a análise única por IA ou `legacy` para voltar ao score determinístico anterior com interpretação por IA.
+
+`RATE_LIMIT_STORE` controla onde os contadores de rate limit vivem: por padrão usa o Supabase (tabela `rate_limit_buckets`, compartilhada entre instâncias — requer `supabase/rate_limits.sql` aplicado) com fallback automático para memória; use `memory` para forçar apenas o fallback por processo.
 
 ## Como Rodar Localmente
 
@@ -151,6 +173,15 @@ npm run build
 ```
 
 O backend não possui build separado; ele roda diretamente com Node.js.
+
+## Testes
+
+```bash
+cd backend
+npm test
+```
+
+Cobrem hipóteses diagnósticas, planos de cobrança, rate limit, roteamento da API e score estrutural. Rodar antes de qualquer commit que toque o backend.
 
 ## Rotas e Fluxos Principais
 
@@ -206,6 +237,7 @@ Os arquivos SQL ficam em `supabase/` e devem ser aplicados manualmente no SQL Ed
 - `clinical_drugs`: bulário clínico.
 - `billing_payments`: pagamentos e auditoria de checkout.
 - `events`: eventos de funil e produto.
+- `rate_limit_buckets`: contadores de rate limit compartilhados entre instâncias (`supabase/rate_limits.sql`).
 
 ## Onde Ficam as Regras Importantes
 
@@ -240,10 +272,10 @@ Os arquivos SQL ficam em `supabase/` e devem ser aplicados manualmente no SQL Ed
 - [x] Cartas de encaminhamento
 - [x] Guias de prescrição com CID-10
 - [x] Bulário clínico
+- [x] Testes automatizados de regressão (billing, rate limit, rotas e score)
 - [ ] Interações medicamentosas no bulário
 - [ ] Alertas por contraindicação/comorbidade
 - [ ] Exportação PDF
-- [ ] Testes automatizados de regressão
 - [ ] Controles avançados de privacidade e gestão de conta
 
 ## Aviso Clínico

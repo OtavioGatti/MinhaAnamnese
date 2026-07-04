@@ -1,32 +1,35 @@
-﻿import { useEffect, useMemo, useRef, useState } from 'react';
+﻿import { lazy, Suspense, useEffect, useMemo, useRef, useState } from 'react';
 import { api } from './apiClient';
 import { API_BASE_URL, DIAGNOSTIC_HYPOTHESES_ENABLED } from './config';
 import DetailedAnalysis from './components/DetailedAnalysis';
 import DiagnosticHypothesesPanel from './components/DiagnosticHypothesesPanel';
-import EvolutionPage from './components/EvolutionPage';
 import InputSection from './components/InputSection';
 import InsightBlock from './components/InsightBlock';
 import PlanComparisonModal from './components/PlanComparisonModal';
-import ProfilePage from './components/ProfilePage';
-import PrescriptionGuidePage from './components/PrescriptionGuidePage';
 import ReferralLetterCard from './components/ReferralLetterCard';
 import StructuralFeedback from './components/StructuralFeedback';
 import StructuredOutput from './components/StructuredOutput';
-import TemplatesPage from './components/TemplatesPage';
 import UserEvolution from './components/UserEvolution';
 import WorkspaceSidebar from './components/WorkspaceSidebar';
 import CheckoutSuccessBanner from './components/CheckoutSuccessBanner';
-import ClinicalDrugPage from './components/ClinicalDrugPage';
-import ClinicalToolsPage from './components/ClinicalToolsPage';
 import CookieConsentBanner from './components/CookieConsentBanner';
 import LegalConsentModal from './components/LegalConsentModal';
 import LegalDocumentPage, { LEGAL_DOCUMENT_VERSION } from './components/LegalDocumentPage';
 import WelcomeOnboardingModal from './components/WelcomeOnboardingModal';
-import AffiliatePage from './components/AffiliatePage';
 import { BILLING_PLANS, DEFAULT_PLAN_KEY, PRO_PLAN_PERIOD_COPY, PRO_PLAN_PRICE_COPY } from './billingPlans';
 import { guides } from './data/guides';
 import { supabase } from './lib/supabaseClient';
 import useDiagnosticHypotheses from './hooks/useDiagnosticHypotheses';
+
+// Páginas fora da home são carregadas sob demanda (code splitting) para
+// reduzir o bundle inicial do workspace clínico.
+const AffiliatePage = lazy(() => import('./components/AffiliatePage'));
+const ClinicalDrugPage = lazy(() => import('./components/ClinicalDrugPage'));
+const ClinicalToolsPage = lazy(() => import('./components/ClinicalToolsPage'));
+const EvolutionPage = lazy(() => import('./components/EvolutionPage'));
+const PrescriptionGuidePage = lazy(() => import('./components/PrescriptionGuidePage'));
+const ProfilePage = lazy(() => import('./components/ProfilePage'));
+const TemplatesPage = lazy(() => import('./components/TemplatesPage'));
 
 const TEMPLATE_WITH_CALCULATORS = 'obstetricia';
 const CHECKOUT_RETURN_STATE_KEY = 'checkout-return-state';
@@ -2836,6 +2839,14 @@ function App() {
         </div>
       )}
 
+      <Suspense
+        fallback={(
+          <div className="page-suspense-fallback" role="status" aria-live="polite">
+            <span className="page-suspense-spinner" aria-hidden="true" />
+            Carregando página...
+          </div>
+        )}
+      >
       {currentPage === 'templates' && (
         <TemplatesPage
           templates={templates}
@@ -2946,6 +2957,7 @@ function App() {
           }}
         />
       )}
+      </Suspense>
 
       <footer className="footer">
         <p>
