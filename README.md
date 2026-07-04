@@ -50,7 +50,9 @@ O Minha Anamnese é composto por:
 O Render hiberna o backend após ~15 minutos ocioso. Duas mitigações:
 
 1. O frontend dispara um `GET /api/health` em background assim que o app carrega (`frontend/src/lib/backendWarmup.js`), acordando o backend enquanto o usuário digita.
-2. Opcionalmente, configure um ping externo (UptimeRobot, cron-job.org) em `GET /api/health` a cada 10–14 minutos durante o horário de uso. Atenção ao teto de 750h/mês do plano free: pings 24/7 consomem ~730h; restrinja ao horário ativo.
+2. Um ping externo em `GET /api/health` a cada 10 minutos mantém o backend quente 24/7. O workflow do n8n está versionado em `tools/n8n/keep-warm-render.json` (importar e ativar — instruções em `tools/n8n/README.md`).
+
+Atenção ao teto de 750h/mês do plano free do Render: o ping 24/7 mantém o serviço acordado ~730h, cabendo nas 750h com margem estreita. Se precisar de folga (ex.: um segundo serviço free), restrinja o Schedule Trigger ao horário de uso.
 
 ## Estrutura
 

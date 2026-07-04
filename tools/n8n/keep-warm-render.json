@@ -1,0 +1,62 @@
+{
+  "name": "Keep-warm Render — Minha Anamnese",
+  "active": false,
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes",
+              "minutesInterval": 10
+            }
+          ]
+        }
+      },
+      "id": "7f3c1e90-1a2b-4c3d-8e4f-1a2b3c4d5e6f",
+      "name": "A cada 10 minutos",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "https://minhaanamnese.onrender.com/api/health",
+        "options": {
+          "timeout": 60000
+        }
+      },
+      "id": "9d8c7b6a-5e4f-4a3b-9c2d-0f1e2d3c4b5a",
+      "name": "Ping /api/health",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        220,
+        0
+      ],
+      "continueOnFail": true
+    }
+  ],
+  "connections": {
+    "A cada 10 minutos": {
+      "main": [
+        [
+          {
+            "node": "Ping /api/health",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "pinData": {},
+  "meta": {}
+}
