@@ -404,7 +404,6 @@ async function queryNotionClinicalToolPages() {
   do {
     const body = {
       page_size: 100,
-      in_trash: false,
       result_type: 'page',
       ...(startCursor ? { start_cursor: startCursor } : {}),
     };

@@ -161,7 +161,6 @@ async function queryNotionPromptPages() {
   do {
     const body = {
       page_size: 100,
-      in_trash: false,
       result_type: 'page',
       sorts: [
         { property: 'Order', direction: 'ascending' },

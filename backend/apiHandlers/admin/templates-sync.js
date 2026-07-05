@@ -83,7 +83,30 @@ module.exports = async function handler(req, res) {
     });
   }
 
-  const result = await syncNotionTemplates();
+  let result;
+  try {
+    result = await syncNotionTemplates();
+  } catch (error) {
+    const statusCode = Number(error?.statusCode) || 500;
+    const responseBody = String(error?.responseBody || '');
+    const isNotionAccessError = responseBody.includes('Could not find database')
+      || responseBody.includes('shared with your integration')
+      || responseBody.includes('object_not_found');
+
+    if (isNotionAccessError) {
+      return res.status(502).json({
+        success: false,
+        error: 'A integração do Notion usada pelo backend não tem acesso à tabela de Templates.',
+        details: responseBody.slice(0, 1000),
+      });
+    }
+
+    return res.status(statusCode >= 400 && statusCode < 600 ? statusCode : 500).json({
+      success: false,
+      error: 'Falha ao sincronizar Templates.',
+      details: responseBody.slice(0, 1000) || error?.message || 'Erro desconhecido',
+    });
+  }
 
   return res.status(200).json({
     success: true,
