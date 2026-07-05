@@ -22,6 +22,8 @@ const apiRoutes = {
   '/api/admin/clinical-drugs/sync': require('./admin/clinical-drugs-sync'),
   '/api/admin/clinical-tools/sync': require('./admin/clinical-tools-sync'),
   '/api/admin/templates/sync': require('./admin/templates-sync'),
+  '/api/admin/protocols/generate-preview': require('./admin/protocol-generate-preview'),
+  '/api/admin/protocols/availability-report': require('./admin/protocol-availability-report'),
   '/api/webhook/mercadopago': require('./webhook/mercadopago'),
   '/api/webhook/notion/prescription-guides': require('./webhook/notion/prescription-guides'),
   '/api/webhook/notion/templates': require('./webhook/notion/templates'),
