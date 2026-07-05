@@ -6202,3 +6202,7 @@ body {
   font-size: 0.8125rem;
   font-weight: 500;
 }
+
+.plan-comparison-error {
+  margin-bottom: 0.9rem;
+}

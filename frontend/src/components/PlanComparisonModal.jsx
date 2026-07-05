@@ -63,6 +63,7 @@ function PlanComparisonModal({
   plans = BILLING_PLANS,
   isTrialAccess,
   referralDiscount = null,
+  checkoutError = '',
   onClose,
   onConfirm,
 }) {
@@ -102,6 +103,10 @@ function PlanComparisonModal({
         </div>
 
         <div className="plan-comparison-scroll-region">
+          {checkoutError ? (
+            <div className="templates-inline-error plan-comparison-error">{checkoutError}</div>
+          ) : null}
+
           {discountPercent > 0 ? (
             <div className="plan-comparison-discount-banner">
               Indicação{referralDiscount?.label ? ` ${referralDiscount.label}` : ''}: {discountPercent}% de desconto

@@ -7,7 +7,8 @@ const BILLING_PLANS = {
   monthly: {
     key: 'monthly',
     title: 'Plano Profissional Mensal',
-    reason: 'Minha Anamnese - Plano Profissional Mensal',
+    // Mercado Pago rejeita preapproval (assinatura) com "reason" acima de 40 caracteres.
+    reason: 'Minha Anamnese - Profissional Mensal',
     product: 'professional_plan_monthly',
     billingKind: 'subscription',
     price: 18.9,

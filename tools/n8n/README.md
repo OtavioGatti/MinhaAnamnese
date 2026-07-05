@@ -1,3 +1,12 @@
+# Workflows de n8n do Minha Anamnese
+
+Este diretório reúne os workflows de n8n usados pela operação do produto:
+
+- `keep-warm-render.json` — mantém o backend do Render acordado (ver seção abaixo).
+- `affiliate-payout-whatsapp.json` — avisa o dono no WhatsApp quando um afiliado solicita saque.
+
+---
+
 # Keep-warm do backend (Render) via n8n
 
 O backend no Render (plano free) hiberna após ~15 minutos ocioso e leva ~50s para
@@ -29,3 +38,83 @@ religar. Este workflow mantém o serviço quente pingando `GET /api/health` a ca
 
 Após ativar, rode uma vez manualmente (**Execute Workflow**) e confira no nó HTTP a
 resposta `{ "success": true, "data": { "status": "ok" } }` com status 200.
+
+---
+
+# Notificação de saque de afiliado (WhatsApp via CallMeBot)
+
+Quando um afiliado solicita saque (`POST /api/affiliate/payouts`), o backend chama
+`AFFILIATE_PAYOUT_WEBHOOK_URL` (best-effort — se falhar, o pedido continua salvo no
+Supabase). Este workflow recebe esse aviso e manda uma mensagem para o seu WhatsApp
+via [CallMeBot](https://www.callmebot.com/blog/free-api-whatsapp-messages/), que é
+gratuito e não exige servidor extra.
+
+## Arquivo
+
+- `affiliate-payout-whatsapp.json` — **Webhook (POST)** → **Code (monta a mensagem)** → **HTTP Request GET (CallMeBot)**.
+
+## Passo 1 — Ativar o CallMeBot no seu WhatsApp (2 min)
+
+1. No celular, adicione o número do CallMeBot aos contatos: **+34 644 51 95 23**.
+2. Pelo WhatsApp, mande para esse contato exatamente esta mensagem:
+   `I allow callmebot to send me messages`
+3. Em alguns minutos você recebe uma resposta do bot com sua **API Key** (um número).
+   Guarde essa chave e o seu número de telefone completo com DDI (ex.: `5511999999999`,
+   sem `+`, sem espaços).
+
+Se não receber resposta em ~10 min, reenvie a mensagem — o serviço processa em lote.
+
+## Passo 2 — Importar e configurar o workflow no n8n
+
+1. No n8n: **Workflows → Add workflow → ⋯ (menu) → Import from File** e selecione
+   `affiliate-payout-whatsapp.json` (ou **Import from URL** apontando para o arquivo no GitHub).
+2. Abra o nó **Enviar WhatsApp (CallMeBot)** e, nos **Query Parameters**, preencha:
+   - `phone` → seu número com DDI (ex.: `5511999999999`)
+   - `apikey` → a API Key que o CallMeBot te enviou
+   - `text` → deixe como está (`={{ $json.message }}`, já vem pronto)
+3. **Ative** o workflow (toggle no topo direito).
+4. Abra o nó **Webhook - Saque solicitado** e copie a **Production URL** (com o workflow
+   ativo, o n8n mostra essa URL — algo como `https://SEU_N8N/webhook/affiliate-payout-notify`).
+
+## Passo 3 — Configurar a URL no Render
+
+1. Acesse o [painel do Render](https://dashboard.render.com) → seu serviço de backend
+   (`minha-anamnese-backend`) → aba **Environment**.
+2. Clique em **Add Environment Variable**:
+   - **Key**: `AFFILIATE_PAYOUT_WEBHOOK_URL`
+   - **Value**: a Production URL copiada no passo anterior.
+3. Salve. O Render faz redeploy automático ao salvar uma env var.
+
+## Passo 4 — Testar de ponta a ponta
+
+**Teste rápido do workflow (sem mexer no app):** no n8n, com o workflow aberto, clique
+em **Execute workflow** e envie manualmente um POST ao webhook (via `curl`/Postman) com
+este corpo de exemplo:
+
+```bash
+curl -X POST "https://SEU_N8N/webhook/affiliate-payout-notify" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "event": "affiliate_payout_requested",
+    "payout_id": "00000000-0000-0000-0000-000000000000",
+    "affiliate_code": "teste",
+    "amount": 89.91,
+    "currency_id": "BRL",
+    "pix_key": "teste@example.com",
+    "requested_at": "2026-07-05T12:00:00.000Z"
+  }'
+```
+
+Se a mensagem chegar no seu WhatsApp, está tudo certo.
+
+**Teste real:** peça para um afiliado de teste (ou você mesmo, com uma segunda conta)
+clicar em **Solicitar saque** na tela de Afiliados. Se `AFFILIATE_PAYOUT_WEBHOOK_URL`
+estiver configurada no Render, a notificação chega automaticamente.
+
+## Limitações do CallMeBot
+
+- Gratuito, mas com limite informal de uso (não é para disparo em massa) — aqui o volume
+  é baixíssimo (1 notificação por pedido de saque), então não há risco.
+- Só envia para o número que autorizou o bot (o seu). Não serve para notificar terceiros.
+- Se quiser algo mais robusto no futuro (Twilio, Evolution API/WAHA), basta trocar o nó
+  **Enviar WhatsApp (CallMeBot)** por outro — o resto do workflow (webhook + mensagem) continua igual.

@@ -3011,6 +3011,7 @@ function App() {
         plans={BILLING_PLANS}
         isTrialAccess={Boolean(accessState?.isTrialAccess)}
         referralDiscount={referralDiscount}
+        checkoutError={checkoutErrors[planComparisonState.origin] || ''}
         onClose={() => setPlanComparisonState((current) => ({ ...current, open: false }))}
         onConfirm={handleConfirmPlanComparison}
       />

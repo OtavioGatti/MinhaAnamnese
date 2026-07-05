@@ -1,6 +1,7 @@
 const assert = require('node:assert/strict');
 const test = require('node:test');
 const {
+  BILLING_PLANS,
   calculateCommissionAmount,
   getBillingPlan,
   getBillingPlanByAmount,
@@ -8,6 +9,24 @@ const {
   isExpectedPlanAmount,
   normalizePlanKey,
 } = require('../config/billingPlans');
+
+// Mercado Pago rejeita a criação de preapproval (assinatura) com
+// reason acima de 40 caracteres (erro: "reason has more than 40 characters").
+// Este teste evita que o bug volte a passar despercebido.
+test('reason de planos de assinatura respeita o limite de 40 caracteres do Mercado Pago', () => {
+  const subscriptionPlans = Object.values(BILLING_PLANS).filter(
+    (plan) => plan.billingKind === 'subscription',
+  );
+
+  assert.ok(subscriptionPlans.length > 0, 'deveria existir ao menos um plano de assinatura');
+
+  for (const plan of subscriptionPlans) {
+    assert.ok(
+      plan.reason.length <= 40,
+      `reason do plano "${plan.key}" tem ${plan.reason.length} caracteres (máximo 40): "${plan.reason}"`,
+    );
+  }
+});
 
 test('normalizePlanKey usa o plano padrão para valores desconhecidos', () => {
   assert.equal(normalizePlanKey('monthly'), 'monthly');
