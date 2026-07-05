@@ -107,6 +107,79 @@ function normalizeCopyPrescription(value) {
     .trim();
 }
 
+// Extrai pares (número da opção, código CID-10) de qualquer formato que o
+// modelo escreva — "Opção N: CÓDIGO", "N | CÓDIGO", tudo em uma linha só ou
+// já quebrado em várias linhas. Espelha o separador aceito pelo parser real
+// (Notion -> Supabase): [|:;-].
+const CID10_OPTION_RE = /(?:op[cç][aã]o\s*)?(\d{1,2})\s*[|:;-]\s*([A-Za-z]\d{2}(?:[.,]\d{1,2})?)/gi;
+
+// Normaliza cid10_opcoes para o formato canônico "Opção N: CÓDIGO", uma opção
+// por LINHA — o mesmo formato que o injetor_cid.py já grava no Notion. Não usa
+// normalizeText (colapsaria as quebras de linha e destruiria a separação entre
+// opções, que foi exatamente o bug: o modelo escreve tudo certo mas em uma
+// única linha, ou o código antigo colapsava quebras que o modelo até tentava
+// gerar).
+function normalizeCid10Options(value) {
+  const text = String(value == null ? '' : value);
+  const matches = [...text.matchAll(CID10_OPTION_RE)];
+
+  if (matches.length === 0) {
+    return normalizeText(value);
+  }
+
+  const seen = new Set();
+  const lines = [];
+
+  for (const match of matches) {
+    const numero = match[1];
+    const codigo = match[2].toUpperCase().replace(',', '.');
+    const chave = `${numero}:${codigo}`;
+
+    if (seen.has(chave)) {
+      continue;
+    }
+
+    seen.add(chave);
+    lines.push(`Opção ${numero}: ${codigo}`);
+  }
+
+  return lines.join('\n');
+}
+
+// Detecta itens [n] cuja instrução parece esconder um SEGUNDO medicamento com
+// dose (o separador de 40 hifens aparecendo DENTRO do texto de instrução, não
+// só logo após "[n] Nome dose"). Isso indica que o modelo escreveu uma
+// combinação (ex.: "Ceftriaxona + Metronidazol") como um item só em vez de dois
+// itens numerados. NÃO tenta corrigir sozinho — "+" às vezes é um produto
+// combinado único (ex.: "Amoxicilina + Clavulanato"), então dividir automático
+// arriscaria quebrar casos legítimos. Só sinaliza para revisão humana.
+function findNestedPrescriptionWarnings(prescriptionText) {
+  const text = String(prescriptionText || '');
+
+  if (!text.includes(PRESCRIPTION_SEPARATOR)) {
+    return [];
+  }
+
+  const headerRe = new RegExp(`\\[(\\d{1,2})\\][^\\n]*?${PRESCRIPTION_SEPARATOR}`, 'g');
+  const headers = [...text.matchAll(headerRe)];
+  const warnings = [];
+
+  headers.forEach((header, index) => {
+    const bodyStart = header.index + header[0].length;
+    const bodyEnd = index + 1 < headers.length ? headers[index + 1].index : text.length;
+    const body = text.slice(bodyStart, bodyEnd);
+
+    if (body.includes(PRESCRIPTION_SEPARATOR)) {
+      warnings.push(
+        `Item [${header[1]}]: a instrução parece conter outro medicamento com dose embutido `
+        + '(separador dentro do texto de instrução). Revise se deveria virar um item numerado separado.',
+      );
+    }
+  });
+
+  return warnings;
+}
+
 // Monta texto_copiavel_completo no formato canônico dos protocolos existentes:
 //   -CONDUTA: <bullets> / -PRESCRIÇÃO: <opções> / -ORIENTAÇÕES: <bullets>
 function buildCanonicalCompleteText({ conduta, prescricao, orientacoes } = {}) {
@@ -228,6 +301,11 @@ function normalizeProtocol(raw = {}, options = {}) {
     out[field] = normalizeText(raw[field]);
   }
 
+  // cid10_opcoes precisa de UMA opção por LINHA; normalizeText (acima) colapsa
+  // quebras de linha em espaço, então sobrescreve com o parser dedicado sobre
+  // o valor ORIGINAL (não o já achatado por normalizeText).
+  out.cid10_opcoes = normalizeCid10Options(raw.cid10_opcoes);
+
   for (const field of LONG_TEXT_FIELDS) {
     out[field] = normalizeLongText(raw[field]);
   }
@@ -307,5 +385,7 @@ module.exports = {
   normalizeSlug,
   normalizeCopyPrescription,
   buildCanonicalCompleteText,
+  normalizeCid10Options,
+  findNestedPrescriptionWarnings,
   PRESCRIPTION_SEPARATOR,
 };

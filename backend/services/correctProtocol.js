@@ -10,6 +10,7 @@ const {
   buildProtocolSchema,
   normalizeProtocol,
   applyAutomationLock,
+  findNestedPrescriptionWarnings,
   STATUS_AUTOMACAO_CORRIGIDO,
   MODEL_GENERATED_FIELDS,
   MULTI_SELECT_ENUM_FIELDS,
@@ -110,13 +111,14 @@ async function correctProtocolFromFields(fields) {
   const protocol = applyAutomationLock(nextNorm, { statusAutomacao: STATUS_AUTOMACAO_CORRIGIDO });
   // Escreve os campos que mudaram + sempre as travas (reset da revisão).
   const writeFields = Array.from(new Set([...changedFields, ...LOCK_FIELDS]));
+  const prescriptionWarnings = findNestedPrescriptionWarnings(protocol.texto_copiavel_prescricao);
 
   return {
     protocol,
     changedFields,
     writeFields,
     instruction,
-    meta: { model, apiSurface: generation.apiSurface },
+    meta: { model, apiSurface: generation.apiSurface, prescriptionWarnings },
   };
 }
 

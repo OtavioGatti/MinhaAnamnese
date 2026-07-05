@@ -24,6 +24,18 @@ REGRA IMPORTANTE (evite o erro comum): NUNCA empilhe vários medicamentos como s
 - (b) separa em opções/cenários distintos.
 Dentro de uma opção, os itens [1], [2]... podem ser um CONJUNTO coerente para prescrever junto (ex.: antibiótico + analgésico + sintomático), mas quando forem intercambiáveis isso precisa estar claro no texto.
 
+REGRA IMPORTANTE (medicamentos administrados JUNTOS, ex. terapia combinada): quando dois medicamentos são administrados em conjunto como parte do mesmo esquema (ex.: Ceftriaxona + Metronidazol para cobertura empírica), cada um recebe seu PRÓPRIO item numerado, com sua própria dose e instrução completa. NUNCA escreva um segundo medicamento com dose dentro do texto de instrução de outro item.
+Exemplo ERRADO (não faça isto):
+[4] Ceftriaxona 1g ----------------------------------------
+intravenoso a cada 12 horas + Metronidazol 500 mg ----------------------------------------
+intravenoso a cada 8 horas, cobertura empírica
+Exemplo CERTO:
+[4] Ceftriaxona 1g ----------------------------------------
+intravenoso a cada 12 horas, associar ao item [5] para cobertura anaeróbia
+[5] Metronidazol 500 mg ----------------------------------------
+intravenoso a cada 8 horas, cobertura empírica
+Exceção: se os dois princípios ativos formam um ÚNICO produto farmacêutico comercial (ex.: "Amoxicilina + Clavulanato de potássio 875mg/125mg", "Sulfametoxazol + Trimetoprima 400mg+80mg"), mantenha como UM item só — é uma apresentação única, não dois medicamentos separados.
+
 ## Campo prescricao_medicamentos (texto explicativo por opção)
 Para CADA opção, escreva o bloco (cada item em uma linha começando com "-"):
 -Opção 1: <título do cenário clínico>
@@ -56,7 +68,7 @@ Cada linha um item começando com "-". Ex.:
 
 ## Demais campos
 - resumo_clinico, quando_usar, quando_nao_usar, conduta_procedimento, orientacoes_paciente, sinais_alerta, criterios_encaminhamento, observacoes_clinicas: texto clínico claro e completo.
-- cid10_principal (ex.: "N39.0") e cid10_opcoes (uma por linha, "1 | N39.0") quando houver mais de um.
+- cid10_principal (ex.: "N39.0"). cid10_opcoes: quando houver mais de um código (um por opção clínica), escreva UMA opção por LINHA no formato EXATO "Opção N: CÓDIGO" (ex.: "Opção 1: H60.3"). NUNCA junte várias opções na mesma linha.
 - titulo: nome clínico da condição (padrão dos existentes: "CONDIÇÃO — ADULTO"). subcondicao só se aplicável. tags: 3-8 termos de busca.
 - texto_copiavel_completo: deixe "" — o sistema monta automaticamente a partir de conduta + prescrição + orientações.`;
 

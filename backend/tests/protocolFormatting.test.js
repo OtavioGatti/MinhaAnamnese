@@ -4,6 +4,8 @@ const {
   normalizeCopyPrescription,
   buildCanonicalCompleteText,
   finalizeAutomationProtocol,
+  normalizeCid10Options,
+  findNestedPrescriptionWarnings,
   PRESCRIPTION_SEPARATOR,
 } = require('../contracts/protocolAutomation');
 
@@ -75,4 +77,65 @@ test('finalizeAutomationProtocol reconstrói o completo e ignora o que o modelo 
   assert.ok(finalized.texto_copiavel_completo.includes(PRESCRIPTION_SEPARATOR));
   // A trava continua valendo.
   assert.equal(finalized.pronto_para_supabase, false);
+});
+
+test('normalizeCid10Options reformata o caso real do bug: tudo em uma linha "N | CODE"', () => {
+  // Exatamente o que saiu gerado: "1 | T42.4 2 | F13.0 3 | F13.1" (uma linha só).
+  const out = normalizeCid10Options('1 | T42.4 2 | F13.0 3 | F13.1');
+  assert.equal(out, 'Opção 1: T42.4\nOpção 2: F13.0\nOpção 3: F13.1');
+});
+
+test('normalizeCid10Options é idempotente sobre o formato canônico existente', () => {
+  const canonico = [
+    'Opção 1: H60.3',
+    'Opção 2: H60.4',
+    'Opção 3: H60.3',
+    'Opção 4: H60.5',
+  ].join('\n');
+  // Códigos repetidos em opções DIFERENTES (1 e 3 ambos H60.3) não são
+  // deduplicados — só duplicatas exatas (mesmo número + mesmo código) são.
+  assert.equal(normalizeCid10Options(canonico), canonico);
+});
+
+test('normalizeCid10Options normaliza vírgula decimal e remove duplicata exata', () => {
+  const out = normalizeCid10Options('1 | N39,0\n1 | N39.0\n2 | N30.0');
+  assert.equal(out, 'Opção 1: N39.0\nOpção 2: N30.0');
+});
+
+test('normalizeCid10Options cai para normalizeText quando não há nenhum código reconhecível', () => {
+  assert.equal(normalizeCid10Options(''), '');
+  assert.equal(normalizeCid10Options('sem codigo aqui'), 'sem codigo aqui');
+});
+
+test('finalizeAutomationProtocol reformata cid10_opcoes mesmo vindo achatado do modelo', () => {
+  const finalized = finalizeAutomationProtocol({
+    titulo: 'Intoxicação por Benzodiazepínicos',
+    cid10_opcoes: '1 | T42.4 2 | F13.0 3 | F13.1',
+  }, {});
+
+  assert.equal(finalized.cid10_opcoes, 'Opção 1: T42.4\nOpção 2: F13.0\nOpção 3: F13.1');
+});
+
+test('findNestedPrescriptionWarnings detecta o caso real: Ceftriaxona escondendo Metronidazol', () => {
+  const prescricao = normalizeCopyPrescription([
+    '[4] Ceftriaxona 1g ---- intravenoso a cada 12 horas + Metronidazol 500 mg ---- intravenoso a cada 8 horas, cobertura empírica',
+  ].join('\n'));
+
+  const warnings = findNestedPrescriptionWarnings(prescricao);
+  assert.equal(warnings.length, 1);
+  assert.match(warnings[0], /\[4\]/);
+});
+
+test('findNestedPrescriptionWarnings não sinaliza itens numerados corretamente', () => {
+  const prescricao = normalizeCopyPrescription([
+    '[4] Ceftriaxona 1g ---- intravenoso a cada 12 horas, associar ao item [5]',
+    '[5] Metronidazol 500 mg ---- intravenoso a cada 8 horas',
+  ].join('\n'));
+
+  assert.deepEqual(findNestedPrescriptionWarnings(prescricao), []);
+});
+
+test('findNestedPrescriptionWarnings não sinaliza quando não há separador nenhum', () => {
+  assert.deepEqual(findNestedPrescriptionWarnings(''), []);
+  assert.deepEqual(findNestedPrescriptionWarnings('texto qualquer sem itens'), []);
 });

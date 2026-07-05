@@ -50,6 +50,7 @@ async function processPage(page, { dryRun }) {
     let protocol;
     let writeFields;
     let changedFields;
+    let prescriptionWarnings;
 
     if (action === 'gerar') {
       const result = await generateProtocol({
@@ -61,11 +62,13 @@ async function processPage(page, { dryRun }) {
       protocol = result.protocol;
       writeFields = undefined; // grava o protocolo completo
       changedFields = ['(protocolo completo gerado)'];
+      prescriptionWarnings = result.meta.prescriptionWarnings;
     } else {
       const result = await correctProtocolFromFields(fields);
       protocol = result.protocol;
       writeFields = result.writeFields;
       changedFields = result.changedFields;
+      prescriptionWarnings = result.meta.prescriptionWarnings;
     }
 
     let writtenFields = changedFields;
@@ -96,6 +99,7 @@ async function processPage(page, { dryRun }) {
       writtenFields,
       newStatusAutomacao: protocol.status_automacao,
       auditPersisted: audit.persisted,
+      prescriptionWarnings,
     };
   } catch (error) {
     const message = String(error?.message || 'erro desconhecido');

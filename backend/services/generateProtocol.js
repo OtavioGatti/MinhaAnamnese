@@ -9,6 +9,7 @@ const OpenAI = require('openai');
 const {
   buildProtocolSchema,
   finalizeAutomationProtocol,
+  findNestedPrescriptionWarnings,
 } = require('../contracts/protocolAutomation');
 const {
   buildProtocolInstructions,
@@ -202,6 +203,9 @@ async function generateProtocol({ titulo, especialidade, contexto, subcondicao }
 
   // Normaliza + aplica a TRAVA de revisão humana antes de devolver.
   const protocol = finalizeAutomationProtocol(generation.raw, enumOptions);
+  // Sinaliza (não corrige sozinho) possível medicamento embutido na instrução
+  // de outro item — precisa de revisão humana, ver findNestedPrescriptionWarnings.
+  const prescriptionWarnings = findNestedPrescriptionWarnings(protocol.texto_copiavel_prescricao);
 
   return {
     protocol,
@@ -210,6 +214,7 @@ async function generateProtocol({ titulo, especialidade, contexto, subcondicao }
       model,
       apiSurface: generation.apiSurface,
       enumOptions: enumOptionsMeta,
+      prescriptionWarnings,
     },
   };
 }
