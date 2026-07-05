@@ -109,20 +109,27 @@ function scoreAgainst(normalizedName, target) {
  */
 function matchMedication(name, dictionary) {
   const normalizedName = normalizeForMatch(name);
-  let best = { record: null, score: 0 };
+  let best = { record: null, score: 0, tiebreak: 0 };
 
   for (const record of dictionary) {
     const score = Math.max(
       scoreAgainst(normalizedName, record.match?.nome),
       scoreAgainst(normalizedName, record.match?.principio_ativo),
     );
+    // Desempate por proximidade real (dice/levenshtein): quando o overlap de
+    // tokens empata (ex.: "Amoxicilina" casa com "Amoxicilina" e com
+    // "Amoxicilina + clavulanato"), prefere o nome mais próximo do prescrito.
+    const tiebreak = Math.max(
+      similarityScore(normalizedName, record.match?.principio_ativo || ''),
+      similarityScore(normalizedName, record.match?.nome || ''),
+    );
 
-    if (score > best.score) {
-      best = { record, score };
+    if (score > best.score || (score === best.score && tiebreak > best.tiebreak)) {
+      best = { record, score, tiebreak };
     }
   }
 
-  return best;
+  return { record: best.record, score: best.score };
 }
 
 /**

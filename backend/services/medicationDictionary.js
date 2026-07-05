@@ -10,7 +10,7 @@ const fs = require('fs');
 const path = require('path');
 const { normalizeForMatch } = require('../utils/stringSimilarity');
 
-const DEFAULT_DICTIONARY_PATH = path.join(__dirname, '..', 'data', 'medicamentos_assis.seed.csv');
+const DEFAULT_DICTIONARY_PATH = path.join(__dirname, '..', 'data', 'medicamentos_assis.csv');
 const EXPECTED_COLUMNS = [
   'nome',
   'principio_ativo',
