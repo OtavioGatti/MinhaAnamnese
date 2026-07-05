@@ -75,6 +75,25 @@ test('buildAvailabilityReport classifica disponivel / em_falta / nao_encontrado'
   assert.equal(nimesulida.correspondencia, null);
 });
 
+test('não casa por coincidência de letras nem por palavra genérica compartilhada', () => {
+  const dict = parseMedicationCsv(`nome,principio_ativo,apresentacao,fonte,status,unidade,atualizado_em
+Budenosida,Budenosida,aerosol nasal 50 mcg,SUS-Assis,em falta,X,2026-07-05
+Complexo B,Complexo B,comprimido,SUS-Assis,disponivel,X,2026-07-05
+Nitrofurantoina,Nitrofurantoina,100 mg,SUS-Assis,disponivel,X,2026-07-05`);
+
+  // "Adenosina" não pode casar "Budenosida" (coincidência de letras ~0.7).
+  const a = buildAvailabilityReport('[1] Adenosina 6 mg ---- IV rápido', { dictionary: dict });
+  assert.equal(a.items[0].classificacao, 'nao_encontrado');
+
+  // "Complexo protrombínico" não pode casar "Complexo B" (palavra genérica).
+  const c = buildAvailabilityReport('[1] Complexo protrombínico 500 UI ---- IV', { dictionary: dict });
+  assert.equal(c.items[0].classificacao, 'nao_encontrado');
+
+  // ...mas um nome real ainda casa.
+  const n = buildAvailabilityReport('[1] Nitrofurantoina 100 mg ---- 6/6h', { dictionary: dict });
+  assert.equal(n.items[0].classificacao, 'disponivel');
+});
+
 test('itens de ação (sem dose e sem match) não entram no cruzamento', () => {
   const prescription = [
     '[1] Nitrofurantoina 100 mg ---- 6/6h por 5 dias',

@@ -10,7 +10,7 @@
 const { normalizeForMatch, similarityScore } = require('../utils/stringSimilarity');
 const { getMedicationDictionary } = require('./medicationDictionary');
 
-const DEFAULT_MATCH_THRESHOLD = 0.6;
+const DEFAULT_MATCH_THRESHOLD = 0.72;
 const DOSE_TOKEN = /\b\d+([.,]\d+)?\s*(mg|mcg|g|ml|mL|ui|UI|%|mg\/ml)\b/i;
 
 function stripLeadingIndex(line) {
@@ -80,16 +80,27 @@ function parsePrescriptionMedications(text) {
   return medications;
 }
 
+// Tokens significativos: descarta ruído (números de dose como "0"/"9" e
+// fragmentos curtos como "de"/"mg") que inflam a interseção e geram falsos
+// positivos (ex.: dose "0,9%" fazendo "solução 0 9" casar com qualquer coisa).
+function meaningfulTokens(value) {
+  return value.split(' ').filter((token) => token.length >= 3 && !/^\d+$/.test(token));
+}
+
+// Fração das palavras significativas do nome PRESCRITO (a) presentes no
+// candidato (b). Denominador = tokens do prescrito, não min(a,b): evita que um
+// candidato com uma única palavra genérica (ex.: princípio "Complexo") pontue
+// 1.0 contra "Complexo protrombínico".
 function tokenOverlapScore(a, b) {
-  const tokensA = a.split(' ').filter(Boolean);
-  const tokensB = new Set(b.split(' ').filter(Boolean));
+  const tokensA = meaningfulTokens(a);
+  const tokensB = new Set(meaningfulTokens(b));
 
   if (tokensA.length === 0 || tokensB.size === 0) {
     return 0;
   }
 
   const intersection = tokensA.filter((token) => tokensB.has(token)).length;
-  return intersection / Math.min(tokensA.length, tokensB.size);
+  return intersection / tokensA.length;
 }
 
 function scoreAgainst(normalizedName, target) {

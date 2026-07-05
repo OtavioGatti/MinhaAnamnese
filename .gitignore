@@ -23,6 +23,9 @@ build/
 npm-debug.log*
 tmp-*.json
 
+# Auditoria da automação de protocolos (runtime; durável no Supabase)
+backend/data/protocol_automation_audit.jsonl
+
 # OS
 .DS_Store
 Thumbs.db

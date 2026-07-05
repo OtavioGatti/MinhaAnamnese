@@ -90,9 +90,39 @@ function buildProtocolInput({ titulo, especialidade, contexto, subcondicao, enum
   return [requested.join('\n'), vocabulary.join('\n')].join('\n\n');
 }
 
+function buildCorrectionInstructions() {
+  return [
+    PROTOCOL_SAFETY_CONTRACT,
+    'GUIA DE REDAÇÃO',
+    PROTOCOL_AUTHORING_GUIDE,
+    `MODO CORREÇÃO
+Você recebe um protocolo já existente (JSON) e uma INSTRUÇÃO DE CORREÇÃO. Aplique SOMENTE o que a instrução pede. Devolva o protocolo COMPLETO no schema, mas mantenha TODOS os campos não afetados EXATAMENTE iguais ao original (copie-os sem alterar). Não reescreva, reordene ou "melhore" nada que a instrução não pediu. Se a correção tocar a prescrição, mantenha o formato de opções/itens.`,
+  ].filter(Boolean).join('\n\n');
+}
+
+function buildCorrectionInput({ currentProtocol, instruction, enumOptions = {} }) {
+  const vocabulary = [
+    'VOCABULÁRIO PERMITIDO (campos restritos):',
+    `- especialidade: ${formatOptionList(enumOptions.especialidade)}`,
+    `- contexto: ${formatOptionList(enumOptions.contexto)}`,
+    `- tipo_protocolo: ${formatOptionList(enumOptions.tipo_protocolo)}`,
+    `- nivel_risco: ${formatOptionList(enumOptions.nivel_risco)}`,
+  ].join('\n');
+
+  return [
+    'PROTOCOLO ATUAL (JSON — mantenha igual, exceto o que a instrução pedir):',
+    JSON.stringify(currentProtocol, null, 2),
+    'INSTRUÇÃO DE CORREÇÃO:',
+    String(instruction || '').trim() || '(nenhuma instrução fornecida)',
+    vocabulary,
+  ].join('\n\n');
+}
+
 module.exports = {
   buildProtocolInstructions,
   buildProtocolInput,
+  buildCorrectionInstructions,
+  buildCorrectionInput,
   PROTOCOL_SAFETY_CONTRACT,
   PROTOCOL_AUTHORING_GUIDE,
 };

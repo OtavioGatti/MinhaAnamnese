@@ -14,6 +14,8 @@ const { stripAccents } = require('../utils/stringSimilarity');
 // do que o modelo devolver ou do que já existia na página.
 const LOCKED_STATUS_REVISAO = 'Revisão clínica pendente';
 const STATUS_AUTOMACAO_GERADO = 'gerado — aguardando revisão';
+const STATUS_AUTOMACAO_CORRIGIDO = 'corrigido — aguardando revisão';
+const STATUS_AUTOMACAO_ERRO = 'erro na automação';
 const LOCKED_REVISOR = '';
 const PRONTO_PARA_SUPABASE = false; // boolean nativo — NUNCA string.
 
@@ -271,24 +273,26 @@ function normalizeProtocol(raw = {}, options = {}) {
  * de marcar pronto_para_supabase=true ou status revisado é anulada aqui.
  * Esta é a função que os testes protegem.
  */
-function applyAutomationLock(protocol = {}) {
+function applyAutomationLock(protocol = {}, { statusAutomacao = STATUS_AUTOMACAO_GERADO } = {}) {
   return {
     ...protocol,
     status_revisao: LOCKED_STATUS_REVISAO,
     pronto_para_supabase: PRONTO_PARA_SUPABASE,
     revisor: LOCKED_REVISOR,
-    status_automacao: STATUS_AUTOMACAO_GERADO,
+    status_automacao: statusAutomacao,
   };
 }
 
 /** Normaliza e aplica a trava em um passo — saída pronta para preview/escrita. */
-function finalizeAutomationProtocol(raw = {}, options = {}) {
-  return applyAutomationLock(normalizeProtocol(raw, options));
+function finalizeAutomationProtocol(raw = {}, options = {}, lockOptions = {}) {
+  return applyAutomationLock(normalizeProtocol(raw, options), lockOptions);
 }
 
 module.exports = {
   LOCKED_STATUS_REVISAO,
   STATUS_AUTOMACAO_GERADO,
+  STATUS_AUTOMACAO_CORRIGIDO,
+  STATUS_AUTOMACAO_ERRO,
   LOCKED_REVISOR,
   PRONTO_PARA_SUPABASE,
   MULTI_SELECT_ENUM_FIELDS,

@@ -130,6 +130,7 @@ async function getProtocolEnumOptions() {
 module.exports = {
   getNotionProtocolsConfig,
   isNotionProtocolsConfigured,
+  requestNotion,
   retrieveProtocolDataSource,
   getProtocolEnumOptions,
   extractOptionNames,

@@ -24,6 +24,8 @@ const apiRoutes = {
   '/api/admin/templates/sync': require('./admin/templates-sync'),
   '/api/admin/protocols/generate-preview': require('./admin/protocol-generate-preview'),
   '/api/admin/protocols/availability-report': require('./admin/protocol-availability-report'),
+  '/api/admin/protocols/automation-run': require('./admin/protocol-automation-run'),
+  '/api/admin/protocols/recompute-availability': require('./admin/protocol-recompute-availability'),
   '/api/webhook/mercadopago': require('./webhook/mercadopago'),
   '/api/webhook/notion/prescription-guides': require('./webhook/notion/prescription-guides'),
   '/api/webhook/notion/templates': require('./webhook/notion/templates'),
