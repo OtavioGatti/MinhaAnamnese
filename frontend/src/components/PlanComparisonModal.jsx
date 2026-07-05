@@ -1,6 +1,27 @@
 import { BILLING_PLANS } from '../billingPlans';
 
-function PlanOptionCard({ plan, featured, loading, onConfirm }) {
+function formatCurrencyBRL(value) {
+  return new Intl.NumberFormat('pt-BR', {
+    style: 'currency',
+    currency: 'BRL',
+  }).format(Number(value) || 0);
+}
+
+// Exibição do desconto de indicação; o valor cobrado é sempre recalculado no
+// backend a partir do afiliado registrado.
+function getDiscountedPriceCopy(plan, discountRate) {
+  const rate = Number(discountRate) || 0;
+
+  if (rate <= 0 || !Number.isFinite(Number(plan?.price))) {
+    return null;
+  }
+
+  return formatCurrencyBRL(Math.round(plan.price * (1 - rate) * 100) / 100);
+}
+
+function PlanOptionCard({ plan, featured, loading, discountRate, onConfirm }) {
+  const discountedPriceCopy = getDiscountedPriceCopy(plan, discountRate);
+
   return (
     <section className={`plan-comparison-column ${featured ? 'featured' : ''}`}>
       <div className="plan-comparison-featured-top">
@@ -9,7 +30,14 @@ function PlanOptionCard({ plan, featured, loading, onConfirm }) {
           <h3>{plan.title}</h3>
         </div>
         <div className="plan-comparison-price">
-          <strong>{plan.priceCopy}</strong>
+          {discountedPriceCopy ? (
+            <>
+              <s className="plan-comparison-price-original">{plan.priceCopy}</s>
+              <strong>{discountedPriceCopy}</strong>
+            </>
+          ) : (
+            <strong>{plan.priceCopy}</strong>
+          )}
           <span>{plan.periodCopy}</span>
         </div>
       </div>
@@ -34,6 +62,7 @@ function PlanComparisonModal({
   loadingPlanKey,
   plans = BILLING_PLANS,
   isTrialAccess,
+  referralDiscount = null,
   onClose,
   onConfirm,
 }) {
@@ -43,6 +72,8 @@ function PlanComparisonModal({
 
   const monthlyPlan = plans.monthly;
   const semiannualPlan = plans.semiannual;
+  const discountRate = Number(referralDiscount?.rate) || 0;
+  const discountPercent = Math.round(discountRate * 100);
 
   return (
     <div className="app-modal-backdrop" role="presentation" onClick={onClose}>
@@ -71,6 +102,13 @@ function PlanComparisonModal({
         </div>
 
         <div className="plan-comparison-scroll-region">
+          {discountPercent > 0 ? (
+            <div className="plan-comparison-discount-banner">
+              Indicação{referralDiscount?.label ? ` ${referralDiscount.label}` : ''}: {discountPercent}% de desconto
+              aplicado automaticamente no checkout.
+            </div>
+          ) : null}
+
           <div className="plan-comparison-grid">
             <section className="plan-comparison-column basic-summary">
               <span className="plan-comparison-badge basic">Plano básico</span>
@@ -87,6 +125,7 @@ function PlanComparisonModal({
               plan={monthlyPlan}
               featured={false}
               loading={loading && loadingPlanKey === monthlyPlan.key}
+              discountRate={discountRate}
               onConfirm={onConfirm}
             />
 
@@ -94,6 +133,7 @@ function PlanComparisonModal({
               plan={semiannualPlan}
               featured
               loading={loading && loadingPlanKey === semiannualPlan.key}
+              discountRate={discountRate}
               onConfirm={onConfirm}
             />
           </div>

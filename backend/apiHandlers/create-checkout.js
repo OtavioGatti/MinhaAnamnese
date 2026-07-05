@@ -5,6 +5,8 @@ const DEBUG_CHECKOUT = process.env.DEBUG_CHECKOUT === 'true';
 const {
   DEFAULT_PLAN_KEY,
   getBillingPlan,
+  getDiscountedPlanAmount,
+  normalizeDiscountRate,
   normalizePlanKey,
 } = require('../config/billingPlans');
 const { resolveAffiliateForCheckout } = require('../services/affiliates');
@@ -148,13 +150,13 @@ function getCheckoutBaseUrl(req) {
   return baseUrl;
 }
 
-function buildOneTimeCheckoutPayload({ baseUrl, webhookUrl, email, userId, plan, affiliate }) {
+function buildOneTimeCheckoutPayload({ baseUrl, webhookUrl, email, userId, plan, affiliate, discountRate, chargeAmount }) {
   return {
     items: [
       {
         title: plan.title,
         quantity: 1,
-        unit_price: plan.price,
+        unit_price: chargeAmount,
         currency_id: plan.currencyId,
       },
     ],
@@ -173,6 +175,9 @@ function buildOneTimeCheckoutPayload({ baseUrl, webhookUrl, email, userId, plan,
       billing_version: BILLING_VERSION,
       affiliate_id: affiliate?.id || null,
       affiliate_code: affiliate?.code || null,
+      discount_rate: discountRate > 0 ? discountRate : null,
+      list_price: plan.price,
+      charged_amount: chargeAmount,
     },
     external_reference: userId,
     notification_url: webhookUrl,
@@ -185,7 +190,7 @@ function buildOneTimeCheckoutPayload({ baseUrl, webhookUrl, email, userId, plan,
   };
 }
 
-function buildSubscriptionPayload({ baseUrl, email, userId, plan }) {
+function buildSubscriptionPayload({ baseUrl, email, userId, plan, chargeAmount }) {
   return {
     reason: plan.reason,
     external_reference: userId,
@@ -193,7 +198,7 @@ function buildSubscriptionPayload({ baseUrl, email, userId, plan }) {
     auto_recurring: {
       frequency: 1,
       frequency_type: 'months',
-      transaction_amount: plan.price,
+      transaction_amount: chargeAmount,
       currency_id: plan.currencyId,
     },
     back_url: `${baseUrl}/?checkout=success`,
@@ -303,12 +308,18 @@ module.exports = async function handler(req, res) {
       }).catch(() => null)
       : null;
 
+    // Desconto sempre resolvido server-side a partir do afiliado registrado;
+    // o cliente envia apenas o código. Sem afiliado ou desconto: preço cheio.
+    const discountRate = normalizeDiscountRate(affiliate?.discount_rate);
+    const chargeAmount = getDiscountedPlanAmount(plan, discountRate);
+
     if (plan.billingKind === 'subscription') {
       const payload = buildSubscriptionPayload({
         baseUrl,
         email,
         userId,
         plan,
+        chargeAmount,
       });
       const providerResponse = await postMercadoPagoJson(
         MERCADO_PAGO_PREAPPROVAL_URL,
@@ -325,7 +336,7 @@ module.exports = async function handler(req, res) {
           userId,
           status: providerResponse?.status || 'pending',
           planKey: plan.key,
-          amount: plan.price,
+          amount: chargeAmount,
           currencyId: plan.currencyId,
           payerEmail: email,
           externalReference: userId,
@@ -348,6 +359,8 @@ module.exports = async function handler(req, res) {
           init_point: checkoutUrl,
           plan_key: plan.key,
           billing_kind: plan.billingKind,
+          charged_amount: chargeAmount,
+          discount_rate: discountRate,
         },
       });
     }
@@ -359,6 +372,8 @@ module.exports = async function handler(req, res) {
       userId,
       plan,
       affiliate,
+      discountRate,
+      chargeAmount,
     });
     const providerResponse = await postMercadoPagoJson(
       MERCADO_PAGO_PREFERENCES_URL,
@@ -374,6 +389,8 @@ module.exports = async function handler(req, res) {
         init_point: checkoutUrl,
         plan_key: plan.key,
         billing_kind: plan.billingKind,
+        charged_amount: chargeAmount,
+        discount_rate: discountRate,
       },
     });
   } catch (error) {

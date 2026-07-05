@@ -24,6 +24,21 @@ function normalizeAffiliateCode(value) {
     .slice(0, 48);
 }
 
+const PAYOUT_STATUS_LABELS = {
+  requested: 'Em processamento',
+  paid: 'Pago',
+  rejected: 'Rejeitado',
+};
+
+function formatDate(value) {
+  if (!value) {
+    return '';
+  }
+
+  const date = new Date(value);
+  return Number.isNaN(date.getTime()) ? '' : date.toLocaleDateString('pt-BR');
+}
+
 function AffiliatePage({ user, referralCode, onLogin }) {
   const [affiliateData, setAffiliateData] = useState(null);
   const [loading, setLoading] = useState(Boolean(user));
@@ -31,6 +46,10 @@ function AffiliatePage({ user, referralCode, onLogin }) {
   const [error, setError] = useState('');
   const [copied, setCopied] = useState(false);
   const [desiredCode, setDesiredCode] = useState('');
+  const [pixKey, setPixKey] = useState('');
+  const [requestingPayout, setRequestingPayout] = useState(false);
+  const [payoutError, setPayoutError] = useState('');
+  const [payoutSuccess, setPayoutSuccess] = useState('');
 
   useEffect(() => {
     if (!user) {
@@ -73,9 +92,19 @@ function AffiliatePage({ user, referralCode, onLogin }) {
 
   const affiliate = affiliateData?.affiliate || null;
   const stats = affiliateData?.stats || null;
+  const payouts = Array.isArray(affiliateData?.payouts) ? affiliateData.payouts : [];
+  const payoutMinAmount = Number(affiliateData?.payoutMinAmount) || 50;
   const affiliateLink = useMemo(() => (affiliate?.code ? buildAffiliateLink(affiliate.code) : ''), [affiliate?.code]);
   const normalizedDesiredCode = normalizeAffiliateCode(desiredCode);
   const previewLink = normalizedDesiredCode ? buildAffiliateLink(normalizedDesiredCode) : '';
+  const commissionPercent = affiliate
+    ? Math.round((Number(affiliate.commission_rate) || 0.3) * 100)
+    : 30;
+  const availableCommission = Number(stats?.availableCommission) || 0;
+  const processingCommission = Number(stats?.processingCommission) || 0;
+  const hasOpenPayout = payouts.some((payout) => payout.status === 'requested');
+  const belowMinimum = availableCommission < payoutMinAmount;
+  const canRequestPayout = Boolean(affiliate) && !hasOpenPayout && !belowMinimum;
 
   const handleCreateAffiliate = async () => {
     if (!normalizedDesiredCode || normalizedDesiredCode.length < 3) {
@@ -113,6 +142,42 @@ function AffiliatePage({ user, referralCode, onLogin }) {
     window.setTimeout(() => setCopied(false), 1800);
   };
 
+  const handleRequestPayout = async () => {
+    const normalizedPixKey = pixKey.trim();
+
+    if (!normalizedPixKey) {
+      setPayoutError('Informe sua chave PIX para receber o saque.');
+      return;
+    }
+
+    setRequestingPayout(true);
+    setPayoutError('');
+    setPayoutSuccess('');
+
+    try {
+      const response = await api.post('/affiliate/payouts', {
+        pixKey: normalizedPixKey,
+      });
+
+      if (!response.success) {
+        throw new Error(response.error || 'Não foi possível solicitar o saque.');
+      }
+
+      setAffiliateData((current) => ({
+        ...(current || {}),
+        stats: response.data?.stats || current?.stats || null,
+        payouts: Array.isArray(response.data?.payouts) ? response.data.payouts : [],
+        payoutMinAmount: response.data?.payoutMinAmount || current?.payoutMinAmount,
+      }));
+      setPayoutSuccess('Saque solicitado! A transferência via PIX será feita manualmente e o status atualizado aqui.');
+      setPixKey('');
+    } catch (requestError) {
+      setPayoutError(requestError.message || 'Não foi possível solicitar o saque.');
+    } finally {
+      setRequestingPayout(false);
+    }
+  };
+
   return (
     <div className="affiliate-page">
       <section className="workspace-surface affiliate-hero">
@@ -120,11 +185,11 @@ function AffiliatePage({ user, referralCode, onLogin }) {
           <span className="workspace-kicker">Afiliados</span>
           <h1>Indique o Minha Anamnese</h1>
           <p>
-            Gere seu link, divulgue para colegas e acompanhe comissões de 30% sobre pagamentos aprovados.
+            Gere seu link, divulgue para colegas e acompanhe comissões de {commissionPercent}% sobre pagamentos aprovados.
           </p>
         </div>
         <div className="affiliate-hero-rate">
-          <strong>30%</strong>
+          <strong>{commissionPercent}%</strong>
           <span>por venda aprovada</span>
         </div>
       </section>
@@ -201,12 +266,16 @@ function AffiliatePage({ user, referralCode, onLogin }) {
             <h2>Resumo</h2>
             <div className="affiliate-stats">
               <div>
-                <span>Comissão pendente</span>
-                <strong>{formatCurrency(stats?.pendingCommission)}</strong>
+                <span>Disponível para saque</span>
+                <strong>{formatCurrency(availableCommission)}</strong>
               </div>
               <div>
-                <span>Total registrado</span>
-                <strong>{formatCurrency(stats?.totalCommission)}</strong>
+                <span>Em processamento</span>
+                <strong>{formatCurrency(processingCommission)}</strong>
+              </div>
+              <div>
+                <span>Total pago</span>
+                <strong>{formatCurrency(stats?.paidCommission)}</strong>
               </div>
               <div>
                 <span>Conversões</span>
@@ -214,9 +283,81 @@ function AffiliatePage({ user, referralCode, onLogin }) {
               </div>
             </div>
             <p className="affiliate-small-print">
-              Comissões entram como pendentes após pagamento aprovado. Saques e baixa manual entram em uma próxima etapa operacional.
+              Comissões entram como disponíveis após pagamento aprovado. Ao solicitar um saque, o valor fica em
+              processamento até a transferência via PIX ser confirmada.
             </p>
           </section>
+
+          {affiliate ? (
+            <section className="affiliate-card affiliate-payout-card">
+              <h2>Saque</h2>
+              <p>
+                Saque mínimo de {formatCurrency(payoutMinAmount)}. A transferência é feita manualmente via PIX e o
+                status fica registrado aqui para acompanhamento.
+              </p>
+
+              {hasOpenPayout ? (
+                <div className="affiliate-payout-open">
+                  Você tem um saque em processamento. Aguarde a transferência para solicitar outro.
+                </div>
+              ) : (
+                <div className="affiliate-payout-form">
+                  <label htmlFor="affiliate-pix-key">Chave PIX</label>
+                  <div className="affiliate-payout-input-row">
+                    <input
+                      id="affiliate-pix-key"
+                      type="text"
+                      value={pixKey}
+                      onChange={(event) => {
+                        setPixKey(event.target.value);
+                        setPayoutError('');
+                      }}
+                      placeholder="CPF, e-mail, telefone ou chave aleatória"
+                      maxLength={140}
+                    />
+                    <button
+                      type="button"
+                      className="btn btn-primario"
+                      onClick={handleRequestPayout}
+                      disabled={!canRequestPayout || requestingPayout}
+                    >
+                      {requestingPayout ? 'Solicitando...' : 'Solicitar saque'}
+                    </button>
+                  </div>
+                  {belowMinimum ? (
+                    <span className="affiliate-payout-hint">
+                      Saldo disponível de {formatCurrency(availableCommission)} — o saque libera a partir de {formatCurrency(payoutMinAmount)}.
+                    </span>
+                  ) : null}
+                </div>
+              )}
+
+              {payoutError ? <div className="templates-inline-error">{payoutError}</div> : null}
+              {payoutSuccess ? <div className="affiliate-payout-success">{payoutSuccess}</div> : null}
+
+              {payouts.length > 0 ? (
+                <div className="affiliate-payout-history">
+                  <h3>Histórico de saques</h3>
+                  <ul>
+                    {payouts.map((payout) => (
+                      <li key={payout.id}>
+                        <div>
+                          <strong>{formatCurrency(payout.amount)}</strong>
+                          <span>
+                            Solicitado em {formatDate(payout.requested_at)}
+                            {payout.status === 'paid' && payout.paid_at ? ` · pago em ${formatDate(payout.paid_at)}` : ''}
+                          </span>
+                        </div>
+                        <span className={`affiliate-payout-status affiliate-payout-status-${payout.status}`}>
+                          {PAYOUT_STATUS_LABELS[payout.status] || payout.status}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ) : null}
+            </section>
+          ) : null}
         </div>
       )}
     </div>

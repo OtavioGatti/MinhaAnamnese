@@ -34,6 +34,11 @@ test('rotas críticas do produto continuam registradas', () => {
     '/api/create-checkout',
     '/api/webhook/mercadopago',
     '/api/health',
+    '/api/affiliate',
+    '/api/affiliate/lookup',
+    '/api/affiliate/payouts',
+    '/api/admin/affiliates/update',
+    '/api/admin/affiliate-payouts/settle',
   ];
 
   for (const route of criticalRoutes) {

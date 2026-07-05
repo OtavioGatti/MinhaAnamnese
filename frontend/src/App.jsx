@@ -805,6 +805,7 @@ function App() {
   const [loadingInsights, setLoadingInsights] = useState(false);
   const [checkoutLoadingOrigin, setCheckoutLoadingOrigin] = useState(null);
   const [checkoutLoadingPlanKey, setCheckoutLoadingPlanKey] = useState(null);
+  const [referralDiscount, setReferralDiscount] = useState(null);
   const [loadingAuth, setLoadingAuth] = useState(false);
   const [animatedScore, setAnimatedScore] = useState(0);
   const [erro, setErro] = useState('');
@@ -864,6 +865,38 @@ function App() {
     if (referralCode) {
       saveAffiliateReferralCode(referralCode);
     }
+
+    // Consulta o desconto do código de indicação (se houver) para exibição;
+    // o valor cobrado é sempre recalculado no backend.
+    const storedCode = referralCode || readAffiliateReferralCode();
+
+    if (!storedCode) {
+      return undefined;
+    }
+
+    let cancelled = false;
+
+    api.get(`/affiliate/lookup?code=${encodeURIComponent(storedCode)}`)
+      .then((response) => {
+        if (cancelled || !response.success) {
+          return;
+        }
+
+        const rate = Number(response.data?.discountRate) || 0;
+
+        if (response.data?.valid && rate > 0) {
+          setReferralDiscount({
+            rate,
+            label: response.data?.discountLabel || null,
+            code: response.data?.code || storedCode,
+          });
+        }
+      })
+      .catch(() => {});
+
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   useEffect(() => {
@@ -2977,6 +3010,7 @@ function App() {
         loadingPlanKey={checkoutLoadingPlanKey}
         plans={BILLING_PLANS}
         isTrialAccess={Boolean(accessState?.isTrialAccess)}
+        referralDiscount={referralDiscount}
         onClose={() => setPlanComparisonState((current) => ({ ...current, open: false }))}
         onConfirm={handleConfirmPlanComparison}
       />

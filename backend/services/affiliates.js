@@ -1,4 +1,4 @@
-const { COMMISSION_RATE, calculateCommissionAmount } = require('../config/billingPlans');
+const { COMMISSION_RATE, calculateCommissionAmount, normalizeDiscountRate } = require('../config/billingPlans');
 const { isValidUserId } = require('../utils/idValidation');
 
 function getSupabaseAdminConfig() {
@@ -30,6 +30,11 @@ function normalizeAffiliate(record) {
     code: typeof record.code === 'string' ? record.code : null,
     status: typeof record.status === 'string' ? record.status : 'paused',
     commission_rate: Number(record.commission_rate) || COMMISSION_RATE,
+    // Colunas de desconto podem não existir antes do SQL ser aplicado: default 0.
+    discount_rate: normalizeDiscountRate(record.discount_rate),
+    discount_label: typeof record.discount_label === 'string' && record.discount_label.trim()
+      ? record.discount_label.trim()
+      : null,
     created_at: typeof record.created_at === 'string' ? record.created_at : null,
     updated_at: typeof record.updated_at === 'string' ? record.updated_at : null,
   };
@@ -52,6 +57,7 @@ function normalizeCommission(record) {
     commission_amount: Number(record.commission_amount) || 0,
     currency_id: typeof record.currency_id === 'string' ? record.currency_id : 'BRL',
     status: typeof record.status === 'string' ? record.status : 'pending',
+    payout_id: typeof record.payout_id === 'string' ? record.payout_id : null,
     created_at: typeof record.created_at === 'string' ? record.created_at : null,
     updated_at: typeof record.updated_at === 'string' ? record.updated_at : null,
   };
@@ -261,6 +267,8 @@ async function getAffiliateStats(affiliateId) {
       totalCommission: 0,
       pendingCommission: 0,
       paidCommission: 0,
+      availableCommission: 0,
+      processingCommission: 0,
       conversions: 0,
     };
   }
@@ -283,6 +291,13 @@ async function getAffiliateStats(affiliateId) {
         summary.paidCommission += amount;
       } else if (commission.status !== 'cancelled') {
         summary.pendingCommission += amount;
+
+        if (commission.payout_id) {
+          // Comissão presa em um saque solicitado, aguardando transferência.
+          summary.processingCommission += amount;
+        } else {
+          summary.availableCommission += amount;
+        }
       }
 
       return summary;
@@ -291,6 +306,8 @@ async function getAffiliateStats(affiliateId) {
       totalCommission: 0,
       pendingCommission: 0,
       paidCommission: 0,
+      availableCommission: 0,
+      processingCommission: 0,
       conversions: 0,
     },
   );

@@ -1,8 +1,12 @@
+// `price` espelha o valor canônico de backend/config/billingPlans.js e serve
+// apenas para exibição (ex.: preço com desconto de indicação). A cobrança real
+// é sempre calculada no backend.
 export const BILLING_PLANS = {
   monthly: {
     key: 'monthly',
     label: 'Mensal',
     title: 'Plano mensal',
+    price: 18.9,
     priceCopy: 'R$ 18,90',
     periodCopy: 'por mês',
     daysCopy: '30 dias',
@@ -13,6 +17,7 @@ export const BILLING_PLANS = {
     key: 'semiannual',
     label: 'Semestral',
     title: 'Plano semestral',
+    price: 99.9,
     priceCopy: 'R$ 99,90',
     periodCopy: '6 meses',
     daysCopy: '180 dias',

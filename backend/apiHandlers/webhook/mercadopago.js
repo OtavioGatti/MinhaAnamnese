@@ -4,7 +4,8 @@ const {
   getBillingPlan,
   getBillingPlanByAmount,
   getBillingPlanByProduct,
-  isExpectedPlanAmount,
+  isExpectedChargedAmount,
+  normalizeDiscountRate,
   normalizePlanKey,
 } = require('../../config/billingPlans');
 const { getAffiliateByCode, createAffiliateCommission } = require('../../services/affiliates');
@@ -325,12 +326,19 @@ function hasExpectedProduct(payment, plan, subscription = null) {
   return metadata.product === plan.product;
 }
 
-function isApprovedPlanPayment(payment, plan, subscription = null) {
+function isApprovedPlanPayment(payment, plan, subscription = null, discountContext = {}) {
   return (
     payment?.status === 'approved' &&
     Boolean(payment?.date_approved) &&
     Boolean(plan) &&
-    isExpectedPlanAmount(plan, payment?.transaction_amount) &&
+    // Aceita preço cheio ou com desconto de afiliado. As taxas vêm de fontes
+    // server-side (registro do afiliado, metadata criada pelo nosso checkout e
+    // valor persistido da assinatura) — nunca do valor informado pelo cliente.
+    isExpectedChargedAmount(plan, payment?.transaction_amount, {
+      affiliateDiscountRate: discountContext.affiliateDiscountRate,
+      metadataDiscountRate: discountContext.metadataDiscountRate,
+      subscriptionAmount: subscription?.amount,
+    }) &&
     hasExpectedCurrency(payment, plan) &&
     hasExpectedProduct(payment, plan, subscription)
   );
@@ -430,7 +438,12 @@ async function handlePaymentWebhook(resourceId, accessToken, supabase) {
 
   await persistPaymentSnapshot(payment, userId, plan, subscription, affiliate, null);
 
-  if (!plan || !isApprovedPlanPayment(payment, plan, subscription)) {
+  const discountContext = {
+    affiliateDiscountRate: normalizeDiscountRate(affiliate?.discount_rate),
+    metadataDiscountRate: normalizeDiscountRate(getPaymentMetadata(payment).discount_rate),
+  };
+
+  if (!plan || !isApprovedPlanPayment(payment, plan, subscription, discountContext)) {
     return { skipped: true };
   }
 

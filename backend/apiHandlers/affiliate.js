@@ -5,18 +5,23 @@ const {
   getAffiliateStats,
   normalizeAffiliateCode,
 } = require('../services/affiliates');
+const { getPayoutMinAmount, listAffiliatePayouts } = require('../services/affiliatePayouts');
 const { ensureUserProfile } = require('../services/profiles');
 const { resolveSupabaseUser } = require('../utils/supabaseAuth');
 
-function buildAffiliateResponse(affiliate, stats = null) {
+function buildAffiliateResponse(affiliate, stats = null, payouts = []) {
   return {
     affiliate,
     stats: stats || {
       totalCommission: 0,
       pendingCommission: 0,
       paidCommission: 0,
+      availableCommission: 0,
+      processingCommission: 0,
       conversions: 0,
     },
+    payouts,
+    payoutMinAmount: getPayoutMinAmount(),
   };
 }
 
@@ -41,11 +46,17 @@ module.exports = async function handler(req, res) {
 
   if (req.method === 'GET') {
     const affiliate = await getAffiliateByUserId(auth.user.id).catch(() => null);
-    const stats = affiliate?.id ? await getAffiliateStats(affiliate.id).catch(() => null) : null;
+    const [stats, payouts] = affiliate?.id
+      ? await Promise.all([
+        getAffiliateStats(affiliate.id).catch(() => null),
+        // Tabela de saques pode não existir antes do SQL ser aplicado: lista vazia.
+        listAffiliatePayouts(affiliate.id).catch(() => []),
+      ])
+      : [null, []];
 
     return res.status(200).json({
       success: true,
-      data: buildAffiliateResponse(affiliate, stats),
+      data: buildAffiliateResponse(affiliate, stats, payouts),
     });
   }
 

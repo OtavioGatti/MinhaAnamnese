@@ -139,6 +139,9 @@ NOTION_WEBHOOK_VERIFICATION_TOKEN=
 PRO_TRIAL_DAYS=7
 
 RATE_LIMIT_STORE=
+
+AFFILIATE_PAYOUT_MIN_AMOUNT=50
+AFFILIATE_PAYOUT_WEBHOOK_URL=
 ```
 
 `ANALYSIS_ENGINE` controla o motor da avaliação estrutural: use `unified_ai` para a análise única por IA ou `legacy` para voltar ao score determinístico anterior com interpretação por IA.
@@ -194,8 +197,13 @@ Cobrem hipóteses diagnósticas, planos de cobrança, rate limit, roteamento da 
 - `GET /api/templates`: lista templates oficiais e do usuário.
 - `GET /api/prescription-guides`: lista guias de prescrição publicados.
 - `GET /api/clinical-drugs`: lista medicamentos do bulário clínico.
-- `POST /api/create-checkout`: cria checkout no Mercado Pago.
+- `POST /api/create-checkout`: cria checkout no Mercado Pago (aplica desconto de afiliado quando houver).
 - `POST /api/webhook/mercadopago`: recebe confirmação de pagamento.
+- `GET /api/affiliate`: dados do afiliado, saldos e histórico de saques.
+- `GET /api/affiliate/lookup?code=...`: consulta pública de código de indicação (desconto para exibição).
+- `POST /api/affiliate/payouts`: afiliado solicita saque das comissões disponíveis.
+- `POST /api/admin/affiliates/update`: ajusta comissão/desconto/status de um afiliado (bearer `ADMIN_SYNC_SECRET`).
+- `POST /api/admin/affiliate-payouts/settle`: dá baixa em um saque após a transferência (bearer `ADMIN_SYNC_SECRET`).
 
 ## Sincronização com Notion
 
@@ -240,6 +248,56 @@ Os arquivos SQL ficam em `supabase/` e devem ser aplicados manualmente no SQL Ed
 - `billing_payments`: pagamentos e auditoria de checkout.
 - `events`: eventos de funil e produto.
 - `rate_limit_buckets`: contadores de rate limit compartilhados entre instâncias (`supabase/rate_limits.sql`).
+- `affiliates` / `affiliate_commissions` / `affiliate_attributions`: programa de afiliados, com comissão e desconto por afiliado (`supabase/affiliate_program.sql`, `supabase/affiliate_discounts.sql`).
+- `affiliate_payouts`: saques de comissão com baixa manual (`supabase/affiliate_payouts.sql`).
+
+## Programa de Afiliados (Operação)
+
+Comissão padrão de 30%, com comissão e desconto configuráveis **por afiliado**. O desconto é aplicado no checkout e validado de forma independente no webhook (nunca confia no valor vindo do cliente). Mudanças de comissão valem só para vendas futuras — cada comissão grava a taxa do momento da venda.
+
+Ajustar comissão/desconto (SQL Editor do Supabase):
+
+```sql
+-- 10% de desconto para compradores indicados + comissão de 20%
+update public.affiliates
+set discount_rate = 0.10, discount_label = 'Atlética XYZ', commission_rate = 0.20
+where code = 'atletica-xyz';
+```
+
+Ou via endpoint admin:
+
+```powershell
+Invoke-RestMethod `
+  -Method Post `
+  -Uri "https://minhaanamnese.onrender.com/api/admin/affiliates/update" `
+  -Headers @{ Authorization = "Bearer SEU_ADMIN_SYNC_SECRET" } `
+  -ContentType "application/json" `
+  -Body '{"code":"atletica-xyz","discountRate":0.10,"discountLabel":"Atlética XYZ","commissionRate":0.20}'
+```
+
+### Saques
+
+1. O afiliado clica em **Solicitar saque** (mínimo `AFFILIATE_PAYOUT_MIN_AMOUNT`, padrão R$50) informando a chave PIX; as comissões disponíveis ficam presas no saque.
+2. O dono é notificado via `AFFILIATE_PAYOUT_WEBHOOK_URL` (ex.: n8n → WhatsApp/e-mail); a row em `affiliate_payouts` é a fonte da verdade.
+3. Após fazer o PIX manualmente, dar baixa (o saldo disponível zera e o histórico fica visível para os dois lados):
+
+```sql
+select public.settle_affiliate_payout('<payout_id>', 'paid', 'PIX enviado');
+-- ou 'rejected' para devolver o valor ao saldo disponível
+```
+
+Ou via endpoint admin:
+
+```powershell
+Invoke-RestMethod `
+  -Method Post `
+  -Uri "https://minhaanamnese.onrender.com/api/admin/affiliate-payouts/settle" `
+  -Headers @{ Authorization = "Bearer SEU_ADMIN_SYNC_SECRET" } `
+  -ContentType "application/json" `
+  -Body '{"payoutId":"<payout_id>","action":"paid","note":"PIX enviado"}'
+```
+
+Requer `supabase/affiliate_discounts.sql` e `supabase/affiliate_payouts.sql` aplicados. Antes disso, o código segue funcionando com desconto 0 e saques indisponíveis (mensagem amigável).
 
 ## Onde Ficam as Regras Importantes
 

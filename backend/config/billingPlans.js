@@ -1,5 +1,7 @@
 const PLAN_CURRENCY = 'BRL';
 const COMMISSION_RATE = 0.3;
+const MAX_AFFILIATE_DISCOUNT_RATE = 0.5;
+const AMOUNT_EPSILON = 0.0001;
 
 const BILLING_PLANS = {
   monthly: {
@@ -76,7 +78,86 @@ function getBillingPlanByAmount(amount, billingKind = null) {
 
 function isExpectedPlanAmount(plan, amount) {
   const numericAmount = Number(amount);
-  return Boolean(plan) && Number.isFinite(numericAmount) && Math.abs(numericAmount - plan.price) < 0.0001;
+  return Boolean(plan) && Number.isFinite(numericAmount) && Math.abs(numericAmount - plan.price) < AMOUNT_EPSILON;
+}
+
+function roundCurrency(value) {
+  if (value == null || value === '') {
+    return null;
+  }
+
+  const numericValue = Number(value);
+
+  if (!Number.isFinite(numericValue)) {
+    return null;
+  }
+
+  return Math.round(numericValue * 100) / 100;
+}
+
+function normalizeDiscountRate(value) {
+  const numericRate = Number(value);
+
+  if (!Number.isFinite(numericRate) || numericRate <= 0) {
+    return 0;
+  }
+
+  return Math.min(numericRate, MAX_AFFILIATE_DISCOUNT_RATE);
+}
+
+// Único ponto de arredondamento do preço com desconto: checkout e webhook
+// PRECISAM usar esta função para o valor cobrado e o valor esperado baterem.
+function getDiscountedPlanAmount(plan, discountRate) {
+  if (!plan || !Number.isFinite(Number(plan.price))) {
+    return null;
+  }
+
+  const normalizedRate = normalizeDiscountRate(discountRate);
+
+  if (normalizedRate === 0) {
+    return plan.price;
+  }
+
+  return roundCurrency(plan.price * (1 - normalizedRate));
+}
+
+// Valores aceitos para um pagamento do plano: preço cheio, preço com desconto
+// (taxa atual do afiliado e/ou taxa registrada na metadata criada pelo nosso
+// checkout) e o valor persistido da assinatura (gravado server-side na criação).
+function getExpectedChargeAmounts(plan, { affiliateDiscountRate = 0, metadataDiscountRate = 0, subscriptionAmount = null } = {}) {
+  if (!plan) {
+    return [];
+  }
+
+  const amounts = new Set([plan.price]);
+
+  for (const rate of [affiliateDiscountRate, metadataDiscountRate]) {
+    const discounted = getDiscountedPlanAmount(plan, rate);
+
+    if (discounted != null) {
+      amounts.add(discounted);
+    }
+  }
+
+  const normalizedSubscriptionAmount = roundCurrency(subscriptionAmount);
+
+  if (normalizedSubscriptionAmount != null && normalizedSubscriptionAmount > 0) {
+    amounts.add(normalizedSubscriptionAmount);
+  }
+
+  return [...amounts];
+}
+
+function isExpectedChargedAmount(plan, amount, discountContext = {}) {
+  const numericAmount = Number(amount);
+
+  if (!plan || !Number.isFinite(numericAmount)) {
+    return false;
+  }
+
+  return getExpectedChargeAmounts(plan, discountContext).some(
+    (expected) => Math.abs(numericAmount - expected) < AMOUNT_EPSILON,
+  );
 }
 
 function calculateCommissionAmount(amount, rate = COMMISSION_RATE) {
@@ -95,11 +176,17 @@ module.exports = {
   COMMISSION_RATE,
   DEFAULT_PLAN_KEY,
   LEGACY_BILLING_PLANS,
+  MAX_AFFILIATE_DISCOUNT_RATE,
   PLAN_CURRENCY,
   calculateCommissionAmount,
   getBillingPlan,
   getBillingPlanByAmount,
   getBillingPlanByProduct,
+  getDiscountedPlanAmount,
+  getExpectedChargeAmounts,
+  isExpectedChargedAmount,
   isExpectedPlanAmount,
+  normalizeDiscountRate,
+  roundCurrency,
   normalizePlanKey,
 };
