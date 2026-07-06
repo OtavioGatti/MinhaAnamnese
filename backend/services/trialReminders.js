@@ -9,6 +9,7 @@
 // para quem simplesmente não volta ao app.
 
 const { sendEmail } = require('./emailNotifications');
+const { buildEmailHtml } = require('./emailTemplates');
 
 const DEFAULT_DAYS_BEFORE = 2;
 const FIELD_ENDING_SOON = 'trial_reminder_2d_sent_at';
@@ -113,26 +114,39 @@ async function markReminderSent(profileId, field) {
 }
 
 // Tom direto, sem pressão — mesmo estilo do resto do produto (ver paywall/
-// onboarding copy em frontend/src/App.jsx e WelcomeOnboardingModal.jsx).
+// onboarding copy em frontend/src/App.jsx e WelcomeOnboardingModal.jsx),
+// no mesmo molde visual do e-mail de confirmação de cadastro (emailTemplates.js).
 function buildReminderEmail(kind, profile) {
   const appUrl = getAppUrl();
 
   if (kind === 'ending_soon') {
     return {
       subject: 'Seu teste profissional termina em breve',
-      html: `<p>Olá!</p>
-<p>Seu teste profissional no Minha Anamnese termina em breve (${formatDateBR(profile.plan_expires_at)}). Depois disso, sua conta volta ao plano básico e você perde acesso a avaliações completas, encaminhamentos com IA, guias de prescrição e bulário clínico.</p>
-<p>Para continuar sem interrupção: <a href="${appUrl}">assine o Profissional</a> — R$ 24,90/mês ou R$ 129,90 no semestral (~13% de desconto).</p>
-<p>— Equipe Minha Anamnese</p>`,
+      html: buildEmailHtml({
+        heading: 'Seu teste está terminando ⏳',
+        paragraphs: [
+          `Seu teste profissional no <strong>Minha Anamnese</strong> termina em breve (${formatDateBR(profile.plan_expires_at)}).`,
+          'Depois disso, sua conta volta ao plano básico e você perde acesso a avaliações completas, encaminhamentos com IA, guias de prescrição e bulário clínico.',
+          'Para continuar sem interrupção, assine o Profissional — R$ 24,90/mês ou R$ 129,90 no semestral (~13% de desconto).',
+        ],
+        button: { label: 'Assinar o Profissional', url: appUrl },
+        footerNote: 'Se você já assinou ou não deseja continuar, pode ignorar este e-mail com segurança.',
+      }),
     };
   }
 
   return {
     subject: 'Seu teste no Minha Anamnese terminou',
-    html: `<p>Olá!</p>
-<p>Seu teste profissional de 7 dias terminou. A organização básica de anamneses continua disponível gratuitamente.</p>
-<p>Se quiser continuar com avaliações completas, encaminhamentos com IA e prescrições, você pode assinar quando quiser: <a href="${appUrl}">${appUrl}</a>.</p>
-<p>— Equipe Minha Anamnese</p>`,
+    html: buildEmailHtml({
+      heading: 'Seu teste terminou',
+      paragraphs: [
+        'Seu teste profissional de 7 dias no <strong>Minha Anamnese</strong> terminou.',
+        'A organização básica de anamneses continua disponível gratuitamente — você não perdeu nada do que já criou.',
+        'Se quiser continuar com avaliações completas, encaminhamentos com IA, guias de prescrição e bulário clínico, você pode assinar quando quiser.',
+      ],
+      button: { label: 'Assinar o Profissional', url: appUrl },
+      footerNote: 'Sem pressa — pode assinar quando fizer sentido pra sua rotina.',
+    }),
   };
 }
 
