@@ -77,9 +77,12 @@ function buildPayoutActionUrl(baseUrl, payoutId, action, token) {
 }
 
 // Gera os links assinados de baixa (pago/rejeitado) para a notificação.
-// Retorna null se faltar segredo ou URL pública — a notificação segue sem links.
-function buildPayoutActionUrls(payoutId, ttlMs = DEFAULT_TTL_MS) {
-  const baseUrl = getPublicApiBaseUrl();
+// Usa a URL derivada da requisição (options.baseUrl) e, se ausente, a env
+// PUBLIC_API_URL. Retorna null se faltar segredo ou URL — a notificação segue
+// sem links (fallback amigável).
+function buildPayoutActionUrls(payoutId, options = {}) {
+  const { baseUrl: requestBaseUrl, ttlMs = DEFAULT_TTL_MS } = options;
+  const baseUrl = normalizeApiBaseUrl(requestBaseUrl) || getPublicApiBaseUrl();
   const paidToken = createPayoutActionToken(payoutId, 'paid', ttlMs);
   const rejectedToken = createPayoutActionToken(payoutId, 'rejected', ttlMs);
 

@@ -97,3 +97,23 @@ test('buildPayoutActionUrls normaliza base terminando em /api', () => {
   assert.ok(urls.paid.startsWith('https://minhaanamnese.onrender.com/api/affiliate-payout-action?'));
   assert.ok(!urls.paid.includes('/api/api/'));
 });
+
+test('buildPayoutActionUrls usa baseUrl da requisição mesmo sem PUBLIC_API_URL', () => {
+  delete process.env.PUBLIC_API_URL;
+  delete process.env.BACKEND_PUBLIC_URL;
+  delete process.env.API_BASE_URL;
+
+  const urls = buildPayoutActionUrls(PAYOUT_ID, { baseUrl: 'https://minhaanamnese.onrender.com' });
+
+  assert.ok(urls);
+  assert.ok(urls.paid.startsWith('https://minhaanamnese.onrender.com/api/affiliate-payout-action?'));
+  assert.ok(urls.rejected.includes('action=rejected'));
+});
+
+test('buildPayoutActionUrls retorna null sem base alguma', () => {
+  delete process.env.PUBLIC_API_URL;
+  delete process.env.BACKEND_PUBLIC_URL;
+  delete process.env.API_BASE_URL;
+
+  assert.equal(buildPayoutActionUrls(PAYOUT_ID), null);
+});

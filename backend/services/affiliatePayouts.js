@@ -128,7 +128,7 @@ async function listAffiliatePayouts(affiliateId, limit = 20) {
 // Notificação (best-effort) para o dono via webhook externo (ex.: n8n ->
 // WhatsApp/e-mail). A row no Supabase é a fonte da verdade: falha aqui não
 // perde o pedido de saque.
-async function notifyPayoutRequested({ payout, affiliate }) {
+async function notifyPayoutRequested({ payout, affiliate, baseUrl = null }) {
   const webhookUrl = process.env.AFFILIATE_PAYOUT_WEBHOOK_URL;
 
   if (!webhookUrl || !payout) {
@@ -138,7 +138,7 @@ async function notifyPayoutRequested({ payout, affiliate }) {
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), PAYOUT_WEBHOOK_TIMEOUT_MS);
   // Links assinados de baixa direta (via WhatsApp); null se faltar segredo/URL.
-  const actionUrls = buildPayoutActionUrls(payout.id);
+  const actionUrls = buildPayoutActionUrls(payout.id, { baseUrl });
 
   try {
     await fetch(webhookUrl, {

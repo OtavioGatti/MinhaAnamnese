@@ -29,6 +29,18 @@ function normalizePixKey(value) {
   return String(value || '').trim().slice(0, PIX_KEY_MAX_LENGTH);
 }
 
+// URL pública do backend derivada da própria requisição (host do Render),
+// para os links de baixa funcionarem sem depender de PUBLIC_API_URL.
+function getRequestBaseUrl(req) {
+  const forwardedProto = Array.isArray(req.headers['x-forwarded-proto'])
+    ? req.headers['x-forwarded-proto'][0]
+    : req.headers['x-forwarded-proto'];
+  const host = req.headers['x-forwarded-host'] || req.headers.host || '';
+  const protocol = forwardedProto || 'https';
+
+  return host ? `${protocol}://${host}` : '';
+}
+
 module.exports = async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({
@@ -90,7 +102,7 @@ module.exports = async function handler(req, res) {
       pixKey,
     });
 
-    await notifyPayoutRequested({ payout, affiliate }).catch(() => false);
+    await notifyPayoutRequested({ payout, affiliate, baseUrl: getRequestBaseUrl(req) }).catch(() => false);
 
     const [stats, payouts] = await Promise.all([
       getAffiliateStats(affiliate.id).catch(() => null),
