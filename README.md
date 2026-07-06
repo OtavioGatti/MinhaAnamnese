@@ -278,8 +278,8 @@ Invoke-RestMethod `
 ### Saques
 
 1. O afiliado clica em **Solicitar saque** (mínimo `AFFILIATE_PAYOUT_MIN_AMOUNT`, padrão R$50) informando a chave PIX; as comissões disponíveis ficam presas no saque.
-2. O dono é notificado via `AFFILIATE_PAYOUT_WEBHOOK_URL` (ex.: n8n → WhatsApp/e-mail); a row em `affiliate_payouts` é a fonte da verdade.
-3. Após fazer o PIX manualmente, dar baixa (o saldo disponível zera e o histórico fica visível para os dois lados):
+2. O dono é notificado via `AFFILIATE_PAYOUT_WEBHOOK_URL` (ex.: n8n → WhatsApp/e-mail); a row em `affiliate_payouts` é a fonte da verdade. A notificação inclui **links assinados de baixa** (pago/rejeitado) que abrem uma página de confirmação (`GET /api/affiliate-payout-action`, assinada por `PAYOUT_ACTION_SECRET`/`ADMIN_SYNC_SECRET`; só executa após o clique humano em Confirmar — imune a preview de link).
+3. Após fazer o PIX manualmente, dar baixa pelo link do WhatsApp, pelo painel n8n, pela função SQL ou pelo endpoint admin (o saldo disponível zera e o histórico fica visível para os dois lados):
 
 ```sql
 select public.settle_affiliate_payout('<payout_id>', 'paid', 'PIX enviado');

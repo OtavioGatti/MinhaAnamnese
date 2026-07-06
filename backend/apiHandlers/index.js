@@ -16,6 +16,7 @@ const apiRoutes = {
   '/api/affiliate': require('./affiliate'),
   '/api/affiliate/lookup': require('./affiliate-lookup'),
   '/api/affiliate/payouts': require('./affiliate-payouts'),
+  '/api/affiliate-payout-action': require('./affiliate-payout-action'),
   '/api/admin/affiliates/update': require('./admin/affiliates-update'),
   '/api/admin/affiliate-payouts/settle': require('./admin/affiliate-payouts-settle'),
   '/api/admin/prompts/sync': require('./admin/prompts-sync'),

@@ -1,3 +1,5 @@
+const { buildPayoutActionUrls } = require('../utils/payoutActionToken');
+
 const DEFAULT_PAYOUT_MIN_AMOUNT = 50;
 const PAYOUT_WEBHOOK_TIMEOUT_MS = 5000;
 
@@ -135,6 +137,8 @@ async function notifyPayoutRequested({ payout, affiliate }) {
 
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), PAYOUT_WEBHOOK_TIMEOUT_MS);
+  // Links assinados de baixa direta (via WhatsApp); null se faltar segredo/URL.
+  const actionUrls = buildPayoutActionUrls(payout.id);
 
   try {
     await fetch(webhookUrl, {
@@ -150,6 +154,8 @@ async function notifyPayoutRequested({ payout, affiliate }) {
         currency_id: payout.currency_id,
         pix_key: payout.pix_key,
         requested_at: payout.requested_at,
+        action_paid_url: actionUrls?.paid || null,
+        action_rejected_url: actionUrls?.rejected || null,
       }),
       signal: controller.signal,
     });

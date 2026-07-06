@@ -37,6 +37,7 @@ test('rotas críticas do produto continuam registradas', () => {
     '/api/affiliate',
     '/api/affiliate/lookup',
     '/api/affiliate/payouts',
+    '/api/affiliate-payout-action',
     '/api/admin/affiliates/update',
     '/api/admin/affiliate-payouts/settle',
   ];

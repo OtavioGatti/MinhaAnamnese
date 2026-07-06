@@ -112,11 +112,28 @@ Se a mensagem chegar no seu WhatsApp, está tudo certo.
 clicar em **Solicitar saque** na tela de Afiliados. Se `AFFILIATE_PAYOUT_WEBHOOK_URL`
 estiver configurada no Render, a notificação chega automaticamente.
 
+## Botões de baixa direto no WhatsApp
+
+Se o backend tiver `PAYOUT_ACTION_SECRET` (ou `ADMIN_SYNC_SECRET`) **e** `PUBLIC_API_URL`
+configurados no Render, a mensagem já chega com dois links assinados:
+
+- **✅ marcar como PAGO** e **❌ Rejeitar**.
+
+Cada link abre uma página de confirmação (não executa nada sozinho — seguro contra o
+preview automático do WhatsApp); você clica em **Confirmar** e a baixa é feita. O link
+é assinado (HMAC) e expira em 7 dias, então não dá para forjar nem reaproveitar.
+
+Não precisa configurar nada no n8n para isso: o Code node já insere os links quando
+eles vêm no payload. Se as variáveis não estiverem no Render, a mensagem chega sem os
+links e você usa o painel/endpoint admin.
+
 ## Limitações do CallMeBot
 
 - Gratuito, mas com limite informal de uso (não é para disparo em massa) — aqui o volume
   é baixíssimo (1 notificação por pedido de saque), então não há risco.
 - Só envia para o número que autorizou o bot (o seu). Não serve para notificar terceiros.
+- Não tem botão interativo nativo do WhatsApp; os "botões" de baixa são links clicáveis
+  (funcionam igual na prática). Para botão nativo seria preciso a API oficial do WhatsApp Business.
 - Se quiser algo mais robusto no futuro (Twilio, Evolution API/WAHA), basta trocar o nó
   **Enviar WhatsApp (CallMeBot)** por outro — o resto do workflow (webhook + mensagem) continua igual.
 
@@ -143,8 +160,10 @@ Environment). Se ainda não existir, crie um valor forte e adicione lá.
 
 1. Importe `affiliate-payout-settle-form.json` no n8n (**Import from File**).
 2. Abra o nó **Baixar saque (API admin)** → em **Header Parameters**, no campo
-   `Authorization`, troque `SEU_ADMIN_SYNC_SECRET` pelo valor real (mantenha o
-   prefixo `Bearer `). Confirme a URL do backend.
+   `Authorization`, troque `SEU_ADMIN_SYNC_SECRET` pelo **valor real** do
+   `ADMIN_SYNC_SECRET` (mantenha o prefixo `Bearer `, com espaço). Confirme a URL do backend.
+   - ⚠️ Se der **401 "Acesso não autorizado"**, é porque o header ainda está com o
+     placeholder ou com o segredo errado — ele precisa ser idêntico ao `ADMIN_SYNC_SECRET` do Render.
 3. **Ative/Publique** o workflow e copie a **Production URL** do formulário
    (aba do nó Form Trigger). Salve esse link — é o seu painel.
 

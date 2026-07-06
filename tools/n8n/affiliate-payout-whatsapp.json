@@ -20,7 +20,7 @@
     },
     {
       "parameters": {
-        "jsCode": "const body = $json.body ?? $json;\n\nconst amount = Number(body.amount || 0).toLocaleString('pt-BR', {\n  style: 'currency',\n  currency: body.currency_id || 'BRL',\n});\n\nconst message = [\n  '💰 Saque de afiliado solicitado',\n  '',\n  `Afiliado: ${body.affiliate_code || 'desconhecido'}`,\n  `Valor: ${amount}`,\n  `Chave PIX: ${body.pix_key || 'não informada'}`,\n  `ID do saque: ${body.payout_id || '-'}`,\n  '',\n  'Após transferir, dê baixa no Supabase ou pelo endpoint admin.',\n].join('\\n');\n\nreturn [{ json: { message } }];"
+        "jsCode": "const body = $json.body ?? $json;\n\nconst amount = Number(body.amount || 0).toLocaleString('pt-BR', {\n  style: 'currency',\n  currency: body.currency_id || 'BRL',\n});\n\nconst parts = [\n  '💰 Saque de afiliado solicitado',\n  '',\n  `Afiliado: ${body.affiliate_code || 'desconhecido'}`,\n  `Valor: ${amount}`,\n  `Chave PIX: ${body.pix_key || 'não informada'}`,\n  `ID do saque: ${body.payout_id || '-'}`,\n];\n\nif (body.action_paid_url) {\n  parts.push('', '✅ Após fazer o PIX, marcar como PAGO:', body.action_paid_url);\n}\n\nif (body.action_rejected_url) {\n  parts.push('', '❌ Rejeitar (devolve o saldo):', body.action_rejected_url);\n}\n\nif (!body.action_paid_url && !body.action_rejected_url) {\n  parts.push('', 'Dê baixa pelo painel n8n ou pela função settle_affiliate_payout.');\n}\n\nreturn [{ json: { message: parts.join('\\n') } }];"
       },
       "id": "5f6a7b8c-9d0e-4a1b-8c2d-3e4f5a6b7c81",
       "name": "Montar mensagem",
