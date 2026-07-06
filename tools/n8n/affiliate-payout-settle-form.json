@@ -1,0 +1,106 @@
+{
+  "name": "Painel de saques de afiliado (baixa) — Minha Anamnese",
+  "active": false,
+  "nodes": [
+    {
+      "parameters": {
+        "formTitle": "Baixar saque de afiliado",
+        "formDescription": "Cole o ID do saque recebido no WhatsApp, escolha a ação e envie. 'paid' zera o saldo do afiliado; 'rejected' devolve o saldo.",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "payout_id",
+              "placeholder": "ID (uuid) do saque",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "acao",
+              "fieldType": "dropdown",
+              "fieldOptions": {
+                "values": [
+                  { "option": "paid" },
+                  { "option": "rejected" }
+                ]
+              },
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "nota",
+              "placeholder": "Opcional (ex.: PIX enviado em 05/07)",
+              "requiredField": false
+            }
+          ]
+        },
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "id": "2b3c4d5e-6f70-4182-9a3b-4c5d6e7f8091",
+      "name": "Formulário - Baixar saque",
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.1,
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://minhaanamnese.onrender.com/api/admin/affiliate-payouts/settle",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer SEU_ADMIN_SYNC_SECRET"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "payoutId",
+              "value": "={{ $json.payout_id }}"
+            },
+            {
+              "name": "action",
+              "value": "={{ $json.acao }}"
+            },
+            {
+              "name": "note",
+              "value": "={{ $json.nota }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "4d5e6f70-8192-43a4-9b5c-6d7e8f901a2b",
+      "name": "Baixar saque (API admin)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        240,
+        0
+      ]
+    }
+  ],
+  "connections": {
+    "Formulário - Baixar saque": {
+      "main": [
+        [
+          {
+            "node": "Baixar saque (API admin)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "pinData": {},
+  "meta": {}
+}

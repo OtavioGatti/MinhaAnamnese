@@ -4,6 +4,7 @@ Este diretório reúne os workflows de n8n usados pela operação do produto:
 
 - `keep-warm-render.json` — mantém o backend do Render acordado (ver seção abaixo).
 - `affiliate-payout-whatsapp.json` — avisa o dono no WhatsApp quando um afiliado solicita saque.
+- `affiliate-payout-settle-form.json` — "painel" (formulário hospedado) para dar baixa nos saques.
 
 ---
 
@@ -118,3 +119,42 @@ estiver configurada no Render, a notificação chega automaticamente.
 - Só envia para o número que autorizou o bot (o seu). Não serve para notificar terceiros.
 - Se quiser algo mais robusto no futuro (Twilio, Evolution API/WAHA), basta trocar o nó
   **Enviar WhatsApp (CallMeBot)** por outro — o resto do workflow (webhook + mensagem) continua igual.
+
+---
+
+# Painel de baixa de saques (n8n Form)
+
+Um formulário hospedado pelo próprio n8n que funciona como um mini-painel: você
+abre o link (dá pra salvar no celular), cola o ID do saque que chegou no WhatsApp,
+escolhe **paid** (pago) ou **rejected** (rejeitado) e envia. Por baixo, ele chama
+`POST /api/admin/affiliate-payouts/settle`, que faz a baixa correta (cascade nas
+comissões) — nunca edite o status direto no Supabase.
+
+## Arquivo
+
+- `affiliate-payout-settle-form.json` — **Form Trigger** → **HTTP Request POST (API admin)**.
+
+## Pré-requisito
+
+O endpoint admin exige o segredo `ADMIN_SYNC_SECRET` configurado no Render (aba
+Environment). Se ainda não existir, crie um valor forte e adicione lá.
+
+## Configurar
+
+1. Importe `affiliate-payout-settle-form.json` no n8n (**Import from File**).
+2. Abra o nó **Baixar saque (API admin)** → em **Header Parameters**, no campo
+   `Authorization`, troque `SEU_ADMIN_SYNC_SECRET` pelo valor real (mantenha o
+   prefixo `Bearer `). Confirme a URL do backend.
+3. **Ative/Publique** o workflow e copie a **Production URL** do formulário
+   (aba do nó Form Trigger). Salve esse link — é o seu painel.
+
+## Usar (fluxo completo)
+
+1. Afiliado solicita saque → você recebe no WhatsApp o valor, a chave PIX e o
+   **ID do saque**.
+2. Faça o PIX manualmente para a chave informada.
+3. Abra o link do formulário, cole o **payout_id**, escolha **paid** e envie.
+   O saldo do afiliado zera e o histórico marca "Pago".
+   - Para recusar um pedido, escolha **rejected** — o saldo volta para o afiliado.
+
+O formulário mostra a resposta da API (sucesso ou erro) na própria tela após enviar.

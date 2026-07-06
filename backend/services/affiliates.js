@@ -261,56 +261,108 @@ async function resolveAffiliateForCheckout({ affiliateCode, buyerUserId, sourceU
   return affiliate;
 }
 
+function emptyAffiliateStats() {
+  return {
+    totalCommission: 0,
+    pendingCommission: 0,
+    paidCommission: 0,
+    availableCommission: 0,
+    processingCommission: 0,
+    conversions: 0,
+  };
+}
+
+function roundMoney(value) {
+  return Math.round((Number(value) || 0) * 100) / 100;
+}
+
+// Blindagem: o saldo é derivado do status REAL do saque de cada comissão, não
+// só da presença de payout_id. Assim, um saque rejeitado/pago por edição manual
+// (fora do RPC) não deixa dinheiro preso nem re-sacável indevidamente.
+//   - disponível: pending/approved sem saque ou com saque rejeitado
+//   - em processamento: comissão em um saque ainda 'requested'
+//   - comissão presa em saque 'paid' sem baixa correta não entra em disponível
+//     (evita saque em dobro) — precisa ser corrigida pelo RPC settle.
+function summarizeAffiliateCommissions(commissions = [], payoutStatusById = new Map()) {
+  const summary = commissions.reduce((accumulator, commission) => {
+    const amount = Number(commission.commission_amount) || 0;
+    accumulator.totalCommission += amount;
+    accumulator.conversions += 1;
+
+    if (commission.status === 'paid') {
+      accumulator.paidCommission += amount;
+      return accumulator;
+    }
+
+    if (commission.status === 'cancelled') {
+      return accumulator;
+    }
+
+    accumulator.pendingCommission += amount;
+
+    const payoutStatus = commission.payout_id ? payoutStatusById.get(commission.payout_id) : null;
+
+    if (payoutStatus === 'requested') {
+      accumulator.processingCommission += amount;
+    } else if (!commission.payout_id || payoutStatus === 'rejected') {
+      accumulator.availableCommission += amount;
+    }
+
+    return accumulator;
+  }, emptyAffiliateStats());
+
+  summary.totalCommission = roundMoney(summary.totalCommission);
+  summary.pendingCommission = roundMoney(summary.pendingCommission);
+  summary.paidCommission = roundMoney(summary.paidCommission);
+  summary.availableCommission = roundMoney(summary.availableCommission);
+  summary.processingCommission = roundMoney(summary.processingCommission);
+
+  return summary;
+}
+
+// Best-effort: se a tabela de saques ainda não existir, retorna mapa vazio e o
+// saldo cai no comportamento anterior (tudo pending/approved = disponível).
+async function getAffiliatePayoutStatusMap(affiliateId) {
+  try {
+    const query = new URLSearchParams({
+      select: 'id,status',
+      affiliate_id: `eq.${affiliateId}`,
+    });
+    const response = await supabaseRequest(`affiliate_payouts?${query.toString()}`, { method: 'GET' });
+    const json = await response.json();
+    const map = new Map();
+
+    if (Array.isArray(json)) {
+      json.forEach((row) => {
+        if (row?.id) {
+          map.set(row.id, row.status);
+        }
+      });
+    }
+
+    return map;
+  } catch (_error) {
+    return new Map();
+  }
+}
+
 async function getAffiliateStats(affiliateId) {
   if (!affiliateId) {
-    return {
-      totalCommission: 0,
-      pendingCommission: 0,
-      paidCommission: 0,
-      availableCommission: 0,
-      processingCommission: 0,
-      conversions: 0,
-    };
+    return emptyAffiliateStats();
   }
 
   const query = new URLSearchParams({
     select: '*',
     affiliate_id: `eq.${affiliateId}`,
   });
-  const response = await supabaseRequest(`affiliate_commissions?${query.toString()}`, { method: 'GET' });
+  const [response, payoutStatusById] = await Promise.all([
+    supabaseRequest(`affiliate_commissions?${query.toString()}`, { method: 'GET' }),
+    getAffiliatePayoutStatusMap(affiliateId),
+  ]);
   const json = await response.json();
   const commissions = Array.isArray(json) ? json.map(normalizeCommission).filter(Boolean) : [];
 
-  return commissions.reduce(
-    (summary, commission) => {
-      const amount = Number(commission.commission_amount) || 0;
-      summary.totalCommission += amount;
-      summary.conversions += 1;
-
-      if (commission.status === 'paid') {
-        summary.paidCommission += amount;
-      } else if (commission.status !== 'cancelled') {
-        summary.pendingCommission += amount;
-
-        if (commission.payout_id) {
-          // Comissão presa em um saque solicitado, aguardando transferência.
-          summary.processingCommission += amount;
-        } else {
-          summary.availableCommission += amount;
-        }
-      }
-
-      return summary;
-    },
-    {
-      totalCommission: 0,
-      pendingCommission: 0,
-      paidCommission: 0,
-      availableCommission: 0,
-      processingCommission: 0,
-      conversions: 0,
-    },
-  );
+  return summarizeAffiliateCommissions(commissions, payoutStatusById);
 }
 
 async function createAffiliateCommission({
@@ -369,4 +421,5 @@ module.exports = {
   getAffiliateStats,
   normalizeAffiliateCode,
   resolveAffiliateForCheckout,
+  summarizeAffiliateCommissions,
 };

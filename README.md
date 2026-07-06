@@ -286,7 +286,7 @@ select public.settle_affiliate_payout('<payout_id>', 'paid', 'PIX enviado');
 -- ou 'rejected' para devolver o valor ao saldo disponível
 ```
 
-Ou via endpoint admin:
+Ou via endpoint admin (ou pelo formulário n8n em `tools/n8n/affiliate-payout-settle-form.json`, que é um painel pronto para isso):
 
 ```powershell
 Invoke-RestMethod `
@@ -296,6 +296,8 @@ Invoke-RestMethod `
   -ContentType "application/json" `
   -Body '{"payoutId":"<payout_id>","action":"paid","note":"PIX enviado"}'
 ```
+
+> ⚠️ **Sempre dê baixa pela função `settle_affiliate_payout` ou pelo endpoint admin — nunca editando a coluna `status` direto no Table Editor.** A baixa correta faz o cascade nas comissões (marca como `paid` ou devolve o saldo); a edição direta deixa a comissão órfã. Como blindagem, o saldo é derivado do status real do saque (`getAffiliateStats` / RPC de saque), então uma comissão presa a um saque rejeitado volta sozinha a ficar disponível; mas um saque marcado `paid` por edição manual não faz a baixa da comissão.
 
 Requer `supabase/affiliate_discounts.sql` e `supabase/affiliate_payouts.sql` aplicados. Antes disso, o código segue funcionando com desconto 0 e saques indisponíveis (mensagem amigável).
 

@@ -113,11 +113,19 @@ begin
     return jsonb_build_object('ok', false, 'error', 'payout_already_open');
   end if;
 
-  select coalesce(sum(commission_amount), 0) into v_amount
-  from public.affiliate_commissions
-  where affiliate_id = p_affiliate_id
-    and payout_id is null
-    and status in ('pending', 'approved');
+  -- "Disponível" = pending/approved que NÃO esteja preso num saque aberto
+  -- (requested). Comissão órfã de saque rejeitado/pago volta a contar aqui,
+  -- tornando o saldo imune a edições manuais de status fora do RPC.
+  select coalesce(sum(c.commission_amount), 0) into v_amount
+  from public.affiliate_commissions c
+  where c.affiliate_id = p_affiliate_id
+    and c.status in ('pending', 'approved')
+    and not exists (
+      select 1
+      from public.affiliate_payouts p
+      where p.id = c.payout_id
+        and p.status = 'requested'
+    );
 
   if v_amount < p_min_amount then
     return jsonb_build_object(
@@ -132,11 +140,17 @@ begin
   values (p_affiliate_id, v_amount, nullif(trim(coalesce(p_pix_key, '')), ''), 'requested')
   returning * into v_payout;
 
-  update public.affiliate_commissions
+  update public.affiliate_commissions c
   set payout_id = v_payout.id
-  where affiliate_id = p_affiliate_id
-    and payout_id is null
-    and status in ('pending', 'approved');
+  where c.affiliate_id = p_affiliate_id
+    and c.status in ('pending', 'approved')
+    and not exists (
+      select 1
+      from public.affiliate_payouts p
+      where p.id = c.payout_id
+        and p.status = 'requested'
+        and p.id <> v_payout.id
+    );
 
   return jsonb_build_object('ok', true, 'payout', to_jsonb(v_payout));
 end;
