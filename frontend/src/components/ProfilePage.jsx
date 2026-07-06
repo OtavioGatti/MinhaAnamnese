@@ -131,6 +131,8 @@ function ProfilePage({
   onGoTemplates,
   loadingCheckout,
   checkoutError,
+  onRequestCancelSubscription,
+  justCancelledAccessUntil,
 }) {
   if (!user) {
     return (
@@ -240,6 +242,15 @@ function ProfilePage({
                   </button>
                   {checkoutError ? <div className="topbar-auth-error">{checkoutError}</div> : null}
                 </>
+              ) : justCancelledAccessUntil ? (
+                <div className="profile-plan-note">
+                  <span>{'Assinatura cancelada'}</span>
+                  <strong>{`Você não será cobrado novamente. Seu acesso continua até ${formatPlanExpiry(justCancelledAccessUntil)}.`}</strong>
+                </div>
+              ) : accessState?.hasActiveRecurringSubscription ? (
+                <button type="button" className="btn btn-secundario" onClick={onRequestCancelSubscription}>
+                  Cancelar assinatura
+                </button>
               ) : (
                 <button type="button" className="btn btn-secundario" disabled>
                   Gerenciar plano

@@ -6,6 +6,7 @@ const {
   normalizePlanExpiresAt,
   resolveUserAccessState,
 } = require('./accessState');
+const { getActiveBillingSubscriptionByUserId } = require('./billingSubscriptions');
 const { getTrialUsageSummary } = require('./trialUsage');
 
 const ALLOWED_CONTEXTUAL_TABS = new Set(['guide', 'checklist', 'calculator', 'structure']);
@@ -513,11 +514,13 @@ async function ensureUserProfile(user, overrides = {}) {
   const fallbackProfile = buildProfileFallback(user, existingProfile, nextOverrides);
 
   if (!isProfilesStorageAvailable()) {
-    return withTrialUsageSummary(fallbackProfile);
+    return withActiveSubscriptionFlag(await withTrialUsageSummary(fallbackProfile));
   }
 
   if (!shouldUpdateProfile(existingProfile, fallbackProfile)) {
-    return withTrialUsageSummary(await expireProfileAccessIfNeeded(user, fallbackProfile));
+    return withActiveSubscriptionFlag(
+      await withTrialUsageSummary(await expireProfileAccessIfNeeded(user, fallbackProfile)),
+    );
   }
 
   const persistedProfile = await upsertProfile({
@@ -544,9 +547,39 @@ async function ensureUserProfile(user, overrides = {}) {
     last_payment_id: fallbackProfile.last_payment_id,
   });
 
-  return withTrialUsageSummary(
-    await expireProfileAccessIfNeeded(user, buildProfileFallback(user, persistedProfile || fallbackProfile)),
+  return withActiveSubscriptionFlag(
+    await withTrialUsageSummary(
+      await expireProfileAccessIfNeeded(user, buildProfileFallback(user, persistedProfile || fallbackProfile)),
+    ),
   );
+}
+
+// Só quem realmente pagou (não trial, não legado, não afiliado) pode ter uma
+// assinatura recorrente na Mercado Pago — evita uma consulta extra ao banco
+// para a maioria dos perfis (básico/trial/afiliado).
+async function withActiveSubscriptionFlag(profile) {
+  const accessState = profile?.access_state;
+
+  if (!profile?.id || !accessState) {
+    return profile;
+  }
+
+  if (!accessState.isPaidProAccess || accessState.accessSource !== 'paid') {
+    return {
+      ...profile,
+      access_state: { ...accessState, hasActiveRecurringSubscription: false },
+    };
+  }
+
+  const subscription = await getActiveBillingSubscriptionByUserId(profile.id).catch(() => null);
+
+  return {
+    ...profile,
+    access_state: {
+      ...accessState,
+      hasActiveRecurringSubscription: Boolean(subscription),
+    },
+  };
 }
 
 async function withTrialUsageSummary(profile) {
@@ -573,5 +606,6 @@ module.exports = {
   normalizePlan,
   normalizeTemplateId,
   upsertProfile,
+  withActiveSubscriptionFlag,
   withTrialUsageSummary,
 };

@@ -43,11 +43,11 @@ test('resolve plano por produto, inclusive legado', () => {
 });
 
 test('resolve plano por valor com filtro de tipo de cobrança', () => {
-  assert.equal(getBillingPlanByAmount(18.9)?.key, 'monthly');
-  assert.equal(getBillingPlanByAmount(99.9)?.key, 'semiannual');
+  assert.equal(getBillingPlanByAmount(24.9)?.key, 'monthly');
+  assert.equal(getBillingPlanByAmount(129.9)?.key, 'semiannual');
   assert.equal(getBillingPlanByAmount(9.9)?.key, 'legacy_monthly_v1');
-  assert.equal(getBillingPlanByAmount(18.9, 'subscription')?.key, 'monthly');
-  assert.equal(getBillingPlanByAmount(99.9, 'subscription'), null);
+  assert.equal(getBillingPlanByAmount(24.9, 'subscription')?.key, 'monthly');
+  assert.equal(getBillingPlanByAmount(129.9, 'subscription'), null);
   assert.equal(getBillingPlanByAmount(123.45), null);
   assert.equal(getBillingPlanByAmount('não numérico'), null);
 });
@@ -55,15 +55,15 @@ test('resolve plano por valor com filtro de tipo de cobrança', () => {
 test('valida o valor esperado do plano com tolerância mínima', () => {
   const monthly = getBillingPlan('monthly');
 
-  assert.equal(isExpectedPlanAmount(monthly, 18.9), true);
-  assert.equal(isExpectedPlanAmount(monthly, 18.91), false);
+  assert.equal(isExpectedPlanAmount(monthly, 24.9), true);
+  assert.equal(isExpectedPlanAmount(monthly, 24.91), false);
   assert.equal(isExpectedPlanAmount(monthly, null), false);
-  assert.equal(isExpectedPlanAmount(null, 18.9), false);
+  assert.equal(isExpectedPlanAmount(null, 24.9), false);
 });
 
 test('comissão de afiliado arredonda para 2 casas decimais', () => {
-  assert.equal(calculateCommissionAmount(99.9, 0.3), 29.97);
-  assert.equal(calculateCommissionAmount(18.9), 5.67);
+  assert.equal(calculateCommissionAmount(129.9, 0.3), 38.97);
+  assert.equal(calculateCommissionAmount(24.9), 7.47);
   assert.equal(calculateCommissionAmount('abc'), null);
   assert.equal(calculateCommissionAmount(10, 'abc'), null);
 });

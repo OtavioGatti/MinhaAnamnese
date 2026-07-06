@@ -11,6 +11,7 @@ import StructuralFeedback from './components/StructuralFeedback';
 import StructuredOutput from './components/StructuredOutput';
 import UserEvolution from './components/UserEvolution';
 import WorkspaceSidebar from './components/WorkspaceSidebar';
+import CancelSubscriptionModal from './components/CancelSubscriptionModal';
 import CheckoutSuccessBanner from './components/CheckoutSuccessBanner';
 import CookieConsentBanner from './components/CookieConsentBanner';
 import LegalConsentModal from './components/LegalConsentModal';
@@ -805,6 +806,10 @@ function App() {
   const [loadingInsights, setLoadingInsights] = useState(false);
   const [checkoutLoadingOrigin, setCheckoutLoadingOrigin] = useState(null);
   const [checkoutLoadingPlanKey, setCheckoutLoadingPlanKey] = useState(null);
+  const [cancelSubscriptionModalOpen, setCancelSubscriptionModalOpen] = useState(false);
+  const [loadingCancelSubscription, setLoadingCancelSubscription] = useState(false);
+  const [cancelSubscriptionError, setCancelSubscriptionError] = useState('');
+  const [cancelSubscriptionAccessUntil, setCancelSubscriptionAccessUntil] = useState(null);
   const [referralDiscount, setReferralDiscount] = useState(null);
   const [loadingAuth, setLoadingAuth] = useState(false);
   const [animatedScore, setAnimatedScore] = useState(0);
@@ -1787,6 +1792,32 @@ function App() {
       open: false,
     }));
     await startCheckoutFlow(origin, planKey);
+  };
+
+  const handleCancelSubscription = async () => {
+    setCancelSubscriptionError('');
+    setLoadingCancelSubscription(true);
+
+    try {
+      const response = await api.post('/cancel-subscription', {});
+
+      if (!response.success) {
+        setCancelSubscriptionError(response.error || 'Não foi possível cancelar a assinatura agora.');
+        return;
+      }
+
+      setCancelSubscriptionAccessUntil(response.data?.accessUntil || null);
+      setCancelSubscriptionModalOpen(false);
+
+      const profileResponse = await api.get('/profile');
+      if (profileResponse.success && profileResponse.data) {
+        setProfile(profileResponse.data);
+      }
+    } catch (err) {
+      setCancelSubscriptionError(err.message || 'Não foi possível cancelar a assinatura agora.');
+    } finally {
+      setLoadingCancelSubscription(false);
+    }
   };
 
   const resetAuthFormState = () => {
@@ -2976,6 +3007,8 @@ function App() {
           onGoTemplates={() => handleNavigate('templates')}
           loadingCheckout={isProfileCheckoutLoading}
           checkoutError={profileCheckoutError}
+          onRequestCancelSubscription={() => setCancelSubscriptionModalOpen(true)}
+          justCancelledAccessUntil={cancelSubscriptionAccessUntil}
         />
       )}
 
@@ -3014,6 +3047,18 @@ function App() {
         checkoutError={checkoutErrors[planComparisonState.origin] || ''}
         onClose={() => setPlanComparisonState((current) => ({ ...current, open: false }))}
         onConfirm={handleConfirmPlanComparison}
+      />
+
+      <CancelSubscriptionModal
+        open={cancelSubscriptionModalOpen}
+        loading={loadingCancelSubscription}
+        error={cancelSubscriptionError}
+        accessUntil={accessState?.planExpiresAt}
+        onClose={() => {
+          setCancelSubscriptionModalOpen(false);
+          setCancelSubscriptionError('');
+        }}
+        onConfirm={handleCancelSubscription}
       />
 
       <WelcomeOnboardingModal

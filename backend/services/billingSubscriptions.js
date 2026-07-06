@@ -66,6 +66,47 @@ async function getBillingSubscriptionByPreapprovalId(preapprovalId) {
   return Array.isArray(json) && json.length ? normalizeSubscriptionRecord(json[0]) : null;
 }
 
+/**
+ * Assinatura recorrente ATIVA de um usuário (status='authorized' na Mercado
+ * Pago), a mais recente se houver mais de uma histórica. Usada para
+ * cancelamento self-service — nunca aceita um preapproval_id vindo do
+ * cliente, sempre resolve pelo user_id da sessão autenticada.
+ */
+async function getActiveBillingSubscriptionByUserId(userId) {
+  if (!isValidUserId(userId)) {
+    return null;
+  }
+
+  const { url, serviceRoleKey } = getSupabaseAdminConfig();
+
+  if (!url || !serviceRoleKey) {
+    throw new Error('billing subscription storage unavailable');
+  }
+
+  const query = new URLSearchParams({
+    select: '*',
+    user_id: `eq.${userId}`,
+    status: 'eq.authorized',
+    order: 'created_at.desc',
+    limit: '1',
+  });
+
+  const response = await fetch(`${url}/rest/v1/billing_subscriptions?${query.toString()}`, {
+    method: 'GET',
+    headers: {
+      apikey: serviceRoleKey,
+      Authorization: `Bearer ${serviceRoleKey}`,
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error('failed to fetch active billing subscription');
+  }
+
+  const json = await response.json();
+  return Array.isArray(json) && json.length ? normalizeSubscriptionRecord(json[0]) : null;
+}
+
 async function upsertBillingSubscription({
   preapprovalId,
   userId,
@@ -132,5 +173,6 @@ async function upsertBillingSubscription({
 
 module.exports = {
   getBillingSubscriptionByPreapprovalId,
+  getActiveBillingSubscriptionByUserId,
   upsertBillingSubscription,
 };
