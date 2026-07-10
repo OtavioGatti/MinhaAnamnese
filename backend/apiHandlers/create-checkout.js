@@ -190,11 +190,14 @@ function buildOneTimeCheckoutPayload({ baseUrl, webhookUrl, email, userId, plan,
   };
 }
 
-function buildSubscriptionPayload({ baseUrl, email, userId, plan, chargeAmount }) {
+function buildSubscriptionPayload({ baseUrl, webhookUrl, email, userId, plan, chargeAmount }) {
   return {
     reason: plan.reason,
     external_reference: userId,
     payer_email: email,
+    // Sem notification_url o Mercado Pago não avisa os pagamentos da assinatura
+    // e o usuário nunca é promovido a Pro.
+    notification_url: webhookUrl || undefined,
     auto_recurring: {
       frequency: 1,
       frequency_type: 'months',
@@ -316,6 +319,7 @@ module.exports = async function handler(req, res) {
     if (plan.billingKind === 'subscription') {
       const payload = buildSubscriptionPayload({
         baseUrl,
+        webhookUrl: getWebhookUrl(req),
         email,
         userId,
         plan,

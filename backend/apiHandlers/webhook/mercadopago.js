@@ -22,6 +22,7 @@ const { isValidUserId } = require('../../utils/idValidation');
 
 const MERCADO_PAGO_PAYMENT_API = 'https://api.mercadopago.com/v1/payments';
 const MERCADO_PAGO_PREAPPROVAL_API = 'https://api.mercadopago.com/preapproval';
+const MERCADO_PAGO_AUTHORIZED_PAYMENT_API = 'https://api.mercadopago.com/authorized_payments';
 const DEBUG_BILLING = process.env.DEBUG_BILLING === 'true';
 
 function logBillingError(message, context = {}) {
@@ -113,6 +114,11 @@ function getWebhookTopic(req) {
   ).toLowerCase();
 }
 
+function isAuthorizedPaymentWebhook(req) {
+  // Pagamento gerado por uma assinatura (recorrência ou primeira cobrança).
+  return getWebhookTopic(req).includes('authorized_payment');
+}
+
 function isSubscriptionWebhook(req) {
   const topic = getWebhookTopic(req);
   return topic.includes('preapproval') || topic.includes('subscription');
@@ -199,6 +205,21 @@ async function getPreapprovalDetails(preapprovalId, accessToken) {
 
   if (!response.ok) {
     throw new Error('failed to fetch preapproval');
+  }
+
+  return response.json();
+}
+
+async function getAuthorizedPaymentDetails(authorizedPaymentId, accessToken) {
+  const response = await fetch(`${MERCADO_PAGO_AUTHORIZED_PAYMENT_API}/${authorizedPaymentId}`, {
+    method: 'GET',
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error('failed to fetch authorized payment');
   }
 
   return response.json();
@@ -410,7 +431,21 @@ async function handleSubscriptionWebhook(resourceId, accessToken) {
   });
 }
 
-async function handlePaymentWebhook(resourceId, accessToken, supabase) {
+async function handleAuthorizedPaymentWebhook(resourceId, accessToken, supabase) {
+  const authorizedPayment = await getAuthorizedPaymentDetails(resourceId, accessToken);
+  const paymentId = authorizedPayment?.payment?.id || authorizedPayment?.payment_id || null;
+  const preapprovalId = authorizedPayment?.preapproval_id || null;
+
+  if (!paymentId) {
+    return { skipped: true };
+  }
+
+  // Reaproveita todo o fluxo de pagamento (validação, upgrade, comissão),
+  // passando o preapproval como dica para resolver a assinatura/usuário.
+  return handlePaymentWebhook(paymentId, accessToken, supabase, preapprovalId);
+}
+
+async function handlePaymentWebhook(resourceId, accessToken, supabase, preapprovalIdHint = null) {
   const existingPayment = await getBillingPaymentByPaymentId(resourceId);
 
   if (existingPayment?.processed_at) {
@@ -418,7 +453,7 @@ async function handlePaymentWebhook(resourceId, accessToken, supabase) {
   }
 
   const payment = await getPaymentDetails(resourceId, accessToken);
-  const preapprovalId = getPaymentPreapprovalId(payment);
+  const preapprovalId = getPaymentPreapprovalId(payment) || preapprovalIdHint;
   let subscription = preapprovalId
     ? await getBillingSubscriptionByPreapprovalId(preapprovalId).catch(() => null)
     : null;
@@ -536,6 +571,13 @@ module.exports = async function handler(req, res) {
   }
 
   try {
+    // Ordem importa: 'subscription_authorized_payment' contém 'subscription',
+    // então o pagamento autorizado precisa ser checado antes da assinatura.
+    if (isAuthorizedPaymentWebhook(req)) {
+      const result = await handleAuthorizedPaymentWebhook(resourceId, accessToken, supabase);
+      return res.status(200).json({ success: true, ...result });
+    }
+
     if (isSubscriptionWebhook(req)) {
       await handleSubscriptionWebhook(resourceId, accessToken);
       return res.status(200).json({ success: true });
@@ -552,3 +594,9 @@ module.exports = async function handler(req, res) {
     return res.status(500).json({ success: false });
   }
 };
+
+// Exportados para testes de regressão do roteamento (a ordem de classificação
+// é o que faz a assinatura promover o usuário corretamente).
+module.exports.getWebhookTopic = getWebhookTopic;
+module.exports.isAuthorizedPaymentWebhook = isAuthorizedPaymentWebhook;
+module.exports.isSubscriptionWebhook = isSubscriptionWebhook;
