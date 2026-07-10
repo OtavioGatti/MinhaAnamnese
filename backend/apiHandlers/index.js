@@ -9,6 +9,7 @@ const apiRoutes = {
   '/api/health': require('./health'),
   '/api/analytics': require('./analytics'),
   '/api/create-checkout': require('./create-checkout'),
+  '/api/reconcile-subscription': require('./reconcile-subscription'),
   '/api/cancel-subscription': require('./cancel-subscription'),
   '/api/prescription-guides': require('./prescription-guides'),
   '/api/clinical-drugs': require('./clinical-drugs'),

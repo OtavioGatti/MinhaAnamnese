@@ -1052,7 +1052,16 @@ function App() {
 
   useEffect(() => {
     async function atualizarSessaoAposCheckout() {
-      const checkoutStatus = new URLSearchParams(window.location.search).get('checkout');
+      // O retorno de assinatura (preapproval) do Mercado Pago tem um bug
+      // conhecido: anexa `?preapproval_id=...` à back_url em vez de
+      // `&preapproval_id=...`, gerando algo como
+      // "?checkout=success?preapproval_id=xxx". Isso quebra o parsing padrão
+      // via URLSearchParams (o valor de `checkout` vira "success?preapproval_id=xxx").
+      // Por isso lemos com tolerância a esse caso em vez de comparar igualdade estrita.
+      const rawCheckoutStatus = new URLSearchParams(window.location.search).get('checkout');
+      const checkoutStatus = rawCheckoutStatus?.startsWith('success') ? 'success' : rawCheckoutStatus;
+      const preapprovalIdMatch = window.location.href.match(/preapproval_id=([^&?#]+)/);
+      const preapprovalId = preapprovalIdMatch ? decodeURIComponent(preapprovalIdMatch[1]) : null;
 
       if (checkoutStatus !== 'success') {
         return;
@@ -1068,6 +1077,12 @@ function App() {
         setCurrentPage(returnState.page || 'home');
       }
 
+      if (preapprovalId) {
+        // Confirma ativamente a assinatura em vez de depender só do webhook do
+        // Mercado Pago chegar (best-effort: falha aqui não deve travar o retorno).
+        await api.post('/reconcile-subscription', { preapprovalId }).catch(() => null);
+      }
+
       const {
         data: { session },
       } = await supabase.auth.getSession();
@@ -1080,8 +1095,17 @@ function App() {
         }
       }
 
+      if (preapprovalId) {
+        const profileResponse = await api.get('/profile').catch(() => null);
+
+        if (profileResponse?.success && profileResponse.data) {
+          setProfile(profileResponse.data);
+        }
+      }
+
       const nextUrl = new URL(window.location.href);
       nextUrl.searchParams.delete('checkout');
+      nextUrl.searchParams.delete('preapproval_id');
       window.history.replaceState({}, '', nextUrl.toString());
       setCheckoutSuccessBannerVisible(true);
       clearCheckoutReturnState();

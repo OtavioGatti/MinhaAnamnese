@@ -238,6 +238,39 @@ async function getAuthorizedPaymentDetails(authorizedPaymentId, accessToken) {
   return response.json();
 }
 
+async function searchAuthorizedPayments(preapprovalId, accessToken) {
+  const query = new URLSearchParams({ preapproval_id: preapprovalId });
+  const response = await fetch(`${MERCADO_PAGO_AUTHORIZED_PAYMENT_API}/search?${query.toString()}`, {
+    method: 'GET',
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error('failed to search authorized payments');
+  }
+
+  const json = await response.json();
+  return Array.isArray(json?.results) ? json.results : [];
+}
+
+// Entre vários pagamentos gerados pela mesma assinatura (recorrência), pega o
+// mais recente com um payment.id resolvível.
+function pickMostRecentAuthorizedPayment(results = []) {
+  return results
+    .filter((item) => item?.payment?.id || item?.payment_id)
+    .reduce((latest, item) => {
+      if (!latest) {
+        return item;
+      }
+
+      const latestDate = new Date(latest.date_created || 0).getTime();
+      const itemDate = new Date(item.date_created || 0).getTime();
+      return itemDate > latestDate ? item : latest;
+    }, null);
+}
+
 async function getSupabaseUserById(userId, { url, serviceRoleKey }) {
   const response = await fetch(`${url}/auth/v1/admin/users/${userId}`, {
     method: 'GET',
@@ -456,6 +489,53 @@ async function handleAuthorizedPaymentWebhook(resourceId, accessToken, supabase)
   // Reaproveita todo o fluxo de pagamento (validação, upgrade, comissão),
   // passando o preapproval como dica para resolver a assinatura/usuário.
   return handlePaymentWebhook(paymentId, accessToken, supabase, preapprovalId);
+}
+
+// Confirmação ativa (chamada pelo frontend ao voltar do checkout de sucesso),
+// independente do webhook chegar. Assinaturas do Mercado Pago às vezes não
+// notificam via notification_url — exigem Webhooks configurados a nível de
+// Aplicação no painel do MP — então esta é a rede de segurança que evita
+// depender só disso.
+async function reconcileSubscriptionByPreapprovalId(preapprovalId, { expectedUserId = null } = {}) {
+  const accessToken = getMercadoPagoToken();
+  const supabase = getSupabaseConfig();
+
+  if (!accessToken || !supabase.url || !supabase.serviceRoleKey) {
+    const error = new Error('billing reconciliation unavailable');
+    error.code = 'CONFIG_UNAVAILABLE';
+    throw error;
+  }
+
+  const existingSubscription = await getBillingSubscriptionByPreapprovalId(preapprovalId).catch(() => null);
+  const preapproval = await getPreapprovalDetails(preapprovalId, accessToken);
+
+  if (
+    expectedUserId &&
+    isValidUserId(preapproval?.external_reference) &&
+    preapproval.external_reference !== expectedUserId
+  ) {
+    const error = new Error('preapproval does not belong to the requesting user');
+    error.code = 'FORBIDDEN';
+    throw error;
+  }
+
+  await persistPreapprovalSnapshot(preapproval, existingSubscription).catch(() => null);
+
+  if (preapproval?.status !== 'authorized') {
+    return { status: preapproval?.status || 'unknown', reconciled: false };
+  }
+
+  const authorizedPayments = await searchAuthorizedPayments(preapprovalId, accessToken).catch(() => []);
+  const latestAuthorizedPayment = pickMostRecentAuthorizedPayment(authorizedPayments);
+  const paymentId = latestAuthorizedPayment?.payment?.id || latestAuthorizedPayment?.payment_id;
+
+  if (!paymentId) {
+    return { status: 'authorized', reconciled: false, reason: 'no_payment_found_yet' };
+  }
+
+  const result = await handlePaymentWebhook(paymentId, accessToken, supabase, preapprovalId);
+
+  return { status: 'authorized', reconciled: true, ...result };
 }
 
 // Reembolso/chargeback: cancela a comissão do afiliado, cancela a assinatura
@@ -678,8 +758,11 @@ module.exports = async function handler(req, res) {
 };
 
 // Exportados para testes de regressão do roteamento (a ordem de classificação
-// é o que faz a assinatura promover o usuário corretamente).
+// é o que faz a assinatura promover o usuário corretamente) e para o endpoint
+// de reconciliação ativa (/api/reconcile-subscription).
 module.exports.getWebhookTopic = getWebhookTopic;
 module.exports.isAuthorizedPaymentWebhook = isAuthorizedPaymentWebhook;
 module.exports.isRevokedPaymentStatus = isRevokedPaymentStatus;
 module.exports.isSubscriptionWebhook = isSubscriptionWebhook;
+module.exports.pickMostRecentAuthorizedPayment = pickMostRecentAuthorizedPayment;
+module.exports.reconcileSubscriptionByPreapprovalId = reconcileSubscriptionByPreapprovalId;

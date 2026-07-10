@@ -198,12 +198,19 @@ Cobrem hipóteses diagnósticas, planos de cobrança, rate limit, roteamento da 
 - `GET /api/prescription-guides`: lista guias de prescrição publicados.
 - `GET /api/clinical-drugs`: lista medicamentos do bulário clínico.
 - `POST /api/create-checkout`: cria checkout no Mercado Pago (aplica desconto de afiliado quando houver).
+- `POST /api/reconcile-subscription`: confirma ativamente uma assinatura ao voltar do checkout, sem depender do webhook (ver aviso abaixo).
 - `POST /api/webhook/mercadopago`: recebe confirmação de pagamento.
 - `GET /api/affiliate`: dados do afiliado, saldos e histórico de saques.
 - `GET /api/affiliate/lookup?code=...`: consulta pública de código de indicação (desconto para exibição).
 - `POST /api/affiliate/payouts`: afiliado solicita saque das comissões disponíveis.
 - `POST /api/admin/affiliates/update`: ajusta comissão/desconto/status de um afiliado (bearer `ADMIN_SYNC_SECRET`).
 - `POST /api/admin/affiliate-payouts/settle`: dá baixa em um saque após a transferência (bearer `ADMIN_SYNC_SECRET`).
+
+### ⚠️ Webhook de assinaturas (Preapproval) do Mercado Pago
+
+O Mercado Pago **não usa o `notification_url` enviado na criação da assinatura** para os tópicos `subscription_preapproval` e `subscription_authorized_payment` — diferente do checkout de pagamento único. Esses eventos só chegam se o webhook estiver configurado **a nível de Aplicação** no [painel de desenvolvedor do Mercado Pago](https://www.mercadopago.com.br/developers/panel) (Sua aplicação → Webhooks → apontar para `https://minhaanamnese.onrender.com/api/webhook/mercadopago` e assinar os tópicos de assinatura/pagamentos).
+
+Enquanto isso não estiver configurado (ou como rede de segurança mesmo depois), o retorno do checkout de sucesso chama `POST /api/reconcile-subscription`, que busca ativamente o pagamento da assinatura direto na API do Mercado Pago e roda a mesma lógica de negócio do webhook (upgrade do usuário, comissão do afiliado). Isso cobre o caso do usuário completar o pagamento e voltar ao app; **cobranças recorrentes futuras** (a partir do 2º ciclo, sem o usuário estar no app) continuam dependendo do webhook estar configurado corretamente.
 
 ## Sincronização com Notion
 
