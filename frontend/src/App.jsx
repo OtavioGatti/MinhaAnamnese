@@ -360,6 +360,7 @@ function deriveAccessState(user, profile) {
     return {
       effectivePlan: serverAccessState.effectivePlan || 'basic',
       hasActiveProAccess: Boolean(serverAccessState.hasActiveProAccess),
+      hasActiveRecurringSubscription: Boolean(serverAccessState.hasActiveRecurringSubscription),
       isAffiliate: Boolean(serverAccessState.isAffiliate),
       isTrialAccess: Boolean(serverAccessState.isTrialAccess),
       isPaidProAccess: Boolean(serverAccessState.isPaidProAccess),
@@ -401,6 +402,9 @@ function deriveAccessState(user, profile) {
   return {
     effectivePlan: isAffiliate ? 'affiliate' : hasActiveProAccess ? 'pro' : 'basic',
     hasActiveProAccess,
+    // Sem access_state do servidor não há como saber se existe assinatura
+    // recorrente na Mercado Pago (dado não replicável a partir só do perfil).
+    hasActiveRecurringSubscription: false,
     isAffiliate,
     isTrialAccess,
     isPaidProAccess: hasActiveProAccess && !isTrialAccess,
