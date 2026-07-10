@@ -4,12 +4,14 @@
 // do resto depois. O semestral é cobrança única, não tem nada para cancelar
 // aqui (não há assinatura recorrente 'authorized' para ele).
 
-const MERCADO_PAGO_PREAPPROVAL_API = 'https://api.mercadopago.com/preapproval';
-
 const {
   getActiveBillingSubscriptionByUserId,
   upsertBillingSubscription,
 } = require('../services/billingSubscriptions');
+const {
+  cancelMercadoPagoPreapproval,
+  getMercadoPagoAccessToken,
+} = require('../services/mercadoPagoPreapprovals');
 const { ensureUserProfile } = require('../services/profiles');
 const { resolveSupabaseUser } = require('../utils/supabaseAuth');
 const { consumeRateLimit, sendRateLimitResponse } = require('../utils/rateLimit');
@@ -18,35 +20,6 @@ const CANCEL_RATE_LIMIT = {
   limit: 5,
   windowMs: 10 * 60 * 1000,
 };
-
-function getMercadoPagoAccessToken() {
-  return (
-    process.env.MERCADO_PAGO_ACCESS_TOKEN ||
-    process.env.MP_ACCESS_TOKEN ||
-    process.env.MERCADOPAGO_ACCESS_TOKEN
-  );
-}
-
-async function cancelPreapproval(preapprovalId) {
-  const response = await fetch(`${MERCADO_PAGO_PREAPPROVAL_API}/${preapprovalId}`, {
-    method: 'PUT',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${getMercadoPagoAccessToken()}`,
-    },
-    body: JSON.stringify({ status: 'cancelled' }),
-  });
-
-  if (!response.ok) {
-    const responseBody = await response.text().catch(() => '');
-    const error = new Error('mercado pago preapproval cancel failed');
-    error.statusCode = response.status === 401 || response.status === 403 ? 503 : 502;
-    error.responseBody = responseBody;
-    throw error;
-  }
-
-  return response.json();
-}
 
 module.exports = async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -87,7 +60,7 @@ module.exports = async function handler(req, res) {
       });
     }
 
-    await cancelPreapproval(subscription.preapproval_id);
+    await cancelMercadoPagoPreapproval(subscription.preapproval_id);
 
     // Best-effort: reflete o cancelamento localmente na hora; o webhook do
     // Mercado Pago também confirma isso de forma assíncrona (fonte dupla,

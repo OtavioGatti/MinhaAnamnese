@@ -40,3 +40,4 @@ Thumbs.db
 # Local eval artifacts
 test-results/
 tests/anamnese-evals/cases.semantic-check.json
+/roteiro-video-divulgacao-atletica.md

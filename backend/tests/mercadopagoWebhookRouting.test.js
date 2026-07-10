@@ -35,3 +35,16 @@ test('classificação também funciona via query string (topic)', () => {
     true,
   );
 });
+
+test('reembolso e chargeback revogam; demais status não', () => {
+  assert.equal(webhook.isRevokedPaymentStatus('refunded'), true);
+  assert.equal(webhook.isRevokedPaymentStatus('charged_back'), true);
+  assert.equal(webhook.isRevokedPaymentStatus('REFUNDED'), true);
+
+  // 'cancelled' aqui é pagamento pendente abandonado (boleto/pix não pago):
+  // nunca concedeu acesso, não revoga nada.
+  assert.equal(webhook.isRevokedPaymentStatus('cancelled'), false);
+  assert.equal(webhook.isRevokedPaymentStatus('approved'), false);
+  assert.equal(webhook.isRevokedPaymentStatus('pending'), false);
+  assert.equal(webhook.isRevokedPaymentStatus(null), false);
+});

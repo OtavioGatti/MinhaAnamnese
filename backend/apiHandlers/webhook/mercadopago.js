@@ -8,7 +8,12 @@ const {
   normalizeDiscountRate,
   normalizePlanKey,
 } = require('../../config/billingPlans');
-const { getAffiliateByCode, createAffiliateCommission } = require('../../services/affiliates');
+const {
+  cancelAffiliateCommissionsForPayment,
+  createAffiliateCommission,
+  getAffiliateByCode,
+} = require('../../services/affiliates');
+const { cancelMercadoPagoPreapproval } = require('../../services/mercadoPagoPreapprovals');
 const {
   getBillingPaymentByPaymentId,
   upsertBillingPayment,
@@ -117,6 +122,14 @@ function getWebhookTopic(req) {
 function isAuthorizedPaymentWebhook(req) {
   // Pagamento gerado por uma assinatura (recorrência ou primeira cobrança).
   return getWebhookTopic(req).includes('authorized_payment');
+}
+
+// Status de pagamento em que o dinheiro voltou ao comprador: o acesso concedido
+// por ele deixa de valer e a assinatura vinculada é cancelada automaticamente.
+const REVOKED_PAYMENT_STATUSES = ['refunded', 'charged_back'];
+
+function isRevokedPaymentStatus(status) {
+  return REVOKED_PAYMENT_STATUSES.includes(String(status || '').toLowerCase());
 }
 
 function isSubscriptionWebhook(req) {
@@ -445,14 +458,79 @@ async function handleAuthorizedPaymentWebhook(resourceId, accessToken, supabase)
   return handlePaymentWebhook(paymentId, accessToken, supabase, preapprovalId);
 }
 
+// Reembolso/chargeback: cancela a comissão do afiliado, cancela a assinatura
+// vinculada no Mercado Pago e revoga o acesso concedido por ESTE pagamento
+// (não mexe no acesso se ele veio de outro pagamento mais recente).
+async function handleRevokedPayment({ payment, plan, subscription, userId, affiliate, accessToken }) {
+  const paymentId = String(payment.id);
+
+  await cancelAffiliateCommissionsForPayment(paymentId).catch((error) => {
+    logBillingError('failed to cancel affiliate commissions after refund', {
+      paymentId,
+      message: error?.message || 'unknown_error',
+    });
+  });
+
+  const preapprovalId = subscription?.preapproval_id || getPaymentPreapprovalId(payment);
+
+  if (preapprovalId) {
+    const cancelledPreapproval = await cancelMercadoPagoPreapproval(preapprovalId).catch((error) => {
+      logBillingError('failed to cancel preapproval after refund', {
+        paymentId,
+        preapprovalId,
+        message: error?.message || 'unknown_error',
+      });
+      return null;
+    });
+
+    const preapprovalSnapshot = cancelledPreapproval ||
+      (await getPreapprovalDetails(preapprovalId, accessToken).catch(() => null)) ||
+      { id: preapprovalId, status: 'cancelled' };
+
+    await persistPreapprovalSnapshot(preapprovalSnapshot, subscription).catch(() => null);
+  }
+
+  if (userId) {
+    const profile = await getStoredProfileByUserId(userId).catch(() => null);
+
+    if (profile?.last_payment_id === paymentId) {
+      await upsertProfile({
+        id: userId,
+        billing_status: 'expired',
+        plan_expires_at: new Date().toISOString(),
+      }).catch((error) => {
+        logBillingError('failed to revoke access after refund', {
+          paymentId,
+          userId,
+          message: error?.message || 'unknown_error',
+        });
+      });
+    }
+  }
+
+  // Marca como processado com o status de estorno: notificações repetidas
+  // caem no guard de idempotência.
+  await persistPaymentSnapshot(payment, userId, plan, subscription, affiliate, new Date().toISOString());
+
+  return { refunded: true };
+}
+
 async function handlePaymentWebhook(resourceId, accessToken, supabase, preapprovalIdHint = null) {
   const existingPayment = await getBillingPaymentByPaymentId(resourceId);
 
-  if (existingPayment?.processed_at) {
+  // Estorno já tratado: nada a fazer.
+  if (existingPayment?.processed_at && isRevokedPaymentStatus(existingPayment.status)) {
     return { alreadyProcessed: true };
   }
 
   const payment = await getPaymentDetails(resourceId, accessToken);
+
+  // Pagamento processado e sem estorno novo: idempotência (sem re-persistir,
+  // para não zerar processed_at nem reprocessar upgrade/comissão).
+  if (existingPayment?.processed_at && !isRevokedPaymentStatus(payment?.status)) {
+    return { alreadyProcessed: true };
+  }
+
   const preapprovalId = getPaymentPreapprovalId(payment) || preapprovalIdHint;
   let subscription = preapprovalId
     ? await getBillingSubscriptionByPreapprovalId(preapprovalId).catch(() => null)
@@ -470,6 +548,10 @@ async function handlePaymentWebhook(resourceId, accessToken, supabase, preapprov
   const userId = getPaymentUserId(payment, subscription);
   const affiliateCode = getAffiliateCodeForPayment(payment, subscription);
   const affiliate = affiliateCode ? await getAffiliateByCode(affiliateCode).catch(() => null) : null;
+
+  if (isRevokedPaymentStatus(payment?.status)) {
+    return handleRevokedPayment({ payment, plan, subscription, userId, affiliate, accessToken });
+  }
 
   await persistPaymentSnapshot(payment, userId, plan, subscription, affiliate, null);
 
@@ -599,4 +681,5 @@ module.exports = async function handler(req, res) {
 // é o que faz a assinatura promover o usuário corretamente).
 module.exports.getWebhookTopic = getWebhookTopic;
 module.exports.isAuthorizedPaymentWebhook = isAuthorizedPaymentWebhook;
+module.exports.isRevokedPaymentStatus = isRevokedPaymentStatus;
 module.exports.isSubscriptionWebhook = isSubscriptionWebhook;

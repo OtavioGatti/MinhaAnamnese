@@ -412,7 +412,34 @@ async function createAffiliateCommission({
   return normalizeCommission(Array.isArray(json) ? json[0] : null);
 }
 
+// Reembolso/chargeback: a comissão deixa de ser devida. Cancela apenas
+// comissões ainda não pagas e fora de saque aberto; se já estiver presa num
+// saque, fica para revisão manual do dono antes de pagar.
+async function cancelAffiliateCommissionsForPayment(paymentId) {
+  const normalizedPaymentId = paymentId != null ? String(paymentId) : '';
+
+  if (!normalizedPaymentId) {
+    return [];
+  }
+
+  const query = new URLSearchParams({
+    payment_id: `eq.${normalizedPaymentId}`,
+    status: 'in.(pending,approved)',
+    payout_id: 'is.null',
+  });
+  const response = await supabaseRequest(`affiliate_commissions?${query.toString()}`, {
+    method: 'PATCH',
+    headers: {
+      Prefer: 'return=representation',
+    },
+    body: JSON.stringify({ status: 'cancelled' }),
+  });
+  const json = await response.json();
+  return Array.isArray(json) ? json.map(normalizeCommission).filter(Boolean) : [];
+}
+
 module.exports = {
+  cancelAffiliateCommissionsForPayment,
   createAffiliate,
   createAffiliateWithCode,
   createAffiliateCommission,

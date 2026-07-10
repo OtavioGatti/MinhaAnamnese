@@ -297,6 +297,11 @@ Invoke-RestMethod `
   -Body '{"payoutId":"<payout_id>","action":"paid","note":"PIX enviado"}'
 ```
 
+### Reembolsos e cancelamento
+
+- **Cancelamento pelo cliente**: o assinante mensal cancela pelo próprio app (Perfil → cancelar assinatura, `POST /api/cancel-subscription`). Cancela só a próxima cobrança; o acesso já pago continua até `plan_expires_at`.
+- **Reembolso/chargeback**: ao reembolsar um pagamento no painel do Mercado Pago, o webhook trata o estorno automaticamente: cancela a assinatura vinculada no provedor, revoga o acesso concedido por aquele pagamento (só se ele for o `last_payment_id` do perfil) e cancela a comissão de afiliado ainda não paga (comissão presa em saque aberto fica para revisão manual). Reembolsos **parciais** não revogam nada — tratar manualmente.
+
 > ⚠️ **Sempre dê baixa pela função `settle_affiliate_payout` ou pelo endpoint admin — nunca editando a coluna `status` direto no Table Editor.** A baixa correta faz o cascade nas comissões (marca como `paid` ou devolve o saldo); a edição direta deixa a comissão órfã. Como blindagem, o saldo é derivado do status real do saque (`getAffiliateStats` / RPC de saque), então uma comissão presa a um saque rejeitado volta sozinha a ficar disponível; mas um saque marcado `paid` por edição manual não faz a baixa da comissão.
 
 Requer `supabase/affiliate_discounts.sql` e `supabase/affiliate_payouts.sql` aplicados. Antes disso, o código segue funcionando com desconto 0 e saques indisponíveis (mensagem amigável).
