@@ -33,6 +33,8 @@ test('rotas críticas do produto continuam registradas', () => {
     '/api/clinical-drugs',
     '/api/create-checkout',
     '/api/reconcile-subscription',
+    '/api/account/export',
+    '/api/account/delete',
     '/api/webhook/mercadopago',
     '/api/health',
     '/api/affiliate',

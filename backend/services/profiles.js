@@ -567,7 +567,7 @@ async function withActiveSubscriptionFlag(profile) {
   if (!accessState.isPaidProAccess || accessState.accessSource !== 'paid') {
     return {
       ...profile,
-      access_state: { ...accessState, hasActiveRecurringSubscription: false },
+      access_state: { ...accessState, hasActiveRecurringSubscription: false, subscription: null },
     };
   }
 
@@ -578,6 +578,14 @@ async function withActiveSubscriptionFlag(profile) {
     access_state: {
       ...accessState,
       hasActiveRecurringSubscription: Boolean(subscription),
+      subscription: subscription
+        ? {
+            planKey: subscription.plan_key || null,
+            amount: typeof subscription.amount === 'number' ? subscription.amount : null,
+            currencyId: subscription.currency_id || 'BRL',
+            nextPaymentDate: subscription.next_payment_date || null,
+          }
+        : null,
     },
   };
 }

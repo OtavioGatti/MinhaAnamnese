@@ -197,6 +197,8 @@ Cobrem hipóteses diagnósticas, planos de cobrança, rate limit, roteamento da 
 - `GET /api/templates`: lista templates oficiais e do usuário.
 - `GET /api/prescription-guides`: lista guias de prescrição publicados.
 - `GET /api/clinical-drugs`: lista medicamentos do bulário clínico.
+- `GET /api/account/export`: exporta os dados do usuário em JSON (portabilidade LGPD).
+- `POST /api/account/delete`: exclui a conta (cancela assinatura, apaga perfil e anamneses; auditoria financeira é anonimizada por `SET NULL`). Exige reenvio do e-mail da conta em `confirmEmail`.
 - `POST /api/create-checkout`: cria checkout no Mercado Pago (aplica desconto de afiliado quando houver).
 - `POST /api/reconcile-subscription`: confirma ativamente uma assinatura ao voltar do checkout, sem depender do webhook (ver aviso abaixo).
 - `POST /api/webhook/mercadopago`: recebe confirmação de pagamento.
@@ -350,7 +352,8 @@ Requer `supabase/affiliate_discounts.sql` e `supabase/affiliate_payouts.sql` apl
 - [ ] Interações medicamentosas no bulário
 - [ ] Alertas por contraindicação/comorbidade
 - [ ] Exportação PDF
-- [ ] Controles avançados de privacidade e gestão de conta
+- [x] Gestão de conta no perfil (exportar dados, excluir conta, editar preferências, cancelar assinatura)
+- [ ] Controles avançados de privacidade (consentimentos granulares, histórico de pagamentos/recibos)
 
 ## Aviso Clínico
 

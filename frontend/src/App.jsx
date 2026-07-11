@@ -12,6 +12,7 @@ import StructuredOutput from './components/StructuredOutput';
 import UserEvolution from './components/UserEvolution';
 import WorkspaceSidebar from './components/WorkspaceSidebar';
 import CancelSubscriptionModal from './components/CancelSubscriptionModal';
+import DeleteAccountModal from './components/DeleteAccountModal';
 import CheckoutSuccessBanner from './components/CheckoutSuccessBanner';
 import CookieConsentBanner from './components/CookieConsentBanner';
 import LegalConsentModal from './components/LegalConsentModal';
@@ -361,6 +362,7 @@ function deriveAccessState(user, profile) {
       effectivePlan: serverAccessState.effectivePlan || 'basic',
       hasActiveProAccess: Boolean(serverAccessState.hasActiveProAccess),
       hasActiveRecurringSubscription: Boolean(serverAccessState.hasActiveRecurringSubscription),
+      subscription: serverAccessState.subscription || null,
       isAffiliate: Boolean(serverAccessState.isAffiliate),
       isTrialAccess: Boolean(serverAccessState.isTrialAccess),
       isPaidProAccess: Boolean(serverAccessState.isPaidProAccess),
@@ -405,6 +407,7 @@ function deriveAccessState(user, profile) {
     // Sem access_state do servidor não há como saber se existe assinatura
     // recorrente na Mercado Pago (dado não replicável a partir só do perfil).
     hasActiveRecurringSubscription: false,
+    subscription: null,
     isAffiliate,
     isTrialAccess,
     isPaidProAccess: hasActiveProAccess && !isTrialAccess,
@@ -814,6 +817,12 @@ function App() {
   const [loadingCancelSubscription, setLoadingCancelSubscription] = useState(false);
   const [cancelSubscriptionError, setCancelSubscriptionError] = useState('');
   const [cancelSubscriptionAccessUntil, setCancelSubscriptionAccessUntil] = useState(null);
+  const [savingPreference, setSavingPreference] = useState(false);
+  const [exportingData, setExportingData] = useState(false);
+  const [exportError, setExportError] = useState('');
+  const [deleteAccountModalOpen, setDeleteAccountModalOpen] = useState(false);
+  const [deletingAccount, setDeletingAccount] = useState(false);
+  const [deleteAccountError, setDeleteAccountError] = useState('');
   const [referralDiscount, setReferralDiscount] = useState(null);
   const [loadingAuth, setLoadingAuth] = useState(false);
   const [animatedScore, setAnimatedScore] = useState(0);
@@ -1845,6 +1854,77 @@ function App() {
       setCancelSubscriptionError(err.message || 'Não foi possível cancelar a assinatura agora.');
     } finally {
       setLoadingCancelSubscription(false);
+    }
+  };
+
+  const handleUpdateContextualTab = async (nextTab) => {
+    if (!nextTab || nextTab === (profile?.default_contextual_tab || activeSidebarTab)) {
+      return;
+    }
+
+    setSavingPreference(true);
+    setActiveSidebarTab(nextTab);
+
+    try {
+      const response = await api.post('/profile', { default_contextual_tab: nextTab });
+
+      if (response.success && response.data) {
+        setProfile(response.data);
+      }
+    } catch (_err) {
+      // Preferência é best-effort: mantém a mudança local mesmo se a persistência falhar.
+    } finally {
+      setSavingPreference(false);
+    }
+  };
+
+  const handleExportData = async () => {
+    setExportError('');
+    setExportingData(true);
+
+    try {
+      const response = await api.get('/account/export');
+
+      if (!response.success || !response.data) {
+        throw new Error(response.error || 'Não foi possível exportar seus dados agora.');
+      }
+
+      const blob = new Blob([JSON.stringify(response.data, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `minha-anamnese-dados-${new Date().toISOString().slice(0, 10)}.json`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+    } catch (err) {
+      setExportError(err.message || 'Não foi possível exportar seus dados agora.');
+    } finally {
+      setExportingData(false);
+    }
+  };
+
+  const handleDeleteAccount = async () => {
+    setDeleteAccountError('');
+    setDeletingAccount(true);
+
+    try {
+      const response = await api.post('/account/delete', {
+        confirmEmail: user?.email || '',
+      });
+
+      if (!response.success) {
+        throw new Error(response.error || 'Não foi possível excluir sua conta agora.');
+      }
+
+      setDeleteAccountModalOpen(false);
+      await supabase.auth.signOut();
+      window.location.href = '/';
+    } catch (err) {
+      setDeleteAccountError(err.message || 'Não foi possível excluir sua conta agora.');
+    } finally {
+      setDeletingAccount(false);
     }
   };
 
@@ -3037,6 +3117,15 @@ function App() {
           checkoutError={profileCheckoutError}
           onRequestCancelSubscription={() => setCancelSubscriptionModalOpen(true)}
           justCancelledAccessUntil={cancelSubscriptionAccessUntil}
+          onUpdateContextualTab={handleUpdateContextualTab}
+          savingPreference={savingPreference}
+          onExportData={handleExportData}
+          exportingData={exportingData}
+          exportError={exportError}
+          onRequestDeleteAccount={() => {
+            setDeleteAccountError('');
+            setDeleteAccountModalOpen(true);
+          }}
         />
       )}
 
@@ -3087,6 +3176,20 @@ function App() {
           setCancelSubscriptionError('');
         }}
         onConfirm={handleCancelSubscription}
+      />
+
+      <DeleteAccountModal
+        open={deleteAccountModalOpen}
+        loading={deletingAccount}
+        error={deleteAccountError}
+        accountEmail={user?.email || ''}
+        onClose={() => {
+          if (!deletingAccount) {
+            setDeleteAccountModalOpen(false);
+            setDeleteAccountError('');
+          }
+        }}
+        onConfirm={handleDeleteAccount}
       />
 
       <WelcomeOnboardingModal

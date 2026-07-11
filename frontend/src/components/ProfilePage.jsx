@@ -6,12 +6,11 @@ function formatPlanExpiry(value) {
   }
 
   const parsed = new Date(value);
+  return Number.isNaN(parsed.getTime()) ? '' : parsed.toLocaleDateString('pt-BR');
+}
 
-  if (Number.isNaN(parsed.getTime())) {
-    return '';
-  }
-
-  return parsed.toLocaleDateString('pt-BR');
+function formatCurrencyBRL(value, currency = 'BRL') {
+  return new Intl.NumberFormat('pt-BR', { style: 'currency', currency }).format(Number(value) || 0);
 }
 
 function isPlanExpiringSoon(value, thresholdInDays = 5) {
@@ -29,13 +28,18 @@ function isPlanExpiringSoon(value, thresholdInDays = 5) {
   return diffDays > 0 && diffDays <= thresholdInDays;
 }
 
-function getSidebarPreferenceLabel(activeSidebarTab) {
-  const labels = {
-    guide: 'Guia clínico',
-    calculator: 'Calculadoras',
-  };
+const PLAN_KEY_LABELS = {
+  monthly: 'Plano mensal',
+  semiannual: 'Plano semestral',
+};
 
-  return labels[activeSidebarTab] || 'Guia clínico';
+const CONTEXTUAL_TAB_OPTIONS = [
+  { value: 'guide', label: 'Guia clínico' },
+  { value: 'calculator', label: 'Calculadoras' },
+];
+
+function getContextualTabLabel(value) {
+  return CONTEXTUAL_TAB_OPTIONS.find((option) => option.value === value)?.label || 'Guia clínico';
 }
 
 function getPlanLabel(accessState) {
@@ -119,6 +123,53 @@ function getPlanDescription(accessState) {
   return `A organização básica continua liberada. Assine a partir de ${PRO_PLAN_PRICE_COPY} ${PRO_PLAN_PERIOD_COPY} para usar IA, encaminhamentos, guias e templates próprios.`;
 }
 
+function PlanActions({
+  accessState,
+  shouldShowUpgradeAction,
+  loadingCheckout,
+  checkoutError,
+  onUpgrade,
+  onRequestCancelSubscription,
+  justCancelledAccessUntil,
+}) {
+  if (shouldShowUpgradeAction) {
+    return (
+      <>
+        <button type="button" className="btn btn-primario" onClick={onUpgrade} disabled={loadingCheckout}>
+          {loadingCheckout
+            ? 'Abrindo checkout...'
+            : accessState?.isTrialAccess
+              ? 'Assinar e manter o Profissional'
+              : accessState?.billingStatus === 'expired'
+                ? `Reativar por ${PRO_PLAN_PRICE_COPY}`
+                : `Assinar por ${PRO_PLAN_PRICE_COPY}`}
+        </button>
+        {checkoutError ? <div className="topbar-auth-error">{checkoutError}</div> : null}
+      </>
+    );
+  }
+
+  if (justCancelledAccessUntil) {
+    return (
+      <div className="profile-plan-note">
+        <span>Assinatura cancelada</span>
+        <strong>{`Você não será cobrado novamente. Seu acesso continua até ${formatPlanExpiry(justCancelledAccessUntil)}.`}</strong>
+      </div>
+    );
+  }
+
+  if (accessState?.hasActiveRecurringSubscription) {
+    return (
+      <button type="button" className="btn btn-secundario" onClick={onRequestCancelSubscription}>
+        Cancelar assinatura
+      </button>
+    );
+  }
+
+  // Sem ação self-service (afiliado, semestral pago) — nada de botão desabilitado.
+  return null;
+}
+
 function ProfilePage({
   user,
   profile,
@@ -133,6 +184,12 @@ function ProfilePage({
   checkoutError,
   onRequestCancelSubscription,
   justCancelledAccessUntil,
+  onUpdateContextualTab,
+  savingPreference,
+  onExportData,
+  exportingData,
+  exportError,
+  onRequestDeleteAccount,
 }) {
   if (!user) {
     return (
@@ -141,14 +198,14 @@ function ProfilePage({
           <div className="profile-hero-copy">
             <span className="workspace-kicker">Conta</span>
             <h1>Seu perfil</h1>
-            <p>{'Centralize informações da sua conta, plano, preferências de uso e orientações de privacidade em um só lugar.'}</p>
+            <p>{'Centralize informações da sua conta, plano, preferências de uso e privacidade em um só lugar.'}</p>
           </div>
         </section>
 
         <section className="profile-empty-state">
           <strong>Entre na sua conta para acessar seu perfil.</strong>
           <span>
-            {'Aqui você poderá acompanhar o plano atual, preferências de uso, privacidade e futuros recursos pessoais do produto.'}
+            {'Aqui você acompanha o plano atual, cobrança, preferências de uso e controles de privacidade da sua conta.'}
           </span>
           <div className="profile-empty-actions">
             <button type="button" className="btn btn-primario" onClick={onGoHome}>
@@ -169,6 +226,10 @@ function ProfilePage({
   const showExpiringSoon = accessState?.hasActiveProAccess && isPlanExpiringSoon(accessState?.planExpiresAt);
   const shouldShowUpgradeAction =
     (!accessState?.hasActiveProAccess || accessState?.isTrialAccess) && !accessState?.isAffiliate;
+  const subscription = accessState?.subscription || null;
+  const currentContextualTab = CONTEXTUAL_TAB_OPTIONS.some((option) => option.value === activeSidebarTab)
+    ? activeSidebarTab
+    : 'guide';
 
   return (
     <div className="profile-page">
@@ -176,36 +237,16 @@ function ProfilePage({
         <div className="profile-hero-copy">
           <span className="workspace-kicker">Conta</span>
           <h1>Seu perfil</h1>
-          <p>{'Centralize sua conta, plano, preferências de uso e orientações de privacidade em uma área simples e confiável.'}</p>
+          <p>{'Gerencie seu plano, cobrança, preferências de uso e privacidade em uma área simples e confiável.'}</p>
         </div>
       </section>
 
       <div className="profile-grid">
         <div className="profile-column">
-          <section className="profile-card">
+          <section className="profile-card profile-card-highlight">
             <div className="profile-card-header">
-              <h2>Conta</h2>
-              <p>{'Informações básicas de acesso ao produto.'}</p>
-            </div>
-
-            <div className="profile-info-list">
-              <div className="profile-info-row">
-                <span>E-mail</span>
-                <strong>{profileEmail}</strong>
-              </div>
-            </div>
-
-            <div className="profile-card-actions">
-              <button type="button" className="btn btn-secundario" onClick={onSignOut}>
-                Sair
-              </button>
-            </div>
-          </section>
-
-          <section className="profile-card">
-            <div className="profile-card-header">
-              <h2>Plano</h2>
-              <p>{'Resumo do acesso atual com status real de ativação e validade.'}</p>
+              <h2>Plano e cobrança</h2>
+              <p>{'Status real do seu acesso e da assinatura.'}</p>
             </div>
 
             <div className="profile-plan-card">
@@ -215,48 +256,82 @@ function ProfilePage({
               ) : null}
               <strong>{planSummary}</strong>
               <p>{getPlanDescription(accessState)}</p>
+
+              {subscription ? (
+                <div className="profile-billing-details">
+                  <div>
+                    <span>Plano</span>
+                    <strong>{PLAN_KEY_LABELS[subscription.planKey] || 'Assinatura recorrente'}</strong>
+                  </div>
+                  {subscription.amount != null ? (
+                    <div>
+                      <span>Valor</span>
+                      <strong>{formatCurrencyBRL(subscription.amount, subscription.currencyId)}/mês</strong>
+                    </div>
+                  ) : null}
+                  {subscription.nextPaymentDate ? (
+                    <div>
+                      <span>Próxima cobrança</span>
+                      <strong>{formatPlanExpiry(subscription.nextPaymentDate)}</strong>
+                    </div>
+                  ) : null}
+                </div>
+              ) : null}
+
               {accessState?.isTrialAccess ? (
                 <div className="profile-plan-note">
-                  <span>{'Teste profissional'}</span>
-                  <strong>{'Acesso completo liberado durante o período gratuito.'}</strong>
+                  <span>Teste profissional</span>
+                  <strong>Acesso completo liberado durante o período gratuito.</strong>
                 </div>
               ) : null}
             </div>
 
             <div className="profile-card-actions">
-              {shouldShowUpgradeAction ? (
-                <>
-                  <button
-                    type="button"
-                    className="btn btn-primario"
-                    onClick={onUpgrade}
-                    disabled={loadingCheckout}
-                  >
-                    {loadingCheckout
-                      ? 'Abrindo checkout...'
-                      : accessState?.isTrialAccess
-                        ? 'Assinar e manter o Profissional'
-                        : accessState?.billingStatus === 'expired'
-                          ? `Reativar por ${PRO_PLAN_PRICE_COPY}`
-                          : `Assinar por ${PRO_PLAN_PRICE_COPY}`}
-                  </button>
-                  {checkoutError ? <div className="topbar-auth-error">{checkoutError}</div> : null}
-                </>
-              ) : justCancelledAccessUntil ? (
-                <div className="profile-plan-note">
-                  <span>{'Assinatura cancelada'}</span>
-                  <strong>{`Você não será cobrado novamente. Seu acesso continua até ${formatPlanExpiry(justCancelledAccessUntil)}.`}</strong>
-                </div>
-              ) : accessState?.hasActiveRecurringSubscription ? (
-                <button type="button" className="btn btn-secundario" onClick={onRequestCancelSubscription}>
-                  Cancelar assinatura
+              <PlanActions
+                accessState={accessState}
+                shouldShowUpgradeAction={shouldShowUpgradeAction}
+                loadingCheckout={loadingCheckout}
+                checkoutError={checkoutError}
+                onUpgrade={onUpgrade}
+                onRequestCancelSubscription={onRequestCancelSubscription}
+                justCancelledAccessUntil={justCancelledAccessUntil}
+              />
+            </div>
+          </section>
+
+          <section className="profile-card">
+            <div className="profile-card-header">
+              <h2>Conta</h2>
+              <p>{'Seus dados de acesso e controles da conta.'}</p>
+            </div>
+
+            <div className="profile-info-list">
+              <div className="profile-info-row">
+                <span>E-mail</span>
+                <strong>{profileEmail}</strong>
+              </div>
+            </div>
+
+            <div className="profile-card-actions profile-card-actions-stack">
+              <div className="profile-inline-actions">
+                <button type="button" className="btn btn-secundario" onClick={onExportData} disabled={exportingData}>
+                  {exportingData ? 'Exportando...' : 'Exportar meus dados'}
                 </button>
-              ) : (
-                <button type="button" className="btn btn-secundario" disabled>
-                  Gerenciar plano
-                  <span className="templates-soon-chip">Em breve</span>
+                <button type="button" className="btn btn-secundario" onClick={onSignOut}>
+                  Sair
                 </button>
-              )}
+              </div>
+              {exportError ? <div className="topbar-auth-error">{exportError}</div> : null}
+            </div>
+
+            <div className="profile-danger-zone">
+              <div>
+                <strong>Excluir minha conta</strong>
+                <span>Apaga seu perfil e histórico de anamneses de forma permanente.</span>
+              </div>
+              <button type="button" className="btn btn-perigo-outline" onClick={onRequestDeleteAccount}>
+                Excluir conta
+              </button>
             </div>
           </section>
         </div>
@@ -265,36 +340,50 @@ function ProfilePage({
           <section className="profile-card">
             <div className="profile-card-header">
               <h2>{'Preferências'}</h2>
-              <p>Estrutura inicial para personalizar o uso do produto ao longo do tempo.</p>
+              <p>Personalize como o produto se comporta no seu fluxo.</p>
             </div>
 
-            <div className="profile-info-list">
+            <div className="profile-pref-list">
+              <div className="profile-pref-row">
+                <div>
+                  <span>Painel contextual padrão</span>
+                  <small>Qual aba aparece primeiro no apoio lateral.</small>
+                </div>
+                <select
+                  className="profile-pref-select"
+                  value={currentContextualTab}
+                  onChange={(event) => onUpdateContextualTab?.(event.target.value)}
+                  disabled={savingPreference}
+                >
+                  {CONTEXTUAL_TAB_OPTIONS.map((option) => (
+                    <option key={option.value} value={option.value}>
+                      {option.label}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
               <div className="profile-info-row">
                 <span>Template padrão recente</span>
                 <strong>{selectedTemplateName || 'Ainda não definido'}</strong>
-              </div>
-              <div className="profile-info-row">
-                <span>Painel contextual</span>
-                <strong>{getSidebarPreferenceLabel(activeSidebarTab)}</strong>
-              </div>
-              <div className="profile-info-row">
-                <span>Recursos básicos</span>
-                <strong>Organização da anamnese liberada</strong>
               </div>
             </div>
           </section>
 
           <section className="profile-card">
             <div className="profile-card-header">
-              <h2>{'Privacidade'}</h2>
-              <p>{'Comunicação clara sobre como usar o produto com mais segurança.'}</p>
+              <h2>{'Privacidade e termos'}</h2>
+              <p>{'Como usar o produto com segurança e onde ler as regras completas.'}</p>
             </div>
 
             <div className="profile-privacy-list">
               <div className="profile-privacy-item">{'Evite inserir dados identificáveis do paciente no texto.'}</div>
-              <div className="profile-privacy-item">{'O texto é processado por IA para gerar organização, análises e encaminhamentos.'}</div>
-              <div className="profile-privacy-item">{'O produto não salva o texto como prontuário; métricas agregadas de uso e evolução podem ser registradas.'}</div>
-              <div className="profile-privacy-item">{'Espaço preparado para política de privacidade e controles adicionais no futuro.'}</div>
+              <div className="profile-privacy-item">{'O texto é processado por IA para gerar organização, análises e encaminhamentos, e não é salvo como prontuário.'}</div>
+            </div>
+
+            <div className="profile-legal-links">
+              <a href="/privacidade">Política de Privacidade</a>
+              <a href="/termos">Termos de Uso</a>
             </div>
           </section>
         </div>

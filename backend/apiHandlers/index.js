@@ -6,6 +6,8 @@ const apiRoutes = {
   '/api/referral-letter': require('./referral-letter'),
   '/api/diagnostic-hypotheses': require('./diagnostic-hypotheses'),
   '/api/profile': require('./profile'),
+  '/api/account/export': require('./account'),
+  '/api/account/delete': require('./account'),
   '/api/health': require('./health'),
   '/api/analytics': require('./analytics'),
   '/api/create-checkout': require('./create-checkout'),
