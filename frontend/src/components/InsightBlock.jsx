@@ -1,8 +1,36 @@
 import { parseCriticalInsight } from '../utils/criticalInsight';
 
+const SECTION_ACTION_VERB = {
+  missing: 'Documentar',
+  partial: 'Detalhar',
+};
+
+// Roteiro concreto do que falta para completar a anamnese, montado a partir do
+// status por seção que a análise já calculou (ausente/parcial) + a recomendação
+// que o backend gera para cada uma. É o "como chegar lá", não só 1 ponto.
+function buildCompletionRoadmap(sections) {
+  if (!Array.isArray(sections)) {
+    return [];
+  }
+
+  const priorityOrder = { missing: 0, partial: 1 };
+
+  return sections
+    .filter((section) => section.status === 'missing' || section.status === 'partial')
+    .sort((left, right) => (priorityOrder[left.status] ?? 9) - (priorityOrder[right.status] ?? 9))
+    .map((section) => ({
+      id: section.id || section.label,
+      label: section.label,
+      status: section.status,
+      verb: SECTION_ACTION_VERB[section.status] || 'Revisar',
+      detail: section.recommendation || section.issue || '',
+    }));
+}
+
 function InsightBlock({
   insightsSectionRef,
   insightPrincipalSection,
+  sections = [],
   shouldShowPaywall,
   performanceMessage,
   relevantGapsCount,
@@ -16,6 +44,7 @@ function InsightBlock({
 }) {
   const gapsLabel = `${relevantGapsCount} ${relevantGapsCount === 1 ? 'lacuna relevante' : 'lacunas relevantes'}`;
   const structuredAction = parseCriticalInsight(insightPrincipalSection);
+  const roadmap = buildCompletionRoadmap(sections);
 
   return (
     <div ref={insightsSectionRef} className="card section-insight insight-block">
@@ -68,6 +97,26 @@ function InsightBlock({
           </div>
         ) : null}
       </div>
+
+      {!shouldShowPaywall && roadmap.length > 0 ? (
+        <div className="insight-roadmap">
+          <div className="insight-roadmap-header">
+            <strong>Roteiro para completar esta anamnese</strong>
+            <span>Cobrindo estes pontos, a estrutura fica completa para revisão.</span>
+          </div>
+          <ol className="insight-roadmap-list">
+            {roadmap.map((step) => (
+              <li key={step.id} className={`insight-roadmap-item insight-roadmap-${step.status}`}>
+                <span className="insight-roadmap-tag">{step.status === 'missing' ? 'Ausente' : 'Parcial'}</span>
+                <div>
+                  <strong>{step.verb} {step.label}</strong>
+                  {step.detail ? <span>{step.detail}</span> : null}
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
+      ) : null}
 
       {shouldShowPaywall && (
         <div className="paywall-panel insight-paywall-panel">

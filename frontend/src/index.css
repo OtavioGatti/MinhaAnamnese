@@ -6526,3 +6526,208 @@ body {
 .section-checklist-not_applicable .section-checklist-status {
   color: #64748b;
 }
+
+/* Roteiro para completar a anamnese (dentro de "Ação recomendada") */
+.insight-roadmap {
+  border-top: 1px solid rgba(226, 232, 240, 0.9);
+  display: grid;
+  gap: 0.7rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+}
+
+.insight-roadmap-header {
+  display: grid;
+  gap: 0.15rem;
+}
+
+.insight-roadmap-header strong {
+  color: #111827;
+  font-size: 0.95rem;
+}
+
+.insight-roadmap-header span {
+  color: #6b7280;
+  font-size: 0.82rem;
+}
+
+.insight-roadmap-list {
+  counter-reset: roadmap;
+  display: grid;
+  gap: 0.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.insight-roadmap-item {
+  align-items: flex-start;
+  border: 1px solid rgba(226, 232, 240, 0.95);
+  border-radius: 12px;
+  display: flex;
+  gap: 0.6rem;
+  padding: 0.6rem 0.75rem;
+}
+
+.insight-roadmap-item > div {
+  display: grid;
+  gap: 0.15rem;
+  min-width: 0;
+}
+
+.insight-roadmap-item strong {
+  color: #1f2937;
+  font-size: 0.88rem;
+}
+
+.insight-roadmap-item span:not(.insight-roadmap-tag) {
+  color: #6b7280;
+  font-size: 0.8rem;
+  line-height: 1.45;
+}
+
+.insight-roadmap-tag {
+  border-radius: 999px;
+  flex-shrink: 0;
+  font-size: 0.66rem;
+  font-weight: 700;
+  margin-top: 0.1rem;
+  padding: 0.2rem 0.5rem;
+}
+
+.insight-roadmap-missing .insight-roadmap-tag {
+  background: #fff1f2;
+  color: #be123c;
+}
+
+.insight-roadmap-partial .insight-roadmap-tag {
+  background: #fefce8;
+  color: #a16207;
+}
+
+/* Revisão dirigida ao quadro (Camada 2) */
+.focused-review {
+  display: grid;
+  gap: 1rem;
+}
+
+.focused-review-cta {
+  align-items: flex-start;
+  display: grid;
+  gap: 0.6rem;
+}
+
+.focused-review-cta p {
+  color: #374151;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  margin: 0;
+}
+
+.focused-review-notice {
+  background: rgba(254, 249, 195, 0.4);
+  border: 1px solid rgba(250, 204, 21, 0.4);
+  border-radius: 12px;
+  display: grid;
+  gap: 0.35rem;
+  padding: 0.85rem 1rem;
+}
+
+.focused-review-notice strong {
+  color: #854d0e;
+  font-size: 0.92rem;
+}
+
+.focused-review-notice p {
+  color: #6b7280;
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+.focused-review-result {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.focused-review-hypotheses {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.focused-review-hypotheses > span {
+  color: #6b7280;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.focused-review-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.focused-review-chip {
+  align-items: baseline;
+  background: #eef2ff;
+  border-radius: 10px;
+  color: #4338ca;
+  display: inline-flex;
+  flex-wrap: wrap;
+  font-size: 0.84rem;
+  font-weight: 600;
+  gap: 0.35rem;
+  padding: 0.35rem 0.6rem;
+}
+
+.focused-review-chip small {
+  font-size: 0.66rem;
+  font-weight: 700;
+  opacity: 0.8;
+}
+
+.focused-review-chip-most_compatible {
+  background: #ecfdf5;
+  color: #047857;
+}
+
+.focused-review-chip-documented_problem {
+  background: #eff6ff;
+  color: #1d4ed8;
+}
+
+.focused-review-chip-cannot_miss {
+  background: #fff1f2;
+  color: #be123c;
+}
+
+.focused-review-block {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.focused-review-block > strong {
+  color: #111827;
+  font-size: 0.9rem;
+}
+
+.focused-review-list {
+  display: grid;
+  gap: 0.35rem;
+  margin: 0;
+  padding-left: 1.1rem;
+  color: #374151;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.focused-review-block-warning .focused-review-list {
+  color: #9f1239;
+}
+
+.focused-review-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}

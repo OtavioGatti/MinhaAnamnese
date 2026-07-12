@@ -1,8 +1,8 @@
 ﻿import { lazy, Suspense, useEffect, useMemo, useRef, useState } from 'react';
 import { api } from './apiClient';
 import { API_BASE_URL, DIAGNOSTIC_HYPOTHESES_ENABLED } from './config';
-import DetailedAnalysis from './components/DetailedAnalysis';
 import DiagnosticHypothesesPanel from './components/DiagnosticHypothesesPanel';
+import FocusedClinicalReview from './components/FocusedClinicalReview';
 import InputSection from './components/InputSection';
 import InsightBlock from './components/InsightBlock';
 import PlanComparisonModal from './components/PlanComparisonModal';
@@ -875,7 +875,6 @@ function App() {
   const [loadingAnamneseStats, setLoadingAnamneseStats] = useState(false);
   const [loadingAnamneseActivity, setLoadingAnamneseActivity] = useState(false);
   const [loadingRecentAnamneses, setLoadingRecentAnamneses] = useState(false);
-  const [secaoSecundariaAberta, setSecaoSecundariaAberta] = useState(false);
   const [authPanelAberto, setAuthPanelAberto] = useState(false);
   const [activeSidebarTab, setActiveSidebarTab] = useState('guide');
   const [currentPage, setCurrentPage] = useState(() => getInitialWorkspacePageFromPath());
@@ -1531,7 +1530,6 @@ function App() {
         setResultado(organizedResult);
         setLatestScoreComparison(response.data.comparison || null);
         setEvolutionRefreshToken((current) => current + 1);
-        setSecaoSecundariaAberta(false);
         trackEvent('anamnese_gerada', {
           template: templateSelecionado,
           text_length: texto.trim().length,
@@ -2274,8 +2272,6 @@ function App() {
   );
   const shouldShowPaywall =
     hasFinalInterpretation && !accessState?.hasActiveProAccess && !currentInsightsUnlocked;
-  const analysisInputSection = qualityScore.justification;
-  const summarizedScoreJustification = qualityScore.message;
   const insightPrincipalSection = qualityScore.criticalInsight;
   const primaryGapsCopy = qualityScore.justification;
   const secondaryGaps = qualityScore.otherGaps.filter((gap) => {
@@ -2356,7 +2352,6 @@ function App() {
   const shouldShowUserEvolution = Boolean(
     user && (loadingAnamneseStats || loadingAnamneseActivity || hasEvolutionData)
   );
-  const hasSecondaryContent = Boolean(hasFinalInterpretation && !shouldShowPaywall);
   const shouldShowFeedback = Boolean(resultado);
 
   const trackEvent = async (eventName, metadata = {}, options = {}) => {
@@ -2427,6 +2422,31 @@ function App() {
         prompt_source: data.generation?.promptSource || null,
       });
     }
+  };
+
+  // Camada 2 na tela principal: gera a revisão sem forçar a aba lateral
+  // (o resultado aparece inline no FocusedClinicalReview).
+  const handleGenerateFocusedReview = async () => {
+    if (!user?.id || !accessState?.hasActiveProAccess) {
+      handleUpgradeInsights('home');
+      return;
+    }
+
+    const data = await diagnosticHypotheses.generate();
+
+    if (data) {
+      trackEvent('hipoteses_diagnosticas_geradas', {
+        template: templateSelecionado,
+        hypothesis_count: Array.isArray(data.hypotheses) ? data.hypotheses.length : 0,
+        result_status: data.status,
+        source: 'focused_review',
+      });
+    }
+  };
+
+  const handleSeeFullReasoning = () => {
+    setActiveSidebarTab('diagnostic');
+    trackEvent('hipoteses_raciocinio_completo_click', { template: templateSelecionado });
   };
 
   const handleOpenHypothesisPrescription = (hypothesis) => {
@@ -2977,6 +2997,7 @@ function App() {
                 <InsightBlock
                   insightsSectionRef={insightsSectionRef}
                   insightPrincipalSection={insightPrincipalSection}
+                  sections={qualityScore.sections}
                   shouldShowPaywall={shouldShowPaywall}
                   performanceMessage={performanceMessage}
                   relevantGapsCount={relevantGapsCount}
@@ -2990,15 +3011,17 @@ function App() {
                 />
               )}
 
-              {hasSecondaryContent && (
-                <DetailedAnalysis
-                  aberto={secaoSecundariaAberta}
-                  onToggle={() => setSecaoSecundariaAberta((current) => !current)}
-                  showDetailedContent={hasFinalInterpretation && !shouldShowPaywall}
-                  analysisInputSection={analysisInputSection}
-                  summarizedScoreJustification={summarizedScoreJustification}
-                  insightPrincipalSection={insightPrincipalSection}
-                  secondaryGaps={secondaryGaps}
+              {hasFinalInterpretation && !shouldShowPaywall && DIAGNOSTIC_HYPOTHESES_ENABLED && (
+                <FocusedClinicalReview
+                  hasStructuredResult={Boolean(resultado)}
+                  user={user}
+                  isPro={isPro}
+                  data={diagnosticHypotheses.data}
+                  loading={diagnosticHypotheses.loading}
+                  error={diagnosticHypotheses.error}
+                  onGenerate={handleGenerateFocusedReview}
+                  onRequestUpgrade={() => handleUpgradeInsights('home')}
+                  onSeeFullReasoning={handleSeeFullReasoning}
                 />
               )}
 

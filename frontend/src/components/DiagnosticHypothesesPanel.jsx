@@ -123,7 +123,7 @@ function DiagnosticHypothesesPanel({
   if (!data) {
     return (
       <div className="diagnostic-start-card">
-        <p>A análise usa somente o resultado organizado e não altera sua anamnese.</p>
+        <p>Raciocínio clínico completo a partir da história organizada: hipóteses, evidências, o que falta coletar e sinais de alerta. Não altera sua anamnese nem sugere conduta.</p>
         <button type="button" className="btn btn-primario" onClick={onGenerate}>
           Sugerir hipóteses
         </button>

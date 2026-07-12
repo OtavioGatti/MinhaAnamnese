@@ -74,23 +74,17 @@ export function buildActionItems(actionText) {
     return [];
   }
 
-  const normalized = normalizeText(sanitized);
-  const splitBy = normalized.includes(' e ')
-    ? /\s+e\s+/i
-    : sanitized.includes(';')
-      ? ';'
-      : sanitized.includes(',')
-        ? ','
-        : null;
-
-  if (!splitBy) {
-    return [sanitized];
+  // Só quebra em uma lista quando há separador explícito (";"). Antes fragmentava
+  // qualquer " e " ou ",", partindo frases normais no meio (ex.: "...com achados
+  // relevantes e pendências" virava dois itens sem sentido).
+  if (sanitized.includes(';')) {
+    return sanitized
+      .split(';')
+      .map((item) => item.trim())
+      .filter(Boolean);
   }
 
-  return sanitized
-    .split(splitBy)
-    .map((item) => item.trim())
-    .filter(Boolean);
+  return [sanitized];
 }
 
 export function parseCriticalInsight(insightText) {
