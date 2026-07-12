@@ -9,7 +9,6 @@ const {
   sanitizeParsedInsightResponse,
 } = require('../utils/insightGuardrails');
 const { parseUnifiedAnalysisResponse } = require('../utils/unifiedAnalysisResponse');
-const { updateUserHistory } = require('../utils/userHistory');
 const { parseAIResponse } = require('../utils/parseAIResponse');
 const { getTextLimitError } = require('../utils/requestLimits');
 const { sanitizeText } = require('../utils/textSanitization');
@@ -332,10 +331,6 @@ async function generateUnifiedInsights({
     return false;
   });
   const comparison = buildMetricComparison(previousMetric, data.score);
-  const history = updateUserHistory(userId, {
-    score: data.score,
-    erros: [],
-  });
 
   if (DEBUG_MODE) {
     console.log('insights: unified analysis debug summary', {
@@ -345,7 +340,6 @@ async function generateUnifiedInsights({
       promptSource: syncedPrompt ? 'official_prompt' : 'runtime_fallback',
       sections: data.unifiedAnalysis.sections.length,
       confidence: data.unifiedAnalysis.confidence,
-      historySize: history.length,
       metricRecorded,
     });
   }
@@ -419,10 +413,6 @@ async function generateLegacyInsights({
   }
 
   const sanitizedParsed = sanitizeParsedInsightResponse(parsed, guardrailContext.statusMap);
-  const history = updateUserHistory(userId, {
-    score: qualityScore.score,
-    erros: [],
-  });
 
   if (DEBUG_MODE) {
     console.log('insights: debug summary', {
@@ -437,7 +427,6 @@ async function generateLegacyInsights({
         insight: Boolean(sanitizedParsed.insight),
         outros: Boolean(sanitizedParsed.outros),
       },
-      historySize: history.length,
     });
   }
 

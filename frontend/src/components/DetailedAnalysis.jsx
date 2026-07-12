@@ -1,112 +1,4 @@
-function cleanInsightSegment(value) {
-  return String(value || '').replace(/\s+/g, ' ').trim();
-}
-
-function normalizeText(value) {
-  return String(value || '')
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .toLowerCase()
-    .trim();
-}
-
-function getInsightLabelKey(value) {
-  const normalized = normalizeText(value).replace(/[:.-]+$/g, '');
-
-  if (normalized === 'falha' || normalized === 'ponto critico') {
-    return 'point';
-  }
-
-  if (normalized === 'consequencia na leitura') {
-    return 'consequence';
-  }
-
-  if (normalized === 'impacto na qualidade') {
-    return 'impact';
-  }
-
-  return '';
-}
-
-function extractLabeledPrefix(value) {
-  const labels = [
-    ['FALHA', 'point'],
-    ['PONTO CRITICO', 'point'],
-    ['CONSEQUENCIA NA LEITURA', 'consequence'],
-    ['IMPACTO NA QUALIDADE', 'impact'],
-  ];
-  const normalized = normalizeText(value);
-
-  for (const [label, key] of labels) {
-    const normalizedLabel = normalizeText(label);
-
-    if (normalized === normalizedLabel) {
-      return { key, rest: '' };
-    }
-
-    if (normalized.startsWith(`${normalizedLabel} `)) {
-      return {
-        key,
-        rest: value.slice(label.length).replace(/^[:\s-]+/, '').trim(),
-      };
-    }
-  }
-
-  return { key: '', rest: value };
-}
-
-function parseCriticalInsight(insightText) {
-  const parsed = {
-    point: '',
-    consequence: '',
-    impact: '',
-  };
-  let activeKey = '';
-  const parts = cleanInsightSegment(insightText)
-    .replace(/[→⇒]/g, '->')
-    .split(/\s*->\s*/)
-    .map((part) => cleanInsightSegment(part))
-    .filter(Boolean);
-
-  for (const part of parts) {
-    const directKey = getInsightLabelKey(part);
-
-    if (directKey) {
-      activeKey = directKey;
-      continue;
-    }
-
-    const labeledPart = extractLabeledPrefix(part);
-    const targetKey = labeledPart.key || activeKey;
-    const value = cleanInsightSegment(labeledPart.rest);
-
-    if (targetKey && value) {
-      parsed[targetKey] = parsed[targetKey]
-        ? `${parsed[targetKey]} ${value}`
-        : value;
-      activeKey = '';
-      continue;
-    }
-
-    if (!parsed.point) {
-      parsed.point = value || part;
-    }
-  }
-
-  if (!parsed.point && !parsed.consequence && !parsed.impact) {
-    return {
-      point: cleanInsightSegment(insightText),
-      readingImpact: '',
-    };
-  }
-
-  return {
-    point: parsed.point,
-    readingImpact: [parsed.consequence, parsed.impact]
-      .filter(Boolean)
-      .join(' '),
-  };
-}
+import { parseCriticalInsight } from '../utils/criticalInsight';
 
 function DetailedAnalysis({
   aberto,
@@ -162,8 +54,9 @@ function DetailedAnalysis({
               <div className="detailed-analysis-block">
                 <h3 className="detailed-analysis-title">Ponto crítico</h3>
                 <div className="resultado">
-                  <div>{criticalReading.point || insightPrincipalSection}</div>
+                  <div>{criticalReading.priority || insightPrincipalSection}</div>
                   {criticalReading.readingImpact ? <div>{criticalReading.readingImpact}</div> : null}
+                  {criticalReading.action ? <div>Ação sugerida: {criticalReading.action}</div> : null}
                 </div>
               </div>
 

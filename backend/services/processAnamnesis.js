@@ -127,7 +127,12 @@ async function processAnamnesis({ template, texto, userId }) {
     throw error;
   }
 
-  const qualityScore = calculateAnamnesisQualityScore(resultado, template, templateConfig);
+  // O score determinístico da organização só é consumido no modo legacy (que
+  // grava métrica e comparação aqui). No motor unificado o score nasce em
+  // /insights — computá-lo aqui era trabalho descartado pelo frontend.
+  const qualityScore = shouldRecordMetric
+    ? calculateAnamnesisQualityScore(resultado, template, templateConfig)
+    : { score: null };
 
   const metricRecorded = shouldRecordMetric ? await registerAnamneseMetric({
     userId,

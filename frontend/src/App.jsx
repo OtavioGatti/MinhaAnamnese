@@ -309,19 +309,49 @@ function createEmptyQualityScore() {
     justification: '',
     criticalInsight: '',
     otherGaps: [],
+    sections: [],
   };
 }
 
+const QUALITY_SECTION_STATUSES = ['present', 'partial', 'missing', 'not_applicable'];
+
+function normalizeQualityScoreSections(payload) {
+  const rawSections = Array.isArray(payload?.unifiedAnalysis?.sections)
+    ? payload.unifiedAnalysis.sections
+    : Array.isArray(payload?.sections)
+      ? payload.sections
+      : [];
+
+  return rawSections
+    .map((section) => ({
+      id: section?.id || '',
+      label: String(section?.label || '').trim(),
+      status: QUALITY_SECTION_STATUSES.includes(section?.status) ? section.status : 'missing',
+      evidence: String(section?.evidence || '').trim(),
+      issue: String(section?.issue || '').trim(),
+      recommendation: String(section?.recommendation || '').trim(),
+    }))
+    .filter((section) => section.label);
+}
+
+// Aceita tanto o payload cru da API (interpretation/unifiedAnalysis) quanto um
+// qualityScore já normalizado (ex.: restaurado do retorno de checkout) — antes,
+// re-normalizar um estado salvo perdia message/justification/insight.
 function normalizeQualityScorePayload(payload) {
   const score = isValidScoreValue(payload?.score) ? payload.score : null;
 
   return {
     shouldShowScore: isValidScoreValue(score),
     score,
-    message: payload?.interpretation?.message || '',
-    justification: payload?.interpretation?.justification || '',
-    criticalInsight: payload?.interpretation?.criticalInsight || '',
-    otherGaps: Array.isArray(payload?.interpretation?.otherGaps) ? payload.interpretation.otherGaps : [],
+    message: payload?.interpretation?.message || payload?.message || '',
+    justification: payload?.interpretation?.justification || payload?.justification || '',
+    criticalInsight: payload?.interpretation?.criticalInsight || payload?.criticalInsight || '',
+    otherGaps: Array.isArray(payload?.interpretation?.otherGaps)
+      ? payload.interpretation.otherGaps
+      : Array.isArray(payload?.otherGaps)
+        ? payload.otherGaps
+        : [],
+    sections: normalizeQualityScoreSections(payload),
   };
 }
 

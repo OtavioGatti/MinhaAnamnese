@@ -1,3 +1,5 @@
+import SectionChecklist from './SectionChecklist';
+
 function getStructureLabel(score) {
   if (score >= 85) {
     return 'Boa';
@@ -102,6 +104,8 @@ function StructuralFeedback({
                 ) : null}
               </div>
             ) : null}
+
+            <SectionChecklist sections={qualityScore.sections} />
 
             {!hasFinalInterpretation && (
               <div className="feedback-action-panel">
