@@ -5,6 +5,39 @@ const {
   getLegacyClinicalCategoryKeyByCategoryKey,
   resolveCategory,
 } = require('../utils/categoryKeys');
+const { matchOfficialSection } = require('../utils/templateSectionMatching');
+const { enrichCustomTemplate } = require('./enrichCustomTemplate');
+
+// Pesos-base por prioridade clínica (renormalizados para somar ~100).
+const PRIORITY_BASE_WEIGHT = {
+  essential: 18,
+  important: 10,
+  contextual: 5,
+  optional: 2,
+};
+
+function dedupeStrings(values, max) {
+  const seen = new Set();
+  const output = [];
+
+  for (const value of values) {
+    const normalized = String(value || '').trim();
+    const key = normalized.toLowerCase();
+
+    if (!normalized || seen.has(key)) {
+      continue;
+    }
+
+    seen.add(key);
+    output.push(normalized);
+
+    if (output.length >= max) {
+      break;
+    }
+  }
+
+  return output;
+}
 
 const CUSTOM_TEMPLATE_PREFIX = 'custom:';
 const MAX_TEMPLATE_NAME_LENGTH = 80;
@@ -150,38 +183,117 @@ function getSectionPriority(label, index) {
   return 'contextual';
 }
 
-function buildCustomEvaluation(sections, inheritedEvaluation = null) {
-  const baseWeight = Number((100 / sections.length).toFixed(1));
-  let accumulatedWeight = 0;
+// Deriva o "material clínico" de uma seção custom em ordem de qualidade:
+// 1) enriquecimento por IA salvo (D); 2) herança da seção oficial mais próxima
+// (A); 3) heurística a partir do próprio rótulo (fallback).
+function resolveSectionMaterial(label, index, { officialSections, enrichmentByLabel }) {
+  const normalizedLabel = String(label || '')
+    .normalize('NFD')
+    .replace(/[̀-ͯ]/g, '')
+    .toLowerCase();
+  const enrichment = enrichmentByLabel.get(normalizedLabel);
+  const officialMatch = matchOfficialSection(label, officialSections);
+
+  const heuristicEvidence = normalizedLabel.split(/[^a-z0-9]+/g).filter((item) => item.length > 3).slice(0, 6);
+  const priority = enrichment?.priority || officialMatch?.priority || getSectionPriority(label, index);
+  const aliases = dedupeStrings(
+    [label, ...(enrichment?.aliases || []), ...(officialMatch?.aliases || []), normalizedLabel],
+    10,
+  );
+  const evidence = dedupeStrings(
+    [...(enrichment?.evidence || []), ...(officialMatch?.evidence || []), ...heuristicEvidence],
+    12,
+  );
+
+  return {
+    id: slugifySection(label, index),
+    label,
+    priority,
+    aliases,
+    evidence,
+    narrative: Boolean(officialMatch?.narrative) || /(historia|molestia|evolucao|hda|hma)/.test(normalizedLabel),
+    vitals: Boolean(officialMatch?.vitals) || /(exame fisico|sinais vitais|vital)/.test(normalizedLabel),
+  };
+}
+
+function buildCustomEvaluation(sections, inheritedEvaluation = null, enrichment = null) {
+  const officialSections = Array.isArray(inheritedEvaluation?.sections) ? inheritedEvaluation.sections : [];
+  const enrichmentByLabel = new Map(
+    (Array.isArray(enrichment?.sections) ? enrichment.sections : []).map((item) => [
+      String(item?.label || '')
+        .normalize('NFD')
+        .replace(/[̀-ͯ]/g, '')
+        .toLowerCase(),
+      item,
+    ]),
+  );
   const severitySignals =
-    Array.isArray(inheritedEvaluation?.severitySignals) && inheritedEvaluation.severitySignals.length
-      ? inheritedEvaluation.severitySignals
-      : ['dispneia', 'dor toracica', 'dor torácica', 'sangramento', 'convulsao', 'convulsão'];
+    (Array.isArray(enrichment?.severitySignals) && enrichment.severitySignals.length && enrichment.severitySignals) ||
+    (Array.isArray(inheritedEvaluation?.severitySignals) && inheritedEvaluation.severitySignals.length && inheritedEvaluation.severitySignals) ||
+    ['dispneia', 'dor toracica', 'dor torácica', 'sangramento', 'convulsao', 'convulsão'];
+
+  const materials = sections.map((label, index) =>
+    resolveSectionMaterial(label, index, { officialSections, enrichmentByLabel }));
+
+  // Peso por prioridade clínica, renormalizado para somar 100.
+  const rawWeights = materials.map((material) => PRIORITY_BASE_WEIGHT[material.priority] || PRIORITY_BASE_WEIGHT.contextual);
+  const totalRaw = rawWeights.reduce((sum, weight) => sum + weight, 0) || 1;
+  let accumulatedWeight = 0;
 
   return {
     sensitivity: inheritedEvaluation?.sensitivity || 'custom',
     severitySignals,
-    sections: sections.map((label, index) => {
-      const isLast = index === sections.length - 1;
-      const weight = isLast ? Number((100 - accumulatedWeight).toFixed(1)) : baseWeight;
+    sections: materials.map((material, index) => {
+      const isLast = index === materials.length - 1;
+      const weight = isLast
+        ? Number((100 - accumulatedWeight).toFixed(1))
+        : Number(((rawWeights[index] / totalRaw) * 100).toFixed(1));
       accumulatedWeight += weight;
-      const normalizedLabel = String(label || '')
-        .normalize('NFD')
-        .replace(/[\u0300-\u036f]/g, '')
-        .toLowerCase();
 
       return {
-        id: slugifySection(label, index),
-        label,
+        id: material.id,
+        label: material.label,
         weight,
-        priority: getSectionPriority(label, index),
-        aliases: [label, normalizedLabel].filter(Boolean),
-        evidence: normalizedLabel.split(/[^a-z0-9]+/g).filter((item) => item.length > 3).slice(0, 6),
-        narrative: /(historia|molestia|evolucao|hda|hma)/.test(normalizedLabel),
-        vitals: /(exame fisico|sinais vitais|vital)/.test(normalizedLabel),
+        priority: material.priority,
+        aliases: material.aliases,
+        evidence: material.evidence,
+        narrative: material.narrative,
+        vitals: material.vitals,
       };
     }),
   };
+}
+
+// Remapeia a orientação clínica oficial (chaveada pelos rótulos oficiais) para
+// os rótulos custom do usuário, para o prompt de organização não perder a
+// orientação por seção. Enriquecimento por IA tem precedência.
+function buildCustomSectionGuidance(sections, officialEvaluation, officialGuidance, enrichment) {
+  const officialSections = Array.isArray(officialEvaluation?.sections) ? officialEvaluation.sections : [];
+  const enrichmentByLabel = new Map(
+    (Array.isArray(enrichment?.sections) ? enrichment.sections : []).map((item) => [
+      String(item?.label || '').trim().toLowerCase(),
+      item,
+    ]),
+  );
+  const guidance = {};
+
+  sections.forEach((label) => {
+    const enriched = enrichmentByLabel.get(String(label).trim().toLowerCase());
+
+    if (Array.isArray(enriched?.guidance) && enriched.guidance.length) {
+      guidance[label] = enriched.guidance;
+      return;
+    }
+
+    const officialMatch = matchOfficialSection(label, officialSections);
+    const officialLines = officialMatch && officialGuidance ? officialGuidance[officialMatch.label] : null;
+
+    if (Array.isArray(officialLines) && officialLines.length) {
+      guidance[label] = officialLines;
+    }
+  });
+
+  return Object.keys(guidance).length ? guidance : null;
 }
 
 function mapTemplateRow(row) {
@@ -224,17 +336,32 @@ function buildRuntimeTemplateConfig(row) {
   const categoryTemplate = getClinicalCategoryTemplate(
     row?.clinical_category || getLegacyClinicalCategoryKeyByCategoryKey(category.key),
   );
+  const enrichment = normalizeStoredEnrichment(row?.enrichment);
 
   return {
     nome: row.name,
     secoes: sections,
     promptVariant: categoryTemplate?.promptVariant || 'custom',
-    sectionGuidance: categoryTemplate?.sectionGuidance,
-    evaluation: buildCustomEvaluation(sections, categoryTemplate?.evaluation),
+    // Guidance remapeada para os rótulos do usuário (senão o prompt não a acha).
+    sectionGuidance: buildCustomSectionGuidance(
+      sections,
+      categoryTemplate?.evaluation,
+      categoryTemplate?.sectionGuidance,
+      enrichment,
+    ),
+    evaluation: buildCustomEvaluation(sections, categoryTemplate?.evaluation, enrichment),
     clinicalCategory: category.key,
     clinicalCategoryKey: category.key,
     clinicalCategoryLabel: category.label,
   };
+}
+
+function normalizeStoredEnrichment(value) {
+  if (!value || typeof value !== 'object' || !Array.isArray(value.sections)) {
+    return null;
+  }
+
+  return value;
 }
 
 async function requestUserTemplates(path, options = {}) {
@@ -291,8 +418,10 @@ async function getUserTemplateConfig(templateId, userId) {
     return null;
   }
 
+  // select=* para incluir a coluna enrichment quando existir, sem quebrar
+  // enquanto o SQL não foi aplicado (PostgREST não erra em coluna ausente aqui).
   const query = new URLSearchParams({
-    select: 'id,user_id,name,description,sections,clinical_category,clinical_category_key,clinical_category_label,created_at,updated_at',
+    select: '*',
     id: `eq.${rowId}`,
     user_id: `eq.${userId}`,
     limit: '1',
@@ -301,6 +430,31 @@ async function getUserTemplateConfig(templateId, userId) {
   const row = Array.isArray(json) ? json[0] : null;
 
   return buildRuntimeTemplateConfig(row);
+}
+
+// Best-effort: enriquece o template com IA e grava na coluna enrichment.
+// Falha (IA indisponível / coluna ausente antes do SQL) não quebra o save.
+async function persistTemplateEnrichment(rowId, userId, fields) {
+  try {
+    const enrichment = await enrichCustomTemplate({
+      name: fields.name,
+      categoryLabel: fields.clinicalCategoryLabel,
+      sections: fields.sections,
+    });
+
+    if (!enrichment) {
+      return;
+    }
+
+    const query = new URLSearchParams({ id: `eq.${rowId}`, user_id: `eq.${userId}` });
+    await requestUserTemplates(`?${query.toString()}`, {
+      method: 'PATCH',
+      headers: { Prefer: 'return=minimal' },
+      body: JSON.stringify({ enrichment }),
+    });
+  } catch (_error) {
+    // Silencioso de propósito: enriquecimento é opcional.
+  }
 }
 
 async function createUserTemplate(userId, payload) {
@@ -327,7 +481,15 @@ async function createUserTemplate(userId, payload) {
     }),
   });
 
-  return Array.isArray(json) && json[0] ? mapTemplateRow(json[0]) : null;
+  const row = Array.isArray(json) && json[0] ? json[0] : null;
+
+  if (!row) {
+    return null;
+  }
+
+  await persistTemplateEnrichment(row.id, userId, fields);
+
+  return mapTemplateRow(row);
 }
 
 async function updateUserTemplate(userId, templateId, payload) {
@@ -364,6 +526,8 @@ async function updateUserTemplate(userId, templateId, payload) {
     error.statusCode = 404;
     throw error;
   }
+
+  await persistTemplateEnrichment(rowId, userId, fields);
 
   return mapTemplateRow(json[0]);
 }

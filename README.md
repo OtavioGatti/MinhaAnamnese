@@ -259,6 +259,7 @@ Os arquivos SQL ficam em `supabase/` e devem ser aplicados manualmente no SQL Ed
 - `rate_limit_buckets`: contadores de rate limit compartilhados entre instâncias (`supabase/rate_limits.sql`).
 - `affiliates` / `affiliate_commissions` / `affiliate_attributions`: programa de afiliados, com comissão e desconto por afiliado (`supabase/affiliate_program.sql`, `supabase/affiliate_discounts.sql`).
 - `affiliate_payouts`: saques de comissão com baixa manual (`supabase/affiliate_payouts.sql`).
+- `user_templates.enrichment`: metadados por seção gerados por IA para elevar a qualidade dos templates próprios (`supabase/user_templates_enrichment.sql`).
 
 ## Programa de Afiliados (Operação)
 

@@ -33,3 +33,4 @@ cd frontend && npm run build  # validar build antes de publicar mudanças de UI
 - Desconto de afiliado: checkout e webhook devem calcular o valor pelo mesmo helper (`getDiscountedPlanAmount` em `billingPlans.js`) — arredondamento divergente rejeita pagamentos legítimos. Desconto sempre resolvido server-side a partir do registro do afiliado.
 - Páginas fora da home são `React.lazy` no `App.jsx` — novas páginas devem seguir o mesmo padrão.
 - Conteúdo clínico é editorial (Notion) — não hardcodar textos clínicos novos no código sem alinhamento.
+- Templates próprios: a qualidade (score + organização) vem de 3 camadas em `backend/services/userTemplates.js` — enriquecimento por IA salvo (`enrichment` jsonb, gerado no save) > herança da seção oficial mais próxima (`utils/templateSectionMatching.js`) > heurística do rótulo. Não voltar ao antigo `buildCustomEvaluation` de pesos iguais/evidence do próprio título.

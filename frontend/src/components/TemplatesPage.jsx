@@ -216,6 +216,27 @@ function TemplatesPage({
     }));
   };
 
+  // B: preenche o editor a partir de um template oficial (o usuário renomeia e
+  // ajusta). O modelo próprio ainda herda a qualidade de análise do oficial.
+  const handleApplyOfficialBase = (officialId) => {
+    const base = officialTemplates.find((template) => template.id === officialId);
+
+    if (!base) {
+      return;
+    }
+
+    const category = availableCategoryOptions.find((option) => option.key === base.categoryKey);
+
+    setFormState((current) => ({
+      ...current,
+      name: current.name || base.name,
+      description: current.description || base.description,
+      clinicalCategoryKey: category?.key || base.categoryKey || 'clinica_medica',
+      clinicalCategoryLabel: category?.label || base.category || 'Clínica médica',
+      sections: (base.structure || []).join('\n'),
+    }));
+  };
+
   const handleSaveTemplate = async (event) => {
     event.preventDefault();
 
@@ -599,6 +620,27 @@ function TemplatesPage({
               </button>
             </div>
 
+            {!formState.id ? (
+              <label className="template-editor-field">
+                <span>Começar de um modelo oficial (opcional)</span>
+                <select
+                  value=""
+                  onChange={(event) => {
+                    if (event.target.value) {
+                      handleApplyOfficialBase(event.target.value);
+                    }
+                  }}
+                >
+                  <option value="">Começar do zero</option>
+                  {officialTemplates.map((template) => (
+                    <option key={template.id} value={template.id}>
+                      {template.name}
+                    </option>
+                  ))}
+                </select>
+              </label>
+            ) : null}
+
             <label className="template-editor-field">
               <span>Nome do template</span>
               <input
@@ -645,7 +687,7 @@ function TemplatesPage({
             </label>
 
             <div className="template-editor-helper">
-              O template herdará o prompt clínico publicado para esta categoria.
+              O template herda a orientação clínica e os critérios de análise da categoria e das seções oficiais equivalentes — quanto mais próximos os nomes das seções dos títulos clínicos usuais, melhor a organização e o score.
             </div>
 
             <label className="template-editor-field">
