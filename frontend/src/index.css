@@ -6731,3 +6731,93 @@ body {
   flex-wrap: wrap;
   gap: 0.6rem;
 }
+
+/* CTA de análise pronta (estado pré-análise do Pro) — feature, não placeholder */
+.analysis-ready-cta {
+  align-items: flex-start;
+  background:
+    radial-gradient(120% 140% at 0% 0%, rgba(37, 99, 235, 0.10) 0%, rgba(37, 99, 235, 0) 55%),
+    linear-gradient(180deg, #ffffff 0%, #f6f9ff 100%);
+  border: 1px solid rgba(37, 99, 235, 0.24);
+  border-radius: 16px;
+  box-shadow: 0 14px 34px rgba(37, 99, 235, 0.10);
+  display: flex;
+  gap: 1rem;
+  padding: 1.1rem 1.2rem;
+}
+
+.analysis-ready-icon {
+  align-items: center;
+  background: linear-gradient(160deg, #2563eb 0%, #1d4ed8 100%);
+  border-radius: 14px;
+  box-shadow: 0 8px 18px rgba(37, 99, 235, 0.32);
+  color: #fff;
+  display: flex;
+  flex-shrink: 0;
+  height: 44px;
+  justify-content: center;
+  width: 44px;
+}
+
+.analysis-ready-icon svg {
+  height: 24px;
+  width: 24px;
+}
+
+.analysis-ready-copy {
+  display: grid;
+  gap: 0.5rem;
+  min-width: 0;
+}
+
+.analysis-ready-kicker {
+  color: #1d4ed8;
+  font-size: 0.72rem;
+  font-weight: 750;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.analysis-ready-copy > strong {
+  color: #0f172a;
+  font-size: 1.06rem;
+  line-height: 1.3;
+}
+
+.analysis-ready-lead {
+  color: #475569;
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+.analysis-ready-highlights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0.15rem 0 0.35rem;
+}
+
+.analysis-ready-highlights span {
+  background: rgba(37, 99, 235, 0.08);
+  border-radius: 999px;
+  color: #1e40af;
+  font-size: 0.76rem;
+  font-weight: 600;
+  padding: 0.3rem 0.65rem;
+}
+
+.analysis-ready-button {
+  justify-self: flex-start;
+  padding-left: 1.4rem;
+  padding-right: 1.4rem;
+}
+
+@media (max-width: 640px) {
+  .analysis-ready-cta {
+    flex-direction: column;
+  }
+
+  .analysis-ready-button {
+    width: 100%;
+  }
+}

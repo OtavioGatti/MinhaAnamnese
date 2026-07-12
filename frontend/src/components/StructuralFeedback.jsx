@@ -34,7 +34,7 @@ function StructuralFeedback({
   canImprove,
   loadingCheckout,
   loadingInsights,
-  showAnalyzeAction,
+  canRunAnalysis,
   onGerarInsights,
 }) {
   const structureLabel = qualityScore.shouldShowScore
@@ -124,13 +124,42 @@ function StructuralFeedback({
               </div>
             )}
           </>
+        ) : canRunAnalysis ? (
+          <div className="analysis-ready-cta">
+            <div className="analysis-ready-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M12 3l1.9 4.4 4.8.4-3.6 3.1 1.1 4.7L12 13.9 7.8 15.7l1.1-4.7L5.3 7.8l4.8-.4z" />
+              </svg>
+            </div>
+            <div className="analysis-ready-copy">
+              <span className="analysis-ready-kicker">Análise por IA</span>
+              <strong>Sua análise completa está pronta para rodar</strong>
+              <span className="analysis-ready-lead">
+                Receba a nota estrutural, a cobertura seção a seção, um roteiro do que falta e a revisão dirigida ao provável quadro clínico.
+              </span>
+              <div className="analysis-ready-highlights">
+                <span>Cobertura por seção</span>
+                <span>Roteiro para completar</span>
+                <span>Revisão do quadro</span>
+              </div>
+              <button
+                className="btn btn-primario analysis-ready-button"
+                type="button"
+                onClick={onGerarInsights}
+                disabled={loadingInsights}
+              >
+                {loadingInsights ? 'Analisando a anamnese...' : 'Analisar esta anamnese'}
+              </button>
+              {insightError ? <div className="feedback-secondary-error">{insightError}</div> : null}
+            </div>
+          </div>
         ) : showTeaser ? (
           <div className="feedback-placeholder feedback-placeholder-highlight">
             <strong>{paywallTitle}</strong>
             <span>{paywallDescription}</span>
             <div className="feedback-action-row">
               <button
-                className="btn btn-secundario"
+                className="btn btn-primario"
                 type="button"
                 onClick={onPaywallAction}
                 disabled={loadingCheckout}
@@ -145,29 +174,10 @@ function StructuralFeedback({
             <strong>{loadingInsights ? 'Gerando leitura estrutural' : 'Análise ainda indisponível'}</strong>
             <span>
               {loadingInsights
-                ? 'Estamos preparando a nota, a principal lacuna e o ajuste com maior impacto para a próxima coleta.'
+                ? 'Estamos preparando a nota, a cobertura por seção e o roteiro de melhoria.'
                 : qualityScore.message || 'Gere a análise para ver onde a estrutura enfraqueceu e o que vale corrigir primeiro.'}
             </span>
           </div>
-        )}
-
-        {showAnalyzeAction && !showTeaser && (
-          <>
-            {insightError ? <div className="feedback-secondary-error">{insightError}</div> : null}
-            <div className="feedback-action-row">
-              <button
-                className="btn btn-secundario"
-                type="button"
-                onClick={onGerarInsights}
-                disabled={loadingInsights}
-              >
-                {loadingInsights ? 'Gerando análise...' : paywallButtonLabel}
-              </button>
-            </div>
-            <span className="feedback-helper-copy">
-              Veja a leitura estrutural completa e receba uma orientação mais clara para a próxima coleta.
-            </span>
-          </>
         )}
       </div>
     </div>

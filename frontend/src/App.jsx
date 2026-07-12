@@ -2988,7 +2988,7 @@ function App() {
                   canImprove={Boolean(texto.trim())}
                   loadingCheckout={isHomeCheckoutLoading}
                   loadingInsights={loadingInsights}
-                  showAnalyzeAction={canRequestInsights && !hasFinalInterpretation}
+                  canRunAnalysis={canRequestInsights && !hasFinalInterpretation}
                   onGerarInsights={() => handleGerarInsights()}
                 />
               )}
