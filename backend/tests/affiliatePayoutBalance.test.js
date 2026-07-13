@@ -61,6 +61,40 @@ test('comissão cancelada é ignorada nos saldos', () => {
   assert.equal(summary.totalCommission, 38.97);
 });
 
+test('comissão dentro da carência de 7 dias fica em carência, não disponível', () => {
+  const now = new Date('2026-07-13T00:00:00Z').getTime();
+  const recent = new Date('2026-07-10T00:00:00Z').toISOString(); // 3 dias atrás
+  const summary = summarizeAffiliateCommissions(
+    [{ commission_amount: 40, status: 'approved', created_at: recent }],
+    new Map(),
+    { now },
+  );
+
+  assert.equal(summary.holdCommission, 40);
+  assert.equal(summary.availableCommission, 0);
+  assert.equal(summary.pendingCommission, 40);
+});
+
+test('comissão fora da carência (>7 dias) fica disponível', () => {
+  const now = new Date('2026-07-13T00:00:00Z').getTime();
+  const old = new Date('2026-07-01T00:00:00Z').toISOString(); // 12 dias atrás
+  const summary = summarizeAffiliateCommissions(
+    [{ commission_amount: 40, status: 'approved', created_at: old }],
+    new Map(),
+    { now },
+  );
+
+  assert.equal(summary.availableCommission, 40);
+  assert.equal(summary.holdCommission, 0);
+});
+
+test('comissão sem created_at conta como disponível (compat com dados legados)', () => {
+  const summary = summarizeAffiliateCommissions([{ commission_amount: 40, status: 'approved' }]);
+
+  assert.equal(summary.availableCommission, 40);
+  assert.equal(summary.holdCommission, 0);
+});
+
 test('somatório misto arredonda corretamente e separa cada saldo', () => {
   const payoutStatus = new Map([
     ['aberto', 'requested'],

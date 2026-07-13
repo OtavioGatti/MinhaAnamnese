@@ -7,7 +7,14 @@ const {
   resolveUserAccessState,
 } = require('./accessState');
 const { getActiveBillingSubscriptionByUserId } = require('./billingSubscriptions');
+const { getBillingPaymentByPaymentId } = require('./billingPayments');
 const { getTrialUsageSummary } = require('./trialUsage');
+
+// Janela de arrependimento (CDC art. 49): o cliente pode pedir reembolso do
+// último pagamento em até 7 dias. Espelha REFUND_WINDOW no cancel-subscription.
+const REFUND_WINDOW_DAYS = 7;
+const REFUND_WINDOW_MS = REFUND_WINDOW_DAYS * 24 * 60 * 60 * 1000;
+const REFUND_REVOKED_STATUSES = new Set(['refunded', 'charged_back']);
 
 const ALLOWED_CONTEXTUAL_TABS = new Set(['guide', 'checklist', 'calculator', 'structure']);
 const DEFAULT_TRIAL_DAYS = 7;
@@ -567,11 +574,23 @@ async function withActiveSubscriptionFlag(profile) {
   if (!accessState.isPaidProAccess || accessState.accessSource !== 'paid') {
     return {
       ...profile,
-      access_state: { ...accessState, hasActiveRecurringSubscription: false, subscription: null },
+      access_state: {
+        ...accessState,
+        hasActiveRecurringSubscription: false,
+        subscription: null,
+        refundWindow: null,
+      },
     };
   }
 
-  const subscription = await getActiveBillingSubscriptionByUserId(profile.id).catch(() => null);
+  // Assinatura recorrente e último pagamento em paralelo (o segundo alimenta a
+  // janela de reembolso, exibida para o cliente decidir cancelar com estorno).
+  const [subscription, lastPayment] = await Promise.all([
+    getActiveBillingSubscriptionByUserId(profile.id).catch(() => null),
+    profile.last_payment_id
+      ? getBillingPaymentByPaymentId(profile.last_payment_id).catch(() => null)
+      : Promise.resolve(null),
+  ]);
 
   return {
     ...profile,
@@ -586,7 +605,34 @@ async function withActiveSubscriptionFlag(profile) {
             nextPaymentDate: subscription.next_payment_date || null,
           }
         : null,
+      refundWindow: buildRefundWindow(lastPayment),
     },
+  };
+}
+
+// Exibição (não é a autoridade): a decisão real de reembolso é reconfirmada no
+// cancel-subscription contra o date_approved ao vivo da Mercado Pago.
+function buildRefundWindow(payment) {
+  if (!payment?.provider_created_at) {
+    return null;
+  }
+
+  const chargedAtMs = new Date(payment.provider_created_at).getTime();
+
+  if (!Number.isFinite(chargedAtMs)) {
+    return null;
+  }
+
+  const deadlineMs = chargedAtMs + REFUND_WINDOW_MS;
+  const alreadyRefunded = REFUND_REVOKED_STATUSES.has(String(payment.status || '').toLowerCase());
+  const eligible = !alreadyRefunded && Date.now() <= deadlineMs;
+
+  return {
+    eligible,
+    amount: typeof payment.amount === 'number' ? payment.amount : null,
+    currencyId: payment.currency_id || 'BRL',
+    chargedAt: payment.provider_created_at,
+    deadline: new Date(deadlineMs).toISOString(),
   };
 }
 

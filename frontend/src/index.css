@@ -4973,6 +4973,18 @@ body {
   font-size: 0.82rem;
 }
 
+.affiliate-terms-note {
+  margin-top: 0.5rem;
+  color: var(--gray-500);
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
+
+.affiliate-terms-note a {
+  color: var(--primary-600, #2563eb);
+  text-decoration: underline;
+}
+
 .profile-privacy-item {
   padding: 0.95rem 1rem;
   color: var(--gray-700);

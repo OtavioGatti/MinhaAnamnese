@@ -9,7 +9,7 @@ const {
   normalizePlanKey,
 } = require('../../config/billingPlans');
 const {
-  cancelAffiliateCommissionsForPayment,
+  cancelAffiliateCommissionForRefund,
   createAffiliateCommission,
   getAffiliateByCode,
 } = require('../../services/affiliates');
@@ -544,7 +544,7 @@ async function reconcileSubscriptionByPreapprovalId(preapprovalId, { expectedUse
 async function handleRevokedPayment({ payment, plan, subscription, userId, affiliate, accessToken }) {
   const paymentId = String(payment.id);
 
-  await cancelAffiliateCommissionsForPayment(paymentId).catch((error) => {
+  await cancelAffiliateCommissionForRefund(paymentId).catch((error) => {
     logBillingError('failed to cancel affiliate commissions after refund', {
       paymentId,
       message: error?.message || 'unknown_error',

@@ -441,6 +441,7 @@ function deriveAccessState(user, profile) {
       hasActiveProAccess: Boolean(serverAccessState.hasActiveProAccess),
       hasActiveRecurringSubscription: Boolean(serverAccessState.hasActiveRecurringSubscription),
       subscription: serverAccessState.subscription || null,
+      refundWindow: serverAccessState.refundWindow || null,
       isAffiliate: Boolean(serverAccessState.isAffiliate),
       isTrialAccess: Boolean(serverAccessState.isTrialAccess),
       isPaidProAccess: Boolean(serverAccessState.isPaidProAccess),
@@ -486,6 +487,7 @@ function deriveAccessState(user, profile) {
     // recorrente na Mercado Pago (dado não replicável a partir só do perfil).
     hasActiveRecurringSubscription: false,
     subscription: null,
+    refundWindow: null,
     isAffiliate,
     isTrialAccess,
     isPaidProAccess: hasActiveProAccess && !isTrialAccess,
@@ -897,6 +899,7 @@ function App() {
   const [loadingCancelSubscription, setLoadingCancelSubscription] = useState(false);
   const [cancelSubscriptionError, setCancelSubscriptionError] = useState('');
   const [cancelSubscriptionAccessUntil, setCancelSubscriptionAccessUntil] = useState(null);
+  const [cancelSubscriptionRefund, setCancelSubscriptionRefund] = useState(null);
   const [savingPreference, setSavingPreference] = useState(false);
   const [exportingData, setExportingData] = useState(false);
   const [exportError, setExportError] = useState('');
@@ -1923,6 +1926,14 @@ function App() {
       }
 
       setCancelSubscriptionAccessUntil(response.data?.accessUntil || null);
+      setCancelSubscriptionRefund(
+        response.data?.refunded
+          ? {
+              amount: response.data?.refundAmount ?? null,
+              currencyId: response.data?.currencyId || 'BRL',
+            }
+          : null,
+      );
       setCancelSubscriptionModalOpen(false);
 
       const profileResponse = await api.get('/profile');
@@ -3232,6 +3243,7 @@ function App() {
           checkoutError={profileCheckoutError}
           onRequestCancelSubscription={() => setCancelSubscriptionModalOpen(true)}
           justCancelledAccessUntil={cancelSubscriptionAccessUntil}
+          justCancelledRefund={cancelSubscriptionRefund}
           onUpdateContextualTab={handleUpdateContextualTab}
           savingPreference={savingPreference}
           onExportData={handleExportData}
@@ -3286,6 +3298,7 @@ function App() {
         loading={loadingCancelSubscription}
         error={cancelSubscriptionError}
         accessUntil={accessState?.planExpiresAt}
+        refundWindow={accessState?.refundWindow || null}
         onClose={() => {
           setCancelSubscriptionModalOpen(false);
           setCancelSubscriptionError('');

@@ -131,6 +131,7 @@ function PlanActions({
   onUpgrade,
   onRequestCancelSubscription,
   justCancelledAccessUntil,
+  justCancelledRefund,
 }) {
   if (shouldShowUpgradeAction) {
     return (
@@ -149,6 +150,22 @@ function PlanActions({
     );
   }
 
+  if (justCancelledRefund) {
+    const refundLabel = justCancelledRefund.amount != null
+      ? formatCurrencyBRL(justCancelledRefund.amount, justCancelledRefund.currencyId)
+      : '';
+    return (
+      <div className="profile-plan-note">
+        <span>Reembolso solicitado</span>
+        <strong>
+          {refundLabel
+            ? `Estorno de ${refundLabel} em processamento na Mercado Pago. Seu acesso profissional foi encerrado.`
+            : 'Estorno em processamento na Mercado Pago. Seu acesso profissional foi encerrado.'}
+        </strong>
+      </div>
+    );
+  }
+
   if (justCancelledAccessUntil) {
     return (
       <div className="profile-plan-note">
@@ -161,12 +178,22 @@ function PlanActions({
   if (accessState?.hasActiveRecurringSubscription) {
     return (
       <button type="button" className="btn btn-secundario" onClick={onRequestCancelSubscription}>
-        Cancelar assinatura
+        {accessState?.refundWindow?.eligible ? 'Cancelar e solicitar reembolso' : 'Cancelar assinatura'}
       </button>
     );
   }
 
-  // Sem ação self-service (afiliado, semestral pago) — nada de botão desabilitado.
+  // Compra sem recorrência (semestral) mas dentro do prazo de arrependimento:
+  // permite o cancelamento com estorno integral.
+  if (accessState?.refundWindow?.eligible) {
+    return (
+      <button type="button" className="btn btn-secundario" onClick={onRequestCancelSubscription}>
+        Solicitar reembolso (7 dias)
+      </button>
+    );
+  }
+
+  // Sem ação self-service (afiliado, semestral fora do prazo) — sem botão.
   return null;
 }
 
@@ -184,6 +211,7 @@ function ProfilePage({
   checkoutError,
   onRequestCancelSubscription,
   justCancelledAccessUntil,
+  justCancelledRefund,
   onUpdateContextualTab,
   savingPreference,
   onExportData,
@@ -295,6 +323,7 @@ function ProfilePage({
                 onUpgrade={onUpgrade}
                 onRequestCancelSubscription={onRequestCancelSubscription}
                 justCancelledAccessUntil={justCancelledAccessUntil}
+                justCancelledRefund={justCancelledRefund}
               />
             </div>
           </section>

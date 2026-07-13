@@ -102,6 +102,8 @@ function AffiliatePage({ user, referralCode, onLogin }) {
     : 30;
   const availableCommission = Number(stats?.availableCommission) || 0;
   const processingCommission = Number(stats?.processingCommission) || 0;
+  const holdCommission = Number(stats?.holdCommission) || 0;
+  const clawbackDebt = Number(stats?.clawbackDebt) || 0;
   const hasOpenPayout = payouts.some((payout) => payout.status === 'requested');
   const belowMinimum = availableCommission < payoutMinAmount;
   const canRequestPayout = Boolean(affiliate) && !hasOpenPayout && !belowMinimum;
@@ -256,6 +258,10 @@ function AffiliatePage({ user, referralCode, onLogin }) {
                 <button type="button" className="btn btn-primario" onClick={handleCreateAffiliate} disabled={creating}>
                   {creating ? 'Gerando...' : 'Gerar meu link'}
                 </button>
+                <p className="affiliate-terms-note">
+                  Ao gerar seu link, você concorda com a seção Programa de Afiliados dos{' '}
+                  <a href="/termos" target="_blank" rel="noopener noreferrer">Termos de Uso</a>.
+                </p>
               </div>
             )}
 
@@ -270,6 +276,10 @@ function AffiliatePage({ user, referralCode, onLogin }) {
                 <strong>{formatCurrency(availableCommission)}</strong>
               </div>
               <div>
+                <span>Em carência (7 dias)</span>
+                <strong>{formatCurrency(holdCommission)}</strong>
+              </div>
+              <div>
                 <span>Em processamento</span>
                 <strong>{formatCurrency(processingCommission)}</strong>
               </div>
@@ -281,10 +291,17 @@ function AffiliatePage({ user, referralCode, onLogin }) {
                 <span>Conversões</span>
                 <strong>{stats?.conversions || 0}</strong>
               </div>
+              {clawbackDebt > 0 ? (
+                <div>
+                  <span>Ajuste por reembolso</span>
+                  <strong>-{formatCurrency(clawbackDebt)}</strong>
+                </div>
+              ) : null}
             </div>
             <p className="affiliate-small-print">
-              Comissões entram como disponíveis após pagamento aprovado. Ao solicitar um saque, o valor fica em
-              processamento até a transferência via PIX ser confirmada.
+              A comissão fica em carência por 7 dias após a venda (prazo de arrependimento do cliente) antes de
+              virar saldo disponível. Se o cliente indicado for reembolsado, a comissão correspondente é cancelada
+              e, se já tiver sido paga, descontada de saques futuros.
             </p>
           </section>
 

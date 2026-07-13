@@ -1,6 +1,12 @@
 const { COMMISSION_RATE, calculateCommissionAmount, normalizeDiscountRate } = require('../config/billingPlans');
 const { isValidUserId } = require('../utils/idValidation');
 
+// Carência antes de uma comissão virar saldo sacável: cobre a janela de
+// arrependimento de 7 dias do cliente. DEVE bater com o interval usado em
+// supabase/affiliate_refund_protection.sql (request_affiliate_payout).
+const AFFILIATE_COMMISSION_HOLD_DAYS = 7;
+const AFFILIATE_COMMISSION_HOLD_MS = AFFILIATE_COMMISSION_HOLD_DAYS * 24 * 60 * 60 * 1000;
+
 function getSupabaseAdminConfig() {
   return {
     url: process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL,
@@ -267,9 +273,24 @@ function emptyAffiliateStats() {
     pendingCommission: 0,
     paidCommission: 0,
     availableCommission: 0,
+    holdCommission: 0,
     processingCommission: 0,
+    clawbackDebt: 0,
     conversions: 0,
   };
+}
+
+// Comissão dentro da carência de 7 dias ainda não é sacável. created_at ausente
+// (dados sintéticos/legado) é tratado como fora da carência para não travar o
+// saldo indevidamente — o banco sempre grava created_at em produção.
+function isCommissionWithinHold(commission, now) {
+  const createdAt = commission?.created_at ? new Date(commission.created_at).getTime() : NaN;
+
+  if (!Number.isFinite(createdAt)) {
+    return false;
+  }
+
+  return createdAt > now - AFFILIATE_COMMISSION_HOLD_MS;
 }
 
 function roundMoney(value) {
@@ -279,11 +300,12 @@ function roundMoney(value) {
 // Blindagem: o saldo é derivado do status REAL do saque de cada comissão, não
 // só da presença de payout_id. Assim, um saque rejeitado/pago por edição manual
 // (fora do RPC) não deixa dinheiro preso nem re-sacável indevidamente.
-//   - disponível: pending/approved sem saque ou com saque rejeitado
+//   - disponível: pending/approved sem saque (ou saque rejeitado) E fora da carência de 7d
+//   - em carência: pending/approved fora de saque, mas ainda dentro dos 7 dias
 //   - em processamento: comissão em um saque ainda 'requested'
 //   - comissão presa em saque 'paid' sem baixa correta não entra em disponível
 //     (evita saque em dobro) — precisa ser corrigida pelo RPC settle.
-function summarizeAffiliateCommissions(commissions = [], payoutStatusById = new Map()) {
+function summarizeAffiliateCommissions(commissions = [], payoutStatusById = new Map(), { now = Date.now() } = {}) {
   const summary = commissions.reduce((accumulator, commission) => {
     const amount = Number(commission.commission_amount) || 0;
     accumulator.totalCommission += amount;
@@ -305,7 +327,12 @@ function summarizeAffiliateCommissions(commissions = [], payoutStatusById = new 
     if (payoutStatus === 'requested') {
       accumulator.processingCommission += amount;
     } else if (!commission.payout_id || payoutStatus === 'rejected') {
-      accumulator.availableCommission += amount;
+      // Fora de saque aberto: disponível se passou a carência, senão em carência.
+      if (isCommissionWithinHold(commission, now)) {
+        accumulator.holdCommission += amount;
+      } else {
+        accumulator.availableCommission += amount;
+      }
     }
 
     return accumulator;
@@ -315,6 +342,7 @@ function summarizeAffiliateCommissions(commissions = [], payoutStatusById = new 
   summary.pendingCommission = roundMoney(summary.pendingCommission);
   summary.paidCommission = roundMoney(summary.paidCommission);
   summary.availableCommission = roundMoney(summary.availableCommission);
+  summary.holdCommission = roundMoney(summary.holdCommission);
   summary.processingCommission = roundMoney(summary.processingCommission);
 
   return summary;
@@ -346,6 +374,28 @@ async function getAffiliatePayoutStatusMap(affiliateId) {
   }
 }
 
+// Best-effort: soma das dívidas de clawback pendentes (reembolsos de comissões
+// já pagas). Se a tabela ainda não existir (SQL não aplicado), retorna 0.
+async function getAffiliatePendingClawbackTotal(affiliateId) {
+  try {
+    const query = new URLSearchParams({
+      select: 'amount',
+      affiliate_id: `eq.${affiliateId}`,
+      status: 'eq.pending',
+    });
+    const response = await supabaseRequest(`affiliate_commission_clawbacks?${query.toString()}`, { method: 'GET' });
+    const json = await response.json();
+
+    if (!Array.isArray(json)) {
+      return 0;
+    }
+
+    return roundMoney(json.reduce((total, row) => total + (Number(row?.amount) || 0), 0));
+  } catch (_error) {
+    return 0;
+  }
+}
+
 async function getAffiliateStats(affiliateId) {
   if (!affiliateId) {
     return emptyAffiliateStats();
@@ -355,14 +405,20 @@ async function getAffiliateStats(affiliateId) {
     select: '*',
     affiliate_id: `eq.${affiliateId}`,
   });
-  const [response, payoutStatusById] = await Promise.all([
+  const [response, payoutStatusById, clawbackDebt] = await Promise.all([
     supabaseRequest(`affiliate_commissions?${query.toString()}`, { method: 'GET' }),
     getAffiliatePayoutStatusMap(affiliateId),
+    getAffiliatePendingClawbackTotal(affiliateId),
   ]);
   const json = await response.json();
   const commissions = Array.isArray(json) ? json.map(normalizeCommission).filter(Boolean) : [];
+  const summary = summarizeAffiliateCommissions(commissions, payoutStatusById);
 
-  return summarizeAffiliateCommissions(commissions, payoutStatusById);
+  // Dívida de reembolso reduz o valor efetivamente sacável (mesma regra do RPC).
+  summary.clawbackDebt = roundMoney(clawbackDebt);
+  summary.availableCommission = roundMoney(Math.max(0, summary.availableCommission - clawbackDebt));
+
+  return summary;
 }
 
 async function createAffiliateCommission({
@@ -412,16 +468,35 @@ async function createAffiliateCommission({
   return normalizeCommission(Array.isArray(json) ? json[0] : null);
 }
 
-// Reembolso/chargeback: a comissão deixa de ser devida. Cancela apenas
-// comissões ainda não pagas e fora de saque aberto; se já estiver presa num
-// saque, fica para revisão manual do dono antes de pagar.
-async function cancelAffiliateCommissionsForPayment(paymentId) {
-  const normalizedPaymentId = paymentId != null ? String(paymentId) : '';
+async function supabaseRpc(functionName, payload) {
+  const { url, serviceRoleKey } = getSupabaseAdminConfig();
 
-  if (!normalizedPaymentId) {
-    return [];
+  if (!url || !serviceRoleKey) {
+    throw new Error('affiliate storage unavailable');
   }
 
+  const response = await fetch(`${url}/rest/v1/rpc/${functionName}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      apikey: serviceRoleKey,
+      Authorization: `Bearer ${serviceRoleKey}`,
+    },
+    body: JSON.stringify(payload),
+  });
+
+  if (!response.ok) {
+    const error = new Error('affiliate rpc failed');
+    error.statusCode = response.status;
+    throw error;
+  }
+
+  return response.json();
+}
+
+// Fallback (antes do SQL de proteção ser aplicado): cancela só comissões soltas
+// e fora de saque aberto — o mesmo comportamento anterior.
+async function cancelUncommittedCommissionsForPayment(normalizedPaymentId) {
   const query = new URLSearchParams({
     payment_id: `eq.${normalizedPaymentId}`,
     status: 'in.(pending,approved)',
@@ -438,13 +513,37 @@ async function cancelAffiliateCommissionsForPayment(paymentId) {
   return Array.isArray(json) ? json.map(normalizeCommission).filter(Boolean) : [];
 }
 
+// Reembolso/chargeback: a comissão deixa de ser devida. Usa o RPC atômico
+// cancel_affiliate_commission_for_refund, que trata os 3 casos (solta, presa em
+// saque aberto, já paga -> vira dívida de clawback). Se o RPC ainda não existir
+// (SQL não aplicado), cai no comportamento anterior sem quebrar o webhook.
+async function cancelAffiliateCommissionForRefund(paymentId) {
+  const normalizedPaymentId = paymentId != null ? String(paymentId) : '';
+
+  if (!normalizedPaymentId) {
+    return { ok: true, result: 'no_payment' };
+  }
+
+  try {
+    const result = await supabaseRpc('cancel_affiliate_commission_for_refund', {
+      p_payment_id: normalizedPaymentId,
+    });
+    return result || { ok: true, result: 'unknown' };
+  } catch (error) {
+    // 404 = função ainda não criada no banco. Degrada para o cancelamento simples.
+    await cancelUncommittedCommissionsForPayment(normalizedPaymentId).catch(() => []);
+    return { ok: true, result: 'fallback_patch', degraded: true, statusCode: error?.statusCode || null };
+  }
+}
+
 module.exports = {
-  cancelAffiliateCommissionsForPayment,
+  cancelAffiliateCommissionForRefund,
   createAffiliate,
   createAffiliateWithCode,
   createAffiliateCommission,
   getAffiliateByCode,
   getAffiliateByUserId,
+  getAffiliatePendingClawbackTotal,
   getAffiliateStats,
   normalizeAffiliateCode,
   resolveAffiliateForCheckout,

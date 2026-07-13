@@ -1,5 +1,5 @@
-export const LEGAL_DOCUMENT_VERSION = '2026-06-07';
-export const LEGAL_LAST_UPDATED = '07/06/2026';
+export const LEGAL_DOCUMENT_VERSION = '2026-07-13';
+export const LEGAL_LAST_UPDATED = '13/07/2026';
 
 const TERMS_SECTIONS = [
   {
@@ -27,6 +27,8 @@ const TERMS_SECTIONS = [
       'Durante o trial, o acesso aos recursos profissionais é liberado pelo período promocional vigente, sujeito apenas a limites técnicos de segurança, estabilidade e disponibilidade.',
       'O processamento de pagamentos para a liberação do plano profissional e o checkout são realizados de forma segura pela integração com o Mercado Pago.',
       'Em caso de cancelamento da assinatura, o acesso às funcionalidades premium será suspenso ao final do ciclo de faturamento vigente.',
+      'Nos termos do art. 49 do Código de Defesa do Consumidor, você pode desistir de qualquer pagamento realizado através do Mercado Pago em até 7 (sete) dias corridos contados da data de aprovação do pagamento, sem necessidade de justificativa, solicitando o cancelamento pela própria plataforma. Nesse caso, o valor será integralmente estornado e o acesso aos recursos profissionais será encerrado imediatamente.',
+      'Decorrido o prazo de 7 dias, o cancelamento da assinatura impede apenas cobranças futuras, mantendo o acesso já pago até o fim do ciclo vigente, sem direito a estorno proporcional.',
     ],
   },
   {
@@ -41,6 +43,19 @@ const TERMS_SECTIONS = [
     paragraphs: [
       'O Minha Anamnese e seus desenvolvedores não se responsabilizam por quaisquer danos, perdas ou prejuízos decorrentes de condutas médicas, diagnósticos ou tratamentos realizados com base nas informações geradas pelo sistema.',
       'A decisão clínica final é sempre do profissional de saúde.',
+    ],
+  },
+  {
+    title: '6. Programa de Afiliados',
+    paragraphs: [
+      'O Minha Anamnese oferece um programa de afiliados opcional. Ao gerar seu link de afiliado, você adere e concorda integralmente com as condições desta seção, que passam a reger essa relação sem necessidade de contrato individual adicional.',
+      'A participação no programa constitui uma parceria comercial de indicação e não cria qualquer vínculo empregatício, societário, de representação comercial ou de exclusividade entre o afiliado e o Minha Anamnese.',
+      'A comissão é devida sobre o valor efetivamente pago pelo cliente indicado (líquido de eventuais descontos) e apenas sobre pagamentos aprovados e confirmados. O percentual de comissão é definido pela empresa, pode variar por afiliado e ser ajustado a qualquer momento, a critério exclusivo da empresa e sem necessidade de aviso individual prévio.',
+      'A comissão fica em carência durante o prazo de arrependimento do cliente indicado e só é considerada devida e disponível para saque após decorrido esse período. Caso o pagamento que gerou a comissão seja cancelado, reembolsado ou estornado por qualquer motivo, a comissão correspondente será automaticamente cancelada; se já tiver sido paga ao afiliado, o valor poderá ser descontado de comissões ou saques futuros.',
+      'O pagamento das comissões ocorre mediante solicitação do afiliado, respeitado o valor mínimo definido pela empresa, por meio de transferência via PIX para a chave informada pelo próprio afiliado. A empresa não se responsabiliza por transferências feitas a chaves PIX informadas incorretamente pelo afiliado. Os tributos incidentes sobre os valores recebidos são de responsabilidade exclusiva do afiliado.',
+      'É vedado ao afiliado: indicar a própria conta ou realizar autoindicação para obter comissão sobre a própria compra; praticar spam ou divulgação não autorizada; fazer promessas ou afirmações falsas ou enganosas sobre o produto; e utilizar a marca, o nome ou anúncios pagos com o termo "Minha Anamnese" sem autorização expressa.',
+      'A empresa poderá suspender ou cancelar a conta de afiliado e as comissões pendentes em caso de indício de fraude, abuso ou violação destes termos, bem como suspender, encerrar ou alterar as condições do programa a qualquer momento, com efeito sobre comissões futuras, preservando as comissões já aprovadas e fora do período de carência.',
+      'A participação no programa não garante qualquer volume de conversões, ganhos mínimos ou resultado específico.',
     ],
   },
 ];
