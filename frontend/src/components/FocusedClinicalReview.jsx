@@ -86,7 +86,7 @@ function FocusedClinicalReview({
 
   if (!user?.id || !isPro) {
     return (
-      <div className="card section-insight focused-review">
+      <div className="card section-insight focused-review workspace-panel">
         {header}
         <div className="focused-review-cta">
           <span className="diagnostic-pro-badge">PRO</span>
@@ -101,7 +101,7 @@ function FocusedClinicalReview({
 
   if (!data && !loading && !error) {
     return (
-      <div className="card section-insight focused-review">
+      <div className="card section-insight focused-review workspace-panel">
         {header}
         <div className="focused-review-cta">
           <p>Analisa a história organizada e aponta o que checar sobre o quadro específico — sem sugerir diagnóstico, dose ou conduta.</p>
@@ -114,7 +114,7 @@ function FocusedClinicalReview({
   }
 
   return (
-    <div className="card section-insight focused-review">
+    <div className="card section-insight focused-review workspace-panel">
       {header}
 
       {loading ? (
