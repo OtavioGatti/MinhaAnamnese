@@ -761,6 +761,29 @@ body {
   box-shadow: none;
 }
 
+/* .card (definido depois de .workspace-panel) zerava bg/borda/raio dos painéis,
+   deixando as seções "soltas". O seletor combinado tem especificidade maior e
+   restaura a moldura de bloco onde workspace-panel é aplicada. */
+.card.workspace-panel {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(229, 231, 235, 0.9);
+  border-radius: 20px;
+  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.05);
+  padding: 1.35rem 1.45rem 1.5rem;
+}
+
+.card.workspace-panel-primary {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.96) 0%, rgba(248, 250, 252, 0.96) 100%);
+}
+
+.card.workspace-panel + .card.workspace-panel {
+  border-top: 1px solid rgba(229, 231, 235, 0.9);
+}
+
+.conteudo-principal > .card.workspace-panel:first-child {
+  padding-top: 1.35rem;
+}
+
 .section-input {
   order: 1;
 }
@@ -6822,8 +6845,3 @@ body {
   }
 }
 
-/* Painéis (workspace-panel) adjacentes mantêm a própria borda uniforme,
-   sem herdar o hairline de separação usado entre cards transparentes. */
-.card.workspace-panel + .card.workspace-panel {
-  border-top: 1px solid rgba(229, 231, 235, 0.9);
-}
