@@ -1,4 +1,81 @@
+import { useState } from 'react';
 import { PRO_PLAN_PERIOD_COPY, PRO_PLAN_PRICE_COPY } from '../billingPlans';
+
+const DISPLAY_NAME_MAX_LENGTH = 60;
+
+// Campo editável de nome de exibição, isolado para manter seu próprio estado
+// (rascunho, salvando, erro/sucesso) sem inflar o ProfilePage.
+function DisplayNameField({ initialValue, onSave }) {
+  const [draft, setDraft] = useState(initialValue || '');
+  const [saving, setSaving] = useState(false);
+  const [error, setError] = useState('');
+  const [saved, setSaved] = useState(false);
+
+  const trimmed = draft.replace(/\s+/g, ' ').trim();
+  const normalizedInitial = String(initialValue || '').trim();
+  const isDirty = trimmed !== normalizedInitial;
+  const looksLikeEmail = /\S+@\S+\.\S+/.test(trimmed);
+
+  const handleSave = async () => {
+    if (!isDirty || saving) {
+      return;
+    }
+
+    if (looksLikeEmail) {
+      setError('Use um nome, não um e-mail.');
+      return;
+    }
+
+    setSaving(true);
+    setError('');
+    setSaved(false);
+
+    try {
+      const response = await onSave?.(trimmed);
+
+      if (response && response.success === false) {
+        setError(response.error || 'Não foi possível salvar o nome agora.');
+        return;
+      }
+
+      setSaved(true);
+      window.setTimeout(() => setSaved(false), 2000);
+    } catch (_err) {
+      setError('Não foi possível salvar o nome agora.');
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  return (
+    <div className="profile-name-field">
+      <label htmlFor="profile-display-name">Nome de exibição</label>
+      <div className="profile-name-input-row">
+        <input
+          id="profile-display-name"
+          type="text"
+          value={draft}
+          onChange={(event) => {
+            setDraft(event.target.value);
+            setError('');
+          }}
+          placeholder="Como você quer ser chamado(a)"
+          maxLength={DISPLAY_NAME_MAX_LENGTH}
+        />
+        <button
+          type="button"
+          className="btn btn-secundario"
+          onClick={handleSave}
+          disabled={!isDirty || saving || looksLikeEmail}
+        >
+          {saving ? 'Salvando...' : 'Salvar'}
+        </button>
+      </div>
+      {error ? <div className="topbar-auth-error">{error}</div> : null}
+      {saved && !error ? <small className="profile-name-saved">Nome atualizado.</small> : null}
+    </div>
+  );
+}
 
 function formatPlanExpiry(value) {
   if (!value) {
@@ -212,6 +289,7 @@ function ProfilePage({
   onRequestCancelSubscription,
   justCancelledAccessUntil,
   justCancelledRefund,
+  onSaveDisplayName,
   onUpdateContextualTab,
   savingPreference,
   onExportData,
@@ -340,6 +418,8 @@ function ProfilePage({
                 <strong>{profileEmail}</strong>
               </div>
             </div>
+
+            <DisplayNameField initialValue={profile?.display_name || ''} onSave={onSaveDisplayName} />
 
             <div className="profile-card-actions profile-card-actions-stack">
               <div className="profile-inline-actions">

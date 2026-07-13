@@ -674,7 +674,15 @@ function getRelevantGapsCount(score) {
   return 4;
 }
 
-function getUserDisplayName(user) {
+function getUserDisplayName(user, profile) {
+  // Nome escolhido pelo usuário tem prioridade; o heurístico do e-mail é só a
+  // rede de segurança para quem nunca preencheu.
+  const chosenName = String(profile?.display_name || '').trim();
+
+  if (chosenName) {
+    return chosenName;
+  }
+
   const email = user?.email || '';
 
   if (!email.includes('@')) {
@@ -1947,6 +1955,16 @@ function App() {
     }
   };
 
+  const handleSaveDisplayName = async (nextName) => {
+    const response = await api.post('/profile', { display_name: nextName });
+
+    if (response.success && response.data) {
+      setProfile(response.data);
+    }
+
+    return response;
+  };
+
   const handleUpdateContextualTab = async (nextTab) => {
     if (!nextTab || nextTab === (profile?.default_contextual_tab || activeSidebarTab)) {
       return;
@@ -2348,7 +2366,7 @@ function App() {
     return !areMessagesRedundant(primaryGapsCopy, gap);
   });
   const displayedResultado = useMemo(() => sanitizeAnamnesisForDisplay(resultado), [resultado]);
-  const userDisplayName = user ? getUserDisplayName(user) : '';
+  const userDisplayName = user ? getUserDisplayName(user, profile) : '';
   const templateAtual = templates.find((template) => template.id === templateSelecionado) || null;
   const profileTemplateAtual =
     templates.find((template) => template.id === profile?.last_template_used) || null;
@@ -3244,6 +3262,7 @@ function App() {
           onRequestCancelSubscription={() => setCancelSubscriptionModalOpen(true)}
           justCancelledAccessUntil={cancelSubscriptionAccessUntil}
           justCancelledRefund={cancelSubscriptionRefund}
+          onSaveDisplayName={handleSaveDisplayName}
           onUpdateContextualTab={handleUpdateContextualTab}
           savingPreference={savingPreference}
           onExportData={handleExportData}

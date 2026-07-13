@@ -19,7 +19,10 @@ const REFUND_REVOKED_STATUSES = new Set(['refunded', 'charged_back']);
 const ALLOWED_CONTEXTUAL_TABS = new Set(['guide', 'checklist', 'calculator', 'structure']);
 const DEFAULT_TRIAL_DAYS = 7;
 const DEFAULT_TRIAL_ROLLOUT_AT = '2026-05-14T00:00:00.000Z';
-const OPTIONAL_COMPLIANCE_COLUMNS = [
+// Colunas que podem não existir antes do respectivo SQL ser aplicado. Se o
+// upsert falhar por causa delas (400), reenviamos sem essas chaves (degradação
+// graciosa), em vez de quebrar o perfil inteiro.
+const OPTIONAL_PROFILE_COLUMNS = [
   'terms_accepted_at',
   'terms_scrolled_at',
   'terms_version',
@@ -29,6 +32,7 @@ const OPTIONAL_COMPLIANCE_COLUMNS = [
   'cookie_consent_status',
   'cookie_consent_at',
   'cookie_consent_version',
+  'display_name',
 ];
 
 function getProfilesAdminConfig() {
@@ -125,6 +129,24 @@ function normalizeContextualTab(value) {
   return ALLOWED_CONTEXTUAL_TABS.has(value) ? value : 'guide';
 }
 
+const DISPLAY_NAME_MAX_LENGTH = 60;
+
+// Nome de exibição: colapsa espaços, remove quebras de linha e corta em 60. Um
+// e-mail digitado no campo é rejeitado (null) — evita recriar o problema feio.
+function normalizeDisplayName(value) {
+  if (typeof value !== 'string') {
+    return null;
+  }
+
+  const cleaned = value.replace(/\s+/g, ' ').trim().slice(0, DISPLAY_NAME_MAX_LENGTH);
+
+  if (!cleaned || /\S+@\S+\.\S+/.test(cleaned)) {
+    return null;
+  }
+
+  return cleaned;
+}
+
 function normalizeTemplateId(value) {
   if (typeof value !== 'string') {
     return null;
@@ -175,6 +197,9 @@ function buildProfileFallback(user, existingProfile = null, overrides = {}) {
   const profile = {
     id: user?.id || existingProfile?.id || null,
     email: user?.email || existingProfile?.email || null,
+    display_name: normalizeDisplayName(
+      overrides.display_name ?? existingProfile?.display_name,
+    ),
     current_plan: normalizePlan(
       overrides.current_plan ??
         existingProfile?.current_plan ??
@@ -298,6 +323,10 @@ async function upsertProfile(fields) {
     payload.email = fields.email || null;
   }
 
+  if ('display_name' in fields) {
+    payload.display_name = normalizeDisplayName(fields.display_name);
+  }
+
   if ('current_plan' in fields) {
     payload.current_plan = normalizePlan(fields.current_plan);
   }
@@ -379,9 +408,9 @@ async function upsertProfile(fields) {
     on_conflict: 'id',
   });
 
-  function omitOptionalComplianceFields(source) {
+  function omitOptionalProfileFields(source) {
     return Object.fromEntries(
-      Object.entries(source).filter(([key]) => !OPTIONAL_COMPLIANCE_COLUMNS.includes(key)),
+      Object.entries(source).filter(([key]) => !OPTIONAL_PROFILE_COLUMNS.includes(key)),
     );
   }
 
@@ -412,15 +441,15 @@ async function upsertProfile(fields) {
   try {
     return await sendProfileUpsert(payload);
   } catch (error) {
-    const hasOptionalComplianceFields = OPTIONAL_COMPLIANCE_COLUMNS.some((key) =>
+    const hasOptionalProfileFields = OPTIONAL_PROFILE_COLUMNS.some((key) =>
       Object.prototype.hasOwnProperty.call(payload, key),
     );
 
-    if (!hasOptionalComplianceFields || error.statusCode !== 400) {
+    if (!hasOptionalProfileFields || error.statusCode !== 400) {
       throw error;
     }
 
-    return sendProfileUpsert(omitOptionalComplianceFields(payload));
+    return sendProfileUpsert(omitOptionalProfileFields(payload));
   }
 }
 
@@ -431,6 +460,7 @@ function shouldUpdateProfile(existingProfile, nextProfile) {
 
   return (
     existingProfile.email !== nextProfile.email ||
+    normalizeDisplayName(existingProfile.display_name) !== normalizeDisplayName(nextProfile.display_name) ||
     normalizePlan(existingProfile.current_plan) !== normalizePlan(nextProfile.current_plan) ||
     normalizeTemplateId(existingProfile.last_template_used) !==
       normalizeTemplateId(nextProfile.last_template_used) ||
@@ -533,6 +563,7 @@ async function ensureUserProfile(user, overrides = {}) {
   const persistedProfile = await upsertProfile({
     id: fallbackProfile.id,
     email: fallbackProfile.email,
+    display_name: fallbackProfile.display_name,
     current_plan: fallbackProfile.current_plan,
     last_template_used: fallbackProfile.last_template_used,
     default_contextual_tab: fallbackProfile.default_contextual_tab,

@@ -6367,6 +6367,45 @@ body {
   outline: none;
 }
 
+.profile-name-field {
+  margin-top: 1rem;
+  display: grid;
+  gap: 0.4rem;
+}
+
+.profile-name-field label {
+  font-size: 0.85rem;
+  color: var(--gray-600, #4b5563);
+  font-weight: 600;
+}
+
+.profile-name-input-row {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.profile-name-input-row input {
+  flex: 1;
+  min-width: 0;
+  border: 1.5px solid var(--gray-200);
+  border-radius: 10px;
+  background: white;
+  color: var(--gray-800, #1f2937);
+  font-size: 0.9rem;
+  padding: 0.55rem 0.7rem;
+}
+
+.profile-name-input-row input:focus {
+  border-color: var(--green-600, #16a34a);
+  outline: none;
+}
+
+.profile-name-saved {
+  color: var(--green-600, #16a34a);
+  font-size: 0.8rem;
+}
+
 .profile-legal-links {
   display: flex;
   flex-wrap: wrap;

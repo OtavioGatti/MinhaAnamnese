@@ -6,6 +6,10 @@ function getProfileUpdatesFromRequest(req) {
   const now = new Date().toISOString();
 
   return {
+    display_name:
+      Object.prototype.hasOwnProperty.call(body, 'display_name')
+        ? body.display_name
+        : undefined,
     last_template_used:
       Object.prototype.hasOwnProperty.call(body, 'last_template_used')
         ? body.last_template_used

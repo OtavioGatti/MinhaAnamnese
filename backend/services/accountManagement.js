@@ -60,6 +60,7 @@ async function exportUserData(user) {
     },
     profile: profile
       ? {
+          display_name: profile.display_name || null,
           current_plan: profile.current_plan,
           billing_status: profile.billing_status,
           access_source: profile.access_source,
