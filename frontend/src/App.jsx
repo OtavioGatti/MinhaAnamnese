@@ -35,6 +35,10 @@ const TemplatesPage = lazy(() => import('./components/TemplatesPage'));
 
 const TEMPLATE_WITH_CALCULATORS = 'obstetricia';
 const CHECKOUT_RETURN_STATE_KEY = 'checkout-return-state';
+const ANAMNESIS_DRAFT_KEY = 'minha-anamnese-draft';
+// Espelha o teto do backend (MAX_ANAMNESIS_TEXT_LENGTH) para avisar antes do
+// round-trip que seria rejeitado com 413.
+const MAX_ANAMNESIS_TEXT_LENGTH = 20000;
 const TRACKING_SESSION_ID_KEY = 'tracking-session-id';
 const COOKIE_CONSENT_KEY = 'minha-anamnese-cookie-consent';
 const AFFILIATE_REFERRAL_KEY = 'minha-anamnese-affiliate-ref';
@@ -145,6 +149,50 @@ function getCheckoutReturnState() {
 
 function clearCheckoutReturnState() {
   sessionStorage.removeItem(CHECKOUT_RETURN_STATE_KEY);
+}
+
+// Rascunho da anamnese em digitação: persistido por aba (sessionStorage) para
+// sobreviver a refresh acidental, navegação interna e expiração de sessão, sem
+// deixar o texto clínico no disco após a aba fechar.
+function saveAnamnesisDraft(draft) {
+  try {
+    const texto = String(draft?.texto || '');
+    const templateSelecionado = String(draft?.templateSelecionado || '');
+
+    if (!texto.trim() && !templateSelecionado) {
+      sessionStorage.removeItem(ANAMNESIS_DRAFT_KEY);
+      return;
+    }
+
+    sessionStorage.setItem(
+      ANAMNESIS_DRAFT_KEY,
+      JSON.stringify({ texto, templateSelecionado }),
+    );
+  } catch {
+    // sessionStorage pode estar indisponível (modo privado/quota); segue sem rascunho.
+  }
+}
+
+function getAnamnesisDraft() {
+  try {
+    const rawDraft = sessionStorage.getItem(ANAMNESIS_DRAFT_KEY);
+
+    if (!rawDraft) {
+      return null;
+    }
+
+    return JSON.parse(rawDraft);
+  } catch {
+    return null;
+  }
+}
+
+function clearAnamnesisDraft() {
+  try {
+    sessionStorage.removeItem(ANAMNESIS_DRAFT_KEY);
+  } catch {
+    // Ignora falha de storage.
+  }
 }
 
 function createTrackingSessionId() {
@@ -824,8 +872,10 @@ function App() {
   const lastSavedProfileSnapshotRef = useRef(null);
   const [templates, setTemplates] = useState([]);
   const [templateCategories, setTemplateCategories] = useState([]);
-  const [templateSelecionado, setTemplateSelecionado] = useState('');
-  const [texto, setTexto] = useState('');
+  const [templateSelecionado, setTemplateSelecionado] = useState(
+    () => getAnamnesisDraft()?.templateSelecionado || '',
+  );
+  const [texto, setTexto] = useState(() => getAnamnesisDraft()?.texto || '');
   const [resultado, setResultado] = useState('');
   const [user, setUser] = useState(null);
   const [profile, setProfile] = useState(null);
@@ -1561,6 +1611,7 @@ function App() {
     setReferralCopied(false);
     setActiveSidebarTab('guide');
     setCurrentInsightsUnlocked(false);
+    clearAnamnesisDraft();
     trackedEventsRef.current.clear();
   };
 
@@ -2504,6 +2555,16 @@ function App() {
     return () => window.cancelAnimationFrame(frameId);
   }, [qualityScore.shouldShowScore, qualityScore.score, resultado, templateSelecionado]);
 
+  // Autosave do rascunho em digitação. Debounce curto para não escrever a cada
+  // tecla; ao esvaziar (ex.: Limpar) o helper remove a chave.
+  useEffect(() => {
+    const timeoutId = window.setTimeout(() => {
+      saveAnamnesisDraft({ texto, templateSelecionado });
+    }, 400);
+
+    return () => window.clearTimeout(timeoutId);
+  }, [texto, templateSelecionado]);
+
   if (legalPage) {
     return (
       <>
@@ -2925,6 +2986,7 @@ function App() {
                 onTextoChange={handleTextoChange}
                 inputRef={textoInputRef}
                 placeholder={textPlaceholder}
+                maxLength={MAX_ANAMNESIS_TEXT_LENGTH}
                 possuiGuiaSelecionado={possuiGuiaSelecionado}
                 templateTemCalculadora={templateTemCalculadora}
                 onOpenCalculadora={() => setActiveSidebarTab('calculator')}
