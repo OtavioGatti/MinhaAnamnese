@@ -1573,6 +1573,13 @@ body {
   color: var(--gray-400);
 }
 
+/* Ancora o contador ao rodape do proprio textarea, e nao do input-wrapper
+   inteiro — evita a sobreposicao com a linha "Abrir Bulario" quando a mencao
+   de farmacos esta ativa. */
+.textarea-shell {
+  position: relative;
+}
+
 .char-count {
   position: absolute;
   bottom: 0.625rem;

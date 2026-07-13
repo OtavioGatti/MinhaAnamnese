@@ -72,22 +72,24 @@ function InputSection({
       <div className="form-group">
         <label htmlFor="texto">Texto base</label>
         <div className="input-wrapper">
-          <textarea
-            className="task-textarea"
-            ref={inputRef}
-            id="texto"
-            value={texto}
-            onChange={drugMentions.handleTextChange}
-            onClick={drugMentions.handleCursorActivity}
-            onKeyDown={drugMentions.handleTextKeyDown}
-            onKeyUp={drugMentions.handleCursorActivity}
-            placeholder={placeholder}
-          />
-          {texto.length > 0 && (
-            <span className={`char-count${excedeuLimite ? ' char-count-exceeded' : ''}`}>
-              {texto.length.toLocaleString('pt-BR')} caracteres
-            </span>
-          )}
+          <div className="textarea-shell">
+            <textarea
+              className="task-textarea"
+              ref={inputRef}
+              id="texto"
+              value={texto}
+              onChange={drugMentions.handleTextChange}
+              onClick={drugMentions.handleCursorActivity}
+              onKeyDown={drugMentions.handleTextKeyDown}
+              onKeyUp={drugMentions.handleCursorActivity}
+              placeholder={placeholder}
+            />
+            {texto.length > 0 && (
+              <span className={`char-count${excedeuLimite ? ' char-count-exceeded' : ''}`}>
+                {texto.length.toLocaleString('pt-BR')} caracteres
+              </span>
+            )}
+          </div>
           <ClinicalDrugMentionAssist
             enabled={drugMentionsEnabled}
             mention={drugMentions}
