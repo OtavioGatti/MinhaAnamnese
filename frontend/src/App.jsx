@@ -7,6 +7,7 @@ import InputSection from './components/InputSection';
 import InsightBlock from './components/InsightBlock';
 import PlanComparisonModal from './components/PlanComparisonModal';
 import ReferralLetterCard from './components/ReferralLetterCard';
+import SnippetsQuickModal from './components/SnippetsQuickModal';
 import StructuralFeedback from './components/StructuralFeedback';
 import StructuredOutput from './components/StructuredOutput';
 import UserEvolution from './components/UserEvolution';
@@ -908,6 +909,7 @@ function App() {
   const [cancelSubscriptionError, setCancelSubscriptionError] = useState('');
   const [cancelSubscriptionAccessUntil, setCancelSubscriptionAccessUntil] = useState(null);
   const [cancelSubscriptionRefund, setCancelSubscriptionRefund] = useState(null);
+  const [snippetsModalOpen, setSnippetsModalOpen] = useState(false);
   const [savingPreference, setSavingPreference] = useState(false);
   const [exportingData, setExportingData] = useState(false);
   const [exportError, setExportError] = useState('');
@@ -1624,6 +1626,20 @@ function App() {
     setCurrentInsightsUnlocked(false);
     clearAnamnesisDraft();
     trackedEventsRef.current.clear();
+  };
+
+  const handleInsertSnippet = (snippetBody) => {
+    const body = String(snippetBody || '').trim();
+
+    if (!body) {
+      return;
+    }
+
+    // Anexa ao fim do texto atual; o usuário ajusta só o que estiver diferente.
+    setTexto((current) => (current.trim() ? `${current.replace(/\s+$/, '')}\n\n${body}` : body));
+    window.setTimeout(() => {
+      textoInputRef.current?.focus();
+    }, 60);
   };
 
   const handleMelhorarAnamnese = async () => {
@@ -3019,6 +3035,7 @@ function App() {
                 possuiGuiaSelecionado={possuiGuiaSelecionado}
                 templateTemCalculadora={templateTemCalculadora}
                 onOpenCalculadora={() => setActiveSidebarTab('calculator')}
+                onOpenSnippets={() => setSnippetsModalOpen(true)}
                 loading={loading}
                 loadingInsights={loadingInsights}
                 onOrganizar={handleOrganizar}
@@ -3176,6 +3193,12 @@ function App() {
           checkoutError={templatesCheckoutError}
           onProfileUpdate={setProfile}
           onRequestUpgrade={handleUpgradeTemplates}
+          user={user}
+          onLogin={() => {
+            setAuthPanelAberto(true);
+            setAuthMode('login');
+            setAuthError('');
+          }}
         />
       )}
 
@@ -3337,6 +3360,17 @@ function App() {
           }
         }}
         onConfirm={handleDeleteAccount}
+      />
+
+      <SnippetsQuickModal
+        open={snippetsModalOpen}
+        user={user}
+        onClose={() => setSnippetsModalOpen(false)}
+        onInsert={handleInsertSnippet}
+        onManage={() => {
+          setSnippetsModalOpen(false);
+          handleNavigate('templates');
+        }}
       />
 
       <WelcomeOnboardingModal

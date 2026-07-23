@@ -3,6 +3,7 @@ import { api } from '../apiClient';
 import { guides } from '../data/guides';
 import { officialTemplateCatalog } from '../data/officialTemplateCatalog';
 import { templateStructures } from '../data/templateStructures';
+import SnippetsSection from './SnippetsSection';
 
 const EMPTY_TEMPLATE_FORM = {
   id: null,
@@ -36,7 +37,10 @@ function TemplatesPage({
   checkoutError,
   onProfileUpdate,
   onRequestUpgrade,
+  user,
+  onLogin,
 }) {
+  const [pageTab, setPageTab] = useState('templates');
   const [search, setSearch] = useState('');
   const [categoryFilter, setCategoryFilter] = useState('all');
   const [previewTemplateId, setPreviewTemplateId] = useState(null);
@@ -316,47 +320,86 @@ function TemplatesPage({
       <section className="workspace-surface templates-hero">
         <div className="templates-hero-copy">
           <span className="workspace-kicker">Biblioteca clínica</span>
-          <h1>Templates clínicos</h1>
+          <h1>{pageTab === 'snippets' ? 'Frases prontas' : 'Templates clínicos'}</h1>
           <p>
-            Escolha um modelo oficial ou salve suas próprias estruturas para organizar a anamnese do jeito que você usa no dia a dia.
+            {pageTab === 'snippets'
+              ? 'Modelos de texto para copiar e colar na anamnese — exame físico normal, condutas e orientações, prontos para ajustar só o que estiver diferente.'
+              : 'Escolha um modelo oficial ou salve suas próprias estruturas para organizar a anamnese do jeito que você usa no dia a dia.'}
           </p>
         </div>
 
-        <div className="templates-toolbar">
-          <label className="templates-search">
-            <span>Buscar template oficial</span>
-            <input
-              type="text"
-              value={search}
-              onChange={(event) => setSearch(event.target.value)}
-              placeholder="Ex.: obstetrícia, triagem, clínica médica"
-            />
-          </label>
-
-          <div className="templates-toolbar-actions">
-            <button type="button" className="btn btn-primario" onClick={() => openTemplateEditor()} disabled={loadingCheckout}>
-              {canManageTemplates
-                ? 'Novo template'
-                : loadingCheckout
-                  ? 'Abrindo checkout...'
-                  : 'Liberar templates'}
-            </button>
-          </div>
+        <div className="templates-page-tabs" role="tablist" aria-label="Seções da biblioteca clínica">
+          <button
+            type="button"
+            role="tab"
+            aria-selected={pageTab === 'templates'}
+            className={`templates-filter-chip ${pageTab === 'templates' ? 'active' : ''}`}
+            onClick={() => setPageTab('templates')}
+          >
+            Templates
+          </button>
+          <button
+            type="button"
+            role="tab"
+            aria-selected={pageTab === 'snippets'}
+            className={`templates-filter-chip ${pageTab === 'snippets' ? 'active' : ''}`}
+            onClick={() => setPageTab('snippets')}
+          >
+            Frases prontas
+          </button>
         </div>
 
-        <div className="templates-filters" aria-label="Filtrar templates por categoria">
-          {[{ key: 'all', label: 'Todos' }, ...availableCategoryOptions].map((category) => (
-            <button
-              key={category.key}
-              type="button"
-              className={`templates-filter-chip ${categoryFilter === category.key ? 'active' : ''}`}
-              onClick={() => setCategoryFilter(category.key)}
-            >
-              {category.label}
-            </button>
-          ))}
-        </div>
+        {pageTab === 'templates' ? (
+          <>
+            <div className="templates-toolbar">
+              <label className="templates-search">
+                <span>Buscar template oficial</span>
+                <input
+                  type="text"
+                  value={search}
+                  onChange={(event) => setSearch(event.target.value)}
+                  placeholder="Ex.: obstetrícia, triagem, clínica médica"
+                />
+              </label>
+
+              <div className="templates-toolbar-actions">
+                <button type="button" className="btn btn-primario" onClick={() => openTemplateEditor()} disabled={loadingCheckout}>
+                  {canManageTemplates
+                    ? 'Novo template'
+                    : loadingCheckout
+                      ? 'Abrindo checkout...'
+                      : 'Liberar templates'}
+                </button>
+              </div>
+            </div>
+
+            <div className="templates-filters" aria-label="Filtrar templates por categoria">
+              {[{ key: 'all', label: 'Todos' }, ...availableCategoryOptions].map((category) => (
+                <button
+                  key={category.key}
+                  type="button"
+                  className={`templates-filter-chip ${categoryFilter === category.key ? 'active' : ''}`}
+                  onClick={() => setCategoryFilter(category.key)}
+                >
+                  {category.label}
+                </button>
+              ))}
+            </div>
+          </>
+        ) : null}
       </section>
+
+      {pageTab === 'snippets' ? (
+        <SnippetsSection
+          user={user}
+          isPro={isPro}
+          onRequestUpgrade={onRequestUpgrade}
+          onLogin={onLogin}
+        />
+      ) : null}
+
+      {pageTab === 'templates' ? (
+        <>
 
       <section className="templates-section templates-my-section">
         <div className="templates-section-header">
@@ -719,6 +762,8 @@ function TemplatesPage({
             </div>
           </form>
         </div>
+      ) : null}
+        </>
       ) : null}
     </div>
   );

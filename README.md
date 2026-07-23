@@ -240,6 +240,11 @@ Invoke-RestMethod `
   -Method Post `
   -Uri "https://minhaanamnese.onrender.com/api/admin/clinical-drugs/sync" `
   -Headers @{ Authorization = "Bearer SEU_SECRET" }
+
+Invoke-RestMethod `
+  -Method Post `
+  -Uri "https://minhaanamnese.onrender.com/api/admin/snippets/sync" `
+  -Headers @{ Authorization = "Bearer SEU_SECRET" }
 ```
 
 ## Supabase

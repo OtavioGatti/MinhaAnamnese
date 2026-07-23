@@ -3120,6 +3120,175 @@ body {
   font-weight: 600;
 }
 
+/* Frases prontas (aba da biblioteca + modal rápido do workspace) */
+.templates-page-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.9rem;
+}
+
+.snippets-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 0.9rem;
+}
+
+.snippets-type-group {
+  margin-top: 1.1rem;
+}
+
+.snippets-type-title {
+  margin: 0 0 0.6rem;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--gray-600, #4b5563);
+}
+
+.snippet-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  padding: 1rem 1.05rem;
+  border: 1.5px solid var(--gray-200);
+  border-radius: 14px;
+  background: white;
+}
+
+.snippet-card h3 {
+  margin: 0.4rem 0 0;
+  font-size: 1rem;
+}
+
+.snippet-card-body {
+  margin: 0;
+  padding: 0.7rem 0.8rem;
+  border: 1px dashed var(--gray-200);
+  border-radius: 10px;
+  background: linear-gradient(180deg, #fbfcfd 0%, #f8fafc 100%);
+  color: var(--gray-700, #374151);
+  font-family: inherit;
+  font-size: 0.8rem;
+  line-height: 1.55;
+  white-space: pre-wrap;
+  word-break: break-word;
+  max-height: 180px;
+  overflow-y: auto;
+}
+
+.snippet-card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: auto;
+}
+
+.snippet-editor-card,
+.snippet-quick-card {
+  max-height: 86vh;
+  overflow-y: auto;
+}
+
+.snippet-editor-form {
+  display: grid;
+  gap: 0.45rem;
+  margin: 0.9rem 0;
+}
+
+.snippet-editor-form label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--gray-600, #4b5563);
+}
+
+.snippet-editor-form input,
+.snippet-editor-form select,
+.snippet-editor-form textarea {
+  width: 100%;
+  padding: 0.6rem 0.7rem;
+  border: 1.5px solid var(--gray-200);
+  border-radius: 10px;
+  background: white;
+  color: var(--gray-800, #1f2937);
+  font-size: 0.9rem;
+  font-family: inherit;
+}
+
+.snippet-editor-form textarea {
+  min-height: 200px;
+  resize: vertical;
+  line-height: 1.6;
+}
+
+.snippet-editor-form input:focus,
+.snippet-editor-form select:focus,
+.snippet-editor-form textarea:focus {
+  outline: none;
+  border-color: var(--primary-500);
+}
+
+.snippet-quick-list {
+  display: grid;
+  gap: 0.55rem;
+  margin: 0.9rem 0;
+}
+
+.snippet-quick-group-title {
+  margin-top: 0.4rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--gray-500, #6b7280);
+}
+
+.snippet-quick-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+  padding: 0.7rem 0.85rem;
+  border: 1.5px solid var(--gray-200);
+  border-radius: 12px;
+  background: white;
+}
+
+.snippet-quick-copy {
+  display: grid;
+  gap: 0.15rem;
+  min-width: 0;
+}
+
+.snippet-quick-copy strong {
+  font-size: 0.92rem;
+}
+
+.snippet-quick-copy span {
+  font-size: 0.78rem;
+  color: var(--gray-500, #6b7280);
+}
+
+.snippet-quick-actions {
+  display: flex;
+  flex-shrink: 0;
+  gap: 0.45rem;
+}
+
+.snippet-quick-footer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.snippet-quick-footer .btn-link {
+  border: none;
+  background: none;
+  padding: 0.3rem 0;
+  color: var(--primary-600, #2563eb);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
 .templates-inline-note {
   padding: 0.8rem 0.95rem;
   border: 1px solid rgba(59, 130, 246, 0.24);

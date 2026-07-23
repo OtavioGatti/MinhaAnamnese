@@ -43,6 +43,9 @@ test('rotas críticas do produto continuam registradas', () => {
     '/api/affiliate-payout-action',
     '/api/admin/affiliates/update',
     '/api/admin/affiliate-payouts/settle',
+    '/api/snippets',
+    '/api/admin/snippets/sync',
+    '/api/webhook/notion/snippets',
   ];
 
   for (const route of criticalRoutes) {

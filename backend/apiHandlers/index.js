@@ -14,6 +14,7 @@ const apiRoutes = {
   '/api/reconcile-subscription': require('./reconcile-subscription'),
   '/api/cancel-subscription': require('./cancel-subscription'),
   '/api/prescription-guides': require('./prescription-guides'),
+  '/api/snippets': require('./snippets'),
   '/api/clinical-drugs': require('./clinical-drugs'),
   '/api/clinical-tools': require('./clinical-tools'),
   '/api/affiliate': require('./affiliate'),
@@ -27,6 +28,7 @@ const apiRoutes = {
   '/api/admin/clinical-drugs/sync': require('./admin/clinical-drugs-sync'),
   '/api/admin/clinical-tools/sync': require('./admin/clinical-tools-sync'),
   '/api/admin/templates/sync': require('./admin/templates-sync'),
+  '/api/admin/snippets/sync': require('./admin/snippets-sync'),
   '/api/admin/protocols/generate-preview': require('./admin/protocol-generate-preview'),
   '/api/admin/protocols/availability-report': require('./admin/protocol-availability-report'),
   '/api/admin/protocols/automation-run': require('./admin/protocol-automation-run'),
@@ -35,6 +37,7 @@ const apiRoutes = {
   '/api/webhook/mercadopago': require('./webhook/mercadopago'),
   '/api/webhook/notion/prescription-guides': require('./webhook/notion/prescription-guides'),
   '/api/webhook/notion/templates': require('./webhook/notion/templates'),
+  '/api/webhook/notion/snippets': require('./webhook/notion/snippets'),
 };
 
 function normalizeApiPath(req) {
