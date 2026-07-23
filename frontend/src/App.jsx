@@ -111,6 +111,10 @@ function sanitizeAnamnesisForDisplay(content) {
   return content.trim();
 }
 
+function applyOutputCaseStyle(content, style) {
+  return style === 'upper' ? content.toLocaleUpperCase('pt-BR') : content;
+}
+
 async function copyTextToClipboard(text) {
   try {
     if (navigator.clipboard?.writeText) {
@@ -890,6 +894,9 @@ function App() {
   const [resultado, setResultado] = useState('');
   const [user, setUser] = useState(null);
   const [profile, setProfile] = useState(null);
+  // Estilo de escrita da saída: "mixed" (Aa, natural) ou "upper" (AA, tudo
+  // maiúsculo). Estado local porque usuário anônimo não tem profile persistido.
+  const [outputCaseStyle, setOutputCaseStyle] = useState('mixed');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -1971,6 +1978,36 @@ function App() {
     }
   };
 
+  useEffect(() => {
+    if (profile?.output_case_style === 'upper' || profile?.output_case_style === 'mixed') {
+      setOutputCaseStyle(profile.output_case_style);
+    }
+  }, [profile?.output_case_style]);
+
+  const handleChangeOutputCaseStyle = async (nextStyle) => {
+    const normalized = nextStyle === 'upper' ? 'upper' : 'mixed';
+
+    if (normalized === outputCaseStyle) {
+      return;
+    }
+
+    setOutputCaseStyle(normalized);
+
+    if (!user?.id) {
+      return;
+    }
+
+    try {
+      const response = await api.post('/profile', { output_case_style: normalized });
+
+      if (response.success && response.data) {
+        setProfile(response.data);
+      }
+    } catch (_err) {
+      // Preferência é best-effort: mantém a mudança local mesmo se a persistência falhar.
+    }
+  };
+
   const handleSaveDisplayName = async (nextName) => {
     const response = await api.post('/profile', { display_name: nextName });
 
@@ -2381,7 +2418,10 @@ function App() {
 
     return !areMessagesRedundant(primaryGapsCopy, gap);
   });
-  const displayedResultado = useMemo(() => sanitizeAnamnesisForDisplay(resultado), [resultado]);
+  const displayedResultado = useMemo(
+    () => applyOutputCaseStyle(sanitizeAnamnesisForDisplay(resultado), outputCaseStyle),
+    [resultado, outputCaseStyle],
+  );
   const userDisplayName = user ? getUserDisplayName(user, profile) : '';
   const templateAtual = templates.find((template) => template.id === templateSelecionado) || null;
   const profileTemplateAtual =
@@ -3051,6 +3091,8 @@ function App() {
                   displayedResultado={displayedResultado}
                   copiado={copiado}
                   onCopiar={handleCopiar}
+                  outputCaseStyle={outputCaseStyle}
+                  onChangeOutputCaseStyle={handleChangeOutputCaseStyle}
                   onSuggestHypotheses={handleRequestDiagnosticHypotheses}
                   diagnosticLoading={diagnosticHypotheses.loading}
                   diagnosticEnabled={DIAGNOSTIC_HYPOTHESES_ENABLED}

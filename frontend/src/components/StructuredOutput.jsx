@@ -57,6 +57,8 @@ function StructuredOutput({
   displayedResultado,
   copiado,
   onCopiar,
+  outputCaseStyle = 'mixed',
+  onChangeOutputCaseStyle,
   onSuggestHypotheses,
   diagnosticLoading = false,
   diagnosticEnabled = false,
@@ -81,6 +83,27 @@ function StructuredOutput({
           </div>
 
           <div className="document-actions">
+            <div
+              className="case-style-toggle"
+              role="group"
+              aria-label="Estilo de escrita da saída"
+              title="Escolher entre texto normal (Aa) ou tudo em maiúsculas (AA)"
+            >
+              <button
+                type="button"
+                className={`case-style-option ${outputCaseStyle === 'mixed' ? 'active' : ''}`}
+                onClick={() => onChangeOutputCaseStyle?.('mixed')}
+              >
+                Aa
+              </button>
+              <button
+                type="button"
+                className={`case-style-option ${outputCaseStyle === 'upper' ? 'active' : ''}`}
+                onClick={() => onChangeOutputCaseStyle?.('upper')}
+              >
+                AA
+              </button>
+            </div>
             <div className="document-action-buttons">
               <button
                 className={`btn btn-copiar btn-copiar-inline ${copiado ? 'copiado' : ''}`}

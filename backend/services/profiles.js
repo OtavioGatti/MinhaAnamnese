@@ -17,6 +17,7 @@ const REFUND_WINDOW_MS = REFUND_WINDOW_DAYS * 24 * 60 * 60 * 1000;
 const REFUND_REVOKED_STATUSES = new Set(['refunded', 'charged_back']);
 
 const ALLOWED_CONTEXTUAL_TABS = new Set(['guide', 'checklist', 'calculator', 'structure']);
+const ALLOWED_OUTPUT_CASE_STYLES = new Set(['mixed', 'upper']);
 const DEFAULT_TRIAL_DAYS = 7;
 const DEFAULT_TRIAL_ROLLOUT_AT = '2026-05-14T00:00:00.000Z';
 // Colunas que podem não existir antes do respectivo SQL ser aplicado. Se o
@@ -33,6 +34,7 @@ const OPTIONAL_PROFILE_COLUMNS = [
   'cookie_consent_at',
   'cookie_consent_version',
   'display_name',
+  'output_case_style',
 ];
 
 function getProfilesAdminConfig() {
@@ -129,6 +131,12 @@ function normalizeContextualTab(value) {
   return ALLOWED_CONTEXTUAL_TABS.has(value) ? value : 'guide';
 }
 
+// "mixed" (Aa) é o texto natural que a IA já escreve; "upper" (AA) força
+// maiúsculas — parte dos médicos padroniza a anamnese assim.
+function normalizeOutputCaseStyle(value) {
+  return ALLOWED_OUTPUT_CASE_STYLES.has(value) ? value : 'mixed';
+}
+
 const DISPLAY_NAME_MAX_LENGTH = 60;
 
 // Nome de exibição: colapsa espaços, remove quebras de linha e corta em 60. Um
@@ -210,6 +218,9 @@ function buildProfileFallback(user, existingProfile = null, overrides = {}) {
     ),
     default_contextual_tab: normalizeContextualTab(
       overrides.default_contextual_tab ?? existingProfile?.default_contextual_tab,
+    ),
+    output_case_style: normalizeOutputCaseStyle(
+      overrides.output_case_style ?? existingProfile?.output_case_style,
     ),
     billing_status: normalizeBillingStatus(
       overrides.billing_status ?? existingProfile?.billing_status,
@@ -325,6 +336,10 @@ async function upsertProfile(fields) {
 
   if ('display_name' in fields) {
     payload.display_name = normalizeDisplayName(fields.display_name);
+  }
+
+  if ('output_case_style' in fields) {
+    payload.output_case_style = normalizeOutputCaseStyle(fields.output_case_style);
   }
 
   if ('current_plan' in fields) {
@@ -466,6 +481,8 @@ function shouldUpdateProfile(existingProfile, nextProfile) {
       normalizeTemplateId(nextProfile.last_template_used) ||
     normalizeContextualTab(existingProfile.default_contextual_tab) !==
       normalizeContextualTab(nextProfile.default_contextual_tab) ||
+    normalizeOutputCaseStyle(existingProfile.output_case_style) !==
+      normalizeOutputCaseStyle(nextProfile.output_case_style) ||
     normalizeBillingStatus(existingProfile.billing_status) !== normalizeBillingStatus(nextProfile.billing_status) ||
     normalizeAccessSource(existingProfile.access_source) !== normalizeAccessSource(nextProfile.access_source) ||
     normalizePlanExpiresAt(existingProfile.plan_expires_at) !== normalizePlanExpiresAt(nextProfile.plan_expires_at) ||
@@ -567,6 +584,7 @@ async function ensureUserProfile(user, overrides = {}) {
     current_plan: fallbackProfile.current_plan,
     last_template_used: fallbackProfile.last_template_used,
     default_contextual_tab: fallbackProfile.default_contextual_tab,
+    output_case_style: fallbackProfile.output_case_style,
     billing_status: fallbackProfile.billing_status,
     access_source: fallbackProfile.access_source,
     plan_expires_at: fallbackProfile.plan_expires_at,
@@ -688,6 +706,7 @@ module.exports = {
   getTrialDays,
   isProfilesStorageAvailable,
   normalizeContextualTab,
+  normalizeOutputCaseStyle,
   normalizePlan,
   normalizeTemplateId,
   upsertProfile,

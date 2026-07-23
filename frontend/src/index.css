@@ -1042,6 +1042,33 @@ body {
   gap: 0.55rem;
 }
 
+.case-style-toggle {
+  display: inline-flex;
+  align-self: flex-end;
+  border: 1.5px solid var(--gray-200);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.case-style-option {
+  border: none;
+  background: white;
+  color: var(--gray-500, #6b7280);
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 0.32rem 0.65rem;
+  cursor: pointer;
+}
+
+.case-style-option:not(:last-child) {
+  border-right: 1.5px solid var(--gray-200);
+}
+
+.case-style-option.active {
+  background: var(--primary-600, #2563eb);
+  color: white;
+}
+
 .btn-diagnostic-hypotheses {
   display: inline-flex;
   align-items: center;

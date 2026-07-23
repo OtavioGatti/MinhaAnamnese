@@ -18,6 +18,10 @@ function getProfileUpdatesFromRequest(req) {
       Object.prototype.hasOwnProperty.call(body, 'default_contextual_tab')
         ? body.default_contextual_tab
         : undefined,
+    output_case_style:
+      Object.prototype.hasOwnProperty.call(body, 'output_case_style')
+        ? body.output_case_style
+        : undefined,
     welcome_onboarding_seen_at:
       body.welcome_onboarding_seen === true
         ? new Date().toISOString()
