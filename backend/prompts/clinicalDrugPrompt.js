@@ -25,7 +25,9 @@ const DRUG_AUTHORING_GUIDE = `Preencha os campos de um medicamento, em portuguê
 - pediatric_dosage: posologia pediátrica (mg/kg quando aplicável). Se não se aplica a crianças, escreva isso explicitamente; se não souber, deixe vazio.
 - warnings: advertências e precauções relevantes, uma por linha começando com "-".
 - interactions: principais interações medicamentosas clinicamente relevantes, uma por linha "- Medicamento/classe: efeito".
+- interaction_pairs: as MESMAS interações em forma estruturada (uma entrada por interação). Para cada uma: target (nome do outro fármaco ou classe, ex.: "Ácido valproico"); severity ("danger" para grave/contraindicada, "warning" para relevante, "info" para leve); mechanism (mecanismo em poucas palavras); message (frase objetiva de alerta ao prescritor). Só inclua interações de que você tem razoável certeza; na dúvida, não inclua a entrada. Pode ficar lista vazia.
 - presentations: apresentações e formas farmacêuticas usuais (ex.: "Comprimido 500 mg; suspensão oral 250 mg/5 mL").
+- commercial_names_openai: nomes comerciais/marcas comuns no Brasil, separados por vírgula (ex.: "Amoxil, Novocilin, Hiconcil"). Se não tiver certeza, deixe vazio.
 - pregnancy_risk: uma das opções fornecidas (letra de risco). Na dúvida, "Indefinido".
 - summary_text: um resumo de 1-3 frases do que é o medicamento e para que serve.
 - search_tags: 3-8 termos de busca (nomes comerciais comuns, sinônimos, classe), separados por vírgula.

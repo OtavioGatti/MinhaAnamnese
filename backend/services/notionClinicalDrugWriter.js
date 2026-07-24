@@ -65,7 +65,14 @@ function buildClinicalDrugProperties(drug, typeMap, { fields } = {}) {
       continue; // propriedade inexistente ou tipo não gravável
     }
 
-    const built = buildPropertyValue(type, drug[key]);
+    // Campos estruturados (arrays/objetos) viram JSON no campo de texto do
+    // Notion — o sync os lê de volta com JSON.parse.
+    const rawValue = drug[key];
+    const value = (type === 'rich_text' && rawValue && typeof rawValue === 'object')
+      ? JSON.stringify(rawValue, null, 2)
+      : rawValue;
+
+    const built = buildPropertyValue(type, value);
     if (built) {
       properties[notionName] = built;
     }

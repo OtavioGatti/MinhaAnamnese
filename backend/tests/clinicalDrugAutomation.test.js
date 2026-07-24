@@ -100,7 +100,7 @@ test('resolveCorrectionInstruction: manual, auto e nada-a-fazer', () => {
 
   // nada a fazer: tudo preenchido e sem instrução
   const full = {};
-  for (const key of ['class_category', 'contraindications', 'adult_dosage', 'pediatric_dosage', 'warnings', 'interactions', 'presentations', 'pregnancy_risk', 'summary_text']) {
+  for (const key of ['class_category', 'contraindications', 'adult_dosage', 'pediatric_dosage', 'warnings', 'interactions', 'presentations', 'commercial_names_openai', 'pregnancy_risk', 'summary_text']) {
     full[key] = 'preenchido';
   }
   const nothing = resolveCorrectionInstruction({ correction_instruction: '', ...full });
@@ -117,6 +117,34 @@ test('getEmptyCompletableFields e diffChangedFields', () => {
     { adult_dosage: 'b', warnings: 'w' },
   );
   assert.deepEqual(changed, ['adult_dosage']);
+});
+
+test('interaction_pairs: entram como needs_review=true (dormentes) com slug derivado', () => {
+  const out = normalizeClinicalDrug(
+    {
+      active_ingredient: 'Imipenem',
+      interaction_pairs: [
+        { target: 'Ácido valproico', severity: 'danger', mechanism: 'reduz níveis', message: 'risco de convulsões' },
+        { target: 'Ácido valproico', severity: 'warning', mechanism: 'dup', message: 'dup' }, // duplicado -> descartado
+        { target: '', severity: 'info', mechanism: '', message: '' }, // sem alvo -> descartado
+      ],
+    },
+    { pregnancy_risk: ['C'] },
+  );
+
+  assert.equal(out.interaction_pairs.length, 1);
+  const pair = out.interaction_pairs[0];
+  assert.equal(pair.target_slug, 'acido-valproico');
+  assert.equal(pair.severity, 'danger');
+  assert.equal(pair.needs_review, true);
+  assert.equal(pair.source, 'ai');
+});
+
+test('interaction_pairs: aceita string JSON (correção lê da página)', () => {
+  const json = JSON.stringify([{ target: 'Probenecida', severity: 'warning', mechanism: 'm', message: 'x' }]);
+  const out = normalizeClinicalDrug({ active_ingredient: 'Imipenem', interaction_pairs: json }, {});
+  assert.equal(out.interaction_pairs.length, 1);
+  assert.equal(out.interaction_pairs[0].target, 'Probenecida');
 });
 
 test('gate do sync: página com Status Automação preenchido é RETIDA (held)', () => {

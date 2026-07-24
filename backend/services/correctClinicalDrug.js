@@ -33,12 +33,17 @@ const LOCK_FIELDS = ['automation_status'];
 function pickCurrentDrug(fields) {
   const current = {};
   for (const key of MODEL_GENERATED_FIELDS) {
-    current[key] = fields[key] == null ? '' : String(fields[key]);
+    const value = fields[key];
+    // interaction_pairs pode vir como array (já lido) ou string JSON da página.
+    current[key] = value == null ? '' : (typeof value === 'object' ? value : String(value));
   }
   return current;
 }
 
 function valuesEqual(a, b) {
+  if (Array.isArray(a) || Array.isArray(b) || (a && typeof a === 'object') || (b && typeof b === 'object')) {
+    return JSON.stringify(a ?? null) === JSON.stringify(b ?? null);
+  }
   return String(a == null ? '' : a) === String(b == null ? '' : b);
 }
 

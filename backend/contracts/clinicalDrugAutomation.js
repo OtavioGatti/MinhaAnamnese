@@ -32,7 +32,9 @@ const FIELD_TO_NOTION = {
   pediatric_dosage: 'Posologia Pediátrica',
   warnings: 'Advertências',
   interactions: 'Interações',
+  interaction_pairs: 'Interações Estruturadas',
   presentations: 'Apresentações / Nomes Comerciais',
+  commercial_names_openai: 'Nomes Comerciais OpenAI',
   pregnancy_risk: 'Risco Gestacional',
   summary_text: 'Texto Resumo',
   search_tags: 'Tags Busca',
@@ -56,9 +58,14 @@ const LONG_TEXT_FIELDS = [
   'warnings',
   'interactions',
   'presentations',
+  'commercial_names_openai',
   'summary_text',
 ];
 const SELECT_ENUM_FIELDS = ['pregnancy_risk'];
+// Campo estruturado (array de objetos), serializado como JSON no Notion.
+const ARRAY_FIELDS = ['interaction_pairs'];
+
+const INTERACTION_SEVERITIES = ['danger', 'warning', 'info'];
 
 // Campos que o MODELO gera. slug é derivado (não pedido ao modelo); os campos de
 // controle ficam por conta da trava/humano.
@@ -66,9 +73,11 @@ const MODEL_GENERATED_FIELDS = [
   ...SHORT_TEXT_FIELDS,
   ...LONG_TEXT_FIELDS,
   ...SELECT_ENUM_FIELDS,
+  ...ARRAY_FIELDS,
 ];
 
 // Campos de conteúdo cuja ausência conta como "bula incompleta" (modo completar).
+// interaction_pairs fica de fora: quase toda bula está sem, enfileiraria tudo.
 const COMPLETABLE_FIELDS = [
   'class_category',
   'contraindications',
@@ -77,6 +86,7 @@ const COMPLETABLE_FIELDS = [
   'warnings',
   'interactions',
   'presentations',
+  'commercial_names_openai',
   'pregnancy_risk',
   'summary_text',
 ];
@@ -124,6 +134,23 @@ function buildClinicalDrugSchema(options = {}) {
     properties[field] = selectProperty(options[field]);
   }
 
+  // Interações estruturadas: pares (com o outro fármaco/classe). target_slug e
+  // needs_review são derivados no código (não pedidos ao modelo).
+  properties.interaction_pairs = {
+    type: 'array',
+    items: {
+      type: 'object',
+      additionalProperties: false,
+      required: ['target', 'severity', 'mechanism', 'message'],
+      properties: {
+        target: { type: 'string' },
+        severity: { type: 'string', enum: INTERACTION_SEVERITIES },
+        mechanism: { type: 'string' },
+        message: { type: 'string' },
+      },
+    },
+  };
+
   return {
     type: 'object',
     additionalProperties: false,
@@ -137,6 +164,65 @@ function resolvePregnancyRiskOptions(liveOptions) {
   const live = new Set(Array.isArray(liveOptions) ? liveOptions : []);
   const allowed = CANONICAL_PREGNANCY_RISK.filter((value) => live.has(value));
   return allowed.length > 0 ? allowed : CANONICAL_PREGNANCY_RISK;
+}
+
+// Normaliza pares de interação. Toda saída da IA entra como needs_review=true e
+// confidence baixa — ficam DORMENTES (o frontend só dispara alerta de pares já
+// revisados, com needs_review=false). target_slug é derivado do nome do alvo.
+function normalizeInteractionPairs(raw) {
+  const pairs = Array.isArray(raw) ? raw : [];
+  const seen = new Set();
+  const out = [];
+
+  for (const pair of pairs) {
+    const target = normalizeText(pair?.target);
+    if (!target) {
+      continue;
+    }
+
+    const targetSlug = normalizeSlug(target);
+    const key = targetSlug || target.toLowerCase();
+    if (seen.has(key)) {
+      continue;
+    }
+    seen.add(key);
+
+    out.push({
+      target,
+      target_slug: targetSlug,
+      severity: INTERACTION_SEVERITIES.includes(pair?.severity) ? pair.severity : 'warning',
+      mechanism: normalizeText(pair?.mechanism),
+      message: normalizeText(pair?.message),
+      source: 'ai',
+      confidence: 'low',
+      needs_review: true,
+    });
+
+    if (out.length >= 40) {
+      break;
+    }
+  }
+
+  return out;
+}
+
+// Aceita array (do modelo) ou string JSON (lida da página na correção).
+function coerceInteractionPairs(value) {
+  if (Array.isArray(value)) {
+    return value;
+  }
+
+  const text = String(value == null ? '' : value).trim();
+  if (!text) {
+    return [];
+  }
+
+  try {
+    const parsed = JSON.parse(text);
+    return Array.isArray(parsed) ? parsed : [];
+  } catch (_error) {
+    return [];
+  }
 }
 
 // Normaliza a saída do modelo. NÃO aplica a trava.
@@ -157,6 +243,8 @@ function normalizeClinicalDrug(raw = {}, options = {}) {
   );
   const risk = normalizeText(raw.pregnancy_risk);
   out.pregnancy_risk = allowedRisk.has(risk) ? risk : '';
+
+  out.interaction_pairs = normalizeInteractionPairs(coerceInteractionPairs(raw.interaction_pairs));
 
   out.slug = normalizeSlug(raw.slug || out.active_ingredient);
 
