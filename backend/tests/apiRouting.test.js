@@ -50,6 +50,10 @@ test('rotas críticas do produto continuam registradas', () => {
     '/api/letter-models',
     '/api/admin/letter-models/sync',
     '/api/webhook/notion/letter-models',
+    '/api/admin/clinical-drugs/generate-preview',
+    '/api/admin/clinical-drugs/automation-run',
+    '/api/admin/clinical-drugs/queue-incomplete',
+    '/api/webhook/notion/clinical-drugs',
   ];
 
   for (const route of criticalRoutes) {

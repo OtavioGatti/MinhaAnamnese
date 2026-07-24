@@ -36,12 +36,16 @@ const apiRoutes = {
   '/api/admin/protocols/availability-report': require('./admin/protocol-availability-report'),
   '/api/admin/protocols/automation-run': require('./admin/protocol-automation-run'),
   '/api/admin/protocols/recompute-availability': require('./admin/protocol-recompute-availability'),
+  '/api/admin/clinical-drugs/generate-preview': require('./admin/clinical-drug-generate-preview'),
+  '/api/admin/clinical-drugs/automation-run': require('./admin/clinical-drug-automation-run'),
+  '/api/admin/clinical-drugs/queue-incomplete': require('./admin/clinical-drug-queue-incomplete'),
   '/api/admin/trial-reminders/run': require('./admin/trial-reminders-run'),
   '/api/webhook/mercadopago': require('./webhook/mercadopago'),
   '/api/webhook/notion/prescription-guides': require('./webhook/notion/prescription-guides'),
   '/api/webhook/notion/templates': require('./webhook/notion/templates'),
   '/api/webhook/notion/snippets': require('./webhook/notion/snippets'),
   '/api/webhook/notion/letter-models': require('./webhook/notion/letter-models'),
+  '/api/webhook/notion/clinical-drugs': require('./webhook/notion/clinical-drugs'),
 };
 
 function normalizeApiPath(req) {

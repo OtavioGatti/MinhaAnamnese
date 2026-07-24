@@ -5,11 +5,13 @@ const TRIAL_USAGE_ACTIONS = {
   referralLetters: 'trial_referral_letter',
   diagnosticHypotheses: 'trial_diagnostic_hypotheses',
   prescriptionGuides: 'trial_prescription_guide',
+  clinicalDrugs: 'trial_clinical_drug',
   userTemplates: 'trial_user_template',
 };
 const TRIAL_USAGE_FEATURES = Object.keys(TRIAL_USAGE_ACTIONS);
 
-const UNIQUE_RESOURCE_FEATURES = new Set(['prescriptionGuides']);
+// Contam por recurso único (mesmo item visto de novo não soma).
+const UNIQUE_RESOURCE_FEATURES = new Set(['prescriptionGuides', 'clinicalDrugs']);
 
 function getTrialUsageConfig() {
   return {
@@ -124,6 +126,7 @@ async function getTrialUsageSummary(userId) {
         referralLetters: 0,
         diagnosticHypotheses: 0,
         prescriptionGuides: 0,
+        clinicalDrugs: 0,
         userTemplates: 0,
       },
     };

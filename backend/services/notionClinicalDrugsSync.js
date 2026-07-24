@@ -257,6 +257,23 @@ function mapNotionPageToClinicalDrug(page) {
   const properties = page?.properties || {};
   const activeIngredient = normalizeText(readTextProperty(properties, 'Princípio Ativo'));
   const slug = normalizeSlug(readTextProperty(properties, 'Slug') || activeIngredient);
+
+  // Gate da automação de IA: se a página está em qualquer estado do fluxo de
+  // automação (Status Automação preenchido), ela é RETIDA — não publicamos até
+  // um humano revisar e LIMPAR o status. Páginas fora do fluxo (status vazio,
+  // como todas as existentes) seguem normalmente.
+  const automationStatus = normalizeText(readTextProperty(properties, 'Status Automação'));
+  if (automationStatus) {
+    return {
+      payload: null,
+      held: {
+        notionPageId: page?.id || null,
+        activeIngredient: activeIngredient || null,
+        slug: slug || null,
+        automationStatus,
+      },
+    };
+  }
   const drug = {
     slug,
     notion_page_id: page?.id || null,
@@ -423,8 +440,14 @@ async function syncNotionClinicalDrugs() {
   const seenBySlug = new Map();
   const duplicateSlugs = [];
   const skipped = [];
+  const heldForReview = [];
 
   mapped.forEach((drug) => {
+    if (drug.held) {
+      heldForReview.push(drug.held);
+      return;
+    }
+
     if (drug.error) {
       skipped.push(drug.error);
       return;
@@ -511,6 +534,8 @@ async function syncNotionClinicalDrugs() {
     prepared: prepared.length,
     publishedAvailable: prepared.filter((drug) => drug.publication_status === 'published').length,
     persisted: persisted.length,
+    heldForReview: heldForReview.length,
+    heldItems: heldForReview,
     skipped,
   };
 }
