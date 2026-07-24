@@ -4,6 +4,8 @@ const apiRoutes = {
   '/api/organizar': require('./organizar'),
   '/api/insights': require('./insights'),
   '/api/referral-letter': require('./referral-letter'),
+  '/api/letters': require('./letters'),
+  '/api/letter-models': require('./letter-models'),
   '/api/diagnostic-hypotheses': require('./diagnostic-hypotheses'),
   '/api/profile': require('./profile'),
   '/api/account/export': require('./account'),
@@ -29,6 +31,7 @@ const apiRoutes = {
   '/api/admin/clinical-tools/sync': require('./admin/clinical-tools-sync'),
   '/api/admin/templates/sync': require('./admin/templates-sync'),
   '/api/admin/snippets/sync': require('./admin/snippets-sync'),
+  '/api/admin/letter-models/sync': require('./admin/letter-models-sync'),
   '/api/admin/protocols/generate-preview': require('./admin/protocol-generate-preview'),
   '/api/admin/protocols/availability-report': require('./admin/protocol-availability-report'),
   '/api/admin/protocols/automation-run': require('./admin/protocol-automation-run'),
@@ -38,6 +41,7 @@ const apiRoutes = {
   '/api/webhook/notion/prescription-guides': require('./webhook/notion/prescription-guides'),
   '/api/webhook/notion/templates': require('./webhook/notion/templates'),
   '/api/webhook/notion/snippets': require('./webhook/notion/snippets'),
+  '/api/webhook/notion/letter-models': require('./webhook/notion/letter-models'),
 };
 
 function normalizeApiPath(req) {

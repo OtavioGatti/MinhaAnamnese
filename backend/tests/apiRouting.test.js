@@ -46,6 +46,10 @@ test('rotas críticas do produto continuam registradas', () => {
     '/api/snippets',
     '/api/admin/snippets/sync',
     '/api/webhook/notion/snippets',
+    '/api/letters',
+    '/api/letter-models',
+    '/api/admin/letter-models/sync',
+    '/api/webhook/notion/letter-models',
   ];
 
   for (const route of criticalRoutes) {
