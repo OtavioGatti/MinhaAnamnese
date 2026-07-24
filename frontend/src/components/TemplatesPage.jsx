@@ -328,23 +328,35 @@ function TemplatesPage({
           </p>
         </div>
 
-        <div className="templates-page-tabs" role="tablist" aria-label="Seções da biblioteca clínica">
+        <div className="templates-section-tabs" role="tablist" aria-label="Seções da biblioteca clínica">
           <button
             type="button"
             role="tab"
             aria-selected={pageTab === 'templates'}
-            className={`templates-filter-chip ${pageTab === 'templates' ? 'active' : ''}`}
+            className={`templates-section-tab ${pageTab === 'templates' ? 'active' : ''}`}
             onClick={() => setPageTab('templates')}
           >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <rect x="3" y="3" width="7" height="7" rx="1.5" />
+              <rect x="14" y="3" width="7" height="7" rx="1.5" />
+              <rect x="3" y="14" width="7" height="7" rx="1.5" />
+              <rect x="14" y="14" width="7" height="7" rx="1.5" />
+            </svg>
             Templates
           </button>
           <button
             type="button"
             role="tab"
             aria-selected={pageTab === 'snippets'}
-            className={`templates-filter-chip ${pageTab === 'snippets' ? 'active' : ''}`}
+            className={`templates-section-tab ${pageTab === 'snippets' ? 'active' : ''}`}
             onClick={() => setPageTab('snippets')}
           >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
+              <rect x="8" y="2" width="8" height="4" rx="1" />
+              <path d="M9 12h6" />
+              <path d="M9 16h6" />
+            </svg>
             Frases prontas
           </button>
         </div>

@@ -2898,7 +2898,25 @@ body {
 .templates-filters {
   display: flex;
   gap: 0.55rem;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  padding-bottom: 0.35rem;
+  margin-bottom: -0.35rem;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+
+.templates-filters::-webkit-scrollbar {
+  height: 6px;
+}
+
+.templates-filters::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.5);
+  border-radius: 999px;
+}
+
+.templates-filters .templates-filter-chip {
+  flex-shrink: 0;
 }
 
 .templates-filter-chip,
@@ -3148,10 +3166,49 @@ body {
 }
 
 /* Frases prontas (aba da biblioteca + modal rápido do workspace) */
-.templates-page-tabs {
-  display: flex;
-  gap: 0.5rem;
-  margin-bottom: 0.9rem;
+
+/* Switcher de seção primária: segmented control com pill sólido no ativo, para
+   não se confundir com os chips de filtro secundário (categoria). */
+.templates-section-tabs {
+  display: inline-flex;
+  gap: 0.25rem;
+  padding: 0.28rem;
+  margin-bottom: 1rem;
+  background: rgba(241, 245, 249, 0.9);
+  border: 1px solid rgba(226, 232, 240, 0.95);
+  border-radius: 14px;
+}
+
+.templates-section-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.5rem 0.95rem;
+  border: none;
+  border-radius: 10px;
+  background: transparent;
+  color: var(--gray-500, #6b7280);
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition), box-shadow var(--transition);
+}
+
+.templates-section-tab svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.templates-section-tab:hover:not(.active) {
+  color: var(--gray-700, #374151);
+}
+
+.templates-section-tab.active {
+  background: white;
+  color: var(--primary-700, #1d4ed8);
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.08), 0 4px 10px rgba(15, 23, 42, 0.06);
 }
 
 .snippets-grid {
@@ -3186,20 +3243,36 @@ body {
   font-size: 1rem;
 }
 
-.snippet-card-body {
-  margin: 0;
-  padding: 0.7rem 0.8rem;
+.snippet-card-body-wrap {
+  position: relative;
   border: 1px dashed var(--gray-200);
   border-radius: 10px;
   background: linear-gradient(180deg, #fbfcfd 0%, #f8fafc 100%);
+  overflow: hidden;
+}
+
+.snippet-card-body-wrap.is-clipped::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2.6rem;
+  background: linear-gradient(180deg, rgba(248, 250, 252, 0) 0%, #f8fafc 88%);
+  pointer-events: none;
+}
+
+.snippet-card-body {
+  margin: 0;
+  padding: 0.7rem 0.8rem;
   color: var(--gray-700, #374151);
   font-family: inherit;
   font-size: 0.8rem;
   line-height: 1.55;
   white-space: pre-wrap;
   word-break: break-word;
-  max-height: 180px;
-  overflow-y: auto;
+  max-height: 190px;
+  overflow: hidden;
 }
 
 .snippet-card-actions {

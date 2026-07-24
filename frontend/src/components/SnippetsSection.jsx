@@ -1,5 +1,26 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { api } from '../apiClient';
+
+// Corpo do modelo com recorte suave: o gradiente só aparece quando o texto
+// realmente ultrapassa a altura (evita "esmaecer" um modelo curto e completo).
+function SnippetCardBody({ text }) {
+  const ref = useRef(null);
+  const [clipped, setClipped] = useState(false);
+
+  useLayoutEffect(() => {
+    const element = ref.current;
+
+    if (element) {
+      setClipped(element.scrollHeight > element.clientHeight + 2);
+    }
+  }, [text]);
+
+  return (
+    <div className={`snippet-card-body-wrap ${clipped ? 'is-clipped' : ''}`}>
+      <pre className="snippet-card-body" ref={ref}>{text}</pre>
+    </div>
+  );
+}
 
 const EMPTY_SNIPPET_FORM = {
   id: null,
@@ -88,6 +109,30 @@ function SnippetsSection({ user, isPro, onRequestUpgrade, onLogin }) {
 
     return [...groups.entries()];
   }, [officialSnippets]);
+
+  // Sugestões do campo "Tipo": opções padrão + qualquer tipo já usado nos
+  // modelos carregados (oficiais e do usuário). Assim tipos novos criados no
+  // Notion — como "Anamnese" — aparecem para escolha sem precisar de deploy.
+  const typeOptions = useMemo(() => {
+    const seen = new Set();
+    const ordered = [];
+
+    [
+      ...SNIPPET_TYPE_OPTIONS,
+      ...officialSnippets.map((snippet) => snippet.snippetType),
+      ...mySnippets.map((snippet) => snippet.snippetType),
+    ].forEach((rawType) => {
+      const type = String(rawType || '').trim();
+      const key = type.toLocaleLowerCase('pt-BR');
+
+      if (type && !seen.has(key)) {
+        seen.add(key);
+        ordered.push(type);
+      }
+    });
+
+    return ordered;
+  }, [officialSnippets, mySnippets]);
 
   const handleCopy = async (snippet) => {
     const copied = await copyToClipboard(snippet.body);
@@ -182,7 +227,7 @@ function SnippetsSection({ user, isPro, onRequestUpgrade, onLogin }) {
         </div>
       </div>
 
-      <pre className="snippet-card-body">{snippet.body}</pre>
+      <SnippetCardBody text={snippet.body} />
 
       <div className="snippet-card-actions">
         <button type="button" className="btn btn-secundario" onClick={() => handleCopy(snippet)}>
@@ -297,15 +342,21 @@ function SnippetsSection({ user, isPro, onRequestUpgrade, onLogin }) {
               />
 
               <label htmlFor="snippet-type">Tipo</label>
-              <select
+              <input
                 id="snippet-type"
+                type="text"
+                list="snippet-type-options"
                 value={formState.snippetType}
+                maxLength={40}
                 onChange={(event) => setFormState((current) => ({ ...current, snippetType: event.target.value }))}
-              >
-                {SNIPPET_TYPE_OPTIONS.map((option) => (
-                  <option key={option} value={option}>{option}</option>
+                placeholder="Escolha ou digite um tipo"
+                autoComplete="off"
+              />
+              <datalist id="snippet-type-options">
+                {typeOptions.map((option) => (
+                  <option key={option} value={option} />
                 ))}
-              </select>
+              </datalist>
 
               <label htmlFor="snippet-body">Texto do modelo</label>
               <textarea
