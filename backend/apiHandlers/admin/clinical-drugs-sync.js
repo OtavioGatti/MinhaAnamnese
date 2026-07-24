@@ -92,7 +92,10 @@ module.exports = async function handler(req, res) {
 
   let result;
   try {
-    result = await syncNotionClinicalDrugs();
+    // Sync manual (o humano clicou "Sync de Bulário") = decisão de publicar:
+    // libera o conteúdo de IA "aguardando revisão". O webhook (automático)
+    // continua retendo. Stubs "a gerar"/"a corrigir" e "erro" seguem retidos.
+    result = await syncNotionClinicalDrugs({ bypassReviewGate: true });
   } catch (error) {
     const statusCode = Number(error?.statusCode) || 500;
     const responseBody = String(error?.responseBody || '');

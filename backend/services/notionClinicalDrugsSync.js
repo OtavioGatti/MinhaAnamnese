@@ -1,3 +1,5 @@
+const { shouldHoldFromSync } = require('../contracts/clinicalDrugAutomation');
+
 const NOTION_API_BASE_URL = 'https://api.notion.com/v1';
 const DEFAULT_NOTION_VERSION = '2022-06-28';
 const CLINICO_REVISADO_DATA_SOURCE_ID = '366da8a92980802a839ccbd8d2d7f111';
@@ -258,22 +260,8 @@ function mapNotionPageToClinicalDrug(page) {
   const activeIngredient = normalizeText(readTextProperty(properties, 'Princípio Ativo'));
   const slug = normalizeSlug(readTextProperty(properties, 'Slug') || activeIngredient);
 
-  // Gate da automação de IA: se a página está em qualquer estado do fluxo de
-  // automação (Status Automação preenchido), ela é RETIDA — não publicamos até
-  // um humano revisar e LIMPAR o status. Páginas fora do fluxo (status vazio,
-  // como todas as existentes) seguem normalmente.
+  // Status da automação de IA (o SYNC decide reter ou não, conforme a origem).
   const automationStatus = normalizeText(readTextProperty(properties, 'Status Automação'));
-  if (automationStatus) {
-    return {
-      payload: null,
-      held: {
-        notionPageId: page?.id || null,
-        activeIngredient: activeIngredient || null,
-        slug: slug || null,
-        automationStatus,
-      },
-    };
-  }
   const drug = {
     slug,
     notion_page_id: page?.id || null,
@@ -327,6 +315,7 @@ function mapNotionPageToClinicalDrug(page) {
   if (reasons.length > 0) {
     return {
       payload: null,
+      automationStatus,
       error: {
         notionPageId: page?.id || null,
         activeIngredient: activeIngredient || null,
@@ -338,6 +327,7 @@ function mapNotionPageToClinicalDrug(page) {
 
   return {
     payload: drug,
+    automationStatus,
     error: null,
   };
 }
@@ -433,7 +423,7 @@ async function listExistingClinicalDrugsBySlugs(slugs) {
   return rows;
 }
 
-async function syncNotionClinicalDrugs() {
+async function syncNotionClinicalDrugs({ bypassReviewGate = false } = {}) {
   const pages = await queryNotionClinicalDrugPages();
   const mapped = pages.map(mapNotionPageToClinicalDrug);
   const prepared = [];
@@ -443,8 +433,15 @@ async function syncNotionClinicalDrugs() {
   const heldForReview = [];
 
   mapped.forEach((drug) => {
-    if (drug.held) {
-      heldForReview.push(drug.held);
+    // Gate: retém páginas do fluxo de automação. No sync manual (bypass) o
+    // conteúdo "aguardando revisão" é publicado; stubs/erros seguem retidos.
+    if (shouldHoldFromSync(drug.automationStatus, { bypassReviewGate })) {
+      heldForReview.push({
+        notionPageId: drug.payload?.notion_page_id || drug.error?.notionPageId || null,
+        activeIngredient: drug.payload?.active_ingredient || drug.error?.activeIngredient || null,
+        slug: drug.payload?.slug || drug.error?.slug || null,
+        automationStatus: drug.automationStatus,
+      });
       return;
     }
 

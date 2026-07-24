@@ -7,8 +7,10 @@ const {
   applyClinicalDrugLock,
   finalizeClinicalDrug,
   resolvePregnancyRiskOptions,
+  shouldHoldFromSync,
   STATUS_AUTOMACAO_GERADO,
   STATUS_AUTOMACAO_CORRIGIDO,
+  STATUS_AUTOMACAO_ERRO,
   MODEL_GENERATED_FIELDS,
   FIELD_TO_NOTION,
 } = require('../contracts/clinicalDrugAutomation');
@@ -152,28 +154,39 @@ test('interaction_pairs: aceita string JSON (correção lê da página)', () => 
   assert.equal(out.interaction_pairs[0].target, 'Probenecida');
 });
 
-test('gate do sync: página com Status Automação preenchido é RETIDA (held)', () => {
-  const heldPage = {
+test('mapNotionPageToClinicalDrug anexa o automationStatus e monta o payload', () => {
+  const page = {
     id: 'page-1',
     properties: {
       'Princípio Ativo': { type: 'title', title: [{ plain_text: 'Nova Bula' }] },
       'Status Automação': { type: 'select', select: { name: STATUS_AUTOMACAO_GERADO } },
     },
   };
-  const result = mapNotionPageToClinicalDrug(heldPage);
-  assert.equal(result.payload, null);
-  assert.ok(result.held);
-  assert.equal(result.held.automationStatus, STATUS_AUTOMACAO_GERADO);
+  const result = mapNotionPageToClinicalDrug(page);
+  assert.equal(result.automationStatus, STATUS_AUTOMACAO_GERADO);
+  assert.ok(result.payload);
+  assert.equal(result.payload.active_ingredient, 'Nova Bula');
 
-  // Página sem Status Automação sincroniza normalmente.
-  const normalPage = {
+  const normal = mapNotionPageToClinicalDrug({
     id: 'page-2',
-    properties: {
-      'Princípio Ativo': { type: 'title', title: [{ plain_text: 'Amoxicilina' }] },
-    },
-  };
-  const normal = mapNotionPageToClinicalDrug(normalPage);
-  assert.equal(normal.held, undefined);
-  assert.ok(normal.payload);
-  assert.equal(normal.payload.active_ingredient, 'Amoxicilina');
+    properties: { 'Princípio Ativo': { type: 'title', title: [{ plain_text: 'Amoxicilina' }] } },
+  });
+  assert.equal(normal.automationStatus, '');
+});
+
+test('shouldHoldFromSync: webhook segura "aguardando revisão", sync manual publica', () => {
+  // webhook (bypass=false): tudo do fluxo é retido
+  assert.equal(shouldHoldFromSync(STATUS_AUTOMACAO_GERADO), true);
+  assert.equal(shouldHoldFromSync(STATUS_AUTOMACAO_CORRIGIDO), true);
+  assert.equal(shouldHoldFromSync('a gerar'), true);
+  assert.equal(shouldHoldFromSync(STATUS_AUTOMACAO_ERRO), true);
+  assert.equal(shouldHoldFromSync(''), false);
+
+  // sync manual (bypass=true): "aguardando revisão" publica; stub/erro seguem retidos
+  assert.equal(shouldHoldFromSync(STATUS_AUTOMACAO_GERADO, { bypassReviewGate: true }), false);
+  assert.equal(shouldHoldFromSync(STATUS_AUTOMACAO_CORRIGIDO, { bypassReviewGate: true }), false);
+  assert.equal(shouldHoldFromSync('a gerar', { bypassReviewGate: true }), true);
+  assert.equal(shouldHoldFromSync('a corrigir', { bypassReviewGate: true }), true);
+  assert.equal(shouldHoldFromSync(STATUS_AUTOMACAO_ERRO, { bypassReviewGate: true }), true);
+  assert.equal(shouldHoldFromSync('', { bypassReviewGate: true }), false);
 });

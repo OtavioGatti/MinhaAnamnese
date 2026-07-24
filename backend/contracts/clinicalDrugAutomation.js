@@ -14,13 +14,42 @@ const STATUS_AUTOMACAO_GERADO = 'gerado — aguardando revisão';
 const STATUS_AUTOMACAO_CORRIGIDO = 'corrigido — aguardando revisão';
 const STATUS_AUTOMACAO_ERRO = 'erro na automação';
 
-// Estados de "pendente" que travam a publicação: o sync do bulário PULA páginas
-// nesses estados para que conteúdo de IA não vá ao ar sem revisão humana.
+// Estados de "pendente" que travam a publicação.
 const PENDING_REVIEW_STATUSES = new Set([
   STATUS_AUTOMACAO_GERADO,
   STATUS_AUTOMACAO_CORRIGIDO,
   STATUS_AUTOMACAO_ERRO,
 ]);
+
+// Conteúdo de IA pronto para revisão: publicável no sync MANUAL (o humano
+// clicou = decisão de publicar), mas RETIDO no webhook (automático).
+const READY_FOR_REVIEW_STATUSES = new Set([
+  STATUS_AUTOMACAO_GERADO,
+  STATUS_AUTOMACAO_CORRIGIDO,
+]);
+
+// Estados que NUNCA publicam (stub sem conteúdo, pendente de correção ou erro).
+const NOT_READY_STATUSES = new Set([
+  'a gerar',
+  'a corrigir',
+  STATUS_AUTOMACAO_ERRO,
+]);
+
+// Uma página deve ser RETIDA do sync? bypassReviewGate=true (sync manual do
+// humano) publica o que está "aguardando revisão"; false (webhook) segura tudo.
+function shouldHoldFromSync(automationStatus, { bypassReviewGate = false } = {}) {
+  const status = String(automationStatus || '').trim();
+  if (!status) {
+    return false; // fora do fluxo de automação -> sincroniza normalmente
+  }
+  if (NOT_READY_STATUSES.has(status)) {
+    return true; // nunca publica (stub/pendente/erro)
+  }
+  if (READY_FOR_REVIEW_STATUSES.has(status)) {
+    return !bypassReviewGate; // manual publica; webhook segura
+  }
+  return false;
+}
 
 // Chave do modelo (snake_case) -> nome da propriedade no Notion "Clínico Revisado".
 const FIELD_TO_NOTION = {
@@ -284,6 +313,9 @@ module.exports = {
   STATUS_AUTOMACAO_CORRIGIDO,
   STATUS_AUTOMACAO_ERRO,
   PENDING_REVIEW_STATUSES,
+  READY_FOR_REVIEW_STATUSES,
+  NOT_READY_STATUSES,
+  shouldHoldFromSync,
   FIELD_TO_NOTION,
   NOTION_TO_FIELD,
   CANONICAL_PREGNANCY_RISK,
