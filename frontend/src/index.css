@@ -1284,6 +1284,59 @@ body {
   word-break: break-word;
 }
 
+/* Saída editável: mesmo visual do prontuário, porém um textarea que cresce. */
+.referral-letter-editable {
+  width: 100%;
+  display: block;
+  resize: vertical;
+  overflow: hidden;
+}
+
+.referral-letter-editable:focus {
+  outline: none;
+  border-color: var(--primary-500, #3b82f6);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.12);
+}
+
+.referral-model-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.referral-model-wrapper select {
+  flex: 1;
+  min-width: 180px;
+}
+
+.referral-manage-link {
+  border: none;
+  background: none;
+  padding: 0;
+  color: var(--primary-600, #2563eb);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
+  white-space: nowrap;
+}
+
+.letter-model-default-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--gray-700, #374151);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.letter-model-default-toggle input {
+  width: 16px;
+  height: 16px;
+}
+
 .secondary-toggle {
   width: 100%;
   display: flex;

@@ -4,6 +4,7 @@ import { guides } from '../data/guides';
 import { officialTemplateCatalog } from '../data/officialTemplateCatalog';
 import { templateStructures } from '../data/templateStructures';
 import SnippetsSection from './SnippetsSection';
+import LetterModelsSection from './LetterModelsSection';
 
 const EMPTY_TEMPLATE_FORM = {
   id: null,
@@ -39,8 +40,9 @@ function TemplatesPage({
   onRequestUpgrade,
   user,
   onLogin,
+  initialPageTab = 'templates',
 }) {
-  const [pageTab, setPageTab] = useState('templates');
+  const [pageTab, setPageTab] = useState(initialPageTab);
   const [search, setSearch] = useState('');
   const [categoryFilter, setCategoryFilter] = useState('all');
   const [previewTemplateId, setPreviewTemplateId] = useState(null);
@@ -320,11 +322,19 @@ function TemplatesPage({
       <section className="workspace-surface templates-hero">
         <div className="templates-hero-copy">
           <span className="workspace-kicker">Biblioteca clínica</span>
-          <h1>{pageTab === 'snippets' ? 'Frases prontas' : 'Templates clínicos'}</h1>
+          <h1>
+            {pageTab === 'snippets'
+              ? 'Frases prontas'
+              : pageTab === 'letters'
+                ? 'Modelos de carta'
+                : 'Templates clínicos'}
+          </h1>
           <p>
             {pageTab === 'snippets'
               ? 'Modelos de texto para copiar e colar na anamnese — exame físico normal, condutas e orientações, prontos para ajustar só o que estiver diferente.'
-              : 'Escolha um modelo oficial ou salve suas próprias estruturas para organizar a anamnese do jeito que você usa no dia a dia.'}
+              : pageTab === 'letters'
+                ? 'Formatos reutilizáveis das cartas e documentos gerados por IA. Defina a estrutura e o seu cabeçalho/assinatura fixos por tipo.'
+                : 'Escolha um modelo oficial ou salve suas próprias estruturas para organizar a anamnese do jeito que você usa no dia a dia.'}
           </p>
         </div>
 
@@ -358,6 +368,22 @@ function TemplatesPage({
               <path d="M9 16h6" />
             </svg>
             Frases prontas
+          </button>
+          <button
+            type="button"
+            role="tab"
+            aria-selected={pageTab === 'letters'}
+            className={`templates-section-tab ${pageTab === 'letters' ? 'active' : ''}`}
+            onClick={() => setPageTab('letters')}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <path d="M4 4h16v16H4z" />
+              <path d="M4 8h16" />
+              <path d="M8 4v16" />
+              <path d="M12 12h5" />
+              <path d="M12 16h4" />
+            </svg>
+            Modelos de carta
           </button>
         </div>
 
@@ -403,6 +429,15 @@ function TemplatesPage({
 
       {pageTab === 'snippets' ? (
         <SnippetsSection
+          user={user}
+          isPro={isPro}
+          onRequestUpgrade={onRequestUpgrade}
+          onLogin={onLogin}
+        />
+      ) : null}
+
+      {pageTab === 'letters' ? (
+        <LetterModelsSection
           user={user}
           isPro={isPro}
           onRequestUpgrade={onRequestUpgrade}

@@ -6,7 +6,7 @@ import FocusedClinicalReview from './components/FocusedClinicalReview';
 import InputSection from './components/InputSection';
 import InsightBlock from './components/InsightBlock';
 import PlanComparisonModal from './components/PlanComparisonModal';
-import ReferralLetterCard from './components/ReferralLetterCard';
+import LetterGeneratorCard from './components/LetterGeneratorCard';
 import SnippetsQuickModal from './components/SnippetsQuickModal';
 import StructuralFeedback from './components/StructuralFeedback';
 import StructuredOutput from './components/StructuredOutput';
@@ -959,9 +959,8 @@ function App() {
   const [checkoutSuccessBannerVisible, setCheckoutSuccessBannerVisible] = useState(false);
   const [welcomeOnboardingOpen, setWelcomeOnboardingOpen] = useState(false);
   const [currentInsightsUnlocked, setCurrentInsightsUnlocked] = useState(false);
-  const [referralSpecialty, setReferralSpecialty] = useState('');
-  const [referralReason, setReferralReason] = useState('');
   const [referralLetter, setReferralLetter] = useState('');
+  const [templatesInitialTab, setTemplatesInitialTab] = useState('templates');
   const [referralError, setReferralError] = useState('');
   const [loadingReferralLetter, setLoadingReferralLetter] = useState(false);
   const [referralCopied, setReferralCopied] = useState(false);
@@ -1507,20 +1506,6 @@ function App() {
     setReferralCopied(false);
   };
 
-  const handleReferralSpecialtyChange = (nextSpecialty) => {
-    setReferralSpecialty(nextSpecialty);
-    setReferralLetter('');
-    setReferralError('');
-    setReferralCopied(false);
-  };
-
-  const handleReferralReasonChange = (nextReason) => {
-    setReferralReason(nextReason);
-    setReferralLetter('');
-    setReferralError('');
-    setReferralCopied(false);
-  };
-
   const handleNavigate = (page, options = {}) => {
     setCurrentPage(page);
     setAuthPanelAberto(false);
@@ -1692,10 +1677,9 @@ function App() {
     }
   };
 
-  const handleGenerateReferralLetter = async () => {
+  const handleGenerateLetter = async ({ letterType, fields, modelId }) => {
     const sourceText = texto.trim();
     const structuredText = (displayedResultado || resultado || '').trim();
-    const specialty = referralSpecialty.trim();
 
     if (!user?.id) {
       setAuthPanelAberto(true);
@@ -1710,12 +1694,7 @@ function App() {
     }
 
     if (!sourceText) {
-      setReferralError('Preencha a anamnese antes de gerar a carta.');
-      return;
-    }
-
-    if (!specialty) {
-      setReferralError('Informe a especialidade de destino.');
+      setReferralError('Preencha a anamnese antes de gerar o documento.');
       return;
     }
 
@@ -1724,21 +1703,22 @@ function App() {
     setLoadingReferralLetter(true);
 
     try {
-      const response = await api.post('/referral-letter', {
+      const response = await api.post('/letters', {
+        letterType,
+        fields,
+        modelId,
         texto: sourceText,
         structuredText,
-        specialty,
-        reason: referralReason.trim(),
       });
 
       if (response.success) {
-        const nextLetter = response.data?.letter || '';
-        setReferralLetter(nextLetter);
+        setReferralLetter(response.data?.letter || '');
         if (response.data?.profile) {
           setProfile(response.data.profile);
         }
-        trackEvent('carta_encaminhamento_gerada', {
-          specialty,
+        trackEvent('carta_gerada', {
+          letter_type: letterType,
+          used_custom_model: Boolean(modelId),
           has_structured_result: Boolean(structuredText),
           text_length: sourceText.length,
           is_pro: isPro,
@@ -1749,9 +1729,9 @@ function App() {
       if (response.data?.profile) {
         setProfile(response.data.profile);
       }
-      setReferralError(response.error || 'Não foi possível gerar a carta agora.');
+      setReferralError(response.error || 'Não foi possível gerar o documento agora.');
     } catch (err) {
-      setReferralError(err.message || 'Não foi possível gerar a carta agora.');
+      setReferralError(err.message || 'Não foi possível gerar o documento agora.');
     } finally {
       setLoadingReferralLetter(false);
     }
@@ -1766,13 +1746,12 @@ function App() {
       await copyTextToClipboard(referralLetter);
       setReferralCopied(true);
       setTimeout(() => setReferralCopied(false), 2000);
-      trackEvent('carta_encaminhamento_copiada', {
-        specialty: referralSpecialty.trim(),
+      trackEvent('carta_copiada', {
         text_length: referralLetter.length,
         is_pro: isPro,
       });
     } catch {
-      setReferralError('Não foi possível copiar a carta agora.');
+      setReferralError('Não foi possível copiar o documento agora.');
     }
   };
 
@@ -1983,6 +1962,15 @@ function App() {
       setOutputCaseStyle(profile.output_case_style);
     }
   }, [profile?.output_case_style]);
+
+  // Fora da biblioteca, a aba inicial volta a "Templates"; o link "Gerenciar
+  // modelos" da carta é quem seta 'letters' antes de navegar (sem ser resetado,
+  // pois o efeito só dispara quando saímos da página).
+  useEffect(() => {
+    if (currentPage !== 'templates') {
+      setTemplatesInitialTab('templates');
+    }
+  }, [currentPage]);
 
   const handleChangeOutputCaseStyle = async (nextStyle) => {
     const normalized = nextStyle === 'upper' ? 'upper' : 'mixed';
@@ -3100,10 +3088,9 @@ function App() {
                 />
               )}
 
-              <ReferralLetterCard
-                specialty={referralSpecialty}
-                reason={referralReason}
+              <LetterGeneratorCard
                 letter={referralLetter}
+                onLetterChange={setReferralLetter}
                 loading={loadingReferralLetter}
                 error={referralError}
                 checkoutError={referralLetterCheckoutError}
@@ -3111,12 +3098,14 @@ function App() {
                 user={user}
                 accessState={accessState}
                 loadingCheckout={isReferralLetterCheckoutLoading}
-                onSpecialtyChange={handleReferralSpecialtyChange}
-                onReasonChange={handleReferralReasonChange}
-                onGenerate={handleGenerateReferralLetter}
+                onGenerate={handleGenerateLetter}
                 onCopy={handleCopyReferralLetter}
                 onRequestUpgrade={() => handleUpgradeInsights('referralLetter')}
                 onDismissError={() => setReferralError('')}
+                onManageModels={() => {
+                  setTemplatesInitialTab('letters');
+                  handleNavigate('templates');
+                }}
               />
 
               {shouldShowFeedback && (
@@ -3236,6 +3225,7 @@ function App() {
           onProfileUpdate={setProfile}
           onRequestUpgrade={handleUpgradeTemplates}
           user={user}
+          initialPageTab={templatesInitialTab}
           onLogin={() => {
             setAuthPanelAberto(true);
             setAuthMode('login');
