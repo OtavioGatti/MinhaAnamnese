@@ -134,6 +134,17 @@ function SnippetsSection({ user, isPro, onRequestUpgrade, onLogin }) {
     return ordered;
   }, [officialSnippets, mySnippets]);
 
+  // Garante que o valor atual do formulário sempre exista como opção do select
+  // (ex.: ao editar um modelo cujo tipo saiu da lista oficial no meio-tempo).
+  const typeSelectOptions = useMemo(() => {
+    const current = String(formState.snippetType || '').trim();
+    const alreadyListed = typeOptions.some(
+      (type) => type.toLocaleLowerCase('pt-BR') === current.toLocaleLowerCase('pt-BR'),
+    );
+
+    return current && !alreadyListed ? [current, ...typeOptions] : typeOptions;
+  }, [typeOptions, formState.snippetType]);
+
   const handleCopy = async (snippet) => {
     const copied = await copyToClipboard(snippet.body);
 
@@ -342,21 +353,15 @@ function SnippetsSection({ user, isPro, onRequestUpgrade, onLogin }) {
               />
 
               <label htmlFor="snippet-type">Tipo</label>
-              <input
+              <select
                 id="snippet-type"
-                type="text"
-                list="snippet-type-options"
                 value={formState.snippetType}
-                maxLength={40}
                 onChange={(event) => setFormState((current) => ({ ...current, snippetType: event.target.value }))}
-                placeholder="Escolha ou digite um tipo"
-                autoComplete="off"
-              />
-              <datalist id="snippet-type-options">
-                {typeOptions.map((option) => (
-                  <option key={option} value={option} />
+              >
+                {typeSelectOptions.map((option) => (
+                  <option key={option} value={option}>{option}</option>
                 ))}
-              </datalist>
+              </select>
 
               <label htmlFor="snippet-body">Texto do modelo</label>
               <textarea
