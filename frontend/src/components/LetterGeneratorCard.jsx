@@ -47,6 +47,7 @@ function LetterGeneratorCard({
   user,
   accessState,
   loadingCheckout,
+  defaultCaseStyle = 'mixed',
   onGenerate,
   onCopy,
   onRequestUpgrade,
@@ -57,6 +58,7 @@ function LetterGeneratorCard({
   const [fields, setFields] = useState({});
   const [modelId, setModelId] = useState('');
   const [myModels, setMyModels] = useState([]);
+  const [caseStyle, setCaseStyle] = useState(defaultCaseStyle === 'upper' ? 'upper' : 'mixed');
 
   const accessCopy = getAccessCopy({ user, accessState });
   const shouldUseUpgradeAction = Boolean(accessCopy);
@@ -246,17 +248,40 @@ function LetterGeneratorCard({
               <strong>Documento pronto para revisar</strong>
               <span>{'Edite livremente abaixo; a cópia leva o texto ajustado.'}</span>
             </div>
-            <button
-              type="button"
-              className={`btn btn-copiar btn-copiar-inline ${copied ? 'copiado' : ''}`}
-              onClick={onCopy}
-            >
-              {copied ? 'Copiado!' : 'Copiar documento'}
-            </button>
+            <div className="referral-letter-output-actions">
+              <div
+                className="case-style-toggle"
+                role="group"
+                aria-label="Estilo de escrita da carta"
+                title="Alternar entre texto normal (Aa) e tudo em maiúsculas (AA)"
+              >
+                <button
+                  type="button"
+                  className={`case-style-option ${caseStyle === 'mixed' ? 'active' : ''}`}
+                  onClick={() => setCaseStyle('mixed')}
+                >
+                  Aa
+                </button>
+                <button
+                  type="button"
+                  className={`case-style-option ${caseStyle === 'upper' ? 'active' : ''}`}
+                  onClick={() => setCaseStyle('upper')}
+                >
+                  AA
+                </button>
+              </div>
+              <button
+                type="button"
+                className={`btn btn-copiar btn-copiar-inline ${copied ? 'copiado' : ''}`}
+                onClick={() => onCopy(caseStyle === 'upper' ? letter.toLocaleUpperCase('pt-BR') : letter)}
+              >
+                {copied ? 'Copiado!' : 'Copiar documento'}
+              </button>
+            </div>
           </div>
           <textarea
             ref={outputRef}
-            className="referral-letter-text referral-letter-editable"
+            className={`referral-letter-text referral-letter-editable ${caseStyle === 'upper' ? 'is-upper' : ''}`}
             value={letter}
             onChange={(event) => onLetterChange(event.target.value)}
             spellCheck

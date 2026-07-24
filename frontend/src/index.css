@@ -1284,12 +1284,25 @@ body {
   word-break: break-word;
 }
 
+.referral-letter-output-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
 /* Saída editável: mesmo visual do prontuário, porém um textarea que cresce. */
 .referral-letter-editable {
   width: 100%;
   display: block;
   resize: vertical;
   overflow: hidden;
+}
+
+/* AA não altera o valor guardado — só a exibição fica em caixa alta e a cópia
+   aplica toUpperCase, mantendo a edição reversível. */
+.referral-letter-editable.is-upper {
+  text-transform: uppercase;
 }
 
 .referral-letter-editable:focus {
@@ -3326,6 +3339,22 @@ body {
   word-break: break-word;
   max-height: 190px;
   overflow: hidden;
+}
+
+/* Modelo de carta: corpo rolável para ler o formato inteiro dentro do card. */
+.letter-model-body {
+  max-height: 200px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+.letter-model-body::-webkit-scrollbar {
+  width: 7px;
+}
+
+.letter-model-body::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.5);
+  border-radius: 999px;
 }
 
 .snippet-card-actions {

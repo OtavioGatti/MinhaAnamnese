@@ -1,4 +1,4 @@
-import ClinicalDrugMentionAssist from './ClinicalDrugMentionAssist';
+import ClinicalDrugMentionAssist, { ClinicalDrugAutocomplete } from './ClinicalDrugMentionAssist';
 import { useClinicalDrugMentions } from '../hooks/useClinicalDrugMentions';
 
 function InputSection({
@@ -90,6 +90,7 @@ function InputSection({
                 {texto.length.toLocaleString('pt-BR')} caracteres
               </span>
             )}
+            {drugMentionsEnabled && <ClinicalDrugAutocomplete mention={drugMentions} />}
           </div>
           <ClinicalDrugMentionAssist
             enabled={drugMentionsEnabled}

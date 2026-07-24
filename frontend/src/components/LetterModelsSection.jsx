@@ -23,20 +23,26 @@ async function copyToClipboard(text) {
   }
 }
 
+// Corpo rolável: o usuário lê o formato inteiro sem sair do card; o fade só
+// aparece enquanto ainda há conteúdo abaixo do que está visível.
 function ModelCardBody({ text }) {
   const ref = useRef(null);
-  const [clipped, setClipped] = useState(false);
+  const [showFade, setShowFade] = useState(false);
 
-  useLayoutEffect(() => {
+  const updateFade = () => {
     const element = ref.current;
     if (element) {
-      setClipped(element.scrollHeight > element.clientHeight + 2);
+      setShowFade(element.scrollHeight - element.clientHeight - element.scrollTop > 2);
     }
+  };
+
+  useLayoutEffect(() => {
+    updateFade();
   }, [text]);
 
   return (
-    <div className={`snippet-card-body-wrap ${clipped ? 'is-clipped' : ''}`}>
-      <pre className="snippet-card-body" ref={ref}>{text}</pre>
+    <div className={`snippet-card-body-wrap letter-model-body-wrap ${showFade ? 'is-clipped' : ''}`}>
+      <pre className="snippet-card-body letter-model-body" ref={ref} onScroll={updateFade}>{text}</pre>
     </div>
   );
 }

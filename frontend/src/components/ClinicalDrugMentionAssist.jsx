@@ -408,7 +408,7 @@ function buildClinicalDrugAlerts(detectedMentions) {
   ];
 }
 
-function ClinicalDrugAutocomplete({ mention }) {
+export function ClinicalDrugAutocomplete({ mention }) {
   const {
     highlightedIndex,
     insertDrugMention,
@@ -792,8 +792,6 @@ function ClinicalDrugMentionAssist({ enabled, mention, onOpenCatalog }) {
 
   return (
     <>
-      <ClinicalDrugAutocomplete mention={mention} />
-
       <div className="drug-mention-helper-row">
         <span>Digite <strong>@</strong> para inserir medicamentos do Bulário.</span>
         {onOpenCatalog ? (

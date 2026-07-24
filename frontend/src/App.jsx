@@ -1737,13 +1737,15 @@ function App() {
     }
   };
 
-  const handleCopyReferralLetter = async () => {
-    if (!referralLetter) {
+  const handleCopyReferralLetter = async (textToCopy) => {
+    const finalText = typeof textToCopy === 'string' && textToCopy ? textToCopy : referralLetter;
+
+    if (!finalText) {
       return;
     }
 
     try {
-      await copyTextToClipboard(referralLetter);
+      await copyTextToClipboard(finalText);
       setReferralCopied(true);
       setTimeout(() => setReferralCopied(false), 2000);
       trackEvent('carta_copiada', {
@@ -3098,6 +3100,7 @@ function App() {
                 user={user}
                 accessState={accessState}
                 loadingCheckout={isReferralLetterCheckoutLoading}
+                defaultCaseStyle={outputCaseStyle}
                 onGenerate={handleGenerateLetter}
                 onCopy={handleCopyReferralLetter}
                 onRequestUpgrade={() => handleUpgradeInsights('referralLetter')}

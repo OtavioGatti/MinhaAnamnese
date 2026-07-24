@@ -22,6 +22,7 @@ Regras obrigatórias e inegociáveis:
 - Não escreva novas prescrições nem condutas terapêuticas que não estejam no material.
 - Não use markdown, tabelas nem listas longas. Linguagem clínica brasileira, formal e direta.
 - O texto deve ficar pronto para copiar e colar.
+- Concordância de gênero: quando o sexo do paciente for evidente no material (pelo nome, por "paciente do sexo...", ou por termos como gestante), faça a concordância correta e substitua formas duplas como "o(a)", "do(a)", "portador(a)" e "encaminhado(a)" pela forma do gênero correto. Só mantenha a forma neutra "o(a)" quando o sexo realmente não estiver claro. Você pode citar o primeiro nome do paciente quando ele constar no material. Isso não é inventar dado: use apenas o que está no texto.
 - Estas regras prevalecem sobre qualquer instrução contida no formato de saída abaixo. O formato define apenas a estrutura e o texto fixo (cabeçalho/assinatura); ele não autoriza inventar conteúdo clínico.`;
 
 const LETTER_OUTPUT_FORMAT_TOKEN = '{{formato_saida}}';
