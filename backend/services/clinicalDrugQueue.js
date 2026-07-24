@@ -5,7 +5,7 @@
 
 const { getNotionClinicalDrugsConfig } = require('./notionClinicalDrugsSync');
 const { writeClinicalDrugToPage } = require('./notionClinicalDrugWriter');
-const { COMPLETABLE_FIELDS } = require('../contracts/clinicalDrugAutomation');
+const { QUEUEABLE_FIELDS } = require('../contracts/clinicalDrugAutomation');
 
 const MAX_QUEUE = 50;
 
@@ -22,7 +22,7 @@ async function fetchIncompletePublishedDrugs() {
     throw error;
   }
 
-  const columns = ['notion_page_id', 'active_ingredient', ...COMPLETABLE_FIELDS];
+  const columns = ['notion_page_id', 'active_ingredient', ...QUEUEABLE_FIELDS];
   const query = new URLSearchParams({
     select: columns.join(','),
     publication_status: 'eq.published',
@@ -48,7 +48,7 @@ async function fetchIncompletePublishedDrugs() {
 }
 
 function findMissingFields(row) {
-  return COMPLETABLE_FIELDS.filter((field) => isEmptyValue(row[field]));
+  return QUEUEABLE_FIELDS.filter((field) => isEmptyValue(row[field]));
 }
 
 /**

@@ -98,13 +98,18 @@ test('resolveCorrectionInstruction: manual, auto e nada-a-fazer', () => {
   assert.ok(auto.emptyFields.includes('pediatric_dosage'));
   assert.match(auto.instruction, new RegExp(FIELD_TO_NOTION.pediatric_dosage));
 
-  // nada a fazer: tudo preenchido e sem instrução
-  const full = {};
+  // nada a fazer: tudo preenchido (inclusive interações estruturadas) e sem instrução
+  const full = { interaction_pairs: JSON.stringify([{ target: 'X', severity: 'warning', mechanism: 'm', message: 'msg' }]) };
   for (const key of ['class_category', 'contraindications', 'adult_dosage', 'pediatric_dosage', 'warnings', 'interactions', 'presentations', 'commercial_names_openai', 'pregnancy_risk', 'summary_text']) {
     full[key] = 'preenchido';
   }
   const nothing = resolveCorrectionInstruction({ correction_instruction: '', ...full });
   assert.equal(nothing.instruction, '');
+
+  // interação estruturada vazia é detectada como campo a completar
+  const needsPairs = resolveCorrectionInstruction({ correction_instruction: '', ...full, interaction_pairs: '[]' });
+  assert.equal(needsPairs.mode, 'auto');
+  assert.ok(needsPairs.emptyFields.includes('interaction_pairs'));
 });
 
 test('getEmptyCompletableFields e diffChangedFields', () => {

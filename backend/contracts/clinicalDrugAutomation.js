@@ -76,8 +76,8 @@ const MODEL_GENERATED_FIELDS = [
   ...ARRAY_FIELDS,
 ];
 
-// Campos de conteúdo cuja ausência conta como "bula incompleta" (modo completar).
-// interaction_pairs fica de fora: quase toda bula está sem, enfileiraria tudo.
+// Campos considerados no modo auto-completar de UMA página marcada "a corrigir"
+// (o humano pediu explicitamente): inclui interaction_pairs.
 const COMPLETABLE_FIELDS = [
   'class_category',
   'contraindications',
@@ -85,11 +85,16 @@ const COMPLETABLE_FIELDS = [
   'pediatric_dosage',
   'warnings',
   'interactions',
+  'interaction_pairs',
   'presentations',
   'commercial_names_openai',
   'pregnancy_risk',
   'summary_text',
 ];
+
+// Campos considerados na FILA EM LOTE (queue-incomplete): NÃO inclui
+// interaction_pairs — quase toda bula está sem, enfileiraria o bulário inteiro.
+const QUEUEABLE_FIELDS = COMPLETABLE_FIELDS.filter((field) => field !== 'interaction_pairs');
 
 function normalizeText(value) {
   return String(value == null ? '' : value).replace(/\s+/g, ' ').trim();
@@ -265,6 +270,15 @@ function finalizeClinicalDrug(raw = {}, options = {}, lockOptions = {}) {
   return applyClinicalDrugLock(normalizeClinicalDrug(raw, options), lockOptions);
 }
 
+// Um campo de conteúdo está "vazio"? interaction_pairs é considerado vazio
+// quando o array (ou o JSON armazenado) não tem nenhuma entrada.
+function isFieldEmpty(field, value) {
+  if (field === 'interaction_pairs') {
+    return coerceInteractionPairs(value).length === 0;
+  }
+  return String(value == null ? '' : value).trim() === '';
+}
+
 module.exports = {
   STATUS_AUTOMACAO_GERADO,
   STATUS_AUTOMACAO_CORRIGIDO,
@@ -278,6 +292,8 @@ module.exports = {
   SELECT_ENUM_FIELDS,
   MODEL_GENERATED_FIELDS,
   COMPLETABLE_FIELDS,
+  QUEUEABLE_FIELDS,
+  isFieldEmpty,
   buildClinicalDrugSchema,
   resolvePregnancyRiskOptions,
   normalizeClinicalDrug,

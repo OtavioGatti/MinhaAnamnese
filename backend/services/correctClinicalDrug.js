@@ -15,6 +15,7 @@ const {
   MODEL_GENERATED_FIELDS,
   COMPLETABLE_FIELDS,
   FIELD_TO_NOTION,
+  isFieldEmpty,
 } = require('../contracts/clinicalDrugAutomation');
 const {
   buildDrugCorrectionInstructions,
@@ -53,7 +54,7 @@ function diffChangedFields(currentNorm, nextNorm) {
 
 // Lista os campos de conteúdo vazios (modo auto-completar).
 function getEmptyCompletableFields(fields) {
-  return COMPLETABLE_FIELDS.filter((key) => !String(fields[key] || '').trim());
+  return COMPLETABLE_FIELDS.filter((key) => isFieldEmpty(key, fields[key]));
 }
 
 // Instrução: manual (se houver) ou auto a partir dos campos vazios.
