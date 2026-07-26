@@ -127,6 +127,8 @@ body {
 
 .product-topbar-brand .product-brand-name-accent {
   display: inline;
+  font-size: inherit;
+  font-weight: inherit;
   color: var(--primary-600);
 }
 
