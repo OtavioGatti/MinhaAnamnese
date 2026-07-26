@@ -121,6 +121,15 @@ body {
   font-size: 0.8rem;
 }
 
+.product-brand-name {
+  white-space: nowrap;
+}
+
+.product-topbar-brand .product-brand-name-accent {
+  display: inline;
+  color: var(--primary-600);
+}
+
 .product-topbar-nav {
   display: flex;
   align-items: center;

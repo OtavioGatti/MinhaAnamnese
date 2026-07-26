@@ -2667,7 +2667,9 @@ function App() {
             </svg>
           </div>
           <div>
-            <strong>Minha Anamnese</strong>
+            <strong className="product-brand-name">
+              <span className="product-brand-name-accent">Minha</span> Anamnese
+            </strong>
             <span>Workspace clínico</span>
           </div>
         </div>
