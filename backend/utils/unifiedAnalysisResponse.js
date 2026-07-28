@@ -26,6 +26,9 @@ const OBJECTIVE_EXAM_PATTERNS = [
   /\bspo2\b/i,
   /exame\s+f[ií]sico/i,
   /ao\s+exame/i,
+  // Rótulos abreviados do prontuário (ver BASE_CLINICAL_SECTIONS em templates.js).
+  /\bef\b/i,
+  /\bssvv\b/i,
 ];
 
 function normalizeText(value) {
@@ -71,7 +74,9 @@ const HIGH_PRIORITY_INSIGHT_PATTERNS = [
   /remedios?/i,
   /alergias?/i,
   /exame\s+fisico/i,
+  /\bef\b/i,
   /sinais\s+vitais/i,
+  /\bssvv\b/i,
   /interrogatorio/i,
   /sintomas?\s+associados?/i,
   /sinais?\s+de\s+alarme/i,
@@ -90,6 +95,8 @@ const ACUTE_PRIORITY_SECTION_GROUPS = [
     patterns: [
       /exame[_\s]+fisico/i,
       /sinais\s+vitais/i,
+      /\bef\b/i,
+      /\bssvv\b/i,
       /\bpa\b/i,
       /\bfc\b/i,
       /\bfr\b/i,
@@ -269,6 +276,7 @@ const SECTION_EVIDENCE_RULES = [
     evidencePatterns: [
       /ao\s+exame[^.\n]*(?:pa|fc|fr|spo2|saturacao|ausculta|abdome|murphy|crepitacoes|murmurio|taquipneic)/i,
       /exame\s+fisico\s*:\s*(?!\[?nao\s+relatado\]?)(?!\[?não\s+relatado\]?)[^.\n]+/i,
+      /^ef\s*:\s*(?!\[?nao\s+relatado\]?)(?!\[?não\s+relatado\]?)[^.\n]+/im,
       /\bpa\b/i,
       /\bfc\b/i,
       /\bfr\b/i,
@@ -952,6 +960,8 @@ const MISSING_SECTION_LINE_PATTERNS = [
   /^exame\s+fisico\s*:?\s*(?:\[?\s*nao\s+relatado\s*\]?)?\s*$/,
   /^(?:pessoais\s+e\s+)?comorbidades\s*:?\s*(?:\[?\s*nao\s+relatado\s*\]?)?\s*$/,
   /^antecedentes\s+pessoais\s*:?\s*(?:\[?\s*nao\s+relatado\s*\]?)?\s*$/,
+  // Rótulos abreviados do prontuário (BASE_CLINICAL_SECTIONS em templates.js).
+  /^(?:hf|hv|ef|muc|hda|qp|hd|id)\s*:?\s*(?:\[?\s*nao\s+relatado\s*\]?)?\s*$/,
 ];
 
 function lineHasMissingPlaceholder(line) {
@@ -1331,6 +1341,8 @@ function findObjectiveExamSection(sections) {
   return sections.find((section) => sectionLooksLike(section, [
     /exame[_\s]+fisico/i,
     /sinais\s+vitais/i,
+    /\bef\b/i,
+    /\bssvv\b/i,
     /\bpa\b/i,
     /\bfc\b/i,
     /\bfr\b/i,

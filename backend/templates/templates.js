@@ -1,3 +1,8 @@
+const {
+  EXAM_SECTION_GUIDANCE,
+  MENTAL_EXAM_SECTION_GUIDANCE,
+} = require('../utils/examSectionGuidance');
+
 function createSectionDefinition({
   id,
   label,
@@ -32,20 +37,26 @@ function createTemplateConfig({ nome, secoes, category, categoryKey, promptVaria
   };
 }
 
+// Rótulos no padrão abreviado que o médico usa no prontuário (PEC e-SUS).
+// Regra de nomenclatura: usar a sigla só quando ela for consagrada e NÃO colidir
+// com sigla de aparelho dentro do exame físico — por isso "Antecedentes pessoais"
+// e "Interrogatório sintomatológico" ficam por extenso (AP já é aparelho
+// respiratório e IS não é consagrada).
 const BASE_CLINICAL_SECTIONS = [
-  'Identificação',
-  'Hipóteses diagnósticas / problemas ativos',
-  'Queixa principal',
-  'História da moléstia atual (HDA)',
-  'Medicações em uso contínuo',
-  'História pregressa',
+  'ID',
+  'HD',
+  'QP',
+  'HDA',
+  'MUC',
+  'Antecedentes pessoais',
   'Doenças de base',
-  'História familiar',
-  'Hábitos de vida',
+  'HF',
+  'HV',
   'Interrogatório sintomatológico',
   'Exames complementares',
-  'Exame físico',
+  'EF',
 ];
+
 
 const BASE_CLINICAL_EVALUATION = {
   sensitivity: 'ambulatory',
@@ -63,7 +74,7 @@ const BASE_CLINICAL_EVALUATION = {
   sections: [
     createSectionDefinition({
       id: 'identificacao',
-      label: 'Identificação',
+      label: 'ID',
       weight: 8,
       priority: 'important',
       aliases: ['identificação', 'identificacao', 'id'],
@@ -71,15 +82,15 @@ const BASE_CLINICAL_EVALUATION = {
     }),
     createSectionDefinition({
       id: 'hipoteses',
-      label: 'Hipóteses diagnósticas / problemas ativos',
+      label: 'HD',
       weight: 0,
       priority: 'optional',
-      aliases: ['hipóteses diagnósticas', 'hipoteses diagnosticas', 'problemas ativos', 'impressao clinica'],
+      aliases: ['hd', 'hipóteses diagnósticas', 'hipoteses diagnosticas', 'problemas ativos', 'impressao clinica'],
       evidence: ['problema ativo', 'hipotese', 'hipótese', 'impressao', 'impressão'],
     }),
     createSectionDefinition({
       id: 'queixa_principal',
-      label: 'Queixa principal',
+      label: 'QP',
       weight: 12,
       priority: 'essential',
       aliases: ['queixa principal', 'qp', 'qpd'],
@@ -87,7 +98,7 @@ const BASE_CLINICAL_EVALUATION = {
     }),
     createSectionDefinition({
       id: 'hma',
-      label: 'História da moléstia atual (HDA)',
+      label: 'HDA',
       weight: 18,
       priority: 'essential',
       aliases: ['história da moléstia atual', 'historia da molestia atual', 'hda', 'hma', 'história da doença atual', 'historia da doenca atual'],
@@ -96,7 +107,7 @@ const BASE_CLINICAL_EVALUATION = {
     }),
     createSectionDefinition({
       id: 'medicacoes',
-      label: 'Medicações em uso contínuo',
+      label: 'MUC',
       weight: 8,
       priority: 'important',
       aliases: ['medicações em uso contínuo', 'medicacoes em uso continuo', 'medicações em uso', 'medicacoes em uso', 'muc'],
@@ -104,10 +115,10 @@ const BASE_CLINICAL_EVALUATION = {
     }),
     createSectionDefinition({
       id: 'historia_pregressa',
-      label: 'História pregressa',
+      label: 'Antecedentes pessoais',
       weight: 8,
       priority: 'important',
-      aliases: ['história pregressa', 'historia pregressa', 'antecedentes pessoais'],
+      aliases: ['história pregressa', 'historia pregressa', 'antecedentes pessoais', 'hp'],
       evidence: ['cirurgia', 'internação', 'internacao', 'alergia', 'alergias'],
     }),
     createSectionDefinition({
@@ -120,15 +131,15 @@ const BASE_CLINICAL_EVALUATION = {
     }),
     createSectionDefinition({
       id: 'historia_familiar',
-      label: 'História familiar',
+      label: 'HF',
       weight: 6,
       priority: 'important',
-      aliases: ['história familiar', 'historia familiar', 'antecedentes familiares'],
+      aliases: ['história familiar', 'historia familiar', 'antecedentes familiares', 'hf'],
       evidence: ['mãe', 'pai', 'irmão', 'irmã', 'familiar'],
     }),
     createSectionDefinition({
       id: 'habitos_vida',
-      label: 'Hábitos de vida',
+      label: 'HV',
       weight: 5,
       priority: 'contextual',
       aliases: ['hábitos de vida', 'habitos de vida', 'hv'],
@@ -152,10 +163,10 @@ const BASE_CLINICAL_EVALUATION = {
     }),
     createSectionDefinition({
       id: 'exame_fisico',
-      label: 'Exame físico',
+      label: 'EF',
       weight: 10,
       priority: 'essential',
-      aliases: ['exame físico', 'exame fisico', 'ao exame', 'ex. físico', 'ex. fisico'],
+      aliases: ['exame físico', 'exame fisico', 'ao exame', 'ex. físico', 'ex. fisico', 'ef'],
       evidence: ['pressão arterial', 'pressao arterial', 'fc', 'fr', 'temperatura', 'saturação', 'saturacao', 'ausculta'],
       vitals: true,
     }),
@@ -215,6 +226,7 @@ const templates = {
       'Medicações em uso': [
         'Registrar nome, dose, tempo de uso, adesão e resposta percebida quando essas informações estiverem no texto.',
       ],
+      'Exame do estado mental': MENTAL_EXAM_SECTION_GUIDANCE,
     },
     evaluation: {
       sensitivity: 'psychiatry',
@@ -310,6 +322,9 @@ const templates = {
     category: 'Clínica médica',
     categoryKey: 'clinica_medica',
     secoes: BASE_CLINICAL_SECTIONS,
+    sectionGuidance: {
+      EF: EXAM_SECTION_GUIDANCE,
+    },
     evaluation: BASE_CLINICAL_EVALUATION,
   }),
 
@@ -332,6 +347,12 @@ const templates = {
       'Conduta',
     ],
     promptVariant: 'obstetricia',
+    sectionGuidance: {
+      'Ex. físico': [
+        ...EXAM_SECTION_GUIDANCE,
+        'Acrescentar linha obstétrica quando informado: AU (altura uterina), BCF, DU (dinâmica uterina), toque/colo, movimentação fetal.',
+      ],
+    },
     evaluation: {
       sensitivity: 'obstetric',
       severitySignals: ['sangramento vaginal', 'perda de líquido', 'perda de liquido', 'contrações', 'contracoes', 'cefaleia intensa', 'epigastralgia'],
@@ -356,33 +377,39 @@ const templates = {
     category: 'Urgência e emergência',
     categoryKey: 'urgencia_e_emergencia',
     secoes: [
-      'Identificação',
-      'Queixa principal',
-      'História da moléstia atual (foco na queixa)',
+      'ID',
+      'QP',
+      'HDA (foco na queixa)',
       'Tempo de evolução',
       'Sintomas associados',
       'Sinais de alarme',
       'Comorbidades / doenças de base',
-      'Medicações em uso',
+      'MUC',
       'Exames complementares',
-      'Exame físico direcionado',
+      'EF direcionado',
       'Impressão clínica inicial',
       'Conduta',
     ],
+    sectionGuidance: {
+      'EF direcionado': [
+        ...EXAM_SECTION_GUIDANCE,
+        'Priorizar os sistemas relacionados à queixa e os sinais de gravidade; SSVV são obrigatórios quando informados.',
+      ],
+    },
     evaluation: {
       sensitivity: 'emergency',
       severitySignals: ['dispneia', 'dor torácica', 'dor toracica', 'rebaixamento', 'choque', 'hemorragia', 'convulsão', 'convulsao'],
       sections: [
-        createSectionDefinition({ id: 'identificacao', label: 'Identificação', weight: 6, priority: 'important', aliases: ['identificação'], evidence: ['paciente', 'anos'] }),
-        createSectionDefinition({ id: 'queixa_principal', label: 'Queixa principal', weight: 14, priority: 'essential', aliases: ['queixa principal', 'qp'], evidence: ['dor', 'dispneia', 'febre', 'trauma'] }),
-        createSectionDefinition({ id: 'hma', label: 'História da moléstia atual (foco na queixa)', weight: 18, priority: 'essential', aliases: ['história da moléstia atual', 'hda'], evidence: ['desde', 'início', 'inicio', 'evolução', 'evolucao'], narrative: true }),
+        createSectionDefinition({ id: 'identificacao', label: 'ID', weight: 6, priority: 'important', aliases: ['identificação', 'identificacao', 'id'], evidence: ['paciente', 'anos'] }),
+        createSectionDefinition({ id: 'queixa_principal', label: 'QP', weight: 14, priority: 'essential', aliases: ['queixa principal', 'qp'], evidence: ['dor', 'dispneia', 'febre', 'trauma'] }),
+        createSectionDefinition({ id: 'hma', label: 'HDA (foco na queixa)', weight: 18, priority: 'essential', aliases: ['história da moléstia atual', 'hda'], evidence: ['desde', 'início', 'inicio', 'evolução', 'evolucao'], narrative: true }),
         createSectionDefinition({ id: 'tempo_evolucao', label: 'Tempo de evolução', weight: 10, priority: 'essential', aliases: ['tempo de evolução', 'tempo de evolucao'], evidence: ['horas', 'dias', 'início', 'inicio'] }),
         createSectionDefinition({ id: 'sintomas_associados', label: 'Sintomas associados', weight: 8, priority: 'important', aliases: ['sintomas associados'], evidence: ['náusea', 'nausea', 'vômito', 'vomito', 'sudorese'] }),
         createSectionDefinition({ id: 'sinais_alarme', label: 'Sinais de alarme', weight: 12, priority: 'essential', aliases: ['sinais de alarme'], evidence: ['rebaixamento', 'cianose', 'hipotensão', 'hipotensao', 'dessaturação', 'dessaturacao'] }),
         createSectionDefinition({ id: 'comorbidades', label: 'Comorbidades / doenças de base', weight: 6, priority: 'important', aliases: ['comorbidades', 'doenças de base'], evidence: ['hipertensão', 'diabetes', 'asma'] }),
-        createSectionDefinition({ id: 'medicacoes', label: 'Medicações em uso', weight: 5, priority: 'important', aliases: ['medicações em uso'], evidence: ['medicação', 'medicacao'] }),
+        createSectionDefinition({ id: 'medicacoes', label: 'MUC', weight: 5, priority: 'important', aliases: ['medicações em uso', 'muc'], evidence: ['medicação', 'medicacao'] }),
         createSectionDefinition({ id: 'exames_complementares', label: 'Exames complementares', weight: 4, priority: 'contextual', aliases: ['exames complementares'], evidence: ['ecg', 'troponina', 'raio x', 'gasometria'] }),
-        createSectionDefinition({ id: 'exame_fisico', label: 'Exame físico direcionado', weight: 15, priority: 'essential', aliases: ['exame físico direcionado', 'exame físico'], evidence: ['pa', 'fc', 'fr', 'saturação', 'saturacao', 'temperatura'], vitals: true }),
+        createSectionDefinition({ id: 'exame_fisico', label: 'EF direcionado', weight: 15, priority: 'essential', aliases: ['exame físico direcionado', 'exame físico', 'ef direcionado', 'ef'], evidence: ['pa', 'fc', 'fr', 'saturação', 'saturacao', 'temperatura'], vitals: true }),
       ],
     },
   }),
@@ -392,36 +419,42 @@ const templates = {
     category: 'Puerpério',
     categoryKey: 'puerperio',
     secoes: [
-      'Identificação',
+      'ID',
       'Tipo de parto',
       'Tempo de pós-parto',
-      'Queixa principal',
+      'QP',
       'Evolução pós-parto',
       'Amamentação',
       'Loquiação',
       'Dor / sinais infecciosos',
       'Eliminações fisiológicas',
       'Estado emocional',
-      'Medicações em uso',
-      'Exame físico',
+      'MUC',
+      'EF',
       'Conduta',
     ],
+    sectionGuidance: {
+      EF: [
+        ...EXAM_SECTION_GUIDANCE,
+        'Acrescentar linha puerperal quando informado: mamas, involução uterina, lóquios, ferida operatória/períneo, MMII (sinais de TVP).',
+      ],
+    },
     evaluation: {
       sensitivity: 'puerperium',
       severitySignals: ['febre', 'sangramento', 'mastite', 'dor intensa'],
       sections: [
-        createSectionDefinition({ id: 'identificacao', label: 'Identificação', weight: 6, priority: 'important', aliases: ['identificação'], evidence: ['puérpera', 'puerpera', 'anos'] }),
+        createSectionDefinition({ id: 'identificacao', label: 'ID', weight: 6, priority: 'important', aliases: ['identificação', 'identificacao', 'id'], evidence: ['puérpera', 'puerpera', 'anos'] }),
         createSectionDefinition({ id: 'tipo_parto', label: 'Tipo de parto', weight: 8, priority: 'important', aliases: ['tipo de parto'], evidence: ['vaginal', 'cesárea', 'cesarea'] }),
         createSectionDefinition({ id: 'tempo_pos_parto', label: 'Tempo de pós-parto', weight: 8, priority: 'important', aliases: ['tempo de pós-parto', 'tempo de pos-parto'], evidence: ['dias', 'semanas', 'pós-parto', 'pos-parto'] }),
-        createSectionDefinition({ id: 'queixa_principal', label: 'Queixa principal', weight: 10, priority: 'essential', aliases: ['queixa principal'], evidence: ['dor', 'febre', 'sangramento'] }),
+        createSectionDefinition({ id: 'queixa_principal', label: 'QP', weight: 10, priority: 'essential', aliases: ['queixa principal', 'qp'], evidence: ['dor', 'febre', 'sangramento'] }),
         createSectionDefinition({ id: 'evolucao_pos_parto', label: 'Evolução pós-parto', weight: 14, priority: 'essential', aliases: ['evolução pós-parto', 'evolucao pos-parto'], evidence: ['desde', 'evolução', 'amamentação', 'loquiação'], narrative: true }),
         createSectionDefinition({ id: 'amamentacao', label: 'Amamentação', weight: 7, priority: 'important', aliases: ['amamentação', 'amamentacao'], evidence: ['mama', 'pega', 'leite'] }),
         createSectionDefinition({ id: 'loquiacao', label: 'Loquiação', weight: 6, priority: 'important', aliases: ['loquiação', 'loquiacao'], evidence: ['lóquios', 'loquios', 'sangramento'] }),
         createSectionDefinition({ id: 'dor_sinais_infecciosos', label: 'Dor / sinais infecciosos', weight: 10, priority: 'important', aliases: ['dor / sinais infecciosos'], evidence: ['febre', 'odor fétido', 'odor fetido', 'dor'] }),
         createSectionDefinition({ id: 'eliminacoes', label: 'Eliminações fisiológicas', weight: 5, priority: 'contextual', aliases: ['eliminações fisiológicas', 'eliminacoes fisiologicas'], evidence: ['diurese', 'evacuação', 'evacuacao'] }),
         createSectionDefinition({ id: 'estado_emocional', label: 'Estado emocional', weight: 5, priority: 'contextual', aliases: ['estado emocional'], evidence: ['tristeza', 'ansiedade', 'choro'] }),
-        createSectionDefinition({ id: 'medicacoes', label: 'Medicações em uso', weight: 4, priority: 'important', aliases: ['medicações em uso'], evidence: ['analgésico', 'antibiótico', 'antibiotico'] }),
-        createSectionDefinition({ id: 'exame_fisico', label: 'Exame físico', weight: 10, priority: 'essential', aliases: ['exame físico'], evidence: ['pa', 'fc', 'abdome', 'mamas', 'loquiação'], vitals: true }),
+        createSectionDefinition({ id: 'medicacoes', label: 'MUC', weight: 4, priority: 'important', aliases: ['medicações em uso', 'muc'], evidence: ['analgésico', 'antibiótico', 'antibiotico'] }),
+        createSectionDefinition({ id: 'exame_fisico', label: 'EF', weight: 10, priority: 'essential', aliases: ['exame físico', 'exame fisico', 'ef'], evidence: ['pa', 'fc', 'abdome', 'mamas', 'loquiação'], vitals: true }),
       ],
     },
   }),
@@ -431,35 +464,41 @@ const templates = {
     category: 'Ginecologia',
     categoryKey: 'ginecologia',
     secoes: [
-      'Identificação',
-      'Queixa principal',
-      'História da moléstia atual',
+      'ID',
+      'QP',
+      'HDA',
       'História menstrual (DUM, ciclo)',
       'Vida sexual',
       'Método contraceptivo',
       'Corrimento / dor pélvica',
       'Antecedentes ginecológicos',
-      'Medicações em uso',
+      'MUC',
       'Exames complementares',
-      'Exame físico',
-      'Hipóteses diagnósticas / problemas ativos',
+      'EF',
+      'HD',
       'Conduta',
     ],
+    sectionGuidance: {
+      EF: [
+        ...EXAM_SECTION_GUIDANCE,
+        'Acrescentar linha ginecológica quando informado: exame especular, toque bimanual, mamas, abdome/fossas ilíacas.',
+      ],
+    },
     evaluation: {
       sensitivity: 'gynecology',
       severitySignals: ['sangramento', 'dor pélvica intensa', 'dor pelvica intensa'],
       sections: [
-        createSectionDefinition({ id: 'identificacao', label: 'Identificação', weight: 6, priority: 'important', aliases: ['identificação'], evidence: ['anos', 'paciente'] }),
-        createSectionDefinition({ id: 'queixa_principal', label: 'Queixa principal', weight: 10, priority: 'essential', aliases: ['queixa principal'], evidence: ['dor', 'corrimento', 'sangramento'] }),
-        createSectionDefinition({ id: 'hma', label: 'História da moléstia atual', weight: 16, priority: 'essential', aliases: ['história da moléstia atual', 'hda'], evidence: ['desde', 'evolução', 'piora', 'melhora'], narrative: true }),
+        createSectionDefinition({ id: 'identificacao', label: 'ID', weight: 6, priority: 'important', aliases: ['identificação', 'identificacao', 'id'], evidence: ['anos', 'paciente'] }),
+        createSectionDefinition({ id: 'queixa_principal', label: 'QP', weight: 10, priority: 'essential', aliases: ['queixa principal', 'qp'], evidence: ['dor', 'corrimento', 'sangramento'] }),
+        createSectionDefinition({ id: 'hma', label: 'HDA', weight: 16, priority: 'essential', aliases: ['história da moléstia atual', 'hda'], evidence: ['desde', 'evolução', 'piora', 'melhora'], narrative: true }),
         createSectionDefinition({ id: 'historia_menstrual', label: 'História menstrual (DUM, ciclo)', weight: 10, priority: 'important', aliases: ['história menstrual', 'dum', 'ciclo'], evidence: ['dum', 'ciclo', 'menstruação', 'menstruacao'] }),
         createSectionDefinition({ id: 'vida_sexual', label: 'Vida sexual', weight: 6, priority: 'contextual', aliases: ['vida sexual'], evidence: ['sexualmente', 'parceria', 'parceiro'] }),
         createSectionDefinition({ id: 'contraceptivo', label: 'Método contraceptivo', weight: 6, priority: 'important', aliases: ['método contraceptivo', 'metodo contraceptivo'], evidence: ['diu', 'pílula', 'pilula', 'preservativo'] }),
         createSectionDefinition({ id: 'corrimento_dor_pelvica', label: 'Corrimento / dor pélvica', weight: 10, priority: 'important', aliases: ['corrimento / dor pélvica', 'corrimento', 'dor pélvica'], evidence: ['odor', 'prurido', 'corrimento', 'dor pélvica', 'dor pelvica'] }),
         createSectionDefinition({ id: 'antecedentes_ginecologicos', label: 'Antecedentes ginecológicos', weight: 8, priority: 'important', aliases: ['antecedentes ginecológicos', 'antecedentes ginecologicos'], evidence: ['mioma', 'cirurgia', 'ist'] }),
-        createSectionDefinition({ id: 'medicacoes', label: 'Medicações em uso', weight: 4, priority: 'contextual', aliases: ['medicações em uso'], evidence: ['medicação', 'medicacao'] }),
+        createSectionDefinition({ id: 'medicacoes', label: 'MUC', weight: 4, priority: 'contextual', aliases: ['medicações em uso', 'muc'], evidence: ['medicação', 'medicacao'] }),
         createSectionDefinition({ id: 'exames_complementares', label: 'Exames complementares', weight: 5, priority: 'contextual', aliases: ['exames complementares'], evidence: ['papanicolau', 'ultrassom', 'usg'] }),
-        createSectionDefinition({ id: 'exame_fisico', label: 'Exame físico', weight: 9, priority: 'essential', aliases: ['exame físico'], evidence: ['abdome', 'especular', 'toque', 'pa', 'fc'], vitals: true }),
+        createSectionDefinition({ id: 'exame_fisico', label: 'EF', weight: 9, priority: 'essential', aliases: ['exame físico', 'exame fisico', 'ef'], evidence: ['abdome', 'especular', 'toque', 'pa', 'fc'], vitals: true }),
       ],
     },
   }),
@@ -469,22 +508,29 @@ const templates = {
     category: 'Triagem',
     categoryKey: 'triagem',
     secoes: [
-      'Identificação',
-      'Queixa principal',
+      'ID',
+      'QP',
       'Tempo de início',
       'Sintomas associados',
       'Sinais de gravidade',
       'Comorbidades',
-      'Medicações em uso',
+      'MUC',
       'Sinais vitais',
       'Impressão inicial',
     ],
+    sectionGuidance: {
+      'Sinais vitais': [
+        'Escrever em lista, uma linha por parâmetro, nunca em parágrafo corrido.',
+        'Usar as siglas do prontuário: PA, FC, FR, Tax, SatO2, HGT (glicemia capilar) e dor (escala) quando informados.',
+        'Incluir apenas os parâmetros aferidos no texto original; não presumir valores.',
+      ],
+    },
     evaluation: {
       sensitivity: 'triage',
       severitySignals: ['dispneia', 'dor torácica', 'rebaixamento', 'cianose', 'convulsão'],
       sections: [
-        createSectionDefinition({ id: 'identificacao', label: 'Identificação', weight: 6, priority: 'important', aliases: ['identificação'], evidence: ['paciente', 'anos'] }),
-        createSectionDefinition({ id: 'queixa_principal', label: 'Queixa principal', weight: 14, priority: 'essential', aliases: ['queixa principal'], evidence: ['dor', 'febre', 'dispneia', 'trauma'] }),
+        createSectionDefinition({ id: 'identificacao', label: 'ID', weight: 6, priority: 'important', aliases: ['identificação', 'identificacao', 'id'], evidence: ['paciente', 'anos'] }),
+        createSectionDefinition({ id: 'queixa_principal', label: 'QP', weight: 14, priority: 'essential', aliases: ['queixa principal', 'qp'], evidence: ['dor', 'febre', 'dispneia', 'trauma'] }),
         createSectionDefinition({ id: 'tempo_inicio', label: 'Tempo de início', weight: 10, priority: 'essential', aliases: ['tempo de início', 'tempo de inicio'], evidence: ['horas', 'dias', 'início', 'inicio'] }),
         createSectionDefinition({ id: 'sintomas_associados', label: 'Sintomas associados', weight: 8, priority: 'important', aliases: ['sintomas associados'], evidence: ['náusea', 'nausea', 'vômito', 'vomito'] }),
         createSectionDefinition({ id: 'sinais_gravidade', label: 'Sinais de gravidade', weight: 16, priority: 'essential', aliases: ['sinais de gravidade'], evidence: ['cianose', 'rebaixamento', 'hipotensão', 'hipotensao'] }),

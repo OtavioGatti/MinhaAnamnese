@@ -1198,6 +1198,36 @@ body {
   text-wrap: pretty;
 }
 
+/* Anamnese estruturada editável: mesmo visual de prontuário do bloco anterior,
+   porém em textarea (o médico ajusta antes de copiar). Cresce com o conteúdo. */
+.clinical-document-editor {
+  width: 100%;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--gray-900);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 0.98rem;
+  line-height: 1.62;
+  letter-spacing: -0.01em;
+  resize: vertical;
+  overflow: hidden;
+  min-height: 260px;
+  word-break: break-word;
+}
+
+.clinical-document-editor:focus {
+  outline: none;
+}
+
+/* AA é só apresentação: o valor guardado continua como veio (edição reversível);
+   a cópia aplica o uppercase via displayedResultado no App. */
+.clinical-document-editor.is-upper {
+  text-transform: uppercase;
+}
+
 .referral-letter-card {
   display: grid;
   gap: 1rem;

@@ -1,4 +1,5 @@
 const { buildCustomEvaluation } = require('./userTemplates');
+const { withExamSectionGuidance, abbreviateSections } = require('../utils/examSectionGuidance');
 
 const MAX_SECTIONS = 40;
 const MAX_LIST_ITEM_LENGTH = 180;
@@ -127,7 +128,10 @@ function mapOfficialTemplateRow(row) {
   return {
     id: row.slug,
     nome: row.name,
-    secoes: normalizeList(row.sections),
+    // O CMS guarda os rótulos por extenso; o site exibe e gera no padrão
+    // abreviado do prontuário (EF:, QP:, HDA:...), então a listagem e a geração
+    // mostram exatamente a mesma estrutura.
+    secoes: abbreviateSections(normalizeList(row.sections)),
     source: 'official',
     description: row.description || '',
     category: row.category || '',
@@ -148,11 +152,15 @@ function buildRuntimeOfficialTemplateConfig(row, fallbackTemplate = null) {
     return null;
   }
 
+  const secoes = mapped.secoes; // já abreviadas em mapOfficialTemplateRow
+
   return {
     nome: mapped.nome,
-    secoes: mapped.secoes,
+    secoes,
     promptVariant: fallbackTemplate?.promptVariant,
-    sectionGuidance: fallbackTemplate?.sectionGuidance,
+    // Templates que só existem no CMS não têm sectionGuidance hardcoded; o
+    // helper garante a orientação de formato do exame mesmo assim.
+    sectionGuidance: withExamSectionGuidance(secoes, fallbackTemplate?.sectionGuidance),
     evaluation: hasRuntimeEvaluation(row.evaluation)
       ? row.evaluation
       : fallbackTemplate?.evaluation || buildCustomEvaluation(mapped.secoes),

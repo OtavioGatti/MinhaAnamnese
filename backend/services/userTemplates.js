@@ -6,6 +6,7 @@ const {
   resolveCategory,
 } = require('../utils/categoryKeys');
 const { matchOfficialSection } = require('../utils/templateSectionMatching');
+const { withExamSectionGuidance } = require('../utils/examSectionGuidance');
 const { enrichCustomTemplate } = require('./enrichCustomTemplate');
 
 // Pesos-base por prioridade clínica (renormalizados para somar ~100).
@@ -342,12 +343,16 @@ function buildRuntimeTemplateConfig(row) {
     nome: row.name,
     secoes: sections,
     promptVariant: categoryTemplate?.promptVariant || 'custom',
-    // Guidance remapeada para os rótulos do usuário (senão o prompt não a acha).
-    sectionGuidance: buildCustomSectionGuidance(
+    // Guidance remapeada para os rótulos do usuário (senão o prompt não a acha);
+    // withExamSectionGuidance garante o formato do exame nos rótulos próprios.
+    sectionGuidance: withExamSectionGuidance(
       sections,
-      categoryTemplate?.evaluation,
-      categoryTemplate?.sectionGuidance,
-      enrichment,
+      buildCustomSectionGuidance(
+        sections,
+        categoryTemplate?.evaluation,
+        categoryTemplate?.sectionGuidance,
+        enrichment,
+      ),
     ),
     evaluation: buildCustomEvaluation(sections, categoryTemplate?.evaluation, enrichment),
     clinicalCategory: category.key,

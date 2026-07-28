@@ -3080,7 +3080,8 @@ function App() {
 
               {resultado && (
                 <StructuredOutput
-                  displayedResultado={displayedResultado}
+                  displayedResultado={resultado}
+                  onResultadoChange={setResultado}
                   copiado={copiado}
                   onCopiar={handleCopiar}
                   outputCaseStyle={outputCaseStyle}
