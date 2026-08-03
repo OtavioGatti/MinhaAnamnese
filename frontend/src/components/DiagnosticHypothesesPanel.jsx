@@ -75,6 +75,7 @@ function DiagnosticHypothesesPanel({
   data,
   error,
   loading,
+  isStale,
   onGenerate,
   onRequestUpgrade,
   onOpenPrescriptionGuide,
@@ -110,7 +111,8 @@ function DiagnosticHypothesesPanel({
     );
   }
 
-  if (error) {
+  // Só substitui a tela inteira pelo erro quando não há análise anterior em tela.
+  if (error && !data) {
     return (
       <div className="diagnostic-error" role="alert">
         <strong>Não foi possível concluir a análise</strong>
@@ -137,6 +139,24 @@ function DiagnosticHypothesesPanel({
 
   return (
     <div className="diagnostic-results" aria-live="polite">
+      {error ? (
+        <div className="diagnostic-error" role="alert">
+          <strong>Não foi possível atualizar a análise</strong>
+          <p>{error}</p>
+          <button type="button" className="btn btn-secundario" onClick={onGenerate}>Tentar novamente</button>
+        </div>
+      ) : null}
+
+      {isStale ? (
+        <div className="diagnostic-stale-notice">
+          <strong>O texto organizado mudou</strong>
+          <p>Estas hipóteses foram geradas antes da sua última edição. Termine os ajustes e atualize quando quiser.</p>
+          <button type="button" className="btn btn-secundario" onClick={onGenerate}>
+            Atualizar hipóteses
+          </button>
+        </div>
+      ) : null}
+
       {isInsufficient || isRefused ? (
         <div className="diagnostic-status-notice">
           <strong>{isRefused ? 'Análise não realizada' : 'História clínica insuficiente'}</strong>

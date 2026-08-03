@@ -61,6 +61,7 @@ function FocusedClinicalReview({
   data,
   loading,
   error,
+  isStale,
   onGenerate,
   onRequestUpgrade,
   onSeeFullReasoning,
@@ -123,14 +124,34 @@ function FocusedClinicalReview({
           <strong>Analisando a história clínica...</strong>
           <p>Levantando o que vale checar sobre o provável quadro.</p>
         </div>
-      ) : error ? (
+      ) : error && !data ? (
         <div className="diagnostic-error" role="alert">
           <strong>Não foi possível concluir a revisão</strong>
           <p>{error}</p>
           <button type="button" className="btn btn-secundario" onClick={onGenerate}>Tentar novamente</button>
         </div>
       ) : (
-        <FocusReviewResult data={data} onGenerate={onGenerate} onSeeFullReasoning={onSeeFullReasoning} />
+        <>
+          {error ? (
+            <div className="diagnostic-error" role="alert">
+              <strong>Não foi possível atualizar a revisão</strong>
+              <p>{error}</p>
+              <button type="button" className="btn btn-secundario" onClick={onGenerate}>Tentar novamente</button>
+            </div>
+          ) : null}
+
+          {isStale ? (
+            <div className="diagnostic-stale-notice">
+              <strong>O texto organizado mudou</strong>
+              <p>Esta revisão foi gerada antes da sua última edição.</p>
+              <button type="button" className="btn btn-secundario" onClick={onGenerate}>
+                Atualizar revisão
+              </button>
+            </div>
+          ) : null}
+
+          <FocusReviewResult data={data} onGenerate={onGenerate} onSeeFullReasoning={onSeeFullReasoning} />
+        </>
       )}
     </div>
   );

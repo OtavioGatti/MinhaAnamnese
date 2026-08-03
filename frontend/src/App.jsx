@@ -3164,6 +3164,7 @@ function App() {
                   data={diagnosticHypotheses.data}
                   loading={diagnosticHypotheses.loading}
                   error={diagnosticHypotheses.error}
+                  isStale={diagnosticHypotheses.isStale}
                   onGenerate={handleGenerateFocusedReview}
                   onRequestUpgrade={() => handleUpgradeInsights('home')}
                   onSeeFullReasoning={handleSeeFullReasoning}
@@ -3199,6 +3200,7 @@ function App() {
                   data={diagnosticHypotheses.data}
                   error={diagnosticHypotheses.error}
                   loading={diagnosticHypotheses.loading}
+                  isStale={diagnosticHypotheses.isStale}
                   onGenerate={handleRequestDiagnosticHypotheses}
                   onRequestUpgrade={() => handleUpgradeInsights('home')}
                   onOpenPrescriptionGuide={handleOpenHypothesisPrescription}
