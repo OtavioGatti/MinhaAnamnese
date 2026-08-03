@@ -16,6 +16,10 @@ const {
   buildHypothesisGuideRef,
   findExactPrescriptionGuideMatch,
 } = require('../services/prescriptionGuides');
+const {
+  collectUnmatchedHypotheses,
+  recordUnmatchedHypotheses,
+} = require('../services/unmatchedHypotheses');
 
 function hypothesis(name, priority = 'differential') {
   return {
@@ -124,6 +128,43 @@ test('vínculo de prescrição exige correspondência exata normalizada', () => 
     guides[0].slug,
   );
   assert.equal(findExactPrescriptionGuideMatch('Pneumonia', guides), null);
+});
+
+test('backlog registra só hipóteses sem guia, deduplicadas', () => {
+  const entries = collectUnmatchedHypotheses([
+    { name: 'Pneumonia Adquirida na Comunidade (PAC)', prescriptionGuide: { slug: 'pac' } },
+    { name: 'Lesão por Pressão Grau 4' },
+    { name: 'lesão por pressão grau 4' },
+    { name: 'Delirium' },
+  ]);
+
+  assert.deepEqual(entries.map((entry) => entry.displayName), [
+    'Lesão por Pressão Grau 4',
+    'Delirium',
+  ]);
+  assert.equal(entries[0].normalizedName, 'lesao por pressao grau 4');
+});
+
+test('backlog ignora nomes vazios ou curtos demais para virar prescrição', () => {
+  assert.deepEqual(collectUnmatchedHypotheses([{ name: '' }, { name: '  ' }, { name: 'AB' }]), []);
+  assert.deepEqual(collectUnmatchedHypotheses(null), []);
+});
+
+test('sem Supabase configurado o backlog degrada em silêncio', async () => {
+  const originalUrl = process.env.SUPABASE_URL;
+  const originalViteUrl = process.env.VITE_SUPABASE_URL;
+  const originalKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  delete process.env.SUPABASE_URL;
+  delete process.env.VITE_SUPABASE_URL;
+  delete process.env.SUPABASE_SERVICE_ROLE_KEY;
+
+  try {
+    assert.equal(await recordUnmatchedHypotheses([{ name: 'Delirium' }]), 0);
+  } finally {
+    if (originalUrl) process.env.SUPABASE_URL = originalUrl;
+    if (originalViteUrl) process.env.VITE_SUPABASE_URL = originalViteUrl;
+    if (originalKey) process.env.SUPABASE_SERVICE_ROLE_KEY = originalKey;
+  }
 });
 
 test('referência do guia leva o CID-10 revisado para a hipótese', () => {

@@ -742,4 +742,5 @@ module.exports = {
   getPrescriptionGuideBySlug,
   isPrescriptionGuidesStorageAvailable,
   listPrescriptionGuides,
+  normalizeGuideMatchKey,
 };

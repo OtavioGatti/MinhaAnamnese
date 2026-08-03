@@ -11,6 +11,7 @@ const {
 } = require('../prompts/diagnosticHypothesesPrompt');
 const { getSyncedOfficialPrompt } = require('./officialPrompts');
 const { findPrescriptionGuideForHypothesis } = require('./prescriptionGuides');
+const { recordUnmatchedHypotheses } = require('./unmatchedHypotheses');
 const { resolveTemplateById } = require('./templates');
 const { sanitizeText } = require('../utils/textSanitization');
 
@@ -241,6 +242,10 @@ async function generateDiagnosticHypotheses({ template, structuredText, userId }
   });
   const parsed = generationResponse.parsed;
   const hypotheses = await attachPrescriptionGuides(parsed.hypotheses);
+
+  // Backlog editorial das prescrições que ainda faltam escrever. Best-effort:
+  // nunca deve derrubar a análise clínica já pronta.
+  await recordUnmatchedHypotheses(hypotheses).catch(() => 0);
 
   return {
     ...parsed,
