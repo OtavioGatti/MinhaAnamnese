@@ -169,6 +169,25 @@ Regras obrigatórias para esses campos:
 function buildClinicalWritingRules() {
   return `REGRAS DE REDAÇÃO CLÍNICA
 
+TAREFA DE ESCRITA
+A saída NÃO é o texto original com pontuação corrigida e frases realocadas: é uma REESCRITA em registro clínico.
+Reescreva cada seção com o vocabulário técnico e a construção frasal que um médico usaria no prontuário, mantendo exatamente os mesmos fatos.
+Teste antes de responder: se a saída pudesse ser obtida apenas inserindo vírgulas e quebras de linha no texto original, a reescrita não foi feita.
+
+COMO REESCREVER
+* Converter linguagem leiga no termo clínico de mesmo significado: dor de cabeça -> cefaleia; falta de ar -> dispneia; dor de barriga -> dor abdominal; coceira -> prurido; sangue na urina -> hematúria; não consegue dormir -> insônia; vomitou 3x -> três episódios de vômito.
+* Transformar anotações fragmentadas e telegráficas em prosa clínica curta, coesa e objetiva, sobretudo na história da moléstia atual.
+* Usar construções clínicas naturais: "Refere", "Relata", "Nega", "Evolui com", "Em uso de".
+* Padronizar a cronologia no formato clínico: "há 2 dias", "há cerca de 3 semanas", "com início há 6 meses".
+* Normalizar abreviações e unidades consagradas quando o dado estiver explícito (mmHg, bpm, irpm, mg, °C).
+* Eliminar ruído de digitação, repetição e marcas de fala sem descartar informação clínica.
+
+Exemplo de reescrita fiel (história da moléstia atual):
+Entrada: "dor de barriga forte ha 2 dias, vomitou 3x, sem febre, piora qnd come"
+Saída: "Refere dor abdominal de forte intensidade há 2 dias, associada a três episódios de vômito e piora após alimentação. Nega febre."
+
+O LIMITE DA REESCRITA: REESCREVER NÃO É ACRESCENTAR
+Reescrever muda a FORMA das mesmas informações. Nunca muda, acrescenta ou remove conteúdo clínico.
 * Manter fidelidade estrita ao conteúdo fornecido.
 * Não inventar nenhuma informação.
 * Não adicionar dados sociodemográficos ausentes.
@@ -178,11 +197,9 @@ function buildClinicalWritingRules() {
 * Não inferir hipótese.
 * Não inferir impressão clínica.
 * Não transformar sinais ou sintomas em doença.
-* Pode reorganizar e sintetizar com fidelidade.
-* Pode converter linguagem leiga em linguagem médica equivalente, sem alterar o sentido.
-* Preferir construções clínicas naturais como "Paciente refere", "Relata" e "Informa" quando isso melhorar a fluidez.
-* Evitar redação telegráfica quando for possível escrever em prosa clínica curta e fiel.
-* Na história da moléstia atual, transformar anotações fragmentadas em um parágrafo clínico coeso, objetivo e elegante, sem acrescentar conteúdo novo.
+* Não trocar o termo do relato por um termo clínico MAIS ESPECÍFICO do que o original: "tontura" não vira "vertigem"; "dor no peito" não vira "angina" nem "dor precordial típica"; "cansaço" não vira "dispneia"; "inchaço" não vira "edema de membros inferiores" se o texto não disser onde; "perdeu água" não vira "bolsa rota". Na dúvida entre dois termos clínicos, usar o mais genérico.
+* Não aumentar nem reduzir intensidade, duração, frequência ou grau de certeza do que foi relatado.
+* Não completar duração, antecedentes ou detalhes ausentes.
 * Se o texto já vier semi-estruturado, preservar a riqueza das informações em vez de comprimir o conteúdo em blocos genéricos.
 * Quando a mesma frase trouxer doença e medicamento juntos (ex.: "HAS e DM em uso de losartana e metformina"), separar: a doença vai para a seção de comorbidades/antecedentes e o medicamento vai para a seção de medicações em uso contínuo. Não deixar a seção de medicações vazia quando houver medicamento citado em qualquer parte do texto.
 
@@ -320,9 +337,6 @@ REGRAS OBRIGATÓRIAS
 - Não completar automaticamente campos
 - Se a informação não estiver presente, escrever: "Não informado"
 - Preservar todos os dados relevantes do texto original
-- Melhorar a fluidez clínica sem alterar o sentido
-- Converter expressões leigas para equivalentes médicos apenas quando o significado for o mesmo
-- Usar redação natural de prontuário, evitando estilo excessivamente telegráfico
 
 FORMATAÇÃO
 - Seguir exatamente a estrutura do modelo fornecido
@@ -339,6 +353,8 @@ FORMATAÇÃO
 - Em obstetrícia, HV deve ficar restrito a hábitos de vida reais, como tabagismo, álcool, outras substâncias, atividade física e comportamento
 - Não colocar medicações, suplementos ou profilaxias em HV
 
+${buildClinicalWritingRules()}
+
 ${buildSectionGlossary(templateConfig)}
 
 ESTRUTURA OBRIGATÓRIA
@@ -351,8 +367,6 @@ FORMATO DE SAÍDA
 Responda apenas com:
 
 ${buildOutputSkeleton(templateConfig)}
-
-${buildExamFormatRules()}
 
 ESTILO CLÍNICO
 - Em QPD e H. obstétrico, priorizar narrativa clínica curta, organizada e fiel

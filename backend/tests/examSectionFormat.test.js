@@ -67,6 +67,31 @@ test('significados das siglas são curtos (não viram checklist para a IA)', () 
   });
 });
 
+test('prompt exige reescrita clínica, não apenas reorganizar/pontuar', () => {
+  const prompt = buildStructurePrompt(templates.clinica_medica);
+
+  assert.match(prompt, /é uma REESCRITA em registro clínico/);
+  assert.match(prompt, /dor de cabeça -> cefaleia/);
+});
+
+test('permissão de reescrever não afrouxa a fidelidade ao relato', () => {
+  const prompt = buildStructurePrompt(templates.clinica_medica);
+
+  assert.match(prompt, /REESCREVER NÃO É ACRESCENTAR/);
+  // Reescrever não pode subir a especificidade clínica do que o médico escreveu.
+  assert.match(prompt, /"tontura" não vira "vertigem"/);
+  assert.match(prompt, /Não inferir diagnóstico/);
+});
+
+test('regras de reescrita chegam a todos os templates de estruturação', () => {
+  for (const key of Object.keys(templates)) {
+    const prompt = buildStructurePrompt(templates[key]);
+
+    assert.match(prompt, /é uma REESCRITA em registro clínico/, key);
+    assert.match(prompt, /REESCREVER NÃO É ACRESCENTAR/, key);
+  }
+});
+
 test('regra separa doença de medicamento citados na mesma frase', () => {
   // "HAS e DM em uso de AAS e losartana" deixava MUC vazio na verificação real.
   assert.match(buildStructurePrompt(templates.clinica_medica), /doença vai para a seção de comorbidades/);
