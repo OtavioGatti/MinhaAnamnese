@@ -640,6 +640,23 @@ async function listPrescriptionGuides({ query = '', specialty = '', context = ''
     .slice(0, normalizeLimit(limit));
 }
 
+// Referência enxuta do guia casado com uma hipótese. O CID vem sempre daqui —
+// do conteúdo editorial revisado — e nunca da IA, que segue proibida de emitir
+// código CID pelo contrato de segurança do prompt de hipóteses.
+function buildHypothesisGuideRef(match) {
+  if (!match?.slug) {
+    return null;
+  }
+
+  return {
+    slug: match.slug,
+    title: match.title,
+    conditionName: match.conditionName,
+    cid10Primary: match.cid10Primary || '',
+    matchType: 'exact',
+  };
+}
+
 async function findPrescriptionGuideForHypothesis(hypothesisName) {
   const normalizedName = normalizeText(hypothesisName);
 
@@ -650,16 +667,7 @@ async function findPrescriptionGuideForHypothesis(hypothesisName) {
   const guides = await listPrescriptionGuides({ query: normalizedName, limit: 12 });
   const match = findExactPrescriptionGuideMatch(normalizedName, guides);
 
-  if (!match) {
-    return null;
-  }
-
-  return {
-    slug: match.slug,
-    title: match.title,
-    conditionName: match.conditionName,
-    matchType: 'exact',
-  };
+  return buildHypothesisGuideRef(match);
 }
 
 async function getPrescriptionGuideBySlug(slug) {
@@ -728,6 +736,7 @@ async function getPrescriptionGuideBySlug(slug) {
 }
 
 module.exports = {
+  buildHypothesisGuideRef,
   findExactPrescriptionGuideMatch,
   findPrescriptionGuideForHypothesis,
   getPrescriptionGuideBySlug,

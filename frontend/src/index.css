@@ -6001,6 +6001,27 @@ body {
   line-height: 1.35;
 }
 
+.diagnostic-hypothesis-title {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.4rem 0.5rem;
+}
+
+.diagnostic-hypothesis-cid {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.1rem 0.42rem;
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  border-radius: 999px;
+  background: var(--gray-50, #f9fafb);
+  color: var(--gray-600);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
 .diagnostic-priority {
   display: inline-flex;
   width: fit-content;

@@ -35,7 +35,18 @@ function HypothesisCard({ hypothesis, index, onOpenPrescriptionGuide }) {
         </span>
         <span className="diagnostic-hypothesis-index">{index + 1}</span>
       </div>
-      <h3>{hypothesis.name}</h3>
+      <div className="diagnostic-hypothesis-title">
+        <h3>{hypothesis.name}</h3>
+        {/* CID vem do guia de prescrição casado (conteúdo revisado), nunca da IA. */}
+        {guide?.cid10Primary ? (
+          <span
+            className="diagnostic-hypothesis-cid"
+            title={`CID-10 do guia de prescrição "${guide.title || guide.conditionName}". Confira antes de registrar.`}
+          >
+            CID {guide.cid10Primary}
+          </span>
+        ) : null}
+      </div>
       {hypothesis.rationale ? <p>{hypothesis.rationale}</p> : null}
 
       <div className="diagnostic-reasoning">

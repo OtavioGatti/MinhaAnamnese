@@ -13,6 +13,7 @@ const {
   validateDiagnosticHypothesesInput,
 } = require('../services/generateDiagnosticHypotheses');
 const {
+  buildHypothesisGuideRef,
   findExactPrescriptionGuideMatch,
 } = require('../services/prescriptionGuides');
 
@@ -123,6 +124,29 @@ test('vínculo de prescrição exige correspondência exata normalizada', () => 
     guides[0].slug,
   );
   assert.equal(findExactPrescriptionGuideMatch('Pneumonia', guides), null);
+});
+
+test('referência do guia leva o CID-10 revisado para a hipótese', () => {
+  const ref = buildHypothesisGuideRef({
+    slug: 'pneumonia-adquirida-na-comunidade',
+    title: 'Pneumonia adquirida na comunidade',
+    conditionName: 'Pneumonia adquirida na comunidade',
+    cid10Primary: 'J18.9',
+  });
+
+  assert.equal(ref.cid10Primary, 'J18.9');
+  assert.equal(ref.matchType, 'exact');
+});
+
+test('guia sem CID cadastrado não inventa código', () => {
+  const semCid = buildHypothesisGuideRef({
+    slug: 'condicao-sem-cid',
+    title: 'Condição sem CID',
+    conditionName: 'Condição sem CID',
+  });
+
+  assert.equal(semCid.cid10Primary, '');
+  assert.equal(buildHypothesisGuideRef(null), null);
 });
 
 test('validação exige template e história organizada', () => {
