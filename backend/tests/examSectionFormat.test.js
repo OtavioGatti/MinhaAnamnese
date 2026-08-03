@@ -92,6 +92,18 @@ test('regras de reescrita chegam a todos os templates de estruturação', () => 
   }
 });
 
+test('negativa consolidada fica em frase própria (escopo sem ambiguidade)', () => {
+  // A consolidação de "Nega" é desejada, mas misturar afirmado e negado na mesma
+  // frase faz o motor de hipóteses ler achado ausente como sintoma ativo.
+  for (const key of Object.keys(templates)) {
+    const prompt = buildStructurePrompt(templates[key]);
+
+    assert.match(prompt, /CONSOLIDAÇÃO DE NEGATIVAS/, key);
+    assert.match(prompt, /Manter a negativa em FRASE PRÓPRIA/, key);
+    assert.match(prompt, /Nunca misturar achados afirmados e negados na mesma frase/, key);
+  }
+});
+
 test('regra separa doença de medicamento citados na mesma frase', () => {
   // "HAS e DM em uso de AAS e losartana" deixava MUC vazio na verificação real.
   assert.match(buildStructurePrompt(templates.clinica_medica), /doença vai para a seção de comorbidades/);

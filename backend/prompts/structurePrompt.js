@@ -183,6 +183,15 @@ COMO REESCREVER
 * Escrever sempre em caixa de sentença, mesmo que o texto original esteja todo em CAIXA ALTA: não espelhar a caixa do texto base. Manter em caixa alta apenas as siglas clínicas (PA, FC, HAS, DM, MMII, EF, HD) e as unidades consagradas.
 * Eliminar ruído de digitação, repetição e marcas de fala sem descartar informação clínica.
 
+CONSOLIDAÇÃO DE NEGATIVAS (regra de segurança)
+Repetições de "Nega" podem ser unidas numa única negativa: "Nega alteração visual, rigidez de nuca e déficit neurológico" é preferível a repetir o verbo três vezes.
+Mas a negativa consolidada precisa ficar SEM AMBIGUIDADE de escopo, porque o motor de hipóteses lê esse texto depois:
+* Manter a negativa em FRASE PRÓPRIA, terminada em ponto. Nunca misturar achados afirmados e negados na mesma frase.
+* Certo: "Refere febre e tosse produtiva. Nega dispneia, dor torácica e síncope."
+* Errado: "Refere febre e tosse produtiva, nega dispneia, dor torácica e síncope." (o leitor não sabe onde a negação começa)
+* Errado: "Nega dispneia, dor torácica e refere síncope." (afirmação escondida dentro da lista negada)
+* Só consolidar itens que estão de fato negados no texto original. Nunca arrastar para dentro da negativa um achado que foi afirmado.
+
 Exemplo de reescrita fiel (história da moléstia atual):
 Entrada: "dor de barriga forte ha 2 dias, vomitou 3x, sem febre, piora qnd come"
 Saída: "Refere dor abdominal de forte intensidade há 2 dias, associada a três episódios de vômito e piora após alimentação. Nega febre."
