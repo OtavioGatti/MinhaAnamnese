@@ -5945,6 +5945,54 @@ body {
   background: #fffbeb;
 }
 
+/* Avisa que a reorganização vai partir do resultado editado, não do texto base. */
+.organize-source-hint {
+  margin: 0 0 0.75rem;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid rgba(59, 130, 246, 0.28);
+  border-radius: 12px;
+  background: #eff6ff;
+  color: var(--gray-600);
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+/* Escolha de fonte quando texto base e resultado foram os dois editados. */
+.organize-source-options {
+  display: grid;
+  gap: 0.7rem;
+  margin-top: 0.4rem;
+}
+
+.organize-source-option {
+  display: grid;
+  gap: 0.28rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid rgba(148, 163, 184, 0.34);
+  border-radius: 14px;
+  background: #fff;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.organize-source-option:hover,
+.organize-source-option:focus-visible {
+  border-color: rgba(59, 130, 246, 0.55);
+  background: #f8fbff;
+}
+
+.organize-source-option strong {
+  color: var(--gray-800);
+  font-size: 0.88rem;
+}
+
+.organize-source-option span {
+  color: var(--gray-600);
+  font-size: 0.8rem;
+  line-height: 1.45;
+}
+
 /* Aviso de análise desatualizada: as hipóteses continuam em tela depois de
    editar o texto organizado, sinalizando que se referem à versão anterior. */
 .diagnostic-stale-notice {

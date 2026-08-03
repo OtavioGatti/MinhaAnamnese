@@ -23,6 +23,7 @@ function InputSection({
   onDismissErro,
   drugMentionsEnabled = false,
   onOpenDrugCatalog,
+  reorganizeFromResult = false,
 }) {
   const drugMentions = useClinicalDrugMentions({
     enabled: drugMentionsEnabled,
@@ -163,6 +164,14 @@ function InputSection({
         )}
       </div>
 
+      {/* Reorganizar passa a partir do resultado editado — avisar antes do
+          clique, para não parecer que o texto base foi ignorado por engano. */}
+      {reorganizeFromResult && !loading ? (
+        <p className="organize-source-hint">
+          Você editou o resultado estruturado. A próxima organização parte dele, preservando o que você acrescentou.
+        </p>
+      ) : null}
+
       <div className="botoes">
         <button
           className="btn btn-primario"
@@ -187,7 +196,7 @@ function InputSection({
                 <path d="M2 12h4" />
                 <path d="m4.9 4.9 2.9 2.9" />
               </svg>
-              Organizar anamnese
+              {reorganizeFromResult ? 'Reorganizar com minhas edições' : 'Organizar anamnese'}
             </>
           )}
         </button>

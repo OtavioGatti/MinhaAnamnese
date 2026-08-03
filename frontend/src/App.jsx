@@ -13,6 +13,7 @@ import StructuredOutput from './components/StructuredOutput';
 import UserEvolution from './components/UserEvolution';
 import WorkspaceSidebar from './components/WorkspaceSidebar';
 import CancelSubscriptionModal from './components/CancelSubscriptionModal';
+import OrganizeSourceModal from './components/OrganizeSourceModal';
 import DeleteAccountModal from './components/DeleteAccountModal';
 import CheckoutSuccessBanner from './components/CheckoutSuccessBanner';
 import CookieConsentBanner from './components/CookieConsentBanner';
@@ -113,6 +114,16 @@ function sanitizeAnamnesisForDisplay(content) {
 }
 
 // applyOutputCaseStyle / toClinicalSentenceCase vivem em lib/clinicalTextCase.
+
+// Assinatura usada para detectar edição manual do texto base e do resultado.
+// Ignora diferenças só de espaçamento, que não são edição de conteúdo.
+function buildContentSignature(value) {
+  return String(value || '').replace(/\s+/g, ' ').trim();
+}
+
+function createOrganizeBaseline() {
+  return { texto: '', resultado: '' };
+}
 
 async function copyTextToClipboard(text) {
   try {
@@ -963,6 +974,10 @@ function App() {
   const [referralError, setReferralError] = useState('');
   const [loadingReferralLetter, setLoadingReferralLetter] = useState(false);
   const [referralCopied, setReferralCopied] = useState(false);
+  // Texto base e resultado como estavam na última organização bem-sucedida.
+  // Serve para saber o que o médico editou à mão depois disso.
+  const [organizeBaseline, setOrganizeBaseline] = useState(createOrganizeBaseline);
+  const [organizeSourceConflict, setOrganizeSourceConflict] = useState(false);
   const diagnosticHypotheses = useDiagnosticHypotheses({
     templateId: templateSelecionado,
     structuredText: resultado,
@@ -1183,6 +1198,12 @@ function App() {
         setTemplateSelecionado(returnState.templateSelecionado || '');
         setTexto(returnState.texto || '');
         setResultado(returnState.resultado || '');
+        // Volta do checkout: o par restaurado é o estado já organizado, não uma
+        // edição manual pendente.
+        setOrganizeBaseline({
+          texto: returnState.texto || '',
+          resultado: returnState.resultado || '',
+        });
         setQualityScore(normalizeQualityScorePayload(returnState.qualityScore));
         setCurrentPage(returnState.page || 'home');
       }
@@ -1550,33 +1571,33 @@ function App() {
     }, 0);
   };
 
-  const handleOrganizar = async () => {
+  const hasOrganizedOnce = Boolean(organizeBaseline.resultado);
+  const isResultadoDirty = hasOrganizedOnce
+    && buildContentSignature(resultado) !== buildContentSignature(organizeBaseline.resultado);
+  const isTextoDirty = hasOrganizedOnce
+    && buildContentSignature(texto) !== buildContentSignature(organizeBaseline.texto);
+  // Reorganizar a partir do resultado só faz sentido se ele ainda tem conteúdo:
+  // se o médico apagou tudo, a fonte volta a ser o texto base.
+  const canReorganizeFromResult = isResultadoDirty && Boolean(resultado.trim());
+
+  // Reorganiza a partir do texto informado. O resultado anterior só é
+  // substituído quando a chamada dá certo: falha de rede não pode apagar o que
+  // o médico já editou em tela.
+  const runOrganizar = async (sourceTexto, sourceKind) => {
     setErro('');
     setInsightError('');
-    setResultado('');
     setLatestScoreComparison(null);
     setQualityScore(createEmptyQualityScore());
     setCurrentInsightsUnlocked(false);
     setReferralLetter('');
     setReferralError('');
     setReferralCopied(false);
-
-    if (!templateSelecionado) {
-      setErro('Selecione um modelo clínico para continuar.');
-      return;
-    }
-
-    if (!texto.trim()) {
-      setErro('Preencha a anamnese antes de continuar.');
-      return;
-    }
-
     setLoading(true);
 
     try {
       const response = await api.post('/organizar', {
         template: templateSelecionado,
-        texto,
+        texto: sourceTexto,
       });
 
       if (response.success) {
@@ -1584,15 +1605,22 @@ function App() {
         // Texto base em CAIXA ALTA faz o modelo devolver a saída em caixa alta.
         // No estilo "Aa" isso precisa voltar para caixa de sentença já aqui,
         // senão o editor mostra maiúsculas e só a cópia sairia normalizada.
-        setResultado(
-          outputCaseStyle === 'upper' ? organizedResult : toClinicalSentenceCase(organizedResult),
-        );
+        const nextResultado = outputCaseStyle === 'upper'
+          ? organizedResult
+          : toClinicalSentenceCase(organizedResult);
+
+        setResultado(nextResultado);
+        // O baseline do texto base guarda o CAMPO como está agora, não a fonte
+        // usada: reorganizar a partir do resultado não pode deixar o texto base
+        // marcado como editado para sempre (abriria o modal em todo clique).
+        setOrganizeBaseline({ texto, resultado: nextResultado });
         setLatestScoreComparison(response.data.comparison || null);
         setEvolutionRefreshToken((current) => current + 1);
         trackEvent('anamnese_gerada', {
           template: templateSelecionado,
-          text_length: texto.trim().length,
+          text_length: sourceTexto.trim().length,
           is_pro: isPro,
+          source: sourceKind,
         });
       } else {
         setErro(response.error || 'Não foi possível estruturar a anamnese.');
@@ -1604,10 +1632,53 @@ function App() {
     }
   };
 
+  const handleOrganizar = async () => {
+    setErro('');
+
+    if (!templateSelecionado) {
+      setErro('Selecione um modelo clínico para continuar.');
+      return;
+    }
+
+    // Reorganizar partindo do resultado editado evita perder o que foi escrito
+    // direto nele — antes o app reprocessava o texto base parado no tempo.
+    if (canReorganizeFromResult) {
+      if (isTextoDirty) {
+        setOrganizeSourceConflict(true);
+        return;
+      }
+
+      await runOrganizar(resultado, 'resultado_editado');
+      return;
+    }
+
+    if (!texto.trim()) {
+      setErro('Preencha a anamnese antes de continuar.');
+      return;
+    }
+
+    await runOrganizar(texto, 'texto_base');
+  };
+
+  const handleResolveOrganizeSource = async (sourceKind) => {
+    setOrganizeSourceConflict(false);
+
+    const sourceTexto = sourceKind === 'resultado_editado' ? resultado : texto;
+
+    if (!sourceTexto.trim()) {
+      setErro('Preencha a anamnese antes de continuar.');
+      return;
+    }
+
+    await runOrganizar(sourceTexto, sourceKind);
+  };
+
   const handleLimpar = () => {
     setTemplateSelecionado('');
     setTexto('');
     setResultado('');
+    setOrganizeBaseline(createOrganizeBaseline());
+    setOrganizeSourceConflict(false);
     setLatestScoreComparison(null);
     setQualityScore(createEmptyQualityScore());
     setErro('');
@@ -1992,6 +2063,13 @@ function App() {
     // em maiúsculas, tirar o uppercase de exibição não mudaria nada em tela.
     if (normalized === 'mixed') {
       setResultado((current) => toClinicalSentenceCase(current));
+      // O baseline recebe a mesma transformação: trocar o estilo de caixa não é
+      // edição manual e não pode marcar o resultado como editado.
+      setOrganizeBaseline((baseline) => (
+        baseline.resultado
+          ? { ...baseline, resultado: toClinicalSentenceCase(baseline.resultado) }
+          : baseline
+      ));
     }
 
     if (!user?.id) {
@@ -3082,6 +3160,7 @@ function App() {
                 loading={loading}
                 loadingInsights={loadingInsights}
                 onOrganizar={handleOrganizar}
+                reorganizeFromResult={canReorganizeFromResult}
                 onLimpar={handleLimpar}
                 erro={erro}
                 onDismissErro={() => setErro('')}
@@ -3384,6 +3463,12 @@ function App() {
         checkoutError={checkoutErrors[planComparisonState.origin] || ''}
         onClose={() => setPlanComparisonState((current) => ({ ...current, open: false }))}
         onConfirm={handleConfirmPlanComparison}
+      />
+
+      <OrganizeSourceModal
+        open={organizeSourceConflict}
+        onClose={() => setOrganizeSourceConflict(false)}
+        onSelect={handleResolveOrganizeSource}
       />
 
       <CancelSubscriptionModal
