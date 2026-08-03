@@ -11,6 +11,7 @@
 const UPPERCASE_TOKENS = new Set([
   // Rótulos de seção
   'ID', 'QP', 'QPD', 'HDA', 'HMA', 'HPP', 'HF', 'HV', 'MUC', 'EF', 'HD', 'IS',
+  'DIH', 'SV', 'AVD', 'AIVD',
   // Exame físico e sinais vitais
   'SSVV', 'PA', 'FC', 'FR', 'PAM', 'BEG', 'REG', 'MEG', 'AC', 'AP', 'ACV',
   'ABD', 'MMII', 'MMSS', 'NEURO', 'RHA', 'MV', 'BNF', 'BRNF', 'TEC', 'ECG',
@@ -32,11 +33,19 @@ const MIXED_CASE_TOKENS = new Map([
   ['meq', 'mEq'], ['ml', 'mL'], ['dl', 'dL'],
 ]);
 
-const SENTENCE_START = /(^|[.!?:;\n]\s*|\n)([a-zà-ÿ])/g;
+// Fronteiras de "início de frase": pontuação final, quebra de linha, o marcador
+// de ausência do app ("[Não relatado]") e o separador de itens "//" usado nos
+// templates. Barra dupla é segura como fronteira — posologia usa barra simples
+// ("12/12h"), então "ml/kg/dia" não é afetado.
+const SENTENCE_START = /(^|[.!?:;\n]\s*|\n|\[|\/\/\s*)([a-zà-ÿ])/g;
 
 // "BNF em 2T" (bulhas em dois tempos): o T fica colado ao número e escapa da
 // restauração por token, que só começa a casar a partir de uma letra.
 const CARDIAC_RHYTHM = /\b([2-4])t\b/g;
+
+// Rótulo no início da linha, até os dois-pontos ("HD/Problemas:"). O limite de
+// tamanho evita capturar uma frase inteira que por acaso contenha dois-pontos.
+const SECTION_LABEL_LINE = /^[^:\n]{1,40}(?=:)/gm;
 
 // Proporção de letras maiúsculas a partir da qual consideramos o texto "todo em
 // caixa alta". Um prontuário normal tem siglas em caixa alta, mas a maior parte
@@ -86,10 +95,22 @@ export function toClinicalSentenceCase(text) {
     .replace(CARDIAC_RHYTHM, (_match, count) => `${count}T`);
 
   // Maiúscula no início do texto e depois de cada fim de frase ou rótulo.
-  return withTokens.replace(
+  const withSentences = withTokens.replace(
     SENTENCE_START,
     (_match, prefix, letter) => `${prefix}${letter.toLocaleUpperCase('pt-BR')}`,
   );
+
+  return capitalizeCompoundLabels(withSentences);
+}
+
+// Rótulos compostos ("ID/Leito:", "HD/Problemas:") perdiam a maiúscula depois da
+// barra. Só vale dentro do rótulo, no início da linha: aplicar em todo o texto
+// estragaria unidades como "ml/kg/dia".
+function capitalizeCompoundLabels(text) {
+  return text.replace(SECTION_LABEL_LINE, (match) => match.replace(
+    /(\/\s*)([a-zà-ÿ])/g,
+    (_part, separator, letter) => `${separator}${letter.toLocaleUpperCase('pt-BR')}`,
+  ));
 }
 
 export function applyOutputCaseStyle(content, style) {
