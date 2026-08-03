@@ -32,11 +32,19 @@ def _continua_linha(anterior, atual):
     return bool(CONECTOR_FINAL_RE.search(anterior.rstrip()))
 
 
+# Marcador de layout que o PDF injeta no meio do texto e vaza na extracao.
+ARTEFATO_PDF = re.compile(r'\[\s*Quebra\s+da\s+Disposi\S*\s+de\s+Texto\s*\]', re.I)
+
+
+def _limpar(t):
+    return re.sub(r'\s{2,}', ' ', ARTEFATO_PDF.sub(' ', t)).strip()
+
+
 def _join_wrapped(linhas):
     """Reune linhas quebradas pela largura da pagina do PDF."""
     out = []
     for l in linhas:
-        t = l['t'].strip()
+        t = _limpar(l['t'])
         if not t:
             continue
         if l['k'] == 'secao':
@@ -130,7 +138,11 @@ def formatar(condicao, numero_opcao=1, rotulo_opcao=None):
 
     cabecalho = rotulo_opcao or condicao['titulo']
     texto = '\n'.join([f'-Opção {numero_opcao}: {cabecalho}', ''] + corpo).rstrip()
-    return texto, '\n'.join(orient_linhas), numero_opcao + 1
+    # O marcador de layout tambem se forma DEPOIS da juncao, quando ele estava
+    # partido entre duas linhas do PDF — por isso a limpeza final.
+    texto = ARTEFATO_PDF.sub(' ', texto)
+    orient = ARTEFATO_PDF.sub(' ', '\n'.join(orient_linhas))
+    return texto, orient, numero_opcao + 1
 
 
 def formatar_varias(condicoes, rotulos=None):

@@ -60,6 +60,22 @@ reaplica um campo por vez.
   N30.0 (ITU) são a mesma condição, mas a subcategoria diferente vai para
   decisão humana.
 
+## Guias novos
+
+`build_new.py` agrupa as condições que ainda não existem e `create_new.py` cria
+as páginas. O conteúdo clínico (resumo, quando usar/não usar, conduta, sinais de
+alerta, encaminhamento) é escrito à mão nos arquivos `loteNN_clinico.py`.
+
+Cada página nasce com **dupla proteção** contra ir ao ar sem revisão:
+
+- `pronto_para_supabase` desmarcado → o sync marca `status=draft` e `active=false`
+- `status_revisao = "Rascunho"` → o sync também força `draft`
+
+O título é escrito por extenso em `TITULOS` (em `build_new.py`), não reconstruído
+da chave normalizada — reconstruir perdia acento e separador ("ABSCESSO
+FURUNCULO" em vez de "ABSCESSO / FURÚNCULO"). `FUNDIR` une o que o material
+separou sem necessidade (oxiuríase = enterobíase; amigdalite = tonsilite).
+
 ## Nada vai ao ar sozinho
 
 O sync Notion → Supabase é disparado manualmente
