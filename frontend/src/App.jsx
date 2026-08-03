@@ -22,6 +22,7 @@ import WelcomeOnboardingModal from './components/WelcomeOnboardingModal';
 import { BILLING_PLANS, DEFAULT_PLAN_KEY, PRO_PLAN_PERIOD_COPY, PRO_PLAN_PRICE_COPY } from './billingPlans';
 import { guides } from './data/guides';
 import { supabase } from './lib/supabaseClient';
+import { applyOutputCaseStyle, toClinicalSentenceCase } from './lib/clinicalTextCase';
 import useDiagnosticHypotheses from './hooks/useDiagnosticHypotheses';
 
 // Páginas fora da home são carregadas sob demanda (code splitting) para
@@ -111,9 +112,7 @@ function sanitizeAnamnesisForDisplay(content) {
   return content.trim();
 }
 
-function applyOutputCaseStyle(content, style) {
-  return style === 'upper' ? content.toLocaleUpperCase('pt-BR') : content;
-}
+// applyOutputCaseStyle / toClinicalSentenceCase vivem em lib/clinicalTextCase.
 
 async function copyTextToClipboard(text) {
   try {
@@ -1582,7 +1581,12 @@ function App() {
 
       if (response.success) {
         const organizedResult = response.data.resultado || '';
-        setResultado(organizedResult);
+        // Texto base em CAIXA ALTA faz o modelo devolver a saída em caixa alta.
+        // No estilo "Aa" isso precisa voltar para caixa de sentença já aqui,
+        // senão o editor mostra maiúsculas e só a cópia sairia normalizada.
+        setResultado(
+          outputCaseStyle === 'upper' ? organizedResult : toClinicalSentenceCase(organizedResult),
+        );
         setLatestScoreComparison(response.data.comparison || null);
         setEvolutionRefreshToken((current) => current + 1);
         trackEvent('anamnese_gerada', {
@@ -1982,6 +1986,13 @@ function App() {
     }
 
     setOutputCaseStyle(normalized);
+
+    // "AA" é só apresentação (CSS), então o valor guardado continua reversível.
+    // "Aa" precisa desfazer a caixa alta de verdade: quando o texto já veio todo
+    // em maiúsculas, tirar o uppercase de exibição não mudaria nada em tela.
+    if (normalized === 'mixed') {
+      setResultado((current) => toClinicalSentenceCase(current));
+    }
 
     if (!user?.id) {
       return;

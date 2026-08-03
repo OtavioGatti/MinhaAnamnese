@@ -180,6 +180,7 @@ COMO REESCREVER
 * Usar construções clínicas naturais: "Refere", "Relata", "Nega", "Evolui com", "Em uso de".
 * Padronizar a cronologia no formato clínico: "há 2 dias", "há cerca de 3 semanas", "com início há 6 meses".
 * Normalizar abreviações e unidades consagradas quando o dado estiver explícito (mmHg, bpm, irpm, mg, °C).
+* Escrever sempre em caixa de sentença, mesmo que o texto original esteja todo em CAIXA ALTA: não espelhar a caixa do texto base. Manter em caixa alta apenas as siglas clínicas (PA, FC, HAS, DM, MMII, EF, HD) e as unidades consagradas.
 * Eliminar ruído de digitação, repetição e marcas de fala sem descartar informação clínica.
 
 Exemplo de reescrita fiel (história da moléstia atual):
