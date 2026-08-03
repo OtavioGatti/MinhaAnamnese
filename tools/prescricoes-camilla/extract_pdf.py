@@ -13,6 +13,18 @@ SECTION_RE = re.compile(
     re.IGNORECASE,
 )
 
+# Titulos que perderam o negrito no PDF. Sem isso a prescricao deles era
+# absorvida pela condicao anterior — a DIP contaminava "DERMATITE DE CONTATO"
+# com metronidazol, doxiciclina e ceftriaxona.
+# Lista explicita: a varredura do documento inteiro achou so este caso, e a
+# heuristica generica pegava texto corrido ("MESMO ASSIM PERSISTIR:") como titulo.
+TITULOS_SEM_NEGRITO = {'DIP(1):'}
+
+
+def e_titulo_perdido(texto):
+    return texto.strip() in TITULOS_SEM_NEGRITO
+
+
 def line_info(line):
     spans = line.get('spans', [])
     text = ''.join(s['text'] for s in spans)
@@ -50,6 +62,14 @@ def main():
                 # numero de pagina impresso (bold grande, so digitos)
                 if re.fullmatch(r'\d{1,3}', text):
                     continue
+                # Alguns titulos perderam o negrito no PDF ("DIP(1):") e
+                # arrastariam sua prescricao para a condicao anterior.
+                if not (bold and size >= TITLE_SIZE_MIN) and e_titulo_perdido(text):
+                    flush_title()
+                    current = None
+                    pending_page = pageno + 1
+                    pending_title.append(text)
+                    continue
                 if bold and size >= TITLE_SIZE_MIN:
                     if current is not None and not pending_title:
                         current = None
@@ -62,7 +82,9 @@ def main():
                 pending_page = None
                 if current is None:
                     continue
-                kind = 'secao' if (bold and SECTION_RE.match(text)) else 'corpo'
+                # O rotulo de secao as vezes vem sem negrito ("Uso Interno:"),
+                # e viraria nome de medicamento.
+                kind = 'secao' if SECTION_RE.match(text) else 'corpo'
                 current['linhas'].append({'t': text, 'k': kind})
     flush_title()
 

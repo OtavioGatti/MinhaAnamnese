@@ -90,6 +90,12 @@ def _itens(linhas):
             atual = {'nome': nome, 'posologia': []}
             itens.append(atual)
             continue
+        # O PDF as vezes quebra o nome do medicamento em varias linhas soltas
+        # ("Tioconazol+Tinidazol" / "creme" / "vaginal" / "(Cartrax)"). Enquanto
+        # o nome ainda estiver vazio, as linhas seguintes o completam.
+        if not re.search(r'[A-Za-zÀ-ÿ]', atual['nome']) and not POSOLOGIA_RE.match(t):
+            atual['nome'] = f'{atual["nome"]} {t}'.strip()
+            continue
         atual['posologia'].append(t)
     return itens
 
@@ -126,6 +132,8 @@ def formatar(condicao, numero_opcao=1, rotulo_opcao=None):
             # padrao em vez de acrescentar um segundo tracejado.
             m = re.match(r'^(.*?)\s*-{3,}\s*(.*)$', item['nome'])
             nome, qtd = (m.group(1).strip(), m.group(2).strip()) if m else (item['nome'], '')
+            # numeracao residual do PDF ("1. Tioconazol...") — a nossa e o [i]
+            nome = re.sub(r'^\d{1,2}\s*[\).\-]\s*', '', nome).strip()
             corpo.append(f'[{numero_item}] {nome} {SEP}' + (f' {qtd}' if qtd else ''))
             corpo.append('')
             if item['posologia']:
