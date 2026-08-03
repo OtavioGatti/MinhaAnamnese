@@ -13,6 +13,7 @@ const {
   validateDiagnosticHypothesesInput,
 } = require('../services/generateDiagnosticHypotheses');
 const {
+  buildGuideSearchName,
   buildHypothesisGuideRef,
   findExactPrescriptionGuideMatch,
 } = require('../services/prescriptionGuides');
@@ -128,6 +129,88 @@ test('vínculo de prescrição exige correspondência exata normalizada', () => 
     guides[0].slug,
   );
   assert.equal(findExactPrescriptionGuideMatch('Pneumonia', guides), null);
+});
+
+test('nome curto casa com guia de titulo composto por sinônimos', () => {
+  // Caso real: a HD "Sinusite Aguda" não casava com o guia cadastrado, então o
+  // CID-10 J01.0 nunca chegava ao card.
+  const guides = [
+    {
+      slug: 'sinusite-aguda-rinossinusite-aguda-bacteriana',
+      title: 'Sinusite Aguda / Rinossinusite Aguda Bacteriana',
+      conditionName: 'Sinusite Aguda / Rinossinusite Aguda Bacteriana',
+      subcondition: '',
+      cid10Primary: 'J01.0',
+    },
+  ];
+
+  assert.equal(findExactPrescriptionGuideMatch('Sinusite Aguda', guides)?.cid10Primary, 'J01.0');
+  assert.equal(
+    findExactPrescriptionGuideMatch('Rinossinusite Aguda Bacteriana', guides)?.slug,
+    guides[0].slug,
+  );
+  // O título inteiro continua casando.
+  assert.ok(findExactPrescriptionGuideMatch(guides[0].title, guides));
+});
+
+test('sigla entre parênteses não impede o pareamento', () => {
+  // O prompt do CMS manda a IA escrever "Pneumonia Adquirida na Comunidade (PAC)".
+  const guides = [
+    {
+      slug: 'pneumonia-adquirida-na-comunidade',
+      title: 'Pneumonia Adquirida na Comunidade',
+      conditionName: 'Pneumonia Adquirida na Comunidade',
+      subcondition: '',
+    },
+  ];
+
+  assert.equal(
+    findExactPrescriptionGuideMatch('Pneumonia Adquirida na Comunidade (PAC)', guides)?.slug,
+    guides[0].slug,
+  );
+});
+
+test('busca do guia ignora a sigla final (senão nem chega no pareamento)', () => {
+  assert.equal(
+    buildGuideSearchName('Pneumonia Adquirida na Comunidade (PAC)'),
+    'Pneumonia Adquirida na Comunidade',
+  );
+  // Sem sigla, nada muda; nome que é só a sigla não pode virar busca vazia.
+  assert.equal(buildGuideSearchName('Sinusite Aguda'), 'Sinusite Aguda');
+  assert.equal(buildGuideSearchName('(PAC)'), '(PAC)');
+});
+
+test('nome completo tem prioridade sobre a sigla isolada', () => {
+  const guides = [
+    { slug: 'sca-generico', title: 'SCA', conditionName: 'SCA', subcondition: '' },
+    {
+      slug: 'sindrome-coronariana-aguda',
+      title: 'Síndrome Coronariana Aguda',
+      conditionName: 'Síndrome Coronariana Aguda',
+      subcondition: '',
+    },
+  ];
+
+  assert.equal(
+    findExactPrescriptionGuideMatch('Síndrome Coronariana Aguda (SCA)', guides)?.slug,
+    'sindrome-coronariana-aguda',
+  );
+});
+
+test('pareamento nunca casa por substring nem por sinônimo parcial', () => {
+  const guides = [
+    {
+      slug: 'sinusite-aguda-rinossinusite-aguda-bacteriana',
+      title: 'Sinusite Aguda / Rinossinusite Aguda Bacteriana',
+      conditionName: 'Sinusite Aguda / Rinossinusite Aguda Bacteriana',
+      subcondition: '',
+    },
+  ];
+
+  // "Sinusite" sozinho é genérico demais: casaria com crônica, viral, fúngica.
+  assert.equal(findExactPrescriptionGuideMatch('Sinusite', guides), null);
+  assert.equal(findExactPrescriptionGuideMatch('Sinusite Crônica', guides), null);
+  assert.equal(findExactPrescriptionGuideMatch('Rinossinusite', guides), null);
 });
 
 test('backlog registra só hipóteses sem guia, deduplicadas', () => {
