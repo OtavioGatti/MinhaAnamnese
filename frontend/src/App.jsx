@@ -18,12 +18,13 @@ import DeleteAccountModal from './components/DeleteAccountModal';
 import CheckoutSuccessBanner from './components/CheckoutSuccessBanner';
 import CookieConsentBanner from './components/CookieConsentBanner';
 import { initGoogleAnalytics, trackGoogleAnalyticsPageView } from './lib/googleAnalytics';
+import { initGoogleAdsTag, trackSignupConversion } from './lib/googleAdsConversion';
 import LegalConsentModal from './components/LegalConsentModal';
 import LegalDocumentPage, { LEGAL_DOCUMENT_VERSION } from './components/LegalDocumentPage';
 import WelcomeOnboardingModal from './components/WelcomeOnboardingModal';
 import { BILLING_PLANS, DEFAULT_PLAN_KEY, PRO_PLAN_PERIOD_COPY, PRO_PLAN_PRICE_COPY } from './billingPlans';
 import { guides } from './data/guides';
-import { supabase } from './lib/supabaseClient';
+import { supabase, consumeSignupConfirmationIntent } from './lib/supabaseClient';
 import { applyOutputCaseStyle, toClinicalSentenceCase } from './lib/clinicalTextCase';
 import useDiagnosticHypotheses from './hooks/useDiagnosticHypotheses';
 
@@ -1111,6 +1112,12 @@ function App() {
         clearAuthReturnStateFromUrl();
       }
 
+      // Confirmação de cadastro: o intent só é consumido quando já existe
+      // sessão, senão o sinal se perderia antes de o usuário estar autenticado.
+      if (data.session?.user && consumeSignupConfirmationIntent()) {
+        trackSignupConversion(data.session.user.id);
+      }
+
       setLoadingUser(false);
     }
 
@@ -1122,6 +1129,12 @@ function App() {
         event === 'PASSWORD_RECOVERY';
       setUser(session?.user || null);
       setLoadingUser(false);
+
+      // Se a sessão só ficou pronta depois de carregarSessao, o disparo cai
+      // aqui. Consumir o intent garante que só um dos dois caminhos dispara.
+      if (session?.user && consumeSignupConfirmationIntent()) {
+        trackSignupConversion(session.user.id);
+      }
 
       if (hasRecoveryIntent && session?.user) {
         rememberPasswordRecoveryIntent();
@@ -1386,6 +1399,10 @@ function App() {
   useEffect(() => {
     if (canTrackNonEssentialCookies(cookieConsent)) {
       initGoogleAnalytics();
+      // Sitewide de propósito: a tag do Ads precisa estar presente já no clique
+      // do anúncio para gravar o cookie que liga aquele clique à conversão que
+      // só acontece depois, na confirmação do e-mail.
+      initGoogleAdsTag();
     }
   }, [cookieConsent]);
 

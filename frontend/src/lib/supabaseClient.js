@@ -5,6 +5,7 @@ const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 const isSupabaseConfigured = Boolean(supabaseUrl && supabaseAnonKey);
 const PASSWORD_RECOVERY_PATH = '/redefinir-senha';
 const PASSWORD_RECOVERY_INTENT_KEY = 'minha-anamnese-password-recovery-intent';
+const SIGNUP_CONFIRMATION_INTENT_KEY = 'minha-anamnese-signup-confirmation-intent';
 
 function rememberPasswordRecoveryIntentFromUrl() {
   if (typeof window === 'undefined') {
@@ -31,6 +32,54 @@ function rememberPasswordRecoveryIntentFromUrl() {
 }
 
 rememberPasswordRecoveryIntentFromUrl();
+
+// Mesma corrida do fluxo de recuperação: o link de confirmação de cadastro traz
+// `type=signup` no hash, e o `detectSessionInUrl` do Supabase consome e limpa a
+// URL antes do React montar. Por isso o sinal é lido aqui, no carregamento do
+// módulo, e guardado para o App consumir depois.
+function rememberSignupConfirmationIntentFromUrl() {
+  if (typeof window === 'undefined') {
+    return;
+  }
+
+  try {
+    const hashParams = new URLSearchParams(window.location.hash.replace(/^#/, ''));
+    const searchParams = new URLSearchParams(window.location.search);
+    const type = hashParams.get('type') || searchParams.get('type') || '';
+    // Link expirado/já usado não vira sessão. Sem este guard o sinal ficaria
+    // pendente e um login posterior na mesma aba contaria como conversão.
+    const hasError = Boolean(
+      hashParams.get('error') ||
+        searchParams.get('error') ||
+        hashParams.get('error_code') ||
+        searchParams.get('error_code')
+    );
+
+    if (type === 'signup' && !hasError) {
+      window.sessionStorage.setItem(SIGNUP_CONFIRMATION_INTENT_KEY, '1');
+    }
+  } catch {
+    // Ignore storage access errors; the app can still rely on Supabase events.
+  }
+}
+
+rememberSignupConfirmationIntentFromUrl();
+
+// Consome o sinal (uma vez só) quando já existe sessão: é o momento em que a
+// confirmação de cadastro de fato se concretizou.
+export function consumeSignupConfirmationIntent() {
+  try {
+    const hasIntent = window.sessionStorage.getItem(SIGNUP_CONFIRMATION_INTENT_KEY) === '1';
+
+    if (hasIntent) {
+      window.sessionStorage.removeItem(SIGNUP_CONFIRMATION_INTENT_KEY);
+    }
+
+    return hasIntent;
+  } catch {
+    return false;
+  }
+}
 
 function createFallbackSupabaseClient() {
   const unsupportedError = {
