@@ -12,6 +12,8 @@ const {
   cancelAffiliateCommissionForRefund,
   createAffiliateCommission,
   getAffiliateByCode,
+  registerAffiliateCommissionLimit,
+  resolveAffiliateCommissionEligibility,
 } = require('../../services/affiliates');
 const { cancelMercadoPagoPreapproval } = require('../../services/mercadoPagoPreapprovals');
 const {
@@ -673,21 +675,52 @@ async function handlePaymentWebhook(resourceId, accessToken, supabase, preapprov
   });
 
   if (safeAffiliate) {
-    await createAffiliateCommission({
+    // Teto de comissões por indicado. Falha na checagem (SQL ainda não aplicado,
+    // Supabase fora) degrada para o comportamento anterior e paga a comissão:
+    // bloquear por erro de infraestrutura tiraria dinheiro do afiliado.
+    const commissionLimit = await resolveAffiliateCommissionEligibility({
       affiliate: safeAffiliate,
       buyerUserId: targetUser.id,
-      paymentId: payment.id,
-      planKey: plan.key,
-      billingKind: plan.billingKind,
-      grossAmount: Number(payment.transaction_amount) || null,
-      currencyId: payment.currency_id || plan.currencyId,
     }).catch((error) => {
-      logBillingError('failed to create affiliate commission', {
+      logBillingError('failed to resolve affiliate commission limit', {
         paymentId: String(payment.id),
         affiliateCode: safeAffiliate.code,
         message: error?.message || 'unknown_error',
       });
+
+      return { allowed: true, shouldRegister: false, reason: 'check_failed' };
     });
+
+    if (commissionLimit.allowed) {
+      // Marca o par ANTES de criar a comissão: se a criação falhar, o par já
+      // está sob contagem (com zero comissões). Registrar depois arriscaria
+      // perder o marcador e transformar a relação em vitalícia por engano.
+      if (commissionLimit.shouldRegister) {
+        await registerAffiliateCommissionLimit(safeAffiliate.id, targetUser.id).catch((error) => {
+          logBillingError('failed to register affiliate commission limit', {
+            paymentId: String(payment.id),
+            affiliateCode: safeAffiliate.code,
+            message: error?.message || 'unknown_error',
+          });
+        });
+      }
+
+      await createAffiliateCommission({
+        affiliate: safeAffiliate,
+        buyerUserId: targetUser.id,
+        paymentId: payment.id,
+        planKey: plan.key,
+        billingKind: plan.billingKind,
+        grossAmount: Number(payment.transaction_amount) || null,
+        currencyId: payment.currency_id || plan.currencyId,
+      }).catch((error) => {
+        logBillingError('failed to create affiliate commission', {
+          paymentId: String(payment.id),
+          affiliateCode: safeAffiliate.code,
+          message: error?.message || 'unknown_error',
+        });
+      });
+    }
   }
 
   await persistPaymentSnapshot(payment, targetUser.id, plan, subscription, safeAffiliate, new Date().toISOString());

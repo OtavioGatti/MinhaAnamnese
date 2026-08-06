@@ -25,6 +25,47 @@ function normalizeAffiliateCode(value) {
     .slice(0, 48);
 }
 
+// Teto de comissões por indicado: só inteiro positivo limita. Qualquer outro
+// valor (null, 0, texto, negativo) significa "sem limite" — o comportamento
+// vigente antes desta regra.
+function normalizeCommissionMaxCount(value) {
+  const parsed = Number.parseInt(value, 10);
+  return Number.isFinite(parsed) && parsed > 0 ? parsed : null;
+}
+
+// Decide se um novo pagamento ainda gera comissão. Função pura: o acesso ao
+// banco fica em resolveAffiliateCommissionEligibility.
+//
+// commissionCount é o total JÁ existente do par, sem o pagamento atual, e conta
+// comissão cancelada/estornada de propósito — o ciclo aconteceu e consumiu uma
+// das vagas; o estorno é tratado pelo clawback.
+function resolveCommissionLimitDecision({ maxCount, hasLimitMarker, commissionCount }) {
+  const limit = normalizeCommissionMaxCount(maxCount);
+
+  if (!limit) {
+    return { allowed: true, shouldRegister: false, reason: 'no_limit' };
+  }
+
+  const parsedCount = Number(commissionCount);
+  const count = Number.isFinite(parsedCount) && parsedCount > 0 ? parsedCount : 0;
+
+  if (hasLimitMarker) {
+    return count < limit
+      ? { allowed: true, shouldRegister: false, reason: 'within_limit' }
+      : { allowed: false, shouldRegister: false, reason: 'limit_reached' };
+  }
+
+  // Sem marcador mas com histórico: par anterior à regra. Segue vitalício mesmo
+  // que o afiliado passe a ter teto depois — não corta retroativamente quem foi
+  // indicado sob a regra antiga.
+  if (count > 0) {
+    return { allowed: true, shouldRegister: false, reason: 'legacy_pair' };
+  }
+
+  // Primeira comissão do par: a contagem passa a valer a partir daqui.
+  return { allowed: true, shouldRegister: true, reason: 'first_commission' };
+}
+
 function normalizeAffiliate(record) {
   if (!record || typeof record !== 'object') {
     return null;
@@ -36,6 +77,9 @@ function normalizeAffiliate(record) {
     code: typeof record.code === 'string' ? record.code : null,
     status: typeof record.status === 'string' ? record.status : 'paused',
     commission_rate: Number(record.commission_rate) || COMMISSION_RATE,
+    // Teto de comissões por indicado. A coluna pode não existir antes do SQL ser
+    // aplicado: null = sem limite, que é o comportamento vigente.
+    commission_max_count: normalizeCommissionMaxCount(record.commission_max_count),
     // Colunas de desconto podem não existir antes do SQL ser aplicado: default 0.
     discount_rate: normalizeDiscountRate(record.discount_rate),
     discount_label: typeof record.discount_label === 'string' && record.discount_label.trim()
@@ -468,6 +512,81 @@ async function createAffiliateCommission({
   return normalizeCommission(Array.isArray(json) ? json[0] : null);
 }
 
+// PostgREST devolve a contagem no header content-range ("0-0/12", "*/0").
+function parseContentRangeTotal(headerValue) {
+  const total = String(headerValue || '').split('/')[1];
+  const parsed = Number.parseInt(total, 10);
+  return Number.isFinite(parsed) && parsed > 0 ? parsed : 0;
+}
+
+// Conta comissões já existentes do par, incluindo canceladas: cada ciclo pago
+// consome uma vaga, independentemente de ter sido estornado depois.
+async function countAffiliateCommissionsForBuyer(affiliateId, buyerUserId) {
+  const query = new URLSearchParams({
+    select: 'payment_id',
+    affiliate_id: `eq.${affiliateId}`,
+    buyer_user_id: `eq.${buyerUserId}`,
+  });
+  const response = await supabaseRequest(`affiliate_commissions?${query.toString()}`, {
+    method: 'GET',
+    headers: {
+      Prefer: 'count=exact',
+      Range: '0-0',
+    },
+  });
+
+  return parseContentRangeTotal(response.headers.get('content-range'));
+}
+
+async function hasAffiliateCommissionLimitMarker(affiliateId, buyerUserId) {
+  const query = new URLSearchParams({
+    select: 'affiliate_id',
+    affiliate_id: `eq.${affiliateId}`,
+    buyer_user_id: `eq.${buyerUserId}`,
+    limit: '1',
+  });
+  const response = await supabaseRequest(`affiliate_commission_limits?${query.toString()}`, {
+    method: 'GET',
+  });
+  const json = await response.json();
+  return Array.isArray(json) && json.length > 0;
+}
+
+// Marca o par como sujeito ao teto. Idempotente: o webhook pode reprocessar.
+async function registerAffiliateCommissionLimit(affiliateId, buyerUserId) {
+  const query = new URLSearchParams({
+    on_conflict: 'affiliate_id,buyer_user_id',
+  });
+
+  await supabaseRequest(`affiliate_commission_limits?${query.toString()}`, {
+    method: 'POST',
+    headers: {
+      Prefer: 'resolution=ignore-duplicates,return=minimal',
+    },
+    body: JSON.stringify({
+      affiliate_id: affiliateId,
+      buyer_user_id: buyerUserId,
+    }),
+  });
+}
+
+// Sem teto configurado não consulta o banco: o caminho comum continua com o
+// mesmo custo de antes.
+async function resolveAffiliateCommissionEligibility({ affiliate, buyerUserId }) {
+  const limit = normalizeCommissionMaxCount(affiliate?.commission_max_count);
+
+  if (!limit || !affiliate?.id || !isValidUserId(buyerUserId)) {
+    return { allowed: true, shouldRegister: false, reason: 'no_limit' };
+  }
+
+  const [hasLimitMarker, commissionCount] = await Promise.all([
+    hasAffiliateCommissionLimitMarker(affiliate.id, buyerUserId),
+    countAffiliateCommissionsForBuyer(affiliate.id, buyerUserId),
+  ]);
+
+  return resolveCommissionLimitDecision({ maxCount: limit, hasLimitMarker, commissionCount });
+}
+
 async function supabaseRpc(functionName, payload) {
   const { url, serviceRoleKey } = getSupabaseAdminConfig();
 
@@ -546,6 +665,10 @@ module.exports = {
   getAffiliatePendingClawbackTotal,
   getAffiliateStats,
   normalizeAffiliateCode,
+  normalizeCommissionMaxCount,
+  registerAffiliateCommissionLimit,
+  resolveAffiliateCommissionEligibility,
+  resolveCommissionLimitDecision,
   resolveAffiliateForCheckout,
   summarizeAffiliateCommissions,
 };
