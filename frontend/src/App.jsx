@@ -17,6 +17,7 @@ import OrganizeSourceModal from './components/OrganizeSourceModal';
 import DeleteAccountModal from './components/DeleteAccountModal';
 import CheckoutSuccessBanner from './components/CheckoutSuccessBanner';
 import CookieConsentBanner from './components/CookieConsentBanner';
+import { initGoogleAnalytics, trackGoogleAnalyticsPageView } from './lib/googleAnalytics';
 import LegalConsentModal from './components/LegalConsentModal';
 import LegalDocumentPage, { LEGAL_DOCUMENT_VERSION } from './components/LegalDocumentPage';
 import WelcomeOnboardingModal from './components/WelcomeOnboardingModal';
@@ -1381,6 +1382,20 @@ function App() {
       }
     }).catch(() => null);
   }, [cookieConsent?.status, cookieConsent?.version, profile?.cookie_consent_status, profile?.cookie_consent_version, user?.id]);
+
+  useEffect(() => {
+    if (canTrackNonEssentialCookies(cookieConsent)) {
+      initGoogleAnalytics();
+    }
+  }, [cookieConsent]);
+
+  useEffect(() => {
+    if (!canTrackNonEssentialCookies(cookieConsent)) {
+      return;
+    }
+
+    trackGoogleAnalyticsPageView(`/${currentPage === 'home' ? '' : currentPage}`, currentPage);
+  }, [currentPage, cookieConsent]);
 
   useEffect(() => {
     if (
