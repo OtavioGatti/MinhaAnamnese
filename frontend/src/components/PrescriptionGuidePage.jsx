@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { api } from '../apiClient';
+import Cid10SearchSection from './Cid10SearchSection';
 
 const DEFAULT_QUERY = '';
 const SEARCH_DEBOUNCE_MS = 320;
@@ -718,6 +719,7 @@ function PrescriptionGuidePage({
   initialSlug = '',
   initialQuery = '',
 }) {
+  const [pageTab, setPageTab] = useState('protocolos');
   const [query, setQuery] = useState(DEFAULT_QUERY);
   const [guides, setGuides] = useState([]);
   const [selectedSlug, setSelectedSlug] = useState('');
@@ -732,6 +734,9 @@ function PrescriptionGuidePage({
     setQuery(initialQuery || '');
     setSelectedSlug(initialSlug || '');
     setSelectedGuide(null);
+    // Chegar por link direto (ex.: "Abrir guia relacionado" nas hipóteses)
+    // sempre aponta para um protocolo, então a aba volta para ele.
+    setPageTab('protocolos');
   }, [initialQuery, initialSlug]);
 
   useEffect(() => {
@@ -883,58 +888,97 @@ function PrescriptionGuidePage({
       <section className="prescription-guide-header">
         <div>
           <span className="workspace-kicker">Guia de Prescrição</span>
-          <h1>Protocolos por patologia</h1>
-          <p>Busque uma condição clínica e copie a prescrição, conduta ou orientação pronta para uso.</p>
+          <h1>{pageTab === 'cid10' ? 'Tabela CID-10' : 'Protocolos por patologia'}</h1>
+          <p>
+            {pageTab === 'cid10'
+              ? 'Pesquise o código oficial por número ou por condição e copie para o atestado, receituário ou prontuário.'
+              : 'Busque uma condição clínica e copie a prescrição, conduta ou orientação pronta para uso.'}
+          </p>
+        </div>
+
+        <div className="prescription-section-tabs" role="tablist" aria-label="Seções do guia de prescrição">
+          <button
+            type="button"
+            role="tab"
+            aria-selected={pageTab === 'protocolos'}
+            className={`prescription-section-tab ${pageTab === 'protocolos' ? 'active' : ''}`}
+            onClick={() => setPageTab('protocolos')}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <path d="M8 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-2" />
+              <rect x="8" y="2" width="8" height="4" rx="1" />
+              <path d="M9 12h6" />
+              <path d="M9 16h6" />
+            </svg>
+            Protocolos
+          </button>
+          <button
+            type="button"
+            role="tab"
+            aria-selected={pageTab === 'cid10'}
+            className={`prescription-section-tab ${pageTab === 'cid10' ? 'active' : ''}`}
+            onClick={() => setPageTab('cid10')}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <circle cx="11" cy="11" r="7" />
+              <path d="m20 20-3.5-3.5" />
+            </svg>
+            CID-10
+          </button>
         </div>
       </section>
 
-      <section className="prescription-guide-grid">
-        <ProtocolSidebar
-          query={query}
-          setQuery={(value) => {
-            setQuery(value);
-            setSelectedGuide(null);
-          }}
-          guides={guides}
-          selectedSlug={selectedSlug}
-          setSelectedSlug={setSelectedSlug}
-          loadingGuides={loadingGuides}
-          error={error}
-        />
+      {pageTab === 'cid10' ? <Cid10SearchSection /> : null}
 
-        <article className="protocol-detail-panel">
-          {loadingDetail ? (
-            <div className="prescription-empty">Carregando protocolo...</div>
-          ) : selectedGuide ? (
-            <>
-              <ProtocolHeader guide={selectedGuide} />
-              <SafetyNotice />
+      {pageTab === 'protocolos' ? (
+        <section className="prescription-guide-grid">
+          <ProtocolSidebar
+            query={query}
+            setQuery={(value) => {
+              setQuery(value);
+              setSelectedGuide(null);
+            }}
+            guides={guides}
+            selectedSlug={selectedSlug}
+            setSelectedSlug={setSelectedSlug}
+            loadingGuides={loadingGuides}
+            error={error}
+          />
 
-              <ProtocolSummarySection
-                text={selectedGuide.resumoClinico}
-                expanded={Boolean(expandedSections.summary)}
-                onToggle={() => toggleSection('summary')}
-              />
+          <article className="protocol-detail-panel">
+            {loadingDetail ? (
+              <div className="prescription-empty">Carregando protocolo...</div>
+            ) : selectedGuide ? (
+              <>
+                <ProtocolHeader guide={selectedGuide} />
+                <SafetyNotice />
 
-              <div className="protocol-accordion-list">
-                {SECTION_DEFINITIONS.map((definition) => (
-                  <ProtocolAccordionSection
-                    key={definition.key}
-                    definition={definition}
-                    guide={selectedGuide}
-                    expanded={Boolean(expandedSections[definition.key])}
-                    onToggle={() => toggleSection(definition.key)}
-                    copiedKey={copiedKey}
-                    onCopy={copyText}
-                  />
-                ))}
-              </div>
-            </>
-          ) : (
-            <div className="prescription-empty">Selecione uma patologia para ver o protocolo.</div>
-          )}
-        </article>
-      </section>
+                <ProtocolSummarySection
+                  text={selectedGuide.resumoClinico}
+                  expanded={Boolean(expandedSections.summary)}
+                  onToggle={() => toggleSection('summary')}
+                />
+
+                <div className="protocol-accordion-list">
+                  {SECTION_DEFINITIONS.map((definition) => (
+                    <ProtocolAccordionSection
+                      key={definition.key}
+                      definition={definition}
+                      guide={selectedGuide}
+                      expanded={Boolean(expandedSections[definition.key])}
+                      onToggle={() => toggleSection(definition.key)}
+                      copiedKey={copiedKey}
+                      onCopy={copyText}
+                    />
+                  ))}
+                </div>
+              </>
+            ) : (
+              <div className="prescription-empty">Selecione uma patologia para ver o protocolo.</div>
+            )}
+          </article>
+        </section>
+      ) : null}
     </main>
   );
 }

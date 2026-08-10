@@ -55,7 +55,7 @@ export const LETTER_TYPES = [
         name: 'cid10',
         label: 'CID-10 (opcional)',
         required: false,
-        placeholder: 'Ex: J06.9',
+        placeholder: 'Digite o código (N30) ou a condição (cistite)',
         widget: 'cid',
         hint: 'Com CID, o atestado sai com o termo de ciência e assinatura do paciente. Em branco, sai sem nenhuma menção a diagnóstico e assinado só por você.',
       },

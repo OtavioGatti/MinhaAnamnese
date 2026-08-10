@@ -16,6 +16,7 @@ const apiRoutes = {
   '/api/reconcile-subscription': require('./reconcile-subscription'),
   '/api/cancel-subscription': require('./cancel-subscription'),
   '/api/prescription-guides': require('./prescription-guides'),
+  '/api/cid10': require('./cid10'),
   '/api/snippets': require('./snippets'),
   '/api/clinical-drugs': require('./clinical-drugs'),
   '/api/clinical-tools': require('./clinical-tools'),

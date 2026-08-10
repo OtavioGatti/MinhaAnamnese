@@ -1313,6 +1313,177 @@ body {
   white-space: nowrap;
 }
 
+/* Autocomplete do campo de CID: a lista flutua sobre o formulário, por isso o
+   wrapper precisa ser o contexto de posicionamento. */
+.letter-cid-input-wrapper {
+  position: relative;
+}
+
+.letter-cid-results {
+  position: absolute;
+  z-index: 20;
+  top: calc(100% + 0.25rem);
+  right: 0;
+  left: 0;
+  max-height: 16rem;
+  margin: 0;
+  padding: 0.25rem;
+  overflow-y: auto;
+  list-style: none;
+  background: white;
+  border: 1px solid var(--gray-200);
+  border-radius: 12px;
+  box-shadow: var(--shadow-lg);
+}
+
+.letter-cid-result {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.45rem 0.6rem;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--gray-700);
+  font: inherit;
+  font-size: 0.85rem;
+  text-align: left;
+  cursor: pointer;
+}
+
+.letter-cid-result:hover,
+.letter-cid-result:focus-visible {
+  background: var(--primary-50);
+}
+
+.letter-cid-result strong {
+  flex-shrink: 0;
+  color: var(--primary-700);
+}
+
+.letter-cid-result span {
+  overflow: hidden;
+  color: var(--gray-600);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Aba CID-10 dentro de Prescrições. */
+.cid10-section {
+  display: grid;
+  gap: 1rem;
+}
+
+.cid10-toolbar {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.cid10-search {
+  display: grid;
+  gap: 0.35rem;
+  max-width: 32rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--gray-700);
+}
+
+.cid10-search input {
+  padding: 0.6rem 0.8rem;
+  border: 1px solid var(--gray-300);
+  border-radius: 10px;
+  font: inherit;
+  font-weight: 400;
+}
+
+.cid10-search input:focus-visible {
+  outline: 2px solid var(--primary-500);
+  outline-offset: 1px;
+}
+
+.cid10-toolbar-hint {
+  margin: 0;
+  color: var(--gray-500);
+  font-size: 0.8rem;
+}
+
+.cid10-results {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.cid10-result {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid var(--gray-200);
+  border-radius: 12px;
+  background: white;
+}
+
+.cid10-result-main {
+  display: grid;
+  gap: 0.2rem;
+  min-width: 0;
+}
+
+.cid10-result-heading {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.cid10-result-code {
+  color: var(--primary-700);
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.cid10-result-tag {
+  padding: 0.1rem 0.45rem;
+  border-radius: 999px;
+  background: var(--gray-100);
+  color: var(--gray-600);
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.cid10-result-description {
+  margin: 0;
+  color: var(--gray-800);
+  font-size: 0.9rem;
+}
+
+.cid10-result-context {
+  margin: 0;
+  color: var(--gray-500);
+  font-size: 0.78rem;
+}
+
+.cid10-result-flag {
+  margin: 0.15rem 0 0;
+  color: var(--amber-800);
+  font-size: 0.78rem;
+}
+
+.cid10-copy-button {
+  flex-shrink: 0;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.8rem;
+}
+
+@media (max-width: 640px) {
+  .cid10-result {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
 .referral-actions {
   display: flex;
   align-items: center;
@@ -3333,6 +3504,7 @@ body {
 
 /* Switcher de seção primária: segmented control com pill sólido no ativo, para
    não se confundir com os chips de filtro secundário (categoria). */
+.prescription-section-tabs,
 .templates-section-tabs {
   display: inline-flex;
   gap: 0.25rem;
@@ -3343,6 +3515,7 @@ body {
   border-radius: 14px;
 }
 
+.prescription-section-tab,
 .templates-section-tab {
   display: inline-flex;
   align-items: center;
@@ -3359,16 +3532,19 @@ body {
   transition: background var(--transition), color var(--transition), box-shadow var(--transition);
 }
 
+.prescription-section-tab svg,
 .templates-section-tab svg {
   width: 16px;
   height: 16px;
   flex-shrink: 0;
 }
 
+.prescription-section-tab:hover:not(.active),
 .templates-section-tab:hover:not(.active) {
   color: var(--gray-700, #374151);
 }
 
+.prescription-section-tab.active,
 .templates-section-tab.active {
   background: white;
   color: var(--primary-700, #1d4ed8);

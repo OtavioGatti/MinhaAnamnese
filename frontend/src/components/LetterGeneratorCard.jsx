@@ -1,5 +1,6 @@
-import { useEffect, useId, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { api } from '../apiClient';
+import { useCid10Search } from '../hooks/useCid10Search';
 import { LETTER_TYPES, DEFAULT_LETTER_TYPE_KEY, getLetterType } from '../letterTypes';
 
 function getAccessCopy({ user, accessState }) {
@@ -60,12 +61,19 @@ function LetterGeneratorCard({
   const [modelId, setModelId] = useState('');
   const [myModels, setMyModels] = useState([]);
   const [caseStyle, setCaseStyle] = useState(defaultCaseStyle === 'upper' ? 'upper' : 'mixed');
+  // Só abre a busca depois que o médico digita: escolher um código pelos chips
+  // ou reabrir o formulário não deve fazer a lista aparecer sozinha.
+  const [cidSearchOpen, setCidSearchOpen] = useState(false);
 
   const accessCopy = getAccessCopy({ user, accessState });
   const shouldUseUpgradeAction = Boolean(accessCopy);
   const currentType = getLetterType(letterType);
   const outputRef = useAutoSize(letter);
-  const cidListId = useId();
+  const hasCidField = currentType.fields.some((field) => field.widget === 'cid');
+  const cidSearch = useCid10Search(fields.cid10, {
+    enabled: hasCidField && cidSearchOpen && !shouldUseUpgradeAction,
+    limit: 8,
+  });
 
   // Carrega os modelos do usuário para popular o seletor (por tipo).
   useEffect(() => {
@@ -153,45 +161,71 @@ function LetterGeneratorCard({
           // CID do guia de prescrição casado, ou seja, conteúdo revisado.
           const isCidField = field.widget === 'cid';
           const suggestions = isCidField ? cidOptions : [];
+          const showCidResults = isCidField && cidSearchOpen && cidSearch.results.length > 0;
 
           return (
             <div className="form-group referral-field" key={field.name}>
               <label htmlFor={`letter-field-${field.name}`}>{field.label}</label>
-              <div className="input-wrapper">
+              <div className={`input-wrapper ${isCidField ? 'letter-cid-input-wrapper' : ''}`}>
                 <input
                   id={`letter-field-${field.name}`}
                   type="text"
                   value={fields[field.name] || ''}
-                  onChange={(event) => handleFieldChange(field.name, event.target.value)}
+                  onChange={(event) => {
+                    handleFieldChange(field.name, event.target.value);
+                    if (isCidField) {
+                      setCidSearchOpen(true);
+                    }
+                  }}
+                  onBlur={isCidField ? () => setCidSearchOpen(false) : undefined}
                   placeholder={field.placeholder}
                   disabled={loading}
-                  list={suggestions.length > 0 ? cidListId : undefined}
+                  autoComplete={isCidField ? 'off' : undefined}
                 />
+
+                {showCidResults ? (
+                  <ul className="letter-cid-results" role="listbox" aria-label="Códigos CID-10 encontrados">
+                    {cidSearch.results.map((result) => (
+                      <li key={result.code}>
+                        {/* onMouseDown corre antes do blur do input — com onClick a
+                            lista já teria fechado antes de o clique chegar. */}
+                        <button
+                          type="button"
+                          className="letter-cid-result"
+                          onMouseDown={(event) => {
+                            event.preventDefault();
+                            handleFieldChange(field.name, result.code);
+                            setCidSearchOpen(false);
+                          }}
+                        >
+                          <strong>{result.code}</strong>
+                          <span>{result.description}</span>
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                ) : null}
               </div>
 
               {suggestions.length > 0 ? (
-                <>
-                  <datalist id={cidListId}>
-                    {suggestions.map((option) => (
-                      <option key={option.code} value={option.code}>{option.condition}</option>
-                    ))}
-                  </datalist>
-                  <div className="letter-cid-suggestions">
-                    <span className="letter-cid-suggestions-label">Das hipóteses geradas:</span>
-                    {suggestions.map((option) => (
-                      <button
-                        key={option.code}
-                        type="button"
-                        className={`letter-cid-chip ${fields[field.name] === option.code ? 'active' : ''}`}
-                        onClick={() => handleFieldChange(field.name, option.code)}
-                        disabled={loading}
-                      >
-                        <strong>{option.code}</strong>
-                        <span>{option.condition}</span>
-                      </button>
-                    ))}
-                  </div>
-                </>
+                <div className="letter-cid-suggestions">
+                  <span className="letter-cid-suggestions-label">Das hipóteses geradas:</span>
+                  {suggestions.map((option) => (
+                    <button
+                      key={option.code}
+                      type="button"
+                      className={`letter-cid-chip ${fields[field.name] === option.code ? 'active' : ''}`}
+                      onClick={() => {
+                        handleFieldChange(field.name, option.code);
+                        setCidSearchOpen(false);
+                      }}
+                      disabled={loading}
+                    >
+                      <strong>{option.code}</strong>
+                      <span>{option.condition}</span>
+                    </button>
+                  ))}
+                </div>
               ) : null}
 
               {field.hint ? <p className="referral-field-hint">{field.hint}</p> : null}
