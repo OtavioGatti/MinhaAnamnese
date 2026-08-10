@@ -1,8 +1,12 @@
 const assert = require('node:assert/strict');
 const test = require('node:test');
 const {
+  applyConditionalFormatBlocks,
   buildLetterSystemPrompt,
+  getCid10Error,
+  normalizeCid10,
   normalizeFormatTemplate,
+  normalizeLetterFields,
   validateLetterInput,
 } = require('../services/letters');
 const { getLetterType, normalizeLetterTypeKey, LETTER_TYPES } = require('../config/letterTypes');
@@ -18,9 +22,9 @@ test('normalizeLetterTypeKey cai no encaminhamento para valores desconhecidos', 
   assert.equal(normalizeLetterTypeKey(undefined), 'encaminhamento');
 });
 
-test('os 5 tipos de carta estão registrados', () => {
+test('os 6 tipos de carta estão registrados', () => {
   const keys = LETTER_TYPES.map((type) => type.key);
-  assert.deepEqual(keys, ['encaminhamento', 'contrarreferencia', 'relatorio', 'solicitacao', 'declaracao']);
+  assert.deepEqual(keys, ['encaminhamento', 'contrarreferencia', 'relatorio', 'solicitacao', 'declaracao', 'atestado']);
 });
 
 test('buildLetterSystemPrompt mantém regras fixas e usa o formato padrão do tipo', () => {
@@ -98,6 +102,122 @@ test('resolveLetterTypeKey converte rótulos do Notion para keys', () => {
   assert.equal(resolveLetterTypeKey('Relatório médico'), 'relatorio');
   assert.equal(resolveLetterTypeKey('Declaração de comparecimento'), 'declaracao');
   assert.equal(resolveLetterTypeKey('Encaminhamento'), 'encaminhamento');
+  assert.equal(resolveLetterTypeKey('Atestado'), 'atestado');
+  assert.equal(resolveLetterTypeKey('Atestado médico'), 'atestado');
+});
+
+test('normalizeCid10 padroniza caixa e separadores', () => {
+  assert.equal(normalizeCid10('j06.9'), 'J06.9');
+  assert.equal(normalizeCid10(' m54 , j06.9 '), 'M54 J06.9');
+  assert.equal(normalizeCid10(''), '');
+});
+
+test('getCid10Error aceita códigos da tabela e recusa texto livre', () => {
+  assert.equal(getCid10Error(''), null, 'em branco é válido: CID é opcional');
+  assert.equal(getCid10Error('J06.9'), null);
+  assert.equal(getCid10Error('U07.1'), null, 'códigos da faixa U existem (COVID-19)');
+  assert.equal(getCid10Error('M54 J06.9'), null, 'comorbidade: mais de um código');
+  assert.ok(getCid10Error('gripe'), 'nome de doença não é código');
+  assert.ok(getCid10Error('A01 A02 A03 A04 A05'), 'excesso de códigos é recusado');
+});
+
+test('normalizeLetterFields descarta campos não declarados pelo tipo', () => {
+  const fields = normalizeLetterFields(getLetterType('declaracao'), {
+    period: '23/07/2026',
+    cid10: 'J06.9',
+  });
+
+  assert.equal(fields.period, '23/07/2026');
+  assert.ok(!('cid10' in fields), 'declaração não declara cid10: campo não chega ao prompt');
+});
+
+test('applyConditionalFormatBlocks mantém ou remove o bloco de CID', () => {
+  const format = 'ATESTADO\n\n{{#com_cid}}\nCID-10: [codigo].\n\n{{/com_cid}}\n[assinatura do médico]';
+
+  assert.ok(applyConditionalFormatBlocks(format, { includeCid: true }).includes('CID-10'));
+  assert.ok(!applyConditionalFormatBlocks(format, { includeCid: false }).includes('CID-10'));
+  assert.ok(
+    applyConditionalFormatBlocks(format, { includeCid: false }).includes('[assinatura do médico]'),
+    'o restante do formato é preservado',
+  );
+  assert.equal(
+    applyConditionalFormatBlocks(format, { includeCid: true }),
+    'ATESTADO\n\nCID-10: [codigo].\n\n[assinatura do médico]',
+    'a separação entre parágrafos sobrevive ao manter o bloco',
+  );
+  assert.equal(
+    applyConditionalFormatBlocks(format, { includeCid: false }),
+    'ATESTADO\n\n[assinatura do médico]',
+    'a separação entre parágrafos sobrevive ao remover o bloco',
+  );
+});
+
+test('marcador escrito fora de linha própria não vaza como texto no documento', () => {
+  const malformed = 'ATESTADO {{#com_cid}}CID: [codigo].{{/com_cid}} fim';
+
+  [true, false].forEach((includeCid) => {
+    const result = applyConditionalFormatBlocks(malformed, { includeCid });
+    assert.ok(!result.includes('com_cid'), `marcador removido (includeCid: ${includeCid})`);
+  });
+});
+
+test('atestado sem CID sai sem diagnóstico e sem assinatura do paciente', () => {
+  const prompt = buildLetterSystemPrompt(getLetterType('atestado'), '', null, { cid10: '' });
+
+  assert.ok(!prompt.includes('CID-10:'), 'linha de CID removida do formato');
+  assert.ok(!prompt.includes('Assinatura do paciente'), 'sem CID não há termo de ciência');
+  assert.ok(prompt.includes('SEM CID'), 'regra condicional correta aplicada');
+});
+
+test('atestado com CID traz o termo de ciência do paciente', () => {
+  const prompt = buildLetterSystemPrompt(getLetterType('atestado'), '', null, { cid10: 'J06.9' });
+
+  assert.ok(prompt.includes('CID-10:'), 'linha de CID mantida no formato');
+  assert.ok(prompt.includes('Assinatura do paciente'), 'termo de ciência presente');
+  assert.ok(prompt.includes('COM CID'), 'regra condicional correta aplicada');
+  assert.ok(prompt.includes('não o diagnóstico por extenso'), 'consentimento cobre o código, não a doença');
+});
+
+test('override do Notion não apaga as regras de consentimento do atestado', () => {
+  const prompt = buildLetterSystemPrompt(
+    getLetterType('atestado'),
+    '',
+    'REGRAS EDITORIAIS\n{{formato_saida}}\nFIM',
+    { cid10: 'J06.9' },
+  );
+
+  assert.ok(prompt.includes('REGRAS EDITORIAIS'), 'override editorial aplicado');
+  assert.ok(prompt.includes('COM CID'), 'regra de consentimento sobrevive ao override');
+});
+
+test('modelo do usuário sem marcadores não deixa vazar CID quando não há CID', () => {
+  const custom = 'ATESTADO DA CLÍNICA X\n[periodo]\nCID: [codigo]\nAssinatura do paciente: ______';
+  const prompt = buildLetterSystemPrompt(getLetterType('atestado'), custom, null, { cid10: '' });
+
+  // O formato do usuário é preservado (não temos como reescrevê-lo), mas a regra
+  // condicional instrui a omitir CID e o bloco de ciência.
+  assert.ok(prompt.includes('ATESTADO DA CLÍNICA X'), 'formato do usuário preservado');
+  assert.ok(prompt.includes('Não inclua bloco de ciência'), 'regra cobre o formato sem marcadores');
+});
+
+test('validateLetterInput cobre os campos e o CID do atestado', () => {
+  assert.equal(
+    validateLetterInput({ letterType: 'atestado', texto: 'quadro', fields: {} }),
+    'Informe: Tempo de afastamento.',
+  );
+  assert.equal(
+    validateLetterInput({ letterType: 'atestado', texto: 'quadro', fields: { period: '3 dias' } }),
+    null,
+    'CID é opcional',
+  );
+  assert.equal(
+    validateLetterInput({ letterType: 'atestado', texto: 'quadro', fields: { period: '3 dias', cid10: 'J06.9' } }),
+    null,
+  );
+  assert.ok(
+    validateLetterInput({ letterType: 'atestado', texto: 'quadro', fields: { period: '3 dias', cid10: 'gripe' } }),
+    'CID em texto livre é recusado',
+  );
 });
 
 test('normalizeOfficialLetterModelPayload valida e mapeia o tipo', () => {

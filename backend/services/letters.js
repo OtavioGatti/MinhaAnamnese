@@ -4,6 +4,8 @@ const { sanitizeText } = require('../utils/textSanitization');
 const { getSyncedOfficialPrompt } = require('./officialPrompts');
 const { renderPromptTemplate } = require('../prompts/promptTemplate');
 const {
+  LETTER_CID_BLOCK_CLOSE,
+  LETTER_CID_BLOCK_OPEN,
   LETTER_COMMON_GUARDRAILS,
   LETTER_OUTPUT_FORMAT_TOKEN,
   getLetterType,
@@ -11,9 +13,87 @@ const {
 } = require('../config/letterTypes');
 
 const MAX_FORMAT_TEMPLATE_LENGTH = 4000;
+const CID10_FIELD_NAME = 'cid10';
+// Formato da tabela CID-10: letra + 2 dígitos, com subdivisão opcional (J06.9).
+const CID10_CODE_PATTERN = /^[A-Z][0-9]{2}(\.[0-9]{1,2})?$/;
+const MAX_CID10_CODES = 4;
+
+function escapeForRegExp(value) {
+  return String(value).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+// Cada marcador ocupa a própria linha e é consumido junto com ela, para que o
+// espaçamento entre parágrafos sobreviva tanto ao manter quanto ao remover.
+const CID_BLOCK_PATTERN = new RegExp(
+  `^[ \\t]*${escapeForRegExp(LETTER_CID_BLOCK_OPEN)}[ \\t]*\\r?\\n([\\s\\S]*?)^[ \\t]*${escapeForRegExp(LETTER_CID_BLOCK_CLOSE)}[ \\t]*\\r?\\n?`,
+  'gm',
+);
+
+// Rede de segurança para modelo escrito à mão com marcador fora de linha
+// própria: o token é removido para não virar lixo visível no documento. O
+// conteúdo fica, e quem garante a omissão é a regra condicional do tipo.
+const CID_MARKER_LEFTOVER_PATTERN = new RegExp(
+  `${escapeForRegExp(LETTER_CID_BLOCK_OPEN)}|${escapeForRegExp(LETTER_CID_BLOCK_CLOSE)}`,
+  'g',
+);
 
 function normalizeShortText(value) {
   return sanitizeText(String(value || '')).replace(/\s+/g, ' ').trim();
+}
+
+// Caixa alta e separadores uniformes: "j06.9, m54" -> "J06.9 M54".
+function normalizeCid10(value) {
+  return normalizeShortText(value).toUpperCase().replace(/[\s,;]+/g, ' ').trim();
+}
+
+function typeSupportsCid(type) {
+  return Boolean(type?.fields?.some((field) => field.name === CID10_FIELD_NAME));
+}
+
+// Validação leve: garante que o campo carrega código(s) da tabela, não texto
+// livre. O CID em si é decisão do médico — o servidor só confere o formato,
+// porque é ele que dispara o termo de ciência do paciente.
+function getCid10Error(value) {
+  const normalized = normalizeCid10(value);
+
+  if (!normalized) {
+    return null;
+  }
+
+  const codes = normalized.split(' ');
+
+  if (codes.length > MAX_CID10_CODES) {
+    return `Informe no máximo ${MAX_CID10_CODES} códigos CID-10.`;
+  }
+
+  if (!codes.every((code) => CID10_CODE_PATTERN.test(code))) {
+    return 'CID-10 inválido. Use o código da tabela (ex.: J06.9) ou deixe em branco.';
+  }
+
+  return null;
+}
+
+// Descarta chaves não declaradas pelo tipo: só os campos do registro chegam ao
+// prompt, mesmo que o cliente envie outros (ex.: cid10 sobrando ao trocar de tipo).
+function normalizeLetterFields(type, fields = {}) {
+  const normalized = {};
+
+  (type?.fields || []).forEach((field) => {
+    normalized[field.name] = field.name === CID10_FIELD_NAME
+      ? normalizeCid10(fields?.[field.name])
+      : normalizeShortText(fields?.[field.name]);
+  });
+
+  return normalized;
+}
+
+// Mantém ou remove os blocos condicionais do formato antes de o prompt existir.
+function applyConditionalFormatBlocks(format, { includeCid }) {
+  return String(format || '')
+    .replace(CID_BLOCK_PATTERN, (_match, inner) => (includeCid ? inner : ''))
+    .replace(CID_MARKER_LEFTOVER_PATTERN, '')
+    .replace(/\n{3,}/g, '\n\n')
+    .trim();
 }
 
 function normalizeFormatTemplate(value) {
@@ -61,23 +141,43 @@ function validateLetterInput({ letterType, texto, structuredText, fields = {} })
     }
   }
 
+  if (typeSupportsCid(type)) {
+    const cidError = getCid10Error(fields?.[CID10_FIELD_NAME]);
+
+    if (cidError) {
+      return cidError;
+    }
+  }
+
   return null;
 }
 
 // Monta o prompt de sistema: regras fixas (servidor) + objetivo do tipo +
 // formato. O formato do usuario/modelo entra apenas no bloco de formato — nunca
 // substitui as regras clinicas.
-function buildLetterSystemPrompt(type, formatTemplate, promptOverride = null) {
-  const format = normalizeFormatTemplate(formatTemplate) || type.defaultFormat;
+function buildLetterSystemPrompt(type, formatTemplate, promptOverride = null, fields = {}) {
+  const includeCid = typeSupportsCid(type) && Boolean(normalizeCid10(fields?.[CID10_FIELD_NAME]));
+  const rawFormat = normalizeFormatTemplate(formatTemplate) || type.defaultFormat;
+  // Um formato que fosse só o bloco condicional ficaria vazio ao ser removido:
+  // nesse caso o padrão do tipo assume, para não gerar documento sem esqueleto.
+  const format = applyConditionalFormatBlocks(rawFormat, { includeCid })
+    || applyConditionalFormatBlocks(type.defaultFormat, { includeCid });
+  const conditionalRules = typeof type.buildConditionalRules === 'function'
+    ? type.buildConditionalRules(fields)
+    : '';
 
   if (promptOverride && promptOverride.includes(LETTER_OUTPUT_FORMAT_TOKEN)) {
-    return renderPromptTemplate(promptOverride, { formato_saida: format });
+    const rendered = renderPromptTemplate(promptOverride, { formato_saida: format });
+    // Diferente do goalPrompt, as regras condicionais sobrevivem ao override:
+    // elas registram consentimento, e o CMS controla só estilo e estrutura.
+    return conditionalRules ? [rendered, '', conditionalRules].join('\n') : rendered;
   }
 
   return [
     LETTER_COMMON_GUARDRAILS,
     '',
     type.goalPrompt,
+    ...(conditionalRules ? ['', conditionalRules] : []),
     '',
     'FORMATO DE SAÍDA (siga esta estrutura; remova blocos sem informação; preserve o texto fixo, como cabeçalho e assinatura):',
     format,
@@ -127,14 +227,20 @@ async function generateLetter({ letterType, fields = {}, texto, structuredText =
   }
 
   const openai = new OpenAI({ apiKey });
+  const normalizedFields = normalizeLetterFields(type, fields);
   const promptOverride = await getSyncedOfficialPrompt(type.promptSlug).catch(() => null);
-  const systemPrompt = buildLetterSystemPrompt(type, formatTemplate, promptOverride?.promptBody || null);
+  const systemPrompt = buildLetterSystemPrompt(
+    type,
+    formatTemplate,
+    promptOverride?.promptBody || null,
+    normalizedFields,
+  );
 
   const response = await openai.chat.completions.create({
     model: 'gpt-4o-mini',
     messages: [
       { role: 'system', content: systemPrompt },
-      { role: 'user', content: buildLetterUserMessage(type, { fields, texto, structuredText }) },
+      { role: 'user', content: buildLetterUserMessage(type, { fields: normalizedFields, texto, structuredText }) },
     ],
     temperature: 0.1,
     max_tokens: 900,
@@ -156,8 +262,12 @@ async function generateLetter({ letterType, fields = {}, texto, structuredText =
 
 module.exports = {
   MAX_FORMAT_TEMPLATE_LENGTH,
+  applyConditionalFormatBlocks,
   buildLetterSystemPrompt,
   generateLetter,
+  getCid10Error,
+  normalizeCid10,
   normalizeFormatTemplate,
+  normalizeLetterFields,
   validateLetterInput,
 };

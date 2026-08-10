@@ -26,6 +26,8 @@ const LETTER_TYPE_LABEL_TO_KEY = new Map([
   ['solicitacao', 'solicitacao'],
   ['declaracao de comparecimento', 'declaracao'],
   ['declaracao', 'declaracao'],
+  ['atestado medico', 'atestado'],
+  ['atestado', 'atestado'],
 ]);
 
 function getConfig() {

@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useId, useMemo, useRef, useState } from 'react';
 import { api } from '../apiClient';
 import { LETTER_TYPES, DEFAULT_LETTER_TYPE_KEY, getLetterType } from '../letterTypes';
 
@@ -48,6 +48,7 @@ function LetterGeneratorCard({
   accessState,
   loadingCheckout,
   defaultCaseStyle = 'mixed',
+  cidOptions = [],
   onGenerate,
   onCopy,
   onRequestUpgrade,
@@ -64,6 +65,7 @@ function LetterGeneratorCard({
   const shouldUseUpgradeAction = Boolean(accessCopy);
   const currentType = getLetterType(letterType);
   const outputRef = useAutoSize(letter);
+  const cidListId = useId();
 
   // Carrega os modelos do usuário para popular o seletor (por tipo).
   useEffect(() => {
@@ -146,21 +148,56 @@ function LetterGeneratorCard({
       </div>
 
       <div className="referral-letter-grid">
-        {currentType.fields.map((field) => (
-          <div className="form-group referral-field" key={field.name}>
-            <label htmlFor={`letter-field-${field.name}`}>{field.label}</label>
-            <div className="input-wrapper">
-              <input
-                id={`letter-field-${field.name}`}
-                type="text"
-                value={fields[field.name] || ''}
-                onChange={(event) => handleFieldChange(field.name, event.target.value)}
-                placeholder={field.placeholder}
-                disabled={loading}
-              />
+        {currentType.fields.map((field) => {
+          // O CID sugerido vem das hipóteses já geradas — e cada opção carrega o
+          // CID do guia de prescrição casado, ou seja, conteúdo revisado.
+          const isCidField = field.widget === 'cid';
+          const suggestions = isCidField ? cidOptions : [];
+
+          return (
+            <div className="form-group referral-field" key={field.name}>
+              <label htmlFor={`letter-field-${field.name}`}>{field.label}</label>
+              <div className="input-wrapper">
+                <input
+                  id={`letter-field-${field.name}`}
+                  type="text"
+                  value={fields[field.name] || ''}
+                  onChange={(event) => handleFieldChange(field.name, event.target.value)}
+                  placeholder={field.placeholder}
+                  disabled={loading}
+                  list={suggestions.length > 0 ? cidListId : undefined}
+                />
+              </div>
+
+              {suggestions.length > 0 ? (
+                <>
+                  <datalist id={cidListId}>
+                    {suggestions.map((option) => (
+                      <option key={option.code} value={option.code}>{option.condition}</option>
+                    ))}
+                  </datalist>
+                  <div className="letter-cid-suggestions">
+                    <span className="letter-cid-suggestions-label">Das hipóteses geradas:</span>
+                    {suggestions.map((option) => (
+                      <button
+                        key={option.code}
+                        type="button"
+                        className={`letter-cid-chip ${fields[field.name] === option.code ? 'active' : ''}`}
+                        onClick={() => handleFieldChange(field.name, option.code)}
+                        disabled={loading}
+                      >
+                        <strong>{option.code}</strong>
+                        <span>{option.condition}</span>
+                      </button>
+                    ))}
+                  </div>
+                </>
+              ) : null}
+
+              {field.hint ? <p className="referral-field-hint">{field.hint}</p> : null}
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
 
       <div className="form-group referral-field">

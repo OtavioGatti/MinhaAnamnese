@@ -1,6 +1,8 @@
 // Espelho leve do registro de tipos do backend (backend/config/letterTypes.js).
 // Só o necessário para o frontend: rótulo e campos do formulário. As regras
 // clínicas e o formato padrão vivem no servidor.
+//
+// `widget` e `hint` são exclusivos daqui: só mudam como o campo é apresentado.
 
 export const LETTER_TYPES = [
   {
@@ -40,6 +42,23 @@ export const LETTER_TYPES = [
     fields: [
       { name: 'period', label: 'Data / período / horário', required: true, placeholder: 'Ex: 23/07/2026, das 14h às 15h30' },
       { name: 'companion', label: 'Acompanhante (opcional)', required: false, placeholder: 'Ex: mãe, Maria da Silva' },
+    ],
+  },
+  {
+    key: 'atestado',
+    label: 'Atestado médico',
+    fields: [
+      { name: 'period', label: 'Tempo de afastamento', required: true, placeholder: 'Ex: 3 dias' },
+      { name: 'startDate', label: 'Início do afastamento', required: false, placeholder: 'Ex: 10/08/2026 — vazio usa a data de hoje' },
+      { name: 'activity', label: 'Atividades das quais se afasta', required: false, placeholder: 'Ex: atividades laborais' },
+      {
+        name: 'cid10',
+        label: 'CID-10 (opcional)',
+        required: false,
+        placeholder: 'Ex: J06.9',
+        widget: 'cid',
+        hint: 'Com CID, o atestado sai com o termo de ciência e assinatura do paciente. Em branco, sai sem nenhuma menção a diagnóstico e assinado só por você.',
+      },
     ],
   },
 ];

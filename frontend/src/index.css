@@ -1256,6 +1256,63 @@ body {
   margin-bottom: 0;
 }
 
+.referral-field-hint {
+  margin: 0.4rem 0 0;
+  color: var(--gray-500);
+  font-size: 0.78rem;
+  line-height: 1.45;
+}
+
+.letter-cid-suggestions {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+
+.letter-cid-suggestions-label {
+  color: var(--gray-500);
+  font-size: 0.78rem;
+}
+
+.letter-cid-chip {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.35rem;
+  max-width: 100%;
+  padding: 0.25rem 0.6rem;
+  border: 1px solid rgba(219, 234, 254, 0.9);
+  border-radius: 999px;
+  background: #f8fbff;
+  color: var(--gray-700);
+  font-size: 0.78rem;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.letter-cid-chip:hover:not(:disabled) {
+  border-color: var(--primary-500);
+  background: var(--primary-50);
+}
+
+.letter-cid-chip.active {
+  border-color: var(--primary-500);
+  background: var(--primary-50);
+}
+
+.letter-cid-chip:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.letter-cid-chip span {
+  overflow: hidden;
+  color: var(--gray-500);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .referral-actions {
   display: flex;
   align-items: center;

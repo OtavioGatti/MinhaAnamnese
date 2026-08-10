@@ -986,6 +986,26 @@ function App() {
     onProfileUpdate: setProfile,
   });
 
+  // CIDs oferecidos no atestado: só os das hipóteses que casaram com um guia de
+  // prescrição, porque é de lá que vem o código revisado — nunca da IA.
+  const cidOptionsFromHypotheses = useMemo(() => {
+    const hypotheses = Array.isArray(diagnosticHypotheses.data?.hypotheses)
+      ? diagnosticHypotheses.data.hypotheses
+      : [];
+    const seen = new Set();
+
+    return hypotheses.reduce((options, hypothesis) => {
+      const code = hypothesis?.prescriptionGuide?.cid10Primary;
+
+      if (code && !seen.has(code)) {
+        seen.add(code);
+        options.push({ code, condition: hypothesis.name });
+      }
+
+      return options;
+    }, []);
+  }, [diagnosticHypotheses.data]);
+
   const templateTemCalculadora = templateSelecionado === TEMPLATE_WITH_CALCULATORS;
   const accessState = useMemo(() => deriveAccessState(user, profile), [profile, user]);
   const isPro = Boolean(accessState?.hasActiveProAccess);
@@ -3226,6 +3246,7 @@ function App() {
                 accessState={accessState}
                 loadingCheckout={isReferralLetterCheckoutLoading}
                 defaultCaseStyle={outputCaseStyle}
+                cidOptions={cidOptionsFromHypotheses}
                 onGenerate={handleGenerateLetter}
                 onCopy={handleCopyReferralLetter}
                 onRequestUpgrade={() => handleUpgradeInsights('referralLetter')}
