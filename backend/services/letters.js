@@ -96,6 +96,12 @@ function applyConditionalFormatBlocks(format, { includeCid }) {
     .trim();
 }
 
+// Data de hoje é informação de sistema, não julgamento clínico: resolvida aqui
+// e injetada via token, nunca deixada para a IA inferir do texto da anamnese.
+function getTodayDateBR() {
+  return new Intl.DateTimeFormat('pt-BR', { timeZone: 'America/Sao_Paulo' }).format(new Date());
+}
+
 function normalizeFormatTemplate(value) {
   return sanitizeText(String(value || ''))
     .replace(/\r\n/g, '\n')
@@ -160,8 +166,11 @@ function buildLetterSystemPrompt(type, formatTemplate, promptOverride = null, fi
   const rawFormat = normalizeFormatTemplate(formatTemplate) || type.defaultFormat;
   // Um formato que fosse só o bloco condicional ficaria vazio ao ser removido:
   // nesse caso o padrão do tipo assume, para não gerar documento sem esqueleto.
-  const format = applyConditionalFormatBlocks(rawFormat, { includeCid })
+  const conditionalFormat = applyConditionalFormatBlocks(rawFormat, { includeCid })
     || applyConditionalFormatBlocks(type.defaultFormat, { includeCid });
+  // {{data_emissao}} funciona em qualquer formato (padrão do tipo, modelo do
+  // usuário ou oficial do Notion) — é o mesmo mecanismo do {{formato_saida}}.
+  const format = renderPromptTemplate(conditionalFormat, { data_emissao: getTodayDateBR() });
   const conditionalRules = typeof type.buildConditionalRules === 'function'
     ? type.buildConditionalRules(fields)
     : '';
@@ -266,6 +275,7 @@ module.exports = {
   buildLetterSystemPrompt,
   generateLetter,
   getCid10Error,
+  getTodayDateBR,
   normalizeCid10,
   normalizeFormatTemplate,
   normalizeLetterFields,

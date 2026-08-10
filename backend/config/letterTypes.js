@@ -37,6 +37,11 @@ const LETTER_OUTPUT_FORMAT_TOKEN = '{{formato_saida}}';
 const LETTER_CID_BLOCK_OPEN = '{{#com_cid}}';
 const LETTER_CID_BLOCK_CLOSE = '{{/com_cid}}';
 
+// Token de data resolvido no servidor (data de hoje, fuso de Brasília) — nunca
+// deixado para a IA inferir do texto. Disponível em qualquer formato: padrão do
+// tipo, modelo do usuário ou modelo oficial sincronizado do Notion.
+const LETTER_TODAY_TOKEN = '{{data_emissao}}';
+
 const LETTER_TYPES = [
   {
     key: 'encaminhamento',
@@ -190,7 +195,7 @@ ${LETTER_CID_BLOCK_OPEN}
 CID-10: [código exatamente como informado pelo médico].
 
 ${LETTER_CID_BLOCK_CLOSE}
-[Cidade], [data].
+[Cidade], ${LETTER_TODAY_TOKEN}.
 
 _____________________________
 [assinatura do médico — nome e CRM]
@@ -224,6 +229,7 @@ module.exports = {
   LETTER_CID_BLOCK_OPEN,
   LETTER_COMMON_GUARDRAILS,
   LETTER_OUTPUT_FORMAT_TOKEN,
+  LETTER_TODAY_TOKEN,
   LETTER_TYPES,
   getLetterType,
   normalizeLetterTypeKey,

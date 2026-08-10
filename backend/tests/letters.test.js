@@ -4,6 +4,7 @@ const {
   applyConditionalFormatBlocks,
   buildLetterSystemPrompt,
   getCid10Error,
+  getTodayDateBR,
   normalizeCid10,
   normalizeFormatTemplate,
   normalizeLetterFields,
@@ -188,6 +189,22 @@ test('override do Notion não apaga as regras de consentimento do atestado', () 
 
   assert.ok(prompt.includes('REGRAS EDITORIAIS'), 'override editorial aplicado');
   assert.ok(prompt.includes('COM CID'), 'regra de consentimento sobrevive ao override');
+});
+
+test('atestado preenche a data de emissão com a data real, nunca deixa o token ou o placeholder', () => {
+  const prompt = buildLetterSystemPrompt(getLetterType('atestado'), '', null, { period: '7 dias' });
+  const today = getTodayDateBR();
+
+  assert.ok(prompt.includes(`[Cidade], ${today}.`), 'data de hoje injetada no lugar do token');
+  assert.ok(!prompt.includes('{{data_emissao}}'), 'token não vaza para o prompt');
+  assert.ok(!prompt.includes('[data]'), 'placeholder antigo não sobra');
+});
+
+test('{{data_emissao}} funciona também em formato customizado pelo usuário', () => {
+  const custom = 'MODELO CUSTOM\nEmitido em {{data_emissao}}.';
+  const prompt = buildLetterSystemPrompt(getLetterType('atestado'), custom, null, { period: '7 dias' });
+
+  assert.ok(prompt.includes(`Emitido em ${getTodayDateBR()}.`), 'token do usuário também é resolvido pelo servidor');
 });
 
 test('modelo do usuário sem marcadores não deixa vazar CID quando não há CID', () => {
