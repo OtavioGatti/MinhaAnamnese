@@ -190,7 +190,7 @@ ${LETTER_CID_BLOCK_OPEN}
 CID-10: [código exatamente como informado pelo médico].
 
 ${LETTER_CID_BLOCK_CLOSE}
-[cidade e data — mantenha como campo a preencher se não constarem na história].
+[Cidade], [data].
 
 _____________________________
 [assinatura do médico — nome e CRM]
