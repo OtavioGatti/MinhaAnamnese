@@ -7,6 +7,9 @@ const DEFAULT_SEARCH_LIMIT = 20;
 const MAX_SEARCH_LIMIT = 50;
 const MIN_QUERY_LENGTH = 2;
 const MAX_QUERY_LENGTH = 80;
+// Termos comuns ("infeccao", "aguda") passam de 200 linhas. A janela do
+// fallback precisa ser larga o bastante para o reordenamento ter o que escolher.
+const FALLBACK_FETCH_WINDOW = 200;
 
 const CID10_SELECT = [
   'code',
@@ -149,14 +152,31 @@ function rankCid10Results(results, query) {
     .map((entry) => entry.item);
 }
 
-async function searchCid10Codes({ query = '', limit = DEFAULT_SEARCH_LIMIT } = {}) {
-  const normalizedQuery = normalizeQuery(query);
+function isMissingFunctionError(error) {
+  const body = String(error?.responseBody || '');
+  return error?.statusCode === 404
+    && (body.includes('PGRST202') || body.toLowerCase().includes('could not find the function'));
+}
 
-  if (!isCid10StorageAvailable() || normalizedQuery.length < MIN_QUERY_LENGTH) {
-    return [];
-  }
+// Caminho preferido: o ranking roda no banco, que enxerga todas as linhas.
+async function searchViaRpc(normalizedQuery, normalizedLimit) {
+  const params = new URLSearchParams({ select: CID10_SELECT });
+  const json = await requestCid10(`rpc/search_cid10_codes?${params.toString()}`, {
+    method: 'POST',
+    body: JSON.stringify({
+      search_query: normalizedQuery,
+      max_results: normalizedLimit,
+    }),
+  });
 
-  const normalizedLimit = normalizeLimit(limit);
+  return Array.isArray(json) ? json.map(mapCid10Row).filter(Boolean) : [];
+}
+
+// Usado enquanto a função do Supabase não estiver aplicada (o SQL é manual).
+// Ordena pelo código e reordena no processo, então perde relevância quando o
+// termo tem muito resultado — por isso a janela buscada é bem maior que o
+// limite pedido.
+async function searchViaTableScan(normalizedQuery, normalizedLimit) {
   const codeQuery = buildCodeKeyQuery(normalizedQuery);
   const termQuery = normalizedQuery.toLowerCase();
   const filters = [`search_text.like.*${termQuery}*`];
@@ -169,14 +189,34 @@ async function searchCid10Codes({ query = '', limit = DEFAULT_SEARCH_LIMIT } = {
     select: CID10_SELECT,
     or: `(${filters.join(',')})`,
     order: 'code_key.asc',
-    // Busca um pouco alem do limite para o reordenamento ter margem de escolha.
-    limit: String(Math.min(normalizedLimit * 3, MAX_SEARCH_LIMIT * 3)),
+    limit: String(FALLBACK_FETCH_WINDOW),
   });
 
   const json = await requestCid10(`cid10_codes?${params.toString()}`, { method: 'GET' });
   const results = Array.isArray(json) ? json.map(mapCid10Row).filter(Boolean) : [];
 
   return rankCid10Results(results, normalizedQuery).slice(0, normalizedLimit);
+}
+
+async function searchCid10Codes({ query = '', limit = DEFAULT_SEARCH_LIMIT } = {}) {
+  const normalizedQuery = normalizeQuery(query);
+
+  if (!isCid10StorageAvailable() || normalizedQuery.length < MIN_QUERY_LENGTH) {
+    return [];
+  }
+
+  const normalizedLimit = normalizeLimit(limit);
+
+  try {
+    return await searchViaRpc(normalizedQuery, normalizedLimit);
+  } catch (error) {
+    if (!isMissingFunctionError(error)) {
+      throw error;
+    }
+
+    console.warn('cid10: search_cid10_codes ausente no Supabase, usando busca sem ranking do banco.');
+    return searchViaTableScan(normalizedQuery, normalizedLimit);
+  }
 }
 
 async function getCid10CodeByCode(code) {

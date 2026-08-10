@@ -20,6 +20,11 @@ create table if not exists public.cid10_codes (
   -- Minusculas e sem acento, calculado na importacao. Evita depender da
   -- extensao unaccent no runtime da busca.
   search_text text not null,
+  -- So a descricao normalizada. Separada do search_text (que comeca pelo
+  -- codigo) para o ranking conseguir perguntar "a descricao COMECA com o
+  -- termo?" — e o que separa "Cistite aguda" de "Colecistite" numa busca
+  -- por "cistite".
+  description_search text,
   -- Categoria de 3 caracteres a que o codigo pertence ("N30" para "N30.0").
   category_code text not null,
   chapter_number smallint,
@@ -47,6 +52,7 @@ alter table public.cid10_codes
   add column if not exists code_key text,
   add column if not exists description text,
   add column if not exists search_text text,
+  add column if not exists description_search text,
   add column if not exists category_code text,
   add column if not exists chapter_number smallint,
   add column if not exists chapter_description text,
@@ -67,6 +73,51 @@ create index if not exists cid10_codes_code_key_prefix_idx
 
 create index if not exists cid10_codes_category_idx
   on public.cid10_codes (category_code);
+
+-- "a descricao comeca com o termo?" e uma das perguntas do ranking.
+create index if not exists cid10_codes_description_search_prefix_idx
+  on public.cid10_codes (description_search text_pattern_ops);
+
+-- Relevancia decidida no banco, nao no backend. Sem isso, buscar "infeccao"
+-- (96 resultados) devolveria so os primeiros codigos em ordem alfabetica —
+-- todos do capitulo A — e nunca chegaria em J06.9, que e o que o medico quer.
+create or replace function public.search_cid10_codes(
+  search_query text,
+  max_results integer default 20
+)
+returns setof public.cid10_codes
+language sql
+stable
+as $$
+  with normalized as (
+    select
+      -- Curinga do LIKE vindo da entrada viraria busca aberta: fora.
+      lower(btrim(replace(replace(coalesce(search_query, ''), '%', ''), '_', ''))) as term,
+      upper(replace(replace(btrim(replace(replace(coalesce(search_query, ''), '%', ''), '_', '')), '.', ''), ' ', '')) as code
+  )
+  select codes.*
+  from public.cid10_codes codes, normalized
+  where length(normalized.term) >= 2
+    and (
+      codes.code_key like normalized.code || '%'
+      or codes.search_text like '%' || normalized.term || '%'
+    )
+  order by
+    case
+      when codes.code_key = normalized.code then 0
+      when codes.code_key like normalized.code || '%' then 1
+      when codes.description_search like normalized.term || '%' then 2
+      -- Termo no comeco de outra palavra: "aereas" em "vias aereas".
+      when codes.description_search like '% ' || normalized.term || '%' then 3
+      else 4
+    end,
+    -- Entre iguais, a descricao mais curta costuma ser a mais geral.
+    length(codes.description),
+    codes.code_key
+  limit greatest(least(coalesce(max_results, 20), 50), 1);
+$$;
+
+grant execute on function public.search_cid10_codes(text, integer) to authenticated, service_role;
 
 create or replace function public.set_cid10_codes_updated_at()
 returns trigger

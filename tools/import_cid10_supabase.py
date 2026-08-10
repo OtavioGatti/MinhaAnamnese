@@ -138,6 +138,9 @@ def build_row(raw_code, description, chapters, groups, level, sex=None, classif=
         "description": clean_description,
         # O codigo entra no texto de busca para "n300" e "n30.0" acharem a linha.
         "search_text": build_search_text(display_code, code_key, clean_description),
+        # So a descricao: o ranking pergunta se ela COMECA com o termo, o que o
+        # search_text (que abre com o codigo) nao conseguiria responder.
+        "description_search": build_search_text(clean_description),
         "category_code": category_code,
         "chapter_number": chapter_number,
         "chapter_description": chapter["description"] if chapter else None,
