@@ -1369,6 +1369,104 @@ body {
   white-space: nowrap;
 }
 
+/* Busca de CID-10 embutida no card da hipótese diagnóstica. */
+.diagnostic-cid-search {
+  margin-top: 0.5rem;
+}
+
+.cid10-inline {
+  display: grid;
+  gap: 0.4rem;
+  margin-top: 0.5rem;
+}
+
+.cid10-inline-field {
+  display: grid;
+  gap: 0.25rem;
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--gray-600);
+}
+
+.cid10-inline-field input {
+  padding: 0.4rem 0.55rem;
+  border: 1px solid var(--gray-300);
+  border-radius: 8px;
+  font: inherit;
+  font-weight: 400;
+}
+
+.cid10-inline-field input:focus-visible {
+  outline: 2px solid var(--primary-500);
+  outline-offset: 1px;
+}
+
+.cid10-inline-status {
+  margin: 0;
+  color: var(--gray-500);
+  font-size: 0.76rem;
+}
+
+.cid10-inline-results {
+  display: grid;
+  gap: 0.2rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cid10-inline-result {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  width: 100%;
+  padding: 0.35rem 0.5rem;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: var(--gray-50);
+  color: var(--gray-700);
+  font: inherit;
+  font-size: 0.78rem;
+  text-align: left;
+  cursor: pointer;
+}
+
+.cid10-inline-result:hover {
+  border-color: var(--primary-500);
+  background: var(--primary-50);
+}
+
+.cid10-inline-result strong {
+  flex-shrink: 0;
+  color: var(--primary-700);
+}
+
+.cid10-inline-result span {
+  flex: 1;
+  overflow: hidden;
+  color: var(--gray-600);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cid10-inline-result em {
+  flex-shrink: 0;
+  color: var(--gray-500);
+  font-size: 0.72rem;
+  font-style: normal;
+}
+
+.cid10-inline-result.copiado em {
+  color: var(--green-600);
+  font-weight: 700;
+}
+
+.cid10-inline-note {
+  margin: 0;
+  color: var(--gray-500);
+  font-size: 0.72rem;
+}
+
 /* Aba CID-10 dentro de Prescrições. */
 .cid10-section {
   display: grid;

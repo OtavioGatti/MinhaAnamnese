@@ -89,7 +89,10 @@ function Cid10SearchSection() {
       ) : null}
 
       {!loading && !error && query.trim() && !isQueryTooShort && results.length === 0 ? (
-        <div className="prescription-empty">Nenhum código encontrado para esta busca.</div>
+        <div className="prescription-empty">
+          Nenhum código encontrado. A tabela usa a nomenclatura oficial do DATASUS —
+          tente um termo mais curto ou outra palavra do diagnóstico.
+        </div>
       ) : null}
 
       {results.length > 0 ? (

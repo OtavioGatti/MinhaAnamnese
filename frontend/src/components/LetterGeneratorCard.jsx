@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { api } from '../apiClient';
 import { useCid10Search } from '../hooks/useCid10Search';
+import { handleUppercaseCopy } from '../lib/clinicalTextCase';
 import { LETTER_TYPES, DEFAULT_LETTER_TYPE_KEY, getLetterType } from '../letterTypes';
 
 function getAccessCopy({ user, accessState }) {
@@ -355,6 +356,7 @@ function LetterGeneratorCard({
             className={`referral-letter-text referral-letter-editable ${caseStyle === 'upper' ? 'is-upper' : ''}`}
             value={letter}
             onChange={(event) => onLetterChange(event.target.value)}
+            onCopy={(event) => handleUppercaseCopy(event, caseStyle === 'upper')}
             spellCheck
           />
         </div>

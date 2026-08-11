@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { handleUppercaseCopy } from '../lib/clinicalTextCase';
 
 // Textarea que cresce com o conteúdo — o médico revisa e edita a anamnese aqui
 // mesmo antes de copiar. O texto editado é a MESMA fonte usada por "Copiar
@@ -107,6 +108,7 @@ function StructuredOutput({
               className={`clinical-document-editor ${outputCaseStyle === 'upper' ? 'is-upper' : ''}`}
               value={texto}
               onChange={(event) => onResultadoChange?.(event.target.value)}
+              onCopy={(event) => handleUppercaseCopy(event, outputCaseStyle === 'upper')}
               spellCheck
               aria-label="Anamnese estruturada (editável)"
             />

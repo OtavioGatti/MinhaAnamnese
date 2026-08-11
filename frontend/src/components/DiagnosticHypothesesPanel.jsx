@@ -1,4 +1,5 @@
 import { useId, useState } from 'react';
+import Cid10InlineSearch from './Cid10InlineSearch';
 
 const PRIORITY_LABELS = {
   documented_problem: 'Problema ativo documentado',
@@ -25,7 +26,12 @@ function ClinicalList({ title, items, tone = 'default' }) {
 function HypothesisCard({ hypothesis, index, onOpenPrescriptionGuide }) {
   const guide = hypothesis.prescriptionGuide;
   const [isReasoningExpanded, setIsReasoningExpanded] = useState(false);
+  const [isCidSearchExpanded, setIsCidSearchExpanded] = useState(false);
   const reasoningId = useId();
+  const cidSearchId = useId();
+  // Só oferece a busca quando não há CID vindo do guia casado. Com CID revisado
+  // em tela, mandar procurar outro só criaria dúvida.
+  const canSearchCid = !guide?.cid10Primary;
 
   return (
     <article className="diagnostic-hypothesis-card">
@@ -67,6 +73,26 @@ function HypothesisCard({ hypothesis, index, onOpenPrescriptionGuide }) {
           <ClinicalList title="Sinais de alerta" items={hypothesis.redFlags} tone="warning" />
         </div>
       </div>
+
+      {canSearchCid ? (
+        <div className="diagnostic-cid-search">
+          <button
+            type="button"
+            className="diagnostic-reasoning-toggle"
+            aria-expanded={isCidSearchExpanded}
+            aria-controls={cidSearchId}
+            onClick={() => setIsCidSearchExpanded((expanded) => !expanded)}
+          >
+            <span aria-hidden="true">{isCidSearchExpanded ? '▾' : '▸'}</span>
+            {isCidSearchExpanded ? 'Ocultar busca de CID-10' : 'Buscar CID-10 desta hipótese'}
+          </button>
+          <div id={cidSearchId} hidden={!isCidSearchExpanded}>
+            {/* Montado só ao abrir: evita disparar uma busca por hipótese
+                listada assim que o painel aparece. */}
+            {isCidSearchExpanded ? <Cid10InlineSearch initialQuery={hypothesis.name} /> : null}
+          </div>
+        </div>
+      ) : null}
 
       <button
         type="button"

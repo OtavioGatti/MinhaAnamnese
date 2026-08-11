@@ -120,3 +120,29 @@ export function applyOutputCaseStyle(content, style) {
 
   return toClinicalSentenceCase(content);
 }
+
+// O estilo "AA" é só apresentação (text-transform no CSS): o valor guardado
+// continua em caixa mista para a edição ser reversível. O botão de copiar
+// resolve isso porque converte o texto inteiro na hora, mas selecionar um
+// trecho e apertar Ctrl+C levava o valor real — ou seja, em "Aa".
+// Aqui a seleção é convertida no próprio evento de cópia, sem tocar no texto
+// editável.
+export function handleUppercaseCopy(event, isUpperStyle) {
+  if (!isUpperStyle) {
+    return;
+  }
+
+  const element = event.currentTarget;
+  const selection = String(element.value || '').substring(
+    element.selectionStart,
+    element.selectionEnd,
+  );
+
+  if (!selection) {
+    return;
+  }
+
+  event.clipboardData.setData('text/plain', selection.toLocaleUpperCase('pt-BR'));
+  // Sem isso o navegador sobrescreve o clipboard com a seleção original.
+  event.preventDefault();
+}
