@@ -81,6 +81,12 @@ create index if not exists cid10_codes_description_search_prefix_idx
 -- Relevancia decidida no banco, nao no backend. Sem isso, buscar "infeccao"
 -- (96 resultados) devolveria so os primeiros codigos em ordem alfabetica —
 -- todos do capitulo A — e nunca chegaria em J06.9, que e o que o medico quer.
+--
+-- CONTRATO: a funcao NAO remove acento. As colunas search_text e
+-- description_search ja estao sem acento (normalizadas na importacao), entao
+-- quem chama precisa mandar o termo sem acento tambem — o backend faz isso em
+-- normalizeQuery (services/cid10.js). Testar direto no SQL Editor com acento
+-- devolve zero resultado e parece bug, mas e so a entrada fora do contrato.
 create or replace function public.search_cid10_codes(
   search_query text,
   max_results integer default 20
@@ -94,22 +100,45 @@ as $$
       -- Curinga do LIKE vindo da entrada viraria busca aberta: fora.
       lower(btrim(replace(replace(coalesce(search_query, ''), '%', ''), '_', ''))) as term,
       upper(replace(replace(btrim(replace(replace(coalesce(search_query, ''), '%', ''), '_', '')), '.', ''), ' ', '')) as code
+  ),
+  alvo as (
+    select
+      normalized.term,
+      normalized.code,
+      -- Palavras de conteudo na ordem, conectivos ignorados. A IA escreve
+      -- "Doenca DO Refluxo Gastroesofagico" e a tabela oficial diz "Doenca DE
+      -- refluxo gastroesofagico": sem isso, uma preposicao diferente zera a
+      -- busca. So os conectivos saem — todos os termos clinicos continuam
+      -- obrigatorios, e na mesma ordem, para nao casar com outra condicao.
+      '%' || coalesce(string_agg(palavra.w, '%' order by palavra.ord), normalized.term) || '%' as padrao_ordenado
+    from normalized
+    left join lateral unnest(string_to_array(normalized.term, ' ')) with ordinality as palavra(w, ord)
+      on palavra.w <> ''
+      and palavra.w not in (
+        'de', 'do', 'da', 'dos', 'das', 'com', 'sem', 'na', 'no', 'nas', 'nos',
+        'em', 'por', 'para', 'ao', 'aos', 'e', 'a', 'o', 'as', 'os'
+      )
+    group by normalized.term, normalized.code
   )
   select codes.*
-  from public.cid10_codes codes, normalized
-  where length(normalized.term) >= 2
+  from public.cid10_codes codes, alvo
+  where length(alvo.term) >= 2
     and (
-      codes.code_key like normalized.code || '%'
-      or codes.search_text like '%' || normalized.term || '%'
+      codes.code_key like alvo.code || '%'
+      or codes.search_text like '%' || alvo.term || '%'
+      or codes.description_search like alvo.padrao_ordenado
     )
   order by
     case
-      when codes.code_key = normalized.code then 0
-      when codes.code_key like normalized.code || '%' then 1
-      when codes.description_search like normalized.term || '%' then 2
+      when codes.code_key = alvo.code then 0
+      when codes.code_key like alvo.code || '%' then 1
+      when codes.description_search like alvo.term || '%' then 2
       -- Termo no comeco de outra palavra: "aereas" em "vias aereas".
-      when codes.description_search like '% ' || normalized.term || '%' then 3
-      else 4
+      when codes.description_search like '% ' || alvo.term || '%' then 3
+      when codes.search_text like '%' || alvo.term || '%' then 4
+      -- Ultimo lugar: bateu so ignorando conectivo. E o resultado mais frouxo,
+      -- entao nunca passa na frente de quem casou com a frase inteira.
+      else 5
     end,
     -- Entre iguais, a descricao mais curta costuma ser a mais geral.
     length(codes.description),
