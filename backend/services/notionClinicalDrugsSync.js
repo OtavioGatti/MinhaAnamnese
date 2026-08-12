@@ -53,18 +53,21 @@ function normalizeSlug(value) {
     .slice(0, 120);
 }
 
+// Padrão: PUBLICADO, a menos que a página diga explicitamente "draft"/"rascunho"
+// no Notion (ou "archived"/"arquivado"). Sem essa propriedade preenchida (caso
+// mais comum hoje), o item é publicado — não fica escondido por padrão.
 function normalizePublicationStatus(value) {
   const normalized = stripAccents(normalizeText(value)).toLowerCase();
 
-  if (normalized === 'published' || normalized === 'publicado') {
-    return 'published';
+  if (normalized === 'draft' || normalized === 'rascunho') {
+    return 'draft';
   }
 
   if (normalized === 'archived' || normalized === 'arquivado') {
     return 'archived';
   }
 
-  return 'draft';
+  return 'published';
 }
 
 function normalizePregnancyRisk(value) {

@@ -92,10 +92,12 @@ module.exports = async function handler(req, res) {
 
   let result;
   try {
-    // Sync manual (o humano clicou "Sync de Bulário") = decisão de publicar:
-    // libera o conteúdo de IA "aguardando revisão". O webhook (automático)
-    // continua retendo. Stubs "a gerar"/"a corrigir" e "erro" seguem retidos.
-    result = await syncNotionClinicalDrugs({ bypassReviewGate: true });
+    // Retém SEMPRE conteúdo de IA pendente de revisão ("aguardando revisão",
+    // "a gerar"/"a corrigir", "erro"), tanto no sync manual quanto no webhook.
+    // "Cliquei em Sync" não é uma revisão item a item — para liberar uma bula
+    // gerada/corrigida por IA, revise no Notion e limpe o campo
+    // "Status Automação" (deixe vazio); no próximo sync ela publica normalmente.
+    result = await syncNotionClinicalDrugs();
   } catch (error) {
     const statusCode = Number(error?.statusCode) || 500;
     const responseBody = String(error?.responseBody || '');
