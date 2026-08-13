@@ -4736,6 +4736,119 @@ body {
   grid-template-columns: auto minmax(0, 1fr);
 }
 
+.linked-tools {
+  display: grid;
+  gap: 0.4rem;
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--gray-200);
+}
+
+.linked-tools h4 {
+  margin: 0;
+  color: var(--gray-800);
+  font-size: 0.85rem;
+  font-weight: 800;
+  line-height: 1.35;
+}
+
+.linked-tools p {
+  margin: 0;
+  color: var(--gray-500);
+  font-size: 0.78rem;
+  line-height: 1.45;
+}
+
+.linked-tools-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.linked-tools-chip {
+  padding: 0.3rem 0.6rem;
+  border: 1px solid rgba(37, 99, 235, 0.3);
+  border-radius: 999px;
+  background: var(--primary-50);
+  color: var(--primary-700);
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1.3;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color var(--transition), background var(--transition);
+}
+
+.linked-tools-chip:hover {
+  border-color: rgba(37, 99, 235, 0.65);
+  background: #dbeafe;
+}
+
+.clinical-tool-filter-row {
+  display: grid;
+  gap: 0.35rem;
+  margin-top: 0.6rem;
+}
+
+.clinical-tool-filter-label {
+  color: var(--gray-500);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.clinical-tool-filter-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+.clinical-tool-filter-chip {
+  padding: 0.28rem 0.55rem;
+  border: 1px solid var(--gray-200);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--gray-600);
+  font: inherit;
+  font-size: 0.76rem;
+  font-weight: 700;
+  line-height: 1.3;
+  cursor: pointer;
+  transition: border-color var(--transition), background var(--transition), color var(--transition);
+}
+
+.clinical-tool-filter-chip:hover {
+  border-color: rgba(37, 99, 235, 0.45);
+  color: var(--primary-700);
+}
+
+.clinical-tool-filter-chip.active {
+  border-color: rgba(37, 99, 235, 0.6);
+  background: var(--primary-50);
+  color: var(--primary-700);
+}
+
+.clinical-tool-result-group {
+  display: grid;
+  gap: 0.3rem;
+}
+
+.clinical-tool-result-group + .clinical-tool-result-group {
+  margin-top: 0.55rem;
+}
+
+.clinical-tool-result-group h3 {
+  margin: 0;
+  padding: 0 0.2rem;
+  color: var(--gray-500);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
 .clinical-tool-result-classification {
   font-size: 1.12rem;
   line-height: 1.3;
@@ -4763,6 +4876,23 @@ body {
 .clinical-tool-checklist-group.red {
   border-left-color: #dc2626;
   background: #fef2f2;
+}
+
+.clinical-tool-checklist-domain {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.clinical-tool-checklist-domain + .clinical-tool-checklist-domain {
+  margin-top: 0.35rem;
+}
+
+.clinical-tool-checklist-domain h5 {
+  margin: 0;
+  color: var(--gray-500);
+  font-size: 0.74rem;
+  font-weight: 800;
+  line-height: 1.35;
 }
 
 .clinical-tool-checklist-group h4 {

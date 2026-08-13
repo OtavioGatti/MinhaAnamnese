@@ -3,7 +3,9 @@ import { api } from '../apiClient';
 import {
   buildChecklistCopyText,
   evaluateChecklist,
+  formatChecklistItemLabel,
   getChecklistGroupColor,
+  groupItemsByDomain,
   isChecklistTool,
 } from '../lib/clinicalChecklist';
 
@@ -39,12 +41,36 @@ function getToolTitle(tool) {
   return tool?.title || 'Ferramenta clínica';
 }
 
-function getToolMeta(tool) {
+function getToolMeta(tool, { includeCategory = true } = {}) {
   return [
-    tool?.category,
+    includeCategory ? tool?.category : '',
     tool?.subcategory,
     TOOL_TYPE_LABELS[tool?.toolType] || 'Ferramenta',
   ].filter(Boolean);
+}
+
+function sortLabels(labels) {
+  return [...labels].sort((a, b) => a.localeCompare(b, 'pt-BR'));
+}
+
+function getUniqueValues(tools, key) {
+  return sortLabels([...new Set(tools.map((tool) => tool[key]).filter(Boolean))]);
+}
+
+function groupToolsByCategory(tools) {
+  const groups = new Map();
+
+  tools.forEach((tool) => {
+    const key = tool.category || 'Outras';
+
+    if (!groups.has(key)) {
+      groups.set(key, []);
+    }
+
+    groups.get(key).push(tool);
+  });
+
+  return [...groups.entries()].sort((a, b) => a[0].localeCompare(b[0], 'pt-BR'));
 }
 
 function getOptionByValue(field, value) {
@@ -381,15 +407,73 @@ async function copyTextToClipboard(text) {
   document.body.removeChild(textarea);
 }
 
+function ToolFilterChips({ label, values, selected, onSelect }) {
+  if (values.length === 0) {
+    return null;
+  }
+
+  return (
+    <div className="clinical-tool-filter-row">
+      <span className="clinical-tool-filter-label">{label}</span>
+      <div className="clinical-tool-filter-chips">
+        <button
+          type="button"
+          className={`clinical-tool-filter-chip ${selected ? '' : 'active'}`}
+          onClick={() => onSelect('')}
+        >
+          Todas
+        </button>
+        {values.map((value) => (
+          <button
+            key={value}
+            type="button"
+            className={`clinical-tool-filter-chip ${value === selected ? 'active' : ''}`}
+            onClick={() => onSelect(value === selected ? '' : value)}
+            aria-pressed={value === selected}
+          >
+            {value}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function ToolResultItem({ tool, selectedSlug, setSelectedSlug, includeCategory }) {
+  const meta = getToolMeta(tool, { includeCategory }).join(' · ');
+
+  return (
+    <button
+      type="button"
+      className={`protocol-result-item ${tool.slug === selectedSlug ? 'active' : ''}`}
+      onClick={() => setSelectedSlug(tool.slug)}
+    >
+      <strong>{getToolTitle(tool)}</strong>
+      <span>{meta || 'Ferramenta clínica'}</span>
+    </button>
+  );
+}
+
 function ClinicalToolSidebar({
   query,
   setQuery,
+  category,
+  setCategory,
+  subcategory,
+  setSubcategory,
+  categories,
+  subcategories,
   tools,
   selectedSlug,
   setSelectedSlug,
   loadingTools,
   error,
 }) {
+  // Sem busca nem filtro, a lista corrida de dezenas de ferramentas não ajuda
+  // a achar nada — aí vale quebrar por categoria.
+  const grouped = !query.trim() && !category;
+  const groups = grouped ? groupToolsByCategory(tools) : [];
+
   return (
     <aside className="protocol-sidebar clinical-tool-sidebar">
       <label className="protocol-search-label" htmlFor="clinical-tool-search">
@@ -406,25 +490,52 @@ function ClinicalToolSidebar({
         placeholder="Ex: HEART, IMC, M-CHAT"
       />
 
+      <ToolFilterChips
+        label="Especialidade"
+        values={categories}
+        selected={category}
+        onSelect={setCategory}
+      />
+
+      <ToolFilterChips
+        label="Tipo"
+        values={subcategories}
+        selected={subcategory}
+        onSelect={setSubcategory}
+      />
+
       {error ? <div className="prescription-error">{error}</div> : null}
 
       <div className="protocol-results-list" aria-live="polite">
         {loadingTools ? (
           <div className="prescription-empty">Buscando ferramentas...</div>
-        ) : tools.length > 0 ? (
-          tools.map((tool) => (
-            <button
-              key={tool.slug}
-              type="button"
-              className={`protocol-result-item ${tool.slug === selectedSlug ? 'active' : ''}`}
-              onClick={() => setSelectedSlug(tool.slug)}
-            >
-              <strong>{getToolTitle(tool)}</strong>
-              <span>{getToolMeta(tool).join(' · ') || 'Ferramenta clínica'}</span>
-            </button>
+        ) : tools.length === 0 ? (
+          <div className="prescription-empty">Nenhuma ferramenta encontrada.</div>
+        ) : grouped ? (
+          groups.map(([groupName, groupTools]) => (
+            <div key={groupName} className="clinical-tool-result-group">
+              <h3>{groupName}</h3>
+              {groupTools.map((tool) => (
+                <ToolResultItem
+                  key={tool.slug}
+                  tool={tool}
+                  selectedSlug={selectedSlug}
+                  setSelectedSlug={setSelectedSlug}
+                  includeCategory={false}
+                />
+              ))}
+            </div>
           ))
         ) : (
-          <div className="prescription-empty">Nenhuma ferramenta encontrada.</div>
+          tools.map((tool) => (
+            <ToolResultItem
+              key={tool.slug}
+              tool={tool}
+              selectedSlug={selectedSlug}
+              setSelectedSlug={setSelectedSlug}
+              includeCategory={!category}
+            />
+          ))
         )}
       </div>
     </aside>
@@ -600,14 +711,19 @@ function ChecklistBreakdown({ result }) {
       {filledGroups.map((group) => (
         <div key={group} className={`clinical-tool-checklist-group ${getChecklistGroupColor(group)}`}>
           <h4>{result.labels[group]} ({result.groups[group].length})</h4>
-          <ul>
-            {result.groups[group].map((item) => (
-              <li key={item.id}>
-                <span>{item.label}</span>
-                {item.expectedText ? <em>esperado: {item.expectedText}</em> : null}
-              </li>
-            ))}
-          </ul>
+          {groupItemsByDomain(result.groups[group]).map(({ domain, items }) => (
+            <div key={domain || 'sem_dominio'} className="clinical-tool-checklist-domain">
+              {domain ? <h5>{domain}</h5> : null}
+              <ul>
+                {items.map((item) => (
+                  <li key={item.id}>
+                    <span>{formatChecklistItemLabel(item)}</span>
+                    {item.expectedText ? <em>esperado: {item.expectedText}</em> : null}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
       ))}
     </section>
@@ -760,10 +876,16 @@ function ClinicalToolsPage({
   onRequestUpgrade,
   loadingCheckout,
   checkoutError,
+  initialToolSlug = '',
 }) {
   const [query, setQuery] = useState(DEFAULT_QUERY);
+  const [category, setCategory] = useState('');
+  const [subcategory, setSubcategory] = useState('');
   const [tools, setTools] = useState([]);
-  const [selectedSlug, setSelectedSlug] = useState('');
+  // Catálogo completo (primeira carga, sem busca nem filtro): alimenta os chips
+  // para que eles não sumam conforme a busca estreita o resultado.
+  const [catalog, setCatalog] = useState([]);
+  const [selectedSlug, setSelectedSlug] = useState(initialToolSlug);
   const [selectedTool, setSelectedTool] = useState(null);
   const [values, setValues] = useState({});
   const [loadingTools, setLoadingTools] = useState(false);
@@ -790,6 +912,11 @@ function ClinicalToolsPage({
         q: query.trim(),
         limit: '80',
       });
+
+      if (category) {
+        params.set('category', category);
+      }
+
       const response = await api.get(`/clinical-tools?${params.toString()}`);
 
       if (ignore) {
@@ -798,6 +925,10 @@ function ClinicalToolsPage({
 
       if (response.success && Array.isArray(response.data)) {
         setTools(response.data);
+
+        if (!query.trim() && !category) {
+          setCatalog(response.data);
+        }
 
         if (!selectedSlug && response.data[0]?.slug) {
           setSelectedSlug(response.data[0].slug);
@@ -814,7 +945,7 @@ function ClinicalToolsPage({
       ignore = true;
       window.clearTimeout(timeoutId);
     };
-  }, [isPro, query, selectedSlug, user?.id]);
+  }, [category, isPro, query, selectedSlug, user?.id]);
 
   useEffect(() => {
     if (!user?.id || !isPro || !selectedSlug) {
@@ -854,6 +985,48 @@ function ClinicalToolsPage({
     };
   }, [isPro, selectedSlug, user?.id]);
 
+  // Abrir a ferramenta pedida por um link de modelo, inclusive quando a página
+  // já estava montada em outra ferramenta.
+  useEffect(() => {
+    if (!initialToolSlug) {
+      return;
+    }
+
+    setQuery(DEFAULT_QUERY);
+    setCategory('');
+    setSubcategory('');
+    setSelectedSlug(initialToolSlug);
+  }, [initialToolSlug]);
+
+  const categories = useMemo(() => getUniqueValues(catalog, 'category'), [catalog]);
+
+  const subcategories = useMemo(() => {
+    const scoped = category ? catalog.filter((tool) => tool.category === category) : catalog;
+    return getUniqueValues(scoped, 'subcategory');
+  }, [catalog, category]);
+
+  // Subcategoria refina no cliente: é um recorte estreito dentro de um resultado
+  // que o servidor já filtrou por busca e categoria.
+  const visibleTools = useMemo(() => {
+    if (!subcategory) {
+      return tools;
+    }
+
+    return tools.filter((tool) => tool.subcategory === subcategory);
+  }, [subcategory, tools]);
+
+  useEffect(() => {
+    if (visibleTools.length === 0) {
+      return;
+    }
+
+    if (visibleTools.some((tool) => tool.slug === selectedSlug)) {
+      return;
+    }
+
+    setSelectedSlug(visibleTools[0].slug);
+  }, [selectedSlug, visibleTools]);
+
   const result = useMemo(() => {
     if (!selectedTool) {
       return null;
@@ -871,6 +1044,17 @@ function ClinicalToolsPage({
 
     return 'Busque scores, calculadoras e questionários clínicos sincronizados do Notion.';
   }, [accessState?.isTrialAccess]);
+
+  function handleCategoryChange(value) {
+    setCategory(value);
+    setSubcategory('');
+    setSelectedSlug('');
+  }
+
+  function handleSubcategoryChange(value) {
+    setSubcategory(value);
+    setSelectedSlug('');
+  }
 
   function updateFieldValue(fieldId, value) {
     setCopied(false);
@@ -936,7 +1120,13 @@ function ClinicalToolsPage({
         <ClinicalToolSidebar
           query={query}
           setQuery={setQuery}
-          tools={tools}
+          category={category}
+          setCategory={handleCategoryChange}
+          subcategory={subcategory}
+          setSubcategory={handleSubcategoryChange}
+          categories={categories}
+          subcategories={subcategories}
+          tools={visibleTools}
           selectedSlug={selectedSlug}
           setSelectedSlug={setSelectedSlug}
           loadingTools={loadingTools}

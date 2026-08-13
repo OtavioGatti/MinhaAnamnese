@@ -411,6 +411,115 @@ describe('avaliação do checklist condicional', () => {
     assert.equal(evaluation.ready, true);
   });
 
+  test('domínio sub-agrupa o resultado sem mexer na contagem de alertas', () => {
+    const prenatal = normalizeClinicalToolSchema({
+      slug: 'pre-natal',
+      title: 'Pré-natal',
+      tool_type: 'conditional_logic',
+      status: 'published',
+      engine_config: { axis_field_id: 'ig', axis_unit: 'semanas' },
+      fields: [
+        {
+          id: 'ig',
+          label: 'Idade gestacional',
+          tipo_input: 'SELECT',
+          opcoes: [{ label: '24 semanas', numeric_value: 24 }],
+        },
+        {
+          id: 'totg',
+          label: 'TOTG 75g',
+          tipo_input: 'RADIO',
+          domain: 'Exames laboratoriais',
+          applicable_from: 24,
+          opcoes: [{ label: 'Realizado', numeric_value: 0 }, { label: 'Pendente', numeric_value: 1 }],
+        },
+        {
+          id: 'dtpa',
+          label: 'dTpa',
+          tipo_input: 'RADIO',
+          dominio: 'Vacinas',
+          applicable_from: 20,
+          opcoes: [{ label: 'Aplicada', numeric_value: 0 }, { label: 'Pendente', numeric_value: 1 }],
+        },
+      ],
+      result_ranges: [],
+    });
+
+    assert.equal(prenatal.fields[1].domain, 'Exames laboratoriais');
+    assert.equal(prenatal.fields[2].domain, 'Vacinas');
+
+    const evaluation = checklist.evaluateChecklist(prenatal, {
+      ig: '24_semanas',
+      totg: 'pendente',
+      dtpa: 'pendente',
+    });
+
+    assert.equal(evaluation.alertCount, 2);
+    assert.deepEqual(
+      checklist.groupItemsByDomain(evaluation.groups.alert).map((entry) => entry.domain),
+      ['Exames laboratoriais', 'Vacinas'],
+    );
+
+    const text = checklist.buildChecklistCopyText(prenatal, evaluation, null);
+    assert.match(text, /^- Exames laboratoriais: TOTG 75g$/m);
+    assert.match(text, /^- Vacinas: dTpa$/m);
+  });
+
+  test('item com show_answer registra a resposta junto do rótulo', () => {
+    const prenatal = normalizeClinicalToolSchema({
+      slug: 'pre-natal',
+      title: 'Pré-natal',
+      tool_type: 'conditional_logic',
+      status: 'published',
+      engine_config: { axis_field_id: 'ig', axis_unit: 'semanas' },
+      fields: [
+        { id: 'ig', label: 'IG', tipo_input: 'SELECT', opcoes: [{ label: '24 semanas', numeric_value: 24 }] },
+        { id: 'totg', label: 'TOTG 75g', tipo_input: 'RADIO', applicable_from: 24, opcoes: [{ label: 'Realizado', numeric_value: 0 }, { label: 'Pendente', numeric_value: 1 }] },
+        {
+          id: 'sangramento',
+          label: 'Sangramento vaginal',
+          tipo_input: 'RADIO',
+          show_answer: true,
+          opcoes: [
+            { label: 'Não', numeric_value: 0, outcome: 'presente' },
+            { label: 'Sim', numeric_value: 1, outcome: 'ausente' },
+          ],
+        },
+      ],
+      result_ranges: [],
+    });
+
+    assert.equal(prenatal.fields[2].showAnswer, true);
+    assert.equal(prenatal.fields[1].showAnswer, false);
+
+    const evaluation = checklist.evaluateChecklist(prenatal, {
+      ig: '24_semanas',
+      totg: 'realizado',
+      sangramento: 'nao',
+    });
+    const text = checklist.buildChecklistCopyText(prenatal, evaluation, null);
+
+    // Sem a resposta, "Sangramento vaginal" no grupo dos normais seria lido
+    // como achado presente.
+    assert.match(text, /Sangramento vaginal: Não/);
+    assert.doesNotMatch(text, /TOTG 75g: Realizado/);
+  });
+
+  test('sem domínio o resumo segue em lista plana', () => {
+    const evaluation = checklist.evaluateChecklist(tool, {
+      idade: '4_meses',
+      sustenta_cabeca: 'ausente',
+      rola: 'presente',
+    });
+    const byDomain = checklist.groupItemsByDomain(evaluation.groups.alert);
+
+    assert.deepEqual(byDomain, [{ domain: '', items: evaluation.groups.alert }]);
+    assert.match(
+      checklist.buildChecklistCopyText(tool, evaluation, null),
+      /^Ausentes \(marco de alerta\): Sustenta a cabeça$/m,
+    );
+  });
+
   test('não copia resultado parcial', () => {
     const evaluation = checklist.evaluateChecklist(tool, { idade: '9_meses' });
 

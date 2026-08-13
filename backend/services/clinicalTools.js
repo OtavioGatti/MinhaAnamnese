@@ -128,6 +128,15 @@ function normalizeOptionalNumber(value) {
   return value == null || value === '' ? null : normalizeNumber(value, null);
 }
 
+function normalizeBoolean(value) {
+  if (typeof value === 'boolean') {
+    return value;
+  }
+
+  const normalized = normalizeKey(value);
+  return normalized === 'true' || normalized === 'sim' || normalized === '1';
+}
+
 function normalizeChecklistOutcome(value, numericValue) {
   const normalized = normalizeKey(value);
   const outcomeMap = {
@@ -268,6 +277,12 @@ function normalizeField(field, index) {
     // Sobrescreve o texto do "esperado" quando o valor do eixo não se lê bem
     // sozinho ("ao nascer" em vez de "0 meses").
     expectedLabel: normalizeText(field?.expected_label ?? field?.expectedLabel ?? field?.rotulo_esperado),
+    // Só organiza a exibição do resultado (exames / vacinas / suplementação).
+    // Não participa de nenhum cálculo de alerta.
+    domain: normalizeText(field?.domain ?? field?.dominio ?? field?.grupo),
+    // Itens cuja resposta não se deduz do grupo ("Sangramento vaginal: Não"
+    // precisa do "Não" para não ser lido como achado presente no prontuário).
+    showAnswer: normalizeBoolean(field?.show_answer ?? field?.showAnswer ?? field?.mostrar_resposta),
     alertFrom: normalizeOptionalNumber(
       field?.alert_from ?? field?.alertFrom ?? field?.alerta_a_partir_de ?? field?.alerta_de,
     ),
@@ -614,6 +629,45 @@ async function listClinicalTools({ query = '', category = '', limit = 30 } = {})
   }
 }
 
+// Resolve vários slugs numa chamada só — usado pelas ferramentas vinculadas a
+// um modelo. Slugs inexistentes ou despublicados simplesmente não voltam.
+async function listClinicalToolsBySlugs(slugs) {
+  // Teto alto porque a galeria de modelos resolve os vínculos de vários
+  // modelos numa chamada só (cada modelo isolado traz no máximo 12).
+  const normalizedSlugs = [...new Set((Array.isArray(slugs) ? slugs : [])
+    .map(normalizeSlug)
+    .filter(Boolean))].slice(0, 60);
+
+  if (normalizedSlugs.length === 0 || !isClinicalToolsStorageAvailable()) {
+    return [];
+  }
+
+  const params = new URLSearchParams({
+    select: CLINICAL_TOOL_SELECT,
+    status: 'eq.published',
+    slug: `in.(${normalizedSlugs.join(',')})`,
+    limit: String(normalizedSlugs.length),
+  });
+
+  try {
+    const json = await requestClinicalTools(`clinical_tools?${params.toString()}`, { method: 'GET' });
+    const tools = (Array.isArray(json) ? json : [])
+      .map(mapClinicalToolRow)
+      .filter((tool) => tool?.validation?.valid);
+
+    // Preserva a ordem curada no modelo, não a ordem que o banco devolveu.
+    return normalizedSlugs
+      .map((slug) => tools.find((tool) => tool.slug === slug))
+      .filter(Boolean);
+  } catch (error) {
+    if (isMissingClinicalToolsTable(error)) {
+      return [];
+    }
+
+    throw error;
+  }
+}
+
 async function getClinicalToolBySlug(slug) {
   const normalizedSlug = normalizeSlug(slug);
 
@@ -647,6 +701,7 @@ module.exports = {
   getClinicalToolBySlug,
   isClinicalToolsStorageAvailable,
   listClinicalTools,
+  listClinicalToolsBySlugs,
   normalizeAlertColor,
   normalizeClinicalToolSchema: mapClinicalToolRow,
   normalizeSlug,

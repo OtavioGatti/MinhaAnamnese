@@ -217,6 +217,8 @@ export function evaluateChecklist(tool, values = {}) {
       groups[group].push({
         id: field.id,
         label: field.label,
+        domain: field.domain || '',
+        showAnswer: Boolean(field.showAnswer),
         optionLabel: option.label,
         optionHelperText: option.helperText || '',
         expectedText,
@@ -245,6 +247,34 @@ export function evaluateChecklist(tool, values = {}) {
   };
 }
 
+// "Sangramento vaginal" no grupo dos normais seria lido como achado presente;
+// para esses itens a resposta acompanha o rótulo.
+export function formatChecklistItemLabel(item) {
+  return item.showAnswer && item.optionLabel ? `${item.label}: ${item.optionLabel}` : item.label;
+}
+
+// Sub-agrupa por domínio quando os itens declaram um. Sem domínio, devolve um
+// único bloco sem rótulo — que é exatamente a lista plana de antes.
+export function groupItemsByDomain(items) {
+  if (!items.some((item) => item.domain)) {
+    return [{ domain: '', items }];
+  }
+
+  const groups = new Map();
+
+  items.forEach((item) => {
+    const key = item.domain || 'Outros';
+
+    if (!groups.has(key)) {
+      groups.set(key, []);
+    }
+
+    groups.get(key).push(item);
+  });
+
+  return [...groups.entries()].map(([domain, domainItems]) => ({ domain, items: domainItems }));
+}
+
 export function buildChecklistCopyText(tool, evaluation, range) {
   if (!evaluation?.ready) {
     return '';
@@ -263,7 +293,17 @@ export function buildChecklistCopyText(tool, evaluation, range) {
       return;
     }
 
-    lines.push(`${evaluation.labels[group]}: ${items.map((item) => item.label).join('; ')}`);
+    const byDomain = groupItemsByDomain(items);
+
+    if (byDomain.length === 1 && !byDomain[0].domain) {
+      lines.push(`${evaluation.labels[group]}: ${items.map(formatChecklistItemLabel).join('; ')}`);
+      return;
+    }
+
+    lines.push(`${evaluation.labels[group]}:`);
+    byDomain.forEach(({ domain, items: domainItems }) => {
+      lines.push(`- ${domain}: ${domainItems.map(formatChecklistItemLabel).join('; ')}`);
+    });
   });
 
   if (evaluation.upcomingItems.length > 0) {
