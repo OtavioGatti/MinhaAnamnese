@@ -4732,6 +4732,69 @@ body {
   font-weight: 800;
 }
 
+.clinical-tool-option.no-score {
+  grid-template-columns: auto minmax(0, 1fr);
+}
+
+.clinical-tool-result-classification {
+  font-size: 1.12rem;
+  line-height: 1.3;
+}
+
+.clinical-tool-checklist-group {
+  display: grid;
+  gap: 0.4rem;
+  padding: 0.6rem 0.7rem;
+  border-left: 3px solid var(--gray-300);
+  border-radius: 8px;
+  background: var(--gray-50);
+}
+
+.clinical-tool-checklist-group.green {
+  border-left-color: #16a34a;
+  background: #f0fdf4;
+}
+
+.clinical-tool-checklist-group.yellow {
+  border-left-color: #f59e0b;
+  background: #fffbeb;
+}
+
+.clinical-tool-checklist-group.red {
+  border-left-color: #dc2626;
+  background: #fef2f2;
+}
+
+.clinical-tool-checklist-group h4 {
+  margin: 0;
+  color: var(--gray-800);
+  font-size: 0.82rem;
+  font-weight: 800;
+  line-height: 1.35;
+}
+
+.clinical-tool-checklist-group li,
+.clinical-tool-checklist-upcoming li {
+  align-items: baseline;
+}
+
+.clinical-tool-checklist-group li em,
+.clinical-tool-checklist-upcoming li em {
+  flex: none;
+  color: var(--gray-500);
+  font-size: 0.76rem;
+  font-style: normal;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.clinical-tool-checklist-upcoming p {
+  margin: 0;
+  color: var(--gray-500);
+  font-size: 0.8rem;
+  line-height: 1.45;
+}
+
 .clinical-drug-quick-modal {
   grid-template-rows: auto minmax(0, 1fr) auto;
   width: min(100%, 780px);

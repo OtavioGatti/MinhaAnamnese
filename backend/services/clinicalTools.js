@@ -4,6 +4,8 @@ const MAX_QUERY_LENGTH = 80;
 const TOOL_TYPES = new Set(['sum_points', 'math_formula', 'conditional_logic']);
 const INPUT_TYPES = new Set(['select', 'radio', 'number', 'checkbox']);
 const ALERT_COLORS = new Set(['green', 'yellow', 'red', 'blue', 'gray']);
+const CHECKLIST_OUTCOMES = new Set(['present', 'absent', 'not_applicable']);
+const CHECKLIST_LABEL_KEYS = ['present', 'alert', 'watch', 'notApplicable', 'upcoming'];
 const ALLOWED_FORMULA_FUNCTIONS = new Set([
   'abs',
   'ceil',
@@ -122,6 +124,57 @@ function normalizeNumber(value, fallback = 0) {
   return Number.isFinite(number) ? number : fallback;
 }
 
+function normalizeOptionalNumber(value) {
+  return value == null || value === '' ? null : normalizeNumber(value, null);
+}
+
+function normalizeChecklistOutcome(value, numericValue) {
+  const normalized = normalizeKey(value);
+  const outcomeMap = {
+    presente: 'present',
+    atingido: 'present',
+    aplicada: 'present',
+    aplicado: 'present',
+    realizado: 'present',
+    sim: 'present',
+    ausente: 'absent',
+    nao_atingido: 'absent',
+    nao_aplicada: 'absent',
+    nao_aplicado: 'absent',
+    nao_realizado: 'absent',
+    nao: 'absent',
+    nao_se_aplica: 'not_applicable',
+    na: 'not_applicable',
+  };
+  const outcome = outcomeMap[normalized] || normalized;
+
+  if (CHECKLIST_OUTCOMES.has(outcome)) {
+    return outcome;
+  }
+
+  // Sem rótulo explícito, o valor numérico da opção decide: pontuar é "não atingido".
+  return numericValue > 0 ? 'absent' : 'present';
+}
+
+function normalizeChecklistLabels(value) {
+  const config = safeJsonObject(value);
+  const aliases = {
+    present: ['present', 'presentes', 'presente'],
+    alert: ['alert', 'alerta', 'alertas'],
+    watch: ['watch', 'acompanhar', 'observar'],
+    notApplicable: ['notApplicable', 'not_applicable', 'nao_se_aplica'],
+    upcoming: ['upcoming', 'proximos', 'proximos_itens'],
+  };
+
+  return CHECKLIST_LABEL_KEYS.reduce((accumulator, key) => {
+    const label = aliases[key]
+      .map((alias) => normalizeText(config[alias]))
+      .find(Boolean) || '';
+
+    return { ...accumulator, [key]: label };
+  }, {});
+}
+
 function parseLimit(value) {
   const limit = Number.parseInt(value, 10);
 
@@ -162,11 +215,16 @@ function normalizeOption(option, index) {
   }
 
   const value = normalizeText(option?.value || option?.id || label) || `option_${index + 1}`;
+  const numericValue = normalizeNumber(
+    option?.numeric_value ?? option?.numericValue ?? option?.score ?? option?.points,
+    0,
+  );
 
   return {
     label,
     value: normalizeKey(value) || `option_${index + 1}`,
-    numericValue: normalizeNumber(option?.numeric_value ?? option?.numericValue ?? option?.score ?? option?.points, 0),
+    numericValue,
+    outcome: normalizeChecklistOutcome(option?.outcome ?? option?.resultado, numericValue),
     helperText: normalizeLongText(option?.helper_text ?? option?.helperText ?? option?.description),
   };
 }
@@ -199,6 +257,17 @@ function normalizeField(field, index) {
     max: field?.max == null ? null : normalizeNumber(field.max, null),
     step: field?.step == null ? null : normalizeNumber(field.step, null),
     placeholder: normalizeText(field?.placeholder),
+    // Checklist condicional: em qual janela do eixo o item é perguntado e a
+    // partir de qual valor a ausência vira alerta clínico.
+    applicableFrom: normalizeOptionalNumber(
+      field?.applicable_from ?? field?.applicableFrom ?? field?.esperado_a_partir_de ?? field?.esperado_de,
+    ),
+    applicableUntil: normalizeOptionalNumber(
+      field?.applicable_until ?? field?.applicableUntil ?? field?.esperado_ate ?? field?.avaliar_ate,
+    ),
+    alertFrom: normalizeOptionalNumber(
+      field?.alert_from ?? field?.alertFrom ?? field?.alerta_a_partir_de ?? field?.alerta_de,
+    ),
     options,
   };
 }
@@ -256,6 +325,16 @@ function normalizeEngineConfig(value) {
     unit: normalizeText(config.unit || config.unidade),
     scoreLabel: normalizeText(config.score_label || config.scoreLabel || config.label) || 'pontos',
     resultLabel: normalizeText(config.result_label || config.resultLabel) || 'Resultado',
+    // Checklist condicional (opcional): campo que serve de eixo para liberar itens.
+    axisFieldId: normalizeKey(config.axis_field_id || config.axisFieldId || config.campo_eixo || config.eixo),
+    axisUnit: normalizeText(config.axis_unit || config.axisUnit || config.unidade_eixo),
+    previewWindow: Math.max(normalizeNumber(
+      config.preview_window ?? config.previewWindow ?? config.janela_previsao,
+      0,
+    ), 0),
+    checklistLabels: normalizeChecklistLabels(
+      config.checklist_labels || config.checklistLabels || config.rotulos_checklist,
+    ),
     outputs,
   };
 }
@@ -279,6 +358,60 @@ function validateFormula(formula, fields) {
   const tokens = normalizedFormula.match(/[a-zA-Z_][a-zA-Z0-9_]*/g) || [];
 
   return tokens.every((token) => fieldIds.has(token) || ALLOWED_FORMULA_FUNCTIONS.has(token));
+}
+
+// O checklist condicional é o que impede um item fora da faixa etária de contar
+// como falha. Se o eixo estiver mal configurado, a ferramenta não pode publicar.
+function validateChecklistAxis(tool) {
+  const errors = [];
+  const fields = Array.isArray(tool.fields) ? tool.fields : [];
+  const axisFieldId = tool.engineConfig?.axisFieldId;
+  const hasThresholds = fields.some((field) => (
+    field.applicableFrom != null || field.alertFrom != null || field.applicableUntil != null
+  ));
+
+  if (!axisFieldId) {
+    if (hasThresholds) {
+      errors.push('campos com faixa de aplicação exigem campo eixo no config do motor');
+    }
+
+    return errors;
+  }
+
+  const axisField = fields.find((field) => field.id === axisFieldId);
+
+  if (!axisField) {
+    errors.push('campo eixo inexistente');
+    return errors;
+  }
+
+  if (axisField.inputType !== 'number' && !axisField.options.some((option) => option.numericValue > 0)) {
+    errors.push('campo eixo precisa de opções com valores numéricos');
+  }
+
+  if (!hasThresholds) {
+    errors.push('campo eixo configurado sem nenhum item com faixa de aplicação');
+  }
+
+  fields.forEach((field) => {
+    if (field.id === axisFieldId) {
+      return;
+    }
+
+    if (field.alertFrom != null && field.applicableFrom != null && field.alertFrom < field.applicableFrom) {
+      errors.push(`alerta anterior à faixa de aplicação em "${field.label}"`);
+    }
+
+    if (field.applicableUntil != null && field.applicableFrom != null && field.applicableUntil < field.applicableFrom) {
+      errors.push(`faixa de aplicação invertida em "${field.label}"`);
+    }
+
+    if (field.applicableUntil != null && field.alertFrom != null && field.applicableUntil < field.alertFrom) {
+      errors.push(`item deixa de ser avaliado antes do alerta em "${field.label}"`);
+    }
+  });
+
+  return errors;
 }
 
 function validateClinicalToolSchema(tool) {
@@ -321,6 +454,8 @@ function validateClinicalToolSchema(tool) {
   if (tool.toolType !== 'math_formula' && !tool.fields.some((field) => field.options.length > 0)) {
     errors.push('scores precisam de opções com valores numéricos');
   }
+
+  errors.push(...validateChecklistAxis(tool));
 
   return {
     valid: errors.length === 0,

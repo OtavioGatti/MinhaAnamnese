@@ -1,5 +1,11 @@
 import { useEffect, useMemo, useState } from 'react';
 import { api } from '../apiClient';
+import {
+  buildChecklistCopyText,
+  evaluateChecklist,
+  getChecklistGroupColor,
+  isChecklistTool,
+} from '../lib/clinicalChecklist';
 
 const DEFAULT_QUERY = '';
 const SEARCH_DEBOUNCE_MS = 320;
@@ -231,7 +237,22 @@ function calculateFormulaOutput(output, variables, fields, values, fallbackRange
   };
 }
 
+function calculateChecklistToolResult(tool, values) {
+  const evaluation = evaluateChecklist(tool, values);
+
+  return {
+    ...evaluation,
+    value: evaluation.alertCount,
+    range: evaluation.ready ? findResultRange(evaluation.alertCount, tool.resultRanges) : null,
+    selectedItems: [],
+  };
+}
+
 function calculateToolResult(tool, values) {
+  if (isChecklistTool(tool)) {
+    return calculateChecklistToolResult(tool, values);
+  }
+
   const fields = tool?.fields || [];
   const missingFields = fields.filter((field) => isFieldMissing(field, values[field.id]));
   const configuredOutputs = Array.isArray(tool?.engineConfig?.outputs) ? tool.engineConfig.outputs : [];
@@ -290,6 +311,10 @@ function calculateToolResult(tool, values) {
 function buildCopyText(tool, result) {
   if (!tool) {
     return '';
+  }
+
+  if (result?.mode === 'checklist') {
+    return buildChecklistCopyText(tool, result, result.range);
   }
 
   if (Array.isArray(result.outputs) && result.outputs.length > 0) {
@@ -447,7 +472,7 @@ function NumberField({ field, value, onChange }) {
   );
 }
 
-function OptionGroupField({ field, value, onChange }) {
+function OptionGroupField({ field, value, onChange, showScore = true }) {
   const selectedValues = field.inputType === 'checkbox' && Array.isArray(value) ? value : [];
 
   function handleCheckboxChange(optionValue) {
@@ -472,7 +497,7 @@ function OptionGroupField({ field, value, onChange }) {
           return (
             <label
               key={option.value}
-              className={`clinical-tool-option ${checked ? 'selected' : ''}`}
+              className={`clinical-tool-option ${checked ? 'selected' : ''} ${showScore ? '' : 'no-score'}`}
             >
               <input
                 type={field.inputType === 'checkbox' ? 'checkbox' : 'radio'}
@@ -490,7 +515,7 @@ function OptionGroupField({ field, value, onChange }) {
                 <strong>{option.label}</strong>
                 {option.helperText ? <small>{option.helperText}</small> : null}
               </span>
-              <em>{formatResultValue(option.numericValue, 1)}</em>
+              {showScore ? <em>{formatResultValue(option.numericValue, 1)}</em> : null}
             </label>
           );
         })}
@@ -499,7 +524,7 @@ function OptionGroupField({ field, value, onChange }) {
   );
 }
 
-function ClinicalToolField({ field, value, onChange }) {
+function ClinicalToolField({ field, value, onChange, showScore = true }) {
   if (field.inputType === 'number') {
     return <NumberField field={field} value={value} onChange={onChange} />;
   }
@@ -508,7 +533,106 @@ function ClinicalToolField({ field, value, onChange }) {
     return <SelectField field={field} value={value} onChange={onChange} />;
   }
 
-  return <OptionGroupField field={field} value={value} onChange={onChange} />;
+  return <OptionGroupField field={field} value={value} onChange={onChange} showScore={showScore} />;
+}
+
+function ChecklistResult({ tool, result, copied, onCopy }) {
+  const resultLabel = tool?.engineConfig?.resultLabel || 'Resultado';
+
+  if (!result.ready) {
+    const waitingForAxis = result.axisValue == null;
+
+    return (
+      <section className="clinical-tool-result-card neutral">
+        <span>{resultLabel}</span>
+        <h3>{waitingForAxis ? `Informe ${result.axisField.label.toLowerCase()}` : 'Complete a avaliação'}</h3>
+        {waitingForAxis ? (
+          <p>Os itens avaliados são liberados conforme o valor informado — nada fora da faixa entra no resultado.</p>
+        ) : (
+          <p>
+            {result.missingFields.length > 0
+              ? `Faltam: ${result.missingFields.map((field) => field.label).join(', ')}.`
+              : 'Nenhum item aplicável para o valor informado.'}
+          </p>
+        )}
+      </section>
+    );
+  }
+
+  const scoreLabel = tool?.engineConfig?.scoreLabel || 'itens';
+  const countText = `${result.alertCount} ${scoreLabel}`;
+  const color = result.range?.alertColor || (result.alertCount > 0 ? 'yellow' : 'green');
+
+  return (
+    <div className="clinical-tool-result-stack">
+      <section className={`clinical-tool-result-card ${color}`}>
+        <div className="clinical-tool-result-header">
+          <div>
+            <span>{resultLabel}</span>
+            <h3 className="clinical-tool-result-classification">
+              {result.range?.classification || countText}
+            </h3>
+          </div>
+          <strong>{countText}</strong>
+        </div>
+
+        {result.range?.orientation ? <p>{result.range.orientation}</p> : null}
+      </section>
+
+      <button type="button" className="btn btn-secundario" onClick={onCopy}>
+        {copied ? 'Copiado' : 'Copiar para o prontuário'}
+      </button>
+    </div>
+  );
+}
+
+function ChecklistBreakdown({ result }) {
+  const filledGroups = result.groupOrder.filter((group) => result.groups[group].length > 0);
+
+  if (filledGroups.length === 0) {
+    return null;
+  }
+
+  return (
+    <section className="clinical-tool-breakdown clinical-tool-checklist-breakdown">
+      <h3>Resumo da avaliação</h3>
+
+      {filledGroups.map((group) => (
+        <div key={group} className={`clinical-tool-checklist-group ${getChecklistGroupColor(group)}`}>
+          <h4>{result.labels[group]} ({result.groups[group].length})</h4>
+          <ul>
+            {result.groups[group].map((item) => (
+              <li key={item.id}>
+                <span>{item.label}</span>
+                {item.expectedText ? <em>esperado: {item.expectedText}</em> : null}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </section>
+  );
+}
+
+function ChecklistUpcoming({ result }) {
+  if (result.upcomingItems.length === 0) {
+    return null;
+  }
+
+  return (
+    <section className="clinical-tool-breakdown clinical-tool-checklist-upcoming">
+      <h3>{result.labels.upcoming}</h3>
+      <p>Ainda não esperados nesta avaliação — observar na próxima consulta.</p>
+      <ul>
+        {result.upcomingItems.map((item) => (
+          <li key={item.id}>
+            <span>{item.label}</span>
+            {item.expectedText ? <em>esperado: {item.expectedText}</em> : null}
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
 }
 
 function ClinicalToolResult({ tool, result, copied, onCopy }) {
@@ -738,6 +862,8 @@ function ClinicalToolsPage({
     return calculateToolResult(selectedTool, values);
   }, [selectedTool, values]);
 
+  const isChecklist = result?.mode === 'checklist';
+
   const headerCopy = useMemo(() => {
     if (accessState?.isTrialAccess) {
       return 'Use scores, calculadoras e questionários clínicos durante o teste profissional.';
@@ -827,23 +953,40 @@ function ClinicalToolsPage({
 
               <div className="clinical-tool-workspace">
                 <form className="clinical-tool-form">
-                  {selectedTool.fields.map((field) => (
+                  {(isChecklist ? result.activeFields : selectedTool.fields).map((field) => (
                     <ClinicalToolField
                       key={field.id}
                       field={field}
                       value={values[field.id]}
                       onChange={(value) => updateFieldValue(field.id, value)}
+                      showScore={!isChecklist}
                     />
                   ))}
                 </form>
 
                 <div className="clinical-tool-result-column">
-                  <ClinicalToolResult
-                    tool={selectedTool}
-                    result={result}
-                    copied={copied}
-                    onCopy={handleCopyResult}
-                  />
+                  {isChecklist ? (
+                    <ChecklistResult
+                      tool={selectedTool}
+                      result={result}
+                      copied={copied}
+                      onCopy={handleCopyResult}
+                    />
+                  ) : (
+                    <ClinicalToolResult
+                      tool={selectedTool}
+                      result={result}
+                      copied={copied}
+                      onCopy={handleCopyResult}
+                    />
+                  )}
+
+                  {isChecklist ? (
+                    <>
+                      <ChecklistBreakdown result={result} />
+                      <ChecklistUpcoming result={result} />
+                    </>
+                  ) : null}
 
                   {result?.selectedItems?.length ? (
                     <section className="clinical-tool-breakdown">
