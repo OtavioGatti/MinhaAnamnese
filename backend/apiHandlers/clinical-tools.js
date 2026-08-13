@@ -2,6 +2,7 @@ const { ensureUserProfile } = require('../services/profiles');
 const {
   getClinicalToolBySlug,
   listClinicalTools,
+  listClinicalToolsBySlugs,
 } = require('../services/clinicalTools');
 const { resolveSupabaseUser } = require('../utils/supabaseAuth');
 
@@ -51,6 +52,15 @@ module.exports = async function handler(req, res) {
 
     if (!profile?.access_state?.hasActiveProAccess) {
       return res.status(402).json(buildPaywallResponse(profile));
+    }
+
+    const slugs = getQueryParam(req, 'slugs');
+
+    if (slugs) {
+      return res.status(200).json({
+        success: true,
+        data: await listClinicalToolsBySlugs(slugs.split(',')),
+      });
     }
 
     const slug = getQueryParam(req, 'slug');

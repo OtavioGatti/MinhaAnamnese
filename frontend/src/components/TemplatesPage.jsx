@@ -5,6 +5,7 @@ import { officialTemplateCatalog } from '../data/officialTemplateCatalog';
 import { templateStructures } from '../data/templateStructures';
 import SnippetsSection from './SnippetsSection';
 import LetterModelsSection from './LetterModelsSection';
+import LinkedClinicalTools, { useLinkedClinicalTools } from './LinkedClinicalTools';
 
 const EMPTY_TEMPLATE_FORM = {
   id: null,
@@ -40,6 +41,7 @@ function TemplatesPage({
   onRequestUpgrade,
   user,
   onLogin,
+  onOpenLinkedTool = () => {},
   initialPageTab = 'templates',
 }) {
   const [pageTab, setPageTab] = useState(initialPageTab);
@@ -71,12 +73,22 @@ function TemplatesPage({
           description: template.description || catalogEntry.description || 'Template oficial disponível para organizar este tipo de anamnese.',
           whenToUse: template.whenToUse || catalogEntry.whenToUse || 'Use este template quando precisar de uma estrutura clínica padronizada.',
           hasCalculators: Boolean(catalogEntry.hasCalculators),
+          linkedTools: Array.isArray(template.linkedTools) ? template.linkedTools : [],
           structure,
           checklist,
           source: 'official',
         };
       })
   ), [templates]);
+
+  // Uma chamada para a galeria inteira, em vez de uma por card.
+  const linkedToolSlugs = useMemo(() => (
+    [...new Set(officialTemplates.flatMap((template) => template.linkedTools))]
+  ), [officialTemplates]);
+  const linkedToolsCatalog = useLinkedClinicalTools(linkedToolSlugs, isPro);
+  const linkedToolsBySlug = useMemo(() => (
+    new Map(linkedToolsCatalog.map((tool) => [tool.slug, tool]))
+  ), [linkedToolsCatalog]);
 
   const availableCategoryOptions = useMemo(() => {
     const sourceCategories = [
@@ -605,6 +617,13 @@ function TemplatesPage({
                       ) : null}
                     </div>
                   </div>
+
+                  <LinkedClinicalTools
+                    tools={template.linkedTools
+                      .map((slug) => linkedToolsBySlug.get(slug))
+                      .filter(Boolean)}
+                    onOpenTool={onOpenLinkedTool}
+                  />
 
                   <div className="template-card-actions">
                     <button

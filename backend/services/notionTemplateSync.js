@@ -174,6 +174,9 @@ function mapNotionPageToTemplate(page) {
       lastReviewed: readDateProperty(properties, 'Last reviewed'),
       scoringHints: normalizeList(scoringHints, { maxItems: 80, maxLength: 240 }),
       internalNotes: internalNotes || null,
+      // Slugs de ferramentas clínicas sugeridas com este modelo, uma por linha.
+      linkedTools: normalizeLinkedToolSlugs(readTextProperty(properties, 'Linked tools')
+        || readTextProperty(properties, 'Ferramentas Vinculadas')),
     },
   };
 }

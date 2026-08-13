@@ -56,6 +56,37 @@ function normalizeSlug(value) {
     .slice(0, 80);
 }
 
+// Slugs de ferramentas clínicas usam hífen (marcos-desenvolvimento-infantil),
+// diferente do slug de modelo, que usa underscore.
+function normalizeLinkedToolSlugs(value) {
+  if (!Array.isArray(value) && typeof value !== 'string') {
+    return [];
+  }
+
+  const rawItems = Array.isArray(value) ? value : value.split(/[\n,;]/g);
+  const slugs = [];
+
+  rawItems.forEach((item) => {
+    // Um item que não é texto (objeto, número) viraria slug lixo tipo
+    // "object-object" — descarta antes de normalizar.
+    const slug = (typeof item === 'string' ? item : '')
+      .normalize('NFD')
+      .replace(/[̀-ͯ]/g, '')
+      .toLowerCase()
+      .replace(/^\s*(?:[-*]|\d+[.)])\s+/, '')
+      .trim()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-+|-+$/g, '')
+      .slice(0, 120);
+
+    if (slug && !slugs.includes(slug)) {
+      slugs.push(slug);
+    }
+  });
+
+  return slugs.slice(0, 12);
+}
+
 function normalizeStatus(value) {
   const normalized = normalizeText(value)
     .normalize('NFD')
@@ -139,6 +170,10 @@ function mapOfficialTemplateRow(row) {
     whenToUse: row.when_to_use || '',
     baseExample: row.base_example || '',
     guide: normalizeList(row.guide, { maxItems: 60, maxLength: 240 }),
+    // Ferramentas clínicas sugeridas junto deste modelo (curadoria editorial).
+    linkedTools: normalizeLinkedToolSlugs(
+      isPlainObject(row.metadata) ? row.metadata.linkedTools || row.metadata.linked_tools : [],
+    ),
     version: normalizeNumber(row.version, 1),
     displayOrder: normalizeNumber(row.display_order, 1000),
     updated_at: row.updated_at || row.synced_at || null,
@@ -334,6 +369,7 @@ module.exports = {
   getSyncedOfficialTemplateConfig,
   isOfficialTemplatesStorageAvailable,
   listSyncedOfficialTemplates,
+  normalizeLinkedToolSlugs,
   normalizeList,
   normalizeOfficialTemplatePayload,
   normalizeSlug,

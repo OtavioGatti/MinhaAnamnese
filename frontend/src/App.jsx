@@ -12,6 +12,7 @@ import StructuralFeedback from './components/StructuralFeedback';
 import StructuredOutput from './components/StructuredOutput';
 import UserEvolution from './components/UserEvolution';
 import WorkspaceSidebar from './components/WorkspaceSidebar';
+import { useLinkedClinicalTools } from './components/LinkedClinicalTools';
 import CancelSubscriptionModal from './components/CancelSubscriptionModal';
 import OrganizeSourceModal from './components/OrganizeSourceModal';
 import DeleteAccountModal from './components/DeleteAccountModal';
@@ -961,6 +962,7 @@ function App() {
   const [activeSidebarTab, setActiveSidebarTab] = useState('guide');
   const [currentPage, setCurrentPage] = useState(() => getInitialWorkspacePageFromPath());
   const [prescriptionGuideTarget, setPrescriptionGuideTarget] = useState(null);
+  const [clinicalToolTarget, setClinicalToolTarget] = useState('');
   const [anamneseStats, setAnamneseStats] = useState(null);
   const [anamneseActivity, setAnamneseActivity] = useState([]);
   const [recentAnamneses, setRecentAnamneses] = useState([]);
@@ -1584,6 +1586,10 @@ function App() {
 
     if (page === 'prescriptionGuide') {
       setPrescriptionGuideTarget(options.prescriptionTarget || null);
+    }
+
+    if (page === 'clinicalTools') {
+      setClinicalToolTarget(options.clinicalToolSlug || '');
     }
 
     setCheckoutErrors({
@@ -2560,6 +2566,7 @@ function App() {
   const selectedGuideItems = Array.isArray(templateAtual?.guide) && templateAtual.guide.length
     ? templateAtual.guide
     : guides[templateSelecionado] || [];
+  const linkedTools = useLinkedClinicalTools(templateAtual?.linkedTools, isPro);
   const textPlaceholder =
     formatBaseExamplePlaceholder(templateAtual?.baseExample) ||
     TEMPLATE_TEXT_PLACEHOLDERS[templateSelecionado] ||
@@ -2714,6 +2721,11 @@ function App() {
   const handleSeeFullReasoning = () => {
     setActiveSidebarTab('diagnostic');
     trackEvent('hipoteses_raciocinio_completo_click', { template: templateSelecionado });
+  };
+
+  const handleOpenLinkedTool = (slug, origin) => {
+    trackEvent('ferramenta_vinculada_click', { slug, origin });
+    handleNavigate('clinicalTools', { clinicalToolSlug: slug });
   };
 
   const handleOpenHypothesisPrescription = (hypothesis) => {
@@ -3333,6 +3345,8 @@ function App() {
               templateSelecionado={templateSelecionado}
               templateNome={templateAtual?.nome}
               guideItems={selectedGuideItems}
+              linkedTools={linkedTools}
+              onOpenLinkedTool={(slug) => handleOpenLinkedTool(slug, 'home')}
               templateTemCalculadora={templateTemCalculadora}
               diagnosticEnabled={DIAGNOSTIC_HYPOTHESES_ENABLED}
               diagnosticContent={(
@@ -3376,6 +3390,7 @@ function App() {
           onProfileUpdate={setProfile}
           onRequestUpgrade={handleUpgradeTemplates}
           user={user}
+          onOpenLinkedTool={(slug) => handleOpenLinkedTool(slug, 'templates')}
           initialPageTab={templatesInitialTab}
           onLogin={() => {
             setAuthPanelAberto(true);
@@ -3449,6 +3464,7 @@ function App() {
           onRequestUpgrade={handleUpgradeClinicalTools}
           loadingCheckout={isClinicalToolsCheckoutLoading}
           checkoutError={clinicalToolsCheckoutError}
+          initialToolSlug={clinicalToolTarget}
         />
       )}
 

@@ -1,5 +1,6 @@
 import CalculatorPanel from './CalculatorPanel';
 import GuidePanel from './GuidePanel';
+import LinkedClinicalTools from './LinkedClinicalTools';
 import { guides } from '../data/guides';
 
 const TABS = [
@@ -29,6 +30,8 @@ function WorkspaceSidebar({
   templateSelecionado,
   templateNome,
   guideItems,
+  linkedTools = [],
+  onOpenLinkedTool = () => {},
   templateTemCalculadora,
   diagnosticEnabled = false,
   diagnosticContent = null,
@@ -132,6 +135,12 @@ function WorkspaceSidebar({
           ) : null}
         </div>
         {renderContent()}
+
+        <LinkedClinicalTools
+          tools={linkedTools}
+          onOpenTool={onOpenLinkedTool}
+          hint="Sugeridas para este modelo."
+        />
       </div>
     </aside>
   );
