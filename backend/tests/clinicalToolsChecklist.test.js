@@ -329,6 +329,88 @@ describe('avaliação do checklist condicional', () => {
     assert.match(text, /^Presentes: Sustenta a cabeça; Rola sozinho$/m);
   });
 
+  test('eixo em zero é resposta válida e não bloqueia o resultado', () => {
+    const schedule = normalizeClinicalToolSchema({
+      slug: 'calendario-vacinal',
+      title: 'Calendário vacinal',
+      tool_type: 'conditional_logic',
+      status: 'published',
+      engine_config: { axis_field_id: 'idade', axis_unit: 'meses', preview_window: 2 },
+      fields: [
+        {
+          id: 'idade',
+          label: 'Idade',
+          tipo_input: 'SELECT',
+          opcoes: [{ label: 'Ao nascer', numeric_value: 0 }, { label: '2 meses', numeric_value: 2 }],
+        },
+        {
+          id: 'bcg',
+          label: 'BCG',
+          tipo_input: 'RADIO',
+          applicable_from: 0,
+          alert_from: 2,
+          expected_label: 'ao nascer',
+          opcoes: [
+            { label: 'Aplicada', numeric_value: 0 },
+            { label: 'Não aplicada', numeric_value: 1 },
+            { label: 'Contraindicada', numeric_value: 0, outcome: 'nao_se_aplica' },
+          ],
+        },
+      ],
+      result_ranges: [{ min: 0, max: 0, classificacao: 'Em dia' }],
+    });
+
+    assert.equal(schedule.validation.valid, true);
+
+    const evaluation = checklist.evaluateChecklist(schedule, { idade: 'ao_nascer', bcg: 'aplicada' });
+
+    assert.equal(evaluation.axisValue, 0);
+    assert.equal(evaluation.ready, true);
+    assert.deepEqual(evaluation.groups.present.map((item) => item.id), ['bcg']);
+    // Rótulo próprio no lugar de "0 meses".
+    assert.equal(evaluation.groups.present[0].expectedText, 'ao nascer');
+  });
+
+  test('opção "não se aplica" sai do resultado sem virar alerta', () => {
+    const schedule = normalizeClinicalToolSchema({
+      slug: 'calendario-vacinal',
+      title: 'Calendário vacinal',
+      tool_type: 'conditional_logic',
+      status: 'published',
+      engine_config: { axis_field_id: 'idade', axis_unit: 'meses' },
+      fields: [
+        {
+          id: 'idade',
+          label: 'Idade',
+          tipo_input: 'SELECT',
+          opcoes: [{ label: '12 meses', numeric_value: 12 }],
+        },
+        {
+          id: 'rotavirus_1',
+          label: 'Rotavírus — 1ª dose',
+          tipo_input: 'RADIO',
+          applicable_from: 2,
+          alert_from: 4,
+          opcoes: [
+            { label: 'Aplicada', numeric_value: 0 },
+            { label: 'Não aplicada', numeric_value: 1 },
+            { label: 'Fora da idade limite', numeric_value: 0, outcome: 'nao_se_aplica' },
+          ],
+        },
+      ],
+      result_ranges: [],
+    });
+    const evaluation = checklist.evaluateChecklist(schedule, {
+      idade: '12_meses',
+      rotavirus_1: 'fora_da_idade_limite',
+    });
+
+    assert.equal(evaluation.alertCount, 0);
+    assert.equal(evaluation.groups.alert.length, 0);
+    assert.deepEqual(evaluation.groups.notApplicable.map((item) => item.id), ['rotavirus_1']);
+    assert.equal(evaluation.ready, true);
+  });
+
   test('não copia resultado parcial', () => {
     const evaluation = checklist.evaluateChecklist(tool, { idade: '9_meses' });
 

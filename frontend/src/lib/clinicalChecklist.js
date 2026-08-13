@@ -188,12 +188,14 @@ export function evaluateChecklist(tool, values = {}) {
         return;
       }
 
+      const expectedText = field.expectedLabel || formatAxisAmount(thresholds.applicableFrom, axisUnit);
+
       if (visibility === 'upcoming') {
         upcomingItems.push({
           id: field.id,
           label: field.label,
           applicableFrom: thresholds.applicableFrom,
-          expectedText: formatAxisAmount(thresholds.applicableFrom, axisUnit),
+          expectedText,
         });
         return;
       }
@@ -217,7 +219,7 @@ export function evaluateChecklist(tool, values = {}) {
         label: field.label,
         optionLabel: option.label,
         optionHelperText: option.helperText || '',
-        expectedText: formatAxisAmount(thresholds.applicableFrom, axisUnit),
+        expectedText,
       });
     });
 

@@ -265,6 +265,9 @@ function normalizeField(field, index) {
     applicableUntil: normalizeOptionalNumber(
       field?.applicable_until ?? field?.applicableUntil ?? field?.esperado_ate ?? field?.avaliar_ate,
     ),
+    // Sobrescreve o texto do "esperado" quando o valor do eixo não se lê bem
+    // sozinho ("ao nascer" em vez de "0 meses").
+    expectedLabel: normalizeText(field?.expected_label ?? field?.expectedLabel ?? field?.rotulo_esperado),
     alertFrom: normalizeOptionalNumber(
       field?.alert_from ?? field?.alertFrom ?? field?.alerta_a_partir_de ?? field?.alerta_de,
     ),
