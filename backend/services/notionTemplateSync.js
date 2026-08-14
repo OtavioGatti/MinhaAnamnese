@@ -1,4 +1,5 @@
 const {
+  normalizeLinkedToolSlugs,
   normalizeList,
   normalizeOfficialTemplatePayload,
   upsertOfficialTemplates,
