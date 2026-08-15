@@ -21,6 +21,7 @@ const DIAGNOSTIC_HYPOTHESES_SCHEMA = {
           'missingOrConflictingData',
           'differentiatingSteps',
           'redFlags',
+          'suggestedExamManeuvers',
         ],
         properties: {
           name: { type: 'string' },
@@ -47,6 +48,13 @@ const DIAGNOSTIC_HYPOTHESES_SCHEMA = {
           redFlags: {
             type: 'array',
             maxItems: 6,
+            items: { type: 'string' },
+          },
+          // Só o NOME da manobra. A técnica e a interpretação do achado vêm do
+          // catálogo revisado (services/physicalExamManeuvers.js), nunca daqui.
+          suggestedExamManeuvers: {
+            type: 'array',
+            maxItems: 4,
             items: { type: 'string' },
           },
         },
@@ -79,7 +87,7 @@ function normalizeText(value, maxLength = 600) {
     .slice(0, maxLength);
 }
 
-function normalizeTextList(value, maxItems) {
+function normalizeTextList(value, maxItems, maxLength) {
   if (!Array.isArray(value)) {
     return [];
   }
@@ -88,7 +96,7 @@ function normalizeTextList(value, maxItems) {
   const items = [];
 
   for (const item of value) {
-    const text = normalizeText(item);
+    const text = maxLength ? normalizeText(item, maxLength) : normalizeText(item);
     const key = text.toLocaleLowerCase('pt-BR');
 
     if (!text || seen.has(key)) {
@@ -121,6 +129,8 @@ function normalizeHypothesis(value) {
     missingOrConflictingData: normalizeTextList(value?.missingOrConflictingData, 6),
     differentiatingSteps: normalizeTextList(value?.differentiatingSteps, 6),
     redFlags: normalizeTextList(value?.redFlags, 6),
+    // Nome curto: é um epônimo ("Sinal de Giordano"), não uma frase.
+    suggestedExamManeuvers: normalizeTextList(value?.suggestedExamManeuvers, 4, 120),
   };
 }
 

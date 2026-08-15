@@ -10,8 +10,10 @@ const {
   buildDiagnosticHypothesesInstructions,
 } = require('../prompts/diagnosticHypothesesPrompt');
 const { getSyncedOfficialPrompt } = require('./officialPrompts');
+const { findManeuverByName, listManeuverNamesForPrompt } = require('./physicalExamManeuvers');
 const { findPrescriptionGuideForHypothesis } = require('./prescriptionGuides');
 const { recordUnmatchedHypotheses } = require('./unmatchedHypotheses');
+const { recordUnmatchedManeuvers } = require('./unmatchedManeuvers');
 const { resolveTemplateById } = require('./templates');
 const { sanitizeText } = require('../utils/textSanitization');
 
@@ -190,6 +192,26 @@ async function attachPrescriptionGuides(hypotheses) {
   }));
 }
 
+// Casa cada nome sugerido pela IA com o catálogo revisado. Sem correspondência,
+// a manobra continua aparecendo — só o nome, sem técnica nem interpretação — e
+// entra no backlog editorial.
+async function attachExamManeuvers(hypotheses) {
+  return Promise.all((hypotheses || []).map(async (hypothesis) => {
+    const names = Array.isArray(hypothesis.suggestedExamManeuvers)
+      ? hypothesis.suggestedExamManeuvers
+      : [];
+    const examManeuvers = await Promise.all(names.map(async (name) => ({
+      name,
+      maneuver: await findManeuverByName(name).catch(() => null),
+    })));
+
+    return {
+      ...hypothesis,
+      examManeuvers,
+    };
+  }));
+}
+
 async function generateDiagnosticHypotheses({ template, structuredText, userId }) {
   const validationError = validateDiagnosticHypothesesInput({ template, structuredText });
 
@@ -227,10 +249,15 @@ async function generateDiagnosticHypotheses({ template, structuredText, userId }
   const model = resolveDiagnosticModel(syncedPrompt?.model);
   const openai = new OpenAI({ apiKey });
   const instructions = buildDiagnosticHypothesesInstructions(syncedPrompt?.promptBody);
+  // Os nomes do catálogo entram no prompt como referência de grafia: o modelo
+  // copia em vez de adivinhar, e o pareamento posterior acerta muito mais.
+  // Best-effort — sem o catálogo, a IA nomeia livremente como antes.
+  const maneuverNames = await listManeuverNamesForPrompt().catch(() => []);
   const input = buildDiagnosticHypothesesInput({
     structuredHistory: sanitizedHistory,
     templateName: templateConfig.nome,
     clinicalCategory: templateConfig.categoryKey || templateConfig.clinicalCategoryKey || '',
+    maneuverNames,
   });
   const generationResponse = await createStructuredDiagnosticResponse({
     openai,
@@ -241,11 +268,14 @@ async function generateDiagnosticHypotheses({ template, structuredText, userId }
     promptVersion: syncedPrompt?.version || 0,
   });
   const parsed = generationResponse.parsed;
-  const hypotheses = await attachPrescriptionGuides(parsed.hypotheses);
+  const hypotheses = await attachExamManeuvers(await attachPrescriptionGuides(parsed.hypotheses));
 
-  // Backlog editorial das prescrições que ainda faltam escrever. Best-effort:
-  // nunca deve derrubar a análise clínica já pronta.
-  await recordUnmatchedHypotheses(hypotheses).catch(() => 0);
+  // Backlog editorial do que ainda falta escrever (prescrições e manobras).
+  // Best-effort: nunca deve derrubar a análise clínica já pronta.
+  await Promise.all([
+    recordUnmatchedHypotheses(hypotheses).catch(() => 0),
+    recordUnmatchedManeuvers(hypotheses).catch(() => 0),
+  ]);
 
   return {
     ...parsed,
