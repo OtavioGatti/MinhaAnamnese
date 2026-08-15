@@ -45,7 +45,9 @@ module.exports = async function handler(req, res) {
   }
 
   try {
-    const data = await syncNotionPhysicalExamManeuvers();
+    // Sync manual: quem clicou foi o humano, então o que está "aguardando
+    // revisão" pode publicar. O webhook automático (se existir) não passa isso.
+    const data = await syncNotionPhysicalExamManeuvers({ bypassReviewGate: true });
     return res.status(200).json({ success: true, data });
   } catch (error) {
     const responseBody = String(error?.responseBody || '');

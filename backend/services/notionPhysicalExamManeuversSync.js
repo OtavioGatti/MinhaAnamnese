@@ -1,6 +1,8 @@
 // Sync do CMS de manobras de exame físico (Notion -> Supabase), mesmo padrão
 // dos outros catálogos clínicos do projeto.
 
+const { shouldHoldFromSync } = require('../contracts/maneuverAutomation');
+
 const NOTION_API_BASE_URL = 'https://api.notion.com/v1';
 const DEFAULT_NOTION_VERSION = '2026-03-11';
 // Data source "Minha Anamnese - Manobras de Exame Físico CMS".
@@ -124,6 +126,7 @@ function mapNotionPageToManeuver(page) {
     status: readTextProperty(properties, 'Status'),
     displayOrder: readNumberProperty(properties, 'Order', 1000),
     internalNotes: readTextProperty(properties, 'Internal notes'),
+    automationStatus: readTextProperty(properties, 'Status Automação'),
   };
 }
 
@@ -313,13 +316,22 @@ async function upsertManeuvers(payloads) {
   return payloads.length;
 }
 
-async function syncNotionPhysicalExamManeuvers() {
+// `bypassReviewGate` = sync manual (o humano clicou, então publicar o que está
+// "aguardando revisão" é decisão dele). No webhook automático fica false, e
+// conteúdo recém-gerado pela IA é retido até alguém revisar.
+async function syncNotionPhysicalExamManeuvers({ bypassReviewGate = false } = {}) {
   const pages = await queryNotionManeuverPages();
   const prepared = [];
   const skipped = [];
+  const held = [];
   let publishedAvailable = 0;
 
   pages.map(mapNotionPageToManeuver).forEach((model) => {
+    if (shouldHoldFromSync(model.automationStatus, { bypassReviewGate })) {
+      held.push({ name: model.name || null, automationStatus: model.automationStatus });
+      return;
+    }
+
     const normalized = normalizeManeuverPayload(model);
 
     if (normalized.error) {
@@ -340,12 +352,14 @@ async function syncNotionPhysicalExamManeuvers() {
     totalFromNotion: pages.length,
     persisted: prepared.length,
     publishedAvailable,
+    held,
     skipped,
   };
 }
 
 module.exports = {
   DEFAULT_MANEUVERS_DATA_SOURCE_ID,
+  getConfig,
   buildSearchText,
   isNotionManeuversSyncConfigured,
   mapNotionPageToManeuver,
