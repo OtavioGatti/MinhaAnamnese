@@ -128,9 +128,11 @@ async function queryManeuverPagesByStatus(values, { pageSize = 25 } = {}) {
     ? { property, select: { equals: values[0] } }
     : { or: values.map((value) => ({ property, select: { equals: value } })) };
 
-  const response = await requestNotion(`/databases/${dataSourceId}/query`, {
+  // Data source (não database): o id configurado é o mesmo que o sync usa em
+  // /data_sources/{id}/query. Pedir por /databases/{id} devolve 404.
+  const response = await requestNotion(`/data_sources/${dataSourceId}/query`, {
     method: 'POST',
-    body: JSON.stringify({ page_size: pageSize, filter }),
+    body: JSON.stringify({ page_size: pageSize, result_type: 'page', filter }),
   });
 
   return Array.isArray(response.results) ? response.results : [];
