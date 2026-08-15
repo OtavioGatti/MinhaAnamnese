@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { api } from '../apiClient';
+import ManeuversSection from './ManeuversSection';
 import {
   buildChecklistCopyText,
   evaluateChecklist,
@@ -878,6 +879,7 @@ function ClinicalToolsPage({
   checkoutError,
   initialToolSlug = '',
 }) {
+  const [pageTab, setPageTab] = useState('calculadoras');
   const [query, setQuery] = useState(DEFAULT_QUERY);
   const [category, setCategory] = useState('');
   const [subcategory, setSubcategory] = useState('');
@@ -1074,8 +1076,8 @@ function ClinicalToolsPage({
     return (
       <main className="prescription-guide-page clinical-tool-page">
         <section className="prescription-access-panel">
-          <span className="workspace-kicker">Ferramentas clínicas</span>
-          <h1>Entre para usar scores e calculadoras</h1>
+          <span className="workspace-kicker">Avaliação clínica</span>
+          <h1>Entre para usar a avaliação clínica</h1>
           <p>Este recurso fica protegido para profissionais com conta ativa.</p>
           <button type="button" className="btn btn-primario prescription-access-action" onClick={onLogin}>
             Entrar
@@ -1089,9 +1091,9 @@ function ClinicalToolsPage({
     return (
       <main className="prescription-guide-page clinical-tool-page">
         <section className="prescription-access-panel">
-          <span className="workspace-kicker">Ferramentas clínicas</span>
+          <span className="workspace-kicker">Avaliação clínica</span>
           <h1>Recurso do plano profissional</h1>
-          <p>Scores, calculadoras e questionários clínicos ficam liberados no plano profissional.</p>
+          <p>Scores, calculadoras e manobras de exame físico ficam liberados no plano profissional.</p>
           {checkoutError ? <div className="prescription-error">{checkoutError}</div> : null}
           <button
             type="button"
@@ -1110,72 +1112,110 @@ function ClinicalToolsPage({
     <main className="prescription-guide-page clinical-tool-page">
       <section className="prescription-guide-header clinical-tool-page-header">
         <div>
-          <span className="workspace-kicker">Ferramentas clínicas</span>
-          <h1>Scores, calculadoras e questionários</h1>
-          <p>{headerCopy}</p>
+          <span className="workspace-kicker">Avaliação clínica</span>
+          <h1>{pageTab === 'manobras' ? 'Manobras de exame físico' : 'Scores, calculadoras e questionários'}</h1>
+          <p>
+            {pageTab === 'manobras'
+              ? 'Consulte quando fazer, como executar e o que cada achado sugere. As mesmas manobras aparecem junto das hipóteses diagnósticas.'
+              : headerCopy}
+          </p>
+        </div>
+
+        <div className="prescription-section-tabs" role="tablist" aria-label="Seções da avaliação clínica">
+          <button
+            type="button"
+            role="tab"
+            aria-selected={pageTab === 'calculadoras'}
+            className={`prescription-section-tab ${pageTab === 'calculadoras' ? 'active' : ''}`}
+            onClick={() => setPageTab('calculadoras')}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <rect x="4" y="2" width="16" height="20" rx="2" />
+              <path d="M8 6h8" />
+              <path d="M8 11h.01M12 11h.01M16 11h.01M8 15h.01M12 15h.01M16 15h.01" />
+            </svg>
+            Calculadoras
+          </button>
+          <button
+            type="button"
+            role="tab"
+            aria-selected={pageTab === 'manobras'}
+            className={`prescription-section-tab ${pageTab === 'manobras' ? 'active' : ''}`}
+            onClick={() => setPageTab('manobras')}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <path d="M4.8 2.3A.3.3 0 1 0 5 2H4a2 2 0 0 0-2 2v5a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6V4a2 2 0 0 0-2-2h-1a.2.2 0 1 0 .3.3" />
+              <path d="M8 15v1a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6v-4" />
+              <circle cx="20" cy="10" r="2" />
+            </svg>
+            Manobras
+          </button>
         </div>
       </section>
 
-      <section className="prescription-guide-grid clinical-tool-grid">
-        <ClinicalToolSidebar
-          query={query}
-          setQuery={setQuery}
-          category={category}
-          setCategory={handleCategoryChange}
-          subcategory={subcategory}
-          setSubcategory={handleSubcategoryChange}
-          categories={categories}
-          subcategories={subcategories}
-          tools={visibleTools}
-          selectedSlug={selectedSlug}
-          setSelectedSlug={setSelectedSlug}
-          loadingTools={loadingTools}
-          error={error}
-        />
+      {pageTab === 'manobras' ? <ManeuversSection /> : null}
 
-        <article className="protocol-detail-panel clinical-tool-detail-panel">
-          {loadingDetail ? (
-            <div className="prescription-empty">Carregando ferramenta...</div>
-          ) : selectedTool ? (
-            <>
-              <ClinicalToolHeader tool={selectedTool} />
-              <SafetyNotice />
+      {pageTab === 'calculadoras' ? (
+        <section className="prescription-guide-grid clinical-tool-grid">
+          <ClinicalToolSidebar
+            query={query}
+            setQuery={setQuery}
+            category={category}
+            setCategory={handleCategoryChange}
+            subcategory={subcategory}
+            setSubcategory={handleSubcategoryChange}
+            categories={categories}
+            subcategories={subcategories}
+            tools={visibleTools}
+            selectedSlug={selectedSlug}
+            setSelectedSlug={setSelectedSlug}
+            loadingTools={loadingTools}
+            error={error}
+          />
 
-              <div className="clinical-tool-workspace">
-                <form className="clinical-tool-form">
-                  {(isChecklist ? result.activeFields : selectedTool.fields).map((field) => (
-                    <ClinicalToolField
-                      key={field.id}
-                      field={field}
-                      value={values[field.id]}
-                      onChange={(value) => updateFieldValue(field.id, value)}
-                      showScore={!isChecklist}
-                    />
-                  ))}
-                </form>
+          <article className="protocol-detail-panel clinical-tool-detail-panel">
+            {loadingDetail ? (
+              <div className="prescription-empty">Carregando ferramenta...</div>
+            ) : selectedTool ? (
+              <>
+                <ClinicalToolHeader tool={selectedTool} />
+                <SafetyNotice />
 
-                <div className="clinical-tool-result-column">
-                  {isChecklist ? (
-                    <ChecklistResult
-                      tool={selectedTool}
-                      result={result}
-                      copied={copied}
-                      onCopy={handleCopyResult}
-                    />
-                  ) : (
-                    <ClinicalToolResult
-                      tool={selectedTool}
-                      result={result}
-                      copied={copied}
-                      onCopy={handleCopyResult}
-                    />
-                  )}
+                <div className="clinical-tool-workspace">
+                  <form className="clinical-tool-form">
+                    {(isChecklist ? result.activeFields : selectedTool.fields).map((field) => (
+                      <ClinicalToolField
+                        key={field.id}
+                        field={field}
+                        value={values[field.id]}
+                        onChange={(value) => updateFieldValue(field.id, value)}
+                        showScore={!isChecklist}
+                      />
+                    ))}
+                  </form>
 
-                  {isChecklist ? (
-                    <>
-                      <ChecklistBreakdown result={result} />
-                      <ChecklistUpcoming result={result} />
-                    </>
+                  <div className="clinical-tool-result-column">
+                    {isChecklist ? (
+                      <ChecklistResult
+                        tool={selectedTool}
+                        result={result}
+                        copied={copied}
+                        onCopy={handleCopyResult}
+                      />
+                    ) : (
+                      <ClinicalToolResult
+                        tool={selectedTool}
+                        result={result}
+                        copied={copied}
+                        onCopy={handleCopyResult}
+                      />
+                    )}
+
+                    {isChecklist ? (
+                      <>
+                        <ChecklistBreakdown result={result} />
+                        <ChecklistUpcoming result={result} />
+                      </>
                   ) : null}
 
                   {result?.selectedItems?.length ? (
@@ -1206,6 +1246,7 @@ function ClinicalToolsPage({
           )}
         </article>
       </section>
+      ) : null}
     </main>
   );
 }

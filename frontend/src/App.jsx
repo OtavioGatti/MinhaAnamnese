@@ -2868,7 +2868,7 @@ function App() {
             className={`product-nav-item ${currentPage === 'clinicalTools' ? 'active' : ''}`}
             onClick={() => handleNavigate('clinicalTools')}
           >
-            Ferramentas
+            Avaliação
           </button>
           {user && isAffiliate ? (
             <button

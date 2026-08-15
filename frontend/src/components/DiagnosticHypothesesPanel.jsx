@@ -23,6 +23,77 @@ function ClinicalList({ title, items, tone = 'default' }) {
   );
 }
 
+const MANEUVER_DETAIL_FIELDS = [
+  { key: 'whenToPerform', label: 'Quando fazer' },
+  { key: 'howToPerform', label: 'Como executar' },
+  { key: 'positiveFinding', label: 'Achado positivo' },
+  { key: 'negativeFinding', label: 'Achado negativo' },
+  { key: 'clinicalUtility', label: 'Utilidade clínica' },
+];
+
+// A IA nomeia a manobra; a técnica e a interpretação vêm do catálogo revisado.
+// Sem correspondência no catálogo, fica só o nome — sem link e sem detalhe,
+// porque não há conteúdo revisado para mostrar.
+function ManeuverItem({ suggestion }) {
+  const [isExpanded, setIsExpanded] = useState(false);
+  const detailId = useId();
+  const maneuver = suggestion.maneuver;
+
+  if (!maneuver) {
+    return (
+      <li className="exam-maneuver exam-maneuver-uncatalogued">
+        <span>{suggestion.name}</span>
+      </li>
+    );
+  }
+
+  const details = MANEUVER_DETAIL_FIELDS
+    .map((field) => ({ ...field, text: String(maneuver[field.key] || '').trim() }))
+    .filter((field) => field.text);
+
+  return (
+    <li className="exam-maneuver">
+      <button
+        type="button"
+        className="exam-maneuver-toggle"
+        aria-expanded={isExpanded}
+        aria-controls={detailId}
+        onClick={() => setIsExpanded((expanded) => !expanded)}
+      >
+        <span aria-hidden="true">{isExpanded ? '▾' : '▸'}</span>
+        {maneuver.name}
+      </button>
+
+      <div id={detailId} className="exam-maneuver-detail" hidden={!isExpanded}>
+        {details.map((field) => (
+          <div key={field.key}>
+            <strong>{field.label}</strong>
+            <p>{field.text}</p>
+          </div>
+        ))}
+        {maneuver.source ? <p className="exam-maneuver-source">Fonte: {maneuver.source}</p> : null}
+      </div>
+    </li>
+  );
+}
+
+function ExamManeuvers({ suggestions }) {
+  if (!Array.isArray(suggestions) || suggestions.length === 0) {
+    return null;
+  }
+
+  return (
+    <div className="exam-maneuvers">
+      <strong>Exame físico específico</strong>
+      <ul>
+        {suggestions.map((suggestion, index) => (
+          <ManeuverItem key={`${suggestion.name}-${index}`} suggestion={suggestion} />
+        ))}
+      </ul>
+    </div>
+  );
+}
+
 function HypothesisCard({ hypothesis, index, onOpenPrescriptionGuide }) {
   const guide = hypothesis.prescriptionGuide;
   const [isReasoningExpanded, setIsReasoningExpanded] = useState(false);
@@ -73,6 +144,8 @@ function HypothesisCard({ hypothesis, index, onOpenPrescriptionGuide }) {
           <ClinicalList title="Sinais de alerta" items={hypothesis.redFlags} tone="warning" />
         </div>
       </div>
+
+      <ExamManeuvers suggestions={hypothesis.examManeuvers} />
 
       {canSearchCid ? (
         <div className="diagnostic-cid-search">
