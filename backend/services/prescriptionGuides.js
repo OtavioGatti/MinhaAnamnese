@@ -1,3 +1,10 @@
+const {
+  buildAliasKeys,
+  buildCatalogSearchName,
+  findExactAliasMatch,
+  normalizeMatchKey,
+} = require('../utils/clinicalAliasMatching');
+
 const MAX_SEARCH_RESULTS = 60;
 const MAX_QUERY_LENGTH = 80;
 
@@ -180,97 +187,22 @@ function normalizeKey(value) {
   return stripAccents(value).toLowerCase().trim();
 }
 
-function normalizeGuideMatchKey(value) {
-  return normalizeKey(value)
-    .replace(/[^a-z0-9]+/g, ' ')
-    .replace(/\s+/g, ' ')
-    .trim();
-}
-
-// Guias listam sinônimos da mesma condição separados por barra ("Sinusite Aguda
-// / Rinossinusite Aguda Bacteriana"). Cada trecho é um nome válido da condição,
-// então vira uma chave própria — senão o nome curto nunca casa com o título
-// composto.
-const GUIDE_ALIAS_SEPARATORS = /\s*[/|;]\s*/;
-
-// O prompt de hipóteses pede a sigla consagrada junto do nome ("Pneumonia
-// Adquirida na Comunidade (PAC)"), enquanto o guia costuma ser cadastrado só
-// com o nome expandido.
-const TRAILING_ACRONYM = /\s*\(([^)]+)\)\s*$/;
+// Mantido como nome local: o pareamento generico vive em
+// utils/clinicalAliasMatching.js, compartilhado com os outros catalogos
+// revisados (manobras de exame fisico, exames complementares).
+const normalizeGuideMatchKey = normalizeMatchKey;
 
 function buildGuideAliasKeys(guide) {
-  const rawNames = [
+  return buildAliasKeys([
     guide?.conditionName,
     guide?.title,
     guide?.subcondition,
     String(guide?.slug || '').replace(/-/g, ' '),
-  ];
-  const keys = new Set();
-
-  for (const rawName of rawNames) {
-    const name = String(rawName || '');
-
-    if (!name.trim()) {
-      continue;
-    }
-
-    for (const part of [name, ...name.split(GUIDE_ALIAS_SEPARATORS)]) {
-      const key = normalizeGuideMatchKey(part);
-
-      if (key) {
-        keys.add(key);
-      }
-    }
-  }
-
-  return keys;
+  ]);
 }
 
-// Chaves da hipótese em ordem de prioridade: nome completo primeiro, sigla
-// isolada por último (mais genérica, poderia casar com outro protocolo).
-function buildHypothesisMatchKeys(hypothesisName) {
-  const name = String(hypothesisName || '').trim();
-  const keys = [];
-  const addKey = (value) => {
-    const key = normalizeGuideMatchKey(value);
-
-    if (key && !keys.includes(key)) {
-      keys.push(key);
-    }
-  };
-
-  addKey(name);
-
-  const acronymMatch = name.match(TRAILING_ACRONYM);
-
-  if (acronymMatch) {
-    addKey(name.replace(TRAILING_ACRONYM, ''));
-    addKey(acronymMatch[1]);
-  }
-
-  return keys;
-}
-
-// Pareamento por igualdade normalizada — nunca por substring, que casaria
-// "Pneumonia" com qualquer pneumonia e traria o CID de outra condição.
 function findExactPrescriptionGuideMatch(hypothesisName, guides) {
-  const hypothesisKeys = buildHypothesisMatchKeys(hypothesisName);
-
-  if (hypothesisKeys.length === 0 || !Array.isArray(guides)) {
-    return null;
-  }
-
-  const candidates = guides.map((guide) => ({ guide, aliasKeys: buildGuideAliasKeys(guide) }));
-
-  for (const key of hypothesisKeys) {
-    const found = candidates.find((candidate) => candidate.aliasKeys.has(key));
-
-    if (found) {
-      return found.guide;
-    }
-  }
-
-  return null;
+  return findExactAliasMatch(hypothesisName, guides, buildGuideAliasKeys);
 }
 
 function getSearchTerms(value) {
@@ -722,13 +654,7 @@ function buildHypothesisGuideRef(match) {
   };
 }
 
-// A busca precisa do nome sem a sigla final: "(PAC)" não aparece no título
-// cadastrado e zeraria o resultado antes do pareamento sequer acontecer.
-function buildGuideSearchName(hypothesisName) {
-  const normalizedName = normalizeText(hypothesisName);
-
-  return normalizeText(normalizedName.replace(TRAILING_ACRONYM, '')) || normalizedName;
-}
+const buildGuideSearchName = buildCatalogSearchName;
 
 async function findPrescriptionGuideForHypothesis(hypothesisName) {
   const normalizedName = normalizeText(hypothesisName);
