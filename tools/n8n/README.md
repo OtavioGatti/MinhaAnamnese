@@ -5,6 +5,7 @@ Este diretório reúne os workflows de n8n usados pela operação do produto:
 - `keep-warm-render.json` — mantém o backend do Render acordado (ver seção abaixo).
 - `affiliate-payout-whatsapp.json` — avisa o dono no WhatsApp quando um afiliado solicita saque.
 - `affiliate-payout-settle-form.json` — "painel" (formulário hospedado) para dar baixa nos saques.
+- `maneuvers-panel-form.json` — painel de manobras de exame físico (gerar/corrigir/publicar) pelo celular.
 
 ---
 
@@ -177,3 +178,75 @@ Environment). Se ainda não existir, crie um valor forte e adicione lá.
    - Para recusar um pedido, escolha **rejected** — o saldo volta para o afiliado.
 
 O formulário mostra a resposta da API (sucesso ou erro) na própria tela após enviar.
+
+---
+
+# Painel de Manobras de Exame Físico (n8n Form)
+
+O mesmo formato do painel de saques: um formulário hospedado pelo n8n, com link
+que dá para salvar na tela inicial do celular. Serve para rodar a automação de
+manobras sem abrir o painel desktop (`painel_app.py`).
+
+## Arquivo
+
+- `maneuvers-panel-form.json` — **Form Trigger** → **HTTP Request (API admin)** → **Code (resumo legível)**.
+
+## O que cada ação faz
+
+| Ação no formulário | Rota chamada | Efeito |
+|---|---|---|
+| Rodar automacao (gerar/corrigir) | `POST /api/admin/maneuvers/automation-run` | Gera/corrige as linhas marcadas `a gerar`/`a corrigir` e **escreve no Notion** |
+| Simular (dry-run) | a mesma, com `dryRun: true` | Roda tudo e mostra o resultado, **sem escrever** |
+| Publicar no site (sync) | `POST /api/admin/physical-exam-maneuvers/sync` | Notion → Supabase: é o passo que faz o conteúdo aparecer no app |
+| Enfileirar incompletas | `POST /api/admin/maneuvers/queue-incomplete` | Marca `a corrigir` nas publicadas com campo vazio (não gera nada) |
+| Preview de geracao | `POST /api/admin/maneuvers/generate-preview` | Gera uma manobra pelo nome e devolve na tela, **sem tocar no Notion** |
+
+Os campos **limite** (padrão 5) e **nome_da_manobra** são opcionais — o segundo só
+é usado no *Preview de geracao*.
+
+## Pré-requisito: DOIS segredos
+
+As rotas não usam o mesmo segredo, e isso não é descuido — o sync é uma rota
+administrativa comum, a automação tem segredo próprio para poder ser girado sem
+derrubar o resto:
+
+- **automação** (`maneuvers/*`): `MANEUVER_AUTOMATION_SECRET` → `PROTOCOL_AUTOMATION_SECRET` → `ADMIN_SYNC_SECRET` (a primeira que existir vence)
+- **sync** (`physical-exam-maneuvers/sync`): apenas `ADMIN_SYNC_SECRET`
+
+Por isso o header do nó HTTP é uma **expressão** que troca o segredo conforme a
+ação escolhida. Se os dois valores forem iguais no seu Render, pode repetir o
+mesmo nos dois lugares.
+
+> Atenção ao fallback: se `PROTOCOL_AUTOMATION_SECRET` existir, ele **vence**
+> `ADMIN_SYNC_SECRET` nas rotas de automação. Usar o segredo de sync ali devolve
+> 401 mesmo estando "certo" — foi exatamente o que aconteceu no primeiro teste.
+
+## Configurar
+
+1. Importe `maneuvers-panel-form.json` no n8n (**Import from File**).
+2. Abra o nó **Chamar API admin** → **Header Parameters** → campo `Authorization`.
+   Troque os **dois** placeholders pelos valores reais:
+   - `SEU_ADMIN_SYNC_SECRET` → valor de `ADMIN_SYNC_SECRET`
+   - `SEU_PROTOCOL_AUTOMATION_SECRET` → valor de `PROTOCOL_AUTOMATION_SECRET`
+   Mantenha o `Bearer ` (com espaço) e o resto da expressão intactos.
+3. Confirme a URL do backend no mesmo nó.
+4. **Ative/Publique** o workflow e copie a **Production URL** do formulário
+   (aba do nó Form Trigger). Salve o link no celular — é o seu painel.
+
+## Fluxo completo (do Notion ao site)
+
+1. No Notion, crie a linha da manobra com o **Name** e marque **Status Automação = "a gerar"**.
+2. No formulário, escolha **Rodar automacao** → a IA preenche a linha e o status vira
+   `gerado — aguardando revisão`.
+3. **Revise no Notion.** Ajuste o texto e mude **Review status** para `Validado`.
+4. No formulário, escolha **Publicar no site (sync)**.
+
+O passo 3 não é burocracia: em teste, o `gpt-4.1` escreveu "gangliocisto" no lugar
+de vesícula biliar. Conteúdo gerado fica retido do site até alguém validar, e o
+sync mostra na tela o que ficou retido e por quê.
+
+## Timeout
+
+O nó HTTP está com 300s porque a primeira chamada pode acordar o Render (~50s de
+cold start) e cada geração usa a OpenAI. Se der timeout, rode *Simular (dry-run)*
+uma vez só para acordar o backend e tente de novo.
