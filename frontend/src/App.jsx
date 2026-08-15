@@ -963,6 +963,7 @@ function App() {
   const [currentPage, setCurrentPage] = useState(() => getInitialWorkspacePageFromPath());
   const [prescriptionGuideTarget, setPrescriptionGuideTarget] = useState(null);
   const [clinicalToolTarget, setClinicalToolTarget] = useState('');
+  const [maneuverTarget, setManeuverTarget] = useState('');
   const [anamneseStats, setAnamneseStats] = useState(null);
   const [anamneseActivity, setAnamneseActivity] = useState([]);
   const [recentAnamneses, setRecentAnamneses] = useState([]);
@@ -1590,6 +1591,7 @@ function App() {
 
     if (page === 'clinicalTools') {
       setClinicalToolTarget(options.clinicalToolSlug || '');
+      setManeuverTarget(options.maneuverSlug || '');
     }
 
     setCheckoutErrors({
@@ -2728,6 +2730,17 @@ function App() {
     handleNavigate('clinicalTools', { clinicalToolSlug: slug });
   };
 
+  // Manobra citada numa hipótese abre a página dela na aba Avaliação — o
+  // conteúdo revisado mora lá, não duplicado dentro do card.
+  const handleOpenHypothesisManeuver = (maneuver) => {
+    if (!maneuver?.slug) {
+      return;
+    }
+
+    trackEvent('hipotese_manobra_click', { maneuver: maneuver.name || null });
+    handleNavigate('clinicalTools', { maneuverSlug: maneuver.slug });
+  };
+
   const handleOpenHypothesisPrescription = (hypothesis) => {
     const guide = hypothesis?.prescriptionGuide || null;
     const prescriptionTarget = guide?.slug
@@ -3361,6 +3374,7 @@ function App() {
                   onGenerate={handleRequestDiagnosticHypotheses}
                   onRequestUpgrade={() => handleUpgradeInsights('home')}
                   onOpenPrescriptionGuide={handleOpenHypothesisPrescription}
+                  onOpenManeuver={handleOpenHypothesisManeuver}
                 />
               )}
             />
@@ -3465,6 +3479,7 @@ function App() {
           loadingCheckout={isClinicalToolsCheckoutLoading}
           checkoutError={clinicalToolsCheckoutError}
           initialToolSlug={clinicalToolTarget}
+          initialManeuverSlug={maneuverTarget}
         />
       )}
 

@@ -878,8 +878,10 @@ function ClinicalToolsPage({
   loadingCheckout,
   checkoutError,
   initialToolSlug = '',
+  initialManeuverSlug = '',
 }) {
-  const [pageTab, setPageTab] = useState('calculadoras');
+  // Link direto para uma manobra abre a aba dela; sem isso, cai nas calculadoras.
+  const [pageTab, setPageTab] = useState(initialManeuverSlug ? 'manobras' : 'calculadoras');
   const [query, setQuery] = useState(DEFAULT_QUERY);
   const [category, setCategory] = useState('');
   const [subcategory, setSubcategory] = useState('');
@@ -1153,7 +1155,7 @@ function ClinicalToolsPage({
         </div>
       </section>
 
-      {pageTab === 'manobras' ? <ManeuversSection /> : null}
+      {pageTab === 'manobras' ? <ManeuversSection initialSlug={initialManeuverSlug} /> : null}
 
       {pageTab === 'calculadoras' ? (
         <section className="prescription-guide-grid clinical-tool-grid">

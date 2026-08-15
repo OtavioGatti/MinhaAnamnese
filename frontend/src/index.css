@@ -1369,83 +1369,22 @@ body {
   white-space: nowrap;
 }
 
-/* Manobras de exame físico no card da hipótese diagnóstica. */
-.exam-maneuvers {
-  margin-top: 0.75rem;
-  padding-top: 0.7rem;
-  border-top: 1px solid var(--gray-200);
-}
-
-.exam-maneuvers > strong {
-  display: block;
-  margin-bottom: 0.4rem;
-  color: var(--gray-700);
-  font-size: 0.8rem;
-}
-
-.exam-maneuvers ul {
-  display: grid;
-  gap: 0.25rem;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.exam-maneuver-toggle {
-  display: inline-flex;
-  align-items: baseline;
-  gap: 0.35rem;
+/* Manobra citada no raciocínio clínico: vira link quando há conteúdo revisado
+   por trás. Sem correspondência no catálogo, o item fica texto simples. */
+.diagnostic-catalog-link {
   padding: 0;
   border: none;
   background: none;
   color: var(--primary-700);
   font: inherit;
-  font-size: 0.82rem;
   font-weight: 600;
   text-align: left;
   cursor: pointer;
 }
 
-.exam-maneuver-toggle:hover {
+.diagnostic-catalog-link:hover,
+.diagnostic-catalog-link:focus-visible {
   text-decoration: underline;
-}
-
-/* Sem conteúdo revisado por trás: fica texto, não link. */
-.exam-maneuver-uncatalogued span {
-  color: var(--gray-500);
-  font-size: 0.82rem;
-}
-
-.exam-maneuver-detail {
-  display: grid;
-  gap: 0.5rem;
-  margin: 0.4rem 0 0.5rem;
-  padding: 0.6rem 0.7rem;
-  border-left: 2px solid var(--primary-500);
-  border-radius: 0 8px 8px 0;
-  background: var(--gray-50);
-}
-
-.exam-maneuver-detail strong {
-  display: block;
-  color: var(--gray-700);
-  font-size: 0.72rem;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
-}
-
-.exam-maneuver-detail p {
-  margin: 0.1rem 0 0;
-  color: var(--gray-600);
-  font-size: 0.82rem;
-  line-height: 1.5;
-  white-space: pre-line;
-}
-
-.exam-maneuver-source {
-  color: var(--gray-500);
-  font-size: 0.75rem;
-  font-style: italic;
 }
 
 /* Detalhe da manobra na aba Avaliação. */

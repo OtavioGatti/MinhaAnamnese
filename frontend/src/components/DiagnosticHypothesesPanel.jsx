@@ -23,78 +23,39 @@ function ClinicalList({ title, items, tone = 'default' }) {
   );
 }
 
-const MANEUVER_DETAIL_FIELDS = [
-  { key: 'whenToPerform', label: 'Quando fazer' },
-  { key: 'howToPerform', label: 'Como executar' },
-  { key: 'positiveFinding', label: 'Achado positivo' },
-  { key: 'negativeFinding', label: 'Achado negativo' },
-  { key: 'clinicalUtility', label: 'Utilidade clínica' },
-];
+// Mesmo formato das outras listas do raciocínio clínico. O que casou com o
+// catálogo revisado vira link para a página da manobra; o que não casou fica
+// texto simples, porque não há conteúdo revisado para abrir.
+function ManeuverList({ suggestions, onOpenManeuver }) {
+  const items = Array.isArray(suggestions) ? suggestions : [];
 
-// A IA nomeia a manobra; a técnica e a interpretação vêm do catálogo revisado.
-// Sem correspondência no catálogo, fica só o nome — sem link e sem detalhe,
-// porque não há conteúdo revisado para mostrar.
-function ManeuverItem({ suggestion }) {
-  const [isExpanded, setIsExpanded] = useState(false);
-  const detailId = useId();
-  const maneuver = suggestion.maneuver;
-
-  if (!maneuver) {
-    return (
-      <li className="exam-maneuver exam-maneuver-uncatalogued">
-        <span>{suggestion.name}</span>
-      </li>
-    );
-  }
-
-  const details = MANEUVER_DETAIL_FIELDS
-    .map((field) => ({ ...field, text: String(maneuver[field.key] || '').trim() }))
-    .filter((field) => field.text);
-
-  return (
-    <li className="exam-maneuver">
-      <button
-        type="button"
-        className="exam-maneuver-toggle"
-        aria-expanded={isExpanded}
-        aria-controls={detailId}
-        onClick={() => setIsExpanded((expanded) => !expanded)}
-      >
-        <span aria-hidden="true">{isExpanded ? '▾' : '▸'}</span>
-        {maneuver.name}
-      </button>
-
-      <div id={detailId} className="exam-maneuver-detail" hidden={!isExpanded}>
-        {details.map((field) => (
-          <div key={field.key}>
-            <strong>{field.label}</strong>
-            <p>{field.text}</p>
-          </div>
-        ))}
-        {maneuver.source ? <p className="exam-maneuver-source">Fonte: {maneuver.source}</p> : null}
-      </div>
-    </li>
-  );
-}
-
-function ExamManeuvers({ suggestions }) {
-  if (!Array.isArray(suggestions) || suggestions.length === 0) {
+  if (items.length === 0) {
     return null;
   }
 
   return (
-    <div className="exam-maneuvers">
+    <div className="diagnostic-hypothesis-list">
       <strong>Exame físico específico</strong>
       <ul>
-        {suggestions.map((suggestion, index) => (
-          <ManeuverItem key={`${suggestion.name}-${index}`} suggestion={suggestion} />
+        {items.map((suggestion, index) => (
+          <li key={`${suggestion.name}-${index}`}>
+            {suggestion.maneuver ? (
+              <button
+                type="button"
+                className="diagnostic-catalog-link"
+                onClick={() => onOpenManeuver?.(suggestion.maneuver)}
+              >
+                {suggestion.maneuver.name}
+              </button>
+            ) : suggestion.name}
+          </li>
         ))}
       </ul>
     </div>
   );
 }
 
-function HypothesisCard({ hypothesis, index, onOpenPrescriptionGuide }) {
+function HypothesisCard({ hypothesis, index, onOpenPrescriptionGuide, onOpenManeuver }) {
   const guide = hypothesis.prescriptionGuide;
   const [isReasoningExpanded, setIsReasoningExpanded] = useState(false);
   const [isCidSearchExpanded, setIsCidSearchExpanded] = useState(false);
@@ -140,12 +101,11 @@ function HypothesisCard({ hypothesis, index, onOpenPrescriptionGuide }) {
         <div id={reasoningId} className="diagnostic-reasoning-content" hidden={!isReasoningExpanded}>
           <ClinicalList title="Evidências na história" items={hypothesis.supportingEvidence} tone="support" />
           <ClinicalList title="Dados ausentes ou conflitantes" items={hypothesis.missingOrConflictingData} />
+          <ManeuverList suggestions={hypothesis.examManeuvers} onOpenManeuver={onOpenManeuver} />
           <ClinicalList title="Como diferenciar" items={hypothesis.differentiatingSteps} />
           <ClinicalList title="Sinais de alerta" items={hypothesis.redFlags} tone="warning" />
         </div>
       </div>
-
-      <ExamManeuvers suggestions={hypothesis.examManeuvers} />
 
       {canSearchCid ? (
         <div className="diagnostic-cid-search">
@@ -189,6 +149,7 @@ function DiagnosticHypothesesPanel({
   onGenerate,
   onRequestUpgrade,
   onOpenPrescriptionGuide,
+  onOpenManeuver,
 }) {
   if (!hasStructuredResult) {
     return (
@@ -287,6 +248,7 @@ function DiagnosticHypothesesPanel({
           hypothesis={hypothesis}
           index={index}
           onOpenPrescriptionGuide={onOpenPrescriptionGuide}
+          onOpenManeuver={onOpenManeuver}
         />
       ))}
 

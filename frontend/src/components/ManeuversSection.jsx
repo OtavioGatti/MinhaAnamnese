@@ -108,12 +108,19 @@ function ManeuverDetail({ maneuver }) {
   );
 }
 
-function ManeuversSection() {
+function ManeuversSection({ initialSlug = '' }) {
   const [query, setQuery] = useState('');
   const [maneuvers, setManeuvers] = useState([]);
-  const [selectedSlug, setSelectedSlug] = useState('');
+  const [selectedSlug, setSelectedSlug] = useState(initialSlug);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+
+  // Chegada por link (ex.: manobra citada numa hipótese) troca a seleção.
+  useEffect(() => {
+    if (initialSlug) {
+      setSelectedSlug(initialSlug);
+    }
+  }, [initialSlug]);
 
   useEffect(() => {
     let ignore = false;
