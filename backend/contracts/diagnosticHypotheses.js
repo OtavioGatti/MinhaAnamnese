@@ -22,6 +22,7 @@ const DIAGNOSTIC_HYPOTHESES_SCHEMA = {
           'differentiatingSteps',
           'redFlags',
           'suggestedExamManeuvers',
+          'suggestedComplementaryExams',
         ],
         properties: {
           name: { type: 'string' },
@@ -53,6 +54,13 @@ const DIAGNOSTIC_HYPOTHESES_SCHEMA = {
           // Só o NOME da manobra. A técnica e a interpretação do achado vêm do
           // catálogo revisado (services/physicalExamManeuvers.js), nunca daqui.
           suggestedExamManeuvers: {
+            type: 'array',
+            maxItems: 4,
+            items: { type: 'string' },
+          },
+          // Só o NOME do exame. Como interpretar vem do catálogo revisado
+          // (services/diagnosticExams.js), nunca daqui.
+          suggestedComplementaryExams: {
             type: 'array',
             maxItems: 4,
             items: { type: 'string' },
@@ -131,6 +139,7 @@ function normalizeHypothesis(value) {
     redFlags: normalizeTextList(value?.redFlags, 6),
     // Nome curto: é um epônimo ("Sinal de Giordano"), não uma frase.
     suggestedExamManeuvers: normalizeTextList(value?.suggestedExamManeuvers, 4, 120),
+    suggestedComplementaryExams: normalizeTextList(value?.suggestedComplementaryExams, 4, 120),
   };
 }
 

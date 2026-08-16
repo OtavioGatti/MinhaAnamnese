@@ -10,9 +10,11 @@ const {
   buildDiagnosticHypothesesInstructions,
 } = require('../prompts/diagnosticHypothesesPrompt');
 const { getSyncedOfficialPrompt } = require('./officialPrompts');
+const { findExamByName, listExamNamesForPrompt } = require('./diagnosticExams');
 const { findManeuverByName, listManeuverNamesForPrompt } = require('./physicalExamManeuvers');
 const { findPrescriptionGuideForHypothesis } = require('./prescriptionGuides');
 const { recordUnmatchedHypotheses } = require('./unmatchedHypotheses');
+const { recordUnmatchedExams } = require('./unmatchedExams');
 const { recordUnmatchedManeuvers } = require('./unmatchedManeuvers');
 const { resolveTemplateById } = require('./templates');
 const { sanitizeText } = require('../utils/textSanitization');
@@ -212,6 +214,25 @@ async function attachExamManeuvers(hypotheses) {
   }));
 }
 
+// Casa cada exame sugerido com o catálogo revisado. Sem correspondência, o
+// exame continua aparecendo — só o nome — e entra no backlog editorial.
+async function attachComplementaryExams(hypotheses) {
+  return Promise.all((hypotheses || []).map(async (hypothesis) => {
+    const names = Array.isArray(hypothesis.suggestedComplementaryExams)
+      ? hypothesis.suggestedComplementaryExams
+      : [];
+    const complementaryExams = await Promise.all(names.map(async (name) => ({
+      name,
+      exam: await findExamByName(name).catch(() => null),
+    })));
+
+    return {
+      ...hypothesis,
+      complementaryExams,
+    };
+  }));
+}
+
 async function generateDiagnosticHypotheses({ template, structuredText, userId }) {
   const validationError = validateDiagnosticHypothesesInput({ template, structuredText });
 
@@ -252,12 +273,16 @@ async function generateDiagnosticHypotheses({ template, structuredText, userId }
   // Os nomes do catálogo entram no prompt como referência de grafia: o modelo
   // copia em vez de adivinhar, e o pareamento posterior acerta muito mais.
   // Best-effort — sem o catálogo, a IA nomeia livremente como antes.
-  const maneuverNames = await listManeuverNamesForPrompt().catch(() => []);
+  const [maneuverNames, examNames] = await Promise.all([
+    listManeuverNamesForPrompt().catch(() => []),
+    listExamNamesForPrompt().catch(() => []),
+  ]);
   const input = buildDiagnosticHypothesesInput({
     structuredHistory: sanitizedHistory,
     templateName: templateConfig.nome,
     clinicalCategory: templateConfig.categoryKey || templateConfig.clinicalCategoryKey || '',
     maneuverNames,
+    examNames,
   });
   const generationResponse = await createStructuredDiagnosticResponse({
     openai,
@@ -268,13 +293,16 @@ async function generateDiagnosticHypotheses({ template, structuredText, userId }
     promptVersion: syncedPrompt?.version || 0,
   });
   const parsed = generationResponse.parsed;
-  const hypotheses = await attachExamManeuvers(await attachPrescriptionGuides(parsed.hypotheses));
+  const hypotheses = await attachComplementaryExams(
+    await attachExamManeuvers(await attachPrescriptionGuides(parsed.hypotheses)),
+  );
 
   // Backlog editorial do que ainda falta escrever (prescrições e manobras).
   // Best-effort: nunca deve derrubar a análise clínica já pronta.
   await Promise.all([
     recordUnmatchedHypotheses(hypotheses).catch(() => 0),
     recordUnmatchedManeuvers(hypotheses).catch(() => 0),
+    recordUnmatchedExams(hypotheses).catch(() => 0),
   ]);
 
   return {
