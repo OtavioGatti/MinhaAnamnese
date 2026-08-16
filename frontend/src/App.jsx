@@ -964,6 +964,7 @@ function App() {
   const [prescriptionGuideTarget, setPrescriptionGuideTarget] = useState(null);
   const [clinicalToolTarget, setClinicalToolTarget] = useState('');
   const [maneuverTarget, setManeuverTarget] = useState('');
+  const [examTarget, setExamTarget] = useState('');
   const [anamneseStats, setAnamneseStats] = useState(null);
   const [anamneseActivity, setAnamneseActivity] = useState([]);
   const [recentAnamneses, setRecentAnamneses] = useState([]);
@@ -1592,6 +1593,7 @@ function App() {
     if (page === 'clinicalTools') {
       setClinicalToolTarget(options.clinicalToolSlug || '');
       setManeuverTarget(options.maneuverSlug || '');
+      setExamTarget(options.examSlug || '');
     }
 
     setCheckoutErrors({
@@ -2741,6 +2743,17 @@ function App() {
     handleNavigate('clinicalTools', { maneuverSlug: maneuver.slug });
   };
 
+  // Exame citado numa hipótese abre a página dele na aba Avaliação — como
+  // interpretar mora lá, não duplicado dentro do card.
+  const handleOpenHypothesisExam = (exam) => {
+    if (!exam?.slug) {
+      return;
+    }
+
+    trackEvent('hipotese_exame_click', { exam: exam.name || null });
+    handleNavigate('clinicalTools', { examSlug: exam.slug });
+  };
+
   const handleOpenHypothesisPrescription = (hypothesis) => {
     const guide = hypothesis?.prescriptionGuide || null;
     const prescriptionTarget = guide?.slug
@@ -3375,6 +3388,7 @@ function App() {
                   onRequestUpgrade={() => handleUpgradeInsights('home')}
                   onOpenPrescriptionGuide={handleOpenHypothesisPrescription}
                   onOpenManeuver={handleOpenHypothesisManeuver}
+                  onOpenExam={handleOpenHypothesisExam}
                 />
               )}
             />
@@ -3480,6 +3494,7 @@ function App() {
           checkoutError={clinicalToolsCheckoutError}
           initialToolSlug={clinicalToolTarget}
           initialManeuverSlug={maneuverTarget}
+          initialExamSlug={examTarget}
         />
       )}
 

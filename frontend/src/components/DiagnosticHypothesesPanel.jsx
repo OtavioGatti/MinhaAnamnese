@@ -24,9 +24,9 @@ function ClinicalList({ title, items, tone = 'default' }) {
 }
 
 // Mesmo formato das outras listas do raciocínio clínico. O que casou com o
-// catálogo revisado vira link para a página da manobra; o que não casou fica
+// catálogo revisado vira link para a página do item; o que não casou fica
 // texto simples, porque não há conteúdo revisado para abrir.
-function ManeuverList({ suggestions, onOpenManeuver }) {
+function CatalogList({ title, suggestions, itemKey, onOpen }) {
   const items = Array.isArray(suggestions) ? suggestions : [];
 
   if (items.length === 0) {
@@ -35,27 +35,31 @@ function ManeuverList({ suggestions, onOpenManeuver }) {
 
   return (
     <div className="diagnostic-hypothesis-list">
-      <strong>Exame físico específico</strong>
+      <strong>{title}</strong>
       <ul>
-        {items.map((suggestion, index) => (
-          <li key={`${suggestion.name}-${index}`}>
-            {suggestion.maneuver ? (
-              <button
-                type="button"
-                className="diagnostic-catalog-link"
-                onClick={() => onOpenManeuver?.(suggestion.maneuver)}
-              >
-                {suggestion.maneuver.name}
-              </button>
-            ) : suggestion.name}
-          </li>
-        ))}
+        {items.map((suggestion, index) => {
+          const match = suggestion[itemKey];
+
+          return (
+            <li key={`${suggestion.name}-${index}`}>
+              {match ? (
+                <button
+                  type="button"
+                  className="diagnostic-catalog-link"
+                  onClick={() => onOpen?.(match)}
+                >
+                  {match.name}
+                </button>
+              ) : suggestion.name}
+            </li>
+          );
+        })}
       </ul>
     </div>
   );
 }
 
-function HypothesisCard({ hypothesis, index, onOpenPrescriptionGuide, onOpenManeuver }) {
+function HypothesisCard({ hypothesis, index, onOpenPrescriptionGuide, onOpenManeuver, onOpenExam }) {
   const guide = hypothesis.prescriptionGuide;
   const [isReasoningExpanded, setIsReasoningExpanded] = useState(false);
   const [isCidSearchExpanded, setIsCidSearchExpanded] = useState(false);
@@ -101,7 +105,18 @@ function HypothesisCard({ hypothesis, index, onOpenPrescriptionGuide, onOpenMane
         <div id={reasoningId} className="diagnostic-reasoning-content" hidden={!isReasoningExpanded}>
           <ClinicalList title="Evidências na história" items={hypothesis.supportingEvidence} tone="support" />
           <ClinicalList title="Dados ausentes ou conflitantes" items={hypothesis.missingOrConflictingData} />
-          <ManeuverList suggestions={hypothesis.examManeuvers} onOpenManeuver={onOpenManeuver} />
+          <CatalogList
+            title="Exame físico específico"
+            suggestions={hypothesis.examManeuvers}
+            itemKey="maneuver"
+            onOpen={onOpenManeuver}
+          />
+          <CatalogList
+            title="Exames complementares"
+            suggestions={hypothesis.complementaryExams}
+            itemKey="exam"
+            onOpen={onOpenExam}
+          />
           <ClinicalList title="Como diferenciar" items={hypothesis.differentiatingSteps} />
           <ClinicalList title="Sinais de alerta" items={hypothesis.redFlags} tone="warning" />
         </div>
@@ -150,6 +165,7 @@ function DiagnosticHypothesesPanel({
   onRequestUpgrade,
   onOpenPrescriptionGuide,
   onOpenManeuver,
+  onOpenExam,
 }) {
   if (!hasStructuredResult) {
     return (
@@ -249,6 +265,7 @@ function DiagnosticHypothesesPanel({
           index={index}
           onOpenPrescriptionGuide={onOpenPrescriptionGuide}
           onOpenManeuver={onOpenManeuver}
+          onOpenExam={onOpenExam}
         />
       ))}
 

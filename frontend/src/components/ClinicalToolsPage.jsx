@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { api } from '../apiClient';
+import ExamsSection from './ExamsSection';
 import ManeuversSection from './ManeuversSection';
 import {
   buildChecklistCopyText,
@@ -879,9 +880,14 @@ function ClinicalToolsPage({
   checkoutError,
   initialToolSlug = '',
   initialManeuverSlug = '',
+  initialExamSlug = '',
 }) {
-  // Link direto para uma manobra abre a aba dela; sem isso, cai nas calculadoras.
-  const [pageTab, setPageTab] = useState(initialManeuverSlug ? 'manobras' : 'calculadoras');
+  // Link direto abre a aba do item; sem isso, cai nas calculadoras.
+  const [pageTab, setPageTab] = useState(() => {
+    if (initialManeuverSlug) return 'manobras';
+    if (initialExamSlug) return 'exames';
+    return 'calculadoras';
+  });
   const [query, setQuery] = useState(DEFAULT_QUERY);
   const [category, setCategory] = useState('');
   const [subcategory, setSubcategory] = useState('');
@@ -1152,10 +1158,26 @@ function ClinicalToolsPage({
             </svg>
             Manobras
           </button>
+          <button
+            type="button"
+            role="tab"
+            aria-selected={pageTab === 'exames'}
+            className={`prescription-section-tab ${pageTab === 'exames' ? 'active' : ''}`}
+            onClick={() => setPageTab('exames')}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <path d="M9 2v6.5L4.6 17a2 2 0 0 0 1.7 3h11.4a2 2 0 0 0 1.7-3L15 8.5V2" />
+              <path d="M8 2h8" />
+              <path d="M6.5 14h11" />
+            </svg>
+            Exames
+          </button>
         </div>
       </section>
 
       {pageTab === 'manobras' ? <ManeuversSection initialSlug={initialManeuverSlug} /> : null}
+
+      {pageTab === 'exames' ? <ExamsSection initialSlug={initialExamSlug} /> : null}
 
       {pageTab === 'calculadoras' ? (
         <section className="prescription-guide-grid clinical-tool-grid">

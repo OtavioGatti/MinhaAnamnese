@@ -5,7 +5,7 @@ Este diretório reúne os workflows de n8n usados pela operação do produto:
 - `keep-warm-render.json` — mantém o backend do Render acordado (ver seção abaixo).
 - `affiliate-payout-whatsapp.json` — avisa o dono no WhatsApp quando um afiliado solicita saque.
 - `affiliate-payout-settle-form.json` — "painel" (formulário hospedado) para dar baixa nos saques.
-- `maneuvers-panel-form.json` — painel de manobras de exame físico (gerar/corrigir/publicar) pelo celular.
+- `catalogs-panel-form.json` — painel de manobras e exames complementares (gerar/corrigir/publicar) pelo celular.
 
 ---
 
@@ -181,28 +181,30 @@ O formulário mostra a resposta da API (sucesso ou erro) na própria tela após 
 
 ---
 
-# Painel de Manobras de Exame Físico (n8n Form)
+# Painel de Manobras e Exames (n8n Form)
 
 O mesmo formato do painel de saques: um formulário hospedado pelo n8n, com link
 que dá para salvar na tela inicial do celular. Serve para rodar a automação de
-manobras sem abrir o painel desktop (`painel_app.py`).
+manobras e de exames complementares sem abrir o painel desktop (`painel_app.py`).
 
 ## Arquivo
 
-- `maneuvers-panel-form.json` — **Form Trigger** → **HTTP Request (API admin)** → **Code (resumo legível)**.
+- `catalogs-panel-form.json` — **Form Trigger** → **HTTP Request (API admin)** → **Code (resumo legível)**.
+
+O primeiro campo do formulário é **catalogo** (Manobras ou Exames) — ele decide o par de rotas usado.
 
 ## O que cada ação faz
 
-| Ação no formulário | Rota chamada | Efeito |
-|---|---|---|
-| Rodar automacao (gerar/corrigir) | `POST /api/admin/maneuvers/automation-run` | Gera/corrige as linhas marcadas `a gerar`/`a corrigir` e **escreve no Notion** |
-| Simular (dry-run) | a mesma, com `dryRun: true` | Roda tudo e mostra o resultado, **sem escrever** |
-| Publicar no site (sync) | `POST /api/admin/physical-exam-maneuvers/sync` | Notion → Supabase: é o passo que faz o conteúdo aparecer no app |
-| Enfileirar incompletas | `POST /api/admin/maneuvers/queue-incomplete` | Marca `a corrigir` nas publicadas com campo vazio (não gera nada) |
-| Preview de geracao | `POST /api/admin/maneuvers/generate-preview` | Gera uma manobra pelo nome e devolve na tela, **sem tocar no Notion** |
+| Ação | Rota (Manobras) | Rota (Exames) | Efeito |
+|---|---|---|---|
+| Rodar automacao | `maneuvers/automation-run` | `exams/automation-run` | Gera/corrige as linhas marcadas `a gerar`/`a corrigir` e **escreve no Notion** |
+| Simular (dry-run) | a mesma, com `dryRun: true` | idem | Roda tudo e mostra o resultado, **sem escrever** |
+| Publicar no site (sync) | `physical-exam-maneuvers/sync` | `diagnostic-exams/sync` | Notion → Supabase: faz o conteúdo aparecer no app |
+| Enfileirar incompletas | `maneuvers/queue-incomplete` | `exams/queue-incomplete` | Marca `a corrigir` nas publicadas com campo vazio |
+| Preview de geracao | `maneuvers/generate-preview` | `exams/generate-preview` | Gera pelo nome e devolve na tela, **sem tocar no Notion** |
 
-Os campos **limite** (padrão 5) e **nome_da_manobra** são opcionais — o segundo só
-é usado no *Preview de geracao*.
+Todas com prefixo `POST /api/admin/`. Os campos **limite** (padrão 5) e
+**nome_do_item** são opcionais — o segundo só é usado no *Preview de geracao*.
 
 ## Pré-requisito: DOIS segredos
 
@@ -210,8 +212,9 @@ As rotas não usam o mesmo segredo, e isso não é descuido — o sync é uma ro
 administrativa comum, a automação tem segredo próprio para poder ser girado sem
 derrubar o resto:
 
-- **automação** (`maneuvers/*`): `MANEUVER_AUTOMATION_SECRET` → `PROTOCOL_AUTOMATION_SECRET` → `ADMIN_SYNC_SECRET` (a primeira que existir vence)
-- **sync** (`physical-exam-maneuvers/sync`): apenas `ADMIN_SYNC_SECRET`
+- **automação de manobras** (`maneuvers/*`): `MANEUVER_AUTOMATION_SECRET` → `PROTOCOL_AUTOMATION_SECRET` → `ADMIN_SYNC_SECRET` (a primeira que existir vence)
+- **automação de exames** (`exams/*`): `EXAM_AUTOMATION_SECRET` → `PROTOCOL_AUTOMATION_SECRET` → `ADMIN_SYNC_SECRET`
+- **sync** (ambos): apenas `ADMIN_SYNC_SECRET`
 
 Por isso o header do nó HTTP é uma **expressão** que troca o segredo conforme a
 ação escolhida. Se os dois valores forem iguais no seu Render, pode repetir o
@@ -223,7 +226,7 @@ mesmo nos dois lugares.
 
 ## Configurar
 
-1. Importe `maneuvers-panel-form.json` no n8n (**Import from File**).
+1. Importe `catalogs-panel-form.json` no n8n (**Import from File**).
 2. Abra o nó **Chamar API admin** → **Header Parameters** → campo `Authorization`.
    Troque os **dois** placeholders pelos valores reais:
    - `SEU_ADMIN_SYNC_SECRET` → valor de `ADMIN_SYNC_SECRET`
@@ -235,15 +238,20 @@ mesmo nos dois lugares.
 
 ## Fluxo completo (do Notion ao site)
 
-1. No Notion, crie a linha da manobra com o **Name** e marque **Status Automação = "a gerar"**.
-2. No formulário, escolha **Rodar automacao** → a IA preenche a linha e o status vira
-   `gerado — aguardando revisão`.
+1. No Notion, crie a linha (na base de Manobras ou de Exames) com o **Name** e
+   marque **Status Automação = "a gerar"**.
+2. No formulário, escolha o **catalogo** e **Rodar automacao** → a IA preenche a
+   linha e o status vira `gerado — aguardando revisão`.
 3. **Revise no Notion.** Ajuste o texto e mude **Review status** para `Validado`.
 4. No formulário, escolha **Publicar no site (sync)**.
 
 O passo 3 não é burocracia: em teste, o `gpt-4.1` escreveu "gangliocisto" no lugar
 de vesícula biliar. Conteúdo gerado fica retido do site até alguém validar, e o
 sync mostra na tela o que ficou retido e por quê.
+
+Nos **exames**, a atenção extra é com faixa de referência: o prompt manda escrever
+"(faixa orientativa)" em vez de número quando não há fonte, mas confira sempre —
+um número errado apresentado como universal é o pior erro possível neste catálogo.
 
 ## Timeout
 

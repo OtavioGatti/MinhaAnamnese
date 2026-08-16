@@ -1,0 +1,180 @@
+import { useEffect, useState } from 'react';
+import { api } from '../apiClient';
+
+// Catálogo de exames complementares dentro da aba Avaliação. Mesmo layout das
+// manobras (lista à esquerda, detalhe em seções à direita).
+
+const SEARCH_DEBOUNCE_MS = 320;
+
+// O aviso de faixa de referência é fixo, não vem do CMS: que o valor varia por
+// laboratório é regra clínica, e uma edição no Notion não pode tirar isso da
+// tela. O texto espelha EXAM_REFERENCE_DISCLAIMER no backend.
+const REFERENCE_DISCLAIMER = 'Faixas de referência variam por laboratório, método de análise, idade, sexo e gestação. O que está aqui é orientação geral — o intervalo do laudo do seu laboratório sempre prevalece.';
+
+const DETAIL_SECTIONS = [
+  { key: 'whenToRequest', title: 'Quando pedir' },
+  { key: 'preparation', title: 'Preparo' },
+  { key: 'howToInterpret', title: 'Como interpretar' },
+  { key: 'limitations', title: 'Limitações' },
+  { key: 'source', title: 'Fonte' },
+];
+
+function ExamSidebar({ query, setQuery, exams, selectedSlug, setSelectedSlug, loading, error }) {
+  return (
+    <aside className="protocol-sidebar">
+      <label className="protocol-search-label" htmlFor="exam-search">
+        Buscar exame
+      </label>
+      <input
+        id="exam-search"
+        className="protocol-search-input"
+        value={query}
+        onChange={(event) => {
+          setQuery(event.target.value);
+          setSelectedSlug('');
+        }}
+        placeholder="Ex: hemograma, urina, pielonefrite"
+        autoComplete="off"
+      />
+
+      {error ? <div className="prescription-error">{error}</div> : null}
+
+      <div className="protocol-results-list" aria-live="polite">
+        {loading ? (
+          <div className="prescription-empty">Buscando exames...</div>
+        ) : exams.length > 0 ? (
+          exams.map((exam) => (
+            <button
+              key={exam.slug}
+              type="button"
+              className={`protocol-result-item ${exam.slug === selectedSlug ? 'active' : ''}`}
+              onClick={() => setSelectedSlug(exam.slug)}
+            >
+              <strong>{exam.name}</strong>
+              <span>{[exam.category, exam.relatedConditions].filter(Boolean).join(' · ')}</span>
+            </button>
+          ))
+        ) : (
+          <div className="prescription-empty">
+            {query.trim()
+              ? 'Nenhum exame encontrado para esta busca.'
+              : 'Nenhum exame publicado ainda.'}
+          </div>
+        )}
+      </div>
+    </aside>
+  );
+}
+
+function ExamDetail({ exam }) {
+  const sections = DETAIL_SECTIONS
+    .map((definition) => ({ ...definition, text: String(exam[definition.key] || '').trim() }))
+    .filter((section) => section.text);
+
+  return (
+    <>
+      <header className="protocol-header">
+        <div className="protocol-header-copy">
+          <h2>{exam.name}</h2>
+          {exam.aliases ? <p>{exam.aliases}</p> : null}
+        </div>
+        <div className="protocol-header-meta">
+          {exam.category ? (
+            <div className="protocol-meta-group">
+              <span>Tipo</span>
+              <strong>{exam.category}</strong>
+            </div>
+          ) : null}
+          {exam.relatedConditions ? (
+            <div className="protocol-meta-group">
+              <span>Relacionado a</span>
+              <strong>{exam.relatedConditions}</strong>
+            </div>
+          ) : null}
+        </div>
+      </header>
+
+      <div className="maneuver-safety-notice">{REFERENCE_DISCLAIMER}</div>
+
+      <div className="maneuver-sections">
+        {sections.map((section) => (
+          <section key={section.key} className="maneuver-section">
+            <h3>{section.title}</h3>
+            <p>{section.text}</p>
+          </section>
+        ))}
+      </div>
+    </>
+  );
+}
+
+function ExamsSection({ initialSlug = '' }) {
+  const [query, setQuery] = useState('');
+  const [exams, setExams] = useState([]);
+  const [selectedSlug, setSelectedSlug] = useState(initialSlug);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+
+  // Chegada por link (ex.: exame citado numa hipótese) troca a seleção.
+  useEffect(() => {
+    if (initialSlug) {
+      setSelectedSlug(initialSlug);
+    }
+  }, [initialSlug]);
+
+  useEffect(() => {
+    let ignore = false;
+
+    const timeoutId = window.setTimeout(async () => {
+      setLoading(true);
+      setError('');
+
+      const params = new URLSearchParams({ q: query.trim(), limit: '60' });
+      const response = await api.get(`/diagnostic-exams?${params.toString()}`).catch(() => null);
+
+      if (ignore) {
+        return;
+      }
+
+      if (response?.success && Array.isArray(response.data)) {
+        setExams(response.data);
+      } else {
+        setExams([]);
+        setError(response?.error || 'Não foi possível carregar os exames agora.');
+      }
+
+      setLoading(false);
+    }, SEARCH_DEBOUNCE_MS);
+
+    return () => {
+      ignore = true;
+      window.clearTimeout(timeoutId);
+    };
+  }, [query]);
+
+  const selectedExam = exams.find((exam) => exam.slug === selectedSlug) || null;
+
+  return (
+    <section className="prescription-guide-grid">
+      <ExamSidebar
+        query={query}
+        setQuery={setQuery}
+        exams={exams}
+        selectedSlug={selectedSlug}
+        setSelectedSlug={setSelectedSlug}
+        loading={loading}
+        error={error}
+      />
+
+      <article className="protocol-detail-panel">
+        {selectedExam ? (
+          <ExamDetail exam={selectedExam} />
+        ) : (
+          <div className="prescription-empty">Selecione um exame para ver quando pedir e como interpretar.</div>
+        )}
+      </article>
+    </section>
+  );
+}
+
+export default ExamsSection;
