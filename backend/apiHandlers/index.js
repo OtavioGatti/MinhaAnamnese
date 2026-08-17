@@ -43,6 +43,8 @@ const apiRoutes = {
   '/api/admin/exams/generate-preview': require('./admin/exam-generate-preview'),
   '/api/admin/exams/automation-run': require('./admin/exam-automation-run'),
   '/api/admin/exams/queue-incomplete': require('./admin/exam-queue-incomplete'),
+  '/api/admin/clinical-tools/generate-preview': require('./admin/clinical-tool-generate-preview'),
+  '/api/admin/clinical-tools/automation-run': require('./admin/clinical-tool-automation-run'),
   '/api/admin/protocols/generate-preview': require('./admin/protocol-generate-preview'),
   '/api/admin/protocols/availability-report': require('./admin/protocol-availability-report'),
   '/api/admin/protocols/automation-run': require('./admin/protocol-automation-run'),

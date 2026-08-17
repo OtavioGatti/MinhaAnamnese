@@ -92,7 +92,9 @@ module.exports = async function handler(req, res) {
 
   let result;
   try {
-    result = await syncNotionClinicalTools();
+    // Sync manual: quem clicou foi o humano, então o que está "aguardando
+    // revisão" pode publicar. Um webhook automático não passa isso.
+    result = await syncNotionClinicalTools({ bypassReviewGate: true });
   } catch (error) {
     const statusCode = Number(error?.statusCode) || 500;
     const responseBody = String(error?.responseBody || '');

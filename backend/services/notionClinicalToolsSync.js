@@ -3,6 +3,7 @@ const {
   normalizeSlug,
   normalizeToolType,
 } = require('./clinicalTools');
+const { shouldHoldFromSync } = require('../contracts/clinicalToolAutomation');
 
 const DEFAULT_NOTION_VERSION = '2026-03-11';
 const MAX_SYNC_PAGES = 1000;
@@ -527,13 +528,29 @@ function buildClinicalToolsDebug(skipped) {
   };
 }
 
-async function syncNotionClinicalTools() {
+// `bypassReviewGate` = sync manual (o humano clicou). No automático fica false,
+// e ferramenta recém-gerada pela IA é retida até alguém revisar a lógica.
+async function syncNotionClinicalTools({ bypassReviewGate = false } = {}) {
   const pages = await queryNotionClinicalToolPages();
   const mapped = [];
   const skipped = [];
+  const held = [];
 
   for (const page of pages) {
     try {
+      const automationStatus = readFirstExistingTextProperty(page?.properties || {}, [
+        'status automacao',
+        'status automação',
+      ]);
+
+      if (shouldHoldFromSync(automationStatus, { bypassReviewGate })) {
+        held.push({
+          title: readFirstExistingTextProperty(page?.properties || {}, ['titulo', 'title']) || null,
+          automationStatus,
+        });
+        continue;
+      }
+
       const mappedTool = mapNotionPageToClinicalTool(page);
 
       if (mappedTool.error) {
@@ -568,6 +585,7 @@ async function syncNotionClinicalTools() {
   return {
     totalFromNotion: pages.length,
     synced: persisted.length,
+    held,
     skipped,
     debug,
   };
