@@ -1,5 +1,6 @@
-import { useEffect, useId, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { api } from '../apiClient';
+import CatalogFilterPanel, { getCatalogFilterValues } from './CatalogFilterPanel';
 import ExamsSection from './ExamsSection';
 import ManeuversSection from './ManeuversSection';
 import {
@@ -49,14 +50,6 @@ function getToolMeta(tool, { includeCategory = true } = {}) {
     tool?.subcategory,
     TOOL_TYPE_LABELS[tool?.toolType] || 'Ferramenta',
   ].filter(Boolean);
-}
-
-function sortLabels(labels) {
-  return [...labels].sort((a, b) => a.localeCompare(b, 'pt-BR'));
-}
-
-function getUniqueValues(tools, key) {
-  return sortLabels([...new Set(tools.map((tool) => tool[key]).filter(Boolean))]);
 }
 
 function groupToolsByCategory(tools) {
@@ -409,115 +402,6 @@ async function copyTextToClipboard(text) {
   document.body.removeChild(textarea);
 }
 
-function ToolFilterChips({ label, values, selected, onSelect }) {
-  if (values.length === 0) {
-    return null;
-  }
-
-  return (
-    <div className="clinical-tool-filter-row">
-      <span className="clinical-tool-filter-label">{label}</span>
-      <div className="clinical-tool-filter-chips">
-        <button
-          type="button"
-          className={`clinical-tool-filter-chip ${selected ? '' : 'active'}`}
-          onClick={() => onSelect('')}
-        >
-          Todas
-        </button>
-        {values.map((value) => (
-          <button
-            key={value}
-            type="button"
-            className={`clinical-tool-filter-chip ${value === selected ? 'active' : ''}`}
-            onClick={() => onSelect(value === selected ? '' : value)}
-            aria-pressed={value === selected}
-          >
-            {value}
-          </button>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-// Filtros recolhidos por padrão: com 13 especialidades, os chips sempre abertos
-// viravam uma parede de pílulas na coluna estreita. Fechado, o que está ativo
-// continua na tela — filtro invisível que encurta a lista sem avisar confunde
-// mais do que a poluição que ele evita.
-function ClinicalToolFilters({
-  category,
-  setCategory,
-  onClearCategory,
-  subcategory,
-  setSubcategory,
-  categories,
-  subcategories,
-}) {
-  const [isExpanded, setIsExpanded] = useState(false);
-  const panelId = useId();
-
-  if (categories.length === 0 && subcategories.length === 0) {
-    return null;
-  }
-
-  const activeFilters = [
-    category ? { key: 'category', label: category, clear: onClearCategory } : null,
-    subcategory ? { key: 'subcategory', label: subcategory, clear: () => setSubcategory('') } : null,
-  ].filter(Boolean);
-
-  return (
-    <div className="clinical-tool-filters">
-      <button
-        type="button"
-        className="clinical-tool-filters-toggle"
-        aria-expanded={isExpanded}
-        aria-controls={panelId}
-        onClick={() => setIsExpanded((expanded) => !expanded)}
-      >
-        <span aria-hidden="true">{isExpanded ? '▾' : '▸'}</span>
-        Filtros
-        {activeFilters.length > 0 ? (
-          <span className="clinical-tool-filters-count">{activeFilters.length}</span>
-        ) : null}
-      </button>
-
-      {!isExpanded && activeFilters.length > 0 ? (
-        <div className="clinical-tool-filters-active">
-          {activeFilters.map((filter) => (
-            <button
-              key={filter.key}
-              type="button"
-              className="clinical-tool-filter-chip active"
-              aria-label={`Remover filtro ${filter.label}`}
-              onClick={filter.clear}
-            >
-              {filter.label}
-              <span aria-hidden="true">×</span>
-            </button>
-          ))}
-        </div>
-      ) : null}
-
-      <div id={panelId} className="clinical-tool-filters-panel" hidden={!isExpanded}>
-        <ToolFilterChips
-          label="Especialidade"
-          values={categories}
-          selected={category}
-          onSelect={setCategory}
-        />
-
-        <ToolFilterChips
-          label="Tipo"
-          values={subcategories}
-          selected={subcategory}
-          onSelect={setSubcategory}
-        />
-      </div>
-    </div>
-  );
-}
-
 function ToolResultItem({ tool, selectedSlug, setSelectedSlug, includeCategory }) {
   const meta = getToolMeta(tool, { includeCategory }).join(' · ');
 
@@ -570,14 +454,24 @@ function ClinicalToolSidebar({
         placeholder="Ex: HEART, IMC, M-CHAT"
       />
 
-      <ClinicalToolFilters
-        category={category}
-        setCategory={setCategory}
-        onClearCategory={onClearCategory}
-        subcategory={subcategory}
-        setSubcategory={setSubcategory}
-        categories={categories}
-        subcategories={subcategories}
+      <CatalogFilterPanel
+        groups={[
+          {
+            key: 'category',
+            label: 'Especialidade',
+            values: categories,
+            selected: category,
+            onSelect: setCategory,
+            onClear: onClearCategory,
+          },
+          {
+            key: 'subcategory',
+            label: 'Tipo',
+            values: subcategories,
+            selected: subcategory,
+            onSelect: setSubcategory,
+          },
+        ]}
       />
 
       {error ? <div className="prescription-error">{error}</div> : null}
@@ -1082,11 +976,11 @@ function ClinicalToolsPage({
     setSelectedSlug(initialToolSlug);
   }, [initialToolSlug]);
 
-  const categories = useMemo(() => getUniqueValues(catalog, 'category'), [catalog]);
+  const categories = useMemo(() => getCatalogFilterValues(catalog, 'category'), [catalog]);
 
   const subcategories = useMemo(() => {
     const scoped = category ? catalog.filter((tool) => tool.category === category) : catalog;
-    return getUniqueValues(scoped, 'subcategory');
+    return getCatalogFilterValues(scoped, 'subcategory');
   }, [catalog, category]);
 
   // Subcategoria refina no cliente: é um recorte estreito dentro de um resultado

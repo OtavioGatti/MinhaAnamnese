@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { api } from '../apiClient';
+import CatalogFilterPanel, { getCatalogFilterValues } from './CatalogFilterPanel';
 
 // Catálogo de manobras de exame físico dentro da aba Avaliação. Reaproveita o
 // layout de Protocolos (lista à esquerda, detalhe em seções à direita) porque o
@@ -16,7 +17,18 @@ const DETAIL_SECTIONS = [
   { key: 'source', title: 'Fonte' },
 ];
 
-function ManeuverSidebar({ query, setQuery, maneuvers, selectedSlug, setSelectedSlug, loading, error }) {
+function ManeuverSidebar({
+  query,
+  setQuery,
+  category,
+  setCategory,
+  categories,
+  maneuvers,
+  selectedSlug,
+  setSelectedSlug,
+  loading,
+  error,
+}) {
   return (
     <aside className="protocol-sidebar">
       <label className="protocol-search-label" htmlFor="maneuver-search">
@@ -32,6 +44,16 @@ function ManeuverSidebar({ query, setQuery, maneuvers, selectedSlug, setSelected
         }}
         placeholder="Ex: Giordano, pielonefrite, joelho"
         autoComplete="off"
+      />
+
+      <CatalogFilterPanel
+        groups={[{
+          key: 'category',
+          label: 'Região',
+          values: categories,
+          selected: category,
+          onSelect: setCategory,
+        }]}
       />
 
       {error ? <div className="prescription-error">{error}</div> : null}
@@ -53,7 +75,7 @@ function ManeuverSidebar({ query, setQuery, maneuvers, selectedSlug, setSelected
           ))
         ) : (
           <div className="prescription-empty">
-            {query.trim()
+            {query.trim() || category
               ? 'Nenhuma manobra encontrada para esta busca.'
               : 'Nenhuma manobra publicada ainda.'}
           </div>
@@ -110,7 +132,11 @@ function ManeuverDetail({ maneuver }) {
 
 function ManeuversSection({ initialSlug = '' }) {
   const [query, setQuery] = useState('');
+  const [category, setCategory] = useState('');
   const [maneuvers, setManeuvers] = useState([]);
+  // Catálogo completo (primeira carga, sem busca nem filtro): alimenta os chips
+  // para que as regiões não sumam conforme a busca estreita o resultado.
+  const [catalog, setCatalog] = useState([]);
   const [selectedSlug, setSelectedSlug] = useState(initialSlug);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -130,6 +156,11 @@ function ManeuversSection({ initialSlug = '' }) {
       setError('');
 
       const params = new URLSearchParams({ q: query.trim(), limit: '60' });
+
+      if (category) {
+        params.set('category', category);
+      }
+
       const response = await api.get(`/physical-exam-maneuvers?${params.toString()}`).catch(() => null);
 
       if (ignore) {
@@ -138,6 +169,10 @@ function ManeuversSection({ initialSlug = '' }) {
 
       if (response?.success && Array.isArray(response.data)) {
         setManeuvers(response.data);
+
+        if (!query.trim() && !category) {
+          setCatalog(response.data);
+        }
       } else {
         setManeuvers([]);
         setError(response?.error || 'Não foi possível carregar as manobras agora.');
@@ -150,7 +185,14 @@ function ManeuversSection({ initialSlug = '' }) {
       ignore = true;
       window.clearTimeout(timeoutId);
     };
-  }, [query]);
+  }, [category, query]);
+
+  const categories = useMemo(() => getCatalogFilterValues(catalog, 'category'), [catalog]);
+
+  function handleCategoryChange(value) {
+    setCategory(value);
+    setSelectedSlug('');
+  }
 
   const selectedManeuver = maneuvers.find((maneuver) => maneuver.slug === selectedSlug) || null;
 
@@ -159,6 +201,9 @@ function ManeuversSection({ initialSlug = '' }) {
       <ManeuverSidebar
         query={query}
         setQuery={setQuery}
+        category={category}
+        setCategory={handleCategoryChange}
+        categories={categories}
         maneuvers={maneuvers}
         selectedSlug={selectedSlug}
         setSelectedSlug={setSelectedSlug}

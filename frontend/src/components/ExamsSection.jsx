@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { api } from '../apiClient';
+import CatalogFilterPanel, { getCatalogFilterValues } from './CatalogFilterPanel';
 
 // Catálogo de exames complementares dentro da aba Avaliação. Mesmo layout das
 // manobras (lista à esquerda, detalhe em seções à direita).
@@ -19,7 +20,18 @@ const DETAIL_SECTIONS = [
   { key: 'source', title: 'Fonte' },
 ];
 
-function ExamSidebar({ query, setQuery, exams, selectedSlug, setSelectedSlug, loading, error }) {
+function ExamSidebar({
+  query,
+  setQuery,
+  category,
+  setCategory,
+  categories,
+  exams,
+  selectedSlug,
+  setSelectedSlug,
+  loading,
+  error,
+}) {
   return (
     <aside className="protocol-sidebar">
       <label className="protocol-search-label" htmlFor="exam-search">
@@ -35,6 +47,16 @@ function ExamSidebar({ query, setQuery, exams, selectedSlug, setSelectedSlug, lo
         }}
         placeholder="Ex: hemograma, urina, pielonefrite"
         autoComplete="off"
+      />
+
+      <CatalogFilterPanel
+        groups={[{
+          key: 'category',
+          label: 'Tipo',
+          values: categories,
+          selected: category,
+          onSelect: setCategory,
+        }]}
       />
 
       {error ? <div className="prescription-error">{error}</div> : null}
@@ -56,7 +78,7 @@ function ExamSidebar({ query, setQuery, exams, selectedSlug, setSelectedSlug, lo
           ))
         ) : (
           <div className="prescription-empty">
-            {query.trim()
+            {query.trim() || category
               ? 'Nenhum exame encontrado para esta busca.'
               : 'Nenhum exame publicado ainda.'}
           </div>
@@ -110,7 +132,11 @@ function ExamDetail({ exam }) {
 
 function ExamsSection({ initialSlug = '' }) {
   const [query, setQuery] = useState('');
+  const [category, setCategory] = useState('');
   const [exams, setExams] = useState([]);
+  // Catálogo completo (primeira carga, sem busca nem filtro): alimenta os chips
+  // para que os tipos não sumam conforme a busca estreita o resultado.
+  const [catalog, setCatalog] = useState([]);
   const [selectedSlug, setSelectedSlug] = useState(initialSlug);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -130,6 +156,11 @@ function ExamsSection({ initialSlug = '' }) {
       setError('');
 
       const params = new URLSearchParams({ q: query.trim(), limit: '60' });
+
+      if (category) {
+        params.set('category', category);
+      }
+
       const response = await api.get(`/diagnostic-exams?${params.toString()}`).catch(() => null);
 
       if (ignore) {
@@ -138,6 +169,10 @@ function ExamsSection({ initialSlug = '' }) {
 
       if (response?.success && Array.isArray(response.data)) {
         setExams(response.data);
+
+        if (!query.trim() && !category) {
+          setCatalog(response.data);
+        }
       } else {
         setExams([]);
         setError(response?.error || 'Não foi possível carregar os exames agora.');
@@ -150,7 +185,14 @@ function ExamsSection({ initialSlug = '' }) {
       ignore = true;
       window.clearTimeout(timeoutId);
     };
-  }, [query]);
+  }, [category, query]);
+
+  const categories = useMemo(() => getCatalogFilterValues(catalog, 'category'), [catalog]);
+
+  function handleCategoryChange(value) {
+    setCategory(value);
+    setSelectedSlug('');
+  }
 
   const selectedExam = exams.find((exam) => exam.slug === selectedSlug) || null;
 
@@ -159,6 +201,9 @@ function ExamsSection({ initialSlug = '' }) {
       <ExamSidebar
         query={query}
         setQuery={setQuery}
+        category={category}
+        setCategory={handleCategoryChange}
+        categories={categories}
         exams={exams}
         selectedSlug={selectedSlug}
         setSelectedSlug={setSelectedSlug}
