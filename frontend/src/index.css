@@ -4837,6 +4837,69 @@ body {
   background: #dbeafe;
 }
 
+.clinical-tool-filters {
+  display: grid;
+  gap: 0.45rem;
+  margin-top: 0.7rem;
+}
+
+.clinical-tool-filters-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.32rem;
+  justify-self: start;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--primary-700);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.clinical-tool-filters-toggle:hover {
+  color: var(--primary-800);
+}
+
+.clinical-tool-filters-toggle:focus-visible {
+  border-radius: 4px;
+  outline: 2px solid var(--primary-500);
+  outline-offset: 3px;
+}
+
+.clinical-tool-filters-count {
+  display: inline-grid;
+  place-items: center;
+  min-width: 1.05rem;
+  height: 1.05rem;
+  padding: 0 0.28rem;
+  border-radius: 999px;
+  background: var(--primary-600);
+  color: #fff;
+  font-size: 0.66rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.clinical-tool-filters-active {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+.clinical-tool-filters-active .clinical-tool-filter-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+/* O painel não declara `display`: uma regra de classe venceria o `[hidden]` do
+   navegador e os chips nunca fechariam. */
+.clinical-tool-filters-panel > .clinical-tool-filter-row:first-child {
+  margin-top: 0.15rem;
+}
+
 .clinical-tool-filter-row {
   display: grid;
   gap: 0.35rem;

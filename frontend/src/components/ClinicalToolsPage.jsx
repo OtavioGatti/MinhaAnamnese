@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useId, useMemo, useState } from 'react';
 import { api } from '../apiClient';
 import ExamsSection from './ExamsSection';
 import ManeuversSection from './ManeuversSection';
@@ -441,6 +441,83 @@ function ToolFilterChips({ label, values, selected, onSelect }) {
   );
 }
 
+// Filtros recolhidos por padrão: com 13 especialidades, os chips sempre abertos
+// viravam uma parede de pílulas na coluna estreita. Fechado, o que está ativo
+// continua na tela — filtro invisível que encurta a lista sem avisar confunde
+// mais do que a poluição que ele evita.
+function ClinicalToolFilters({
+  category,
+  setCategory,
+  onClearCategory,
+  subcategory,
+  setSubcategory,
+  categories,
+  subcategories,
+}) {
+  const [isExpanded, setIsExpanded] = useState(false);
+  const panelId = useId();
+
+  if (categories.length === 0 && subcategories.length === 0) {
+    return null;
+  }
+
+  const activeFilters = [
+    category ? { key: 'category', label: category, clear: onClearCategory } : null,
+    subcategory ? { key: 'subcategory', label: subcategory, clear: () => setSubcategory('') } : null,
+  ].filter(Boolean);
+
+  return (
+    <div className="clinical-tool-filters">
+      <button
+        type="button"
+        className="clinical-tool-filters-toggle"
+        aria-expanded={isExpanded}
+        aria-controls={panelId}
+        onClick={() => setIsExpanded((expanded) => !expanded)}
+      >
+        <span aria-hidden="true">{isExpanded ? '▾' : '▸'}</span>
+        Filtros
+        {activeFilters.length > 0 ? (
+          <span className="clinical-tool-filters-count">{activeFilters.length}</span>
+        ) : null}
+      </button>
+
+      {!isExpanded && activeFilters.length > 0 ? (
+        <div className="clinical-tool-filters-active">
+          {activeFilters.map((filter) => (
+            <button
+              key={filter.key}
+              type="button"
+              className="clinical-tool-filter-chip active"
+              aria-label={`Remover filtro ${filter.label}`}
+              onClick={filter.clear}
+            >
+              {filter.label}
+              <span aria-hidden="true">×</span>
+            </button>
+          ))}
+        </div>
+      ) : null}
+
+      <div id={panelId} className="clinical-tool-filters-panel" hidden={!isExpanded}>
+        <ToolFilterChips
+          label="Especialidade"
+          values={categories}
+          selected={category}
+          onSelect={setCategory}
+        />
+
+        <ToolFilterChips
+          label="Tipo"
+          values={subcategories}
+          selected={subcategory}
+          onSelect={setSubcategory}
+        />
+      </div>
+    </div>
+  );
+}
+
 function ToolResultItem({ tool, selectedSlug, setSelectedSlug, includeCategory }) {
   const meta = getToolMeta(tool, { includeCategory }).join(' · ');
 
@@ -461,6 +538,7 @@ function ClinicalToolSidebar({
   setQuery,
   category,
   setCategory,
+  onClearCategory,
   subcategory,
   setSubcategory,
   categories,
@@ -492,18 +570,14 @@ function ClinicalToolSidebar({
         placeholder="Ex: HEART, IMC, M-CHAT"
       />
 
-      <ToolFilterChips
-        label="Especialidade"
-        values={categories}
-        selected={category}
-        onSelect={setCategory}
-      />
-
-      <ToolFilterChips
-        label="Tipo"
-        values={subcategories}
-        selected={subcategory}
-        onSelect={setSubcategory}
+      <ClinicalToolFilters
+        category={category}
+        setCategory={setCategory}
+        onClearCategory={onClearCategory}
+        subcategory={subcategory}
+        setSubcategory={setSubcategory}
+        categories={categories}
+        subcategories={subcategories}
       />
 
       {error ? <div className="prescription-error">{error}</div> : null}
@@ -1061,6 +1135,15 @@ function ClinicalToolsPage({
     setSelectedSlug('');
   }
 
+  // Remover a especialidade preserva o tipo: sem especialidade a lista de tipos
+  // passa a ser a do catálogo inteiro, então o que já estava escolhido continua
+  // existindo. Trocar de especialidade continua zerando o tipo
+  // (handleCategoryChange), porque aí o tipo antigo pode não existir na nova.
+  function handleClearCategory() {
+    setCategory('');
+    setSelectedSlug('');
+  }
+
   function handleSubcategoryChange(value) {
     setSubcategory(value);
     setSelectedSlug('');
@@ -1186,6 +1269,7 @@ function ClinicalToolsPage({
             setQuery={setQuery}
             category={category}
             setCategory={handleCategoryChange}
+            onClearCategory={handleClearCategory}
             subcategory={subcategory}
             setSubcategory={handleSubcategoryChange}
             categories={categories}
