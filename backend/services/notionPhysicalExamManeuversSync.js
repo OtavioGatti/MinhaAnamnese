@@ -101,6 +101,14 @@ function readTextProperty(properties, name) {
 function readNumberProperty(properties, name, fallback = null) {
   const property = properties?.[name];
   const rawValue = property?.number ?? readTextProperty(properties, name);
+
+  // Propriedade vazia no Notion chega como '' — e `Number('')` é 0, não NaN.
+  // Sem esta guarda o fallback nunca valia: item sem ordem definida ia para o
+  // topo da lista em vez do fim, empurrando o conteúdo curado para fora.
+  if (rawValue === '' || rawValue == null) {
+    return fallback;
+  }
+
   const parsed = Number(rawValue);
   return Number.isFinite(parsed) ? parsed : fallback;
 }

@@ -11,7 +11,11 @@ const {
   findExactAliasMatch,
 } = require('../utils/clinicalAliasMatching');
 
-const MAX_SEARCH_RESULTS = 60;
+const MAX_SEARCH_RESULTS = 300;
+// Nomes injetados no prompt de hipóteses ficam com o teto antigo de propósito:
+// ali a lista serve de referência de grafia para o modelo, e inflá-la
+// encareceria toda geração sem melhorar o pareamento.
+const MAX_PROMPT_NAMES = 60;
 const MAX_QUERY_LENGTH = 80;
 const HIDDEN_REVIEW_STATUS = 'Não usar sem validação';
 
@@ -187,7 +191,7 @@ async function getDiagnosticExamBySlug(slug) {
 
 // Só os nomes publicados, para injetar como referência de grafia no prompt de
 // hipóteses — mesma ideia das manobras.
-async function listExamNamesForPrompt(limit = MAX_SEARCH_RESULTS) {
+async function listExamNamesForPrompt(limit = MAX_PROMPT_NAMES) {
   if (!isDiagnosticExamsStorageAvailable()) {
     return [];
   }

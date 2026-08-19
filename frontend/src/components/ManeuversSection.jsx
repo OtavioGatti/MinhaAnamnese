@@ -7,6 +7,9 @@ import CatalogFilterPanel, { getCatalogFilterValues } from './CatalogFilterPanel
 // conteúdo tem corpo — quando fazer, como fazer, o que cada achado sugere.
 
 const SEARCH_DEBOUNCE_MS = 320;
+// Teto da listagem, alinhado ao do backend. Acima disso a lista precisa de
+// paginação de verdade — carregar tudo de uma vez deixaria de compensar.
+const CATALOG_LIMIT = 300;
 
 const DETAIL_SECTIONS = [
   { key: 'whenToPerform', title: 'Quando fazer' },
@@ -138,6 +141,9 @@ function ManeuversSection({ initialSlug = '' }) {
   // para que as regiões não sumam conforme a busca estreita o resultado.
   const [catalog, setCatalog] = useState([]);
   const [selectedSlug, setSelectedSlug] = useState(initialSlug);
+  // Manobra aberta por link que não veio na listagem — ver o efeito abaixo.
+  const [fallbackManeuver, setFallbackManeuver] = useState(null);
+  const [loadingFallback, setLoadingFallback] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
@@ -155,7 +161,7 @@ function ManeuversSection({ initialSlug = '' }) {
       setLoading(true);
       setError('');
 
-      const params = new URLSearchParams({ q: query.trim(), limit: '60' });
+      const params = new URLSearchParams({ q: query.trim(), limit: String(CATALOG_LIMIT) });
 
       if (category) {
         params.set('category', category);
@@ -194,7 +200,41 @@ function ManeuversSection({ initialSlug = '' }) {
     setSelectedSlug('');
   }
 
-  const selectedManeuver = maneuvers.find((maneuver) => maneuver.slug === selectedSlug) || null;
+  const maneuverFromList = maneuvers.find((maneuver) => maneuver.slug === selectedSlug) || null;
+  const foundSlug = maneuverFromList?.slug || '';
+
+  // A lista vem limitada (60 itens), então um link direto — vindo de uma
+  // hipótese, por exemplo — pode apontar para manobra fora dessa janela. Buscar
+  // pelo slug evita que esse link abra em branco: o painel não depende mais de
+  // a manobra ter cabido na listagem.
+  useEffect(() => {
+    if (!selectedSlug || foundSlug) {
+      setFallbackManeuver(null);
+      setLoadingFallback(false);
+      return undefined;
+    }
+
+    let ignore = false;
+    setLoadingFallback(true);
+
+    (async () => {
+      const params = new URLSearchParams({ slug: selectedSlug });
+      const response = await api.get(`/physical-exam-maneuvers?${params.toString()}`).catch(() => null);
+
+      if (ignore) {
+        return;
+      }
+
+      setFallbackManeuver(response?.success ? response.data?.maneuver || null : null);
+      setLoadingFallback(false);
+    })();
+
+    return () => {
+      ignore = true;
+    };
+  }, [foundSlug, selectedSlug]);
+
+  const selectedManeuver = maneuverFromList || fallbackManeuver;
 
   return (
     <section className="prescription-guide-grid">
@@ -214,6 +254,8 @@ function ManeuversSection({ initialSlug = '' }) {
       <article className="protocol-detail-panel">
         {selectedManeuver ? (
           <ManeuverDetail maneuver={selectedManeuver} />
+        ) : loadingFallback ? (
+          <div className="prescription-empty">Carregando manobra...</div>
         ) : (
           <div className="prescription-empty">Selecione uma manobra para ver a execução e a interpretação.</div>
         )}

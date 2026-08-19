@@ -11,7 +11,11 @@ const {
   findExactAliasMatch,
 } = require('../utils/clinicalAliasMatching');
 
-const MAX_SEARCH_RESULTS = 60;
+const MAX_SEARCH_RESULTS = 300;
+// Nomes injetados no prompt de hipóteses ficam com o teto antigo de propósito:
+// ali a lista serve de referência de grafia para o modelo, e inflá-la
+// encareceria toda geração sem melhorar o pareamento.
+const MAX_PROMPT_NAMES = 60;
 const MAX_QUERY_LENGTH = 80;
 const HIDDEN_REVIEW_STATUS = 'Não usar sem validação';
 
@@ -187,7 +191,7 @@ async function getPhysicalExamManeuverBySlug(slug) {
 
 // Só os nomes publicados, para injetar como referência no prompt de hipóteses:
 // vendo a grafia que o catálogo usa, o modelo copia em vez de adivinhar.
-async function listManeuverNamesForPrompt(limit = MAX_SEARCH_RESULTS) {
+async function listManeuverNamesForPrompt(limit = MAX_PROMPT_NAMES) {
   if (!isPhysicalExamManeuversStorageAvailable()) {
     return [];
   }

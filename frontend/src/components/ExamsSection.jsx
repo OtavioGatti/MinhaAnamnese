@@ -6,6 +6,9 @@ import CatalogFilterPanel, { getCatalogFilterValues } from './CatalogFilterPanel
 // manobras (lista à esquerda, detalhe em seções à direita).
 
 const SEARCH_DEBOUNCE_MS = 320;
+// Teto da listagem, alinhado ao do backend. Acima disso a lista precisa de
+// paginação de verdade — carregar tudo de uma vez deixaria de compensar.
+const CATALOG_LIMIT = 300;
 
 // O aviso de faixa de referência é fixo, não vem do CMS: que o valor varia por
 // laboratório é regra clínica, e uma edição no Notion não pode tirar isso da
@@ -138,6 +141,9 @@ function ExamsSection({ initialSlug = '' }) {
   // para que os tipos não sumam conforme a busca estreita o resultado.
   const [catalog, setCatalog] = useState([]);
   const [selectedSlug, setSelectedSlug] = useState(initialSlug);
+  // Exame aberto por link que não veio na listagem — ver o efeito abaixo.
+  const [fallbackExam, setFallbackExam] = useState(null);
+  const [loadingFallback, setLoadingFallback] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
@@ -155,7 +161,7 @@ function ExamsSection({ initialSlug = '' }) {
       setLoading(true);
       setError('');
 
-      const params = new URLSearchParams({ q: query.trim(), limit: '60' });
+      const params = new URLSearchParams({ q: query.trim(), limit: String(CATALOG_LIMIT) });
 
       if (category) {
         params.set('category', category);
@@ -194,7 +200,41 @@ function ExamsSection({ initialSlug = '' }) {
     setSelectedSlug('');
   }
 
-  const selectedExam = exams.find((exam) => exam.slug === selectedSlug) || null;
+  const examFromList = exams.find((exam) => exam.slug === selectedSlug) || null;
+  const foundSlug = examFromList?.slug || '';
+
+  // A lista vem limitada (60 itens), então um link direto — vindo de uma
+  // hipótese, por exemplo — pode apontar para exame fora dessa janela. Buscar
+  // pelo slug evita que esse link abra em branco: o painel não depende mais de
+  // o exame ter cabido na listagem.
+  useEffect(() => {
+    if (!selectedSlug || foundSlug) {
+      setFallbackExam(null);
+      setLoadingFallback(false);
+      return undefined;
+    }
+
+    let ignore = false;
+    setLoadingFallback(true);
+
+    (async () => {
+      const params = new URLSearchParams({ slug: selectedSlug });
+      const response = await api.get(`/diagnostic-exams?${params.toString()}`).catch(() => null);
+
+      if (ignore) {
+        return;
+      }
+
+      setFallbackExam(response?.success ? response.data?.exam || null : null);
+      setLoadingFallback(false);
+    })();
+
+    return () => {
+      ignore = true;
+    };
+  }, [foundSlug, selectedSlug]);
+
+  const selectedExam = examFromList || fallbackExam;
 
   return (
     <section className="prescription-guide-grid">
@@ -214,6 +254,8 @@ function ExamsSection({ initialSlug = '' }) {
       <article className="protocol-detail-panel">
         {selectedExam ? (
           <ExamDetail exam={selectedExam} />
+        ) : loadingFallback ? (
+          <div className="prescription-empty">Carregando exame...</div>
         ) : (
           <div className="prescription-empty">Selecione um exame para ver quando pedir e como interpretar.</div>
         )}
