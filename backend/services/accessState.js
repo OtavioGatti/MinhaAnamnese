@@ -40,27 +40,7 @@ function isPlanExpired(planExpiresAt) {
   return new Date(planExpiresAt).getTime() <= Date.now();
 }
 
-function shouldUseLegacyMetadataFallback(user, profile) {
-  if (normalizePlan(user?.user_metadata?.plan) !== 'pro') {
-    return false;
-  }
-
-  if (!profile) {
-    return true;
-  }
-
-  if (normalizeBillingStatus(profile.billing_status) !== 'inactive') {
-    return false;
-  }
-
-  if (normalizePlanExpiresAt(profile.plan_expires_at)) {
-    return false;
-  }
-
-  return true;
-}
-
-function resolveUserAccessState({ user, profile }) {
+function resolveUserAccessState({ profile }) {
   const normalizedCurrentPlan = normalizePlan(profile?.current_plan);
   const normalizedBillingStatus = normalizeBillingStatus(profile?.billing_status);
   const normalizedAccessSource = normalizeAccessSource(profile?.access_source);
@@ -77,14 +57,11 @@ function resolveUserAccessState({ user, profile }) {
       normalizedBillingStatus === 'active' &&
       !expiredByDate
     );
-  const hasLegacyMetadataAccess = shouldUseLegacyMetadataFallback(user, profile);
-  const hasActiveProAccess = hasProfileProAccess || hasLegacyMetadataAccess;
+  const hasActiveProAccess = hasProfileProAccess;
   const effectivePlan = isAffiliate ? 'affiliate' : hasActiveProAccess ? 'pro' : 'basic';
-  const accessSource = hasLegacyMetadataAccess
-    ? 'legacy'
-    : hasProfileProAccess
-      ? (normalizedAccessSource === 'none' ? 'paid' : normalizedAccessSource)
-      : normalizedAccessSource;
+  const accessSource = hasProfileProAccess
+    ? (normalizedAccessSource === 'none' ? 'paid' : normalizedAccessSource)
+    : normalizedAccessSource;
   const isTrialAccess = hasProfileProAccess && accessSource === 'trial';
   const isPaidProAccess = hasActiveProAccess && !isTrialAccess;
   const trialEndsAt = isTrialAccess ? normalizedPlanExpiresAt : null;

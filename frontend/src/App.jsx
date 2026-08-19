@@ -450,7 +450,7 @@ function normalizePlanExpiresAt(value) {
   return Number.isNaN(parsed.getTime()) ? null : parsed.toISOString();
 }
 
-function deriveAccessState(user, profile) {
+function deriveAccessState(profile) {
   if (profile?.access_state) {
     const serverAccessState = profile.access_state;
 
@@ -482,20 +482,13 @@ function deriveAccessState(user, profile) {
   const planExpiresAt = normalizePlanExpiresAt(profile?.plan_expires_at);
   const expiredByDate = planExpiresAt ? new Date(planExpiresAt).getTime() <= Date.now() : false;
   const isAffiliate = currentPlan === 'affiliate';
-  const hasLegacyMetadataAccess =
-    normalizePlan(user?.user_metadata?.plan) === 'pro' &&
-    billingStatus === 'inactive' &&
-    !planExpiresAt;
   const hasActiveProAccess =
     isAffiliate ||
-    (currentPlan === 'pro' && billingStatus === 'active' && !expiredByDate) ||
-    hasLegacyMetadataAccess;
+    (currentPlan === 'pro' && billingStatus === 'active' && !expiredByDate);
   const freeFullInsightsUsedCount = Math.max(0, Number(profile?.free_full_insights_used_count) || 0);
-  const effectiveAccessSource = hasLegacyMetadataAccess
-    ? 'legacy'
-    : hasActiveProAccess
-      ? (accessSource === 'none' ? 'paid' : accessSource)
-      : accessSource;
+  const effectiveAccessSource = hasActiveProAccess
+    ? (accessSource === 'none' ? 'paid' : accessSource)
+    : accessSource;
   const isTrialAccess = hasActiveProAccess && effectiveAccessSource === 'trial';
 
   return {
@@ -1011,7 +1004,7 @@ function App() {
   }, [diagnosticHypotheses.data]);
 
   const templateTemCalculadora = templateSelecionado === TEMPLATE_WITH_CALCULATORS;
-  const accessState = useMemo(() => deriveAccessState(user, profile), [profile, user]);
+  const accessState = useMemo(() => deriveAccessState(profile), [profile]);
   const isPro = Boolean(accessState?.hasActiveProAccess);
   const isAffiliate = Boolean(accessState?.isAffiliate);
 
