@@ -3910,6 +3910,16 @@ body {
   overflow: auto;
 }
 
+.template-editor-draft-note {
+  margin-top: 0.4rem;
+  padding: 0.45rem 0.6rem;
+  border-radius: 8px;
+  background: var(--primary-50);
+  color: var(--primary-800);
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
 .template-editor-field {
   display: grid;
   gap: 0.45rem;

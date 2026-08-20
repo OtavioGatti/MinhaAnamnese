@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { api } from '../apiClient';
 import CatalogFilterPanel, { getCatalogFilterValues } from './CatalogFilterPanel';
+import usePersistedState from '../lib/usePersistedState';
 
 // Catálogo de exames complementares dentro da aba Avaliação. Mesmo layout das
 // manobras (lista à esquerda, detalhe em seções à direita).
@@ -134,13 +135,13 @@ function ExamDetail({ exam }) {
 }
 
 function ExamsSection({ initialSlug = '' }) {
-  const [query, setQuery] = useState('');
-  const [category, setCategory] = useState('');
+  const [query, setQuery] = usePersistedState('exams.query', '');
+  const [category, setCategory] = usePersistedState('exams.category', '');
   const [exams, setExams] = useState([]);
   // Catálogo completo (primeira carga, sem busca nem filtro): alimenta os chips
   // para que os tipos não sumam conforme a busca estreita o resultado.
   const [catalog, setCatalog] = useState([]);
-  const [selectedSlug, setSelectedSlug] = useState(initialSlug);
+  const [selectedSlug, setSelectedSlug] = usePersistedState('exams.selectedSlug', initialSlug);
   // Exame aberto por link que não veio na listagem — ver o efeito abaixo.
   const [fallbackExam, setFallbackExam] = useState(null);
   const [loadingFallback, setLoadingFallback] = useState(false);

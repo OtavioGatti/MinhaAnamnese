@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { api } from '../apiClient';
 import CatalogFilterPanel, { getCatalogFilterValues } from './CatalogFilterPanel';
+import usePersistedState from '../lib/usePersistedState';
 import ExamsSection from './ExamsSection';
 import ManeuversSection from './ManeuversSection';
 import {
@@ -850,22 +851,20 @@ function ClinicalToolsPage({
   initialManeuverSlug = '',
   initialExamSlug = '',
 }) {
-  // Link direto abre a aba do item; sem isso, cai nas calculadoras.
-  const [pageTab, setPageTab] = useState(() => {
-    if (initialManeuverSlug) return 'manobras';
-    if (initialExamSlug) return 'exames';
-    return 'calculadoras';
-  });
-  const [query, setQuery] = useState(DEFAULT_QUERY);
-  const [category, setCategory] = useState('');
-  const [subcategory, setSubcategory] = useState('');
+  const [pageTab, setPageTab] = usePersistedState('clinicalTools.pageTab', 'calculadoras');
+  const [query, setQuery] = usePersistedState('clinicalTools.query', DEFAULT_QUERY);
+  const [category, setCategory] = usePersistedState('clinicalTools.category', '');
+  const [subcategory, setSubcategory] = usePersistedState('clinicalTools.subcategory', '');
   const [tools, setTools] = useState([]);
   // Catálogo completo (primeira carga, sem busca nem filtro): alimenta os chips
   // para que eles não sumam conforme a busca estreita o resultado.
   const [catalog, setCatalog] = useState([]);
-  const [selectedSlug, setSelectedSlug] = useState(initialToolSlug);
+  const [selectedSlug, setSelectedSlug] = usePersistedState('clinicalTools.selectedSlug', initialToolSlug);
   const [selectedTool, setSelectedTool] = useState(null);
-  const [values, setValues] = useState({});
+  // Respostas marcadas ficam guardadas por ferramenta: trocar de calculadora, ir
+  // à Home e voltar preserva o preenchimento de cada uma.
+  const [valuesByTool, setValuesByTool] = usePersistedState('clinicalTools.values', {});
+  const values = valuesByTool[selectedSlug] || {};
   const [loadingTools, setLoadingTools] = useState(false);
   const [loadingDetail, setLoadingDetail] = useState(false);
   const [error, setError] = useState('');
@@ -928,7 +927,6 @@ function ClinicalToolsPage({
   useEffect(() => {
     if (!user?.id || !isPro || !selectedSlug) {
       setSelectedTool(null);
-      setValues({});
       return undefined;
     }
 
@@ -946,10 +944,20 @@ function ClinicalToolsPage({
 
       if (response.success && response.data) {
         setSelectedTool(response.data);
-        setValues(createInitialValues(response.data.fields));
+        // Semeia os valores iniciais só quando não há rascunho desta ferramenta:
+        // reabrir a calculadora não pode apagar o que já estava marcado.
+        setValuesByTool((current) => (
+          current[selectedSlug]
+            ? current
+            : { ...current, [selectedSlug]: createInitialValues(response.data.fields) }
+        ));
       } else {
         setSelectedTool(null);
-        setValues({});
+        setValuesByTool((current) => {
+          const next = { ...current };
+          delete next[selectedSlug];
+          return next;
+        });
         setError(response.error || 'Não foi possível abrir esta ferramenta.');
       }
 
@@ -962,6 +970,17 @@ function ClinicalToolsPage({
       ignore = true;
     };
   }, [isPro, selectedSlug, user?.id]);
+
+  // Link direto abre a aba do item e ganha da aba restaurada da sessão.
+  useEffect(() => {
+    if (initialManeuverSlug) {
+      setPageTab('manobras');
+    } else if (initialExamSlug) {
+      setPageTab('exames');
+    } else if (initialToolSlug) {
+      setPageTab('calculadoras');
+    }
+  }, [initialExamSlug, initialManeuverSlug, initialToolSlug, setPageTab]);
 
   // Abrir a ferramenta pedida por um link de modelo, inclusive quando a página
   // já estava montada em outra ferramenta.
@@ -1045,9 +1064,12 @@ function ClinicalToolsPage({
 
   function updateFieldValue(fieldId, value) {
     setCopied(false);
-    setValues((current) => ({
+    setValuesByTool((current) => ({
       ...current,
-      [fieldId]: value,
+      [selectedSlug]: {
+        ...(current[selectedSlug] || {}),
+        [fieldId]: value,
+      },
     }));
   }
 

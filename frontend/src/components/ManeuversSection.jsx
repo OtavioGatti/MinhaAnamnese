@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { api } from '../apiClient';
 import CatalogFilterPanel, { getCatalogFilterValues } from './CatalogFilterPanel';
+import usePersistedState from '../lib/usePersistedState';
 
 // Catálogo de manobras de exame físico dentro da aba Avaliação. Reaproveita o
 // layout de Protocolos (lista à esquerda, detalhe em seções à direita) porque o
@@ -134,13 +135,13 @@ function ManeuverDetail({ maneuver }) {
 }
 
 function ManeuversSection({ initialSlug = '' }) {
-  const [query, setQuery] = useState('');
-  const [category, setCategory] = useState('');
+  const [query, setQuery] = usePersistedState('maneuvers.query', '');
+  const [category, setCategory] = usePersistedState('maneuvers.category', '');
   const [maneuvers, setManeuvers] = useState([]);
   // Catálogo completo (primeira carga, sem busca nem filtro): alimenta os chips
   // para que as regiões não sumam conforme a busca estreita o resultado.
   const [catalog, setCatalog] = useState([]);
-  const [selectedSlug, setSelectedSlug] = useState(initialSlug);
+  const [selectedSlug, setSelectedSlug] = usePersistedState('maneuvers.selectedSlug', initialSlug);
   // Manobra aberta por link que não veio na listagem — ver o efeito abaixo.
   const [fallbackManeuver, setFallbackManeuver] = useState(null);
   const [loadingFallback, setLoadingFallback] = useState(false);

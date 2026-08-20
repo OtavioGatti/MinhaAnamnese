@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { api } from '../apiClient';
 import Cid10SearchSection from './Cid10SearchSection';
+import usePersistedState from '../lib/usePersistedState';
 
 const DEFAULT_QUERY = '';
 const SEARCH_DEBOUNCE_MS = 320;
@@ -719,10 +720,10 @@ function PrescriptionGuidePage({
   initialSlug = '',
   initialQuery = '',
 }) {
-  const [pageTab, setPageTab] = useState('protocolos');
-  const [query, setQuery] = useState(DEFAULT_QUERY);
+  const [pageTab, setPageTab] = usePersistedState('prescriptionGuide.pageTab', 'protocolos');
+  const [query, setQuery] = usePersistedState('prescriptionGuide.query', DEFAULT_QUERY);
   const [guides, setGuides] = useState([]);
-  const [selectedSlug, setSelectedSlug] = useState('');
+  const [selectedSlug, setSelectedSlug] = usePersistedState('prescriptionGuide.selectedSlug', '');
   const [selectedGuide, setSelectedGuide] = useState(null);
   const [expandedSections, setExpandedSections] = useState({});
   const [loadingGuides, setLoadingGuides] = useState(false);
@@ -731,6 +732,12 @@ function PrescriptionGuidePage({
   const [copiedKey, setCopiedKey] = useState('');
 
   useEffect(() => {
+    // Sem link direto não há o que reposicionar — e resetar aqui apagaria a
+    // busca restaurada de quem só foi até a Home e voltou.
+    if (!initialQuery && !initialSlug) {
+      return;
+    }
+
     setQuery(initialQuery || '');
     setSelectedSlug(initialSlug || '');
     setSelectedGuide(null);

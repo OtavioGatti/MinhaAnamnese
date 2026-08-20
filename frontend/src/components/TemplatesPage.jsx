@@ -6,6 +6,7 @@ import { templateStructures } from '../data/templateStructures';
 import SnippetsSection from './SnippetsSection';
 import LetterModelsSection from './LetterModelsSection';
 import LinkedClinicalTools, { useLinkedClinicalTools } from './LinkedClinicalTools';
+import usePersistedState from '../lib/usePersistedState';
 
 const EMPTY_TEMPLATE_FORM = {
   id: null,
@@ -25,6 +26,14 @@ function normalizeText(value) {
 
 function getSectionsText(template) {
   return (template?.secoes || template?.structure || []).join('\n');
+}
+
+function hasDraftContent(form) {
+  return Boolean(
+    String(form?.name || '').trim()
+    || String(form?.description || '').trim()
+    || String(form?.sections || '').trim(),
+  );
 }
 
 function TemplatesPage({
@@ -49,7 +58,14 @@ function TemplatesPage({
   const [categoryFilter, setCategoryFilter] = useState('all');
   const [previewTemplateId, setPreviewTemplateId] = useState(null);
   const [editorOpen, setEditorOpen] = useState(false);
-  const [formState, setFormState] = useState(EMPTY_TEMPLATE_FORM);
+  // Rascunho vai para o localStorage, não sessionStorage: um template em
+  // escrita merece sobreviver até a fechar o navegador sem querer.
+  const [formState, setFormState, clearFormDraft] = usePersistedState(
+    'templates.draft',
+    EMPTY_TEMPLATE_FORM,
+    { storage: 'local' },
+  );
+  const [draftRestored, setDraftRestored] = useState(false);
   const [savingTemplate, setSavingTemplate] = useState(false);
   const [templateError, setTemplateError] = useState('');
 
@@ -204,7 +220,9 @@ function TemplatesPage({
     }
 
     setTemplateError('');
-    setFormState(template
+
+    const targetId = template?.id || null;
+    const pristine = template
       ? {
           id: template.id,
           name: template.name,
@@ -213,10 +231,19 @@ function TemplatesPage({
           clinicalCategoryLabel: template.clinicalCategoryLabel || 'Clínica médica',
           sections: getSectionsText(template),
         }
-      : EMPTY_TEMPLATE_FORM);
+      : EMPTY_TEMPLATE_FORM;
+
+    // Rascunho só volta se for do mesmo alvo: ver o texto de um template dentro
+    // da edição de outro seria pior do que perder o rascunho.
+    const restored = hasDraftContent(formState) && (formState.id || null) === targetId;
+
+    setFormState(restored ? formState : pristine);
+    setDraftRestored(restored);
     setEditorOpen(true);
   };
 
+  // "Fechar" é o cancelar de verdade: descarta o rascunho. Clicar fora do modal
+  // não faz mais nada — era o gatilho acidental que apagava o trabalho.
   const closeTemplateEditor = () => {
     if (savingTemplate) {
       return;
@@ -224,7 +251,8 @@ function TemplatesPage({
 
     setEditorOpen(false);
     setTemplateError('');
-    setFormState(EMPTY_TEMPLATE_FORM);
+    setDraftRestored(false);
+    clearFormDraft();
   };
 
   const handleTemplateFormChange = (field, value) => {
@@ -298,7 +326,9 @@ function TemplatesPage({
     await onTemplatesRefresh?.();
     setSavingTemplate(false);
     setEditorOpen(false);
-    setFormState(EMPTY_TEMPLATE_FORM);
+    setDraftRestored(false);
+    // Salvou: o rascunho cumpriu o papel e sai do storage.
+    clearFormDraft();
   };
 
   const handleDeleteTemplate = async (template) => {
@@ -707,14 +737,13 @@ function TemplatesPage({
       </section>
 
       {editorOpen ? (
-        <div className="app-modal-backdrop" role="presentation" onClick={closeTemplateEditor}>
+        <div className="app-modal-backdrop" role="presentation">
           <form
             className="app-modal-card template-editor-modal"
             role="dialog"
             aria-modal="true"
             aria-labelledby="template-editor-title"
             onSubmit={handleSaveTemplate}
-            onClick={(event) => event.stopPropagation()}
           >
             <div className="app-modal-header">
               <div>
@@ -723,6 +752,11 @@ function TemplatesPage({
                   {formState.id ? 'Editar template' : 'Criar template'}
                 </h2>
                 <p>Defina o nome e escreva as seções na ordem em que você quer ver o resultado estruturado.</p>
+                {draftRestored ? (
+                  <p className="template-editor-draft-note">
+                    Rascunho recuperado de onde você parou. Ele fica guardado até você salvar ou fechar.
+                  </p>
+                ) : null}
               </div>
               <button type="button" className="btn btn-secundario" onClick={closeTemplateEditor}>
                 Fechar
