@@ -87,63 +87,101 @@ create index if not exists cid10_codes_description_search_prefix_idx
 -- quem chama precisa mandar o termo sem acento tambem — o backend faz isso em
 -- normalizeQuery (services/cid10.js). Testar direto no SQL Editor com acento
 -- devolve zero resultado e parece bug, mas e so a entrada fora do contrato.
+--
+-- DUAS PASSADAS. A primeira e literal (LIKE) e responde em ~11ms. So quando ela
+-- volta fraca entra a segunda, por parecenca de trigrama (word_similarity), que
+-- custa ~150ms porque calcula similaridade nas 14 mil linhas. Como a busca roda
+-- a cada tecla digitada, pagar o trigrama sempre seria 15x mais lento no caso
+-- comum; pagar so quando o literal falhou e justamente quando o medico esta sem
+-- resposta e prefere esperar.
+--
+-- E a segunda passada que faz "dislipidemia" chegar em "Disturbios do
+-- metabolismo de lipoproteinas e outras lipidemias" — descricao oficial que nao
+-- contem o termo digitado. Usa word_similarity e nao similarity porque o termo e
+-- curto e a descricao e longa: similarity() compara as strings inteiras e
+-- afundaria qualquer termo de uma palavra so.
 create or replace function public.search_cid10_codes(
   search_query text,
   max_results integer default 20
 )
 returns setof public.cid10_codes
-language sql
+language plpgsql
 stable
 as $$
-  with normalized as (
-    select
-      -- Curinga do LIKE vindo da entrada viraria busca aberta: fora.
-      lower(btrim(replace(replace(coalesce(search_query, ''), '%', ''), '_', ''))) as term,
-      upper(replace(replace(btrim(replace(replace(coalesce(search_query, ''), '%', ''), '_', '')), '.', ''), ' ', '')) as code
-  ),
-  alvo as (
-    select
-      normalized.term,
-      normalized.code,
-      -- Palavras de conteudo na ordem, conectivos ignorados. A IA escreve
-      -- "Doenca DO Refluxo Gastroesofagico" e a tabela oficial diz "Doenca DE
-      -- refluxo gastroesofagico": sem isso, uma preposicao diferente zera a
-      -- busca. So os conectivos saem — todos os termos clinicos continuam
-      -- obrigatorios, e na mesma ordem, para nao casar com outra condicao.
-      '%' || coalesce(string_agg(palavra.w, '%' order by palavra.ord), normalized.term) || '%' as padrao_ordenado
-    from normalized
-    left join lateral unnest(string_to_array(normalized.term, ' ')) with ordinality as palavra(w, ord)
-      on palavra.w <> ''
-      and palavra.w not in (
-        'de', 'do', 'da', 'dos', 'das', 'com', 'sem', 'na', 'no', 'nas', 'nos',
-        'em', 'por', 'para', 'ao', 'aos', 'e', 'a', 'o', 'as', 'os'
-      )
-    group by normalized.term, normalized.code
-  )
+declare
+  -- Curinga do LIKE vindo da entrada viraria busca aberta: fora.
+  termo text := lower(btrim(replace(replace(coalesce(search_query, ''), '%', ''), '_', '')));
+  codigo text;
+  padrao_ordenado text;
+  cap integer := greatest(least(coalesce(max_results, 20), 50), 1);
+  achados integer;
+begin
+  if length(termo) < 2 then
+    return;
+  end if;
+
+  codigo := upper(replace(replace(termo, '.', ''), ' ', ''));
+
+  -- Palavras de conteudo na ordem, conectivos ignorados. A IA escreve "Doenca DO
+  -- Refluxo Gastroesofagico" e a tabela oficial diz "Doenca DE refluxo
+  -- gastroesofagico": sem isso, uma preposicao diferente zera a busca. So os
+  -- conectivos saem — todos os termos clinicos continuam obrigatorios, e na
+  -- mesma ordem, para nao casar com outra condicao.
+  select '%' || coalesce(string_agg(palavra.w, '%' order by palavra.ord), termo) || '%'
+    into padrao_ordenado
+  from unnest(string_to_array(termo, ' ')) with ordinality as palavra(w, ord)
+  where palavra.w <> ''
+    and palavra.w not in (
+      'de', 'do', 'da', 'dos', 'das', 'com', 'sem', 'na', 'no', 'nas', 'nos',
+      'em', 'por', 'para', 'ao', 'aos', 'e', 'a', 'o', 'as', 'os'
+    );
+
+  return query
   select codes.*
-  from public.cid10_codes codes, alvo
-  where length(alvo.term) >= 2
-    and (
-      codes.code_key like alvo.code || '%'
-      or codes.search_text like '%' || alvo.term || '%'
-      or codes.description_search like alvo.padrao_ordenado
-    )
+  from public.cid10_codes codes
+  where codes.code_key like codigo || '%'
+     or codes.search_text like '%' || termo || '%'
+     or codes.description_search like padrao_ordenado
   order by
     case
-      when codes.code_key = alvo.code then 0
-      when codes.code_key like alvo.code || '%' then 1
-      when codes.description_search like alvo.term || '%' then 2
+      when codes.code_key = codigo then 0
+      when codes.code_key like codigo || '%' then 1
+      when codes.description_search like termo || '%' then 2
       -- Termo no comeco de outra palavra: "aereas" em "vias aereas".
-      when codes.description_search like '% ' || alvo.term || '%' then 3
-      when codes.search_text like '%' || alvo.term || '%' then 4
-      -- Ultimo lugar: bateu so ignorando conectivo. E o resultado mais frouxo,
-      -- entao nunca passa na frente de quem casou com a frase inteira.
+      when codes.description_search like '% ' || termo || '%' then 3
+      when codes.search_text like '%' || termo || '%' then 4
+      -- Bateu so ignorando conectivo. E o resultado mais frouxo da passada
+      -- literal, entao nunca passa na frente de quem casou com a frase inteira.
       else 5
     end,
     -- Entre iguais, a descricao mais curta costuma ser a mais geral.
     length(codes.description),
     codes.code_key
-  limit greatest(least(coalesce(max_results, 20), 50), 1);
+  limit cap;
+
+  get diagnostics achados = row_count;
+
+  -- Cinco ja e meia tela de sugestao: a passada cara so vale a pena abaixo disso.
+  if achados >= 5 then
+    return;
+  end if;
+
+  return query
+  select codes.*
+  from public.cid10_codes codes
+  where word_similarity(termo, codes.description_search) >= 0.5
+    -- Sem isto, o que a passada literal ja devolveu voltaria duplicado.
+    and not (
+      codes.code_key like codigo || '%'
+      or codes.search_text like '%' || termo || '%'
+      or codes.description_search like padrao_ordenado
+    )
+  order by
+    word_similarity(termo, codes.description_search) desc,
+    length(codes.description),
+    codes.code_key
+  limit cap - achados;
+end;
 $$;
 
 grant execute on function public.search_cid10_codes(text, integer) to authenticated, service_role;

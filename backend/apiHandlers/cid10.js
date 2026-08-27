@@ -10,6 +10,14 @@ const CID10_RATE_LIMIT = {
   windowMs: 10 * 60 * 1000,
 };
 
+// A expansao por IA e o unico trecho pago da busca, e so dispara quando nada
+// mais achou. Limite proprio e bem menor: estourar aqui nao e erro, so desliga
+// a ultima camada e a busca responde com o que as outras acharam.
+const CID10_AI_EXPANSION_RATE_LIMIT = {
+  limit: 20,
+  windowMs: 10 * 60 * 1000,
+};
+
 function getQueryParam(req, name) {
   if (typeof req.query?.[name] === 'string') {
     return req.query[name];
@@ -67,6 +75,18 @@ module.exports = async function handler(req, res) {
     const results = await searchCid10Codes({
       query: getQueryParam(req, 'q'),
       limit: getQueryParam(req, 'limit'),
+      // Cobrado sob demanda: a busca so chama isto quando esgotou as camadas
+      // gratuitas. Consumir por requisicao gastaria a cota inteira digitando.
+      allowAiExpansion: async () => {
+        const aiLimit = await consumeRateLimit({
+          req,
+          scope: 'cid10_ai_expansion',
+          userId: auth.user.id,
+          ...CID10_AI_EXPANSION_RATE_LIMIT,
+        });
+
+        return aiLimit.allowed;
+      },
     });
 
     return res.status(200).json({ success: true, data: results });
