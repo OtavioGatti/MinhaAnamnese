@@ -56,6 +56,14 @@ html {
   -moz-osx-font-smoothing: grayscale;
 }
 
+html,
+body {
+  /* Rede de seguranca: se um elemento estourar a largura da tela (como o
+     .product-topbar-nav estourava antes de ganhar scroll proprio), a pagina
+     inteira nao deve virar scroll horizontal por causa dele. */
+  overflow-x: hidden;
+}
+
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   background: linear-gradient(180deg, var(--gray-50) 0%, var(--gray-100) 100%);
@@ -6903,6 +6911,25 @@ body {
     order: 3;
     width: 100%;
     justify-content: flex-start;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 0.35rem;
+    margin-bottom: -0.35rem;
+    scrollbar-width: thin;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .product-topbar-nav::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  .product-topbar-nav::-webkit-scrollbar-thumb {
+    background: rgba(148, 163, 184, 0.5);
+    border-radius: 999px;
+  }
+
+  .product-topbar-nav .product-nav-item {
+    flex-shrink: 0;
   }
 }
 
