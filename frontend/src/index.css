@@ -2187,13 +2187,18 @@ body {
   margin-top: 0.1rem;
 }
 
+/* A posicao vertical vem por style inline, calculada a partir da linha do
+   cursor (ver ClinicalDrugAutocomplete). O `top` daqui e so o fallback de
+   quando a medicao do cursor nao esta disponivel — ancorar no rodape, como
+   era antes, abria a lista exatamente sobre o fim do texto, que e onde o
+   cursor quase sempre esta. */
 .drug-mention-popover {
   position: absolute;
   left: 0.85rem;
   right: 0.85rem;
-  bottom: 2.75rem;
+  top: 0.85rem;
   z-index: 12;
-  max-height: 280px;
+  max-height: 200px;
   display: grid;
   gap: 0.45rem;
   padding: 0.65rem;
@@ -7132,7 +7137,9 @@ body {
   .drug-mention-popover {
     left: 0.5rem;
     right: 0.5rem;
-    max-height: 240px;
+    /* Menor que no desktop: no celular o campo ocupa quase a tela inteira, e
+       uma caixa alta demais nao teria para onde virar sem cobrir o texto. */
+    max-height: 180px;
   }
 
   .drug-mention-popover-header,

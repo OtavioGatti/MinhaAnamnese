@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { api } from '../apiClient';
+import { getCaretPosition } from '../lib/textareaCaret';
 
 const SEARCH_DEBOUNCE_MS = 260;
 const MAX_AUTOCOMPLETE_RESULTS = 8;
@@ -130,9 +131,17 @@ export function useClinicalDrugMentions({
     }
 
     const nextTrigger = findMentionTrigger(nextText, cursorPosition);
+
+    // Mede o cursor junto com o gatilho: é o popover que precisa da posição,
+    // mas só aqui existe o par (texto, cursor) já resolvido. O '@' é a âncora,
+    // não o cursor — assim a lista não anda para o lado conforme se digita.
+    if (nextTrigger) {
+      nextTrigger.caret = getCaretPosition(inputRef?.current, nextTrigger.start);
+    }
+
     setTrigger(nextTrigger);
     setHighlightedIndex(0);
-  }, [enabled]);
+  }, [enabled, inputRef]);
 
   const handleTextChange = useCallback((event) => {
     const nextText = event.target.value;
@@ -158,6 +167,31 @@ export function useClinicalDrugMentions({
     setSearchError('');
     setHighlightedIndex(0);
   }, []);
+
+  // Rolar o campo move a linha do '@' sem passar por nenhum handler de texto,
+  // então a posição guardada envelhece e a lista fica flutuando solta. Recalcula
+  // enquanto o '@' continuar visível; se saiu de vista, fecha.
+  useEffect(() => {
+    const textarea = inputRef?.current;
+
+    if (!textarea || !trigger) {
+      return undefined;
+    }
+
+    const handleScroll = () => {
+      const caret = getCaretPosition(textarea, trigger.start);
+
+      if (!caret || caret.top < 0 || caret.top > textarea.clientHeight) {
+        closeAutocomplete();
+        return;
+      }
+
+      setTrigger((current) => (current ? { ...current, caret } : current));
+    };
+
+    textarea.addEventListener('scroll', handleScroll, { passive: true });
+    return () => textarea.removeEventListener('scroll', handleScroll);
+  }, [closeAutocomplete, inputRef, trigger]);
 
   const insertDrugMention = useCallback((drug) => {
     const normalizedDrug = normalizeDrug(drug);

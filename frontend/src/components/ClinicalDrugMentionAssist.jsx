@@ -1,4 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+
+// Folga entre a linha do cursor e a caixa, para não encostar no texto.
+const CARET_GAP_PX = 6;
 
 function normalizeDisplayText(value) {
   return String(value || '').trim();
@@ -419,15 +422,69 @@ export function ClinicalDrugAutocomplete({ mention }) {
     trigger,
   } = mention;
 
+  const popoverRef = useRef(null);
+  const [topPx, setTopPx] = useState(null);
+  const caret = trigger?.caret || null;
+
+  // Decide embaixo/em cima com a altura REAL da caixa, depois do layout e antes
+  // da pintura — medir no useEffect faria a lista aparecer embaixo e pular para
+  // cima, visivelmente. A altura muda conforme os resultados chegam, por isso a
+  // contagem entra nas dependências.
+  useLayoutEffect(() => {
+    const node = popoverRef.current;
+
+    if (!node || !caret) {
+      return;
+    }
+
+    const textarea = node.closest('.textarea-shell')?.querySelector('textarea');
+
+    if (!textarea) {
+      return;
+    }
+
+    const popoverHeight = node.offsetHeight;
+    const field = textarea.getBoundingClientRect();
+    const caretTopOnScreen = field.top + caret.top;
+
+    // Compara o espaço realmente utilizável acima e abaixo da linha do cursor.
+    // "Utilizável" é a interseção do campo com a viewport: o campo pode estar
+    // cortado pela tela, e caber dentro dele não garante estar visível.
+    const usableBottom = Math.min(field.bottom, window.innerHeight);
+    const usableTop = Math.max(field.top, 0);
+    const spaceBelow = usableBottom - (caretTopOnScreen + caret.lineHeight + CARET_GAP_PX);
+    const spaceAbove = caretTopOnScreen - CARET_GAP_PX - usableTop;
+
+    // Vira para cima só se não couber embaixo E lá em cima houver mais espaço —
+    // assim uma folga pequena embaixo não provoca uma virada que piora a vida.
+    const placeAbove = spaceBelow < popoverHeight && spaceAbove > spaceBelow;
+    const desiredTop = placeAbove
+      ? caret.top - CARET_GAP_PX - popoverHeight
+      : caret.top + caret.lineHeight + CARET_GAP_PX;
+
+    // Trava dentro do campo: se o cursor estiver fora da área visível (campo
+    // rolado, texto colado de uma vez), a conta acima cairia fora do textarea e
+    // a lista apareceria solta na página.
+    const maxTop = Math.max(0, textarea.clientHeight - popoverHeight);
+    setTopPx(Math.round(Math.min(Math.max(desiredTop, 0), maxTop)));
+  }, [caret, results.length, loadingResults, searchError]);
+
   if (!trigger) {
     return null;
   }
 
   const query = trigger.query.trim();
   const shouldTypeMore = query.length === 1;
+  const positionStyle = caret && topPx !== null ? { top: `${topPx}px` } : undefined;
 
   return (
-    <div className="drug-mention-popover" role="listbox" aria-label="Sugestões de medicamentos">
+    <div
+      className="drug-mention-popover"
+      ref={popoverRef}
+      style={positionStyle}
+      role="listbox"
+      aria-label="Sugestões de medicamentos"
+    >
       <div className="drug-mention-popover-header">
         <strong>Inserir medicamento</strong>
         <span>@ busca no Bulário</span>
