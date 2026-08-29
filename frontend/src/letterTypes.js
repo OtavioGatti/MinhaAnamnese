@@ -61,6 +61,23 @@ export const LETTER_TYPES = [
       },
     ],
   },
+  {
+    key: 'laudo',
+    label: 'Laudo médico',
+    fields: [
+      { name: 'purpose', label: 'Finalidade / órgão de destino', required: true, placeholder: 'Ex: BPC/LOAS, INSS, isenção de imposto de renda' },
+      {
+        name: 'cid10',
+        label: 'CID-10',
+        required: true,
+        placeholder: 'Digite o código (G80) ou a condição (paralisia cerebral)',
+        widget: 'cid',
+        hint: 'Obrigatório no laudo: o órgão avaliador não aceita o documento sem o código.',
+      },
+      { name: 'limitations', label: 'Limitações funcionais', required: false, placeholder: 'Ex: não deambula sem apoio, dependente para higiene' },
+      { name: 'duration', label: 'Duração estimada / prognóstico', required: false, placeholder: 'Ex: caráter permanente; superior a 2 anos' },
+    ],
+  },
 ];
 
 export const LETTER_TYPES_BY_KEY = LETTER_TYPES.reduce((acc, type) => {

@@ -1,4 +1,6 @@
-const { normalizeLetterTypeKey } = require('../config/letterTypes');
+const { LETTER_TYPES, normalizeLetterTypeKey } = require('../config/letterTypes');
+
+const LETTER_TYPES_BY_KEY = new Set(LETTER_TYPES.map((type) => type.key));
 
 const MAX_FORMAT_BODY_LENGTH = 4000;
 const OFFICIAL_LETTER_MODEL_SELECT = [
@@ -28,6 +30,8 @@ const LETTER_TYPE_LABEL_TO_KEY = new Map([
   ['declaracao', 'declaracao'],
   ['atestado medico', 'atestado'],
   ['atestado', 'atestado'],
+  ['laudo medico', 'laudo'],
+  ['laudo', 'laudo'],
 ]);
 
 function getConfig() {
@@ -80,9 +84,26 @@ function normalizeStatus(value) {
 }
 
 // Converte o rótulo do Notion (ou qualquer valor) para a key canônica do tipo.
+// Tolerante de propósito na LEITURA: linha antiga com tipo estranho continua
+// aparecendo em vez de sumir da biblioteca.
 function resolveLetterTypeKey(value) {
   const folded = foldAccents(value);
   return LETTER_TYPE_LABEL_TO_KEY.get(folded) || normalizeLetterTypeKey(folded);
+}
+
+// Versão estrita para a ESCRITA (sync do Notion): devolve null quando o rótulo
+// não é reconhecido, em vez de cair no encaminhamento. Sem isso, cadastrar um
+// modelo com "Letter type = Laudo" antes de o tipo existir era aceito em
+// silêncio e arquivado sob Encaminhamento — sem erro e sem sync_error.
+function resolveLetterTypeKeyStrict(value) {
+  const folded = foldAccents(value);
+
+  if (!folded) {
+    return null;
+  }
+
+  return LETTER_TYPE_LABEL_TO_KEY.get(folded)
+    || (LETTER_TYPES_BY_KEY.has(folded) ? folded : null);
 }
 
 function normalizeNumber(value, fallback) {
@@ -177,6 +198,12 @@ function normalizeOfficialLetterModelPayload(model) {
     reasons.push('missing_format_body');
   }
 
+  const letterType = resolveLetterTypeKeyStrict(model?.letterType);
+
+  if (!letterType) {
+    reasons.push(model?.letterType ? 'unknown_letter_type' : 'missing_letter_type');
+  }
+
   if (reasons.length > 0) {
     return {
       payload: null,
@@ -189,7 +216,7 @@ function normalizeOfficialLetterModelPayload(model) {
       slug,
       notion_page_id: normalizeText(model?.notionPageId) || null,
       name,
-      letter_type: resolveLetterTypeKey(model?.letterType),
+      letter_type: letterType,
       format_body: formatBody,
       internal_notes: normalizeLongText(model?.internalNotes) || null,
       status,
@@ -235,5 +262,6 @@ module.exports = {
   normalizeSlug,
   normalizeStatus,
   resolveLetterTypeKey,
+  resolveLetterTypeKeyStrict,
   upsertOfficialLetterModels,
 };

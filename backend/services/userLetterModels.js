@@ -1,9 +1,14 @@
 const { isValidUserId } = require('../utils/idValidation');
 const { MAX_FORMAT_BODY_LENGTH } = require('./officialLetterModels');
-const { normalizeLetterTypeKey } = require('../config/letterTypes');
+const { LETTER_TYPES, normalizeLetterTypeKey } = require('../config/letterTypes');
 
 const MAX_TITLE_LENGTH = 80;
 const MAX_MODELS_PER_USER = 60;
+const KNOWN_LETTER_TYPE_KEYS = new Set(LETTER_TYPES.map((type) => type.key));
+
+function isKnownLetterTypeKey(value) {
+  return KNOWN_LETTER_TYPE_KEYS.has(String(value || '').trim().toLowerCase());
+}
 
 function getConfig() {
   return {
@@ -92,13 +97,19 @@ async function listUserLetterModels(userId) {
   return Array.isArray(json) ? json.map(normalizeUserLetterModel).filter(Boolean) : [];
 }
 
-function validateInput({ title, formatBody }) {
+function validateInput({ title, formatBody, letterType }) {
   if (!normalizeTitle(title)) {
     return 'Dê um título ao modelo.';
   }
 
   if (!normalizeFormatBody(formatBody)) {
     return 'O formato do modelo não pode estar vazio.';
+  }
+
+  // Recusa em vez de coagir: salvar um tipo desconhecido como encaminhamento
+  // faria o modelo sumir do seletor do tipo certo, sem nenhum aviso.
+  if (!isKnownLetterTypeKey(letterType)) {
+    return 'Tipo de documento inválido.';
   }
 
   return null;
@@ -120,7 +131,7 @@ async function clearDefaultForType(userId, letterType) {
 }
 
 async function createUserLetterModel(userId, { title, letterType, formatBody, isDefault = false }) {
-  const validationError = validateInput({ title, formatBody });
+  const validationError = validateInput({ title, formatBody, letterType });
 
   if (validationError) {
     const error = new Error(validationError);
@@ -159,7 +170,7 @@ async function createUserLetterModel(userId, { title, letterType, formatBody, is
 }
 
 async function updateUserLetterModel(userId, modelId, { title, letterType, formatBody, isDefault = false }) {
-  const validationError = validateInput({ title, formatBody });
+  const validationError = validateInput({ title, formatBody, letterType });
 
   if (validationError) {
     const error = new Error(validationError);

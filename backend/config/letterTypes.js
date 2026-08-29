@@ -209,6 +209,53 @@ _____________________________
 Assinatura do paciente
 ${LETTER_CID_BLOCK_CLOSE}`,
   },
+  {
+    key: 'laudo',
+    label: 'Laudo médico',
+    promptSlug: 'medical_expert_report_system',
+    fields: [
+      { name: 'purpose', label: 'Finalidade / órgão de destino', required: true, maxLength: 160, placeholder: 'Ex: BPC/LOAS, INSS, isenção de imposto de renda' },
+      { name: 'cid10', label: 'CID-10', required: true, maxLength: 60, placeholder: 'Ex: G80.9' },
+      { name: 'limitations', label: 'Limitações funcionais', required: false, maxLength: 400, placeholder: 'Ex: não deambula sem apoio, dependente para higiene' },
+      { name: 'duration', label: 'Duração estimada / prognóstico', required: false, maxLength: 160, placeholder: 'Ex: caráter permanente; superior a 2 anos' },
+    ],
+    // O erro clássico deste documento é o médico (ou a IA) opinar sobre o
+    // direito ao benefício. O laudo é peça médica: descreve repercussão
+    // funcional; quem decide o enquadramento é o órgão.
+    goalPrompt: 'Objetivo: redigir um laudo médico para a finalidade informada, descrevendo o quadro clínico e, sobretudo, a REPERCUSSÃO FUNCIONAL — o que o paciente deixa de conseguir fazer no dia a dia, no trabalho e no autocuidado. Descreva limitações apenas se estiverem no material; não as deduza do diagnóstico. NÃO afirme nem sugira que o paciente tem direito ao benefício, não cite artigo de lei, não classifique grau de incapacidade e não use termos de enquadramento administrativo (como "incapaz para todo e qualquer trabalho") que não estejam no material: a decisão é do órgão avaliador, não do médico assistente.',
+    // O CID é obrigatório aqui (o órgão não aceita laudo sem código), então não
+    // há bloco condicional de ciência: a própria finalidade do documento
+    // pressupõe a exposição do diagnóstico ao órgão. A regra permanece para
+    // travar o que a IA poderia acrescentar por conta própria — e, como as
+    // demais regras condicionais, sobrevive ao override de prompt do Notion.
+    buildConditionalRules() {
+      return [
+        'REGRA DESTE LAUDO:',
+        '- Use o CID exatamente como o médico informou. Não corrija, complete, troque nem acrescente outros códigos.',
+        '- Não inclua bloco de ciência, autorização ou assinatura do paciente: o laudo é emitido a pedido dele para instruir o próprio requerimento.',
+        '- Não estime datas de início da doença, duração ou prognóstico que não estejam no material.',
+        '- O documento é assinado somente pelo médico.',
+      ].join('\n');
+    },
+    defaultFormat: `LAUDO MÉDICO
+
+Finalidade: [finalidade / órgão de destino informado].
+
+Declaro, para os devidos fins, que o(a) paciente encontra-se sob meus cuidados e apresenta o quadro descrito a seguir.
+
+Quadro clínico: [história e evolução pertinentes à finalidade].
+
+CID-10: [código exatamente como informado pelo médico].
+
+Repercussão funcional: [limitações informadas — remova o bloco se não houver].
+
+Duração estimada: [duração ou prognóstico informado — remova o bloco se não houver].
+
+[Cidade], ${LETTER_TODAY_TOKEN}.
+
+_____________________________
+[assinatura do médico — nome e CRM]`,
+  },
 ];
 
 const LETTER_TYPES_BY_KEY = new Map(LETTER_TYPES.map((type) => [type.key, type]));

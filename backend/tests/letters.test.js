@@ -14,6 +14,7 @@ const { getLetterType, normalizeLetterTypeKey, LETTER_TYPES } = require('../conf
 const {
   normalizeOfficialLetterModelPayload,
   resolveLetterTypeKey,
+  resolveLetterTypeKeyStrict,
 } = require('../services/officialLetterModels');
 
 test('normalizeLetterTypeKey cai no encaminhamento para valores desconhecidos', () => {
@@ -23,9 +24,9 @@ test('normalizeLetterTypeKey cai no encaminhamento para valores desconhecidos', 
   assert.equal(normalizeLetterTypeKey(undefined), 'encaminhamento');
 });
 
-test('os 6 tipos de carta estão registrados', () => {
+test('os 7 tipos de carta estão registrados', () => {
   const keys = LETTER_TYPES.map((type) => type.key);
-  assert.deepEqual(keys, ['encaminhamento', 'contrarreferencia', 'relatorio', 'solicitacao', 'declaracao', 'atestado']);
+  assert.deepEqual(keys, ['encaminhamento', 'contrarreferencia', 'relatorio', 'solicitacao', 'declaracao', 'atestado', 'laudo']);
 });
 
 test('buildLetterSystemPrompt mantém regras fixas e usa o formato padrão do tipo', () => {
@@ -217,6 +218,60 @@ test('modelo do usuário sem marcadores não deixa vazar CID quando não há CID
   assert.ok(prompt.includes('Não inclua bloco de ciência'), 'regra cobre o formato sem marcadores');
 });
 
+test('laudo exige finalidade e CID', () => {
+  assert.equal(
+    validateLetterInput({ letterType: 'laudo', texto: 'quadro', fields: {} }),
+    'Informe: Finalidade / órgão de destino.',
+  );
+  assert.equal(
+    validateLetterInput({ letterType: 'laudo', texto: 'quadro', fields: { purpose: 'BPC/LOAS' } }),
+    'Informe: CID-10.',
+    'diferente do atestado, aqui o CID não é opcional',
+  );
+  assert.ok(
+    validateLetterInput({ letterType: 'laudo', texto: 'quadro', fields: { purpose: 'BPC/LOAS', cid10: 'paralisia' } }),
+    'CID em texto livre é recusado',
+  );
+  assert.equal(
+    validateLetterInput({ letterType: 'laudo', texto: 'quadro', fields: { purpose: 'BPC/LOAS', cid10: 'G80.9' } }),
+    null,
+  );
+});
+
+test('laudo não pede assinatura do paciente e proíbe opinar sobre o benefício', () => {
+  const prompt = buildLetterSystemPrompt(
+    getLetterType('laudo'),
+    '',
+    null,
+    { purpose: 'BPC/LOAS', cid10: 'G80.9' },
+  );
+
+  assert.ok(prompt.includes('LAUDO MÉDICO'), 'formato padrão do tipo presente');
+  assert.ok(prompt.includes('REPERCUSSÃO FUNCIONAL'), 'objetivo central do laudo presente');
+  assert.ok(prompt.includes('a decisão é do órgão avaliador'), 'não opina sobre direito ao benefício');
+  assert.ok(!prompt.includes('Assinatura do paciente'), 'laudo não leva termo de ciência');
+});
+
+test('regras do laudo sobrevivem ao override de prompt do Notion', () => {
+  const prompt = buildLetterSystemPrompt(
+    getLetterType('laudo'),
+    '',
+    'REGRAS EDITORIAIS\n{{formato_saida}}\nFIM',
+    { purpose: 'INSS', cid10: 'M54.5' },
+  );
+
+  assert.ok(prompt.includes('REGRAS EDITORIAIS'), 'override editorial aplicado');
+  assert.ok(prompt.includes('REGRA DESTE LAUDO'), 'regra condicional sobrevive ao override');
+});
+
+test('modelo do usuário não injeta termo de ciência no laudo', () => {
+  const custom = 'LAUDO DA CLÍNICA X\n[quadro]\nAssinatura do paciente: ______';
+  const prompt = buildLetterSystemPrompt(getLetterType('laudo'), custom, null, { purpose: 'BPC', cid10: 'G80.9' });
+
+  assert.ok(prompt.includes('LAUDO DA CLÍNICA X'), 'formato do usuário preservado');
+  assert.ok(prompt.includes('Não inclua bloco de ciência'), 'regra cobre o formato escrito à mão');
+});
+
 test('validateLetterInput cobre os campos e o CID do atestado', () => {
   assert.equal(
     validateLetterInput({ letterType: 'atestado', texto: 'quadro', fields: {} }),
@@ -253,5 +308,34 @@ test('normalizeOfficialLetterModelPayload valida e mapeia o tipo', () => {
 
   const bad = normalizeOfficialLetterModelPayload({ slug: '', name: '', formatBody: '' });
   assert.equal(bad.payload, null);
-  assert.deepEqual(bad.error.reasons, ['missing_slug', 'missing_name', 'missing_format_body']);
+  assert.deepEqual(bad.error.reasons, [
+    'missing_slug',
+    'missing_name',
+    'missing_format_body',
+    'missing_letter_type',
+  ]);
+});
+
+// Regressão: antes, um "Letter type" desconhecido virava encaminhamento em
+// silêncio — o modelo era publicado sob o tipo errado, sem erro nem sync_error.
+test('sync recusa modelo do Notion com tipo desconhecido em vez de virar encaminhamento', () => {
+  const result = normalizeOfficialLetterModelPayload({
+    slug: 'laudo_bpc',
+    name: 'Laudo BPC',
+    status: 'Published',
+    letterType: 'Tipo Que Nao Existe',
+    formatBody: 'LAUDO\n[quadro]',
+  });
+
+  assert.equal(result.payload, null, 'não pode ser publicado sob outro tipo');
+  assert.deepEqual(result.error.reasons, ['unknown_letter_type']);
+});
+
+test('resolveLetterTypeKeyStrict reconhece o laudo e rejeita o resto', () => {
+  assert.equal(resolveLetterTypeKeyStrict('Laudo'), 'laudo');
+  assert.equal(resolveLetterTypeKeyStrict('Laudo médico'), 'laudo');
+  assert.equal(resolveLetterTypeKeyStrict('laudo'), 'laudo');
+  assert.equal(resolveLetterTypeKeyStrict('Tipo Que Nao Existe'), null);
+  assert.equal(resolveLetterTypeKeyStrict(''), null);
+  assert.equal(resolveLetterTypeKeyStrict(undefined), null);
 });
