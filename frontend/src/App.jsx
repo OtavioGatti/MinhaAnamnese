@@ -17,6 +17,7 @@ import CancelSubscriptionModal from './components/CancelSubscriptionModal';
 import OrganizeSourceModal from './components/OrganizeSourceModal';
 import DeleteAccountModal from './components/DeleteAccountModal';
 import CheckoutSuccessBanner from './components/CheckoutSuccessBanner';
+import EmailConfirmedBanner from './components/EmailConfirmedBanner';
 import CookieConsentBanner from './components/CookieConsentBanner';
 import { initGoogleAnalytics, trackGoogleAnalyticsPageView } from './lib/googleAnalytics';
 import { initGoogleAdsTag, trackSignupConversion } from './lib/googleAdsConversion';
@@ -972,6 +973,7 @@ function App() {
   const [qualityScore, setQualityScore] = useState(() => createEmptyQualityScore());
   const [planComparisonState, setPlanComparisonState] = useState({ open: false, origin: 'home' });
   const [checkoutSuccessBannerVisible, setCheckoutSuccessBannerVisible] = useState(false);
+  const [emailConfirmedBanner, setEmailConfirmedBanner] = useState(null);
   const [welcomeOnboardingOpen, setWelcomeOnboardingOpen] = useState(false);
   const [currentInsightsUnlocked, setCurrentInsightsUnlocked] = useState(false);
   const [referralLetter, setReferralLetter] = useState('');
@@ -1139,6 +1141,7 @@ function App() {
       // sessão, senão o sinal se perderia antes de o usuário estar autenticado.
       if (data.session?.user && consumeSignupConfirmationIntent()) {
         trackSignupConversion(data.session.user.id);
+        setEmailConfirmedBanner({ email: data.session.user.email || '' });
       }
 
       setLoadingUser(false);
@@ -1157,6 +1160,7 @@ function App() {
       // aqui. Consumir o intent garante que só um dos dois caminhos dispara.
       if (session?.user && consumeSignupConfirmationIntent()) {
         trackSignupConversion(session.user.id);
+        setEmailConfirmedBanner({ email: session.user.email || '' });
       }
 
       if (hasRecoveryIntent && session?.user) {
@@ -3317,6 +3321,13 @@ function App() {
               </div>
             </div>
           </div>
+
+          {emailConfirmedBanner && (
+            <EmailConfirmedBanner
+              email={emailConfirmedBanner.email}
+              onDismiss={() => setEmailConfirmedBanner(null)}
+            />
+          )}
 
           {checkoutSuccessBannerVisible && accessState?.hasActiveProAccess && (
             <CheckoutSuccessBanner
