@@ -14,6 +14,12 @@ const { buildEmailHtml } = require('./emailTemplates');
 const DEFAULT_DAYS_BEFORE = 2;
 const FIELD_ENDING_SOON = 'trial_reminder_2d_sent_at';
 const FIELD_EXPIRED = 'trial_reminder_expired_sent_at';
+// Planos de acesso cortesia: quem tem um deles não está em teste, mesmo que o
+// perfil ainda carregue access_source='trial' da época do cadastro (promover a
+// afiliado só troca o current_plan). Sem esta exclusão eles recebiam o e-mail de
+// "seu teste está acabando" para sempre. As duas grafias existem no check
+// constraint de profiles e normalizePlan trata ambas como afiliado.
+const NON_TRIAL_PLANS = ['affiliate', 'afiliado'];
 
 function getProfilesAdminConfig() {
   return {
@@ -66,6 +72,32 @@ async function fetchProfiles(filterPairs) {
 }
 
 /**
+ * Filtros de cada fila. Exportado para dar teste ao público-alvo sem rede: é
+ * justamente aqui que um afiliado entrava indevidamente na lista de envio.
+ */
+function buildReminderFilters(stage, { nowIso, windowEndIso }) {
+  const audience = [
+    ['access_source', 'eq.trial'],
+    ['current_plan', `not.in.(${NON_TRIAL_PLANS.join(',')})`],
+  ];
+
+  if (stage === 'ending_soon') {
+    return [
+      ...audience,
+      ['plan_expires_at', `gte.${nowIso}`],
+      ['plan_expires_at', `lte.${windowEndIso}`],
+      [FIELD_ENDING_SOON, 'is.null'],
+    ];
+  }
+
+  return [
+    ...audience,
+    ['plan_expires_at', `lte.${nowIso}`],
+    [FIELD_EXPIRED, 'is.null'],
+  ];
+}
+
+/**
  * Duas filas de perfis em trial que ainda não receberam o respectivo lembrete:
  * "terminando em breve" (dentro da janela de TRIAL_REMINDER_DAYS_BEFORE dias)
  * e "terminou" (plan_expires_at já passou).
@@ -79,17 +111,8 @@ async function getDueTrialReminders() {
   const windowEndIso = new Date(Date.now() + getTrialReminderDaysBefore() * 86400000).toISOString();
 
   const [endingSoon, expired] = await Promise.all([
-    fetchProfiles([
-      ['access_source', 'eq.trial'],
-      ['plan_expires_at', `gte.${nowIso}`],
-      ['plan_expires_at', `lte.${windowEndIso}`],
-      [FIELD_ENDING_SOON, 'is.null'],
-    ]),
-    fetchProfiles([
-      ['access_source', 'eq.trial'],
-      ['plan_expires_at', `lte.${nowIso}`],
-      [FIELD_EXPIRED, 'is.null'],
-    ]),
+    fetchProfiles(buildReminderFilters('ending_soon', { nowIso, windowEndIso })),
+    fetchProfiles(buildReminderFilters('expired', { nowIso, windowEndIso })),
   ]);
 
   return { endingSoon, expired };
@@ -196,8 +219,10 @@ async function runTrialReminders() {
 module.exports = {
   FIELD_ENDING_SOON,
   FIELD_EXPIRED,
+  NON_TRIAL_PLANS,
   isTrialReminderStorageAvailable,
   getTrialReminderDaysBefore,
+  buildReminderFilters,
   getDueTrialReminders,
   markReminderSent,
   buildReminderEmail,

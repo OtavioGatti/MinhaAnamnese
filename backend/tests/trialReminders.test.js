@@ -11,10 +11,20 @@ delete process.env.RESEND_API_KEY;
 const {
   isTrialReminderStorageAvailable,
   getTrialReminderDaysBefore,
+  buildReminderFilters,
   getDueTrialReminders,
   buildReminderEmail,
   runTrialReminders,
 } = require('../services/trialReminders');
+
+const FILTER_WINDOW = {
+  nowIso: '2026-08-29T12:00:00.000Z',
+  windowEndIso: '2026-08-31T12:00:00.000Z',
+};
+
+function findFilter(filters, key) {
+  return filters.filter(([field]) => field === key).map(([, value]) => value);
+}
 
 test('getTrialReminderDaysBefore usa o padrão de 2 dias e respeita override válido', () => {
   delete process.env.TRIAL_REMINDER_DAYS_BEFORE;
@@ -36,6 +46,41 @@ test('isTrialReminderStorageAvailable é false sem credenciais do Supabase', () 
 test('getDueTrialReminders degrada para filas vazias sem Supabase configurado (sem tentar rede)', async () => {
   const result = await getDueTrialReminders();
   assert.deepEqual(result, { endingSoon: [], expired: [] });
+});
+
+// Regressão real: promover alguém a afiliado troca só o current_plan, deixando
+// access_source='trial' e a data de expiração do cadastro. Sem excluir o plano,
+// esses perfis ficavam presos na fila e recebiam "seu teste está acabando".
+test('nenhuma das filas inclui planos de cortesia (afiliado)', () => {
+  for (const stage of ['ending_soon', 'expired']) {
+    const filters = buildReminderFilters(stage, FILTER_WINDOW);
+    const planFilters = findFilter(filters, 'current_plan');
+
+    assert.equal(planFilters.length, 1, `${stage}: esperava um filtro de current_plan`);
+    assert.match(planFilters[0], /^not\.in\./, `${stage}: o filtro de plano precisa ser exclusão`);
+    assert.match(planFilters[0], /affiliate/, `${stage}: precisa excluir "affiliate"`);
+    assert.match(planFilters[0], /afiliado/, `${stage}: precisa excluir a grafia legada "afiliado"`);
+  }
+});
+
+test('as filas continuam restritas a quem está de fato em trial', () => {
+  for (const stage of ['ending_soon', 'expired']) {
+    const filters = buildReminderFilters(stage, FILTER_WINDOW);
+    assert.deepEqual(findFilter(filters, 'access_source'), ['eq.trial'], `${stage}: público errado`);
+  }
+});
+
+test('cada fila filtra pelo próprio carimbo de envio e pela janela certa', () => {
+  const endingSoon = buildReminderFilters('ending_soon', FILTER_WINDOW);
+  assert.deepEqual(findFilter(endingSoon, 'trial_reminder_2d_sent_at'), ['is.null']);
+  assert.deepEqual(findFilter(endingSoon, 'plan_expires_at'), [
+    `gte.${FILTER_WINDOW.nowIso}`,
+    `lte.${FILTER_WINDOW.windowEndIso}`,
+  ]);
+
+  const expired = buildReminderFilters('expired', FILTER_WINDOW);
+  assert.deepEqual(findFilter(expired, 'trial_reminder_expired_sent_at'), ['is.null']);
+  assert.deepEqual(findFilter(expired, 'plan_expires_at'), [`lte.${FILTER_WINDOW.nowIso}`]);
 });
 
 test('buildReminderEmail "terminando em breve" inclui data, preços atuais e link', () => {

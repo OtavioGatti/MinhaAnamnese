@@ -379,6 +379,24 @@ Modelos oficiais podem sugerir ferramentas relacionadas via `metadata.linkedTool
 
 Comissão padrão de 30%, com comissão e desconto configuráveis **por afiliado**. O desconto é aplicado no checkout e validado de forma independente no webhook (nunca confia no valor vindo do cliente). Mudanças de comissão valem só para vendas futuras — cada comissão grava a taxa do momento da venda.
 
+### Promover alguém a afiliado
+
+Não existe endpoint para isso: é um UPDATE manual no SQL Editor. Use **sempre** o comando completo abaixo — mexer só no `current_plan` deixa o perfil parecendo um teste em andamento para sempre, e a pessoa passa a receber os e-mails de "seu teste está acabando" e a ver "Teste profissional" na interface (ver `supabase/affiliate_access_source_fix.sql`, que corrigiu quem já tinha ficado nesse estado).
+
+```sql
+update public.profiles
+set
+  current_plan = 'affiliate',
+  access_source = 'legacy',
+  billing_status = 'inactive',
+  plan_expires_at = null,
+  trial_reminder_2d_sent_at = coalesce(trial_reminder_2d_sent_at, timezone('utc', now())),
+  trial_reminder_expired_sent_at = coalesce(trial_reminder_expired_sent_at, timezone('utc', now()))
+where lower(email) = 'pessoa@exemplo.com';
+```
+
+`plan_expires_at` fica nulo porque o acesso de afiliado não expira: `accessState` libera Pro por `isAffiliate`, independente de data e de `billing_status`. Depois disso a pessoa cria o próprio código em `/afiliado`.
+
 Ajustar comissão/desconto (SQL Editor do Supabase):
 
 ```sql
