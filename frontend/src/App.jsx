@@ -50,6 +50,9 @@ const COOKIE_CONSENT_KEY = 'minha-anamnese-cookie-consent';
 const AFFILIATE_REFERRAL_KEY = 'minha-anamnese-affiliate-ref';
 const PASSWORD_RECOVERY_PATH = '/redefinir-senha';
 const PASSWORD_RECOVERY_INTENT_KEY = 'minha-anamnese-password-recovery-intent';
+// Segura o reenvio do e-mail de confirmação para não esbarrar no rate limit
+// de e-mail do Supabase quando a pessoa clica em sequência.
+const RESEND_CONFIRMATION_COOLDOWN_SECONDS = 20;
 const PRODUCTION_APP_ORIGIN = 'https://www.minhaanamnese.com.br';
 const DEBUG_MODE = false;
 const TRIAL_DAYS_COPY = '7 dias';
@@ -946,6 +949,9 @@ function App() {
   });
   const [authError, setAuthError] = useState('');
   const [authFeedback, setAuthFeedback] = useState('');
+  const [signupConfirmationPending, setSignupConfirmationPending] = useState(false);
+  const [resendConfirmationCooldown, setResendConfirmationCooldown] = useState(0);
+  const [resendingConfirmation, setResendingConfirmation] = useState(false);
   const [copiado, setCopiado] = useState(false);
   const [loadingTemplates, setLoadingTemplates] = useState(true);
   const [loadingAnamneseStats, setLoadingAnamneseStats] = useState(false);
@@ -1205,6 +1211,18 @@ function App() {
       data.subscription.unsubscribe();
     };
   }, []);
+
+  useEffect(() => {
+    if (resendConfirmationCooldown <= 0) {
+      return undefined;
+    }
+
+    const timer = setTimeout(() => {
+      setResendConfirmationCooldown((seconds) => Math.max(0, seconds - 1));
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, [resendConfirmationCooldown]);
 
   useEffect(() => {
     async function atualizarSessaoAposCheckout() {
@@ -2232,6 +2250,7 @@ function App() {
     setLegalConsentModalOpen(false);
     setAuthError('');
     setAuthFeedback('');
+    setSignupConfirmationPending(false);
     setLoadingAuth(false);
   };
 
@@ -2253,6 +2272,7 @@ function App() {
     }
     setAuthError('');
     setAuthFeedback('');
+    setSignupConfirmationPending(false);
   };
 
   const handleLogin = async () => {
@@ -2367,14 +2387,45 @@ function App() {
       return;
     }
 
-    setAuthFeedback('Conta criada com sucesso. Enviamos um link de confirmação para o seu e-mail. Depois de confirmar, entre para iniciar seu teste profissional.');
+    // Não trocar para o modo login aqui: o passo real do usuário agora é abrir
+    // o e-mail, e um formulário de "Entrar" em destaque contradiz isso — foi o
+    // que fazia muita gente achar que tinha digitado o e-mail errado.
     setPassword('');
     setConfirmPassword('');
     setTermsAccepted(false);
     setSignupLegalConsent(null);
     setLegalConsentModalOpen(false);
-    setAuthMode('login');
+    setSignupConfirmationPending(true);
+    setResendConfirmationCooldown(RESEND_CONFIRMATION_COOLDOWN_SECONDS);
     setLoadingAuth(false);
+  };
+
+  const handleResendConfirmation = async () => {
+    const normalizedEmail = email.trim().toLowerCase();
+
+    if (!isValidEmail(normalizedEmail) || resendConfirmationCooldown > 0 || resendingConfirmation) {
+      return;
+    }
+
+    setAuthError('');
+    setAuthFeedback('');
+    setResendingConfirmation(true);
+
+    const { error } = await supabase.auth.resend({
+      type: 'signup',
+      email: normalizedEmail,
+      options: { emailRedirectTo: window.location.origin },
+    });
+
+    if (error) {
+      setAuthError(getAuthErrorMessage(error, 'Não foi possível reenviar o e-mail de confirmação agora.'));
+      setResendingConfirmation(false);
+      return;
+    }
+
+    setAuthFeedback('Reenviamos o link de confirmação. Verifique sua caixa de entrada e o spam.');
+    setResendConfirmationCooldown(RESEND_CONFIRMATION_COOLDOWN_SECONDS);
+    setResendingConfirmation(false);
   };
 
   const handleLegalConsentComplete = async (legalConsent) => {
@@ -2967,6 +3018,12 @@ function App() {
             onSubmit={(e) => {
               e.preventDefault();
 
+              // Na tela de "verifique seu e-mail" o authMode continua 'signup',
+              // então um Enter aqui recriaria a conta sem querer.
+              if (signupConfirmationPending) {
+                return;
+              }
+
               if (authMode === 'login') {
                 handleLogin();
                 return;
@@ -2989,22 +3046,26 @@ function App() {
             <div className="topbar-auth-header">
               <div>
                 <strong>
-                  {authMode === 'login'
-                    ? 'Entre na sua conta'
-                    : authMode === 'signup'
-                      ? 'Crie sua conta'
-                      : authMode === 'resetPassword'
-                        ? 'Defina sua nova senha'
-                        : 'Recuperar acesso'}
+                  {signupConfirmationPending
+                    ? 'Verifique seu e-mail'
+                    : authMode === 'login'
+                      ? 'Entre na sua conta'
+                      : authMode === 'signup'
+                        ? 'Crie sua conta'
+                        : authMode === 'resetPassword'
+                          ? 'Defina sua nova senha'
+                          : 'Recuperar acesso'}
                 </strong>
                 <span>
-                  {authMode === 'login'
-                    ? 'Use seu e-mail e senha para acessar seu histórico e recursos profissionais.'
-                    : authMode === 'signup'
-                      ? 'Crie um acesso simples para continuar usando o produto com mais facilidade.'
-                      : authMode === 'resetPassword'
-                        ? 'Crie uma nova senha para concluir a recuperação e seguir usando sua conta normalmente.'
-                        : 'Informe seu e-mail para receber as instruções de recuperação de senha.'}
+                  {signupConfirmationPending
+                    ? 'Falta um passo simples para ativar sua conta.'
+                    : authMode === 'login'
+                      ? 'Use seu e-mail e senha para acessar seu histórico e recursos profissionais.'
+                      : authMode === 'signup'
+                        ? 'Crie um acesso simples para continuar usando o produto com mais facilidade.'
+                        : authMode === 'resetPassword'
+                          ? 'Crie uma nova senha para concluir a recuperação e seguir usando sua conta normalmente.'
+                          : 'Informe seu e-mail para receber as instruções de recuperação de senha.'}
                 </span>
               </div>
               <button
@@ -3016,7 +3077,23 @@ function App() {
               </button>
             </div>
 
-            {authMode !== 'resetPassword' && (
+            {signupConfirmationPending && (
+              <div className="topbar-auth-confirm-panel">
+                <span className="topbar-auth-confirm-icon" aria-hidden="true">✓</span>
+                <div>
+                  <strong>Conta criada. Agora confirme o e-mail.</strong>
+                  <p>
+                    Enviamos um link de confirmação para <strong>{email}</strong>. Abra sua caixa de
+                    entrada, clique no link e sua conta será ativada.
+                  </p>
+                  <p className="topbar-auth-confirm-hint">
+                    Não achou? Verifique a caixa de spam ou promoções.
+                  </p>
+                </div>
+              </div>
+            )}
+
+            {!signupConfirmationPending && authMode !== 'resetPassword' && (
               <input
                 ref={emailInputRef}
                 type="email"
@@ -3033,7 +3110,7 @@ function App() {
               />
             )}
 
-            {authMode !== 'forgotPassword' && (
+            {!signupConfirmationPending && authMode !== 'forgotPassword' && (
               <input
                 ref={passwordInputRef}
                 type="password"
@@ -3050,7 +3127,7 @@ function App() {
               />
             )}
 
-            {(authMode === 'signup' || authMode === 'resetPassword') && (
+            {!signupConfirmationPending && (authMode === 'signup' || authMode === 'resetPassword') && (
               <input
                 type="password"
                 value={confirmPassword}
@@ -3066,7 +3143,7 @@ function App() {
               />
             )}
 
-            {authMode === 'signup' && (
+            {!signupConfirmationPending && authMode === 'signup' && (
               <div className={`terms-consent-control legal-consent-summary ${termsAccepted ? 'completed' : ''}`}>
                 <span className="legal-consent-summary-icon" aria-hidden="true">
                   {termsAccepted ? '✓' : 'i'}
@@ -3089,7 +3166,20 @@ function App() {
             {authFeedback && <span className="topbar-auth-feedback">{authFeedback}</span>}
             {authError && <div className="topbar-auth-error">{authError}</div>}
 
-            {authMode === 'login' ? (
+            {signupConfirmationPending ? (
+              <button
+                type="button"
+                className="btn btn-secundario"
+                onClick={handleResendConfirmation}
+                disabled={resendingConfirmation || resendConfirmationCooldown > 0}
+              >
+                {resendingConfirmation
+                  ? 'Reenviando...'
+                  : resendConfirmationCooldown > 0
+                    ? `Reenviar e-mail (${resendConfirmationCooldown}s)`
+                    : 'Reenviar e-mail de confirmação'}
+              </button>
+            ) : authMode === 'login' ? (
               <button
                 type="submit"
                 className="btn btn-secundario"
@@ -3124,7 +3214,29 @@ function App() {
             )}
 
             <div className="topbar-auth-links">
-              {authMode === 'login' && (
+              {signupConfirmationPending && (
+                <>
+                  <button
+                    type="button"
+                    className="topbar-auth-link"
+                    onClick={() => handleChangeAuthMode('login')}
+                  >
+                    Já confirmei, quero entrar
+                  </button>
+                  <button
+                    type="button"
+                    className="topbar-auth-link"
+                    onClick={() => {
+                      setEmail('');
+                      handleChangeAuthMode('signup');
+                    }}
+                  >
+                    Usar outro e-mail
+                  </button>
+                </>
+              )}
+
+              {!signupConfirmationPending && authMode === 'login' && (
                 <>
                   <button
                     type="button"
@@ -3145,7 +3257,7 @@ function App() {
                 </>
               )}
 
-              {authMode === 'signup' && (
+              {!signupConfirmationPending && authMode === 'signup' && (
                 <button
                   type="button"
                   className="topbar-auth-link"

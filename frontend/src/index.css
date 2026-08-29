@@ -251,6 +251,58 @@ body {
   color: #4b5563;
 }
 
+/* Estado de "conta criada, falta confirmar o e-mail". Precisa de peso visual
+   proprio: como legenda cinza generica, a instrucao passava despercebida e a
+   pessoa achava que tinha errado o e-mail. */
+.topbar-auth-confirm-panel {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  padding: 0.85rem 0.9rem;
+  border: 1px solid var(--green-100);
+  border-radius: 10px;
+  background: var(--green-50);
+}
+
+.topbar-auth-confirm-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  background: var(--green-500);
+  color: #ffffff;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.topbar-auth-confirm-panel strong {
+  display: block;
+  margin-bottom: 0.3rem;
+  color: #14532d;
+  font-size: 0.88rem;
+}
+
+.topbar-auth-confirm-panel p {
+  color: #166534;
+  font-size: 0.83rem;
+  line-height: 1.5;
+}
+
+.topbar-auth-confirm-panel p strong {
+  display: inline;
+  margin: 0;
+  font-size: inherit;
+  word-break: break-all;
+}
+
+.topbar-auth-confirm-hint {
+  margin-top: 0.35rem;
+  opacity: 0.85;
+}
+
 .topbar-auth-error {
   padding: 0.75rem 0.9rem;
   border: 1px solid #fecaca;
