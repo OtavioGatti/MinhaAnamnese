@@ -328,6 +328,14 @@ function normalizeEngineOutput(output, index) {
     resultLabel: normalizeText(config.result_label || config.resultLabel) || label || `Resultado ${index + 1}`,
     requiredFields,
     resultRanges,
+    // Agrupamento é só apresentação: saídas com o mesmo `group` viram um card
+    // único, com uma linha por saída. Sem `group` a saída renderiza como sempre
+    // (um card por valor), então nenhuma ferramenta antiga muda.
+    group: normalizeKey(config.group || config.grupo),
+    groupLabel: normalizeText(config.group_label || config.groupLabel || config.rotulo_grupo),
+    groupOrientation: normalizeText(
+      config.group_orientation || config.groupOrientation || config.orientacao_grupo,
+    ),
   };
 }
 

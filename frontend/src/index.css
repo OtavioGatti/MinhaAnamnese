@@ -4785,6 +4785,50 @@ body {
   background: var(--gray-50);
 }
 
+/* Saídas agrupadas: uma linha por valor dentro do card do regime, em vez de um
+   card inteiro para cada número. */
+.clinical-tool-result-rows {
+  display: grid;
+  gap: 0.35rem;
+  margin: 0;
+}
+
+.clinical-tool-result-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.3rem 0;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+}
+
+.clinical-tool-result-row:last-child {
+  border-bottom: none;
+}
+
+.clinical-tool-result-row dt {
+  color: var(--gray-600);
+  font-size: 0.88rem;
+}
+
+.clinical-tool-result-row dd {
+  margin: 0;
+  color: var(--gray-900);
+  font-size: 1.05rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.clinical-tool-result-row dd em {
+  color: var(--gray-500);
+  font-size: 0.82rem;
+  font-weight: 500;
+  font-style: normal;
+  white-space: normal;
+}
+
 .clinical-tool-result-header {
   display: flex;
   align-items: flex-start;

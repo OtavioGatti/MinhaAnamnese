@@ -347,18 +347,35 @@ function buildCopyText(tool, result) {
       return '';
     }
 
-    readyOutputs.forEach((output) => {
-      const precision = output.precision ?? tool.engineConfig?.precision;
-      const unit = output.unit ? ` ${output.unit}` : '';
-      lines.push(`${output.label || output.resultLabel || 'Resultado'}: ${formatResultValue(output.value, precision)}${unit}`);
+    // O texto copiado espelha o agrupamento da tela: quem cola no prontuário
+    // precisa ver a mesma organização que viu no resultado.
+    groupToolOutputs(readyOutputs).forEach((entry) => {
+      if (entry.type === 'single') {
+        const output = entry.item;
+        const precision = output.precision ?? tool.engineConfig?.precision;
+        const unit = output.unit ? ` ${output.unit}` : '';
+        lines.push(`${output.label || output.resultLabel || 'Resultado'}: ${formatResultValue(output.value, precision)}${unit}`);
 
-      if (output.range?.classification) {
-        lines.push(`Classificação: ${output.range.classification}`);
+        if (output.range?.classification) {
+          lines.push(`Classificação: ${output.range.classification}`);
+        }
+
+        if (output.range?.orientation) {
+          lines.push(`Orientação: ${output.range.orientation}`);
+        }
+
+        return;
       }
 
-      if (output.range?.orientation) {
-        lines.push(`Orientação: ${output.range.orientation}`);
-      }
+      lines.push('', entry.label);
+
+      entry.items.forEach((output) => {
+        const precision = output.precision ?? tool.engineConfig?.precision;
+        const unit = output.unit ? ` ${output.unit}` : '';
+        lines.push(`  ${output.label || output.resultLabel || 'Resultado'}: ${formatResultValue(output.value, precision)}${unit}`);
+      });
+
+      entry.orientations.forEach((text) => lines.push(`Orientação: ${text}`));
     });
 
     return lines.join('\n');
@@ -722,6 +739,75 @@ function ChecklistUpcoming({ result }) {
   );
 }
 
+function formatOutputValue(item, tool) {
+  const precision = item.precision ?? tool?.engineConfig?.precision ?? 1;
+  const unit = item.unit ? ` ${item.unit}` : (tool?.engineConfig?.unit ? ` ${tool.engineConfig.unit}` : '');
+  const scoreLabel = tool?.engineConfig?.scoreLabel || 'pontos';
+
+  return `${formatResultValue(item.value, precision)}${unit || (tool?.toolType === 'math_formula' ? '' : ` ${scoreLabel}`)}`;
+}
+
+function uniqueTexts(values) {
+  return Array.from(new Set(values.filter(Boolean)));
+}
+
+// Cor do card do grupo: a da primeira saída (é ela que define o caráter do
+// regime), mas um vermelho em qualquer item promove o card inteiro — alerta
+// duro não pode ficar escondido dentro de um card verde.
+function resolveGroupColor(items) {
+  if (items.some((item) => item.range?.alertColor === 'red')) {
+    return 'red';
+  }
+
+  return items[0]?.range?.alertColor || 'gray';
+}
+
+// Agrupa saídas que declaram o mesmo `group`, preservando a ordem de primeira
+// aparição. Saída sem `group` continua sozinha, como card individual — é isso
+// que mantém intacto o comportamento das ferramentas que já existiam.
+function groupToolOutputs(outputs) {
+  const entries = [];
+  const byGroup = new Map();
+
+  outputs.forEach((item) => {
+    if (!item.group) {
+      entries.push({ type: 'single', item });
+      return;
+    }
+
+    const existing = byGroup.get(item.group);
+
+    if (existing) {
+      existing.items.push(item);
+      return;
+    }
+
+    const entry = { type: 'group', id: item.group, items: [item] };
+    byGroup.set(item.group, entry);
+    entries.push(entry);
+  });
+
+  return entries.map((entry) => {
+    if (entry.type !== 'group') {
+      return entry;
+    }
+
+    // Orientação curada pelo autor vence; sem ela, junta as das faixas sem
+    // repetir (é o que fazia o aviso de potássio aparecer duas vezes).
+    const explicit = uniqueTexts(entry.items.map((item) => item.groupOrientation));
+    const orientations = explicit.length
+      ? explicit
+      : uniqueTexts(entry.items.map((item) => item.range?.orientation));
+
+    return {
+      ...entry,
+      label: entry.items.find((item) => item.groupLabel)?.groupLabel || entry.items[0]?.label || 'Resultado',
+      color: resolveGroupColor(entry.items),
+      orientations,
+    };
+  });
+}
+
 function ClinicalToolResult({ tool, result, copied, onCopy }) {
   const hasOutputs = Array.isArray(result?.outputs) && result.outputs.length > 0;
 
@@ -756,10 +842,7 @@ function ClinicalToolResult({ tool, result, copied, onCopy }) {
       );
     }
 
-    const precision = item.precision ?? tool?.engineConfig?.precision ?? 1;
-    const unit = item.unit ? ` ${item.unit}` : (tool?.engineConfig?.unit ? ` ${tool.engineConfig.unit}` : '');
-    const scoreLabel = tool?.engineConfig?.scoreLabel || 'pontos';
-    const valueText = `${formatResultValue(item.value, precision)}${unit || (tool.toolType === 'math_formula' ? '' : ` ${scoreLabel}`)}`;
+    const valueText = formatOutputValue(item, tool);
     const color = item.range?.alertColor || 'gray';
 
     return (
@@ -779,12 +862,43 @@ function ClinicalToolResult({ tool, result, copied, onCopy }) {
     );
   }
 
+  function renderGroupCard(group) {
+    const orientations = group.orientations;
+
+    return (
+      <section key={`group_${group.id}`} className={`clinical-tool-result-card ${group.color}`}>
+        <div className="clinical-tool-result-header">
+          <div>
+            <span>{group.label}</span>
+          </div>
+        </div>
+
+        <dl className="clinical-tool-result-rows">
+          {group.items.map((item) => (
+            <div key={item.id || item.label} className="clinical-tool-result-row">
+              <dt>{item.label || item.resultLabel}</dt>
+              <dd>
+                {item.ready === false
+                  ? <em>Preencha {item.missingFields.map((field) => field.label).join(', ')}</em>
+                  : formatOutputValue(item, tool)}
+              </dd>
+            </div>
+          ))}
+        </dl>
+
+        {orientations.map((text) => <p key={text}>{text}</p>)}
+      </section>
+    );
+  }
+
   if (hasOutputs) {
     const hasReadyOutput = result.outputs.some((output) => output.ready);
 
     return (
       <div className="clinical-tool-result-stack">
-        {result.outputs.map(renderResultCard)}
+        {groupToolOutputs(result.outputs).map((entry) => (
+          entry.type === 'group' ? renderGroupCard(entry) : renderResultCard(entry.item)
+        ))}
         <button type="button" className="btn btn-secundario" onClick={onCopy} disabled={!hasReadyOutput}>
           {copied ? 'Copiado' : 'Copiar resultados'}
         </button>
