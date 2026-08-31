@@ -966,6 +966,9 @@ function ClinicalToolsPage({
   initialExamSlug = '',
 }) {
   const [pageTab, setPageTab] = usePersistedState('clinicalTools.pageTab', 'calculadoras');
+  // A aba fica guardada na sessão: quem já foi Pro pode voltar com 'manobras'
+  // salva e cair numa seção que a API vai recusar. Sem Pro, só calculadoras.
+  const effectivePageTab = isPro ? pageTab : 'calculadoras';
   const [query, setQuery] = usePersistedState('clinicalTools.query', DEFAULT_QUERY);
   const [category, setCategory] = usePersistedState('clinicalTools.category', '');
   const [subcategory, setSubcategory] = usePersistedState('clinicalTools.subcategory', '');
@@ -980,12 +983,17 @@ function ClinicalToolsPage({
   const [valuesByTool, setValuesByTool] = usePersistedState('clinicalTools.values', {});
   const values = valuesByTool[selectedSlug] || {};
   const [loadingTools, setLoadingTools] = useState(false);
+  // A busca é debounced, então `loadingTools` só sobe depois de ~320ms. Sem
+  // este marcador, quem não é Pro veria o paywall piscar antes da lista chegar.
+  const [toolsLoadedOnce, setToolsLoadedOnce] = useState(false);
   const [loadingDetail, setLoadingDetail] = useState(false);
   const [error, setError] = useState('');
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
-    if (!user?.id || !isPro) {
+    // Sem Pro a busca continua acontecendo: o servidor devolve o subconjunto
+    // liberado (vazio para quem não tem nenhum), e é isso que decide o paywall.
+    if (!user?.id) {
       setTools([]);
       setSelectedSlug('');
       setSelectedTool(null);
@@ -1030,6 +1038,7 @@ function ClinicalToolsPage({
       }
 
       setLoadingTools(false);
+      setToolsLoadedOnce(true);
     }, SEARCH_DEBOUNCE_MS);
 
     return () => {
@@ -1039,7 +1048,7 @@ function ClinicalToolsPage({
   }, [category, isPro, query, selectedSlug, user?.id]);
 
   useEffect(() => {
-    if (!user?.id || !isPro || !selectedSlug) {
+    if (!user?.id || !selectedSlug) {
       setSelectedTool(null);
       return undefined;
     }
@@ -1208,7 +1217,9 @@ function ClinicalToolsPage({
     );
   }
 
-  if (!isPro) {
+  // Sem Pro a página ainda abre quando o servidor liberou alguma ferramenta
+  // (divulgação aberta). O paywall só aparece quando não sobrou nada.
+  if (!isPro && toolsLoadedOnce && !loadingTools && tools.length === 0) {
     return (
       <main className="prescription-guide-page clinical-tool-page">
         <section className="prescription-access-panel">
@@ -1257,9 +1268,12 @@ function ClinicalToolsPage({
             </svg>
             Calculadoras
           </button>
+          {/* Manobras e Exames tem paywall proprio na API: mostrar as abas para
+              quem so tem a calculadora liberada levaria a um erro sem saida. */}
           <button
             type="button"
             role="tab"
+            hidden={!isPro}
             aria-selected={pageTab === 'manobras'}
             className={`prescription-section-tab ${pageTab === 'manobras' ? 'active' : ''}`}
             onClick={() => setPageTab('manobras')}
@@ -1274,6 +1288,7 @@ function ClinicalToolsPage({
           <button
             type="button"
             role="tab"
+            hidden={!isPro}
             aria-selected={pageTab === 'exames'}
             className={`prescription-section-tab ${pageTab === 'exames' ? 'active' : ''}`}
             onClick={() => setPageTab('exames')}
@@ -1288,11 +1303,11 @@ function ClinicalToolsPage({
         </div>
       </section>
 
-      {pageTab === 'manobras' ? <ManeuversSection initialSlug={initialManeuverSlug} /> : null}
+      {effectivePageTab === 'manobras' ? <ManeuversSection initialSlug={initialManeuverSlug} /> : null}
 
-      {pageTab === 'exames' ? <ExamsSection initialSlug={initialExamSlug} /> : null}
+      {effectivePageTab === 'exames' ? <ExamsSection initialSlug={initialExamSlug} /> : null}
 
-      {pageTab === 'calculadoras' ? (
+      {effectivePageTab === 'calculadoras' ? (
         <section className="prescription-guide-grid clinical-tool-grid">
           <ClinicalToolSidebar
             query={query}

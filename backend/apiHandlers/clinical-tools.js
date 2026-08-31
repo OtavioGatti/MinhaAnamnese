@@ -5,6 +5,7 @@ const {
   listClinicalToolsBySlugs,
 } = require('../services/clinicalTools');
 const { resolveSupabaseUser } = require('../utils/supabaseAuth');
+const { resolveClinicalToolsAccess } = require('../config/freeClinicalTools');
 
 function getQueryParam(req, name) {
   if (typeof req.query?.[name] === 'string') {
@@ -49,22 +50,24 @@ module.exports = async function handler(req, res) {
     }
 
     const profile = await ensureUserProfile(auth.user);
+    const slugsParam = getQueryParam(req, 'slugs');
+    const slug = getQueryParam(req, 'slug');
 
-    if (!profile?.access_state?.hasActiveProAccess) {
+    // Sem Pro o acesso não é negado de saída: sobra o subconjunto liberado.
+    // O corte é feito aqui, no servidor — filtrar só no frontend deixaria o
+    // conteúdo pago acessível a quem chamasse a API direto.
+    const access = resolveClinicalToolsAccess({
+      hasProAccess: Boolean(profile?.access_state?.hasActiveProAccess),
+      slug,
+      slugs: slugsParam ? slugsParam.split(',') : [],
+    });
+
+    if (access.mode === 'denied') {
       return res.status(402).json(buildPaywallResponse(profile));
     }
 
-    const slugs = getQueryParam(req, 'slugs');
-
-    if (slugs) {
-      return res.status(200).json({
-        success: true,
-        data: await listClinicalToolsBySlugs(slugs.split(',')),
-      });
-    }
-
-    const slug = getQueryParam(req, 'slug');
-
+    // Detalhe de uma ferramenta: mesmo caminho para todo mundo — quem podia
+    // chegar aqui já passou pelo corte de acesso acima.
     if (slug) {
       const tool = await getClinicalToolBySlug(slug);
 
@@ -78,6 +81,25 @@ module.exports = async function handler(req, res) {
       return res.status(200).json({
         success: true,
         data: tool,
+      });
+    }
+
+    if (slugsParam) {
+      // `access.slugs` já vem filtrado quando não há Pro.
+      const requested = access.mode === 'slugs' ? access.slugs : slugsParam.split(',');
+
+      return res.status(200).json({
+        success: true,
+        data: await listClinicalToolsBySlugs(requested),
+      });
+    }
+
+    // Listagem sem Pro ignora busca e categoria: são poucas ferramentas
+    // liberadas, e filtrar sobre elas confundiria mais do que ajudaria.
+    if (access.mode === 'slugs') {
+      return res.status(200).json({
+        success: true,
+        data: await listClinicalToolsBySlugs(access.slugs),
       });
     }
 

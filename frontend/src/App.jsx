@@ -270,7 +270,31 @@ function getInitialWorkspacePageFromPath() {
     return 'clinicalTools';
   }
 
+  // Um ?tool= válido leva para as ferramentas mesmo fora de /ferramentas, para
+  // o link funcionar se alguém copiar só o domínio com o parâmetro.
+  if (getClinicalToolSlugFromUrl()) {
+    return 'clinicalTools';
+  }
+
   return 'home';
+}
+
+// Link de divulgação: /ferramentas?tool=<slug> abre a calculadora já
+// selecionada. O parâmetro NÃO é apagado da URL depois de lido (diferente do
+// `checkout`), senão recarregar a página perderia a ferramenta — e o link
+// existe justamente para ser compartilhado e reaberto.
+function getClinicalToolSlugFromUrl() {
+  if (typeof window === 'undefined') {
+    return '';
+  }
+
+  const params = new URLSearchParams(window.location.search);
+
+  return String(params.get('tool') || '')
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9-]/g, '')
+    .slice(0, 80);
 }
 
 function normalizeAffiliateReferralCode(value) {
@@ -962,7 +986,10 @@ function App() {
   const [activeSidebarTab, setActiveSidebarTab] = useState('guide');
   const [currentPage, setCurrentPage] = useState(() => getInitialWorkspacePageFromPath());
   const [prescriptionGuideTarget, setPrescriptionGuideTarget] = useState(null);
-  const [clinicalToolTarget, setClinicalToolTarget] = useState('');
+  // Semeado pela URL: é o que faz o link de divulgação abrir a calculadora
+  // certa. O efeito de initialToolSlug na página já vence a seleção que ficou
+  // guardada na sessão, então não é preciso limpar nada aqui.
+  const [clinicalToolTarget, setClinicalToolTarget] = useState(getClinicalToolSlugFromUrl);
   const [maneuverTarget, setManeuverTarget] = useState('');
   const [examTarget, setExamTarget] = useState('');
   const [anamneseStats, setAnamneseStats] = useState(null);
