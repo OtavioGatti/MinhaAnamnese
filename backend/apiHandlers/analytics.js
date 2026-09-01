@@ -6,13 +6,32 @@ const {
 } = require('../utils/supabaseAuth');
 const { isValidSessionId } = require('../utils/idValidation');
 
+// Precisa acompanhar o que o frontend realmente dispara (trackEvent em
+// App.jsx). Evento fora desta lista volta 400 e some sem deixar rastro: o
+// cliente engole o erro, então a métrica simplesmente não existe e ninguém
+// percebe. Foi o que aconteceu com cartas, hipóteses e onboarding.
 const ALLOWED_EVENTS = new Set([
+  // Fluxo principal
   'anamnese_gerada',
   'score_exibido',
   'teaser_exibido',
   'cta_avaliacao_click',
   'insight_gerado',
   'upgrade_click',
+  // Cartas e documentos
+  'carta_gerada',
+  'carta_copiada',
+  // Hipóteses diagnósticas e o que elas levam a abrir
+  'hipoteses_diagnosticas_geradas',
+  'hipoteses_raciocinio_completo_click',
+  'ferramenta_vinculada_click',
+  'hipotese_manobra_click',
+  'hipotese_exame_click',
+  'hipotese_prescricao_click',
+  // Boas-vindas
+  'onboarding_exibido',
+  'onboarding_fechado',
+  'onboarding_cta_click',
 ]);
 const DEBUG_ANALYTICS = process.env.DEBUG_ANALYTICS === 'true';
 
@@ -30,7 +49,35 @@ function sanitizeMetadata(metadata) {
   }
 
   const sanitized = {};
-  const allowedKeys = ['template', 'text_length', 'score', 'is_pro', 'has_teaser'];
+  // Allowlist também na metadata: só entra o que é métrica, nunca texto
+  // clínico. Chave não listada é descartada em silêncio — por isso ela precisa
+  // acompanhar os eventos acima, senão o evento chega vazio de contexto.
+  const allowedKeys = [
+    'template',
+    'text_length',
+    'score',
+    'is_pro',
+    'is_trial',
+    'has_teaser',
+    'plan_key',
+    // Cartas
+    'letter_type',
+    'used_custom_model',
+    'has_structured_result',
+    // Hipóteses
+    'hypothesis_count',
+    'result_status',
+    'prompt_source',
+    'has_exact_guide',
+    // Conteúdo do catálogo que foi aberto (identificador editorial, não dado
+    // de paciente). `hypothesis` fica DE FORA de propósito: é o nome gerado a
+    // partir da anamnese, o mais próximo de conteúdo clínico do paciente que
+    // esses eventos carregam — `has_exact_guide` já dá o sinal útil.
+    'slug',
+    'origin',
+    'maneuver',
+    'exam',
+  ];
 
   allowedKeys.forEach((key) => {
     const value = metadata[key];
@@ -221,3 +268,9 @@ module.exports = async function handler(req, res) {
     error: 'M\u00e9todo n\u00e3o permitido',
   });
 };
+
+// Anexados depois da atribuicao acima (que substitui module.exports inteiro).
+// Servem ao teste que confere se a allowlist acompanha o que o frontend
+// dispara — sem isso, um evento novo volta a ser descartado em silencio.
+module.exports.ALLOWED_EVENTS = ALLOWED_EVENTS;
+module.exports.sanitizeMetadata = sanitizeMetadata;
