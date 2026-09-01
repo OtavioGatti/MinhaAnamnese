@@ -375,6 +375,37 @@ O motor de lógica condicional (`frontend/src/lib/clinicalChecklist.js` + normal
 
 Modelos oficiais podem sugerir ferramentas relacionadas via `metadata.linkedTools` (array de slugs) em `official_templates`, editado no Notion (propriedade "Linked tools") e exibido como chips na Home e na galeria de Modelos.
 
+## Painel de Métricas (Operação)
+
+`GET /api/admin/metrics` devolve as métricas agregadas do site. **Só leitura** — nenhuma rota daqui escreve.
+
+Duas formas de autenticar:
+
+- **Bearer `ADMIN_SYNC_SECRET`** — para chamar de script ou n8n. Devolve JSON.
+- **Link assinado** (`?exp=&sig=`) — para abrir no navegador sem colar o segredo na URL, mesmo mecanismo do link de baixa de repasse. Com `&format=html` devolve a página pronta.
+
+Gerar o link (validade padrão de 180 dias, pensado para ficar nos favoritos):
+
+```bash
+cd backend && node -e "
+require('dotenv').config();
+const { createOwnerMetricsToken } = require('./utils/ownerMetricsToken');
+const t = createOwnerMetricsToken();
+console.log('https://minhaanamnese.onrender.com/api/admin/metrics?format=html&exp=' + t.exp + '&sig=' + t.sig);
+"
+```
+
+Para revogar todos os links já gerados, troque `OWNER_METRICS_SECRET` (ou `ADMIN_SYNC_SECRET`, se estiver usando o fallback).
+
+### Como ler os números
+
+O painel traz as ressalvas no rodapé, mas as duas que mais importam:
+
+- **Quem recusa o banner de cookies não emite evento nenhum.** Toda métrica de evento (uso, retenção, funil) é piso, não total.
+- **Não existe registro de clique no link de afiliado.** A taxa mostrada é "iniciou checkout → pagou", uma etapa tardia — não é a conversão do link de divulgação, e por isso parece alta.
+
+Há duas leituras de funil, de propósito: **Alcance por etapa** (ignora a ordem, é a confiável) e **Funil em sequência** (só conta quem seguiu a ordem exata de `FUNNEL_STEPS`). Quando as duas divergem muito, é sinal de que a ordem declarada não reflete o uso real — hoje é o caso, porque o clique no CTA costuma vir antes do score.
+
 ## Programa de Afiliados (Operação)
 
 Comissão padrão de 30%, com comissão e desconto configuráveis **por afiliado**. O desconto é aplicado no checkout e validado de forma independente no webhook (nunca confia no valor vindo do cliente). Mudanças de comissão valem só para vendas futuras — cada comissão grava a taxa do momento da venda.

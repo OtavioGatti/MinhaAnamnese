@@ -62,6 +62,11 @@ function getFunnelLevel(events) {
   };
 }
 
+// Teto do funil global. O PostgREST corta em 1000 por padrão e a tabela não
+// tem índice em created_at, então a leitura ampla é deliberadamente limitada —
+// ver o aviso de truncamento devolvido por getGlobalFunnelSessions.
+const GLOBAL_FUNNEL_EVENT_LIMIT = 5000;
+
 async function fetchEventsByUserId(userId) {
   const supabaseUrl = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL;
   const supabaseServiceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
@@ -103,8 +108,50 @@ async function fetchEventsByUserId(userId) {
   ));
 }
 
-async function getFunnelSessions(userId) {
-  const events = await fetchEventsByUserId(userId);
+// Funil de TODO o site, incluindo sessão anônima (user_id nulo) — é por isso
+// que agrupa por session_id, e não por usuário. Só o painel do dono usa.
+async function fetchAllFunnelEvents() {
+  const supabaseUrl = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL;
+  const supabaseServiceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+
+  if (!supabaseUrl || !supabaseServiceRoleKey) {
+    return [];
+  }
+
+  const query = new URLSearchParams({
+    select: 'session_id,event_name,created_at',
+    order: 'created_at.asc',
+    event_name: `in.(${FUNNEL_STEPS.join(',')})`,
+    limit: String(GLOBAL_FUNNEL_EVENT_LIMIT),
+  });
+
+  const response = await fetch(`${supabaseUrl}/rest/v1/events?${query.toString()}`, {
+    method: 'GET',
+    headers: {
+      apikey: supabaseServiceRoleKey,
+      Authorization: `Bearer ${supabaseServiceRoleKey}`,
+    },
+  });
+
+  if (!response.ok) {
+    return [];
+  }
+
+  const json = await response.json();
+
+  if (!Array.isArray(json)) {
+    return [];
+  }
+
+  return json.filter((event) => (
+    isValidSessionId(event?.session_id) &&
+    typeof event?.event_name === 'string' &&
+    FUNNEL_STEPS.includes(event.event_name) &&
+    typeof event?.created_at === 'string'
+  ));
+}
+
+function buildSessionsFromEvents(events) {
   const sessionsMap = new Map();
 
   events.forEach((event) => {
@@ -134,6 +181,27 @@ async function getFunnelSessions(userId) {
     });
 }
 
+async function getFunnelSessions(userId) {
+  return buildSessionsFromEvents(await fetchEventsByUserId(userId));
+}
+
+/**
+ * Sessões do site inteiro para o painel do dono.
+ * `truncated` avisa quando bateu no teto — sem isso o painel mostraria um
+ * funil parcial como se fosse o total.
+ */
+async function getGlobalFunnelSessions() {
+  const events = await fetchAllFunnelEvents();
+
+  return {
+    sessions: buildSessionsFromEvents(events),
+    truncated: events.length >= GLOBAL_FUNNEL_EVENT_LIMIT,
+  };
+}
+
 module.exports = {
+  GLOBAL_FUNNEL_EVENT_LIMIT,
+  buildSessionsFromEvents,
   getFunnelSessions,
+  getGlobalFunnelSessions,
 };

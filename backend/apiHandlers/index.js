@@ -53,6 +53,7 @@ const apiRoutes = {
   '/api/admin/clinical-drugs/automation-run': require('./admin/clinical-drug-automation-run'),
   '/api/admin/clinical-drugs/queue-incomplete': require('./admin/clinical-drug-queue-incomplete'),
   '/api/admin/trial-reminders/run': require('./admin/trial-reminders-run'),
+  '/api/admin/metrics': require('./admin/metrics'),
   '/api/webhook/mercadopago': require('./webhook/mercadopago'),
   '/api/webhook/notion/prescription-guides': require('./webhook/notion/prescription-guides'),
   '/api/webhook/notion/templates': require('./webhook/notion/templates'),
