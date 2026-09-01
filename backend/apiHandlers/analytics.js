@@ -28,6 +28,8 @@ const ALLOWED_EVENTS = new Set([
   'hipotese_manobra_click',
   'hipotese_exame_click',
   'hipotese_prescricao_click',
+  // Origem: chegada por link de afiliado (topo do funil)
+  'afiliado_link_visita',
   // Boas-vindas
   'onboarding_exibido',
   'onboarding_fechado',
@@ -77,6 +79,8 @@ function sanitizeMetadata(metadata) {
     'origin',
     'maneuver',
     'exam',
+    // Código do afiliado que trouxe a visita
+    'ref',
   ];
 
   allowedKeys.forEach((key) => {

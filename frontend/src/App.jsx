@@ -1083,6 +1083,30 @@ function App() {
     };
   }, []);
 
+  // Topo do funil de afiliado. Sem isto só existia dado a partir do checkout,
+  // então não dava para saber quantas pessoas o link trouxe.
+  //
+  // Depende do consentimento de propósito: quem chega pelo link ainda não
+  // aceitou cookies, e trackEvent bloqueia antes disso. Por isso o evento sai
+  // quando o consentimento chega, e não na chegada — quem recusa não é
+  // rastreado, que é o comportamento correto. A contagem no painel é por
+  // sessão distinta, então recarregar a página não infla o número.
+  useEffect(() => {
+    if (!canTrackNonEssentialCookies(cookieConsent)) {
+      return;
+    }
+
+    const referralCode = readAffiliateReferralCode();
+
+    if (!referralCode) {
+      return;
+    }
+
+    trackEvent('afiliado_link_visita', { ref: referralCode }, {
+      eventKey: `afiliado_link_visita:${referralCode}`,
+    });
+  }, [cookieConsent]);
+
   useEffect(() => {
     if (currentPage !== 'affiliate') {
       return;

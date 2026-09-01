@@ -6,6 +6,7 @@ delete process.env.VITE_SUPABASE_URL;
 delete process.env.SUPABASE_SERVICE_ROLE_KEY;
 
 const {
+  countAffiliateVisits,
   summarizeAffiliates,
   summarizeEventUsage,
   summarizePayments,
@@ -168,6 +169,51 @@ test('summarizeAffiliates ignora atribuição de afiliado inexistente', () => {
 
   assert.equal(linhas.length, 1);
   assert.equal(linhas[0].checkoutsIniciados, 0);
+});
+
+test('countAffiliateVisits conta sessões distintas por código', () => {
+  const visitas = countAffiliateVisits([
+    { event_name: 'afiliado_link_visita', session_id: 's1', metadata: { ref: 'gatti' } },
+    // mesma sessão recarregando não pode inflar
+    { event_name: 'afiliado_link_visita', session_id: 's1', metadata: { ref: 'gatti' } },
+    { event_name: 'afiliado_link_visita', session_id: 's2', metadata: { ref: 'GATTI' } },
+    { event_name: 'afiliado_link_visita', session_id: 's3', metadata: { ref: 'lucas' } },
+    // ruído que não deve contar
+    { event_name: 'anamnese_gerada', session_id: 's4', metadata: { ref: 'gatti' } },
+    { event_name: 'afiliado_link_visita', session_id: 's5', metadata: {} },
+    { event_name: 'afiliado_link_visita', session_id: null, metadata: { ref: 'gatti' } },
+  ]);
+
+  assert.equal(visitas.get('gatti'), 2, 'caixa alta é o mesmo código; reload não conta duas vezes');
+  assert.equal(visitas.get('lucas'), 1);
+  assert.equal(visitas.size, 2);
+});
+
+test('summarizeAffiliates calcula a conversão de ponta a ponta a partir das visitas', () => {
+  const [linha] = summarizeAffiliates({
+    affiliates: [{ id: 'a1', code: 'gatti', status: 'active', commission_rate: 0.3 }],
+    attributions: [{ affiliate_id: 'a1', buyer_user_id: 'u1' }],
+    commissions: [
+      { affiliate_id: 'a1', gross_amount: 24.9, commission_amount: 7.47, status: 'pending', created_at: new Date().toISOString() },
+    ],
+    visitsByCode: new Map([['gatti', 20]]),
+  });
+
+  assert.equal(linha.visitas, 20);
+  assert.equal(linha.taxaVisitaParaPago, 5, '1 pago / 20 visitas');
+  assert.equal(linha.taxaCheckoutParaPago, 100, '1 pago / 1 pessoa que abriu checkout');
+});
+
+test('sem visitas medidas a taxa de ponta a ponta é null, não zero', () => {
+  const [linha] = summarizeAffiliates({
+    affiliates: [{ id: 'a1', code: 'gatti', status: 'active', commission_rate: 0.3 }],
+    attributions: [],
+    commissions: [],
+    visitsByCode: new Map(),
+  });
+
+  assert.equal(linha.visitas, 0);
+  assert.equal(linha.taxaVisitaParaPago, null);
 });
 
 test('token do painel assina, valida e recusa adulteração', () => {

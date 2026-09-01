@@ -59,13 +59,15 @@ function renderHtml(m) {
   const afiliados = m.afiliados
     .map((a) => `<tr>
       <td>${escapeHtml(a.codigo)}</td>
+      <td class="num">${a.visitas}</td>
       <td class="num">${a.checkoutsIniciados}</td>
       <td class="num">${a.compradoresDistintos}</td>
       <td class="num">${a.conversoes}</td>
+      <td class="num">${a.taxaVisitaParaPago == null ? '<span class="muted">sem dado</span>' : `${a.taxaVisitaParaPago}%`}</td>
       <td class="num">${a.taxaCheckoutParaPago == null ? '<span class="muted">sem dado</span>' : `${a.taxaCheckoutParaPago}%`}</td>
       <td class="num">${money(a.receitaGerada)}</td>
     </tr>`)
-    .join('') || '<tr><td colspan="6" class="muted">Nenhum afiliado com movimento.</td></tr>';
+    .join('') || '<tr><td colspan="8" class="muted">Nenhum afiliado com movimento.</td></tr>';
 
   const avisos = m.avisos.map((a) => `<li>${escapeHtml(a)}</li>`).join('');
 
@@ -147,8 +149,9 @@ function renderHtml(m) {
 
   <div class="card">
     <h2 style="margin-top:0">Afiliados</h2>
+    <p class="muted" style="margin:0 0 8px;font-size:.8rem">Visitas só passaram a ser medidas a partir da instrumentação do link — zero no histórico antigo é ausência de medição, não queda.</p>
     <div class="scroll"><table>
-      <thead><tr><th>Código</th><th class="num">Checkouts</th><th class="num">Pessoas</th><th class="num">Pagos</th><th class="num">Checkout→pago</th><th class="num">Receita</th></tr></thead>
+      <thead><tr><th>Código</th><th class="num">Visitas</th><th class="num">Checkouts</th><th class="num">Pessoas</th><th class="num">Pagos</th><th class="num">Visita→pago</th><th class="num">Checkout→pago</th><th class="num">Receita</th></tr></thead>
       <tbody>${afiliados}</tbody>
     </table></div>
   </div>

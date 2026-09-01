@@ -210,20 +210,47 @@ function summarizeEventUsage(events) {
     .sort((a, b) => b.total - a.total);
 }
 
+// Visitas por código, a partir do evento afiliado_link_visita. Conta SESSÕES
+// distintas: recarregar a página não infla o número. Só enxerga quem aceitou
+// cookies — o evento é bloqueado antes do consentimento.
+function countAffiliateVisits(events) {
+  const sessoesPorCodigo = new Map();
+
+  events.forEach((event) => {
+    if (event.event_name !== 'afiliado_link_visita') {
+      return;
+    }
+
+    const codigo = String(event.metadata?.ref || '').trim().toLowerCase();
+
+    if (!codigo || !event.session_id) {
+      return;
+    }
+
+    const sessoes = sessoesPorCodigo.get(codigo) || new Set();
+    sessoes.add(event.session_id);
+    sessoesPorCodigo.set(codigo, sessoes);
+  });
+
+  return new Map([...sessoesPorCodigo].map(([codigo, sessoes]) => [codigo, sessoes.size]));
+}
+
 /**
  * Quadro por afiliado.
  *
  * ATENÇÃO ao que cada número significa:
- * - `checkoutsIniciados` conta linhas de affiliate_attributions, que são
- *   gravadas ao ABRIR o checkout, uma por tentativa. Por isso a contagem de
- *   PESSOAS usa buyer_user_id distinto.
+ * - `visitas` conta sessões distintas que chegaram pelo link. Só passou a
+ *   existir quando o evento afiliado_link_visita foi instrumentado, então o
+ *   histórico anterior é zero — não é queda, é ausência de medição.
+ * - `checkoutsIniciados` conta linhas de affiliate_attributions, gravadas ao
+ *   ABRIR o checkout, uma por tentativa. Por isso a contagem de PESSOAS usa
+ *   buyer_user_id distinto.
  * - `conversoes` vem de affiliate_commissions, a única fonte confiável de
  *   pagamento (idempotente por payment_id).
- * - Não existe dado de clique no link: a taxa abaixo é
- *   "iniciou checkout → pagou", uma etapa tardia. NÃO é taxa de conversão do
- *   link de divulgação, e vai parecer alta justamente por isso.
+ * - `taxaCheckoutParaPago` é etapa tardia e parece alta por isso;
+ *   `taxaVisitaParaPago` é a de ponta a ponta, a que interessa à divulgação.
  */
-function summarizeAffiliates({ affiliates, attributions, commissions }) {
+function summarizeAffiliates({ affiliates, attributions, commissions, visitsByCode = new Map() }) {
   const porAfiliado = new Map(affiliates.map((a) => [a.id, {
     codigo: a.code,
     status: a.status,
@@ -274,18 +301,27 @@ function summarizeAffiliates({ affiliates, attributions, commissions }) {
   return [...porAfiliado.values()]
     .map((linha) => {
       const pessoas = linha.compradoresDistintos.size;
+      const visitas = visitsByCode.get(String(linha.codigo || '').toLowerCase()) || 0;
 
       return {
         ...linha,
         compradoresDistintos: pessoas,
+        visitas,
         // null em vez de 0 quando não há denominador: 0% e "sem dado" são
         // coisas diferentes e não podem virar o mesmo número no painel.
         taxaCheckoutParaPago: pessoas > 0
           ? Math.round((linha.conversoes / pessoas) * 1000) / 10
           : null,
+        // Conversão de ponta a ponta, a que a divulgação realmente quer saber.
+        // Só existe a partir de agora: antes não havia registro de visita.
+        taxaVisitaParaPago: visitas > 0
+          ? Math.round((linha.conversoes / visitas) * 1000) / 10
+          : null,
       };
     })
-    .sort((a, b) => b.receitaGerada - a.receitaGerada || b.checkoutsIniciados - a.checkoutsIniciados);
+    .sort((a, b) => b.receitaGerada - a.receitaGerada
+      || b.visitas - a.visitas
+      || b.checkoutsIniciados - a.checkoutsIniciados);
 }
 
 // --- composição -----------------------------------------------------------
@@ -301,7 +337,7 @@ async function getOwnerMetrics() {
     await Promise.all([
       selectRows('profiles', { select: 'current_plan,billing_status,plan_expires_at,trial_started_at,created_at' }),
       selectRows('billing_payments', { select: 'status,amount,user_id,created_at' }),
-      selectRows('events', { select: 'user_id,session_id,event_name,created_at' }),
+      selectRows('events', { select: 'user_id,session_id,event_name,metadata,created_at' }),
       selectRows('anamneses', { select: 'user_id' }),
       selectRows('affiliates', { select: 'id,code,status,commission_rate' }),
       selectRows('affiliate_attributions', { select: 'affiliate_id,buyer_user_id,created_at' }),
@@ -332,7 +368,12 @@ async function getOwnerMetrics() {
     eventos: summarizeEventUsage(events),
     alcance,
     funil: metricasFunil,
-    afiliados: summarizeAffiliates({ affiliates, attributions, commissions }),
+    afiliados: summarizeAffiliates({
+      affiliates,
+      attributions,
+      commissions,
+      visitsByCode: countAffiliateVisits(events),
+    }),
     avisos: buildWarnings({ events, funnelTruncated: funnel.truncated, funilDivergente }),
   };
 }
@@ -342,7 +383,7 @@ async function getOwnerMetrics() {
 function buildWarnings({ events, funnelTruncated, funilDivergente }) {
   const avisos = [
     'Quem recusa o banner de cookies não emite evento nenhum — toda métrica de evento é piso, não total.',
-    'Não existe registro de clique no link de afiliado: a taxa mostrada é "iniciou checkout → pagou", etapa tardia do funil.',
+    'Visitas por link de afiliado começaram a ser medidas em 31/08/2026: zero antes disso é ausência de medição, não queda. Como o evento respeita o consentimento de cookies, a visita de quem recusa não é contada.',
   ];
 
   if (funilDivergente) {
@@ -366,6 +407,7 @@ function buildWarnings({ events, funnelTruncated, funilDivergente }) {
 module.exports = {
   getOwnerMetrics,
   isOwnerMetricsStorageAvailable,
+  countAffiliateVisits,
   summarizeAffiliates,
   summarizeEventUsage,
   summarizePayments,
