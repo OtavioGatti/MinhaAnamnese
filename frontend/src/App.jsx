@@ -2767,6 +2767,15 @@ function App() {
       return;
     }
 
+    // Marca ANTES do await, nao depois da resposta. Registrar so no fim abria
+    // uma janela de alguns milissegundos em que varias chamadas passavam todas
+    // pela checagem acima antes de qualquer uma marcar a chave — e o evento
+    // era gravado 3x. Em caso de falha a marca e desfeita no catch, para que a
+    // proxima tentativa ainda possa registrar.
+    if (eventKey) {
+      trackedEventsRef.current.add(eventKey);
+    }
+
     const sessionId = trackingSessionIdRef.current || getOrCreateTrackingSessionId();
     trackingSessionIdRef.current = sessionId;
 
@@ -2792,10 +2801,11 @@ function App() {
         throw new Error('tracking request failed');
       }
 
-      if (eventKey) {
-        trackedEventsRef.current.add(eventKey);
-      }
     } catch (error) {
+      if (eventKey) {
+        trackedEventsRef.current.delete(eventKey);
+      }
+
       if (DEBUG_MODE) {
         console.error('tracking: failed to register event', error);
       }
