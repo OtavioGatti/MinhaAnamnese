@@ -6,12 +6,16 @@ delete process.env.VITE_SUPABASE_URL;
 delete process.env.SUPABASE_SERVICE_ROLE_KEY;
 
 const {
+  buildWindows,
   countAffiliateVisits,
+  countDistinctByWindow,
+  summarizeActivation,
   summarizeAffiliates,
   summarizeEventUsage,
   summarizePayments,
   summarizeProfiles,
   summarizeRetention,
+  summarizeReturn,
   summarizeStepReach,
 } = require('../services/ownerMetrics');
 const {
@@ -237,4 +241,113 @@ test('sem segredo configurado o token não é gerado nem aceito', () => {
 
   assert.equal(createOwnerMetricsToken(), null);
   assert.equal(verifyOwnerMetricsToken({ exp: Date.now() + 1000, sig: 'a'.repeat(64) }), false);
+});
+
+// --- ativação e janelas de tempo ------------------------------------------
+
+test('summarizeActivation separa quem nunca usou de quem usou', () => {
+  const agora = new Date('2026-09-02T12:00:00Z');
+  const recente = new Date(agora.getTime() - 5 * 86400000).toISOString();
+  const antigo = new Date(agora.getTime() - 90 * 86400000).toISOString();
+
+  const resumo = summarizeActivation({
+    profiles: [{ id: 'u1' }, { id: 'u2' }, { id: 'u3' }, { id: 'u4' }],
+    anamneses: [
+      // u1: uso leve e recente
+      { user_id: 'u1', created_at: recente },
+      // u2: uso forte, mas parou
+      ...Array.from({ length: 6 }, () => ({ user_id: 'u2', created_at: antigo })),
+      // u3: uso leve e antigo
+      { user_id: 'u3', created_at: antigo },
+      // u4 nao aparece: criou conta e nunca usou
+    ],
+    now: agora,
+  });
+
+  assert.equal(resumo.contas, 4);
+  assert.equal(resumo.semUso, 1);
+  assert.equal(resumo.usoLeve, 2, 'u1 e u3');
+  assert.equal(resumo.usoForte, 1, 'u2 com 6 anamneses');
+  assert.equal(resumo.ativos30d, 1, 'so u1');
+  assert.equal(resumo.dormentes, 2, 'u2 e u3 usaram e pararam');
+  assert.equal(resumo.taxaAtivacao, 75, '3 de 4 chegaram a usar');
+});
+
+test('summarizeActivation devolve taxa null sem contas', () => {
+  const resumo = summarizeActivation({ profiles: [], anamneses: [] });
+
+  assert.equal(resumo.taxaAtivacao, null, 'sem denominador nao e 0%');
+  assert.equal(resumo.contas, 0);
+});
+
+// Bordas de janela sao o tipo de erro que passa despercebido e envergonha
+// depois, porque o numero fica *quase* certo.
+test('countDistinctByWindow respeita a borda dos 7 dias', () => {
+  const agora = new Date('2026-09-02T12:00:00Z');
+  const dentro = new Date(agora.getTime() - 7 * 86400000 + 60000).toISOString();
+  const fora = new Date(agora.getTime() - 7 * 86400000 - 60000).toISOString();
+
+  const contagem = countDistinctByWindow(
+    [
+      { id: 'a', quando: dentro },
+      { id: 'b', quando: fora },
+    ],
+    { chave: 'id', data: 'quando', now: agora },
+  );
+
+  assert.equal(contagem.sete, 1, '7 dias e 1 minuto atras esta fora');
+  assert.equal(contagem.trinta, 2, 'mas ambos entram em 30 dias');
+});
+
+test('countDistinctByWindow conta cada id uma vez e ignora linha invalida', () => {
+  const agora = new Date('2026-09-02T12:00:00Z');
+  const recente = new Date(agora.getTime() - 3600000).toISOString();
+
+  const contagem = countDistinctByWindow(
+    [
+      { id: 's1', quando: recente },
+      { id: 's1', quando: recente },
+      { id: null, quando: recente },
+      { id: 's2', quando: null },
+      { id: 's3', quando: 'data-invalida' },
+    ],
+    { chave: 'id', data: 'quando', now: agora },
+  );
+
+  assert.equal(contagem.trinta, 1, 'so s1; repetido conta uma vez');
+});
+
+// "Hoje" tem que virar a meia-noite de Brasilia. Em UTC o dia viraria as 21h
+// e o numero do painel zerava no meio da noite de quem esta lendo.
+test('a janela de hoje usa a meia-noite de Brasilia, nao a de UTC', () => {
+  // 02/09 02:00 UTC = 01/09 23:00 em Brasilia: ainda e "ontem" para o leitor.
+  const agora = new Date('2026-09-02T02:00:00Z');
+  const janelas = buildWindows(agora);
+  const inicioDoDia = new Date(janelas.hoje);
+
+  assert.equal(inicioDoDia.toISOString(), '2026-09-01T03:00:00.000Z',
+    'meia-noite de 01/09 em Brasilia');
+
+  // Evento das 01:00 UTC de 02/09 = 22:00 de 01/09 em Brasilia: conta em hoje.
+  const contagem = countDistinctByWindow(
+    [{ id: 'x', quando: '2026-09-02T01:00:00Z' }],
+    { chave: 'id', data: 'quando', now: agora },
+  );
+
+  assert.equal(contagem.hoje, 1);
+});
+
+test('summarizeReturn separa quem ainda nao tem carimbo', () => {
+  const agora = new Date('2026-09-02T12:00:00Z');
+
+  const resumo = summarizeReturn([
+    { id: 'u1', last_seen_at: new Date(agora.getTime() - 3600000).toISOString() },
+    { id: 'u2', last_seen_at: new Date(agora.getTime() - 10 * 86400000).toISOString() },
+    { id: 'u3', last_seen_at: null },
+    { id: 'u4' },
+  ], agora);
+
+  assert.equal(resumo.hoje, 1);
+  assert.equal(resumo.trinta, 2);
+  assert.equal(resumo.semRegistro, 2, 'coluna nova comeca vazia');
 });

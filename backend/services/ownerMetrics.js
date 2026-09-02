@@ -31,13 +31,8 @@ function isOwnerMetricsStorageAvailable() {
   return Boolean(url && serviceRoleKey);
 }
 
-async function selectRows(table, params = {}) {
+async function fetchRows(table, params) {
   const { url, serviceRoleKey } = getConfig();
-
-  if (!url || !serviceRoleKey) {
-    return [];
-  }
-
   const query = new URLSearchParams({ limit: String(ROW_LIMIT), ...params });
   const response = await fetch(`${url}/rest/v1/${table}?${query.toString()}`, {
     method: 'GET',
@@ -45,11 +40,46 @@ async function selectRows(table, params = {}) {
   });
 
   if (!response.ok) {
-    return [];
+    return null;
   }
 
   const json = await response.json();
   return Array.isArray(json) ? json : [];
+}
+
+// `optionalColumns` cobre a janela entre o deploy e a aplicação manual do SQL:
+// o PostgREST devolve 400 para coluna inexistente, e como aqui a falha vira
+// lista vazia, UMA coluna nova zeraria o painel inteiro em silêncio. Nesse
+// caso reconsulta sem ela e devolve `degraded`, para o painel avisar em vez de
+// mostrar zero como se fosse resultado.
+async function selectRows(table, params = {}, { optionalColumns = [] } = {}) {
+  const { url, serviceRoleKey } = getConfig();
+
+  if (!url || !serviceRoleKey) {
+    return { rows: [], degraded: [] };
+  }
+
+  const rows = await fetchRows(table, params).catch(() => null);
+
+  if (rows) {
+    return { rows, degraded: [] };
+  }
+
+  if (optionalColumns.length === 0 || !params.select) {
+    return { rows: [], degraded: [] };
+  }
+
+  const colunas = params.select.split(',');
+  const restantes = colunas.filter((coluna) => !optionalColumns.includes(coluna.trim()));
+
+  if (restantes.length === colunas.length) {
+    return { rows: [], degraded: [] };
+  }
+
+  const semOpcionais = await fetchRows(table, { ...params, select: restantes.join(',') })
+    .catch(() => null);
+
+  return { rows: semOpcionais || [], degraded: semOpcionais ? optionalColumns : [] };
 }
 
 function roundMoney(value) {
@@ -324,6 +354,169 @@ function summarizeAffiliates({ affiliates, attributions, commissions, visitsByCo
       || b.checkoutsIniciados - a.checkoutsIniciados);
 }
 
+// --- janelas de tempo -----------------------------------------------------
+
+// O painel e lido no Brasil, entao "hoje" tem que virar a meia-noite de
+// Brasilia, nao a de UTC — senao o numero do dia zera as 21h.
+//
+// Subtrai o relogio de parede local do instante absoluto, em vez de assumir
+// UTC-3: continua correto se o fuso mudar ou se o horario de verao voltar.
+const FUSO_PAINEL = 'America/Sao_Paulo';
+
+function startOfDayInTimeZone(now = new Date(), timeZone = FUSO_PAINEL) {
+  const partes = Object.fromEntries(
+    new Intl.DateTimeFormat('en-CA', {
+      timeZone,
+      hour12: false,
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+    })
+      .formatToParts(now)
+      .filter((parte) => parte.type !== 'literal')
+      .map((parte) => [parte.type, parte.value]),
+  );
+
+  // Em alguns ICU meia-noite sai como "24" com hour12:false.
+  const hora = Number(partes.hour) % 24;
+  const desdeMeiaNoite = ((hora * 60 + Number(partes.minute)) * 60 + Number(partes.second)) * 1000
+    + now.getMilliseconds();
+
+  return new Date(now.getTime() - desdeMeiaNoite);
+}
+
+function buildWindows(now = new Date()) {
+  return {
+    hoje: startOfDayInTimeZone(now).getTime(),
+    sete: now.getTime() - 7 * 24 * 60 * 60 * 1000,
+    trinta: now.getTime() - 30 * 24 * 60 * 60 * 1000,
+  };
+}
+
+function toTime(value) {
+  if (!value) {
+    return null;
+  }
+
+  const marca = new Date(value).getTime();
+  return Number.isNaN(marca) ? null : marca;
+}
+
+// Conta valores distintos de `chave` em cada janela. Distinto, e nao total,
+// porque a pergunta e "quantas pessoas/sessoes", nao "quantas linhas".
+function countDistinctByWindow(rows, { chave, data, now = new Date() }) {
+  const janelas = buildWindows(now);
+  const hoje = new Set();
+  const sete = new Set();
+  const trinta = new Set();
+
+  rows.forEach((row) => {
+    const id = row[chave];
+    const marca = toTime(row[data]);
+
+    if (!id || marca === null) {
+      return;
+    }
+
+    if (marca >= janelas.trinta) {
+      trinta.add(id);
+    }
+
+    if (marca >= janelas.sete) {
+      sete.add(id);
+    }
+
+    if (marca >= janelas.hoje) {
+      hoje.add(id);
+    }
+  });
+
+  return { hoje: hoje.size, sete: sete.size, trinta: trinta.size };
+}
+
+// Ativacao: das contas criadas, quantas chegaram a usar o produto.
+//
+// Base em `anamneses`, nao em eventos: e registro de servidor, tem historico
+// completo e nao depende do consentimento de cookies.
+function summarizeActivation({ profiles, anamneses, now = new Date() }) {
+  const janelas = buildWindows(now);
+  const porUsuario = new Map();
+
+  anamneses.forEach((linha) => {
+    if (!linha.user_id) {
+      return;
+    }
+
+    const atual = porUsuario.get(linha.user_id) || { total: 0, ultima: null };
+    atual.total += 1;
+
+    const marca = toTime(linha.created_at);
+
+    if (marca !== null && (atual.ultima === null || marca > atual.ultima)) {
+      atual.ultima = marca;
+    }
+
+    porUsuario.set(linha.user_id, atual);
+  });
+
+  let semUso = 0;
+  let usoLeve = 0;
+  let usoForte = 0;
+  let ativos30d = 0;
+  let dormentes = 0;
+
+  profiles.forEach((profile) => {
+    const uso = porUsuario.get(profile.id);
+
+    if (!uso || uso.total === 0) {
+      semUso += 1;
+      return;
+    }
+
+    if (uso.total <= 4) {
+      usoLeve += 1;
+    } else {
+      usoForte += 1;
+    }
+
+    if (uso.ultima !== null && uso.ultima >= janelas.trinta) {
+      ativos30d += 1;
+    } else {
+      dormentes += 1;
+    }
+  });
+
+  const contas = profiles.length;
+
+  return {
+    contas,
+    semUso,
+    usoLeve,
+    usoForte,
+    ativos30d,
+    dormentes,
+    // A pergunta que o dono realmente faz: de cada 100 contas, quantas
+    // chegaram a usar? null sem denominador, nunca 0%.
+    taxaAtivacao: contas > 0
+      ? Math.round(((contas - semUso) / contas) * 1000) / 10
+      : null,
+  };
+}
+
+// Retorno: quem voltou a usar o site, por `profiles.last_seen_at`.
+//
+// A coluna e nova, entao todo mundo comeca em null e enche conforme as
+// pessoas voltam — por isso `semRegistro` sai junto, para o numero baixo dos
+// primeiros dias nao ser lido como queda.
+function summarizeReturn(profiles, now = new Date()) {
+  const janelas = countDistinctByWindow(profiles, { chave: 'id', data: 'last_seen_at', now });
+
+  return {
+    ...janelas,
+    semRegistro: profiles.filter((profile) => !profile.last_seen_at).length,
+  };
+}
+
 // --- composição -----------------------------------------------------------
 
 async function getOwnerMetrics() {
@@ -333,17 +526,40 @@ async function getOwnerMetrics() {
     throw erro;
   }
 
-  const [profiles, payments, events, anamneses, affiliates, attributions, commissions, funnel] =
-    await Promise.all([
-      selectRows('profiles', { select: 'current_plan,billing_status,plan_expires_at,trial_started_at,created_at' }),
-      selectRows('billing_payments', { select: 'status,amount,user_id,created_at' }),
-      selectRows('events', { select: 'user_id,session_id,event_name,metadata,created_at' }),
-      selectRows('anamneses', { select: 'user_id' }),
-      selectRows('affiliates', { select: 'id,code,status,commission_rate' }),
-      selectRows('affiliate_attributions', { select: 'affiliate_id,buyer_user_id,created_at' }),
-      selectRows('affiliate_commissions', { select: 'affiliate_id,gross_amount,commission_amount,status,payout_id,created_at' }),
-      getGlobalFunnelSessions().catch(() => ({ sessions: [], truncated: false })),
-    ]);
+  const [
+    profilesResult,
+    paymentsResult,
+    eventsResult,
+    anamnesesResult,
+    affiliatesResult,
+    attributionsResult,
+    commissionsResult,
+    funnel,
+  ] = await Promise.all([
+    selectRows(
+      'profiles',
+      { select: 'id,current_plan,billing_status,plan_expires_at,trial_started_at,created_at,last_seen_at' },
+      // Enquanto profile_last_seen.sql não for aplicado à mão, esta coluna não
+      // existe e derrubaria a consulta inteira.
+      { optionalColumns: ['last_seen_at'] },
+    ),
+    selectRows('billing_payments', { select: 'status,amount,user_id,created_at' }),
+    selectRows('events', { select: 'user_id,session_id,event_name,metadata,created_at' }),
+    selectRows('anamneses', { select: 'user_id,created_at' }),
+    selectRows('affiliates', { select: 'id,code,status,commission_rate' }),
+    selectRows('affiliate_attributions', { select: 'affiliate_id,buyer_user_id,created_at' }),
+    selectRows('affiliate_commissions', { select: 'affiliate_id,gross_amount,commission_amount,status,payout_id,created_at' }),
+    getGlobalFunnelSessions().catch(() => ({ sessions: [], truncated: false })),
+  ]);
+
+  const profiles = profilesResult.rows;
+  const payments = paymentsResult.rows;
+  const events = eventsResult.rows;
+  const anamneses = anamnesesResult.rows;
+  const affiliates = affiliatesResult.rows;
+  const attributions = attributionsResult.rows;
+  const commissions = commissionsResult.rows;
+  const faltaLastSeen = profilesResult.degraded.includes('last_seen_at');
 
   const metricasFunil = funnel.sessions.length
     ? buildFunnelMetrics(funnel.sessions)
@@ -356,6 +572,8 @@ async function getOwnerMetrics() {
     etapa.total === 0 && (alcance.etapas[indice]?.sessoes || 0) > 0
   ));
 
+  const retorno = summarizeReturn(profiles);
+
   return {
     geradoEm: new Date().toISOString(),
     contas: summarizeProfiles(profiles),
@@ -364,6 +582,9 @@ async function getOwnerMetrics() {
       total: anamneses.length,
       usuariosDistintos: new Set(anamneses.map((a) => a.user_id).filter(Boolean)).size,
     },
+    ativacao: summarizeActivation({ profiles, anamneses }),
+    retorno,
+    sessoesPorPeriodo: countDistinctByWindow(events, { chave: 'session_id', data: 'created_at' }),
     retencao: summarizeRetention(events),
     eventos: summarizeEventUsage(events),
     alcance,
@@ -374,17 +595,42 @@ async function getOwnerMetrics() {
       commissions,
       visitsByCode: countAffiliateVisits(events),
     }),
-    avisos: buildWarnings({ events, funnelTruncated: funnel.truncated, funilDivergente }),
+    avisos: buildWarnings({
+      events,
+      funnelTruncated: funnel.truncated,
+      funilDivergente,
+      retornoSemRegistro: retorno.semRegistro,
+      faltaLastSeen,
+    }),
   };
 }
 
 // Ressalvas que precisam viajar junto com os números: sem elas o painel
 // parece mais confiável do que é.
-function buildWarnings({ events, funnelTruncated, funilDivergente }) {
+function buildWarnings({
+  events,
+  funnelTruncated,
+  funilDivergente,
+  retornoSemRegistro = 0,
+  faltaLastSeen = false,
+}) {
   const avisos = [
     'Quem recusa o banner de cookies não emite evento nenhum — toda métrica de evento é piso, não total.',
     'Visitas por link de afiliado começaram a ser medidas em 31/08/2026: zero antes disso é ausência de medição, não queda. Como o evento respeita o consentimento de cookies, a visita de quem recusa não é contada.',
   ];
+
+  if (faltaLastSeen) {
+    avisos.push(
+      'A coluna last_seen_at ainda não existe no banco: aplique supabase/profile_last_seen.sql no SQL Editor. '
+      + 'Até lá o bloco de retorno fica zerado — o resto do painel continua correto.',
+    );
+  } else if (retornoSemRegistro) {
+    avisos.push(
+      'O carimbo de retorno (last_seen_at) só passou a existir agora e enche conforme as pessoas voltam: '
+      + `${retornoSemRegistro} conta(s) ainda sem registro. Número baixo aqui nos primeiros dias é ausência de medição, não queda. `
+      + 'Já a ativação (usou / não usou) vem das anamneses e tem histórico completo.',
+    );
+  }
 
   if (funilDivergente) {
     avisos.push(
@@ -407,11 +653,15 @@ function buildWarnings({ events, funnelTruncated, funilDivergente }) {
 module.exports = {
   getOwnerMetrics,
   isOwnerMetricsStorageAvailable,
+  buildWindows,
   countAffiliateVisits,
+  countDistinctByWindow,
+  summarizeActivation,
   summarizeAffiliates,
   summarizeEventUsage,
   summarizePayments,
   summarizeProfiles,
   summarizeRetention,
+  summarizeReturn,
   summarizeStepReach,
 };

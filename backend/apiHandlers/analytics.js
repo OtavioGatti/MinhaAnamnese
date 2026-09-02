@@ -28,6 +28,8 @@ const ALLOWED_EVENTS = new Set([
   'hipotese_manobra_click',
   'hipotese_exame_click',
   'hipotese_prescricao_click',
+  // Chegada ao site: a unica etapa que nao exige acao do usuario
+  'site_visita',
   // Origem: chegada por link de afiliado (topo do funil)
   'afiliado_link_visita',
   // Boas-vindas
@@ -81,6 +83,8 @@ function sanitizeMetadata(metadata) {
     'exam',
     // Código do afiliado que trouxe a visita
     'ref',
+    // Visita de quem ja tem conta vs visitante sem conta
+    'logado',
   ];
 
   allowedKeys.forEach((key) => {

@@ -1107,6 +1107,27 @@ function App() {
     });
   }, [cookieConsent]);
 
+  // Visita ao site, independente de a pessoa fazer qualquer coisa.
+  //
+  // Sem isto nenhuma sessao passiva existe: todos os eventos sao de acao, e
+  // 120 das 133 sessoes registradas comecavam direto em `anamnese_gerada` —
+  // quem entrava, olhava e saia era invisivel.
+  //
+  // Sai quando o consentimento chega, nao na chegada, pelo mesmo motivo do
+  // evento de afiliado: o banner ainda esta na tela quando a visita acontece.
+  // `logado` separa "o site atrai gente" de "a gente que atraiu volta".
+  useEffect(() => {
+    if (!canTrackNonEssentialCookies(cookieConsent)) {
+      return;
+    }
+
+    if (loadingUser) {
+      return;
+    }
+
+    trackEvent('site_visita', { logado: Boolean(user) }, { eventKey: 'site_visita' });
+  }, [cookieConsent, loadingUser, user]);
+
   useEffect(() => {
     if (currentPage !== 'affiliate') {
       return;

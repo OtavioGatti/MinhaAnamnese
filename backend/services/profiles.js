@@ -37,6 +37,38 @@ const OPTIONAL_PROFILE_COLUMNS = [
   'output_case_style',
 ];
 
+// Atividade do usuario para o painel de metricas. Uma escrita por requisicao
+// autenticada seria caro demais no free tier, entao so regrava se o carimbo
+// guardado ja passou de uma hora.
+const LAST_SEEN_THROTTLE_MS = 60 * 60 * 1000;
+
+function shouldTouchLastSeen(existingProfile, now = Date.now()) {
+  if (!existingProfile) {
+    return false;
+  }
+
+  const anterior = existingProfile.last_seen_at;
+
+  if (!anterior) {
+    return true;
+  }
+
+  const marca = new Date(anterior).getTime();
+
+  // Data invalida (ou coluna ainda inexistente) conta como "nunca visto".
+  if (Number.isNaN(marca)) {
+    return true;
+  }
+
+  // Carimbo no futuro so pode ser relogio fora de sincronia; regravar
+  // corrigiria para tras e criaria atividade falsa. Melhor deixar quieto.
+  if (marca > now) {
+    return false;
+  }
+
+  return now - marca >= LAST_SEEN_THROTTLE_MS;
+}
+
 function getProfilesAdminConfig() {
   return {
     url: process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL,
@@ -557,8 +589,39 @@ async function expireProfileAccessIfNeeded(user, profile) {
   };
 }
 
+// Escreve o carimbo sem bloquear a resposta e sem nunca derrubar a
+// requisicao: metrica jamais deve quebrar o fluxo do usuario. Falha em
+// silencio tambem cobre a janela entre o deploy e a aplicacao manual do SQL
+// (profile_last_seen.sql), quando a coluna ainda nao existe.
+function touchLastSeen(userId) {
+  if (!isValidUserId(userId) || !isProfilesStorageAvailable()) {
+    return;
+  }
+
+  const { url, serviceRoleKey } = getProfilesAdminConfig();
+  const query = new URLSearchParams({ id: `eq.${userId}` });
+
+  Promise.resolve()
+    .then(() => fetch(`${url}/rest/v1/profiles?${query.toString()}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        apikey: serviceRoleKey,
+        Authorization: `Bearer ${serviceRoleKey}`,
+        Prefer: 'return=minimal',
+      },
+      body: JSON.stringify({ last_seen_at: new Date().toISOString() }),
+    }))
+    .catch(() => {});
+}
+
 async function ensureUserProfile(user, overrides = {}) {
   const existingProfile = await getProfileByUserId(user?.id).catch(() => null);
+
+  if (shouldTouchLastSeen(existingProfile)) {
+    touchLastSeen(user?.id);
+  }
+
   const nextOverrides = shouldStartAutomaticTrial(user, existingProfile, overrides)
     ? {
         ...buildTrialOverrides(),
@@ -709,6 +772,8 @@ module.exports = {
   normalizeOutputCaseStyle,
   normalizePlan,
   normalizeTemplateId,
+  shouldTouchLastSeen,
+  touchLastSeen,
   upsertProfile,
   withActiveSubscriptionFlag,
   withTrialUsageSummary,

@@ -119,6 +119,34 @@ function renderHtml(m) {
   </div>
 
   <div class="card">
+    <h2 style="margin-top:0">Ativação — as contas chegam a usar?</h2>
+    <p class="muted" style="margin:0 0 8px;font-size:.8rem">Vem das anamneses gravadas no servidor: histórico completo, não depende de cookie.</p>
+    <div class="tiles">
+      ${tile('Contas', m.ativacao.contas)}
+      ${tile('Nunca usaram', m.ativacao.semUso, 'criaram conta e nunca geraram anamnese')}
+      ${tile('Usaram pouco', m.ativacao.usoLeve, '1 a 4 anamneses')}
+      ${tile('Usaram bastante', m.ativacao.usoForte, '5 ou mais')}
+      ${tile('Ativos em 30 dias', m.ativacao.ativos30d, 'geraram algo no período')}
+      ${tile('Dormentes', m.ativacao.dormentes, 'já usaram, pararam')}
+      ${tile('Taxa de ativação', m.ativacao.taxaAtivacao == null ? 'sem dado' : `${m.ativacao.taxaAtivacao}%`, 'das contas chegaram a usar')}
+    </div>
+  </div>
+
+  <div class="card">
+    <h2 style="margin-top:0">Movimento recente</h2>
+    <p class="muted" style="margin:0 0 8px;font-size:.8rem">Retorno vem do servidor e começou a ser medido agora. Sessões com atividade vem dos eventos e só conta quem aceitou cookies — e quem entra sem fazer nada não aparece em nenhuma das duas.</p>
+    <div class="tiles">
+      ${tile('Voltaram hoje', m.retorno.hoje)}
+      ${tile('Voltaram em 7 dias', m.retorno.sete)}
+      ${tile('Voltaram em 30 dias', m.retorno.trinta)}
+      ${tile('Sem registro ainda', m.retorno.semRegistro, 'medição recém-começada')}
+      ${tile('Sessões hoje', m.sessoesPorPeriodo.hoje, 'com alguma ação')}
+      ${tile('Sessões em 7 dias', m.sessoesPorPeriodo.sete, 'com alguma ação')}
+      ${tile('Sessões em 30 dias', m.sessoesPorPeriodo.trinta, 'com alguma ação')}
+    </div>
+  </div>
+
+  <div class="card">
     <h2 style="margin-top:0">Retenção</h2>
     <div class="tiles">
       ${tile('Com evento', m.retencao.usuariosComEvento)}
