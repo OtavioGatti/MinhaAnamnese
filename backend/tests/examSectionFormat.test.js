@@ -154,7 +154,10 @@ test('templates.js exporta apenas templates (constantes não vazam para o catál
 test('withExamSectionGuidance cobre templates sem guidance (CMS/usuário)', () => {
   // Template que só existe no Notion/Supabase: não tem guidance hardcoded.
   const cms = withExamSectionGuidance(['Identificação', 'Queixa principal', 'Exame físico'], null);
-  assert.ok(cms['Exame físico'][0].includes('uma linha por aparelho'));
+  // Sem depender da posição: a ordem importa para o modelo (a restrição vem
+  // primeiro), mas o teste aqui é só que a orientação de formato chegou.
+  assert.match(cms['Exame físico'].join(' '), /uma linha por aparelho/);
+  assert.match(cms['Exame físico'].join(' '), /nunca escrever \[Não relatado\] por sistema/);
 
   // Rótulo abreviado e variantes também são reconhecidos.
   assert.ok(withExamSectionGuidance(['EF'], null).EF);
@@ -176,4 +179,71 @@ test('isPhysicalExamSection não confunde outras seções', () => {
   assert.ok(isPhysicalExamSection('Exame físico direcionado'));
   assert.ok(!isPhysicalExamSection('Exames complementares'));
   assert.ok(!isPhysicalExamSection('Exame do estado mental'));
+});
+
+// A regra "não enumerar, senão vira checklist" já existia para o glossário de
+// siglas (teste acima), mas só olhava linhas iniciadas por "* ". A lista de
+// sistemas do exame usa "  - " e escapou: enumerava 7 descritores de
+// NORMALIDADE em "Estado geral (BEG, corado, hidratado, acianótico...)".
+// Resultado medido contra o modelo real: linha fantasma em sistema não
+// examinado ("AC: [Não relatado]") em 6 de 14 rodadas.
+test('lista de sistemas do exame não enumera achados (senão vira checklist)', () => {
+  const prompt = buildStructurePrompt(templates.clinica_medica);
+  // Só a lista de siglas: as orientações por seção (sectionGuidance) também
+  // usam "  - " e não fazem parte desta regra.
+  const apos = prompt.slice(prompt.indexOf('* Ordem e grafia das siglas'));
+  const itens = [];
+
+  for (const linha of apos.split(/\r?\n/).slice(1)) {
+    const item = /^ {2}- (.+)$/.exec(linha);
+
+    if (!item) {
+      break;
+    }
+
+    itens.push(item[1].trim());
+  }
+
+  assert.ok(itens.length >= 5, `esperava a lista de sistemas, veio ${itens.length}`);
+
+  itens.forEach((item) => {
+    assert.ok(!item.includes(','), `sistema não deve enumerar achados: "${item}"`);
+    assert.ok(item.length <= 40, `descrição longa demais vira exemplo a copiar: "${item}"`);
+  });
+});
+
+// Sem esta regra o modelo aplica às linhas do exame a instrução de seção vazia
+// que vem do CMS ("use [Não relatado] para seções vazias") — as duas usam a
+// mesma sintaxe "RÓTULO:", e ele não distingue uma da outra.
+test('exame proíbe marcador de ausência por linha de sistema', () => {
+  const prompt = buildStructurePrompt(templates.clinica_medica);
+  const bloco = prompt.slice(prompt.indexOf('FORMATO DA SEÇÃO DE EXAME FÍSICO'));
+
+  assert.match(bloco, /NUNCA escrever \[Não relatado\]/);
+  assert.match(bloco, /valem para SEÇÕES inteiras/);
+  assert.match(bloco, /A LINHA SÓ EXISTE SE/);
+});
+
+test('a lista de siglas se declara ordem e grafia, não checklist', () => {
+  const prompt = buildStructurePrompt(templates.clinica_medica);
+
+  assert.match(prompt, /NÃO É CHECKLIST/);
+});
+
+// A correção precisa valer para todo template, não só clínica médica — os
+// prompts do CMS recebem estas regras pelo token clinical_writing_rules.
+test('proibição de linha fantasma chega a todos os templates', () => {
+  Object.values(templates).forEach((template) => {
+    if (!template || !Array.isArray(template.secoes)) {
+      return;
+    }
+
+    const prompt = buildStructurePrompt(template);
+
+    assert.match(
+      prompt,
+      /NUNCA escrever \[Não relatado\]/,
+      `template sem a proibição: ${template.nome || template.id}`,
+    );
+  });
 });

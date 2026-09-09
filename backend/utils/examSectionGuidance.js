@@ -7,17 +7,22 @@
 
 // Orientação de formato do exame físico, usada pelos templates hardcoded e
 // aplicada automaticamente aos templates do CMS/usuário.
+// A restrição vem PRIMEIRO de propósito. Quando a lista de siglas vinha antes,
+// o modelo a tratava como checklist e devolvia uma linha por sigla — preenchida
+// com o marcador de ausência ("AC: [Não relatado]", "NEURO: [Não relatado]") em
+// sistema que ninguém examinou. O sub-nível "SSVV (PA, FC, FR, Tax, SatO2)" era
+// o pior: gerava a linha inteira de sinais vitais vazios.
 const EXAM_SECTION_GUIDANCE = [
-  'Escrever em lista, uma linha por aparelho/sistema, nunca em parágrafo corrido.',
-  'Usar as siglas do prontuário: estado geral, SSVV (PA, FC, FR, Tax, SatO2), AP, AC, ABD, MMII, NEURO.',
-  'Incluir apenas os sistemas com achado descrito no texto original; não inventar exame normal não realizado.',
+  'Incluir apenas os sistemas com achado no texto original. Sistema não examinado NÃO vira linha: nunca escrever [Não relatado] por sistema, nem inventar exame normal não realizado.',
+  'Escrever em lista, uma linha por aparelho/sistema com achado, nunca em parágrafo corrido.',
+  'Grafia das siglas quando houver achado (não é checklist, não preencher todas): SSVV, AP, AC, ABD, MMII, NEURO.',
 ];
 
 // Exame do estado mental usa domínios psicopatológicos, não aparelhos.
 const MENTAL_EXAM_SECTION_GUIDANCE = [
-  'Escrever em lista, uma linha por domínio do exame mental, nunca em parágrafo corrido.',
-  'Domínios usuais: apresentação/atitude, consciência, orientação, atenção, humor, afeto, pensamento (curso/forma/conteúdo), sensopercepção, memória, cognição, juízo crítico e insight.',
-  'Incluir apenas os domínios descritos no texto original; não presumir normalidade de domínio não avaliado.',
+  'Incluir apenas os domínios descritos no texto original. Domínio não avaliado NÃO vira linha: nunca escrever [Não relatado] por domínio, nem presumir normalidade.',
+  'Escrever em lista, uma linha por domínio avaliado, nunca em parágrafo corrido.',
+  'Grafia dos domínios quando houver achado (não é checklist, não preencher todos): apresentação, consciência, orientação, atenção, humor, afeto, pensamento, sensopercepção, memória, cognição, juízo crítico.',
 ];
 
 function foldAccents(value) {

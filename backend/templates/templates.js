@@ -520,9 +520,9 @@ const templates = {
     ],
     sectionGuidance: {
       'Sinais vitais': [
-        'Escrever em lista, uma linha por parâmetro, nunca em parágrafo corrido.',
-        'Usar as siglas do prontuário: PA, FC, FR, Tax, SatO2, HGT (glicemia capilar) e dor (escala) quando informados.',
-        'Incluir apenas os parâmetros aferidos no texto original; não presumir valores.',
+        'Incluir apenas os parâmetros aferidos no texto original. Parâmetro não aferido NÃO vira linha: nunca escrever [Não relatado] por parâmetro, nem presumir valores.',
+        'Escrever em lista, uma linha por parâmetro aferido, nunca em parágrafo corrido.',
+        'Grafia das siglas quando houver valor (não é checklist, não preencher todas): PA, FC, FR, Tax, SatO2, HGT, dor (escala).',
       ],
     },
     evaluation: {

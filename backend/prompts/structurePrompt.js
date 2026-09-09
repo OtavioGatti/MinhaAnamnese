@@ -219,23 +219,39 @@ ${buildExamFormatRules()}`;
 // O exame físico é a ÚNICA seção que sai em lista: uma linha por aparelho/
 // sistema, no padrão que o médico usa no prontuário. As demais seções continuam
 // em prosa (ver REGRAS DE REDAÇÃO CLÍNICA).
+//
+// A lista de siglas NÃO enumera achados de exemplo, pelo mesmo motivo já
+// documentado em SECTION_MEANINGS: o modelo trata enumeração como checklist.
+// Aqui isso saía como linha fantasma — "AC: [Não relatado]", "NEURO: [Não
+// relatado]" — em sistema que ninguém examinou (reproduzido em 6 de 14 rodadas
+// contra o modelo real).
+//
+// A causa tem duas partes, e as duas precisam da regra explícita abaixo:
+// 1. a enumeração sugeria que as 7 linhas eram esperadas;
+// 2. as linhas do exame usam a MESMA sintaxe "RÓTULO:" das seções do modelo,
+//    então a regra do CMS ("use [Não relatado] para seções vazias") vazava para
+//    dentro do exame. Por isso a proibição precisa dizer, com todas as letras,
+//    que o marcador é de seção e nunca de linha de sistema.
 function buildExamFormatRules() {
   return `FORMATO DA SEÇÃO DE EXAME FÍSICO (exceção à regra de prosa)
 
 * A seção de exame físico (EF / Ex. físico / Exame físico direcionado) é a ÚNICA que deve sair em LISTA, nunca em parágrafo corrido.
 * Escrever UMA LINHA POR APARELHO/SISTEMA, cada linha começando com a sigla do sistema seguida de dois-pontos.
 * Após o rótulo da seção ("EF:"), quebrar a linha e começar a lista na linha seguinte — não colar o primeiro sistema na mesma linha do rótulo.
-* Ordem e siglas preferidas quando houver o dado no texto original:
-  - Estado geral (BEG/REG/MEG, corado, hidratado, acianótico, anictérico, afebril, eupneico)
-  - SSVV: sinais vitais (PA, FC, FR, Tax, SatO2)
-  - AP: aparelho respiratório (murmúrio vesicular, ruídos adventícios)
-  - AC: aparelho cardiovascular (bulhas, sopros)
-  - ABD: abdome (RHA, palpação, sinais de Giordano/Murphy/descompressão)
-  - MMII: membros inferiores (pulsos, edema, panturrilhas)
-  - NEURO: neurológico (Glasgow, pupilas, déficits)
-* Incluir apenas as linhas cujo conteúdo estiver no texto original. Não criar linha de sistema não examinado e não preencher com achados normais que o texto não afirma.
+* Ordem e grafia das siglas. NÃO É CHECKLIST: a lista diz em que ordem escrever e como grafar, nunca que todas devem aparecer.
+  - Estado geral
+  - SSVV: sinais vitais
+  - AP: aparelho respiratório
+  - AC: aparelho cardiovascular
+  - ABD: abdome
+  - MMII: membros inferiores
+  - NEURO: neurológico
+* A LINHA SÓ EXISTE SE O TEXTO ORIGINAL TROUXER ACHADO DAQUELE SISTEMA. Sistema não examinado simplesmente não aparece na saída.
+* NUNCA escrever [Não relatado], [DADO AUSENTE] ou [INFORMAÇÃO INSUFICIENTE] dentro do exame físico. Esses marcadores valem para SEÇÕES inteiras do modelo, nunca para linha de sistema — em vez de "AC: [Não relatado]", a linha AC não deve existir.
+* Nunca escrever uma linha só com o marcador, sem sigla.
+* Não preencher com achados normais que o texto não afirma. Se o texto só descreveu o abdome, a seção de exame físico terá apenas a linha do abdome.
 * Se houver achado de outro sistema (pele, otoscopia, oroscopia, exame ginecológico, mamas), usar uma linha própria com rótulo claro.
-* Em exame do estado mental (psiquiatria), aplicar a mesma lógica de uma linha por domínio (apresentação, consciência, orientação, humor, afeto, pensamento, sensopercepção, memória, juízo crítico), não por aparelho.`;
+* Em exame do estado mental (psiquiatria), aplicar a mesma lógica de uma linha por domínio avaliado — e igualmente sem linha para domínio não avaliado.`;
 }
 
 function buildDefaultStructurePrompt(templateConfig, promptTemplate = null) {
