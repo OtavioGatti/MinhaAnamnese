@@ -13,7 +13,10 @@ const {
 } = require('./anamneseMetrics');
 const { getTextLimitError } = require('../utils/requestLimits');
 const { sanitizeText } = require('../utils/textSanitization');
-const { removeLinhasVaziasDoExame } = require('../utils/examSectionCleanup');
+const {
+  preservaAchadosDoExame,
+  removeLinhasVaziasDoExame,
+} = require('../utils/examSectionCleanup');
 const { isCustomTemplateId } = require('./userTemplates');
 
 function validateProcessAnamnesisInput(payload) {
@@ -124,8 +127,17 @@ async function processAnamnesis({ template, texto, userId }) {
   // no exame físico. O prompt pede isso, mas pedir não garante: sobravam 2-3
   // linhas "SSVV: [Não relatado]" por geração mesmo depois de três rodadas de
   // ajuste no texto (código e CMS). Ver utils/examSectionCleanup.js.
-  const resultado = removeLinhasVaziasDoExame(
-    sanitizeText(response.choices?.[0]?.message?.content || '').trim(),
+  // Rede de segurança contra o pior defeito possível aqui: achado do médico
+  // sumindo. Aconteceu de verdade — "C+P: Tireoide..." foi encaixado em AP e
+  // sobrescreveu "AP: Murmúrios abolidos em base, estertorando difusamente",
+  // que desapareceu. O prompt já foi corrigido, mas prompt é pedido, não
+  // garantia. Ver utils/examSectionCleanup.js.
+  const resultado = preservaAchadosDoExame(
+    removeLinhasVaziasDoExame(
+      sanitizeText(response.choices?.[0]?.message?.content || '').trim(),
+      templateConfig?.secoes,
+    ),
+    sanitizedText,
     templateConfig?.secoes,
   );
 

@@ -22,6 +22,8 @@ const EXAM_SECTION_GUIDANCE = [
   'Incluir apenas os sistemas com achado no texto original. Sistema não examinado NÃO vira linha: nunca escrever [Não relatado] por sistema, nem inventar exame normal não realizado.',
   'Escrever em lista, uma linha por aparelho/sistema com achado, nunca em parágrafo corrido.',
   'Grafia das siglas mais comuns (lista de referência, NÃO é checklist e NÃO é lista fechada): Estado geral, SSVV, C+P (cabeça e pescoço), AP, AC, ABD, MMII, NEURO.',
+  'Estado geral e sinais vitais são linhas DIFERENTES: BEG/REG/MEG, corado, hidratado, acianótico, anictérico, afebril e eupneico descrevem o estado geral; PA, FC, FR, Tax e SatO2 são os sinais vitais. Nunca juntar as duas na mesma linha.',
+  'Preservar as abreviações consagradas do estado geral exatamente como o médico escreveu: BEG continua BEG, REG continua REG, MEG continua MEG. Não expandir (BEG não é "Bem" nem "Bem estado geral").',
 ];
 
 // Exame do estado mental usa domínios psicopatológicos, não aparelhos.
