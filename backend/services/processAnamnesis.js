@@ -13,6 +13,7 @@ const {
 } = require('./anamneseMetrics');
 const { getTextLimitError } = require('../utils/requestLimits');
 const { sanitizeText } = require('../utils/textSanitization');
+const { removeLinhasVaziasDoExame } = require('../utils/examSectionCleanup');
 const { isCustomTemplateId } = require('./userTemplates');
 
 function validateProcessAnamnesisInput(payload) {
@@ -119,7 +120,14 @@ async function processAnamnesis({ template, texto, userId }) {
     max_tokens: 2048,
   });
 
-  const resultado = sanitizeText(response.choices?.[0]?.message?.content || '').trim();
+  // Garantia determinística de que sistema não examinado não vira linha vazia
+  // no exame físico. O prompt pede isso, mas pedir não garante: sobravam 2-3
+  // linhas "SSVV: [Não relatado]" por geração mesmo depois de três rodadas de
+  // ajuste no texto (código e CMS). Ver utils/examSectionCleanup.js.
+  const resultado = removeLinhasVaziasDoExame(
+    sanitizeText(response.choices?.[0]?.message?.content || '').trim(),
+    templateConfig?.secoes,
+  );
 
   if (!resultado) {
     const error = new Error('Erro interno ao processar a anamnese.');
