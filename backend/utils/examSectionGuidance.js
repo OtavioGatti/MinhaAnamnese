@@ -13,13 +13,20 @@
 // sistema que ninguém examinou. O sub-nível "SSVV (PA, FC, FR, Tax, SatO2)" era
 // o pior: gerava a linha inteira de sinais vitais vazios.
 const EXAM_SECTION_GUIDANCE = [
+  // Esta regra vem primeiro porque e a de SEGURANCA. Sem ela o modelo forcava
+  // rotulo desconhecido na sigla mais parecida: "C+P: tireoide..." virava
+  // "AP: tireoide...", e o AP verdadeiro ("murmurios abolidos, estertorando")
+  // era SOBRESCRITO e sumia. Achado alterado desaparecendo em silencio e o pior
+  // defeito possivel aqui. Reproduzido 2/2 contra o modelo real.
+  'NUNCA descartar nem fundir achado. Cada rótulo de sistema que aparecer no texto original vira UMA linha própria, com o mesmo sistema. Se o rótulo não estiver na lista de siglas abaixo (ex.: C+P, pele, oroscopia, otoscopia, tireoide, mamas), MANTENHA o rótulo original do médico — nunca troque por outra sigla e nunca junte dois sistemas na mesma linha.',
   'Incluir apenas os sistemas com achado no texto original. Sistema não examinado NÃO vira linha: nunca escrever [Não relatado] por sistema, nem inventar exame normal não realizado.',
   'Escrever em lista, uma linha por aparelho/sistema com achado, nunca em parágrafo corrido.',
-  'Grafia das siglas quando houver achado (não é checklist, não preencher todas): SSVV, AP, AC, ABD, MMII, NEURO.',
+  'Grafia das siglas mais comuns (lista de referência, NÃO é checklist e NÃO é lista fechada): Estado geral, SSVV, C+P (cabeça e pescoço), AP, AC, ABD, MMII, NEURO.',
 ];
 
 // Exame do estado mental usa domínios psicopatológicos, não aparelhos.
 const MENTAL_EXAM_SECTION_GUIDANCE = [
+  'NUNCA descartar nem fundir achado. Cada domínio descrito no texto original vira UMA linha própria. Se o rótulo usado pelo médico não estiver na lista abaixo, MANTENHA o rótulo original — nunca troque por outro domínio e nunca junte dois domínios na mesma linha.',
   'Incluir apenas os domínios descritos no texto original. Domínio não avaliado NÃO vira linha: nunca escrever [Não relatado] por domínio, nem presumir normalidade.',
   'Escrever em lista, uma linha por domínio avaliado, nunca em parágrafo corrido.',
   'Grafia dos domínios quando houver achado (não é checklist, não preencher todos): apresentação, consciência, orientação, atenção, humor, afeto, pensamento, sensopercepção, memória, cognição, juízo crítico.',

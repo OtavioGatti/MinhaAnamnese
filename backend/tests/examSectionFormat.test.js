@@ -247,3 +247,41 @@ test('proibição de linha fantasma chega a todos os templates', () => {
     );
   });
 });
+
+// Caso real relatado pelo dono, reproduzido 2/2 contra o modelo antes da
+// correção: o médico escreveu "C+P: Tireoide..." e "AP: Murmúrios abolidos em
+// base, estertorando difusamente". Como C+P não estava na lista de siglas, o
+// modelo forçou a tireoide em AP e SOBRESCREVEU o achado pulmonar — que
+// simplesmente sumiu. Achado alterado desaparecendo é o pior defeito possível
+// aqui, então a regra de não descartar/fundir vem ANTES de tudo na orientação.
+test('exame proíbe descartar ou fundir achado, e manda manter rótulo fora da lista', () => {
+  const guidance = withExamSectionGuidance(['EF'], null).EF.join(' ');
+
+  assert.match(guidance, /NUNCA descartar nem fundir achado/);
+  assert.match(guidance, /MANTENHA o rótulo original do médico/);
+  assert.match(guidance, /nunca junte dois sistemas na mesma linha/);
+});
+
+test('a lista de siglas se declara aberta e inclui os sistemas que faltavam', () => {
+  const guidance = withExamSectionGuidance(['EF'], null).EF.join(' ');
+
+  // "estado geral" e "C+P" faltavam: sem casa na lista, o conteúdo deles era
+  // empurrado para a sigla mais parecida.
+  assert.match(guidance, /Estado geral/);
+  assert.match(guidance, /C\+P/);
+  assert.match(guidance, /NÃO é lista fechada/);
+});
+
+test('a regra de segurança chega a todos os templates', () => {
+  Object.values(templates).forEach((template) => {
+    if (!template || !Array.isArray(template.secoes)) {
+      return;
+    }
+
+    assert.match(
+      buildStructurePrompt(template),
+      /NUNCA descartar nem fundir achado/,
+      `template sem a regra: ${template.nome || template.id}`,
+    );
+  });
+});

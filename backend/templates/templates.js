@@ -520,6 +520,7 @@ const templates = {
     ],
     sectionGuidance: {
       'Sinais vitais': [
+        'NUNCA descartar nem fundir achado. Cada parâmetro aferido no texto original é preservado; se o rótulo usado pelo médico não estiver na lista abaixo, MANTENHA o rótulo original.',
         'Incluir apenas os parâmetros aferidos no texto original. Parâmetro não aferido NÃO vira linha: nunca escrever [Não relatado] por parâmetro, nem presumir valores.',
         'Escrever em lista, uma linha por parâmetro aferido, nunca em parágrafo corrido.',
         'Grafia das siglas quando houver valor (não é checklist, não preencher todas): PA, FC, FR, Tax, SatO2, HGT, dor (escala).',
