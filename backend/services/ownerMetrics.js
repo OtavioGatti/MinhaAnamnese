@@ -31,12 +31,47 @@ function isOwnerMetricsStorageAvailable() {
   return Boolean(url && serviceRoleKey);
 }
 
+// Content-Range vem como "0-999/1168" (parcial), "0-5/6" (completo) ou "*/0"
+// (vazio). É a ÚNICA forma de saber se algo cortou a leitura — o Max Rows do
+// projeto no Supabase (hoje 1000 neste banco) sobrepõe silenciosamente
+// qualquer `limit` maior pedido aqui, sem erro nenhum.
+function parseContentRange(value) {
+  if (!value) {
+    return null;
+  }
+
+  const [range, totalRaw] = String(value).trim().split('/');
+  const total = totalRaw === '*' ? null : Number(totalRaw);
+  const totalValido = Number.isFinite(total) ? total : null;
+
+  if (range === '*') {
+    return { returned: 0, total: totalValido };
+  }
+
+  const [startRaw, endRaw] = range.split('-');
+  const start = Number(startRaw);
+  const end = Number(endRaw);
+
+  if (!Number.isFinite(start) || !Number.isFinite(end)) {
+    return null;
+  }
+
+  return { returned: end - start + 1, total: totalValido };
+}
+
 async function fetchRows(table, params) {
   const { url, serviceRoleKey } = getConfig();
   const query = new URLSearchParams({ limit: String(ROW_LIMIT), ...params });
   const response = await fetch(`${url}/rest/v1/${table}?${query.toString()}`, {
     method: 'GET',
-    headers: { apikey: serviceRoleKey, Authorization: `Bearer ${serviceRoleKey}` },
+    headers: {
+      apikey: serviceRoleKey,
+      Authorization: `Bearer ${serviceRoleKey}`,
+      // count=exact é o que faz o Content-Range vir com o total real de
+      // linhas, não só o intervalo devolvido — sem isso não dá pra distinguir
+      // "a tabela tem exatamente 1000 linhas" de "cortou em 1000".
+      Prefer: 'count=exact',
+    },
   });
 
   if (!response.ok) {
@@ -44,7 +79,14 @@ async function fetchRows(table, params) {
   }
 
   const json = await response.json();
-  return Array.isArray(json) ? json : [];
+  const rows = Array.isArray(json) ? json : [];
+  const range = parseContentRange(response.headers.get('content-range'));
+
+  return { rows, total: range?.total ?? null };
+}
+
+function isTruncated({ rows, total }) {
+  return typeof total === 'number' && rows.length < total;
 }
 
 // `optionalColumns` cobre a janela entre o deploy e a aplicação manual do SQL:
@@ -56,30 +98,34 @@ async function selectRows(table, params = {}, { optionalColumns = [] } = {}) {
   const { url, serviceRoleKey } = getConfig();
 
   if (!url || !serviceRoleKey) {
-    return { rows: [], degraded: [] };
+    return { rows: [], degraded: [], truncated: false };
   }
 
-  const rows = await fetchRows(table, params).catch(() => null);
+  const result = await fetchRows(table, params).catch(() => null);
 
-  if (rows) {
-    return { rows, degraded: [] };
+  if (result) {
+    return { rows: result.rows, degraded: [], truncated: isTruncated(result) };
   }
 
   if (optionalColumns.length === 0 || !params.select) {
-    return { rows: [], degraded: [] };
+    return { rows: [], degraded: [], truncated: false };
   }
 
   const colunas = params.select.split(',');
   const restantes = colunas.filter((coluna) => !optionalColumns.includes(coluna.trim()));
 
   if (restantes.length === colunas.length) {
-    return { rows: [], degraded: [] };
+    return { rows: [], degraded: [], truncated: false };
   }
 
   const semOpcionais = await fetchRows(table, { ...params, select: restantes.join(',') })
     .catch(() => null);
 
-  return { rows: semOpcionais || [], degraded: semOpcionais ? optionalColumns : [] };
+  return {
+    rows: semOpcionais?.rows || [],
+    degraded: semOpcionais ? optionalColumns : [],
+    truncated: semOpcionais ? isTruncated(semOpcionais) : false,
+  };
 }
 
 function roundMoney(value) {
@@ -538,17 +584,26 @@ async function getOwnerMetrics() {
   ] = await Promise.all([
     selectRows(
       'profiles',
-      { select: 'id,current_plan,billing_status,plan_expires_at,trial_started_at,created_at,last_seen_at' },
+      {
+        select: 'id,current_plan,billing_status,plan_expires_at,trial_started_at,created_at,last_seen_at',
+        // Se o Max Rows do projeto cortar, que corte as contas mais antigas —
+        // as mais novas são as que pesam em ativação/retorno.
+        order: 'created_at.desc',
+      },
       // Enquanto profile_last_seen.sql não for aplicado à mão, esta coluna não
       // existe e derrubaria a consulta inteira.
       { optionalColumns: ['last_seen_at'] },
     ),
-    selectRows('billing_payments', { select: 'status,amount,user_id,created_at' }),
-    selectRows('events', { select: 'user_id,session_id,event_name,metadata,created_at' }),
-    selectRows('anamneses', { select: 'user_id,created_at' }),
+    selectRows('billing_payments', { select: 'status,amount,user_id,created_at', order: 'created_at.desc' }),
+    // A ordem aqui é o que evita que um corte de linhas apague justo os
+    // eventos de agora: sem isso já aconteceu de visita de afiliado sumir do
+    // painel porque a tabela passou do teto e o Postgres devolveu as mais
+    // antigas primeiro.
+    selectRows('events', { select: 'user_id,session_id,event_name,metadata,created_at', order: 'created_at.desc' }),
+    selectRows('anamneses', { select: 'user_id,created_at', order: 'created_at.desc' }),
     selectRows('affiliates', { select: 'id,code,status,commission_rate' }),
-    selectRows('affiliate_attributions', { select: 'affiliate_id,buyer_user_id,created_at' }),
-    selectRows('affiliate_commissions', { select: 'affiliate_id,gross_amount,commission_amount,status,payout_id,created_at' }),
+    selectRows('affiliate_attributions', { select: 'affiliate_id,buyer_user_id,created_at', order: 'created_at.desc' }),
+    selectRows('affiliate_commissions', { select: 'affiliate_id,gross_amount,commission_amount,status,payout_id,created_at', order: 'created_at.desc' }),
     getGlobalFunnelSessions().catch(() => ({ sessions: [], truncated: false })),
   ]);
 
@@ -560,6 +615,19 @@ async function getOwnerMetrics() {
   const attributions = attributionsResult.rows;
   const commissions = commissionsResult.rows;
   const faltaLastSeen = profilesResult.degraded.includes('last_seen_at');
+  // Nome amigável só das tabelas que o Content-Range denunciou como cortadas
+  // pelo teto do servidor — não pelo `limit` que o código pede, esse a gente
+  // controla.
+  const tabelasTruncadas = [
+    ['contas', profilesResult],
+    ['pagamentos', paymentsResult],
+    ['eventos', eventsResult],
+    ['anamneses', anamnesesResult],
+    ['indicações de afiliado', attributionsResult],
+    ['comissões de afiliado', commissionsResult],
+  ]
+    .filter(([, resultado]) => resultado.truncated)
+    .map(([nome]) => nome);
 
   const metricasFunil = funnel.sessions.length
     ? buildFunnelMetrics(funnel.sessions)
@@ -596,7 +664,7 @@ async function getOwnerMetrics() {
       visitsByCode: countAffiliateVisits(events),
     }),
     avisos: buildWarnings({
-      events,
+      tabelasTruncadas,
       funnelTruncated: funnel.truncated,
       funilDivergente,
       retornoSemRegistro: retorno.semRegistro,
@@ -608,7 +676,7 @@ async function getOwnerMetrics() {
 // Ressalvas que precisam viajar junto com os números: sem elas o painel
 // parece mais confiável do que é.
 function buildWarnings({
-  events,
+  tabelasTruncadas = [],
   funnelTruncated,
   funilDivergente,
   retornoSemRegistro = 0,
@@ -643,8 +711,12 @@ function buildWarnings({
     avisos.push('O funil bateu no teto de eventos lidos e está parcial.');
   }
 
-  if (events.length >= ROW_LIMIT) {
-    avisos.push('A leitura de eventos bateu no teto: os números de uso e retenção estão parciais.');
+  if (tabelasTruncadas.length > 0) {
+    avisos.push(
+      `A leitura bateu no teto de linhas do banco em: ${tabelasTruncadas.join(', ')}. `
+      + 'A busca já vem ordenada do mais recente para o mais antigo, então o que falta é histórico antigo, '
+      + 'não atividade de agora — mas os totais e médias que dependem disso estão parciais.',
+    );
   }
 
   return avisos;
@@ -653,9 +725,11 @@ function buildWarnings({
 module.exports = {
   getOwnerMetrics,
   isOwnerMetricsStorageAvailable,
+  buildWarnings,
   buildWindows,
   countAffiliateVisits,
   countDistinctByWindow,
+  parseContentRange,
   summarizeActivation,
   summarizeAffiliates,
   summarizeEventUsage,

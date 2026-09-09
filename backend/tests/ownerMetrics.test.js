@@ -6,9 +6,11 @@ delete process.env.VITE_SUPABASE_URL;
 delete process.env.SUPABASE_SERVICE_ROLE_KEY;
 
 const {
+  buildWarnings,
   buildWindows,
   countAffiliateVisits,
   countDistinctByWindow,
+  parseContentRange,
   summarizeActivation,
   summarizeAffiliates,
   summarizeEventUsage,
@@ -335,6 +337,47 @@ test('a janela de hoje usa a meia-noite de Brasilia, nao a de UTC', () => {
   );
 
   assert.equal(contagem.hoje, 1);
+});
+
+// --- Content-Range e aviso de truncamento ---------------------------------
+//
+// Bug real que motivou isto: a tabela events passou de 1000 linhas, o Max
+// Rows do projeto no Supabase cortou em 1000 sem avisar, e sem `order` o
+// corte pegou justo os eventos mais recentes (incluindo visitas de afiliado
+// do dia). O aviso antigo comparava contra o teto que o próprio código pede
+// (5000), que nunca é o que bate de verdade — por isso nunca disparava.
+
+test('parseContentRange le uma leitura parcial', () => {
+  assert.deepEqual(parseContentRange('0-999/1168'), { returned: 1000, total: 1168 });
+});
+
+test('parseContentRange le uma leitura completa', () => {
+  assert.deepEqual(parseContentRange('0-5/6'), { returned: 6, total: 6 });
+});
+
+test('parseContentRange le resultado vazio', () => {
+  assert.deepEqual(parseContentRange('*/0'), { returned: 0, total: 0 });
+});
+
+test('parseContentRange devolve null para cabecalho ausente ou invalido', () => {
+  assert.equal(parseContentRange(null), null);
+  assert.equal(parseContentRange(''), null);
+  assert.equal(parseContentRange('lixo'), null);
+});
+
+test('buildWarnings aponta a tabela truncada pelo nome, nao pelo teto do codigo', () => {
+  const avisos = buildWarnings({ tabelasTruncadas: ['eventos'] });
+
+  assert.ok(
+    avisos.some((aviso) => aviso.includes('eventos') && aviso.includes('teto de linhas')),
+    'precisa nomear a tabela cortada',
+  );
+});
+
+test('buildWarnings nao avisa truncamento quando nada foi cortado', () => {
+  const avisos = buildWarnings({ tabelasTruncadas: [] });
+
+  assert.ok(!avisos.some((aviso) => aviso.includes('teto de linhas')));
 });
 
 test('summarizeReturn separa quem ainda nao tem carimbo', () => {
