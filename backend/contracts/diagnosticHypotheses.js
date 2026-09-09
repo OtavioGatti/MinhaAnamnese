@@ -9,7 +9,7 @@ const DIAGNOSTIC_HYPOTHESES_SCHEMA = {
     },
     hypotheses: {
       type: 'array',
-      maxItems: 5,
+      maxItems: 8,
       items: {
         type: 'object',
         additionalProperties: false,
@@ -143,9 +143,42 @@ function normalizeHypothesis(value) {
   };
 }
 
+const MAX_HYPOTHESES = 8;
+// Comorbidade documentada é contexto, não raciocínio diagnóstico. Sem um teto
+// próprio, um paciente com HAS, DM2, dislipidemia e anemia consumia as vagas
+// todas e não sobrava diferencial nenhum.
+const MAX_DOCUMENTED_PROBLEMS = 3;
+
+// O corte era `.slice(0, 5)` cego — e o prompt manda inventariar os problemas
+// DOCUMENTADOS antes de inferir diferenciais. Ou seja: o que era cortado por
+// excesso era sempre a ponta do raciocínio, nunca a comorbidade. Nos dados
+// reais isso apareceu como "Hipertensão Arterial Sistêmica" ocupando vaga de
+// hipótese 9 vezes, e sinais soltos ("Melena") entrando como diagnóstico.
+//
+// Agora cada lado tem teto próprio, e a sobra de um pode ser usada pelo outro.
+// A ordem original de apresentação é preservada.
+function selectHypotheses(lista) {
+  const documentados = lista.filter((item) => item.priority === 'documented_problem');
+  const raciocinio = lista.filter((item) => item.priority !== 'documented_problem');
+
+  const documentadosMantidos = documentados.slice(0, MAX_DOCUMENTED_PROBLEMS);
+  const raciocinioMantido = raciocinio.slice(0, MAX_HYPOTHESES - documentadosMantidos.length);
+
+  // Poucos diferenciais? A sobra volta para os problemas documentados, em vez
+  // de devolver uma lista mais curta do que o teto permite.
+  const sobra = MAX_HYPOTHESES - documentadosMantidos.length - raciocinioMantido.length;
+  const extras = sobra > 0
+    ? documentados.slice(MAX_DOCUMENTED_PROBLEMS, MAX_DOCUMENTED_PROBLEMS + sobra)
+    : [];
+
+  const mantidos = new Set([...documentadosMantidos, ...raciocinioMantido, ...extras]);
+
+  return lista.filter((item) => mantidos.has(item));
+}
+
 function normalizeDiagnosticHypotheses(value) {
   const hypotheses = Array.isArray(value?.hypotheses)
-    ? value.hypotheses.map(normalizeHypothesis).filter(Boolean).slice(0, 5)
+    ? selectHypotheses(value.hypotheses.map(normalizeHypothesis).filter(Boolean))
     : [];
   const requestedStatus = value?.status === 'ok' ? 'ok' : 'insufficient_data';
   const status = requestedStatus === 'ok' && hypotheses.length < 3
@@ -173,6 +206,9 @@ function buildRefusalResult(message) {
 
 module.exports = {
   buildRefusalResult,
+  MAX_DOCUMENTED_PROBLEMS,
+  MAX_HYPOTHESES,
+  selectHypotheses,
   DIAGNOSTIC_HYPOTHESES_SCHEMA,
   normalizeDiagnosticHypotheses,
 };

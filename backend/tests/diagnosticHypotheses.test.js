@@ -49,12 +49,13 @@ test('reclassifica como dados insuficientes sem inventar três hipóteses', () =
 test('limita hipóteses, listas e prioridades fora do contrato', () => {
   const result = normalizeDiagnosticHypotheses({
     status: 'ok',
-    hypotheses: Array.from({ length: 7 }, (_, index) => hypothesis(`Hipótese ${index}`, 'invalid')),
+    hypotheses: Array.from({ length: 12 }, (_, index) => hypothesis(`Hipótese ${index}`, 'invalid')),
     missingData: Array.from({ length: 12 }, (_, index) => `Dado ${index}`),
     generalWarnings: [],
   });
 
-  assert.equal(result.hypotheses.length, 5);
+  // Teto passou de 5 para 8 quando o orçamento virou por prioridade.
+  assert.equal(result.hypotheses.length, 8);
   assert.equal(result.missingData.length, 8);
   assert.equal(result.hypotheses[0].priority, 'differential');
 });
@@ -305,4 +306,122 @@ test('validação exige template e história organizada', () => {
     validateDiagnosticHypothesesInput({ template: 'clinica_medica', structuredText: 'História' }),
     null,
   );
+});
+
+// --- orçamento de vagas por prioridade ------------------------------------
+//
+// O corte era `.slice(0, 5)` cego, e o prompt manda inventariar os problemas
+// DOCUMENTADOS antes de inferir diferenciais — então o que sobrava cortado era
+// sempre a ponta do raciocínio. Nos dados reais: "Hipertensão Arterial
+// Sistêmica" ocupou vaga de hipótese 9 vezes.
+
+function hipotese(name, priority) {
+  return {
+    name,
+    priority,
+    rationale: 'x',
+    supportingEvidence: [],
+    missingOrConflictingData: [],
+    differentiatingSteps: [],
+    redFlags: [],
+    suggestedExamManeuvers: [],
+    suggestedComplementaryExams: [],
+  };
+}
+
+test('comorbidade documentada não expulsa mais os diferenciais', () => {
+  const entrada = {
+    status: 'ok',
+    hypotheses: [
+      // o modelo devolve os documentados primeiro, como o prompt manda
+      hipotese('Hipertensão Arterial Sistêmica', 'documented_problem'),
+      hipotese('Diabetes Mellitus Tipo 2', 'documented_problem'),
+      hipotese('Dislipidemia', 'documented_problem'),
+      hipotese('Anemia', 'documented_problem'),
+      hipotese('Insuficiência cardíaca descompensada', 'most_compatible'),
+      hipotese('Pneumonia', 'differential'),
+      hipotese('Tromboembolismo pulmonar', 'cannot_miss'),
+    ],
+    missingData: [],
+    generalWarnings: [],
+  };
+
+  const { hypotheses } = normalizeDiagnosticHypotheses(entrada);
+  const nomes = hypotheses.map((h) => h.name);
+
+  assert.ok(nomes.includes('Tromboembolismo pulmonar'), 'o cannot_miss não pode ser cortado');
+  assert.ok(nomes.includes('Pneumonia'));
+  assert.ok(nomes.includes('Insuficiência cardíaca descompensada'));
+  assert.equal(
+    hypotheses.filter((h) => h.priority !== 'documented_problem').length,
+    3,
+    'nenhum item de raciocínio pode ser perdido',
+  );
+});
+
+test('quando há disputa real, o teto da comorbidade segura', () => {
+  const entrada = {
+    status: 'ok',
+    hypotheses: [
+      ...Array.from({ length: 6 }, (_, i) => hipotese(`Cronica ${i}`, 'documented_problem')),
+      ...Array.from({ length: 5 }, (_, i) => hipotese(`Diferencial ${i}`, 'differential')),
+    ],
+    missingData: [],
+    generalWarnings: [],
+  };
+
+  const { hypotheses } = normalizeDiagnosticHypotheses(entrada);
+
+  assert.equal(hypotheses.length, 8);
+  assert.equal(hypotheses.filter((h) => h.priority === 'documented_problem').length, 3);
+  assert.equal(
+    hypotheses.filter((h) => h.priority === 'differential').length,
+    5,
+    'os 5 diferenciais sobrevivem; antes seriam todos cortados',
+  );
+});
+
+test('com poucos diferenciais, a sobra volta para os documentados', () => {
+  const entrada = {
+    status: 'ok',
+    hypotheses: [
+      ...['A', 'B', 'C', 'D', 'E'].map((n) => hipotese(`Cronica ${n}`, 'documented_problem')),
+      hipotese('Pneumonia', 'differential'),
+    ],
+    missingData: [],
+    generalWarnings: [],
+  };
+
+  const { hypotheses } = normalizeDiagnosticHypotheses(entrada);
+
+  assert.equal(hypotheses.length, 6, 'não devolve lista mais curta que o teto à toa');
+  assert.ok(hypotheses.some((h) => h.name === 'Pneumonia'));
+});
+
+test('a ordem original de apresentação é preservada', () => {
+  const entrada = {
+    status: 'ok',
+    hypotheses: [
+      hipotese('Documentado 1', 'documented_problem'),
+      hipotese('Diferencial 1', 'differential'),
+      hipotese('Documentado 2', 'documented_problem'),
+    ],
+    missingData: [],
+    generalWarnings: [],
+  };
+
+  const nomes = normalizeDiagnosticHypotheses(entrada).hypotheses.map((h) => h.name);
+
+  assert.deepEqual(nomes, ['Documentado 1', 'Diferencial 1', 'Documentado 2']);
+});
+
+test('teto global continua valendo', () => {
+  const entrada = {
+    status: 'ok',
+    hypotheses: Array.from({ length: 20 }, (_, i) => hipotese(`H${i}`, 'differential')),
+    missingData: [],
+    generalWarnings: [],
+  };
+
+  assert.equal(normalizeDiagnosticHypotheses(entrada).hypotheses.length, 8);
 });
