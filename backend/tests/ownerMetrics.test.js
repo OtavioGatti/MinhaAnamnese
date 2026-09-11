@@ -10,6 +10,7 @@ const {
   buildWindows,
   countAffiliateVisits,
   countDistinctByWindow,
+  countLinkedAccounts,
   parseContentRange,
   summarizeActivation,
   summarizeAffiliates,
@@ -393,4 +394,50 @@ test('summarizeReturn separa quem ainda nao tem carimbo', () => {
   assert.equal(resumo.hoje, 1);
   assert.equal(resumo.trinta, 2);
   assert.equal(resumo.semRegistro, 2, 'coluna nova comeca vazia');
+});
+
+// --- contas vinculadas por afiliado -------------------------------------------
+
+test('countLinkedAccounts conta contas por afiliado e ignora quem não tem indicação', () => {
+  const porAfiliado = countLinkedAccounts([
+    { id: 'u1', referred_by_affiliate_id: 'af-matheus' },
+    { id: 'u2', referred_by_affiliate_id: 'af-matheus' },
+    { id: 'u3', referred_by_affiliate_id: 'af-joseph' },
+    { id: 'u4', referred_by_affiliate_id: null },
+    { id: 'u5' },
+  ]);
+
+  assert.equal(porAfiliado.get('af-matheus'), 2);
+  assert.equal(porAfiliado.get('af-joseph'), 1);
+  assert.equal(porAfiliado.size, 2, 'conta sem indicação não entra');
+});
+
+// Caso real: 24 cadastros do TikTok do Matheus, nenhum pelo link. Sem esta
+// coluna o quadro dele mostrava zero em tudo e ele ficava no fim da lista,
+// atrás de quem só tinha visita.
+test('summarizeAffiliates mostra contas vinculadas e ordena por elas antes das visitas', () => {
+  const linhas = summarizeAffiliates({
+    affiliates: [
+      { id: 'af-joseph', code: 'joseph', status: 'active', commission_rate: 0.3 },
+      { id: 'af-matheus', code: 'matheusmacari', status: 'active', commission_rate: 0.3 },
+    ],
+    attributions: [],
+    commissions: [],
+    visitsByCode: new Map([['joseph', 16]]),
+    linkedByAffiliate: new Map([['af-matheus', 24]]),
+  });
+
+  assert.equal(linhas[0].codigo, 'matheusmacari');
+  assert.equal(linhas[0].contasVinculadas, 24);
+  assert.equal(linhas[1].contasVinculadas, 0);
+});
+
+test('summarizeAffiliates sem vínculos informados devolve zero, não quebra', () => {
+  const [linha] = summarizeAffiliates({
+    affiliates: [{ id: 'a1', code: 'x', status: 'active', commission_rate: 0.3 }],
+    attributions: [],
+    commissions: [],
+  });
+
+  assert.equal(linha.contasVinculadas, 0);
 });

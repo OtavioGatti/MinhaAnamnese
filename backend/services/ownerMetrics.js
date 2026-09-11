@@ -311,6 +311,29 @@ function countAffiliateVisits(events) {
   return new Map([...sessoesPorCodigo].map(([codigo, sessoes]) => [codigo, sessoes.size]));
 }
 
+// Contas vinculadas por afiliado (profiles.referred_by_affiliate_id).
+//
+// É a métrica que responde "quantas pessoas esse afiliado trouxe" ANTES de
+// qualquer pagamento — e a única que existe para quem chegou sem link e foi
+// vinculado depois. Caso real: o TikTok do Matheus gerou 24 cadastros num dia,
+// nenhum pelo link (em legenda de TikTok link não é clicável), e sem esta
+// coluna o quadro dele mostrava zero em tudo.
+function countLinkedAccounts(profiles) {
+  const porAfiliado = new Map();
+
+  profiles.forEach((profile) => {
+    const affiliateId = profile.referred_by_affiliate_id;
+
+    if (!affiliateId) {
+      return;
+    }
+
+    porAfiliado.set(affiliateId, (porAfiliado.get(affiliateId) || 0) + 1);
+  });
+
+  return porAfiliado;
+}
+
 /**
  * Quadro por afiliado.
  *
@@ -326,9 +349,16 @@ function countAffiliateVisits(events) {
  * - `taxaCheckoutParaPago` é etapa tardia e parece alta por isso;
  *   `taxaVisitaParaPago` é a de ponta a ponta, a que interessa à divulgação.
  */
-function summarizeAffiliates({ affiliates, attributions, commissions, visitsByCode = new Map() }) {
+function summarizeAffiliates({
+  affiliates,
+  attributions,
+  commissions,
+  visitsByCode = new Map(),
+  linkedByAffiliate = new Map(),
+}) {
   const porAfiliado = new Map(affiliates.map((a) => [a.id, {
     codigo: a.code,
+    contasVinculadas: linkedByAffiliate.get(a.id) || 0,
     status: a.status,
     comissaoPercentual: Math.round((Number(a.commission_rate) || 0) * 1000) / 10,
     checkoutsIniciados: 0,
@@ -396,6 +426,7 @@ function summarizeAffiliates({ affiliates, attributions, commissions, visitsByCo
       };
     })
     .sort((a, b) => b.receitaGerada - a.receitaGerada
+      || b.contasVinculadas - a.contasVinculadas
       || b.visitas - a.visitas
       || b.checkoutsIniciados - a.checkoutsIniciados);
 }
@@ -585,14 +616,14 @@ async function getOwnerMetrics() {
     selectRows(
       'profiles',
       {
-        select: 'id,current_plan,billing_status,plan_expires_at,trial_started_at,created_at,last_seen_at',
+        select: 'id,current_plan,billing_status,plan_expires_at,trial_started_at,created_at,last_seen_at,referred_by_affiliate_id',
         // Se o Max Rows do projeto cortar, que corte as contas mais antigas —
         // as mais novas são as que pesam em ativação/retorno.
         order: 'created_at.desc',
       },
       // Enquanto profile_last_seen.sql não for aplicado à mão, esta coluna não
       // existe e derrubaria a consulta inteira.
-      { optionalColumns: ['last_seen_at'] },
+      { optionalColumns: ['last_seen_at', 'referred_by_affiliate_id'] },
     ),
     selectRows('billing_payments', { select: 'status,amount,user_id,created_at', order: 'created_at.desc' }),
     // A ordem aqui é o que evita que um corte de linhas apague justo os
@@ -662,6 +693,7 @@ async function getOwnerMetrics() {
       attributions,
       commissions,
       visitsByCode: countAffiliateVisits(events),
+      linkedByAffiliate: countLinkedAccounts(profiles),
     }),
     avisos: buildWarnings({
       tabelasTruncadas,
@@ -728,6 +760,7 @@ module.exports = {
   buildWarnings,
   buildWindows,
   countAffiliateVisits,
+  countLinkedAccounts,
   countDistinctByWindow,
   parseContentRange,
   summarizeActivation,
