@@ -9,6 +9,7 @@ delete process.env.SUPABASE_SERVICE_ROLE_KEY;
 const {
   buildReferralClaimRequest,
   claimAffiliateReferral,
+  decideReferralClaim,
   getStoredReferralAffiliate,
   normalizeReferralSource,
   pickCheckoutAffiliate,
@@ -150,7 +151,8 @@ test('auto-indicação é recusada antes de tocar no banco', async () => {
     source: 'link',
   });
 
-  assert.deepEqual(resultado, { claimed: false });
+  // Sem "unavailable": prova que foi recusada ANTES de qualquer consulta.
+  assert.deepEqual(resultado, { claimed: false, reason: 'ineligible_referrer' });
 });
 
 test('sem banco, a gravação falha em silêncio', async () => {
@@ -178,4 +180,48 @@ test('sem banco, o checkout segue sem afiliado e sem quebrar', async () => {
   });
 
   assert.equal(afiliadoResolvido, null);
+});
+
+// --- conta de afiliado nunca recebe indicação -------------------------------
+//
+// Caso real da primeira semana: 5 das 6 contas logadas que visitaram links de
+// afiliado eram contas de afiliado conferindo links, e uma acabou vinculada a
+// outro afiliado pela reivindicação pós-login.
+
+test('conta de afiliado não recebe indicação no checkout, nem salva nem enviada', () => {
+  const escolha = pickCheckoutAffiliate({
+    storedAffiliate: afiliado('joseph', DONO_LUCAS),
+    requestedAffiliate: afiliado('matheusmacari', DONO_MATHEUS),
+    buyerUserId: COMPRADOR,
+    buyerIsAffiliate: true,
+  });
+
+  assert.deepEqual(escolha, { affiliate: null, origin: null });
+});
+
+test('reivindicação recusa conta de afiliado', () => {
+  const decisao = decideReferralClaim({
+    userId: COMPRADOR,
+    affiliate: afiliado('joseph', DONO_LUCAS),
+    buyerAffiliate: afiliado('gatti', COMPRADOR),
+  });
+
+  assert.deepEqual(decisao, { allowed: false, reason: 'buyer_is_affiliate' });
+});
+
+test('reivindicação libera conta comum com afiliado válido', () => {
+  const decisao = decideReferralClaim({
+    userId: COMPRADOR,
+    affiliate: afiliado('matheusmacari', DONO_MATHEUS),
+    buyerAffiliate: null,
+  });
+
+  assert.deepEqual(decisao, { allowed: true, reason: null });
+});
+
+test('reivindicação recusa usuário inválido', () => {
+  assert.equal(
+    decideReferralClaim({ userId: 'nao-e-uuid', affiliate: afiliado('x', DONO_MATHEUS), buyerAffiliate: null }).reason,
+    'invalid_user',
+  );
 });

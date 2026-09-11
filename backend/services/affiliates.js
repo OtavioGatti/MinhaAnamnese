@@ -339,11 +339,16 @@ function isEligibleReferrer(affiliate, buyerUserId) {
 }
 
 // Pura. Precedência do afiliado no checkout:
+// 0. conta de afiliado nunca recebe indicação — nem de outro afiliado;
 // 1. indicação já salva na conta — primeiro contato vence, protege quem trouxe;
 // 2. código enviado pelo navegador (link ou digitado no modal de planos);
 // 3. nenhum: preço cheio.
 // Auto-indicação e afiliado pausado nunca valem, em nenhuma das duas fontes.
-function pickCheckoutAffiliate({ storedAffiliate, requestedAffiliate, buyerUserId }) {
+function pickCheckoutAffiliate({ storedAffiliate, requestedAffiliate, buyerUserId, buyerIsAffiliate = false }) {
+  if (buyerIsAffiliate) {
+    return { affiliate: null, origin: null };
+  }
+
   if (isEligibleReferrer(storedAffiliate, buyerUserId)) {
     return { affiliate: storedAffiliate, origin: 'stored' };
   }
@@ -374,9 +379,51 @@ function buildReferralClaimRequest({ userId, affiliateId, source, now = new Date
   };
 }
 
+// Pura. Quem pode receber esta indicação.
+//
+// Conta de afiliado nunca recebe — afiliado abrindo o link de colega (ou o
+// próprio) é tráfego de conferência, não indicação. Na primeira semana em
+// produção, 5 das 6 contas logadas que visitaram links de afiliado eram contas
+// de afiliado, e uma delas acabou vinculada a outro afiliado. O vínculo manual
+// por SQL já excluía afiliados; esta é a mesma regra no caminho automático.
+function decideReferralClaim({ userId, affiliate, buyerAffiliate }) {
+  if (!isValidUserId(userId)) {
+    return { allowed: false, reason: 'invalid_user' };
+  }
+
+  if (buyerAffiliate) {
+    return { allowed: false, reason: 'buyer_is_affiliate' };
+  }
+
+  if (!isEligibleReferrer(affiliate, userId)) {
+    return { allowed: false, reason: 'ineligible_referrer' };
+  }
+
+  return { allowed: true, reason: null };
+}
+
 async function claimAffiliateReferral({ userId, affiliate, source }) {
-  if (!isValidUserId(userId) || !isEligibleReferrer(affiliate, userId)) {
-    return { claimed: false };
+  // O que não precisa de banco é recusado antes de qualquer consulta.
+  const previa = decideReferralClaim({ userId, affiliate, buyerAffiliate: null });
+
+  if (!previa.allowed) {
+    return { claimed: false, reason: previa.reason };
+  }
+
+  let buyerAffiliate;
+
+  try {
+    buyerAffiliate = await getAffiliateByUserId(userId);
+  } catch (_error) {
+    // Falha fechado: sem saber se a conta é de afiliado, não grava. Gravação
+    // errada fica travada pelo write-once; a que faltou pode ser refeita.
+    return { claimed: false, unavailable: true };
+  }
+
+  const decisao = decideReferralClaim({ userId, affiliate, buyerAffiliate });
+
+  if (!decisao.allowed) {
+    return { claimed: false, reason: decisao.reason };
   }
 
   const { path, body } = buildReferralClaimRequest({ userId, affiliateId: affiliate.id, source });
@@ -433,11 +480,27 @@ function summarizeReferral(affiliate) {
 }
 
 async function resolveAffiliateForCheckout({ affiliateCode, affiliateCodeSource, buyerUserId, sourceUrl }) {
-  const [storedAffiliate, requestedAffiliate] = await Promise.all([
-    getStoredReferralAffiliate(buyerUserId),
-    affiliateCode ? getAffiliateByCode(affiliateCode).catch(() => null) : Promise.resolve(null),
-  ]);
-  const { affiliate, origin } = pickCheckoutAffiliate({ storedAffiliate, requestedAffiliate, buyerUserId });
+  let consultas;
+
+  try {
+    consultas = await Promise.all([
+      getAffiliateByUserId(buyerUserId),
+      getStoredReferralAffiliate(buyerUserId),
+      affiliateCode ? getAffiliateByCode(affiliateCode).catch(() => null) : Promise.resolve(null),
+    ]);
+  } catch (_error) {
+    // Falha fechado: sem saber se quem compra é afiliado, sem indicação e
+    // preço cheio — o mesmo de quando as outras consultas falham.
+    return null;
+  }
+
+  const [buyerAffiliate, storedAffiliate, requestedAffiliate] = consultas;
+  const { affiliate, origin } = pickCheckoutAffiliate({
+    storedAffiliate,
+    requestedAffiliate,
+    buyerUserId,
+    buyerIsAffiliate: Boolean(buyerAffiliate),
+  });
 
   if (!affiliate) {
     return null;
@@ -817,6 +880,7 @@ module.exports = {
   // indicação salva na conta
   buildReferralClaimRequest,
   claimAffiliateReferral,
+  decideReferralClaim,
   getAffiliateById,
   getStoredReferralAffiliate,
   normalizeReferralSource,
