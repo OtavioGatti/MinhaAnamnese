@@ -1453,14 +1453,21 @@ function App() {
       const nextContextualTab = normalizeContextualTab(nextProfile.default_contextual_tab);
       setProfile(nextProfile);
 
-      // Chegou pelo link em outro dispositivo, ou antes de ter conta: grava a
+      // Chegou pelo LINK em outro dispositivo, ou antes de ter conta: grava a
       // indicação na conta agora, para valer no checkout de qualquer navegador.
       // Write-once no servidor — se a conta já tem indicação, nada muda.
+      //
+      // Só código de link. O código DIGITADO no modal de planos trava no
+      // checkout, não aqui: antes, quem digitava e recarregava a página ficava
+      // travado sem ter assinado, e perdia a chance de corrigir um erro de
+      // digitação. Quem chegou por link antes da origem existir não tem a
+      // marcação, e a leitura cai no padrão "link" — continua reivindicado.
       const codigoDoNavegador = readAffiliateReferralCode();
+      const veioDeLink = readAffiliateReferralSource() === 'link';
 
-      if (codigoDoNavegador && !nextProfile.referral && referralClaimTriedRef.current !== user.id) {
+      if (codigoDoNavegador && veioDeLink && !nextProfile.referral && referralClaimTriedRef.current !== user.id) {
         referralClaimTriedRef.current = user.id;
-        api.post('/affiliate/claim', { code: codigoDoNavegador, source: readAffiliateReferralSource() })
+        api.post('/affiliate/claim', { code: codigoDoNavegador, source: 'link' })
           .then((claim) => {
             if (claim?.success && claim.data?.referral) {
               setProfile((atual) => (atual ? { ...atual, referral: claim.data.referral } : atual));
