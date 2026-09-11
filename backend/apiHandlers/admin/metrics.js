@@ -41,6 +41,51 @@ function tile(label, value, hint = '') {
   }</div>`;
 }
 
+// O painel é lido no Brasil, mas o servidor roda em UTC: sem o fuso explícito
+// o "Gerado em" e as datas das barras saíam com 3 horas de diferença.
+const FUSO = 'America/Sao_Paulo';
+
+function formatNumber(value) {
+  return Number(value || 0).toLocaleString('pt-BR');
+}
+
+// Número, seta com a diferença e, embaixo, o valor comparado — empilhados para
+// caber no celular:  322 / ▲ +296 / ontem 26 · +1.138%.
+// Sem base anterior, "novo" em vez de uma porcentagem que não existe.
+function changeCell(atual, anterior, variacao, rotuloAnterior) {
+  const { delta, percentual, direcao } = variacao;
+  const classe = direcao === 'sobe' ? 'up' : direcao === 'desce' ? 'down' : 'flat';
+  const seta = direcao === 'sobe' ? '▲' : direcao === 'desce' ? '▼' : '=';
+  const sinal = delta > 0 ? '+' : delta < 0 ? '−' : '';
+  const diferenca = direcao === 'igual' ? 'igual' : `${sinal}${formatNumber(Math.abs(delta))}`;
+  const porcentagem = percentual === null
+    ? (direcao === 'sobe' ? ' · novo' : '')
+    : ` · ${sinal}${formatNumber(Math.abs(percentual))}%`;
+
+  return `<strong>${formatNumber(atual)}</strong><span class="chg ${classe}">${seta} ${diferenca}</span>`
+    + `<small>${rotuloAnterior} ${formatNumber(anterior)}${porcentagem}</small>`;
+}
+
+// Barras dos últimos 14 dias em SVG inline — sem JavaScript, como o resto do
+// painel. A barra de hoje em destaque; passar o dedo/mouse mostra dia e valor.
+function sparkline(serie) {
+  const largura = 98;
+  const altura = 28;
+  const espaco = 1;
+  const barra = (largura - espaco * (serie.length - 1)) / serie.length;
+  const maximo = Math.max(1, ...serie.map((ponto) => ponto.valor));
+
+  const barras = serie.map((ponto, indice) => {
+    const h = ponto.valor === 0 ? 1 : Math.max(2, Math.round((ponto.valor / maximo) * (altura - 2)));
+    const classe = indice === serie.length - 1 ? 'bar-hoje' : ponto.valor === 0 ? 'bar-zero' : 'bar';
+    const dia = new Date(ponto.dia).toLocaleDateString('pt-BR', { timeZone: FUSO, day: '2-digit', month: '2-digit' });
+
+    return `<rect x="${(indice * (barra + espaco)).toFixed(1)}" y="${altura - h}" width="${barra.toFixed(1)}" height="${h}" rx="1" class="${classe}"><title>${dia}: ${formatNumber(ponto.valor)}</title></rect>`;
+  }).join('');
+
+  return `<svg class="spark" viewBox="0 0 ${largura} ${altura}" width="${largura}" height="${altura}" role="img" aria-label="Últimos 14 dias">${barras}</svg>`;
+}
+
 function renderHtml(m) {
   // Alcance vem primeiro de propósito: é a leitura que não depende da ordem
   // declarada do funil, e portanto a que não mente quando o uso real diverge.
@@ -70,6 +115,16 @@ function renderHtml(m) {
     </tr>`)
     .join('') || '<tr><td colspan="9" class="muted">Nenhum afiliado com movimento.</td></tr>';
 
+  const horaAgora = new Date(m.geradoEm).toLocaleTimeString('pt-BR', { timeZone: FUSO, hour: '2-digit', minute: '2-digit' });
+
+  const crescimento = (m.crescimento || [])
+    .map((c) => `<tr>
+      <td>${escapeHtml(c.rotulo)}${c.dica ? `<small>${escapeHtml(c.dica)}</small>` : ''}${sparkline(c.serie)}</td>
+      <td class="num">${changeCell(c.hoje, c.ontemAteAgora, c.variacaoDia, 'ontem')}</td>
+      <td class="num">${changeCell(c.ultimos7, c.anteriores7, c.variacaoSemana, 'antes')}</td>
+    </tr>`)
+    .join('');
+
   const avisos = m.avisos.map((a) => `<li>${escapeHtml(a)}</li>`).join('');
 
   return `<!doctype html>
@@ -97,12 +152,38 @@ function renderHtml(m) {
   .muted { color: #94a3b8; }
   .avisos { background: #fffbeb; border: 1px solid #fde68a; border-radius: 12px; padding: 12px 12px 12px 28px; margin: 0; font-size: 0.82rem; line-height: 1.5; }
   .scroll { overflow-x: auto; }
+  .note { margin: 0 0 8px; font-size: .8rem; }
+  .growth td { vertical-align: top; padding: 8px 4px; }
+  .growth td small { display: block; color: #94a3b8; font-size: .72rem; }
+  .growth td.num strong, .growth td.num .chg { display: block; }
+  .growth td.num strong { font-size: 1.05rem; }
+  .growth td.num small { white-space: nowrap; }
+  .growth th small { display: block; text-transform: none; letter-spacing: 0; font-weight: 400; }
+  .growth th.num { text-align: right; }
+  .growth .spark { margin-top: 5px; }
+  .chg { font-weight: 700; font-variant-numeric: tabular-nums; }
+  .chg.up { color: #15803d; }
+  .chg.down { color: #b91c1c; }
+  .chg.flat { color: #94a3b8; font-weight: 600; }
+  .spark { display: block; }
+  .spark .bar { fill: #cbd5e1; }
+  .spark .bar-zero { fill: #e2e8f0; }
+  .spark .bar-hoje { fill: #16a34a; }
 </style>
 </head>
 <body><div class="wrap">
   <div class="card">
     <h1>Métricas do site</h1>
-    <p class="muted" style="margin:0;font-size:.8rem">Gerado em ${escapeHtml(new Date(m.geradoEm).toLocaleString('pt-BR'))}</p>
+    <p class="muted" style="margin:0;font-size:.8rem">Gerado em ${escapeHtml(new Date(m.geradoEm).toLocaleString('pt-BR', { timeZone: FUSO }))} (horário de Brasília)</p>
+  </div>
+
+  <div class="card">
+    <h2 style="margin-top:0">Crescimento</h2>
+    <p class="muted note">Cada número vem com a diferença para o período anterior. <strong>Hoje</strong> é comparado com ontem <strong>até ${horaAgora}</strong>, não com o ontem inteiro — senão toda tarde pareceria queda. <strong>7 dias</strong> é comparado com os 7 anteriores. As barras são os últimos 14 dias; a verde é hoje (passe o dedo para ver o dia).</p>
+    <div class="scroll"><table class="growth">
+      <thead><tr><th>Métrica<small>14 dias</small></th><th class="num">Hoje<small>vs ontem até ${horaAgora}</small></th><th class="num">7 dias<small>vs 7 anteriores</small></th></tr></thead>
+      <tbody>${crescimento || '<tr><td colspan="3" class="muted">Sem dados.</td></tr>'}</tbody>
+    </table></div>
   </div>
 
   <div class="card">
@@ -115,21 +196,22 @@ function renderHtml(m) {
       ${tile('Pagamentos aprovados', m.pagamentos.aprovados)}
       ${tile('Receita bruta', money(m.pagamentos.receitaBruta), m.pagamentos.reembolsados ? `${m.pagamentos.reembolsados} estorno(s)` : '')}
       ${tile('Compradores únicos', m.pagamentos.compradoresUnicos)}
-      ${tile('Anamneses', m.anamneses.total, `${m.anamneses.usuariosDistintos} usuários`)}
+      ${tile('Anamneses organizadas', formatNumber(m.organizacoes.total), `${m.organizacoes.contas} contas`)}
+      ${tile('Avaliações pedidas', formatNumber(m.anamneses.total), 'anamneses com nota e análise')}
     </div>
   </div>
 
   <div class="card">
-    <h2 style="margin-top:0">Ativação — as contas chegam a usar?</h2>
-    <p class="muted" style="margin:0 0 8px;font-size:.8rem">Vem das anamneses gravadas no servidor: histórico completo, não depende de cookie.</p>
+    <h2 style="margin-top:0">Ativação — as contas chegam a organizar?</h2>
+    <p class="muted note">Pelos eventos de organização, incluindo quem organizou antes de criar conta, na mesma sessão. É piso: sem consentimento de cookies não há evento. (Antes vinha da tabela de avaliações, que só registra quem pede nota — e subcontava.)</p>
     <div class="tiles">
       ${tile('Contas', m.ativacao.contas)}
-      ${tile('Nunca usaram', m.ativacao.semUso, 'criaram conta e nunca geraram anamnese')}
-      ${tile('Usaram pouco', m.ativacao.usoLeve, '1 a 4 anamneses')}
-      ${tile('Usaram bastante', m.ativacao.usoForte, '5 ou mais')}
-      ${tile('Ativos em 30 dias', m.ativacao.ativos30d, 'geraram algo no período')}
-      ${tile('Dormentes', m.ativacao.dormentes, 'já usaram, pararam')}
-      ${tile('Taxa de ativação', m.ativacao.taxaAtivacao == null ? 'sem dado' : `${m.ativacao.taxaAtivacao}%`, 'das contas chegaram a usar')}
+      ${tile('Nunca organizaram', m.ativacao.semUso, 'criaram conta e não organizaram')}
+      ${tile('Organizaram 1 a 4 vezes', m.ativacao.usoLeve)}
+      ${tile('Organizaram 5+ vezes', m.ativacao.usoForte)}
+      ${tile('Organizaram em 30 dias', m.ativacao.ativos30d)}
+      ${tile('Pararam', m.ativacao.dormentes, 'organizaram antes, nada em 30 dias')}
+      ${tile('Taxa de ativação', m.ativacao.taxaAtivacao == null ? 'sem dado' : `${m.ativacao.taxaAtivacao}%`, 'das contas chegaram a organizar')}
     </div>
   </div>
 

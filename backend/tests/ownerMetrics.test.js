@@ -8,13 +8,18 @@ delete process.env.SUPABASE_SERVICE_ROLE_KEY;
 const {
   buildWarnings,
   buildWindows,
+  compareChange,
   countAffiliateVisits,
   countDistinctByWindow,
   countLinkedAccounts,
+  fetchAllPages,
+  PAGE_SIZE,
   parseContentRange,
   summarizeActivation,
   summarizeAffiliates,
   summarizeEventUsage,
+  summarizeGrowth,
+  summarizeOrganizations,
   summarizePayments,
   summarizeProfiles,
   summarizeRetention,
@@ -248,21 +253,28 @@ test('sem segredo configurado o token não é gerado nem aceito', () => {
 
 // --- ativação e janelas de tempo ------------------------------------------
 
-test('summarizeActivation separa quem nunca usou de quem usou', () => {
+// A ativação vem dos eventos de organização, NÃO da tabela `anamneses`, que só
+// registra quem pede avaliação. Medido em 11/09/2026: 34 contas tinham
+// organizado pelos eventos, 14 apareciam na tabela.
+test('summarizeActivation conta quem organizou pelos eventos', () => {
   const agora = new Date('2026-09-02T12:00:00Z');
   const recente = new Date(agora.getTime() - 5 * 86400000).toISOString();
   const antigo = new Date(agora.getTime() - 90 * 86400000).toISOString();
+  const organizou = (user, quando, sessao = `s-${user}`) => ({
+    event_name: 'anamnese_gerada', user_id: user, session_id: sessao, created_at: quando,
+  });
 
   const resumo = summarizeActivation({
     profiles: [{ id: 'u1' }, { id: 'u2' }, { id: 'u3' }, { id: 'u4' }],
-    anamneses: [
+    events: [
       // u1: uso leve e recente
-      { user_id: 'u1', created_at: recente },
+      organizou('u1', recente),
       // u2: uso forte, mas parou
-      ...Array.from({ length: 6 }, () => ({ user_id: 'u2', created_at: antigo })),
+      ...Array.from({ length: 6 }, () => organizou('u2', antigo)),
       // u3: uso leve e antigo
-      { user_id: 'u3', created_at: antigo },
-      // u4 nao aparece: criou conta e nunca usou
+      organizou('u3', antigo),
+      // u4 só visitou: evento que não é organização não conta
+      { event_name: 'site_visita', user_id: 'u4', session_id: 's-u4', created_at: recente },
     ],
     now: agora,
   });
@@ -277,7 +289,7 @@ test('summarizeActivation separa quem nunca usou de quem usou', () => {
 });
 
 test('summarizeActivation devolve taxa null sem contas', () => {
-  const resumo = summarizeActivation({ profiles: [], anamneses: [] });
+  const resumo = summarizeActivation({ profiles: [], events: [] });
 
   assert.equal(resumo.taxaAtivacao, null, 'sem denominador nao e 0%');
   assert.equal(resumo.contas, 0);
@@ -440,4 +452,162 @@ test('summarizeAffiliates sem vínculos informados devolve zero, não quebra', (
   });
 
   assert.equal(linha.contasVinculadas, 0);
+});
+
+// Quem organizou sem conta e criou conta na mesma sessão é a mesma pessoa.
+test('summarizeActivation credita quem organizou antes de logar, na mesma sessão', () => {
+  const agora = new Date('2026-09-11T18:00:00Z');
+  const cedo = '2026-09-11T13:00:00Z';
+
+  const resumo = summarizeActivation({
+    profiles: [{ id: 'u5' }, { id: 'u6' }],
+    events: [
+      { event_name: 'anamnese_gerada', user_id: null, session_id: 'sa', created_at: cedo },
+      { event_name: 'site_visita', user_id: 'u5', session_id: 'sa', created_at: cedo },
+    ],
+    now: agora,
+  });
+
+  assert.equal(resumo.usoLeve, 1, 'u5 organizou antes de logar');
+  assert.equal(resumo.semUso, 1, 'u6 nunca organizou');
+});
+
+test('summarizeOrganizations separa total de organizações e contas', () => {
+  const resumo = summarizeOrganizations([
+    { event_name: 'anamnese_gerada', user_id: 'u1', session_id: 's1' },
+    { event_name: 'anamnese_gerada', user_id: 'u1', session_id: 's1' },
+    { event_name: 'anamnese_gerada', user_id: null, session_id: 'anon' },
+    { event_name: 'site_visita', user_id: 'u2', session_id: 's2' },
+  ]);
+
+  assert.equal(resumo.total, 3, 'conta organização anônima também');
+  assert.equal(resumo.contas, 1, 'só u1 tem conta');
+});
+
+test('summarizeOrganizations não conta conta apagada, para bater com a ativação', () => {
+  const resumo = summarizeOrganizations(
+    [
+      { event_name: 'anamnese_gerada', user_id: 'u1', session_id: 's1' },
+      { event_name: 'anamnese_gerada', user_id: 'apagada', session_id: 's2' },
+    ],
+    [{ id: 'u1' }],
+  );
+
+  assert.equal(resumo.total, 2, 'a organização aconteceu, fica no total');
+  assert.equal(resumo.contas, 1, 'mas a conta apagada não entra em contas');
+});
+
+// --- crescimento --------------------------------------------------------------
+
+const SO_CADASTROS = [{ id: 'cadastros', rotulo: 'Cadastros', fonte: 'profiles', data: 'created_at' }];
+
+// Comparar o dia parcial com o ontem inteiro faria toda tarde parecer queda.
+test('crescimento compara hoje com ontem ATÉ A MESMA HORA, não com o ontem inteiro', () => {
+  // 11/09 15:00 em Brasília
+  const agora = new Date('2026-09-11T18:00:00Z');
+  const profiles = [
+    ...Array.from({ length: 3 }, () => ({ created_at: '2026-09-11T13:00:00Z' })), // hoje 10h
+    { created_at: '2026-09-10T13:00:00Z' }, // ontem 10h: antes da mesma hora
+    ...Array.from({ length: 5 }, () => ({ created_at: '2026-09-10T23:00:00Z' })), // ontem 20h: depois
+  ];
+
+  const [c] = summarizeGrowth({ fontes: { profiles }, now: agora, metricas: SO_CADASTROS });
+
+  assert.equal(c.hoje, 3);
+  assert.equal(c.ontemAteAgora, 1, 'os 5 de ontem às 20h ainda não "aconteceram" nesta hora');
+  assert.deepEqual(c.variacaoDia, { delta: 2, percentual: 200, direcao: 'sobe' });
+});
+
+test('crescimento da semana compara dois períodos do mesmo tamanho', () => {
+  const agora = new Date('2026-09-11T18:00:00Z');
+  const diasAtras = (n) => new Date(agora.getTime() - n * 86400000).toISOString();
+  const profiles = [
+    ...[1, 2, 3, 6].map((n) => ({ created_at: diasAtras(n) })),
+    ...[8, 13].map((n) => ({ created_at: diasAtras(n) })),
+    { created_at: diasAtras(15) }, // fora das duas janelas
+  ];
+
+  const [c] = summarizeGrowth({ fontes: { profiles }, now: agora, metricas: SO_CADASTROS });
+
+  assert.equal(c.ultimos7, 4);
+  assert.equal(c.anteriores7, 2);
+  assert.deepEqual(c.variacaoSemana, { delta: 2, percentual: 100, direcao: 'sobe' });
+});
+
+test('a série tem 14 dias e cada item cai no dia certo de Brasília', () => {
+  const agora = new Date('2026-09-11T18:00:00Z');
+  // 11/09 01:00 UTC = 10/09 22:00 em Brasília: é barra de ontem, não de hoje.
+  const profiles = [{ created_at: '2026-09-11T01:00:00Z' }];
+
+  const [c] = summarizeGrowth({ fontes: { profiles }, now: agora, metricas: SO_CADASTROS });
+
+  assert.equal(c.serie.length, 14);
+  assert.equal(c.serie[13].valor, 0, 'hoje');
+  assert.equal(c.serie[12].valor, 1, 'ontem');
+  assert.equal(c.serie[13].dia, '2026-09-11T03:00:00.000Z', 'meia-noite de hoje em Brasília');
+});
+
+test('visitas sem conta contam sessões distintas e ignoram quem está logado', () => {
+  const agora = new Date('2026-09-11T18:00:00Z');
+  const hora = '2026-09-11T15:00:00Z';
+  const events = [
+    { event_name: 'site_visita', session_id: 's1', metadata: { logado: false }, created_at: hora },
+    { event_name: 'site_visita', session_id: 's1', metadata: { logado: false }, created_at: hora },
+    { event_name: 'site_visita', session_id: 's2', metadata: { logado: 'false' }, created_at: hora },
+    { event_name: 'site_visita', session_id: 's3', metadata: { logado: true }, created_at: hora },
+  ];
+
+  const visitas = summarizeGrowth({ fontes: { events }, now: agora }).find((c) => c.id === 'visitas');
+
+  assert.equal(visitas.hoje, 2, 's1 recarregou (1 sessão), s2 conta, s3 estava logado');
+});
+
+test('variação sem base anterior não inventa porcentagem', () => {
+  assert.deepEqual(compareChange(5, 0), { delta: 5, percentual: null, direcao: 'sobe' });
+  assert.deepEqual(compareChange(0, 0), { delta: 0, percentual: null, direcao: 'igual' });
+  assert.deepEqual(compareChange(2, 4), { delta: -2, percentual: -50, direcao: 'desce' });
+});
+
+// --- paginação ----------------------------------------------------------------
+//
+// O teto de 1000 linhas do Supabase já cortava os eventos (1.876 em 11/09).
+
+function paginasFalsas(todas) {
+  const pedidos = [];
+  const fetchPage = async (cursor) => {
+    pedidos.push(cursor);
+    const restantes = cursor ? todas.filter((linha) => linha.created_at < cursor) : todas;
+    return { rows: restantes.slice(0, PAGE_SIZE), total: restantes.length };
+  };
+  return { fetchPage, pedidos };
+}
+
+function linhasDecrescentes(quantidade) {
+  const base = Date.UTC(2026, 8, 11);
+  return Array.from({ length: quantidade }, (_, i) => ({ id: i, created_at: new Date(base - i * 1000).toISOString() }));
+}
+
+test('fetchAllPages segue o cursor até o fim, sem repetir nem perder linha', async () => {
+  const todas = linhasDecrescentes(2500);
+  const { fetchPage, pedidos } = paginasFalsas(todas);
+
+  const resultado = await fetchAllPages(fetchPage);
+
+  assert.equal(resultado.rows.length, 2500);
+  assert.equal(new Set(resultado.rows.map((linha) => linha.id)).size, 2500, 'nenhuma linha repetida');
+  assert.equal(resultado.truncated, false);
+  assert.equal(pedidos.length, 3, '1000 + 1000 + 500');
+});
+
+test('fetchAllPages marca como parcial quando bate no teto de páginas', async () => {
+  const { fetchPage } = paginasFalsas(linhasDecrescentes(2500));
+
+  const resultado = await fetchAllPages(fetchPage, { maxPages: 2 });
+
+  assert.equal(resultado.rows.length, 2000);
+  assert.equal(resultado.truncated, true);
+});
+
+test('fetchAllPages devolve null se a primeira página falhar', async () => {
+  assert.equal(await fetchAllPages(async () => null), null);
 });

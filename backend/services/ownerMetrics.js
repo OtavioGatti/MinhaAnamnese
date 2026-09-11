@@ -59,7 +59,7 @@ function parseContentRange(value) {
   return { returned: end - start + 1, total: totalValido };
 }
 
-async function fetchRows(table, params) {
+async function fetchPage(table, params) {
   const { url, serviceRoleKey } = getConfig();
   const query = new URLSearchParams({ limit: String(ROW_LIMIT), ...params });
   const response = await fetch(`${url}/rest/v1/${table}?${query.toString()}`, {
@@ -89,6 +89,69 @@ function isTruncated({ rows, total }) {
   return typeof total === 'number' && rows.length < total;
 }
 
+// O Max Rows do projeto no Supabase (hoje 1000) corta qualquer resposta, não
+// importa o `limit` pedido. Com 1.876 eventos em 11/09/2026, o painel já
+// calculava retenção, funil e uso por evento só sobre os 1.000 mais recentes
+// — e uma comparação "7 dias contra os 7 anteriores" veria a semana antiga
+// incompleta, inventando crescimento.
+//
+// Paginação por CURSOR DE DATA, não por deslocamento: o site grava eventos o
+// tempo todo, e com offset uma linha nova empurraria as páginas seguintes,
+// repetindo a última linha de cada uma. Com o cursor (created_at menor que o
+// da última linha lida), linha nova nunca entra numa página posterior.
+// Empate exato de created_at na fronteira seria pulado; com precisão de
+// microssegundo e inserção uma a uma, não acontece na prática.
+const PAGE_SIZE = 1000;
+const MAX_PAGES = 20;
+
+async function fetchAllPages(fetchPageFn, { maxPages = MAX_PAGES } = {}) {
+  const rows = [];
+  let total = null;
+  let cursor = null;
+
+  for (let pagina = 0; pagina < maxPages; pagina += 1) {
+    const resultado = await fetchPageFn(cursor);
+
+    if (!resultado) {
+      // Falha no meio: o que veio antes vale, mas marcado como parcial.
+      return pagina === 0 ? null : { rows, total, truncated: true };
+    }
+
+    // O total da PRIMEIRA página é o da tabela inteira; os seguintes, com o
+    // cursor aplicado, contam só o que falta.
+    if (pagina === 0 && typeof resultado.total === 'number') {
+      total = resultado.total;
+    }
+
+    rows.push(...resultado.rows);
+
+    // Não decide pelo tamanho da página: se o teto do servidor for menor que
+    // PAGE_SIZE, uma página cheia pareceria a última e o resto sumiria calado.
+    if (resultado.rows.length === 0 || (total !== null && rows.length >= total)) {
+      return { rows, total, truncated: false };
+    }
+
+    cursor = resultado.rows[resultado.rows.length - 1].created_at;
+  }
+
+  return { rows, total, truncated: total === null || rows.length < total };
+}
+
+// Tabela ordenada por data (tudo que cresce) é lida inteira, página a página.
+// As pequenas e sem ordem (affiliates) seguem numa leitura só.
+async function fetchRows(table, params) {
+  if (params.order !== 'created_at.desc') {
+    const resultado = await fetchPage(table, params);
+    return resultado ? { ...resultado, truncated: isTruncated(resultado) } : null;
+  }
+
+  return fetchAllPages((cursor) => fetchPage(table, {
+    ...params,
+    limit: String(PAGE_SIZE),
+    ...(cursor ? { created_at: `lt.${cursor}` } : {}),
+  }));
+}
+
 // `optionalColumns` cobre a janela entre o deploy e a aplicação manual do SQL:
 // o PostgREST devolve 400 para coluna inexistente, e como aqui a falha vira
 // lista vazia, UMA coluna nova zeraria o painel inteiro em silêncio. Nesse
@@ -104,7 +167,7 @@ async function selectRows(table, params = {}, { optionalColumns = [] } = {}) {
   const result = await fetchRows(table, params).catch(() => null);
 
   if (result) {
-    return { rows: result.rows, degraded: [], truncated: isTruncated(result) };
+    return { rows: result.rows, degraded: [], truncated: result.truncated };
   }
 
   if (optionalColumns.length === 0 || !params.select) {
@@ -124,7 +187,7 @@ async function selectRows(table, params = {}, { optionalColumns = [] } = {}) {
   return {
     rows: semOpcionais?.rows || [],
     degraded: semOpcionais ? optionalColumns : [],
-    truncated: semOpcionais ? isTruncated(semOpcionais) : false,
+    truncated: semOpcionais ? semOpcionais.truncated : false,
   };
 }
 
@@ -511,30 +574,70 @@ function countDistinctByWindow(rows, { chave, data, now = new Date() }) {
   return { hoje: hoje.size, sete: sete.size, trinta: trinta.size };
 }
 
-// Ativacao: das contas criadas, quantas chegaram a usar o produto.
+// Organizações por conta, pelos eventos `anamnese_gerada`.
 //
-// Base em `anamneses`, nao em eventos: e registro de servidor, tem historico
-// completo e nao depende do consentimento de cookies.
-function summarizeActivation({ profiles, anamneses, now = new Date() }) {
-  const janelas = buildWindows(now);
+// NÃO pela tabela `anamneses`: ela só ganha linha quando a pessoa pede a
+// AVALIAÇÃO (generateInsights.js) — no motor atual, organizar não grava nada
+// lá. Medido em 11/09/2026: 34 contas tinham organizado pelos eventos, 14
+// apareciam na tabela, e o painel dizia 19% de ativação quando o piso real
+// era ~47%.
+//
+// Credita também quem organizou ANTES de criar conta, quando foi na mesma
+// sessão: a sessão anônima que organizou e depois fez login é a mesma pessoa.
+// Continua sendo piso — sem consentimento de cookies não há evento.
+function countOrganizationsByUser(events) {
+  const usuarioDaSessao = new Map();
+
+  events.forEach((event) => {
+    if (event.user_id && event.session_id && !usuarioDaSessao.has(event.session_id)) {
+      usuarioDaSessao.set(event.session_id, event.user_id);
+    }
+  });
+
   const porUsuario = new Map();
 
-  anamneses.forEach((linha) => {
-    if (!linha.user_id) {
+  events.forEach((event) => {
+    if (event.event_name !== 'anamnese_gerada') {
       return;
     }
 
-    const atual = porUsuario.get(linha.user_id) || { total: 0, ultima: null };
+    const userId = event.user_id || usuarioDaSessao.get(event.session_id);
+
+    if (!userId) {
+      return;
+    }
+
+    const atual = porUsuario.get(userId) || { total: 0, ultima: null };
     atual.total += 1;
 
-    const marca = toTime(linha.created_at);
+    const marca = toTime(event.created_at);
 
     if (marca !== null && (atual.ultima === null || marca > atual.ultima)) {
       atual.ultima = marca;
     }
 
-    porUsuario.set(linha.user_id, atual);
+    porUsuario.set(userId, atual);
   });
+
+  return porUsuario;
+}
+
+// `contas` só conta quem ainda tem conta: evento de conta apagada ficaria no
+// total e faria este número divergir da ativação (36 contra 31 em 11/09).
+function summarizeOrganizations(events, profiles = null) {
+  const ids = profiles ? new Set(profiles.map((profile) => profile.id)) : null;
+  const usuarios = [...countOrganizationsByUser(events).keys()];
+
+  return {
+    total: events.filter((event) => event.event_name === 'anamnese_gerada').length,
+    contas: ids ? usuarios.filter((id) => ids.has(id)).length : usuarios.length,
+  };
+}
+
+// Ativação: das contas criadas, quantas chegaram a ORGANIZAR uma anamnese.
+function summarizeActivation({ profiles, events = [], now = new Date() }) {
+  const janelas = buildWindows(now);
+  const porUsuario = countOrganizationsByUser(events);
 
   let semUso = 0;
   let usoLeve = 0;
@@ -594,6 +697,126 @@ function summarizeReturn(profiles, now = new Date()) {
   };
 }
 
+// --- crescimento: comparar sem precisar decorar o número anterior ---------
+//
+// Duas comparações, cada uma honesta de um jeito:
+// - HOJE ATÉ AGORA contra ONTEM ATÉ A MESMA HORA. Comparar o dia parcial com
+//   o ontem inteiro faria toda tarde parecer queda.
+// - ÚLTIMOS 7 DIAS contra os 7 ANTERIORES, em janelas corridas: dois períodos
+//   do mesmo tamanho, sem dia parcial no meio.
+// E uma série de 14 dias, para ver a tendência e não só a ponta.
+
+const DIA_MS = 24 * 60 * 60 * 1000;
+
+// Quantas linhas (ou quantos ids distintos, com `chave`) caem em [inicio, fim).
+function countInRange(rows, { data, chave = null, filtro = null, inicio, fim }) {
+  const vistos = new Set();
+  let total = 0;
+
+  rows.forEach((row) => {
+    if (filtro && !filtro(row)) {
+      return;
+    }
+
+    const marca = toTime(row[data]);
+
+    if (marca === null || marca < inicio || marca >= fim) {
+      return;
+    }
+
+    if (chave) {
+      if (row[chave]) {
+        vistos.add(row[chave]);
+      }
+
+      return;
+    }
+
+    total += 1;
+  });
+
+  return chave ? vistos.size : total;
+}
+
+// Sem base anterior não há porcentagem: "+5 (novo)" é verdade, "+∞%" não.
+function compareChange(atual, anterior) {
+  const delta = atual - anterior;
+
+  return {
+    delta,
+    percentual: anterior > 0 ? Math.round((delta / anterior) * 100) : null,
+    direcao: delta > 0 ? 'sobe' : delta < 0 ? 'desce' : 'igual',
+  };
+}
+
+// Início de cada um dos últimos `quantidade` dias em Brasília, do mais antigo
+// ao de hoje. Ancora no meio-dia de cada dia: somar 24h a partir da
+// meia-noite erraria o dia na virada do horário de verão, se ele voltar.
+function daysBack(now, quantidade) {
+  const inicioHoje = startOfDayInTimeZone(now).getTime();
+  const dias = [];
+
+  for (let k = quantidade - 1; k >= 0; k -= 1) {
+    dias.push(startOfDayInTimeZone(new Date(inicioHoje - k * DIA_MS + DIA_MS / 2)).getTime());
+  }
+
+  return dias;
+}
+
+function isVisitWithoutAccount(event) {
+  return event.event_name === 'site_visita'
+    && (event.metadata?.logado === false || event.metadata?.logado === 'false');
+}
+
+// O que o dono acompanha dia a dia. Ordem = ordem do funil: chega, usa,
+// aprofunda, quer pagar, paga.
+const METRICAS_DE_CRESCIMENTO = [
+  { id: 'cadastros', rotulo: 'Cadastros', dica: 'contas criadas', fonte: 'profiles', data: 'created_at' },
+  { id: 'visitas', rotulo: 'Visitas sem conta', dica: 'sessões', fonte: 'events', data: 'created_at', chave: 'session_id', filtro: isVisitWithoutAccount },
+  { id: 'organizaram', rotulo: 'Sessões que organizaram', dica: 'com ou sem conta', fonte: 'events', data: 'created_at', chave: 'session_id', filtro: (event) => event.event_name === 'anamnese_gerada' },
+  { id: 'contasOrganizaram', rotulo: 'Contas que organizaram', dica: 'logadas', fonte: 'events', data: 'created_at', chave: 'user_id', filtro: (event) => event.event_name === 'anamnese_gerada' && Boolean(event.user_id) },
+  { id: 'hipoteses', rotulo: 'Hipóteses geradas', fonte: 'events', data: 'created_at', filtro: (event) => event.event_name === 'hipoteses_diagnosticas_geradas' },
+  { id: 'cartas', rotulo: 'Cartas geradas', fonte: 'events', data: 'created_at', filtro: (event) => event.event_name === 'carta_gerada' },
+  { id: 'cliquesAssinar', rotulo: 'Cliques em assinar', fonte: 'events', data: 'created_at', filtro: (event) => event.event_name === 'upgrade_click' },
+  { id: 'checkouts', rotulo: 'Assinaturas iniciadas', dica: 'checkout do plano mensal', fonte: 'subscriptions', data: 'created_at' },
+  { id: 'pagamentos', rotulo: 'Pagamentos aprovados', fonte: 'payments', data: 'created_at', filtro: (payment) => payment.status === 'approved' },
+];
+
+function summarizeGrowth({ fontes, now = new Date(), metricas = METRICAS_DE_CRESCIMENTO }) {
+  const agora = now.getTime();
+  const fimAgora = agora + 1;
+  const inicioHoje = startOfDayInTimeZone(now).getTime();
+  const inicioOntem = startOfDayInTimeZone(new Date(inicioHoje - DIA_MS / 2)).getTime();
+  const decorridoHoje = agora - inicioHoje;
+  const dias = daysBack(now, 14);
+
+  return metricas.map((metrica) => {
+    const rows = fontes[metrica.fonte] || [];
+    const conta = (inicio, fim) => countInRange(rows, { ...metrica, inicio, fim });
+
+    const hoje = conta(inicioHoje, fimAgora);
+    const ontemAteAgora = conta(inicioOntem, inicioOntem + decorridoHoje + 1);
+    const ultimos7 = conta(agora - 7 * DIA_MS, fimAgora);
+    const anteriores7 = conta(agora - 14 * DIA_MS, agora - 7 * DIA_MS);
+
+    return {
+      id: metrica.id,
+      rotulo: metrica.rotulo,
+      dica: metrica.dica || null,
+      hoje,
+      ontemAteAgora,
+      variacaoDia: compareChange(hoje, ontemAteAgora),
+      ultimos7,
+      anteriores7,
+      variacaoSemana: compareChange(ultimos7, anteriores7),
+      serie: dias.map((inicio, indice) => ({
+        dia: new Date(inicio).toISOString(),
+        valor: conta(inicio, indice === dias.length - 1 ? fimAgora : dias[indice + 1]),
+      })),
+    };
+  });
+}
+
 // --- composição -----------------------------------------------------------
 
 async function getOwnerMetrics() {
@@ -611,6 +834,7 @@ async function getOwnerMetrics() {
     affiliatesResult,
     attributionsResult,
     commissionsResult,
+    subscriptionsResult,
     funnel,
   ] = await Promise.all([
     selectRows(
@@ -635,6 +859,7 @@ async function getOwnerMetrics() {
     selectRows('affiliates', { select: 'id,code,status,commission_rate' }),
     selectRows('affiliate_attributions', { select: 'affiliate_id,buyer_user_id,created_at', order: 'created_at.desc' }),
     selectRows('affiliate_commissions', { select: 'affiliate_id,gross_amount,commission_amount,status,payout_id,created_at', order: 'created_at.desc' }),
+    selectRows('billing_subscriptions', { select: 'status,created_at', order: 'created_at.desc' }),
     getGlobalFunnelSessions().catch(() => ({ sessions: [], truncated: false })),
   ]);
 
@@ -645,6 +870,7 @@ async function getOwnerMetrics() {
   const affiliates = affiliatesResult.rows;
   const attributions = attributionsResult.rows;
   const commissions = commissionsResult.rows;
+  const subscriptions = subscriptionsResult.rows;
   const faltaLastSeen = profilesResult.degraded.includes('last_seen_at');
   // Nome amigável só das tabelas que o Content-Range denunciou como cortadas
   // pelo teto do servidor — não pelo `limit` que o código pede, esse a gente
@@ -656,6 +882,7 @@ async function getOwnerMetrics() {
     ['anamneses', anamnesesResult],
     ['indicações de afiliado', attributionsResult],
     ['comissões de afiliado', commissionsResult],
+    ['assinaturas', subscriptionsResult],
   ]
     .filter(([, resultado]) => resultado.truncated)
     .map(([nome]) => nome);
@@ -681,7 +908,9 @@ async function getOwnerMetrics() {
       total: anamneses.length,
       usuariosDistintos: new Set(anamneses.map((a) => a.user_id).filter(Boolean)).size,
     },
-    ativacao: summarizeActivation({ profiles, anamneses }),
+    ativacao: summarizeActivation({ profiles, events }),
+    organizacoes: summarizeOrganizations(events, profiles),
+    crescimento: summarizeGrowth({ fontes: { profiles, events, subscriptions, payments } }),
     retorno,
     sessoesPorPeriodo: countDistinctByWindow(events, { chave: 'session_id', data: 'created_at' }),
     retencao: summarizeRetention(events),
@@ -728,7 +957,7 @@ function buildWarnings({
     avisos.push(
       'O carimbo de retorno (last_seen_at) só passou a existir agora e enche conforme as pessoas voltam: '
       + `${retornoSemRegistro} conta(s) ainda sem registro. Número baixo aqui nos primeiros dias é ausência de medição, não queda. `
-      + 'Já a ativação (usou / não usou) vem das anamneses e tem histórico completo.',
+      + 'Já a ativação vem dos eventos de organização, com histórico desde que o evento existe.',
     );
   }
 
@@ -762,10 +991,18 @@ module.exports = {
   countAffiliateVisits,
   countLinkedAccounts,
   countDistinctByWindow,
+  compareChange,
+  countInRange,
+  countOrganizationsByUser,
+  daysBack,
+  fetchAllPages,
+  PAGE_SIZE,
   parseContentRange,
   summarizeActivation,
   summarizeAffiliates,
   summarizeEventUsage,
+  summarizeGrowth,
+  summarizeOrganizations,
   summarizePayments,
   summarizeProfiles,
   summarizeRetention,
