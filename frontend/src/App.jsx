@@ -49,6 +49,8 @@ const MAX_ANAMNESIS_TEXT_LENGTH = 20000;
 const TRACKING_SESSION_ID_KEY = 'tracking-session-id';
 const COOKIE_CONSENT_KEY = 'minha-anamnese-cookie-consent';
 const AFFILIATE_REFERRAL_KEY = 'minha-anamnese-affiliate-ref';
+// Como o código chegou (link ou digitado): vai ao checkout para registro.
+const AFFILIATE_REFERRAL_SOURCE_KEY = 'minha-anamnese-affiliate-ref-source';
 const PASSWORD_RECOVERY_PATH = '/redefinir-senha';
 const PASSWORD_RECOVERY_INTENT_KEY = 'minha-anamnese-password-recovery-intent';
 // Segura o reenvio do e-mail de confirmação para não esbarrar no rate limit
@@ -326,6 +328,22 @@ function saveAffiliateReferralCode(code) {
 
   localStorage.setItem(AFFILIATE_REFERRAL_KEY, normalizedCode);
   return normalizedCode;
+}
+
+function saveAffiliateReferralSource(source) {
+  try {
+    localStorage.setItem(AFFILIATE_REFERRAL_SOURCE_KEY, source === 'codigo' ? 'codigo' : 'link');
+  } catch (_error) {
+    // Armazenamento bloqueado: a origem é só registro, o código segue valendo.
+  }
+}
+
+function readAffiliateReferralSource() {
+  try {
+    return localStorage.getItem(AFFILIATE_REFERRAL_SOURCE_KEY) === 'codigo' ? 'codigo' : 'link';
+  } catch (_error) {
+    return 'link';
+  }
 }
 
 function buildCookieConsent(status) {
@@ -958,6 +976,7 @@ function App() {
   const [deletingAccount, setDeletingAccount] = useState(false);
   const [deleteAccountError, setDeleteAccountError] = useState('');
   const [referralDiscount, setReferralDiscount] = useState(null);
+  const referralClaimTriedRef = useRef(null);
   const [loadingAuth, setLoadingAuth] = useState(false);
   const [animatedScore, setAnimatedScore] = useState(0);
   const [erro, setErro] = useState('');
@@ -1048,6 +1067,7 @@ function App() {
 
     if (referralCode) {
       saveAffiliateReferralCode(referralCode);
+      saveAffiliateReferralSource('link');
     }
 
     // Consulta o desconto do código de indicação (se houver) para exibição;
@@ -1068,12 +1088,15 @@ function App() {
 
         const rate = Number(response.data?.discountRate) || 0;
 
-        if (response.data?.valid && rate > 0) {
-          setReferralDiscount({
+        // Vale mesmo sem desconto (código válido de 0%): a tela mostra o código
+        // aplicado. Nunca sobrepõe a indicação salva na conta (locked), que pode
+        // ter chegado antes desta consulta.
+        if (response.data?.valid) {
+          setReferralDiscount((atual) => (atual?.locked ? atual : {
             rate,
             label: response.data?.discountLabel || null,
             code: response.data?.code || storedCode,
-          });
+          }));
         }
       })
       .catch(() => {});
@@ -1082,6 +1105,24 @@ function App() {
       cancelled = true;
     };
   }, []);
+
+  // Indicação salva na conta é a que o checkout vai usar (vence o código do
+  // navegador no servidor). A tela mostra essa, travada, para não prometer um
+  // desconto diferente do que será cobrado.
+  useEffect(() => {
+    const referral = profile?.referral;
+
+    if (!referral?.code) {
+      return;
+    }
+
+    setReferralDiscount({
+      rate: Number(referral.discountRate) || 0,
+      label: referral.discountLabel || null,
+      code: referral.code,
+      locked: true,
+    });
+  }, [profile?.referral?.code, profile?.referral?.discountRate]);
 
   // Topo do funil de afiliado. Sem isto só existia dado a partir do checkout,
   // então não dava para saber quantas pessoas o link trouxe.
@@ -1411,6 +1452,22 @@ function App() {
       const nextProfile = response.data;
       const nextContextualTab = normalizeContextualTab(nextProfile.default_contextual_tab);
       setProfile(nextProfile);
+
+      // Chegou pelo link em outro dispositivo, ou antes de ter conta: grava a
+      // indicação na conta agora, para valer no checkout de qualquer navegador.
+      // Write-once no servidor — se a conta já tem indicação, nada muda.
+      const codigoDoNavegador = readAffiliateReferralCode();
+
+      if (codigoDoNavegador && !nextProfile.referral && referralClaimTriedRef.current !== user.id) {
+        referralClaimTriedRef.current = user.id;
+        api.post('/affiliate/claim', { code: codigoDoNavegador, source: readAffiliateReferralSource() })
+          .then((claim) => {
+            if (claim?.success && claim.data?.referral) {
+              setProfile((atual) => (atual ? { ...atual, referral: claim.data.referral } : atual));
+            }
+          })
+          .catch(() => {});
+      }
       lastSavedProfileSnapshotRef.current = {
         current_plan: nextProfile.current_plan || 'basic',
         last_template_used: nextProfile.last_template_used || null,
@@ -2077,6 +2134,7 @@ function App() {
       .post('/create-checkout', {
         planKey,
         affiliateCode: readAffiliateReferralCode() || null,
+        affiliateCodeSource: readAffiliateReferralSource(),
         sourceUrl: window.location.href,
       })
       .then((response) => {
@@ -2094,6 +2152,33 @@ function App() {
         setCheckoutLoadingOrigin(null);
         setCheckoutLoadingPlanKey(null);
       });
+  };
+
+  // Código de indicação digitado no modal de planos. Só valida e guarda no
+  // navegador: a gravação na conta acontece no checkout (write-once), então
+  // até lá dá para trocar.
+  const handleApplyReferralCode = async (rawCode) => {
+    const response = await api
+      .get(`/affiliate/lookup?code=${encodeURIComponent(rawCode)}`)
+      .catch(() => null);
+
+    if (!response?.success) {
+      return { ok: false, error: 'Não foi possível validar o código agora. Tente de novo.' };
+    }
+
+    if (!response.data?.valid) {
+      return { ok: false, error: 'Código não encontrado. Confira a grafia com quem indicou.' };
+    }
+
+    saveAffiliateReferralCode(response.data.code);
+    saveAffiliateReferralSource('codigo');
+    setReferralDiscount({
+      rate: Number(response.data.discountRate) || 0,
+      label: response.data.discountLabel || null,
+      code: response.data.code,
+    });
+
+    return { ok: true };
   };
 
   const handleUpgradeInsights = (origin = 'home') => {
@@ -3757,6 +3842,8 @@ function App() {
         plans={BILLING_PLANS}
         isTrialAccess={Boolean(accessState?.isTrialAccess)}
         referralDiscount={referralDiscount}
+        referralLocked={Boolean(profile?.referral?.code)}
+        onApplyReferralCode={handleApplyReferralCode}
         checkoutError={checkoutErrors[planComparisonState.origin] || ''}
         onClose={() => setPlanComparisonState((current) => ({ ...current, open: false }))}
         onConfirm={handleConfirmPlanComparison}

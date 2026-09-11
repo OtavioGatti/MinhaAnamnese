@@ -24,6 +24,7 @@ const apiRoutes = {
   '/api/clinical-tools': require('./clinical-tools'),
   '/api/affiliate': require('./affiliate'),
   '/api/affiliate/lookup': require('./affiliate-lookup'),
+  '/api/affiliate/claim': require('./affiliate-claim'),
   '/api/affiliate/payouts': require('./affiliate-payouts'),
   '/api/affiliate-payout-action': require('./affiliate-payout-action'),
   '/api/admin/affiliates/update': require('./admin/affiliates-update'),

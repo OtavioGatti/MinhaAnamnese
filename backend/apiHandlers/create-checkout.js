@@ -303,13 +303,15 @@ module.exports = async function handler(req, res) {
     const body = req.body || {};
     const plan = getBillingPlan(normalizePlanKey(body.planKey || DEFAULT_PLAN_KEY));
     const baseUrl = getCheckoutBaseUrl(req);
-    const affiliate = body.affiliateCode
-      ? await resolveAffiliateForCheckout({
-        affiliateCode: body.affiliateCode,
-        buyerUserId: userId,
-        sourceUrl: body.sourceUrl,
-      }).catch(() => null)
-      : null;
+    // A indicação salva na conta vale mais que o código do navegador. Chama
+    // SEMPRE, não só quando vem código: a conta pode ter indicação mesmo sem
+    // código no navegador (link aberto em outro dispositivo, vínculo manual).
+    const affiliate = await resolveAffiliateForCheckout({
+      affiliateCode: body.affiliateCode,
+      affiliateCodeSource: body.affiliateCodeSource,
+      buyerUserId: userId,
+      sourceUrl: body.sourceUrl,
+    }).catch(() => null);
 
     // Desconto sempre resolvido server-side a partir do afiliado registrado;
     // o cliente envia apenas o código. Sem afiliado ou desconto: preço cheio.

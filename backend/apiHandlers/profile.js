@@ -1,4 +1,5 @@
 const { ensureUserProfile } = require('../services/profiles');
+const { getStoredReferralAffiliate, summarizeReferral } = require('../services/affiliates');
 const { resolveSupabaseUser } = require('../utils/supabaseAuth');
 
 function getProfileUpdatesFromRequest(req) {
@@ -59,14 +60,22 @@ module.exports = async function handler(req, res) {
       });
     }
 
-    const profile = await ensureUserProfile(
-      auth.user,
-      req.method === 'POST' ? getProfileUpdatesFromRequest(req) : {},
-    );
+    // A indicação sai junto do perfil para o modal de planos mostrar o desconto
+    // que o checkout vai aplicar. Só código e desconto — nunca dado do afiliado.
+    const [profile, referralAffiliate] = await Promise.all([
+      ensureUserProfile(
+        auth.user,
+        req.method === 'POST' ? getProfileUpdatesFromRequest(req) : {},
+      ),
+      getStoredReferralAffiliate(auth.user.id).catch(() => null),
+    ]);
 
     return res.status(200).json({
       success: true,
-      data: profile,
+      data: {
+        ...profile,
+        referral: summarizeReferral(referralAffiliate),
+      },
     });
   } catch (_error) {
     return res.status(503).json({

@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { BILLING_PLANS } from '../billingPlans';
 
 function formatCurrencyBRL(value) {
@@ -56,6 +57,93 @@ function PlanOptionCard({ plan, featured, loading, discountRate, onConfirm }) {
   );
 }
 
+// Código de indicação digitado. O TikTok exige este caminho: link em legenda
+// não é clicável, então quem vem de lá digita o endereço e chega sem ?ref.
+//
+// "locked" = a indicação já está salva na conta (write-once no servidor), e o
+// checkout vai usá-la de qualquer jeito — não faz sentido oferecer troca.
+function ReferralCodeSection({ referralDiscount, locked, onApply }) {
+  const [editando, setEditando] = useState(false);
+  const [codigo, setCodigo] = useState('');
+  const [erro, setErro] = useState('');
+  const [aplicando, setAplicando] = useState(false);
+
+  const aplicado = Boolean(referralDiscount?.code);
+  const percentual = Math.round((Number(referralDiscount?.rate) || 0) * 100);
+
+  if (aplicado && !editando) {
+    return (
+      <div className="plan-comparison-discount-banner">
+        Código <strong>{referralDiscount.code}</strong>
+        {percentual > 0 ? ` aplicado: ${percentual}% de desconto no checkout.` : ' aplicado.'}
+        {!locked && onApply ? (
+          <button
+            type="button"
+            className="plan-comparison-referral-change"
+            onClick={() => {
+              setEditando(true);
+              setCodigo('');
+              setErro('');
+            }}
+          >
+            Usar outro código
+          </button>
+        ) : null}
+      </div>
+    );
+  }
+
+  if (!onApply) {
+    return null;
+  }
+
+  const enviar = async (event) => {
+    event.preventDefault();
+    const valor = codigo.trim();
+
+    if (!valor) {
+      setErro('Digite o código de indicação.');
+      return;
+    }
+
+    setAplicando(true);
+    setErro('');
+    const resultado = await onApply(valor);
+    setAplicando(false);
+
+    if (resultado?.ok) {
+      setEditando(false);
+      setCodigo('');
+      return;
+    }
+
+    setErro(resultado?.error || 'Não foi possível aplicar o código.');
+  };
+
+  return (
+    <form className="plan-comparison-referral-form" onSubmit={enviar}>
+      <label htmlFor="plan-referral-code">Tem um código de indicação?</label>
+      <div className="plan-comparison-referral-row">
+        <input
+          id="plan-referral-code"
+          type="text"
+          value={codigo}
+          onChange={(event) => setCodigo(event.target.value)}
+          placeholder="Digite o código"
+          autoComplete="off"
+          autoCapitalize="none"
+          spellCheck={false}
+          maxLength={48}
+        />
+        <button type="submit" className="btn btn-secundario" disabled={aplicando}>
+          {aplicando ? 'Validando...' : 'Aplicar'}
+        </button>
+      </div>
+      {erro ? <p className="plan-comparison-referral-error">{erro}</p> : null}
+    </form>
+  );
+}
+
 function PlanComparisonModal({
   open,
   loading,
@@ -63,6 +151,8 @@ function PlanComparisonModal({
   plans = BILLING_PLANS,
   isTrialAccess,
   referralDiscount = null,
+  referralLocked = false,
+  onApplyReferralCode,
   checkoutError = '',
   onClose,
   onConfirm,
@@ -74,7 +164,6 @@ function PlanComparisonModal({
   const monthlyPlan = plans.monthly;
   const semiannualPlan = plans.semiannual;
   const discountRate = Number(referralDiscount?.rate) || 0;
-  const discountPercent = Math.round(discountRate * 100);
 
   return (
     <div className="app-modal-backdrop" role="presentation" onClick={onClose}>
@@ -107,12 +196,11 @@ function PlanComparisonModal({
             <div className="templates-inline-error plan-comparison-error">{checkoutError}</div>
           ) : null}
 
-          {discountPercent > 0 ? (
-            <div className="plan-comparison-discount-banner">
-              Indicação{referralDiscount?.label ? ` ${referralDiscount.label}` : ''}: {discountPercent}% de desconto
-              aplicado automaticamente no checkout.
-            </div>
-          ) : null}
+          <ReferralCodeSection
+            referralDiscount={referralDiscount}
+            locked={referralLocked}
+            onApply={onApplyReferralCode}
+          />
 
           <div className="plan-comparison-grid">
             <section className="plan-comparison-column basic-summary">

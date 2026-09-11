@@ -7542,6 +7542,56 @@ body {
   margin-bottom: 0.9rem;
 }
 
+/* Código de indicação digitado (canal do TikTok: link em legenda não é clicável) */
+.plan-comparison-referral-form {
+  display: grid;
+  gap: 0.4rem;
+  margin-bottom: 0.9rem;
+}
+
+.plan-comparison-referral-form label {
+  color: var(--gray-700, #374151);
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+.plan-comparison-referral-row {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.plan-comparison-referral-row input {
+  border: 1px solid rgba(203, 213, 225, 0.9);
+  border-radius: 10px;
+  flex: 1;
+  font-size: 0.9375rem;
+  min-width: 0;
+  padding: 0.55rem 0.7rem;
+}
+
+.plan-comparison-referral-row input:focus {
+  border-color: rgba(37, 99, 235, 0.6);
+  outline: 2px solid rgba(37, 99, 235, 0.25);
+}
+
+.plan-comparison-referral-error {
+  color: #b91c1c;
+  font-size: 0.8125rem;
+  margin: 0;
+}
+
+.plan-comparison-referral-change {
+  background: none;
+  border: 0;
+  color: #166534;
+  cursor: pointer;
+  font-size: inherit;
+  font-weight: 700;
+  margin-left: 0.4rem;
+  padding: 0;
+  text-decoration: underline;
+}
+
 /* Perfil — redesenho (plano/cobrança, preferências, conta, privacidade) */
 .profile-card-highlight {
   border: 1px solid rgba(37, 99, 235, 0.28);

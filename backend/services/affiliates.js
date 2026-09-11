@@ -296,18 +296,161 @@ async function createAffiliateAttribution({ affiliate, buyerUserId, sourceUrl })
   return Array.isArray(json) ? json[0] : null;
 }
 
-async function resolveAffiliateForCheckout({ affiliateCode, buyerUserId, sourceUrl }) {
-  const affiliate = await getAffiliateByCode(affiliateCode);
+// --- indicação salva na conta ------------------------------------------------
+//
+// Até aqui a indicação só existia no navegador (localStorage) e só virava
+// registro no checkout. Isso perdia comissão legítima: quem chega pelo link no
+// celular e assina no computador, ou limpa os dados, some da conta do afiliado.
+// E não havia como vincular quem chegou sem link — o caso do TikTok, onde link
+// em legenda não é clicável e a pessoa digita o endereço.
+//
+// A indicação agora fica em profiles.referred_by_affiliate_id, gravada UMA vez
+// (a primeira vence) e usada pelo checkout acima do código do navegador. O
+// webhook não muda: continua lendo o afiliado dos metadados que o checkout
+// grava e validando o valor com o mesmo registro — a consistência de desconto
+// vem daí, sem segundo cálculo.
 
-  if (!affiliate || affiliate.status !== 'active') {
+const REFERRAL_SOURCES = new Set(['link', 'codigo', 'admin']);
+
+function normalizeReferralSource(value) {
+  const source = String(value || '').trim().toLowerCase();
+  return REFERRAL_SOURCES.has(source) ? source : 'link';
+}
+
+// isValidUserId é um validador genérico de UUID; serve para id de afiliado.
+async function getAffiliateById(affiliateId) {
+  if (!isValidUserId(affiliateId)) {
     return null;
   }
 
-  if (affiliate.user_id === buyerUserId) {
+  const query = new URLSearchParams({
+    select: '*',
+    id: `eq.${affiliateId}`,
+    status: 'eq.active',
+    limit: '1',
+  });
+  const response = await supabaseRequest(`affiliates?${query.toString()}`, { method: 'GET' });
+  const json = await response.json();
+  return Array.isArray(json) && json.length ? normalizeAffiliate(json[0]) : null;
+}
+
+function isEligibleReferrer(affiliate, buyerUserId) {
+  return Boolean(affiliate?.id) && affiliate.status === 'active' && affiliate.user_id !== buyerUserId;
+}
+
+// Pura. Precedência do afiliado no checkout:
+// 1. indicação já salva na conta — primeiro contato vence, protege quem trouxe;
+// 2. código enviado pelo navegador (link ou digitado no modal de planos);
+// 3. nenhum: preço cheio.
+// Auto-indicação e afiliado pausado nunca valem, em nenhuma das duas fontes.
+function pickCheckoutAffiliate({ storedAffiliate, requestedAffiliate, buyerUserId }) {
+  if (isEligibleReferrer(storedAffiliate, buyerUserId)) {
+    return { affiliate: storedAffiliate, origin: 'stored' };
+  }
+
+  if (isEligibleReferrer(requestedAffiliate, buyerUserId)) {
+    return { affiliate: requestedAffiliate, origin: 'requested' };
+  }
+
+  return { affiliate: null, origin: null };
+}
+
+// Pura. O filtro `referred_by_affiliate_id=is.null` é o que torna a gravação
+// write-once NO BANCO: se a conta já tem indicação, o PATCH não casa nenhuma
+// linha e nada muda — sem corrida entre dois checkouts simultâneos.
+function buildReferralClaimRequest({ userId, affiliateId, source, now = new Date() }) {
+  const query = new URLSearchParams({
+    id: `eq.${userId}`,
+    referred_by_affiliate_id: 'is.null',
+  });
+
+  return {
+    path: `profiles?${query.toString()}`,
+    body: {
+      referred_by_affiliate_id: affiliateId,
+      referred_at: now.toISOString(),
+      referral_source: normalizeReferralSource(source),
+    },
+  };
+}
+
+async function claimAffiliateReferral({ userId, affiliate, source }) {
+  if (!isValidUserId(userId) || !isEligibleReferrer(affiliate, userId)) {
+    return { claimed: false };
+  }
+
+  const { path, body } = buildReferralClaimRequest({ userId, affiliateId: affiliate.id, source });
+
+  try {
+    const response = await supabaseRequest(path, {
+      method: 'PATCH',
+      headers: { Prefer: 'return=representation' },
+      body: JSON.stringify(body),
+    });
+    const rows = await response.json();
+    return { claimed: Array.isArray(rows) && rows.length > 0 };
+  } catch (_error) {
+    // Coluna ainda inexistente (SQL não aplicado) ou falha de rede: a conta
+    // fica sem vínculo e o checkout segue exatamente como antes.
+    return { claimed: false, unavailable: true };
+  }
+}
+
+async function getStoredReferralAffiliate(userId) {
+  if (!isValidUserId(userId)) {
+    return null;
+  }
+
+  try {
+    const query = new URLSearchParams({
+      select: 'referred_by_affiliate_id',
+      id: `eq.${userId}`,
+      limit: '1',
+    });
+    const response = await supabaseRequest(`profiles?${query.toString()}`, { method: 'GET' });
+    const rows = await response.json();
+    const affiliateId = Array.isArray(rows) ? rows[0]?.referred_by_affiliate_id : null;
+
+    return affiliateId ? await getAffiliateById(affiliateId) : null;
+  } catch (_error) {
+    // Mesma degradação: antes do SQL a coluna não existe e isto vira "sem indicação".
+    return null;
+  }
+}
+
+// O que a tela pode saber da indicação: código e desconto. Nunca o dono, a
+// comissão ou qualquer outro dado do afiliado.
+function summarizeReferral(affiliate) {
+  if (!affiliate?.code) {
+    return null;
+  }
+
+  return {
+    code: affiliate.code,
+    discountRate: normalizeDiscountRate(affiliate.discount_rate),
+    discountLabel: affiliate.discount_label || null,
+  };
+}
+
+async function resolveAffiliateForCheckout({ affiliateCode, affiliateCodeSource, buyerUserId, sourceUrl }) {
+  const [storedAffiliate, requestedAffiliate] = await Promise.all([
+    getStoredReferralAffiliate(buyerUserId),
+    affiliateCode ? getAffiliateByCode(affiliateCode).catch(() => null) : Promise.resolve(null),
+  ]);
+  const { affiliate, origin } = pickCheckoutAffiliate({ storedAffiliate, requestedAffiliate, buyerUserId });
+
+  if (!affiliate) {
     return null;
   }
 
   await createAffiliateAttribution({ affiliate, buyerUserId, sourceUrl }).catch(() => null);
+
+  // Primeira indicação desta conta: grava para valer em qualquer dispositivo
+  // daqui para frente. Se já havia outra, o write-once do banco mantém a antiga.
+  if (origin === 'requested') {
+    await claimAffiliateReferral({ userId: buyerUserId, affiliate, source: affiliateCodeSource });
+  }
+
   return affiliate;
 }
 
@@ -671,4 +814,12 @@ module.exports = {
   resolveCommissionLimitDecision,
   resolveAffiliateForCheckout,
   summarizeAffiliateCommissions,
+  // indicação salva na conta
+  buildReferralClaimRequest,
+  claimAffiliateReferral,
+  getAffiliateById,
+  getStoredReferralAffiliate,
+  normalizeReferralSource,
+  pickCheckoutAffiliate,
+  summarizeReferral,
 };
