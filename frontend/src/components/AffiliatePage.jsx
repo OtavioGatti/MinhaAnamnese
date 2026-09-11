@@ -8,6 +8,35 @@ function formatCurrency(value) {
   }).format(Number(value) || 0);
 }
 
+// Mesma estratégia do copyTextToClipboard do App.jsx: API da área de
+// transferência e, se ela faltar ou for negada, um textarea como reserva.
+// Devolve se deu certo, para a tela avisar em vez de falhar em silêncio.
+async function copyToClipboard(text) {
+  try {
+    if (navigator.clipboard?.writeText) {
+      await navigator.clipboard.writeText(text);
+      return true;
+    }
+  } catch {
+    // Permissão negada ou contexto inseguro: tenta o caminho antigo abaixo.
+  }
+
+  try {
+    const textarea = document.createElement('textarea');
+    textarea.value = text;
+    textarea.setAttribute('readonly', '');
+    textarea.style.position = 'fixed';
+    textarea.style.opacity = '0';
+    document.body.appendChild(textarea);
+    textarea.select();
+    const copiou = document.execCommand('copy');
+    document.body.removeChild(textarea);
+    return copiou;
+  } catch {
+    return false;
+  }
+}
+
 function buildAffiliateLink(code) {
   const origin = window.location.origin || 'https://www.minhaanamnese.com.br';
   return `${origin}/afiliado?ref=${encodeURIComponent(code)}`;
@@ -44,7 +73,10 @@ function AffiliatePage({ user, referralCode, onLogin }) {
   const [loading, setLoading] = useState(Boolean(user));
   const [creating, setCreating] = useState(false);
   const [error, setError] = useState('');
-  const [copied, setCopied] = useState(false);
+  // Um estado por alvo: com link e código na tela, o "Copiado" tem que
+  // aparecer no botão que foi clicado, não nos dois.
+  const [copiedTarget, setCopiedTarget] = useState(null);
+  const [copyFailedTarget, setCopyFailedTarget] = useState(null);
   const [desiredCode, setDesiredCode] = useState('');
   const [pixKey, setPixKey] = useState('');
   const [requestingPayout, setRequestingPayout] = useState(false);
@@ -134,14 +166,31 @@ function AffiliatePage({ user, referralCode, onLogin }) {
     }
   };
 
-  const handleCopy = async () => {
-    if (!affiliateLink) {
+  const handleCopy = async (target, text) => {
+    if (!text) {
       return;
     }
 
-    await navigator.clipboard.writeText(affiliateLink);
-    setCopied(true);
-    window.setTimeout(() => setCopied(false), 1800);
+    const copiou = await copyToClipboard(text);
+    setCopiedTarget(copiou ? target : null);
+    setCopyFailedTarget(copiou ? null : target);
+
+    window.setTimeout(() => {
+      setCopiedTarget((atual) => (atual === target ? null : atual));
+      setCopyFailedTarget((atual) => (atual === target ? null : atual));
+    }, 1800);
+  };
+
+  const copyButtonLabel = (target, padrao) => {
+    if (copiedTarget === target) {
+      return 'Copiado';
+    }
+
+    if (copyFailedTarget === target) {
+      return 'Não copiou';
+    }
+
+    return padrao;
   };
 
   const handleRequestPayout = async () => {
@@ -221,15 +270,32 @@ function AffiliatePage({ user, referralCode, onLogin }) {
               <div className="affiliate-loading">Carregando...</div>
             ) : affiliate ? (
               <>
-                <div className="affiliate-link-box">
-                  <span>{affiliateLink}</span>
-                  <button type="button" className="btn btn-secundario" onClick={handleCopy}>
-                    {copied ? 'Copiado' : 'Copiar'}
-                  </button>
+                {/* Link e código servem a canais diferentes. Link só funciona onde
+                    é clicável; no TikTok (legenda, comentário) não é, e quem vê
+                    digita o endereço e chega sem indicação — foi o que aconteceu
+                    no primeiro vídeo que trouxe cadastros em massa. */}
+                <div className="affiliate-share-item">
+                  <span className="affiliate-share-label">Link</span>
+                  <div className="affiliate-link-box">
+                    <span>{affiliateLink}</span>
+                    <button type="button" className="btn btn-secundario" onClick={() => handleCopy('link', affiliateLink)}>
+                      {copyButtonLabel('link', 'Copiar link')}
+                    </button>
+                  </div>
+                  <p className="affiliate-share-hint">Para onde o link é clicável: bio, WhatsApp, e-mail.</p>
                 </div>
-                <div className="affiliate-code-row">
-                  <span>Código</span>
-                  <strong>{affiliate.code}</strong>
+                <div className="affiliate-share-item">
+                  <span className="affiliate-share-label">Código</span>
+                  <div className="affiliate-link-box">
+                    <span className="affiliate-share-code">{affiliate.code}</span>
+                    <button type="button" className="btn btn-secundario" onClick={() => handleCopy('code', affiliate.code)}>
+                      {copyButtonLabel('code', 'Copiar código')}
+                    </button>
+                  </div>
+                  <p className="affiliate-share-hint">
+                    Para onde o link não é clicável: legenda e comentário do TikTok, story, vídeo. A pessoa digita o
+                    código na hora de assinar.
+                  </p>
                 </div>
               </>
             ) : (
