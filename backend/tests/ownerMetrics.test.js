@@ -13,6 +13,7 @@ const {
   countDistinctByWindow,
   countLinkedAccounts,
   fetchAllPages,
+  findUnlinkedApprovedPayments,
   PAGE_SIZE,
   parseContentRange,
   summarizeActivation,
@@ -60,9 +61,9 @@ test('summarizeProfiles trata plano sem data de expiração como vigente', () =>
 
 test('summarizePayments soma só aprovados e separa estorno', () => {
   const resumo = summarizePayments([
-    { status: 'approved', amount: 24.9, user_id: 'u1' },
-    { status: 'approved', amount: 24.9, user_id: 'u1' },
-    { status: 'approved', amount: 129.9, user_id: 'u2' },
+    { status: 'approved', amount: 24.9, user_id: 'u1', processed_at: PASSADO },
+    { status: 'approved', amount: 24.9, user_id: 'u1', processed_at: PASSADO },
+    { status: 'approved', amount: 129.9, user_id: 'u2', processed_at: PASSADO },
     { status: 'refunded', amount: 24.9, user_id: 'u3' },
     { status: 'rejected', amount: 24.9, user_id: 'u4' },
   ]);
@@ -610,4 +611,48 @@ test('fetchAllPages marca como parcial quando bate no teto de páginas', async (
 
 test('fetchAllPages devolve null se a primeira página falhar', async () => {
   assert.equal(await fetchAllPages(async () => null), null);
+});
+
+// --- pagamentos: aprovado de verdade é o que liberou o acesso -----------------
+//
+// Caso real de 13/09/2026: cartão recusado e, 91 segundos depois, um "aprovado"
+// sem valor e sem conta. No Mercado Pago não havia venda; o painel mostrava 1.
+
+test('aprovado que o webhook não processou não é venda nem receita', () => {
+  const resumo = summarizePayments([
+    { status: 'rejected', amount: 22.41, user_id: 'u1' },
+    { status: 'approved', amount: null, user_id: null, processed_at: null },
+  ]);
+
+  assert.equal(resumo.aprovados, 0);
+  assert.equal(resumo.receitaBruta, 0);
+  assert.equal(resumo.recusados, 1);
+});
+
+test('crescimento conta pagamento aprovado só quando liberou o acesso', () => {
+  const agora = new Date('2026-09-13T22:00:00Z');
+  const hora = '2026-09-13T21:15:00Z';
+  const payments = [
+    { status: 'approved', created_at: hora, processed_at: null },
+    { status: 'approved', created_at: hora, processed_at: hora },
+  ];
+
+  const pagamentos = summarizeGrowth({ fontes: { payments }, now: agora }).find((c) => c.id === 'pagamentos');
+
+  assert.equal(pagamentos.hoje, 1);
+});
+
+test('alerta de aprovado sem conta respeita a janela de 30 minutos a 7 dias', () => {
+  const agora = new Date('2026-09-13T22:00:00Z');
+  const minutosAtras = (n) => new Date(agora.getTime() - n * 60000).toISOString();
+
+  const ids = findUnlinkedApprovedPayments([
+    { payment_id: 'recente', status: 'approved', processed_at: null, created_at: minutosAtras(10) },
+    { payment_id: 'alerta', status: 'approved', processed_at: null, created_at: minutosAtras(105) },
+    { payment_id: 'antigo', status: 'approved', processed_at: null, created_at: minutosAtras(8 * 24 * 60) },
+    { payment_id: 'processado', status: 'approved', processed_at: minutosAtras(100), created_at: minutosAtras(105) },
+    { payment_id: 'recusado', status: 'rejected', processed_at: null, created_at: minutosAtras(105) },
+  ], agora);
+
+  assert.deepEqual(ids, ['alerta'], 'só o aprovado sem processamento, fora dos primeiros 30 min e dentro de 7 dias');
 });

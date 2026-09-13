@@ -127,6 +127,16 @@ function renderHtml(m) {
 
   const avisos = m.avisos.map((a) => `<li>${escapeHtml(a)}</li>`).join('');
 
+  // No topo, e não na lista de ressalvas do fim: pode ser dinheiro de alguém
+  // que ficou sem o Pro.
+  const semVinculo = m.pagamentos?.semVinculo || [];
+  const alertaPagamentos = semVinculo.length
+    ? `<div class="card alerta">
+    <strong>${semVinculo.length} pagamento(s) aprovado(s) no Mercado Pago sem conta ligada</strong>
+    <p>Nº ${escapeHtml(semVinculo.join(', '))}. Confira no painel do Mercado Pago se entrou dinheiro: se entrou, a pessoa não recebeu o Pro e o afiliado não recebeu comissão. Não contam como venda neste painel. O alerta some sozinho em 7 dias.</p>
+  </div>`
+    : '';
+
   return `<!doctype html>
 <html lang="pt-BR">
 <head>
@@ -152,6 +162,8 @@ function renderHtml(m) {
   .muted { color: #94a3b8; }
   .avisos { background: #fffbeb; border: 1px solid #fde68a; border-radius: 12px; padding: 12px 12px 12px 28px; margin: 0; font-size: 0.82rem; line-height: 1.5; }
   .scroll { overflow-x: auto; }
+  .alerta { background: #fef2f2; border: 1px solid #fecaca; color: #7f1d1d; }
+  .alerta p { margin: 6px 0 0; font-size: .85rem; line-height: 1.45; }
   .note { margin: 0 0 8px; font-size: .8rem; }
   .growth td { vertical-align: top; padding: 8px 4px; }
   .growth td small { display: block; color: #94a3b8; font-size: .72rem; }
@@ -177,6 +189,8 @@ function renderHtml(m) {
     <p class="muted" style="margin:0;font-size:.8rem">Gerado em ${escapeHtml(new Date(m.geradoEm).toLocaleString('pt-BR', { timeZone: FUSO }))} (horário de Brasília)</p>
   </div>
 
+  ${alertaPagamentos}
+
   <div class="card">
     <h2 style="margin-top:0">Crescimento</h2>
     <p class="muted note">Cada número vem com a diferença para o período anterior. <strong>Hoje</strong> é comparado com ontem <strong>até ${horaAgora}</strong>, não com o ontem inteiro — senão toda tarde pareceria queda. <strong>7 dias</strong> é comparado com os 7 anteriores. As barras são os últimos 14 dias; a verde é hoje (passe o dedo para ver o dia).</p>
@@ -193,7 +207,7 @@ function renderHtml(m) {
       ${tile('Iniciaram trial', m.contas.comTrial)}
       ${tile('Pro vigente', m.contas.proVigente)}
       ${tile('Afiliado cortesia', m.contas.afiliadoCortesia)}
-      ${tile('Pagamentos aprovados', m.pagamentos.aprovados)}
+      ${tile('Pagamentos aprovados', m.pagamentos.aprovados, 'liberaram o acesso')}
       ${tile('Receita bruta', money(m.pagamentos.receitaBruta), m.pagamentos.reembolsados ? `${m.pagamentos.reembolsados} estorno(s)` : '')}
       ${tile('Compradores únicos', m.pagamentos.compradoresUnicos)}
       ${tile('Anamneses organizadas', formatNumber(m.organizacoes.total), `${m.organizacoes.contas} contas`)}

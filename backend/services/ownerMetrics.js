@@ -231,8 +231,17 @@ function summarizeProfiles(profiles) {
   return { total, comTrial, proVigente, afiliadoCortesia, basico };
 }
 
+// Venda é o pagamento que o webhook terminou de processar, o que liberou o
+// acesso (`processed_at`). Só `status: approved` não basta: em 13/09/2026 o
+// Mercado Pago avisou um "aprovado" sem valor e sem conta, logo depois de um
+// cartão recusado, e o painel mostrou 1 pagamento aprovado com R$ 0,00. No
+// Mercado Pago não havia venda nenhuma.
+function isRecognizedApprovedPayment(payment) {
+  return payment?.status === 'approved' && Boolean(payment.processed_at);
+}
+
 function summarizePayments(payments) {
-  const aprovados = payments.filter((p) => p.status === 'approved');
+  const aprovados = payments.filter(isRecognizedApprovedPayment);
   const reembolsados = payments.filter((p) => p.status === 'refunded');
 
   return {
@@ -243,6 +252,31 @@ function summarizePayments(payments) {
     receitaEstornada: roundMoney(reembolsados.reduce((total, p) => total + (Number(p.amount) || 0), 0)),
     compradoresUnicos: new Set(aprovados.map((p) => p.user_id).filter(Boolean)).size,
   };
+}
+
+// Aprovados no Mercado Pago que o webhook não ligou a conta nenhuma. Se for
+// dinheiro de verdade, a pessoa ficou sem o Pro e o afiliado sem comissão, e
+// isso não pode depender de alguém abrir a tabela.
+//
+// Janela: 30 minutos para não alarmar enquanto o webhook ainda processa ou o
+// Mercado Pago reenvia a notificação; 7 dias para o alerta de um caso já
+// conferido sair sozinho, sem precisar apagar a linha.
+const ALERTA_PAGAMENTO_DEPOIS_MS = 30 * 60 * 1000;
+const ALERTA_PAGAMENTO_ATE_MS = 7 * 24 * 60 * 60 * 1000;
+
+function findUnlinkedApprovedPayments(payments, now = new Date()) {
+  const agora = now.getTime();
+
+  return payments
+    .filter((payment) => payment.status === 'approved' && !payment.processed_at)
+    .filter((payment) => {
+      const marca = toTime(payment.created_at);
+      return marca !== null
+        && agora - marca >= ALERTA_PAGAMENTO_DEPOIS_MS
+        && agora - marca <= ALERTA_PAGAMENTO_ATE_MS;
+    })
+    .map((payment) => payment.payment_id)
+    .filter(Boolean);
 }
 
 // Retenção medida por dias distintos com evento. Só enxerga quem aceitou
@@ -779,7 +813,7 @@ const METRICAS_DE_CRESCIMENTO = [
   { id: 'cartas', rotulo: 'Cartas geradas', fonte: 'events', data: 'created_at', filtro: (event) => event.event_name === 'carta_gerada' },
   { id: 'cliquesAssinar', rotulo: 'Cliques em assinar', fonte: 'events', data: 'created_at', filtro: (event) => event.event_name === 'upgrade_click' },
   { id: 'checkouts', rotulo: 'Assinaturas iniciadas', dica: 'checkout do plano mensal', fonte: 'subscriptions', data: 'created_at' },
-  { id: 'pagamentos', rotulo: 'Pagamentos aprovados', fonte: 'payments', data: 'created_at', filtro: (payment) => payment.status === 'approved' },
+  { id: 'pagamentos', rotulo: 'Pagamentos aprovados', dica: 'que liberaram o acesso', fonte: 'payments', data: 'created_at', filtro: isRecognizedApprovedPayment },
 ];
 
 function summarizeGrowth({ fontes, now = new Date(), metricas = METRICAS_DE_CRESCIMENTO }) {
@@ -849,7 +883,7 @@ async function getOwnerMetrics() {
       // existe e derrubaria a consulta inteira.
       { optionalColumns: ['last_seen_at', 'referred_by_affiliate_id'] },
     ),
-    selectRows('billing_payments', { select: 'status,amount,user_id,created_at', order: 'created_at.desc' }),
+    selectRows('billing_payments', { select: 'payment_id,status,amount,user_id,processed_at,created_at', order: 'created_at.desc' }),
     // A ordem aqui é o que evita que um corte de linhas apague justo os
     // eventos de agora: sem isso já aconteceu de visita de afiliado sumir do
     // painel porque a tabela passou do teto e o Postgres devolveu as mais
@@ -903,7 +937,7 @@ async function getOwnerMetrics() {
   return {
     geradoEm: new Date().toISOString(),
     contas: summarizeProfiles(profiles),
-    pagamentos: summarizePayments(payments),
+    pagamentos: { ...summarizePayments(payments), semVinculo: findUnlinkedApprovedPayments(payments) },
     anamneses: {
       total: anamneses.length,
       usuariosDistintos: new Set(anamneses.map((a) => a.user_id).filter(Boolean)).size,
@@ -996,6 +1030,8 @@ module.exports = {
   countOrganizationsByUser,
   daysBack,
   fetchAllPages,
+  findUnlinkedApprovedPayments,
+  isRecognizedApprovedPayment,
   PAGE_SIZE,
   parseContentRange,
   summarizeActivation,

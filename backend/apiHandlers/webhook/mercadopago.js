@@ -418,16 +418,38 @@ function getAffiliateCodeForPayment(payment, subscription = null) {
   return metadata.affiliate_code || metadata.affiliateCode || subscription?.affiliate_code || null;
 }
 
-async function persistPaymentSnapshot(payment, userId, plan = null, subscription = null, affiliate = null, processedAt = null) {
-  const commissionAmount = affiliate
-    ? calculateCommissionAmount(payment.transaction_amount, affiliate.commission_rate)
+// Valor como veio do Mercado Pago. Zero continua zero: o antigo
+// `Number(x) || null` deixou ambíguo o "aprovado sem valor" de 13/09/2026, sem
+// dizer se era validação de cartão (zero) ou dado que não veio.
+function toProviderAmount(value) {
+  if (value === null || value === undefined || value === '') {
+    return null;
+  }
+
+  const numero = Number(value);
+  return Number.isFinite(numero) ? numero : null;
+}
+
+// Comissão só em pagamento aprovado, ou estornado (o estorno precisa do valor
+// para cancelar). Na linha recusada ela aparecia sem nunca ter existido.
+function shouldRecordCommission(status) {
+  return status === 'approved' || isRevokedPaymentStatus(status);
+}
+
+// Montagem pura da linha de billing_payments, separada da gravação para ser
+// testável sem banco.
+function buildPaymentSnapshot(payment, userId, plan = null, subscription = null, affiliate = null, processedAt = null) {
+  const status = payment.status || 'unknown';
+  const amount = toProviderAmount(payment.transaction_amount);
+  const commissionAmount = affiliate && amount !== null && shouldRecordCommission(status)
+    ? calculateCommissionAmount(amount, affiliate.commission_rate)
     : null;
 
-  return upsertBillingPayment({
+  return {
     paymentId: payment.id,
     userId,
-    status: payment.status || 'unknown',
-    amount: Number(payment.transaction_amount) || null,
+    status,
+    amount,
     currencyId: payment.currency_id || null,
     product: getPaymentMetadata(payment).product || plan?.product || null,
     planKey: plan?.key || null,
@@ -440,7 +462,43 @@ async function persistPaymentSnapshot(payment, userId, plan = null, subscription
     payerEmail: getPaymentMetadata(payment).email || payment?.payer?.email || subscription?.payer_email || null,
     providerCreatedAt: payment.date_created || null,
     processedAt,
-  });
+  };
+}
+
+async function persistPaymentSnapshot(payment, userId, plan = null, subscription = null, affiliate = null, processedAt = null) {
+  return upsertBillingPayment(buildPaymentSnapshot(payment, userId, plan, subscription, affiliate, processedAt));
+}
+
+// Aprovado no Mercado Pago que não conseguimos ligar a conta ou plano: ninguém
+// recebe o Pro e nenhuma comissão é gerada. Precisa deixar rastro mesmo sem
+// DEBUG_BILLING, porque em 13/09/2026 um caso assim passou sem log nenhum.
+// Sem e-mail nem dado pessoal: só o que permite achar o pagamento no Mercado Pago.
+function describeUnlinkedApprovedPayment({ payment, plan, userId, subscription, approvedPlanPayment }) {
+  if (payment?.status !== 'approved') {
+    return null;
+  }
+
+  let motivo = null;
+
+  if (!plan) {
+    motivo = 'plano_nao_identificado';
+  } else if (!approvedPlanPayment) {
+    motivo = 'valor_moeda_produto_ou_data_inesperados';
+  } else if (!userId) {
+    motivo = 'conta_nao_identificada';
+  }
+
+  if (!motivo) {
+    return null;
+  }
+
+  return {
+    paymentId: String(payment.id),
+    status: payment.status,
+    amount: toProviderAmount(payment.transaction_amount),
+    viaAssinatura: Boolean(subscription?.preapproval_id || getPaymentPreapprovalId(payment)),
+    motivo,
+  };
 }
 
 async function persistPreapprovalSnapshot(preapproval, fallbackSubscription = null) {
@@ -642,7 +700,14 @@ async function handlePaymentWebhook(resourceId, accessToken, supabase, preapprov
     metadataDiscountRate: normalizeDiscountRate(getPaymentMetadata(payment).discount_rate),
   };
 
-  if (!plan || !isApprovedPlanPayment(payment, plan, subscription, discountContext)) {
+  const approvedPlanPayment = Boolean(plan) && isApprovedPlanPayment(payment, plan, subscription, discountContext);
+  const semVinculo = describeUnlinkedApprovedPayment({ payment, plan, userId, subscription, approvedPlanPayment });
+
+  if (semVinculo) {
+    console.warn('billing: pagamento aprovado sem vínculo', JSON.stringify(semVinculo));
+  }
+
+  if (!approvedPlanPayment) {
     return { skipped: true };
   }
 
@@ -799,3 +864,5 @@ module.exports.isRevokedPaymentStatus = isRevokedPaymentStatus;
 module.exports.isSubscriptionWebhook = isSubscriptionWebhook;
 module.exports.pickMostRecentAuthorizedPayment = pickMostRecentAuthorizedPayment;
 module.exports.reconcileSubscriptionByPreapprovalId = reconcileSubscriptionByPreapprovalId;
+module.exports.buildPaymentSnapshot = buildPaymentSnapshot;
+module.exports.describeUnlinkedApprovedPayment = describeUnlinkedApprovedPayment;
