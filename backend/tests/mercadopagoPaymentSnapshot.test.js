@@ -107,3 +107,13 @@ test('o sinal de log não leva e-mail nem conta', () => {
   assert.deepEqual(Object.keys(sinal).sort(), ['amount', 'motivo', 'paymentId', 'status', 'viaAssinatura']);
   assert.equal(JSON.stringify(sinal).includes('@'), false);
 });
+
+test('o motivo do resultado do Mercado Pago vai para a linha gravada', () => {
+  const recusado = webhook.buildPaymentSnapshot(
+    pagamento({ status: 'rejected', status_detail: 'cc_rejected_insufficient_amount' }),
+    CONTA,
+  );
+
+  assert.equal(recusado.statusDetail, 'cc_rejected_insufficient_amount');
+  assert.equal(webhook.buildPaymentSnapshot(pagamento(), CONTA).statusDetail, null);
+});

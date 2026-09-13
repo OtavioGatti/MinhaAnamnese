@@ -18,6 +18,7 @@ const {
   parseContentRange,
   summarizeActivation,
   summarizeAffiliates,
+  summarizeDeclines,
   summarizeEventUsage,
   summarizeGrowth,
   summarizeOrganizations,
@@ -655,4 +656,34 @@ test('alerta de aprovado sem conta respeita a janela de 30 minutos a 7 dias', ()
   ], agora);
 
   assert.deepEqual(ids, ['alerta'], 'só o aprovado sem processamento, fora dos primeiros 30 min e dentro de 7 dias');
+});
+
+// --- recusas por motivo -----------------------------------------------------
+
+test('recusas agrupam pelo motivo e contam pessoas uma vez', () => {
+  const linhas = summarizeDeclines([
+    { status: 'rejected', status_detail: 'cc_rejected_insufficient_amount', user_id: 'u1' },
+    { status: 'rejected', status_detail: 'cc_rejected_insufficient_amount', user_id: 'u1' },
+    { status: 'rejected', status_detail: 'cc_rejected_insufficient_amount', user_id: 'u2' },
+    { status: 'rejected', status_detail: 'cc_rejected_other_reason', user_id: 'u3' },
+    { status: 'approved', status_detail: 'accredited', user_id: 'u4', processed_at: PASSADO },
+  ]);
+
+  assert.deepEqual(linhas, [
+    { rotulo: 'Limite insuficiente', total: 3, pessoas: 2 },
+    { rotulo: 'Banco recusou sem informar o motivo', total: 1, pessoas: 1 },
+  ]);
+});
+
+// A recusa real de 13/09/2026 foi gravada antes de o motivo existir.
+test('recusa sem motivo gravado aparece como não registrado, não como motivo inventado', () => {
+  const [linha] = summarizeDeclines([{ status: 'rejected', status_detail: null, user_id: 'u1' }]);
+
+  assert.equal(linha.rotulo, 'Motivo não registrado');
+});
+
+test('aviso pede o SQL quando a coluna do motivo ainda não existe', () => {
+  const avisos = buildWarnings({ faltaMotivoRecusa: true });
+
+  assert.ok(avisos.some((aviso) => aviso.includes('billing_payment_decline_reason.sql')));
 });

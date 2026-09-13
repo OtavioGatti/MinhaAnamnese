@@ -16,6 +16,7 @@ const { buildFunnelMetrics, getZeroFunnelMetrics } = require('./funnelMetrics');
 const { getGlobalFunnelSessions } = require('./funnelTracking');
 const { FUNNEL_STEPS } = require('../utils/funnel');
 const { summarizeAffiliateCommissions } = require('./affiliates');
+const { describeDeclineReason } = require('../utils/paymentDeclineReasons');
 
 const ROW_LIMIT = 5000;
 
@@ -252,6 +253,31 @@ function summarizePayments(payments) {
     receitaEstornada: roundMoney(reembolsados.reduce((total, p) => total + (Number(p.amount) || 0), 0)),
     compradoresUnicos: new Set(aprovados.map((p) => p.user_id).filter(Boolean)).size,
   };
+}
+
+// Recusas agrupadas pelo motivo informado pelo Mercado Pago, da mais frequente
+// para a menos. `pessoas` existe porque quem tenta de novo com o mesmo cartão
+// gera uma recusa por tentativa.
+function summarizeDeclines(payments) {
+  const porMotivo = new Map();
+
+  payments
+    .filter((payment) => payment.status === 'rejected')
+    .forEach((payment) => {
+      const { rotulo } = describeDeclineReason(payment.status_detail);
+      const atual = porMotivo.get(rotulo) || { rotulo, total: 0, pessoas: new Set() };
+      atual.total += 1;
+
+      if (payment.user_id) {
+        atual.pessoas.add(payment.user_id);
+      }
+
+      porMotivo.set(rotulo, atual);
+    });
+
+  return [...porMotivo.values()]
+    .map((linha) => ({ rotulo: linha.rotulo, total: linha.total, pessoas: linha.pessoas.size }))
+    .sort((a, b) => b.total - a.total || a.rotulo.localeCompare(b.rotulo));
 }
 
 // Aprovados no Mercado Pago que o webhook não ligou a conta nenhuma. Se for
@@ -883,7 +909,12 @@ async function getOwnerMetrics() {
       // existe e derrubaria a consulta inteira.
       { optionalColumns: ['last_seen_at', 'referred_by_affiliate_id'] },
     ),
-    selectRows('billing_payments', { select: 'payment_id,status,amount,user_id,processed_at,created_at', order: 'created_at.desc' }),
+    selectRows(
+      'billing_payments',
+      { select: 'payment_id,status,status_detail,amount,user_id,processed_at,created_at', order: 'created_at.desc' },
+      // Enquanto billing_payment_decline_reason.sql não for aplicado à mão.
+      { optionalColumns: ['status_detail'] },
+    ),
     // A ordem aqui é o que evita que um corte de linhas apague justo os
     // eventos de agora: sem isso já aconteceu de visita de afiliado sumir do
     // painel porque a tabela passou do teto e o Postgres devolveu as mais
@@ -906,6 +937,7 @@ async function getOwnerMetrics() {
   const commissions = commissionsResult.rows;
   const subscriptions = subscriptionsResult.rows;
   const faltaLastSeen = profilesResult.degraded.includes('last_seen_at');
+  const faltaMotivoRecusa = paymentsResult.degraded.includes('status_detail');
   // Nome amigável só das tabelas que o Content-Range denunciou como cortadas
   // pelo teto do servidor — não pelo `limit` que o código pede, esse a gente
   // controla.
@@ -937,7 +969,11 @@ async function getOwnerMetrics() {
   return {
     geradoEm: new Date().toISOString(),
     contas: summarizeProfiles(profiles),
-    pagamentos: { ...summarizePayments(payments), semVinculo: findUnlinkedApprovedPayments(payments) },
+    pagamentos: {
+      ...summarizePayments(payments),
+      semVinculo: findUnlinkedApprovedPayments(payments),
+      recusasPorMotivo: summarizeDeclines(payments),
+    },
     anamneses: {
       total: anamneses.length,
       usuariosDistintos: new Set(anamneses.map((a) => a.user_id).filter(Boolean)).size,
@@ -964,6 +1000,7 @@ async function getOwnerMetrics() {
       funilDivergente,
       retornoSemRegistro: retorno.semRegistro,
       faltaLastSeen,
+      faltaMotivoRecusa,
     }),
   };
 }
@@ -976,6 +1013,7 @@ function buildWarnings({
   funilDivergente,
   retornoSemRegistro = 0,
   faltaLastSeen = false,
+  faltaMotivoRecusa = false,
 }) {
   const avisos = [
     'Quem recusa o banner de cookies não emite evento nenhum — toda métrica de evento é piso, não total.',
@@ -992,6 +1030,13 @@ function buildWarnings({
       'O carimbo de retorno (last_seen_at) só passou a existir agora e enche conforme as pessoas voltam: '
       + `${retornoSemRegistro} conta(s) ainda sem registro. Número baixo aqui nos primeiros dias é ausência de medição, não queda. `
       + 'Já a ativação vem dos eventos de organização, com histórico desde que o evento existe.',
+    );
+  }
+
+  if (faltaMotivoRecusa) {
+    avisos.push(
+      'A coluna do motivo de recusa ainda não existe no banco: aplique supabase/billing_payment_decline_reason.sql no SQL Editor. '
+      + 'Até lá as recusas aparecem como "Motivo não registrado". O resto do painel continua correto.',
     );
   }
 
@@ -1036,6 +1081,7 @@ module.exports = {
   parseContentRange,
   summarizeActivation,
   summarizeAffiliates,
+  summarizeDeclines,
   summarizeEventUsage,
   summarizeGrowth,
   summarizeOrganizations,

@@ -129,6 +129,10 @@ function renderHtml(m) {
 
   // No topo, e não na lista de ressalvas do fim: pode ser dinheiro de alguém
   // que ficou sem o Pro.
+  const recusas = (m.pagamentos?.recusasPorMotivo || [])
+    .map((r) => `<tr><td>${escapeHtml(r.rotulo)}</td><td class="num">${formatNumber(r.total)}</td><td class="num">${formatNumber(r.pessoas)}</td></tr>`)
+    .join('');
+
   const semVinculo = m.pagamentos?.semVinculo || [];
   const alertaPagamentos = semVinculo.length
     ? `<div class="card alerta">
@@ -213,6 +217,15 @@ function renderHtml(m) {
       ${tile('Anamneses organizadas', formatNumber(m.organizacoes.total), `${m.organizacoes.contas} contas`)}
       ${tile('Avaliações pedidas', formatNumber(m.anamneses.total), 'anamneses com nota e análise')}
     </div>
+  </div>
+
+  <div class="card">
+    <h2 style="margin-top:0">Pagamentos recusados por motivo</h2>
+    <p class="muted note">Motivo informado pelo Mercado Pago. Cada tentativa recusada conta uma vez em "Recusas"; "Pessoas" conta cada conta uma vez. Recusas gravadas antes de o motivo passar a ser registrado aparecem como "Motivo não registrado".</p>
+    <div class="scroll"><table>
+      <thead><tr><th>Motivo</th><th class="num">Recusas</th><th class="num">Pessoas</th></tr></thead>
+      <tbody>${recusas || '<tr><td colspan="3" class="muted">Nenhuma recusa.</td></tr>'}</tbody>
+    </table></div>
   </div>
 
   <div class="card">

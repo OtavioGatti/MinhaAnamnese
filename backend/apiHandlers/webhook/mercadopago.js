@@ -449,6 +449,8 @@ function buildPaymentSnapshot(payment, userId, plan = null, subscription = null,
     paymentId: payment.id,
     userId,
     status,
+    // Motivo técnico do resultado (ex.: cc_rejected_insufficient_amount).
+    statusDetail: payment.status_detail || null,
     amount,
     currencyId: payment.currency_id || null,
     product: getPaymentMetadata(payment).product || plan?.product || null,

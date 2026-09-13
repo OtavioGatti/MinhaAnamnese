@@ -20,6 +20,7 @@ function normalizePaymentRecord(record) {
     payment_id: record.payment_id != null ? String(record.payment_id) : null,
     user_id: typeof record.user_id === 'string' ? record.user_id : null,
     status: typeof record.status === 'string' ? record.status : null,
+    status_detail: typeof record.status_detail === 'string' ? record.status_detail : null,
     amount: typeof record.amount === 'number' ? record.amount : null,
     currency_id: typeof record.currency_id === 'string' ? record.currency_id : null,
     product: typeof record.product === 'string' ? record.product : null,
@@ -38,6 +39,7 @@ function normalizePaymentRecord(record) {
     payer_email: typeof record.payer_email === 'string' ? record.payer_email : null,
     provider_created_at: typeof record.provider_created_at === 'string' ? record.provider_created_at : null,
     processed_at: typeof record.processed_at === 'string' ? record.processed_at : null,
+    notified_at: typeof record.notified_at === 'string' ? record.notified_at : null,
     created_at: typeof record.created_at === 'string' ? record.created_at : null,
     updated_at: typeof record.updated_at === 'string' ? record.updated_at : null,
   };
@@ -83,10 +85,56 @@ async function getBillingPaymentByPaymentId(paymentId) {
   return normalizePaymentRecord(json[0]);
 }
 
+// Linha enviada ao Supabase. `status_detail` só entra quando foi informado:
+// uma gravação que não conhece o motivo não pode apagar o que já estava salvo.
+function buildBillingPaymentPayload({
+  paymentId,
+  userId,
+  status,
+  statusDetail,
+  amount,
+  currencyId,
+  product,
+  planKey,
+  billingKind,
+  preapprovalId,
+  affiliateId,
+  affiliateCode,
+  commissionAmount,
+  externalReference,
+  payerEmail,
+  providerCreatedAt,
+  processedAt = null,
+}) {
+  return {
+    payment_id: String(paymentId),
+    user_id: isValidUserId(userId) ? userId : null,
+    status: status || null,
+    ...(statusDetail !== undefined ? { status_detail: statusDetail || null } : {}),
+    amount: typeof amount === 'number' && !Number.isNaN(amount) ? amount : null,
+    currency_id: currencyId || null,
+    product: product || null,
+    plan_key: planKey || null,
+    billing_kind: billingKind || null,
+    preapproval_id: preapprovalId || null,
+    affiliate_id: affiliateId || null,
+    affiliate_code: affiliateCode || null,
+    commission_amount:
+      typeof commissionAmount === 'number' && !Number.isNaN(commissionAmount)
+        ? commissionAmount
+        : null,
+    external_reference: externalReference || null,
+    payer_email: payerEmail || null,
+    provider_created_at: providerCreatedAt || null,
+    processed_at: processedAt,
+  };
+}
+
 async function upsertBillingPayment({
   paymentId,
   userId,
   status,
+  statusDetail,
   amount,
   currencyId,
   product,
@@ -113,27 +161,25 @@ async function upsertBillingPayment({
     throw new Error('billing storage unavailable');
   }
 
-  const payload = {
-    payment_id: normalizedPaymentId,
-    user_id: isValidUserId(userId) ? userId : null,
-    status: status || null,
-    amount: typeof amount === 'number' && !Number.isNaN(amount) ? amount : null,
-    currency_id: currencyId || null,
-    product: product || null,
-    plan_key: planKey || null,
-    billing_kind: billingKind || null,
-    preapproval_id: preapprovalId || null,
-    affiliate_id: affiliateId || null,
-    affiliate_code: affiliateCode || null,
-    commission_amount:
-      typeof commissionAmount === 'number' && !Number.isNaN(commissionAmount)
-        ? commissionAmount
-        : null,
-    external_reference: externalReference || null,
-    payer_email: payerEmail || null,
-    provider_created_at: providerCreatedAt || null,
-    processed_at: processedAt,
-  };
+  const payload = buildBillingPaymentPayload({
+    paymentId: normalizedPaymentId,
+    userId,
+    status,
+    statusDetail,
+    amount,
+    currencyId,
+    product,
+    planKey,
+    billingKind,
+    preapprovalId,
+    affiliateId,
+    affiliateCode,
+    commissionAmount,
+    externalReference,
+    payerEmail,
+    providerCreatedAt,
+    processedAt,
+  });
 
   const query = new URLSearchParams({
     on_conflict: 'payment_id',
@@ -154,8 +200,19 @@ async function upsertBillingPayment({
 
   let response = await sendPaymentUpsert(payload);
 
+  // status_detail vem de supabase/billing_payment_decline_reason.sql, aplicado
+  // à mão. Até lá o PostgREST recusa o payload inteiro por causa da coluna:
+  // tenta de novo só sem ela, para o motivo nunca impedir o pagamento de ser
+  // gravado (nem derrubar as colunas que já existem).
+  if (!response.ok && Object.prototype.hasOwnProperty.call(payload, 'status_detail')) {
+    const semMotivo = { ...payload };
+    delete semMotivo.status_detail;
+    response = await sendPaymentUpsert(semMotivo);
+  }
+
   if (!response.ok) {
     const legacyPayload = { ...payload };
+    delete legacyPayload.status_detail;
     delete legacyPayload.plan_key;
     delete legacyPayload.billing_kind;
     delete legacyPayload.preapproval_id;
@@ -175,6 +232,7 @@ async function upsertBillingPayment({
 }
 
 module.exports = {
+  buildBillingPaymentPayload,
   getBillingPaymentByPaymentId,
   upsertBillingPayment,
 };
