@@ -3,7 +3,60 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Minha Anamnese</title>
+    <title>Minha Anamnese — Anamnese organizada com IA para médicos</title>
+    <meta
+      name="description"
+      content="Organize anamneses com IA a partir de texto livre: templates por especialidade, score de qualidade, hipóteses diagnósticas, prescrições e calculadoras clínicas."
+    />
+    <meta name="theme-color" content="#2563eb" />
+
+    <!-- Sem <link rel="canonical"> fixo: este HTML serve todas as rotas do SPA,
+         e um canonical estático mandaria /ferramentas e /termos para a home. -->
+
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Minha Anamnese" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:title" content="Minha Anamnese — Anamnese organizada com IA para médicos" />
+    <meta
+      property="og:description"
+      content="Organize anamneses com IA a partir de texto livre: templates por especialidade, score de qualidade, hipóteses diagnósticas, prescrições e calculadoras clínicas."
+    />
+    <meta property="og:image" content="https://minhaanamnese.com.br/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Minha Anamnese — Anamnese organizada com IA para médicos" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Minha Anamnese — Anamnese organizada com IA para médicos" />
+    <meta name="twitter:image" content="https://minhaanamnese.com.br/og-image.png" />
+
+    <!-- Nome do site acima do link no Google (em vez do domínio) e logo da marca. -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://minhaanamnese.com.br/#website",
+            "name": "Minha Anamnese",
+            "url": "https://minhaanamnese.com.br/",
+            "inLanguage": "pt-BR",
+            "publisher": { "@id": "https://minhaanamnese.com.br/#organization" }
+          },
+          {
+            "@type": "Organization",
+            "@id": "https://minhaanamnese.com.br/#organization",
+            "name": "Minha Anamnese",
+            "url": "https://minhaanamnese.com.br/",
+            "logo": "https://minhaanamnese.com.br/icon-512.png"
+          }
+        ]
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>

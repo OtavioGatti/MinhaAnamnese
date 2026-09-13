@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /redefinir-senha
+
+Sitemap: https://minhaanamnese.com.br/sitemap.xml
