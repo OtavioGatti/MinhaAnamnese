@@ -11,6 +11,7 @@
 // O reembolso também dispara o webhook 'refunded' de forma assíncrona; as ações
 // deste handler são idempotentes com o webhook (mesmo padrão do reconcile).
 
+const { notifySubscriptionCancelled } = require('../services/billingNotifications');
 const {
   getActiveBillingSubscriptionByUserId,
   upsertBillingSubscription,
@@ -155,11 +156,16 @@ module.exports = async function handler(req, res) {
     await cancelMercadoPagoPreapproval(subscription.preapproval_id);
     await markSubscriptionCancelled(subscription);
 
+    const accessUntil = profile?.plan_expires_at || profile?.access_state?.planExpiresAt || null;
+
+    // Confirmação por e-mail. Falha no envio não desfaz o cancelamento.
+    await notifySubscriptionCancelled({ to: auth.user.email || null, accessUntil }).catch(() => null);
+
     return res.status(200).json({
       success: true,
       data: {
         refunded: false,
-        accessUntil: profile?.plan_expires_at || profile?.access_state?.planExpiresAt || null,
+        accessUntil,
       },
     });
   } catch (error) {

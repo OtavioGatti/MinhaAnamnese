@@ -231,8 +231,107 @@ async function upsertBillingPayment({
   return normalizePaymentRecord(record);
 }
 
+// Reserva o e-mail deste pagamento: grava notified_at só se ainda estiver vazio
+// (filtro is.null no próprio PATCH). Devolve true só para quem conseguiu a
+// reserva, então duas notificações simultâneas não mandam dois e-mails.
+async function claimPaymentNotification(paymentId, now = new Date()) {
+  const normalizedPaymentId = paymentId != null ? String(paymentId) : '';
+  const { url, serviceRoleKey } = getSupabaseAdminConfig();
+
+  if (!normalizedPaymentId || !url || !serviceRoleKey) {
+    return false;
+  }
+
+  const query = new URLSearchParams({
+    payment_id: `eq.${normalizedPaymentId}`,
+    notified_at: 'is.null',
+    select: 'payment_id',
+  });
+
+  const response = await fetch(`${url}/rest/v1/billing_payments?${query.toString()}`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+      apikey: serviceRoleKey,
+      Authorization: `Bearer ${serviceRoleKey}`,
+      Prefer: 'return=representation',
+    },
+    body: JSON.stringify({ notified_at: now.toISOString() }),
+  });
+
+  if (!response.ok) {
+    return false;
+  }
+
+  const json = await response.json().catch(() => []);
+  return Array.isArray(json) && json.length === 1;
+}
+
+// Devolve a reserva quando o envio falhou, para uma nova notificação poder
+// tentar de novo.
+async function releasePaymentNotification(paymentId) {
+  const normalizedPaymentId = paymentId != null ? String(paymentId) : '';
+  const { url, serviceRoleKey } = getSupabaseAdminConfig();
+
+  if (!normalizedPaymentId || !url || !serviceRoleKey) {
+    return false;
+  }
+
+  const query = new URLSearchParams({ payment_id: `eq.${normalizedPaymentId}` });
+  const response = await fetch(`${url}/rest/v1/billing_payments?${query.toString()}`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+      apikey: serviceRoleKey,
+      Authorization: `Bearer ${serviceRoleKey}`,
+      Prefer: 'return=minimal',
+    },
+    body: JSON.stringify({ notified_at: null }),
+  });
+
+  return response.ok;
+}
+
+// Histórico de pagamentos da conta, só com o que os e-mails precisam para
+// decidir (boas-vindas ou renovação, recusa já avisada).
+async function listPaymentsByUser(userId) {
+  if (!isValidUserId(userId)) {
+    return [];
+  }
+
+  const { url, serviceRoleKey } = getSupabaseAdminConfig();
+
+  if (!url || !serviceRoleKey) {
+    throw new Error('billing storage unavailable');
+  }
+
+  const query = new URLSearchParams({
+    select: 'payment_id,status,preapproval_id,processed_at,notified_at,created_at',
+    user_id: `eq.${userId}`,
+    order: 'created_at.desc',
+    limit: '100',
+  });
+
+  const response = await fetch(`${url}/rest/v1/billing_payments?${query.toString()}`, {
+    headers: {
+      apikey: serviceRoleKey,
+      Authorization: `Bearer ${serviceRoleKey}`,
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error('failed to list billing payments');
+  }
+
+  const json = await response.json();
+  return Array.isArray(json) ? json : [];
+}
+
 module.exports = {
   buildBillingPaymentPayload,
+  claimPaymentNotification,
   getBillingPaymentByPaymentId,
+  listPaymentsByUser,
+  releasePaymentNotification,
   upsertBillingPayment,
 };

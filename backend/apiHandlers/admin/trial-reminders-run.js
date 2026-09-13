@@ -4,6 +4,7 @@
 // perfil não é marcado como notificado, então tenta de novo na próxima vez).
 
 const { runTrialReminders } = require('../../services/trialReminders');
+const { runPlanNotices } = require('../../services/planNotices');
 const { isEmailConfigured } = require('../../services/emailNotifications');
 const {
   isAuthorizedAdminRequest,
@@ -49,7 +50,10 @@ module.exports = async function handler(req, res) {
 
   try {
     const data = await runTrialReminders();
-    return res.status(200).json({ success: true, data });
+    // Avisos de plano (semestral e acesso pausado) no mesmo agendamento diário.
+    // Uma falha neles não pode derrubar os lembretes de teste, que já rodaram.
+    const avisosDePlano = await runPlanNotices().catch(() => ({ pendente: 'falha_na_rotina' }));
+    return res.status(200).json({ success: true, data: { ...data, avisosDePlano } });
   } catch (error) {
     return res.status(500).json({
       success: false,

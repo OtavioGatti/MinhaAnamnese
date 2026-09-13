@@ -25,6 +25,7 @@ const {
   upsertBillingSubscription,
 } = require('../../services/billingSubscriptions');
 const { upsertProfile, getProfileByUserId: getStoredProfileByUserId } = require('../../services/profiles');
+const { notifyApprovedPayment, notifyRejectedPayment } = require('../../services/billingNotifications');
 const { isValidUserId } = require('../../utils/idValidation');
 
 const MERCADO_PAGO_PAYMENT_API = 'https://api.mercadopago.com/v1/payments';
@@ -657,6 +658,51 @@ async function handleRevokedPayment({ payment, plan, subscription, userId, affil
   return { refunded: true };
 }
 
+// E-mail do pagamento aprovado (boas-vindas ou renovação). A próxima cobrança
+// vem do Mercado Pago ao vivo: o retrato salvo da assinatura pode ser de antes
+// desta cobrança.
+async function notifyApprovedPaymentSafely({ payment, plan, subscription, targetUser, accessUntil, accessToken }) {
+  const preapprovalId = subscription?.preapproval_id || getPaymentPreapprovalId(payment) || null;
+  const preapproval = preapprovalId && plan.billingKind === 'subscription'
+    ? await getPreapprovalDetails(preapprovalId, accessToken).catch(() => null)
+    : null;
+
+  return notifyApprovedPayment({
+    paymentId: payment.id,
+    userId: targetUser.id,
+    to: targetUser.email || null,
+    plan,
+    amount: toProviderAmount(payment.transaction_amount),
+    preapprovalId,
+    accessUntil,
+    nextPaymentDate: preapproval?.next_payment_date || null,
+  });
+}
+
+// E-mail de pagamento não aprovado, com o motivo do Mercado Pago. Quem ainda
+// está em teste fica sabendo que nada muda até o fim do teste.
+async function notifyRejectedPaymentSafely({ payment, userId, subscription, supabase }) {
+  const [usuario, perfil] = await Promise.all([
+    getSupabaseUserById(userId, supabase).catch(() => null),
+    getStoredProfileByUserId(userId).catch(() => null),
+  ]);
+  const fimDoTeste = perfil?.access_source === 'trial' && perfil?.plan_expires_at
+    && new Date(perfil.plan_expires_at).getTime() > Date.now()
+    ? perfil.plan_expires_at
+    : null;
+
+  return notifyRejectedPayment({
+    paymentId: payment.id,
+    userId,
+    to: usuario?.email || null,
+    amount: toProviderAmount(payment.transaction_amount),
+    statusDetail: payment.status_detail || null,
+    preapprovalId: subscription?.preapproval_id || getPaymentPreapprovalId(payment) || null,
+    trialEndsAt: fimDoTeste,
+    paymentCreatedAt: payment.date_created || null,
+  });
+}
+
 async function handlePaymentWebhook(resourceId, accessToken, supabase, preapprovalIdHint = null) {
   const existingPayment = await getBillingPaymentByPaymentId(resourceId);
 
@@ -697,6 +743,11 @@ async function handlePaymentWebhook(resourceId, accessToken, supabase, preapprov
 
   await persistPaymentSnapshot(payment, userId, plan, subscription, affiliate, null);
 
+  // Depois de gravado: o e-mail nunca atrasa nem derruba o processamento.
+  if (payment?.status === 'rejected' && userId) {
+    await notifyRejectedPaymentSafely({ payment, userId, subscription, supabase }).catch(() => null);
+  }
+
   const discountContext = {
     affiliateDiscountRate: normalizeDiscountRate(affiliate?.discount_rate),
     metadataDiscountRate: normalizeDiscountRate(getPaymentMetadata(payment).discount_rate),
@@ -731,13 +782,15 @@ async function handlePaymentWebhook(resourceId, accessToken, supabase, preapprov
   const safeAffiliate = affiliate?.user_id === targetUser.id ? null : affiliate;
 
   await updateSupabaseUserPlan(targetUser.id, targetUser.user_metadata, payment, plan, subscription, safeAffiliate?.code || null, supabase);
+  const accessUntil = getNextPlanExpirationDate(existingProfile?.plan_expires_at, plan.days);
+
   await upsertProfile({
     id: targetUser.id,
     email: targetUser.email || payment?.payer?.email || subscription?.payer_email || null,
     current_plan: 'pro',
     billing_status: 'active',
     access_source: 'paid',
-    plan_expires_at: getNextPlanExpirationDate(existingProfile?.plan_expires_at, plan.days),
+    plan_expires_at: accessUntil,
     last_payment_id: String(payment.id),
   });
 
@@ -791,6 +844,9 @@ async function handlePaymentWebhook(resourceId, accessToken, supabase, preapprov
   }
 
   await persistPaymentSnapshot(payment, targetUser.id, plan, subscription, safeAffiliate, new Date().toISOString());
+
+  // Só depois de acesso liberado e pagamento gravado como processado.
+  await notifyApprovedPaymentSafely({ payment, plan, subscription, targetUser, accessUntil, accessToken }).catch(() => null);
 
   return { processed: true };
 }
