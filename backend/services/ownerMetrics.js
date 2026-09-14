@@ -877,6 +877,93 @@ function summarizeGrowth({ fontes, now = new Date(), metricas = METRICAS_DE_CRES
   });
 }
 
+// --- checkout ---------------------------------------------------------------
+//
+// Do clique em assinar ao pagamento, nos últimos 30 dias. Clique, chegada ao
+// Mercado Pago, erros e retorno vêm de eventos: dependem de cookie, e a chegada
+// ao Mercado Pago começou a ser medida em 13/09/2026. Assinaturas e pagamentos
+// vêm do banco e são completos. "Pessoas" existe porque a mesma pessoa clica e
+// tenta mais de uma vez.
+
+const JANELA_CHECKOUT_DIAS = 30;
+
+const ROTULOS_ERRO_CHECKOUT = {
+  rede: 'Sem conexão com o servidor',
+  dados_invalidos: 'Dados inválidos para o checkout',
+  sessao: 'Sessão expirada',
+  limite: 'Tentativas demais',
+  provedor: 'Mercado Pago não respondeu',
+  configuracao: 'Checkout sem configuração no servidor',
+  servidor: 'Erro no servidor',
+  sem_link: 'Mercado Pago não devolveu o link',
+  desconhecido: 'Outro erro',
+};
+
+function percentile(valores, p) {
+  const ordenados = [...valores].sort((a, b) => a - b);
+  const indice = Math.min(ordenados.length - 1, Math.max(0, Math.ceil((p / 100) * ordenados.length) - 1));
+  return ordenados[indice];
+}
+
+function summarizeCheckout({ events = [], subscriptions = [], payments = [], now = new Date() }) {
+  const fim = now.getTime();
+  const inicio = fim - JANELA_CHECKOUT_DIAS * DIA_MS;
+  const naJanela = (row) => {
+    const marca = toTime(row.created_at);
+    return marca !== null && marca >= inicio && marca <= fim;
+  };
+  const etapa = (id, rotulo, fonte, rows) => ({
+    id,
+    rotulo,
+    fonte,
+    vezes: rows.length,
+    pessoas: new Set(rows.map((row) => row.user_id).filter(Boolean)).size,
+  });
+
+  const eventosNaJanela = events.filter(naJanela);
+  const doEvento = (nome) => eventosNaJanela.filter((event) => event.event_name === nome);
+  const redirecionados = doEvento('checkout_redirecionado');
+
+  const esperas = redirecionados
+    .map((event) => Number(event.metadata?.espera_ms))
+    .filter((valor) => Number.isFinite(valor) && valor >= 0);
+
+  const erros = new Map();
+  doEvento('checkout_erro').forEach((event) => {
+    const tipo = Object.prototype.hasOwnProperty.call(ROTULOS_ERRO_CHECKOUT, event.metadata?.erro_tipo)
+      ? event.metadata.erro_tipo
+      : 'desconhecido';
+    erros.set(tipo, (erros.get(tipo) || 0) + 1);
+  });
+
+  const retornos = { success: 0, pending: 0, failure: 0 };
+  doEvento('checkout_retorno').forEach((event) => {
+    const status = event.metadata?.result_status;
+
+    if (Object.prototype.hasOwnProperty.call(retornos, status)) {
+      retornos[status] += 1;
+    }
+  });
+
+  return {
+    janelaDias: JANELA_CHECKOUT_DIAS,
+    etapas: [
+      etapa('cliques', 'Clicaram em assinar', 'eventos', doEvento('upgrade_click')),
+      etapa('redirecionados', 'Chegaram ao Mercado Pago', 'eventos', redirecionados),
+      etapa('assinaturas', 'Assinaturas mensais criadas', 'banco', subscriptions.filter(naJanela)),
+      etapa('recusados', 'Pagamentos recusados', 'banco', payments.filter((payment) => payment.status === 'rejected' && naJanela(payment))),
+      etapa('aprovados', 'Pagamentos aprovados', 'banco', payments.filter((payment) => isRecognizedApprovedPayment(payment) && naJanela(payment))),
+    ],
+    espera: esperas.length
+      ? { amostras: esperas.length, medianaMs: percentile(esperas, 50), p90Ms: percentile(esperas, 90) }
+      : null,
+    erros: [...erros.entries()]
+      .map(([tipo, vezes]) => ({ tipo, rotulo: ROTULOS_ERRO_CHECKOUT[tipo], vezes }))
+      .sort((a, b) => b.vezes - a.vezes),
+    retornos,
+  };
+}
+
 // --- composição -----------------------------------------------------------
 
 async function getOwnerMetrics() {
@@ -924,7 +1011,7 @@ async function getOwnerMetrics() {
     selectRows('affiliates', { select: 'id,code,status,commission_rate' }),
     selectRows('affiliate_attributions', { select: 'affiliate_id,buyer_user_id,created_at', order: 'created_at.desc' }),
     selectRows('affiliate_commissions', { select: 'affiliate_id,gross_amount,commission_amount,status,payout_id,created_at', order: 'created_at.desc' }),
-    selectRows('billing_subscriptions', { select: 'status,created_at', order: 'created_at.desc' }),
+    selectRows('billing_subscriptions', { select: 'user_id,status,created_at', order: 'created_at.desc' }),
     getGlobalFunnelSessions().catch(() => ({ sessions: [], truncated: false })),
   ]);
 
@@ -981,6 +1068,7 @@ async function getOwnerMetrics() {
     ativacao: summarizeActivation({ profiles, events }),
     organizacoes: summarizeOrganizations(events, profiles),
     crescimento: summarizeGrowth({ fontes: { profiles, events, subscriptions, payments } }),
+    checkout: summarizeCheckout({ events, subscriptions, payments }),
     retorno,
     sessoesPorPeriodo: countDistinctByWindow(events, { chave: 'session_id', data: 'created_at' }),
     retencao: summarizeRetention(events),
@@ -1081,6 +1169,7 @@ module.exports = {
   parseContentRange,
   summarizeActivation,
   summarizeAffiliates,
+  summarizeCheckout,
   summarizeDeclines,
   summarizeEventUsage,
   summarizeGrowth,

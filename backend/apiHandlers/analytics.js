@@ -36,6 +36,10 @@ const ALLOWED_EVENTS = new Set([
   'onboarding_exibido',
   'onboarding_fechado',
   'onboarding_cta_click',
+  // Checkout: do link do Mercado Pago recebido até a volta de lá
+  'checkout_redirecionado',
+  'checkout_erro',
+  'checkout_retorno',
 ]);
 const DEBUG_ANALYTICS = process.env.DEBUG_ANALYTICS === 'true';
 
@@ -85,6 +89,10 @@ function sanitizeMetadata(metadata) {
     'ref',
     // Visita de quem ja tem conta vs visitante sem conta
     'logado',
+    // Checkout: espera até o link do Mercado Pago e o tipo do erro (nunca a
+    // mensagem). O retorno usa result_status.
+    'espera_ms',
+    'erro_tipo',
   ];
 
   allowedKeys.forEach((key) => {

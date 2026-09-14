@@ -96,3 +96,26 @@ test('sanitizeMetadata trunca string longa em 120 caracteres', () => {
   const resultado = sanitizeMetadata({ template: 'x'.repeat(500) });
   assert.equal(resultado.template.length, 120);
 });
+
+test('eventos de checkout e suas métricas passam pela allowlist', () => {
+  for (const name of ['checkout_redirecionado', 'checkout_erro', 'checkout_retorno']) {
+    assert.ok(ALLOWED_EVENTS.has(name), `${name} deveria ser aceito`);
+  }
+
+  const resultado = sanitizeMetadata({
+    plan_key: 'monthly',
+    origin: 'home',
+    espera_ms: 1234,
+    erro_tipo: 'rede',
+    result_status: 'success',
+    mensagem: 'texto livre que não pode entrar',
+  });
+
+  assert.deepEqual(resultado, {
+    plan_key: 'monthly',
+    origin: 'home',
+    espera_ms: 1234,
+    erro_tipo: 'rede',
+    result_status: 'success',
+  });
+});

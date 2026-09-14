@@ -1,5 +1,6 @@
 ﻿import { lazy, Suspense, useEffect, useMemo, useRef, useState } from 'react';
 import { api } from './apiClient';
+import { classifyCheckoutFailure, normalizeCheckoutReturnStatus, waitAtMost } from './lib/checkoutTracking';
 import { API_BASE_URL, DIAGNOSTIC_HYPOTHESES_ENABLED } from './config';
 import DiagnosticHypothesesPanel from './components/DiagnosticHypothesesPanel';
 import FocusedClinicalReview from './components/FocusedClinicalReview';
@@ -1353,12 +1354,21 @@ function App() {
       const checkoutStatus = rawCheckoutStatus?.startsWith('success') ? 'success' : rawCheckoutStatus;
       const preapprovalIdMatch = window.location.href.match(/preapproval_id=([^&?#]+)/);
       const preapprovalId = preapprovalIdMatch ? decodeURIComponent(preapprovalIdMatch[1]) : null;
+      const returnState = getCheckoutReturnState();
+      const retornoDoCheckout = normalizeCheckoutReturnStatus(rawCheckoutStatus);
+
+      // Quem volta do Mercado Pago, e como volta. A assinatura mensal só tem
+      // retorno de sucesso; pendente e falha vêm do semestral (pagamento único).
+      if (retornoDoCheckout) {
+        trackEvent('checkout_retorno', {
+          result_status: retornoDoCheckout,
+          plan_key: returnState?.planKey || null,
+        }, { eventKey: `checkout_retorno:${window.location.search}` });
+      }
 
       if (checkoutStatus !== 'success') {
         return;
       }
-
-      const returnState = getCheckoutReturnState();
 
       if (returnState) {
         setTemplateSelecionado(returnState.templateSelecionado || '');
@@ -2135,7 +2145,12 @@ function App() {
       texto,
       resultado,
       qualityScore,
+      planKey,
     });
+
+    // Espera até o link do Mercado Pago chegar. Com o servidor hibernando passa
+    // de 30 s, e é o que faz a pessoa clicar de novo ou desistir.
+    const inicioDoCheckout = performance.now();
 
     api
       .post('/create-checkout', {
@@ -2144,10 +2159,26 @@ function App() {
         affiliateCodeSource: readAffiliateReferralSource(),
         sourceUrl: window.location.href,
       })
-      .then((response) => {
+      .then(async (response) => {
+        const esperaMs = Math.round(performance.now() - inicioDoCheckout);
+
         if (!response.success || !response.data?.init_point) {
+          trackEvent('checkout_erro', {
+            plan_key: planKey,
+            origin,
+            erro_tipo: classifyCheckoutFailure(response),
+            espera_ms: esperaMs,
+          });
           throw new Error(response.error || 'Não foi possível iniciar o pagamento');
         }
+
+        // A troca de página cancelaria o registro no meio: espera ele sair, no
+        // máximo 800 ms, antes de ir para o Mercado Pago.
+        await waitAtMost(trackEvent('checkout_redirecionado', {
+          plan_key: planKey,
+          origin,
+          espera_ms: esperaMs,
+        }, { keepalive: true }));
 
         window.location.href = response.data.init_point;
       })
@@ -2876,6 +2907,9 @@ function App() {
       const accessToken = sessionData?.session?.access_token || null;
       const response = await fetch(`${API_BASE_URL}/analytics`, {
         method: 'POST',
+        // Evento disparado logo antes de trocar de página (a ida ao Mercado
+        // Pago) precisa sobreviver à navegação.
+        keepalive: Boolean(options.keepalive),
         headers: {
           'Content-Type': 'application/json',
           ...(accessToken ? { Authorization: `Bearer ${accessToken}` } : {}),

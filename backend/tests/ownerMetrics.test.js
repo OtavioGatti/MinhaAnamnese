@@ -18,6 +18,7 @@ const {
   parseContentRange,
   summarizeActivation,
   summarizeAffiliates,
+  summarizeCheckout,
   summarizeDeclines,
   summarizeEventUsage,
   summarizeGrowth,
@@ -686,4 +687,61 @@ test('aviso pede o SQL quando a coluna do motivo ainda não existe', () => {
   const avisos = buildWarnings({ faltaMotivoRecusa: true });
 
   assert.ok(avisos.some((aviso) => aviso.includes('billing_payment_decline_reason.sql')));
+});
+
+// --- checkout ---------------------------------------------------------------------
+
+test('checkout conta vezes e pessoas em cada etapa, só nos últimos 30 dias', () => {
+  const agora = new Date('2026-09-13T22:00:00Z');
+  const diasAtras = (n) => new Date(agora.getTime() - n * 86400000).toISOString();
+
+  const resumo = summarizeCheckout({
+    events: [
+      // mesma pessoa clicando 3 vezes
+      ...[1, 1, 2].map((n) => ({ event_name: 'upgrade_click', user_id: 'u1', created_at: diasAtras(n) })),
+      { event_name: 'upgrade_click', user_id: 'u2', created_at: diasAtras(3) },
+      { event_name: 'upgrade_click', user_id: 'u3', created_at: diasAtras(40) }, // fora da janela
+      { event_name: 'checkout_redirecionado', user_id: 'u1', metadata: { espera_ms: 1200 }, created_at: diasAtras(1) },
+      { event_name: 'checkout_redirecionado', user_id: 'u2', metadata: { espera_ms: 35000 }, created_at: diasAtras(3) },
+    ],
+    subscriptions: [{ user_id: 'u1', status: 'pending', created_at: diasAtras(1) }],
+    payments: [
+      { user_id: 'u1', status: 'rejected', created_at: diasAtras(1) },
+      { user_id: 'u1', status: 'approved', processed_at: null, created_at: diasAtras(1) },
+    ],
+    now: agora,
+  });
+
+  const porId = Object.fromEntries(resumo.etapas.map((etapa) => [etapa.id, etapa]));
+
+  assert.deepEqual([porId.cliques.vezes, porId.cliques.pessoas], [4, 2]);
+  assert.deepEqual([porId.redirecionados.vezes, porId.redirecionados.pessoas], [2, 2]);
+  assert.equal(porId.assinaturas.vezes, 1);
+  assert.equal(porId.recusados.pessoas, 1);
+  assert.equal(porId.aprovados.vezes, 0, 'aprovado sem processamento não é venda');
+  assert.deepEqual(resumo.espera, { amostras: 2, medianaMs: 1200, p90Ms: 35000 });
+});
+
+test('checkout agrupa erros pelo tipo e conta retornos do Mercado Pago', () => {
+  const agora = new Date('2026-09-13T22:00:00Z');
+  const hora = '2026-09-13T21:00:00Z';
+
+  const resumo = summarizeCheckout({
+    events: [
+      { event_name: 'checkout_erro', metadata: { erro_tipo: 'rede' }, created_at: hora },
+      { event_name: 'checkout_erro', metadata: { erro_tipo: 'rede' }, created_at: hora },
+      { event_name: 'checkout_erro', metadata: { erro_tipo: 'tipo_inventado' }, created_at: hora },
+      { event_name: 'checkout_retorno', metadata: { result_status: 'success' }, created_at: hora },
+      { event_name: 'checkout_retorno', metadata: { result_status: 'failure' }, created_at: hora },
+      { event_name: 'checkout_retorno', metadata: { result_status: 'outro' }, created_at: hora },
+    ],
+    now: agora,
+  });
+
+  assert.deepEqual(resumo.erros, [
+    { tipo: 'rede', rotulo: 'Sem conexão com o servidor', vezes: 2 },
+    { tipo: 'desconhecido', rotulo: 'Outro erro', vezes: 1 },
+  ]);
+  assert.deepEqual(resumo.retornos, { success: 1, pending: 0, failure: 1 });
+  assert.equal(resumo.espera, null, 'sem aberturas, sem tempo inventado');
 });

@@ -127,12 +127,28 @@ function renderHtml(m) {
 
   const avisos = m.avisos.map((a) => `<li>${escapeHtml(a)}</li>`).join('');
 
-  // No topo, e não na lista de ressalvas do fim: pode ser dinheiro de alguém
-  // que ficou sem o Pro.
+  const checkout = m.checkout || null;
+  const formatSeconds = (ms) => `${(Number(ms) / 1000).toFixed(1).replace('.', ',')} s`;
+  const etapasCheckout = (checkout?.etapas || [])
+    .map((etapa) => `<tr><td>${escapeHtml(etapa.rotulo)}<small>${etapa.fonte === 'banco' ? 'banco de dados' : 'eventos (quem aceitou cookies)'}</small></td><td class="num">${formatNumber(etapa.vezes)}</td><td class="num">${formatNumber(etapa.pessoas)}</td></tr>`)
+    .join('');
+  // Acima de 10 s, quase sempre é o servidor gratuito acordando da hibernação.
+  const esperaCheckout = checkout?.espera
+    ? `Tempo até abrir o Mercado Pago: <strong>${formatSeconds(checkout.espera.medianaMs)}</strong> na mediana; 9 em cada 10 em até <strong>${formatSeconds(checkout.espera.p90Ms)}</strong> (${formatNumber(checkout.espera.amostras)} aberturas).${checkout.espera.p90Ms > 10000 ? ' Acima de 10 s costuma ser o servidor acordando da hibernação.' : ''}`
+    : 'Tempo até abrir o Mercado Pago: ainda sem medição.';
+  const errosCheckout = (checkout?.erros || [])
+    .map((erro) => `<tr><td>${escapeHtml(erro.rotulo)}</td><td class="num">${formatNumber(erro.vezes)}</td></tr>`)
+    .join('');
+  const retornosCheckout = checkout
+    ? `Voltaram do Mercado Pago: <strong>${formatNumber(checkout.retornos.success)}</strong> com sucesso · ${formatNumber(checkout.retornos.pending)} pendentes · ${formatNumber(checkout.retornos.failure)} com falha. Quem desiste no meio do pagamento não volta, e por isso não aparece aqui.`
+    : '';
+
   const recusas = (m.pagamentos?.recusasPorMotivo || [])
     .map((r) => `<tr><td>${escapeHtml(r.rotulo)}</td><td class="num">${formatNumber(r.total)}</td><td class="num">${formatNumber(r.pessoas)}</td></tr>`)
     .join('');
 
+  // No topo, e não na lista de ressalvas do fim: pode ser dinheiro de alguém
+  // que ficou sem o Pro.
   const semVinculo = m.pagamentos?.semVinculo || [];
   const alertaPagamentos = semVinculo.length
     ? `<div class="card alerta">
@@ -168,6 +184,7 @@ function renderHtml(m) {
   .scroll { overflow-x: auto; }
   .alerta { background: #fef2f2; border: 1px solid #fecaca; color: #7f1d1d; }
   .alerta p { margin: 6px 0 0; font-size: .85rem; line-height: 1.45; }
+  .funil td small { display: block; color: #94a3b8; font-size: .72rem; }
   .note { margin: 0 0 8px; font-size: .8rem; }
   .growth td { vertical-align: top; padding: 8px 4px; }
   .growth td small { display: block; color: #94a3b8; font-size: .72rem; }
@@ -227,6 +244,20 @@ function renderHtml(m) {
       <tbody>${recusas || '<tr><td colspan="3" class="muted">Nenhuma recusa.</td></tr>'}</tbody>
     </table></div>
   </div>
+
+  ${checkout ? `<div class="card">
+    <h2 style="margin-top:0">Checkout (últimos ${checkout.janelaDias} dias)</h2>
+    <p class="muted note">Do clique em assinar ao pagamento. "Pessoas" conta cada conta uma vez, porque a mesma pessoa costuma clicar e tentar mais de uma vez. "Chegaram ao Mercado Pago" começou a ser medido em 13/09/2026: zero antes disso é falta de medição.</p>
+    <div class="scroll"><table class="funil">
+      <thead><tr><th>Etapa</th><th class="num">Vezes</th><th class="num">Pessoas</th></tr></thead>
+      <tbody>${etapasCheckout}</tbody>
+    </table></div>
+    <p class="note" style="margin-top:12px">${esperaCheckout}</p>
+    <p class="note">${retornosCheckout}</p>
+    ${errosCheckout
+      ? `<div class="scroll"><table><thead><tr><th>Erro ao abrir o checkout</th><th class="num">Vezes</th></tr></thead><tbody>${errosCheckout}</tbody></table></div>`
+      : '<p class="muted note">Nenhum erro ao abrir o checkout.</p>'}
+  </div>` : ''}
 
   <div class="card">
     <h2 style="margin-top:0">Ativação — as contas chegam a organizar?</h2>
