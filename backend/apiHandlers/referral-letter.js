@@ -1,7 +1,7 @@
 const { generateReferralLetter, validateReferralLetterInput } = require('../services/referralLetters');
 const { ensureUserProfile } = require('../services/profiles');
 const {
-  recordTrialUsage,
+  recordFeatureUsage,
 } = require('../services/trialUsage');
 const { consumeRateLimit, sendRateLimitResponse } = require('../utils/rateLimit');
 const { getTextLimitError, sendTextLimitError } = require('../utils/requestLimits');
@@ -99,15 +99,17 @@ module.exports = async function handler(req, res) {
     });
     let nextProfile = profile;
 
+    // Uso é registrado para toda conta; só quem está em teste precisa do perfil
+    // recarregado, porque a cota mudou.
+    await recordFeatureUsage({
+      userId: auth.user.id,
+      feature: 'referralLetters',
+      metadata: {
+        specialty,
+      },
+    }).catch(() => null);
+
     if (accessState?.isTrialAccess) {
-      await recordTrialUsage({
-        userId: auth.user.id,
-        profile,
-        feature: 'referralLetters',
-        metadata: {
-          specialty,
-        },
-      }).catch(() => null);
       nextProfile = await ensureUserProfile(auth.user).catch(() => profile);
     }
 

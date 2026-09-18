@@ -1,7 +1,7 @@
 const { generateInsights, validateGenerateInsightsInput } = require('../services/generateInsights');
 const { ensureUserProfile } = require('../services/profiles');
 const {
-  recordTrialUsage,
+  recordFeatureUsage,
 } = require('../services/trialUsage');
 const { consumeRateLimit, sendRateLimitResponse } = require('../utils/rateLimit');
 const { getTextLimitError, sendTextLimitError } = require('../utils/requestLimits');
@@ -100,15 +100,15 @@ module.exports = async function handler(req, res) {
 
     let nextProfile = profile;
 
+    await recordFeatureUsage({
+      userId: auth.user.id,
+      feature: 'insights',
+      metadata: {
+        templateId,
+      },
+    }).catch(() => null);
+
     if (accessState?.isTrialAccess) {
-      await recordTrialUsage({
-        userId: auth.user.id,
-        profile,
-        feature: 'insights',
-        metadata: {
-          templateId,
-        },
-      }).catch(() => null);
       nextProfile = await ensureUserProfile(auth.user).catch(() => profile);
     }
 

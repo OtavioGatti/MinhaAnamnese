@@ -2,7 +2,7 @@ const { generateLetter, validateLetterInput } = require('../services/letters');
 const { getUserLetterModelFormat } = require('../services/userLetterModels');
 const { normalizeLetterTypeKey } = require('../config/letterTypes');
 const { ensureUserProfile } = require('../services/profiles');
-const { recordTrialUsage } = require('../services/trialUsage');
+const { recordFeatureUsage } = require('../services/trialUsage');
 const { consumeRateLimit, sendRateLimitResponse } = require('../utils/rateLimit');
 const { getTextLimitError, sendTextLimitError } = require('../utils/requestLimits');
 const { resolveSupabaseUser } = require('../utils/supabaseAuth');
@@ -89,13 +89,13 @@ module.exports = async function handler(req, res) {
 
     let nextProfile = profile;
 
+    await recordFeatureUsage({
+      userId: auth.user.id,
+      feature: 'referralLetters',
+      metadata: { letterType: normalizeLetterTypeKey(letterType) },
+    }).catch(() => null);
+
     if (accessState?.isTrialAccess) {
-      await recordTrialUsage({
-        userId: auth.user.id,
-        profile,
-        feature: 'referralLetters',
-        metadata: { letterType: normalizeLetterTypeKey(letterType) },
-      }).catch(() => null);
       nextProfile = await ensureUserProfile(auth.user).catch(() => profile);
     }
 

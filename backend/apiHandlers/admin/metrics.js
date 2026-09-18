@@ -127,6 +127,10 @@ function renderHtml(m) {
 
   const avisos = m.avisos.map((a) => `<li>${escapeHtml(a)}</li>`).join('');
 
+  const recursos = (m.usoDeRecursos || [])
+    .map((r) => `<tr><td>${escapeHtml(r.rotulo)}</td><td class="num">${formatNumber(r.usos)}</td><td class="num">${formatNumber(r.contas)}</td></tr>`)
+    .join('');
+
   const checkout = m.checkout || null;
   const formatSeconds = (ms) => `${(Number(ms) / 1000).toFixed(1).replace('.', ',')} s`;
   const etapasCheckout = (checkout?.etapas || [])
@@ -260,17 +264,26 @@ function renderHtml(m) {
   </div>` : ''}
 
   <div class="card">
-    <h2 style="margin-top:0">Ativação — as contas chegam a organizar?</h2>
-    <p class="muted note">Pelos eventos de organização, incluindo quem organizou antes de criar conta, na mesma sessão. É piso: sem consentimento de cookies não há evento. (Antes vinha da tabela de avaliações, que só registra quem pede nota — e subcontava.)</p>
+    <h2 style="margin-top:0">Ativação — as contas chegam a usar?</h2>
+    <p class="muted note">Junta as duas fontes: os eventos de organização (dependem de cookie) e o registro de uso no servidor (não depende, e vale para conta em teste, paga ou cortesia). Conta quem organizou anamnese ou abriu hipóteses, prescrição, bulário, calculadora, carta, avaliação ou template próprio.</p>
     <div class="tiles">
       ${tile('Contas', m.ativacao.contas)}
-      ${tile('Nunca organizaram', m.ativacao.semUso, 'criaram conta e não organizaram')}
-      ${tile('Organizaram 1 a 4 vezes', m.ativacao.usoLeve)}
-      ${tile('Organizaram 5+ vezes', m.ativacao.usoForte)}
-      ${tile('Organizaram em 30 dias', m.ativacao.ativos30d)}
-      ${tile('Pararam', m.ativacao.dormentes, 'organizaram antes, nada em 30 dias')}
-      ${tile('Taxa de ativação', m.ativacao.taxaAtivacao == null ? 'sem dado' : `${m.ativacao.taxaAtivacao}%`, 'das contas chegaram a organizar')}
+      ${tile('Nunca usaram', m.ativacao.semUso, 'criaram conta e não usaram nada')}
+      ${tile('Usaram 1 a 4 vezes', m.ativacao.usoLeve)}
+      ${tile('Usaram 5+ vezes', m.ativacao.usoForte)}
+      ${tile('Usaram em 30 dias', m.ativacao.ativos30d)}
+      ${tile('Pararam', m.ativacao.dormentes, 'usaram antes, nada em 30 dias')}
+      ${tile('Taxa de ativação', m.ativacao.taxaAtivacao == null ? 'sem dado' : `${m.ativacao.taxaAtivacao}%`, 'das contas chegaram a usar')}
     </div>
+  </div>
+
+  <div class="card">
+    <h2 style="margin-top:0">Uso por recurso (registro do servidor)</h2>
+    <p class="muted note">Não depende de cookie e conta toda conta, inclusive Pro e cortesia. Calculadoras entram quando a ferramenta é aberta; frases prontas ainda aparecem só no uso por evento, logo abaixo.</p>
+    <div class="scroll"><table>
+      <thead><tr><th>Recurso</th><th class="num">Usos</th><th class="num">Contas</th></tr></thead>
+      <tbody>${recursos || '<tr><td colspan="3" class="muted">Sem registro ainda.</td></tr>'}</tbody>
+    </table></div>
   </div>
 
   <div class="card">

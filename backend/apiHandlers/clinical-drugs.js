@@ -3,7 +3,7 @@ const {
   getClinicalDrugBySlug,
   listClinicalDrugs,
 } = require('../services/clinicalDrugs');
-const { recordTrialUsage } = require('../services/trialUsage');
+const { recordFeatureUsage } = require('../services/trialUsage');
 const { resolveSupabaseUser } = require('../utils/supabaseAuth');
 
 function getQueryParam(req, name) {
@@ -67,14 +67,11 @@ module.exports = async function handler(req, res) {
       }
 
       // Rastreia consumo no trial (por recurso único; não bloqueia).
-      if (profile?.access_state?.isTrialAccess) {
-        await recordTrialUsage({
-          userId: auth.user.id,
-          profile,
-          feature: 'clinicalDrugs',
-          resourceKey: drug.slug || slug,
-        }).catch(() => null);
-      }
+      await recordFeatureUsage({
+        userId: auth.user.id,
+        feature: 'clinicalDrugs',
+        resourceKey: drug.slug || slug,
+      }).catch(() => null);
 
       return res.status(200).json({
         success: true,

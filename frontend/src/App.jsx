@@ -1936,6 +1936,7 @@ function App() {
 
     // Anexa ao fim do texto atual; o usuário ajusta só o que estiver diferente.
     setTexto((current) => (current.trim() ? `${current.replace(/\s+$/, '')}\n\n${body}` : body));
+    trackEvent('frase_pronta_usada', { origin: currentPage });
     window.setTimeout(() => {
       textoInputRef.current?.focus();
     }, 60);
@@ -3817,6 +3818,9 @@ function App() {
         <ClinicalToolsPage
           user={user}
           isPro={isPro}
+          onToolResult={(slug) => trackEvent('ferramenta_calculada', { slug }, {
+            eventKey: `ferramenta_calculada:${slug}`,
+          })}
           accessState={accessState}
           onLogin={() => {
             setAuthMode('login');

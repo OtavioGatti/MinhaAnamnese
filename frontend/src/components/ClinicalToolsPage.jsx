@@ -956,6 +956,7 @@ function SafetyNotice() {
 function ClinicalToolsPage({
   user,
   isPro,
+  onToolResult,
   accessState,
   onLogin,
   onRequestUpgrade,
@@ -1156,6 +1157,18 @@ function ClinicalToolsPage({
   }, [selectedTool, values]);
 
   const isChecklist = result?.mode === 'checklist';
+
+  // O cálculo é feito aqui no navegador: sem este aviso, o painel nunca saberia
+  // que alguém usou uma calculadora. `onToolResult` fica fora das dependências
+  // de propósito — o evento já tem trava de repetição por ferramenta.
+  useEffect(() => {
+    if (!selectedTool?.slug || result?.value == null) {
+      return;
+    }
+
+    onToolResult?.(selectedTool.slug);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedTool?.slug, result?.value]);
 
   const headerCopy = useMemo(() => {
     if (accessState?.isTrialAccess) {

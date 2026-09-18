@@ -10,6 +10,15 @@ const TRIAL_USAGE_ACTIONS = {
 };
 const TRIAL_USAGE_FEATURES = Object.keys(TRIAL_USAGE_ACTIONS);
 
+// Recursos medidos mas SEM cota no teste: entram no mesmo registro para o painel
+// enxergar o uso, e ficam fora de TRIAL_USAGE_FEATURES para não contarem como
+// limite consumido.
+const EXTRA_USAGE_ACTIONS = {
+  clinicalTools: 'clinical_tool',
+};
+
+const USAGE_ACTIONS = { ...TRIAL_USAGE_ACTIONS, ...EXTRA_USAGE_ACTIONS };
+
 // Contam por recurso único (mesmo item visto de novo não soma).
 const UNIQUE_RESOURCE_FEATURES = new Set(['prescriptionGuides', 'clinicalDrugs']);
 
@@ -26,7 +35,7 @@ function isTrialUsageStorageAvailable() {
 }
 
 function getActionForFeature(feature) {
-  return TRIAL_USAGE_ACTIONS[feature] || '';
+  return USAGE_ACTIONS[feature] || '';
 }
 
 function normalizeResourceKey(value) {
@@ -149,8 +158,14 @@ async function getTrialUsageSummary(userId) {
   };
 }
 
-async function recordTrialUsage({ userId, profile, feature, resourceKey = null, metadata = null }) {
-  if (!profile?.access_state?.isTrialAccess || !isValidUserId(userId)) {
+// Registra o uso de um recurso por QUALQUER conta autenticada.
+//
+// Até 18/09/2026 só gravava para quem estava em teste, então o uso de quem já é
+// Pro (ou cortesia) não aparecia em lugar nenhum: uma conta passou um dia
+// inteiro usando o site sem deixar rastro no painel. As cotas do teste seguem
+// lendo as mesmas linhas — só quem está em teste tem limite.
+async function recordFeatureUsage({ userId, feature, resourceKey = null, metadata = null }) {
+  if (!isValidUserId(userId)) {
     return null;
   }
 
@@ -189,6 +204,7 @@ async function recordTrialUsage({ userId, profile, feature, resourceKey = null, 
 module.exports = {
   getTrialFeatureUsage,
   getTrialUsageSummary,
-  recordTrialUsage,
+  recordFeatureUsage,
   TRIAL_USAGE_ACTIONS,
+  USAGE_ACTIONS,
 };

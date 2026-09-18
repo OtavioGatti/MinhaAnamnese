@@ -22,6 +22,7 @@ const {
   summarizeCheckout,
   summarizeDeclines,
   summarizeEventUsage,
+  summarizeFeatureUsage,
   summarizeGrowth,
   summarizeOrganizations,
   summarizePayments,
@@ -784,4 +785,58 @@ test('sessões diferentes e outros eventos não são colapsados', () => {
   ];
 
   assert.equal(collapseRepeatedEvents(eventos).length, 5, 'só a mesma nota na mesma sessão colapsa');
+});
+
+// --- ativação com as duas fontes ------------------------------------------------
+//
+// Só os eventos subcontam: em 17/09/2026, 59 contas da turma apareciam no
+// registro do servidor contra 39 nos eventos.
+
+test('quem usou recurso no servidor conta como ativada, mesmo sem evento', () => {
+  const agora = new Date('2026-09-17T18:00:00Z');
+  const resumo = summarizeActivation({
+    profiles: [{ id: 'u1' }, { id: 'u2' }],
+    events: [],
+    usos: [{ user_id: 'u1', action: 'trial_prescription_guide', created_at: '2026-09-16T12:00:00Z' }],
+    now: agora,
+  });
+
+  assert.equal(resumo.semUso, 1, 'só u2 ficou sem usar');
+  assert.equal(resumo.usoLeve, 1);
+  assert.equal(resumo.ativos30d, 1);
+  assert.equal(resumo.taxaAtivacao, 50);
+});
+
+test('evento e registro do servidor somam para a mesma conta', () => {
+  const agora = new Date('2026-09-17T18:00:00Z');
+  const resumo = summarizeActivation({
+    profiles: [{ id: 'u1' }],
+    events: [{ event_name: 'anamnese_gerada', user_id: 'u1', session_id: 's1', created_at: '2026-09-15T12:00:00Z' }],
+    usos: [
+      { user_id: 'u1', action: 'trial_clinical_drug', created_at: '2026-09-16T12:00:00Z' },
+      { user_id: 'u1', action: 'clinical_tool', created_at: '2026-09-17T12:00:00Z' },
+      { user_id: 'u1', action: 'trial_diagnostic_hypotheses', created_at: '2026-09-17T13:00:00Z' },
+      { user_id: 'u1', action: 'trial_insight', created_at: '2026-09-17T14:00:00Z' },
+    ],
+    now: agora,
+  });
+
+  assert.equal(resumo.usoForte, 1, '1 organização + 4 usos de recurso');
+});
+
+test('uso por recurso agrupa pelo rótulo e conta contas distintas', () => {
+  const linhas = summarizeFeatureUsage([
+    { user_id: 'u1', action: 'trial_diagnostic_hypotheses' },
+    { user_id: 'u2', action: 'trial_diagnostic_hypotheses' },
+    { user_id: 'u1', action: 'trial_diagnostic_hypotheses' },
+    { user_id: 'u1', action: 'clinical_tool' },
+    { user_id: null, action: 'acao_nova_do_futuro' },
+  ]);
+
+  // Empate em usos desempata por ordem alfabética do rótulo.
+  assert.deepEqual(linhas, [
+    { rotulo: 'Hipóteses diagnósticas', usos: 3, contas: 2 },
+    { rotulo: 'acao_nova_do_futuro', usos: 1, contas: 0 },
+    { rotulo: 'Calculadora clínica', usos: 1, contas: 1 },
+  ]);
 });

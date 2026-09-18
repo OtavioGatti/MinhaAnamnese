@@ -4,7 +4,7 @@ const {
   listPrescriptionGuides,
 } = require('../services/prescriptionGuides');
 const {
-  recordTrialUsage,
+  recordFeatureUsage,
 } = require('../services/trialUsage');
 const { resolveSupabaseUser } = require('../utils/supabaseAuth');
 
@@ -71,16 +71,16 @@ module.exports = async function handler(req, res) {
 
       let nextProfile = profile;
 
+      await recordFeatureUsage({
+        userId: auth.user.id,
+        feature: 'prescriptionGuides',
+        resourceKey: slug,
+        metadata: {
+          title: guide.title,
+        },
+      }).catch(() => null);
+
       if (profile?.access_state?.isTrialAccess) {
-        await recordTrialUsage({
-          userId: auth.user.id,
-          profile,
-          feature: 'prescriptionGuides',
-          resourceKey: slug,
-          metadata: {
-            title: guide.title,
-          },
-        }).catch(() => null);
         nextProfile = await ensureUserProfile(auth.user).catch(() => profile);
       }
 

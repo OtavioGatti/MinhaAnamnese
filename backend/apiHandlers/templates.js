@@ -9,7 +9,7 @@ const {
 } = require('../services/userTemplates');
 const { ensureUserProfile } = require('../services/profiles');
 const {
-  recordTrialUsage,
+  recordFeatureUsage,
 } = require('../services/trialUsage');
 const {
   getAccessTokenFromRequest,
@@ -109,16 +109,16 @@ module.exports = async function handler(req, res) {
       const template = await createUserTemplate(access.user.id, req.body);
       let nextProfile = access.profile;
 
+      await recordFeatureUsage({
+        userId: access.user.id,
+        feature: 'userTemplates',
+        resourceKey: template?.id,
+        metadata: {
+          templateName: template?.nome || template?.name || null,
+        },
+      }).catch(() => null);
+
       if (access.profile?.access_state?.isTrialAccess) {
-        await recordTrialUsage({
-          userId: access.user.id,
-          profile: access.profile,
-          feature: 'userTemplates',
-          resourceKey: template?.id,
-          metadata: {
-            templateName: template?.nome || template?.name || null,
-          },
-        }).catch(() => null);
         nextProfile = await ensureUserProfile(access.user).catch(() => access.profile);
       }
 

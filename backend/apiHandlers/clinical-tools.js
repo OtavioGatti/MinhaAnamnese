@@ -5,6 +5,7 @@ const {
   listClinicalToolsBySlugs,
 } = require('../services/clinicalTools');
 const { resolveSupabaseUser } = require('../utils/supabaseAuth');
+const { recordFeatureUsage } = require('../services/trialUsage');
 const { resolveClinicalToolsAccess } = require('../config/freeClinicalTools');
 
 function getQueryParam(req, name) {
@@ -76,6 +77,16 @@ module.exports = async function handler(req, res) {
           success: false,
           error: 'Ferramenta clínica não encontrada.',
         });
+      }
+
+      // O cálculo acontece no navegador, então abrir a ferramenta é o único
+      // rastro de servidor que existe — e ele não depende de cookie.
+      if (auth.user?.id) {
+        await recordFeatureUsage({
+          userId: auth.user.id,
+          feature: 'clinicalTools',
+          resourceKey: slug,
+        }).catch(() => null);
       }
 
       return res.status(200).json({

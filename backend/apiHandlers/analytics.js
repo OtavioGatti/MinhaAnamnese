@@ -36,6 +36,9 @@ const ALLOWED_EVENTS = new Set([
   'onboarding_exibido',
   'onboarding_fechado',
   'onboarding_cta_click',
+  // Ferramentas clínicas (o cálculo é no navegador) e frases prontas
+  'ferramenta_calculada',
+  'frase_pronta_usada',
   // Checkout: do link do Mercado Pago recebido até a volta de lá
   'checkout_redirecionado',
   'checkout_erro',

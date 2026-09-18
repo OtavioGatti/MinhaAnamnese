@@ -730,10 +730,66 @@ function summarizeOrganizations(events, profiles = null) {
   };
 }
 
-// Ativação: das contas criadas, quantas chegaram a ORGANIZAR uma anamnese.
-function summarizeActivation({ profiles, events = [], now = new Date() }) {
+// Rótulos do registro de uso do servidor (usage_logs).
+const ROTULOS_DE_RECURSO = {
+  trial_diagnostic_hypotheses: 'Hipóteses diagnósticas',
+  trial_prescription_guide: 'Guia de prescrição',
+  trial_clinical_drug: 'Bulário clínico',
+  trial_referral_letter: 'Carta de encaminhamento',
+  trial_insight: 'Avaliação da anamnese',
+  trial_user_template: 'Template próprio',
+  clinical_tool: 'Calculadora clínica',
+};
+
+// Uso por recurso pelo registro do servidor: não depende de cookie e vale para
+// conta em teste, paga ou cortesia.
+function summarizeFeatureUsage(usos = []) {
+  const porRecurso = new Map();
+
+  usos.forEach((uso) => {
+    const rotulo = ROTULOS_DE_RECURSO[uso.action] || uso.action || 'Outro';
+    const atual = porRecurso.get(rotulo) || { rotulo, usos: 0, contas: new Set() };
+    atual.usos += 1;
+
+    if (uso.user_id) {
+      atual.contas.add(uso.user_id);
+    }
+
+    porRecurso.set(rotulo, atual);
+  });
+
+  return [...porRecurso.values()]
+    .map((linha) => ({ rotulo: linha.rotulo, usos: linha.usos, contas: linha.contas.size }))
+    .sort((a, b) => b.usos - a.usos || a.rotulo.localeCompare(b.rotulo));
+}
+
+// Ativação: das contas criadas, quantas chegaram a USAR o produto — organizar
+// uma anamnese ou abrir um recurso (hipóteses, prescrição, bulário, calculadora,
+// carta, avaliação, template próprio).
+function summarizeActivation({ profiles, events = [], usos = [], now = new Date() }) {
   const janelas = buildWindows(now);
   const porUsuario = countOrganizationsByUser(events);
+
+  // O registro do servidor entra junto com os eventos porque não depende de
+  // cookie e pega quem foi direto ao bulário ou à prescrição sem organizar
+  // nada. Medido em 17/09/2026: 59 contas da turma apareciam aqui contra 39
+  // pelos eventos — a ativação saía subestimada em ~40%.
+  usos.forEach((uso) => {
+    if (!uso.user_id) {
+      return;
+    }
+
+    const atual = porUsuario.get(uso.user_id) || { total: 0, ultima: null };
+    atual.total += 1;
+
+    const marca = toTime(uso.created_at);
+
+    if (marca !== null && (atual.ultima === null || marca > atual.ultima)) {
+      atual.ultima = marca;
+    }
+
+    porUsuario.set(uso.user_id, atual);
+  });
 
   let semUso = 0;
   let usoLeve = 0;
@@ -1014,6 +1070,7 @@ async function getOwnerMetrics() {
     paymentsResult,
     eventsResult,
     anamnesesResult,
+    usageResult,
     affiliatesResult,
     attributionsResult,
     commissionsResult,
@@ -1044,6 +1101,7 @@ async function getOwnerMetrics() {
     // antigas primeiro.
     selectRows('events', { select: 'user_id,session_id,event_name,metadata,created_at', order: 'created_at.desc' }),
     selectRows('anamneses', { select: 'user_id,created_at', order: 'created_at.desc' }),
+    selectRows('usage_logs', { select: 'user_id,action,created_at', order: 'created_at.desc' }),
     selectRows('affiliates', { select: 'id,code,status,commission_rate' }),
     selectRows('affiliate_attributions', { select: 'affiliate_id,buyer_user_id,created_at', order: 'created_at.desc' }),
     selectRows('affiliate_commissions', { select: 'affiliate_id,gross_amount,commission_amount,status,payout_id,created_at', order: 'created_at.desc' }),
@@ -1055,6 +1113,7 @@ async function getOwnerMetrics() {
   const payments = paymentsResult.rows;
   const events = collapseRepeatedEvents(eventsResult.rows);
   const anamneses = anamnesesResult.rows;
+  const usos = usageResult.rows;
   const affiliates = affiliatesResult.rows;
   const attributions = attributionsResult.rows;
   const commissions = commissionsResult.rows;
@@ -1069,6 +1128,7 @@ async function getOwnerMetrics() {
     ['pagamentos', paymentsResult],
     ['eventos', eventsResult],
     ['anamneses', anamnesesResult],
+    ['registro de uso', usageResult],
     ['indicações de afiliado', attributionsResult],
     ['comissões de afiliado', commissionsResult],
     ['assinaturas', subscriptionsResult],
@@ -1101,7 +1161,8 @@ async function getOwnerMetrics() {
       total: anamneses.length,
       usuariosDistintos: new Set(anamneses.map((a) => a.user_id).filter(Boolean)).size,
     },
-    ativacao: summarizeActivation({ profiles, events }),
+    ativacao: summarizeActivation({ profiles, events, usos }),
+    usoDeRecursos: summarizeFeatureUsage(usos),
     organizacoes: summarizeOrganizations(events, profiles),
     crescimento: summarizeGrowth({ fontes: { profiles, events, subscriptions, payments } }),
     checkout: summarizeCheckout({ events, subscriptions, payments }),
@@ -1209,6 +1270,7 @@ module.exports = {
   summarizeCheckout,
   summarizeDeclines,
   summarizeEventUsage,
+  summarizeFeatureUsage,
   summarizeGrowth,
   summarizeOrganizations,
   summarizePayments,
