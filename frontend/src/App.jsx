@@ -934,6 +934,12 @@ function App() {
   const insightsSectionRef = useRef(null);
   const improveActionLockRef = useRef(false);
   const trackedEventsRef = useRef(new Set());
+  // Identifica a anamnese organizada que está na tela. O evento da nota é
+  // marcado por ela, e não pelo texto: a chave antiga incluía o tamanho do
+  // resultado, então cada caractere editado disparava um evento novo. Em
+  // 13/09/2026 uma conta gerou 40 disparos em 16 segundos só editando o texto,
+  // tendo visto a nota uma única vez.
+  const organizacaoIdRef = useRef(0);
   const trackingSessionIdRef = useRef(null);
   const cookieConsentSyncedRef = useRef('');
   const profileHydratedUserRef = useRef(null);
@@ -1373,6 +1379,7 @@ function App() {
       if (returnState) {
         setTemplateSelecionado(returnState.templateSelecionado || '');
         setTexto(returnState.texto || '');
+        organizacaoIdRef.current += 1;
         setResultado(returnState.resultado || '');
         // Volta do checkout: o par restaurado é o estado já organizado, não uma
         // edição manual pendente.
@@ -1832,6 +1839,7 @@ function App() {
           ? organizedResult
           : toClinicalSentenceCase(organizedResult);
 
+        organizacaoIdRef.current += 1;
         setResultado(nextResultado);
         // O baseline do texto base guarda o CAMPO como está agora, não a fonte
         // usada: reorganizar a partir do resultado não pode deixar o texto base
@@ -1899,6 +1907,7 @@ function App() {
   const handleLimpar = () => {
     setTemplateSelecionado('');
     setTexto('');
+    organizacaoIdRef.current += 1;
     setResultado('');
     setOrganizeBaseline(createOrganizeBaseline());
     setOrganizeSourceConflict(false);
@@ -3028,7 +3037,8 @@ function App() {
       return;
     }
 
-    const eventKey = `score_exibido:${templateSelecionado}:${resultado.length}:${qualityScore.score}`;
+    // Uma vez por anamnese organizada: editar o texto depois não conta de novo.
+    const eventKey = `score_exibido:${organizacaoIdRef.current}`;
     trackEvent(
       'score_exibido',
       {

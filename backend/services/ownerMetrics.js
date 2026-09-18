@@ -554,6 +554,42 @@ function summarizeAffiliates({
       || b.checkoutsIniciados - a.checkoutsIniciados);
 }
 
+// Repetição do mesmo evento na mesma sessão, em poucos segundos, é defeito de
+// instrumentação, não uso. O evento da nota (`score_exibido`) disparava a cada
+// caractere editado até 18/09/2026: 18% dos disparos vinham repetidos em menos
+// de 10 s, e uma sessão sozinha gerou 40. Colapsar na leitura mantém o
+// histórico intacto no banco e evita inflar "viu a nota" e o uso por evento.
+const EVENTOS_COLAPSAVEIS = new Set(['score_exibido']);
+const JANELA_COLAPSO_MS = 10 * 60 * 1000;
+
+function collapseRepeatedEvents(events, { janelaMs = JANELA_COLAPSO_MS } = {}) {
+  const ultimoPorChave = new Map();
+  const manter = new Set();
+
+  // Do mais antigo para o mais novo: o primeiro disparo de cada rajada fica.
+  [...events]
+    .map((event, indice) => ({ event, indice, marca: toTime(event.created_at) }))
+    .sort((a, b) => (a.marca ?? 0) - (b.marca ?? 0))
+    .forEach(({ event, indice, marca }) => {
+      if (!EVENTOS_COLAPSAVEIS.has(event.event_name) || !event.session_id || marca === null) {
+        manter.add(indice);
+        return;
+      }
+
+      const chave = `${event.event_name}|${event.session_id}`;
+      const anterior = ultimoPorChave.get(chave);
+
+      if (anterior !== undefined && marca - anterior < janelaMs) {
+        return;
+      }
+
+      ultimoPorChave.set(chave, marca);
+      manter.add(indice);
+    });
+
+  return events.filter((_, indice) => manter.has(indice));
+}
+
 // --- janelas de tempo -----------------------------------------------------
 
 // O painel e lido no Brasil, entao "hoje" tem que virar a meia-noite de
@@ -1017,7 +1053,7 @@ async function getOwnerMetrics() {
 
   const profiles = profilesResult.rows;
   const payments = paymentsResult.rows;
-  const events = eventsResult.rows;
+  const events = collapseRepeatedEvents(eventsResult.rows);
   const anamneses = anamnesesResult.rows;
   const affiliates = affiliatesResult.rows;
   const attributions = attributionsResult.rows;
@@ -1158,6 +1194,7 @@ module.exports = {
   countAffiliateVisits,
   countLinkedAccounts,
   countDistinctByWindow,
+  collapseRepeatedEvents,
   compareChange,
   countInRange,
   countOrganizationsByUser,

@@ -11,6 +11,7 @@ const {
   compareChange,
   countAffiliateVisits,
   countDistinctByWindow,
+  collapseRepeatedEvents,
   countLinkedAccounts,
   fetchAllPages,
   findUnlinkedApprovedPayments,
@@ -744,4 +745,43 @@ test('checkout agrupa erros pelo tipo e conta retornos do Mercado Pago', () => {
   ]);
   assert.deepEqual(resumo.retornos, { success: 1, pending: 0, failure: 1 });
   assert.equal(resumo.espera, null, 'sem aberturas, sem tempo inventado');
+});
+
+// --- evento repetido não é uso ------------------------------------------------
+//
+// Caso real de 13/09/2026: a chave do evento da nota incluía o tamanho do texto,
+// então editar a anamnese organizada disparava um evento por caractere.
+
+test('nota repetida na mesma sessão conta uma vez, e a primeira é a que fica', () => {
+  const eventos = [
+    { event_name: 'score_exibido', session_id: 's1', created_at: '2026-09-13T20:12:30Z', metadata: { text_length: 1184 } },
+    { event_name: 'score_exibido', session_id: 's1', created_at: '2026-09-13T20:12:14Z', metadata: { text_length: 1147 } },
+    { event_name: 'score_exibido', session_id: 's1', created_at: '2026-09-13T20:12:20Z', metadata: { text_length: 1160 } },
+  ];
+
+  const limpos = collapseRepeatedEvents(eventos);
+
+  assert.equal(limpos.length, 1);
+  assert.equal(limpos[0].metadata.text_length, 1147, 'fica o primeiro disparo da rajada');
+});
+
+test('nota vista de novo depois de 10 minutos conta outra vez', () => {
+  const limpos = collapseRepeatedEvents([
+    { event_name: 'score_exibido', session_id: 's1', created_at: '2026-09-13T20:00:00Z' },
+    { event_name: 'score_exibido', session_id: 's1', created_at: '2026-09-13T20:11:00Z' },
+  ]);
+
+  assert.equal(limpos.length, 2);
+});
+
+test('sessões diferentes e outros eventos não são colapsados', () => {
+  const eventos = [
+    { event_name: 'score_exibido', session_id: 's1', created_at: '2026-09-13T20:00:00Z' },
+    { event_name: 'score_exibido', session_id: 's2', created_at: '2026-09-13T20:00:01Z' },
+    { event_name: 'anamnese_gerada', session_id: 's1', created_at: '2026-09-13T20:00:02Z' },
+    { event_name: 'anamnese_gerada', session_id: 's1', created_at: '2026-09-13T20:00:03Z' },
+    { event_name: 'score_exibido', session_id: null, created_at: '2026-09-13T20:00:04Z' },
+  ];
+
+  assert.equal(collapseRepeatedEvents(eventos).length, 5, 'só a mesma nota na mesma sessão colapsa');
 });
