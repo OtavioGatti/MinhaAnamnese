@@ -11,6 +11,7 @@
 // lembretes de teste.
 
 const { isEmailConfigured, sendEmail } = require('./emailNotifications');
+const { getRemainingDailyBudget, recebeuEmailHoje } = require('./emailBudget');
 const {
   buildAccessPausedEmail,
   buildPlanEndingSoonEmail,
@@ -166,7 +167,7 @@ async function runPlanNotices(now = new Date()) {
   }
 
   const perfisQuery = new URLSearchParams();
-  perfisQuery.append('select', `id,email,plan_expires_at,last_payment_id,${CAMPO_SEMESTRAL_VENCENDO},${CAMPO_SEMESTRAL_TERMINOU},${CAMPO_ACESSO_PAUSADO}`);
+  perfisQuery.append('select', `id,email,plan_expires_at,last_payment_id,reengagement_sent_at,trial_reminder_2d_sent_at,${CAMPO_SEMESTRAL_VENCENDO},${CAMPO_SEMESTRAL_TERMINOU},${CAMPO_ACESSO_PAUSADO}`);
   perfisQuery.append('access_source', 'eq.paid');
   perfisQuery.append('current_plan', `not.in.(${PLANOS_CORTESIA.join(',')})`);
   perfisQuery.append('plan_expires_at', `gte.${new Date(now.getTime() - AVISO_DEPOIS_MS).toISOString()}`);
@@ -194,8 +195,18 @@ async function runPlanNotices(now = new Date()) {
   ]);
 
   const resultados = [];
+  const orcamento = await getRemainingDailyBudget(now);
+  let restante = orcamento.restante;
+  let adiados = 0;
 
   for (const perfil of perfis) {
+    // Mesma regra das outras rotinas: sem orçamento, ou já tendo recebido outro
+    // e-mail hoje, fica para a próxima rodada (nada é marcado).
+    if (restante <= 0 || recebeuEmailHoje(perfil, now)) {
+      adiados += 1;
+      continue;
+    }
+
     const lastPayment = pagamentos.find((pagamento) => pagamento.payment_id === perfil.last_payment_id) || null;
     const subscription = lastPayment?.preapproval_id
       ? assinaturas.find((assinatura) => assinatura.preapproval_id === lastPayment.preapproval_id) || null
@@ -221,6 +232,7 @@ async function runPlanNotices(now = new Date()) {
     const envio = await sendEmail({ to: perfil.email, subject: email.subject, html: email.html });
 
     if (envio.ok) {
+      restante -= 1;
       await markNoticeSent(perfil, decisao.field).catch(() => null);
     }
 
@@ -232,6 +244,8 @@ async function runPlanNotices(now = new Date()) {
     candidatos: perfis.length,
     enviados: resultados.filter((resultado) => resultado.ok).length,
     falhas: resultados.filter((resultado) => !resultado.ok).length,
+    adiadosParaAmanha: adiados,
+    orcamentoDoDia: orcamento,
     resultados,
   };
 }

@@ -109,6 +109,10 @@ test('runTrialReminders com Supabase indisponível retorna resumo vazio e não l
     expiredFound: 0,
     endingSoonNotified: 0,
     expiredNotified: 0,
+    adiadosParaAmanha: 0,
+    // Sem banco não dá para contar os envios do dia, e aí o orçamento fecha em
+    // zero: melhor adiar do que arriscar a cota do cadastro.
+    orcamentoDoDia: { orcamento: 60, enviados: null, restante: 0 },
     errors: [],
     results: [],
   });

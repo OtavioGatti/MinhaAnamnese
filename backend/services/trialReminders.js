@@ -9,6 +9,7 @@
 // para quem simplesmente não volta ao app.
 
 const { sendEmail } = require('./emailNotifications');
+const { getRemainingDailyBudget, recebeuEmailHoje } = require('./emailBudget');
 const { buildEmailHtml } = require('./emailTemplates');
 
 const DEFAULT_DAYS_BEFORE = 2;
@@ -50,7 +51,7 @@ function formatDateBR(value) {
 async function fetchProfiles(filterPairs) {
   const { url, serviceRoleKey } = getProfilesAdminConfig();
   const query = new URLSearchParams();
-  query.append('select', 'id,email,plan_expires_at');
+  query.append('select', 'id,email,plan_expires_at,reengagement_sent_at,trial_reminder_2d_sent_at');
 
   for (const [key, value] of filterPairs) {
     query.append(key, value);
@@ -194,16 +195,37 @@ async function processReminder(profile, kind, field) {
  * Processa as duas filas sequencialmente (evita rajada no provedor de e-mail
  * em lotes grandes). Retorna um resumo + os resultados individuais.
  */
-async function runTrialReminders() {
+async function runTrialReminders(now = new Date()) {
   const { endingSoon, expired } = await getDueTrialReminders();
   const results = [];
+  const orcamento = await getRemainingDailyBudget(now);
+  let restante = orcamento.restante;
+  let adiados = 0;
 
-  for (const profile of endingSoon) {
-    results.push(await processReminder(profile, 'ending_soon', FIELD_ENDING_SOON));
-  }
+  // "Terminou" primeiro: a pessoa acabou de perder o acesso, e foi esse e-mail
+  // que produziu a primeira assinatura (18/09/2026). "Termina em breve" pode
+  // esperar a rodada seguinte sem perder o sentido.
+  const filas = [
+    ['expired', expired, FIELD_EXPIRED],
+    ['ending_soon', endingSoon, FIELD_ENDING_SOON],
+  ];
 
-  for (const profile of expired) {
-    results.push(await processReminder(profile, 'expired', FIELD_EXPIRED));
+  for (const [kind, fila, field] of filas) {
+    for (const profile of fila) {
+      // Quem já recebeu outro e-mail nosso hoje espera: nada é marcado, então
+      // ele entra na rodada de amanhã.
+      if (restante <= 0 || recebeuEmailHoje(profile, now)) {
+        adiados += 1;
+        continue;
+      }
+
+      const resultado = await processReminder(profile, kind, field);
+      results.push(resultado);
+
+      if (resultado.ok) {
+        restante -= 1;
+      }
+    }
   }
 
   return {
@@ -211,6 +233,8 @@ async function runTrialReminders() {
     expiredFound: expired.length,
     endingSoonNotified: results.filter((r) => r.kind === 'ending_soon' && r.ok).length,
     expiredNotified: results.filter((r) => r.kind === 'expired' && r.ok).length,
+    adiadosParaAmanha: adiados,
+    orcamentoDoDia: orcamento,
     errors: results.filter((r) => !r.ok),
     results,
   };

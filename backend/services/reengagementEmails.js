@@ -13,6 +13,7 @@
 
 const { buildEmailHtml } = require('./emailTemplates');
 const { isEmailConfigured, sendEmail } = require('./emailNotifications');
+const { getRemainingDailyBudget } = require('./emailBudget');
 const { BILLING_PLANS, getDiscountedPlanAmount, normalizeDiscountRate } = require('../config/billingPlans');
 
 const FUSO = 'America/Sao_Paulo';
@@ -236,6 +237,15 @@ async function runReengagement({
     return { candidatos: 0, porGrupo: {}, enviados: 0, dryRun, resultados: [] };
   }
 
+  // Respeita o orçamento do dia: o limite do provedor é compartilhado com os
+  // e-mails de confirmação de cadastro, que não podem faltar.
+  const orcamento = dryRun ? { restante: limit } : await getRemainingDailyBudget(now);
+  const teto = Math.min(limit, orcamento.restante);
+
+  if (teto <= 0) {
+    return { dryRun, candidatos: candidatos.length, pendente: 'orcamento_diario_esgotado', orcamentoDoDia: orcamento };
+  }
+
   const ids = candidatos.map((perfil) => perfil.id).join(',');
   const [logs, organizacoes, afiliados] = await Promise.all([
     getRows(`usage_logs?user_id=in.(${ids})&select=user_id,action`),
@@ -255,7 +265,7 @@ async function runReengagement({
   const porGrupo = { a: 0, b: 0, c: 0 };
   const resultados = [];
 
-  for (const perfil of candidatos.slice(0, limit)) {
+  for (const perfil of candidatos.slice(0, teto)) {
     const usage = { organizou: organizou.has(perfil.id), acoes: acoesPorUsuario.get(perfil.id) || [] };
     const grupo = classifyReengagementGroup(usage);
     porGrupo[grupo] += 1;
@@ -289,7 +299,8 @@ async function runReengagement({
   return {
     dryRun,
     candidatos: candidatos.length,
-    considerados: Math.min(candidatos.length, limit),
+    considerados: Math.min(candidatos.length, teto),
+    orcamentoDoDia: orcamento,
     porGrupo,
     enviados: resultados.filter((r) => r.enviado).length,
     falhas: resultados.filter((r) => !r.enviado && !dryRun).length,
