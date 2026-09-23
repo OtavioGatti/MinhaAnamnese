@@ -104,6 +104,71 @@ test('o Pro só conta como liberado quando o servidor diz que é pago (teste nã
   assert.equal(isPaidAccessConfirmed(null), false);
 });
 
+// --- semestral na página --------------------------------------------------------
+
+test('o semestral na página tem chave própria e o teste manual liga os dois', async () => {
+  const { resolveSemiannualPageCheckoutEnabled } = await import(MODULO);
+
+  assert.equal(resolveSemiannualPageCheckoutEnabled({ flag: 'on', publicKey: 'APP_USR-x' }), true);
+  assert.equal(resolveSemiannualPageCheckoutEnabled({ flag: '', publicKey: 'APP_USR-x' }), false);
+  assert.equal(resolveSemiannualPageCheckoutEnabled({ flag: '', publicKey: 'APP_USR-x', stored: '1' }), true);
+  assert.equal(resolveSemiannualPageCheckoutEnabled({ flag: 'on', publicKey: '' }), false, 'sem a chave da aplicação nova, nunca');
+});
+
+test('o formulário do Mercado Pago vira o que o servidor valida (cartão e Pix)', async () => {
+  const { toOrderPaymentInput } = await import(MODULO);
+
+  assert.deepEqual(toOrderPaymentInput({
+    selectedPaymentMethod: 'credit_card',
+    formData: { token: 'tok123abc', payment_method_id: 'master', installments: 1, issuer_id: '24', payer: { email: 'a@b.com', identification: { type: 'CPF', number: '12345678909' } } },
+  }), {
+    paymentMethodId: 'master',
+    paymentTypeId: 'credit_card',
+    token: 'tok123abc',
+    installments: 1,
+    identification: { type: 'CPF', number: '12345678909' },
+  });
+
+  assert.deepEqual(
+    toOrderPaymentInput({ selectedPaymentMethod: 'bank_transfer', formData: { payment_method_id: 'pix', payer: { email: 'a@b.com' } } }),
+    { paymentMethodId: 'pix', identification: null },
+  );
+});
+
+test('resposta do semestral: aprovado, Pix, em análise e recusa', async () => {
+  const { describeSemiannualResult } = await import(MODULO);
+
+  assert.deepEqual(
+    describeSemiannualResult({ success: true, status: 200, data: { status: 'approved', order_id: 'ORD1', reconciled: true } }),
+    { kind: 'aprovado', orderId: 'ORD1', confirmado: true },
+  );
+  assert.equal(describeSemiannualResult({ success: true, status: 200, data: { status: 'approved', order_id: 'ORD1' } }).confirmado, false);
+
+  const pix = describeSemiannualResult({ success: true, status: 200, data: { status: 'pending', order_id: 'ORD2', pix: { qr_code: '000201', qr_code_base64: 'x' } } });
+  assert.equal(pix.kind, 'pix');
+  assert.equal(pix.pix.qr_code, '000201');
+
+  assert.equal(describeSemiannualResult({ success: true, status: 200, data: { status: 'in_process', order_id: 'ORD3' } }).kind, 'em_analise');
+
+  const recusa = describeSemiannualResult({ success: false, status: 422, code: 'CARD_DECLINED', error: 'O cartão não tinha limite.', detalhe: 'insufficient_amount' });
+  assert.equal(recusa.kind, 'recusada');
+  assert.equal(recusa.detail, 'insufficient_amount');
+
+  assert.equal(describeSemiannualResult({ success: false, status: 503, code: 'CARD_CHECKOUT_DISABLED' }).kind, 'checkout_antigo');
+});
+
+test('a tela do Pix só para quando o Pro foi liberado de verdade ou o pedido encerrou', async () => {
+  const { describeOrderStatus, PIX_POLL_INTERVAL_MS } = await import(MODULO);
+
+  assert.equal(describeOrderStatus({ success: true, data: { status: 'approved', reconciled: true } }), 'pago');
+  assert.equal(describeOrderStatus({ success: true, data: { status: 'processed', reconciled: false } }), 'aguardando', 'pago mas ainda não processado aqui');
+  assert.equal(describeOrderStatus({ success: true, data: { status: 'action_required', reconciled: false } }), 'aguardando');
+  assert.equal(describeOrderStatus({ success: true, data: { status: 'expired', reconciled: false } }), 'encerrado');
+  assert.equal(describeOrderStatus(null), 'aguardando', 'falha de rede não encerra a espera');
+  // Limite da rota: 120 consultas a cada 10 min.
+  assert.ok((10 * 60 * 1000) / PIX_POLL_INTERVAL_MS <= 120);
+});
+
 test('a recusa leva a resposta original do Mercado Pago para o evento do painel', async () => {
   const { describeCardCheckoutResult } = await import(MODULO);
   const desfecho = describeCardCheckoutResult({

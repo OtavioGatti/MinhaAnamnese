@@ -882,3 +882,37 @@ test('checkout separa o cartão na página do caminho pelo Mercado Pago, com o m
   assert.equal(resumo.esperaCartao.amostras, 4);
   assert.equal(resumo.espera.amostras, 1, 'o tempo até o Mercado Pago continua separado');
 });
+
+// O semestral na página usa os mesmos eventos do mensal: o plano separa.
+test('checkout separa o semestral na página do mensal com cartão', () => {
+  const agora = new Date('2026-09-24T22:00:00Z');
+  const hora = '2026-09-24T21:00:00Z';
+  const resultado = (plan_key, resultadoDoEvento, user_id = 'u1') => ({
+    event_name: 'checkout_cartao_resultado', user_id, created_at: hora,
+    metadata: { plan_key, resultado: resultadoDoEvento, espera_ms: 1200 },
+  });
+
+  const resumo = summarizeCheckout({
+    events: [
+      { event_name: 'upgrade_click', user_id: 'u1', metadata: { via: 'cartao', plan_key: 'monthly' }, created_at: hora },
+      { event_name: 'upgrade_click', user_id: 'u2', metadata: { via: 'pagina', plan_key: 'semiannual' }, created_at: hora },
+      resultado('monthly', 'autorizada'),
+      resultado('semiannual', 'pix', 'u2'),
+      resultado('semiannual', 'aprovado', 'u2'),
+      { event_name: 'checkout_cartao_confirmado', user_id: 'u1', metadata: { plan_key: 'monthly' }, created_at: hora },
+      { event_name: 'checkout_cartao_confirmado', user_id: 'u2', metadata: { plan_key: 'semiannual' }, created_at: hora },
+    ],
+    now: agora,
+  });
+
+  const porId = Object.fromEntries(resumo.etapas.map((etapa) => [etapa.id, etapa]));
+
+  assert.equal(porId.cartaoEnviou.vezes, 1, 'o semestral não entra no bloco do mensal');
+  assert.equal(porId.cartaoConfirmado.vezes, 1);
+  assert.equal(porId.semestralAbriu.vezes, 1);
+  assert.equal(porId.semestralEnviou.vezes, 2);
+  assert.equal(porId.semestralPix.vezes, 1);
+  assert.equal(porId.semestralCartao.vezes, 1);
+  assert.equal(porId.semestralConfirmado.pessoas, 1);
+  assert.equal(porId.semestralPix.grupo, 'semestral_pagina');
+});

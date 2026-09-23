@@ -14,6 +14,7 @@ const apiRoutes = {
   '/api/analytics': require('./analytics'),
   '/api/create-checkout': require('./create-checkout'),
   '/api/reconcile-subscription': require('./reconcile-subscription'),
+  '/api/payment-status': require('./payment-status'),
   '/api/cancel-subscription': require('./cancel-subscription'),
   '/api/prescription-guides': require('./prescription-guides'),
   '/api/cid10': require('./cid10'),

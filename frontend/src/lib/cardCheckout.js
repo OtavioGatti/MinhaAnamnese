@@ -135,3 +135,77 @@ export function estimateMonthlyCharge(price, discountRate) {
 export function isPaidAccessConfirmed(profile) {
   return Boolean(profile?.access_state?.isPaidProAccess);
 }
+
+// --- semestral na nossa página (cartão à vista ou Pix) -------------------------
+//
+// Formulário: Payment Brick do Mercado Pago, da aplicação só do semestral
+// (Orders API). O servidor cria o pedido; aqui só se traduz o que o formulário
+// devolve e o que o servidor responde.
+
+// Mesma regra do mensal, com chave própria: dá para ligar um sem o outro. O
+// teste manual (?checkout_cartao=1) liga os dois neste navegador.
+export function resolveSemiannualPageCheckoutEnabled({ flag, publicKey, stored = null }) {
+  return Boolean(publicKey) && (flag === 'on' || stored === '1');
+}
+
+/** Do formato do Payment Brick para o que o servidor valida. */
+export function toOrderPaymentInput({ selectedPaymentMethod, formData } = {}) {
+  const identification = formData?.payer?.identification || null;
+
+  if (selectedPaymentMethod === 'bank_transfer' || formData?.payment_method_id === 'pix') {
+    return { paymentMethodId: 'pix', identification };
+  }
+
+  return {
+    paymentMethodId: formData?.payment_method_id || '',
+    paymentTypeId: selectedPaymentMethod || '',
+    token: formData?.token || '',
+    installments: Number(formData?.installments) || 1,
+    identification,
+  };
+}
+
+/**
+ * O que fazer com a resposta do servidor ao pagar o semestral.
+ * - aprovado: cartão aprovado; `confirmado` diz se o Pro já foi liberado.
+ * - pix: mostrar o QR Code e esperar o pagamento.
+ * - em_analise: cartão em análise do banco; confirmar em seguida.
+ * - checkout_antigo / recusada / erro: como no mensal.
+ */
+export function describeSemiannualResult(response) {
+  const data = response?.data;
+
+  if (response?.success && data?.order_id) {
+    if (data.status === 'approved') {
+      return { kind: 'aprovado', orderId: data.order_id, confirmado: Boolean(data.reconciled) };
+    }
+
+    if (data.status === 'pending' && data.pix?.qr_code) {
+      return { kind: 'pix', orderId: data.order_id, pix: data.pix };
+    }
+
+    return { kind: 'em_analise', orderId: data.order_id };
+  }
+
+  const comum = describeCardCheckoutResult(response);
+  return comum.kind === 'autorizada' ? { kind: 'erro', message: 'Resposta inesperada do servidor. Nenhuma cobrança foi confirmada.' } : comum;
+}
+
+// A tela do Pix pergunta ao servidor a cada 6 s enquanto o código vale: cabe
+// no limite da rota (120 consultas a cada 10 min) com folga.
+export const PIX_POLL_INTERVAL_MS = 6000;
+
+/** Situação do pedido na consulta da tela do Pix. */
+export function describeOrderStatus(response) {
+  const status = response?.data?.status;
+
+  if (status === 'approved' && response.data.reconciled) {
+    return 'pago';
+  }
+
+  if (['expired', 'canceled', 'cancelled', 'failed', 'refunded'].includes(status)) {
+    return 'encerrado';
+  }
+
+  return 'aguardando';
+}

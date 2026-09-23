@@ -517,6 +517,29 @@ async function resolveAffiliateForCheckout({ affiliateCode, affiliateCodeSource,
   return affiliate;
 }
 
+// Mesma escolha do checkout, só lendo: para o webhook reconstruir o afiliado
+// de um pagamento que não traz metadata (semestral pela Orders API). O checkout
+// já gravou a indicação na conta antes de criar o pedido. Falha → null (o
+// pagamento fica sem vínculo e aparece no alerta do painel, em vez de liberar
+// com o afiliado errado).
+async function resolveStoredAffiliateForBuyer(buyerUserId) {
+  try {
+    const [buyerAffiliate, storedAffiliate] = await Promise.all([
+      getAffiliateByUserId(buyerUserId),
+      getStoredReferralAffiliate(buyerUserId),
+    ]);
+
+    return pickCheckoutAffiliate({
+      storedAffiliate,
+      requestedAffiliate: null,
+      buyerUserId,
+      buyerIsAffiliate: Boolean(buyerAffiliate),
+    }).affiliate || null;
+  } catch (_error) {
+    return null;
+  }
+}
+
 function emptyAffiliateStats() {
   return {
     totalCommission: 0,
@@ -876,6 +899,7 @@ module.exports = {
   resolveAffiliateCommissionEligibility,
   resolveCommissionLimitDecision,
   resolveAffiliateForCheckout,
+  resolveStoredAffiliateForBuyer,
   summarizeAffiliateCommissions,
   // indicação salva na conta
   buildReferralClaimRequest,

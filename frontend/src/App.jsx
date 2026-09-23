@@ -6,14 +6,21 @@ import {
   CARD_CONFIRMATION_DELAYS_MS,
   describeCardCheckoutResult,
   estimateMonthlyCharge,
+  PIX_POLL_INTERVAL_MS,
+  describeOrderStatus,
+  describeSemiannualResult,
   isPaidAccessConfirmed,
   resolveCardCheckoutEnabled,
+  resolveSemiannualPageCheckoutEnabled,
+  toOrderPaymentInput,
 } from './lib/cardCheckout';
 import {
   API_BASE_URL,
   CARD_CHECKOUT_FLAG,
   DIAGNOSTIC_HYPOTHESES_ENABLED,
+  MERCADO_PAGO_ORDERS_PUBLIC_KEY,
   MERCADO_PAGO_PUBLIC_KEY,
+  SEMIANNUAL_PAGE_CHECKOUT_FLAG,
 } from './config';
 import DiagnosticHypothesesPanel from './components/DiagnosticHypothesesPanel';
 import FocusedClinicalReview from './components/FocusedClinicalReview';
@@ -48,6 +55,7 @@ import useDiagnosticHypotheses from './hooks/useDiagnosticHypotheses';
 // reduzir o bundle inicial do workspace clínico.
 const AffiliatePage = lazy(() => import('./components/AffiliatePage'));
 const CardCheckoutModal = lazy(() => import('./components/CardCheckoutModal'));
+const SemiannualCheckoutModal = lazy(() => import('./components/SemiannualCheckoutModal'));
 const ClinicalDrugPage = lazy(() => import('./components/ClinicalDrugPage'));
 const ClinicalToolsPage = lazy(() => import('./components/ClinicalToolsPage'));
 const EvolutionPage = lazy(() => import('./components/EvolutionPage'));
@@ -1047,7 +1055,19 @@ function App() {
     stage: 'formulario',
     message: '',
   });
-  const [cardCheckoutEnabled] = useState(() => {
+  // Semestral pago aqui (cartão à vista ou Pix). Etapas: formulario → enviando
+  // → pix | em_analise → confirmado (ou encerrado, se o Pix expirar).
+  const [semiannualState, setSemiannualState] = useState({
+    open: false,
+    origin: 'home',
+    stage: 'formulario',
+    message: '',
+    pix: null,
+  });
+  // Cada abertura do semestral é uma rodada: fechar o modal encerra as
+  // consultas ao servidor da rodada anterior.
+  const semiannualRoundRef = useRef(0);
+  const [checkoutNaPagina] = useState(() => {
     let guardado = null;
 
     try {
@@ -1073,7 +1093,14 @@ function App() {
       // Sem armazenamento, vale só para esta visita.
     }
 
-    return decisao.enabled;
+    return {
+      mensal: decisao.enabled,
+      semestral: resolveSemiannualPageCheckoutEnabled({
+        flag: SEMIANNUAL_PAGE_CHECKOUT_FLAG,
+        publicKey: MERCADO_PAGO_ORDERS_PUBLIC_KEY,
+        stored: decisao.stored,
+      }),
+    };
   });
   const [checkoutSuccessBannerVisible, setCheckoutSuccessBannerVisible] = useState(false);
   const [emailConfirmedBanner, setEmailConfirmedBanner] = useState(null);
@@ -2331,8 +2358,8 @@ function App() {
     }));
 
     // O mensal (recorrente) é o que travava na página do Mercado Pago, que
-    // exige conta MP. O semestral segue por lá: aceita Pix e não pede conta.
-    if (planKey === 'monthly' && cardCheckoutEnabled && user?.id && user?.email) {
+    // exige conta MP.
+    if (planKey === 'monthly' && checkoutNaPagina.mensal && user?.id && user?.email) {
       trackEvent('upgrade_click', {
         template: templateSelecionado || null,
         text_length: resultado.trim().length || texto.trim().length,
@@ -2345,7 +2372,148 @@ function App() {
       return;
     }
 
+    // Semestral aqui mesmo (cartão à vista ou Pix), sem ir ao Mercado Pago.
+    if (planKey === 'semiannual' && checkoutNaPagina.semestral && user?.id && user?.email) {
+      trackEvent('upgrade_click', {
+        template: templateSelecionado || null,
+        text_length: resultado.trim().length || texto.trim().length,
+        score: qualityScore.score,
+        is_pro: isPro,
+        plan_key: planKey,
+        via: 'pagina',
+      });
+      semiannualRoundRef.current += 1;
+      setSemiannualState({ open: true, origin, stage: 'formulario', message: '', pix: null });
+      return;
+    }
+
     await startCheckoutFlow(origin, planKey);
+  };
+
+  // Pergunta ao servidor pelo pedido do semestral até ele ser pago, encerrar
+  // ou o prazo acabar. Para sozinho se o modal fechar ou abrir de novo.
+  const acompanharPedidoSemestral = async (orderId, { intervaloMs, ateMs }) => {
+    const rodada = semiannualRoundRef.current;
+
+    while (Date.now() < ateMs && semiannualRoundRef.current === rodada) {
+      await new Promise((resolve) => setTimeout(resolve, intervaloMs));
+
+      if (semiannualRoundRef.current !== rodada) {
+        return;
+      }
+
+      const resposta = await api.post('/payment-status', { orderId }).catch(() => null);
+      const situacao = describeOrderStatus(resposta);
+
+      if (situacao === 'pago') {
+        const profileResponse = await api.get('/profile').catch(() => null);
+
+        if (profileResponse?.success && profileResponse.data) {
+          setProfile(profileResponse.data);
+        }
+
+        setSemiannualState((current) => ({ ...current, stage: 'confirmado' }));
+        trackEvent('checkout_cartao_confirmado', { plan_key: 'semiannual' });
+        return;
+      }
+
+      if (situacao === 'encerrado') {
+        setSemiannualState((current) => ({ ...current, stage: 'encerrado' }));
+        return;
+      }
+    }
+  };
+
+  const handleSubmitSemiannual = async (dados) => {
+    const origin = semiannualState.origin || 'home';
+    setSemiannualState((current) => ({ ...current, stage: 'enviando', message: '' }));
+    const inicio = performance.now();
+
+    const response = await api.post('/create-checkout', {
+      planKey: 'semiannual',
+      payment: toOrderPaymentInput(dados),
+      affiliateCode: readAffiliateReferralCode() || null,
+      affiliateCodeSource: readAffiliateReferralSource(),
+      sourceUrl: window.location.href,
+    });
+    const desfecho = describeSemiannualResult(response);
+
+    // Só o tipo do resultado e o código do motivo: nada do cartão.
+    trackEvent('checkout_cartao_resultado', {
+      plan_key: 'semiannual',
+      origin,
+      resultado: desfecho.kind,
+      motivo: desfecho.code || null,
+      detalhe: desfecho.detail || null,
+      espera_ms: Math.round(performance.now() - inicio),
+    });
+
+    if (desfecho.kind === 'aprovado' && desfecho.confirmado) {
+      const profileResponse = await api.get('/profile').catch(() => null);
+
+      if (profileResponse?.success && profileResponse.data) {
+        setProfile(profileResponse.data);
+      }
+
+      setSemiannualState((current) => ({ ...current, stage: 'confirmado' }));
+      trackEvent('checkout_cartao_confirmado', { plan_key: 'semiannual' });
+      return desfecho;
+    }
+
+    // Aprovado mas ainda não confirmado aqui, ou cartão em análise do banco:
+    // confirma nos próximos minutos; o webhook e o e-mail cobrem o resto.
+    if (desfecho.kind === 'aprovado' || desfecho.kind === 'em_analise') {
+      setSemiannualState((current) => ({ ...current, stage: 'em_analise' }));
+      acompanharPedidoSemestral(desfecho.orderId, { intervaloMs: 5000, ateMs: Date.now() + 3 * 60 * 1000 });
+      return desfecho;
+    }
+
+    if (desfecho.kind === 'pix') {
+      setSemiannualState((current) => ({ ...current, stage: 'pix', pix: desfecho.pix }));
+      const vence = Date.parse(desfecho.pix.expires_at || '');
+      acompanharPedidoSemestral(desfecho.orderId, {
+        intervaloMs: PIX_POLL_INTERVAL_MS,
+        ateMs: Number.isFinite(vence) ? vence + 60 * 1000 : Date.now() + 31 * 60 * 1000,
+      });
+      return desfecho;
+    }
+
+    // Servidor com o caminho novo desligado: segue pelo Mercado Pago como antes.
+    if (desfecho.kind === 'checkout_antigo') {
+      setSemiannualState((current) => ({ ...current, open: false }));
+      startCheckoutFlow(origin, 'semiannual');
+      return desfecho;
+    }
+
+    setSemiannualState((current) => ({ ...current, stage: 'formulario', message: desfecho.message }));
+    return desfecho;
+  };
+
+  const handleCloseSemiannual = () => {
+    if (semiannualState.stage === 'enviando') {
+      return;
+    }
+
+    semiannualRoundRef.current += 1;
+
+    if (semiannualState.stage === 'confirmado') {
+      setCheckoutSuccessBannerVisible(true);
+    }
+
+    setSemiannualState((current) => ({ ...current, open: false }));
+  };
+
+  const handleSemiannualFallback = () => {
+    const origin = semiannualState.origin || 'home';
+    semiannualRoundRef.current += 1;
+    setSemiannualState((current) => ({ ...current, open: false }));
+    trackEvent('checkout_cartao_resultado', { plan_key: 'semiannual', origin, resultado: 'formulario_nao_carregou' });
+    startCheckoutFlow(origin, 'semiannual');
+  };
+
+  const handleRestartSemiannual = () => {
+    semiannualRoundRef.current += 1;
+    setSemiannualState((current) => ({ ...current, stage: 'formulario', message: '', pix: null }));
   };
 
   // A primeira mensalidade sai pouco depois de a assinatura nascer autorizada.
@@ -4074,6 +4242,25 @@ function App() {
             onSubmitCard={handleSubmitCard}
             onClose={handleCloseCardCheckout}
             onFallback={handleCardCheckoutFallback}
+          />
+        </Suspense>
+      ) : null}
+
+      {semiannualState.open ? (
+        <Suspense fallback={null}>
+          <SemiannualCheckoutModal
+            open
+            publicKey={MERCADO_PAGO_ORDERS_PUBLIC_KEY}
+            email={user?.email || ''}
+            amount={estimateMonthlyCharge(BILLING_PLANS.semiannual.price, referralDiscount?.rate)}
+            listPrice={BILLING_PLANS.semiannual.price}
+            stage={semiannualState.stage}
+            message={semiannualState.message}
+            pix={semiannualState.pix}
+            onSubmitPayment={handleSubmitSemiannual}
+            onClose={handleCloseSemiannual}
+            onFallback={handleSemiannualFallback}
+            onRestart={handleRestartSemiannual}
           />
         </Suspense>
       ) : null}

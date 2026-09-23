@@ -11,3 +11,7 @@ export const DIAGNOSTIC_HYPOTHESES_ENABLED =
 // ?checkout_cartao=1. A chave pública do Mercado Pago é pública por natureza.
 export const MERCADO_PAGO_PUBLIC_KEY = import.meta.env.VITE_MERCADO_PAGO_PUBLIC_KEY || '';
 export const CARD_CHECKOUT_FLAG = String(import.meta.env.VITE_CARD_CHECKOUT || '').toLowerCase();
+// Semestral pago aqui (cartão à vista ou Pix), pela aplicação do Mercado Pago
+// só do semestral. "on" liga para todos; ?checkout_cartao=1 liga neste navegador.
+export const MERCADO_PAGO_ORDERS_PUBLIC_KEY = import.meta.env.VITE_MERCADO_PAGO_ORDERS_PUBLIC_KEY || '';
+export const SEMIANNUAL_PAGE_CHECKOUT_FLAG = String(import.meta.env.VITE_SEMIANNUAL_PAGE_CHECKOUT || '').toLowerCase();

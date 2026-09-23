@@ -1,3 +1,4 @@
+const crypto = require('crypto');
 const MERCADO_PAGO_PREFERENCES_URL = 'https://api.mercadopago.com/checkout/preferences';
 const MERCADO_PAGO_PREAPPROVAL_URL = 'https://api.mercadopago.com/preapproval';
 const BILLING_VERSION = 'v2';
@@ -17,10 +18,20 @@ const {
 const {
   describeCardSubscriptionFailure,
   isCardCheckoutEnabled,
+  isSemiannualPageCheckoutEnabled,
   normalizeCardToken,
 } = require('../services/cardCheckout');
+const {
+  buildOrderPayload,
+  createOrder,
+  describeOrderResponse,
+  isOrdersConfigured,
+  normalizeOrderPaymentInput,
+} = require('../services/mercadoPagoOrders');
+const { describeDeclineReason } = require('../utils/paymentDeclineReasons');
 const { consumeRateLimit } = require('../utils/rateLimit');
 const { resolveSupabaseUser } = require('../utils/supabaseAuth');
+const { reconcileOrderById } = require('./webhook/mercadopago');
 
 // O caminho do cartão faz uma cobrança de validação: é alvo de quem testa
 // cartão roubado. Limite por conta e por IP (várias contas na mesma máquina).
@@ -169,6 +180,28 @@ function getCheckoutBaseUrl(req) {
   return baseUrl;
 }
 
+// Metadata do pagamento avulso. É por ela que o webhook reconhece o plano
+// (product/plan_key), o dono e o desconto do afiliado — o checkout do Mercado
+// Pago e o pagamento criado na nossa página mandam exatamente a mesma.
+function buildOneTimeMetadata({ email, userId, plan, affiliate, discountRate, chargeAmount }) {
+  return {
+    userId,
+    user_id: userId,
+    email,
+    plan: 'pro',
+    product: plan.product,
+    plan_key: plan.key,
+    plan_days: plan.days,
+    billing_kind: plan.billingKind,
+    billing_version: BILLING_VERSION,
+    affiliate_id: affiliate?.id || null,
+    affiliate_code: affiliate?.code || null,
+    discount_rate: discountRate > 0 ? discountRate : null,
+    list_price: plan.price,
+    charged_amount: chargeAmount,
+  };
+}
+
 function buildOneTimeCheckoutPayload({ baseUrl, webhookUrl, email, userId, plan, affiliate, discountRate, chargeAmount }) {
   return {
     items: [
@@ -182,22 +215,7 @@ function buildOneTimeCheckoutPayload({ baseUrl, webhookUrl, email, userId, plan,
     payer: {
       email,
     },
-    metadata: {
-      userId,
-      user_id: userId,
-      email,
-      plan: 'pro',
-      product: plan.product,
-      plan_key: plan.key,
-      plan_days: plan.days,
-      billing_kind: plan.billingKind,
-      billing_version: BILLING_VERSION,
-      affiliate_id: affiliate?.id || null,
-      affiliate_code: affiliate?.code || null,
-      discount_rate: discountRate > 0 ? discountRate : null,
-      list_price: plan.price,
-      charged_amount: chargeAmount,
-    },
+    metadata: buildOneTimeMetadata({ email, userId, plan, affiliate, discountRate, chargeAmount }),
     external_reference: userId,
     notification_url: webhookUrl,
     back_urls: {
@@ -231,12 +249,13 @@ function buildSubscriptionPayload({ baseUrl, webhookUrl, email, userId, plan, ch
   };
 }
 
-async function postMercadoPagoJson(url, payload, userId, label) {
+async function postMercadoPagoJson(url, payload, userId, label, extraHeaders = {}) {
   const response = await fetch(url, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${getMercadoPagoAccessToken()}`,
+      ...extraHeaders,
     },
     body: JSON.stringify(payload),
   });
@@ -307,6 +326,64 @@ function getInitPointOrThrow(providerResponse, userId, label) {
   return checkoutUrl;
 }
 
+// Limites de tentativa do pagamento na página (mensal e semestral dividem os
+// mesmos: quem testa cartão roubado não escolhe plano).
+async function consumeCardRateLimits({ req, userId }) {
+  for (const regra of CARD_RATE_LIMITS) {
+    const rateLimit = await consumeRateLimit({
+      req,
+      scope: regra.scope,
+      userId: regra.porConta ? userId : null,
+      limit: regra.limit,
+      windowMs: regra.windowMs,
+    });
+
+    if (!rateLimit.allowed) {
+      return {
+        statusCode: 429,
+        body: {
+          success: false,
+          error: 'Muitas tentativas de pagamento em sequência. Aguarde alguns minutos e tente de novo.',
+        },
+        retryAfterSeconds: rateLimit.retryAfterSeconds,
+      };
+    }
+  }
+
+  return null;
+}
+
+// Travas do semestral na página. Sem checagem de assinatura ativa: é
+// pagamento avulso, como no checkout do Mercado Pago.
+async function checkOnPagePaymentRequest({ req, userId, plan, input }) {
+  if (!isSemiannualPageCheckoutEnabled() || !isOrdersConfigured()) {
+    return {
+      statusCode: 503,
+      body: {
+        success: false,
+        code: 'CARD_CHECKOUT_DISABLED',
+        error: 'Pagamento nesta página está indisponível no momento.',
+      },
+    };
+  }
+
+  if (plan.billingKind !== 'one_time') {
+    return {
+      statusCode: 400,
+      body: { success: false, error: 'Este pagamento vale só para o plano semestral.' },
+    };
+  }
+
+  if (!input) {
+    return {
+      statusCode: 400,
+      body: { success: false, code: 'CARD_TOKEN_INVALID', error: 'Os dados do pagamento expiraram. Preencha de novo.' },
+    };
+  }
+
+  return consumeCardRateLimits({ req, userId });
+}
+
 // Travas do pagamento com cartão, antes de qualquer chamada ao Mercado Pago.
 // Devolve a resposta de recusa, ou null para seguir.
 async function checkCardCheckoutRequest({ req, userId, plan, cardTokenId }) {
@@ -337,25 +414,10 @@ async function checkCardCheckoutRequest({ req, userId, plan, cardTokenId }) {
     };
   }
 
-  for (const regra of CARD_RATE_LIMITS) {
-    const rateLimit = await consumeRateLimit({
-      req,
-      scope: regra.scope,
-      userId: regra.porConta ? userId : null,
-      limit: regra.limit,
-      windowMs: regra.windowMs,
-    });
+  const limite = await consumeCardRateLimits({ req, userId });
 
-    if (!rateLimit.allowed) {
-      return {
-        statusCode: 429,
-        body: {
-          success: false,
-          error: 'Muitas tentativas de pagamento em sequência. Aguarde alguns minutos e tente de novo.',
-        },
-        retryAfterSeconds: rateLimit.retryAfterSeconds,
-      };
-    }
+  if (limite) {
+    return limite;
   }
 
   // A assinatura com cartão nasce autorizada: uma segunda cobraria o mesmo
@@ -427,6 +489,22 @@ module.exports = async function handler(req, res) {
 
     if (pagamentoComCartao) {
       const recusa = await checkCardCheckoutRequest({ req, userId, plan, cardTokenId });
+
+      if (recusa) {
+        if (recusa.retryAfterSeconds && typeof res.setHeader === 'function') {
+          res.setHeader('Retry-After', String(recusa.retryAfterSeconds));
+        }
+
+        return res.status(recusa.statusCode).json(recusa.body);
+      }
+    }
+
+    // Semestral na nossa página (cartão ou Pix), em vez do checkout do Mercado Pago.
+    const pagamentoNaPagina = !pagamentoComCartao && body.payment !== undefined && body.payment !== null;
+    const dadosDoPagamento = pagamentoNaPagina ? normalizeOrderPaymentInput(body.payment) : null;
+
+    if (pagamentoNaPagina) {
+      const recusa = await checkOnPagePaymentRequest({ req, userId, plan, input: dadosDoPagamento });
 
       if (recusa) {
         if (recusa.retryAfterSeconds && typeof res.setHeader === 'function') {
@@ -556,6 +634,56 @@ module.exports = async function handler(req, res) {
       });
     }
 
+    if (dadosDoPagamento) {
+      let pedido;
+
+      try {
+        // Chave de idempotência obrigatória: a mesma requisição repetida (rede
+        // instável) não vira duas cobranças.
+        pedido = await createOrder(
+          buildOrderPayload({ userId, email, plan, chargeAmount, input: dadosDoPagamento }),
+          crypto.randomUUID(),
+        );
+      } catch (error) {
+        if (error?.providerStatus) {
+          const falha = describeCardSubscriptionFailure(error);
+          const detalhe = describeProviderDetail(error);
+          console.warn('checkout semestral: Mercado Pago recusou o pedido', JSON.stringify({
+            status: error.providerStatus,
+            codigo: falha.code,
+            detalhe,
+          }));
+          return res.status(falha.statusCode).json({ success: false, code: falha.code, error: falha.error, detalhe });
+        }
+
+        throw error;
+      }
+
+      const resposta = describeOrderResponse(pedido, { describeDecline: describeDeclineReason });
+
+      if (resposta.statusCode === 422) {
+        console.warn('checkout semestral: pagamento recusado', JSON.stringify({ detalhe: resposta.body.detalhe || null }));
+      }
+
+      // Aprovado no cartão: libera o Pro agora, sem esperar o webhook (os dois
+      // são idempotentes; quem chegar primeiro processa). Se o pagamento ainda
+      // não apareceu na busca do Mercado Pago, a tela confirma em seguida.
+      if (resposta.processar) {
+        const confirmacao = await reconcileOrderById(resposta.body.data.order_id, { expectedUserId: userId }).catch((error) => {
+          logCheckoutError('failed to process approved on-page order', {
+            userId,
+            orderId: resposta.body.data.order_id,
+            message: error?.message || 'unknown_error',
+          });
+          return null;
+        });
+
+        resposta.body.data.reconciled = Boolean(confirmacao?.reconciled);
+      }
+
+      return res.status(resposta.statusCode).json(resposta.body);
+    }
+
     const payload = buildOneTimeCheckoutPayload({
       baseUrl,
       webhookUrl: getWebhookUrl(req),
@@ -614,3 +742,4 @@ module.exports = async function handler(req, res) {
 module.exports.buildSubscriptionPayload = buildSubscriptionPayload;
 module.exports.checkCardCheckoutRequest = checkCardCheckoutRequest;
 module.exports.describeProviderDetail = describeProviderDetail;
+module.exports.checkOnPagePaymentRequest = checkOnPagePaymentRequest;

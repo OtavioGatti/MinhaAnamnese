@@ -14,6 +14,7 @@ const {
   getAffiliateByCode,
   registerAffiliateCommissionLimit,
   resolveAffiliateCommissionEligibility,
+  resolveStoredAffiliateForBuyer,
 } = require('../../services/affiliates');
 const { cancelMercadoPagoPreapproval } = require('../../services/mercadoPagoPreapprovals');
 const {
@@ -26,6 +27,15 @@ const {
 } = require('../../services/billingSubscriptions');
 const { upsertProfile, getProfileByUserId: getStoredProfileByUserId } = require('../../services/profiles');
 const { notifyApprovedPayment, notifyRejectedPayment } = require('../../services/billingNotifications');
+const { isOnPagePayment } = require('../../services/cardCheckout');
+const {
+  buildOrderMetadata,
+  findOrderPaymentId,
+  getOrder,
+  getOrderReference,
+  getOrdersApplicationId,
+  isOrdersConfigured,
+} = require('../../services/mercadoPagoOrders');
 const { isValidUserId } = require('../../utils/idValidation');
 
 const MERCADO_PAGO_PAYMENT_API = 'https://api.mercadopago.com/v1/payments';
@@ -55,6 +65,13 @@ function getMercadoPagoWebhookSecret() {
     process.env.MP_WEBHOOK_SECRET ||
     process.env.MERCADOPAGO_WEBHOOK_SECRET
   );
+}
+
+// Cada aplicação do Mercado Pago assina os avisos com o próprio segredo: a
+// principal (Checkout Pro + Assinaturas) e a do semestral na página (Orders).
+function getMercadoPagoWebhookSecrets() {
+  return [getMercadoPagoWebhookSecret(), process.env.MERCADO_PAGO_ORDERS_WEBHOOK_SECRET]
+    .filter((secret) => typeof secret === 'string' && secret.trim());
 }
 
 function isProductionEnvironment() {
@@ -141,9 +158,9 @@ function isSubscriptionWebhook(req) {
 }
 
 function isMercadoPagoWebhookSignatureValid(req, resourceId) {
-  const secret = getMercadoPagoWebhookSecret();
+  const secrets = getMercadoPagoWebhookSecrets();
 
-  if (!secret) {
+  if (secrets.length === 0) {
     return {
       valid: !isProductionEnvironment(),
       enforced: false,
@@ -169,28 +186,23 @@ function isMercadoPagoWebhookSignatureValid(req, resourceId) {
     };
   }
 
-  const manifest = `id:${resourceId};request-id:${requestId};ts:${ts};`;
-  const expected = crypto
-    .createHmac('sha256', secret)
-    .update(manifest)
-    .digest('hex');
-
   const actual = String(v1).toLowerCase();
-  const normalizedExpected = String(expected).toLowerCase();
+  // O pedido da Orders API tem id alfanumérico (ORD...), que o Mercado Pago
+  // assina em minúsculas; o id numérico de pagamento não muda.
+  const ids = [...new Set([String(resourceId), String(resourceId).toLowerCase()])];
+  const valid = secrets.some((secret) => ids.some((id) => {
+    const expected = crypto
+      .createHmac('sha256', secret)
+      .update(`id:${id};request-id:${requestId};ts:${ts};`)
+      .digest('hex')
+      .toLowerCase();
 
-  if (actual.length !== normalizedExpected.length) {
-    return {
-      valid: false,
-      enforced: true,
-      missingSecret: false,
-    };
-  }
+    return actual.length === expected.length
+      && crypto.timingSafeEqual(Buffer.from(actual), Buffer.from(expected));
+  }));
 
   return {
-    valid: crypto.timingSafeEqual(
-      Buffer.from(actual),
-      Buffer.from(normalizedExpected),
-    ),
+    valid,
     enforced: true,
     missingSecret: false,
   };
@@ -734,6 +746,72 @@ async function notifyRejectedPaymentSafely({ payment, userId, subscription, supa
   });
 }
 
+// Semestral na nossa página (Orders API): o pagamento chega sem metadata, só
+// apontando para o pedido. Pedido desta aplicação ganha o metadata que o
+// Checkout Pro mandaria (ver services/mercadoPagoOrders.js); o resto do fluxo
+// não muda. Pagamento que já tem metadata, ou de pedido de outra aplicação,
+// passa intacto.
+async function enrichOrderPayment(payment) {
+  const orderId = getOrderReference(payment);
+
+  if (!orderId || Object.keys(getPaymentMetadata(payment)).length > 0 || !isOrdersConfigured()) {
+    return payment;
+  }
+
+  const order = await getOrder(orderId).catch(() => null);
+  const affiliate = isValidUserId(order?.external_reference)
+    ? await resolveStoredAffiliateForBuyer(order.external_reference)
+    : null;
+  const metadata = buildOrderMetadata({ order, affiliate });
+
+  return metadata ? { ...payment, metadata } : payment;
+}
+
+// Confirmação ativa de um pedido do semestral: cartão aprovado na hora e a tela
+// do Pix perguntando se já foi pago. Também é o caminho do aviso "order".
+// Idempotente com o webhook de pagamento — quem chegar primeiro libera o Pro.
+async function reconcileOrderById(orderId, { expectedUserId = null } = {}) {
+  const accessToken = getMercadoPagoToken();
+  const supabase = getSupabaseConfig();
+
+  if (!accessToken || !supabase.url || !supabase.serviceRoleKey || !isOrdersConfigured()) {
+    const error = new Error('billing reconciliation unavailable');
+    error.code = 'CONFIG_UNAVAILABLE';
+    throw error;
+  }
+
+  const order = await getOrder(orderId);
+
+  // Pedido de outra aplicação, ou de outra conta: não é para processar aqui.
+  if (order.integration_data?.application_id !== getOrdersApplicationId()
+    || (expectedUserId && order.external_reference !== expectedUserId)) {
+    const error = new Error('order does not belong to the requesting user');
+    error.code = 'FORBIDDEN';
+    throw error;
+  }
+
+  if (order.status !== 'processed') {
+    return { status: order.status || 'unknown', reconciled: false };
+  }
+
+  const paymentId = await findOrderPaymentId(order);
+
+  if (!paymentId) {
+    return { status: 'processed', reconciled: false, reason: 'pagamento_ainda_nao_indexado' };
+  }
+
+  const result = await handlePaymentWebhook(paymentId, accessToken, supabase);
+
+  return { status: 'approved', reconciled: true, ...result };
+}
+
+// Aviso da Orders API: tipo "order" (ação "order.processed" etc.). O
+// "merchant_order" do Checkout Pro também contém "order" e não é isto.
+function isOrderWebhook(req) {
+  const topic = getWebhookTopic(req);
+  return topic === 'order' || topic.startsWith('order.');
+}
+
 async function handlePaymentWebhook(resourceId, accessToken, supabase, preapprovalIdHint = null) {
   const existingPayment = await getBillingPaymentByPaymentId(resourceId);
 
@@ -742,7 +820,7 @@ async function handlePaymentWebhook(resourceId, accessToken, supabase, preapprov
     return { alreadyProcessed: true };
   }
 
-  const payment = await getPaymentDetails(resourceId, accessToken);
+  const payment = await enrichOrderPayment(await getPaymentDetails(resourceId, accessToken));
 
   // Pagamento processado e sem estorno novo: idempotência (sem re-persistir,
   // para não zerar processed_at nem reprocessar upgrade/comissão).
@@ -781,7 +859,10 @@ async function handlePaymentWebhook(resourceId, accessToken, supabase, preapprov
   await persistPaymentSnapshot(payment, userId, plan, subscription, affiliate, null);
 
   // Depois de gravado: o e-mail nunca atrasa nem derruba o processamento.
-  if (payment?.status === 'rejected' && userId) {
+  // No checkout na página a pessoa já viu o motivo na tela e pode ter pago com
+  // outro cartão no minuto seguinte: o e-mail de recusa chegaria depois do de
+  // boas-vindas.
+  if (payment?.status === 'rejected' && userId && !isOnPagePayment(payment)) {
     await notifyRejectedPaymentSafely({ payment, userId, subscription, supabase }).catch(() => null);
   }
 
@@ -926,6 +1007,12 @@ module.exports = async function handler(req, res) {
   }
 
   try {
+    // Pedido do semestral na página (aplicação da Orders API).
+    if (isOrderWebhook(req)) {
+      const result = await reconcileOrderById(String(resourceId));
+      return res.status(200).json({ success: true, ...result });
+    }
+
     // Ordem importa: 'subscription_authorized_payment' contém 'subscription',
     // então o pagamento autorizado precisa ser checado antes da assinatura.
     if (isAuthorizedPaymentWebhook(req)) {
@@ -963,3 +1050,10 @@ module.exports.buildPaymentSnapshot = buildPaymentSnapshot;
 module.exports.describeUnlinkedApprovedPayment = describeUnlinkedApprovedPayment;
 module.exports.isCardValidationRefund = isCardValidationRefund;
 module.exports.getPaymentPreapprovalId = getPaymentPreapprovalId;
+module.exports.reconcileOrderById = reconcileOrderById;
+module.exports.enrichOrderPayment = enrichOrderPayment;
+module.exports.isOrderWebhook = isOrderWebhook;
+module.exports.isApprovedPlanPayment = isApprovedPlanPayment;
+module.exports.resolvePlanForPayment = resolvePlanForPayment;
+module.exports.getPaymentUserId = getPaymentUserId;
+module.exports.isMercadoPagoWebhookSignatureValid = isMercadoPagoWebhookSignatureValid;

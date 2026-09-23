@@ -138,7 +138,8 @@ function renderHtml(m) {
   const GRUPOS_CHECKOUT = {
     geral: null,
     cartao: 'Mensal — cartão na nossa página (desde 23/09/2026)',
-    mercado_pago: 'Página do Mercado Pago — semestral (e o mensal, se o formulário do cartão não abrir)',
+    semestral_pagina: 'Semestral — cartão à vista ou Pix na nossa página',
+    mercado_pago: 'Página do Mercado Pago — quando o pagamento na página está desligado ou não abre',
     banco: 'Resultado no banco de dados (os dois caminhos)',
   };
   let grupoAnterior = 'geral';

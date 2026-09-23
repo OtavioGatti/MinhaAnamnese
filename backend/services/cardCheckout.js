@@ -63,8 +63,29 @@ function describeCardSubscriptionFailure({ providerStatus, providerMessage, prov
   };
 }
 
+// --- semestral na nossa página (pagamento avulso, cartão ou Pix) --------------
+//
+// O semestral é pagamento único: não passa pelo /preapproval. O formulário é o
+// Payment Brick do Mercado Pago (cartão ou Pix) e o pedido é criado na Orders
+// API, numa aplicação do Mercado Pago só para isso (services/mercadoPagoOrders.js).
+
+// Chave própria: dá para desligar o semestral sem mexer no mensal.
+function isSemiannualPageCheckoutEnabled() {
+  return process.env.SEMIANNUAL_PAGE_CHECKOUT_ENABLED === 'true';
+}
+
+// Pagamento criado pelo checkout na página: a pessoa já viu o resultado na
+// tela, então o e-mail de recusa não sai (ela pode ter trocado de cartão e
+// pago no minuto seguinte).
+function isOnPagePayment(payment) {
+  const flag = payment?.metadata?.checkout_na_pagina;
+  return flag === true || flag === 'true';
+}
+
 module.exports = {
   describeCardSubscriptionFailure,
   isCardCheckoutEnabled,
+  isOnPagePayment,
+  isSemiannualPageCheckoutEnabled,
   normalizeCardToken,
 };

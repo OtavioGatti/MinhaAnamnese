@@ -1044,13 +1044,18 @@ function summarizeCheckout({ events = [], subscriptions = [], payments = [], now
 
   // Cartão na página: o mensal não passa mais pela página do Mercado Pago, então
   // "Foram ao Mercado Pago" cai sem que as vendas caiam.
-  const resultadosDoCartao = doEvento('checkout_cartao_resultado');
+  // Mensal e semestral usam os mesmos eventos; o plano separa (evento antigo,
+  // sem plano, é do mensal — o semestral na página veio depois).
+  const doSemestral = (event) => event.metadata?.plan_key === 'semiannual';
+  const resultadosNaPagina = doEvento('checkout_cartao_resultado');
+  const resultadosDoCartao = resultadosNaPagina.filter((event) => !doSemestral(event));
+  const resultadosDoSemestral = resultadosNaPagina.filter(doSemestral);
   const enviosDoCartao = resultadosDoCartao.filter((event) => event.metadata?.resultado !== 'formulario_nao_carregou');
   const temposDoCartao = enviosDoCartao
     .map((event) => Number(event.metadata?.espera_ms))
     .filter((valor) => Number.isFinite(valor) && valor >= 0);
   const problemasDoCartao = new Map();
-  resultadosDoCartao.forEach((event) => {
+  resultadosNaPagina.forEach((event) => {
     const motivo = motivoDoCartao(event);
 
     if (motivo) {
@@ -1086,7 +1091,12 @@ function summarizeCheckout({ events = [], subscriptions = [], payments = [], now
       etapa('cartaoAbriu', 'Abriram o formulário de cartão', 'eventos', doEvento('upgrade_click').filter((event) => event.metadata?.via === 'cartao'), 'cartao'),
       etapa('cartaoEnviou', 'Enviaram o cartão', 'eventos', enviosDoCartao, 'cartao'),
       etapa('cartaoAceito', 'Cartão aceito: assinatura criada', 'eventos', resultadosDoCartao.filter((event) => event.metadata?.resultado === 'autorizada'), 'cartao'),
-      etapa('cartaoConfirmado', 'Pro liberado na mesma tela', 'eventos', doEvento('checkout_cartao_confirmado'), 'cartao'),
+      etapa('cartaoConfirmado', 'Pro liberado na mesma tela', 'eventos', doEvento('checkout_cartao_confirmado').filter((event) => !doSemestral(event)), 'cartao'),
+      etapa('semestralAbriu', 'Abriram o pagamento do semestral', 'eventos', doEvento('upgrade_click').filter((event) => event.metadata?.via === 'pagina'), 'semestral_pagina'),
+      etapa('semestralEnviou', 'Enviaram cartão ou pediram o Pix', 'eventos', resultadosDoSemestral.filter((event) => event.metadata?.resultado !== 'formulario_nao_carregou'), 'semestral_pagina'),
+      etapa('semestralPix', 'Pix gerado (QR Code na tela)', 'eventos', resultadosDoSemestral.filter((event) => event.metadata?.resultado === 'pix'), 'semestral_pagina'),
+      etapa('semestralCartao', 'Cartão aprovado ou em análise', 'eventos', resultadosDoSemestral.filter((event) => ['aprovado', 'em_analise'].includes(event.metadata?.resultado)), 'semestral_pagina'),
+      etapa('semestralConfirmado', 'Pro liberado na mesma tela', 'eventos', doEvento('checkout_cartao_confirmado').filter(doSemestral), 'semestral_pagina'),
       etapa('redirecionados', 'Foram à página do Mercado Pago', 'eventos', redirecionados, 'mercado_pago'),
       etapa('assinaturas', 'Assinaturas mensais criadas', 'banco', subscriptions.filter(naJanela), 'banco'),
       etapa('recusados', 'Pagamentos recusados', 'banco', payments.filter((payment) => payment.status === 'rejected' && naJanela(payment)), 'banco'),
