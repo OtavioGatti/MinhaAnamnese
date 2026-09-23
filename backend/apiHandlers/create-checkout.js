@@ -10,8 +10,27 @@ const {
   normalizePlanKey,
 } = require('../config/billingPlans');
 const { resolveAffiliateForCheckout } = require('../services/affiliates');
-const { upsertBillingSubscription } = require('../services/billingSubscriptions');
+const {
+  getActiveBillingSubscriptionByUserId,
+  upsertBillingSubscription,
+} = require('../services/billingSubscriptions');
+const {
+  describeCardSubscriptionFailure,
+  isCardCheckoutEnabled,
+  normalizeCardToken,
+} = require('../services/cardCheckout');
+const { consumeRateLimit } = require('../utils/rateLimit');
 const { resolveSupabaseUser } = require('../utils/supabaseAuth');
+
+// O caminho do cartão faz uma cobrança de validação: é alvo de quem testa
+// cartão roubado. Limite por conta e por IP (várias contas na mesma máquina).
+const CARD_RATE_LIMITS = [
+  { scope: 'card_checkout', porConta: true, limit: 5, windowMs: 30 * 60 * 1000 },
+  { scope: 'card_checkout_ip', porConta: false, limit: 10, windowMs: 30 * 60 * 1000 },
+  // Clique duplo: as duas requisições passariam juntas pela checagem de
+  // assinatura ativa e criariam duas assinaturas no mesmo cartão.
+  { scope: 'card_checkout_burst', porConta: true, limit: 1, windowMs: 15 * 1000 },
+];
 
 function logCheckoutError(message, context = {}) {
   if (!DEBUG_CHECKOUT) {
@@ -190,7 +209,10 @@ function buildOneTimeCheckoutPayload({ baseUrl, webhookUrl, email, userId, plan,
   };
 }
 
-function buildSubscriptionPayload({ baseUrl, webhookUrl, email, userId, plan, chargeAmount }) {
+// Sem cardTokenId: a assinatura nasce "pending" e a pessoa autoriza na página
+// do Mercado Pago (init_point). Com cardTokenId (cartão digitado na nossa
+// página): já nasce "authorized" e o Mercado Pago agenda a primeira cobrança.
+function buildSubscriptionPayload({ baseUrl, webhookUrl, email, userId, plan, chargeAmount, cardTokenId = null }) {
   return {
     reason: plan.reason,
     external_reference: userId,
@@ -205,7 +227,7 @@ function buildSubscriptionPayload({ baseUrl, webhookUrl, email, userId, plan, ch
       currency_id: plan.currencyId,
     },
     back_url: `${baseUrl}/?checkout=success`,
-    status: 'pending',
+    ...(cardTokenId ? { card_token_id: cardTokenId, status: 'authorized' } : { status: 'pending' }),
   };
 }
 
@@ -240,10 +262,25 @@ async function postMercadoPagoJson(url, payload, userId, label) {
       providerBody,
     });
 
-    throw createProviderError('Nao foi possivel iniciar o pagamento com o provedor.');
+    const error = createProviderError('Nao foi possivel iniciar o pagamento com o provedor.');
+    // Motivo do provedor para o caminho do cartão, que precisa dizer à pessoa
+    // se o problema é o cartão (ex.: não aceita recorrência).
+    const providerJson = parseJsonSafely(providerBody);
+    error.providerStatus = response.status;
+    error.providerMessage = providerJson?.message || null;
+    error.providerCode = providerJson?.code || null;
+    throw error;
   }
 
   return response.json();
+}
+
+function parseJsonSafely(text) {
+  try {
+    return JSON.parse(text);
+  } catch {
+    return null;
+  }
 }
 
 function getInitPointOrThrow(providerResponse, userId, label) {
@@ -261,6 +298,82 @@ function getInitPointOrThrow(providerResponse, userId, label) {
   }
 
   return checkoutUrl;
+}
+
+// Travas do pagamento com cartão, antes de qualquer chamada ao Mercado Pago.
+// Devolve a resposta de recusa, ou null para seguir.
+async function checkCardCheckoutRequest({ req, userId, plan, cardTokenId }) {
+  if (!isCardCheckoutEnabled()) {
+    return {
+      statusCode: 503,
+      body: {
+        success: false,
+        code: 'CARD_CHECKOUT_DISABLED',
+        error: 'Pagamento com cartão nesta página está indisponível no momento.',
+      },
+    };
+  }
+
+  // Só a assinatura mensal é recorrente; o semestral segue pelo checkout do
+  // Mercado Pago, que também aceita Pix.
+  if (plan.billingKind !== 'subscription') {
+    return {
+      statusCode: 400,
+      body: { success: false, error: 'O pagamento com cartão nesta página vale só para o plano mensal.' },
+    };
+  }
+
+  if (!cardTokenId) {
+    return {
+      statusCode: 400,
+      body: { success: false, code: 'CARD_TOKEN_INVALID', error: 'Os dados do cartão expiraram. Digite o cartão de novo.' },
+    };
+  }
+
+  for (const regra of CARD_RATE_LIMITS) {
+    const rateLimit = await consumeRateLimit({
+      req,
+      scope: regra.scope,
+      userId: regra.porConta ? userId : null,
+      limit: regra.limit,
+      windowMs: regra.windowMs,
+    });
+
+    if (!rateLimit.allowed) {
+      return {
+        statusCode: 429,
+        body: {
+          success: false,
+          error: 'Muitas tentativas de pagamento em sequência. Aguarde alguns minutos e tente de novo.',
+        },
+        retryAfterSeconds: rateLimit.retryAfterSeconds,
+      };
+    }
+  }
+
+  // A assinatura com cartão nasce autorizada: uma segunda cobraria o mesmo
+  // cartão todo mês. Sem conseguir consultar, recusa em vez de arriscar.
+  const ativa = await getActiveBillingSubscriptionByUserId(userId).catch(() => undefined);
+
+  if (ativa === undefined) {
+    return {
+      statusCode: 503,
+      body: { success: false, error: 'Não foi possível confirmar sua assinatura agora. Tente de novo em instantes.' },
+    };
+  }
+
+  if (ativa) {
+    return {
+      statusCode: 409,
+      body: {
+        success: false,
+        code: 'SUBSCRIPTION_ALREADY_ACTIVE',
+        error: 'Você já tem uma assinatura mensal ativa. Nenhuma nova cobrança foi feita.',
+      },
+    };
+  }
+
+  return null;
 }
 
 module.exports = async function handler(req, res) {
@@ -302,6 +415,21 @@ module.exports = async function handler(req, res) {
 
     const body = req.body || {};
     const plan = getBillingPlan(normalizePlanKey(body.planKey || DEFAULT_PLAN_KEY));
+    const pagamentoComCartao = body.cardToken !== undefined && body.cardToken !== null;
+    const cardTokenId = pagamentoComCartao ? normalizeCardToken(body.cardToken) : null;
+
+    if (pagamentoComCartao) {
+      const recusa = await checkCardCheckoutRequest({ req, userId, plan, cardTokenId });
+
+      if (recusa) {
+        if (recusa.retryAfterSeconds && typeof res.setHeader === 'function') {
+          res.setHeader('Retry-After', String(recusa.retryAfterSeconds));
+        }
+
+        return res.status(recusa.statusCode).json(recusa.body);
+      }
+    }
+
     const baseUrl = getCheckoutBaseUrl(req);
     // A indicação salva na conta vale mais que o código do navegador. Chama
     // SEMPRE, não só quando vem código: a conta pode ter indicação mesmo sem
@@ -326,14 +454,37 @@ module.exports = async function handler(req, res) {
         userId,
         plan,
         chargeAmount,
+        cardTokenId,
       });
-      const providerResponse = await postMercadoPagoJson(
-        MERCADO_PAGO_PREAPPROVAL_URL,
-        payload,
-        userId,
-        'mercado pago preapproval',
-      );
-      const checkoutUrl = getInitPointOrThrow(providerResponse, userId, 'mercado pago preapproval');
+      let providerResponse;
+
+      try {
+        providerResponse = await postMercadoPagoJson(
+          MERCADO_PAGO_PREAPPROVAL_URL,
+          payload,
+          userId,
+          'mercado pago preapproval',
+        );
+      } catch (error) {
+        // No cartão, a recusa do provedor é sobre o cartão: a pessoa precisa
+        // saber o motivo para corrigir ou trocar. O fluxo antigo segue igual.
+        if (pagamentoComCartao && error?.providerStatus) {
+          const falha = describeCardSubscriptionFailure(error);
+          return res.status(falha.statusCode).json({
+            success: false,
+            code: falha.code,
+            error: falha.error,
+          });
+        }
+
+        throw error;
+      }
+
+      // Com cartão não há página do Mercado Pago para abrir: a assinatura já
+      // vem autorizada.
+      const checkoutUrl = pagamentoComCartao
+        ? null
+        : getInitPointOrThrow(providerResponse, userId, 'mercado pago preapproval');
       const preapprovalId = providerResponse?.id || null;
 
       if (preapprovalId) {
@@ -356,6 +507,20 @@ module.exports = async function handler(req, res) {
             preapprovalId,
             message: error?.message || 'unknown_error',
           });
+        });
+      }
+
+      if (pagamentoComCartao) {
+        return res.status(200).json({
+          success: true,
+          data: {
+            preapproval_id: preapprovalId,
+            status: providerResponse?.status || null,
+            plan_key: plan.key,
+            billing_kind: plan.billingKind,
+            charged_amount: chargeAmount,
+            discount_rate: discountRate,
+          },
         });
       }
 
@@ -424,3 +589,7 @@ module.exports = async function handler(req, res) {
     });
   }
 };
+
+// Exportados para os testes do pagamento com cartão.
+module.exports.buildSubscriptionPayload = buildSubscriptionPayload;
+module.exports.checkCardCheckoutRequest = checkCardCheckoutRequest;

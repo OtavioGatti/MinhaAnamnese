@@ -351,6 +351,11 @@ function getPaymentPreapprovalId(payment) {
     payment?.preapproval_id ||
     metadata.preapproval_id ||
     metadata.preapprovalId ||
+    // É aqui que a cobrança da assinatura diz de qual assinatura é (visto no
+    // sandbox em 23/09/2026): metadata vem vazia. Sem ler este campo o aviso
+    // comum de pagamento era descartado como "sem vínculo", e o Pro dependia
+    // do aviso de fatura ou da busca de faturas, que demora a indexar.
+    payment?.point_of_interaction?.transaction_data?.subscription_id ||
     null
   );
 }
@@ -601,6 +606,32 @@ async function reconcileSubscriptionByPreapprovalId(preapprovalId, { expectedUse
   return { status: 'authorized', reconciled: true, ...result };
 }
 
+// Na assinatura com o cartão digitado na nossa página, o Mercado Pago valida o
+// cartão com uma cobrança de valor mínimo e devolve em seguida. Essa devolução
+// chega aqui como estorno ligado à assinatura — e o estorno cancela a
+// assinatura. Só é estorno de verdade o de uma cobrança que liberou acesso
+// (registrada como aprovada) ou do valor da mensalidade (aprovada cujo aviso
+// se perdeu). Pagamento avulso (semestral) não passa por aqui.
+function isCardValidationRefund({ existingPayment, payment, subscription, preapprovalId }) {
+  if (!preapprovalId) {
+    return false;
+  }
+
+  if (existingPayment?.processed_at && String(existingPayment.status || '').toLowerCase() === 'approved') {
+    return false;
+  }
+
+  const mensalidade = Number(subscription?.amount);
+  const valor = Number(payment?.transaction_amount);
+
+  // Sem saber o valor da assinatura, mantém o comportamento de estorno.
+  if (!(mensalidade > 0) || !Number.isFinite(valor)) {
+    return false;
+  }
+
+  return Math.abs(valor - mensalidade) >= 0.01;
+}
+
 // Reembolso/chargeback: cancela a comissão do afiliado, cancela a assinatura
 // vinculada no Mercado Pago e revoga o acesso concedido por ESTE pagamento
 // (não mexe no acesso se ele veio de outro pagamento mais recente).
@@ -738,6 +769,12 @@ async function handlePaymentWebhook(resourceId, accessToken, supabase, preapprov
   const affiliate = affiliateCode ? await getAffiliateByCode(affiliateCode).catch(() => null) : null;
 
   if (isRevokedPaymentStatus(payment?.status)) {
+    if (isCardValidationRefund({ existingPayment, payment, subscription, preapprovalId })) {
+      // Não liberou acesso nem gerou comissão: não há nada a desfazer, e
+      // cancelar aqui encerraria a assinatura que acabou de nascer.
+      return { skipped: true, reason: 'validacao_do_cartao' };
+    }
+
     return handleRevokedPayment({ payment, plan, subscription, userId, affiliate, accessToken });
   }
 
@@ -924,3 +961,5 @@ module.exports.pickMostRecentAuthorizedPayment = pickMostRecentAuthorizedPayment
 module.exports.reconcileSubscriptionByPreapprovalId = reconcileSubscriptionByPreapprovalId;
 module.exports.buildPaymentSnapshot = buildPaymentSnapshot;
 module.exports.describeUnlinkedApprovedPayment = describeUnlinkedApprovedPayment;
+module.exports.isCardValidationRefund = isCardValidationRefund;
+module.exports.getPaymentPreapprovalId = getPaymentPreapprovalId;

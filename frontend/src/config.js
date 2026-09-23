@@ -6,3 +6,8 @@ export const API_BASE_URL = import.meta.env.VITE_API_URL || '/api';
 export const API_FALLBACK_URL = import.meta.env.VITE_API_FALLBACK_URL || '';
 export const DIAGNOSTIC_HYPOTHESES_ENABLED =
   String(import.meta.env.VITE_DIAGNOSTIC_HYPOTHESES_ENABLED || 'true').toLowerCase() !== 'false';
+// Assinatura mensal com o cartão digitado na nossa página (sem ir ao Mercado
+// Pago). "on" liga para todos; sem isso só liga no navegador aberto com
+// ?checkout_cartao=1. A chave pública do Mercado Pago é pública por natureza.
+export const MERCADO_PAGO_PUBLIC_KEY = import.meta.env.VITE_MERCADO_PAGO_PUBLIC_KEY || '';
+export const CARD_CHECKOUT_FLAG = String(import.meta.env.VITE_CARD_CHECKOUT || '').toLowerCase();

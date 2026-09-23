@@ -43,6 +43,10 @@ const ALLOWED_EVENTS = new Set([
   'checkout_redirecionado',
   'checkout_erro',
   'checkout_retorno',
+  // Checkout do mensal com o cartão digitado na nossa página: o que o servidor
+  // respondeu ao cartão e quando o Pro foi de fato liberado.
+  'checkout_cartao_resultado',
+  'checkout_cartao_confirmado',
 ]);
 const DEBUG_ANALYTICS = process.env.DEBUG_ANALYTICS === 'true';
 
@@ -96,6 +100,12 @@ function sanitizeMetadata(metadata) {
     // mensagem). O retorno usa result_status.
     'espera_ms',
     'erro_tipo',
+    // Checkout com cartão: o desfecho, o código do motivo da recusa (ex.:
+    // CARD_NOT_RECURRING) e por qual caminho a pessoa clicou em assinar.
+    // Nunca dado do cartão.
+    'resultado',
+    'motivo',
+    'via',
   ];
 
   allowedKeys.forEach((key) => {

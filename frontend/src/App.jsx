@@ -1,7 +1,20 @@
 ﻿import { lazy, Suspense, useEffect, useMemo, useRef, useState } from 'react';
 import { api } from './apiClient';
 import { classifyCheckoutFailure, normalizeCheckoutReturnStatus, waitAtMost } from './lib/checkoutTracking';
-import { API_BASE_URL, DIAGNOSTIC_HYPOTHESES_ENABLED } from './config';
+import {
+  CARD_CHECKOUT_OVERRIDE_KEY,
+  CARD_CONFIRMATION_DELAYS_MS,
+  describeCardCheckoutResult,
+  estimateMonthlyCharge,
+  isPaidAccessConfirmed,
+  resolveCardCheckoutEnabled,
+} from './lib/cardCheckout';
+import {
+  API_BASE_URL,
+  CARD_CHECKOUT_FLAG,
+  DIAGNOSTIC_HYPOTHESES_ENABLED,
+  MERCADO_PAGO_PUBLIC_KEY,
+} from './config';
 import DiagnosticHypothesesPanel from './components/DiagnosticHypothesesPanel';
 import FocusedClinicalReview from './components/FocusedClinicalReview';
 import InputSection from './components/InputSection';
@@ -34,6 +47,7 @@ import useDiagnosticHypotheses from './hooks/useDiagnosticHypotheses';
 // Páginas fora da home são carregadas sob demanda (code splitting) para
 // reduzir o bundle inicial do workspace clínico.
 const AffiliatePage = lazy(() => import('./components/AffiliatePage'));
+const CardCheckoutModal = lazy(() => import('./components/CardCheckoutModal'));
 const ClinicalDrugPage = lazy(() => import('./components/ClinicalDrugPage'));
 const ClinicalToolsPage = lazy(() => import('./components/ClinicalToolsPage'));
 const EvolutionPage = lazy(() => import('./components/EvolutionPage'));
@@ -1025,6 +1039,42 @@ function App() {
   const [evolutionRefreshToken, setEvolutionRefreshToken] = useState(0);
   const [qualityScore, setQualityScore] = useState(() => createEmptyQualityScore());
   const [planComparisonState, setPlanComparisonState] = useState({ open: false, origin: 'home' });
+  // Mensal com o cartão digitado aqui, sem ir ao Mercado Pago. Etapas:
+  // formulario → enviando → aguardando_cobranca → confirmado.
+  const [cardCheckoutState, setCardCheckoutState] = useState({
+    open: false,
+    origin: 'home',
+    stage: 'formulario',
+    message: '',
+  });
+  const [cardCheckoutEnabled] = useState(() => {
+    let guardado = null;
+
+    try {
+      guardado = window.localStorage.getItem(CARD_CHECKOUT_OVERRIDE_KEY);
+    } catch {
+      guardado = null;
+    }
+
+    const decisao = resolveCardCheckoutEnabled({
+      flag: CARD_CHECKOUT_FLAG,
+      publicKey: MERCADO_PAGO_PUBLIC_KEY,
+      search: window.location.search,
+      stored: guardado,
+    });
+
+    try {
+      if (decisao.stored) {
+        window.localStorage.setItem(CARD_CHECKOUT_OVERRIDE_KEY, decisao.stored);
+      } else {
+        window.localStorage.removeItem(CARD_CHECKOUT_OVERRIDE_KEY);
+      }
+    } catch {
+      // Sem armazenamento, vale só para esta visita.
+    }
+
+    return decisao.enabled;
+  });
   const [checkoutSuccessBannerVisible, setCheckoutSuccessBannerVisible] = useState(false);
   const [emailConfirmedBanner, setEmailConfirmedBanner] = useState(null);
   const [welcomeOnboardingOpen, setWelcomeOnboardingOpen] = useState(false);
@@ -2279,7 +2329,113 @@ function App() {
       ...current,
       open: false,
     }));
+
+    // O mensal (recorrente) é o que travava na página do Mercado Pago, que
+    // exige conta MP. O semestral segue por lá: aceita Pix e não pede conta.
+    if (planKey === 'monthly' && cardCheckoutEnabled && user?.id && user?.email) {
+      trackEvent('upgrade_click', {
+        template: templateSelecionado || null,
+        text_length: resultado.trim().length || texto.trim().length,
+        score: qualityScore.score,
+        is_pro: isPro,
+        plan_key: planKey,
+        via: 'cartao',
+      });
+      setCardCheckoutState({ open: true, origin, stage: 'formulario', message: '' });
+      return;
+    }
+
     await startCheckoutFlow(origin, planKey);
+  };
+
+  // A primeira mensalidade sai pouco depois de a assinatura nascer autorizada.
+  // Consulta algumas vezes para liberar o Pro sem recarregar a página; se não
+  // sair nesse tempo, o webhook libera e o e-mail de boas-vindas avisa.
+  const confirmCardSubscription = async (preapprovalId) => {
+    for (const espera of CARD_CONFIRMATION_DELAYS_MS) {
+      await new Promise((resolve) => setTimeout(resolve, espera));
+      await api.post('/reconcile-subscription', { preapprovalId }).catch(() => null);
+      const profileResponse = await api.get('/profile').catch(() => null);
+
+      if (profileResponse?.success && profileResponse.data) {
+        setProfile(profileResponse.data);
+
+        if (isPaidAccessConfirmed(profileResponse.data)) {
+          setCardCheckoutState((current) => ({ ...current, stage: 'confirmado' }));
+          trackEvent('checkout_cartao_confirmado', { plan_key: 'monthly' });
+          return;
+        }
+      }
+    }
+  };
+
+  const handleSubmitCard = async (cardFormData) => {
+    const origin = cardCheckoutState.origin || 'home';
+    setCardCheckoutState((current) => ({ ...current, stage: 'enviando', message: '' }));
+    const inicio = performance.now();
+
+    const response = await api.post('/create-checkout', {
+      planKey: 'monthly',
+      cardToken: cardFormData?.token || '',
+      affiliateCode: readAffiliateReferralCode() || null,
+      affiliateCodeSource: readAffiliateReferralSource(),
+      sourceUrl: window.location.href,
+    });
+    const desfecho = describeCardCheckoutResult(response);
+
+    // Só o tipo do resultado e o código do motivo: nada do cartão.
+    trackEvent('checkout_cartao_resultado', {
+      plan_key: 'monthly',
+      origin,
+      resultado: desfecho.kind,
+      motivo: desfecho.code || null,
+      espera_ms: Math.round(performance.now() - inicio),
+    });
+
+    if (desfecho.kind === 'autorizada') {
+      setCardCheckoutState((current) => ({ ...current, stage: 'aguardando_cobranca', message: '' }));
+      confirmCardSubscription(desfecho.preapprovalId);
+      return desfecho;
+    }
+
+    // Servidor com o caminho novo desligado: segue pelo Mercado Pago como antes.
+    if (desfecho.kind === 'checkout_antigo') {
+      setCardCheckoutState((current) => ({ ...current, open: false }));
+      startCheckoutFlow(origin, 'monthly');
+      return desfecho;
+    }
+
+    if (desfecho.kind === 'ja_assina') {
+      api.get('/profile').then((profileResponse) => {
+        if (profileResponse?.success && profileResponse.data) {
+          setProfile(profileResponse.data);
+        }
+      }).catch(() => null);
+    }
+
+    setCardCheckoutState((current) => ({ ...current, stage: 'formulario', message: desfecho.message }));
+    return desfecho;
+  };
+
+  const handleCloseCardCheckout = () => {
+    if (cardCheckoutState.stage === 'enviando') {
+      return;
+    }
+
+    if (cardCheckoutState.stage === 'confirmado') {
+      setCheckoutSuccessBannerVisible(true);
+    }
+
+    setCardCheckoutState((current) => ({ ...current, open: false }));
+  };
+
+  // O formulário do Mercado Pago não carregou (bloqueador, rede): oferece o
+  // caminho antigo em vez de deixar a pessoa sem ter como pagar.
+  const handleCardCheckoutFallback = () => {
+    const origin = cardCheckoutState.origin || 'home';
+    setCardCheckoutState((current) => ({ ...current, open: false }));
+    trackEvent('checkout_cartao_resultado', { plan_key: 'monthly', origin, resultado: 'formulario_nao_carregou' });
+    startCheckoutFlow(origin, 'monthly');
   };
 
   const handleCancelSubscription = async () => {
@@ -3903,6 +4059,23 @@ function App() {
         onClose={() => setPlanComparisonState((current) => ({ ...current, open: false }))}
         onConfirm={handleConfirmPlanComparison}
       />
+
+      {cardCheckoutState.open ? (
+        <Suspense fallback={null}>
+          <CardCheckoutModal
+            open
+            publicKey={MERCADO_PAGO_PUBLIC_KEY}
+            email={user?.email || ''}
+            amount={estimateMonthlyCharge(BILLING_PLANS.monthly.price, referralDiscount?.rate)}
+            listPrice={BILLING_PLANS.monthly.price}
+            stage={cardCheckoutState.stage}
+            message={cardCheckoutState.message}
+            onSubmitCard={handleSubmitCard}
+            onClose={handleCloseCardCheckout}
+            onFallback={handleCardCheckoutFallback}
+          />
+        </Suspense>
+      ) : null}
 
       <OrganizeSourceModal
         open={organizeSourceConflict}
