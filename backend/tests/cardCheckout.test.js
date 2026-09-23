@@ -227,3 +227,16 @@ test('o vínculo explícito continua valendo antes do point_of_interaction', () 
     point_of_interaction: { transaction_data: { subscription_id: 'outro' } },
   }), 'pre-explicito');
 });
+
+// Caso real de 23/09/2026: um cartão voltou como "dados do cartão expiraram"
+// sem que desse para saber o que o Mercado Pago disse. O detalhe vai para o log
+// e para o evento do painel.
+test('a resposta original do Mercado Pago sai curta e só com caracteres comuns', () => {
+  assert.equal(
+    checkout.describeProviderDetail({ providerCode: 'Invalid_payment_method', providerMessage: 'Unsupported_credit_card_for_recurring_payment' }),
+    'Invalid_payment_method: Unsupported_credit_card_for_recurring_payment',
+  );
+  assert.equal(checkout.describeProviderDetail({ providerMessage: '<script>x</script> card_token "inválido"' }), 'scriptx/script card_token invlido');
+  assert.equal(checkout.describeProviderDetail({ providerMessage: 'x'.repeat(300) }).length, 100);
+  assert.equal(checkout.describeProviderDetail({}), null);
+});

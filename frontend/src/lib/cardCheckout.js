@@ -59,6 +59,9 @@ export function describeCardCheckoutResult(response) {
     return {
       kind: 'recusada',
       code: response.code || null,
+      // Resposta original do Mercado Pago, curta: só para o painel entender a
+      // recusa. Nunca aparece para a pessoa.
+      detail: typeof response.detalhe === 'string' ? response.detalhe.slice(0, 100) : null,
       message: response.error || 'Não foi possível confirmar este cartão. Confira os dados ou use outro cartão.',
     };
   }

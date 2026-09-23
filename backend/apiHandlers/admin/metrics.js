@@ -133,8 +133,30 @@ function renderHtml(m) {
 
   const checkout = m.checkout || null;
   const formatSeconds = (ms) => `${(Number(ms) / 1000).toFixed(1).replace('.', ',')} s`;
+  // Dois caminhos convivem desde 23/09/2026: o mensal com cartão na nossa
+  // página e o semestral na página do Mercado Pago.
+  const GRUPOS_CHECKOUT = {
+    geral: null,
+    cartao: 'Mensal — cartão na nossa página (desde 23/09/2026)',
+    mercado_pago: 'Página do Mercado Pago — semestral (e o mensal, se o formulário do cartão não abrir)',
+    banco: 'Resultado no banco de dados (os dois caminhos)',
+  };
+  let grupoAnterior = 'geral';
   const etapasCheckout = (checkout?.etapas || [])
-    .map((etapa) => `<tr><td>${escapeHtml(etapa.rotulo)}<small>${etapa.fonte === 'banco' ? 'banco de dados' : 'eventos (quem aceitou cookies)'}</small></td><td class="num">${formatNumber(etapa.vezes)}</td><td class="num">${formatNumber(etapa.pessoas)}</td></tr>`)
+    .map((etapa) => {
+      const grupo = etapa.grupo || 'geral';
+      const titulo = grupo !== grupoAnterior && GRUPOS_CHECKOUT[grupo]
+        ? `<tr class="grupo"><td colspan="3">${escapeHtml(GRUPOS_CHECKOUT[grupo])}</td></tr>`
+        : '';
+      grupoAnterior = grupo;
+      return `${titulo}<tr><td>${escapeHtml(etapa.rotulo)}<small>${etapa.fonte === 'banco' ? 'banco de dados' : 'eventos (quem aceitou cookies)'}</small></td><td class="num">${formatNumber(etapa.vezes)}</td><td class="num">${formatNumber(etapa.pessoas)}</td></tr>`;
+    })
+    .join('');
+  const esperaCartao = checkout?.esperaCartao
+    ? `Tempo para confirmar o cartão: <strong>${formatSeconds(checkout.esperaCartao.medianaMs)}</strong> na mediana; 9 em cada 10 em até <strong>${formatSeconds(checkout.esperaCartao.p90Ms)}</strong> (${formatNumber(checkout.esperaCartao.amostras)} envios).`
+    : 'Tempo para confirmar o cartão: ainda sem envios.';
+  const problemasCartao = (checkout?.problemasCartao || [])
+    .map((item) => `<tr><td>${escapeHtml(item.rotulo)}</td><td class="num">${formatNumber(item.vezes)}</td></tr>`)
     .join('');
   // Acima de 10 s, quase sempre é o servidor gratuito acordando da hibernação.
   const esperaCheckout = checkout?.espera
@@ -189,6 +211,7 @@ function renderHtml(m) {
   .alerta { background: #fef2f2; border: 1px solid #fecaca; color: #7f1d1d; }
   .alerta p { margin: 6px 0 0; font-size: .85rem; line-height: 1.45; }
   .funil td small { display: block; color: #94a3b8; font-size: .72rem; }
+  .funil tr.grupo td { padding-top: 14px; font-size: .72rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: #64748b; border-bottom: 1px solid #e2e8f0; }
   .note { margin: 0 0 8px; font-size: .8rem; }
   .growth td { vertical-align: top; padding: 8px 4px; }
   .growth td small { display: block; color: #94a3b8; font-size: .72rem; }
@@ -251,11 +274,15 @@ function renderHtml(m) {
 
   ${checkout ? `<div class="card">
     <h2 style="margin-top:0">Checkout (últimos ${checkout.janelaDias} dias)</h2>
-    <p class="muted note">Do clique em assinar ao pagamento. "Pessoas" conta cada conta uma vez, porque a mesma pessoa costuma clicar e tentar mais de uma vez. "Chegaram ao Mercado Pago" começou a ser medido em 13/09/2026: zero antes disso é falta de medição.</p>
+    <p class="muted note">Do clique em assinar ao pagamento. "Pessoas" conta cada conta uma vez, porque a mesma pessoa costuma clicar e tentar mais de uma vez. Desde 23/09/2026 o mensal é pago com cartão aqui mesmo, sem ir ao Mercado Pago: "Foram à página do Mercado Pago" passou a contar só o semestral, e cair ali não é queda de vendas.</p>
     <div class="scroll"><table class="funil">
       <thead><tr><th>Etapa</th><th class="num">Vezes</th><th class="num">Pessoas</th></tr></thead>
       <tbody>${etapasCheckout}</tbody>
     </table></div>
+    <p class="note" style="margin-top:12px">${esperaCartao}</p>
+    ${problemasCartao
+      ? `<div class="scroll"><table><thead><tr><th>Cartão não passou — motivo</th><th class="num">Vezes</th></tr></thead><tbody>${problemasCartao}</tbody></table></div>`
+      : '<p class="muted note">Nenhum cartão recusado ou com problema no período.</p>'}
     <p class="note" style="margin-top:12px">${esperaCheckout}</p>
     <p class="note">${retornosCheckout}</p>
     ${errosCheckout

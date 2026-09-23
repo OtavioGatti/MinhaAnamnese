@@ -275,6 +275,13 @@ async function postMercadoPagoJson(url, payload, userId, label) {
   return response.json();
 }
 
+// Código e mensagem do Mercado Pago, curtos e só com caracteres comuns: vão
+// para o log e para o evento do painel.
+function describeProviderDetail(error) {
+  const bruto = [error?.providerCode, error?.providerMessage].filter(Boolean).join(': ');
+  return bruto.replace(/[^\w .:,()/-]/g, '').slice(0, 100) || null;
+}
+
 function parseJsonSafely(text) {
   try {
     return JSON.parse(text);
@@ -470,10 +477,23 @@ module.exports = async function handler(req, res) {
         // saber o motivo para corrigir ou trocar. O fluxo antigo segue igual.
         if (pagamentoComCartao && error?.providerStatus) {
           const falha = describeCardSubscriptionFailure(error);
+          const detalhe = describeProviderDetail(error);
+
+          // Sempre no log: a tradução para a pessoa é ampla, e sem a resposta
+          // original não dá para saber por que um cartão não passou (caso real
+          // de 23/09/2026: "dados do cartão expiraram" sem causa conhecida).
+          // A resposta do Mercado Pago não traz dado do cartão.
+          console.warn('checkout cartão: Mercado Pago recusou', JSON.stringify({
+            status: error.providerStatus,
+            codigo: falha.code,
+            detalhe,
+          }));
+
           return res.status(falha.statusCode).json({
             success: false,
             code: falha.code,
             error: falha.error,
+            detalhe,
           });
         }
 
@@ -593,3 +613,4 @@ module.exports = async function handler(req, res) {
 // Exportados para os testes do pagamento com cartão.
 module.exports.buildSubscriptionPayload = buildSubscriptionPayload;
 module.exports.checkCardCheckoutRequest = checkCardCheckoutRequest;
+module.exports.describeProviderDetail = describeProviderDetail;

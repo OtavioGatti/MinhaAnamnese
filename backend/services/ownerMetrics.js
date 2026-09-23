@@ -991,6 +991,31 @@ const ROTULOS_ERRO_CHECKOUT = {
   desconhecido: 'Outro erro',
 };
 
+// Desfecho do cartão digitado na nossa página (mensal, desde 23/09/2026). Os
+// códigos vêm do servidor (services/cardCheckout.js) e do frontend
+// (lib/cardCheckout.js); nunca carregam dado do cartão.
+const ROTULOS_RESULTADO_CARTAO = {
+  CARD_NOT_RECURRING: 'Cartão não aceita cobrança mensal (débito ou pré-pago)',
+  CARD_DECLINED: 'Banco recusou o cartão',
+  CARD_TOKEN_INVALID: 'Dados do cartão expiraram',
+  CARD_NOT_ACCEPTED: 'Cartão não aceito, sem motivo informado',
+  erro: 'Erro nosso ou do Mercado Pago',
+  ja_assina: 'Já tinha assinatura ativa',
+  checkout_antigo: 'Caminho desligado no servidor: foi para o Mercado Pago',
+  formulario_nao_carregou: 'Formulário do cartão não carregou',
+};
+
+function motivoDoCartao(event) {
+  const resultado = event.metadata?.resultado;
+
+  if (resultado === 'recusada') {
+    const motivo = event.metadata?.motivo;
+    return Object.prototype.hasOwnProperty.call(ROTULOS_RESULTADO_CARTAO, motivo) ? motivo : 'CARD_NOT_ACCEPTED';
+  }
+
+  return Object.prototype.hasOwnProperty.call(ROTULOS_RESULTADO_CARTAO, resultado) ? resultado : null;
+}
+
 function percentile(valores, p) {
   const ordenados = [...valores].sort((a, b) => a - b);
   const indice = Math.min(ordenados.length - 1, Math.max(0, Math.ceil((p / 100) * ordenados.length) - 1));
@@ -1004,10 +1029,11 @@ function summarizeCheckout({ events = [], subscriptions = [], payments = [], now
     const marca = toTime(row.created_at);
     return marca !== null && marca >= inicio && marca <= fim;
   };
-  const etapa = (id, rotulo, fonte, rows) => ({
+  const etapa = (id, rotulo, fonte, rows, grupo) => ({
     id,
     rotulo,
     fonte,
+    grupo,
     vezes: rows.length,
     pessoas: new Set(rows.map((row) => row.user_id).filter(Boolean)).size,
   });
@@ -1015,6 +1041,22 @@ function summarizeCheckout({ events = [], subscriptions = [], payments = [], now
   const eventosNaJanela = events.filter(naJanela);
   const doEvento = (nome) => eventosNaJanela.filter((event) => event.event_name === nome);
   const redirecionados = doEvento('checkout_redirecionado');
+
+  // Cartão na página: o mensal não passa mais pela página do Mercado Pago, então
+  // "Foram ao Mercado Pago" cai sem que as vendas caiam.
+  const resultadosDoCartao = doEvento('checkout_cartao_resultado');
+  const enviosDoCartao = resultadosDoCartao.filter((event) => event.metadata?.resultado !== 'formulario_nao_carregou');
+  const temposDoCartao = enviosDoCartao
+    .map((event) => Number(event.metadata?.espera_ms))
+    .filter((valor) => Number.isFinite(valor) && valor >= 0);
+  const problemasDoCartao = new Map();
+  resultadosDoCartao.forEach((event) => {
+    const motivo = motivoDoCartao(event);
+
+    if (motivo) {
+      problemasDoCartao.set(motivo, (problemasDoCartao.get(motivo) || 0) + 1);
+    }
+  });
 
   const esperas = redirecionados
     .map((event) => Number(event.metadata?.espera_ms))
@@ -1040,15 +1082,25 @@ function summarizeCheckout({ events = [], subscriptions = [], payments = [], now
   return {
     janelaDias: JANELA_CHECKOUT_DIAS,
     etapas: [
-      etapa('cliques', 'Clicaram em assinar', 'eventos', doEvento('upgrade_click')),
-      etapa('redirecionados', 'Chegaram ao Mercado Pago', 'eventos', redirecionados),
-      etapa('assinaturas', 'Assinaturas mensais criadas', 'banco', subscriptions.filter(naJanela)),
-      etapa('recusados', 'Pagamentos recusados', 'banco', payments.filter((payment) => payment.status === 'rejected' && naJanela(payment))),
-      etapa('aprovados', 'Pagamentos aprovados', 'banco', payments.filter((payment) => isRecognizedApprovedPayment(payment) && naJanela(payment))),
+      etapa('cliques', 'Clicaram em assinar', 'eventos', doEvento('upgrade_click'), 'geral'),
+      etapa('cartaoAbriu', 'Abriram o formulário de cartão', 'eventos', doEvento('upgrade_click').filter((event) => event.metadata?.via === 'cartao'), 'cartao'),
+      etapa('cartaoEnviou', 'Enviaram o cartão', 'eventos', enviosDoCartao, 'cartao'),
+      etapa('cartaoAceito', 'Cartão aceito: assinatura criada', 'eventos', resultadosDoCartao.filter((event) => event.metadata?.resultado === 'autorizada'), 'cartao'),
+      etapa('cartaoConfirmado', 'Pro liberado na mesma tela', 'eventos', doEvento('checkout_cartao_confirmado'), 'cartao'),
+      etapa('redirecionados', 'Foram à página do Mercado Pago', 'eventos', redirecionados, 'mercado_pago'),
+      etapa('assinaturas', 'Assinaturas mensais criadas', 'banco', subscriptions.filter(naJanela), 'banco'),
+      etapa('recusados', 'Pagamentos recusados', 'banco', payments.filter((payment) => payment.status === 'rejected' && naJanela(payment)), 'banco'),
+      etapa('aprovados', 'Pagamentos aprovados', 'banco', payments.filter((payment) => isRecognizedApprovedPayment(payment) && naJanela(payment)), 'banco'),
     ],
     espera: esperas.length
       ? { amostras: esperas.length, medianaMs: percentile(esperas, 50), p90Ms: percentile(esperas, 90) }
       : null,
+    esperaCartao: temposDoCartao.length
+      ? { amostras: temposDoCartao.length, medianaMs: percentile(temposDoCartao, 50), p90Ms: percentile(temposDoCartao, 90) }
+      : null,
+    problemasCartao: [...problemasDoCartao.entries()]
+      .map(([codigo, vezes]) => ({ codigo, rotulo: ROTULOS_RESULTADO_CARTAO[codigo], vezes }))
+      .sort((a, b) => b.vezes - a.vezes),
     erros: [...erros.entries()]
       .map(([tipo, vezes]) => ({ tipo, rotulo: ROTULOS_ERRO_CHECKOUT[tipo], vezes }))
       .sort((a, b) => b.vezes - a.vezes),

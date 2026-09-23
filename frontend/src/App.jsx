@@ -2389,6 +2389,7 @@ function App() {
       origin,
       resultado: desfecho.kind,
       motivo: desfecho.code || null,
+      detalhe: desfecho.detail || null,
       espera_ms: Math.round(performance.now() - inicio),
     });
 

@@ -840,3 +840,45 @@ test('uso por recurso agrupa pelo rótulo e conta contas distintas', () => {
     { rotulo: 'Calculadora clínica', usos: 1, contas: 1 },
   ]);
 });
+
+// Desde 23/09/2026 o mensal é pago com cartão na nossa página: sem estas etapas
+// o quadro mostraria "Foram ao Mercado Pago" caindo como se fosse queda de venda.
+test('checkout separa o cartão na página do caminho pelo Mercado Pago, com o motivo de cada recusa', () => {
+  const agora = new Date('2026-09-23T22:00:00Z');
+  const hora = '2026-09-23T21:00:00Z';
+  const cartao = (resultado, extra = {}) => ({
+    event_name: 'checkout_cartao_resultado', user_id: extra.user_id || 'u1', created_at: hora,
+    metadata: { resultado, espera_ms: extra.espera_ms ?? 1500, ...(extra.motivo ? { motivo: extra.motivo } : {}) },
+  });
+
+  const resumo = summarizeCheckout({
+    events: [
+      { event_name: 'upgrade_click', user_id: 'u1', metadata: { via: 'cartao' }, created_at: hora },
+      { event_name: 'upgrade_click', user_id: 'u2', metadata: { via: 'cartao' }, created_at: hora },
+      { event_name: 'upgrade_click', user_id: 'u3', metadata: { plan_key: 'semiannual' }, created_at: hora },
+      { event_name: 'checkout_redirecionado', user_id: 'u3', metadata: { espera_ms: 900 }, created_at: hora },
+      cartao('recusada', { motivo: 'CARD_NOT_RECURRING', espera_ms: 800 }),
+      cartao('recusada', { motivo: 'CODIGO_QUE_NAO_EXISTE' }),
+      cartao('autorizada', { espera_ms: 2200 }),
+      cartao('recusada', { user_id: 'u2', motivo: 'CARD_NOT_RECURRING' }),
+      cartao('formulario_nao_carregou', { user_id: 'u2', espera_ms: null }),
+      { event_name: 'checkout_cartao_confirmado', user_id: 'u1', created_at: hora },
+    ],
+    now: agora,
+  });
+
+  const porId = Object.fromEntries(resumo.etapas.map((etapa) => [etapa.id, etapa]));
+
+  assert.deepEqual([porId.cliques.vezes, porId.cartaoAbriu.vezes], [3, 2], 'o clique no semestral não conta como formulário de cartão');
+  assert.deepEqual([porId.cartaoEnviou.vezes, porId.cartaoEnviou.pessoas], [4, 2], 'formulário que não carregou não é envio');
+  assert.equal(porId.cartaoAceito.vezes, 1);
+  assert.equal(porId.cartaoConfirmado.pessoas, 1);
+  assert.equal(porId.redirecionados.grupo, 'mercado_pago');
+  assert.deepEqual(resumo.problemasCartao, [
+    { codigo: 'CARD_NOT_RECURRING', rotulo: 'Cartão não aceita cobrança mensal (débito ou pré-pago)', vezes: 2 },
+    { codigo: 'CARD_NOT_ACCEPTED', rotulo: 'Cartão não aceito, sem motivo informado', vezes: 1 },
+    { codigo: 'formulario_nao_carregou', rotulo: 'Formulário do cartão não carregou', vezes: 1 },
+  ]);
+  assert.equal(resumo.esperaCartao.amostras, 4);
+  assert.equal(resumo.espera.amostras, 1, 'o tempo até o Mercado Pago continua separado');
+});

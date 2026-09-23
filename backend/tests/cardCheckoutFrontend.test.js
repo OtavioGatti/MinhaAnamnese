@@ -103,3 +103,13 @@ test('o Pro só conta como liberado quando o servidor diz que é pago (teste nã
   assert.equal(isPaidAccessConfirmed({ access_state: { hasActiveProAccess: true, isTrialAccess: true, isPaidProAccess: false } }), false);
   assert.equal(isPaidAccessConfirmed(null), false);
 });
+
+test('a recusa leva a resposta original do Mercado Pago para o evento do painel', async () => {
+  const { describeCardCheckoutResult } = await import(MODULO);
+  const desfecho = describeCardCheckoutResult({
+    success: false, status: 422, code: 'CARD_TOKEN_INVALID', error: 'x', detalhe: 'Card token service not found',
+  });
+
+  assert.equal(desfecho.detail, 'Card token service not found');
+  assert.equal(describeCardCheckoutResult({ success: false, status: 422, code: 'CARD_DECLINED', error: 'x' }).detail, null);
+});

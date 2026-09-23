@@ -106,6 +106,9 @@ function sanitizeMetadata(metadata) {
     'resultado',
     'motivo',
     'via',
+    // Resposta original do Mercado Pago na recusa do cartão (código e
+    // mensagem curtos, sem dado do cartão).
+    'detalhe',
   ];
 
   allowedKeys.forEach((key) => {
