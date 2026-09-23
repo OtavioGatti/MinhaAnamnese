@@ -1,10 +1,16 @@
 import { useEffect, useRef, useState } from 'react';
 import { loadMercadoPagoSdk } from '../lib/cardCheckout';
+import CheckoutOutcome from './CheckoutOutcome';
 
 const CONTAINER_ID = 'semiannual-checkout-brick';
 
 function formatCurrencyBRL(value) {
   return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(Number(value) || 0);
+}
+
+function formatDate(value) {
+  const data = new Date(value || '');
+  return Number.isNaN(data.getTime()) ? '' : data.toLocaleDateString('pt-BR');
 }
 
 function formatHour(value) {
@@ -35,6 +41,8 @@ function SemiannualCheckoutModal({
   onClose,
   onFallback,
   onRestart,
+  accessUntil = null,
+  metodo = null,
 }) {
   const controllerRef = useRef(null);
   const codigoPixRef = useRef(null);
@@ -148,12 +156,64 @@ function SemiannualCheckoutModal({
   };
 
   const temDesconto = Number(listPrice) > Number(amount);
-  const titulo = {
-    pix: 'Pague com Pix',
-    em_analise: 'Pagamento em análise',
-    confirmado: 'Pagamento confirmado',
-    encerrado: 'O código Pix expirou',
-  }[stage] || 'Plano semestral';
+
+  const resultados = {
+    confirmado: {
+      tom: 'sucesso',
+      titulo: 'Pagamento confirmado!',
+      // Espaço que não quebra: "meses" sozinho na segunda linha fica feio.
+      subtitulo: 'Seu acesso profissional está liberado por 6 meses.',
+      detalhes: [
+        { rotulo: 'Valor pago', valor: formatCurrencyBRL(amount) },
+        { rotulo: 'Forma de pagamento', valor: metodo === 'pix' ? 'Pix' : metodo === 'cartao' ? 'Cartão de crédito à vista' : '' },
+        { rotulo: 'Acesso até', valor: formatDate(accessUntil) },
+        { rotulo: 'Renovação', valor: 'Não renova sozinho' },
+      ],
+      nota: email ? `Enviamos a confirmação para ${email}.` : '',
+      acaoPrincipal: 'Começar a usar',
+      onAcaoPrincipal: onClose,
+    },
+    em_analise: {
+      tom: 'aguardando',
+      titulo: 'Pagamento em análise',
+      subtitulo: 'O banco está analisando o pagamento. Isso costuma levar poucos minutos.',
+      detalhes: [{ rotulo: 'Valor', valor: formatCurrencyBRL(amount) }],
+      nota: 'Pode fechar esta janela: o acesso é liberado sozinho e você recebe um e-mail quando for aprovado.',
+      acaoPrincipal: 'Continuar usando o site',
+      onAcaoPrincipal: onClose,
+    },
+    encerrado: {
+      tom: 'neutro',
+      titulo: 'O código Pix expirou',
+      subtitulo: 'Nenhuma cobrança foi feita. Gere um novo código ou pague com cartão.',
+      acaoPrincipal: 'Gerar novo código',
+      onAcaoPrincipal: onRestart,
+      acaoSecundaria: 'Fechar',
+      onAcaoSecundaria: onClose,
+    },
+  };
+  const resultado = resultados[stage];
+
+  if (resultado) {
+    return (
+      <div className="app-modal-backdrop" role="presentation" onClick={onClose}>
+        <div
+          className="app-modal-card card-checkout-modal checkout-outcome-card"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="semiannual-checkout-title"
+          onClick={(event) => event.stopPropagation()}
+        >
+          <CheckoutOutcome
+            {...resultado}
+            tituloId="semiannual-checkout-title"
+            plano="Plano Profissional Semestral"
+            onClose={onClose}
+          />
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="app-modal-backdrop" role="presentation" onClick={stage === 'enviando' ? undefined : onClose}>
@@ -167,7 +227,7 @@ function SemiannualCheckoutModal({
         <div className="app-modal-header">
           <div>
             <span className="workspace-kicker">Plano Profissional Semestral</span>
-            <h2 id="semiannual-checkout-title">{titulo}</h2>
+            <h2 id="semiannual-checkout-title">{stage === 'pix' ? 'Pague com Pix' : 'Plano semestral'}</h2>
             {mostraFormulario ? (
               <p>
                 {temDesconto ? <s className="card-checkout-list-price">{formatCurrencyBRL(listPrice)}</s> : null}
@@ -184,9 +244,11 @@ function SemiannualCheckoutModal({
 
         {stage === 'pix' && pix ? (
           <div className="pix-checkout">
-            <p className="card-checkout-status" role="status">
-              Aguardando o pagamento. Assim que o Pix cair, o acesso é liberado nesta tela.
-            </p>
+            <span className="pix-checkout-chip" role="status">
+              <span className="pix-checkout-dot" aria-hidden="true" />
+              Aguardando pagamento
+            </span>
+            <p className="pix-checkout-amount">{formatCurrencyBRL(amount)}</p>
             {pix.qr_code_base64 ? (
               <img
                 className="pix-checkout-qr"
@@ -196,6 +258,11 @@ function SemiannualCheckoutModal({
                 height="220"
               />
             ) : null}
+            <ol className="pix-checkout-steps">
+              <li>Abra o app do seu banco e escolha <strong>Pix</strong>.</li>
+              <li>Leia o QR Code ou use o <strong>copia e cola</strong> abaixo.</li>
+              <li>Pronto: esta tela confirma sozinha quando o Pix cair.</li>
+            </ol>
             <label className="pix-checkout-label" htmlFor="pix-copia-e-cola">Pix copia e cola</label>
             <textarea
               ref={codigoPixRef}
@@ -205,7 +272,7 @@ function SemiannualCheckoutModal({
               value={pix.qr_code}
               rows={3}
             />
-            <button type="button" className="btn btn-primario" onClick={copiarCodigo}>
+            <button type="button" className="btn btn-primario pix-checkout-copy" onClick={copiarCodigo}>
               {copia === 'copiado' ? 'Código copiado' : 'Copiar código Pix'}
             </button>
             {copia === 'selecionado' ? (
@@ -216,33 +283,6 @@ function SemiannualCheckoutModal({
             {pix.expires_at ? (
               <p className="card-checkout-footnote">O código vale até {formatHour(pix.expires_at)}.</p>
             ) : null}
-          </div>
-        ) : null}
-
-        {stage === 'em_analise' ? (
-          <div className="card-checkout-done">
-            <p>
-              O banco está analisando o pagamento. Assim que ele aprovar, o acesso é liberado e você recebe um
-              e-mail de confirmação. Pode continuar usando o site normalmente.
-            </p>
-          </div>
-        ) : null}
-
-        {stage === 'confirmado' ? (
-          <div className="card-checkout-done">
-            <p>Pagamento aprovado. Seu acesso profissional já está liberado por 6 meses.</p>
-            <div className="app-modal-actions">
-              <button type="button" className="btn btn-primario" onClick={onClose}>Continuar</button>
-            </div>
-          </div>
-        ) : null}
-
-        {stage === 'encerrado' ? (
-          <div className="card-checkout-done">
-            <p>Nenhuma cobrança foi feita. Gere um novo código ou pague com cartão.</p>
-            <div className="app-modal-actions">
-              <button type="button" className="btn btn-primario" onClick={onRestart}>Tentar de novo</button>
-            </div>
           </div>
         ) : null}
 

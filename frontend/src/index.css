@@ -8324,11 +8324,6 @@ body {
   margin: 0;
 }
 
-.card-checkout-done p {
-  margin: 0;
-  color: #334155;
-  line-height: 1.55;
-}
 
 .card-checkout-footnote {
   margin: 0;
@@ -8380,4 +8375,230 @@ body {
    a aparecer. */
 #semiannual-checkout-brick [class*="value-prop-"] {
   display: none;
+}
+
+/* Resultado do pagamento na página (mensal e semestral): o ícone diz se deu
+   certo antes de qualquer texto; o resumo em lista mostra quanto e até quando. */
+.checkout-outcome-card {
+  width: min(100%, 440px);
+}
+
+.checkout-outcome {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.75rem 0.25rem 0.25rem;
+  text-align: center;
+}
+
+.checkout-outcome-close {
+  position: absolute;
+  top: -0.25rem;
+  right: -0.25rem;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: #64748b;
+  cursor: pointer;
+}
+
+.checkout-outcome-close:hover {
+  background: #f1f5f9;
+  color: #0f172a;
+}
+
+.checkout-outcome-icon {
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  margin-bottom: 0.5rem;
+  border-radius: 999px;
+}
+
+.checkout-outcome-sucesso .checkout-outcome-icon {
+  background: #dcfce7;
+  color: #16a34a;
+  box-shadow: 0 0 0 8px #f0fdf4;
+  animation: checkout-outcome-pop 360ms ease-out;
+}
+
+.checkout-outcome-aguardando .checkout-outcome-icon {
+  background: #dbeafe;
+  color: #2563eb;
+  box-shadow: 0 0 0 8px #eff6ff;
+}
+
+.checkout-outcome-neutro .checkout-outcome-icon {
+  background: #f1f5f9;
+  color: #64748b;
+  box-shadow: 0 0 0 8px #f8fafc;
+}
+
+.checkout-outcome-spinner {
+  width: 26px;
+  height: 26px;
+  border: 3px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 999px;
+  animation: checkout-outcome-spin 900ms linear infinite;
+}
+
+.checkout-outcome-plan {
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+  background: #eff6ff;
+  color: #1d4ed8;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.checkout-outcome-title {
+  margin: 0.35rem 0 0;
+  font-size: 1.4rem;
+  line-height: 1.25;
+  color: #0f172a;
+}
+
+.checkout-outcome-sucesso .checkout-outcome-title {
+  color: #15803d;
+}
+
+.checkout-outcome-subtitle {
+  max-width: 40ch;
+  margin: 0;
+  color: #475569;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.checkout-outcome-details {
+  width: 100%;
+  margin: 0.9rem 0 0.2rem;
+  padding: 0.35rem 1rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  background: #f8fafc;
+  text-align: left;
+}
+
+.checkout-outcome-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid #e2e8f0;
+  font-size: 0.88rem;
+}
+
+.checkout-outcome-row:last-child {
+  border-bottom: 0;
+}
+
+.checkout-outcome-row dt {
+  flex-shrink: 0;
+  color: #64748b;
+}
+
+.checkout-outcome-row dd {
+  margin: 0;
+  color: #0f172a;
+  font-weight: 600;
+  text-align: right;
+}
+
+.checkout-outcome-note {
+  margin: 0.4rem 0 0;
+  color: #64748b;
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+.checkout-outcome-action {
+  width: 100%;
+  margin-top: 0.9rem;
+}
+
+.checkout-outcome-link {
+  margin-top: 0.25rem;
+  padding: 0.4rem;
+  border: 0;
+  background: transparent;
+  color: #475569;
+  font-size: 0.88rem;
+  cursor: pointer;
+}
+
+@keyframes checkout-outcome-pop {
+  0% { transform: scale(0.6); opacity: 0; }
+  70% { transform: scale(1.08); opacity: 1; }
+  100% { transform: scale(1); }
+}
+
+@keyframes checkout-outcome-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Tela do Pix: status, valor e passos antes do código. */
+.pix-checkout-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  background: #fef3c7;
+  color: #92400e;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.pix-checkout-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: #f59e0b;
+  animation: pix-checkout-pulse 1.4s ease-in-out infinite;
+}
+
+.pix-checkout-amount {
+  margin: 0;
+  color: #0f172a;
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.pix-checkout-steps {
+  width: 100%;
+  margin: 0;
+  padding: 0.75rem 1rem 0.75rem 2rem;
+  border-radius: 12px;
+  background: #f8fafc;
+  color: #334155;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  text-align: left;
+}
+
+.pix-checkout-copy {
+  width: 100%;
+}
+
+@keyframes pix-checkout-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.35; transform: scale(0.8); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .checkout-outcome-sucesso .checkout-outcome-icon,
+  .pix-checkout-dot {
+    animation: none;
+  }
 }

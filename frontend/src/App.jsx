@@ -1063,6 +1063,7 @@ function App() {
     stage: 'formulario',
     message: '',
     pix: null,
+    metodo: null,
   });
   // Cada abertura do semestral é uma rodada: fechar o modal encerra as
   // consultas ao servidor da rodada anterior.
@@ -2383,7 +2384,7 @@ function App() {
         via: 'pagina',
       });
       semiannualRoundRef.current += 1;
-      setSemiannualState({ open: true, origin, stage: 'formulario', message: '', pix: null });
+      setSemiannualState({ open: true, origin, stage: 'formulario', message: '', pix: null, metodo: null });
       return;
     }
 
@@ -2455,7 +2456,7 @@ function App() {
         setProfile(profileResponse.data);
       }
 
-      setSemiannualState((current) => ({ ...current, stage: 'confirmado' }));
+      setSemiannualState((current) => ({ ...current, stage: 'confirmado', metodo: 'cartao' }));
       trackEvent('checkout_cartao_confirmado', { plan_key: 'semiannual' });
       return desfecho;
     }
@@ -2463,13 +2464,13 @@ function App() {
     // Aprovado mas ainda não confirmado aqui, ou cartão em análise do banco:
     // confirma nos próximos minutos; o webhook e o e-mail cobrem o resto.
     if (desfecho.kind === 'aprovado' || desfecho.kind === 'em_analise') {
-      setSemiannualState((current) => ({ ...current, stage: 'em_analise' }));
+      setSemiannualState((current) => ({ ...current, stage: 'em_analise', metodo: 'cartao' }));
       acompanharPedidoSemestral(desfecho.orderId, { intervaloMs: 5000, ateMs: Date.now() + 3 * 60 * 1000 });
       return desfecho;
     }
 
     if (desfecho.kind === 'pix') {
-      setSemiannualState((current) => ({ ...current, stage: 'pix', pix: desfecho.pix }));
+      setSemiannualState((current) => ({ ...current, stage: 'pix', pix: desfecho.pix, metodo: 'pix' }));
       const vence = Date.parse(desfecho.pix.expires_at || '');
       acompanharPedidoSemestral(desfecho.orderId, {
         intervaloMs: PIX_POLL_INTERVAL_MS,
@@ -4240,6 +4241,7 @@ function App() {
             stage={cardCheckoutState.stage}
             message={cardCheckoutState.message}
             onSubmitCard={handleSubmitCard}
+            accessUntil={accessState?.planExpiresAt || null}
             onClose={handleCloseCardCheckout}
             onFallback={handleCardCheckoutFallback}
           />
@@ -4257,6 +4259,8 @@ function App() {
             stage={semiannualState.stage}
             message={semiannualState.message}
             pix={semiannualState.pix}
+            metodo={semiannualState.metodo}
+            accessUntil={accessState?.planExpiresAt || null}
             onSubmitPayment={handleSubmitSemiannual}
             onClose={handleCloseSemiannual}
             onFallback={handleSemiannualFallback}

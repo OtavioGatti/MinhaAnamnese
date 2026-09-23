@@ -1,10 +1,16 @@
 import { useEffect, useRef, useState } from 'react';
 import { loadMercadoPagoSdk } from '../lib/cardCheckout';
+import CheckoutOutcome from './CheckoutOutcome';
 
 const CONTAINER_ID = 'card-checkout-brick';
 
 function formatCurrencyBRL(value) {
   return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(Number(value) || 0);
+}
+
+function formatDate(value) {
+  const data = new Date(value || '');
+  return Number.isNaN(data.getTime()) ? '' : data.toLocaleDateString('pt-BR');
 }
 
 /**
@@ -27,6 +33,7 @@ function CardCheckoutModal({
   onSubmitCard,
   onClose,
   onFallback,
+  accessUntil = null,
 }) {
   const controllerRef = useRef(null);
   // O Brick guarda o callback da hora em que foi criado; a ref entrega sempre
@@ -125,6 +132,43 @@ function CardCheckoutModal({
 
   const temDesconto = Number(listPrice) > Number(amount);
 
+  if (concluido) {
+    const confirmado = stage === 'confirmado';
+
+    return (
+      <div className="app-modal-backdrop" role="presentation" onClick={onClose}>
+        <div
+          className="app-modal-card card-checkout-modal checkout-outcome-card"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="card-checkout-title"
+          onClick={(event) => event.stopPropagation()}
+        >
+          <CheckoutOutcome
+            tom={confirmado ? 'sucesso' : 'aguardando'}
+            tituloId="card-checkout-title"
+            plano="Plano Profissional Mensal"
+            titulo={confirmado ? 'Assinatura confirmada!' : 'Confirmando seu pagamento'}
+            subtitulo={confirmado
+              ? 'Seu acesso profissional já está liberado.'
+              : 'Seu cartão foi aceito e a assinatura foi criada. Falta o Mercado Pago confirmar a primeira cobrança, o que costuma levar poucos segundos.'}
+            detalhes={[
+              { rotulo: 'Valor', valor: `${formatCurrencyBRL(amount)} por mês` },
+              { rotulo: 'Próxima cobrança', valor: confirmado ? formatDate(accessUntil) : '' },
+              { rotulo: 'Renovação', valor: 'Automática, cancele quando quiser' },
+            ]}
+            nota={confirmado
+              ? (email ? `Enviamos a confirmação para ${email}.` : '')
+              : 'Pode fechar esta janela: o acesso é liberado sozinho e você recebe um e-mail quando confirmar.'}
+            acaoPrincipal={confirmado ? 'Começar a usar' : 'Continuar usando o site'}
+            onAcaoPrincipal={onClose}
+            onClose={onClose}
+          />
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="app-modal-backdrop" role="presentation" onClick={processando ? undefined : onClose}>
       <div
@@ -137,68 +181,43 @@ function CardCheckoutModal({
         <div className="app-modal-header">
           <div>
             <span className="workspace-kicker">Plano Profissional Mensal</span>
-            <h2 id="card-checkout-title">
-              {concluido ? 'Assinatura confirmada' : 'Assinar com cartão de crédito'}
-            </h2>
-            {!concluido ? (
-              <p>
-                {temDesconto ? <s className="card-checkout-list-price">{formatCurrencyBRL(listPrice)}</s> : null}
-                {' '}
-                <strong>{formatCurrencyBRL(amount)} por mês</strong>, cobrado automaticamente no cartão.
-                Cancele quando quiser, direto no seu perfil.
-              </p>
-            ) : null}
+            <h2 id="card-checkout-title">Assinar com cartão de crédito</h2>
+            <p>
+              {temDesconto ? <s className="card-checkout-list-price">{formatCurrencyBRL(listPrice)}</s> : null}
+              {' '}
+              <strong>{formatCurrencyBRL(amount)} por mês</strong>, cobrado automaticamente no cartão.
+              Cancele quando quiser, direto no seu perfil.
+            </p>
           </div>
           <button type="button" className="btn btn-secundario" onClick={onClose} disabled={processando}>
             Fechar
           </button>
         </div>
 
-        {concluido ? (
-          <div className="card-checkout-done">
-            {stage === 'confirmado' ? (
-              <p>Pagamento aprovado. Seu acesso profissional já está liberado.</p>
-            ) : (
-              <p>
-                Seu cartão foi aceito e a assinatura está ativa. O Mercado Pago está processando a primeira
-                cobrança; assim que ela for aprovada o acesso profissional é liberado e você recebe um e-mail
-                de confirmação. Pode continuar usando o site normalmente.
-              </p>
-            )}
-            <div className="app-modal-actions">
-              <button type="button" className="btn btn-primario" onClick={onClose}>
-                Continuar
-              </button>
-            </div>
+        {message ? <div className="templates-inline-error" role="alert">{message}</div> : null}
+        {stage === 'confirmando' ? (
+          <div className="card-checkout-status" role="status">Confirmando com o Mercado Pago...</div>
+        ) : null}
+
+        {falhaAoCarregar ? (
+          <div className="card-checkout-status">
+            <p>Não foi possível carregar o formulário de cartão.</p>
+            <button type="button" className="btn btn-primario" onClick={onFallback}>
+              Pagar pela página do Mercado Pago
+            </button>
           </div>
-        ) : (
-          <>
-            {message ? <div className="templates-inline-error" role="alert">{message}</div> : null}
-            {stage === 'confirmando' ? (
-              <div className="card-checkout-status" role="status">Confirmando com o Mercado Pago...</div>
-            ) : null}
+        ) : null}
 
-            {falhaAoCarregar ? (
-              <div className="card-checkout-status">
-                <p>Não foi possível carregar o formulário de cartão.</p>
-                <button type="button" className="btn btn-primario" onClick={onFallback}>
-                  Pagar pela página do Mercado Pago
-                </button>
-              </div>
-            ) : null}
+        {carregando && !falhaAoCarregar ? (
+          <div className="card-checkout-status" role="status">Carregando pagamento seguro...</div>
+        ) : null}
 
-            {carregando && !falhaAoCarregar ? (
-              <div className="card-checkout-status" role="status">Carregando pagamento seguro...</div>
-            ) : null}
+        <div id={CONTAINER_ID} className="card-checkout-brick" />
 
-            <div id={CONTAINER_ID} className="card-checkout-brick" />
-
-            <p className="card-checkout-footnote">
-              Os dados do cartão são digitados no formulário seguro do Mercado Pago e não passam pelos nossos
-              servidores. Não é preciso ter conta no Mercado Pago.
-            </p>
-          </>
-        )}
+        <p className="card-checkout-footnote">
+          Os dados do cartão são digitados no formulário seguro do Mercado Pago e não passam pelos nossos
+          servidores. Não é preciso ter conta no Mercado Pago.
+        </p>
       </div>
     </div>
   );
