@@ -767,6 +767,27 @@ async function enrichOrderPayment(payment) {
   return metadata ? { ...payment, metadata } : payment;
 }
 
+// Pedido com o dinheiro devolvido ao comprador, no pedido ou no pagamento dele.
+function isRevokedOrder(order) {
+  return isRevokedPaymentStatus(order?.status)
+    || (order?.transactions?.payments || []).some((payment) => isRevokedPaymentStatus(payment?.status));
+}
+
+// Reprocessa um pagamento pelo número, com a mesma lógica do webhook — para
+// quando um aviso do Mercado Pago se perdeu. Só pela rota administrativa.
+async function reprocessPaymentById(paymentId) {
+  const accessToken = getMercadoPagoToken();
+  const supabase = getSupabaseConfig();
+
+  if (!accessToken || !supabase.url || !supabase.serviceRoleKey) {
+    const error = new Error('billing reconciliation unavailable');
+    error.code = 'CONFIG_UNAVAILABLE';
+    throw error;
+  }
+
+  return handlePaymentWebhook(String(paymentId), accessToken, supabase);
+}
+
 // Confirmação ativa de um pedido do semestral: cartão aprovado na hora e a tela
 // do Pix perguntando se já foi pago. Também é o caminho do aviso "order".
 // Idempotente com o webhook de pagamento — quem chegar primeiro libera o Pro.
@@ -788,6 +809,22 @@ async function reconcileOrderById(orderId, { expectedUserId = null } = {}) {
     const error = new Error('order does not belong to the requesting user');
     error.code = 'FORBIDDEN';
     throw error;
+  }
+
+  // Estorno ou chargeback do pedido: o pagamento por baixo passa pelo mesmo
+  // tratamento de estorno do webhook de pagamento (comissão cancelada, acesso
+  // revogado se foi este pagamento que o liberou). Caso real de 23/09/2026: o
+  // aviso "order" do estorno era respondido com ok e ignorado, e o Mercado
+  // Pago não reenvia.
+  if (isRevokedOrder(order)) {
+    const paymentId = await findOrderPaymentId(order);
+
+    if (!paymentId) {
+      return { status: order.status, reconciled: false, reason: 'pagamento_ainda_nao_indexado' };
+    }
+
+    const result = await handlePaymentWebhook(paymentId, accessToken, supabase);
+    return { status: order.status, reconciled: true, ...result };
   }
 
   if (order.status !== 'processed') {
@@ -1051,6 +1088,8 @@ module.exports.describeUnlinkedApprovedPayment = describeUnlinkedApprovedPayment
 module.exports.isCardValidationRefund = isCardValidationRefund;
 module.exports.getPaymentPreapprovalId = getPaymentPreapprovalId;
 module.exports.reconcileOrderById = reconcileOrderById;
+module.exports.reprocessPaymentById = reprocessPaymentById;
+module.exports.isRevokedOrder = isRevokedOrder;
 module.exports.enrichOrderPayment = enrichOrderPayment;
 module.exports.isOrderWebhook = isOrderWebhook;
 module.exports.isApprovedPlanPayment = isApprovedPlanPayment;

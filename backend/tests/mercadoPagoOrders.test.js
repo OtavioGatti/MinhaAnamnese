@@ -240,3 +240,14 @@ test('a assinatura do aviso vale com o segredo de qualquer uma das duas aplicaç
   delete process.env.MERCADO_PAGO_WEBHOOK_SECRET;
   delete process.env.MERCADO_PAGO_ORDERS_WEBHOOK_SECRET;
 });
+
+// Caso real de 23/09/2026: o estorno do Pix de teste chegou como aviso "order"
+// e era ignorado (só pedido pago era tratado). O Mercado Pago não reenvia.
+test('pedido estornado ou com chargeback é tratado como estorno', () => {
+  assert.equal(webhook.isRevokedOrder({ status: 'refunded' }), true);
+  assert.equal(webhook.isRevokedOrder({ status: 'charged_back' }), true);
+  assert.equal(webhook.isRevokedOrder({ status: 'processed', transactions: { payments: [{ status: 'refunded' }] } }), true, 'o pagamento dentro do pedido também conta');
+  assert.equal(webhook.isRevokedOrder({ status: 'processed', transactions: { payments: [{ status: 'processed' }] } }), false);
+  assert.equal(webhook.isRevokedOrder({ status: 'action_required' }), false);
+  assert.equal(webhook.isRevokedOrder(null), false);
+});
