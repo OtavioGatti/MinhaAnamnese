@@ -388,7 +388,7 @@ function SafetyNotice() {
 
 function ClinicalDrugDetail({ drug }) {
   const [activeTab, setActiveTab] = useState('principal');
-  const [collapsed, setCollapsed] = useState({});
+  const [expanded, setExpanded] = useState({});
 
   const sectionsByTab = useMemo(() => TABS.reduce((accumulator, tab) => ({
     ...accumulator,
@@ -422,7 +422,8 @@ function ClinicalDrugDetail({ drug }) {
         ))}
       </div>
 
-      {/* Tudo aberto por padrão: em plantão, abrir seção por seção custa cliques. */}
+      {/* Tudo fechado por padrão: as abas já deixam poucas seções por tela, e a
+          lista de títulos funciona como índice da bula. */}
       <div className="clinical-drug-section-list">
         {visibleSections.length > 0 ? (
           visibleSections.map((section) => (
@@ -430,8 +431,8 @@ function ClinicalDrugDetail({ drug }) {
               key={section.key}
               title={section.title}
               text={section.text}
-              expanded={!collapsed[section.key]}
-              onToggle={() => setCollapsed((current) => ({ ...current, [section.key]: !current[section.key] }))}
+              expanded={Boolean(expanded[section.key])}
+              onToggle={() => setExpanded((current) => ({ ...current, [section.key]: !current[section.key] }))}
             />
           ))
         ) : (

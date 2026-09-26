@@ -468,6 +468,11 @@ async function postClinicalDrugs(drugs) {
   return Array.isArray(json) ? json : [];
 }
 
+// Gravar os ~530 medicamentos numa instrução só estourava o statement timeout
+// do Supabase (57014): a tabela tem vários índices de busca, e cada linha
+// reescrita os atualiza. Em lotes, cada instrução fica curta.
+const UPSERT_BATCH_SIZE = 50;
+
 // Enquanto supabase/clinical_drugs_monograph.sql não for aplicado à mão, a
 // coluna não existe e o PostgREST recusaria o lote inteiro. Aí grava sem ela:
 // o bulário continua sincronizando, só sem as seções novas.
@@ -476,17 +481,29 @@ async function upsertClinicalDrugs(drugs) {
     return { persisted: 0, monographColumnMissing: false };
   }
 
-  try {
-    await postClinicalDrugs(drugs);
-    return { persisted: drugs.length, monographColumnMissing: false };
-  } catch (error) {
-    if (!isMissingMonographColumn(error)) {
-      throw error;
+  let monographColumnMissing = false;
+  let persisted = 0;
+
+  for (const batch of chunkArray(drugs, UPSERT_BATCH_SIZE)) {
+    const payload = monographColumnMissing
+      ? batch.map(({ monograph, ...rest }) => rest)
+      : batch;
+
+    try {
+      await postClinicalDrugs(payload);
+    } catch (error) {
+      if (monographColumnMissing || !isMissingMonographColumn(error)) {
+        throw error;
+      }
+
+      monographColumnMissing = true;
+      await postClinicalDrugs(batch.map(({ monograph, ...rest }) => rest));
     }
 
-    await postClinicalDrugs(drugs.map(({ monograph, ...rest }) => rest));
-    return { persisted: drugs.length, monographColumnMissing: true };
+    persisted += batch.length;
   }
+
+  return { persisted, monographColumnMissing };
 }
 
 function chunkArray(items, size) {
