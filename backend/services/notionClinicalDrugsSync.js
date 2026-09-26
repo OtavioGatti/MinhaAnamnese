@@ -321,11 +321,9 @@ async function requestSupabase(table, path, options = {}) {
     throw error;
   }
 
-  if (response.status === 204) {
-    return null;
-  }
-
-  return response.json();
+  // return=minimal responde 201 sem corpo; response.json() quebraria ali.
+  const text = await response.text();
+  return text ? JSON.parse(text) : null;
 }
 
 function mapNotionPageToClinicalDrug(page) {
