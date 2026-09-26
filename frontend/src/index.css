@@ -4583,6 +4583,70 @@ body {
   color: var(--gray-900);
 }
 
+.clinical-drug-reference-list {
+  display: grid;
+  gap: 0.3rem;
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.clinical-drug-reference-list a {
+  color: var(--primary-700);
+  font-weight: 700;
+}
+
+.clinical-drug-breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-bottom: 0.2rem;
+  color: var(--gray-500);
+  font-size: 0.78rem;
+}
+
+.clinical-drug-tab-count {
+  min-width: 1.35rem;
+  padding: 0.05rem 0.4rem;
+  border-radius: 999px;
+  background: rgba(148, 163, 184, 0.2);
+  font-size: 0.72rem;
+  text-align: center;
+}
+
+.clinical-drug-review {
+  display: grid;
+  gap: 0.15rem;
+  padding: 0.7rem 0.9rem;
+  border-left: 4px solid var(--gray-300);
+  border-radius: 10px;
+  background: var(--gray-50);
+  font-size: 0.84rem;
+  line-height: 1.45;
+}
+
+.clinical-drug-review strong {
+  color: var(--gray-900);
+}
+
+.clinical-drug-review span {
+  color: var(--gray-600);
+}
+
+.clinical-drug-review.success {
+  border-left-color: #16a34a;
+  background: #f0fdf4;
+}
+
+.clinical-drug-review.warning {
+  border-left-color: #f59e0b;
+  background: #fffbeb;
+}
+
+.clinical-drug-review.danger {
+  border-left-color: #dc2626;
+  background: #fef2f2;
+}
+
 .clinical-tool-page {
   display: grid;
   gap: 1rem;

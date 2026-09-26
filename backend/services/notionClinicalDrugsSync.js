@@ -70,11 +70,81 @@ function normalizePublicationStatus(value) {
   return 'published';
 }
 
+// O Notion usa opções compostas ("C; D no 3º trimestre", "B; evitar próximo ao
+// termo"), mas a coluna do banco só aceita a letra. Antes, todo valor composto
+// virava null e o medicamento aparecia sem gestação. Agora a letra inicial vai
+// para `pregnancy_risk` e o texto completo para `monograph.pregnancyRiskLabel`.
 function normalizePregnancyRisk(value) {
   const normalized = normalizeText(value);
   const allowed = new Set(['A', 'B', 'C', 'D', 'X', 'Indefinido', 'Evitar']);
 
-  return allowed.has(normalized) ? normalized : null;
+  if (allowed.has(normalized)) {
+    return normalized;
+  }
+
+  const leadingCategory = normalized.match(/^([ABCDX])(?=$|[\s;,.(])/);
+
+  if (leadingCategory) {
+    return leadingCategory[1];
+  }
+
+  if (/^indefinido/i.test(normalized)) {
+    return 'Indefinido';
+  }
+
+  return null;
+}
+
+function splitMultiValue(value) {
+  return normalizeLongText(value)
+    .split('\n')
+    .map((item) => normalizeText(item))
+    .filter(Boolean);
+}
+
+// Seções da bula completa. Ficam num jsonb só (`monograph`): são exibidas, não
+// filtradas, então não precisam de coluna própria nem de migração a cada campo.
+const MONOGRAPH_TEXT_FIELDS = [
+  ['indications', 'Indicações'],
+  ['mechanism', 'Mecanismo de Ação'],
+  ['administration', 'Administração'],
+  ['adverseEffects', 'Efeitos Adversos'],
+  ['renalAdjustment', 'Ajuste Renal'],
+  ['hepaticAdjustment', 'Ajuste Hepático'],
+  ['pregnancyUse', 'Uso na Gestação'],
+  ['lactation', 'Lactação'],
+  ['geriatricUse', 'Uso Geriátrico'],
+  ['perioperative', 'Perioperatório'],
+  ['monitoring', 'Monitoramento'],
+  ['references', 'Referências'],
+  ['reviewedBy', 'Revisado por'],
+];
+
+function buildMonograph(properties) {
+  const monograph = {};
+
+  MONOGRAPH_TEXT_FIELDS.forEach(([key, propertyName]) => {
+    const value = normalizeLongText(readTextProperty(properties, propertyName));
+
+    if (value) {
+      monograph[key] = value;
+    }
+  });
+
+  const pregnancyRiskLabel = normalizeText(readTextProperty(properties, 'Risco Gestacional'));
+  const prescriptionType = normalizeText(readTextProperty(properties, 'Tipo de Receituário'));
+  const clinicalReviewStatus = normalizeText(readTextProperty(properties, 'Status Revisão Clínica'));
+  const reviewedAt = readDateProperty(properties, 'Data da Revisão');
+  const pharmacologicClasses = splitMultiValue(readTextProperty(properties, 'Classes Farmacológicas'));
+
+  if (pregnancyRiskLabel) monograph.pregnancyRiskLabel = pregnancyRiskLabel;
+  if (prescriptionType) monograph.prescriptionType = prescriptionType;
+  if (clinicalReviewStatus) monograph.clinicalReviewStatus = clinicalReviewStatus;
+  if (reviewedAt) monograph.reviewedAt = reviewedAt;
+  if (pharmacologicClasses.length > 0) monograph.pharmacologicClasses = pharmacologicClasses;
+  if (readTextProperty(properties, 'Rede SUS (RENAME)') === 'true') monograph.susAvailable = true;
+
+  return monograph;
 }
 
 function richTextToPlainText(items) {
@@ -297,6 +367,7 @@ function mapNotionPageToClinicalDrug(page) {
     openai_commercial_names_status: normalizeText(readTextProperty(properties, 'Status OpenAI Nomes Comerciais')) || null,
     openai_commercial_names_date: readDateProperty(properties, 'Data OpenAI Nomes Comerciais'),
     openai_commercial_names_sources: normalizeLongText(readTextProperty(properties, 'Fontes Nomes Comerciais OpenAI')) || null,
+    monograph: buildMonograph(properties),
     source_updated_at: page?.last_edited_time || null,
     synced_at: new Date().toISOString(),
     sync_status: 'synced',
@@ -374,11 +445,14 @@ async function queryNotionClinicalDrugPages() {
   return pages;
 }
 
-async function upsertClinicalDrugs(drugs) {
-  if (!Array.isArray(drugs) || drugs.length === 0) {
-    return [];
-  }
+function isMissingMonographColumn(error) {
+  const text = `${error?.message || ''} ${error?.responseBody || ''}`.toLowerCase();
+  return text.includes('monograph') && (
+    text.includes('column') || text.includes('schema cache') || text.includes('pgrst204')
+  );
+}
 
+async function postClinicalDrugs(drugs) {
   const query = new URLSearchParams({
     on_conflict: 'notion_page_id',
   });
@@ -386,12 +460,33 @@ async function upsertClinicalDrugs(drugs) {
   const json = await requestSupabase('clinical_drugs', `?${query.toString()}`, {
     method: 'POST',
     headers: {
-      Prefer: 'resolution=merge-duplicates,return=representation',
+      Prefer: 'resolution=merge-duplicates,return=minimal',
     },
     body: JSON.stringify(drugs),
   });
 
   return Array.isArray(json) ? json : [];
+}
+
+// Enquanto supabase/clinical_drugs_monograph.sql não for aplicado à mão, a
+// coluna não existe e o PostgREST recusaria o lote inteiro. Aí grava sem ela:
+// o bulário continua sincronizando, só sem as seções novas.
+async function upsertClinicalDrugs(drugs) {
+  if (!Array.isArray(drugs) || drugs.length === 0) {
+    return { persisted: 0, monographColumnMissing: false };
+  }
+
+  try {
+    await postClinicalDrugs(drugs);
+    return { persisted: drugs.length, monographColumnMissing: false };
+  } catch (error) {
+    if (!isMissingMonographColumn(error)) {
+      throw error;
+    }
+
+    await postClinicalDrugs(drugs.map(({ monograph, ...rest }) => rest));
+    return { persisted: drugs.length, monographColumnMissing: true };
+  }
 }
 
 function chunkArray(items, size) {
@@ -527,13 +622,16 @@ async function syncNotionClinicalDrugs({ bypassReviewGate = false } = {}) {
     throw error;
   }
 
-  const persisted = await upsertClinicalDrugs(prepared);
+  const { persisted, monographColumnMissing } = await upsertClinicalDrugs(prepared);
 
   return {
     totalFromNotion: pages.length,
     prepared: prepared.length,
     publishedAvailable: prepared.filter((drug) => drug.publication_status === 'published').length,
-    persisted: persisted.length,
+    persisted,
+    ...(monographColumnMissing
+      ? { warning: 'Coluna monograph ausente: aplique supabase/clinical_drugs_monograph.sql. Sincronizado sem as seções novas.' }
+      : {}),
     heldForReview: heldForReview.length,
     heldItems: heldForReview,
     skipped,

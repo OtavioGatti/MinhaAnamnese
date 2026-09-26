@@ -27,7 +27,12 @@ const CLINICAL_DRUG_SELECT = [
   'summary_text',
   'extraction_date',
   'updated_at',
+  'source_updated_at',
 ].join(',');
+
+// A bula completa só vai no detalhe: a lista carrega até 250 remédios de uma
+// vez e não exibe nada disso.
+const CLINICAL_DRUG_DETAIL_SELECT = `${CLINICAL_DRUG_SELECT},monograph`;
 
 function getClinicalDrugsConfig() {
   return {
@@ -162,7 +167,18 @@ function mapClinicalDrugRow(row) {
     summaryText: row.summary_text || '',
     extractionDate: row.extraction_date || null,
     updatedAt: row.updated_at || null,
+    sourceUpdatedAt: row.source_updated_at || null,
+    monograph: row.monograph && typeof row.monograph === 'object' && !Array.isArray(row.monograph)
+      ? row.monograph
+      : {},
   };
+}
+
+function isMissingMonographColumn(error) {
+  const text = `${error?.message || ''} ${error?.responseBody || ''}`.toLowerCase();
+  return text.includes('monograph') && (
+    text.includes('column') || text.includes('schema cache') || text.includes('42703')
+  );
 }
 
 function buildClinicalDrugParams({ query = '', limit = 30 }) {
@@ -238,18 +254,28 @@ async function getClinicalDrugBySlug(slug) {
     return null;
   }
 
-  const params = new URLSearchParams({
-    select: CLINICAL_DRUG_SELECT,
+  const buildParams = (select) => new URLSearchParams({
+    select,
     slug: `eq.${normalizedSlug}`,
     publication_status: 'eq.published',
     limit: '1',
   });
+  const fetchRow = async (select) => {
+    const json = await requestClinicalDrugs(`clinical_drugs?${buildParams(select).toString()}`, { method: 'GET' });
+    return Array.isArray(json) ? json[0] : null;
+  };
 
   try {
-    const json = await requestClinicalDrugs(`clinical_drugs?${params.toString()}`, { method: 'GET' });
-    const row = Array.isArray(json) ? json[0] : null;
+    try {
+      return mapClinicalDrugRow(await fetchRow(CLINICAL_DRUG_DETAIL_SELECT));
+    } catch (error) {
+      // Coluna ainda não criada (SQL manual): a bula abre sem as seções novas.
+      if (!isMissingMonographColumn(error)) {
+        throw error;
+      }
 
-    return mapClinicalDrugRow(row);
+      return mapClinicalDrugRow(await fetchRow(CLINICAL_DRUG_SELECT));
+    }
   } catch (error) {
     if (isMissingClinicalDrugsTable(error)) {
       return null;

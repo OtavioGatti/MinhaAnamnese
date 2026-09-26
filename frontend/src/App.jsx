@@ -295,6 +295,11 @@ function getInitialWorkspacePageFromPath() {
     return 'clinicalTools';
   }
 
+  // Link de um medicamento: /bulario/<slug>. A página lê o slug do endereço.
+  if (path === '/bulario' || path.startsWith('/bulario/')) {
+    return 'clinicalDrugs';
+  }
+
   // Um ?tool= válido leva para as ferramentas mesmo fora de /ferramentas, para
   // o link funcionar se alguém copiar só o domínio com o parâmetro.
   if (getClinicalToolSlugFromUrl()) {
