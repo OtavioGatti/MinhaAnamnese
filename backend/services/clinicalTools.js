@@ -305,6 +305,12 @@ function normalizeResultRange(range, index) {
     classification: classification || 'Resultado',
     alertColor: normalizeAlertColor(range?.alert_color || range?.alertColor || range?.cor_alerta),
     orientation,
+    // Faixa que contraindica a ferramenta. Quando ela e a faixa ativa, as demais
+    // saidas somem da tela e do texto copiado: numero que nao vale para o caso
+    // ao lado do aviso passa a impressao de que o calculo valeu.
+    blocksResults: normalizeBoolean(
+      range?.blocks_results ?? range?.blocksResults ?? range?.bloqueia_resultados,
+    ),
   };
 }
 
@@ -335,6 +341,12 @@ function normalizeEngineOutput(output, index) {
     groupLabel: normalizeText(config.group_label || config.groupLabel || config.rotulo_grupo),
     groupOrientation: normalizeText(
       config.group_orientation || config.groupOrientation || config.orientacao_grupo,
+    ),
+    // Saida que e um aviso, nao um valor (ex.: trava de faixa etaria). O numero
+    // dela e um flag interno e sairia herdando a unidade da ferramenta
+    // ("0 ml/dia"); o card passa a mostrar a classificacao da faixa ativa.
+    showAsNotice: normalizeBoolean(
+      config.show_as_notice ?? config.showAsNotice ?? config.exibir_como_aviso,
     ),
   };
 }

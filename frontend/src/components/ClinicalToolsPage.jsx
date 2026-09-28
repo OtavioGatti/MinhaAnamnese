@@ -298,12 +298,18 @@ function calculateToolResult(tool, values) {
     const outputs = configuredOutputs.map((output) => {
       return calculateFormulaOutput(output, variables, fields, values, outputFallbackRanges);
     });
-    const primaryOutput = outputs[0] || null;
+    // Faixa que contraindica a ferramenta esconde as demais saidas. O filtro
+    // fica aqui, e nao no renderizador, porque `outputs` alimenta tambem o texto
+    // copiado: sem isso o medico colaria no prontuario um valor que a propria
+    // tela diz nao valer para o paciente.
+    const blockingOutput = outputs.find((output) => output.ready && output.range?.blocksResults);
+    const visibleOutputs = blockingOutput ? [blockingOutput] : outputs;
+    const primaryOutput = visibleOutputs[0] || null;
     const value = primaryOutput
       ? primaryOutput.value
       : evaluateSafeFormula(tool.engineConfig?.formula, variables);
-    const ready = outputs.length > 0
-      ? outputs.some((output) => output.ready)
+    const ready = visibleOutputs.length > 0
+      ? visibleOutputs.some((output) => output.ready)
       : value != null;
 
     return {
@@ -311,7 +317,7 @@ function calculateToolResult(tool, values) {
       missingFields: [],
       value,
       range: primaryOutput?.range || findResultRange(value, tool.resultRanges),
-      outputs,
+      outputs: visibleOutputs,
       selectedItems: fields.flatMap((field) => getFieldSelectedItems(field, values[field.id])),
     };
   }
@@ -352,6 +358,18 @@ function buildCopyText(tool, result) {
     groupToolOutputs(readyOutputs).forEach((entry) => {
       if (entry.type === 'single') {
         const output = entry.item;
+
+        // Aviso/contraindicacao copia o texto, nunca o flag interno.
+        if (isNoticeOutput(output)) {
+          lines.push(`${output.label || output.resultLabel || 'Resultado'}: ${output.range.classification}`);
+
+          if (output.range.orientation) {
+            lines.push(`Orientação: ${output.range.orientation}`);
+          }
+
+          return;
+        }
+
         const precision = output.precision ?? tool.engineConfig?.precision;
         const unit = output.unit ? ` ${output.unit}` : '';
         lines.push(`${output.label || output.resultLabel || 'Resultado'}: ${formatResultValue(output.value, precision)}${unit}`);
@@ -739,6 +757,14 @@ function ChecklistUpcoming({ result }) {
   );
 }
 
+// Saida exibida como texto, nao como numero: marcada como aviso no CMS ou numa
+// faixa que bloqueia os demais resultados. Exige classificacao resolvida.
+function isNoticeOutput(item) {
+  return Boolean(
+    (item?.showAsNotice || item?.range?.blocksResults) && item?.range?.classification,
+  );
+}
+
 function formatOutputValue(item, tool) {
   const precision = item.precision ?? tool?.engineConfig?.precision ?? 1;
   const unit = item.unit ? ` ${item.unit}` : (tool?.engineConfig?.unit ? ` ${tool.engineConfig.unit}` : '');
@@ -842,17 +868,24 @@ function ClinicalToolResult({ tool, result, copied, onCopy }) {
       );
     }
 
-    const valueText = formatOutputValue(item, tool);
     const color = item.range?.alertColor || 'gray';
+    // Saida de aviso (ou faixa que contraindica): o valor e um flag interno e
+    // sairia como "1 ml/dia" / "0 ml/dia", herdando a unidade da ferramenta. O
+    // titulo vira a propria classificacao, e a etiqueta ao lado sai para nao
+    // repeti-la. Sem classificacao resolvida, cai no valor como antes.
+    const isNotice = isNoticeOutput(item);
+    const headline = isNotice
+      ? item.range.classification
+      : formatOutputValue(item, tool);
 
     return (
       <section key={item.id || resultLabel} className={`clinical-tool-result-card ${color}`}>
         <div className="clinical-tool-result-header">
           <div>
             <span>{resultLabel}</span>
-            <h3>{valueText}</h3>
+            <h3>{headline}</h3>
           </div>
-          {item.range?.classification ? (
+          {item.range?.classification && !isNotice ? (
             <strong>{item.range.classification}</strong>
           ) : null}
         </div>
