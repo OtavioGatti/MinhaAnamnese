@@ -20,7 +20,7 @@ const EXTRA_USAGE_ACTIONS = {
 const USAGE_ACTIONS = { ...TRIAL_USAGE_ACTIONS, ...EXTRA_USAGE_ACTIONS };
 
 // Contam por recurso único (mesmo item visto de novo não soma).
-const UNIQUE_RESOURCE_FEATURES = new Set(['prescriptionGuides', 'clinicalDrugs']);
+const UNIQUE_RESOURCE_FEATURES = new Set(['prescriptionGuides', 'clinicalDrugs', 'clinicalTools']);
 
 function getTrialUsageConfig() {
   return {
@@ -127,22 +127,19 @@ async function getTrialFeatureUsage(userId, feature, resourceKey = null) {
   };
 }
 
+// O resumo mostra à pessoa o que ela usou no teste (quadro de planos, tela de
+// teste encerrado), então inclui também os recursos medidos sem cota.
+const SUMMARY_FEATURES = [...TRIAL_USAGE_FEATURES, ...Object.keys(EXTRA_USAGE_ACTIONS)];
+
 async function getTrialUsageSummary(userId) {
   if (!isValidUserId(userId) || !isTrialUsageStorageAvailable()) {
     return {
-      used: {
-        insights: 0,
-        referralLetters: 0,
-        diagnosticHypotheses: 0,
-        prescriptionGuides: 0,
-        clinicalDrugs: 0,
-        userTemplates: 0,
-      },
+      used: Object.fromEntries(SUMMARY_FEATURES.map((feature) => [feature, 0])),
     };
   }
 
   const entries = await Promise.all(
-    TRIAL_USAGE_FEATURES.map(async (feature) => {
+    SUMMARY_FEATURES.map(async (feature) => {
       const usage = await getTrialFeatureUsage(userId, feature);
       return [feature, usage];
     }),

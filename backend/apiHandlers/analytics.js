@@ -17,6 +17,9 @@ const ALLOWED_EVENTS = new Set([
   'teaser_exibido',
   'cta_avaliacao_click',
   'insight_gerado',
+  // Quadro de planos aberto: a etapa entre querer assinar (clique em
+  // "Assinar") e escolher o plano (upgrade_click).
+  'planos_abertos',
   'upgrade_click',
   // Cartas e documentos
   'carta_gerada',
@@ -109,6 +112,10 @@ function sanitizeMetadata(metadata) {
     // Resposta original do Mercado Pago na recusa do cartão (código e
     // mensagem curtos, sem dado do cartão).
     'detalhe',
+    // Quadro de planos: se o teste já tinha acabado e quanto a pessoa usou
+    // nele (soma do que aparece no bloco "no seu teste você usou").
+    'teste_encerrado',
+    'uso_teste',
   ];
 
   allowedKeys.forEach((key) => {

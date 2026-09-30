@@ -46,6 +46,7 @@ import LegalConsentModal from './components/LegalConsentModal';
 import LegalDocumentPage, { LEGAL_DOCUMENT_VERSION } from './components/LegalDocumentPage';
 import WelcomeOnboardingModal from './components/WelcomeOnboardingModal';
 import { BILLING_PLANS, DEFAULT_PLAN_KEY, PRO_PLAN_PERIOD_COPY, PRO_PLAN_PRICE_COPY } from './billingPlans';
+import { describeTrialUsage, summarizeTrialUsage } from './lib/proOffer';
 import { guides } from './data/guides';
 import { supabase, consumeSignupConfirmationIntent } from './lib/supabaseClient';
 import { applyOutputCaseStyle, toClinicalSentenceCase } from './lib/clinicalTextCase';
@@ -591,7 +592,7 @@ function deriveAccessState(profile) {
   };
 }
 
-function getPaywallUiConfig(user, accessState) {
+function getPaywallUiConfig(user, accessState, trialUsage = null) {
   if (!user) {
     return {
       title: 'Crie sua conta para testar o Profissional',
@@ -621,10 +622,16 @@ function getPaywallUiConfig(user, accessState) {
   }
 
   if (accessState?.billingStatus === 'expired') {
+    // Quem acabou o teste vê o que usou nele: é o que deixa de ter sem assinar.
+    const usedInTrial = accessState?.isTrialExpired
+      ? describeTrialUsage(summarizeTrialUsage(trialUsage?.used))
+      : '';
+
     return {
       title: accessState?.isTrialExpired ? 'Seu teste profissional terminou' : 'Seu acesso profissional expirou',
-      description:
-        `A organização básica continua liberada. Assine a partir de ${PRO_PLAN_PRICE_COPY} ${PRO_PLAN_PERIOD_COPY} para usar avaliações completas, encaminhamentos e prescrições.`,
+      description: usedInTrial
+        ? `No seu teste você usou ${usedInTrial}. A organização básica continua liberada; o resto volta com o Profissional, a partir de ${PRO_PLAN_PRICE_COPY} ${PRO_PLAN_PERIOD_COPY}.`
+        : `A organização básica continua liberada. Assine a partir de ${PRO_PLAN_PRICE_COPY} ${PRO_PLAN_PERIOD_COPY} para usar avaliações completas, encaminhamentos e prescrições.`,
       buttonLabel: `Assinar por ${PRO_PLAN_PRICE_COPY}`,
       highlights: ['Avaliações completas', 'Encaminhamentos com IA', 'Mensal ou semestral'],
     };
@@ -1052,6 +1059,32 @@ function App() {
   const [evolutionRefreshToken, setEvolutionRefreshToken] = useState(0);
   const [qualityScore, setQualityScore] = useState(() => createEmptyQualityScore());
   const [planComparisonState, setPlanComparisonState] = useState({ open: false, origin: 'home' });
+  // Tamanho do catálogo para a lista do Profissional no quadro de planos. Busca
+  // quando o quadro abre pela primeira vez; se falhar, a lista sai sem números
+  // e a próxima abertura tenta de novo.
+  const [catalogSummary, setCatalogSummary] = useState(null);
+  const catalogRequestedRef = useRef(false);
+
+  useEffect(() => {
+    if (!planComparisonState.open || catalogRequestedRef.current) {
+      return;
+    }
+
+    catalogRequestedRef.current = true;
+    api
+      .get('/catalog-summary')
+      .then((response) => {
+        if (response?.success && response.data) {
+          setCatalogSummary(response.data);
+          return;
+        }
+
+        catalogRequestedRef.current = false;
+      })
+      .catch(() => {
+        catalogRequestedRef.current = false;
+      });
+  }, [planComparisonState.open]);
   // Mensal com o cartão digitado aqui, sem ir ao Mercado Pago. Etapas:
   // formulario → enviando → aguardando_cobranca → confirmado.
   const [cardCheckoutState, setCardCheckoutState] = useState({
@@ -2324,6 +2357,14 @@ function App() {
       return;
     }
 
+    const usoNoTeste = summarizeTrialUsage(profile?.trial_usage?.used)
+      .reduce((total, item) => total + item.count, 0);
+    trackEvent('planos_abertos', {
+      origin,
+      is_trial: Boolean(accessState?.isTrialAccess),
+      teste_encerrado: Boolean(accessState?.isTrialExpired),
+      uso_teste: usoNoTeste,
+    });
     setPlanComparisonState({ open: true, origin });
   };
 
@@ -3120,7 +3161,7 @@ function App() {
   const isClinicalDrugsCheckoutLoading = checkoutLoadingOrigin === 'clinicalDrugs';
   const isClinicalToolsCheckoutLoading = checkoutLoadingOrigin === 'clinicalTools';
   const isReferralLetterCheckoutLoading = checkoutLoadingOrigin === 'referralLetter';
-  const paywallUi = getPaywallUiConfig(user, accessState);
+  const paywallUi = getPaywallUiConfig(user, accessState, profile?.trial_usage);
   const isProExpiringSoon = accessState?.hasActiveProAccess && isPlanExpiringSoon(accessState?.planExpiresAt);
   const canRequestInsights = Boolean(
     user &&
@@ -4227,6 +4268,9 @@ function App() {
         loadingPlanKey={checkoutLoadingPlanKey}
         plans={BILLING_PLANS}
         isTrialAccess={Boolean(accessState?.isTrialAccess)}
+        isTrialExpired={Boolean(accessState?.isTrialExpired)}
+        trialUsage={profile?.trial_usage || null}
+        catalog={catalogSummary}
         referralDiscount={referralDiscount}
         referralLocked={Boolean(profile?.referral?.code)}
         onApplyReferralCode={handleApplyReferralCode}

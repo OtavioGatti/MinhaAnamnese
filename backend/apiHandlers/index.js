@@ -23,6 +23,7 @@ const apiRoutes = {
   '/api/snippets': require('./snippets'),
   '/api/clinical-drugs': require('./clinical-drugs'),
   '/api/clinical-tools': require('./clinical-tools'),
+  '/api/catalog-summary': require('./catalog-summary'),
   '/api/affiliate': require('./affiliate'),
   '/api/affiliate/lookup': require('./affiliate-lookup'),
   '/api/affiliate/claim': require('./affiliate-claim'),

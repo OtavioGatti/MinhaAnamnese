@@ -1,5 +1,8 @@
 import { useState } from 'react';
 import { BILLING_PLANS } from '../billingPlans';
+import { DIAGNOSTIC_HYPOTHESES_ENABLED } from '../config';
+import { LETTER_TYPES } from '../letterTypes';
+import { buildProFeatureList, estimatePerMonthPrice, summarizeTrialUsage } from '../lib/proOffer';
 
 function formatCurrencyBRL(value) {
   return new Intl.NumberFormat('pt-BR', {
@@ -20,8 +23,22 @@ function getDiscountedPriceCopy(plan, discountRate) {
   return formatCurrencyBRL(Math.round(plan.price * (1 - rate) * 100) / 100);
 }
 
+// Condições de cada plano; o que o Profissional inclui fica numa lista só,
+// abaixo dos dois cartões, em vez de repetida em cada um.
+const PLAN_TERMS = {
+  monthly: ['Cobrança automática no cartão, todo mês', 'Cancele quando quiser, pelo seu perfil'],
+  semiannual: ['Pagamento único no cartão ou Pix', 'Sem renovação automática'],
+};
+
+const PLAN_MONTHS = {
+  semiannual: 6,
+};
+
 function PlanOptionCard({ plan, featured, loading, discountRate, onConfirm }) {
   const discountedPriceCopy = getDiscountedPriceCopy(plan, discountRate);
+  const perMonth = PLAN_MONTHS[plan.key]
+    ? estimatePerMonthPrice(plan.price, PLAN_MONTHS[plan.key], discountRate)
+    : null;
 
   return (
     <section className={`plan-comparison-column ${featured ? 'featured' : ''}`}>
@@ -40,19 +57,70 @@ function PlanOptionCard({ plan, featured, loading, discountRate, onConfirm }) {
             <strong>{plan.priceCopy}</strong>
           )}
           <span>{plan.periodCopy}</span>
+          {perMonth ? <span>equivale a {formatCurrencyBRL(perMonth)}/mês</span> : null}
         </div>
       </div>
       <p>{plan.description}</p>
       {plan.savingsCopy ? <span className="plan-comparison-saving">{plan.savingsCopy}</span> : null}
       <ul>
-        <li>avaliação completa de anamneses</li>
-        <li>cartas de encaminhamento com IA</li>
-        <li>guias de prescrição e bulário clínico</li>
-        <li>templates próprios para sua rotina</li>
+        {(PLAN_TERMS[plan.key] || []).map((term) => (
+          <li key={term}>{term}</li>
+        ))}
       </ul>
       <button type="button" className="btn btn-primario" onClick={() => onConfirm(plan.key)} disabled={loading}>
         {loading ? 'Abrindo checkout...' : `Escolher ${plan.label}`}
       </button>
+    </section>
+  );
+}
+
+// O que a pessoa já usou no teste: é o argumento mais concreto que existe para
+// ela assinar — "isso aqui para se você não assinar".
+function TrialUsageSummary({ items, isTrialExpired }) {
+  if (!items.length) {
+    return null;
+  }
+
+  return (
+    <section className="plan-comparison-usage" aria-label="Seu uso no teste">
+      <span className="plan-comparison-usage-kicker">
+        {isTrialExpired ? 'No seu teste você usou' : 'No seu teste até agora'}
+      </span>
+      <ul>
+        {items.map((item) => (
+          <li key={item.key}>
+            <strong>{item.count}</strong>
+            <span>{item.label}</span>
+          </li>
+        ))}
+      </ul>
+      <p>
+        {isTrialExpired
+          ? 'Tudo isso volta assim que você assinar.'
+          : 'Assinando agora, nada disso para quando o teste acabar.'}
+      </p>
+    </section>
+  );
+}
+
+function ProFeatureList({ catalog }) {
+  const features = buildProFeatureList({
+    catalog,
+    letterTypeCount: LETTER_TYPES.length,
+    hypothesesEnabled: DIAGNOSTIC_HYPOTHESES_ENABLED,
+  });
+
+  return (
+    <section className="plan-comparison-features" aria-labelledby="plan-comparison-features-title">
+      <h3 id="plan-comparison-features-title">Tudo o que o Profissional inclui</h3>
+      <ul>
+        {features.map((feature) => (
+          <li key={feature.key}>
+            <strong>{feature.title}</strong>
+            <span>{feature.detail}</span>
+          </li>
+        ))}
+      </ul>
     </section>
   );
 }
@@ -150,6 +218,9 @@ function PlanComparisonModal({
   loadingPlanKey,
   plans = BILLING_PLANS,
   isTrialAccess,
+  isTrialExpired = false,
+  trialUsage = null,
+  catalog = null,
   referralDiscount = null,
   referralLocked = false,
   onApplyReferralCode,
@@ -164,6 +235,17 @@ function PlanComparisonModal({
   const monthlyPlan = plans.monthly;
   const semiannualPlan = plans.semiannual;
   const discountRate = Number(referralDiscount?.rate) || 0;
+  const usageItems = isTrialAccess || isTrialExpired ? summarizeTrialUsage(trialUsage?.used) : [];
+  let title = 'Escolha seu Plano Profissional';
+  let subtitle = 'Mensal recorrente para não lembrar de pagar todo mês, ou semestral com melhor custo.';
+
+  if (isTrialAccess) {
+    title = 'Mantenha o Plano Profissional depois do teste';
+    subtitle = 'O pagamento preserva os dias restantes do teste e soma o período do plano escolhido.';
+  } else if (isTrialExpired) {
+    title = 'Seu teste terminou. Continue de onde parou';
+    subtitle = 'Organizar anamneses continua liberado. O resto do Profissional volta assim que você assinar.';
+  }
 
   return (
     <div className="app-modal-backdrop" role="presentation" onClick={onClose}>
@@ -177,14 +259,8 @@ function PlanComparisonModal({
         <div className="app-modal-header">
           <div>
             <span className="workspace-kicker">Planos</span>
-            <h2 id="plan-comparison-title">
-              {isTrialAccess ? 'Mantenha o Plano Profissional depois do teste' : 'Escolha seu Plano Profissional'}
-            </h2>
-            <p>
-              {isTrialAccess
-                ? 'O pagamento preserva os dias restantes do teste e soma o período do plano escolhido.'
-                : 'Mensal recorrente para não lembrar de pagar todo mês, ou semestral com melhor custo.'}
-            </p>
+            <h2 id="plan-comparison-title">{title}</h2>
+            <p>{subtitle}</p>
           </div>
           <button type="button" className="btn btn-secundario" onClick={onClose}>
             Fechar
@@ -202,18 +278,9 @@ function PlanComparisonModal({
             onApply={onApplyReferralCode}
           />
 
-          <div className="plan-comparison-grid">
-            <section className="plan-comparison-column basic-summary">
-              <span className="plan-comparison-badge basic">Plano básico</span>
-              <h3>Para organizar rapidamente</h3>
-              <ul>
-                <li>organiza a anamnese em formato clínico</li>
-                <li>mantém modelos oficiais no fluxo principal</li>
-                <li>preserva seus dados e preferências básicas</li>
-                <li>ideal para uso pontual sem recursos Pro</li>
-              </ul>
-            </section>
+          <TrialUsageSummary items={usageItems} isTrialExpired={isTrialExpired && !isTrialAccess} />
 
+          <div className="plan-comparison-grid">
             <PlanOptionCard
               plan={monthlyPlan}
               featured={false}
@@ -231,10 +298,11 @@ function PlanComparisonModal({
             />
           </div>
 
-          <div className="plan-comparison-highlight">
-            O teste profissional libera avaliações completas, encaminhamentos, prescrições, bulário e templates próprios por 7 dias.
-          </div>
+          <ProFeatureList catalog={catalog} />
 
+          <p className="plan-comparison-basic-note">
+            Sem assinar, você continua organizando anamneses nos modelos oficiais.
+          </p>
         </div>
 
         <div className="app-modal-actions plan-comparison-actions">
