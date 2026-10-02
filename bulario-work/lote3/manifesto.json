@@ -1,0 +1,20 @@
+{
+  "_normas": {
+    "antimicrobiano": "Antimicrobiano — receita em 2 vias | Fonte: ANVISA RDC nº 471/2021 (art. 10: retenção da 2ª via) e IN nº 360/2025 (lista de antimicrobianos; receita válida por 10 dias).",
+    "B1": "Notificação B (azul) — Lista B1 | Fonte: Portaria SVS/MS nº 344/1998, Anexo I atualizado pela RDC ANVISA nº 1.036/2026 (Lista B1 — psicotrópicos sujeitos à Notificação de Receita B).",
+    "C1": "Controle especial — Lista C1/C5 em 2 vias | Fonte: Portaria SVS/MS nº 344/1998, Anexo I atualizado pela RDC ANVISA nº 1.036/2026 (Lista C1 — Receita de Controle Especial em duas vias).",
+    "A2_adendo": "Controle especial — Lista C1/C5 em 2 vias | Fonte: Portaria SVS/MS nº 344/1998, Anexo I atualizado pela RDC ANVISA nº 1.036/2026 — Lista A2, adendo 3: preparações com até 100 mg de tramadol por unidade posológica ficam sujeitas à Receita de Controle Especial em 2 vias, com retenção da receita."
+  },
+  "atorvastatina": {
+    "principal": [
+      "lote3/lote3__atorvastatina__LIPITOR.txt"
+    ]
+  },
+  "tramadol-cloridrato": {
+    "principal": [
+      "lote3/lote3__tramadol-cloridrato__TRAMAL.txt"
+    ],
+    "receituario": "A2_adendo",
+    "observacao": "Em 'Apresentações / Nomes Comerciais' explique que apresentações acima de 100 mg por unidade seguem a Lista A2 (Notificação de Receita A), conforme a mesma norma."
+  }
+}

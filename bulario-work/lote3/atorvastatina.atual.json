@@ -1,0 +1,18 @@
+{
+  
+  "Risco Gestacional": "X",
+  "Slug": "atorvastatina",
+  "Nomes Comerciais / Produtos ANVISA": "Lipitor; Citalor; atorvastatina.",
+  "Interações": "Evitar ou monitorar com inibidores fortes de CYP3A4, como claritromicina, eritromicina, itraconazol, cetoconazol, posaconazol, voriconazol, ritonavir, indinavir, saquinavir e cobicistate, pelo risco de miopatia/rabdomiólise. Ciclosporina, gemfibrozila, fenofibrato, niacina em altas doses, colchicina, daptomicina e ácido fusídico sistêmico aumentam risco muscular; ácido fusídico sistêmico deve ser evitado ou exigir suspensão temporária da estatina conforme protocolo. Rifampicina, carbamazepina, fenitoína e efavirenz podem reduzir exposição. Suco de grapefruit em grande quantidade pode aumentar níveis.",
+  "Apresentações / Nomes Comerciais": "Comprimidos revestidos 10 mg, 20 mg, 40 mg e 80 mg. Exemplos: Lipitor; Citalor; Atorvastatina EMS; Atorvastatina Eurofarma; atorvastatina genérica.",
+  "Posologia Pediátrica": "Hipercolesterolemia familiar heterozigótica em crianças/adolescentes: geralmente iniciar com 10 mg por via oral 1 vez ao dia, com ajuste conforme resposta e idade.\nDose máxima pediátrica depende da idade e bula específica; usar com acompanhamento especializado.",
+  "Texto Resumo": "Atorvastatina é uma estatina usada para redução de LDL-colesterol e prevenção de eventos cardiovasculares. O principal cuidado clínico envolve risco de miopatia/rabdomiólise, hepatotoxicidade e contraindicação na gravidez e lactação.",
+  "Classe / Categoria": "Estatina; hipolipemiante; inibidor da HMG-CoA redutase.",
+  "Posologia Adulto": "Hipercolesterolemia e prevenção cardiovascular: 10 mg a 80 mg por via oral 1 vez ao dia, em qualquer horário, com ou sem alimento.\nDose inicial comum: 10 mg ou 20 mg 1 vez ao dia; em pacientes que necessitam grande redução de LDL, pode iniciar com 40 mg conforme avaliação.\nDose máxima: 80 mg/dia.",
+  "Contraindicações": "Hipersensibilidade à atorvastatina ou componentes da fórmula; doença hepática ativa; elevações persistentes e inexplicadas de transaminases; gravidez; lactação; mulheres em idade fértil sem contracepção adequada quando houver risco de gestação.",
+  "Tags Busca": "atorvastatina; estatina; colesterol; ldl; hipolipemiante; prevenção cardiovascular; lipitor; citalor",
+  "Advertências": "Pode causar mialgia, miopatia, rabdomiólise e elevação de transaminases. Avaliar sintomas musculares, CK quando indicado e função hepática conforme prática clínica. Usar cautela em doença hepática, consumo excessivo de álcool, idosos, insuficiência renal, hipotireoidismo não tratado e uso de medicamentos que aumentem risco de miopatia.",
+  "Nomes Comerciais OpenAI": "Lipitor; Citalor; Atorvastatina EMS; Atorvastatina Eurofarma; Atorvastatina Medley.",
+  "Rede SUS (RENAME)": false,
+  "Princípio Ativo": "Atorvastatina"
+}

@@ -1,0 +1,752 @@
+FONTE: lote3__atorvastatina__LIPITOR.pdf
+
+===== BLOCO 1 =====
+APRESENTAÇÕES
+Lípitor® 10 mg, 20 mg ou 40 mg em embalagens contendo 10 ou 30 comprimidos revestidos.
+Lípitor® 80 mg em embalagens contendo 30 comprimidos revestidos.
+
+VIA DE ADMINISTRAÇÃO: USO ORAL
+
+LÍPITOR® 10 mg e 20 mg - USO ADULTO E PEDIÁTRICO ACIMA DE 10 ANOS DE IDADE
+
+LÍPITOR® 40 mg e 80 mg – USO ADULTO
+
+1. INDICAÇÕES
+
+Lípitor® (atorvastatina cálcica) comprimidos revestidos é indicado como um adjunto à dieta para o tratamento de
+pacientes com níveis elevados de colesterol total (CT), lipoproteína de baixa densidade (LDL-C), apolipoproteína
+B (apo B) e triglicérides (TG), para aumentar os níveis de lipoproteína de alta densidade (HDL-C) em pacientes
+com hipercolesterolemia primária (hipercolesterolemia heterozigótica familiar e não familiar), hiperlipidemia
+combinada (mista) (Fredrickson tipos IIa e IIb), níveis elevados de triglicérides séricos (Fredrickson tipo IV) e
+para pacientes com disbetalipoproteinemia (Fredrickson tipo III) que não respondem de forma adequada à dieta.
+Lípitor® também é indicado para a redução do colesterol total e da lipoproteína de baixa densidade em pacientes
+com hipercolesterolemia familiar homozigótica, quando a resposta à dieta e outras medidas não-farmacológicas
+forem inadequadas.
+Em pacientes com doença cardiovascular e/ou dislipidemia, Lípitor® está indicado na síndrome coronária aguda
+(angina instável e infarto do miocárdio não transmural – sem onda Q) para a prevenção secundária do risco
+combinado de morte, infarto do miocárdio não fatal, parada cardíaca e re-hospitalização de pacientes com angina
+do peito.
+
+Prevenção de Complicações Cardiovasculares: Em pacientes sem evidência clínica de doença cardiovascular
+(DCV) e com ou sem dislipidemia, porém com múltiplos fatores de risco para doença coronariana (DAC) como
+
+LIPITOR_CCDSv21.0_15Dec2020_LIPCOR_33_VPS
+tabagismo, hipertensão, diabetes, baixo nível de HDL-C ou história familiar de doença coronariana precoce,
+Lípitor® está indicado para redução do risco de doença coronariana fatal e infarto do miocárdio não fatal, acidente
+vascular cerebral, procedimentos de revascularização e angina do peito. Em pacientes com doença cardíaca
+coronariana clinicamente evidente, Lípitor® é indicado para redução do risco de: infarto do miocárdio não fatal;
+acidente vascular cerebral fatal e não fatal; procedimentos de revascularização; hospitalização por insuficiência
+cardíaca congestiva (ICC); angina.
+
+Pacientes Pediátricos (10 a 17 anos): Lípitor® também é indicado como um adjuvante à dieta de redução dos
+níveis de CT, LDL-C e Apo B em meninas pós-menarca e meninos, entre 10 e 17 anos, com hipercolesterolemia
+familiar heterozigótica se, após a realização de um teste adequado de terapia dietética, os níveis de LDL-C
+continuarem ≥ 190 mg/ ou ≥ 160 mg/ e houver um histórico familiar positivo para doença cardiovascular (DCV)
+prematura, ou presença de 2 ou mais fatores de risco cardiovascular no paciente pediátrico.
+
+3. CARACTERÍSTICAS FARMACOLÓGICAS
+
+Propriedades Farmacodinâmicas
+A atorvastatina cálcica é um agente de redução de lípides sintéticos, que é um inibidor da HMG-CoA redutase.
+Esta enzima catalisa a conversão de HMG-CoA em mevalonato, uma etapa inicial e limitante da velocidade na
+biossíntese do colesterol.
+
+A fórmula empírica de atorvastatina cálcica é (C33H34FN2O5)2Ca • 3H2O e o seu peso molecular é 1209,42. A sua
+fórmula estrutural é:
+
+A atorvastatina cálcica é um pó cristalino branco a esbranquiçado, praticamente insolúvel em soluções aquosas de
+pH 4 e abaixo. Ele é muito pouco solúvel em água destilada, pH 7,4 tampão de fosfato e acetonitrilo; ligeiramente
+solúvel em etanol; e livremente solúvel em metanol.
+
+Mecanismo de Ação: a atorvastatina é um inibidor seletivo e competitivo da HMG-CoA redutase, a enzima
+limitante da velocidade que converte HMG-Co-A a mevalonato, um precursor de esteróis, incluindo o colesterol .
+
+Em pacientes com hipercolesterolemia familiar homozigótica e heterozigótica, formas não familiares de
+hipercolesterolemia e dislipidemia mista, a atorvastatina reduz o CT (colesterol total), LDL-C (lipoproteína de
+baixa densidade) e apo B (apolipoproteína B). A atorvastatina também reduz o VLDL-C (lipoproteínas de
+densidade muito baixa) e os TG (triglicérides) e produz aumentos variáveis no HDL-C (lipoproteínas de alta
+densidade).
+
+LIPITOR_CCDSv21.0_15Dec2020_LIPCOR_33_VPS
+A atorvastatina diminui os níveis plasmáticos de colesterol e lipoproteínas através da inibição da HMG-CoA
+redutase e da síntese de colesterol no fígado, e aumenta o número de receptores de LDL hepáticos na superfície da
+célula, aumentando a absorção e o catabolismo do LDL.
+A atorvastatina reduz a produção e o número de partículas de LDL. Produz um aumento marcante e prolongado
+na atividade do receptor de LDL, além de promover uma alteração benéfica na qualidade das partículas de LDL
+circulantes. O fármaco é eficaz na redução de LDL em pacientes com hipercolesterolemia familiar homozigótica,
+uma população que não responde normalmente à medicação de redução lipídica.
+
+A atorvastatina e alguns de seus metabólitos são farmacologicamente ativos em humanos. O principal sítio de ação
+da atorvastatina é o fígado, que é o principal local de síntese de colesterol e clearance de LDL. A redução no LDL-
+C está mais relacionada à dose do medicamento do que à concentração sistêmica do fármaco. A individualização
+da dose do medicamento deve ser baseada na resposta terapêutica (vide item 8. Posologia e Modo de Usar).
+
+Em um estudo dose-resposta, a atorvastatina (10 mg – 80 mg) demonstrou reduzir as concentrações de CT (30%
+– 46%), LDL-C (41% – 61%), apo B (34% – 50%) e triglicérides (14% – 33%). Estes resultados são compatíveis
+em pacientes com hipercolesterolemia familiar heterozigótica, formas não familiares de hipercolesterolemia e
+hiperlipidemia mista, incluindo pacientes com diabetes melito não insulino-dependentes.
+
+Em pacientes com hipertrigliceridemia isolada, a atorvastatina reduz o CT, o LDL-C, o VLDL-C, a apo B,
+triglicérides e não-HDL-C, e aumenta o HDL-C. Em pacientes com disbetalipoproteinemia, reduz a lipoproteína
+de densidade intermediária-colesterol (IDL-C).
+
+Em pacientes com hiperlipoproteinemia de Fredrickson tipos IIa e IIb, reunidos em 24 estudos controlados, o
+aumento percentual médio a partir do valor basal no HDL -C para atorvastatina (10 mg – 80 mg) foi de 5,1 – 8,7%
+de maneira não relacionada à dose. Além disso, a análise destes dados demonstrou uma redução significativa
+relacionada à dose nas proporções de CT/HDL-C e LDL-C/HDL-C, variando de -29% para -44% e -37% para -
+55%, respectivamente.
+
+Propriedades Farmacocinéticas
+
+Farmacocinética e Metabolismo:
+Absorção: a atorvastatina é rapidamente absorvida após administração oral e concentrações plasmáticas máximas
+são atingidas dentro de 1 a 2 horas. A extensão da absorção e as concentrações plasmáticas aumentam em
+proporção à sua dose. A atorvastatina em comprimidos apresenta biodisponibilidade entre 95% e 99% em
+comparação à solução. A biodisponibilidade absoluta é de aproximadamente 14% e a disponibilidade sistêmica da
+atividade inibitória sobre a HMG-CoA redutase é de aproximadamente 30%. A baixa disponibilidade sistêmica é
+atribuída ao clearance pré-sistêmico na mucosa gastrintestinal e/ou ao metabolismo hepático de primeira
+passagem. Embora o alimento diminua a taxa e a extensão da absorção do fármaco em aproximadamente 25% e
+9%, respectivamente, como observado através da Cmáx e da AUC, a redução no LDL-C é semelhante se a
+atorvastatina for administrada com ou sem alimentos. As concentrações plasmáticas de atorvastatina são mais
+baixas (aproximadamente 30% para Cmáx e AUC) após a administração do medicamento à noite, quando
+comparada à administração pela manhã. Entretanto, a redução no LDL-C é a mesma independente da hora em que
+o fármaco é administrado (vide item 8. Posologia e Modo de Usar).
+
+Distribuição: o volume médio de distribuição da atorvastatina é de aproximadamente 381 litros. A atorvastatina
+apresenta uma taxa de ligação às proteínas plasmáticas igual ou superior a 98%. Uma proporção glóbulo vermelho
+do sangue/plasma de aproximadamente 0,25 indica baixa penetração do fármaco nos glóbulos vermelhos do
+sangue (eritrócitos).
+
+Metabolismo: a atorvastatina é amplamente metabolizada a derivados orto e para-hidroxilados e a vários produtos
+de beta-oxidação. A inibição da HMG-CoA redutase pelos metabólitos orto e para-hidroxilados in vitro é
+equivalente àquela observada com a atorvastatina. Aproximadamente 70% da atividade inibitória circulante sobre
+a HMG-CoA redutase é atribuída aos metabólitos ativos. Estudos in vitro sugerem a importância do metabolismo
+da atorvastatina pelo citocromo hepático P450 3A4, conforme o aumento das con centrações plasmáticas de
+atorvastatina em humanos após coadministração de eritromicina, um inibidor conhecido desta isoenzima. Estudos
+
+LIPITOR_CCDSv21.0_15Dec2020_LIPCOR_33_VPS
+in vitro também indicaram que a atorvastatina é um inibidor fraco do citocromo P450 3A4. A coadministração de
+atorvastatina e terfenadina não produziu um efeito clinicamente significante nas concentrações plasmáticas da
+terfenadina, um composto predominantemente metabolizado pelo citocromo P450 3A4. Portanto, é improvável
+que a atorvastatina altere significantemente a farmacocinética de outros substratos do citocromo P450 3A4 (vide
+item 6. Interações Medicamentosas). Em animais, o metabólito orto-hidroxilado sofre posteriormente
+glicuronidação.
+
+Excreção: a atorvastatina e seus metabólitos são eliminados principalmente na bile após metabolismo hepático
+e/ou extra-hepático; entretanto, o fármaco parece não sofrer recirculação entero-hepática. A meia-vida de
+eliminação plasmática média em humanos é de aproximadamente 14 horas, mas a meia-vida da atividade inibitória
+para a HMG-CoA redutase é de 20 a 30 horas, devido à contribuição dos metabólitos ativos. Menos de 2% de uma
+dose de atorvastatina é recuperada na urina após administração oral.
+
+A atorvastatina é um substrato dos transportadores hepáticos, transportador OATP1B1 e OATP1B3. Metabólitos
+de atorvastatina são substratos do OATP1B1. A atorvastatina também é identificada como substrato dos
+transportadores de efluxo MDR1 e BCRP, o que pode limitar a absorção intestinal e a depuração biliar da
+atorvastatina.
+
+Populações Especiais
+Idosos: as concentrações plasmáticas da atorvastatina se apresentam mais elevadas (aproximadamente 40% para
+Cmáx e 30% para AUC) em indivíduos idosos sadios (65 anos de idade ou mais) do que em adultos jovens. O
+estudo ACCESS avaliou especificamente pacientes idosos com relação ao alcance da meta de tratamento segundo
+o Programa Nacional de Colesterol dos EUA (NCEP – National Cholesterol Education Program). O estudo incluiu
+1.087 pacientes com menos de 65 anos, 815 pacientes com mais de 65 anos e 185 pacientes com mais de 75 anos
+de idade. Não foram observadas diferenças entre pacientes idosos e a população em geral com relação à segurança,
+eficácia ou alcance do objetivo do tratamento de lípides.
+
+Crianças: não foram conduzidos estudos de farmacocinética na população pediátrica.
+
+Sexo: as concentrações plasmáticas de atorvastatina em mulheres são diferentes das observadas nos homens
+(aproximadamente 20% mais altas para Cmáx e 10% mais baixas para AUC). Entretanto, não houve diferenças
+clinicamente significativas do efeito nos lípides entre homens e mulheres.
+
+Insuficiência renal: disfunção renal não apresenta influência nas concentrações plasmáticas ou no efeito da
+atorvastatina como hipolipemiante. Portanto, não é necessário o ajuste de dose em pacientes com disfunção renal
+(vide item 8. Posologia e Modo de Usar).
+
+Hemodiálise: apesar de não terem sido realizados estudos em pacientes com insuficiência renal em estágio
+terminal, não se espera que a hemodiálise aumente significativamente o clearance da atorvastatina, uma vez que
+este fármaco se liga amplamente às proteínas plasmáticas.
+
+Insuficiência hepática: as concentrações plasmáticas de atorvastatina aumentam acentuadamente
+(aproximadamente 16 vezes na Cmáx e 11 vezes na AUC) em pacientes com hepatopatia alcoólica crônica (classe
+B de Child-Pugh) (vide item 4. Contraindicações).
+
+Interações medicamentosas: o efeito de medicamentos coadministrados sobre a farmacocinética de atorvastatina,
+bem como o efeito da atorvastatina sobre a farmacocinética de medicamentos coadministrados é resumido nas
+Tabelas 5 e 6 (vide item 5. Advertências e Precauções e item 6. Interações Medicamentosas).
+
+LIPITOR_CCDSv21.0_15Dec2020_LIPCOR_33_VPS
+Tabela 4 – Efeitos na farmacocinética da atorvastatina devido coadministração de medicamentos
+ Medicamento coadministrado e regime atorvastatina
+ de dose
+ Dose (mg) Proporção da Proporção da
+ AUC & Cmáx&
+
+ # ciclosporina 5,2 mg/kg/dia, dose estável 10 mg uma vez ao dia 8,7 10,7
+ por 28 dias
+ # tipranavir 500 mg, duas vezes ao dia
+ /ritonavir 200 mg, duas vezes ao dia, 7 10 mg, dose única 9,4 8,6
+ dias
+ # glecaprevir 400 mg, uma vez ao dia /
+ pibrentasvir 120 mg 10 mg, uma vez ao dia 8,3 22,0
+ uma vez ao dia, 7 dias por 7 dias
+
+ # telaprevir 750 mg a cada 8 horas, 10 dias 20 mg, dose única 7,9 10,6
+ # elbasvir 50 mg, uma vez ao dia /
+ grazoprevir 200 mg, uma vez ao dia, 13 10 mg, dose única 1,95 4,3
+ dias
+ # boceprevir 800 mg, três vezes ao dia, 7
+ dias 40 mg dose única 2,3 2,7
+
+ # simeprevir 150 mg, uma vez ao dia, 10
+ dias 40 mg, dose única 2,12 1,7
+
+ # lopinavir 400 mg, duas vezes ao dia / 20 mg, uma vez ao dia
+ ritonavir 100 mg, duas vezes ao dia, 14 dias por 4 dias 5,9 4,7
+
+ #,‡ saquinavir 400 mg, duas vezes ao dia / 40 mg, uma vez ao dia
+ ritonavir 400 mg, duas vezes ao dia, 15 dias por 4 dias 3,9 4,3
+
+ # claritromicina 500 mg, duas vezes ao dia, 80 mg, uma vez ao dia
+ 9 dias por 8 dias 4,5 5,4
+
+ # darunavir 300 mg, duas vezes ao
+ dia/ritonavir 100 mg, duas vezes ao dia, 9 10 mg, uma vez ao dia 3,4 2,2
+ dias por 4 dias
+
+ # itraconazol 200 mg, uma vez ao dia, 4 dias 40 mg, dose única 3,3 1,20
+ #letermovir 480 mg, uma vez ao dia, 10 dias 20 mg, dose única 3,29 2,17
+ # fosamprenavir 700 mg, duas vezes ao
+ dia/ritonavir 100 mg, duas vezes ao dia, 14 10 mg, uma vez ao dia 2,5 2,8
+ dias por 4 dias
+
+ # fosamprenavir 1.400 mg, duas vezes ao 10 mg, uma vez ao dia
+ dia, 14 dias por 4 dias 2,3 4,0
+
+ # nelfinavir 1.250 mg, duas vezes ao dia, 10 mg, uma vez ao dia
+ 14 dias por 28 dias 1,74 2,2
+
+ # suco de Grapefruit, 240 mL, uma vez ao
+ dia* 40 mg, dose única 1,37 1,16
+ diltiazem 240 mg, uma vez ao dia, 28 dias 40 mg, dose única 1,51 1,00
+ eritromicina 500 mg, quatro vezes ao dia, 7 10 mg, dose única 1,33 1,38
+ dias
+ anlodipino 10 mg, dose única 80 mg, dose única 1,18 0,91
+ cimetidina 300 mg, quatro vezes ao dia, 2 10 mg, uma vez ao dia 1,00 0,89
+ semanas por 2 semanas
+ colestipol 10 g, duas vezes ao dia, 24 40 mg, uma vez ao dia NA 0,74**
+ semanas por 8 semanas
+ Maalox TC® 30 mL, quatro vezes ao dia, 17 10 mg, uma vez ao dia
+ dias por 15 dias 0,66 0,67
+ efavirenz 600 mg, uma vez ao dia, 14 dias 10 mg por 3 dias 0,59 1,01
+ # rifampicina 600 mg, uma vez ao dia, 7
+ dias (coadministrado) † 40 mg, dose única 1,12 2,9
+
+LIPITOR_CCDSv21.0_15Dec2020_LIPCOR_33_VPS
+ Medicamento coadministrado e regime atorvastatina
+ de dose
+ # rifampicina 600 mg, uma vez ao dia, 5
+ dias (doses separadas) † 40 mg, dose única 0,20 0,60
+
+ # genfibrozila 600 mg, duas vezes ao dia, 7
+ dias 40 mg, dose única 1,35 1,00
+
+ # fenofibrato 160 mg, uma vez ao dia, 7 dias 40 mg, dose única 1,03 1,02
+
+ & Representa proporção de tratamentos (medicamento coadministrado com atorvastatina vs. atorvastatina
+ isolada).
+ # vide itens 5. Advertências e Precauções e 6. Interações Medicamentosas, para significância clínica.
+ * Aumentos elevados na AUC (proporção da AUC até 2,5) e/ou Cmáx (proporção da Cmáx até 1,71) foram
+ relatados com o consumo excessivo de suco de Grapefruit (≥ 750 mL – 1,2 litro/dia).
+ ** Proporção baseada em amostra única administrada 8 – 16 h pós-dose.
+ † Devido ao mecanismo de dupla interação da rifampicina, é recomendada a coadministração simultânea de
+ atorvastatina com rifampicina, visto que o atraso na administração de atorvastatina após administração de
+ rifampicina foi associada a uma redução significativa das concentrações plasmáticas de atorvastatina.
+ ‡ A dose de saquinavir / ritonavir neste estudo não é a dose usada clinicamente. O aumento da exposição à
+ atorvastatina quando usada clinicamente provavelmente seja superior ao observado no presente estudo. Por isso
+ cautela deve ser tomada e a menor dose necessária deve ser usada .
+
+Tabela 5 – Efeito da atorvastatina na farmacocinética de medicamentos coadministrados
+
+ atorvastatina Medicamento coadministrado e regime de dose
+ Medicamento/Dose (mg) Proporção da AUC & Proporção da
+ Cmáx&
+ 80 mg, uma vez ao dia antipirina, 600 mg, dose única c 1,03 0,89
+ por 15 dias
+ 80 mg, uma vez ao dia #digoxina 0,25 mg, uma vez ao dia,
+ por 10 dias 20 dias 1,15 1,20
+ contraceptivo oral, uma vez ao dia, 2
+ 40 mg, uma vez ao dia meses 1,28 1,23
+ por 22 dias - noretindrona 1 mg 1,19 1,30
+ -etinilestradiol 35 µg
+ tipranavir 500 mg, duas vezes ao dia
+ 10 mg, dose única /ritonavir 200 mg, duas vezes ao dia 1,08 0,96
+ b, 7 dias.
+ 10 mg, uma vez ao dia, fosamprenavir 1400 mg, duas vezes 0,73 0,82
+ por 4 dias ao dia b, 14 dias
+ 10 mg, uma vez ao dia fosamprenavir 700 mg, duas vezes
+ por 4 dias ao dia/ritonavir 100 mg, duas vezes 0,99 0,94
+ ao dia , 14 dias
+
+ & Representa proporção de tratamentos (medicamento coadministrado com atorvastatina vs. atorvastatina
+ isolada).
+ # vide item 6. Interações Medicamentosas, para significância clínica
+
+Dados de Segurança Pré-Clínicos
+Carcinogênese, Mutagênese e Distúrbios da Fertilidade: a atorvastatina não se mostrou carcinogênica em ratos.
+A dose máxima utilizada foi 63 vezes maior, em mg/kg de peso corpóreo, do que a dose máxima recomendada
+para humanos (80 mg/dia) e de 8 a 16 vezes maior baseada nos valores de AUC (0-24). Em um estudo de 2 anos
+realizado com camundongos, as incidências de adenomas hepatocelulares em machos e de carcinomas
+hepatocelulares em fêmeas se mostraram aumentadas na dose máxima utilizada, que foi 250 vezes superior, em
+mg/kg de peso corpóreo, do que a dose máxima recomendada para humanos. A exposição sistêmica foi de 6 a 11
+
+LIPITOR_CCDSv21.0_15Dec2020_LIPCOR_33_VPS
+vezes superior, baseada na AUC (0-24). Todos os outros fármacos quimicamente semelhantes desta classe
+induziram tumores em ratos e camundongos com doses de 12 a 125 vezes superiores à dose clínica máxima
+recomendada, baseada em mg/kg de peso corpóreo.
+
+A atorvastatina não demonstrou potencial mutagênico ou clastogênico em 4 testes in vitro, com ou sem ativação
+metabólica, nem em 1 estudo in vivo. Apresentou-se negativa para o teste de Ames com Salmonella typhimurium
+e Escherichia coli e no ensaio in vitro de hipoxantina-guanina fosforibosiltransferase (HGPRT) forward mutation
+em células pulmonares de hamster chinês. Não produziu aumentos significantes em aberrações cromossômicas no
+ensaio in vitro com células pulmonares de hamster chinês e se apresentou negativa no teste in vivo de mouse
+micronucleus.
+
+Não foi observado efeito adverso na fertilidade ou reprodução em ratos machos que receberam doses de
+atorvastatina de até 175 mg/kg/dia ou em fêmeas que receberam doses de até 225 mg/kg/dia. Estas doses são de
+100 a 140 vezes superiores, em mg/kg de peso corpóreo, à dose máxima recomendada para humanos. A
+atorvastatina não causou efeito adverso nos parâmetros de esperma ou sêmen, ou na histopatologia do órgão
+reprodutivo em cães que receberam doses de 10 mg/kg, 40 mg/kg ou 120 mg/kg por 2 anos.
+
+4. CONTRAINDICAÇÕES
+
+Lípitor® é contraindicado a pacientes que apresentam:
+ • Hipersensibilidade a qualquer componente da fórmula;
+ • Doença hepática ativa ou elevações persistentes inesperadas das transaminases séricas, excedendo em 3
+ vezes o limite superior da normalidade (ULN);
+ou que estão:
+ • Grávidas, amamentando ou a mulheres em idade fértil que não estejam utilizando medidas contraceptivas
+ eficazes. Lípitor® deve ser administrado a adolescentes e mulheres em idade fértil somente quando a
+ gravidez se verificar altamente improvável e desde que estas pacientes tenham sido informadas dos
+ potenciais riscos ao feto.
+
+Este medicamento é contraindicado para menores de 10 anos de idade.
+
+Lípitor® é um medicamento classificado na categoria X de risco de gravidez. Portanto, este medicamento
+não deve ser utilizado por mulheres grávidas ou que possam ficar grávidas durante o tratamento.
+
+5. ADVERTÊNCIAS E PRECAUÇÕES
+
+Em indivíduos em fase de crescimento ou pré-púberes, a terapêutica de escolha inicial para a hipercolesterolemia
+familiar heterozigótica é constituída por fármacos não absorvidos, como a colestiramina ou o colestipol. A
+associação desses agentes com Lípitor® pode ser utilizada para que doses mais elevadas de atorvastatina não sejam
+necessárias para atingir as metas de tratamento. Foram conduzidos estudos de eficácia e segurança em pacientes
+pediátricos com hipercolesterolemia familiar por um período máximo de 52 semanas. Portanto, recomenda-se
+adequada monitoração desses pacientes quando o período de administração de Lípitor® for superior a 1 ano.
+
+Efeitos Hepáticos: assim como ocorre com outros agentes redutores de lípides da mesma classe, elevações
+moderadas (> 3 vezes o limite superior da normalidade [ULN]) das transaminases séricas foram relatadas após
+tratamento com atorvastatina. A função hepática foi monitorada tanto durante estudos clínicos de atorvastatina
+pré-comercialização quanto em estudos pós-comercialização, administrando-se as doses de 10 mg, 20 mg, 40 mg
+e 80 mg. Aumentos persistentes nas transaminases séricas (> 3 vezes o limite superior da normalidade em duas ou
+mais ocasiões) ocorreram em 0,7% dos pacientes que receberam atorvastatina nestes estudos clínicos. A i ncidência
+dessa anormalidade foi de 0,2%, 0,2%, 0,6% e 2,3% para doses de 10 mg, 20 mg, 40 mg e 80 mg, respectivamente.
+Em geral, os aumentos não estavam associados à icterícia ou a outros sinais e sintomas clínicos. Quando a dose de
+atorvastatina foi reduzida ou o tratamento foi interrompido ou descontinuado, os níveis de transaminases
+retornaram aos níveis anteriores ao tratamento. A maioria dos pacientes continuou o tratamento com uma dose
+reduzida de atorvastatina sem sequelas.
+
+LIPITOR_CCDSv21.0_15Dec2020_LIPCOR_33_VPS
+Estudo Tratamento até Novas Metas (Treating to New Targets - TNT): no estudo TNT, incluindo 10.001
+indivíduos com doença cardíaca coronariana clinicamente evidente tratados com atorvastatina cálcica 10 mg/dia
+(n=5006) ou atorvastatina cálcica 80 mg/dia (n=4995), foram observados mais eventos adversos sérios e
+descontinuações em decorrência de eventos adversos no grupo recebendo a dose alta de atorvastatina (92, 1,8%;
+497, 9,9%, respectivamente) comparado ao grupo recebendo a dose baixa (69, 1,4%; 404, 8,1%, respectivamente)
+durante uma mediana de acompanhamento de 4,9 anos. Elevações persistentes nas transaminases ( 3 vezes o
+limite superior da normalidade [LSN] duas vezes dentro de 4-10 dias) ocorreram em 62 (1,3%) indivíduos
+recebendo atorvastatina 80 mg e em nove (0,2%) indivíduos recebendo atorvastatina 10 mg. Elevações na creatina
+quinase (10 vezes o LSN) foram de modo geral baixas, porém mais altas no grupo de tratamento recebendo a
+dose alta de atorvastatina (13; 0,3%) comparado ao grupo recebendo a dose baixa de atorvastatina (6; 0,1%).
+
+Estudo Redução Incremental nos Endpoints Através da Redução Agressiva de Lipídeos (Incremental
+Decrease in Endpoints Through Aggressive Lipid Lowering - IDEAL): o estudo IDEAL incluiu 8.888
+indivíduos tratados com atorvastatina cálcica 80 mg/dia (n=4439) ou sinvastatina 20-40 mg/dia (n=4449), não foi
+observada diferença na frequência global de eventos adversos ou eventos adversos sérios entre os grupos de
+tratamento, durante uma mediana de tratamento de 4,8 anos. Testes de função hepática devem ser realizados antes
+do início e periodicamente durante o tratamento. Pacientes que desenvolverem qualquer sinal ou sintoma sugestivo
+de danos hepáticos devem realizar testes de função hepática. Os que desenvolverem níveis de transaminases
+elevados devem ser monitorados até que a(s) anormalidade(s) se resolva(m). Se um aumento de AST e ALT maior
+que 3 vezes o limite superior da normalidade persistir, recomenda-se a redução da dose ou a descontinuação do
+tratamento com atorvastatina cálcica. A atorvastatina pode causar elevação dos níveis de transaminases (vide item
+9. Reações Adversas). A atorvastatina deve ser utilizada com precaução em pacientes que consomem quantidades
+substanciais de álcool e/ou apresentam histórico de doença hepática. Doença hepática ativa ou elevações
+persistentes e inesperadas das transaminases são contraindicações ao uso de atorvastatina (vide item 4.
+Contraindicações).
+
+Efeitos na Musculatura Esquelética: mialgia foi relatada em pacientes tratados com atorvastatina (vide item 9.
+Reações Adversas). Miopatia, definida como dor ou fraqueza muscular em conjunto com aumentos nos valores de
+creatina fosfoquinase (CPK) maiores que 10 vezes o limite superior da normalidade, deve ser considerado em
+qualquer paciente com mialgias difusas, alterações da sensibilidade ou fraqueza muscular e/ou elevações
+consideráveis de CPK. Os pacientes devem ser instruídos a relatar imediatamente a ocorrência inesperada de dor
+muscular, alterações da sensibilidade ou fraqueza muscular, particularmente se for acompanhada de mal-estar ou
+febre. O tratamento com Lípitor® deve ser descontinuado no caso de ocorrência de níveis consideravelmente
+elevados de CPK ou se diagnose ou suspeita de miopatia. O risco de miopatia é aumentado com a administração
+concomitante de medicamentos que aumentam a concentração sistêmica de atorvastatina (vide itens 6. Interações
+Medicamentosas e 3. Características Farmacológicas – Propriedades Farmacocinéticas). Muitos destes fármacos
+inibem o metabolismo do citocromo P450 3A4 (CYP 3A4) e/ou o transporte do fármaco. A CYP3A4 é a principal
+isoenzima hepática conhecida por estar envolvida na biotransformação da atorvastatina. Os médicos que
+considerarem o tratamento concomitante de atorvastatina e fibratos, eritromicina, medicamentos
+imunossupressores, antifúngicos azólicos, inibidores da protease do HIV / HCV, inibidores HCV NS5A / NS5B,
+letermovir ou niacina em doses que alteram o perfil lipídico, devem avaliar cuidadosamente os potenciais
+benefícios e riscos e devem monitorar cuidadosamente os pacientes para qualquer sinal e sintoma de dor muscular,
+alterações da sensibilidade ou fraqueza muscular, particularmente durante os meses iniciais de tratamento e durante
+qualquer período de aumento de dose de um dos medicamentos. Por isso, doses menores iniciais e de manutenção
+de atorvastatina também devem ser consideradas quando a atorvastatina é administrada concomitantemente com
+os medicamentos citados (vide item 8. Posologia e Modo de Usar). Não se recomenda o uso concomitante de
+atorvastatina e ácido fusídico, portanto, a suspensão temporária de atorvastatina é aconselhável durante o
+tratamento com ácido fusídico (vide item 6. Interações Medicamentosas). Determinações periódicas de creatina
+fosfoquinase (CPK) podem ser consideradas em tais situações, mas não há qualquer garantia de que tal
+monitoração irá prevenir a ocorrência de miopatia grave. A atorvastatina pode causar elevação dos níveis de
+creatina fosfoquinase (vide item 9. Reações Adversas).
+
+Há relatos muito raros de miopatia necrotizante imunomediada (MNI) durante ou após o tratamento com algumas
+estatinas (vide item 9. Reações Adversas). MNI é clinicamente caracterizado por fraqueza muscular proximal
+
+LIPITOR_CCDSv21.0_15Dec2020_LIPCOR_33_VPS
+persistente e creatina quinase sérica elevada, que persiste apesar da descontinuação do tratamento com estatina,
+anticorpo anti-HMG CoA redutase positivo e melhora com agentes imunossupressores.
+
+Assim como ocorre com outros fármacos dessa classe, foram relatados raros casos de rabdomiólise acompanhada
+de insuficiência renal aguda decorrente de mioglobinúria. Histórico de comprometimento renal pode ser fator de
+risco para desenvolver rabdomiólise. Os efeitos musculoesqueléticos de tais pacientes devem ser monitorados
+frequentemente. O tratamento com Lípitor® deve ser interrompido temporariamente ou descontinuado em qualquer
+paciente com uma condição grave e aguda sugestiva de miopatia ou com um fator de risco que o predisponha ao
+desenvolvimento de insuficiência renal decorrente de rabdomiólise (por exemplo, infecção aguda grave,
+hipotensão, cirurgia de grande porte, politraumatismos, distúrbios metabólicos, endócrinos e eletrolíticos e
+convulsões não controladas).
+
+O risco de miopatia e/ou rabdomiólise pode ser aumentado pela administração concomitante de inibidores da
+HMG-CoA redutase (por exemplo, atorvastatina) e daptomicina. Deve-se considerar a suspensão temporária de
+atorvastatina em pacientes que estejam usando daptomicina, a menos que os benefícios da administração
+concomitante superem os riscos. Se a coadministração não puder ser evitada, os níveis de CK devem ser medidos
+2 a 3 vezes por semana, e os pacientes devem ser monitorados de perto para quaisquer sinais ou sintomas que
+possam indicar miopatia.
+
+AVC Hemorrágico: uma análise post-hoc de um estudo clínico com 4.731 pacientes sem DAC que tiveram AVC
+ou ataque isquêmico transitório (AIT) no período de 6 meses e foram iniciados com atorvastatina 80 mg,
+apresentaram uma incidência maior de AVC hemorrágico no grupo com atorvastatina 80 mg comparado ao grupo
+com placebo (55 da atorvastatina vs. 33 do placebo). Pacientes com AVC hemorrágico prévio parecem apresentar
+um risco maior para AVC hemorrágico recorrente (7 de atorvastatina vs. 2 de placebo). Entretanto, em pacientes
+tratados com atorvastatina 80 mg ocorreram poucos eventos de AVC de qualquer tipo (265 vs. 311) e poucos
+eventos de DAC (123 vs. 204) (vide item 3. Características Farmacológicas – Propriedades Farmacodinâmicas –
+AVC recorrente).
+
+Função endócrina: aumentos nos níveis de hemoglobina A1c (HbA1c) e glicose sérica em jejum foram relatados
+com inibidores de 3- hidroxi-3methylglutaryl-coenzima A (HMG-CoA) redutase, incluindo a atorvastatina. O risco
+de hiperglicemia, entretanto, é compensado positivamente pela redução no risco vascular com estatinas.
+
+Fertilidade, gravidez e lactação: A atorvastatina é contraindicada durante a gravidez. Mulheres em idade fértil
+devem utilizar medidas contraceptivas adequadas. A atorvastatina deve ser administrada a mulheres em idade fértil
+somente quando a gravidez se verificar altamente improvável e desde que estas pacientes tenham sido informadas
+dos potenciais riscos ao feto. A atorvastatina é contraindicada durante a lactação. Não se sabe se a atorvastatina é
+excretada no leite materno. Devido ao potencial de ocorrência de reações adversas em lactentes, mulheres
+utilizando Lípitor® não devem amamentar.
+
+Lípitor® é contraindicado durante o aleitamento ou doação de leite, pois pode ser excretado no leite humano
+e pode causar reações indesejáveis no bebê. O médico ou cirurgião-dentista deve apresentar alternativas
+para o seu tratamento ou para a alimentação do bebê.
+Lípitor® é um medicamento classificado na categoria X de risco de gravidez. Portanto, este medicamento
+não deve ser utilizado por mulheres grávidas ou que possam ficar grávidas durante o tratamento.
+
+Uso em Crianças: a segurança e eficácia em pacientes com hipercolesterolemia familiar heterozigótica foram
+avaliadas em um estudo clínico controlado de 6 meses de duração em meninas pós-menarca e meninos, com idade
+variando entre 10 e 17 anos. Os pacientes tratados com Lípitor® apresentaram um perfil de eventos adversos similar
+àqueles observados em indivíduos do grupo placebo. Os eventos adversos mais comumente observados nos 2
+grupos, independente da avaliação de causalidade, foram as infecções. Não foram estudadas doses superiores a
+20 mg nesta população de pacientes. Neste estudo controlado limitado não houve efeito detectável no
+crescimento ou maturação sexual em rapazes ou no prolongamento do ciclo menstrual das adolescentes. As
+adolescentes devem ser aconselhadas sobre os métodos contraceptivos apropriados enquanto estiverem submetidas
+à terapia com Lípitor® (vide itens 4. Contraindicações e 5. Advertências e Precauções). Lípitor® não foi avaliado
+em estudos clínicos controlados envolvendo pacientes pré-adolescentes ou pacientes com idade inferior a 10
+
+LIPITOR_CCDSv21.0_15Dec2020_LIPCOR_33_VPS
+anos de idade. A eficácia clínica foi avaliada com doses de até 80 mg/dia durante 1 ano em um estudo não
+controlado em pacientes com hipercolesterolemia familiar homozigótica, incluindo 8 pacientes pediátricos.
+
+Efeitos na Habilidade de Dirigir ou Operar Máquinas: Não há evidências de que Lípitor® possa afetar a
+habilidade do paciente de dirigir ou operar máquinas.
+
+Em alguns casos, estatinas podem induzir ou agravar a miastenia gravis ou miastenia ocular (ver o item “9. Reações
+Adversas”). Há inclusive relatos de recorrência quando a mesma estatina ou uma diferente é administrada. O
+Lípitor® deve ser usado com cautela em pacientes com essas condições e deve ser descontinuado se quadros de
+miastenia forem induzidos ou agravados com o uso desse medicamento.
+
+Atenção: Contém lactose (tipo de açúcar) abaixo de 0,25g/comprimido revestido.
+Este medicamento não deve ser usado por pessoas com síndrome de má-absorção de glicose-galactose.
+Atenção: Contém o corante dióxido de titânio.
+
+6. INTERAÇÕES MEDICAMENTOSAS
+
+O risco de miopatia durante o tratamento com inibidores da HMG-CoA redutase se apresenta aumentado com a
+administração concomitante de ciclosporina, fibratos, niacina em doses que alteram o perfil lipídico ou inibidores
+de citocromo P450 3A4/transportadores, (por exemplo, eritromicina e antifúngicos azólicos) (vide a seguir e nos
+itens 8. Posologia e Modo de Usar: Uso combinado com outros medicamentos e 5. Advertências e Precauções:
+Efeitos na Musculatura Esquelética).
+
+Inibidores do CYP 3A4
+A atorvastatina é metabolizada pelo CYP 3A4. A administração concomitante de atorvastatina com inibidores do
+citocromo P450 3A4 pode levar a aumentos na concentração plasmática de atorvastatina. A extensão da interação
+e potencialização dos efeitos dependem da variabilidade dos efeitos sobre o CYP 3A4.
+
+- eritromicina/claritromicina: a coadministração de atorvastatina com eritromicina (500 mg, quatro vezes ao dia
+ou a cada 6 horas) ou claritromicina (500 mg, duas vezes ao dia ou a cada 12 horas), inibidores conhecidos do
+CYP 3A4, foi associada a concentrações plasmáticas mais elevadas da atorvastatina (vide item 5. Advertências e
+Precauções: Efeitos na Musculatura Esquelética e item 3. Características Farmacológicas – Propriedades
+Farmacocinéticas).
+
+- Inibidores da protease: a coadministração de atorvastatina e inibidores da protease, inibidores conhecidos do
+CYP 3A4, foi associada ao aumento nas concentrações plasmáticas de atorvastatina (vide item 3. Características
+Farmacológicas - Propriedades Farmacocinéticas).
+
+- cloridrato de diltiazem: a coadministração de atorvastatina (40 mg) com diltiazem (240 mg) foi associado com
+concentrações plasmáticas maiores de atorvastatina (vide item 3. Características Farmacológicas – Propriedades
+Farmacocinéticas).
+
+- cimetidina: um estudo de interação de atorvastatina com cimetidina foi realizado e não foi observada interação
+clinicamente significativa (vide item 3. Características Farmacológicas – Propriedades Farmacocinéticas).
+
+- itraconazol: a administração concomitante de atorvastatina (20 mg a 40 mg) com itraconazol (200 mg) foi
+associada ao aumento na AUC de atorvastatina (vide item 3. Características Farmacológicas – Propriedades
+Farmacocinéticas).
+
+- Suco de grapefruit: contém 1 ou mais componentes que inibem a CYP 3A4 e pode aumentar as concentrações
+plasmáticas de atorvastatina, especialmente com consumo excessivo de suco de grapefruit (> 1,2 litros por dia)
+(vide item 3. Características Farmacológicas – Propriedades Farmacocinéticas).
+
+Inibidor de transportadores
+A atorvastatina é um substrato dos transportadores hepáticos (vide item 3. Características Farmacológicas –
+Propriedades Farmacocinéticas).
+
+LIPITOR_CCDSv21.0_15Dec2020_LIPCOR_33_VPS
+A administração concomitante de 10 mg de atorvastatina e 5,2 mg/kg/dia de ciclosporina resultou num aumento
+da exposição à atorvastatina (relação de AUC: 8,7; vide item 3. Características Farmacológicas - Propriedades
+Farmacocinéticas). A ciclosporina é um inibidor do polipeptídeo transportador de ânions orgânicos 1B1
+(OATP1B1), OATP1B3, proteína multirresistente 1 (MDR1) e proteína de resistência ao câncer de mama (BCRP),
+assim como CYP3A4, aumentando assim a exposição à atorvastatina. Não exceda 10 mg de atorvastatina por dia
+(vide item 8. Posologia e Modo de usar – Uso combinado com outros medicamentos).
+
+O glecaprevir e pibrentasvir são inibidores de OATP1B1, OATP1B3, MDR1 e BCRP. Estudos de interação
+farmacocinética mostraram aumento na exposição de atorvastatina quando administrada concomitantemente a
+glecaprevir/pibrentasvir.
+
+Portadores de hepatite C em tratamento com glecaprevir/pibrentasvir devem considerar estatinas alternativas (ou
+terapias hipolipemiantes alternativas). A coadministração com atorvastatina não é recomendada durante as
+semanas de tratamento com glecaprevir/pibrentasvir. Caso seja utilizada em associação a glecaprevir/pibrentasvir,
+a dose de atorvastatina não deve exceder 10 mg dia (vide item 8. Posologia e Modo de Usar - Uso combinado com
+outros medicamentos).
+
+O elbasvir e grazoprevir são inibidores de OATP1B1, OATP1B3, MDR1 e BCRP, aumentando assim a exposição
+à atorvastatina. Utilizar com precaução e com a menor dose necessária (vide item 8. Posologia e Modo de Usar -
+Uso combinado com outros medicamentos).
+
+A administração concomitante de atorvastatina 20 mg e letermovir 480 mg por dia resultou num aumento da
+exposição à atorvastatina (relação de AUC: 3,29; vide item 3. Carateríticas Farmacológicas – Propriedades
+Farmacocinéticas). O letermovir inibe os transportadores de efluxo P-gp, BCRP, MRP2, OAT2 e o transportador
+hepático OATP1B1 / 1B3, aumentando assim a exposição à atorvastatina. Não exceder 20 mg de atorvastatina por
+dia (vide item 8. Posologia e Modo de usar – Uso combinado com outros medicamentos).
+
+A magnitude das interações medicamentosas mediadas por CYP3A e OATP1B1/1B3 em medicamentos
+coadministrados pode ser diferente quando o letermovir é coadministrado com ciclosporina. O uso de atorvastatina
+não é recomendado em pacientes que tomam letermovir coadministrado com ciclosporina.
+
+Indutores do CYP 3A4
+
+A administração concomitante de atorvastatina com indutores do CYP 3A4 (por ex., efavirenz, rifampicina) pode
+levar a reduções variáveis nas concentrações plasmáticas de atorvastatina. Devido ao mecanismo de interação
+dupla de rifampicina, (indução e inibição do CYP 3A4 de hepatócito transportador de captação OATP1B1), é
+recomendada a coadministração simultânea de atorvastatina com rifampicina, visto que o atraso na administração
+de atorvastatina após administração de rifampicina tem sido associado com uma redução significativa nas
+concentrações plasmáticas de atorvastatina (vide item 3. Características Farmacológicas – Propriedades
+Farmacocinéticas).
+
+- Antiácidos: a coadministração de atorvastatina com um antiácido na forma de suspensão oral contendo hidróxido
+de magnésio e de alumínio provocou uma diminuição nas concentrações plasmáticas de atorvastatina (proporção
+da AUC: 0,66); entretanto, a redução no LDL-C não apresentou alterações.
+
+- antipirina: uma vez que a atorvastatina não afeta a farmacocinética da antipirina, não são esperadas interações
+com outros fármacos metabolizados através das mesmas isoenzimas.
+
+- colestipol: as concentrações plasmáticas de atorvastatina foram menores (proporção da concentração: 0,74)
+quando o colestipol foi administrado com atorvastatina. Entretanto, os efeitos nos lípides foram maiores quando a
+atorvastatina e colestipol foram coadministrados em comparação à administração isolada de qualquer um dos
+fármacos.
+
+- digoxina: quando foram coadministradas doses múltiplas de digoxina e atorvastatina 10 mg, as concentrações
+plasmáticas no estado de equilíbrio não foram afetadas. Entretanto, as concentrações de digoxina aumentaram
+(proporção da AUC: 1,15) após a administração diária de digoxina com atorvastatina 80 mg. Pacientes utilizando
+digoxina devem ser monitorados adequadamente.
+
+LIPITOR_CCDSv21.0_15Dec2020_LIPCOR_33_VPS
+- azitromicina: a coadministração de atorvastatina (10 mg, 1 vez ao dia) com azitromicina (500 mg, 1 vez ao dia)
+não alterou as concentrações plasmáticas da atorvastatina.
+
+- Contraceptivos orais: a coadministração de atorvastatina com um contraceptivo oral contendo noretindrona e
+etinilestradiol aumentou a área de concentração vs. os valores da curva do tempo (AUC) da noretindrona
+(proporção da AUC: 1,28) e do etinilestradiol (proporção da AUC: 1,19). Estas elevações devem ser consideradas
+na escolha do contraceptivo oral em mulheres utilizando atorvastatina.
+
+- varfarina: foi realizado um estudo de interação de atorvastatina com varfarina e não foi observada qualquer
+interação clinicamente significante.
+- colchicina: embora os estudos de interação com atorvastatina e colchicina não tenham sido realizados, casos de
+miopatia têm sido relatados onde atorvastatina foi coadministrada com colchicina e cautela deve ser exercida ao
+prescrever atorvastatina com colchicina.
+
+- anlodipino: num estudo de interação medicamentosa em pacientes saudáveis, a coadministração de atorvastatina
+80 mg com anlodipino 10 mg resultou em um aumento na exposição de atorvastatina (proporção da AUC: 1,18)
+que não foi clinicamente significativa.
+
+- ácido fusídico: embora estudos de interação com atorvastatina e ácido fusídico não tenham sido realizados, existe
+um risco aumentado de rabdomiólise em pacientes recebendo uma combinação de estatinas, incluindo a
+atorvastatina, e ácido fusídico. O mecanismo desta interação não é conhecido. Em pacientes em que a utilização
+de ácido fusídico sistémico é considerada essencial, o tratamento com estatinas deve ser descontinuado durante
+toda a duração do tratamento com o ácido fusídico. A terapia com estatina pode ser reintroduzida sete dias após a
+última dose de ácido fusídico. Em circunstâncias excepcionais, onde o uso prolongado de ácido fusídico sistémico
+é necessário, por exemplo, para o tratamento de infecções graves, a necessidade de coadministração de
+atorvastatina e ácido fusídico somente deve ser considerada em uma análise caso a caso e sob rigorosa supervisão
+médica. O paciente deve ser aconselhado a procurar imediatamente o médico se sentir quaisquer sintomas de
+fraqueza muscular, dor ou sensibilidade.
+
+- Outros tratamentos concomitantes: em estudos clínicos, a atorvastatina foi utilizada concomitantemente com
+agentes anti-hipertensivos e terapia de reposição de estrógenos sem evidências de interações adversas clinicamente
+significantes. Estudos de interação com agentes específicos não foram realizados.
+
+- Daptomicina: Foram relatados casos de miopatia e/ou rabdomiólise com o uso de inibidores da HMG-CoA
+redutase (por exemplo, atorvastatina) em coadministração com daptomicina. Se a coadministração não puder ser
+evitada, recomenda-se monitoramento clínico apropriado.
+
+8. POSOLOGIA E MODO DE USAR
+
+Geral: Antes de ser instituída a terapia com Lípitor® deve ser realizada uma tentativa de controlar a
+hipercolesterolemia com dieta apropriada, exercícios e redução de peso em pacientes obesos, e tratar outros
+problemas médicos subjacentes. O paciente deve continuar com a dieta padrão para redução do colesterol durante
+o tratamento com Lípitor®. A dose pode variar de 10 mg a 80 mg, em dose única diária. As doses podem ser
+administradas a qualquer hora do dia, com ou sem alimentos. As doses inicial e de manutenção devem ser
+individualizadas de acordo com os níveis basais de LDL-C, a meta do tratamento e a resposta do paciente. Após o
+início do tratamento e/ou durante o ajuste de dose de atorvastatina, os níveis lipídicos devem ser analisados dentro
+de 2 a 4 semanas, e a dose deve ser ajustada adequadamente.
+
+Hipercolesterolemia Primária e Hiperlipidemia Combinada (Mista): A maioria dos pacientes é controlada
+com 10 mg de atorvastatina em dose única diária. A resposta terapêutica é evidente dentro de 2 semanas, e a
+resposta máxima é geralmente atingida em 4 semanas. A resposta é mantida durante tratamento crônico.
+
+Hipercolesterolemia Familiar Homozigótica: em um estudo de uso compassivo em pacientes com
+hipercolesterolemia familiar homozigótica, a maioria dos pacientes respondeu a 80 mg de atorvastatina com uma
+redução maior que 15% no LDL-C (18% – 45%).
+
+Uso em Crianças (idade entre 10 e 17 anos) com Hipercolesterolemia Familiar Heterozigótica: Para pacientes
+com 10 anos ou mais, a dose inicial recomendada de Lípitor® é de 10 mg/dia; a dose máxima recomendada é de
+20 mg/dia (não foram estudadas doses superiores a 20 mg nesta população de pacientes). As doses devem ser
+individualizadas de acordo com a meta recomendada para a terapia (vide itens 1. Indicações e 3. Características
+Farmacológicas – Propriedades Farmacodinâmicas). Os ajustes devem ser feitos em intervalos de 4 semanas ou
+mais.
+
+Uso em Pacientes com Insuficiência Hepática: Vide item 4. Contraindicações e item 5. Advertências e
+Precauções.
+
+Uso em Pacientes com Insuficiência Renal: A insuficiência renal não apresenta influência nas concentrações
+plasmáticas ou na redução de LDL-C com Lípitor®. Portanto, o ajuste de dose não é necessário (vide item 5.
+Advertências e Precauções).
+
+Uso em Idosos: Não foram observadas diferenças entre pacientes idosos e a população em geral com relação à
+segurança, eficácia ou alcance do objetivo do tratamento de lípides (vide item 3. Características Farmacológicas -
+Propriedades Farmacocinéticas: Populações Especiais).
+
+Uso combinado com outros medicamentos: quando a coadministração de atorvastatina e ciclosporina, telaprevir,
+a combinação de tipranavir/ritonavir, ou glecaprevir/pibrentasvir é necessária, a dose de atorvastatina não deve
+exceder 10 mg.
+O uso de atorvastatina não é recomendado em pacientes que tomam letermovir coadministrado com ciclosporina.
+
+Foram observadas também interações medicamentosas farmacocinéticas que resultaram no aumento sistêmico de
+Lípitor® com outros inibidores de protease do vírus da imunodeficiência humana (HIV) (lopinavir/ritonavir,
+saquinavir/ritonavir, darunavir/ritonavir, fosamprenavir, fosamprenavir/ritonavir e nelfinavir), inibidores de
+protease da hepatite C (HCV) (bocepravir, elbasvir/grazoprevir, simeprevir), claritromicina, itraconazol e
+letermovir. Deve-se ter precaução na coadministração de atorvastatina e estes medicamentos, e é recomendada
+avaliação clínica apropriada para garantir que a menor dose necessária de atorvastatina seja empregada (vide item
+5. Advertências e Precauções – Efeitos na musculatura esquelética e item 6. Interações Medicamentosas).
+
+LIPITOR_CCDSv21.0_15Dec2020_LIPCOR_33_VPS
+Dose Omitida
+Caso o paciente esqueça-se de tomar Lípitor® no horário estabelecido, deve tomá-lo assim que lembrar. Entretanto,
+se já estiver perto do horário de tomar a próxima dose, deve desconsiderar a dose esquecida e tomar a próxima.
+Neste caso, o paciente não deve tomar a dose duplicada para compensar doses esquecidas. O esquecimento de dose
+pode comprometer a eficácia do tratamento.
+Este medicamento não deve ser partido, aberto ou mastigado.
+
+9. REAÇÕES ADVERSAS
+
+A atorvastatina é geralmente bem tolerada. As reações adversas foram geralmente de natureza leve e transitória.
+Um banco de dados de 16.066 pacientes dos estudos de atorvastatina placebo-controlados (8.755 atorvastatina vs.
+7.311 placebo) tratados por um período médio de 53 semanas, descontinuaram devido a eventos adversos 5,2% de
+pacientes recebendo atorvastatina e 4,0% dos pacientes recebendo placebo.
+
+Os efeitos adversos mais frequentes (≥ 1%) que podem ser associados ao tratamento com atorvastatina, em
+pacientes participando de estudos clínicos placebo-controlados incluem:
+
+Reação comum (> 1/100 e < 1/10):
+Infecções e infestações: nasofaringite.
+Distúrbios do metabolismo e nutricional: hiperglicemia.
+Distúrbios respiratório, torácico e mediastinal: dor faringolaríngea, epistaxe.
+Distúrbios gastrintestinais: diarreia, dispepsia, náusea, flatulência.
+Distúrbios musculoesquelético e do tecido conjuntivo: artralgia, dor nas extremidades, dor musculoesquelética,
+espasmos musculares, mialgia, edema articular.
+Laboratorial: alterações nas funções hepáticas, aumento da creatina fosfoquinase sanguínea.
+
+Os seguintes efeitos adversos adicionais foram relatados nos estudos placebo-controlados com atorvastatina:
+Distúrbios psiquiátricos: pesadelo.
+Distúrbios dos olhos: visão turva.
+Distúrbios do ouvido e labirinto: tinido.
+Distúrbios gastrintestinais: desconforto abdominal, eructação.
+Distúrbios hepatobiliares: hepatite e colestase.
+Distúrbios da pele e tecido subcutâneo: urticária.
+Distúrbios musculoesquelético e do tecido conjuntivo: fadiga muscular, cervicalgia.
+Distúrbios gerais e condição do local de administração: mal-estar, febre.
+Laboratorial: células brancas positivas na urina.
+Nem todos os efeitos listados acima tiveram, necessariamente, uma relação de causalidade associada ao tratamento
+com atorvastatina.
+
+Pacientes Pediátricos (idade entre 10 e 17 anos)
+Os pacientes tratados com atorvastatina tem um perfil de efeitos adversos geralmente semelhantes ao dos pacientes
+tratados com placebo, as experiências adversas mais comuns observadas em ambos os grupos, independentemente
+da avaliação de causalidade, foram as infecções.
+
+Experiência Pós-Comercialização
+Na experiência pós-comercialização de Lípitor® os seguintes efeitos indesejáveis adicionais foram relatados:
+Distúrbios hematológico e linfático: trombocitopenia.
+Distúrbios do sistema imunológico: reações alérgicas (incluindo anafilaxia).
+Lesão, envenenamento e complicações do procedimento: ruptura do tendão.
+Distúrbios do metabolismo e nutricional: aumento de peso.
+Distúrbios do sistema nervoso: hipoestesia, amnésia, tontura, disgeusia.
+Distúrbios gastrintestinais: pancreatite. Distúrbios da pele e tecido subcutâneo: síndrome de Stevens-Johnson,
+necrólise epidérmica tóxica, angioedema, eritema multiforme, rash bolhoso.
+Distúrbios musculoesquelético e do tecido conjuntivo: rabdomiólise, miopatia necrosante autoimune, miosite,
+dor nas costas.
+
+LIPITOR_CCDSv21.0_15Dec2020_LIPCOR_33_VPS
+Distúrbios gerais e condição do local de administração: dor no peito, edema periférico, fadiga.
+Frequência desconhecida
+Distúrbios do sistema nervoso: miastenia gravis.
+Distúrbios oculares: miastenia ocular.
+Frequência rara:
+Disturbio vascular: Vasculite
+Distúrbios da pele e tecido subcutâneo: Erupção medicamentosa liquenoide.
+
+Em caso de eventos adversos, notifique pelo Sistema VigiMed, disponível no Portal da Anvisa.
+
+10. SUPERDOSE
+
+Não há tratamento específico para superdose com atorvastatina. No caso de superdose, o paciente deve receber
+tratamento sintomático e devem ser instituídas medidas de suporte, conforme a necessidade. Devido à alta ligação
+às proteínas plasmáticas, a hemodiálise não deve aumentar o clearance do medicamento significativamente.
+
+Em caso de intoxicação ligue para 0800 722 6001, se você precisar de mais orientações.
+
+III -

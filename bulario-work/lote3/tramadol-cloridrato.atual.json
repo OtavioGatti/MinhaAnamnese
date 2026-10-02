@@ -1,0 +1,18 @@
+{
+  
+  "Risco Gestacional": "C; D se uso prolongado ou próximo ao parto",
+  "Slug": "tramadol-cloridrato",
+  "Nomes Comerciais / Produtos ANVISA": "Tramal; Tramadon; Ultracet; cloridrato de tramadol.",
+  "Interações": "IMAO, como tranilcipromina, moclobemida, selegilina, rasagilina e linezolida, são contraindicados. Serotonérgicos, como sertralina, fluoxetina, paroxetina, escitalopram, citalopram, venlafaxina, duloxetina, amitriptilina, clomipramina, mirtazapina, lítio, triptanos e Hypericum perforatum, aumentam risco de síndrome serotoninérgica e convulsões. Benzodiazepínicos, opioides, álcool, zolpidem, barbitúricos, prometazina, hidroxizina, quetiapina e olanzapina aumentam sedação, depressão respiratória, coma e morte. Carbamazepina pode reduzir analgesia. Fluoxetina, paroxetina, bupropiona, quinidina e duloxetina podem reduzir conversão metabólica e alterar analgesia/toxicidade. Varfarina pode ter INR aumentado em alguns relatos.",
+  "Apresentações / Nomes Comerciais": "Cápsulas ou comprimidos 50 mg; comprimidos de liberação prolongada 100 mg, 150 mg ou 200 mg; solução oral/gotas; solução injetável 50 mg/mL conforme fabricante; associações com paracetamol em produtos específicos. Exemplos: Tramal; Tramadon; Ultracet, quando associado ao paracetamol; tramadol genérico.",
+  "Posologia Pediátrica": "Contraindicado em menores de 12 anos.\nContraindicado em menores de 18 anos após tonsilectomia ou adenoidectomia.\nEm adolescentes acima de 12 anos, usar somente quando claramente indicado, na menor dose e menor duração possível, com atenção a depressão respiratória e convulsões.",
+  "Texto Resumo": "Tramadol é um analgésico opioide usado para dor moderada a intensa. Exige cautela por risco de sedação, depressão respiratória, dependência, convulsões e síndrome serotoninérgica, especialmente quando associado a antidepressivos, IMAO, álcool ou outros depressores do SNC.",
+  "Classe / Categoria": "Analgésico opioide; agonista opioide fraco; inibidor da recaptação de serotonina e noradrenalina.",
+  "Posologia Adulto": "Dor moderada a intensa: 50 mg a 100 mg por via oral, intravenosa ou intramuscular a cada 4 a 6 horas, conforme necessidade e apresentação.\nDose máxima usual: 400 mg/dia.\nEm idosos acima de 75 anos, insuficiência renal ou hepática, considerar dose menor ou maior intervalo.\nUsar pelo menor tempo possível.",
+  "Contraindicações": "Hipersensibilidade ao tramadol, opioides ou componentes da fórmula; intoxicação aguda por álcool, hipnóticos, opioides, psicotrópicos ou outros depressores do SNC; uso concomitante ou recente de inibidores da monoaminoxidase; epilepsia não controlada; depressão respiratória significativa; insuficiência hepática ou renal grave conforme apresentação; crianças menores de 12 anos; menores de 18 anos após tonsilectomia/adenoidectomia.",
+  "Tags Busca": "tramadol; cloridrato de tramadol; opioide; analgésico; dor moderada; dor intensa; tramal; convulsão",
+  "Advertências": "Pode causar sonolência, tontura, náuseas, vômitos, constipação, sudorese, confusão, dependência, abstinência, depressão respiratória, convulsões e síndrome serotoninérgica. Risco maior em epilepsia, uso de antidepressivos, altas doses, insuficiência renal/hepática e associação com depressores do SNC. Evitar dirigir, álcool e uso prolongado sem reavaliação.",
+  "Nomes Comerciais OpenAI": "Tramal; Tramadon; Ultracet; Tramadol EMS; Tramadol Medley; Tramadol Hipolabor.",
+  "Rede SUS (RENAME)": false,
+  "Princípio Ativo": "Tramadol Cloridrato"
+}
