@@ -1,0 +1,122 @@
+{
+  "aciclovir": {
+    "marca": "Zovirax",
+    "empresa": "GlaxoSmithKline Brasil Ltda.",
+    "publicacao": "",
+    "categoria": "medicamento de marca original"
+  },
+  "alprazolam": {
+    "marca": "Frontal",
+    "empresa": "Viatris Farmacêutica do Brasil Ltda",
+    "publicacao": "",
+    "categoria": "medicamento de marca original"
+  },
+  "apixabana": {
+    "marca": "Eliquis",
+    "empresa": "Pfizer Brasil Ltda.",
+    "publicacao": "",
+    "categoria": "medicamento de marca original"
+  },
+  "bissulfato-de-clopidogrel": {
+    "marca": "Plavix",
+    "empresa": "Sanofi Medley Farmacêutica Ltda.",
+    "publicacao": "",
+    "categoria": "medicamento de marca original"
+  },
+  "candesartana-cilexetila": {
+    "marca": "Atacand",
+    "empresa": "Biopas Brasil Produtos Farmacêuticos Ltda.",
+    "publicacao": "",
+    "categoria": "medicamento de marca original"
+  },
+  "carbamazepina": {
+    "marca": "Tegretol",
+    "empresa": "Novartis Biociências SA",
+    "publicacao": "",
+    "categoria": "medicamento de marca original"
+  },
+  "dapagliflozina": {
+    "marca": "Forxiga",
+    "empresa": "AstraZeneca do Brasil Ltda.",
+    "publicacao": "",
+    "categoria": "medicamento de marca original"
+  },
+  "diazepam": {
+    "marca": "Valium",
+    "empresa": "Belfar Ltda.",
+    "publicacao": "",
+    "categoria": "medicamento de marca original"
+  },
+  "empagliflozina": {
+    "marca": "Jardiance",
+    "empresa": "",
+    "publicacao": "",
+    "categoria": "medicamento de marca original"
+  },
+  "esomeprazol": {
+    "marca": "Nexium",
+    "empresa": "AstraZeneca do Brasil Ltda.",
+    "publicacao": "",
+    "categoria": "medicamento de marca original"
+  },
+  "fexofenadina-cloridrato": {
+    "marca": "Allegra",
+    "empresa": "Opella Healthcare Brazil Ltda.",
+    "publicacao": "",
+    "categoria": "medicamento de marca original"
+  },
+  "haloperidol": {
+    "marca": "Haldol",
+    "empresa": "",
+    "publicacao": "",
+    "categoria": "medicamento de marca original"
+  },
+  "insulina-glargina": {
+    "marca": "Lantus",
+    "empresa": "",
+    "publicacao": "",
+    "categoria": "medicamento de marca original"
+  },
+  "metoprolol-succinato": {
+    "marca": "Selozok",
+    "empresa": "AstraZeneca do Brasil Ltda.",
+    "publicacao": "",
+    "categoria": "medicamento de marca original"
+  },
+  "quetiapina-hemifumarato": {
+    "marca": "Seroquel",
+    "empresa": "",
+    "publicacao": "",
+    "categoria": "medicamento de marca original"
+  },
+  "risperidona": {
+    "marca": "Risperdal",
+    "empresa": "Janssen-Cilag Farmacêutica Ltda.",
+    "publicacao": "",
+    "categoria": "medicamento de marca original"
+  },
+  "rivaroxabana": {
+    "marca": "Xarelto",
+    "empresa": "Bayer S.A.",
+    "publicacao": "",
+    "categoria": "medicamento de marca original"
+  },
+  "sitagliptina-fosfato": {
+    "marca": "Januvia",
+    "empresa": "",
+    "publicacao": "",
+    "categoria": "medicamento de marca original"
+  },
+  "telmisartana": {
+    "marca": "Micardis",
+    "empresa": "Boehringer Ingelheim do Brasil Química e Farmacêutica Ltda.",
+    "publicacao": "",
+    "categoria": "medicamento de marca original"
+  },
+  "valsartana": {
+    "marca": "Diovan",
+    "empresa": "Novartis Biociências SA",
+    "publicacao": "",
+    "categoria": "medicamento de marca original"
+  }
+}

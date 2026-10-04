@@ -1,0 +1,670 @@
+FONTE: lote4__diazepam__VALIUM.pdf
+
+===== BLOCO 1 =====
+APRESENTAÇÕES
+Comprimidos de 5 e 10 mg. Caixa com 30 comprimidos. 
+ 
+VIA ORAL 
+USO ADULTO
+
+1. INDICAÇÕES 
+Valium® está indicado para alívio sintomático da ansiedade, tensão e outras queixas somáticas 
+ou psicológicas associadas com a síndrome da ansiedade. Pode também ser útil como coadjuvante 
+no tratamento da ansiedade ou agitação associada a desordens psiquiátricas. 
+O Valium® é útil no alívio do espasmo muscular reflexo devido a traumas locais (lesão, 
+inflamação). Pode ser igualmente usado no tratamento da espasticidade devida à lesão dos 
+interneurônios espinhais e supra espinhais tais como ocorre na paralisia cerebral e paraplegia, 
+assim como na atetose e na síndrome rígida. 
+Os benzodiazepínicos são indicados apenas para desordens intensas, debilitantes ou para dores 
+extremas.
+
+3. CARACTERÍSTICAS FARMACOLÓGICAS 
+Farmacodinâmica 
+Mecanismo de ação 
+ 
+ 
+Valium® - VPS07 4 
+Diazepam faz parte do grupo dos benzodiazepínicos que possuem propriedades ansiolíticas, 
+sedativas, miorrelaxantes, anticonvulsivantes e efeitos amnésicos. Sua ação é aumentada pela 
+geração de metabólitos ativos (principalmente desmetildiazepam). 
+As ações centrais dos benzodiazepínicos são mediadas através de uma melhora da 
+neurotransmissão GABAérgica em sinapses inibitórias. Na presença de benzodiazepínicos, a 
+afinidade do receptor GABA pelo neurotransmissor é aumentada através da modulação alostérica 
+positiva, resultando em uma ação aumentada do GABA liberado nos canais pós- sinápticos 
+transmembrana de íon de cloreto. 
+ 
+Farmacocinética 
+Absorção 
+Diazepam é rápida e completamente absorvido no trato gastrintestinal após administração oral, 
+atingindo a concentração plasmática máxima após 30 - 90 minutos. 
+Após a dose diária, os níveis de diazepam atingem um estado de equilíbrio em aproximadamente 
+5 dias, isso leva cerca de duas vezes mais tempo antes dos níveis de desmetildiazepam atingirem 
+um estado de equilíbrio. Os níveis médios de diazepam no estado de equilíbrio após uma 
+administração diária são aproximadamente duas vezes mais elevados que os níveis máximos do 
+fármaco após a primeira dose. 
+Durante o tratamento, a meia-vida de eliminação do diazepam pode aumentar em 50% devido à 
+redução da depuração hepática. Relatórios sobre a evolução dos níveis plasmáticos durante 
+tratamento a longo prazo são conflitantes. Foi observada uma intensa redução nos níveis de 
+diazepam durante o tratamento a longo prazo, possivelmente devido à autoindução metabólica, 
+entretanto, em outros estudos as concentrações plasmáticas de diazepam e seu metabólito desmetil 
+foram independentes da duração da terapia. 
+ 
+Distribuição 
+Diazepam é amplamente distribuído nos tecidos, apesar da elevada ligação às proteínas 
+plasmáticas (98-99%), principalmente albumina e, em menor extensão, ácido α1- glicoproteína. 
+Após administração intravenosa, uma pronunciada fase de distribuição é observada nas 
+concentrações plasmáticas com uma meia-vida de distribuição de até três horas. O volume de 
+distribuição no estado de equilíbrio é em média 0,88 a 1,1 L/kg, quando derivado de medições da 
+concentração plasmática. Tanto a ligação às proteínas, quanto o volume de distribuição do 
+desmetildiazepam, são semelhantes aos do diazepam. 
+A elevada ligação proteica limita a extensão da passagem do diazepam para o líquido 
+cefalorraquidiano (LCR). Os níveis no LCR em humanos após doses únicas e múltiplas 
+aproximam-se da concentração do fármaco livre no plasma. 
+Após doses múltiplas, o desmetildiazepam, mas não diazepam, pode acumular -se 
+significativamente no LCR. O diazepam tem captação e alcança o equilíbrio no tecido cerebral 
+rapidamente, com concentrações de equilíbrio no cérebro excedendo aquelas no plasma. O tempo 
+total de ocupação do receptor foi consistente com o tempo de duração da soma das concentrações 
+cerebrais de diazepam e metabólitos. 
+ 
+Metabolismo 
+Diazepam é principalmente metabolizado a substâncias farmacologicamente ativas, como o 
+desmetildiazepam, uma via que representa 50 -60% da depuração total do diazepam; 3-
+hidroxilação (27% da depuração total do diazepam) é lenta, levando apenas a baixos níveis 
+plasmáticos dos produtos de oxidação, temazepam e oxazepam. Oxazepam e temazepam são 
+posteriormente conjugados a glucuronídeos. Após múltiplas doses de diazepam a razão da 
+ 
+ 
+Valium® - VPS07 5 
+concentração plasmática de desmetildiazepam/diazepam foi 1,1 ± 0,2, temazepam/diazepam 0,11 
+± 0,05 e oxazepam/diazepam 0,09 ± 0,03. 
+ 
+A oxidação do diazepam é mediada por isoenzimas do citocromo P450; formação de 
+desmetildiazepam principalmente pelas CYP2C19 e CYP3A, 3-hidroxi-diazepam (temazepam) e 
+oxazepam pela CYP3A. Pelo fato da CYP2C19 ser polimórfica, metabolizadores rápidos (MRs) 
+e metabolizadores lentos (MLs) do diazepam podem ser diferenciados. 
+MLs de diazepam mostraram depuração significativamente menor (12 versus. 26 mL/min) e meia-
+vida de eliminação mais longa (88 versus. 41 h) de diazepam do que MRs após uma única dose. 
+Além disso, MLs tiveram menor depuração, maior ASC e maior meia -vida de eliminação do 
+desmetildiazepam. Parece haver diferenças interétnicas neste polimorfismo. 
+ 
+Eliminação 
+O declínio da curva de concentração plasmática/tempo do diazepam após administração é 
+bifásica: uma fase de distribuição inicial rápida e intensa, seguida por uma fase de eliminação 
+terminal prolongada. 
+Os valores típicos da meia-vida de eliminação estão na faixa de 24 - 48 horas para o diazepam e 
+40 - 100 horas para o metabólito ativo desmetildiazepam. O clearance de diazepam é de 20 - 40 
+mL/min. 
+Apenas quantidades insignificantes de diazepam inalterado são eliminadas, indicando que o 
+fármaco é quase completamente metabolizado antes de sair do corpo. Oxazepam-glucuronídeo é 
+o principal produto relacionado ao fármaco na urina. 
+ 
+Farmacocinética em populações especiais 
+ 
+População Geriátrica 
+A fração não ligada do diazepam correlaciona-se positivamente com a idade e foi maior em idosos 
+do que em indivíduos jovens. A idade diminui a capacidade do fígado para a N-demetilação e 3-
+hidroxilação do diazepam. Ocorre uma redução dependente da idade na depuração do fármaco 
+não ligado e é responsável pelo aumento de 2-4 vezes observado na meia-vida de eliminação nos 
+idosos, com um efeito mais forte observado nos homens do que nas mulheres. Assim, a extensão 
+da acumulação do diazepam farmacologicamente ativo não ligado em pessoas idosas durante 
+doses múltiplas será maior do que em adultos mais jovens. 
+A eliminação de desmetildiazepam é mais lenta em homens idosos, mas não em mulheres. 
+ 
+Insuficiência hepática 
+A disposição de diazepam e desmetildiazepam é alterada na doença hepática. Na hepatite viral 
+aguda, a meia-vida do diazepam é aumentada em cerca de 2 vezes, mas retorna lentamente ao 
+normal na recuperação. Um aumento mais acentuado (2 a 5 vezes) na meia-vida de eliminação é 
+observado em pacientes com cirrose alcoólica. 
+Essas alterações são principalmente devido ao metabolismo hepático prejudicado; a distribuição 
+alterada devido a mudanças na ligação às proteínas pode contribuir. A reduzida depuração de 
+diazepam e desmetildiazepam leva ao acúmulo acentuado durante a dose de longo prazo. Isso, 
+por sua vez, é associado com sedação aumentada. 
+ 
+Insuficiência renal 
+Na insuficiência renal crônica, a eliminação de diazepam, como indicado pela depuração do 
+fármaco não ligado, foi semelhante à observada em voluntários sadios; portanto, as concentrações 
+ 
+ 
+Valium® - VPS07 6 
+de diazepam livre no estado de equilíbrio em qualquer dose diária, em média, não devem ser 
+diferentes entre pacientes com insuficiência renal e indivíduos saudáveis. 
+Devido a alterações na ligação às proteínas plasmáticas e distribuição tecidual do diazepam, a 
+meia-vida de eliminação foi reduzida na doença renal de (média ± erro padrão) 92 ± 23 h no 
+controle para 37 ± 7 h em indivíduos com insuficiência renal. 
+ 
+Gravidez 
+O diazepam e o desmetildiazepam atravessam rapidamente a barreira placentária. O feto também 
+pode realizar a N -desmetilação do diazepam. O tratamento de longo prazo leva ao acúmulo de 
+ambos compostos no feto com elevados níveis no coração fetal, pulmões e cérebro. 
+A ligação do diazepam às proteínas plasmáticas diminui durante a gravidez, particularmente 
+durante o último trimestre, em parte devido à queda na concentração sérica de albumina. Efeitos 
+farmacológicos aumentados podem ocorrer após dosagem aguda (vide item “Advertências e 
+Precauções - Gestação e lactação”). 
+ 
+População Pediátrica 
+Durante o primeiro dia de vida, as frações livres de diazepam e desmetildiazepam aumentaram 
+acentuadamente para o dobro dos valores ao nascimento e, subsequentemente, reduziram 
+lentamente para alcançar valores próximos ao controle em uma semana de idade. Essas alterações 
+são paralelas àquelas das concentrações do ácido graxo livre. 
+Recém-nascidos e prematuros metabolizam diazepam mais lentamente que crianças mais velhas 
+e adultos, levando a uma meia -vida prolongada (muito pronunciada em recém -nascidos 
+prematuros), a menos que houvesse exposição a agentes indutores antes ou imediatamente após 
+o nascimento. A capacidade do recém -nascido de realizar processos metabólicos envolvidos na 
+biotransformação do diazepam, incluindo hidroxilação, desmetilação e conjugação com 
+glucuronideo, permanece limitada antes dos 5 meses de idade; após este período, as enzimas 
+hepáticas desenvolvem ou até excedem a capacidade adulta. 
+Diazepam e seus metabólitos são excretados no leite materno. As concentrações de diazepam no 
+leite são apenas 10% daquelas do sangue materno. Normalizado para o peso corporal, 
+aproximadamente 5% da dose materna alcança o lactente. Após múltiplas administrações de doses 
+diárias superiores a 10 mg, as quantidades transferidas podem ser suficientemente grandes para 
+mostrar efeitos no lactente (vide item “Advertências e Precauções - Gestação e lactação). 
+ 
+Segurança não-clínica 
+Carcinogenicidade 
+O potencial carcinogênico de diazepam oral foi estudado em várias espécies roedoras. Aumento 
+na incidência de tumores hepatocelulares ocorreu em camundongos machos. Não houve aumento 
+significativo na incidência de tumores em camundongos fêmeas, ratos, hamsters ou outros 
+roedores. 
+ 
+Genotoxicidade 
+Um número de estudos proporcionou uma fraca evidência de um potencial mutagênico, em altas 
+concentrações, que estão, entretanto, acima das doses terapêuticas em seres humanos. 
+ 
+Prejuízo da fertilidade 
+Estudos reprodutivos em ratos mostraram diminuições no número de gestações e no número de 
+sobreviventes da prole, seguindo administração de doses orais de 100 mg/kg/dia, antes e durante 
+o cruzamento e por toda a gestação e lactação. 
+ 
+ 
+Valium® - VPS07 7 
+ 
+Toxicidade reprodutiva 
+Diazepam foi considerado teratogênico em camundongos em níveis de dose de 45 - 50 mg/kg, 
+100 mg/kg e 140 mg/kg/dia, assim como em hamsters, em 280 mg/kg. No entanto, essa droga não 
+se mostrou teratogênica em 80 e 300 mg/kg/dia, em ratos, e em 20 e 50 mg/kg/dia, em coelhos 
+(vide item “Gestação e lactação”).
+
+4. CONTRAINDICAÇÕES 
+Valium® não deve ser administrado a pacientes com hipersensibilidade aos benzodiazepínicos ou 
+a qualquer excipiente do produto, glaucoma de ângulo agudo, insuficiência respiratória grave, 
+insuficiência hepática grave (pois os benzodiazepínicos podem levar à ocorr ência de 
+encefalopatia hepática), síndrome da apneia do sono ou miastenia gravis. Benzodiazepínicos não 
+são recomendados para tratamento primário de doença psicótica. Eles não devem ser usados como 
+monoterapia na depressão ou ansiedade associada com depressão, pela possibilidade de ocorrer 
+suicídio nesses pacientes. 
+ 
+Uso contraindicado no aleitamento ou na doação de leite humano. 
+ 
+Este medicamento é contraindicado durante o aleitamento ou doação de leite, pois é 
+excretado no leite humano e pode causar reações indesejáveis no bebê. O médico ou 
+cirurgião-dentista deve apresentar alternativas para o tratamento ou para a alimentação do 
+bebê. 
+ 
+Atenção: Contém lactose (tipo de açúcar) abaixo de 0,25g/comprimido. Este medicamento 
+não deve ser usado por pessoas com síndrome de má-absorção de glicose-galactose.
+
+5. ADVERTÊNCIAS E PRECAUÇÕES 
+Uso concomitante de álcool/depressores SNC 
+O uso concomitante de Valium® com álcool e/ou depressores do sistema nervoso central deve ser 
+evitado. Essa utilização concomitante tem potencial para aumentar os efeitos clínicos de 
+Valium®, incluindo, possivelmente, sedação grave, que pode resultar em coma ou morte, 
+depressão cardiovascular e/ou respiratória clinicamente relevantes (vide item “Interações 
+medicamentosas” e “Superdose”). 
+ 
+Histórico médico de abuso de álcool ou drogas 
+Valium® deve ser usado com muita cautela em pacientes com história de alcoolismo ou 
+dependência de drogas. 
+Valium® deve ser evitado em pacientes com dependência de depressores do sistema nervoso 
+central, incluindo álcool. Uma exceção à dependência de álcool é o gerenciamento das reações 
+agudas de retirada. 
+ 
+Insuficiência hepática 
+Os benzodiazepínicos podem contribuir para a ocorrência de episódios de encefalopatia hepática 
+em pacientes com insuficiência hepática grave. Deve- se ter especial cuidado ao administrar 
+Valium® em pacientes com insuficiência hepática leve a moderada (vide item 
+“Contraindicações”). 
+ 
+Reações psiquiátricas e “paradoxais” 
+ 
+ 
+Valium® - VPS07 8 
+Reações paradoxais como inquietude, agitação, irritabilidade, agressividade, ansiedade, delírios, 
+raiva, pesadelos, alucinações, psicoses, comportamento inadequado e outros efeitos adversos 
+comportamentais podem ocorrer com o uso de benzodiazepínicos. Quando isso acontece, deve-
+se descontinuar o uso do medicamento. Esses efeitos são mais prováveis em crianças e idosos. 
+ 
+Amnésia 
+Deve-se ter em mente que os benzodiazepínicos podem induzir a amnésia anterógrada, que pode 
+ocorrer com o uso de doses terapêuticas, com aumento do risco em doses maiores. Efeitos 
+amnésicos podem estar associados com comportamento inapropriado. 
+ 
+Tolerância 
+Pode ocorrer alguma redução na resposta aos efeitos dos benzodiazepínicos, após uso repetido de 
+Valium® por período prolongado. 
+ 
+Intolerância à galactose 
+Pacientes com problemas hereditários raros de intolerância à galactose (a deficiência Lapp de 
+lactase ou má absorção de glicose- galactose) não devem tomar esta medicação e deverão falar 
+com o médico, pois Valium® possui lactose em sua composição. 
+ 
+Abuso e dependência 
+Dependência: o uso de benzodiazepínicos e similares pode levar ao desenvolvimento de 
+dependência física ou psicológica (vide item “Reações adversas”). O risco de dependência 
+aumenta com a dose e duração do tratamento. É maior também em pacientes com histórico médico 
+de abuso de drogas ou álcool. Abusos foram relatados em usuários de múltiplas drogas. Valium® 
+deve ser utilizado com extremo cuidado em pacientes com histórico de abuso de álcool ou outras 
+drogas. No sentido de minimizar o risco de dependência, os benzodiazepínicos só devem ser 
+prescritos após cuidadosa avaliação quanto à indicação e devem ser administrados por período de 
+tempo o mais curto possível. A continuação do tratamento, quando necessária, deve ser 
+acompanhada bem de perto. A duração prol ongada do tratamento só se justifica após avaliação 
+cuidadosa dos riscos e benefícios. 
+ 
+Abstinência: quando ocorre dependência física, a retirada abrupta do tratamento será 
+acompanhada de sintomas de abstinência. O início dos sintomas de abstinência é variável, 
+durando poucas horas a uma semana ou mais. Podem ocorrer cefaleia, diarreia, dores musculares, 
+ansiedade extrema, tensão, inquietude, confusão e irritabilidade. Em casos graves, podem ocorrer 
+sintomas como despersonalização, desrealização, hiperacusia, dormência e sensibilidade nas 
+extremidades, hipersensibilidade à luz, ao barulho e ao contato físico, alucinações ou convulsões. 
+Na ocorrência de sintomas de abstinência, são necessários acompanhamento médico bem próximo 
+e apoio para o paciente. A interrupção abrupta deve ser evitada e um esquema de retirada gradual 
+deve ser adotado. 
+Quando são administrados benzodiazepínicos, sintomas de abstinência podem ocorrer ao mudar 
+para um benzodiazepínico com uma meia-vida de eliminação consideravelmente mais curta. 
+ 
+Ansiedade de rebote: uma síndrome transitória com sintomas que levaram ao tratamento com 
+Valium® recorre com maior intensidade. Isso pode acontecer com a descontinuação do 
+tratamento. Pode ser acompanhada de outras reações, incluindo alterações de humor, ansiedade, 
+distúrbio do sono e inquietude. Como o risco de abstinência e rebote é maior quando a 
+ 
+ 
+Valium® - VPS07 9 
+descontinuação do tratamento é abrupta, é recomendado que a dosagem seja reduzida 
+gradualmente. 
+ 
+Populações especiais 
+ 
+Uso geriátrico: devem ser usadas doses menores em pacientes idosos e debilitados. 
+Os efeitos farmacológicos dos benzodiazepínicos parecem ser maiores em pacientes idosos do 
+que em pacientes mais jovens, mesmo em concentrações plasmáticas semelhantes de 
+benzodiazepínicos, possivelmente devido a mudanças relacionadas à idade nas interações droga-
+receptor, mecanismos pós-receptor e funcionalidade do órgão. 
+ 
+Insuficiência respiratória: são recomendadas doses menores para pacientes com insuficiência 
+respiratória crônica por causa do risco de depressão respiratória. 
+Quando existe insuficiência cardiorrespiratória, deve- se ter em mente que sedativos como 
+Valium® podem acentuar a depressão respiratória. Entretanto, o efeito sedativo pode, ao 
+contrário, ter efeito benéfico ao reduzir o esforço respiratório de certos pacientes. Na hipercapnia 
+severa crônica, Valium® só deve ser administrado caso os benefícios potenciais superem os 
+riscos. 
+ 
+Homens e mulheres com potencial reprodutivo : Se o produto for prescrito para uma mulher 
+em idade fértil, ela deve entrar em contato com o seu médico para a interrupção do produto caso 
+queira engravidar ou suspeite de gravidez. 
+ 
+Gestação e lactação 
+Categoria de risco na gravidez: C. Este medicamento não deve ser utilizado por mulheres 
+grávidas sem orientação médica ou do cirurgião-dentista. 
+A segurança para uso de Valium® durante a gravidez não foi estabelecida em humanos. Um 
+aumento do risco de malformação congênita associada aos benzodiazepínicos durante o primeiro 
+trimestre de gravidez tem sido sugerido. Uma revisão dos efeitos adversos relatados 
+espontaneamente não mostrou incidência maior do que o esperado em uma população similar não 
+tratada. Benzodiazepínicos devem ser evitados durante a gravidez a menos que não exista uma 
+alternativa mais segura. Antes de se administrar Valium® durante a gravidez, especialmente 
+durante o primeiro trimestre, os possíveis riscos para o feto (assim como com qualquer outra 
+droga) devem ser pesados contra o benefício terapêutico esperado para a mãe. 
+Administração contínua de benzodiazepínicos durante a gravidez pode levar à hipotensão, 
+redução da função respiratória e hipotermia no recém -nascido (vide item “Características 
+farmacológicas”). Sintomas de abstinência no recém -nascido têm sido ocasionalmente descritos 
+com esta classe terapêutica. 
+Dados de estudos observacionais sugerem que existe um risco aumentado de aborto espontâneo 
+devido à exposição a benzodiazepínicos durante a gravidez. Ao tratar mulheres em idade fértil, 
+os benefícios do tratamento devem ser ponderados em relação aos riscos , e as pacientes devem 
+ser informadas sobre o risco aumentado de aborto espontâneo. 
+ 
+Trabalho de parto 
+São recomendados cuidados especiais quando o Valium® for administrado durante o trabalho de 
+parto, pois uma única dose alta pode produzir irregularidades na frequência cardíaca fetal e 
+hipotonia, dificuldade de sucção, hipotermia e depressão respiratória moderada no neonato. Deve-
+ 
+ 
+Valium® - VPS07 10 
+se lembrar que o sistema enzimático envolvido no metabolismo da droga não está completamente 
+desenvolvido no recém-nascido (especialmente nos prematuros). 
+ 
+Lactação 
+Como o diazepam é excretado no leite materno, Valium® não deve ser administrado em pacientes 
+que estejam amamentando. 
+ 
+Efeitos sobre a capacidade de dirigir veículo e operar máquinas 
+Oriente seu paciente a não dirigir veículos ou operar máquinas (informar se durante todo o 
+tratamento, no início do tratamento, ao aumentar a dose, em tratamento prolongado, ou 
+outra situação), pois sua habilidade e capacidade de reação podem estar prejudicadas. 
+ 
+O uso deste medicamento pode causar tontura, desmaios ou perda da consciência, expondo 
+o paciente a quedas ou acidentes. 
+ 
+Sedação, amnésia, redução da capacidade de concentração e da força muscular podem prejudicar 
+a capacidade de dirigir veículo ou operar máquinas. Antes de receber Valium®, o paciente deve 
+ser avisado para não conduzir veículo ou operar máquinas até que esteja completamente 
+recuperado. O médico deve decidir quando essas atividades podem ser retomadas. 
+Se a duração do sono for insuficiente ou for consumido álcool, a probabilidade de a capacidade 
+de alerta estar comprometida é maior. 
+Pacientes sob uso de Valium® devem ser alertados quanto à realização de atividades perigosas 
+que requeiram grande atenção como operar máquinas perigosas ou dirigir veículos. Devem ser 
+igualmente alertados sobre o consumo concomitante de bebidas alcoólicas, pois pode ocorrer 
+potencialização dos efeitos indesejáveis de ambas as drogas. 
+ 
+Até o momento, não há informações de que Valium® (diazepam) possa causar doping. 
+ 
+Atenção: Contém os corantes óxido de ferro amarelo ou azul de indigotina.
+
+6. INTERAÇÕES MEDICAMENTOSAS 
+Interação farmacocinética fármaco-fármaco (FFI) 
+O metabolismo de diazepam e seu principal metabólito, DMDZ depende das isoenzimas do 
+citocromo P450, CYP3A4 e CYP2C19. Os moduladores dessas enzimas podem levar a alterações 
+na disposição e efeitos de diazepam. São observadas fortes interações com compostos que afetam 
+simultaneamente as vias metabólicas oxidativas de diazepam; os efeitos moderados só ocorrem, 
+mesmo com inibidores fortes, se eles afetam apenas uma das vias metabólicas de diazepam. Os 
+inibidores de CYP3A4 e CYP2C19 diminuem a taxa metabólica e podem levar a concentrações 
+mais elevadas do que o normal de diazepam e do metabólito desmetil e, consequentemente, aos 
+efeitos sedativos e ansiolíticos aumentados / prolongados. Tais mudanças podem exacerbar os 
+efeitos de diazepam em pacientes com sensibilidade aumentada, por exemplo, devido à sua idade, 
+função hepática reduzida ou tratamento com outros medicamentos que prejudicam a oxidação. Os 
+indutores de CYP3A4 e CYP2C19 podem levar a concentrações inferiores às esperadas e, 
+portanto, a uma falta da eficácia desejada. 
+ 
+Efeito de outros medicamentos na farmacocinética de diazepam 
+Inibidores enzimáticos 
+ 
+ 
+Valium® - VPS07 11 
+O suco de toranja contém fortes inibidores de CYP3A4. A exposição a diazepam foi fortemente 
+aumentada (ASC 3,2 vezes, C máx 1,5 vezes) e o tempo para atingir a concentração máxima foi 
+maior quando diazepam foi administrado com suco de toranja em vez de água. 
+ 
+Derivados de antimicóticos azólicos inibem as vias CYP3A4 e CYP2C19 e levam a um aumento 
+da exposição a diazepam (relação ASC de diazepam com fluconazol 2,5; voriconazol 2,2) e 
+prolonga a meia -vida de eliminação de diazepam (com fluconazol de 31h para 73h, com 
+voriconazol de 31h para 61h). A influência dos antimicóticos nos níveis de diazepam só foi 
+observada a partir de 4 horas após a administração. Itraconazol tem um efeito mais moderado sem 
+interação clinicamente significativa com diazepam, conforme determinado por testes de 
+desempenho psicomotor. 
+ 
+A fluvoxamina, inibidor de recaptação de serotonina, também é inibidor das duas vias de 
+degradação de diazepam e aumentou não apenas a exposição a diazepam em 180% e prolongou 
+a sua meia-vida de eliminação de 51h para 118h, como também aumentou a exposição e o tempo 
+para atingir o estado de equilíbrio do metabólito desmetil. Fluoxetina mostrou um efeito mais 
+moderado sobre a ASC de diazepam (aumento de aproximadamente 50%) e não afetou a resposta 
+psicomotora porque as concentrações combinadas de diazepam e desmetildiazepam foram 
+semelhantes com e sem fluoxetina. 
+ 
+Os contraceptivos hormonais combinados parecem reduzir a depuração (em 67%) e prolongar a 
+meia-vida de eliminação (em 47%) de diazepam. O comprometimento psicomotor induzido por 
+diazepam em mulheres utilizando contraceptivos pode ser maior durante a pausa menstrual de 7 
+dias fora da preparação hormonal do que no período em que ela está tomando o contraceptivo. 
+Existem algumas evidências limitadas de que os benzodiazepínicos podem aumentar a incidência 
+de hemorragia avançada em mulheres utilizando contracept ivos hormonais. Não foi observada 
+interação medicamentosa que tenha causado gravidez. 
+ 
+Omeprazol, inibidor de bomba de prótons e inibidor CYP2C19 e CYP3A4, administrado em dose 
+de 20 mg uma vez ao dia, aumentou ASC de diazepam em 40% e a meia-vida em 36%, e em dose 
+de 40 mg uma vez ao dia, aumentou a ASC de diazepam em 122% e a meia- vida em 130%. A 
+eliminação de desmetildiazepam também foi reduzida. O efeito de omeprazol só foi visto em 
+metabolizadores extensos, mas não lentos, de CYP2C19. Esomeprazol (mas não lanzoprazol ou 
+pantoprazol) tem potencial para inibir o metabolismo de diazepam em um grau semelhante ao 
+omeprazol. 
+ 
+Cimetidina, antagonista do receptor H2 da histamina e inibidor de múltiplas isoenzimas CYP, 
+incluindo CYP3A4 e CYP2C19, reduz a depuração de diazepam e de desmetildiazepam em 40% 
+a 50%. O efeito não é diferente após um dia ou após o tratamento crônico com cimetidina e resulta 
+em maior exposição e meia-vida de eliminação prolongada de diazepam e seu principal metabólito 
+após administração única e maiores concentrações de equilíbrio após administração múltiplas de 
+diazepam. A potencialização da sedação foi observada com coadministração de cimetidina. Não 
+foi observada tal interação farmacocinética com os antagonistas do H2 ranitidina e famotidina. 
+ 
+Disulfiram inibe o metabolismo de diazepam (diminuição mediana da depuração em 41% e 
+aumento da meia -vida em 37%) e provavelmente o metabolismo dos metabólitos ativos de 
+diazepam, podendo resultar na potencialização dos efeitos sedativos. 
+ 
+ 
+ 
+Valium® - VPS07 12 
+A terapia com antituberculínicos pode alterar a disposição do diazepam. Na presença de 
+isoniazida, a exposição média (ASC) e a meia- vida de diazepam aumentaram (em média 33 –
+35%). As maiores alterações foram observadas em indivíduos com fenótipo de acetilador lento. 
+ 
+Diltiazem, bloqueador do canal de cálcio e que é substrato para as mesmas isoenzimas do CYP 
+que diazepam e inibidor do CYP3A4, aumentou a ASC (em aproximadamente 25%) e prolongou 
+a meia-vida (em 43% nos metabolizadores extensivos da CYP2C19) de diazepam, com pequenas 
+diferenças entre indivíduos com diferentes fenótipos de CYP2C 19. Na presença de diltiazem, a 
+exposição a desmetildiazepam também tende a aumentar. 
+ 
+O metabólito primário de idelasibe é um inibidor forte de CYP3A4 e aumenta as concentrações 
+séricas de diazepam de forma que a redução da dose pode ser considerada. 
+ 
+Os psicoestimulantes modafinil e armodafinil induzem CYP3A4 e inibem CYP2C19, podendo 
+prolongar a eliminação de diazepam e causar sedação excessiva. 
+ 
+Indutores enzimáticos 
+Rifampicina é um potente indutor do CYP3A4 e também tem um significante efeito acelerador 
+na via de CYP2C19. Quando administrada a 600 mg por dia, durante 7 dias, a depuração de 
+diazepam aumentou 4,3 vezes e a ASC diminuiu em 77%. Também foi observada redução 
+significativa na exposição a todos os metabólitos de diazepam. Duplicar a dose diária da 
+rifampicina não aumentou o seu efeito. 
+ 
+A carbamazepina é um indutor conhecido de CYP3A4, acelerando a eliminação (aumento da 
+depuração e meia-vida reduzida) de diazepam em 3 vezes, enquanto aumenta as concentrações de 
+desmetildiazepam. 
+ 
+Alimentos e antiácidos 
+Alimentos e antiácidos podem reduzir a taxa, mas não diminuirão a extensão da absorção dos 
+comprimidos de diazepam. Isso pode levar a efeitos atenuados após uma única dose, mas não 
+influenciar as concentrações no estado de equilíbrio durante a terapia com múltiplas doses. 
+ 
+As drogas procinéticas aumentam a taxa de absorção de diazepam. 
+ 
+A metoclopramida intravenosa, mas não oral, aumenta a taxa de absorção de diazepam e aumenta 
+a concentração máxima alcançada após a administração oral. 
+ 
+Os narcóticos (morfina, petidina) diminuem a taxa de absorção e o pico de concentração em 
+administrações orais de diazepam. 
+ 
+Efeitos de diazepam na farmacocinética de outros medicamentos 
+Diazepam não é considerado um indutor ou inibidor de enzimas metabolizadoras. No entanto, 
+podem ocorrer algumas interações com outros medicamentos em que o diazepam é a causa da 
+interação. 
+ 
+A terapia com fenitoína foi associada com maiores concentrações e aumento de intoxicação por 
+fenitoína quando combinada com diazepam. No entanto alguns estudos não encontraram nenhuma 
+ 
+ 
+Valium® - VPS07 13 
+interação ou mesmo baixas concentrações plasmáticas de fenitoína quando co-administrada com 
+diazepam. 
+ 
+Interação farmacodinâmica fármaco-fármaco (FFI) 
+O álcool deve ser evitado em pacientes que recebem Valium® (vide item “Advertências e 
+precauções”). Efeitos aumentados, como sedação e depressão cardiorrespiratória, também podem 
+ocorrer quando o Valium ® é coadministrado com depressores de atuação central, incluindo o 
+álcool (vide item “Superdose”). 
+ 
+Existem vários relatos de hipotensão grave, depressão respiratória ou perda da consciência em 
+pacientes sob tratamento combinado com clozapina e benzodiazepínicos, incluindo diazepam. 
+ 
+Efeitos aditivos depressivos no sistema nervoso central são esperados ao combinar fenotiazinas e 
+benzodiazepínicos. Sedação, depressão respiratória e obstrução das vias aéreas foram relatadas 
+com o uso combinado de levopromazina e diazepam. 
+Os efeitos aditivos de olanzapina e diazepam na sedação e hipotensão ocorrem na ausência de 
+uma interação farmacocinética. Não é recomendado uso parenteral concomitante. 
+ 
+Diazepam aumenta os efeitos subjetivos de opioides da metadona. Diazepam também aumenta os 
+efeitos da metadona sobre o diâmetro da pupila e sobre a sedação e também causa uma perda 
+significativa no tempo de reação em comparação com a metadona sozinha. Não ocorre interação 
+farmacocinética entre os dois medicamentos. 
+ 
+Foi observada perda reversível do controle da doença de Parkinson em alguns pacientes tratados 
+com levodopa combinada com diazepam. Isso pode ser causado pela diminuição dos níveis de 
+dopamina estriatal. 
+ 
+As xantinas teofilina e cafeína antagonizam os efeitos sedativos e possivelmente ansiolíticos de 
+diazepam parcialmente através do bloqueio dos receptores de adenosina. 
+ 
+O pré -tratamento com diazepam altera a farmacodinâmica e a farmacocinética da cetamina 
+anestésica. A n-desmetilação de cetamina foi inibida, resultando em aumento da meia -vida e do 
+tempo de sono induzido por cetamina. Na presença de diazepam, é necessária uma concentração 
+reduzida de cetamina para obter a anestesia adequada. 
+ 
+7. CUIDADOS DE ARMAZENAGEM DO MEDICAMENTO 
+Valium® deve ser armazenado em temperatura ambiente (de 15°C a 30ºC). 
+ 
+Prazo de validade 
+Este medicamento possui prazo de validade de 36 meses a partir da data de fabricação 
+ 
+Número de lote e datas de fabricação e validade: vide embalagem. 
+Não use medicamento com o prazo de validade vencido. Guarde- o em sua embalagem 
+original. 
+ 
+Os comprimidos de Valium® possuem formato cilíndrico biplanar. Os comprimidos de 5 mg são 
+de cor amarelo pálido e os de 10 mg são de cor azul pálido a azul claro. 
+ 
+ 
+Valium® - VPS07 14 
+Valium® não possui características organolépticas marcantes que permitam sua diferenciação em 
+relação a outros comprimidos. 
+ 
+Descarte de medicamentos não utilizados e/ou com data de validade vencida 
+O descarte de medicamentos no meio ambiente deve ser minimizado. Os medicamentos não 
+devem ser descartados no esgoto e o descarte em lixo doméstico deve ser evitado. Utilize o 
+sistema de coleta local estabelecido, se disponível. 
+ 
+Antes de usar, observe o aspecto do medicamento. 
+ 
+Todo medicamento deve ser mantido fora do alcance das crianças.
+
+8. POSOLOGIA E MODO DE USAR 
+Geral: para se obter efeito ótimo, a posologia deve ser individualizada. O tratamento deve ser 
+iniciado com a menor dose apropriada eficaz para a condição particular. 
+ 
+Doses orais usuais para adultos: dose inicial: 5 - 10 mg. Dependendo da gravidade dos sintomas, 
+5 - 20 mg/dia. Cada dose oral para adultos não deve normalmente ser superior a 10 mg. 
+ 
+Duração do tratamento: a duração do tratamento deve ser a menor possível (vide item “Abuso 
+e dependência”). O paciente deve ser reavaliado regularmente quanto à necessidade de se 
+continuar o tratamento, especialmente no paciente assintomático. 
+O tratamento não deve exceder dois a três meses, incluindo o período de retirada progressiva. A 
+extensão além desse limite poderá ser feita após reavaliação da situação. É útil informar ao 
+paciente quando o tratamento for iniciado que ele terá duração limitada e explicar como a dose 
+será progressivamente reduzida. 
+Além disso, é importante que o paciente seja alertado sobre a possibilidade do fenômeno de 
+rebote, para minimizar a ansiedade sobre tais sintomas caso eles ocorram durante a retirada. 
+Existem evidências de que, no caso de benzodiazepínicos de curta duração , o fenômeno de 
+retirada pode se manifestar no intervalo entre as doses, especialmente quando a posologia é alta. 
+No caso de benzodiazepínicos de longa duração, como o diazepam, é importante prevenir quando 
+se trocar para um benzodiazepínico de curta duração, pois podem ocorrer sintomas de abstinência. 
+ 
+Instruções para dosagens especiais 
+Uso geriátrico 
+Dosagem para pacientes idosos: A dose mais baixa possível deve ser utilizada em idosos (vide 
+item “Advertências e Precauções – Uso Geriátrico). Esses pacientes devem ser acompanhados 
+regularmente no início do tratamento para minimizar a dosagem e/ou frequência de administração, 
+para prevenir superdose causada pelo acúmulo (vide item “Características Farmacológicas”). 
+ 
+Insuficiência hepática: Pacientes com insuficiência hepática grave não devem ser tratados com 
+Valium® (vide item “Contraindicações”). Em pacientes cuja insuficiência hepática é leve ou 
+moderada, a menor dose possível deve ser administrada. 
+ 
+Valium® deve ser administrado por via oral. 
+ 
+Os comprimidos de 5 e 10 mg podem ser partidos. A parte não utilizada do comprimido deve ser 
+guardada na embalagem original e administrada no prazo máximo de 60 dias. 
+ 
+ 
+Valium® - VPS07 15
+
+9. REAÇÕES ADVERSAS 
+Experiência pós-comercialização 
+Os efeitos colaterais mais comumente citados são: cansaço, sonolência e fraqueza muscular; em 
+geral, estão relacionados com a dose administrada. Esses efeitos ocorrem predominantemente no 
+início do tratamento e geralmente desaparecem com a administração prolongada. 
+ 
+Distúrbios do sistema nervoso: ataxia, disartria, fala enrolada, dor de cabeça, tremores, tontura, 
+diminuição do estado de alerta. Amnésia anterógrada pode ocorrer com doses terapêuticas, sendo 
+que o risco aumenta com doses maiores. Efeitos amnésicos podem estar associados com 
+comportamento inapropriado. 
+ 
+Distúrbios psiquiátricos: reações paradoxais como inquietude, agitação, irritabilidade, 
+desorientação, agressividade, nervosismo, hostilidade, ansiedade, delírios, raiva, pesadelos, 
+sonhos anormais, alucinações, psicoses, hiperatividade, comportamento inapropriado e outros 
+efeitos comportamentais conhecidos. Esses efeitos são mais prováveis em crianças e idosos e, 
+caso ocorram, o uso do medicamento deve ser descontinuado. Estado confusional, distúrbios 
+emocionais e de humor, depressão e alterações na libido. 
+ 
+O uso crônico (mesmo em doses terapêuticas) pode levar ao desenvolvimento de dependência 
+física. O risco é mais pronunciado em pacientes que recebem tratamento prolongado e/ou com 
+doses elevadas e, particularmente, em pacientes predispostos com antecedente s pessoais de 
+alcoolismo ou abuso de drogas. Uma vez que a dependência física aos benzodiazepínicos se 
+desenvolve, a descontinuação do tratamento pode ser acompanhada de sintomas de abstinência 
+ou fenômeno de rebote (vide item “Abuso e dependência”). 
+Tem sido relatado abuso de benzodiazepínicos em usuários de múltiplas drogas (vide item “Abuso 
+e dependência”). 
+ 
+Lesões, envenenamento e complicações de procedimentos: existem relatos de quedas e fraturas 
+em pacientes sob uso de benzodiazepínicos. O risco é maior em pacientes recebendo, 
+concomitantemente, sedativos (incluindo bebidas alcoólicas) e em pacientes idosos. 
+ 
+Distúrbios gastrintestinais: náuseas, boca seca ou hipersalivação, constipação e outros 
+distúrbios gastrintestinais. 
+ 
+Distúrbios oculares: diplopia, visão turva. 
+ 
+Distúrbios vasculares: hipotensão, depressão circulatória. 
+ 
+Exames: frequência cardíaca irregular, transaminases aumentadas muito raramente, aumento da 
+fosfatase alcalina sanguínea. 
+ 
+Distúrbios renais e urinários: incontinência, retenção urinária. 
+ 
+Distúrbios da pele e do tecido subcutâneo: reações cutâneas. 
+ 
+Distúrbios do ouvido e do labirinto: vertigem. 
+ 
+Cardiopatias: insuficiência cardíaca, incluindo parada cardíaca. 
+ 
+ 
+Valium® - VPS07 16 
+Distúrbios respiratórios: depressão respiratória, incluindo insuficiência respiratória. 
+ 
+Distúrbios hepatobiliares: muito raramente icterícia. 
+ 
+Em caso de eventos adversos, notifique pelo Sistema VigiMed, disponível no Portal da Anvisa.
+
+10. SUPERDOSE 
+Sintomas 
+Os benzodiazepínicos geralmente causam sonolência, ataxia, disartria e nistagmo. Superdose de 
+Valium® raramente resulta em risco à vida se o medicamento for administrado isoladamente, mas 
+pode levar à arreflexia, apneia, hipotensão arterial, depressão cardiorrespiratória e coma. 
+O coma, se ocorrer, normalmente tem duração de poucas horas; porém, pode ser prolongado e 
+cíclico, particularmente em pacientes idosos. Os efeitos de depressão respiratória por 
+benzodiazepínicos são mais graves em pacientes com doença respiratória. 
+Os benzodiazepínicos aumentam os efeitos de outros depressores do sistema nervoso central, 
+incluindo o álcool. 
+ 
+Tratamento 
+Monitorização dos sinais vitais e medidas de suporte devem ser instituídas conforme o estado 
+clínico do paciente. Em particular, os pacientes podem necessitar de tratamento sintomático dos 
+efeitos cardiorrespiratórios ou efeitos do sistema nervoso central. 
+A absorção adicional deve ser prevenida utilizando -se um método apropriado, por exemplo, 
+tratamento em uma a duas horas com carvão ativado. Se for utilizado carvão ativado, é imperativo 
+proteger as vias aéreas em pacientes sonolentos. Em caso de ingestão mista, deve-se considerar a 
+lavagem gástrica; entretanto, esse procedimento não deve ser considerado uma medida de rotina. 
+ 
+Caso a depressão do sistema nervoso central seja grave, deve-se levar em consideração o uso de 
+flumazenil, um antagonista específico do receptor benzodiazepínico. Flumazenil deve ser 
+administrado apenas sob rigorosas condições de monitoramento. Flumazenil possui meia -vida 
+curta (cerca de uma hora), portanto, os pacientes que receberem flumazenil requererão 
+monitoramento após a diminuição dos seus efeitos. Flumazenil deve ser usado com extrema 
+cautela na presença de medicamentos que reduzem o limiar de convu lsões (por exemplo, 
+antidepressivos tricíclicos). Consulte a bula de flumazenil para mais informações sobre o uso 
+correto desse medicamento. 
+ 
+Em caso de intoxicação ligue para 0800 722 6001, se você precisar de mais orientações.

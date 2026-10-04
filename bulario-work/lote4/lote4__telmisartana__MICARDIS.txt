@@ -1,0 +1,375 @@
+FONTE: lote4__telmisartana__MICARDIS.pdf
+
+===== BLOCO 1 =====
+APRESENTAÇÕES
+Comprimidos de 40 mg e 80 mg: embalagens com 30 comprimidos
+
+USO ORAL
+USO ADULTO
+
+1. INDICAÇÕES
+Tratamento da hipertensão arterial, como monoterapia ou em associação com outros agentes anti-hipertensivos.
+Prevenção de mortalidade e lesão cardiovascular em pacientes com idade igual ou superior a 55 anos com alto risco de
+doença cardiovascular.
+
+3. CARACTERÍSTICAS FARMACOLÓGICAS
+Farmacodinâmica
+MICARDIS contém o fármaco telmisartana, um BRA (bloqueador específico dos receptores da angiotensina II, tipo AT1),
+eficaz por via oral. A telmisartana desloca, com afinidade muito elevada, a angiotensina II de seus sítios de ligação no
+receptor AT1, o qual é responsável pelas ações conhecidas da angiotensina II. A telmisartana não apresenta qualquer
+atividade agonista parcial no receptor AT1 e liga-se seletivamente a esses receptores. Esta ligação é de longa duração.
+A telmisartana não apresenta afinidade por outros receptores, incluindo AT2 e outros receptores AT menos caracterizados.
+A função destes receptores não é conhecida, nem os efeitos da possível superestimulação pela angiotensina II, cujos níveis
+são aumentados pela telmisartana. Os níveis de aldosterona plasmática são diminuídos pela telmisartana. A telmisartana
+não inibe a renina plasmática humana nem bloqueia canais iônicos. A telmisartana não possui efeito inibitório sobre a
+ECA (quininase II), que também degrada a bradicinina. Portanto não se espera uma potencialização de efeitos adversos
+mediados pela bradicinina.
+
+Farmacocinética
+A absorção da telmisartana é rápida, embora a quantidade absorvida varie. A biodisponibilidade absoluta média é de cerca
+de 50%. Quando a telmisartana é administrada com alimentos, a redução da AUC varia entre aproximadamente
+6% (dose de 40 mg) e 19% (dose de 160 mg). Três horas após a administração, as concentrações plasmáticas são
+semelhantes, quer a telmisartana seja tomada em jejum, quer com alimentos.
+Não se espera que a pequena redução na AUC cause redução na eficácia terapêutica.
+
+Micardis_Bula Profissional 17- 7455645/C25-01 2
+
+MICARDIS PROFISSIONAL
+
+MI
+ Foram observadas diferenças relacionadas ao sexo nas concentrações plasmáticas, C max e AUC, que são
+aproximadamente 3 e 2 vezes, respectivamente, maiores em mulheres que em homens, sem influência relevante na
+eficácia.
+A telmisartana liga-se predominantemente às proteínas plasmáticas (99,5%), principalmente à albumina e à glicoproteína
+ácida alfa-1. O volume de distribuição aparente no estado de equilíbrio (Vdss) é de cerca de 500L. O metabolismo se dá
+por conjugação para glucuronídio. Não foi demonstrada qualquer atividade farmacológica da entidade conjugada.
+A telmisartana caracteriza-se por uma cinética de declínio bi-exponencial, com um tempo de meia vida terminal superior
+a 20 horas. A concentração plasmática máxima (Cmax) e, numa extensão menor, a AUC, aumentam na proporção inversa
+à dose. Não existe evidência de acúmulo clinicamente relevante de telmisartana se esta for tomada na dose recomendada.
+Após a administração oral e intravenosa, a telmisartana é quase exclusivamente excretada pelas fezes, principalmente na
+forma de composto inalterado. A excreção urinária cumulativa é inferior a 2% da dose. A depuração plasmática total,
+(CLtot) é elevada (cerca de 900 mL/min), em comparação com o fluxo sanguíneo hepático (cerca de 1500 mL/min).
+A farmacocinética da telmisartana não difere entre pacientes jovens e idosos.
+Em pacientes com insuficiência renal em diálise, foram observadas concentrações plasmáticas inferiores. Como a
+telmisartana se liga predominantemente às proteínas plasmáticas, ela não pode ser removida por diálise nos pacientes com
+insuficiência renal. A meia vida de eliminação não se altera em pacientes com lesão renal. Estudos farmacocinéticos em
+pacientes com lesão hepática mostraram um aumento de cerca de 100% na biodisponibilidade. A meia vida de eliminação
+não é alterada nestes pacientes.
+
+4. CONTRAINDICAÇÕES
+• Hipersensibilidade à telmisartana ou aos excipientes da fórmula;
+• Distúrbios biliares obstrutivos;
+• Disfunções hepáticas graves;
+• Intolerância hereditária rara à frutose;
+• Uso concomitante de telmisartana com alisquireno em pacientes com diabetes mellitus ou disfunção renal (taxa de
+ filtração glomerular < 60 ml/min/1,73 m2);
+• Segundo e terceiro trimestres de gravidez;
+• Lactação.
+
+MICARDIS está classificado na categoria de risco D para o segundo e terceiro trimestres de gravidez.
+Este medicamento não deve ser utilizado por mulheres grávidas sem orientação médica. Informe imediatamente
+seu médico em caso de suspeita de gravidez.
+
+5. ADVERTÊNCIAS E PRECAUÇÕES
+• Hiperpotassemia: na vigência do tratamento com medicamentos que atuam no sistema renina-angiotensina-
+ aldosterona, especialmente na presença de insuficiência renal e/ou insuficiência cardíaca, pode ocorrer
+ hiperpotassemia. Recomenda-se monitoração dos níveis séricos de potássio em pacientes de risco. A experiência com
+ o uso de medicamentos que atuam no sistema renina-angiotensina mostra que o uso concomitante de diuréticos
+ poupadores de potássio, suplementos de potássio, substitutos do sal comum por outro que contenha potássio ou outros
+ medicamentos que podem aumentar os níveis de potássio, como a heparina, podem levar a um aumento dos níveis
+ séricos de potássio. Portanto, nestas situações telmisartana deve ser administrado com cautela.
+
+• Insuficiência hepática: uma vez que a maior parte da telmisartana é eliminada pela bile, pode-se esperar redução da
+ depuração em pacientes com disfunções obstrutivas do sistema biliar ou insuficiência hepática. MICARDIS deve ser
+ utilizado com cautela nestes pacientes.
+
+• Depleção de volume e/ou sódio: pode ocorrer hipotensão sintomática, especialmente após a primeira dose, em
+ pacientes com depleção volêmica e/ou de sódio por vigorosa terapia diurética, dieta restrita de sal, diarreia ou vômito.
+ Tais condições, especialmente depleção volêmica e/ou de sódio, devem ser corrigidas antes do início da terapêutica
+ com telmisartana.
+
+• Hipertensão renovascular: há um risco aumentado de hipotensão grave e insuficiência renal quando pacientes com
+ estenose arterial renal bilateral ou estenose da artéria com um único rim funcionando são tratados com medicamentos
+ que atuam no sistema renina-angiotensina-aldosterona.
+
+• Disfunção renal e transplante renal: quando telmisartana é usada em pacientes com função renal anormal, recomenda-
+ se monitoração periódica dos níveis séricos de potássio e creatinina. Não há experiência com relação à administração
+
+Micardis_Bula Profissional 17- 7455645/C25-01 3
+
+MICARDIS PROFISSIONAL
+
+MI
+ de MICARDIS em pacientes com transplante renal recente. A telmisartana não é removida do sangue por
+ hemofiltração e não é dialisável.
+
+• Duplo bloqueio do sistema renina-angiotensina-aldosterona: como consequência da inibição do sistema renina-
+ angiotensina-aldosterona, foram relatadas alterações da função renal (incluindo falência renal aguda) em pacientes
+ susceptíveis, especialmente quando foram combinados medicamentos que afetam esse sistema. Portanto, o duplo
+ bloqueio do sistema renina-angiotensina-aldosterona [por exemplo, combinando um inibidor da ECA ou o inibidor
+ direto de renina (alisquireno) a um BRA] não é recomendada e deve ser limitado aos casos definidos individualmente,
+ com estrita monitoração da função renal.
+
+• Outras condições de estimulação do sistema renina-angiotensina-aldosterona: em pacientes cujo tônus vascular e
+ função renal dependem predominantemente da atividade do sistema renina-angiotensina-aldosterona (p. ex. pacientes
+ com insuficiência cardíaca congestiva grave ou doença renal subjacente, inclusive estenose da artéria renal), o
+ tratamento com medicamentos que afetam este sistema tem sido associado com hipotensão aguda, hiperazotemia,
+ oligúria ou, raramente, insuficiência renal aguda.
+
+• Hiperaldosteronismo primário: pacientes com aldosteronismo primário geralmente não respondem a medicações anti-
+ hipertensivas que agem inibindo o sistema renina-angiotensina. Portanto, não se recomenda o uso de telmisartana.
+
+• Estenose da valva aórtica ou mitral e cardiomiopatia obstrutiva hipertrófica: a exemplo do que ocorre com o uso de
+ outros fármacos vasodilatadores, recomenda-se precaução especial aos pacientes que sofrem de estenose aórtica ou
+ mitral ou cardiomiopatia hipertrófica obstrutiva.
+
+• Contém sorbitol (edulcorante). MICARDIS comprimidos de 40 mg contém 168,64 mg de sorbitol em cada
+ comprimido. MICARDIS comprimidos de 80 mg contém 337,28 mg de sorbitol em cada comprimido; Sorbitol é
+ uma fonte de frutose; Pacientes com intolerância hereditária rara à frutose (distúrbios do metabolismo da frutose) não
+ devem tomar este medicamento.
+
+• Diabetes mellitus: pacientes diabéticos com risco cardiovascular adicional [por exemplo, diabéticos com Doença
+ Arterial Coronariana (DAC) coexistente] devem passar por uma adequada avaliação diagnóstica (por exemplo, teste
+ ergométrico de esforço) para detecção e tratamento adequado da DAC antes do início do tratamento com MICARDIS,
+ pois o não diagnóstico da DAC assintomática nestes pacientes pode apresentar maior risco de infarto do miocárdio
+ fatal e morte de causa cardiovascular inesperada quando tratados com anti-hipertensivos como BRAs ou inibidores
+ da ECA.
+
+• Diferenças étnicas: como observado para os inibidores da ECA, bloqueadores de receptores de angiotensina,
+ incluindo telmisartana, são aparentemente menos eficazes na redução da pressão arterial na população negra do que
+ na população não-negra, possivelmente devido à prevalência de baixas taxas de renina na população hipertensa negra.
+
+• Doença cardíaca isquêmica: Assim como com outros agentes anti-hipertensivos, a redução excessiva da pressão
+ arterial em pacientes com cardiopatia isquêmica ou doença cardiovascular isquêmica pode resultar em infarto do
+ miocárdio ou AVC.
+
+Efeitos na capacidade de dirigir e operar máquinas
+Ainda não realizaram estudos sobre o efeito na habilidade de dirigir e utilizar máquinas. Contudo, ao dirigir ou operar
+máquinas, deve-se levar em conta que na vigência do tratamento anti-hipertensivo podem ocasionalmente ocorrer
+vertigens ou síncope.
+Informe ao seu paciente que ele deve evitar se levantar rapidamente, dirigir veículos e/ou operar máquinas,
+durante todo tratamento.
+
+Gravidez, Lactação e Fertilidade
+O tratamento com BRAs não é recomendado no primeiro trimestre da gravidez e não deve ser iniciado durante a gravidez.
+Quando a gravidez for diagnosticada, o tratamento com BRAs deve ser interrompido imediatamente e, se conveniente,
+deve ser iniciada terapia alternativa. Pacientes que planejam engravidar devem ter o tratamento substituído por outros
+anti-hipertensivos alternativos, que tenham o perfil de segurança estabelecido para uso durante a gestação, a menos que
+o tratamento com BRAs seja absolutamente necessário.
+Estudos pré-clínicos com telmisartana não indicaram efeito teratogênico, mas em doses tóxicas demonstraram
+fetotoxicidade e risco ao desenvolvimento pós-natal da prole. Em humanos, sabe-se que a exposição aos BRAs no segundo
+
+Micardis_Bula Profissional 17- 7455645/C25-01 4
+
+MICARDIS PROFISSIONAL
+
+MI
+e terceiro trimestres da gestação induz fetotoxicidade (diminuição da função renal, oligodrâmnio, retardo da ossificação)
+e toxicidade neonatal (falência renal, hipotensão, hipercalemia).
+Caso tenha ocorrido exposição aos BRAs a partir do segundo trimestre de gestação, recomenda -se verificar a função renal
+e os ossos por ultrassom. Bebês cujas mães utilizaram BRAs devem ser monitorados de perto quanto à hipotensão.
+
+Uso contraindicado no aleitamento ou na doação de leite humano.
+Este medicamento é contraindicado durante o aleitamento ou doação de leite, pois pode ser excretado no leite
+humano e pode causar reações indesejáveis no bebê. Seu médico ou cirurgião-dentista deve apresentar alternativas
+para o seu tratamento ou para a alimentação do bebê. Estudos pré-clínicos demonstraram excreção de telmisartana
+no leite materno.
+
+Não foram realizados estudos sobre a fertilidade em humanos. Não foram observados efeitos de telmisartana sobre a
+fertilidade em fêmeas e machos durante os estudos pré-clínicos.
+
+MICARDIS está classificado na categoria de risco C para o primeiro trimestre de gravidez.
+Este medicamento não deve ser utilizado por mulheres grávidas sem orientação médica ou do cirurgião -dentista.
+
+6. INTERAÇÕES MEDICAMENTOSAS
+Telmisartana pode aumentar o efeito hipotensor de outros agentes anti-hipertensivos. Não se observaram outras interações
+com significado clínico.
+A coadministração de telmisartana não resultou em interações clinicamente significativas com digoxina, varfarina,
+hidroclorotiazida, glibenclamida, ibuprofeno, paracetamol, sinvastatina e anlodipino. No caso da digoxina, observou-se
+um aumento de 20% (num único caso, de 39%) das concentrações plasmáticas de digoxina; portanto, deve-se considerar
+a monitoração dos seus níveis plasmáticos.
+Em um estudo, a coadministração de telmisartana e ramipril levou a um aumento de até 2,5 vezes na AUC0-24 e Cmax de
+ramipril e ramiprilato. Desconhece-se a relevância clínica desta observação.
+Relataram-se aumentos reversíveis das concentrações séricas de lítio e toxicidade durante administração concomitante de
+lítio com inibidores da ECA. Relataram-se também casos de interação com BRAs, incluindo telmisartana. Portanto, é
+aconselhável monitorar os níveis séricos de lítio durante o uso concomitante.
+Em pacientes com desidratação, o tratamento com anti-inflamatório não esteroides - AINEs (por exemplo AAS como
+anti-inflamatório, inibidores da COX- 2 e AINEs não seletivos) está associado com um aumento do potencial para o
+desenvolvimento de insuficiência renal aguda. Fármacos que atuam no sistema renina-angiotensina, como telmisartana,
+podem ter efeitos sinérgicos. Pacientes em tratamento com AINEs e telmisartana devem ser adequadamente hidratados e
+ter sua função renal monitorada no início do tratamento combinado.
+Foi relatada uma redução do efeito de drogas anti-hipertensivas, como telmisartana, pela inibição de prostaglandinas
+vasodilatadoras, durante tratamento combinado com AINEs.
+
+8. POSOLOGIA E MODO DE USAR
+Os comprimidos de MICARDIS devem ser ingeridos com um pouco de água ou outro líquido, por via oral, com ou sem
+alimentos. MICARDIS é um medicamento de uso contínuo e deve ser tomado diariamente na dose prescrita.
+
+Adultos
+• Tratamento da hipertensão arterial: a dose recomendada é de 40 mg uma vez ao dia. Caso a pressão arterial pretendida
+não seja atingida, a dose de MICARDIS pode ser aumentada para 80 mg uma vez ao dia. Quando se considerar um
+aumento da dose, deve-se levar em conta que o máximo efeito anti-hipertensivo é geralmente atingido quatro a oito
+semanas após o início do tratamento. Alternativamente, MICARDIS pode ser usado em combinação com diuréticos
+
+Micardis_Bula Profissional 17- 7455645/C25-01 5
+
+MICARDIS PROFISSIONAL
+
+MI
+tiazídicos, como a hidroclorotiazida, para se obter uma redução maior da pressão arterial.
+• Prevenção da mortalidade e lesão cardiovascular: a dose recomendada é de 80 mg uma vez ao dia. Não se sabe se doses
+inferiores a 80 mg de telmisartana são eficazes na prevenção da mortalidade e lesão cardiovascular. Ao iniciar a terapia
+com telmisartana para a prevenção da mortalidade e lesão cardiovascular, recomenda -se monitoração da pressão arterial,
+e se apropriado, pode ser necessário o ajuste de medicamentos que reduzem a pressão arterial.
+• Insuficiência renal: não há necessidade de ajustes de dose, nem mesmo nos pacientes que fazem hemodiálise. A
+telmisartana não é removida do sangue por hemofiltração e não é dialisável.
+• Insuficiência hepática: Nos pacientes portadores de insuficiência hepática leve a moderada, MICARDIS deve ser
+administrado com cautela. Não se deve exceder a dose diária de 40 mg de telmisartana.
+
+Pacientes idosos: Não são necessários ajustes de doses.
+
+Pacientes pediátricos: O uso de MICARDIS em crianças e adolescentes menores de 18 anos não é recomendado, pois
+há dados limitados sobre segurança e eficácia nesta faixa etária.
+
+Este medicamento não deve ser partido ou mastigado.
+
+9. REAÇÕES ADVERSAS
+Nos estudos clínicos controlados em pacientes tratados para controle da hipertensão, a incidência total dos eventos
+adversos relatados com telmisartana (41,4%) foi, em geral, comparável ao placebo (43,9%). A incidência dos eventos
+adversos não foi relacionada à dose nem demonstrou correlação com sexo, idade ou raça dos pacientes.
+O perfil de segurança de MICARDIS em pacientes tratados para a prevenção da mortalidade e lesão cardiovascular foi
+consistente com o obtido em pacientes hipertensos.
+
+Resumo tabulado de reações adversas
+As reações adversas ao fármaco apresentadas abaixo são derivadas do uso de telmisartana como monoterapia em estudos
+clínicos controlados em pacientes tratados para controle da hipertensão ou a partir de experiência pós-comercialização.
+Na tabela abaixo são demonstradas as reações adversas, classificadas pelo sistema MedDRA de classificação de órgãos e
+termos preferenciais MedDRA. A lista também leva em conta eventos adversos sérios e eventos adversos levando à
+descontinuação, relatados em três estudos clíni cos de longa duração, incluindo 21.642 pacientes tratados com telmisartana
+para prevenção da mortalidade e lesão cardiovascular por até seis anos.
+
+Reações muito comuns: ocorrem entre ≥ 1/10 dos pacientes.
+Reações comuns: ocorrem entre ≥ 1/100 e < 1/10 dos pacientes.
+Reações incomuns: ocorrem entre ≥ 1/1.000 e < 1/100 dos pacientes.
+Reações raras: ocorrem entre ≥ 1/10.000 e < 1/1.000 dos pacientes.
+Reações muito raras: ocorrem entre < 1/10.000 dos pacientes.
+Reações com frequência desconhecida: não é possível determinar a partir dos dados disponíveis.
+
+ Reações adversas Frequência
+ Infecções e infestações Sepse (incluindo desfecho fatal ) Rara
+ Infecções do trato respiratório superior Incomum
+ Infecções do trato urinário Incomum
+ Cistite Incomum
+ Distúrbios do sangue e do Trombocitopenia Rara
+ sistema linfático Anemia Incomum
+ Eosinofilia Rara
+ Distúrbios do sistema Reação anafilática Rara
+ imunológico Hipersensibilidade Rara
+ Distúrbios do metabolismo e Hipercalemia Incomum
+ nutrição Hipoglicemia (em pacientes diabéticos) Rara
+ Hiponatremia Rara
+ Distúrbios psiquiátricos Depressão Incomum
+ Ansiedade Rara
+ Insônia Incomum
+ Distúrbios do sistema nervoso Síncope (desmaio) Incomum
+ Distúrbios da visão Deficiência visual Rara
+
+Micardis_Bula Profissional 17- 7455645/C25-01 6
+
+MICARDIS PROFISSIONAL
+
+MI
+ Distúrbios do ouvido e labirinto Vertigem Incomum
+ Distúrbios cardíacos Bradicardia Incomum
+ Taquicardia Rara
+ Distúrbios vasculares Hipotensão Incomum
+ Hipotensão ortostática Incomum
+ Distúrbios respiratórios, torácicos Dispneia Incomum
+ e mediastinais
+ Distúrbios gastrointestinais Dor abdominal Incomum
+ Diarreia Incomum
+ Vômitos Incomum
+ Dispepsia Incomum
+ Boca seca Rara
+ Flatulência Incomum
+ Desconforto abdominal Rara
+ Distúrbios hepatobiliares Disfunção hepática (a maioria dos casos observados em Rara
+ experiência pós-comercialização ocorreram em
+ pacientes do Japão, que são mais propensos a
+ apresentar este tipo de reação adversa)
+ Distúrbios da pele e tecido Angioedema (incluindo desfecho fatal) Rara
+ subcutâneo Erupção induzida pelo medicamento Rara
+ Erupção relacionada à toxicidade pelo medicamento Rara
+ Urticária Rara
+ Eczema Rara
+ Eritema Rara
+ Rash Incomum
+ Prurido Incomum
+ Hiperidrose Incomum
+ Distúrbios musculoesqueléticos e Artralgia Rara
+ do tecido conectivo Dor nas costas Incomum
+ Dor nas extremidades (dor nas pernas) Rara
+ Dor nos tendões (sintomas semelhantes à tendinite) Rara
+ Espasmos musculares (câimbras nas pernas) Incomum
+ Mialgia Incomum
+ Distúrbios renais e urinários Disfunção renal (incluindo insuficiência renal aguda) Incomum
+ Distúrbios gerais e condições do Dor no peito Incomum
+ local de administração Astenia (fraqueza) Incomum
+ Mal-estar semelhante à gripe Rara
+ Investigações Aumento dos níveis plasmáticos de enzimas hepáticas Rara
+ Aumento dos níveis plasmáticos de creatinina Incomum
+ Aumento dos níveis plasmáticos de creatinina Rara
+ fosfoquinase
+ Diminuição da hemoglobina Rara
+ Aumento dos níveis plasmáticos de ácido úrico Rara
+
+Em casos de eventos adversos, notifique pelo Sistema –VigiMed, disponível no Portal da Anvisa.
+
+10. SUPERDOSE
+As informações disponíveis referentes à superdose com MICARDIS em humanos são limitadas. As manifestações mais
+proeminentes da superdose com telmisartana foram hipotensão e taquicardia, podendo ocorrer também bradicardia. Se
+ocorrer hipotensão sintomática deverá ser instituído um tratamento de suporte. A telmisartana não é removida por
+hemofiltração e não é dialisável.
+
+Em caso de intoxicação ligue para 0800 722 6001, se você precisar de mais orientações.
+
+Registro: 1.0367.0110
+
+Micardis_Bula Profissional 17- 7455645/C25-01 7
+
+MICARDIS PROFISSIONAL
+
+MI
+
+Importado e Registrado por:
+Boehringer Ingelheim do Brasil Quím. e Farm. Ltda.
+Av. das Nações Unidas nº 14171, Torre Marble 17º/18º andares
+Vila Gertrudes – São Paulo – SP CEP 04794-000
+CNPJ 60.831.658/0001-77
+SAC 0800 701 6633
+
+Produzido por:
+Rottendorf Pharma GmbH
+Ennigerloh - Alemanha
+
+Venda sob prescrição
+
+17- 1755645/C25-01
+
+Micardis_Bula Profissional 17- 7455645/C25-01 8
+
+ Histórico de alteração de bula
+
+ Dados da submissão eletrônica Dados da petição/notificação que altera bula Dados das alterações de bulas
+ Data do Nº do Data do Nº do Data de Versões Apresentações relacionadas3
+ expediente expediente Assunto expediente expediente Assunto aprovação Itens de bula1 (VP/VPS)2
+
+ 26/12/2025 -- 10451 - MEDICAMENTO NA NA 10451 - MEDICAMENTO NA APRESENTAÇÕES VPS 40 MG COM CT BL AL/AL X 30
+ NOVO - Notificação de NOVO - Notificação de 5. ADVERTÊNCIAS E PRECAUÇÕES 80 MG COM CT BL AL/AL X 30
+ Alteração de Texto de Bula – Alteração de Texto de Bula
+ publicação no Bulário RDC – publicação no Bulário
+ 60/12 RDC 60/12
+ 18/12/2024 1729408/24-9 10451 - MEDICAMENTO NA NA 10451 - MEDICAMENTO NA 5. ADVERTÊNCIAS E PRECAUÇÕES VPS 40 MG COM CT BL AL/AL X 10
+ NOVO - Notificação de NOVO - Notificação de 7. CUIDADOS DE ARMAZENAMENTO DO 40 MG COM CT BL AL/AL X 30
+ Alteração de Texto de Bula – Alteração de Texto de Bula MEDICAMENTO 80 MG COM CT BL AL/AL X 10
+ publicação no Bulário RDC – publicação no Bulário

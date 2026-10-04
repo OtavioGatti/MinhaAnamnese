@@ -1,0 +1,16 @@
+{
+  "Risco Gestacional": "B",
+  "Slug": "apixabana",
+  "Nomes Comerciais / Produtos ANVISA": "Eliquis; apixabana.",
+  "Interações": "Evitar associação com outros anticoagulantes, como varfarina, heparina, enoxaparina, dabigatrana, rivaroxabana e edoxabana, exceto transição orientada. Antiagregantes e trombolíticos, como ácido acetilsalicílico, clopidogrel, prasugrel, ticagrelor, alteplase e tenecteplase, aumentam risco de sangramento. AINEs como ibuprofeno, naproxeno, diclofenaco e cetoprofeno aumentam risco hemorrágico. Inibidores fortes de CYP3A4/P-gp, como cetoconazol, itraconazol, voriconazol, posaconazol, ritonavir e claritromicina, podem aumentar exposição. Indutores fortes, como rifampicina, carbamazepina, fenitoína, fenobarbital e Hypericum perforatum, podem reduzir efeito anticoagulante.",
+  "Apresentações / Nomes Comerciais": "Comprimidos revestidos 2,5 mg e 5 mg. Exemplos: Eliquis; Apixabana EMS; Apixabana Eurofarma; apixabana genérica.",
+  "Texto Resumo": "Apixabana é um anticoagulante oral direto inibidor do fator Xa usado em fibrilação atrial não valvar, tratamento/prevenção de tromboembolismo venoso e profilaxia pós-operatória selecionada. O principal risco clínico é sangramento, especialmente com antiagregantes, AINEs e outros anticoagulantes.",
+  "Classe / Categoria": "Anticoagulante oral direto; inibidor direto do fator Xa.",
+  "Posologia Adulto": "Prevenção de AVC e embolia sistêmica na fibrilação atrial não valvar: 5 mg por via oral 2 vezes ao dia.\nReduzir para 2,5 mg por via oral 2 vezes ao dia se o paciente tiver pelo menos 2 critérios: idade igual ou maior que 80 anos, peso igual ou menor que 60 kg ou creatinina sérica igual ou maior que 1,5 mg/dL.\nTratamento de TVP/TEP: 10 mg por via oral 2 vezes ao dia por 7 dias, seguido de 5 mg 2 vezes ao dia.\nProfilaxia após artroplastia de quadril ou joelho: 2,5 mg por via oral 2 vezes ao dia.",
+  "Contraindicações": "Hipersensibilidade à apixabana ou componentes da fórmula; sangramento ativo clinicamente significativo; doença hepática associada a coagulopatia e risco de sangramento relevante; lesão ou condição com risco significativo de sangramento maior; uso concomitante com outro anticoagulante, exceto em transição terapêutica conforme protocolo.",
+  "Tags Busca": "apixabana; anticoagulante; inibidor fator xa; fibrilação atrial; trombose venosa profunda; embolia pulmonar; eliquis",
+  "Advertências": "Aumenta risco de sangramento, incluindo sangramento grave e potencialmente fatal. Avaliar função renal, função hepática, idade, peso, risco hemorrágico e uso de medicamentos concomitantes. Não suspender abruptamente em pacientes com indicação anticoagulante sem alternativa, pelo risco trombótico. Não é recomendado em prótese valvar mecânica.",
+  "Nomes Comerciais OpenAI": "Eliquis; Apixabana EMS; Apixabana Eurofarma; Apixabana Sandoz; Apixabana Medley.",
+  "Rede SUS (RENAME)": false,
+  "Princípio Ativo": "Apixabana"
+}

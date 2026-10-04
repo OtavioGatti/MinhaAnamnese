@@ -1,0 +1,115 @@
+{
+  "_normas": {
+    "antimicrobiano": "Antimicrobiano — receita em 2 vias | Fonte: ANVISA RDC nº 471/2021 (art. 10: retenção da 2ª via) e IN nº 360/2025 (lista de antimicrobianos; receita válida por 10 dias).",
+    "B1": "Notificação B (azul) — Lista B1 | Fonte: Portaria SVS/MS nº 344/1998, Anexo I atualizado pela RDC ANVISA nº 1.036/2026 (Lista B1 — psicotrópicos sujeitos à Notificação de Receita B).",
+    "C1": "Controle especial — Lista C1/C5 em 2 vias | Fonte: Portaria SVS/MS nº 344/1998, Anexo I atualizado pela RDC ANVISA nº 1.036/2026 (Lista C1 — Receita de Controle Especial em duas vias).",
+    "A2_adendo": "Controle especial — Lista C1/C5 em 2 vias | Fonte: Portaria SVS/MS nº 344/1998, Anexo I atualizado pela RDC ANVISA nº 1.036/2026 — Lista A2, adendo 3: preparações com até 100 mg de tramadol por unidade posológica ficam sujeitas à Receita de Controle Especial em 2 vias, com retenção da receita."
+  },
+  "_observacao_geral": "Se 'empresa' estiver vazia em fontes.json, use o nome do titular do registro que aparece no começo do texto da bula. 'publicacao' vazia: procure 'aprovada pela Anvisa em' no texto; se não houver, omita a data.",
+  "aciclovir": {
+    "principal": [
+      "lote4/lote4__aciclovir__ZOVIRAX.txt"
+    ]
+  },
+  "alprazolam": {
+    "principal": [
+      "lote4/lote4__alprazolam__FRONTAL.txt"
+    ],
+    "receituario": "B1"
+  },
+  "apixabana": {
+    "principal": [
+      "lote4/lote4__apixabana__ELIQUIS.txt"
+    ]
+  },
+  "bissulfato-de-clopidogrel": {
+    "principal": [
+      "lote4/lote4__bissulfato-de-clopidogrel__PLAVIX.txt"
+    ]
+  },
+  "candesartana-cilexetila": {
+    "principal": [
+      "lote4/lote4__candesartana-cilexetila__ATACAND.txt"
+    ]
+  },
+  "carbamazepina": {
+    "principal": [
+      "lote4/lote4__carbamazepina__TEGRETOL.txt"
+    ],
+    "receituario": "C1"
+  },
+  "dapagliflozina": {
+    "principal": [
+      "lote4/lote4__dapagliflozina__FORXIGA.txt"
+    ]
+  },
+  "diazepam": {
+    "principal": [
+      "lote4/lote4__diazepam__VALIUM.txt"
+    ],
+    "receituario": "B1"
+  },
+  "empagliflozina": {
+    "principal": [
+      "lote4/lote4__empagliflozina__JARDIANCE.txt"
+    ]
+  },
+  "esomeprazol": {
+    "principal": [
+      "lote4/lote4__esomeprazol__NEXIUM.txt"
+    ]
+  },
+  "fexofenadina-cloridrato": {
+    "principal": [
+      "lote4/lote4__fexofenadina-cloridrato__ALLEGRA.txt"
+    ]
+  },
+  "haloperidol": {
+    "principal": [
+      "lote4/lote4__haloperidol__HALDOL.txt"
+    ],
+    "receituario": "C1"
+  },
+  "insulina-glargina": {
+    "principal": [
+      "lote4/lote4__insulina-glargina__LANTUS.txt"
+    ]
+  },
+  "metoprolol-succinato": {
+    "principal": [
+      "lote4/lote4__metoprolol-succinato__SELOZOK.txt"
+    ]
+  },
+  "quetiapina-hemifumarato": {
+    "principal": [
+      "lote4/lote4__quetiapina-hemifumarato__SEROQUEL.txt"
+    ],
+    "receituario": "C1"
+  },
+  "risperidona": {
+    "principal": [
+      "lote4/lote4__risperidona__RISPERDAL.txt"
+    ],
+    "receituario": "C1"
+  },
+  "rivaroxabana": {
+    "principal": [
+      "lote4/lote4__rivaroxabana__XARELTO.txt"
+    ]
+  },
+  "sitagliptina-fosfato": {
+    "principal": [
+      "lote4/lote4__sitagliptina-fosfato__JANUVIA.txt"
+    ]
+  },
+  "telmisartana": {
+    "principal": [
+      "lote4/lote4__telmisartana__MICARDIS.txt"
+    ]
+  },
+  "valsartana": {
+    "principal": [
+      "lote4/lote4__valsartana__DIOVAN.txt"
+    ]
+  }
+}

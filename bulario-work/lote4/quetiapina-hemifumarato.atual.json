@@ -1,0 +1,17 @@
+{
+  "Risco Gestacional": "C",
+  "Slug": "quetiapina-hemifumarato",
+  "Nomes Comerciais / Produtos ANVISA": "Seroquel; Seroquel XRO; Quet; Kitapen; hemifumarato de quetiapina.",
+  "Interações": "Inibidores potentes de CYP3A4, como cetoconazol, itraconazol, voriconazol, posaconazol, ritonavir, cobicistate, indinavir, claritromicina e nefazodona, podem aumentar muito os níveis de quetiapina e devem ser evitados. Indutores como carbamazepina, fenitoína, fenobarbital, rifampicina e Hypericum perforatum podem reduzir eficácia. Álcool, benzodiazepínicos, opioides, zolpidem, prometazina, hidroxizina, mirtazapina, trazodona e outros sedativos aumentam sonolência/depressão do SNC. Anti-hipertensivos, como doxazosina, enalapril, losartana, anlodipino, furosemida e hidroclorotiazida, podem aumentar hipotensão. Medicamentos que prolongam QT, como amiodarona, sotalol, haloperidol, clorpromazina, escitalopram, azitromicina, claritromicina, levofloxacino, moxifloxacino, fluconazol, ondansetrona e metadona, aumentam risco arrítmico.",
+  "Apresentações / Nomes Comerciais": "Comprimidos revestidos 25 mg, 100 mg, 200 mg e 300 mg; comprimidos de liberação prolongada 50 mg, 200 mg, 300 mg e 400 mg conforme fabricante. Exemplos: Seroquel; Seroquel XRO; Quet; Kitapen; quetiapina genérica.",
+  "Posologia Pediátrica": "Uso pediátrico deve seguir indicação aprovada, idade, formulação e avaliação especializada.\nDose deve ser titulada gradualmente e monitorada por efeitos metabólicos, sedação, pressão arterial e sintomas extrapiramidais.\nNão informado na fonte consultada para uma dose pediátrica única aplicável a todas as indicações.",
+  "Texto Resumo": "Quetiapina é um antipsicótico atípico usado em esquizofrenia, transtorno bipolar e depressão bipolar conforme apresentação e indicação. Requer atenção a sedação, hipotensão ortostática, ganho de peso, alterações metabólicas, prolongamento de QT e interações por CYP3A4.",
+  "Classe / Categoria": "Antipsicótico atípico; antagonista serotoninérgico e dopaminérgico; estabilizador do humor em transtorno bipolar.",
+  "Posologia Adulto": "Esquizofrenia: titulação inicial geralmente de 25 mg a cada 12 horas no primeiro dia, aumentando gradualmente conforme esquema; dose usual 300 mg a 450 mg/dia, podendo variar conforme resposta.\nTranstorno bipolar, mania ou depressão bipolar: dose e titulação dependem da fase e formulação.\nLiberação prolongada: geralmente administrada 1 vez ao dia, conforme indicação.\nAjustar lentamente em idosos e insuficiência hepática.",
+  "Contraindicações": "Hipersensibilidade à quetiapina ou componentes da fórmula; uso concomitante com inibidores potentes de CYP3A4, como cetoconazol, itraconazol, ritonavir, indinavir, nefazodona e claritromicina, conforme bula.",
+  "Tags Busca": "quetiapina; antipsicótico; esquizofrenia; transtorno bipolar; depressão bipolar; sedação; seroquel",
+  "Advertências": "Pode causar sonolência, tontura, hipotensão ortostática, ganho de peso, hiperglicemia, diabetes, dislipidemia, constipação, boca seca, taquicardia, prolongamento de QT, sintomas extrapiramidais, discinesia tardia, síndrome neuroléptica maligna, catarata e aumento de risco suicida em populações vulneráveis. Aumenta mortalidade em idosos com psicose relacionada à demência. Monitorar peso, IMC, glicemia, lipídios, pressão arterial e sedação.",
+  "Nomes Comerciais OpenAI": "Seroquel; Seroquel XRO; Quet; Kitapen; Quetiapina EMS; Quetiapina Eurofarma; Quetiapina Medley.",
+  "Rede SUS (RENAME)": false,
+  "Princípio Ativo": "Quetiapina Hemifumarato"
+}

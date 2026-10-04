@@ -1,0 +1,872 @@
+FONTE: lote4__alprazolam__FRONTAL.pdf
+
+===== BLOCO 1 =====
+APRESENTAÇÕES
+Frontal® 0,25 mg, 0,5 mg ou 1,0 mg em embalagens contendo 30 comprimidos. 
+Frontal® 2,0 mg em embalagem contendo 30 comprimidos + 1 porta-comprimidos. 
+ 
+VIA DE ADMINISTRAÇÃO: USO ORAL 
+ 
+USO ADULTO ACIMA DE 18 ANOS DE IDADE
+
+1. INDICAÇÕES 
+ 
+Frontal® (alprazolam) é indicado no tratamento de transtornos de ansiedade. 
+ 
+Frontal® não deve ser administrado como substituição ao tratamento apropriado de psicose. 
+ 
+Os sintomas de ansiedade podem variavelmente incluir: tensão, medo, apreensão, intranquilidade, dificuldades 
+de concentração, irritabilidade, insônia e/ou hiperatividade neurovegetativa, resultando em manifestações 
+somáticas variadas. 
+ 
+Frontal® também é indicado no tratamento dos transtornos de ansiedade associados a outras condições, como a 
+abstinência ao álcool. 
+ 
+Frontal® também está indicado no tratamento do transtorno do pânico, com ou sem agorafobia, cuja principal 
+característica é a crise de ansiedade não esperada, um ataque súbito de apreensão intensa, medo ou terror.
+
+3. CARACTERÍSTICAS FARMACOLÓGICAS 
+ 
+Farmacodinâmica 
+Agentes do sistema nervoso central da classe de 1,4 -benzodiazepínicos, presumivelmente, exercem seus efeitos 
+através da ligação com receptores estéreo -específicos em vários locais no sistema nervoso central. Seu 
+ 
+Frontal_CDS10.NOV.2025_FROCOM_24_VPS 3 
+mecanismo de ação exato é desconhecido. Clinicamente, todos os benzodiazepínicos causam um efeito 
+depressor, relacionado com a dose, que varia de um comprometimento leve de desempenho de tarefas à sedação. 
+ 
+Farmacocinética 
+Absorção 
+Após a administração oral, o alprazolam é prontamente absorvido. Os picos de concentração plasmática ocorrem 
+em 1 h a 2 h após a administração. As concentrações plasmáticas são proporcionais às doses administradas; 
+dentro do intervalo posológico de 0,5 mg a 3,0 mg, foram observados picos de 8,0 a 37 ng/mL. Com a utilização 
+de uma metodologia de ensaio específico, foi observado que a meia -vida de eliminação plasmática média do 
+alprazolam é de aproximadamente 11,2 h (variando entre 6,3 h – 26,9 h) em adultos saudáveis. 
+ 
+Foram relatadas alterações na absorção, distribuição, metabolismo e excreção dos benzodiazepínicos em uma 
+variedade de doenças, incluindo alcoolismo, insuficiência hepática e insuficiência renal. Também foram 
+demonstradas alterações em pacientes geriátricos. Em indivíduos idosos sadios, foi observado que a meia -vida 
+média do alprazolam é de 16,3 h (variando de 9,0 – 26,9 h; n=16), comparado a 11,0 h (variando de 6,6 – 15,8 h; 
+n=16) em indivíduos adultos sadios. Em pacientes com doença alcoólica do fígado, a meia -vida do alprazolam 
+variou de 5,8 – 65,3 h (média de 19,7 h; n=17); quando comparado a 6,3 – 26,9 h em indivíduos sadios (média: 
+11,4 h; n=17). Em um grupo de indivíduos obesos a meia -vida do alprazolam variou entre 9,9 e 40,4 h (média de 
+21,8 h; n=12); quando comparado a indivíduos sadios, cuja variação foi de 6,3 – 15,8 h (média de 10,6 h, n=12). 
+ 
+Devido à sua semelhança com outros benzodiazepínicos, presume -se que o alprazolam atravesse a placenta e 
+seja excretado pelo leite materno. 
+ 
+Dados de segurança pré-clínica 
+Mutagênese 
+O alprazolam não foi mutagênico no teste in vitro de Ames. O alprazolam não produziu aberrações 
+cromossômicas no ensaio in vivo de micronúcleo em ratos até a dose mais elevada testada de 100 mg/kg, que é 
+uma dose 500 vezes a dose diária máxima de 10 mg/dia recomendada para humanos. O alprazolam também não 
+foi mutagênico no ensaio de diluição alcalina/lesão de DNA ou ensaio de Ames. 
+ 
+Carcinogênese 
+Não foram observadas evidências de potencial carcinogênico nos estudos de bioensaio de 2 anos do alprazolam 
+em ratos que receberam doses de até 30 mg/kg/dia (150 vezes a dose diária máxima recomendada para humanos 
+de 10 mg/dia) e em camundongos que receberam doses de até 10 mg/kg/dia (50 vezes a dose diária máxima de 
+10 mg/kg/dia recomendada para seres humanos). 
+ 
+Fertilidade 
+O alprazolam não produziu comprometimento da fertilidade em ratos até a dose mais elevada testada de 5 
+mg/kg/dia, que é 25 vezes a dose diária máxima de 10 mg/dia recomendada para humanos. 
+ 
+Efeitos Oculares 
+Quando ratos foram tratados oralmente com alprazolam, 3, 10 e 30 mg/kg/dia (15 a 150 vezes a dose diária 
+máxima de 10 mg/kg/dia recomendada para seres humanos ) por dois anos, uma tendência para um aumento da 
+dose relacionados no número de catarata (feminino) e vascularização corneana (machos) foi observada. Estas 
+lesões não aparecem até depois de 11 meses de tratamento. 
+ 
+Efeito de medicamentos anestésicos e sedativos 
+Pesquisas não -clínicas demonstraram que a administração de medicamentos anestésicos e de sedação que 
+bloqueiam os receptores N -metil-D-aspartato (NMDA) e/ou potencializam a atividade do ácido gama -
+aminobutírico (GABA) pode aumentar a morte celular neuronal no cérebro e resultar em déficits a longo prazo 
+na cognição e no comportamento de animais juvenis quando administrados durante o período de pico do 
+desenvolvimento cerebral. Com base em comparações entre espécies não -clínicas, acredita -se que a janela de 
+vulnerabilidade do cérebro a esses efeitos correlaciona- se com exposições humanas no terceiro trimestre de 
+gravidez até o primeiro ano de vida, mas pode se estender até aproximadamente 3 anos de idade. Embora exista 
+informação limitada sobre este efeito com o alprazolam, uma vez que o mecanismo de ação inclui a 
+potencialização da atividade do GABA, um efeito semelhante pode ocorrer. A relevância desses achados não 
+clínicos para o uso em humanos é desconhecida. 
+ 
+ 
+ 
+ 
+Frontal_CDS10.NOV.2025_FROCOM_24_VPS 4
+
+4. CONTRAINDICAÇÕES 
+ 
+Frontal® é contraindicado a pacientes com hipersensibilidade conhecida a benzodiazepínicos , alprazolam, ou a 
+qualquer componente da formulação desse produto, e em pacientes portadores de miastenia gravis ou glaucoma 
+de ângulo estreito agudo. 
+ 
+Este medicamento é contraindicado para menores de 18 anos de idade. 
+Este medicamento não deve ser utilizado por mulheres grávidas sem orientação médica. A paciente deve 
+informar imediatamente seu médico em caso de suspeita de gravidez.
+
+5. ADVERTÊNCIAS E PRECAUÇÕES 
+ 
+O uso concomitante de benzodiazepínicos e opioides pode resultar em sedação profunda, depressão respiratória, 
+coma e morte. Limitar as dosagens e durações ao mínimo necessário. 
+ 
+Recomenda-se atenção especial no tratamento de pacientes com insuficiência renal ou hepática. 
+ 
+Habituação e dependência emocional/física podem ocorrer com benzodiazepínicos, inclusive com Frontal ®. 
+Assim como com todos os benzodiazepínicos, o risco de dependência aumenta com doses maiores e utilização 
+em longo prazo, sendo ainda maior em pacientes com história de alcoolismo ou abuso de substâncias . O abuso 
+de substâncias é um risco conhecido para o alprazolam e outros benzodiazepínicos, e os pacientes devem ser 
+monitorados adequadamente quando receberem alprazolam. O alprazolam pode ser sensível à retirada. Há relatos 
+de mortes relacionadas à superdosagem quando o alprazolam é utilizado com outros depressores do sistema 
+nervoso central (SNC), incluindo opi oides, outros benzodiazepínicos e álcool. Esses riscos devem ser 
+considerados ao prescrever ou dispensar alprazolam. Para reduzir esses riscos, a menor quantidade apropriada 
+deve ser usada e os pacientes devem ser aconselhados sobre o armazenamento e descarte adequados do 
+medicamento não utilizado (vide ite m 8. Posologia e Modo de Usar, item 9. Reações Adversas e item 10. 
+Superdose). 
+ 
+Sintomas de abstinência ocorreram após diminuição rápida ou descontinuação abrupta de benzodiazepínicos, 
+inclusive de Frontal ®. Esses sintomas podem variar de leve disforia e insônia a uma síndrome mais importante, 
+que pode incluir cãibras musculares, cólicas abdominais, vômitos, sudorese, tremores e convulsões. 
+Adicionalmente, crises epilépticas ocorreram com a diminuição rápida ou descontinuação abrupta do tratamento 
+com alprazolam (vide item 8. Posologia e Modo de Usar – Descontinuação do Tratamento e item 9. Reações 
+Adversas). 
+ 
+Transtornos do pânico t êm sido associados a transtornos depressivos maiores primários e secundários e a relatos 
+crescentes de suicídio entre pacientes não tratados. Dessa forma, deve- se ter cautela quando doses mais altas de 
+alprazolam forem utilizadas no tratamento de pacientes com transtornos do pânico, a exemplo do que ocorre no 
+tratamento de pacientes deprimidos com fármacos psicotrópicos ou naqueles em que há razões para se presumir 
+planos ou pensamentos suicidas omitidos. 
+ 
+A administração a pacientes suicidas ou gravemente deprimidos deve ser realizada com as devidas precauções e 
+com a prescrição de doses apropriadas. 
+ 
+Episódios de hipomania e mania têm sido relatados em associação com o uso de alprazolam em pacientes com 
+depressão. 
+ 
+A utilização de alprazolam não foi estabelecida em certos tipos de depressão (vide item 1. Indicações). 
+ 
+Uso durante a Gravidez 
+Os dados relacionados à teratogenicidade e aos efeitos sobre o desenvolvimento e o comportamento pós -natais 
+após tratamento com benzodiazepínicos são inconsistentes. Existem evidências de alguns estudos iniciais com 
+outros membros da classe dos benzodiazepínicos em que a exposição in utero pode estar associada a 
+malformações. Estudos posteriores com fármacos da classe dos benzodiazepínicos não forneceram evidência 
+clara de qualquer tipo de defeito. 
+ 
+ 
+Frontal_CDS10.NOV.2025_FROCOM_24_VPS 5 
+Há descrições de crianças expostas aos benzodiazepínicos durante o fim do terceiro trimestre de gestação ou 
+durante o parto que apresentaram tanto a síndrome da criança hipotônica (floppy infant syndrome) quanto 
+sintomas neonatais de abstinência . Se Frontal ® for utilizado durante a gravidez, ou se a paciente engravidar 
+enquanto estiver utilizando Frontal®, ela deve ser informada do dano potencial ao feto. 
+ 
+Dados de estudos observacionais sugerem que existe um risco aumentado de aborto espontâneo devido à 
+exposição a benzodiazepínicos durante a gravidez. Ao tratar mulheres em idade fértil, os benefícios do 
+tratamento devem ser ponderados em relação aos riscos, e as pacientes devem ser informadas sobre o risco 
+aumentado de aborto espontâneo. 
+ 
+Frontal® é um medicamento classificado na categoria D de risco de gravidez. Portanto, este medicamento 
+não deve ser utilizado por mulheres grávidas sem orientação médica. A paciente deve informar 
+imediatamente seu médico em caso de suspeita de gravidez. 
+ 
+Uso durante a Lactação 
+As concentrações de benzodiazepínicos, inclusive de alprazolam, são baixas no leite materno. No entanto, não se 
+deve amamentar durante a utilização de Frontal®. 
+Este medicamento é contraindicado durante o aleitamento ou doação de leite, pois é excretado no leite 
+humano e pode causar reações indesejáveis no bebê. Seu médico ou cirurgião -dentista deve apresentar 
+alternativas para o seu tratamento ou para a alimentação do bebê. 
+ 
+Efeitos na Habilidade de Dirigir e Operar Máquinas 
+Os pacientes devem ser advertidos sobre o uso de alprazolam durante a condução de veículos ou iniciar outras 
+atividades perigosas até que seja provado que eles não se tornem debilitado s ao receber o medicamento. 
+Oriente seu paciente a não dirigir veículos ou operar máquinas durante todo o tratamento com Frontal ®, 
+pois sua habilidade e capacidade de reação podem estar prejudicadas. 
+O uso deste medicamento pode causar tontura, desmaios ou perda da consciência, expondo o paciente a 
+quedas ou acidentes. 
+ 
+Atenção: Contém Lactose (tipo de açúcar) abaixo de 0,25g por comprimido. Este medicamento não deve 
+ser usado por pessoas com síndrome de má-absorção de glicose-galactose. 
+Atenção: Contém o s corantes amarelo crepúsculo, vermelho de eritrosina e azul de indigotina 132 laca de 
+alumínio. 
+Este produto contém benzoato de sódio, que pode causar reações alérgicas, como a asma, especialmente 
+em pessoas alérgicas ao ácido acetilsalicílico.
+
+6. INTERAÇÕES MEDICAMENTOSAS 
+ 
+Os benzodiazepínicos, incluindo o alprazolam, produzem efeitos depressores aditivos n o SNC, incluindo 
+depressão respiratória, quando coadministrados com opioides, álcool ou outros fármacos que produzem 
+depressão do sistema nervoso central (vide item 5. Advertências e Precauções). 
+ 
+Podem ocorrer interações farmacocinéticas quando alprazolam é administrado com fármacos que interferem no 
+seu metabolismo. Compostos que inibem determinadas enzimas hepáticas (particularmente o citocromo P450 
+3A4) podem aumentar a concentração de alprazolam e acentuar sua atividade. Os dados obtidos a partir de 
+estudos clínicos com alprazolam, estudos in vitro com alprazolam e estudos clínicos com fármacos 
+metabolizados similarmente ao alprazolam mostram interações de variados graus e possibilidade de interação 
+com alprazolam para uma quantidade de fármacos. Baseando -se no grau de interação e no tipo de dados 
+disponíveis, recomenda-se o seguinte: 
+- a coadministração de alprazolam com cetoconazol, itraconazol e outros antifúngicos azólicos não é 
+recomendada; 
+- recomenda-se cautela e consideração da redução de dose quando alprazolam é coadministrado com nefazodona, 
+fluvoxamina e cimetidina; 
+- também se recomenda cautela quando alprazolam é coadministrado com fluoxetina, propoxifeno, 
+anticoncepcionais orais, diltiazem, ou antibióticos macrolídeos como eritromicina e troleandomicina; 
+- as interações envolvendo inibidores da protease do vírus da imunodeficiência humana ( HIV) (por exemplo, 
+ritonavir) e alprazolam são complexas e dependentes do tempo. Baixas doses de ritonavir resultaram em grande 
+alteração do clearance de alprazolam, prolongaram sua meia- vida de eliminação e aumentaram seus efeitos 
+clínicos. No entanto, sob exposição prolongada ao ritonavir, a CYP3A compensou essa inibição. Essa interação 
+torna necessário um ajuste de dose ou descontinuação de alprazolam; 
+ 
+Frontal_CDS10.NOV.2025_FROCOM_24_VPS 6 
+- aumento nas concentrações de digoxina tem sido reportado quando alprazolam é administrado, especialmente 
+em idosos (> 65 anos de idade). Pacientes que recebem alprazolam e digoxina devem, portanto ser monitorados 
+em relação aos sinais e sintomas relacionados à toxicidade da digoxina.
+
+8. POSOLOGIA E MODO DE USAR 
+ 
+A dose ótima de Frontal ® deve ser individualizada com base na gravidade dos sintomas e na resposta individual 
+do paciente. Nos pacientes que requeiram doses mais elevadas, essas deverão ser aumentadas com cautela, a fim 
+de evitar reações adversas. Em geral, os pacientes que não tenham sido previamente tratados com medicamentos 
+psicotrópicos necessitarão de doses menores que aqueles previamente tratados com ansiolíticos menores, 
+antidepressivos ou hipnóticos. Recomenda-se que o princípio geral de usar a menor dose eficaz seja seguido, 
+especialmente em pacientes idosos ou debilitados, para evitar o desenvolvimento de sedação excessiva ou ataxia. 
+ 
+Duração do tratamento 
+Os dados disponíveis corroboram a utilização da medicação por até 6 meses para transtornos de ansiedade e por 
+até 8 meses no tratamento dos transtornos de pânico. O risco de dependência pode aumentar com a dose e a 
+duração do tratamento, portanto, devem ser utilizadas a menor dose eficaz e a menor duração possíve l e, a 
+necessidade de continuação do tratamento deve ser reavaliada frequentemente (vide item 5. Advertências e 
+Precauções). 
+ 
+Descontinuação do tratamento 
+Para descontinuar o tratamento com Frontal ®, a dose deve ser reduzida lentamente, conforme prática médica 
+adequada. É sugerido que a dose diária de Frontal ® seja reduzida em não mais que 0,5 mg a cada 3 dias. Alguns 
+pacientes podem necessitar de redução de dose ainda mais lenta (vide item 5. Advertências e Precauções). 
+ 
+Uso em Crianças 
+A segurança e a eficácia de Frontal® em indivíduos com menos de 18 anos de idade não foram estabelecidas. 
+ 
+Dosagem Recomendada 
+Indicação Dose inicial habitual (se 
+ocorrerem efeitos colaterais , a 
+dosagem deve ser diminuída) 
+Intervalo da dose habitual 
+Transtornos de 
+ansiedade 
+0,25 mg a 0,5 mg, 
+administrados 3 vezes ao dia 
+0,5 mg a 4,0 mg ao dia, administrados em doses 
+divididas. 
+Transtorno do pânico 0,5 mg a 1,0 mg antes de dormir 
+ou 0,5 mg, administrados 3 
+vezes ao dia 
+A dose deve ser ajustada à resposta do paciente. 
+Os ajustes de dose devem ser aumentados no 
+máximo 1 mg a cada 3 ou 4 dias. Com Frontal®, 
+doses adicionais podem ser acrescentadas até 
+que seja alcançada uma posologia de 3 ou 4 
+vezes diariamente. 
+ 
+Frontal_CDS10.NOV.2025_FROCOM_24_VPS 7 
+A dose média em um grande estudo 
+multiclínico foi 5,7 ± 2,27 mg, com pacientes 
+necessitando, ocasionalmente, de um máximo 
+de 10 mg diariamente. 
+Pacientes geriátricos 
+ou na presença de 
+condições 
+debilitantes 
+0,25 mg administrados 2 ou 3 
+vezes ao dia 
+0,5 mg a 0,75 mg ao dia, administrados em 
+doses divididas; podem ser gradualmente 
+aumentadas se necessário e tolerado. 
+ 
+Dose Omitida 
+Caso o paciente se esqueça de utilizar Frontal ® no horário estabelecido, deve fazê -lo assim que lembrar. 
+Entretanto, se já estiver perto do horário de administrar a próxima dose, deve desconsiderar a dose esquecida e 
+utilizar a próxima. Neste caso, o paciente não deve utilizar a dose duplicada para compensar doses esquecidas. 
+O esquecimento de dose pode comprometer a eficácia do tratamento.
+
+9. REAÇÕES ADVERSAS 
+ 
+Os eventos adversos de Frontal ®, se presentes, geralmente são observados no início do tratamento e 
+habitualmente desaparecem com a continuidade do tratamento ou diminuição da dose. 
+ 
+Os eventos adversos associados ao tratamento com alprazolam em pacientes participantes de estudos clínicos 
+controlados e em experiências pós-comercialização são os seguintes: 
+ 
+Tabela de Reações Adversas 
+Classe de Sistema 
+de Órgãos 
+Muito Comum 
+≥ 1/10 
+ 
+Comum 
+≥ 1/100 a < 
+1/10 
+ 
+Incomum 
+≥ 1/1000 a < 1/100 
+ 
+Raro 
+≥ 
+1/10
+a < 
+1/1 
+Muito 
+Raro 
+< 
+1/100
+Frequência 
+desconhecida (não 
+pode ser estimada 
+pelos dados 
+disponíveis) 
+ 
+Distúrbios 
+endócrinos 
+ Hiperprolactinemia* 
+Distúrbios da 
+nutrição e do 
+metabolismo 
+ Diminuição 
+do apetite 
+ 
+Distúrbios 
+psiquiátricos 
+Depressão Estado de 
+confusão, 
+desorientação
+, diminuição 
+da libido, 
+ansiedade, 
+insônia, 
+nervosismo, 
+aumento da 
+libido* 
+Mania* (vide item 
+5. Advertências e 
+Precauções), 
+alucinações*, 
+raiva*, agitação*, 
+dependência a 
+substâncias 
+ Hipomania*, 
+agressividade*, 
+hostilidade*, 
+pensamento 
+anormal*, e 
+hiperatividade 
+psicomotora*, 
+abuso de 
+substâncias* 
+Distúrbios do sistema 
+nervoso 
+Sedação, 
+sonolência, ataxia, 
+comprometimento 
+da memória, 
+disartria, tontura e 
+cefaleia 
+Perturbação 
+do equilíbrio, 
+coordenação 
+anormal, 
+distúrbios de 
+atenção, 
+hipersonia, 
+letargia e 
+tremor 
+Amnésia Desequilíbrio 
+autonômico do 
+sistema nervoso * e 
+distonia* 
+Distúrbios oculares Visão turva 
+Distúrbios 
+gastrointestinais 
+Constipação e 
+boca seca 
+Náusea Distúrbios 
+gastrintestinais* 
+Distúrbios Hepatite*, função 
+ 
+Frontal_CDS10.NOV.2025_FROCOM_24_VPS 8 
+Tabela de Reações Adversas 
+Classe de Sistema 
+de Órgãos 
+Muito Comum 
+≥ 1/10 
+ 
+Comum 
+≥ 1/100 a < 
+1/10 
+ 
+Incomum 
+≥ 1/1000 a < 1/100 
+ 
+Raro 
+≥ 
+1/10
+a < 
+1/1 
+Muito 
+Raro 
+< 
+1/100
+Frequência 
+desconhecida (não 
+pode ser estimada 
+pelos dados 
+disponíveis) 
+ 
+hepatobiliares hepática anormal* e 
+icterícia* 
+Distúrbios da pele e 
+tecido subcutâneo 
+ Dermatite* Angioedema* e 
+reação de 
+fotossensibilidade* 
+Distúrbios 
+musculoesqueléticos, 
+do tecido conjuntivo 
+e dos ossos 
+ Fraqueza muscular 
+Distúrbios urinários e 
+renais 
+ Incontinência 
+urinária* 
+ Retenção urinária* 
+Distúrbios do sistema 
+reprodutivo e da 
+mama 
+ Disfunção 
+sexual* 
+Irregularidades 
+menstruais* 
+ 
+Distúrbios gerais Fadiga e 
+irritabilidade 
+ Síndrome de 
+abstinência a 
+substâncias* 
+ Edema periférico* 
+Investigações Diminuição 
+do peso e 
+aumento do 
+peso 
+ Aumento da pressão 
+intraocular* 
+* Reações Adversas identificadas pós-comercialização 
+ 
+Em muitos dos relatos de casos espontâneos de efeitos comportamentais adversos, os pacientes estavam 
+recebendo outros fármacos de ação no sistema nervoso central concomitantemente e/ou tinham doenças 
+psiquiátricas subjacentes. Pacientes que apresentam um distúrbio de personalidade limítrofe, história prévia de 
+comportamento violento ou agressivo ou abuso de bebidas alcoólicas ou outras substâncias , podem ser pacientes 
+de risco para esses eventos. Foram relatados casos de irritabilidade, hostilidade e pensamentos intrusivos durante 
+a interrupção da administração de alprazolam em pacientes com distúrbio de estresse pós -traumático. 
+ 
+Em casos de eventos adversos, notifique pelo Sistema VigiMed, disponível no Portal da Anvisa.
+
+10. SUPERDOSE 
+ 
+Como em todos os casos de superdose intencional de qualquer fármaco, deve -se ter em mente que múltiplos 
+agentes podem ter sido ingeridos. Sequelas sérias são raras, exceto quando há ingestão concomitante de outros 
+fármacos e/ou etanol. 
+ 
+As manifestações de superdose do alprazolam são extensões da sua ação farmacológica e incluem sonolência, 
+fala arrastada, comprometimento da coordenação motora, coma e depressão respiratória. 
+O tratamento de superdose de benzodiazepínicos consiste principalmente em cuidados de suporte e na 
+manutenção da função respiratória e cardiovascular. Como em todos os casos de superdose, a respiração, o 
+pulso e a pressão arterial devem ser monitorados. O flumazenil pode ser usado sob monitoramento como um 
+adjuvante para a administração das funções respiratórias e cardiovasculares associad as a superdose. Existe risco 
+de convulsões associado ao tratamento com flumazenil, particularmente em usuários de benzodiazepínicos. Se 
+justificado, em casos graves, o uso de carvão ativado pode ser considerado caso a caso, sendo necessário 
+monitorar o risco potencial de aspiração. Este é mais eficaz quando administrado dentro de 1 hora após a 
+superdosagem. A lavagem gástrica não é recomendada rotineiramente, mas pode ser apropriada em casos graves . 
+O valor da diálise não foi determinado. 
+ 
+Em caso de intoxicação, ligue para 0800 722 6001 se você precisar de mais orientações. 
+ 
+Frontal_CDS10.NOV.2025_FROCOM_24_VPS 9 
+ 
+III –
+
+===== BLOCO 2 =====
+APRESENTAÇÕES
+Frontal® XR 0,5 mg, 1,0 mg ou 2,0 mg em embalagens contendo 30 comprimidos de liberação prolongada . 
+ 
+VIA DE ADMINISTRAÇÃO: USO ORAL 
+ 
+USO ADULTO ACIMA DE 18 ANOS DE IDADE
+
+3. CARACTERÍSTICAS FARMACOLÓGICAS 
+ 
+Farmacodinâmica 
+ 
+ 
+FRONTAL XR_CDS10.NOV.2025_v6_FXRCLL_22_VPS 3 
+ 
+Agentes do sistema nervoso central da classe de 1,4 -benzodiazepínicos presumivelmente , exercem seus efeitos 
+através da ligação com receptores estéreo-específicos em vários locais no sistema nervoso central. Seu mecanismo 
+de ação exato é desconhecido. Clinicamente, todos os benzodiazepínicos causam um efeito depressor, relacionado 
+com a dose, que varia de um comprometimento leve de desempenho de tarefas à sedação. 
+ 
+Farmacocinética 
+Após a administração oral, o alprazolam é pront amente absorvido. Os picos de concentração plasmática ocorrem 
+em 1 h a 2 h após a administração. As concentrações plasmáticas são proporcionais às doses administradas; dentro 
+do intervalo posológico de 0,5 mg a 3,0 mg, foram observados picos de 8,0 a 37 ng/mL. Com a utilização de uma 
+metodologia de ensaio específico, foi observado que a meia-vida de eliminação plasmática média do alprazolam é 
+de aproximadamente 11,2 h (variando entre 6,3 h – 26,9 h) em adultos saudáveis. 
+ 
+Os metabólitos predominantes são o α-hidroxialprazolam e uma benzofenona derivada do alprazolam. A atividade 
+biológica do α-hidroxialprazolam é aproximadamente metade da atividade biológica do alprazolam. O metabólito 
+benzofenona é essencialmente inativo. Os níveis plasmáticos desses metabólitos são extremamente baixos, o que 
+impede a descrição precisa da farmacocinética. Entr etanto, suas meias -vidas parecem ter a mesma ordem de 
+magnitude que a do alprazolam. 
+ 
+O alprazolam e seus metabólitos são excretados principalmente através da urina. A capacidade do alprazolam de 
+induzir os sistemas de enzimas hepáticas em humanos ainda não foi determinada. Entretanto, essa não é uma 
+propriedade dos benzodiazepínicos em geral. Além disso, o alprazolam não afetou os níveis plasmáticos de 
+protrombina ou varfarina em voluntários do sexo masculino que receberam a varfarina sódica por via oral. In vitro, 
+a ligação do alprazolam às proteínas séricas humanas é de 80%. 
+ 
+Foram relatadas alterações na absorção, distribuição, metabolismo e excreção dos benzodiazepínicos em uma 
+variedade de doenças, incluindo alcoolismo, insuficiência hepática e insuficiência renal. Também foram 
+demonstradas alterações em pacientes geriátrico s. Em indivíduos idosos sadios, foi observado que a meia -vida 
+média do alprazolam é de 16,3 h (variando de 9,0 – 26,9 h; n=16), comparado a 11,0 h (variando de 6,6 – 15,8 h; 
+n=16) em indivíduos adultos sadios. Em pacientes com doença alcoólica do fígado, a meia-vida do alprazolam 
+variou de 5,8 – 65,3 h (média de 19,7 h ; n=17); quando comparado a 6,3 – 26,9 h em indivíduos sadios (média: 
+11,4 h; n=17). Em um grupo de indivíduos obesos a meia -vida do alprazolam variou entre 9,9 e 40,4 h (média de 
+21,8 h; n=12); quando comparado a indivíduos sadios, cuja variação foi de 6,3 – 15,8 h (média de 10,6 h, n=12). 
+ 
+Devido à sua semelhança com outros benzodiazepínicos, presume-se que o alprazolam atravesse a placenta e seja 
+excretado pelo leite materno. 
+ 
+A extensão de absorção do alprazolam (medida pela área sob a curva de concentração versus tempo) produzida 
+pelos comprimidos de liberação prolongada (Frontal® 3 mg, administrados a cada 12 h ) não é diferente da 
+produzida pelos comprimidos de liberação convencional (1,5 mg administrados 4 vezes ao dia). O quociente de 
+flutuação [(Cmáx - Cmín) / Cmédia] em estado estável de concentrações de alprazolam produzidas pelos comprimidos 
+de liberação prolongada não é diferente daquele produzido pelo comprimido simples e o metabolismo e acúmulo 
+do alprazolam obtido com comprimidos de liberação prolongada não são diferentes daqueles produzidos pelo 
+comprimido simples, nessas doses. Além disso, as concentrações de alprazolam aumentam proporcionalmente 
+com a dose, até uma dose de 10 mg de comprimido de liberação prolongada . Portanto, a farmacocinética do 
+alprazolam é linear nessa faixa de doses. A comparabilidade dos perfis farmacocinéticos em equilíbrio estável das 
+duas formulações prevê atividade farmacodinâmica idêntica para comprimidos de liberação prolongada e 
+comprimidos simples. 
+ 
+Dados de segurança pré-clínica 
+ 
+Mutagênese 
+O alprazolam não foi mutagênico no teste in vitro de Ames. O alprazolam não produziu aberrações cromossômicas 
+no ensaio in vivo de micronúcleo em ratos até a dose mais elevada testada de 100 mg/kg, que é uma dose 500 
+vezes a dose diária máxima de 10 mg/dia recomendada para humanos. O alprazolam também não foi mutagênico 
+no ensaio de diluição alcalina/lesão de DNA ou ensaio de Ames. 
+ 
+Carcinogênese 
+ 
+ 
+FRONTAL XR_CDS10.NOV.2025_v6_FXRCLL_22_VPS 4 
+ 
+Não foram observadas evidências de potencial carcinogênico nos estudos de bioensaio de 2 anos do alprazolam 
+em ratos que receberam doses de até 30 mg/kg/dia (150 vezes a dose diária máxima recomendada para humanos 
+de 10 mg/dia) e em camundongos que receberam doses de até 10 mg/kg/dia (50 vezes a dose diária máxima de 10 
+mg/kg/dia recomendada para seres humanos). 
+ 
+Fertilidade 
+O alprazolam não produziu comprometimento da fertilidade em ratos até a dose mais elevada testada de 5 
+mg/kg/dia, que é 25 vezes a dose diária máxima de 10 mg/dia recomendada para humanos. 
+ 
+Efeitos Oculares 
+Quando ratos foram tratados oralmente com alprazolam, 3, 10 e 30 mg/kg/dia (15 a 150 vezes a dose diária máxima 
+de 10 mg/kg/dia recomendada para seres humanos ) por dois anos, uma tendência para um aumento da dose 
+relacionados no número de catarata (feminino) e vascularização corneana (machos) foi observada. Estas lesões 
+não aparecem até depois de 11 meses de tratamento. 
+ 
+Efeito de medicamentos anestésicos e sedativos 
+Pesquisas não -clínicas demonstraram que a administração de medicamentos anestésicos e de sedação que 
+bloqueiam os receptores N -metil-D-aspartato (NMDA) e/ou potencializam a atividade do ácido gama -
+aminobutírico (GABA) pode aumentar a morte celular neuronal no cérebro e resultar em déficits a longo prazo na 
+cognição e no comportamento de animais juvenis quando administrados durante o período de pico do 
+desenvolvimento cerebral. Com base em comparações entre espécies não -clínicas, acredita -se que a janela de 
+vulnerabilidade do cérebro a esses efeitos correlaciona- se com exposições humanas no terceiro trimestre de 
+gravidez até o primeiro ano de vida, mas pode se estender até aproximadamente 3 anos de idade. Embora exista 
+informação limitada sobre este efeito com o alprazolam, uma vez que o mecanismo de ação inclui a potencialização 
+da atividade do GABA, um efeito semelhante pode ocorrer. A relevância desses achados não clínicos para o uso 
+em humanos é desconhecida.
+
+8. POSOLOGIA E MODO DE USAR 
+ 
+A dose ótima de Frontal® XR deve ser individualizada com base na gravidade dos sintomas e na resposta individual 
+do paciente. Nos pacientes que requeiram doses mais elevadas, essas deverão ser aumentadas com cautela, a fim 
+de evitar reações adversas. Em geral, os pacientes que não t enham sido previamente tratados com medicamentos 
+psicotrópicos necessitarão de doses menores que aqueles previamente tratados com ansiolíticos menores, 
+antidepressivos ou hipnóticos . Recomenda-se que o princípio geral de usar a m enor dose eficaz seja seguido, 
+especialmente em pacientes idosos ou debilitados, para evitar o desenvolvimento de sedação excessiva ou ataxia. 
+ 
+ 
+ 
+FRONTAL XR_CDS10.NOV.2025_v6_FXRCLL_22_VPS 7 
+ 
+Comprimidos de Frontal® XR 
+Se os comprimidos de Frontal® XR forem administrados uma vez ao dia é preferível que a dose seja administrada 
+pela manhã. Os comprimidos devem ser ingeridos intactos , eles não devem ser mastigados, esmagados ou 
+quebrados. 
+ 
+As recomendações de dosagem para Frontal ® XR são baseadas no perfil farmacocinético comparativo entre 
+indivíduos normais que receberam Frontal® três ou quatro vezes ao dia e aqueles que receberam Frontal® XR duas 
+vezes ao dia. 
+ 
+Duração do Tratamento 
+Os dados disponíveis corroboram a utilização da medicação por até 6 meses para transtornos de ansiedade e por 
+até 8 meses no tratamento dos transtornos de pânico. O risco de dependência pode aumentar com a dose e a duração 
+do tratamento, portanto, devem ser utilizadas a menor dose eficaz e a menor duração possível e, a necessidade de 
+continuação do tratamento deve ser reavaliada frequentemente (vide item 5. Advertências e Precauções). 
+ 
+Descontinuação do tratamento 
+Para descontinuar o tratamento com Frontal ® XR, a dose deve ser reduzida lentamente, conforme prática médica 
+adequada. É sugerido que a dose diária de Frontal® XR seja reduzida em não mais que 0,5 mg a cada 3 dias. Alguns 
+pacientes podem necessitar de redução de dose ainda mais lenta (vide item 5. Advertências e Precauções). 
+ 
+Uso em Crianças 
+A segurança e a eficácia de Frontal® XR em indivíduos com menos de 18 anos de idade não foram estabelecidas. 
+ 
+Dosagem Recomendada 
+Indicação 
+ 
+Dose inicial habitual (se 
+ocorrerem efeitos colaterais, 
+a dosagem deve ser 
+diminuída) 
+Intervalo da dose habitual 
+Transtornos de 
+ansiedade 
+1 mg diariamente em uma ou 
+duas doses 
+0,5 a 4 mg diariamente, em uma ou duas doses 
+Transtorno do pânico 0,5 a 1,0 mg administrados na 
+hora de dormir ou 0,5 mg duas 
+vezes ao dia 
+A dose deve ser ajustada à resposta do paciente, com 
+aumentos não maiores que 1 mg/dia a cada 3 a 4 dias. 
+(Em estudos clínicos a dose média de manutenção esteve 
+entre 5 e 6 mg/dia, administrados como uma única dose 
+diária ou divididos em duas doses diárias, com pacientes 
+necessitando, ocasionalmente, de até 10 mg/dia) 
+Pacientes geriátricos 
+ou na presença de 
+condições debilitantes 
+0,5 a 1 mg diariamente 
+em uma ou duas doses 
+0,5 a 1 mg/dia; pode ser gradualmente aumentada se 
+necessário e tolerado. 
+ 
+Dose Omitida 
+Caso o paciente se esqueça de utilizar Frontal ® XR no horário estabelecido, deve fazê -lo assim que lembrar. 
+Entretanto, se já estiver perto do horário de administrar a próxima dose, deve desconsiderar a dose esquecida e 
+utilizar a próxima. Neste caso, o paciente não deve utilizar a dose duplicada para compensar doses esquecidas. 
+ 
+O esquecimento de dose pode comprometer a eficácia do tratamento. 
+ 
+Este medicamento não deve ser partido, aberto ou mastigado.
+
+9. REAÇÕES ADVERSAS 
+ 
+Os eventos adversos de Frontal® XR, se presentes, geralmente são observados no início do tratamento e 
+habitualmente desaparecem com a continuidade do tratamento ou diminuição da dose. 
+ 
+Os eventos adversos associados ao tratamento com alprazolam em pacientes participantes de estudos clínicos 
+controlados e em experiências pós-comercialização são os seguintes: 
+ 
+ 
+ 
+FRONTAL XR_CDS10.NOV.2025_v6_FXRCLL_22_VPS 8 
+ 
+Tabela de Reações Adversas 
+Classe de Sistema 
+de Órgãos 
+Muito Comum 
+≥ 1/10 
+ 
+Comum 
+≥ 1/100 a < 
+1/10 
+ 
+Incomum 
+≥ 1/1000 a < 
+1/100 
+ 
+Raro 
+≥ 
+1/10000 
+a < 1/1 
+Muito 
+Raro 
+< 1/10000 
+ 
+Frequência 
+desconhecida 
+(não pode ser 
+estimada 
+pelos dados 
+disponíveis) 
+ 
+Distúrbios 
+endócrinos 
+ Hiperprolactin
+emia* 
+Distúrbios da 
+nutrição e do 
+metabolismo 
+ Diminuição do 
+apetite 
+ 
+Distúrbios 
+psiquiátricos 
+Depressão Estado de 
+confusão, 
+desorientação, 
+diminuição da 
+libido, 
+ansiedade, 
+insônia, 
+nervosismo, 
+aumento da 
+libido* 
+Mania* (vide 
+item 5. 
+Advertências e 
+Precauções), 
+alucinações*, 
+raiva*, 
+agitação*, 
+dependência a 
+substâncias 
+ Hipomania*, 
+agressividade*
+, hostilidade*, 
+pensamento 
+anormal*, e 
+hiperatividade 
+psicomotora*, 
+abuso de 
+substâncias* 
+Distúrbios do sistema 
+nervoso 
+Sedação, 
+sonolência. ataxia, 
+comprometimento 
+da memória, 
+disartria, tontura e 
+cefaleia 
+Perturbação 
+do equilíbrio, 
+coordenação 
+anormal, 
+distúrbios de 
+atenção, 
+hipersonia, 
+letargia e 
+tremor 
+Amnésia Desequilíbrio 
+autonômico do 
+sistema 
+nervoso* e 
+distonia* 
+Distúrbios oculares Visão turva 
+Distúrbios 
+gastrointestinais 
+Constipação e 
+boca seca 
+Náusea Distúrbios 
+gastrintestinais
+* 
+Distúrbios 
+hepatobiliares 
+ Hepatite*, 
+função 
+hepática 
+anormal* e 
+icterícia* 
+Distúrbios da pele e 
+tecido subcutâneo 
+ Dermatite* Angioedema* 
+e reação de 
+fotossensibilid
+ade* 
+Distúrbios 
+musculoesqueléticos, 
+do tecido conjuntivo 
+e dos ossos 
+ Fraqueza 
+muscular 
+ 
+Distúrbios urinários e 
+renais 
+ Incontinência 
+urinária* 
+ Retenção 
+urinária* 
+Distúrbios do sistema 
+reprodutivo e da 
+mama 
+ Disfunção 
+sexual* 
+Irregularidade
+s menstruais* 
+ 
+Distúrbios gerais Fadiga e 
+irritabilidade 
+ Síndrome de 
+abstinência a 
+substâncias* 
+ Edema 
+periférico* 
+ 
+ 
+FRONTAL XR_CDS10.NOV.2025_v6_FXRCLL_22_VPS 9 
+ 
+Tabela de Reações Adversas 
+Classe de Sistema 
+de Órgãos 
+Muito Comum 
+≥ 1/10 
+ 
+Comum 
+≥ 1/100 a < 
+1/10 
+ 
+Incomum 
+≥ 1/1000 a < 
+1/100 
+ 
+Raro 
+≥ 
+1/10000 
+a < 1/1 
+Muito 
+Raro 
+< 1/10000 
+ 
+Frequência 
+desconhecida 
+(não pode ser 
+estimada 
+pelos dados 
+disponíveis) 
+ 
+Investigações Diminuição do 
+peso e 
+aumento do 
+peso 
+ Aumento da 
+pressão 
+intraocular* 
+* Reações Adversas identificadas pós-comercialização 
+ 
+Em muitos dos relatos de casos espontâneos de efeitos comportamentais adversos, os pacientes estavam recebendo 
+outros fármacos de ação no sistema nervoso central concomitantemente e/ou tinham doenças psiquiátricas 
+subjacentes. Pacientes que apresentam um distúrbio de personalidade limítrofe, história prévia de comportamento 
+violento ou agressivo ou abuso de bebidas alcoólicas ou outras substâncias, podem ser pacientes de risco para esses 
+eventos. Foram relatados casos de irritabilidade, hostilidade e pensam entos intrusivos durante a interrupção da 
+administração de alprazolam em pacientes com distúrbio de estresse pós-traumático. 
+ 
+Em casos de eventos adversos, notifique pelo Sistema VigiMed, disponível no Portal da Anvisa.

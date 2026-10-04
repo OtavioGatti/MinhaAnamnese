@@ -1,0 +1,17 @@
+{
+  "Risco Gestacional": "D",
+  "Slug": "candesartana-cilexetila",
+  "Nomes Comerciais / Produtos ANVISA": "Atacand; Blopress; Venzer; candesartana cilexetila.",
+  "Interações": "Não usar com alisquireno em pacientes diabéticos ou com insuficiência renal relevante. IECA, como captopril, enalapril, lisinopril e ramipril, e outros BRA, como losartana, valsartana, olmesartana e telmisartana, aumentam risco de hipercalemia, hipotensão e lesão renal. Espironolactona, amilorida, triantereno, suplementos de potássio e sais substitutos com potássio aumentam risco de hipercalemia. AINEs como ibuprofeno, naproxeno, diclofenaco e ácido acetilsalicílico em dose anti-inflamatória podem reduzir efeito anti-hipertensivo e piorar função renal. Lítio pode ter níveis aumentados e toxicidade.",
+  "Apresentações / Nomes Comerciais": "Comprimidos 8 mg, 16 mg e 32 mg; associações com hidroclorotiazida conforme produto. Exemplos: Atacand; Blopress; Venzer; candesartana genérica.",
+  "Posologia Pediátrica": "Hipertensão pediátrica: dose deve ser individualizada por idade, peso e resposta clínica conforme bula específica.\nMonitorar pressão arterial, função renal e potássio.",
+  "Texto Resumo": "Candesartana cilexetila é um bloqueador do receptor de angiotensina II usado em hipertensão arterial e insuficiência cardíaca. Requer monitorização de função renal e potássio e é contraindicado na gravidez.",
+  "Classe / Categoria": "Antagonista do receptor de angiotensina II; BRA; anti-hipertensivo; medicamento para insuficiência cardíaca.",
+  "Posologia Adulto": "Hipertensão arterial: iniciar geralmente com 8 mg por via oral 1 vez ao dia; dose usual: 8 mg a 32 mg 1 vez ao dia.\nInsuficiência cardíaca: iniciar geralmente com 4 mg por via oral 1 vez ao dia; titular até 32 mg 1 vez ao dia ou maior dose tolerada.\nAjustar conforme pressão arterial, função renal, potássio e tolerabilidade.",
+  "Contraindicações": "Hipersensibilidade à candesartana cilexetila ou componentes da fórmula; gravidez; insuficiência hepática grave ou colestase; uso concomitante com alisquireno em pacientes com diabetes mellitus ou insuficiência renal significativa conforme bula.",
+  "Tags Busca": "candesartana; anti-hipertensivo; bra; hipertensão; insuficiência cardíaca; angiotensina; atacand",
+  "Advertências": "Pode causar hipotensão, hipercalemia, piora da função renal e síncope. Monitorar creatinina e potássio, especialmente em insuficiência renal, insuficiência cardíaca, idosos, desidratação ou uso de diuréticos. Contraindicado na gravidez pelo risco de lesão e morte fetal. Usar cautela em estenose de artéria renal.",
+  "Nomes Comerciais OpenAI": "Atacand; Blopress; Venzer; Candesartana EMS; Candesartana Sandoz; Candesartana Aché.",
+  "Rede SUS (RENAME)": false,
+  "Princípio Ativo": "Candesartana Cilexetila"
+}

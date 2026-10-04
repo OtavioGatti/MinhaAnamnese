@@ -1,0 +1,418 @@
+FONTE: lote4__candesartana-cilexetila__ATACAND.pdf
+
+===== BLOCO 1 =====
+APRESENTAÇÕES
+Comprimidos de 8 mg em embalagem com 30 comprimidos.
+
+ Comprimidos de 16 mg em embalagens com 10 ou 30 comprimidos.
+
+ VIA ORAL
+
+ USO ADULTO
+
+1. INDICAÇÕES
+
+ ATACAND é indicado para o tratamento de insuficiência cardíaca e hipertensão arterial leve, moderada e grave.
+ O tratamento com ATACAND reduz a mortalidade, reduz a hospitalização devido à insuficiência cardíaca e
+ melhora os sintomas.
+
+3. CARACTERÍSTICAS FARMACOLÓGICAS
+
+ Propriedades Farmacodinâmicas
+
+ A angiotensina II é o hormônio vasoativo primário do sistema renina-angiotensina-aldosterona e exerce um
+ significativo papel na fisiopatologia da hipertensão, insuficiência cardíaca e outros transtornos cardiovasculares.
+
+ Também exerce um importante papel na patogênese da hipertrofia e lesões de órgãos alvo. Os principais efeitos
+ fisiológicos da angiotensina II, como a vasoconstrição, estimulação da aldosterona, regulação da homeostase do
+ sal e da água e a estimulação do crescimento celular, são mediados via receptor do tipo 1 (AT 1).
+
+ ATACAND é um pró-fármaco adequado para o uso oral, sendo rapidamente convertido ao fármaco ativo
+ candesartana, por hidrólise de éster durante a absorção no trato gastrointestinal. A candesartana é um antagonista
+ do receptor da angiotensina II, seletivo para recept ores AT1, com forte ligação e lenta dissociação dos mesmos,
+ não tendo atividade agonista.
+
+ A candesartana não inibe a enzima conversora de angiotensina (ECA), que converte a angiotensina I para
+ angiotensina II e degrada a bradicinina. Como não há efeito na degradação da bradicinina, é improvável que os
+ antagonistas dos receptores de angiotensina II sejam associados com tosse.
+
+ Em estudos clínicos controlados que compararam ATACAND com inibidores da ECA, a incidência de tosse foi
+ menor nos pacientes que receberam ATACAND. A candesartana não se liga ou bloqueia outros receptores
+ hormonais ou canais de íons conhecidos por serem importantes na regulação cardiovascular. O antagonismo dos
+ receptores AT1 da angiotensina II resulta em aumento dose -relacionada da atividade da renina plasmática, das
+ concentrações de angiotensina I e angiotensina II e em uma diminuição da concentração plasm ática de
+ aldosterona.
+
+ Propriedades Farmacocinéticas
+
+ - Absorção e distribuição
+
+ Após a administração oral, a candesartana cilexetila é convertida para substância ativa candesartana. A
+ biodisponibilidade absoluta da candesartana é de aproximadamente 40% após uma solução oral de candesartana
+ cilexetila. A biodisponibilidade relativa dos comprimidos em comparação com a solução oral é de
+ aproximadamente 34%, com variabilidade muito pequena. O pico médio de concentração plasmática (C max)
+ ocorre entre 3-4 horas após a ingestão do comprimido. As concentrações séricas da candesartana aumentam
+ linearmente com o aumento das doses na faixa de dose terapêutica. Não foram observadas diferenças
+ relacionadas ao sexo na farmacocinética da candesartana. A área sob a curva de concentração plasmática versus
+ tempo (AUC) não é significativamente afetada por alimentos.
+
+ A candesartana liga -se extensivamente às proteínas plasmáticas (>99%). O volume aparente de distribuição da
+ candesartana é de 0,1 L/kg.
+
+ - Metabolismo e eliminação
+
+ A candesartana é principalmente eliminada inalterada pelas vias urinária e biliar e apenas uma pequena parte é
+ eliminada pelo metabolismo hepático (CYP2C9). Os estudos de interação disponíveis não indicam efeito em
+ CYP2C9 e CYP3A4. Com base em dados in vitro, não seria esperada qualquer interação in vivo com fármacos
+ cujo metabolismo é dependente das isoenzimas do citocromo P450: CYP1A2, CYP2A6, CYP2C9, CYP2C19,
+ CYP2D6, CYP2E1 ou CYP3A4. A meia -vida de eliminação da candesartana é de aproximadamente 9 horas . Não
+ há acúmulo após a administração de doses múltiplas.
+
+ A depuração plasmática total da candesartana é cerca de 0,37 mL/min/kg, com uma depuração renal de cerca de
+ 0,19 mL/min/kg. A eliminação renal da candesartana ocorre tanto por filtração glomerular como por secreção
+ tubular ativa.
+
+ Seguindo uma dose oral de candesartana cilexetila marcada com 14C, cerca de 26% da dose é excretada na urina
+ como candesartana, e 7% como metabólito inativo, enquanto aproximadamente 56% da dose é recuperada nas
+ fezes como candesartana e 10% como metabólito inativo.
+
+ - Populações especiais
+
+ Em idosos (acima de 65 anos), tanto a C max quanto a AUC da candesartana são aumentadas em aproximadamente
+ 50% e 80%, respectivamente, em comparação com indivíduos jovens. Entretanto, a resposta da pressão sanguínea
+ e a incidência de eventos adversos são semelhantes após a administração de ATACAND em pacientes jovens e
+ idosos.
+
+ Em pacientes com alterações renais de leve a moderada, a C max e a AUC da candesartana aumentaram com doses
+ repetidas em aproximadamente 50% e 70%, respectivamente, mas a meia -vida (t½) não foi alterada em
+ comparação com pacientes com a função renal normal. As alterações correspondentes nos pacientes com
+ alterações renais graves foram cerca de 50% e 110%, respectivamente. A t ½ de eliminação da candesartana foi
+ aproximadamente o dobro nos pacientes com alterações renais graves. A farmacocinética em pacientes que fazem
+ hemodiálise foi similar àquela dos pacientes com al terações renais graves (ver item “Posologia e Modo de Usar”).
+
+ Em pacientes com alterações hepáticas de leve a moderada, houve um aumento na AUC da candesartana de
+ aproximadamente 20%. Em pacientes com alterações hepáticas de moderada a grave o aumento na AUC da
+ candesartana foi de aproximadamente 80%.
+
+ Há apenas experiência limitada do uso em pacientes com alterações hepáticas graves e/ou colestase (ver item
+ “Posologia e Modo de Usar”).
+
+ Dados de segurança pré-clínica
+
+ Em diversos estudos de segurança pré-clínica conduzidos em várias espécies, foram observados efeitos
+ farmacológicos exagerados esperados devido à modificação da homeostase do sistema renina -angiotensina-
+ aldosterona. A incidência e a gravidade dos efeitos induzidos foram relacionadas à dose e ao tempo e mostraram -
+ se reversíveis em animais adultos. Estudos com candesartana cilexetila, em animais, demonstraram atraso fetal e
+ lesões renais em neonatos. Acredita-se que o mecanismo seja farmacologicamente mediado por efeitos no sistema
+ renina-angiotensina-aldosterona.
+ Não houve evidência de mutagenicidade, clastogenicidade ou carcinogenicidade.
+
+ Tempo estimado para início da ação terapêutica
+
+ Após a administração de uma única dose de ATACAND, o início do efeito anti-hipertensivo geralmente ocorre
+ dentro de 2 horas. Com o tratamento contínuo, a redução máxima da pressão sanguínea com qualquer dose
+ geralmente é atingida dentro de 4 semanas e é mantida durante o tratamento prolongado. ATACAND
+ administrado uma vez ao dia promove uma efetiva e suave redução da pressão sanguínea ao longo de 24 horas
+ com pequena diferença entre os efeitos máximo e mínimo no intervalo de dose (Lacourcière Y & Asmar R. Am
+ J Hypertens 1999;12:1181-7).
+
+4. CONTRAINDICAÇÕES
+
+ Hipersensibilidade à candesartana ou a qualquer componente da fórmula; durante a gravidez e lactação (ver
+ item Advertências e Precauções); alterações hepáticas graves e/ou colestase; pacientes com diabetes mellitus
+ (tipo I ou II) ou insuficiência renal moderada a grave (TGF < 60mL/min/1,73m2) e que fazem uso de
+ medicamentos contendo alisquireno.
+
+5. ADVERTÊNCIAS E PRECAUÇÕES
+
+ Hipotensão
+
+ Hipotensão pode ocorrer durante o tratamento com ATACAND em pacientes com insuficiência cardíaca. Como
+ descrito para outros agentes que agem no sistema renina-angiotensina-aldosterona, isso também pode ocorrer em
+ pacientes hipertensos com depleção do volume intravascular. Deve-se ter cuidado no início da terapia, corrigindo-
+ se a hipovolemia.
+
+ Bloqueio duplo do sistema renina-angiotensina-aldosterona
+
+ Existem evidências de que o uso concomitante de inibidores da ECA, bloqueadores de receptores de angiotensina
+ II ou alisquirenos aumentam o risco de hipotensão, hipercalemia e função renal diminuída (incluindo falência
+ renal aguda). Bloqueio duplo do sistema renina-angiotensina através do uso combinado de Atacand com um
+ inibidor da ECA ou alisquireno não é, portanto, recomendado (ver item 6. Interações Medicamentosas).
+
+ Se o bloqueio duplo for considerado necessário, o tratamento só deve ocorrer sob supervisão de um especialista
+ e deve haver um acompanhamento de perto frequente da função renal, dos eletrólitos e da pressão arterial.
+
+ Inibidores da ECA e bloqueadores de receptores de angiotensina II não devem ser usados concomitantemente em
+ pacientes com nefropatia diabética. O uso de candesartana cilexetila com alisquireno é contraindicado em
+ pacientes com diabetes mellitus (tipo I ou II) ou insuficiência renal moderada a grave (TGF <
+ 60mL/min/1,73m2) (ver item Contraindicações).
+
+ Uso na insuficiência cardíaca
+
+ Também não é recomendada a combinação tripla de Atacand com um inibidor da ECA e um
+ antagonista de receptor de mineralocorticoide usada na insuficiência cardíaca. O uso dessas
+ combinações deve ser feito sob a supervisão de um especialista e deve haver um acompanhamento de
+ perto frequente da função renal, dos eletrólitos e da pressão arterial.
+ Estenose da artéria renal
+
+ Outras substâncias que afetam o sistema renina-angiotensina-aldosterona, por exemplo, inibidores da enzima
+ conversora de angiotensina (ECA), podem aumentar a taxa de ureia no sangue e a creatinina sérica em pacientes com
+ estenose da artéria renal bilateral ou estenose da artéria de um único rim. Um efeito similar pode ser previsto com os
+ antagonistas dos receptores da angiotensina II.
+
+ Alterações renais
+
+ Assim como com outros agentes inibidores do sistema renina-angiotensina-aldosterona, alterações na função renal
+ podem ser previstas em pacientes suscetíveis tratados com ATACAND. Quando ATACAND é usado em pacientes
+ hipertensos com alterações renais graves, deve -se considerar a monitoração periódica dos níveis séricos de potássio
+ e de creatinina. Há experiências muito limitadas em pacientes com alterações renais muito graves ou em fase terminal
+ (isto é, depuração de creatinina <15 mL/min/1,73 m2 de área corpórea). A avaliação de pacientes com insuficiência
+ cardíaca deve incluir exames periódicos da função renal. Durante titulação de dose de ATACAND, é recomendada
+ monitoração dos níveis séricos de creatinina e potássio.
+
+ Transplante renal
+
+ Existem evidências clínicas limitadas sobre o uso de ATACAND em pacientes que sofreram transplante renal.
+
+ Alterações hepáticas
+
+ Há apenas experiência limitada do uso em pacientes com alterações hepáticas graves e/ou colestase.
+
+ Estenose das válvulas mitral e aórtica (cardiomiopatia hipertrófica obstrutiva)
+
+ Como com outros vasodilatadores, indica -se cuidado especial nos pacientes que sofrem de estenose das válvulas
+ aórtica ou mitral hemodinamicamente relevante ou de cardiomiopatia hipertrófica obstrutiva.
+
+ Hipercalemia
+
+ Com base nas experiências do uso de outros fármacos que afetam o sistema renina -angiotensina-aldosterona, o uso
+ concomitante de ATACAND com diuréticos poupadores de potássio, suplementos de potássio, substitutos do sal
+ contendo potássio ou outros fármacos que podem aumentar os níveis de potássio (como heparina, cotrimoxazol),
+ pode levar a aumentos de potássio sérico em pacientes hipertenso s.
+
+ Pode ocorrer hipercalemia em pacientes com insuficiência cardíaca tratados com ATACAND. Durante o tratamento
+ com ATACAND em pacientes com insuficiência cardíaca, recomenda -se monitoração periódica do potássio sérico,
+ especialmente quando é administrado concomitantemente com inibidores da ECA e diuréticos poupadores de potássio
+ como a espironolactona.
+
+ Angioedema intestinal
+
+ Angioedema intestinal foi relatado em pacientes tratados com antagonistas do receptor da angiotensina II, incluindo
+ ATACAND. Esses pacientes apresentaram dor abdominal, náusea, vômito e diarreia. Os sintomas foram resolvidos
+ após a descontinuação do medicamento. Se angioedema intestinal for diagnosticado, ATACAND deve ser
+ descontinuado e o monitoramento apropriado deve ser iniciado até a resolução completa dos sintomas.
+
+ Anestesia e cirurgia
+
+ Pode ocorrer hipotensão durante anestesia e cirurgias em pacientes tratados com antagonistas da angiotensina II,
+ devido ao bloqueio do sistema renina-angiotensina. Muito raramente, a hipotensão pode ser grave a ponto de justificar
+ o uso de fluidos intravenosos e/ou vasopressores.
+
+ Geral
+
+ Nos pacientes cujo tônus vascular e função renal dependem predominantemente da atividade do sistema renina-
+ angiotensina-aldosterona (como pacientes com insuficiência cardíaca congestiva grave ou com doença renal de base,
+ incluindo estenose da artéria renal), o tratamento com fármacos que afetam este sistema foi associado com hipotensão
+ aguda, azotemia, oligúria ou, raramente, insuficiência renal aguda.
+
+ Como com qualquer agente anti-hipertensivo, a queda excessiva da pressão sanguínea em pacientes com cardiopatia
+ isquêmica ou doença isquêmica cerebrovascular pode resultar em um infarto do miocárdio ou acidente vascular
+ cerebral.
+
+ Gravidez
+
+ O uso de ATACAND é contra-indicado durante a gravidez.
+
+ Pacientes recebendo ATACAND devem estar cientes de que, antes de considerar a possibilidade de engravidar, deve -
+ se discutir as opções adequadas para o tratamento com o médico. Quando a gravidez é diagnosticada, o tratamento
+ com ATACAND deve ser interrompido imediatamente e, se for o caso, a terapia alternativa deve ser iniciada.
+
+ Quando usados durante a gravidez, os fármacos que agem diretamente no sistema renina–angiotensina podem causar
+ lesão e morte fetal e neonatal. A exposição à terapia com antagonistas dos receptores de angiotensia II é conhecida
+ por induzir fetotoxicidade humana (redução da função renal, oligoâmnios, retardamento na ossificação do crânio) e
+ toxicidade neonatal (insuficiência renal, hipotensão e hipercalemia) (ver item Dados de segurança pré-clínica).
+
+ Lactação
+
+ Não se sabe se a candesartana é excretada no leite humano. Entretanto, a candesartana é excretada no leite de ratas
+ que estão amamentando. Devido ao potencial de efeitos adversos nos lactentes, se o uso de ATACAND for
+ considerado essencial, o aleitamento materno deve ser descontinuado (ver item contraindicações).
+
+ Categoria de risco na gravidez: D.
+ Este medicamento não deve ser utilizado por mulheres grávidas sem orientação médica. Informe
+ imediatamente seu médico em caso de suspeita de gravidez.
+
+ Efeitos sobre a capacidade de dirigir veículos e operar máquinas
+
+ O efeito de ATACAND na capacidade de dirigir veículos e operar máquinas não foi estudado, mas baseado em suas
+ propriedades farmacodinâmicas, é improvável que ATACAND afete estas capacidades. É preciso verificar a reação
+ ao medicamento antes de dirigir veículos ou operar máquinas, porque pode ocorrer tontura ou fadiga durante o
+ tratamento.
+
+ Atenção: contém lactose (89,40 mg/comprimidos de 8 mg; 81,40 mg/comprimidos de 16 mg). Este
+ medicamento não deve ser usado por pessoas com síndrome de má -absorção de glicose-galactose.
+
+ Atenção: Contém o corante óxido de ferro vermelho que pode, eventualmente, causar reações alérgicas.
+
+6. INTERAÇÕES MEDICAMENTOSAS
+
+ Dados de ensaios clínicos têm demonstrado que o bloqueio duplo do sistema renina-angiotensina-aldosterona através
+ do uso combinado de inibidores da ECA, bloqueadores de receptores de angiotensina II ou alsquireno está associado
+ com uma frequência mais alta de eventos adversos como hipotensão, hipercalemia e função renal diminuída
+ (incluindo falência renal aguda) comparado ao uso de um agente isolado que atue no sistema renina - angiotensina-
+ aldosterona.
+
+ As seguintes substâncias foram investigadas em estudos de farmacocinética clínica: hidroclorotiazida, varfarina,
+ digoxina, contraceptivos orais (etinilestradiol/levonorgestrel), glibenclamida, nifedipino e enalapril. Não foi
+ identificada interação farmacocinética de relevância clínica com candersartana cilexetila.
+
+ Durante a administração concomitante de lítio com inibidores da ECA, foram relatados aumentos reversíveis das
+
+ concentrações séricas de lítio e toxicidade. Um efeito similar pode ocorrer com antagonistas dos receptores de
+ angiotensina II, e recomenda-se monitoração cuidadosa dos níveis séricos de lítio durante uso concomitante com lítio.
+
+ O efeito anti-hipertensivo de antagonistas dos receptores de angiotensina II, incluindo o ATACAND, pode ser
+ atenuado por antiinflamatórios não esteroidais (AINEs) como os inibidores seletivos de COX -2 e ácido
+ acetilsalicílico.
+
+ Assim como acontece com os inibidores da ECA, o uso concomitante de antagonistas dos receptores de angiotensina
+ II e AINEs pode levar a um risco aumentado de agravamento da função renal, incluindo possível insuficiência renal
+ aguda, e um aumento no potássi o sérico, especialmente em pacientes com problemas pré - existente na função renal.
+ A associação deve ser administrada com precaução, especialmente em pacientes idosos e em pacientes com depleção
+ de volume. Os pacientes devem ser adequadamente hidratados e deve-se considerar a monitoração periódica da
+ função renal após o início e depois da terapia concomitante.
+
+ O efeito anti-hipertensivo de ATACAND pode ser aumentado por outros anti-hipertensivos. A
+
+ biodisponibilidade da candesartana não é afetada por alimentos.
+
+8. POSOLOGIA E MODO DE USAR
+
+ Os comprimidos divisíveis ATACAND devem ser administrados 1 vez ao dia, por via oral, com ou sem a ingestão
+ de alimentos.
+
+ Hipertensão
+
+ Dose inicial: 8 mg, 1 vez ao dia.
+
+ Dose de manutenção: 8 mg, 1 vez ao dia, podendo ser aumentada para 16 mg, 1 vez ao dia. Pacientes que
+ requerem uma maior redução da pressão sanguínea, a dose pode ser aumentada para 32 mg, 1 vez ao dia.
+
+ O efeito anti-hipertensivo máximo é atingido dentro de 4 semanas após o início do tratamento. Em pacientes com uma
+ redução da pressão arterial inferior à considerada ótima com ATACAND, recomenda- se associação com um
+ diurético tiazídico.
+
+ Uso em idosos: não é necessário ajuste de dose inicial em idosos.
+
+ Uso em pacientes com alterações renais: não é necessário ajuste de dose inicial em pacientes com alterações renais
+ de leve a moderada (depuração de creatinina 30-80 mL/min/1,73 m2 de superfície corpórea). Em pacientes com
+ alterações renais graves (depuração de creatinina <30 mL/min/1,73 m2 de superfície corpórea), a experiência clínica
+ é limitada, devendo-se considerar uma dose inicial de 4 mg.
+
+ Uso em pacientes com alterações hepáticas: titulação de dose é recomendada em pacientes com doença hepática
+ crônica de leve a moderada e, uma dose inicial de 4 mg deve ser considerada. ATACAND não deve ser usado em
+ pacientes com alterações hepáticas graves e/ou colestase (ver item Contraindicações).
+
+ Terapia concomitante: ATACAND pode ser administrado com outros agentes anti -hipertensivos (ver item
+ “Características Farmacológicas”).
+
+ Insuficiência Cardíaca
+
+ A dose inicial usual recomendada de ATACAND é de 4 mg uma vez ao dia. A titulação para a dose alvo de 32 mg
+ uma vez ao dia ou para a maior dose tolerada é realizada dobrando -se a dose em intervalos de pelo menos 2 semanas
+ (ver item “Advertências e Precauções ”).
+
+ Populações especiais: não é necessário ajuste de dose inicial para pacientes idosos ou pacientes com alterações renais
+ ou hepáticas.
+
+ Terapia concomitante: ATACAND pode ser administrado com outro tratamento para insuficiência cardíaca,
+ incluindo inibidores da ECA, betabloqueadores, diuréticos e digitálicos ou uma associação desses medicamentos (ver
+ item “Propriedades Farmacodinâmicas”).
+
+ Uso em crianças: não foram estabelecidas a segurança e a eficácia do uso de ATACAND em crianças.
+
+ Se o paciente se esquecer de tomar uma dose de ATACAND, não é necessário tomar a dose esquecida, deve-se
+ apenas tomar a próxima dose, no horário habitual.
+
+9. REAÇÕES ADVERSAS
+
+ Tratamento da Hipertensão
+
+ Em estudos clínicos controlados os eventos adversos foram leves e transitórios e comparáveis aos do placebo. A
+ incidência geral de eventos adversos não mostrou associação com dose, idade ou sexo. As suspensões do tratamento
+ em decorrência de eventos adversos foram semelhantes com candesartana cilexetila (3,1%) e placebo (3,2%).
+
+ Achados laboratoriais: em geral, não foram detectadas influências clinicamente importantes de ATACAND nas
+ variáveis de rotina de laboratório. Assim como para outros inibidores do sistema renina -angiotensina- aldosterona,
+ foram observadas pequenas reduções nos níveis de hemoglobina. Foram observados aumentos nos níveis de
+ creatinina, ureia ou potássio e dim inuição nos níveis de sódio. Foi relatado aumento de ALT sérica (TGP –
+ transaminase glutâmico -pirúvica) como evento adverso, numa frequência um pouco maior com ATACAND do que
+ com o placebo (1,3% versus 0,5%). Não é necessário monitoramento de rotina de variáveis laboratoriais para
+ pacientes recebendo ATACAND. Entretanto, em pacientes com alterações renais graves, deve -se considerar
+ monitoração periódica dos níveis séricos de potássio e creatinina.
+
+ Tratamento de Insuficiência Cardíaca
+
+ O perfil de experiência adversa do uso de ATACAND em pacientes com insuficiência cardíaca foi consistente com
+ a farmacologia do fármaco e com o estado de saúde do paciente. No programa clínico CHARM, que comparou doses
+ de ATACAND de até 32 mg (n=3.803) com placebo (n=3.796), 21,0% do grupo da candesartana cilexetila e 16,1%
+ do grupo do placebo, descontinuaram o tratamento devido a eventos adversos. As reações adversas comumente ( 
+ 1/100, < 1/10) observadas foram:
+
+ Distúrbios vasculares: hipotensão.
+
+ Distúrbios metabólicos e nutricionais: hipercalemia. Distúrbios
+
+ renais e urinários: insuficiência renal.
+
+ Achados laboratoriais: aumentos nos níveis de creatinina, ureia e potássio. É recomendada monitoração
+ periódica dos níveis séricos de creatinina e potássio (ver item “Advertências e Precauções”).
+
+ Pós-comercialização
+
+ As seguintes reações adversas foram relatadas muito raramente (<1/10.000) na pós-comercialização:
+
+ - Alterações dos sistemas sanguíneo e linfático: leucopenia, neutropenia e agranulocitose.
+
+ - Alterações metabólicas e nutricionais: hipercalemia, hiponatremia.
+
+ - Alterações do sistema nervoso: tontura.
+
+ - Alterações respiratórias, torácicas e do mediastino: tosse.
+
+ - Alterações hepato-biliares: aumento das enzimas hepáticas, função hepática alterada ou hepatite.
+
+ - Alterações na pele e tecido subcutâneo: angioedema, exantema, urticária e prurido.
+
+ - Alterações do tecido músculo-esquelético, conectivo e doenças ósseas: dor lombar.
+
+ - Alterações renais e urinárias: alterações renais, incluindo insuficiência renal em pacientes suscetíveis (ver
+ item “Advertências e Precauções”).
+
+ A reação adversa angioedema intestinal foi relatada na pós -comercialização, mas a sua frequência não foi
+ estabelecida.
+
+ Em caso de eventos adversos, notifique pelo Sistema VigiMed, disponível no Portal da Anvisa.
+
+10. SUPERDOSE
+
+ Sintomas
+
+ Com base nas propriedades farmacológicas, a principal manifestação da superdosagem é, provavelmente, hipotensão
+ sintomática e tontura. Em relatos individuais de superdosagem (até 672 mg de candesartana cilexetila), a recuperação
+ do paciente foi sem intercorrências.
+
+ Tratamento
+
+ Se ocorrer hipotensão sintomática, deve-se instituir tratamento sintomático e monitorar os sinais vitais. O paciente
+ deve ser colocado na posição supina, com as pernas elevadas. Se isto não for suficiente, o volume plasmático deve
+ ser aumentado por infusão de solução salina isotônica, por exemplo.
+
+ Substâncias simpatomiméticas podem ser administradas se as medidas mencionadas acima não forem
+ suficientes.
+
+ A candesartana não pode ser removida por hemodiálise.
+
+ Em caso de intoxicação ligue para 0800 722 6001, se você precisar de mais orientações.
+
+ III)

@@ -1,0 +1,17 @@
+{
+  "Risco Gestacional": "B",
+  "Slug": "esomeprazol",
+  "Nomes Comerciais / Produtos ANVISA": "Nexium; Esomex; Ésio; esomeprazol.",
+  "Interações": "Não usar com nelfinavir. Pode reduzir absorção de medicamentos dependentes de acidez gástrica, como cetoconazol, itraconazol, posaconazol, erlotinibe e ferro em algumas situações. Pode aumentar níveis de diazepam, citalopram, escitalopram, fenitoína e varfarina em pacientes suscetíveis. Pode reduzir ativação do clopidogrel por inibição de CYP2C19; avaliar alternativa como pantoprazol quando gastroproteção for necessária. Metotrexato em altas doses pode ter níveis aumentados. Atazanavir pode ter exposição reduzida.",
+  "Apresentações / Nomes Comerciais": "Comprimidos ou cápsulas gastrorresistentes 20 mg e 40 mg; granulado para suspensão oral; pó liofilizado para solução injetável 40 mg conforme fabricante. Exemplos: Nexium; Esomex; Ésio; esomeprazol genérico.",
+  "Posologia Pediátrica": "Crianças e adolescentes: dose depende da idade, peso, indicação e apresentação.\nDRGE em crianças acima de 1 ano: esquemas usuais variam de 10 mg a 20 mg por via oral 1 vez ao dia conforme peso e gravidade.\nNão informado na fonte consultada para todas as faixas etárias.",
+  "Texto Resumo": "Esomeprazol é um inibidor da bomba de prótons usado no tratamento de refluxo gastroesofágico, esofagite erosiva, úlcera péptica e esquemas para Helicobacter pylori. Deve ser usado na menor dose efetiva, com atenção a interações, hipomagnesemia e riscos do uso prolongado.",
+  "Classe / Categoria": "Inibidor da bomba de prótons; antiulceroso; redutor da secreção ácida gástrica.",
+  "Posologia Adulto": "Doença do refluxo gastroesofágico com esofagite erosiva: 40 mg por via oral 1 vez ao dia por 4 a 8 semanas.\nDRGE sintomática sem esofagite: 20 mg por via oral 1 vez ao dia.\nErradicação de Helicobacter pylori: 20 mg por via oral 2 vezes ao dia associado a antibióticos conforme esquema.\nPrevenção de lesão por AINE em pacientes de risco: 20 mg a 40 mg por via oral 1 vez ao dia, conforme indicação.",
+  "Contraindicações": "Hipersensibilidade ao esomeprazol, benzimidazóis substituídos ou componentes da fórmula; uso concomitante com nelfinavir.",
+  "Tags Busca": "esomeprazol; inibidor da bomba de prótons; refluxo; gastrite; úlcera; h pylori; antiácido; nexium",
+  "Advertências": "Uso prolongado pode estar associado a hipomagnesemia, deficiência de vitamina B12, fraturas, nefrite intersticial, infecções gastrointestinais, pneumonia e pólipos de glândulas fúndicas. Investigar sinais de alarme como perda de peso, vômitos persistentes, disfagia, hematêmese ou melena. Pode mascarar sintomas de neoplasia gástrica.",
+  "Nomes Comerciais OpenAI": "Nexium; Esomex; Ésio; Esomeprazol EMS; Esomeprazol Eurofarma; Esomeprazol Medley.",
+  "Rede SUS (RENAME)": false,
+  "Princípio Ativo": "Esomeprazol"
+}

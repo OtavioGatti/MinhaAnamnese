@@ -1,0 +1,16 @@
+{
+  "Risco Gestacional": "C",
+  "Slug": "dapagliflozina",
+  "Nomes Comerciais / Produtos ANVISA": "Forxiga; Xigduo XR; Qtern; dapagliflozina.",
+  "Interações": "Insulina, glibenclamida, gliclazida, glimepirida e outras sulfonilureias aumentam risco de hipoglicemia quando associadas, podendo exigir redução de dose. Diuréticos, como furosemida, hidroclorotiazida e clortalidona, aumentam risco de depleção de volume, hipotensão e lesão renal. IECA/BRA, como captopril, enalapril, losartana, valsartana e candesartana, podem somar efeitos sobre função renal/pressão e requerem monitorização. Corticosteroides, como prednisona e dexametasona, podem piorar controle glicêmico. Evitar uso em cetoacidose diabética.",
+  "Apresentações / Nomes Comerciais": "Comprimidos revestidos 5 mg e 10 mg; associações com metformina ou saxagliptina conforme produto. Exemplos: Forxiga; Xigduo XR, quando associado à metformina; Qtern, quando associado à saxagliptina; dapagliflozina genérica/similar.",
+  "Texto Resumo": "Dapagliflozina é um inibidor de SGLT2 usado no diabetes tipo 2 e em indicações cardiorrenais, como insuficiência cardíaca e doença renal crônica. Exige atenção a cetoacidose euglicêmica, infecções genitais, depleção de volume e função renal.",
+  "Classe / Categoria": "Antidiabético oral; inibidor do cotransportador sódio-glicose 2; inibidor de SGLT2; cardiometabólico.",
+  "Posologia Adulto": "Diabetes mellitus tipo 2: 10 mg por via oral 1 vez ao dia, com ou sem alimento.\nInsuficiência cardíaca ou doença renal crônica: 10 mg por via oral 1 vez ao dia, conforme indicação e função renal.\nAvaliar taxa de filtração glomerular antes de iniciar e durante o tratamento.",
+  "Contraindicações": "Hipersensibilidade à dapagliflozina ou componentes da fórmula; diabetes mellitus tipo 1 para controle glicêmico de rotina; cetoacidose diabética; insuficiência renal grave ou diálise conforme indicação e bula; gravidez e lactação conforme avaliação de risco.",
+  "Tags Busca": "dapagliflozina; sglt2; diabetes tipo 2; insuficiência cardíaca; doença renal crônica; forxiga; antidiabético",
+  "Advertências": "Pode causar infecções genitais micóticas, infecção urinária, poliúria, depleção de volume, hipotensão, piora transitória da função renal e cetoacidose diabética, inclusive euglicêmica. Suspender temporariamente em jejum prolongado, cirurgia, doença aguda grave, desidratação ou suspeita de cetoacidose. Usar cautela em idosos, uso de diuréticos, baixa pressão arterial, insuficiência renal e história de infecções genitais recorrentes.",
+  "Nomes Comerciais OpenAI": "Forxiga; Xigduo XR; Qtern; Dapagliflozina EMS; Dapagliflozina Eurofarma; Dapagliflozina Aché.",
+  "Rede SUS (RENAME)": false,
+  "Princípio Ativo": "Dapagliflozina"
+}

@@ -1,0 +1,1390 @@
+FONTE: lote4__quetiapina-hemifumarato__SEROQUEL.pdf
+
+===== BLOCO 1 =====
+APRESENTAÇÕES
+Comprimidos revestidos de 25 mg em embalagens com 14 comprimidos.
+ Comprimidos revestidos de 100 mg em embalagens com 28 comprimidos.
+ Comprimidos revestidos de 200 mg em embalagens com 28 comprimidos.
+
+ VIA ORAL
+
+ USO ADULTO E PEDIÁTRICO ACIMA DE 10 ANOS (vide indicações)
+
+1. INDICAÇÕES
+
+Em adultos, SEROQUEL é indicado para o tratamento da esquizofrenia, como monoterapia ou
+adjuvante no tratamento dos episódios de mania associados ao transtorno afetivo bipolar, dos episódios
+de depressão associados ao transtorno afetivo bipolar, no tratamento de manutenção do transtorno
+afetivo bipolar I (episódios maníaco, misto ou depressivo) em combinação com os estabilizadores de
+humor lítio ou valproato, e como monoterapia no tratamento de manutenção no transtorno afetivo bipolar
+(episódios de mania, mistos e depressivos).
+
+Em adolescentes (13 a 17 anos), SEROQUEL é indicado para o tratamento da esquizofrenia.
+
+Em crianças e adolescentes (10 a 17 anos), SEROQUEL é indicado como monoterapia ou adjuvante
+no tratamento dos episódios de mania associados ao transtorno afetivo bipolar.
+
+3. CARACTERÍSTICAS FARMACOLÓGICAS
+
+Propriedades Farmacodinâmicas
+
+- Mecanismo de ação
+
+A quetiapina é um agente antipsicótico atípico. A quetiapina e seu metabólito ativo no plasma humano,
+a norquetiapina, interagem com ampla gama de receptores de neurotransmissores. A quetiapina e a
+norquetiapina exibem afinidade pelos receptores de serotonina (5HT2) e pelos receptores de dopamina
+D1 e D2 no cérebro. Acredita-se que esta combinação de antagonismo ao receptor com alta seletividade
+para receptores 5HT2 em relação ao receptor de dopamina D2 é o que contribui para as propriedades
+antipsicóticas clínicas e reduz a suscetibilidade aos efeitos colaterais extrapiramidais (EPS) da
+quetiapina em comparação com os antipsicóticos típicos. A quetiapina não possui afinidade pelo
+transportador de norepinefrina (NET) e tem baixa afinidade pelo receptor de serotonina 5HT1A, enquanto
+a norquetiapina tem alta afinidade por ambos. A inibição do NET e a ação agonista parcial do receptor
+5HT1A pela norquetiapina podem contribuir para a eficácia terapêutica do SEROQUEL como um
+
+antidepressivo A quetiapina e a norquetiapina têm também alta afinidade pelos receptores histamínicos
+e alfa1-adrenérgicos, e afinidade moderada pelos receptores alfa2-adrenérgicos. A quetiapina também
+possui baixa afinidade pelos receptores muscarínicos enquanto que a norquetiapina tem afinidade
+moderada à alta por vários subtipos de receptores muscarínicos, o que pode esclarecer os efeitos
+anticolinérgicos (muscarínicos).
+
+- Efeitos Farmacodinâmicos
+
+A quetiapina é ativa em testes de atividade antipsicótica, como condicionamento para evitar estímulos
+indesejáveis. A quetiapina também reverte a ação dos agonistas de dopamina, que é medida tanto em
+termos comportamentais quanto eletrofisiológicos, e aumenta a concentração dos metabólitos de
+dopamina, que é uma indicação neuroquímica do bloqueio do receptor de dopamina D2.
+
+Em testes pré-clínicos preditivos de EPS, a quetiapina é diferente dos antipsicóticos típicos e tem um
+perfil atípico. A quetiapina não produz supersensibilidade nos receptores de dopamina D2 após
+administração crônica. A quetiapina causa apenas catalepsia leve em doses eficazes de bloqueio do
+receptor de dopamina D 2. A quetiapina demonstra seletividade para o sistema límbico por produzir
+bloqueio de despolarização nos neurônios mesolímbicos A10, mas não nos neurônios nigro -estriatais
+A9 que contêm dopamina após administração crônica. A quetiapina exibe uma suscetibilidade mínima
+a causar distonia em macacos Cebus sensibilizados com haloperidol ou sem pré -sensibilização após
+administração aguda e crônica.
+
+Propriedades Farmacocinéticas
+
+A quetiapina é bem absorvida e extensivamente metabolizada após administração oral.
+
+A biodisponibilidade da quetiapina não é afetada de forma significativa pela administração com
+alimentos. Aproximadamente 83% da quetiapina se liga a proteínas plasmáticas. No estado de equilíbrio,
+o pico de concentração molar do metabólito ativo norquetiapina é 35% do observado para a quetiapina.
+ A meia-vida de eliminação da quetiapina e da norquetiapina são de aproximadamente 7 e 12 horas,
+ respectivamente.
+
+ As farmacocinéticas da quetiapina e da norquetiapina são lineares através da faixa de dose aprovada. A
+ cinética da quetiapina não difere entre homens e mulheres.
+
+ A depuração média da quetiapina no idoso é aproximadamente 30% a 50% menor do que a observada
+ em adultos com idade entre 18 e 65 anos.
+
+ A depuração plasmática média da quetiapina foi reduzida em aproximadamente 25% em indivíduos com
+ insuficiência renal grave (depuração de creatinina menor que 30 mL/min/1,73 m2), mas os valores
+
+ individuais de depuração estão dentro da faixa para indivíduos normais. A fração de dose molar média
+ entre a quetiapina livre e o metabólito ativo norquetiapina no plasma humano é  5% da dose livre
+ excretada na urina.
+
+ A quetiapina é extensivamente metabolizada pelo fígado, com a droga-mãe constituindo menos de 5%
+ do material inalterado relacionado ao fármaco na urina ou nas fezes, após administração de quetiapina
+ marcada radioativamente. Aproximadamente 73% da quetiapina radioativa é excretada na urina e 21%
+ nas fezes. A depuração plasmática média da quetiapina é reduzida em aproximadamente 25% em
+ indivíduos com função hepática prejudicada (cirrose alcoólica estável).
+
+ Como a quetiapina é extensivamente metabolizada pelo fígado, altos níveis plasmáticos são esperados
+ em indivíduos ou na população com insuficiência hepática e ajustes de dose podem ser necessários
+ nesses pacientes (ver item Posologia e Modo de Usar).
+
+ Investigações in vitro estabeleceram que a CYP3A4 é a principal enzima responsável pelo metabolismo
+ da quetiapina mediado pelo citocromo P450. A norquetiapina é principalmente formada e eliminada via
+ CYP3A4.
+
+ A quetiapina e diversos de seus metabólitos (incluindo a norquetiapina) foram considerados inibidores
+ fracos da atividade do citocromo humano P450 1A2, 2C9, 2C19, 2D6 e 3A4 in vitro. A inibição in vitro
+ da CYP é observada apenas em concentrações aproximadamente 5 a 50 vezes maiores que as observadas
+ na faixa de dose eficaz usual de 300 a 800 mg/dia em humanos. Com base nesses resultados in vitro, é
+ improvável que a coadministração de SEROQUEL e outros fármacos resulte em inibição clinicamente
+ significativa do metabolismo do outro fármaco mediado pelo citocromo P450.
+
+ - Crianças e adolescentes (10 a 17 anos de idade)
+No estado de equilíbrio, a farmacocinética da quetiapina em crianças e adolescentes foi semelhante à de
+adultos, enquanto que a AUC e a C máx da norquetiapina foram maiores em crianças e adolescentes do
+que em adultos, 45% e 31%, respectivamente. No entanto quando ajustadas para o peso corporal, a AUC
+e a Cmáx da quetiapina em crianças e adolescentes foram menores do que em adultos, 41% e 39%,
+respectivamente, enquanto que a farmacocinética da norquetiapina foi semelhante (ver item Posologia).
+
+Dados de segurança pré-clínica
+
+- Estudos de toxicidade aguda
+
+A quetiapina tem baixa toxicidade aguda. Os resultados encontrados em camundongos e ratos após
+administração oral (500 mg/kg) ou intraperitoneal (100 mg/kg) foram típicos de um agente neuroléptico
+efetivo e incluiram decréscimo da atividade motora, ptose, perda do reflexo para endireitar a postura,
+fluido ao redor da boca e convulsões.
+
+- Estudos de toxicidade de doses repetidas
+
+Em estudos de doses múltiplas em ratos, cachorros e macacos, foram observados efeitos previstos de
+fármacos antipsicóticos no Sistema Nervoso Central (SNC) com quetiapina (por exemplo, sedação em
+doses baixas e tremor, convulsões ou prostração em altas doses).
+
+A hiperprolactinemia, induzida pela atividade antagonista da quetiapina ou de seus metabólitos sobre o
+receptor de dopamina D2, variou entre as espécies, mas foi mais acentuada em ratos, e foram observados
+diversos efeitos consequentes a isso em um estudo de 12 meses, incluindo hiperplasia mamária, aumento
+do peso da pituitária, diminuição do peso uterino e aumento do crescimento das fêmeas.
+
+Alterações funcionais e morfológicas reversíveis no fígado, consistentes com indução das enzimas
+hepáticas, foram observadas em camundongos, ratos e macacos.
+
+Hipertrofia de células foliculares da tireóide e alterações concomitantes nos níveis plasmáticos dos
+hormônios tireoidianos ocorreram em ratos e macacos.
+
+A pigmentação de uma série de tecidos, particularmente a tireóide, não foi associada com qualquer efeito
+morfológico ou funcional.
+
+Aumentos transitórios da frequência cardíaca, sem efeitos sobre a pressão arterial, ocorreram em
+cachorros.
+
+Cataratas triangulares posteriores observadas em cachorros após 6 meses de tratamento em doses de 100
+mg/kg/dia foram consistentes com a inibição da biossíntese de colesterol no cristalino. Não foi observada
+catarata em macacos Cynomolgus recebendo até 225 mg/kg/dia, nem em roedores. A monitoração em
+ estudos clínicos não revelou opacidade de córnea relacionada ao fármaco em seres humanos (ver item
+ Propriedades Farmacodinâmicas).
+
+ Não foi observada evidência de redução de neutrófilos ou agranulocitose em qualquer dos estudos de
+ toxicidade.
+
+ - Estudos de carcinogenicidade
+
+ No estudo em ratos (doses de 0, 20, 75 e 250 mg/kg/dia), a incidência de adenocarcinomas mamários
+ aumentou em todas as doses em ratas fêmeas, consequência da hiperprolactinemia prolongada.
+
+ Em ratos (250 mg/kg/dia) e camundongos (250 e 750 mg/kg/dia) machos, houve aumento da incidência
+ de adenomas benignos de células foliculares tireoidianas, consistente com os mecanismos conhecidos
+ específicos de roedores, resultantes da intensificação da depuração da tiroxina hepática.
+
+ - Estudos de reprodução
+
+ Efeitos relacionados aos níveis de prolactina elevados (redução marginal da fertilidade em machos e
+ pseudogravidez, períodos prolongados de cio, aumento do intervalo pré-coito e redução da taxa de
+ gravidez) foram observados em ratos, embora estes achados não sejam diretamente relevantes para seres
+ humanos, devido às diferenças entre espécies no controle hormonal da reprodução.
+
+ A quetiapina não apresentou efeitos teratogênicos.
+
+ - Estudos de mutagenicidade
+
+ Estudos de toxicidade genética com quetiapina mostraram que ela não é mutagênica ou clastogênica.
+
+4. CONTRAINDICAÇÕES
+
+ SEROQUEL é contraindicado em pacientes com hipersensibilidade conhecida a qualquer componente
+ de sua fórmula.
+
+ Este medicamento não deve ser usado por pessoas com síndrome de má absorção de glicoce -
+ galactose.
+
+ Uso contraindicado no aleitamento ou na doação de leite humano.
+
+ Este medicamento é contraindicado durante o aleitamento ou doação de leite, pois é excretado no
+ leite humano e pode causar reações indesejáveis no bebê. O médico ou cirurgião -dentista deve
+ apresentar alternativas para o seu tratamento ou para a alimentação do bebê.
+
+5. ADVERTÊNCIAS E PRECAUÇÕES
+
+Ideação suicida e comportamento suicida ou piora clínica
+
+A depressão está associada a aumento de risco de ideação suicida, auto-mutilação e comportamento
+suicida. Este risco persiste até ocorrer uma remissão significativa. Como a melhora clinica pode não ocorrer
+nas primeiras semanas de tratamento, os pacientes devem ser cuidadosamente monitorados até que a melhora
+ocorra. A experiência clínica demonstra que o risco de suicídio pode aumentar nos primeiros estágios da
+recuperação.
+
+Outros transtornos psiquiátricos para os quais a quetiapina é prescrita também podem estar associados
+ao aumento do risco de comportamento suicida.
+
+Pacientes com histórico de comportamento suicida ou aqueles que apresentavam um grau significativo
+de ideação suicida antes do início do tratamento são conhecidos por apresentar altos riscos de
+pensamentos suicidas ou tentativas de suicídio e devem ser cuidadosamente monitorados durante o
+tratamento. Uma metanálise da FDA de estudos clínicos placebo-controlados com fármacos
+antidepressivos em aproximadamente 4400 crianças e adolescentes e 77000 pacientes adultos com
+transtornos psiquiátricos mostrou um aumento de risco de comportamento suicida com antidepressivos
+em comparação com o placebo em crianças, adolescentes e jovens com menos de 25 anos de idade. Esta
+metanálise não incluiu estudos envolvendo a quetiapina (ver item Propriedades farmacocinéticas).
+
+Neutropenia e agranulocitose
+
+Neutropenia grave (<0,5 x 109/L) sem infecção foi raramente relatada nos estudos clínicos de curto prazo
+
+placebo controlados em monoterapia com quetiapina. Há relatos de agranulocitose (neutropenia grave com
+infecção) entre todos os pacientes tratados com quetiapina nos ensaios clínicos (rara) assim como no período
+pós-comercialização (incluindo casos fatais). A maioria desses casos de neutropenia grave ocorreram dentro
+dos primeiros dois meses do início de tratamento com quetiapina. Aparentemente não houve relação com a
+dose. Os possíveis fatores de risco para neutropenia incluem a baixa contagem de leucócitos preexistente e
+histórico de neutropenia induzida por fármacos. A quetiapina deve ser descontinuada em pacientes com
+contagem de neutrófilos <1,0 x 109/L. Esses pacientes devem ser observados quanto aos sinais e sintomas
+de infecção e contagem de neutrófilos (até 1,5 x 109/L) (ver item Reações Adversas).
+
+Houve casos de agranulocitose em pacientes sem fatores de risco preexistentes. A neutropenia deve ser
+considerada em pacientes com infecção, especialmente na ausência de fatores de predisposição óbvios, ou
+em pacientes com febre inexplicável, e devem ser tratadas de modo clinicamente apropriado.
+
+Aumentos de glicose no sangue e hiperglicemia
+Aumentos de glicose no sangue e hiperglicemia, e relatos ocasionais de diabetes foram observados nos
+estudos clínicos com quetiapina. Embora uma relação causal com o diabetes não tenha sido estabelecida,
+pacientes que apresentem risco para desenvolver diabetes são aconselhados a fazer monitoramento clínico
+apropriado. Do mesmo modo, pacientes diabéticos devem ser monitorados para possível exacerbação (ver
+item Reações Adversas).
+
+Lipídeos
+
+Aumentos de triglicérides e colesterol e diminuição de HDL foram observados nos estudos clínicos com
+quetiapina (ver item Reações Adversas). Mudanças no perfil lipídico devem ser clinicamente
+controladas.
+
+Fatores Metabólicos
+
+Em alguns pacientes observou-se nos estudos clínicos o agravamento de mais de um dos fatores
+metabólicos de peso, glicemia e lipídeos. Alterações nesses parâmetros devem ser clinicamente
+controladas.
+
+Doenças concomitantes
+
+SEROQUEL deve ser usado com precaução em pacientes com doença cardiovascular conhecida,
+doença vascular cerebral ou outras condições que predisponham à hipotensão. SEROQUEL pode
+induzir hipotensão ortostática, especialmente durante o período inicial de titulação da dose.
+
+Em pacientes com histórico ou em risco para apneia do sono e que estão recebendo concomitantemente
+depressivos do sistema nervoso central (SNC), SEROQUEL deve ser utilizado com cautela.
+
+Disfagia
+
+Disfagia (ver item Reações Adversas) e aspiração têm sido relatadas com SEROQUEL. Embora uma
+relação causal com pneumonia por aspiração não tenha sido estabelecida, SEROQUEL deve ser usado
+com cautela em pacientes com risco de pneumonia por aspiração..
+
+Convulsões
+
+Durante os ensaios clínicos, convulsões ocorreram em 0,5% (20/3490) dos pacientes tratados com
+SEROQUEL em comparação com 0,2% (2/954) no grupo placebo e 0,7% (4/527) no grupo controle com
+medicamento ativo. Tal como acontece com outros antipsicóticos, SEROQUEL deve ser usado com
+precaução em pacientes com histórico de convulsões ou com condições que potencialmente diminuam o
+limiar convulsivo, por exemplo, Alzheimer. As condições que diminuem o limiar convulsivo podem ser
+mais prevalentes na população de 65 anos ou mais.
+Sintomas extrapiramidais (EPS)
+
+Em estudos clínicos placebo-controlados em esquizofrenia e mania bipolar, a incidência de EPS não foi
+diferente do placebo em toda a faixa de doses recomendada. Isto é um fator preditivo de que a quetiapina
+tenha menor potencial de induzir discinesia tardia em pacientes portadores de esquizofrenia e mania
+bipolar em comparação com agentes antipsicóticos típicos. Em estudos clínicos placebo-controlados de
+curto prazo em depressão bipolar, a incidência de EPS foi maior em pacientes tratados com quetiapina
+do que nos pacientes tratados com placebo (ver item Reações Adversas para taxas de EPS observadas
+em todas as indicações e idades). Síndrome neuroléptica maligna
+
+Um complexo de sintomas potencialmente fatal, por vezes referido como SNM – Síndrome Neuroléptica
+Maligna tem sido relatada em associação com a administração de fármacos antipsicóticos, incluindo
+SEROQUEL. Casos raros de SNM já foram relatados com SEROQUEL. As manifestações clínicas da
+SNM são hiperpirexia, rigidez muscular, estado mental alterado e evidência de instabilidade autonôma
+(pulso ou pressão arterial irregular, taquicardia, diaforese e arritmia cardíaca). Sinais adicionais podem
+incluir aumento da creatina fosfoquinase, mioglobinúria (rabdomiólise) e insuficiência renal aguda.
+
+A avaliação diagnóstica dos pacientes com esta síndrome é complicada. Para chegar a um diagnóstico,
+é importante excluir os casos em que quadro clínico inclua tanto doença médica grave (por exemplo,
+pneumonia, infecção sistêmica, etc.) e não tratada ou sinais e sintomas extrapiramidais (EPS)
+inadequadamente tratados. Outras considerações importantes no diagnóstico diferencial incluem a
+toxicidade centro anticolinérgico, insolação, febre medicamentosa e patologia primária do Sistema
+Nervoso Central (SNC).
+
+A gestão do SNM deve incluir: 1) interrupção imediata dos fármacos antipsicóticos e outros
+medicamentos não essenciais para a terapia concomitante; 2) tratamento sintomático intensivo e
+acompanhamento médico; e 3) o tratamento de quaisquer problemas médicos sérios concomitantes para
+os quais estão disponíveis tratamentos específicos. Não existe um acordo geral sobre os regimes de
+tratamento farmacológicos específicos para SNM.
+
+Se um paciente requerer tratamento com droga antipsicótica após recuperação de SNM, a reintrodução da
+terapia medicamentosa deve ser cuidadosamente considerada. O paciente deve ser cuidadosamente
+monitorado quando o reaparecimento de SNM for relatado.
+
+Síndrome serotoninérgica
+
+A administração concomitante de quetiapina e outros agentes serotoninérgicos, tais como inibidores da
+MAO, inibidores seletivos da recaptação da serotonina (ISRSs), inibidores da recaptação da serotonina
+e norepinefrina (IRSNs) ou antidepressivos tricíclicos pode resultar em síndrome serotoninérgica, uma
+condição potencialmente fatal.
+
+Se o tratamento concomitante com outros agentes serotoninérgicos for clinicamente justificado,
+recomenda-se uma observação cuidadosa do paciente, principalmente durante o início do tratamento e
+o aumento da dose. Os sintomas da síndrome serotoninérgica podem incluir alterações do estado mental,
+instabilidade autonômica, anormalidades neuromusculares e/ou sintomas gastrointestinais.
+
+Se houver suspeita de síndrome serotoninérgica, uma redução da dose ou descontinuação da terapia deve
+ser considerada, dependendo da gravidade dos sintomas.
+
+Discinesia tardia
+
+Uma síndrome de movimentos discinéticos involuntários potencialmente irreversível pode se desenvolver
+em pacientes tratados com medicamentos antipsicóticos, incluindo quetiapina. Embora a prevalência da
+síndrome pareça ser maior entre idosos, especialmente mulheres idosas, não é possível confiar em
+estimativas de prevalência para prever, no início do tratamento antipsicótico, quais pacientes são propensos
+a desenvolver a síndrome. É desconhecido, se medicamentos antipsicóticos diferem quanto ao potencial de
+causar discinesia tardia.
+
+Acredita-se que o risco de desenvolver discinesia tardia e a probabilidade de que ele se torne irreversível
+aumentam à medida que a duração do tratamento e da dose cumulativa total de medicamentos antipsicóticos
+administrados ao paciente aumenta. No entanto, a síndrome pode se desenvolver, embora muito menos
+frequente, após períodos de tratamento relativamente curtos em doses baixas ou podem mesmo surgir, após
+a interrupção do tratamento.
+
+Não há nenhum tratamento conhecido para casos estabelecidos de discinesia tardia, embora a síndrome
+possa diminuir, parcial ou totalmente, se o tratamento antipsicótico for retirado. O tratamento antipsicótico,
+em si, no entanto, pode suprimir (ou parcialmente suprimir) os sinais e sintomas da síndrome e, assim, pode
+mascarar o processo subjacente. O efeito que a supressão sintomática tem sobre o efeito de longo prazo da
+síndrome é desconhecido.
+
+Tendo em conta estas considerações, SEROQUEL deve ser prescrito de maneira a minimizar uma possível
+ocorrência de discinesia tardia. O tratamento crônico de antipsicótico geralmente deve ser reservado para
+pacientes que parecem sofrer de uma doença crónica que (1) responde a antipsicóticos, e (2), pa ra quem os
+tratamentos alternativos, igualmente eficazes, mas potencialmente menos prejudiciais não estão disponíveis
+ou adequados. Deve-se buscar a menor dose e a duração mais curta de tratamento que produza uma resposta
+clínica satisfatória em pacientes que necessitam de tratamento crônico. A necessidade de tratamento
+contínuo deve ser reavaliada periodicamente.
+Se os sinais e sintomas de discinesia tardia se apresentarem em um paciente em tratamento com
+SEROQUEL, a descontinuação do medicamento deve ser considerada. No entanto, alguns pacientes
+podem necessitar do tratamento com SEROQUEL, apesar da presença da síndrome.
+
+Prolongamento do intervalo QT
+
+Em estudos clínicos, a quetiapina não foi associada a aumento persistente no intervalo QT absoluto.
+Entretanto, na experiência pós -comercialização houve casos relatados de prolongamento do intervalo
+QT com superdose (ver item Superdose). Assim como com outros antipsicóticos, a quetiapina deve ser
+prescrita com cautela a pacientes com distúrbios cardiovasculares ou histórico familiar de
+prolongamento de intervalo QT. A quetiapina também deve ser prescrita com cautela tanto com
+medicamentos conhecidos por aumentar o intervalo QT como em concomitância com neurolépticos,
+especialmente para pacientes com risco aumentado de prolongamento do intervalo QT, como pacientes
+idosos, pacientes com síndrome congênita de intervalo QT longo, insuficiência cardíaca congestiva,
+hipertrofia cardíaca, hipocalemia ou hipomagnesemia (ver item Interações Medicamentosas).
+
+Este medicamento pode potencializar o prolongamento do intervalo QT, o que aumenta o risco de
+ataque de arritmias ventriculares graves do tipo “torsades de pointes”, que é potencialmente fatal
+(morte súbita).
+
+Cardiomiopatias e Miocardites
+
+Cardiomiopatias e miocardites foram reportadas em estudos clínicos e na experiência pós-
+comercialização, entretanto a relação causal com a quetiapina não foi estabelecia. O tratamento com
+quetiapina, para pacientes com suspeita de cardiomiopatia ou miocardites, deve ser reavaliado.
+
+Reações Adversas Cutâneas Graves
+
+Reações Adversas Cutâneas Graves (SCARs), incluindo Síndrome de Stevens-Johnsons (SJS),
+Necrólise Epidérmica Tóxica (TEN), Pustulose Exantemática Localizada Aguda (PELA), Eritema
+Multiforme (EM) e Reações ao Medicamento com Eosinofilia e Sintomas Sistêmicos (DRESS) são
+reações adversas potencialmente fatais que foram reportadas durante a exposição à quetiapina. SCARs
+normalmente são apresentadas com um ou mais dos seguintes sintomas: erupção cutânea extensa, que
+pode ser pruriginosa ou associada à pústulas, dermatite esfoliativa, febre, linfadenopatia e possível
+eosinofilia ou neutrofilia. Descontinue o uso de quetiapina caso ocorram Reações Adversas Cutâneas
+Graves.
+
+Descontinuação
+Sintomas de abstinência por descontinuação aguda como insônia, náusea e vômito têm sido descritos após
+interrupção abrupta do tratamento com fármacos antipsicóticos como a quetiapina. É aconselhada a
+descontinuação gradual por um período de pelo menos uma a duas semanas (ver item Reações Adversas).
+
+Uso indevido e abuso
+
+Casos de uso indevido e abuso têm sido reportados. É necessário cuidado ao prescrever quetiapina para
+pacientes com histórico de abuso de drogas ou álcool.
+
+Efeitos anticolinérgicos (muscarínico)
+
+A norquetiapina, um metabólito ativo da quetiapina, tem afinidade moderada à alta por vários subtipos
+de receptores muscarínicos. Isto contribui para as reações adversas a medicamentos (ADRs) que
+refletem os efeitos anticolinérgico, quando SEROQUEL é utilizado nas doses recomendadas,
+concomitantemente a outras medicações com efeito anticolinérgico e quando estabelecida uma
+superdose.
+
+SEROQUEL deve ser utilizado com cautela por pacientes recebendo medicamentos que apresentam
+efeitos anticolinérgicos (muscarínicos).
+
+SEROQUEL deve ser utilizado com cautela em pacientes com diagnóstico atual ou histórico de
+retenção urinária, hipertrofia prostática clinicamente significativa, obstrução intestinal ou condições
+relacionadas, pressão intraocular elevada ou glaucoma de ângulo fechado (ver itens Propriedades
+Farmacodinâmicas, Interações Medicamentosas, Reações Adversas e Superdose).
+
+Interações
+
+Ver também item Interações Medicamentosas.
+
+O uso concomitante de SEROQUEL com indutores de enzimas hepáticas, como carbamazepina, pode
+diminuir substancialmente a exposição sistêmica à quetiapina. Dependendo da resposta clínica, altas
+doses de SEROQUEL podem ser consideradas, se usado concomitantemente com indutores de enzimas
+hepáticas.
+
+Durante a administração concomitante de fármacos inibidores potentes da CYP3A4 (como antifúngicos
+azóis, antibióticos macrolídeos e inibidores da protease), as concentrações plasmáticas desses podem
+estar significativamente aumentadas, conforme observado em pacientes nos estudos clínicos. Como
+consequência, doses reduzidas de SEROQUEL devem ser usadas. Considerações especiais devem ser
+feitas em idosos e pacientes debilitados. A relação risco/benefício precisa ser considerada como base
+individual em todos os pacientes.
+
+Para informações referentes a ajuste de dose para pacientes idosos, crianças e adolescentes, pacientes
+com insuficiência renal e hepática, ver item Posologia.
+
+Crianças e adolescentes (10 a 17 anos de idade)
+
+Embora nem todas as reações adversas identificadas em pacientes adultos tenham sido observadas nos
+estudos clínicos com SEROQUEL em crianças e adolescentes, as mesmas precauções e advertências
+mencionadas para adultos devem ser consideradas para crianças e adolescentes. Além disso, alterações
+na pressão arterial, testes de função tireoidiana, ganho de peso e elevação dos níveis de prolactina foram
+observados e devem ser clinicamente monitorados (ver item Reações Adversas).
+
+Dados de segurança de longo prazo, por mais de 26 semanas de tratamento com SEROQUEL, incluindo
+crescimento, maturação e desenvolvimento comportamental, não estão disponíveis para crianças e
+adolescentes (10 a 17 anos de idade).
+
+Níveis de prolactina
+
+Em dois estudos clínicos agudos placebo-controlados em pacientes pediátricos (de 10 a 17 anos), a
+incidência de pacientes que apresentaram níveis de prolactina normais na inclusão e que foi alterado
+para um valor clinicamente importante em qualquer momento do estudo foi 11,3% (13,4% em meninos
+e 8,7% em meninas) no grupo quetiapina e 2,63% (4,0% em meninos e 0,0% em meninas) no grupo
+placebo.
+
+As consequências clínicas do aumento dos níveis de prolactina podem incluir amenorréia, galactorréia
+e ginecomastia.
+
+Pacientes idosos com demência
+
+SEROQUEL não está aprovado para o tratamento de pacientes idosos com psicose relacionada à
+demência.
+
+Efeitos sobre a capacidade de dirigir veículos e operar máquinas: devido ao seu efeito primário no
+SNC, a quetiapina pode interferir em atividades que requeiram um maior alerta mental. Portanto,
+pacientes devem ser orientados a não dirigir veículos ou operar máquinas até que a suscetibilidade
+individual seja conhecida.
+ Oriente seu paciente a não dirigir veículos ou operar máquinas durante o tratamento, pois sua
+ habilidade e capacidade de reação podem estar prejudicadas.
+
+ O uso deste medicamento pode causar tontura, desmaios ou perda da consciência, expondo o
+ paciente a quedas ou acidentes.
+
+ Uso durante a gravidez e lactação
+
+ Categoria de risco na gravidez: C
+
+ Este medicamento não deve ser utilizado por mulheres grávidas sem orientação médica ou do
+ cirurgião-dentista.
+
+ A segurança e a eficácia de SEROQUEL durante a gestação humana não foram estabelecidas. Foram
+ relatados sintomas de abstinência neonatal após algumas gravidezes durante as quais a quetiapina foi
+ usada. Portanto, SEROQUEL só deve ser usado durante a gravidez se os benefícios justificarem os
+ riscos potenciais.
+
+ Foram publicados relatos sobre a excreção de quetiapina durante a amamentação, no entanto, o nível de
+ excreção não foi consistente. As mulheres que estiverem amamentando devem ser aconselhadas a evitar
+ a amamentação enquanto fazem uso de quetiapina.
+
+ Informe a seu paciente que a doação de sangue é absolutamente contraindicada durante o
+ tratamento com hemifumarato de quetiapina e até 7 dias após seu término, devido ao dano que
+ ele pode causar ao receptor.
+
+ Atenção: Contém lactose (tipo de açúcar) abaixo de 0,25g/comprimido.
+
+ SEROQUEL 25mg:
+ Atenção: Contém os corantes dióxido de titânio, óxido de ferro vermelho e óxido de ferro
+ amarelo.
+
+ SEROQUEL 100mg:
+ Atenção: Contém os corantes dióxido de titânio e óxido de ferro amarelo.
+
+ SEROQUEL 200mg:
+ Atenção: Contém o corante dióxido de titânio.
+
+6. INTERAÇÕES MEDICAMENTOSAS
+
+Devido aos efeitos primários da quetiapina sobre o SNC, SEROQUEL deve ser usado com cuidado em
+combinação com outros fármacos de ação central e com álcool.
+
+O uso de quetiapina concomitante com outros fármacos conhecidos por causar desequilíbrio eletrolítico ou
+por aumentar o intervalo QT deve ser feito com cautela (ver item Advertências e Precauções).
+
+SEROQUEL deve ser utilizado com cautela em pacientes recebendo outras medicações com efeitos
+anticolinérgicos (muscarínicos) (ver item Advertências e Precauções).
+
+A farmacocinética do lítio não foi alterada quando co-administrado com SEROQUEL.
+
+As farmacocinéticas de valproato de sódio e da quetiapina não foram alteradas de forma clinicamente
+relevantes quando co-administrados.
+
+A farmacocinética da quetiapina não foi alterada de forma significativa após a co-administração com os
+antipsicóticos risperidona ou haloperidol. Entretanto, a co-administração de SEROQUEL com tioridazina
+causou elevação do clearance da quetiapina.
+
+A quetiapina não induziu os sistemas enzimáticos hepáticos envolvidos no metabolismo da antipirina.
+Entretanto, em um estudo de múltiplas doses em pacientes para avaliar a farmacocinética da quetiapina
+administrada antes e durante tratamento com carbamazepina (um conhecido indutor de enzima
+hepática), a co-administração de carbamazepina aumentou significativamente a depuração da
+quetiapina. Este aumento da depuração reduziu a exposição sistêmica à quetiapina (medida pela AUC)
+para uma média de 13% da exposição durante administração da quetiapina em monoterapia; embora um
+maior efeito tenha sido observado em muitos pacientes. Como consequência desta interação, pode
+ocorrer diminuição da concentração plasmática de quetiapina e, consequentemente, um aumento da dose
+de SEROQUEL deve ser considerado em cada paciente, dependendo da resposta clínica. Deve-se notar
+que a dose máxima diária recomendada de SEROQUEL é 600 a 800 mg/dia dependendo da indicação
+(ver item Posologia).
+
+Tratamentos contínuos em altas doses devem ser considerados somente como resultado de
+considerações cuidadosas da avaliação do risco/benefício para cada paciente. A co-administração de
+SEROQUEL e outro indutor de enzima microssomal, fenitoína, também causou aumentos na depuração
+da quetiapina.
+
+Doses elevadas de SEROQUEL podem ser necessárias para manter o controle dos sintomas psicóticos
+em pacientes que estejam recebendo concomitantemente SEROQUEL e fenitoína ou outros indutores
+de enzimas hepáticas (por exemplo: barbituratos, rifampicina, etc.). Pode ser necessária a redução de
+dose de SEROQUEL se a fenitoína, a carbamazepina ou outro indutor de enzimas hepáticas forem
+retirados e substituídos por um agente não indutor (por exemplo: valproato de sódio).
+A CYP3A4 é a principal enzima responsável pelo metabolismo da quetiapina mediado pelo citocromo
+P450. A farmacocinética da quetiapina não foi alterada após co -administração com cimetidina, um
+conhecido inibidor da enzima P450. A farmacocinética da quetiapina não foi significativamente alterada
+após co-administração com os antidepressivos imipramina (um conhecido inibidor da CYP2D6) ou
+fluoxetina (um conhecido inibidor da CYP3A4 e da CYP2D6). Em estudos de múltiplas doses em
+voluntários sadios para avaliar a farmacocinética da quetiapina antes da administração e durante o
+tratamento com cetoconazol, a co-administração do cetoconazol resultou em aumento na média da Cmáx
+e da AUC da quetiapina de 235% e 522%, respectivamente, correspondendo a uma diminuição da
+depuração oral média de 84%. A meia-vida média da quetiapina aumentou de 2,6 para 6,8 horas, mas o
+tmax médio ficou inalterado. Devido ao potencial para uma interação de magnitude semelhante em uso
+clínico, a dose de SEROQUEL deve ser reduzida durante o uso concomitante de quetiapina e potentes
+inibidores da CYP3A4 (como antifúngicos do tipo azóis, antibióticos macrolídeos e inibidores da
+protease).
+
+Houve relatos de resultados falso-positivos em ensaios imunoenzimáticos para metadona e
+antidepressivos tricíclicos em pacientes que tenham tomado quetiapina. É recomendado que
+imunoensaios de varredura de resultado questionável sejam confirmados por técnica cromatográfica
+apropriada.
+
+SEROQUEL deve ser usado com cautela em combinação com medicamentos serotoninérgicos, como
+inibidores da MAO, inibidores seletivos da recaptação da serotonina (ISRSs), inibidores da recaptação
+da serotonina e norepinefrina (IRSNs) ou antidepressivos tricíclicos, po is o risco de síndrome
+serotoninérgica, uma condição potencialmente fatal, é aumentada.
+
+8. POSOLOGIA E MODO DE USAR
+
+Modo de usar
+
+SEROQUEL deve ser administrado por via oral, com ou sem alimentos.
+
+- Esquizofrenia, episódios de mania associados ao transtorno afetivo bipolar: SEROQUEL deve
+ser administrado duas vezes ao dia. No entanto, SEROQUEL pode ser administrado três vezes ao dia
+em crianças e adolescentes dependendo da resposta clínica e da tolerabilidade de cada paciente.
+
+- Manutenção do transtorno afetivo bipolar I em combinação com os estabilizadores de humor
+lítio ou valproato: SEROQUEL deve ser administrado duas vezes ao dia.
+
+- Episódios de depressão associados ao transtorno afetivo bipolar: SEROQUEL deve ser
+administrado à noite, em dose única diária.
+
+Este medicamento não deve ser partido ou mastigado.
+
+Posologia
+
+- Esquizofrenia
+
+Adolescentes (13 a 17 anos de idade)
+
+A dose total diária para os cinco dias iniciais do tratamento é de 50 mg (dia 1), 100 mg (dia 2), 200 mg
+(dia 3), 300 mg (dia 4) e 400 mg (dia 5). Após o 5º dia de tratamento, a dose deve ser ajustada até atingir
+a faixa de dose considerada eficaz de 400 a 800 mg/dia dependendo da resposta clínica e da
+tolerabilidade de cada paciente. Ajustes de dose devem ser em incrementos não maiores que 100 mg/dia.
+
+A segurança e eficácia de SEROQUEL não foram estabelecidas em crianças com idade inferior a 13
+anos de idade com esquizofrenia.
+
+Adultos
+
+A dose total diária para os quatro dias iniciais do tratamento é de 50 mg (dia 1), 100 mg (dia 2), 200 mg
+(dia 3) e 300 mg (dia 4). Após o 4º dia de tratamento, a dose deve ser ajustada até atingir a faixa
+considerada eficaz de 300 a 450 mg/dia. Entretanto, dependendo da resposta clínica e da tolerabilidade
+de cada paciente, a dose pode ser ajustada na faixa de dose de 150 a 750 mg/dia.
+
+- Episódios de mania associados ao transtorno afetivo bipolar
+
+Crianças e adolescentes (10 a 17 anos de idade)
+
+A dose total diária para os cinco dias iniciais do tratamento é de 50 mg (dia 1), 100 mg (dia 2), 200 mg
+(dia 3), 300 mg (dia 4) e 400 mg (dia 5). Após o 5º dia de tratamento, a dose deve ser ajustada até atingir
+a faixa de dose considerada eficaz de 400 a 600 mg/dia dependendo da resposta clínica e da
+tolerabilidade de cada paciente. Ajustes de dose podem ser em incrementos não maiores que 100 mg/dia.
+
+A segurança e eficácia de SEROQUEL não foram estabelecidas em crianças com idade inferior a 10
+anos de idade com mania bipolar.
+
+Adultos
+
+A dose total diária para os quatro primeiros dias do tratamento é de 100 mg (dia 1), 200 mg (dia 2), 300
+mg (dia 3) e 400 mg (dia 4). Outros ajustes de dose de até 800 mg/dia no 6° dia não devem ser maiores
+que 200 mg/dia. A dose pode ser ajustada dependendo da resposta clínica e da tolerabilidade de cada
+paciente, dentro do intervalo de dose de 200 a 800 mg/dia. A dose usual efetiva está na faixa de dose de
+400 a 800 mg/dia.
+
+- Episódios de depressão associados ao transtorno afetivo bipolar
+
+A dose deve ser titulada como descrito a seguir: 50 mg (dia 1), 100 mg (dia 2), 200 mg (dia 3) e 300 mg
+(dia 4). SEROQUEL pode ser titulado até 400 mg no dia 5 e até 600 mg no dia 8.
+
+A eficácia antidepressiva foi demonstrada com SEROQUEL com 300 mg e 600 mg, entretanto
+benefícios adicionais não foram observados no grupo 600 mg durante tratamento de curto prazo (ver
+itens Reações Adversas e Resultados de Eficácia).
+
+- Manutenção do transtorno afetivo bipolar I em combinação com os estabilizadores de humor
+lítio ou valproato
+Os pacientes que responderam ao SEROQUEL na terapia combinada a um estabilizador de humor (lítio
+ou valproato) para o tratamento agudo de transtorno bipolar devem continuar com a terapia de
+SEROQUEL na mesma dose.
+
+A dose pode ser ajustada dependendo da resposta clínica e da tolerabilidade individual de cada paciente.
+A eficácia foi demonstrada com SEROQUEL (administrado duas vezes ao dia totalizando 400 a 800
+mg/dia) como terapia de combinação a estabilizador de humor (lítio ou valproato).
+- Para tratamento de manutenção no transtorno bipolar em monoterapia
+
+Pacientes que respondem a SEROQUEL para tratamento agudo de transtorno bipolar devem continuar
+o tratamento na mesma dose, sendo que esta pode ser re -ajustada dependendo da resposta clínica e
+tolerabilidade individual de cada paciente, entre a faixa de 300 mg a 800 mg/ dia.
+
+Se o paciente esquecer de tomar o comprimido de SEROQUEL, deve tomá-lo assim que se lembrar.
+Deverá tomar a próxima dose no horário habitual e não tomar uma dose dobrada.
+
+Crianças e adolescentes: a segurança e a eficácia de SEROQUEL não foram avaliadas em crianças e
+adolescentes com depressão bipolar e no tratamento de manutenção do transtorno bipolar.
+
+Insuficiência hepática: a quetiapina é extensivamente metabolizada pelo fígado. Portanto,
+SEROQUEL deve ser usado com cautela em pacientes com insuficiência hepática conhecida,
+especialmente durante o período inicial.
+
+Pacientes com insuficiência hepática devem iniciar o tratamento com 25 mg/dia. A dose pode ser
+aumentada em incrementos de 25 a 50 mg até atingir a dose eficaz, dependendo da resposta clínica e da
+tolerabilidade de cada paciente.
+
+Insuficiência renal: não é necessário ajuste de dose.
+
+Idosos: assim como com outros antipsicóticos, SEROQUEL deve ser usado com cautela em pacientes
+idosos, especialmente durante o período inicial. Pode ser necessário ajustar a dose de SEROQUEL
+lentamente e a dose terapêutica diária pode ser menor do que a usada por pacientes jovens, dependendo
+da resposta clínica e da tolerabilidade de cada paciente. A depuração plasmática média da quetiapina foi
+reduzida de 30% a 50% em pacientes idosos quando comparada a pacientes jovens. O tratamento deve
+ser iniciado com 25 mg/dia de SEROQUEL, aumentando a dose diariamente em incrementos de 25 a
+50 mg até atingir a dose eficaz, que provavelmente será menor que a dose para pacientes mais jovens.
+
+9. REAÇÕES ADVERSAS
+
+As reações adversas a medicamentos (ADRs) mais comumente relatadas com a quetiapina (>10%) são:
+sonolência, tontura, boca seca, sintomas de abstinência por descontinuação, elevação nos níveis séricos
+de triglicérides, elevação no colesterol total (predominantemente no LDL) redução do colesterol HDL,
+aumento de peso, redução da hemoglobina, de sintomas extrapiramidais.
+
+A incidência das ADRs associadas com a quetiapina está descrita na tabela a seguir:
+ FREQUÊNCIA SISTEMAS REAÇÕES ADVERSAS
+ Muito comum Alterações gastrointestinais Boca seca
+ (≥10%) Alterações gerais Sintomas de abstinência por
+ descontinuaçãoa,j
+
+ Investigações Elevações dos níveis de triglicérides
+ séricosa,k; Elevações do colesterol
+
+ total (predominantemente LDL-
+ colesterol)a,l; Diminuição de HDL
+ colesterola,r; Ganho de pesoc;
+ Diminuição da hemoglobinas
+ Alterações do sistema Tonturaa,e,q; Sonolênciab,q; Sintomas
+ nervoso extrapiramidais a,p
+ FREQUÊNCIA SISTEMAS REAÇÕES ADVERSAS
+ Alterações do sangue e Leucopeniaa, x
+ Comum (≥1% - sistema linfático
+ <10%) Alterações cardíacas Taquicardiaa,e; Palpitaçõest
+
+ Alterações visuais Visão borrada
+ Alterações gastrointestinais Constipação; Dispepsia; Vômitov
+ Alterações gerais Astenia leve; Edema periférico;
+ Irritabilidade; Pirexia
+ Investigações Elevações das alaninas
+ aminotransaminases séricas (ALT)d;
+ Elevações nos níveis de gama GTd;
+
+ Redução da contagem de
+ neutrófilosa, g; Aumento de
+ eosinófilosw; Aumento da glicose no
+ sangue para níveis hiperglicêmicos a,
+
+ h; Elevações da prolactina sérica o;
+ Diminuição do T4 total u;
+ Diminuição do T4 livre u;
+ Diminuição do T3 total u; Aumento
+ do TSHu
+
+ Alterações do sistema Disartria
+ nervos
+ Alterações do metabolismo Aumento do apetite
+ e nutrição
+ Alterações respiratórias, Dispneiat
+ torácicas e do mediastino
+ Alterações vasculares Hipotensão ortostáticaa,e,q
+ Alterações psiquiátricas Sonhos anormais e pesadelos
+
+ FREQUÊNCIA SISTEMAS REAÇÕES ADVERSAS
+ Alterações cardíacas Bradicardiay
+ Incomum (≥0,1% - < Alterações gastrointestinais Disfagiaa, i
+ 1%) Hipersensibilidade
+ Alterações do sistema
+ imune
+ Investigações Elevações da aspartato
+ aminotransferase sérica (AST)d;
+
+ Diminuição da contagem de
+ plaquetasn;
+ Diminuição do T3 livreu
+ Alterações do sistema Convulsãoa; Síndrome das pernas
+
+ nervoso inquietas;
+ Discinesia tardiaa; Síncopea,e,q;
+
+ Estado confusional
+
+ Alterações respiratórias, Rinite
+ torácicas e do mediastino
+ Alterações renais e Retenção urinária
+ urinárias
+ Rara (≥0,01% - < 0,1%) Alterações gerais Síndrome neuroléptica malignaa;
+ Hipotermia
+ Distúrbios hepatobiliares Hepatite (com ou sem icterícia)
+ Investigações Elevação dos níveis de creatino
+ fosfoquinase no sangue m;
+ Agranulocitose z
+
+ Alterações psiquiátricas Sonambulismo e outros eventos
+ relacionados
+ Alterações do sistema Priapismo; Galactorréia
+ reprodutor e mamas
+ Alterações gastrointestinais Obstrução intestinal / Íleo
+ FREQUÊNCIA SISTEMAS REAÇÕES ADVERSAS
+ Alterações do sistema Reações anafiláticasf
+ Muito rara imune
+<0,01%) Distúrbios do tecido Rabdomiólise
+ musculoesquelético e
+ conectivo
+ Desconhecida Distúrbios gerais e Abstinência neonatalaa
+ condições do local de
+ administração
+ Distúrbios cutâneos e Reação ao medicamento com
+ subcutâneos eosinofilia e sintomas sistêmicos
+ (DRESS); Pustulose Exantemática
+ Generalizada Aguda (PELA);
+ Eritema Multiforme (EM); Vasculite
+ cutânea
+
+ a) Ver item Advertências.
+ b) Pode ocorrer sonolência, normalmente durante as duas primeiras semanas de tratamento, e que
+ geralmente é resolvida com a continuação da administração da quetiapina.
+ c) Baseado no aumento de ≥ 7% do peso corporal a partir do basal. Ocorre predominantemente
+ durante as primeiras semanas de tratamento, em adultos.
+ d) Foram observadas elevações assintomáticas (mudança de normal a ≥ 3 x ULN a qualquer momento)
+ dos níveis das transaminases séricas (ALT – alanina aminotransferase, AST – aspartato
+ aminotransferase) ou dos níveis de gama-GT em alguns pacientes recebendo quetiapina. Geralmente,
+ esses aumentos foram reversíveis no decorrer do tratamento com quetiapina.
+ e) Assim como com outros antipsicóticos com atividade bloqueadora alfa1-adrenérgica, a quetiapina
+ pode induzir hipotensão ortostática associada à tontura, taquicardia e síncope em alguns pacientes,
+ especialmente durante a fase inicial de titulação da dose.
+ f) A inclusão da reação anafilática é baseada em relatos pós-comercialização.
+ g) Em todos os estudos clínicos de monoterapia placebo-controlados de curta duração entre pacientes
+ com contagem de neutrófilos basal ≥ 1,5 x 109/L, a incidência de pelo menos uma ocorrência da
+ contagem de neutrófilos < 1,5 x 109/L foi de 1,9% em pacientes tratados com quetiapina em comparação
+ com 1,5% dos pacientes tratados com placebo. A incidência ≥ 0,5 a < 1,0 x 109/L foi 0,2% em pacientes
+
+ tratados com quetiapina e 0,2% em pacientes tratados com placebo. Em estudos clínicos conduzidos
+ antes do aditamento ao protocolo para a descontinuação de pacientes com contagem de neutrófilos <1,0
+ x 109/L devido ao tratamento, entre pacientes com contagem de neutrófilos basal ≥ 1,5 x 10 9/L, a
+ incidência de pelo menos uma ocorrência da contagem de neutrófilos < 0,5 x 10 9/L foi de 0,21% em
+
+ pacientes tratados com quetiapina e 0% em pacientes tratados com placebo.
+ h) Glicemia de jejum ≥ 126mg/dL ou glicemia sem jejum ≥ 200mg/dL em pelo menos uma ocasião.
+i) Aumento da taxa de disfagia com quetiapina versus placebo foi observado apenas nos estudos
+clínicos de depressão bipolar.
+j) Em estudos clínicos de monoterapia placebo-controlados de fase aguda, que avaliaram os sintomas
+de abstinência por descontinuação, a incidência agregada desses sintomas após a interrupção abrupta foi
+de 12,1% para quetiapina e 6,7% para o placebo. A incidência agregada dos eventos adversos individuais
+(ex.: insônia, náusea, cefaleia, diarreia, vômitos, tontura e irritabilidade) não excedeu 5,3% em qualquer
+grupo de tratamento e geralmente foi resolvida após 1 semana da descontinuação.
+k) Triglicérides ≥ 200 mg/dL (em pacientes com idade ≥ 18 anos) ou ≥ 150 mg/dL (em pacientes com
+idade < 18 anos) em pelo menos uma ocasião.
+l) Colesterol ≥ 240 mg/dL (em pacientes com idade ≥ 18 anos) ou ≥ 200 mg/dL (em pacientes com
+idade < 18 anos) em pelo menos uma ocasião.
+m) Baseado em relatórios de eventos adversos em estudos clínicos, o aumento de creatino fosfoquinase
+no sangue não está associado à síndrome neuroléptica maligna.
+n) Plaquetas ≤ 100 x 109/L em pelo menos uma ocasião.
+
+o) Níveis de prolactina (pacientes com idade ≥ 18 anos): > 20µg/L em homens; > 30µg/L em mulheres
+a qualquer momento.
+p) Ver texto descrito a seguir.
+q) Pode levar a quedas.
+r) HDL colesterol: < 40 mg/dL em homens; < 50 mg/dL em mulheres a qualquer momento.
+s) Ocorreu diminuição de hemoglobina para ≤ 13 g/dL em homens e ≤ 12 g/dL em mulheres em pelo
+menos uma ocasião em 11% dos pacientes tomando quetiapina em todos os estudos, incluindo extensões
+abertas. Em estudos de curto prazo placebo-controlados, ocorreu diminuição de hemoglobina para ≤ 13
+g/dL em homens e ≤12 g/dL em mulheres em pelo menos uma ocasião em 8,3% dos pacientes tomando
+quetiapina em comparação com 6,2% dos pacientes tomando placebo.
+t) Esses relatos ocorreram frequentemente na presença de taquicardia, tonturas, hipotensão ortostática
+e/ou doença cardíaca/respiratória subjacente.
+u) Baseado em mudanças a partir da linha de base normal até o valor potencial clinicamente importante
+em qualquer momento após a linha de base para todos os ensaios clínicos. Mudanças no T 4 total, T4
+livre, T3 total e T3 livre são definidas como < 0,8 x LLN (pmol / L) e mudança de TSH é > 5 mUI/L em
+qualquer momento.
+v) Baseado no aumento da taxa de vômito em pacientes idosos (≥ 65 anos de idade).
+w) Baseado em mudanças da linha de base normal até o valor potencial clinicamente importante em
+qualquer momento após a linha de base em todos os ensaios clínicos. Alterações nos eosinófilos são
+definidas como ≥ 1 x 109 células/L em qualquer momento.
+
+x) Baseado em mudanças da linha de base normal até o valor potencial clinicamente importante em
+qualquer momento após a linha de base em todos os ensaios clínicos. Alterações nos glóbulos brancos
+são definidas como ≤ 3 x 109 células/L em qualquer momento.
+y) Pode ocorrer no tratamento ou perto do início do tratamento e estar associada a hipotensão e/ou
+síncope. Frequência baseada em relatos de eventos adversos de bradicardia e em eventos relacionados
+em todos os ensaios clínicos com quetiapina.
+z) Com base na freqüência de pacientes com neutropenia grave (<0.5 x 109/L) e infecções durante todos
+ os estudos clínicos de quetiapina.
+aa) Ver item Advertências e precauções.
+
+Sintomas extrapiramidais
+
+Os seguintes estudos clínicos (monoterapia e terapia combinada) incluem o tratamento com SEROQUEL
+e SEROQUEL XRO.
+
+Em estudos clínicos placebo -controlados de curto prazo em esquizofrenia e mania bipolar, a incidência
+agregada de EPS foi similar ao placebo (esquizofrenia: 7,8% para SEROQUEL e 8% para o placebo; mania
+bipolar: 11,2% para SEROQUEL e 11,4% para o placebo). Em estudos clínicos placebo-controlados de
+curto prazo em depressão bipolar, a incidência agregada de EPS foi de 8,9% para SEROQUEL em
+comparação com 3,8% para o placebo, embora a incidência de eventos adversos individuais (ex.: acatisia,
+alterações extrapiramidais, tremor, discinesia, distonia, inquietação, contração muscular involuntária,
+hiperatividade psicomotora e rigidez muscular) ter sido geralmente baixa e não ter excedido 4% em qualquer
+grupo de tratamento.
+
+Em estudos clínicos de longo prazo de esquizofrenia e transtornos afetivos bipolares, a incidência ajustada
+da exposição agregada de EPS devido ao tratamento foi similar entre a quetiapina e o placebo.
+
+Níveis de hormônios tireoidianos
+
+O tratamento com a quetiapina foi associado com diminuições relacionadas à dose dos níveis de
+hormônios da tireoide. Em estudos clínicos placebo-controlados de curto prazo, a incidência de
+alterações potenciais e clinicamente significativas dos níveis de hormônios da tireoide foram: T 4 total:
+3,4% para a quetiapina versus 0,6% para o placebo; T4 livre: 0,7% para a quetiapina versus 0,1% para o
+placebo; T3 total: 0,54% para a quetiapina versus 0,0% para o placebo e T3 livre: 0,2% para a quetiapina
+versus 0,0% para o placebo. A incidência de alterações no TSH foi de 3,2% para a quetiapina versus
+2,7% para o placebo. Em estudos de monoterapia placebo -controlados de curto prazo, a incidência de
+alterações de reciprocidade, potencial e clinicamente significativas no T 3 e no TSH foi de 0,0% tanto
+para a quetiapina e quanto para o placebo e 0,1% para a quetiapina versus 0,0% para o placebo para as
+alterações no T 4 e no TSH. A redução do T 4 total e livre foi máxima nas primeiras seis semanas de
+tratamento com a quetiapina, sem redução adicional durante o tratamento de longo prazo. Em quase
+todos os casos, a interrupção do tratamento com a quetiapina foi associada com a reversão dos efeitos
+sobre T4 total e livre, independentemente da duração do tratamento. Em oito pacientes, onde foi medida
+a TBG, os níveis de TBG não foram alterados.
+Crianças e adolescentes (10 a 17 anos de idade)
+
+As mesmas reações adversas acima descritas para adultos devem ser consideradas para crianças e
+adolescentes.
+
+A tabela a seguir resume as reações adversas que ocorrem em maior frequência em crianças e
+adolescentes do que em adultos ou reações adversas que não foram identificadas em pacientes adultos.
+
+ FREQUÊNCIA SISTEMAS REAÇÕES ADVERSAS
+
+ Alterações no metabolismo Aumento do apetite
+ Muito comum (≥10%) e nutricional
+ Investigações Elevações da prolactina sérica a;
+ Aumento na pressão arterialb
+
+ Alterações gastrointestinais Vômito
+
+ Comum (≥1% - <10%) Alterações respiratórias, Rinite
+ torácicas e do mediastino
+ Alterações do sistema Síncope
+ nervoso
+(a) Níveis de prolactina (pacientes < 18 anos de idade): > 20µg/L em homens; > 26µg/L em mulheres a
+qualquer momento. Menos de 1% dos pacientes tiveram um aumento do nível de prolactina > 100µg/L.
+(b) Baseado nos dados lineares clinicamente significativos (adaptados a partir dos critérios do National
+Institutes of Health) ou aumentos > 20 mmHg para pressão arterial sistólica ou > 10 mmHg para pressão
+arterial diastólica, a qualquer momento, em dois estudos agudos placebo-controlados (3-6 semanas) em
+crianças e adolescentes.
+
+Ganho de peso em crianças e adolescentes
+
+Em um estudo clínico placebo-controlado de 6 semanas em esquizofrenia com pacientes adolescentes
+(13 a 17 anos de idade), a média de aumento no peso corporal foi 2,0 Kg no grupo SEROQUEL e 0,4
+Kg no grupo placebo. 21% dos pacientes tratados com SEROQUEL e 7% dos pacientes tratados com
+placebo adquiriram ≥ 7% do seu peso corporal.
+
+Em um estudo clínico placebo -controlado de 3 semanas em mania bipolar com crianças e adolescentes
+(10 a 17 anos de idade), a média de aumento no peso corporal foi 1,7 Kg no grupo SEROQUEL e 0,4
+Kg no grupo placebo. 12% dos pacientes tratados com SEROQUEL e 0% dos pacientes tratados com
+placebo adquiriram ≥ 7% do seu peso corporal.
+Em um estudo clínico aberto que envolveu pacientes dos dois estudos citados anteriormente, 63% dos
+pacientes (241/380) completaram 26 semanas de terapia com SEROQUEL. Após 26 semanas de
+tratamento, a média de aumento no peso corporal foi 4,4 Kg. 45% dos pacientes adquiriram ≥ 7% do
+seu peso corporal, não ajustado ao crescimento normal. A fim de ajustar para o crescimento normal,
+após 26 semanas, um aumento de pelo menos 0,5 no desvio padrão do basal no IMC foi utilizado como
+uma medida de uma mudança clinicamente significativa; 18,3% dos pacientes com SEROQUEL
+preencheram este critério após 26 semanas de tratamento.
+
+Sintomas extrapiramidais em crianças e adolescentes
+
+Em um estudo clínico de monoterapia placebo-controlado de curto prazo em esquizofrenia com pacientes
+adolescentes (13 a 17 anos de idade), a incidência agregada de EPS foi 12,9% para SEROQUEL e 5,3%
+para o placebo, embora a incidência dos eventos adversos individuais (ex.: acatisia, tremor, alterações
+extrapiramidais, hipocinesia, inquietação, hiperatividade psicomotora, rigidez muscular, discinesia) foi
+geralmente baixa e não excedeu 4,1% em nenhum grupo de tratamento. Em um estudo clínico de
+monoterapia placebo-controlado de curto prazo em mania bipolar com crianças e adolescentes (10 a 17
+anos de idade), a incidência agregada de EPS foi 3,6% para SEROQUEL e 1,1% para o placebo.
+
+Pancreatite
+
+Pancreatite foi relatada nos estudos clínicos e durante a experiência pós -comercialização, no entanto,
+não foi estabelecida uma relação causal. Entre os relatos pós-comercialização, muitos pacientes
+apresentaram fatores conhecidos por estarem associados à pancreatite, tais como aumento das
+triglicérides (ver item Advertências e precauções, Lipídeos), cálculos biliares e o consumo de álcool.
+
+Constipação e obstrução intestinal
+
+A constipação representa um fator de risco para a obstrução intestinal. Foram relatadas constipação e
+obstrução intestinal com o uso da quetiapina. Isto inclui relatos fatais em pacientes com alto risco de
+obstrução intestinal, incluindo aqueles que estavam recebendo múltiplas medicações concomitantes que
+reduzem a motilidade intestinal e/ou que podem não ter relatado sintomas de constipação.
+
+Outros possíveis eventos
+
+Outros possíveis eventos foram observados em ensaios clínicos com SEROQUEL; porém, uma relação
+causal não foi estabelecida: agitação, ansiedade, faringite, prurido, dor abdominal, hipotensão postural,
+dor nas costas, febre, gastroenterite, hipertonia, espasmos, depressão, ambliopia, distúrbio da fala,
+hipotensão, corpo pesado, hipertensão, falta de coordenação, pensamentos anormais, ataxia, sinusite,
+sudorese, infecção do trato urinário, fadiga, letargia, congestão nasal, artralgia, parestesia, tosse,
+hipersonia, congestão nasal, doença do refluxo gastroesofágico, dor nas extremidades, perturbações do
+equilíbrio, hipoestesia, parkinsonismo, anorexia, abscesso no dente, epistaxe, agressão, rigidez
+musculoesquelética, superdosagem acidental, acne, palidez, desconforto no estômago, dor de ouvido,
+parestesia e sede.
+
+Experiência pós-comercialização
+
+As seguintes reações adversas foram identificadas durante a comercialização de SEROQUEL. Como
+estas reações são relatadas voluntariamente por população de tamanho incerto, não é sempre possível
+estimar com segurança a sua frequência ou estabelecer uma relação causal com a exposição ao
+medicamento.
+
+As reações adversas relatadas desde a introdução no mercado, que foram temporalmente relacionados à
+terapia com quetiapina, incluem: reação anafilática, cardiomiopatia, reação medicamentosa com
+eosinofilia e sintomas sistémicos (HID), hiponatremia, miocardite, enurese noturna, pancreatite,
+amnésia retrógrada, rabdomiólise, síndrome de secreção inadequada de hormônio antidiurético
+(SIADH), síndrome de Stevens-Johnson (SSJ), e necrólise epidérmica tóxica (NET).
+
+Em casos de eventos adversos, notifique pelo Sistema VigiMed, disponível no Portal da Anvisa.
+
+10. SUPERDOSE
+
+Em estudos clínicos, a sobrevida foi relatada em superdose aguda de até 30 g de quetiapina. A maioria
+dos pacientes com superdosagem não apresentou eventos adversos ou recuperou-se completamente dos
+eventos adversos relatados. Morte foi relatada em um estudo clínico seguido de superdose de 13,6 g de
+quetiapina sozinha.
+
+Na experiência pós-comercialização, foram relatados casos raros de superdose com o uso de quetiapina,
+resultando em morte ou coma.
+
+Na experiência pós -comercialização, foram relatados casos de prolongamento do intervalo QT com
+superdose.
+
+Pacientes com doença cardiovascular grave pré -existente podem ter o risco aumentado dos efeitos da
+superdose (ver item Advertências e Precauções).
+
+Em geral, os sinais e sintomas relatados foram resultantes da exacerbação dos efeitos farmacológicos
+conhecidos da quetiapina, isto é, sonolência e sedação, taquicardia, hipotensão e efeitos anticolinérgicos.
+
+Tratamento da superdose
+ Não há antídoto específico para a quetiapina. Em casos de intoxicação grave, a possibilidade do
+ envolvimento de múltiplos fármacos deve ser considerada e recomenda -se procedimentos de terapia
+ intensiva, incluindo estabelecimento e manutenção de vias aéreas desobstruídas, garantindo oxigenação
+ e ventilação adequadas, e monitoração e suporte do sistema cardiovascular. Neste contexto, relatórios
+ publicados na definição de sintomas anticolinérgicos, descrevem uma reversão dos efeitos graves sobre
+ o SNC, incluindo coma e delírio, com a administração de fisostigmina intravenosa (1 -2 mg), com
+ monitoramento contínuo do ECG.
+
+ Os casos de hipotensão refratária a superdose de quetiapina devem ser tratados com medidas adequadas,
+ tais como fluidos intravenosos e/ou agentes simpatomiméticos (adrenalina e dopamina devem ser
+ evitadas, uma vez que a estimulação beta pode piorar a hipotensão devido ao bloqueio alfa induzido pela
+ quetiapina).
+
+ Supervisão médica e monitoração cuidadosa devem ser mantidas até a recuperação do paciente.
+
+ Em caso de intoxicação ligue para 0800 722 6001, se você precisar de mais orientações.
+
+ III)
+
+===== BLOCO 2 =====
+APRESENTAÇÕES
+Comprimidos revestidos de liberação prolongada de 50 mg em embalagens com 30 comprimidos.
+ Comprimidos revestidos de liberação prolongada de 200 mg em embalagem com 30 comprimidos.
+ Comprimidos revestidos de liberação prolongada de 300 mg em embalagens com 30 comprimidos.
+
+ VIA ORAL
+
+ USO ADULTO
+
+1. INDICAÇÕES
+
+SEROQUEL XRO é indicado para:
+ • Tratamento da esquizofrenia;
+ • Como monoterapia ou adjuvante no tratamento dos episódios de mania e de depressão associados ao
+ transtorno afetivo bipolar;
+ • O alívio dos sintomas do transtorno depressivo maior, em terapia adjuvante com outro antidepressivo,
+ quando outros medicamentos antidepressivos tenham falhado. Embora não haja evidência de que a
+ eficácia de SEROQUEL XRO isoladamente seja superior a outros antidepressivos, quando usado em
+ terapia adjuvante, ele oferece uma opção de tratamento para pacientes que não responderam a tratamentos
+ antidepressivos anteriores. Antes de iniciar o tratamento os médicos devem considerar o perfil de
+ segurança de SEROQUEL XRO.
+
+8. POSOLOGIA E MODO DE USAR
+
+Modo de usar
+
+SEROQUEL XRO deve ser administrado em dose única diária, por via oral, com ou sem alimentos.
+
+Este medicamento não pode ser partido ou mastigado.
+
+Posologia
+
+- Esquizofrenia
+
+A dose total diária para o início do tratamento é de 300 mg no dia 1, 600 mg no dia 2 e até 800 mg após o dia 2.
+A dose deve ser ajustada até atingir a faixa considerada eficaz de 400 mg a 800 mg/dia, dependendo da resposta
+clínica e da tolerabilidade de cada paciente. Para a terapia de manutenção em esquizofrenia não é necessário
+ajuste de dose.
+
+- Episódios de mania associados ao transtorno afetivo bipolar
+
+A dose total diária para o início do tratamento é de 300 mg no dia 1, 600 mg no dia 2 e até 800 mg após o dia 2.
+A dose deve ser ajustada até atingir a faixa considerada eficaz de 400 mg a 800 mg/dia, dependendo da resposta
+clínica e da tolerabilidade de cada paciente.
+
+- Episódios de depressão associados ao transtorno afetivo bipolar
+
+SEROQUEL XRO deve ser administrado à noite, em dose única diária. SEROQUEL XRO deve ser titulado
+como descrito a seguir: 50 mg (dia 1), 100 mg (dia 2), 200 mg (dia 3) e 300 mg (dia 4). SEROQUEL XRO pode
+ser titulado até 400 mg no dia 5 e até 600 mg no dia 8.
+A eficácia antidepressiva foi demonstrada com SEROQUEL 300 mg e 600 mg, entretanto, não foram vistos
+benefícios adicionais no grupo de 600 mg durante tratamento de curto prazo (ver itens Reações Adversas e
+Resultados de Eficácia).
+
+- Como adjuvante no tratamento de episódios de depressão maior em Transtorno Depressivo Maior (MDD)
+
+SEROQUEL XRO deve ser administrado à noite. A dose diária no início do tratamento é de 50 mg nos dias 1 e
+2, e 150 mg nos dias 3 e 4. O efeito antidepressivo foi observado nas doses de 150 e 300 mg/dia em estudos em
+adjuvância de curta duração (com amitriptilina, bupropiona, citalopram, duloxetina, escitalopram, fluoxetina,
+paroxetina, sertralina e venlafaxina). Existe um risco aumentado de eventos adversos com doses maiores. Os
+médicos devem, portanto, garantir que a menor dose eficaz seja usada para o tratamento, começando com 50
+mg/dia. A necessidade de aumentar a dose de 150 para 300 mg/dia deve ser baseada na avaliação individual do
+paciente.
+
+Se o paciente esquecer de tomar o comprimido de SEROQUEL XRO, deverá tomá-lo assim que se lembrar.
+Deve tomar a próxima dose no horário habitual e não deve tomar dose dobrada.
+
+Idosos: assim como com outros antipsicóticos, SEROQUEL XRO deve ser usado com cautela no paciente idoso,
+especialmente durante o período inicial. Pode ser necessário ajustar a dose de SEROQUEL XRO lentamente e
+a dose terapêutica diária pode ser menor do que a usada por pacientes jovens. A depuração plasmática média de
+quetiapina foi reduzida em 30% a 50% em pacientes idosos quando comparada a pacientes jovens. Pacientes
+idosos devem iniciar o tratamento com 50 mg/dia. A dose pode ser aumentada em incrementos de 50 mg/dia até
+atingir a dose eficaz, dependendo da resposta clínica e da tolerabilidade de cada paciente.
+
+Em pacientes idosos com episódios de depressão maior a administração deve iniciar com 50 mg/dia nos dias 1 a
+3, aumentando para 100 mg/dia no dia 4 e 150 mg/dia no dia 8. A menor dose efetiva, a partir de 50 mg/dia deve
+ser usada. Com base na avaliação individual do paciente, se for necessário aumentar a dose para 300 mg/dia, isso
+não deve ser antes do dia 22 do tratamento.
+
+Crianças e adolescentes: a segurança e a eficácia de SEROQUEL XRO não foram estabelecidas para crianças
+e adolescentes (10 a 17 anos de idade).
+
+Insuficiência renal: não é necessário ajuste de dose.
+
+Insuficiência hepática: a quetiapina é extensivamente metabolizada pelo fígado. Portanto, SEROQUEL XRO
+deve ser usado com cautela em pacientes com insuficiência hepática conhecida, especialmente durante o período
+inicial. Pacientes com insuficiência hepática devem iniciar o tratamento com 50 mg/dia. A dose pode ser
+aumentada em incrementos de 50 mg/dia até atingir a dose eficaz, dependendo da resposta clínica e da
+tolerabilidade de cada paciente.
+
+9. REAÇÕES ADVERSAS
+
+ As reações adversas a medicamentos (ADRs) mais comumente relatadas com a quetiapina (≥10%) são:
+ sonolência, tontura, boca seca, sintomas de abstinência por descontinuação, elevação nos níveis séricos de
+ triglicérides, elevação no colesterol total (predominantemente no LDL) redução do colesterol HDL, aumento de
+ peso, redução da hemoglobina e de sintomas extrapiramidais.
+ A incidência das ADRs associadas com a quetiapina está descrita na tabela a seguir:
+
+ FREQUÊNCIA SISTEMAS REAÇÕES ADVERSAS
+ Muito comum (≥10%) Alterações gastrointestinais Boca seca
+
+ Alterações gerais e do local de Sintomas de abstinência por
+ administração descontinuação a, j
+
+ Investigações Elevações dos níveis de triglicérides
+ séricosa, k; Elevações do colesterol total
+ (predominantemente LDL-colesterol)a, l;
+ Diminuição de HDL-colesterola, r; Ganho
+ de pesoc; Diminuição da hemoglobinas
+ Alterações do sistema nervoso Tonturaa, e, q; Sonolênciab, q; Sintomas
+ extrapiramidais a, x
+
+ FREQUÊNCIA SISTEMAS REAÇÕES ADVERSAS
+ Comum (≥1% - < 10%) Alterações do sangue e sistema Leucopeniaa, x
+
+ linfático
+ Alterações cardíacas Taquicardiaa, e; Palpitaçõest
+ Alterações visuais Visão borrada
+ Alterações gastrointestinais Constipação; Dispepsia; Vômitov
+
+ Alterações gerais e do local de Astenia leve; Edema periférico;
+ administração Irritabilidade; Pirexia
+ Investigações Elevações das alaninas
+ aminotransaminases séricas (ALT)d;
+ Elevações nos níveis de gama GTd;
+ Redução da contagem de neutrófilosa, g;
+ Aumento de eosinófilosw; Aumento da
+ glicose no sangue para níveis
+ hiperglicêmicosa, h; Elevações da prolactina
+ séricao; Diminuição do T4 totalu;
+ Diminuição do T4 livreu; Diminuição do T 3
+ totalu; Aumento do TSHu
+ Alterações do sistema nervoso Disartria
+
+ Alterações do metabolismo e Aumento do apetite
+ nutrição
+ Alterações respiratórias, Dispneiat
+ torácicas e do mediastino
+ Alterações vasculares Hipotensão ortostáticaa, e, q
+
+ Alterações psiquiátricas Sonhos anormais e pesadelos
+
+ Incomum (≥0,1% - < Alterações cardíacas Bradicardiav
+ 1%)
+ Alterações gastrointestinais Disfagiaa, i
+
+ Alterações do sistema imune Hipersensibilidade
+
+ Investigações Elevações da aspartato aminotransferase
+ sérica (AST)d;
+ Diminuição da contagem de plaquetasn;
+ Diminuição do T3 livreu
+ Alterações do sistema nervoso Convulsãoa;
+ Síndrome das pernas inquietas; Discinesia
+ tardiaa; Síncopea, e, q; Estado confusional
+ Alterações respiratórias, Rinite
+ torácicas e do mediastino
+ Alterações renais e urinárias Retenção urinária
+ FREQUÊNCIA SISTEMAS REAÇÕES ADVERSAS
+ Rara (≥0,01% - < 0,1%) Alterações gerais e do local de Síndrome neuroléptica malignaa;
+ administração Hipotermia
+
+ Distúrbios hepatobiliares Hepatite (com ou sem icterícia)
+ Investigações Elevação dos níveis de creatino
+ fosfoquinase
+ no sanguem; Agranulocitosez
+ Alterações psiquiátricas Sonambulismo e outros eventos
+ relacionados
+ Alterações do sistema Priapismo; Galactorréia
+ reprodutor e mamas
+ Alterações gastrointestinais Obstrução intestinal / Íleo
+ Muito rara (<0,01%) Alterações do sistema imune Reações anafiláticasf
+ Distúrbios do tecido Rabdomiólise
+ musculoesquelético e
+ conectivo
+ Desconhecida Distúrbios gerais e condições Abstinência neonatalaa
+ do
+ local de administração
+ Distúrbios cutâneos e Reação ao medicamento com eosinofilia e
+ subcutâneos sintomas sistêmicos (DRESS); Pustulose
+ Exantemática Generalizada Aguda (PELA);
+ Eritema Multiforme (EM); Vasculite
+ cutânea
+ Distúrbios Benzoarab
+ gastrointestinais
+ a) Ver item Advertências.
+ b) Pode ocorrer sonolência, normalmente durante as duas primeiras semanas de tratamento, e que
+ geralmente é resolvida com a continuação da administração da quetiapina.
+ c) Baseado no aumento de ≥ 7% do peso corporal a partir do basal. Ocorre predominantemente durante as
+ primeiras semanas de tratamento, em adultos.
+ d) Foram observadas elevações assintomáticas (mudança de normal a ≥ 3 x ULN a qualquer momento) dos
+ níveis das transaminases séricas (ALT – alanina aminotransferase, AST – aspartato aminotransferase) ou dos
+ níveis de gama-GT em alguns pacientes recebendo quetiapina. Geralmente, esses aumentos foram reversíveis
+ no decorrer do tratamento com quetiapina.
+ e) Assim como com outros antipsicóticos com atividade bloqueadora alfa1-adrenérgica, a quetiapina pode
+ induzir hipotensão ortostática associada a tontura, taquicardia e síncope em alguns pacientes, especialmente
+ durante a fase inicial de titulação da dose.
+ f) A inclusão da reação anafilática é baseada em relatos pós-comercialização.
+ g) Em todos os estudos clínicos de curto prazo de monoterapia placebo-controlados de curta duração entre
+ pacientes com contagem de neutrófilos basal ≥ 1,5 x 109/L, a incidência de pelo menos uma ocorrência da
+ contagem de neutrófilos < 1,5 x 109/L foi de 1,9% em pacientes tratados com quetiapina em comparação com
+ 1,5% dos pacientes tratados com placebo. A incidência ≥ 0,5 a <1,0 x 109/L foi 0,2% em pacientes tratados
+ com quetiapina e 0,2% em pacientes tratados com placebo. Em estudos clínicos conduzidos antes do
+ aditamento ao protocolo para a descontinuação de pacientes com contagem de neutrófilos <1,0 x 109/L devido
+ ao tratamento, entre pacientes com contagem de neutrófilos basal ≥ 1,5 X 109/L, a incidência de pelo menos
+ uma ocorrência da contagem de neutrófilos < 0,5 x 109/L foi de 0,21% em pacientes tratados com quetiapina
+
+ e 0% em pacientes tratados com placebo.
+ h) Glicemia de jejum ≥ 126mg/dL ou glicemia sem jejum ≥ 200mg/dL em pelo menos uma ocasião.
+ i) Aumento da taxa de disfagia com quetiapina versus placebo foi observado apenas nos estudos clínicos
+ de depressão bipolar.
+ j) Em estudos clínicos de monoterapia placebo-controlados de fase aguda, que avaliaram os sintomas de
+ abstinência por descontinuação, a incidência agregada desses sintomas após a interrupção abrupta foi de
+ 12,1% para quetiapina e 6,7% para o placebo. A incidência agregada dos eventos adversos individuais (ex.:
+ insônia, náusea, cefaléia, diarréia, vômitos, tontura e irritabilidade) não excedeu 5,3% em qualquer grupo de
+ tratamento e geralmente foi resolvida após 1 semana da descontinuação.
+ k) Triglicérides ≥ 200 mg/dL (em pacientes com idade ≥ 18 anos) ou ≥ 150 mg/dL (em pacientes com idade
+ < 18 anos) em pelo menos uma ocasião.
+ l) Colesterol ≥ 240 mg/dL (em pacientes com idade ≥ 18 anos) ou ≥ 200 mg/dL (em pacientes com idade
+ < 18 anos) em pelo menos uma ocasião.
+ m) Baseado em relatórios de eventos adversos em estudos clínicos, o aumento de creatino fosfoquinase no
+ sangue não está associado à síndrome neuroléptica maligna.
+ n) Plaquetas ≤ 100 x 109/L em pelo menos uma ocasião.
+
+ o) Níveis de prolactina (pacientes com idade ≥ 18 anos): > 20µg/L em homens; > 30µg/L em mulheres a
+ qualquer momento.
+ p) Ver texto descrito a seguir.
+ q) Pode levar a quedas.
+ r) HDL colesterol: <40 mg/dL em homens; <50 mg/dL em mulheres a qualquer momento.
+ s) Ocorreu diminuição de hemoglobina para ≤ 13 g/dL em homens e ≤12 g/dL em mulheres em pelo menos
+ uma ocasião em 11% dos pacientes tomando quetiapina em todos os estudos, incluindo extensões abertas.
+ Em estudos de curto prazo placebo -controlados, ocorreu diminuição de hemoglobina para ≤ 13 g/dL em
+ homens e ≤12 g/dL em mulheres em pelo menos uma ocasião em 8,3% dos pacientes tomando quetiapina em
+ comparação com 6,2% dos pacientes tomando placebo.
+ t) Esses relatos frequentemente ocorreram em um cenário de taquicardia, tontura, hipotensão ortostática
+ e/ou doença cardíaca/respiratória subjacente.
+ u) Com base nas alterações dos valores basais normais para potencial e clinicamente importantes a qualquer
+ tempo pós-basal em todos os estudos. Alterações no T4 total, T4 livre, T3 total e T3 livre são definidos como
+ <0,8 x LLN (pmol/L) e alteração no TSH é > 5 mUI/L a qualquer tempo.
+ v) Baseado no aumento da incidência de vômito em pacientes idosos (≤65 anos de idade).
+ w) Baseado em mudanças da linha de base normal até o valor potencial clinicamente importante em qualquer
+ momento após a linha de base em todos os ensaios clínicos. Alterações nos eosinófilos são definidas como ≥
+ 1 x 109 células/L em qualquer momento.
+
+ x) Baseado em mudanças da linha de base normal até o valor potencial clinicamente importante em qualquer
+ momento após a linha de base em todos os ensaios clínicos. Alterações nos glóbulos brancos são definidas
+ como ≤ 3 x 109 células/L em qualquer momento.
+
+ y) Pode ocorrer no tratamento ou perto do início do tratamento e estar associada a hipotensão e/ou síncope.
+ Frequência baseada em relatos de eventos adversos de bradicardia e em eventos relacionados em todos os
+ ensaios clínicos com quetiapina.
+ z) Com base na freqüência de pacientes com neutropenia grave (<0.5 x 109/L) e infecções durante todos os
+
+ estudos clínicos da quetiapina.
+ aa) Ver item Advertências e precauções.
+ ab) Reação adversa observada apenas em casos de superdose. Vide seção 10. Superdose.
+Sintomas extrapiramidais
+
+Os seguintes estudos clínicos (monoterapia e terapia combinada) incluem o tratamento com SEROQUEL
+e
+SEROQUEL XRO.
+
+Em estudos clínicos placebo-controlados de curto prazo em esquizofrenia e mania bipolar, a incidência agregada de
+EPS foi similar ao placebo (esquizofrenia: 7,8% para quetiapina e 8% para o placebo; mania bipolar: 11,2% para
+quetiapina e 11,4% para o placebo). Em estudos clínicos placebo -controlados de curto prazo em depressão bipolar, a
+incidência agregada de EPS foi de 8,9% para quetiapina em comparação com 3,8% para o placebo, embora a
+incidência de eventos adversos individuais (ex.: acatisia, alterações extrapiramidais, tremor, discinesia, distonia,
+inquietação, contração muscular involuntária, hiperatividade psicomotora e rigidez muscular) ter sido geralmente
+baixa e não ter excedido 4% em qualquer grupo de tratamento.
+
+Em estudos clínicos de longo prazo de esquizofrenia, transtornos afetivos bipolares e transtorno depressivo maior, a
+incidência ajustada da exposição agregada de EPS devido ao tratamento foi similar entre a quetiapina e o placebo.
+
+Níveis de hormônios tireoidianos
+
+O tratamento com a quetiapina foi associado com diminuições relacionadas à dose dos níveis de hormônios da
+tireóide. Em estudos clínicos placebo-controlados de curto prazo, a incidência de alterações potenciais e
+clinicamente significativas dos níveis de hormônios da tireóide foram: T 4 total: 3,4% para a quetiapina versus
+0,6% para o placebo; T 4 livre: 0,7% para a quetiapina versus 0,1% para o placebo; T 3 total: 0,54% para a
+quetiapina versus 0,0% para o placebo; e T 3 livre: 0,2% para a quetiapina versus 0,0% para o placebo. A
+incidência de alterações no TSH foi de 3,2% para a quetiapina versus 2,7% para o placebo. Em estudos de
+monoterapia placebo-controlados de curto prazo, a incidência de alterações de reciprocidade, potencial e
+clinicamente significativas no T 3 e no TSH foi de 0,0% tanto para a quetiapina e quanto para o placebo e 0,1%
+para a quetiapina versus 0,0% para o placebo para as alterações no T4 e no TSH. A redução do T4 total e livre foi
+máxima nas primeiras seis semanas de tratamento com a quetiapina, sem redução adicional durante o tratamento
+de longo prazo. Em quase todos os casos, a interrupção do tratamento com a quetiapina foi associada com a
+reversão dos efeitos sobre T4 total e livre, independentemente da duração do tratamento. Em oito pacientes, onde
+foi medida a TBG (tireoglobulinas), os níveis de TBG não foram alterados.
+
+Pancreatite
+
+Pancreatite foi relatada nos estudos clínicos e durante a experiência pós -comercialização, no entanto, não foi
+estabelecida uma relação causal. Entre os relatos pós -comercialização, muitos pacientes apresentaram fatores
+conhecidos por estarem associados à pancreatite, tais como aumento das triglicérides (ver item Advertências e
+precauções, Lipídeos), cálculos biliares e o consumo de álcool.
+ Constipação e obstrução intestinal
+
+ A constipação representa um fator de risco para a obstrução intestinal. Foram relatadas constipação e obstrução
+ intestinal com o uso da quetiapina. Isto inclui relatos fatais em pacientes com alto risco de obstrução intestinal,
+ incluindo aqueles que estavam recebendo múltiplas medicações concomitantes que reduzem a motilidade
+ intestinal e/ou que podem não ter relatado sintomas de constipação.
+
+ Outros possíveis eventos
+
+ Outros possíveis eventos foram observados em ensaios clínicos com SEROQUEL; porém, uma relação causal
+ não foi estabelecida: agitação, ansiedade, faringite, prurido, dor abdominal, hipotensão postural, dor nas costas,
+ febre, gastroenterite, hipertonia, espasmos, depressão, ambliopia, distúrbio da fala, hipotensão, corpo pesado,
+ hipertensão, falta de coordenação, pensamentos anormais, ataxia, sinusite, sudorese, infecção do trato urinário,
+ fadiga, letargia, congestão nasal, artralgia, parestesia, tosse, hipersonia, congestão nasal, doença do refluxo
+ gastroesofágico, dor nas extremidades, perturbações do equilíbrio, hipoestesia, parkinsonismo, anorexia,
+ abscesso no dente, epistaxe, agressão, rigidez musculoesquelética, superdosagem acidental, acne, palidez,
+ desconforto no estômago, dor de ouvido, parestesia e sede.
+
+ Experiência pós-comercialização
+
+ As seguintes reações adversas foram identificadas durante a comercialização de SEROQUEL. Como estas
+ reações são relatadas voluntariamente por população de tamanho incerto, não é sempre possível estimar com
+ segurança a sua frequência ou estabelecer uma relação causal com a exposição ao medicamento.
+ As reações adversas relatadas desde a introdução no mercado, que foram temporalmente relacionados à terapia
+ com quetiapina, incluem: reação anafilática, cardiomiopatia, reação medicamentosa com eosinofilia e sintomas
+ sistémicos (HID), hiponatremia, miocardite, enurese noturna, pancreatite, amnésia retrógrada, rabdomiólise,
+ síndrome de secreção inadequada de hormônio antidiurético (SIADH), síndrome de Stevens -Johnson (SSJ), e
+ necrólise epidérmica tóxica (NET).
+
+ Em casos de eventos adversos, notifique pelo Sistema VigiMed, disponível no Portal da Anvisa.
+
+10. SUPERDOSE
+
+ Em estudos clínicos, foi relatada sobrevida em superdoses agudas de até 30 g de quetiapina. A maioria dos
+ pacientes com superdosagem não apresentou eventos adversos ou recuperou-se completamente dos eventos
+ adversos relatados. Morte foi relatada em um estudo clínico seguido de superdosagem de 13,6 g de quetiapina
+ sozinha.
+
+ Na experiência pós-comercialização, foram relatados casos raros de superdosagem com o uso de quetiapina,
+ resultando em morte ou coma.
+Na experiência pós-comercialização, foram relatados casos de prolongamento do intervalo QT com superdose.
+
+Pacientes com doença cardiovascular grave pré-existente podem ter o risco aumentado dos efeitos da
+superdosagem (ver item Advertências e Precauções).
+
+Em geral, os sinais e sintomas relatados foram resultantes da exacerbação dos efeitos farmacológicos conhecidos
+da quetiapina, isto é, sonolência e sedação, taquicardia, hipotensão e efeitos anticolinérgicos.
+
+Tratamento da superdose
+
+Não há antídoto específico para a quetiapina. Em casos de intoxicação grave, a possibilidade do envolvimento de
+múltiplos fármacos deve ser considerada e recomenda-se procedimentos de terapia intensiva, incluindo
+estabelecimento e manutenção de vias aéreas desobstruídas, garantindo oxigenação e ventilação adequadas, e
+monitoração e suporte do sistema cardiovascular. Neste contexto, relatórios publicados na definição de sintomas
+anticolinérgicos, descrevem uma reversão dos efeitos graves sobre o SNC, incluindo coma e delírio, com a
+administração de fisostigmina intravenosa (1-2 mg), com monitoramento contínuo do ECG.
+
+Os casos de hipotensão refratária a superdose de quetiapina devem ser tratados com medidas adequadas, tais
+como fluidos intravenosos e/ou agentes simpatomiméticos (adrenalina e dopamina devem ser evitadas, uma vez
+que a estimulação beta pode piorar a hipotensão devido ao bloqueio alfa induzido pela quetiapina).
+
+Supervisão médica e monitoração cuidadosa devem ser mantidas até a recuperação do paciente.
+
+A superdose de SEROQUEL XRO pode levar à formação de bezoar gástrico, e neste caso, é recomendado um
+método diagnóstico por imagem apropriado para orientar o correto tratamento ao paciente. A lavagem gástrica
+de rotina pode não ser efetiva na remoção do bezoar, devido à consistência viscosa da massa formada. A remoção
+do bezoar medicamentoso através de procedimento endoscópico foi realizada em vários casos com sucesso.
+
+Em caso de intoxicação ligue para 0800 722 6001, se você precisar de mais orientações.
+
+III)

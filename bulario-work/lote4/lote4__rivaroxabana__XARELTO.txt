@@ -1,0 +1,3584 @@
+FONTE: lote4__rivaroxabana__XARELTO.pdf
+
+===== BLOCO 1 =====
+APRESENTAÇÕES
+Xarelto® (rivaroxabana) é apresentado na forma de comprimidos revestidos em cartucho
+com blister contendo 28 ou 56 comprimidos revestidos de 2,5 mg.
+
+USO ORAL
+
+USO ADULTO
+
+1. INDICAÇÕES
+Xarelto® (rivaroxabana) 2,5 mg, coadministrado com ácido acetilsalicílico 100 mg, é
+indicado para prevenção de eventos aterotrombóticos (acidente vascular cerebral, infarto
+do miocárdio e morte cardiovascular) em pacientes adultos com doença arterial
+coronariana (DAC) ou doença arterial periférica (DAP) sintomática em alto risco de
+eventos isquêmicos.
+
+3. CARACTERÍSTICAS FARMACOLÓGICAS
+➢ Propriedades farmacodinâmicas
+- Mecanismo de ação
+A rivaroxabana é um inibidor direto altamente seletivo do fator Xa com biodisponibilidade
+oral.
+A ativação do fator X a fator Xa (FXa) por meio das vias intrínseca e extrínseca
+desempenha um papel central na cascata da coagulação sanguínea. O FXa converte
+diretamente a protrombina em trombina por meio do complexo de protrombinase e,
+finalmente, esta reação leva à formação do coágulo de fibrina e à ativação das plaquetas
+pela trombina. Uma molécula de FXa é capaz de gerar mais de 1.000 moléculas de
+trombina devido à natureza amplificadora da cascata da coagulação. Além disso, a taxa de
+reação do FXa ligado à protrombinase aumenta 300.000 vezes, em comparação à do FXa
+livre, e causa uma descarga explosiva de geração de trombina. Os inibidores seletivos de
+FXa podem encerrar a descarga amplificada de geração de trombina. Consequentemente,
+diversos testes de coagulação específicos e globais são afetados pela rivaroxabana.
+
+- Efeitos farmacodinâmicos
+Foi observada inibição dose-dependente da atividade do fator Xa em humanos.
+O tempo de protrombina (TP) é influenciado pela rivaroxabana de um modo dose -
+dependente com uma correlação estreita com as concentrações plasmáticas (o valor de r é
+igual a 0,98) se for usado o reagente Neoplastin® (tromboplastina liofilizada obtida a partir
+de cérebro de coelho) para a realização deste ensaio.
+Outros reagentes proporcionariam resultados diferentes. A leitura do TP deve ser feita em
+segundos porque a RNI (Razão Normalizada Internacional) é calibrada e validada somente
+para cumarínicos e não pode ser usada para qualquer outro anticoagulante. Em pacientes
+submetidos a cirurgia ortopédica de grande porte, os percentis 5/95 para TP (Neoplastin ®)
+2-4 horas depois da ingestão do comprimido (por exemplo, no momento de efeito máximo)
+variaram de 13 a 25 segundos.
+O tempo de tromboplastina parcial ativada (TTPa) e o HepTest ® também se prolongam
+dependendo da dose; entretanto, não são recomendados para avaliar o efeito
+farmacodinâmico da rivaroxabana. A atividade anti -fator Xa também é influenciada pela
+rivaroxabana; todavia, não existe padrão para calibração.
+ 2,5mg-0626-VV-LAB-123201-CCDS19; 10mg-0626-VV-LAB-123201-CCDS19; 15mg-20mg-0626-VV-
+LAB-123201-CCDS17
+
+Não há necessidade de monitorar os parâmetros de coagulação durante o tratamento clínico
+de rotina com Xarelto® (rivaroxabana).
+
+- Populações especiais de pacientes
+- Pacientes com próteses valvulares cardíacas submetidos recentemente a TAVR
+No um estudo randomizado, aberto, controlado por ativo, orientado por evento,
+multicêntrico de Fase III GALILEO, 1644 pacientes foram randomizados, tanto para uma
+estratégia baseada em rivaroxabana quanto para uma estratégia baseada em antiagregante
+plaquetário, de 1 a 7 dias após uma sucedida substituição da válvula aórtica transcateter.
+Pacientes com fibrilação atrial prévia ou com indicação para anticoagulantes orais em
+curso foram excluídos.
+O principal objetivo foi avaliar a eficácia e a segurança da estratégia de tratamento baseada
+em rivaroxabana (10 mg de rivaroxabana, uma vez ao dia, mais 75-100 mg de ácido
+acetilsalicílico (AAS), uma vez ao dia, por 90 dias seguido por rivaroxabana 10 mg uma
+vez ao dia) comparado ao tratamento padrão (75 mg de clopidogrel uma vez ao dia mais
+75-100 mg de ácido acetilsalicílico, uma vez ao dia, por 90 dias seguido por ácido
+acetilsalicílico, uma vez ao dia). O estudo foi encerrado precocemente devido a um
+desequilíbrio em eventos tromboembólicos e óbito.
+Na análise de intenção de tratar (ITT), o desfecho primário de eficácia, por exemplo
+eventos tromboembólicos e óbito, ocorreu em 105 pacientes (9,8 por 100 pacientes -ano) no
+braço rivaroxabana e em 78 pacientes (7,21 por 100 pacientes-ano) no braço de
+antiagregante plaquetário. A razão de risco (HR) foi de 1,35 (IC 95%: 1,01; 1,81). Na
+análise durante o tratamento, o desfecho primário de eficácia ocorreu em 68 pacientes
+(8,11 por 100 pacientes-ano) no braço rivaroxabana comparado com 63 pacientes (6,6 por
+100 pacientes-ano) no braço de antiagregante plaquetário; a razão de risco (HR) foi 1,21
+(IC 95%: 0,86; 1,70).
+Na análise de intenção de tratar (ITT), o desfecho primário de segurança, por exemplo
+composto de risco de vida, incapacitante ou sangramento maior, ocorreu em 46 pacientes
+(4,29 por 100 pacientes-ano) no braço de rivaroxabana em comparação com 31 pacientes
+(2,83 por 100 pacientes-ano) no braço de antiagregante plaquetário; a razão de risco (HR)
+foi 1,50 (IC 95% 0,95; 2,37).
+
+- Pacientes com síndrome antifosfolípide triplo positivo de alto risco
+Em um estudo patrocinado pelo investigador, multicêntrico, randomizado, aberto, com o
+desfecho de adjudicação cego, a rivaroxabana foi comparada à varfarina em pacientes com
+histórico de trombose, com diagnóstico de síndrome antifosfolípide e com alto risco de
+eventos tromboembólicos (positivo para todos os três testes antifosfolípides:
+anticoagulante lúpico, anticorpos anticardiolipina e anticorpos anti-beta 2-glicoproteína I).
+ 2,5mg-0626-VV-LAB-123201-CCDS19; 10mg-0626-VV-LAB-123201-CCDS19; 15mg-20mg-0626-VV-
+LAB-123201-CCDS17
+
+O estudo foi encerrado prematuramente após a inclusão de 120 pacientes devido a um
+excesso de eventos dentre os pacientes no braço da rivaroxabana. O seguimento médio foi
+de 569 dias. Cinquenta e nove pacientes foram randomizados para 20 mg de rivaroxabana
+(15 mg para pacientes com clearance de creatinina <50 mL / min) e 61 para varfarina (RNI
+2,0-3,0). Eventos tromboembólicos ocorreram em 12% dos pacientes randomizados para
+rivaroxabana (4 AVCs isquêmico e 3 infartos do miocárdio). Nenhum evento foi relatado
+em pacientes randomizados para varfarina. Sangramento importante ocorreu em 4
+pacientes (7%) do grupo rivaroxabana e 2 pacientes (3%) do grupo varfarina.
+
+➢ Propriedades farmacocinéticas
+- Absorção e biodisponibilidade
+A rivaroxabana é rapidamente absorvida, atingindo concentrações máximas (Cmáx) 2 a 4
+horas após a ingestão do comprimido.
+A absorção oral da rivaroxabana é quase completa e a biodisponibilidade oral é alta (80–
+100%) para dose de 2,5 mg e 10 mg, independente das condições de jejum/alimentação.
+A ingestão com alimentos não afeta a A UC ou a Cmáx da rivaroxabana na dose de 10 mg.
+Os comprimidos de 2,5 e 10 mg de Xarelto® (rivaroxabana) podem ser tomados com ou
+sem alimento (ver “Posologia e Modo de Usar”).
+A variabilidade da farmacocinética da rivaroxabana é moderada, com variabilidade
+interindividual (CV%) de 30% a 40%.
+A absorção da rivaroxabana é dependente do local de liberação do princípio ativo no trato
+gastrintestinal. Foi relatada uma diminuição de 29% e 56% na AUC e C máx quando o
+granulado de rivaroxabana é liberado no intestino delgado proximal em comparação com o
+comprimido. A exposição é ainda mais reduzida quando o princípio ativo é liberado no
+intestino delgado distal, ou no cólon ascendente. Deve -se evitar a administração da
+rivaroxabana distante ao estômago que pode resultar em redução da absorção e da
+exposição ao princípio ativo.
+A biodisponibilidade (AUC e Cmáx) foi comparável entre 20 mg de rivaroxabana
+administrados por via oral como comprimido triturado misturado a purê de maçã, ou
+suspensão em água e administrada por sonda gástrica seguido por uma refeição líquida,
+comparada a um comprimido inteiro. Como o perfil farmacocinético da rivaroxabana é
+previsível e dose-proporcional, os resultados de biodisponibilidade desse estudo são
+provavelmente aplicáveis para as doses mais baixas de rivaroxabana.
+
+- Distribuição
+A ligação às proteínas plasmáticas em humanos é alta, aproximadamente de 92 % a 95%,
+sendo a albumina sérica o principal componente de ligação. O volume de distribuição é
+moderado, sendo Vss de aproximadamente 50 L.
+ 2,5mg-0626-VV-LAB-123201-CCDS19; 10mg-0626-VV-LAB-123201-CCDS19; 15mg-20mg-0626-VV-
+LAB-123201-CCDS17
+
+- Metabolismo e eliminação
+Aproximadamente 2/3 da dose administrada de rivaroxabana, sofrem degradação
+metabólica, com metade sendo eliminada via renal e a outra metade, via fecal. Os demais
+1/3 da dose administrada são diretamente excretados pelos rins como fármaco inalterado na
+urina, principalmente por secreção renal ativa.
+A rivaroxabana é metabolizada por meio de CYP3A4, CYP2J2 e de mecanismos
+independentes do CYP. A degradação oxidativa da fração morfolinona e a hidrólise das
+ligações amida são os principais locais de biotransformação.
+Com base em investigações in vitro, a rivaroxabana é um substrato das proteínas
+transportadoras gp-P (glicoproteína-P) e Bcrp (proteína de resistência ao câncer de mama).
+A rivaroxabana inalterada é o composto mais importante no plasma humano, não estando
+presentes metabólitos maiores ou ativos circulantes. Com uma depuração sistêmica de
+cerca de 10 L/h, a rivaroxabana pode ser classificada como um fármaco de baixa
+depuração. A eliminação da rivaroxabana do plasma ocorreu com meias-vidas terminais de
+5 a 9 horas em indivíduos jovens e com meias-vidas terminais de 11 a 13 horas em idosos.
+
+- Pacientes geriátricos
+Pacientes idosos apresentaram concentrações plasmáticas mais altas que pacientes mais
+jovens, com valores médios de AUC aproximadamente 1,5 vezes maiores, devido
+principalmente à redução (aparente) da depuração total e renal (ver “Posologia e Modo de
+Usar”).
+
+- Gênero
+Não há diferenças clinicamente relevantes da farmacocinética entre pacientes homens e
+mulheres (ver “Posologia e Modo de Usar”).
+
+- Peso corporal
+Pesos corpóreos extremos (<50 kg vs >120 kg) tiveram apenas pequena influência nas
+concentrações plasmáticas de rivaroxabana (menos de 25%) (ver “Posologia e Modo de
+Usar”).
+
+- Crianças e adolescentes
+A segurança e a eficácia não foram estabelecidas para crianças e adolescentes com idade
+inferior a 18 anos (ver “Posologia e Modo de Usar”).
+
+- Diferenças étnicas
+ 2,5mg-0626-VV-LAB-123201-CCDS19; 10mg-0626-VV-LAB-123201-CCDS19; 15mg-20mg-0626-VV-
+LAB-123201-CCDS17
+
+Não foram observadas diferenças clinicamente relevantes entre pacientes caucasianos,
+afro-americanos, hispânicos, japoneses ou chineses em relação à farmacocinética e
+farmacodinâmica (ver “Posologia e Modo de Usar”).
+
+- Insuficiência hepática
+O efeito da insuficiência hepática na farmacocinética da rivaroxabana foi estudado em
+indivíduos categorizados de acordo com a classificação Child Pugh, um procedimento
+padrão no desenvolvimento clínico. O propósito original da classificação Child Pugh é
+avaliar o prognóstico da doença hepática crônica, principalmente cirrose. Em pacientes nos
+quais o uso de anticoagulantes é pretendido , o aspecto crítico da insuficiência hepática é a
+redução da síntese de fatores de coagulação normais no fígado. Uma vez que este aspecto é
+considerado em apenas uma das cinco medições clínicas/bioquímicas que compõem o
+sistema de classificação Child Pugh, o risco de sangramento em pacientes pode não ser
+claramente correlacionado com esta classificação. A decisão de tratar os pacientes com
+anticoagulantes deve ser, portanto, tomada independentemente da classificação Child
+Pugh.
+Xarelto® (rivaroxabana) é contraindicado em pacientes com doença hepática associada à
+coagulopatia, levando a um risco de sangramento clinicamente relevante.
+Pacientes cirróticos com insuficiência hepática leve (classificados como Child Pugh A)
+apresentaram apenas pequenas alterações na farmacocinética da rivaroxabana (aumento de
+1,2 vezes da AUC, em média), próximas das d e seu respectivo grupo controle saudável.
+Nenhuma diferença relevante nas propriedades farmacodinâmicas foi observada entre estes
+grupos.
+Em pacientes cirróticos com insuficiência hepática moderada (classificados como Child
+Pugh B), a média da AUC da rivaroxabana foi significativamente aumentada em 2,3 vezes
+comparada com voluntários sadios, devido à importante insuficiência na depuração do
+fármaco, o que indica uma significante doença hepática. A AUC da fração não -ligada foi
+aumentada em 2,6 vezes. Não há dados em pacientes com insuficiência hepática grave.
+A inibição da atividade do fator Xa foi aumentada por um fator de 2,6 em pacientes com
+insuficiência hepática moderada quando comparada a voluntários sadios; o prolongamento
+do TP foi similarmente aumentado por um fator de 2,1. O teste global de coagulação TP
+avalia a via extrínseca que compreende os fatores de coagulação VII, X, V, II e I que são
+sintetizados no fígado. Pacientes com insuficiência hepática moderada foram mais
+sensíveis à rivaroxabana, resultando em uma relação mais acentuada de
+Farmacocinética/Farmacodinâmica entre concentração e TP.
+Xarelto® (rivaroxabana) é contraindicado em pacientes com doença hepática associada a
+coagulopatia e risco de hemorragia clinicamente relevante, incluindo pacientes cirróticos
+com Child Pugh B e C (ver “Posologia e Modo de Usar” e “Contraindicações”).
+ 2,5mg-0626-VV-LAB-123201-CCDS19; 10mg-0626-VV-LAB-123201-CCDS19; 15mg-20mg-0626-VV-
+LAB-123201-CCDS17
+
+- Insuficiência renal
+Houve um aumento na exposição à rivaroxabana inversamente correlacionada com a
+diminuição da função renal, como avaliado pela medida da depuração de creatinina.
+Em indivíduos com insuficiência renal leve (ClCr ≤ 80-50 mL/min), moderada (ClCr < 50-
+30 mL/min) ou grave (ClCr < 30-15 mL/min), as concentrações plasmáticas de
+rivaroxabana (AUC) foram 1,4; 1,5 e 1,6 vezes maiores, respectivamente, comparadas com
+voluntários sadios (ver “Posologia e Modo de Usar” e “Advertências e Precauções”).
+Aumentos correspondentes nos efeitos farmacodinâmicos foram mais pronunciados (ver
+“Posologia e Modo de Usar” e “Advertências e Precauções”).
+Em indivíduos com insuficiência renal leve, moderada ou grave, a inibição total da
+atividade do fator Xa foi aumentada por um fator de 1,5; 1,9 e 2,0, respectivamente,
+quando comparada com voluntários sadios; o prolongamento do TP foi similarmente
+aumentado por um fator de 1,3; 2,2 e 2,4, respectivamente. Não há dados em pacientes
+com ClCr < 15 mL/min.
+O uso não é recomendado em pacientes com depuração de creatinina < 15 mL/min.
+Xarelto® (rivaroxabana) deve ser utilizado com cautela em pacientes com insuficiência
+renal grave (depuração de creatinina 15-30 mL/min) (ver “Posologia e Modo de Usar” e
+“Advertências e Precauções”).
+Devido à doença de base, pacientes com insuficiência renal grave apresentam risco
+aumentado de sangramento e trombose.
+
+- Administração Concomitante de Potentes Indutores da CYP3A4
+Em um estudo de fase I, a coadministração de Xarelto ® (rivaroxabana) com a rifampicina,
+um potente indutor da isoenzima CYP3A4 e gp-P (glicoproteína-P), levou a uma redução
+de aproximadamente 50% na AUC média da rivaroxabana, com reduções paralelas em
+seus efeitos farmacodinâmicos (ver “Interações Medicamentosas”).
+Em um estudo fase IIa, a relação PK/PD de um regime de dose adaptado de rivaroxabana
+adaptada (30 mg duas vezes ao dia nas primeiras três semanas de tratamento, seguidos por
+20 mg duas vezes ao dia) foi estudada em 19 pacientes tratados para TVP ou EP e que,
+concomitantemente foram medicados com um potente indutor da isoenzima CYP3A4 e gp-
+P (rifampicina ou fenitoína). O regime de dose adaptado nesses pacientes levou a uma
+exposição e farmacodinâmica similares, quando comparado a pacientes tratados para TVP
+(15 mg duas vezes ao dia nas primeiras três semanas de tratamento, seguido por 20 mg
+uma vez ao dia) sem a administração concomitante de um potente indutor da isoenzima
+CYP3A4.
+
+➢ Dados de segurança pré-clínicos
+ 2,5mg-0626-VV-LAB-123201-CCDS19; 10mg-0626-VV-LAB-123201-CCDS19; 15mg-20mg-0626-VV-
+LAB-123201-CCDS17
+
+A avaliação de segurança pré-clínica em dados de estudos convencionais e apropriados de
+segurança farmacológica, toxicidade de dose única e de doses repetidas, genotoxicidade,
+fototoxicidade, carcinogenicidade e toxicidade para a reprodução não revelaram riscos
+especiais para humanos. Não foi observada toxicidade órgão-específica da rivaroxabana
+até a mais alta dose testada.
+
+ - Segurança farmacológica
+As funções cardiovascular, respiratória e do SNC não foram afetadas. Não se observou
+potencial pró-arritmogênico.
+Não foram observados efeitos clinicamente relevantes na motilidade gastrintestinal, função
+hepática, função renal e níveis de glicose sang uínea.
+
+ - Toxicidade aguda e de doses repetidas
+A rivaroxabana mostrou baixa toxicidade aguda em ratos e camundongos.
+A rivaroxabana foi testada em estudos de doses repetidas por até 6 meses em ratos e por
+até 12 meses em cães. Com base no modo de ação farmacológico, não se pôde estabelecer
+NOEL (Nível de efeito não observado) em razão dos efeitos sobre o tempo de coagula ção.
+Todos os achados adversos, exceto uma discreta redução do ganho de peso corporal em
+ratos e cães, puderam ser relacionados a um efeito farmacológico exagerado do composto.
+Em cães com exposições muito altas, foram observados sangramentos importantes
+espontâneos. Os NOAELs (Níveis de efeitos adversos não observados) após exposição
+crônica são 12,5 mg/kg em ratos e 5 mg/kg em cães.
+
+ - Carcinogenicidade
+A rivaroxabana foi testada até 60 mg/kg/dia, atingindo níveis de exposição semelhantes
+aos seres humanos (camundongo) ou até 3,6 vezes maiores (ratos) do que nos seres
+humanos.
+A rivaroxabana não apresentou potencial carcinogênico em ratos e camundongos.
+
+ - Toxicologia para a reprodução
+A rivaroxabana foi testada em estudos de toxicidade para o desenvolvimento em níveis de
+exposição de até 14 vezes (rato) e de até 33 vezes (coelho) acima da exposição terapêutica
+em humanos. O perfil toxicológico se caracteriza principalmente por toxicidade materna
+causada por efeitos farmacodinâmicos exagerados. Até a dose mais alta testada, não se
+identificou potencial teratogênico primário ( ver “Gravidez e lactação”).
+A radioatividade relacionada à [C14] rivaroxabana penetrou a barreira placentária em ratos.
+Em nenhum dos órgãos e tecidos fetais, a exposição, em termos de concentrações máximas
+ 2,5mg-0626-VV-LAB-123201-CCDS19; 10mg-0626-VV-LAB-123201-CCDS19; 15mg-20mg-0626-VV-
+LAB-123201-CCDS17
+
+ou AUC, excedeu a exposição sanguínea materna. A exposição média nos fetos, baseada
+na AUC (0-24), alcançou cerca de 20% da exposição no sangue materno. As glândulas
+mamárias tinham uma AUC aproximadamente equivalente à do sangue, o que indica
+secreção de radioatividade no leite (ver “Gravidez e lactação”).
+A rivaroxabana não mostrou efeito sobre a fertilidade masculina ou feminina até 200
+mg/kg (ver “Gravidez e lactação”).
+
+ - Lactação
+Administrou-se [C14] rivaroxabana por via oral a ratas Wistar lactantes (dias 8 a 10 do pós-
+parto) em dose oral única de 3 mg/kg de peso corporal.
+A radioatividade relacionada à [C14] rivaroxabana foi secretada no leite das ratas lactantes
+apenas em uma pequena extensão em relação à dose administrada: a quantidade estimada
+de radioatividade excretada com o leite foi de 2,12% da dose materna no prazo de 32 horas
+após a administração (ver “Gravidez e lactação”).
+
+ - Genotoxicidade
+Não se observou genotoxicidade num teste para mutação genética em bactérias (Teste de
+Ames), um teste in vitro para aberrações cromossômicas ou no teste in vivo do
+micronúcleo.
+
+4. CONTRAINDICAÇÕES
+Xarelto® (rivaroxabana) é contraindicado em pacientes com hipersensibilidade à
+rivaroxabana ou a qualquer outro componente do produto (ver “Composição”).
+Sangramento ativo clinicamente significativo .
+Lesão ou condição, se considerada um risco significativo de sangramento importante. Isso
+pode incluir ulceração gastrointestinal atual ou recente, presença de neoplas ia maligna com
+alto risco de sangramento, lesão cerebral ou espinhal recente, cirurgia cerebral, espinhal ou
+oftálmica recente, hemorragia intracraniana recente, varizes esofágicas conhecidas ou
+suspeitas, malformações arteriovenosas, aneurismas vasculares ou anorma lidades
+vasculares intraespinhal ou intracerebrais importantes.
+Tratamento concomitante com quaisquer outros anticoagulantes, ex. heparina não
+fracionada (HNF), heparinas de baixo peso molecular (enoxaparina, dalteparina, etc.),
+derivados da heparina (fondaparinux, etc.), anticoagulantes orais (varfarina, etexilato de
+dabigatrana, apixabana, etc.) exceto sob circunstâncias específicas de terapia
+anticoagulante ou quando a HNF é administrada em doses necessárias para manter um
+cateter venoso central ou arterial aberto.
+Tratamento concomitante de DAC/DAP com A AS em pacientes com AVC hemorrágico
+ou lacunar prévio ou qualquer AVC dentro de um mês.
+ 2,5mg-0626-VV-LAB-123201-CCDS19; 10mg-0626-VV-LAB-123201-CCDS19; 15mg-20mg-0626-VV-
+LAB-123201-CCDS17
+
+Doença hepática associada à coagulopatia, levando a um risco de sangramento
+clinicamente relevante, incluindo pacientes com Child Pugh B e C (ver “Propriedades
+Farmacocinéticas”).
+Gravidez e lactação.
+
+Categoria X - Em estudos em animais e mulheres grávidas, o fármaco provocou anomalias
+fetais, havendo clara evidência de risco para o feto que é maior do que qualquer benefício
+possível para a paciente.
+Este medicamento não deve ser utilizado por mulheres grávidas ou que possam ficar
+grávidas durante o tratamento.
+
+Este medicamento é contraindicado durante o aleitamento ou doação de leite, pois
+pode ser excretado no leite humano e pode causar reações indesejáveis no bebê. Seu
+médico ou cirurgião-dentista deve apresentar alternativas para o seu tratamento ou
+para a alimentação do bebê.
+
+5. ADVERTÊNCIAS E PRECAUÇÕES
+➢ Pacientes com próteses valvulares cardíacas
+Xarelto® (rivaroxabana) não é recomendado para tromboprofilaxia em pacientes que foram
+recentemente submetidos a substituição da válvula aórtica transcateter (TAVR), baseado
+nos dados de um estudo clínico randomizado, controlado comparando um regime de
+Xarelto® (rivaroxabana) a um regime de antiagregante plaquetário (ver “Propriedades
+Farmacodinâmicas”).
+A segurança e a eficácia de Xarelto® (rivaroxabana) não foram estudadas em pacientes
+com outras próteses de válvulas cardíacas ou outros procedimentos valvulares; portanto,
+não há dados para suportar que Xarelto® (rivaroxabana) forneça anticoagulação adequada
+nestas populações de pacientes.
+
+➢ Risco de sangramento
+Xarelto® (rivaroxabana), como outros antitrombóticos, deve ser utilizado com cautela em
+pacientes com risco aumentado de sangramento, tais como:
+− distúrbios hemorrágicos adquiridos ou congênitos;
+− hipertensão arterial grave não controlada;
+− doença gastrintestinal ulcerativa ativa;
+− ulcerações gastrintestinais recentes;
+− outras doenças gastrointestinais sem ulceração ativa que podem potencialmente levar a
+ complicações hemorrágicas (por exemplo, doença inflamatória intestinal, esofagite,
+ gastrite e doença do refluxo gastroesofágico);
+ 2,5mg-0626-VV-LAB-123201-CCDS19; 10mg-0626-VV-LAB-123201-CCDS19; 15mg-20mg-0626-VV-
+LAB-123201-CCDS17
+
+− retinopatia vascular;
+− hemorragia intracraniana ou intracerebral recente;
+− anormalidades vasculares intraespinais ou intracerebrais;
+− cirurgia cerebral, espinhal ou oftalmológica recente;
+− bronquiectasia ou história de sangramento pulmonar.
+O sangramento durante o tratamento antitrombótico pode desmascarar malignidades
+subjacentes ainda desconhecidas, em particular no trato gastrointestinal ou geniturinário.
+Pacientes com doença maligna podem, simultaneamente, apresentar maior risco de
+sangramento e trombose. O benefício individual do tratamento antitrombótico deve ser
+avaliado em relação ao risco de sangramento em pacientes com câncer ativo, dependendo
+da localização do tumor, terapia antineoplásica e estágio da doença.
+Deve-se ter cuidado se os pacientes forem tratados concomitantemente com fármacos que
+interferem na hemostasia, como os anti-inflamatórios não-esteroidais (AINEs), ácido
+acetilsalicílico, os inibidores da agregação plaquetária (ou seja, agentes antiplaquetários),
+outros antitrombóticos ou inibidores seletivos da recaptação de serotonina (ISRSs) e
+inibidores da recaptação de serotonina e noradrenalina (IRSNs) (ver “Interações
+Medicamentosas”).
+Pacientes em tratamento com Xarelto® (rivaroxabana) e AAS devem receber tratamento
+concomitante com AINEs somente quando o benefício do tratamento superar o risco de
+sangramento.
+Pode-se considerar tratamento profilático adequado para pacientes com risco de doença
+ulcerativa gastrintestinal (ver “Interações Medicamentosas”).
+Qualquer queda de hemoglobina ou da pressão arterial sem explicação deve levar à
+investigação de um local com sangramento.
+A eficácia e a segurança de Xarelto® (rivaroxabana) 2,5 mg, duas vezes ao dia, foram
+investigadas em combinação com o agente antiagregante plaquetário A AS. O tratamento
+de DAC e DAP em combinação com outros agentes antiplaquetários, por exemplo,
+prasugrel ou ticagrelor, não foi estudado e, portanto, não é recomendado.
+Xarelto® (rivaroxabana) deve ser utilizado com cautela em pacientes com peso corporal
+baixo (≤ 60 kg) quando coadministrado com AAS.
+
+➢ Anestesia neuraxial (epidural/espinhal)
+Quando anestesia neuraxial (epidural/espinhal) ou uma punção espinhal é realizada, os
+pacientes tratados com antitrombóticos para prevenção de complicações tromboembólicas
+correm o risco de desenvolver hematoma epidural ou espinhal que pode resultar em
+paralisia prolongada.
+ 2,5mg-0626-VV-LAB-123201-CCDS19; 10mg-0626-VV-LAB-123201-CCDS19; 15mg-20mg-0626-VV-
+LAB-123201-CCDS17
+
+O risco destes eventos é ainda maior pelo uso de cateteres epidurais de demora ou pelo uso
+concomitante de medicamentos que afetem a hemostasia. O risco também pode aumenta r
+por punção epidural ou espin hal traumática ou repetida.
+Pacientes devem ser frequentemente monitorados para sinais e sintomas de alteração
+neurológica (por exemplo, torpor ou fraqueza das pernas, disfunção intestinal ou da
+bexiga). Se forem observados déficits neurológicos, serão necessários diagnóstico e
+tratamento urgentes.
+O médico deve considerar o benefício em potencial em relação ao risco antes da
+intervenção neuraxial em pacientes anticoagulados ou que vão ser anticoagulados para
+tromboprofilaxia.
+Não há experiência clínica com o uso de 2,5 mg de Xarelto ® (rivaroxabana) duas vezes ao
+dia com AAS nestas situações. O uso concomitante de inibidor de agregação de plaquetária
+deve ser considerado e essa medicação deve ser descontinuada conforme apropriado.
+Para reduzir o risco potencial de sangramento associado ao uso concomitante de
+rivaroxabana e anestesia neuraxial (epidural/espin hal) ou punção espinhal, considerar o
+perfil farmacocinético de rivaroxabana. A inserção ou remoção de um cateter epidural ou
+punção lombar é melhor realizada quando o efeito anticoagulante de rivaroxabana é
+estimado ser baixo (ver “Propriedades Farmacocinéticas”).
+Porém, o tempo exato suficiente para alcançar um efeito anticoagulante leve em cada
+paciente não é conhecido.
+
+➢ Cirurgia e intervenções
+Se um procedimento invasivo ou uma intervenção cirúrgica forem necessários, Xarelto®
+(rivaroxabana) 2,5 mg deve ser interrompido pelo menos 12 horas antes da intervenção, se
+possível, e com base no julgamento clínico do médico.
+Se o paciente faz uso concomitante de inibidor de agregação plaquetária, será submetido a
+cirurgia eletiva e o efeito antiplaquetário não é desejado, os inibidores de agregação
+plaquetária devem ser descontinuados conforme descrito na bula do medicamento e m
+questão.
+Se o procedimento não puder ser adiado, o aumento do risco de sangramento deve ser
+avaliado em relação à urgência de tal intervenção.
+A administração de Xarelto® (rivaroxabana) deve ser reiniciada o mais rapidamente
+possível após o procedimento invasivo ou a intervenção cirúrgica, desde que a situação
+clínica do paciente permita e a hemostasia adequada tenha sido estabelecida (ver
+“Propriedades Farmacocinéticas”).
+
+➢ Pacientes com síndrome antifosfolípide triplo positivo de alto risco
+ 2,5mg-0626-VV-LAB-123201-CCDS19; 10mg-0626-VV-LAB-123201-CCDS19; 15mg-20mg-0626-VV-
+LAB-123201-CCDS17
+
+Xarelto® (rivaroxabana) não é recomendado em pacientes com antecedentes de trombose
+diagnosticados com síndrome antifosfolípide e com persistência tripla positiva (para
+anticoagulante lúpico, anticorpos anticardiolipina e anticorpos anti-beta 2-glicoproteína I),
+uma vez que o tratamento com rivaroxabana está associado a um aumento da taxa de
+eventos trombóticos recorrentes comparados com antagonistas da vitamina K (AVK) (ver
+“Propriedades Farmacodinâmicas”).
+
+➢ DAC ou DAP: Pacientes com histórico de acidente vascular cerebral e/ou ataque
+ isquêmico transitório
+- Pacientes com acidente vascular cerebral hemorrágico ou lacunar
+Pacientes com DAC ou DAP com histórico de acidente vascular cerebral hemorrágico ou
+lacunar não foram estudados. O tratamento com 2,5 mg de Xarelto® (rivaroxabana) duas
+vezes ao dia em associação com AAS deve ser evitado nestes pacientes.
+- Pacientes com acidente vascular cerebral isquêmico, não lacunar
+- Pacientes com DAC ou DAP com histórico de acidente vascular cerebral isquêmico , não
+lacunar no mês anterior ao estudo não foram avaliados. O tratamento com 2,5 mg de
+Xarelto® (rivaroxabana) duas vezes ao dia em associação com AAS deve ser evitado no
+primeiro mês após o acidente vascular cerebral nestes pacientes (ver “Propriedades
+Farmacodinâmicas”).
+
+➢ Insuficiência renal
+Xarelto® (rivaroxabana) deve ser utilizado com cautela em pacientes com insuficiência
+renal moderada (ClCr < 50-30 mL/min) que estejam recebendo comedicações que levam
+ao aumento da concentração de rivaroxabana no plasma (ver “Interações
+Medicamentosas”).
+Em pacientes com insuficiência renal grave (ClCr < 30 mL/min), os níveis plasmáticos de
+rivaroxabana podem elevar-se significativamente (1,6 vezes em média), o que pode levar a
+um aumento do risco de sangramento. Em razão da doença de base, estes pacientes têm um
+aumento do risco de sangramento e de trombose. Em virtude dos dados clínicos limitados,
+Xarelto® (rivaroxabana) deve ser usado com cautela nos pacientes com ClCr < 30-15
+mL/min (ver “Propriedades Farmacocinéticas”).
+Não há dados clínicos disponíveis para pacientes com insuficiência renal grave (ClCr < 15
+mL/min). Portanto o uso de Xarelto® (rivaroxabana) não é recomendado nestes pacientes
+(ver “Posologia e Modo de Usar” e “Propriedades Farmacocinéticas”).
+Após início do tratamento, os pacientes com insuficiência renal grave ou risco aumentado
+de sangramentos e aqueles que recebem tratamento sistêmico concomitante com
+antimicóticos azólicos ou inibidores das proteases do HIV devem ser cuidadosamente
+monitorados quanto a sinais de complicações hemorrágicas (ver “Interações
+ 2,5mg-0626-VV-LAB-123201-CCDS19; 10mg-0626-VV-LAB-123201-CCDS19; 15mg-20mg-0626-VV-
+LAB-123201-CCDS17
+
+ Medicamentosas”). Isto pode ser feito por exame físico regular dos pacientes, observação
+ atenta da drenagem da incisão cirúrgica e dosagens periódicas da hemoglobina.
+
+ ➢ Medicação concomitante
+ Xarelto® (rivaroxabana) não é recomendado em pacientes recebendo tratamento sistêmico
+ concomitante com antimicóticos azólicos (por exemplo, cetoconazol, itraconazol,
+ voriconazol, posaconazol) ou inibidores da protease do HIV (por exemplo, ritonavir). Estes
+ fármacos são potentes inibidores da CYP3A4 e da gp-P. Portanto, estes fármacos podem
+ aumentar as concentrações plasmáticas de rivaroxabana até um grau clinicamente relevante
+ (2,6 vezes em média), o que pode levar ao aumento no risco de sangramentos (ver
+ “Interações Medicamentosas”).
+ O antimicótico azólico fluconazol, um inibidor moderado da CYP3A4, tem, entretanto,
+ menos efeito sobre a exposição à rivaroxabana e pode ser coadministrado (ver “Interações
+ Medicamentosas”).
+
+ ➢ Prolongamento do QTc
+ Não foi observado efeito de prolongamento do QTc com o uso de Xarelto® (rivaroxabana)
+ (ver “Propriedades Farmacocinéticas”).
+
+ ➢ Informação sobre os excipientes
+ Como Xarelto® (rivaroxabana) comprimidos contém lactose, os pacientes com problemas
+ hereditários raros de intolerância à lactose ou à galactose (por exemplo, deficiência de
+ lactase de Lapp ou má absorção de glicose -galactose) não devem tomar Xarelto®
+ (rivaroxabana) comprimidos (ver “Composição”).
+ Xarelto® (rivaroxabana) comprimidos contém menos de 1 mmol de sódio (23 mg) por
+ dose, isto quer dizer que é essencialmente “livre de sódio”.
+
+ Atenção: Contém lactose (tipo de açúcar) abaixo de 0,25g/comprimido revestido. Este
+ medicamento não deve ser usado por pessoas com síndrome de má -absorção de
+ glicose-galactose.
+
+ Atenção: Contém os corantes dióxido de titânio e óxido de ferro amarelo.
+
+➢ Gravidez e lactação
+- Gravidez
+ A segurança e eficácia de Xarelto ® (rivaroxabana) não foram estabelecidas em mulheres
+ grávidas.
+ 2,5mg-0626-VV-LAB-123201-CCDS19; 10mg-0626-VV-LAB-123201-CCDS19; 15mg-20mg-0626-VV-
+ LAB-123201-CCDS17
+
+Em ratas e coelhas, a rivaroxabana mostrou pronunciada toxicidade materna, com
+alterações placentárias relacionadas ao seu modo de ação farmacológico (por exemplo,
+complicações hemorrágicas) levando à toxicidade reprodutiva (ver “Dados de segurança
+pré-clínicos”). Não se identificou potencial teratogênico primário. Devido ao risco
+intrínseco de sangramentos e à evidência de que a rivaroxabana atravessa a placenta, o uso
+de Xarelto® (rivaroxabana) é contraindicado na gravidez (ver “Contraindicações” e “Dados
+de segurança pré-clínicos”).
+
+- Lactação
+Não foram estabelecidos segurança e eficácia de Xarelto® (rivaroxabana) em lactantes. Em
+ratas, a rivaroxabana é secretada no leite materno. Portanto, Xarelto® (rivaroxabana) só
+pode ser administrado depois de descontinuada a amamentação (ver “Contraindicações” e
+“Dados de segurança pré-clínicos”).
+
+➢ Mulheres em idade fértil/Contracepção
+Xarelto® (rivaroxabana) deve ser utilizado em mulheres em idade fértil somente com um
+método contraceptivo eficaz.
+
+➢ Efeitos sobre a capacidade de dirigir veículos ou operar máquinas
+ Foram relatadas síncopes e tonturas, o que podem afetar a habilidade de dirigir veículos ou
+operar máquinas (ver “Reações Adversas”). Pacientes que apresentarem estas reações
+adversas não devem dirigir ou operar máquinas.
+
+Em caso de suspeita de dengue, ou quando associado a outros medicamentos que
+aumentem o efeito hemorrágico, a prescrição deste medicamento ou a manutenção do
+tratamento com ele deve ser reavaliada, devido a seu potencial hemorrágico.
+
+Informe a seu paciente que a doação de sangue é absolutamente contraindicada
+durante o tratamento com rivaroxabana e até 5 dias após seu término, devido ao dano
+que ele pode causar ao receptor.
+
+6. INTERAÇÕES MEDICAMENTOSAS
+➢ Interações farmacocinéticas
+A rivaroxabana é eliminada principalmente pelo metabolismo hepático mediado pelo
+citocromo P450 (CYP3A4, CYP2J2) e por excreção renal do fármaco inalterado,
+envolvendo sistemas de transportadores glicoproteína -P (gp-P)/proteína de resistência ao
+câncer de mama (Bcrp).
+ 2,5mg-0626-VV-LAB-123201-CCDS19; 10mg-0626-VV-LAB-123201-CCDS19; 15mg-20mg-0626-VV-
+LAB-123201-CCDS17
+
+➢ Inibição do CYP
+A rivaroxabana não inibe a CYP3A4 nem qualquer outra isoforma principal de CYP.
+
+➢ Indução do CYP
+A rivaroxabana não induz a CYP3A4 nem qualquer outra isoforma principal de CYP.
+
+➢ Efeitos na rivaroxabana
+O uso concomitante de Xarelto® (rivaroxabana) com inibidores potentes da CYP3A4 e
+inibidores da gp-P pode levar à redução da depuração hepática e renal e, deste modo, a o
+aumento significativo da exposição sistêmica.
+A coadministração de Xarelto® (rivaroxabana) com cetoconazol, antimicótico azólico (400
+mg uma vez ao dia), um potente inibidor da CYP3A4 e da gp-P, levou a um aumento de
+2,6 vezes da AUC média da rivaroxabana no estado de equilíbrio e um aumento de 1,7
+vezes da Cmáx média da rivaroxabana, com elevações significativas de seus efeitos
+farmacodinâmicos.
+A coadministração de Xarelto® (rivaroxabana) com o inibidor da protease do HIV,
+ritonavir (600 mg duas vezes ao dia), um potente inibidor d a CYP3A4 e da gp-P, levou a
+um aumento de 2,5 vezes da AUC média da rivaroxabana e a um aumento de 1,6 vezes de
+Cmáx média de rivaroxabana, com elevações significativas de seus efeitos
+farmacodinâmicos. Portanto, Xarelto® (rivaroxabana) não é recomendado em pacientes que
+estejam recebendo tratamento sistêmico concomitante com antimicóticos azólicos ou
+inibidores da protease do HIV (ver “Advertências e Precauções”).
+Para outros fármacos que inibam potentemente apenas uma das vias de eliminação d a
+rivaroxabana, seja CYP3A4 ou gp-P, é esperado que o aumento das concentrações
+plasmáticas de rivaroxabana seja de menor extensão.
+A claritromicina (500 mg duas vezes ao dia), considerada um potente inibidor da CYP3A4
+e inibidor moderado da gp-P, levou ao aumento de 1,5 vezes da AUC média da
+rivaroxabana e de 1,4 vezes da Cmáx. Este aumento, que está próximo da magnitude da
+variabilidade normal da AUC e Cmáx, é considerado clinicamente irrelevante.
+A eritromicina (500 mg três vezes ao dia), que inibe moderadamente CYP3A4 e gp -P,
+levou a um aumento de 1,3 vezes da AUC e da Cmáx média da rivaroxabana. Este aumento
+está dentro da magnitude de variabilidade normal da AUC e Cmáx e é considerado
+clinicamente irrelevante.
+Em indivíduos com insuficiência renal leve, eritromicina (500 mg três vezes ao dia) levou
+a um aumento de 1,8 vezes da AUC média de rivaroxabana e de 1,6 vezes da Cmáx quando
+comparado a indivíduos com função renal normal sem comedicação. Em indivíduos com
+insuficiência renal moderada, a eritromicina levou a um aumento de 2,0 vezes da AUC
+ 2,5mg-0626-VV-LAB-123201-CCDS19; 10mg-0626-VV-LAB-123201-CCDS19; 15mg-20mg-0626-VV-
+LAB-123201-CCDS17
+
+média de rivaroxabana e de 1,6 vezes da Cmáx quando comparado a indivíduos com função
+renal normal sem comedicação (ver “Advertências e Precauções”).
+O fluconazol (400 mg uma vez ao dia), considerado um inibidor moderado da CYP3A4,
+levou a um aumento de 1,4 vezes da AUC média da rivaroxabana e 1,3 vezes da Cmáx
+média. Este aumento está dentro da magnitude da variabilidade normal de AUC e Cmáx e é
+considerado como clinicamente irrelevante (ver “Advertências e Precauções”).
+Devido aos dados clínicos limitados disponíveis com dronedarona, a coadministração com
+rivaroxabana deve ser evitada.
+A coadministração de Xarelto® (rivaroxabana) com rifampicina, indutor potente da
+CYP3A4 e da gp-P, levou a uma diminuição aproximada de 50% da AUC média da
+rivaroxabana, com diminuições paralelas em seus efeitos farmacodinâmicos (ver
+“Propriedades Farmacocinéticas”).
+O uso concomitante de Xarelto® (rivaroxabana) com outros indutores potentes da CYP3A4
+(por exemplo, fenitoína, carbamazepina, fenobarbital ou Erva de São João) também pode
+levar a uma diminuição da concentração plasmática de rivaroxabana.
+Inibidores potentes da CYP3A4 devem ser utilizados com cautela em pacientes com DAC
+e DAP tratados com 2,5 mg de Xarelto® (rivaroxabana) duas vezes ao dia.
+
+➢ Interações farmacodinâmicas
+Após administração combinada de enoxaparina (40 mg em dose única) com Xarelto®
+(rivaroxabana) (10 mg em dose única), foi observado um efeito aditivo sobre a atividade
+anti-fator Xa sem qualquer efeito adicional sobre os testes de coagulação (TP, TTPa). A
+enoxaparina não afetou a farmacocinética da rivaroxabana (ver “Advertências e
+Precauções”).
+O clopidogrel (300 mg em dose de ataque, seguida por 75 mg de dose de manutenção) não
+mostrou interação farmacocinética (com Xarelto® (rivaroxabana) 15 mg), mas foi
+observado um aumento relevante dos tempos de sangramento em um subgrupo de
+pacientes, e esse efeito não foi correlacionado à agregação plaquetária, à P -selectina ou aos
+níveis do receptor GPIIb/IIIa (ver “Advertências e Precauções”).
+Não foi observado prolongamento clinicamente relevante do tempo de sangramento após
+administração concomitante de Xarelto ® (rivaroxabana) (15 mg) e 500 mg de naproxeno.
+Todavia, pode haver indivíduos com resposta farmacodinâmica mais pronunciada (ver
+“Advertências e Precauções”).
+Ao converter pacientes de varfarina (RNI 2,0 a 3,0) para Xarelto® (rivaroxabana) (20 mg)
+ou de Xarelto® (rivaroxabana) (20 mg) para varfarina ( RNI 2,0 a 3,0) houve um aumento
+do tempo de protrombina (TP)/ RNI (Neoplastin®) mais que aditivamente (podem ser
+observados valores individuais de RNI de até 12) enquanto os efeitos sobre o TTPa, a
+inibição da atividade do fator Xa e o potencial de trombina endógena foram aditivos.
+ 2,5mg-0626-VV-LAB-123201-CCDS19; 10mg-0626-VV-LAB-123201-CCDS19; 15mg-20mg-0626-VV-
+LAB-123201-CCDS17
+
+Se for desejado testar os efeitos farmacodinâmicos de Xarelto® (rivaroxabana) durante o
+período de conversão, a atividade anti-fator Xa, PiCT e HepTest® podem ser usados como
+testes, uma vez que estes testes não são afetados pela varfarina.
+A partir do quarto dia da interrupção da varfarina, todos os testes (incluindo TP, TTPa ,
+inibição da atividade do fator Xa e ETP) refletiram apenas o efeito de Xarelto®
+(rivaroxabana) (ver “Posologia e Modo de Usar”).
+Se for desejado testar os efeitos farmacodinâmicos da varfarina durante o período de
+conversão, a avaliação da RNI pode ser utilizada na Cmin da rivaroxabana (24 horas após a
+ingestão anterior da rivaroxabana) uma vez que este teste é minimamente afetado pela
+rivaroxabana neste ponto de tempo.
+Nenhuma interação farmacocinética foi observada entre varfarina e Xarelto®
+(rivaroxabana).
+Tal como acontece com outros anticoagulantes, pode existir a possibilidade de pacientes
+apresentarem um risco aumentado de sangramento em caso de uso concomitante com
+ISRSs ou IRSNs devido ao seu efeito relatado sobre as plaquetas. Quando usado
+concomitantemente no programa clínico de rivaroxabana, foram observadas taxas
+numericamente mais elevadas de sangramento importante ou não importante clinicamente
+relevante em todos os grupos de tratamento.
+
+➢ Alimentos e laticínios
+Xarelto® (rivaroxabana) 2,5 mg pode ser administrado com ou sem alimentos (ver
+“Propriedades Farmacocinéticas”).
+
+➢ Interações cuja existência não foi demonstrada
+Não houve interações farmacocinéticas mútuas entre rivaroxabana e midazolam (substrato
+de CYP3A4), digoxina (substrato de glicoproteína -P) ou atorvastatina (substrato de
+CYP3A4 e gp-P).
+A coadministração do inibidor da bomba de prótons omeprazol, do antagonista do receptor
+H2 ranitidina, do antiácido hidróxido de alumínio/hidróxido de magnésio, naproxeno,
+clopidogrel ou enoxaparina não afetou a biodisponibilidade e a farmacocinética da
+rivaroxabana.
+Não foram observadas interações farmacocinéticas ou farmacodinâmicas clinicamente
+significativas quando Xarelto® (rivaroxabana) foi coadministrado com 500 mg de ácido
+acetilsalicílico.
+
+➢ Interações com parâmetros laboratoriais
+Os testes de parâmetros da coagulação (TP, TTPa, HepTest®) são afetados como esperado
+pelo modo de ação de Xarelto® (rivaroxabana) (ver “Propriedades Farmacodinâmicas”).
+ 2,5mg-0626-VV-LAB-123201-CCDS19; 10mg-0626-VV-LAB-123201-CCDS19; 15mg-20mg-0626-VV-
+LAB-123201-CCDS17
+
+➢ Interações com tabaco e álcool
+Não foi realizado estudo formal sobre a interação com tabaco ou álcool, uma vez que
+interação farmacocinética não é prevista.
+No estudo de fase III (COMPASS) não houve restrição quanto ao consumo de tabaco ou
+álcool.
+Os dados de uso de tabaco foram coletados apenas no baseline e aproximadamente 21,2%
+dos 9.152 pacientes no grupo rivaroxabana 2,5 mg + AAS 100 mg relataram o uso atual de
+tabaco e 46,8 % relataram uso anterior. As análises subsequentes indicaram que não h ouve
+interação entre o tratamento antitrombótico randomizado e o uso do tabaco, ou seja, o
+efeito do tratamento de Xarelto® (rivaroxabana) foi independente da condição do uso de
+tabaco. Os dados sobre o consumo de álcool não foram coletados.
+
+8. POSOLOGIA E MODO DE USAR
+
+➢ Dosagem e método de administração: DAC ou DAP
+- Método de administração
+Uso oral.
+
+- Dose usual recomendada
+A dose recomendada para pacientes no regime vascular com DAC ou DAP é de 1
+comprimido de 2,5 mg de Xarelto® (rivaroxabana) duas vezes ao dia em associação com
+dose diária de 100 mg AAS.
+
+- Duração do tratamento
+ 2,5mg-0626-VV-LAB-123201-CCDS19; 10mg-0626-VV-LAB-123201-CCDS19; 15mg-20mg-0626-VV-
+LAB-123201-CCDS17
+
+A duração do tratamento deve ser determinada para cada paciente com base em avaliações
+regulares e deve considerar o risco de eventos trombóticos versus os riscos de
+sangramento.
+Em pacientes com DAC ou DAP, Xarelto® (rivaroxabana) 2,5 mg duas vezes ao dia não é
+indicado em associação com terapia antiplaquetária dupla (ver “Propriedades
+Farmacodinâmicas”).
+
+- Método e frequência da administração
+Em pacientes diagnosticados com DAC ou DAP, o tratamento com 2,5 mg de Xarelto ®
+(rivaroxabana) duas vezes ao dia em associação com dose diária de 100 mg AAS pode ser
+iniciado a qualquer momento.
+Um comprimido de Xarelto® (rivaroxabana) 2,5 mg deve ser tomado duas vezes ao dia.
+Xarelto® (rivaroxabana) 2,5 mg pode ser tomado com ou sem alimentos.
+Para pacientes que não conseguem engolir comprimidos inteiros, o comprimido de
+Xarelto® (rivaroxabana) pode ser triturado e misturado com água ou alimentos pastosos,
+como purê de maçã, imediatamente antes da utilização, e administrado por via oral.
+O comprimido de Xarelto® (rivaroxabana) triturado pode ser administrado por sonda
+gástrica. Deve-se confirmar o posicionamento da sonda gástrica antes de administrar
+Xarelto® (rivaroxabana). O comprimido triturado deve ser administrado em uma pequena
+quantidade de água através de uma sonda gástrica, que deve ser lavada com água após a
+administração (ver “Propriedades Farmacocinéticas”).
+
+- Doses esquecidas
+Em caso de esquecimento da tomada de um comprimido, o paciente deverá continuar com
+a dose recomendada regular de Xarelto® (rivaroxabana) na próxima administração. A dose
+não deve ser duplicada para compensar uma dose esquecida.
+
+- Informações adicionais para populações especiais
+- Crianças e adolescentes (do nascimento aos 18 anos)
+A segurança e eficácia não foram estabelecidas em crianças e adolescentes com idade
+inferior a 18 anos.
+
+- Pacientes geriátricos
+Não é necessário ajuste de dose com base na idade. O risco de hemorragia aumenta com o
+aumento da idade. Portanto, o risco-benefício do tratamento deve ser avaliado
+individualmente regularmente (ver “Propriedades Farmacocinéticas”).
+
+- Gênero
+ 2,5mg-0626-VV-LAB-123201-CCDS19; 10mg-0626-VV-LAB-123201-CCDS19; 15mg-20mg-0626-VV-
+LAB-123201-CCDS17
+
+Não é necessário ajuste de dose com base no sexo do paciente (ver “Propriedades
+Farmacocinéticas”).
+
+- Peso corporal
+Não é necessário ajuste de dose baseado no peso corporal do paciente (ver “Propriedades
+Farmacocinéticas”).
+
+- Pacientes com insuficiência hepática
+Xarelto® (rivaroxabana) é contraindicado em pacientes com doença hepática associada à
+coagulopatia, levando a um risco de sangramento clinicamente relevante (ver
+“Contraindicações”).
+Não é necessário ajuste de dose em pacientes com outras doenças hepáticas (ver
+“Propriedades Farmacocinéticas”).
+Dados clínicos limitados em pacientes com insuficiência hepática moderada (Child Pugh
+B) indicam aumento significativo da atividade farmacológica. Não existem dados clínicos
+disponíveis para pacientes com insuficiência hepática grave (Child Pugh C) (ver
+“Contraindicações” e “Propriedades Farmacocinéticas”).
+
+- Pacientes com insuficiência renal
+Não é necessário ajuste de dose se a rivaroxabana for administrada em pacientes com
+insuficiência renal leve (depuração de creatinina ClCr ≤ 80-50 mL/min) ou moderada
+(ClCr < 50-30 mL/min) (ver “Propriedades Farmacocinéticas”).
+Dados clínicos limitados para pacientes com insuficiência renal grave (ClCr < 30-15
+mL/min) indicam que os níveis plasmáticos de rivaroxabana aumentam significativamente
+nesta população de pacientes. Portanto, Xarelto® (rivaroxabana) deve ser utilizado com
+cautela nestes pacientes (ver “Advertências e Precauções” e “Propriedades
+Farmacocinéticas”).
+O uso de Xarelto® (rivaroxabana) não é recomendado para pacientes com ClCr <15
+mL/min (ver “Advertências e Precauções” e “Propriedades Farmacocinéticas”).
+
+- Convertendo de antagonistas de vitamina K (AVK) para Xarelto® (rivaroxabana)
+Em pacientes convertidos de AVKs para Xarelto® (rivaroxabana), os valores de RNI serão
+falsamente elevados após administração de Xarelto® (rivaroxabana). A medida de RNI não
+é válida para medir a atividade anticoagulante de Xarelto® (rivaroxabana) e desta forma,
+não deve ser usada para este fim (ver “Interações Medicamentosas”).
+
+- Convertendo de Xarelto® (rivaroxabana) para antagonistas de vitamina K (AVK)
+Existe um potencial para anticoagulação inadequada durante a transição de Xarelto®
+(rivaroxabana) para AVK. A anticoagulação adequada contínua deve ser assegurada
+ 2,5mg-0626-VV-LAB-123201-CCDS19; 10mg-0626-VV-LAB-123201-CCDS19; 15mg-20mg-0626-VV-
+LAB-123201-CCDS17
+
+durante qualquer transição para um anticoagulante alternativo. Deve ser observado que
+Xarelto® (rivaroxabana) pode contribuir para um valor elevado de RNI.
+Em pacientes convertidos de Xarelto® (rivaroxabana) para AVK, o AVK deve ser
+administrado concomitantemente até que o valor de RNI seja ≥ 2,0. Para os dois primeiros
+dias do período de conversão, a dose padrão de AVK deve ser utilizada seguida pela dose
+de AVK ajustada de acordo com os testes de RNI. Enquanto os pacientes receberem
+ambos, Xarelto® (rivaroxabana) e AVK, a medida de RNI não deve ser realizada antes de
+24 horas (após a dose anterior, mas antes da próxima dose de Xarelto ® (rivaroxabana).
+Com a descontinuação de Xarelto® (rivaroxabana), o teste de RNI pode ser feito de forma
+confiável 24 horas após a última dose (ver “Interações Medicamentosas”).
+
+- Convertendo de anticoagulantes parenterais para Xarelto ® (rivaroxabana)
+Para pacientes que estejam atualmente recebendo um anticoagulante parenteral, Xarelto ®
+(rivaroxabana) deve ser iniciado 0 a 2 horas antes do horário previsto para próxima
+administração do medicamento parenteral (por exemplo, heparina de baixo peso
+molecular) ou no momento da descontinuação da administração parenteral contínua do
+medicamento (por exemplo, heparina não fracionada intravenosa).
+
+- Convertendo de Xarelto® (rivaroxabana) para anticoagulantes parenterais
+Descontinue o uso de Xarelto® (rivaroxabana) e administre a primeira dose do
+anticoagulante parenteral no momento em que a próxima dose de Xarelto® (rivaroxabana)
+seria administrada.
+
+- Diferenças étnicas
+Não é necessário ajuste de dose com base em diferenças étnicas (ver “Propriedades
+Farmacocinéticas”).
+
+9. REAÇÕES ADVERSAS
+ ➢ Resumo do perfil de segurança
+ A segurança de rivaroxabana foi avaliada em 20 (vinte) estudos de fase III que incluíram
+70.021 pacientes expostos à rivaroxabana, conforme listado na tabela a seguir:
+
+Número de pacientes estudados, dose diária total e duração máxima do tratamento nos
+estudos de fase III de Xarelto® (rivaroxabana), conforme descrito abaixo:
+ Indicação investigada em Número de Duração
+ estudos fase III pacientes* Dose diária total máxima do
+ tratamento
+ 2,5mg-0626-VV-LAB-123201-CCDS19; 10mg-0626-VV-LAB-123201-CCDS19; 15mg-20mg-0626-VV-
+LAB-123201-CCDS17
+
+ Prevenção de
+ tromboembolismo venoso
+ (TEV) em pacientes adultos
+ submetidos à cirurgia 6.097 10 mg 39 dias
+ eletiva de artroplastia de
+ joelho ou quadril
+ (RECORD-14)
+ Prevenção de
+ tromboembolismo venoso
+ em pacientes enfermos 3.997 10 mg 39 dias
+ hospitalizados
+ (MAGELLAN)
+ Tratamento de TVP e EP e Dia 1 – 21: 30 mg
+ prevenção de TVP e EP Dia 22 em diante: 20 mg
+ recorrentes 6.790 Após pelo menos 6 meses: 21 meses
+ (EINSTEIN TVP, -EP, - 10 mg ou 20 mg
+ EXT, -CHOICE)
+ Prevenção de acidente
+ vascular cerebral e embolia
+ sistêmica em pacientes com
+ fibrilação atrial não- 7.750 20 mg 41 meses
+ valvular
+ (ROCKET-AF, J-
+ ROCKET)
+ Prevenção de eventos 5 mg ou 10 mg
+ aterotrombóticos em respectivamente, em
+ pacientes após síndrome 10.225 associação com AAS ou 31 meses
+ coronariana aguda (SCA) AAS mais clopidogrel ou
+ (ATLAS ACS TIMI 51) ticlopidina.
+ Prevenção de acidente
+ vascular cerebral, infarto
+ do miocárdio e morte 5 mg em associação com
+ cardiovascular, e prevenção 18.244 100 mg AAS ou somente 47 meses
+ de isquemia aguda dos 10 mg
+ membros e mortalidade em
+ pacientes com DAC ou
+ DAP (COMPASS)
+ 2,5mg-0626-VV-LAB-123201-CCDS19; 10mg-0626-VV-LAB-123201-CCDS19; 15mg-20mg-0626-VV-
+LAB-123201-CCDS17
+
+ Prevenção de acidente
+ vascular cerebral e
+ prevenção de embolia
+ sistêmica em pacientes com 3.562 15 mg uma vez ao dia 24 meses
+ acidente vascular cerebral
+ embólico recente de fonte
+ indeterminada
+ (NAVIGATE ESUS)
+ Prevenção de eventos de
+ TEV sintomático e mortes
+ relacionadas a TEV por um
+ período de 45 dias após a 5.982 10 (ou 7,5) mg uma vez ao 45 dias
+ alta hospitalar em pacientes dia
+ com doença aguda de alto
+ risco
+ (MARINER)
+ Reduzindo o risco de
+ morte, infarto do miocárdio
+ ou acidente vascular
+ cerebral em indivíduos com 2,5 mg duas vezes ao dia 42 meses
+ insuficiência cardíaca e 2.499 combinado com AAS (ou > 1.260
+ doença arterial coronariana 100mg dias)
+ significativa após um
+ episódio de insuficiência
+ cardíaca descompensada
+ (COMMANDER HF)
+ Reduzindo a incidência
+ cumulativa de TVP, EP e
+ morte relacionada a TEV 10 mg dose oral uma vez 6,9 meses
+ em indivíduos adultos com 405 ao dia ou (207
+ vários tipos de câncer com dias)
+ alto risco de desenvolver
+ TEV (CASSINI)
+ Comparando uma
+ estratégia antitrombótica 10 mg uma vez ao dia + 24 meses
+ baseada em rivaroxabana 801 baixa dose de AAS / após (ou 720
+ com uma estratégia com 90 dias 10 mg sozinho dias)
+ base antiplaquetária após a
+ 2,5mg-0626-VV-LAB-123201-CCDS19; 10mg-0626-VV-LAB-123201-CCDS19; 15mg-20mg-0626-VV-
+LAB-123201-CCDS17
+
+ substituição da válvula
+ aórtica transcateter
+ (TAVR) para otimizar os
+ resultados clínicos
+ (GALILEO)
+ Tratamento de
+ tromboembolismo venoso Dose ajustada ao peso
+ (TEV) e prevenção de TEV corporal para atingir uma
+ recorrente em recém- exposição semelhante à
+ nascidos a termo e crianças observada em adultos
+ com idade inferior a 18 329 tratados para TVP e EP 12 meses
+ anos após o início do com 20 mg de
+ tratamento anticoagulante rivaroxabana uma vez ao
+ padrão dia
+ (EINSTEIN Junior Fase
+ III)
+ Prevenção de eventos
+ aterotrombóticos em
+ pacientes após 2,5 mg duas vezes ao dia
+ procedimento recente de 3.256 combinado com AAS 42 meses
+ revascularização do 100mg
+ membro inferior devido a
+ DAP sintomática
+ (VOYAGER PAD)
+*Pacientes expostos a pelo menos uma dose de rivaroxabana.
+
+Taxas de eventos de sangramento e anemia em pacientes expostos a Xarelto ®
+(rivaroxabana) nos estudos de fase III concluídos:
+ Indicação investigada em Qualquer sangramento Anemia
+ estudos de fase III
+ Prevenção de
+ tromboembolismo venoso
+ (TEV) em pacientes
+ adultos submetidos à 6,8 % dos pacientes 5,9 % dos pacientes
+ cirurgia eletiva de
+ artroplastia de joelho ou
+ quadril (RECORD 1-4)
+ 2,5mg-0626-VV-LAB-123201-CCDS19; 10mg-0626-VV-LAB-123201-CCDS19; 15mg-20mg-0626-VV-
+LAB-123201-CCDS17
+
+ Prevenção de
+ tromboembolismo venoso
+ em pacientes enfermos 12,6 % dos pacientes 2,1 % dos pacientes
+ hospitalizados
+ (MAGELLAN)
+ Tratamento de TVP e EP
+ e prevenção de TVP e EP 23 % dos pacientes 1,6 % dos pacientes
+ recorrentes (EINSTEIN
+ TVP, EP, EXT, CHOICE)
+ Prevenção de acidente
+ vascular cerebral e
+ embolia sistêmica em
+ pacientes com fibrilação 28 por 100 pacientes/ano 2,5 por 100 pacientes/ano
+ atrial não-valvular
+ (ROCKET AF, J-
+ ROCKET)
+ Prevenção de eventos
+ aterotrombóticos em
+ pacientes após síndrome 22 por 100 pacientes/ano 1,4 por 100 pacientes/ano
+ coronariana aguda (SCA)
+ (ATLAS ACS TIMI 51)
+ Prevenção de acidente
+ vascular cerebral, infarto
+ do miocárdio e morte
+ cardiovascular, e
+ prevenção de isquemia 6,7 por 100 pacientes/ano 0,15 por 100 pacientes/ano*
+ aguda dos membros e
+ mortalidade em pacientes
+ com DAC ou DAP
+ (COMPASS)
+ Prevenção de acidente
+ vascular cerebral e
+ prevenção de embolia 12,4 % dos pacientes 0.3 % dos pacientes*
+ sistêmica em pacientes
+ com acidente vascular
+ cerebral embólico recente
+ 2,5mg-0626-VV-LAB-123201-CCDS19; 10mg-0626-VV-LAB-123201-CCDS19; 15mg-20mg-0626-VV-
+LAB-123201-CCDS17
+
+ de fonte indeterminada
+ (NAVIGATE ESUS)
+ Prevenção de eventos de
+ TEV sintomático e mortes
+ relacionadas a TEV por
+ um período de 45 dias 3,0 % dos pacientes <0,1 % dos pacientes*
+ após a alta hospitalar em
+ pacientes com doença
+ aguda de alto risco
+ (MARINER)
+ Reduzindo o do risco de
+ morte, infarto do
+ miocárdio ou acidente
+ vascular cerebral em
+ indivíduos com
+ insuficiência cardíaca e 11,5% dos pacientes 1,4% dos pacientes*
+ doença arterial
+ coronariana significativa
+ após um episódio de
+ insuficiência cardíaca
+ descompensada
+ (COMMANDER HF)
+ Reduzindo a incidência
+ cumulativa de TVP, EP e
+ morte relacionada a TEV
+ em indivíduos adultos com 23,2 % dos pacientes 14,1 % dos pacientes*
+ vários tipos de câncer com
+ alto risco de desenvolver
+ TEV (CASSINI)
+ Comparando uma
+ estratégia antitrombótica
+ baseada em rivaroxabana
+ com uma estratégia com 25,6 % dos pacientes 2,4 % dos pacientes*
+ base antiplaquetária após
+ a substituição da válvula
+ aórtica transcateter
+ (TAVR) para otimizar os
+ 2,5mg-0626-VV-LAB-123201-CCDS19; 10mg-0626-VV-LAB-123201-CCDS19; 15mg-20mg-0626-VV-
+LAB-123201-CCDS17
+
+ resultados clínicos
+ (GALILEO)
+ Tratamento de
+ tromboembolismo venoso
+ (TEV) e prevenção de
+ TEV recorrente em
+ recém-nascidos a termo e
+ crianças com idade 39,5% dos pacientes 4,6% dos pacientes
+ inferior a 18 anos após o
+ início do tratamento
+ anticoagulante padrão
+ (EINSTEIN Junior Fase
+ III)
+ Prevenção de eventos (16,9% dos pacientes) (1,5% dos pacientes*)
+ aterotrombóticos em 8,38 por 100 pacientes / ano 0,74 por 100 pacientes / ano*
+ pacientes após
+ procedimento recente de
+ revascularização do
+ membro inferior devido a
+ DAP sintomática
+ (VOYAGER PAD)
+*Foi aplicado método pré-estabelecido seletivo para a coleta de eventos adversos.
+
+Em razão do modo de ação farmacológica, Xarelto® (rivaroxabana) pode ser associado a
+um risco aumentado de sangramento oculto ou manifesto em qualquer tecido e órgão, o
+que pode resultar em anemia pós-hemorrágica. O risco de sangramentos pode ser
+aumentado em certos grupos de pacientes, por exemplo, naqueles com hipertensão arterial
+grave não-controlada e/ou com medicação concomitante que afete a hemostasia (ver
+“Advertências e Precauções”). Os sinais, sintomas e gravidade (incluindo desfecho fatal)
+irão variar de acordo com a localização e o grau ou extensão do sangramento e/ou anemia
+(ver “Superdose”).
+Complicações hemorrágicas podem se apresentar como fraqueza, palidez, tontura, cefaleia
+ou edema inexplicável, dispneia e choque inexplicável. Em alguns casos, como
+consequência da anemia, foram observados sintomas de isquemia cardíaca, tais como dor
+no peito ou angina pectoris.
+Foram relatadas para Xarelto® (rivaroxabana) complicações conhecidas secundárias ao
+sangramento grave, como síndrome compartimental, ruptura esplênica e insuficiência renal
+ 2,5mg-0626-VV-LAB-123201-CCDS19; 10mg-0626-VV-LAB-123201-CCDS19; 15mg-20mg-0626-VV-
+LAB-123201-CCDS17
+
+ devido à hipoperfusão. Portanto, deve-se considerar a possibilidade de hemorragia ao
+ avaliar a condição de qualquer paciente anticoagulado.
+
+ ➢ Lista tabulada das reações adversas
+ As frequências das reações adversas ao medicamento relatadas com Xarelto®
+ (rivaroxabana) em pacientes adultos e pediátricos estão resumidas na tabela abaixo. As
+ reações adversas estão apresentadas em ordem decrescente de gravidade, dentro de cada
+ grupo de frequência. As frequências estão definidas como:
+ Muito comum ( ≥ 1/10)
+ Comum ( ≥ 1/100 a < 1/10)
+ Incomum ( ≥ 1/1.000 a < 1/100)
+ Rara ( ≥ 1/10.000 a < 1/1.000)
+ Muito rara ( < 1/10.000)
+ Desconhecida (não pode ser estimada a partir dos dados disponíveis)
+
+ Tabela 4: Todas as reações adversas ao medicamento emergentes do tratamento relatadas
+ em pacientes adultos nos estudos de fase III (RECORD 1 -4 agrupados, ROCKET, J-
+ ROCKET, MAGELLAN, ATLAS e EINSTEIN (TVP/EP/Extension/CHOICE) e
+ COMPASS*, NAVIGATE ESUS* MARINER*, COMMANDER HF*, CASSIN I*,
+ GALILEO*, em dois estudos fase II e um estudo de fase III EINSTEIN Junior em
+ pacientes pediátricos, e VOYAGER PAD *)
+
+Classificação Comum Incomum Rara Muito rara Desconhecida
+por Sistema
+Corpóreo
+(MedDRA)
+Distúrbios do Anemia Trombocitose
+sistema (incluindo os (incluindo
+sanguíneo e respectivos aumento na
+linfático parâmetros contagem de
+ laboratoriais) plaquetas)A
+Distúrbios Taquicardia
+cardíacos
+Distúrbios Hemorragia
+oculares ocular
+ (incluindo
+ hemorragia
+ conjuntival)
+ 2,5mg-0626-VV-LAB-123201-CCDS19; 10mg-0626-VV-LAB-123201-CCDS19; 15mg-20mg-0626-VV-
+ LAB-123201-CCDS17
+
+Distúrbios Sangramento Boca seca
+gastrintestinais gengival
+ Hemorragia
+ do trato
+ gastrintestinal
+ (incluindo
+ hemorragia
+ retal)
+ Dores
+ abdominais e
+ gastrintestinais
+ Dispepsia
+ Náusea
+ Constipação A
+ Diarreia
+ Vômito A
+Distúrbios Febre A Indisposição Edema
+gerais e Edema (incluindo mal- localizadoA
+condições no periférico estar)
+local da Diminuição
+administração geral da força
+ e energia
+ (incluindo
+ fadiga e
+ astenia)
+Distúrbios Insuficiência Icterícia
+hepatobiliares hepática
+Distúrbios do Reação alérgica Reações
+sistema Dermatite anafiláticas
+imunológico alérgica incluindo choque
+ anafilático
+Traumas, Hemorragia Secreção da Pseudoaneurisma
+intoxicação e pós- incisãoA vascular C
+complicações procedimento
+pós- (incluindo
+procedimento anemia pós-
+ operatória e
+ 2,5mg-0626-VV-LAB-123201-CCDS19; 10mg-0626-VV-LAB-123201-CCDS19; 15mg-20mg-0626-VV-
+ LAB-123201-CCDS17
+
+ hemorragia da
+ incisão)
+ Contusão
+Investigações Aumento das Aumento da Aumento da
+ transaminases bilirrubina bilirrubina
+ Aumento da conjugada (com
+ fosfatase alcalina ou sem aumento
+ no sangue A concomitante de
+ Aumento de ALT)
+ DHL A
+ Aumento da
+ lipase A
+ Aumento da
+ amilase A
+ Aumento de
+ GGT A
+Distúrbios Dor nas Hemartrose Hemorragia Síndrome
+músculo- extremidades A muscular compartimental
+esqueléticos, secundária a um
+do tecido sangramento
+conjuntivo e
+dos ossos
+Distúrbios do Tontura Hemorragia
+sistema Cefaleia cerebral e
+nervoso intracraniana
+ Síncope
+Distúrbios Hemorragia Insuficiência
+renais e do trato renal /
+urinários urogenital insuficiência
+ (incluindo renal aguda
+ hematúria e secundária a
+ menorragia B) sangramento
+ Disfunção suficiente para
+ renal causar
+ (incluindo hipoperfusão
+ aumento da
+ creatinina e da
+ 2,5mg-0626-VV-LAB-123201-CCDS19; 10mg-0626-VV-LAB-123201-CCDS19; 15mg-20mg-0626-VV-
+ LAB-123201-CCDS17
+
+ ureia no
+ sangue) A
+Distúrbios do Epistaxe
+trato Hemoptise
+respiratório
+Distúrbios da Prurido Urticária Síndrome de
+pele e dos (incluindo Stevens-
+tecidos casos Johnson/Necrólise
+subcutâneos incomuns de epidérmica tóxica
+ prurido e Síndrome
+ generalizado) DRESS (Drug
+ Rash Rash with
+ Equimose Eosinophilia and
+ Hemorragia Systemic
+ cutânea e Symptoms)
+ subcutânea
+Distúrbios Hipotensão
+vasculares Hematoma
+ A observado após cirurgia ortopédica de grande porte dos membros inferiores
+ B observado no tratamento de TEV como muito comum em mulheres < 55 anos
+ C observado como incomum na terapia de prevenção na SCA (após intervenção
+ percutânea)
+ *Foi aplicado método pré-estabelecido seletivo para a coleta de eventos adversos. A
+ incidência das reações adversas não aumentou e nenhuma reação adversa nova foi
+ identificada, a partir da análise dos dados dos estudos fase III em adultos.
+
+ Observações pós-comercialização
+ As seguintes reações adversas foram relatadas no período de pós-comercialização em
+ associação temporal com o uso de Xarelto® (rivaroxabana). A frequência dessas reações
+ adversas relatadas na experiência de pós-comercialização não pode ser estimada.
+
+ Distúrbios do sistema imunológico: angioedema e edema alérgico (nos dados agrupados
+ dos estudos Fase III, estes eventos foram incomuns (≥ 1/1.000 a < 1/100)).
+
+ Distúrbios hepatobiliares: colestase, hepatite (incluindo lesão hepatocelular) (nos dados
+ agrupados dos estudos Fase III, estes eventos foram raros (≥ 1/10.000 a < 1/1.000)).
+ 2,5mg-0626-VV-LAB-123201-CCDS19; 10mg-0626-VV-LAB-123201-CCDS19; 15mg-20mg-0626-VV-
+ LAB-123201-CCDS17
+
+Distúrbios do sistema sanguíneo e linfático: trombocitopenia (nos dados agrupados dos
+estudos Fase III, estes eventos foram incomuns (≥ 1/1.000 a < 1/100)).
+
+Distúrbios respiratórios, torácicos e mediastinais: Pneumonia eosinofílica (nos ensaios
+de fase III agrupados, esses eventos foram muito raros (< 1/10.000)) .
+
+Distúrbios renais e urinários: Nefropatia relacionada aos anticoagulantes (nos ensaios de
+fase III agrupados, a frequência não pode ser estimada).
+
+Lesões, envenenamento e complicações d e procedimentos: Ruptura esplênica (nos
+ensaios de fase III agrupados, esses eventos foram muito raros (<1/10.000) ).
+
+ Em casos de eventos adversos, notifique pelo Sistema VigiMed, disponível no Portal
+da Anvisa.
+
+10. SUPERDOSE
+Casos raros de superdose de até 1960 mg foram relatados. Em caso de superdose, observe
+seu paciente cuidadosamente quanto a complicações hemorrágicas ou outras reações
+adversas (ver “Conduta no sangramento”). Devido à absorção limitada, é esperado um
+efeito máximo sem aumento na exposição plasmática média em doses supraterapêuticas de
+50 mg ou mais.
+Não está disponível um antídoto específico para antagonizar os efeitos farmacodinâmicos
+da rivaroxabana. Pode-se considerar o uso de carvão ativado para reduzir a absorção no
+caso de superdosagem de Xarelto® (rivaroxabana). Devido à alta ligação da rivaroxabana
+às proteínas plasmáticas, não se espera que esta seja dialisável.
+
+➢ Conduta no sangramento
+Caso ocorra uma complicação hemorrágica no paciente que estiver recebendo
+rivaroxabana, a próxima administração deve ser adiada ou o tratamento deve ser
+descontinuado, conforme apropriado. A rivaroxabana tem meia -vida de aproximadamente
+5 a 13 horas. A conduta deve ser individualizada de acordo com a gravidade e a
+localização da hemorragia. Tratamento sintomático apropriado pode se r utilizado, se
+necessário, como compressão mecânica (por exemplo, na epistaxe grave), hemostase
+cirúrgica com procedimentos de controle de sangramento, reposição de líquidos e suporte
+hemodinâmico, transfusão de hemoderivados (células vermelhas embaladas ou plasma
+fresco congelado, dependendo da anemia ou coagulopatia associada) ou plaquetas.
+Se o sangramento não puder ser controlado pelas medidas mencionadas acima, deve-se
+considerar a administração de um agente reverso procoagulante específico, como:
+ 2,5mg-0626-VV-LAB-123201-CCDS19; 10mg-0626-VV-LAB-123201-CCDS19; 15mg-20mg-0626-VV-
+LAB-123201-CCDS17
+
+- concentrado de complexo protrombínico (CCP);
+- concentrado de complexo protrombínico ativado (CCPa);
+- fator VIIa recombinante (r-FVIIa).
+No entanto, atualmente a experiência clínica com o uso destes produtos em pacientes
+recebendo Xarelto® (rivaroxabana) é muito limitada (ver “Propriedades
+Farmacodinâmicas”).
+Não se espera que o sulfato de protamina e a vitamina K afetem a atividade anticoagulante
+da rivaroxabana.
+Existe experiência limitada com ácido tranexâmico, e não há experiência com ácido
+aminocaproico e aprotinina em indivíduos tomando Xarelto® (rivaroxabana). Também não
+há racional científico para o benefício, nem experiência com a desmopressina hemostática
+sistêmica em pacientes recebendo Xarelto® (rivaroxabana).
+
+Em caso de intoxicação ligue para 0800 722 6001, se você precisar de mais
+orientações.
+
+===== BLOCO 2 =====
+1. INDICAÇÕES
+Xarelto® (rivaroxabana) é indicado para a prevenção de tromboembolismo venoso (TEV)
+em pacientes adultos submetidos à cirurgia eletiva de artroplastia de joelho ou quadril.
+Xarelto® (rivaroxabana) é indicado para o tratamento de trombose venosa profunda (TVP)
+e prevenção de trombose venosa profunda (TVP) e embolia pulmonar (EP) recorrentes, em
+adultos.
+Xarelto® (rivaroxabana) é indicado para o tratamento de embolia pulmonar (EP) e
+prevenção de embolia pulmonar (EP) e trombose venosa profunda (TVP) recorrentes, em
+adultos.
+
+4. CONTRAINDICAÇÕES
+Xarelto® (rivaroxabana) é contraindicado em pacientes com hipersensibilidade à
+rivaroxabana ou a qualquer outro componente do produto (ver “Composição”) em
+pacientes com sangramento ativo clinicamente significativo (por exemplo, sangramento
+intracraniano, sangramento gastrintestinal); e ainda em pacientes com doença hepática
+associada à coagulopatia, levando a um risco de sangramento clinicamente relevante (ver
+“Propriedades Farmacocinéticas”).
+
+Não foram estabelecidos segurança e eficácia de Xarelto® (rivaroxabana) em mulheres
+grávidas. Dados em animais mostram que a rivaroxabana atravessa a barreira placentária.
+Portanto, o uso de Xarelto® (rivaroxabana) é contraindicado durante toda a gravidez (ver
+“Gravidez e lactação” e “Dados de segurança pré-clínicos”).
+Não foram estabelecidos segurança e eficácia de Xarelto® (rivaroxabana) em mulheres
+lactantes. Dados em animais indicam que a rivaroxabana é secretada no leite materno.
+Portanto, Xarelto® (rivaroxabana) só pode ser administrado depois que for descontinuada a
+amamentação (ver “Gravidez e lactação” e “Dados de segurança pré-clínicos”).
+
+Categoria X - Em estudos em animais e mulheres grávidas, o fármaco provocou anomalias
+fetais, havendo clara evidência de risco para o feto que é maior do que qualquer benefício
+possível para a paciente.
+Este medicamento não deve ser utilizado por mulheres grávidas ou que possam ficar
+grávidas durante o tratamento.
+
+Este medicamento é contraindicado durante o aleitamento ou doação de leite, pois
+pode ser excretado no leite humano e pode causar reações indesejáveis no bebê. Seu
+médico ou cirurgião-dentista deve apresentar alternativas para o seu tratamento ou
+para a alimentação do bebê.
+
+5. ADVERTÊNCIAS E PRECAUÇÕES
+➢ Risco de sangramento
+Xarelto® (rivaroxabana), como outros antitrombóticos, deve ser utilizado com cautela em
+pacientes com risco aumentado de sangramento, tais como:
+- distúrbios hemorrágicos adquiridos ou congênitos;
+- hipertensão arterial grave não controlada;
+- doença gastrintestinal ulcerativa ativa;
+- ulcerações gastrintestinais recentes;
+- retinopatia vascular;
+- hemorragia intracraniana ou intracerebral recente;
+- anormalidades vasculares intraespinais ou intracerebrais;
+
+ 2,5mg-0626-VV-LAB-123201-CCDS19; 10mg-0626-VV-LAB-123201-CCDS19; 15mg-20mg-0626- 18
+VV-LAB-123201-CCDS17
+- cirurgia cerebral, espinhal ou oftalmológica recente;
+- bronquiectasia ou história de sangramento pulmonar.
+O sangramento durante o tratamento antitrombótico pode desmascarar malignidades
+subjacentes ainda desconhecidas, em particular no trato gastrointestinal ou geniturinário.
+Pacientes com doença maligna podem, simultaneamente, apresentar maior risco de
+sangramento e trombose. O benefício individual do tratamento antitrombótico deve ser
+avaliado em relação ao risco de sangramento em pacientes com câncer ativo, dependendo
+da localização do tumor, terapia antineoplásica e estágio da doença.
+Deve-se ter cuidado se os pacientes forem tratados concomitantemente com fármacos que
+interferem na hemostasia, como os anti-inflamatórios não-esteroidais (AINEs), ácido
+acetilsalicílico, os inibidores da agregação plaquetária (ou seja, agentes antiplaquet ários),
+outros antitrombóticos ou inibidores seletivos da recaptação de serotonina (ISRSs) e
+inibidores da recaptação de serotonina e noradrenalina (IRSNs) (ver “Interações
+Medicamentosas”).
+Pode-se considerar tratamento profilático adequado para pacientes com risco de doença
+ulcerativa gastrintestinal (ver “Interações Medicamentosas”).
+Qualquer queda de hemoglobina ou da pressão arterial sem explicação deve levar à
+investigação de um local com sangramento.
+
+➢ Anestesia neuraxial (epidural/espinhal)
+Quando anestesia neuraxial (epidural/espinhal) ou uma punção espinhal é realizada, os
+pacientes tratados com antitrombóticos para prevenção de complicações tromboembólicas
+correm o risco de desenvolver hematoma epidural ou espinhal que pode resultar em
+paralisia prolongada.
+O risco destes eventos é ainda maior pelo uso de cateteres epidurais de demora ou pelo uso
+concomitante de medicamentos que afetem a hemostasia. O risco também pode aumentar
+por punção epidural ou espinhal traumática ou repetida.
+Pacientes devem ser frequentemente monitorados para sinais e sintomas de alteração
+neurológica (por exemplo, torpor ou fraqueza das pernas, disfunção intestinal ou da
+bexiga). Se forem observados déficits neurológicos, serão necessários diagnóstico e
+tratamento urgentes.
+O médico deve considerar o benefício em potencial em relação ao risco antes da
+intervenção neuraxial em pacientes anticoagulados ou que vão ser anticoagulados para
+tromboprofilaxia.
+Para reduzir o risco potencial de sangramento associado ao uso concomitante de
+rivaroxabana e anestesia neuraxial (epidural/espinhal) ou punção espinhal, considerar o
+perfil farmacocinético de rivaroxabana. A inserção ou remoção de um cateter epidural ou
+punção lombar é melhor realizada quando o efeito anticoagulante de rivaroxabana é
+estimado ser baixo (ver “Propriedades Farmacocinéticas”).
+
+ 2,5mg-0626-VV-LAB-123201-CCDS19; 10mg-0626-VV-LAB-123201-CCDS19; 15mg-20mg-0626- 19
+VV-LAB-123201-CCDS17
+Um cateter epidural não deve ser removido antes de 18 horas após a última administração
+de Xarelto® (rivaroxabana).
+Xarelto® (rivaroxabana) deve ser administrado, pelo menos, 6 horas após a remoção do
+cateter.
+Se ocorrer punção traumática, a administração de Xarelto® (rivaroxabana) deverá ser
+adiada por 24 horas.
+
+➢ Cirurgia e intervenções
+Se um procedimento invasivo ou uma intervenção cirúrgica forem necessários, Xarelto®
+(rivaroxabana) 10 mg deve ser interrompido pelo menos 24 horas antes da intervenção, se
+possível, e com base no julgamento clínico do médico.
+Se o procedimento não puder ser adiado, o aumento do risco de sangramento deve ser
+avaliado em relação à urgência de tal intervenção.
+A administração de Xarelto® (rivaroxabana) deve ser reiniciada o mais rapidamente
+possível após o procedimento invasivo ou a intervenção cirúrgica, desde que a situação
+clínica do paciente permita e a hemostasia adequada tenha sido estabelecida (ver
+“Propriedades Farmacocinéticas”).
+
+➢ Pacientes com próteses valvulares cardíacas
+Xarelto® (rivaroxabana) não é recomendado para tromboprofilaxia em pacientes que foram
+recentemente submetidos a substituição da válvula aórtica transcateter (TAVR), baseado
+nos dados de um estudo clínico randomizado, controlado comparando um regime de
+Xarelto® (rivaroxabana) a um regime de antiagregante plaquetário (ver “Propriedades
+Farmacodinâmicas”).
+A segurança e a eficácia de Xarelto® (rivaroxabana) não foram estudadas em pacientes
+com outras próteses de válvulas cardíacas ou outros procedimentos valvulares; portanto,
+não há dados para suportar que Xarelto® (rivaroxabana) forneça anticoagulação adequada
+nestas populações de pacientes.
+
+➢ Pacientes com síndrome antifosfolípide triplo positivo de alto risco
+Xarelto® (rivaroxabana) não é recomendado em pacientes com antecedentes de trombose
+diagnosticados com síndrome antifosfolípide e com persistência tripla positiva (para
+anticoagulante lúpico, anticorpos anticardiolipina e anticorpos anti-beta 2-glicoproteína I),
+uma vez que o tratamento com rivaroxabana está associado a um aumento da taxa de
+eventos trombóticos recorrentes comparados com antagonistas da vitamina K (AVK) (ver
+“Propriedades Farmacodinâmicas”).
+
+➢ Insuficiência renal
+
+ 2,5mg-0626-VV-LAB-123201-CCDS19; 10mg-0626-VV-LAB-123201-CCDS19; 15mg-20mg-0626- 20
+VV-LAB-123201-CCDS17
+Xarelto® (rivaroxabana) deve ser utilizado com cautela em pacientes com insuficiência
+renal moderada (ClCr < 50-30 mL/min) que estejam recebendo comedicações que levam
+ao aumento da concentração de rivaroxabana no plasma (ver “Interações
+Medicamentosas”).
+Em pacientes com insuficiência renal grave (ClCr < 30 mL/min), os níveis plasmáticos de
+rivaroxabana podem elevar-se significativamente (1,6 vezes em média), o que pode levar a
+um aumento do risco de sangramento. Em razão da doença de base, estes pacientes têm um
+aumento do risco de sangramento e de trombose. Em virtude dos dados clínicos limitados,
+Xarelto® (rivaroxabana) deve ser usado com cautela nos pacientes com ClCr < 30 -15
+mL/min (ver “Propriedades Farmacocinéticas”).
+Não há dados clínicos disponíveis para pacientes com insuficiência renal grave (ClCr < 15
+mL/min). Portanto o uso de Xarelto® (rivaroxabana) não é recomendado nestes pacientes
+(ver “Posologia e Modo de Usar” e “Propriedades Farmacocinéticas”).
+Após início do tratamento, os pacientes com insuficiência renal grave ou risco aumentado
+de sangramentos e aqueles que recebem tratamento sistêmico concomitante com
+antimicóticos azólicos ou inibidores das proteases do HIV devem ser cuidadosamente
+monitorados quanto a sinais de complicações hemorrágicas (ver “Interações
+Medicamentosas”). Isto pode ser feito por exame físico regular dos pacientes, observação
+atenta da drenagem da incisão cirúrgica e dosagens periódicas da hemoglobina.
+
+➢ Medicação concomitante
+Xarelto® (rivaroxabana) não é recomendado em pacientes recebendo tratamento sistêmico
+concomitante com antimicóticos azólicos (por exemplo, cetoconazol) ou inibidores da
+protease do HIV (por exemplo, ritonavir). Estes fármacos são potentes inibidores da
+CYP3A4 e da gp-P. Portanto, estes fármacos podem aumentar as concentrações
+plasmáticas de rivaroxabana até um grau clinicamente relevante (2,6 vezes em média), o
+que pode levar ao aumento no risco de sangramentos (ver “Interações Medicamentosas”).
+O antimicótico azólico fluconazol, um inibidor moderado da CYP3A4, tem, entretanto,
+menos efeito sobre a exposição à rivaroxabana e pode ser coadministrado (ver “Interações
+Medicamentosas”).
+
+➢ Prolongamento do QTc
+Não foi observado efeito de prolongamento do QTc com o uso de Xarelto® (rivaroxabana)
+(ver “Propriedades Farmacocinéticas”).
+
+➢ Informação sobre os excipientes
+Como Xarelto® (rivaroxabana) comprimidos contém lactose, os pacientes com problemas
+hereditários raros de intolerância à lactose ou à galactose (por exemplo, deficiência de
+
+ 2,5mg-0626-VV-LAB-123201-CCDS19; 10mg-0626-VV-LAB-123201-CCDS19; 15mg-20mg-0626- 21
+VV-LAB-123201-CCDS17
+ lactase de Lapp ou má absorção de glicose-galactose) não devem tomar Xarelto®
+ (rivaroxabana) comprimidos (ver “Composição”).
+ Xarelto® (rivaroxabana) comprimidos contém menos de 1 mmol de sódio (23 mg) por
+ dose, isto quer dizer que é essencialmente “livre de sódio”.
+
+ Atenção: Contém lactose (tipo de açúcar) abaixo de 0,25g/comprimido revestido. Este
+ medicamento não deve ser usado por pessoas com síndrome de má-absorção de
+ glicose-galactose.
+ Atenção: Contém os corantes dióxido de titânio e óxido de ferro vermelho.
+
+ ➢ Tratamento e prevenção de TVP e EP recorrentes: pacientes com embolia
+ pulmonar hemodinamicamente instáveis ou pacientes que necessitam de trombólise
+ ou embolectomia pulmonar
+ Xarelto® (rivaroxabana) não é recomendado como uma alternativa à heparina não
+ fracionada em pacientes com embolia pulmonar que estejam hemodinamicamente instáveis
+ ou que possam receber trombólise ou embolectomia pulmonar, uma vez que a segurança e
+ eficácia de Xarelto® (rivaroxabana) não foram estabelecidas nestas situações clínicas.
+
+➢ Gravidez e lactação
+- Gravidez
+ A segurança e eficácia de Xarelto® (rivaroxabana) não foram estabelecidas em mulheres
+ grávidas.
+ Em ratas e coelhas, a rivaroxabana mostrou pronunciada toxicidade materna, com
+ alterações placentárias relacionadas ao seu modo de ação farmacológico (por exemplo,
+ complicações hemorrágicas) levando à toxicidade reprodutiva (ver “Dados de segurança
+ pré-clínicos”). Não se identificou potencial teratogênico primário. Devido ao risco
+ intrínseco de sangramentos e à evidência de que a rivaroxabana atravessa a placenta, o uso
+ de Xarelto® (rivaroxabana) é contraindicado na gravidez (ver “Contraindicações” e “Dados
+ de segurança pré-clínicos”).
+
+ - Lactação
+ Não foram estabelecidos segurança e eficácia de Xarelto® (rivaroxabana) em lactantes. Em
+ ratas, a rivaroxabana é secretada no leite materno. Portanto, Xarelto ® (rivaroxabana) só
+ pode ser administrado depois de descontinuada a amamentação (ver “Contraindicações” e
+ “Dados de segurança pré-clínicos”).
+
+ ➢ Mulheres em idade fértil/Contracepção
+ Xarelto® (rivaroxabana) deve ser utilizado em mulheres em idade fértil somente com um
+ método contraceptivo eficaz.
+
+ 2,5mg-0626-VV-LAB-123201-CCDS19; 10mg-0626-VV-LAB-123201-CCDS19; 15mg-20mg-0626- 22
+ VV-LAB-123201-CCDS17
+➢ Efeitos sobre a capacidade de dirigir veículos ou operar máquinas
+Foram relatadas síncopes e tonturas, o que podem afetar a habilidade de dirigir veículos ou
+operar máquinas (ver “Reações Adversas”). Pacientes que apresentarem estas reações
+adversas não devem dirigir ou operar máquinas.
+
+Em caso de suspeita de dengue, ou quando associado a outros medicamentos que
+aumentem o efeito hemorrágico, a prescrição deste medicamento ou a manutenção do
+tratamento com ele deve ser reavaliada, devido a seu potencial hemorrágico.
+
+Informe a seu paciente que a doação de sangue é absolutamente contraindicada
+durante o tratamento com rivaroxabana e até 5 dias após seu término, devido ao dano
+que ele pode causar ao receptor.
+
+6. INTERAÇÕES MEDICAMENTOSAS
+➢ Interações farmacocinéticas
+A rivaroxabana é eliminada principalmente pelo metabolismo hepático mediado pelo
+citocromo P450 (CYP3A4, CYP2J2) e por excreção renal do fármaco inalterado,
+envolvendo sistemas de transportadores glicoproteína-P (gp-P)/proteína de resistência ao
+câncer de mama (Bcrp).
+
+➢ Inibição do CYP
+A rivaroxabana não inibe a CYP3A4 nem qualquer outra isoforma principal de CYP.
+
+➢ Indução do CYP
+A rivaroxabana não induz a CYP3A4 nem qualquer outra isoforma principal de CYP.
+
+➢ Efeitos na rivaroxabana
+O uso concomitante de Xarelto® (rivaroxabana) com inibidores potentes da CYP3A4 e
+inibidores da gp-P pode levar à redução da depuração hepática e renal e, deste modo, ao
+aumento significativo da exposição sistêmica.
+A coadministração de Xarelto® (rivaroxabana) com cetoconazol, antimicótico azólico (400
+mg uma vez ao dia), um potente inibidor da CYP3A4 e da gp-P, levou a um aumento de
+2,6 vezes da AUC média da rivaroxabana no estado de equilíbrio e um aumento de 1,7
+vezes da Cmáx média da rivaroxabana, com elevações significativas de seus efeitos
+farmacodinâmicos.
+A coadministração de Xarelto® (rivaroxabana) com o inibidor da protease do HIV,
+ritonavir (600 mg duas vezes ao dia), um potente inibidor da CYP3A4 e da gp -P, levou a
+um aumento de 2,5 vezes da AUC média da rivaroxabana e a um aumento de 1,6 vezes de
+
+ 2,5mg-0626-VV-LAB-123201-CCDS19; 10mg-0626-VV-LAB-123201-CCDS19; 15mg-20mg-0626- 23
+VV-LAB-123201-CCDS17
+Cmáx média de rivaroxabana, com elevações significativas de seus efeitos
+farmacodinâmicos. Portanto, Xarelto® (rivaroxabana) não é recomendado em pacientes que
+estejam recebendo tratamento sistêmico concomitante com antimicóticos azólicos ou
+inibidores da protease do HIV (ver “Advertências e Precauções”).
+Para outros fármacos que inibam potentemente apenas uma das vias de eliminação da
+rivaroxabana, seja CYP3A4 ou gp-P, é esperado que o aumento das concentrações
+plasmáticas de rivaroxabana seja de menor extensão.
+A claritromicina (500 mg duas vezes ao dia), considerada um potente inibidor da CYP3A4
+e inibidor moderado da gp-P, levou ao aumento de 1,5 vezes da AUC média da
+rivaroxabana e de 1,4 vezes da Cmáx. Este aumento, que está próximo da magnitude da
+variabilidade normal da AUC e Cmáx, é considerado clinicamente irrelevante.
+A eritromicina (500 mg três vezes ao dia), que inibe moderadamente CYP3A4 e gp -P,
+levou a um aumento de 1,3 vezes da AUC e da Cmáx média da rivaroxabana. Este aumento
+está dentro da magnitude de variabilidade normal da AUC e Cmáx e é considerado
+clinicamente irrelevante.
+Em indivíduos com insuficiência renal leve, eritromicina (500 mg três vezes ao dia) levou
+a um aumento de 1,8 vezes da AUC média de rivaroxabana e de 1,6 vezes da Cmáx quando
+comparado a indivíduos com função renal normal sem comedicação. Em indivíduos com
+insuficiência renal moderada, a eritromicina levou a um aumento de 2,0 vezes da AUC
+média de rivaroxabana e de 1,6 vezes da Cmáx quando comparado a indivíduos com função
+renal normal sem comedicação (ver “Advertências e Precauções”).
+O fluconazol (400 mg uma vez ao dia), considerado um inibidor moderado da CYP3A4,
+levou a um aumento de 1,4 vezes da AUC média da rivaroxabana e 1,3 vezes da Cmáx
+média. Este aumento está dentro da magnitude da variabilidade normal de AUC e C máx e é
+considerado como clinicamente irrelevante (ver “Advertências e Precauções”).
+A coadministração de Xarelto® (rivaroxabana) com rifampicina, indutor potente da
+CYP3A4 e da gp-P, levou a uma diminuição aproximada de 50% da AUC média da
+rivaroxabana, com diminuições paralelas em seus efeitos farmacodinâmicos (ver
+“Propriedades Farmacocinéticas”).
+O uso concomitante de Xarelto® (rivaroxabana) com outros indutores potentes da CYP3A4
+(por exemplo, fenitoína, carbamazepina, fenobarbital ou Erva de São João) também pode
+levar a uma diminuição da concentração plasmática de rivaroxabana. A diminuição das
+concentrações plasmáticas de rivaroxabana é considerada clinicamente irrelevante para
+pacientes tratados com 10 mg de Xarelto® (rivaroxabana) uma vez ao dia para prevenção
+do TEV após artroplastia de quadril ou joelho.
+
+➢ Interações farmacodinâmicas
+Após administração combinada de enoxaparina (40 mg em dose única) com Xarelto®
+(rivaroxabana) (10 mg em dose única), foi observado um efeito aditivo sobre a atividade
+
+ 2,5mg-0626-VV-LAB-123201-CCDS19; 10mg-0626-VV-LAB-123201-CCDS19; 15mg-20mg-0626- 24
+VV-LAB-123201-CCDS17
+anti-fator Xa sem qualquer efeito adicional sobre os testes de coagulação (TP, TTPa). A
+enoxaparina não afetou a farmacocinética da rivaroxabana (ver “Advertências e
+Precauções”).
+O clopidogrel (300 mg em dose de ataque, seguida por 75 mg de dose de manutenção) não
+mostrou interação farmacocinética (com Xarelto® (rivaroxabana) 15 mg), mas foi
+observado um aumento relevante dos tempos de sangramento em um subgrupo de
+pacientes, e esse efeito não foi correlacionado à agregação plaquetária, à P -selectina ou aos
+níveis do receptor GPIIb/IIIa (ver “Advertências e Precauções”).
+Não foi observado prolongamento clinicamente relevante do tempo de sangramento após
+administração concomitante de Xarelto® (rivaroxabana) (15 mg) e 500 mg de naproxeno.
+Todavia, pode haver indivíduos com resposta farmacodinâmica mais pronunciada (ver
+“Advertências e Precauções”).
+Ao converter pacientes de varfarina (RNI 2,0 a 3,0) para Xarelto® (rivaroxabana) (20 mg)
+ou de Xarelto® (rivaroxabana) (20 mg) para varfarina (RNI 2,0 a 3,0) houve um aumento
+do tempo de protrombina (TP)/ RNI (Neoplastin®) mais que aditivamente (podem ser
+observados valores individuais de RNI de até 12) enquanto os efeitos sobre o TTPa, a
+inibição da atividade do fator Xa e o potencial de trombina endógena foram aditivos.
+Se for desejado testar os efeitos farmacodinâmicos de Xarelto® (rivaroxabana) durante o
+período de conversão, a atividade anti-fator Xa, PiCT e HepTest® podem ser usados como
+testes, uma vez que estes testes não são afetados pela varfarina.
+A partir do quarto dia da interrupção da varfarina, todos os testes (incluindo TP, TTPa,
+inibição da atividade do fator Xa e ETP) refletiram apenas o efeito de Xarelto®
+(rivaroxabana) (ver “Posologia e Modo de Usar”).
+Se for desejado testar os efeitos farmacodinâmicos da varfarina durante o período de
+conversão, a avaliação da RNI pode ser utilizada na Cmin da rivaroxabana (24 horas após a
+ingestão anterior da rivaroxabana) uma vez que este teste é minimamente afetado pela
+rivaroxabana neste ponto de tempo.
+Nenhuma interação farmacocinética foi observada entre varfarina e Xarelto®
+(rivaroxabana).
+Tal como acontece com outros anticoagulantes, pode existir a possibilidade de pacientes
+apresentarem um risco aumentado de sangramento em caso de uso concomitante com
+ISRSs ou IRSNs devido ao seu efeito relatado sobre as plaquetas. Quando usado
+concomitantemente no programa clínico de rivaroxabana, foram observadas taxas
+numericamente mais elevadas de sangramento importante ou não importante clinicamente
+relevante em todos os grupos de tratamento.
+
+➢ Alimentos e laticínios
+Xarelto® (rivaroxabana) 10 mg pode ser administrado com ou sem alimentos (ver
+“Propriedades Farmacocinéticas”).
+
+ 2,5mg-0626-VV-LAB-123201-CCDS19; 10mg-0626-VV-LAB-123201-CCDS19; 15mg-20mg-0626- 25
+VV-LAB-123201-CCDS17
+➢ Interações cuja existência não foi demonstrada
+Não houve interações farmacocinéticas mútuas entre rivaroxabana e midazolam (substrato
+de CYP3A4), digoxina (substrato de glicoproteína-P) ou atorvastatina (substrato de
+CYP3A4 e gp-P).
+A coadministração do inibidor da bomba de prótons omeprazol, do antagonista do receptor
+H2 ranitidina, do antiácido hidróxido de alumínio/hidróxido de magnésio, naproxeno,
+clopidogrel ou enoxaparina não afetou a biodisponibilidade e a farmacocinética da
+rivaroxabana.
+Não foram observadas interações farmacocinéticas ou farmacodinâmicas clinicamente
+significativas quando Xarelto® (rivaroxabana) foi coadministrado com 500 mg de ácido
+acetilsalicílico.
+
+➢ Interações com parâmetros laboratoriais
+Os testes de parâmetros da coagulação (TP, TTPa, HepTest®) são afetados como esperado
+pelo modo de ação de Xarelto® (rivaroxabana) (ver “Propriedades Farmacodinâmicas”).
+
+➢ Interações com tabaco e álcool
+Não foi realizado estudo formal sobre a interação com tabaco ou ácool, uma vez que
+interação farmacocinética não é prevista. Durante os estudos de fase I, não era permitido o
+consumo de álcool pelos pacientes.
+Durante a fase ambulatorial, era permitido o consumo de álcool pelos pacientes em doses
+de até 40 g por dia. Era permitido fumar durante o ensaio.
+Nos estudos de fase III (RECORD 1, 2 e 3) não houve restrição quanto ao consumo de
+tabaco. O abuso de álcool foi um critério de exclusão em todos os estudos de fase III, mas
+não foram utilizadas restrições adicionais nos ensaios.
+Cerca de 50% dos 4657 pacientes no grupo da rivaroxabana submetidos à artroplastia de
+joelho ou quadril nos estudos de fase III relataram em seu histórico médico o consumo de
+álcool ao menos eventualmente. Pacientes foram ambulatoriais durante algum tempo, mas
+não há disponível nenhuma informação adicional sobre o uso concomitante de álcool e
+tabaco.
+
+8. POSOLOGIA E MODO DE USAR
+➢ Dosagem e método de administração: Prevenção de TEV
+
+- Método de administração
+Uso oral.
+
+- Dose usual recomendada
+A dose recomendada para prevenção de TEV em cirurgia ortopédica é um comprimido de
+10 mg uma vez ao dia, com ou sem alimento.
+
+- Duração do tratamento
+A duração do tratamento depende do tipo de cirurgia ortopédica.
+Após cirurgia de grande porte do quadril, os pacientes devem ser tratados por 5 semanas.
+Após cirurgia de grande porte do joelho, os pacientes devem ser tratados por 2 semanas.
+
+- Método e frequência da administração
+A dose inicial deve ser tomada 6 a 10 horas após a cirurgia, contanto que tenha sido
+estabelecida a hemostasia.
+Para pacientes que não conseguem engolir comprimidos inteiros, o comprimido de
+Xarelto® (rivaroxabana) pode ser triturado e misturado com água ou alimentos pastosos,
+como purê de maçã, imediatamente antes da utilização, e administrado por via oral.
+O comprimido de Xarelto® (rivaroxabana) triturado pode ser administrado por sonda
+gástrica. Deve-se confirmar o posicionamento da sonda gástrica antes de administrar
+Xarelto® (rivaroxabana). O comprimido triturado deve ser administrado em uma pequena
+quantidade de água através de uma sonda gástrica, que deve ser lavada com água após a
+administração (ver “Propriedades Farmacocinéticas”).
+
+- Doses esquecidas
+Em caso de esquecimento da tomada de um comprimido, o paciente deverá tomar a dose
+de 10 mg de Xarelto® (rivaroxabana) assim que se lembrar e, no dia seguinte, continuar
+tomando o comprimido uma vez ao dia, como antes.
+
+ ➢ Dosagem e método de administração no tratamento e prevenção de TVP e EP
+ recorrentes
+
+ 2,5mg-0626-VV-LAB-123201-CCDS19; 10mg-0626-VV-LAB-123201-CCDS19; 15mg-20mg-0626- 27
+VV-LAB-123201-CCDS17
+- Método de administração
+Uso oral
+
+- Dose usual recomendada
+A dose recomendada para o tratamento inicial de TVP e EP agudos é de 15 mg de Xarelto®
+(rivaroxabana) duas vezes ao dia para as três primeiras semanas, seguido por 20 mg de
+Xarelto® (rivaroxabana) uma vez ao dia para a continuação do tratamento e para a
+prevenção da TVP e de EP recorrentes.
+Após a conclusão de pelo menos 6 meses de tratamento para TVP ou EP, Xarelto®
+(rivaroxabana) 10 mg uma vez ao dia ou Xarelto® (rivaroxabana) 20 mg uma vez ao dia é
+recomendado com base em uma avaliação de risco individual de TVP ou EP recorrente em
+relação ao risco de sangramento.
+
+ Período de tempo Esquema de dose Dose diária total
+ Tratamento e 15 mg duas vezes ao
+ prevenção de TVP Dia 1 - 21 dia 30 mg
+ ou EP recorrentes
+ Dia 22 em diante 20 mg uma vez ao dia 20 mg
+ Prevenção de TVP Após a conclusão de 10 mg uma vez ao dia
+ ou EP recorrentes pelo menos 6 meses ou 20 mg uma vez ao
+ de tratamento para dia, com base na 10 mg ou 20 mg
+ TVP ou EP avaliação risco-
+ benefício do médico
+
+- Duração do tratamento
+Para TVP e EP, a duração do tratamento deve ser individualizada após cuidadosa avaliação
+do benefício do tratamento contra o risco de sangramento (ver “Advertências e
+Precauções”). A terapia de curta duração (3 meses) deve ser considerada em pacientes com
+TVP ou EP provocada pelos principais fatores de risco transitórios (por exemplo, cirurgia
+importante recente ou trauma).
+A terapia de longa duração deve ser considerada em pacientes com TVP ou EP provocada
+por fatores de risco permanentes, TVP ou EP não provocada, ou história de TVP ou EP
+recorrente.
+
+- Método e frequência da administração
+Durante as primeiras 3 semanas de tratamento agudo, Xarelto® (rivaroxabana) 15 mg deve
+ser tomado 2 vezes ao dia.
+
+ 2,5mg-0626-VV-LAB-123201-CCDS19; 10mg-0626-VV-LAB-123201-CCDS19; 15mg-20mg-0626- 28
+VV-LAB-123201-CCDS17
+Após as primeiras 3 semanas, o tratamento com Xarelto® (rivaroxabana) deve ser
+continuado com 20 mg uma vez ao dia.
+Após pelo menos 6 meses de tratamento, Xarelto® (rivaroxabana) 10 mg ou 20 mg deve ser
+tomado uma vez ao dia (ver “Propriedades Farmacodinâmicas”).
+Xarelto® (rivaroxabana) 10 mg pode ser tomado com ou sem alimentos (ver “Propriedades
+Farmacocinéticas”).
+Para pacientes que não conseguem engolir comprimidos inteiros, o comprimido de
+Xarelto® (rivaroxabana) pode ser triturado e misturado com água ou alimentos pastosos,
+como purê de maçã, imediatamente antes da utilização, e administrado por via oral. O
+comprimido de Xarelto® (rivaroxabana) triturado pode ser administrado por sonda gástrica.
+Deve-se confirmar o posicionamento da sonda gástrica antes de administrar Xarelto®
+(rivaroxabana). O comprimido triturado deve ser administrado em uma pequena
+quantidade de água através de uma sonda gástrica, que deve ser lavada com água após a
+administração.
+
+- Doses esquecidas
+É essencial aderir ao esquema de dose recomendado.
+Se for esquecida uma dose durante a fase de tratamento com uma ingestão ao dia, o
+paciente deve tomar Xarelto® (rivaroxabana) imediatamente e continuar no dia seguinte
+com uma ingestão ao dia, conforme recomendado. A dose não deve ser dobrada no mesmo
+dia para compensar uma dose perdida.
+
+- Dose diária máxima
+A dose diária máxima recomendada é de 30 mg durante as três semanas iniciais do
+tratamento. Na fase de continuação do tratamento a dose diária máxima recomendada é de
+20 mg.
+
+- Informações adicionais para populações especiais
+- Pacientes com insuficiência hepática
+Xarelto® (rivaroxabana) é contraindicado em pacientes com doença hepática associada à
+coagulopatia, levando a um risco de sangramento clinicamente relevante (ver
+“Contraindicações”).
+Não é necessário ajuste de dose em pacientes com outras doenças hepáticas (ver
+“Propriedades Farmacocinéticas”).
+Dados clínicos limitados em pacientes com insuficiência hepática moderada ( Child Pugh
+B) indicam aumento significativo da atividade farmacológica. Não existem dados clínicos
+disponíveis para pacientes com insuficiência hepática grave (Child Pugh C) (ver
+“Contraindicações” e “Propriedades Farmacocinéticas”).
+
+ 2,5mg-0626-VV-LAB-123201-CCDS19; 10mg-0626-VV-LAB-123201-CCDS19; 15mg-20mg-0626- 29
+VV-LAB-123201-CCDS17
+- Pacientes com insuficiência renal
+ • Para prevenção de TEV não é necessário ajuste de dose se a rivaroxabana for
+ administrada em pacientes com insuficiência renal leve (depuração de creatinina
+ ClCr ≤ 80-50 mL/min) ou moderada (ClCr < 50-30 mL/min) (ver “Propriedades
+ Farmacocinéticas”).
+ • Para tratamento e prevenção de TVP e EP recorrentes não é necessário ajuste de
+ dose em pacientes com insuficiência renal leve (depuração de creatinina (ClCr): ≤
+ 80-50 mL/min) (ver “Propriedades Farmacocinéticas”).
+ O tratamento para pacientes com insuficiência renal moderada (depuração de
+ creatinina (ClCr): < 50–30 mL/min) ou grave (depuração de creatinina (ClCr): <
+ 30-15 mL/min) deve ser 15 mg duas vezes ao dia durante as três primeiras semanas.
+ Posteriormente, quando a dose recomendada é de 20 mg uma vez por dia, a redução
+ de dose de 20 mg uma vez por dia para 15 mg uma vez por dia deve ser
+ considerada, se o risco de sangramento do paciente avaliado supera o risco de TVP
+ e EP recorrente. A recomendação para o uso de 15 mg é baseada em modelo de
+ Farmacocinética e não foi estudada em cenário clínico (ver “Advertências e
+ Precauções” e “Propriedades Farmacocinéticas”). Quando a dose recomendada é de
+ 10 mg uma vez por dia, não é necessário ajuste de dose.
+
+Dados clínicos limitados para pacientes com insuficiência renal grave (ClCr < 30-15
+mL/min) indicam que os níveis plasmáticos de rivaroxabana aumentam significativamente
+nesta população de pacientes. Portanto, Xarelto® (rivaroxabana) deve ser utilizado com
+cautela nestes pacientes (ver “Advertências e Precauções” e “Propriedades
+Farmacocinéticas”).
+O uso de Xarelto® (rivaroxabana) não é recomendado para pacientes com ClCr <15
+mL/min (ver “Advertências e Precauções” e “Propriedades Farmacocinéticas”).
+
+- Convertendo de antagonistas de vitamina K (AVK) para Xarelto® (rivaroxabana)
+ • Para tratamento e prevenção de TVP e EP recorrentes o tratamento com AVK deve
+ ser interrompido e iniciado com Xarelto® (rivaroxabana) assim que os valores de
+ RNI forem  2,5.
+Em pacientes convertidos de AVKs para Xarelto® (rivaroxabana), os valores de RNI serão
+falsamente elevados após administração de Xarelto® (rivaroxabana). A medida de RNI não
+é válida para medir a atividade anticoagulante de Xarelto® (rivaroxabana) e desta forma,
+não deve ser usada para este fim (ver “Interações Medicamentosas”).
+
+- Convertendo de Xarelto® (rivaroxabana) para antagonistas de vitamina K (AVK)
+Existe um potencial para anticoagulação inadequada durante a transição de Xarelto®
+(rivaroxabana) para AVK. A anticoagulação adequada contínua deve ser assegurada
+
+ 2,5mg-0626-VV-LAB-123201-CCDS19; 10mg-0626-VV-LAB-123201-CCDS19; 15mg-20mg-0626- 30
+VV-LAB-123201-CCDS17
+durante qualquer transição para um anticoagulante alternativo. Deve ser observado que
+Xarelto® (rivaroxabana) pode contribuir para um valor elevado de RNI.
+Em pacientes convertidos de Xarelto® (rivaroxabana) para AVK, o AVK deve ser
+administrado concomitantemente até que o valor de RNI seja ≥ 2,0. Para os dois primeiros
+dias do período de conversão, a dose padrão de AVK deve ser utilizada seguida pela dose
+de AVK ajustada de acordo com os testes de RNI. Enquanto os pacientes receberem
+ambos, Xarelto® (rivaroxabana) e AVK, a medida de RNI não deve ser realizada antes de
+24 horas (após a dose anterior, mas antes da próxima dose de Xarelto ® (rivaroxabana)).
+Com a descontinuação de Xarelto® (rivaroxabana), o teste de RNI pode ser feito de forma
+confiável 24 horas após a última dose (ver “Interações Medicamentosas”).
+
+- Convertendo de anticoagulantes parenterais para Xarelto® (rivaroxabana)
+Para pacientes que estejam atualmente recebendo um anticoagulante parenteral, Xarelto ®
+(rivaroxabana) deve ser iniciado 0 a 2 horas antes do horário previsto para próxima
+administração do medicamento parenteral (por exemplo, heparina de baixo peso
+molecular) ou no momento da descontinuação da administração parenteral contínua do
+medicamento (por exemplo, heparina não fracionada intravenosa).
+
+- Convertendo de Xarelto® (rivaroxabana) para anticoagulantes parenterais
+Descontinue o uso de Xarelto® (rivaroxabana) e administre a primeira dose do
+anticoagulante parenteral no momento em que a próxima dose de Xarelto® (rivaroxabana)
+seria administrada.
+
+- Crianças e adolescentes (do nascimento aos 18 anos)
+A segurança e eficácia não foram estabelecidas em crianças e adolescentes com idade
+inferior a 18 anos.
+
+- Pacientes idosos
+Não é necessário ajuste de dose com base na idade do paciente (ver “Propriedades
+Farmacocinéticas”).
+
+- Gênero
+Não é necessário ajuste de dose com base no sexo do paciente (ver “Propriedades
+Farmacocinéticas”).
+
+- Peso corporal
+Não é necessário ajuste de dose baseado no peso corporal do paciente (ver “Propriedades
+Farmacocinéticas”).
+
+- Diferenças étnicas
+
+ 2,5mg-0626-VV-LAB-123201-CCDS19; 10mg-0626-VV-LAB-123201-CCDS19; 15mg-20mg-0626- 31
+VV-LAB-123201-CCDS17
+Não é necessário ajuste de dose com base em diferenças étnicas (ver “Propriedades
+Farmacocinéticas”).
+
+9. REAÇÕES ADVERSAS
+ ➢ Resumo do perfil de segurança
+A segurança de rivaroxabana foi avaliada em 20 (vinte) estudos de fase III que incluíram
+70.021 pacientes expostos à rivaroxabana, conforme listado na tabela a seguir:
+
+Número de pacientes estudados, dose diária total e duração máxima do tratamento nos
+estudos de fase III de Xarelto® (rivaroxabana), conforme descrito abaixo:
+ Indicação investigada em Número de Duração
+ estudos fase III pacientes* Dose diária total máxima do
+ tratamento
+ Prevenção de
+ tromboembolismo venoso
+ (TEV) em pacientes adultos
+ submetidos à cirurgia 6.097 10 mg 39 dias
+ eletiva de artroplastia de
+ joelho ou quadril
+ (RECORD 1-4)
+ Prevenção de
+ tromboembolismo venoso
+ em pacientes enfermos 3.997 10 mg 39 dias
+ hospitalizados
+ (MAGELLAN)
+ Tratamento de TVP e EP e Dia 1 – 21: 30 mg
+ prevenção de TVP e EP Dia 22 em diante: 20 mg
+ recorrentes 6.790 Após pelo menos 6 meses: 21 meses
+ (EINSTEIN TVP, -EP, - 10 mg ou 20 mg
+ EXT, -CHOICE)
+ Prevenção de acidente
+ vascular cerebral e embolia
+ sistêmica em pacientes
+ adultos com fibrilação 7.750 20 mg 41 meses
+ atrial não-valvular
+ (ROCKET-AF, J-
+ ROCKET)
+ Prevenção de eventos 10.225 5 mg ou 10 mg 31 meses
+ aterotrombóticos em respectivamente, em
+
+ 2,5mg-0626-VV-LAB-123201-CCDS19; 10mg-0626-VV-LAB-123201-CCDS19; 15mg-20mg-0626- 32
+VV-LAB-123201-CCDS17
+ pacientes adultos após associação com AAS ou
+ síndrome coronariana AAS mais clopidogrel ou
+ aguda (SCA) ticlopidina.
+ (ATLAS ACS TIMI 51)
+ Prevenção de acidente
+ vascular cerebral, infarto
+ do miocárdio e morte
+ cardiovascular, e prevenção
+ de isquemia aguda dos 5 mg em associação com
+ membros e mortalidade em 18.244 100 mg AAS ou somente 47 meses
+ pacientes com doença 10 mg
+ arterial coronariana (DAC)
+ ou doença arterial
+ periférica (DAP)
+ (COMPASS)
+ Prevenção de acidente
+ vascular cerebral e
+ prevenção de embolia
+ sistêmica em pacientes com 3.562 15 mg uma vez ao dia 24 meses
+ acidente vascular cerebral
+ embólico recente de fonte
+ indeterminada
+ (NAVIGATE ESUS)
+ Prevenção de eventos de
+ TEV sintomático e mortes
+ relacionadas a TEV por um
+ período de 45 dias após a 5.982 10 (ou 7,5) mg uma vez ao 45 dias
+ alta hospitalar em pacientes dia
+ com doença aguda de alto
+ risco
+ (MARINER)
+ Reduzindo o risco de
+ morte, infarto do miocárdio
+ ou acidente vascular 2,5 mg duas vezes ao dia 42 meses
+ cerebral em indivíduos com 2.499 combinado com AAS 100 (ou > 1.260
+ insuficiência cardíaca e mg dias)
+ doença arterial coronariana
+ significativa após um
+ episódio de insuficiência
+
+ 2,5mg-0626-VV-LAB-123201-CCDS19; 10mg-0626-VV-LAB-123201-CCDS19; 15mg-20mg-0626- 33
+VV-LAB-123201-CCDS17
+ cardíaca descompensada
+ (COMMANDER HF)
+ Reduzindo a incidência
+ cumulativa de TVP, EP e
+ morte relacionada a TEV 6,9 meses
+ em indivíduos adultos com 405 10 mg uma vez ao dia ou (207
+ vários tipos de câncer com dias)
+ alto risco de desenvolver
+ TEV (CASSINI)
+ Comparando uma
+ estratégia antitrombótica
+ baseada em rivaroxabana
+ com uma estratégia com 10 mg uma vez ao dia + 24 meses
+ base antiplaquetária após a 801 baixa dose de AAS / após (ou 720
+ substituição da válvula 90 dias 10 mg sozinho dias)
+ aórtica transcateter
+ (TAVR) para otimizar os
+ resultados clínicos
+ (GALILEO)
+ Tratamento de
+ tromboembolismo venoso Dose ajustada ao peso
+ (TEV) e prevenção de TEV corporal para atingir uma
+ recorrente em recém- exposição semelhante à
+ nascidos a termo e crianças observada em adultos
+ com idade inferior a 18 329 tratados para TVP e EP 12 meses
+ anos após o início do com 20 mg de
+ tratamento anticoagulante rivaroxabana uma vez ao
+ padrão dia
+ (EINSTEIN Junior Fase
+ III)
+ Prevenção de eventos
+ aterotrombóticos em
+ pacientes após 2,5 mg duas vezes ao dia
+ procedimento recente de 3.256 combinado com AAS 100 42 meses
+ revascularização do mg
+ membro inferior devido a
+ DAP sintomática
+ (VOYAGER PAD)
+*Pacientes expostos a pelo menos uma dose de rivaroxabana.
+
+ 2,5mg-0626-VV-LAB-123201-CCDS19; 10mg-0626-VV-LAB-123201-CCDS19; 15mg-20mg-0626- 34
+VV-LAB-123201-CCDS17
+Taxas de eventos de sangramento e anemia em pacientes expostos a Xarelto®
+(rivaroxabana) nos estudos de fase III concluídos:
+ Indicação investigada em Qualquer sangramento Anemia
+ estudos fase III
+ Prevenção de
+ tromboembolismo venoso
+ (TEV) em pacientes
+ adultos submetidos à 6,8 % dos pacientes 5,9 % dos pacientes
+ cirurgia eletiva de
+ artroplastia de joelho ou
+ quadril (RECORD 1-4)
+ Prevenção de
+ tromboembolismo venoso
+ em pacientes enfermos 12,6 % dos pacientes 2,1 % dos pacientes
+ hospitalizados
+ (MAGELLAN)
+ Tratamento de TVP e EP
+ e prevenção de TVP e EP
+ recorrentes (EINSTEIN 23 % dos pacientes 1,6 % dos pacientes
+ TVP, -EP, -EXT, -
+ CHOICE)
+ Prevenção de acidente
+ vascular cerebral e
+ embolia sistêmica em
+ pacientes adultos com 28 por 100 pacientes/ano 2,5 por 100 pacientes/ano
+ fibrilação atrial não-
+ valvular (ROCKET AF, J-
+ ROCKET)
+ Prevenção de eventos
+ aterotrombóticos em
+ pacientes adultos após 22 por 100 pacientes/ano 1,4 por 100 pacientes/ano
+ síndrome coronariana
+ aguda (SCA)
+ (ATLAS ACS TIMI 51)
+ Prevenção de acidente
+ vascular cerebral, infarto 6,7 por 100 pacientes/ano 0,15 por 100 pacientes/ano*
+ do miocárdio e morte
+
+ 2,5mg-0626-VV-LAB-123201-CCDS19; 10mg-0626-VV-LAB-123201-CCDS19; 15mg-20mg-0626- 35
+VV-LAB-123201-CCDS17
+ cardiovascular, e
+ prevenção de isquemia
+ aguda dos membros e
+ mortalidade em pacientes
+ com doença arterial
+ coronariana (DAC) ou
+ doença arterial periférica
+ (DAP) (COMPASS)
+ Prevenção de acidente
+ vascular cerebral e
+ prevenção de embolia
+ sistêmica em pacientes 12,4 % dos pacientes 0.3 % dos pacientes*
+ com acidente vascular
+ cerebral embólico recente
+ de fonte indeterminada
+ (NAVIGATE ESUS)
+ Prevenção de eventos de
+ TEV sintomático e mortes
+ relacionadas a TEV por
+ um período de 45 dias 3,0 % dos pacientes < 0,1 % dos pacientes*
+ após a alta hospitalar em
+ pacientes com doença
+ aguda de alto risco
+ (MARINER)
+ Reduzindo o risco de
+ morte, infarto do
+ miocárdio ou acidente
+ vascular cerebral em
+ indivíduos com
+ insuficiência cardíaca e 11,5 % dos pacientes 1,4 % dos pacientes*
+ doença arterial
+ coronariana significativa
+ após um episódio de
+ insuficiência cardíaca
+ descompensada
+ (COMMANDER HF)
+ Reduzindo a incidência
+ cumulativa de TVP, EP e 23,2 % dos pacientes 14,1 % dos pacientes*
+ morte relacionada a TEV
+
+ 2,5mg-0626-VV-LAB-123201-CCDS19; 10mg-0626-VV-LAB-123201-CCDS19; 15mg-20mg-0626- 36
+VV-LAB-123201-CCDS17
+ em indivíduos adultos com
+ vários tipos de câncer com
+ alto risco de desenvolver
+ TEV (CASSINI)
+ Comparando uma
+ estratégia antitrombótica
+ baseada em rivaroxabana
+ com uma estratégia com
+ base antiplaquetária após 25,6 % dos pacientes 2,4 % dos pacientes*
+ a substituição da válvula
+ aórtica transcateter
+ (TAVR) para otimizar os
+ resultados clínicos
+ (GALILEO)
+ Tratamento de
+ tromboembolismo venoso
+ (TEV) e prevenção de
+ TEV recorrente em
+ recém-nascidos a termo e
+ crianças com idade 39,5 % dos pacientes 4,6 % dos pacientes
+ inferior a 18 anos após o
+ início do tratamento
+ anticoagulante padrão
+ (EINSTEIN Junior Fase
+ III)
+ Prevenção de eventos
+ aterotrombóticos em
+ pacientes após
+ procedimento recente de (16,9 % dos pacientes) (1,5 % dos pacientes*)
+ revascularização do 8,38 por 100 pacientes / ano 0,74 por 100 pacientes / ano*
+ membro inferior devido a
+ DAP sintomática
+ (VOYAGER PAD)
+*Foi aplicado método pré-estabelecido seletivo para a coleta de eventos adversos.
+
+Em razão do modo de ação farmacológica, Xarelto® (rivaroxabana) pode ser associado a
+um risco aumentado de sangramento oculto ou manifesto em qualquer tecido e órgão, o
+que pode resultar em anemia pós-hemorrágica. O risco de sangramentos pode ser
+aumentado em certos grupos de pacientes, por exemplo, naqueles com hipertensão arterial
+
+ 2,5mg-0626-VV-LAB-123201-CCDS19; 10mg-0626-VV-LAB-123201-CCDS19; 15mg-20mg-0626- 37
+VV-LAB-123201-CCDS17
+ grave não-controlada e/ou com medicação concomitante que afete a hemostasia (ver
+ “Advertências e Precauções”). Os sinais, sintomas e gravidade (incluindo desfecho fatal)
+ irão variar de acordo com a localização e o grau ou extensão do sangramento e/ou anemia
+ (ver “Superdose”).
+ Complicações hemorrágicas podem se apresentar como fraqueza, palidez, tontura, cefaleia
+ ou edema inexplicável, dispneia e choque inexplicável. Em alguns casos, como
+ consequência da anemia, foram observados sintomas de isquemia cardíaca, tais como dor
+ no peito ou angina pectoris.
+ Foram relatadas para Xarelto® (rivaroxabana) complicações conhecidas secundárias ao
+ sangramento grave, como síndrome compartimental, ruptura esplênica e insuficiência renal
+ devido à hipoperfusão. Portanto, deve-se considerar a possibilidade de hemorragia ao
+ avaliar a condição de qualquer paciente anticoagulado.
+
+ ➢ Lista tabulada das reações adversas
+ As frequências das reações adversas ao medicamento relatadas com Xarelto®
+ (rivaroxabana) em pacientes adultos e pediátricos estão resumidas na tabela abaixo. As
+ reações adversas estão apresentadas em ordem decrescente de gravidade, dentro de cada
+ grupo de frequência. As frequências estão definidas como:
+ Muito comum ( ≥ 1/10)
+ Comum ( ≥ 1/100 a < 1/10)
+ Incomum ( ≥ 1/1.000 a < 1/100)
+ Rara ( ≥ 1/10.000 a < 1/1.000)
+
+ Tabela 1: Todas as reações adversas ao medicamento emergentes do tratamento relatadas
+ em pacientes adultos nos estudos de fase III (RECORD 1 -4 agrupados, ROCKET, J-
+ ROCKET, MAGELLAN, ATLAS, EINSTEIN (TVP/EP/Extension/CHOICE) e
+ COMPASS*, NAVIGATE ESUS* MARINER*, COMMANDER HF*, CASSINI,
+ GALILEO*, em dois estudos fase II e um estudo fase III EINSTEIN Junior em pacientes
+ pediátricos, e VOYAGER PAD*)
+
+Classificação por Comum Incomum Rara Muito rara
+Sistema Corpóreo
+(MedDRA)
+Distúrbios do sistema Anemia Trombocitose
+sanguíneo e linfático (incluindo os (incluindo
+ respectivos aumento na
+ parâmetros contagem de
+ laboratoriais) plaquetas)A
+Distúrbios cardíacos Taquicardia
+
+ 2,5mg-0626-VV-LAB-123201-CCDS19; 10mg-0626-VV-LAB-123201-CCDS19; 15mg-20mg-0626- 38
+ VV-LAB-123201-CCDS17
+Distúrbios oculares Hemorragia
+ ocular (incluindo
+ hemorragia
+ conjuntival)
+Distúrbios Sangramento Boca seca
+gastrintestinais gengival
+ Hemorragia do
+ trato
+ gastrintestinal
+ (incluindo
+ hemorragia retal)
+ Dores
+ abdominais e
+ gastrintestinais
+ Dispepsia
+ Náusea
+ Constipação A
+ Diarreia
+ Vômito A
+Distúrbios gerais e Febre A Indisposição Edema
+condições no local da Edema periférico (incluindo mal- localizadoA
+administração Diminuição geral estar)
+ da força e
+ energia
+ (incluindo fadiga
+ e astenia)
+Distúrbios Insuficiência Icterícia
+hepatobiliares hepática
+Distúrbios do sistema Reação alérgica Reações
+imunológico Dermatite anafiláticas
+ alérgica incluindo choque
+ anafilático
+Traumas, intoxicação Hemorragia pós- Secreção da Pseudoaneurisma
+e complicações pós- procedimento incisãoA vascular C
+procedimento (incluindo
+ anemia pós-
+ operatória e
+ hemorragia da
+ incisão)
+
+ 2,5mg-0626-VV-LAB-123201-CCDS19; 10mg-0626-VV-LAB-123201-CCDS19; 15mg-20mg-0626- 39
+ VV-LAB-123201-CCDS17
+ Contusão
+Investigações Aumento das Aumento da Aumento da
+ transaminases bilirrubina bilirrubina
+ Aumento da conjugada (com
+ fosfatase ou sem aumento
+ alcalina no concomitante de
+ sangue A ALT)
+ Aumento de
+ DHL A
+ Aumento da
+ lipase A
+ Aumento da
+ amilase A
+ Aumento de
+ GGT A
+Distúrbios músculo- Dor nas Hemartrose Hemorragia
+esqueléticos, do tecido extremidades A muscular
+conjuntivo e dos ossos
+Distúrbios do sistema Tontura Hemorragia
+nervoso Cefaleia cerebral e
+ intracraniana
+ Síncope
+Distúrbios renais e Hemorragia do
+urinários trato urogenital
+ (incluindo
+ hematúria e
+ menorragia B)
+ Disfunção renal
+ (incluindo
+ aumento da
+ creatinina e da
+ ureia no sangue)
+ A
+Distúrbios do trato Epistaxe
+respiratório Hemoptise
+Distúrbios da pele e Prurido Urticária Síndrome de
+dos tecidos (incluindo casos Stevens-
+subcutâneos incomuns de Johnson/Necrólise
+ epidérmica tóxica
+
+ 2,5mg-0626-VV-LAB-123201-CCDS19; 10mg-0626-VV-LAB-123201-CCDS19; 15mg-20mg-0626- 40
+ VV-LAB-123201-CCDS17
+ prurido e Síndrome
+ generalizado) DRESS (Drug
+ Rash Rash with
+ Equimose Eosinophilia and
+ Hemorragia Systemic
+ cutânea e Symptoms)
+ subcutânea
+Distúrbios vasculares Hipotensão
+ Hematoma
+ A observado após cirurgia ortopédica de grande porte dos membros inferiores
+ B observado no tratamento de TEV como muito comum em mulheres < 55 anos
+ C observado como incomum na terapia de prevenção na SCA (após intervenção
+ percutânea)
+ *Foi aplicado método pré-estabelecido seletivo para a coleta de eventos adversos. A
+ incidência das reações adversas não aumentou e nenhuma reação adversa nova foi
+ identificada, a partir da análise dos dados dos estudos fase III em adultos.
+
+ Observações pós-comercialização
+ As seguintes reações adversas foram relatadas no período de pós -comercialização em
+ associação temporal com o uso de Xarelto® (rivaroxabana). A frequência dessas reações
+ adversas relatadas na experiência de pós-comercialização não pode ser estimada.
+
+ Distúrbios do sistema imunológico: angioedema e edema alérgico (nos dados agrupados
+ dos estudos Fase III, estes eventos foram incomuns (≥ 1/1.000 a < 1/100)).
+
+ Distúrbios hepatobiliares: colestase, hepatite (incluindo lesão hepatocelular) (nos dados
+ agrupados dos estudos Fase III, estes eventos foram raros (≥ 1/10.000 a < 1/1.000)).
+
+ Distúrbios do sistema sanguíneo e linfático: trombocitopenia (nos dados agrupados dos
+ estudos Fase III, estes eventos foram incomuns (≥ 1/1.000 a < 1/100)).
+
+ Distúrbios respiratórios, torácicos e mediastinais: Pneumonia eosinofílica (nos ensaios
+ de fase III agrupados, esses eventos foram muito raros (< 1/10.000) ).
+
+ Distúrbios renais e urinários: Nefropatia relacionada aos anticoagulantes (nos ensaios de
+ fase III agrupados, a frequência não pode ser estimada).
+
+ Lesões, envenenamento e complicações de procedimentos: Ruptura esplênica (nos
+ ensaios de fase III agrupados, esses eventos foram muito raros (<1/10.000).)
+
+ 2,5mg-0626-VV-LAB-123201-CCDS19; 10mg-0626-VV-LAB-123201-CCDS19; 15mg-20mg-0626- 41
+ VV-LAB-123201-CCDS17
+Em casos de eventos adversos, notifique pelo Sistema VigiMed, disponível no Portal
+da Anvisa.
+
+===== BLOCO 3 =====
+APRESENTAÇÕES
+Xarelto® (rivaroxabana) é apresentado na forma de comprimidos revestidos em cartucho
+com blíster contendo 28 comprimidos revestidos de 15 mg ou 20 mg.
+
+USO ORAL
+
+USO ADULTO E PEDIÁTRICO COM PESO IGUAL OU SUPERIOR A 30 KG
+
+1. INDICAÇÕES
+Adultos
+Xarelto® (rivaroxabana) é indicado para prevenção de acidente vascular cerebral e embolia
+sistêmica em pacientes adultos com fibrilação atrial não-valvular que apresente um ou mais
+fatores de risco, como insuficiência cardíaca congestiva, hipertensão, 75 anos de idade ou
+mais, diabetes mellitus, acidente vascular cerebral ou ataque isquêmico transitório
+anteriores.
+Xarelto® (rivaroxabana) é indicado para o tratamento de trombose venosa profunda (TVP)
+e prevenção de trombose venosa profunda (TVP) e embolia pulmonar (EP) recorrentes
+após trombose venosa profunda aguda, em adultos.
+Xarelto® (rivaroxabana) é indicado para o tratamento de embolia pulmonar (EP) e
+prevenção de embolia pulmonar (EP) e trombose venosa profunda (TVP) recorrentes, em
+adultos.
+
+População pediátrica
+Xarelto® (rivaroxabana) é indicado para o tratamento de tromboembolismo venoso (TEV) e
+prevenção de tromboembolismo venoso (TEV) recorrente em crianças e adolescentes com
+menos de 18 anos com peso igual ou superior a 30 kg após o início do tratamento padrão
+de anticoagulação (ver item “Posologia e Modo de Usar”).
+
+ 2,5mg-0626-VV-LAB-123201-CCDS19; 10mg-0626-VV-LAB-123201-CCDS19; 15mg-20mg-0626- 2
+VV-LAB-123201-CCDS17
+
+3. CARACTERÍSTICAS FARMACOLÓGICAS
+➢ Propriedades farmacodinâmicas
+- Mecanismo de ação
+A rivaroxabana é um inibidor direto altamente seletivo do fator Xa com biodisponibilidade
+oral. A ativação do fator X a fator Xa (FXa) por meio das vias intrínseca e extrínseca
+desempenha um papel central na cascata da coagulação sanguínea. O FXa converte
+diretamente a protrombina em trombina por meio do complexo de protrombinase e,
+finalmente, esta reação leva à formação do coágulo de fibrina e à ativação das plaquetas
+
+ 2,5mg-0626-VV-LAB-123201-CCDS19; 10mg-0626-VV-LAB-123201-CCDS19; 15mg-20mg-0626- 14
+VV-LAB-123201-CCDS17
+pela trombina. Uma molécula de FXa é capaz de gerar mais de 1.000 moléculas de
+trombina devido à natureza amplificadora da cascata da coagulação. Além disso, a taxa de
+reação do FXa ligado à protrombinase aumenta 300.000 vezes em comparação à do FXa
+livre, e causa uma descarga explosiva de geração de trombina. Os inibidores seletivos de
+FXa podem encerrar a descarga amplificada de geração de trombina. Consequentemente,
+diversos testes de coagulação específicos e globais são afetados pela rivaroxabana.
+
+- Efeitos farmacodinâmicos
+Foi observada inibição dose-dependente da atividade do fator Xa em humanos. O tempo de
+protrombina (TP) é influenciado pela rivaroxabana de um modo dose -dependente com uma
+correlação estreita com as concentrações plasmáticas (o valor de r é igual a 0,98) s e for
+usado o reagente Neoplastin® (tromboplastina liofilizada obtida a partir de cérebro de
+coelho) para a realização deste ensaio. Outros reagentes proporcionariam resultados
+diferentes. A leitura do TP deve ser feita em segundos porque a RNI (Razão Normalizada
+Internacional) é calibrada e validada somente para cumarínicos e não pode ser usada para
+qualquer outro anticoagulante.
+Em um estudo de farmacologia clínica na reversão farmacodinâmica de rivaroxabana em
+indivíduos adultos sadios (n=22), os efeitos de doses únicas (50 UI/kg) de dois tipos
+diferentes de CCPs (concentrados de complexo protrombínico), um CCP-3 fatores (fatores
+II, IX e X) e um CCP-4 fatores (fatores II, VII, IX e X) foram avaliados. O CCP -3 fatores
+reduziu a média dos valores do TP (Neoplastin®) em aproximadamente 1,0 segundo em 30
+minutos, comparado a reduções de aproximadamente 3,5 segundos observadas com o
+CCP-4 fatores. Em contrapartida, o CCP-3 fatores teve um efeito global melhor e mais
+rápido em reverter alterações na geração de trombina endógena que o CCP-4 fatores (ver
+“Superdose”).
+
+Em pacientes recebendo rivaroxabana para tratamento de TVP e EP e prevenção de TVP e
+de EP recorrentes, os valores correspondentes aos percentis 5/95 para o TP (Neoplastin®)
+2-4 horas depois da ingestão do comprimido (ou seja, no momento de efeito máximo)
+variaram de 17 a 32 segundos para 15 mg duas vezes ao dia ou de 15 a 30 segundos para
+20 mg uma vez ao dia, respectivamente.
+Em pacientes com fibrilação atrial não-valvular recebendo rivaroxabana para a prevenção
+de AVC e embolia sistêmica, os percentis 5/95 para o TP (Neoplastin ®) 1-4 horas após a
+ingestão do comprimido (ou seja, no momento de efeito máximo) variaram de 14 a 40
+segundos em pacientes tratados com 20 mg uma vez ao dia e de 10 a 50 segundos em
+pacientes com insuficiência renal moderada tratados com 15 mg uma vez ao d ia.
+O tempo de tromboplastina parcial ativada (TTPa) e o HepTest ® também se prolongam
+dependendo da dose, entretanto, não são recomendados para avaliar o efeito
+farmacodinâmico da rivaroxabana.
+
+ 2,5mg-0626-VV-LAB-123201-CCDS19; 10mg-0626-VV-LAB-123201-CCDS19; 15mg-20mg-0626- 15
+VV-LAB-123201-CCDS17
+Não há necessidade de monitorar os parâmetros de coagulação durante o tratamento clínico
+de rotina com Xarelto® (rivaroxabana). Entretanto, se indicado clinicamente, as
+concentrações de rivaroxabana podem ser mensuradas por testes de calibração quantitativa
+de fator anti-Xa (ver “Propriedades Farmacocinéticas”).
+
+- População pediátrica
+TP (reagente de neoplastina), TTPa e teste anti-Xa (com um teste quantitativo calibrado)
+apresentam uma correlação próxima com as concentrações plasmáticas em crianças. A
+correlação entre o anti-Xa e as concentrações plasmáticas é linear com uma taxa de
+variação próxima a 1. Podem ocorrer discrepâncias individuais com valores de anti -Xa
+maiores ou menores em comparação com as concentrações plasmáticas correspondentes.
+Não há necessidade de monitoramento de rotina dos parâmetros de coagulação durante o
+tratamento clínico com Xarelto® (rivaroxabana). No entanto, se clinicamente indicado, as
+concentrações de rivaroxabana podem ser medidas por testes anti -Fator Xa quantitativos
+calibrados (ver “'Propriedades Farmacocinéticas”). O limite inferior de quantificações deve
+ser considerado quando o teste anti-Xa é usado para quantificar as concentrações
+plasmáticas de rivaroxabana em crianças.
+
+- Populações especiais de pacientes
+- Pacientes com próteses valvulares cardíacas submetidos recentemente a TAVR
+No estudo randomizado, aberto, controlado por ativo, orientado por evento, multicêntrico
+de Fase III GALILEO, 1644 pacientes foram randomizados, tanto para uma estratégia
+baseada em rivaroxabana quanto para uma estratégia baseada em antiagregante
+plaquetário, de 1 a 7 dias após uma sucedida substituição da válvula aórtica transcateter.
+Pacientes com fibrilação atrial prévia ou com indicação para anticoagulantes orais em
+curso foram excluídos.
+O principal objetivo foi avaliar a eficácia e a segurança da estratégia de tratamento baseada
+em rivaroxabana (10 mg de rivaroxabana, uma vez ao dia, mais 75-100 mg de ácido
+acetilsalicílico (AAS), uma vez ao dia, por 90 dias seguido por rivaroxabana 10 mg uma
+vez ao dia) comparado ao tratamento padrão (75 mg de clopidogrel uma vez ao dia mais
+75-100 mg de ácido acetilsalicílico, uma vez ao dia, por 90 dias seguido por ácido
+acetilsalicílico, uma vez ao dia). O estudo foi encerrado precocemente devido a um
+desequilíbrio em eventos tromboembólicos e óbito.
+Na análise de intenção de tratar (ITT), o desfecho primário de eficácia, por exemplo
+eventos tromboembólicos e óbito, ocorreu em 105 pacientes (9,8 por 100 pacientes -ano) no
+braço rivaroxabana e em 78 pacientes (7,21 por 100 pacientes-ano) no braço de
+antiagregante plaquetário. A razão de risco (HR) foi de 1,35 (IC 95%: 1,01; 1,81). Na
+análise durante o tratamento, o desfecho primário de eficácia ocorreu em 68 pacientes
+(8,11 por 100 pacientes-ano) no braço rivaroxabana comparado com 63 pacientes (6,6 por
+
+ 2,5mg-0626-VV-LAB-123201-CCDS19; 10mg-0626-VV-LAB-123201-CCDS19; 15mg-20mg-0626- 16
+VV-LAB-123201-CCDS17
+100 pacientes-ano) no braço de antiagregante plaquetário; a razão de risco (HR) foi 1,21
+(IC 95%: 0,86; 1,70).
+Na análise de intenção de tratar (ITT), o desfecho primário de segurança, por exemplo
+composto de risco de vida, incapacitante ou sangramento maior, ocorreu em 46 pacientes
+(4,29 por 100 pacientes-ano) no braço de rivaroxabana em comparação com 31 pacientes
+(2,83 por 100 pacientes-ano) no braço de antiagregante plaquetário; a razão de risco (HR)
+foi 1,50 (IC 95% 0,95; 2,37).
+
+- Pacientes com síndrome antifosfolípide triplo positivo de alto risco
+Em um estudo patrocinado pelo investigador multicêntrico randomizado, aberto, com o
+desfecho de adjudicação cego, a rivaroxabana foi comparada à varfarina em pacientes com
+histórico de trombose, com diagnóstico de síndrome antifosfolípide e com alto risco de
+eventos tromboembólicos (positivo para todos os três testes antifosfolípides:
+anticoagulante lúpico, anticorpos anticardiolipina e anticorpos anti-beta 2-glicoproteína I).
+O estudo foi encerrado prematuramente após a inclusão de 120 pacientes devido a um
+excesso de eventos dentre os pacientes no braço da rivaroxabana. O seguimento médio foi
+de 569 dias. Cinquenta e nove pacientes foram randomizados para 20 mg de rivaroxabana
+(15 mg para pacientes com clearance de creatinina <50 mL / min) e 61 para varfarina (INR
+2,0-3,0). Eventos tromboembólicos ocorreram em 12% dos pacientes randomizados para
+rivaroxabana (4 AVCs isquêmico e 3 infartos do miocárdio). Nenhum evento foi relatado
+em pacientes randomizados para varfarina. Sangramento importante ocorreu em 4
+pacientes (7%) do grupo rivaroxabana e 2 pacientes (3%) do grupo varfarina.
+
+➢ Propriedades farmacocinéticas
+- Absorção e biodisponibilidade
+A seguinte informação é baseada nos dados obtidos em adultos.
+A rivaroxabana é rapidamente absorvida, atingindo concentrações máximas (Cmáx) 2 a 4
+horas após a ingestão do comprimido.
+A absorção oral da rivaroxabana é quase completa e a biodisponibilidade oral é alta (80-
+100%) para a dose de 10 mg, independentemente das condições de jejum/alimentação. A
+ingestão com alimentos não afeta a AUC ou a Cmáx da rivaroxabana na dose de 10 mg. O
+comprimido de 10 mg de Xarelto® (rivaroxabana) pode ser tomado com ou sem alimento
+(ver “Posologia e Modo de Usar”).
+Devido ao grau reduzido de absorção, uma biodisponibilidade oral de 66% foi determinada
+para o comprimido de 20 mg sob condições de jejum. Quando Xarelto® (rivaroxabana) 20
+mg comprimidos é tomado junto com alimentos, aumentos na AUC média ao redor de 39%
+foram observados quando comparados a ingestão sob condições de jejum, indicando
+absorção quase completa e elevada biodisponibilidade oral. Xarelto® (rivaroxabana) 15 mg
+e 20 mg devem ser tomados com alimentos (ver “Posologia e Modo de Usar”).
+
+ 2,5mg-0626-VV-LAB-123201-CCDS19; 10mg-0626-VV-LAB-123201-CCDS19; 15mg-20mg-0626- 17
+VV-LAB-123201-CCDS17
+Sob condições de alimentação, Xarelto® (rivaroxabana) 10 mg, 15 mg e 20 mg
+comprimidos demonstraram proporcionalidade de dose.
+A variabilidade da farmacocinética da rivaroxabana é moderada, com variabilidade
+interindividual (CV%) de 30% a 40%.
+A absorção da rivaroxabana é dependente do local de liberação do princípio ativo no trato
+gastrintestinal. Foi relatada uma diminuição de 29% e 56% na AUC e Cmáx quando o
+granulado de rivaroxabana é liberado no intestino delgado proximal em comparação com o
+comprimido. A exposição é ainda mais reduzida quando o princípio ativo é liberado no
+intestino delgado distal, ou no cólon ascendente. Deve-se evitar a administração da
+rivaroxabana distante ao estômago que pode resultar em redução da absorção e da
+exposição ao princípio ativo.
+A biodisponibilidade (AUC e Cmáx) foi comparável entre 20 mg de rivaroxabana
+administrados por via oral como comprimido triturado misturado a purê de maçã, ou
+suspensão em água e administrada por sonda gástrica seguido por uma refeição líquida,
+comparada a um comprimido inteiro. Como o perfil farmacocinético da rivaroxabana é
+previsível e dose-proporcional, os resultados de biodisponibilidade desse estudo são
+provavelmente aplicáveis para as doses mais baixas de rivaroxabana.
+
+População pediátrica
+Crianças receberam comprimido de Xarelto® (rivaroxabana) durante ou logo após a
+refeição ou ingestão de alimentos e com uma porção usual de líquido para garantir uma
+dosagem confiável em crianças. Tal como nos adultos, a rivaroxabana é prontamente
+absorvida após administração oral na forma de comprimidos em crianças. Não há dados
+farmacocinéticos disponíveis após administração intravenosa em crianças, de modo que a
+biodisponibilidade absoluta do rivaroxabana em crianças é desconhecida. Verificou-se uma
+diminuição na biodisponibilidade relativa para doses crescentes (em mg/kg de peso
+corporal), sugerindo limitações de absorção para doses mais elevadas, mesmo quando
+administradas com alimentos.
+Xarelto® (rivaroxabana) 15 mg ou 20 mg comprimidos devem ser tomados com a refeição
+ou com alimentos (ver “Posologia e Modo de Usar”).
+
+- Distribuição
+A ligação às proteínas plasmáticas em humanos é alta, aproximadamente de 92% a 95%,
+sendo a albumina sérica o principal componente de ligação. O volume de distribuição é
+moderado, sendo Vss de aproximadamente 50 L.
+
+População pediátrica
+Não existem dados disponíveis sobre a ligação da rivaroxabana às proteínas plasmáticas
+em crianças. Não existem dados farmacocinéticos disponíveis após a administração
+
+ 2,5mg-0626-VV-LAB-123201-CCDS19; 10mg-0626-VV-LAB-123201-CCDS19; 15mg-20mg-0626- 18
+VV-LAB-123201-CCDS17
+intravenosa de rivaroxabana para crianças. Vss estimado por meio de modelagem
+farmacocinética populacional em crianças (faixa etária 0-<18 anos) após a administração
+oral de rivaroxabana depende do peso corporal e pode ser descrito com uma função
+alométrica, com uma média de 113 L para um indivíduo com peso corporal de 82,8 kg.
+
+- Metabolismo e eliminação
+Em adultos, aproximadamente 2/3 da dose administrada de rivaroxabana, sofrem
+degradação metabólica, com metade sendo eliminada via renal e a outra metade via fecal.
+Os demais 1/3 da dose administrada são diretamente excretados pelos rins como fármaco
+inalterado na urina, principalmente por secreção renal ativa.
+A rivaroxabana é metabolizada por meio de CYP3A4, CYP2J2 e de mecanismos
+independentes do CYP. A degradação oxidativa da fração morfolinona e a hidrólise das
+ligações amida são os principais locais de biotransformação.
+Com base em investigações in vitro, a rivaroxabana é um substrato das proteínas
+transportadoras gp-P (glicoproteína-P) e Bcrp (proteína de resistência ao câncer de mama).
+A rivaroxabana inalterada é o composto mais importante no plasma humano, não estando
+presentes metabólitos maiores ou ativos circulantes. Com uma depuração sistêmica de
+cerca de 10 L/h, a rivaroxabana pode ser classificada como um fármaco de baixa
+depuração. A eliminação da rivaroxabana do plasma ocorreu com meias-vidas terminais de
+5 a 9 horas em indivíduos jovens e com meias-vidas terminais de 11 a 13 horas em idosos.
+
+População pediátrica
+Não há dados de metabolismo disponíveis específicos para crianças. Não existem dados
+farmacocinéticos disponíveis após a administração intravenosa de rivaroxabana para
+crianças. CL estimado por meio de modelagem farmacocinética populacional em crianças
+(faixa etária 0-<18 anos) após a administração oral de rivaroxabana é dependente do peso
+corporal e pode ser descrito com uma função alométrica, com uma média de 8 L/h para um
+sujeito com peso corporal de 82,8 kg. Os valores geométricos médios estimados para as
+meias-vidas de disposição (t1/2) por meio da modelagem farmacocinética (PK)
+populacional diminuem com a diminuição da idade e variaram de 4,2h em adolescentes a
+aproximadamente 3h em crianças de 2 -12 anos de idade até 1,9 e 1,6h em crianças de 0,5 -
+<2 anos e menos de 0,5 anos, respecti vamente.
+
+- Pacientes geriátricos
+Pacientes idosos apresentaram concentrações plasmáticas mais altas que pacientes mais
+jovens, com valores médios de AUC aproximadamente 1,5 vezes maiores, devido
+principalmente à redução (aparente) da depuração total e renal (ver “Posologia e Modo de
+Usar”).
+
+ 2,5mg-0626-VV-LAB-123201-CCDS19; 10mg-0626-VV-LAB-123201-CCDS19; 15mg-20mg-0626- 19
+VV-LAB-123201-CCDS17
+- Gênero
+Em adultos, não há diferenças clinicamente relevantes da farmacocinética entre pacientes
+homens e mulheres (ver “Posologia e Modo de Usar”). Uma análise exploratória não
+revelou diferenças relevantes na exposição à rivaroxabana entre crianças do sexo
+masculino e feminino.
+
+- Peso Corporal
+Em adultos, pesos corpóreos extremos (<50 kg vs >120 kg) tiveram apenas pequena
+influência nas concentrações plasmáticas de rivaroxabana (menos de 25%) (ver “Posologia
+e Modo de Usar”). Em crianças, o Xarelto® (rivaroxabana) é administrado com base no
+peso corporal. Uma análise exploratória em crianças não revelou um impacto relevante de
+baixo peso ou obesidade na exposição à rivaroxabana.
+
+- Crianças e adolescentes
+A segurança e eficácia não foram estabelecidas na indicação de prevenção de acidente
+vascular cerebral e embolia sistêmica em fibrilação atrial não-valvar, em crianças e
+adolescentes com idade inferior a 18 anos.
+
+- Diferenças étnicas
+Em adultos, não foram observadas diferenças clinicamente relevantes entre pacientes
+caucasianos, afro-americanos, hispânicos, japoneses ou chineses em relação à
+farmacocinética e farmacodinâmica (ver “Posologia e Modo de Usar”). Uma análise
+exploratória não revelou diferenças interétnicas relevantes na exposição à rivaroxabana
+entre crianças japonesas, chinesas ou asiáticas fora do Japão e da China em comparação
+com a respectiva população pediátrica em geral.
+
+Informações adicionais sobre populações especiais
+- Insuficiência hepática
+Não há dados clínicos disponíveis em crianças com insuficiência hepática.
+Em adultos, o efeito da insuficiência hepática na farmacocinética da rivaroxabana foi
+estudado em indivíduos categorizados de acordo com a classificação Child Pugh, um
+procedimento padrão no desenvolvimento clínico. O propósito original da classificação
+Child Pugh é avaliar o prognóstico da doença hepática crônica, principalmente cirrose. Em
+pacientes nos quais o uso de anticoagulantes é pretendido, o aspecto crítico da insuficiência
+hepática é a redução da síntese de fatores de coagulação normais no fígado . Uma vez que
+este aspecto é considerado em apenas uma das cinco medições clínicas/bioquímicas que
+compõem o sistema de classificação Child Pugh, o risco de sangramento em pacientes
+pode não ser claramente correlacionado com esta classificação. A decisão de tratar os
+
+ 2,5mg-0626-VV-LAB-123201-CCDS19; 10mg-0626-VV-LAB-123201-CCDS19; 15mg-20mg-0626- 20
+VV-LAB-123201-CCDS17
+pacientes com anticoagulantes deve ser, portanto, tomada independentemente da
+classificação Child Pugh.
+Xarelto® (rivaroxabana) é contraindicado em pacientes com doença hepática associada à
+coagulopatia e risco de sangramento clinicamente relevante, incluindo pacientes cirróticos
+com Child Pugh B e C.
+Pacientes cirróticos com insuficiência hepática leve (classificados como Child Pugh A)
+apresentaram apenas pequenas alterações na farmacocinética da rivaroxabana (aumento de
+1,2 vezes da AUC, em média), próximas das de seu respectivo grupo controle saudável.
+Nenhuma diferença relevante nas propriedades farmacodinâmicas foi observada entre estes
+grupos.
+Em pacientes cirróticos com insuficiência hepática moderada (classificados como Child
+Pugh B), a média da AUC da rivaroxabana foi significativamente aumentada em 2,3 vezes
+comparada com voluntários sadios, devido à importante insuficiência na depuração do
+fármaco, o que indica uma significativa doença hepática. A AUC da fração não -ligada foi
+aumentada em 2,6 vezes. Não há dados em pacientes com insuficiência hepática grave.
+A inibição da atividade do fator Xa foi aumentada por um fator de 2,6 quando comparada a
+voluntários sadios; o prolongamento do TP foi similarmente aumentado por um fator de
+2,1. O teste global de coagulação TP avalia a via extrínseca que compreende os fat ores de
+coagulação VII, X, V, II e I que são sintetizados no fígado. Pacientes com insuficiência
+hepática moderada foram mais sensíveis à rivaroxabana, resultando em uma relação mais
+acentuada de Farmacocinética/Farmacodinâmica entre concentração e TP.
+Não há dados disponíveis para pacientes Child Pugh C (ver “Posologia e Modo de Usar” e
+“Contraindicações”).
+
+- Insuficiência renal
+Não há dados clínicos disponíveis em crianças com 1 ano de idade ou mais com
+insuficiência renal moderada ou grave (taxa de filtração glomerular <50 mL/min /1,73 m 2).
+Em adultos, houve um aumento na exposição à rivaroxabana inversamente correlacionada
+com a diminuição da função renal, como avaliado pela medida da depuração de creatinina.
+Em indivíduos com insuficiência renal leve (ClCr ≤ 80 -50 mL/min), moderada (ClCr < 50 -
+30 mL/min) ou grave (ClCr < 30-15 mL/min), as concentrações plasmáticas de
+rivaroxabana (AUC) foram 1,4; 1,5 e 1,6 vezes maiores, respectivamente, comparadas com
+voluntários sadios (ver “Posologia e Modo de Usar” e “Advertências e Precauções”).
+Aumentos correspondentes nos efeitos farmacodinâmicos foram mais pronunciados (ver
+“Posologia e Modo de Usar” e “Advertências e Precauções”).
+Em indivíduos com insuficiência renal leve, moderada ou grave, a inibição total da
+atividade do fator Xa foi aumentada por um fator de 1,5; 1,9 e 2,0, respectivamente,
+quando comparada com voluntários sadios; o prolongamento do TP foi similarmente
+
+ 2,5mg-0626-VV-LAB-123201-CCDS19; 10mg-0626-VV-LAB-123201-CCDS19; 15mg-20mg-0626- 21
+VV-LAB-123201-CCDS17
+aumentado por um fator de 1,3; 2,2 e 2,4, respectivamente. Não há dados em pacientes
+com ClCr < 15 mL/min.
+O uso não é recomendado em pacientes com depuração de creatinina < 15 mL/min.
+Xarelto® (rivaroxabana) deve ser utilizado com cautela em pacientes com insuficiência
+renal grave (depuração de creatinina < 30-15 mL/min) (ver “Posologia e Modo de Usar” e
+“Advertências e Precauções”).
+Devido à doença de base, pacientes com insuficiência renal grave apresentam risco
+aumentado de sangramento e trombose.
+
+- Administração Concomitante de Potentes Indutores da CYP3A4
+Em um estudo de fase I em adultos, a coadministração de Xarelto® (rivaroxabana) com a
+rifampicina, um potente indutor da isoenzima CYP3A4 e gp -P (glicoproteína-P), levou a
+uma redução de aproximadamente 50% na AUC média da rivaroxabana, com reduções
+paralelas em seus efeitos farmacodinâmicos (ver “Interações Medicamentosas”).
+Em um estudo fase IIa em adultos, a relação farmacocinética/farmacodinâmica de um
+regime de dose adaptado de rivaroxabana (30 mg duas vezes ao dia nas primeiras três
+semanas de tratamento, seguidos por 20 mg duas vezes ao dia) foi estudada em 19
+pacientes tratados para TVP ou EP e que, concomitantemente foram medicados com um
+potente indutor da isoenzima CYP3A4 e gp-P (rifampicina ou fenitoína). O regime de dose
+adaptado nesses pacientes levou a uma exposição e farmacodinâmica similares, quando
+comparado a pacientes tratados para TVP (15 mg duas vezes ao dia nas primeiras três
+semanas de tratamento, seguido por 20 mg uma vez ao dia) sem a administração
+concomitante de um potente indutor da isoenzima CYP3A4.
+Não há dados disponíveis sobre o uso concomitante de potentes indutores da CYP3A4 em
+crianças.
+
+- Dados farmacocinéticos em pacientes
+Em pacientes adultos recebendo rivaroxabana 20 mg uma vez ao dia para o tratamento de
+TVP aguda, a média geométrica da concentração (intervalo de 90%) em 2 – 4h e cerca de
+24h após a dose (representando aproximadamente concentrações máximas e mínimas
+durante o intervalo de dose) foi de 215 (22 - 535) e 32 (6 - 239) μg/L, respectivamente.
+
+Em pacientes pediátricos com TEV agudo recebendo rivaroxabana ajustada pelo peso
+corporal, levando a uma exposição semelhante à de pacientes adultos com TVP que
+receberam uma dose diária de 20 mg, as concentrações médias geométricas (intervalo de
+90%) em intervalos de tempo de amostragem representando aproximadamente as
+concentrações máximas e mínimas durante o intervalo de dose estão resumidos na Tabela
+10:
+
+ 2,5mg-0626-VV-LAB-123201-CCDS19; 10mg-0626-VV-LAB-123201-CCDS19; 15mg-20mg-0626- 22
+VV-LAB-123201-CCDS17
+Tabela 10: Resumos de estatísticas (média geométrica [intervalo de 90%]) das
+concentrações plasmáticas de rivaroxabana em estado estacionário (μg/L) por dose
+recomendada e idade
+ Intervalos
+ de tempo
+ Uma vez N 12-<18 anos N 6 -<12 anos
+ ao dia
+ Após 171 241,5 24 229,7
+ 2,5-4h (105-484) (91,5-777)
+ Após 151 20,6 24 15,9
+ 20-24h (5,69-66,5) (3,42-45,5)
+
+ Duas vezes N 6-<12 anos N 2 -<6 anos N 0,5 -<2 anos
+ ao dia
+ Após 36 145,4 38 171,8 2 n.c.
+ 2,5-4h (46,0-343) (70,7-438)
+ Após 33 26,0 37 22,2 3 10,7
+ 10-16h (7,99-94,9) (0,25-127) (n.c.-n.c.)
+
+ Três vezes N 2 -<6 anos N Nascimento N 0,5 -<2 anos N Nascimento
+ ao dia -<2 anos - <0,5 anos
+ Após 5 164,7 25 111,2 13 114,3 12 108,0
+ 0,5-3h (108-283) (22,9-320) (22,9-346) (19,2-320)
+ Após 5 33,2 23 18,7 12 21,4 11 16,1
+ 7-8h (18,7-99,7) (10,1-36,5) (10,5-65,6) (1,03-33,6)
+nc=não calculado
+Valores abaixo de LLOQ (limite inferior de quantificação) foram substituídos por 1/2
+LLOQ para o cálculo das estatísticas (LLOQ = 0,5 μg /L)
+
+➢ Dados de segurança pré-clínicos
+A avaliação de segurança pré-clínica em dados de estudos convencionais e apropriados de
+segurança farmacológica, toxicidade de dose única e de doses repetidas, genotoxicidade,
+fototoxicidade, carcinogenicidade e toxicidade para a reprodução não revelaram riscos
+especiais para humanos.
+Não foi observada toxicidade órgão-específica da rivaroxabana até a mais alta dose testada.
+
+- Segurança farmacológica
+As funções cardiovascular, respiratória e do SNC não foram afetadas. Não se observou
+potencial pró-arritmogênico.
+
+ 2,5mg-0626-VV-LAB-123201-CCDS19; 10mg-0626-VV-LAB-123201-CCDS19; 15mg-20mg-0626- 23
+VV-LAB-123201-CCDS17
+Não foram observados efeitos clinicamente relevantes na motilidade gastrintestinal, função
+hepática, função renal e níveis de glicose sanguínea.
+
+- Toxicidade aguda e de doses repetidas
+A rivaroxabana mostrou baixa toxicidade aguda em ratos e camundongos.
+A rivaroxabana foi testada em estudos de doses repetidas por até 6 meses em ratos e por
+até 12 meses em cães. Com base no modo de ação farmacológico, não se pôde estabelecer
+NOEL (Nível de efeito não observado) em razão dos efeitos sobre o tempo de coagulação.
+Todos os achados adversos, exceto uma discreta redução do ganho de peso corporal em
+ratos e cães, puderam ser relacionados a um efeito farmacológico exagerado do composto.
+Em cães com exposições muito altas, foram observados sangramentos importantes
+espontâneos. Os NOAELs (Níveis de efeitos adversos não observados) após exposição
+crônica são 12,5 mg/kg em ratos e 5 mg/kg em cães.
+
+- Carcinogenicidade
+A rivaroxabana foi testada até 60 mg/kg/dia, atingindo níveis de exposição semelhantes
+aos seres humanos (camundongo) ou até 3,6 vezes maiores (ratos) do que nos seres
+humanos.
+A rivaroxabana não apresentou potencial carcinogênico em ratos e camundongos.
+
+- Toxicologia para a reprodução
+A rivaroxabana foi testada em estudos de toxicidade para o desenvolvimento em níveis de
+exposição de até 14 vezes (rato) e de até 33 vezes (coelho) acima da exposição terapêutica
+em humanos. O perfil toxicológico se caracteriza principalmente por toxicidad e materna
+causada por efeitos farmacodinâmicos exagerados. Até a dose mais alta testada, não se
+identificou potencial teratogênico primário (ver “Gravidez e lactação”).
+A radioatividade relacionada à [C14] rivaroxabana penetrou a barreira placentária em ratos.
+Em nenhum dos órgãos e tecidos fetais, a exposição, em termos de concentrações máximas
+ou AUC, excedeu a exposição sanguínea materna. A exposição média nos fetos, baseada
+na AUC (0 - 24), alcançou cerca de 20% da exposição no sangue materno. As glândulas
+mamárias tinham uma AUC aproximadamente equivalente à do sangue, o que indica
+secreção de radioatividade no leite (ver “Gravidez e lactação”).
+A rivaroxabana não mostrou efeito sobre a fertilidade masculina ou feminina até 200
+mg/kg (ver “Gravidez e lactação”).
+
+- Lactação
+Administrou-se [C14] rivaroxabana por via oral a ratas Wistar lactantes (dias 8 a 10 do pós-
+parto) em dose oral única de 3 mg/kg de peso corporal.
+
+ 2,5mg-0626-VV-LAB-123201-CCDS19; 10mg-0626-VV-LAB-123201-CCDS19; 15mg-20mg-0626- 24
+VV-LAB-123201-CCDS17
+A radioatividade relacionada à [C14] rivaroxabana foi secretada no leite das ratas lactantes
+apenas em uma pequena extensão em relação à dose administrada: a quantidade estimada
+de radioatividade excretada com o leite foi de 2,12% da dose materna no prazo de 32 horas
+após a administração (ver “Gravidez e lactação”).
+
+- Genotoxicidade
+Não se observou genotoxicidade num teste para mutação genética em bactérias (Teste de
+Ames), um teste in vitro para aberrações cromossômicas ou no teste in vivo do
+micronúcleo.
+
+- Toxicidade juvenil
+A rivaroxabana foi testada em ratos juvenis até a duração do tratamento de 3 meses,
+começando no dia 4 pós-nascimento. A rivaroxabana foi geralmente bem tolerada, exceto
+por sinais indicando farmacodinâmica exagerada. Nenhuma evidência de toxicidade órgão-
+alvo específica foi observada.
+
+5. ADVERTÊNCIAS E PRECAUÇÕES
+➢ Pacientes com próteses valvulares cardíacas
+Xarelto® (rivaroxabana) não é recomendado para tromboprofilaxia em pacientes que foram
+recentemente submetidos a substituição da válvula aórtica transcateter (TAVR), baseado
+nos dados de um estudo clínico randomizado, controlado comparando um regime de
+Xarelto® (rivaroxabana) a um regime de antiagregante plaquetário (ver “Propriedades
+Farmacodinâmicas”).
+A segurança e eficácia de Xarelto® (rivaroxabana) não foram estudadas em pacientes com
+outras próteses de válvulas cardíacas ou outros procedimentos valvulares; portanto, não há
+dados para suportar que Xarelto® (rivaroxabana) forneça anticoagulação adequada nestas
+populações de pacientes.
+
+➢ Pacientes com síndrome antifosfolípide triplo positivo de alto risco
+Xarelto® (rivaroxabana) não é recomendado em pacientes com antecedentes de trombose
+diagnosticados com síndrome antifosfolípide e com persistência tripla positiva (para
+anticoagulante lúpico, anticorpos anticardiolipina e anticorpos anti-beta 2-glicoproteína I),
+uma vez que o tratamento com rivaroxabana está associado a um aumento da taxa de
+eventos trombóticos recorrentes comparados com antagonistas da vitamina K (AVK) (ver
+“Propriedades Farmacodinâmicas”).
+
+➢ Medicação concomitante
+Não há dados clínicos disponíveis em crianças recebendo tratamento sistêmico
+concomitante com potentes inibidores da CYP 3A4 e gp-P.
+Xarelto® (rivaroxabana) não é recomendado em pacientes recebendo tratamento sistêmico
+concomitante com antimicóticos azólicos (por exemplo, cetoconazol) ou inibidores das
+proteases do HIV (por exemplo, ritonavir). Estes fármacos são potentes inibidores da
+CYP3A4 e da gp-P. Portanto, estes fármacos podem aumentar as concentrações
+plasmáticas da rivaroxabana até um grau clinicamente relevante (2,6 vezes em média), o
+que pode levar ao aumento do risco de sangramentos (ver “Interações Medicamentosas”).
+Dados clínicos limitados estão disponíveis em crianças recebendo inibidores moderados da
+CYP 3A4.O antimicótico azólico fluconazol, um inibidor moderado da CYP3A4, tem
+menor efeito na exposição à rivaroxabana e pode ser coadministrado (ver “Interações
+Medicamentosas”).
+
+ 2,5mg-0626-VV-LAB-123201-CCDS19; 10mg-0626-VV-LAB-123201-CCDS19; 15mg-20mg-0626- 26
+VV-LAB-123201-CCDS17
+➢ Tratamento e prevenção de TVP e EP recorrentes: Insuficiência renal
+Xarelto® (rivaroxabana) deve ser utilizado com cautela em pacientes com insuficiência
+renal que estejam recebendo comedicações que levem ao aumento da concentração de
+rivaroxabana no plasma (ver “Interações Medicamentosas”).
+
+➢ Prevenção de acidente vascular cerebral e embolia sistêmica em pacientes com
+fibrilação atrial não-valvular, tratamento e prevenção de TVP e EP recorrentes:
+Insuficiência renal
+Em pacientes com insuficiência renal grave (ClCr < 30 mL/min), os níveis plasmáticos de
+rivaroxabana podem elevar-se significativamente (1,6 vezes na média), o que pode levar a
+um aumento do risco de sangramento. Em razão da doença de base, estes pacientes têm um
+aumento do risco de sangramento e de trombose.
+Em virtude dos dados clínicos limitados, Xarelto® (rivaroxabana) deve ser utilizado com
+cautela nos pacientes com ClCr < 30-15 mL/min (ver “Propriedades Farmacocinéticas”).
+Não há dados clínicos disponíveis para pacientes com insuficiência renal grave (ClCr < 15
+mL/min). Portanto, o uso de Xarelto® (rivaroxabana) não é recomendado nestes pacientes
+(ver “Posologia e Modo de Usar” e “Propriedades Farmacocinéticas”).
+Após o início do tratamento, os pacientes com insuficiência renal grave ou risco
+aumentado de sangramentos e aqueles que recebem tratamento sistêmico concomitante
+com antimicóticos azólicos ou inibidores das proteases do HIV devem ser cuidadosamente
+monitorados quanto a sinais de complicações hemorrágicas (ver “Interações
+Medicamentosas”).
+
+➢ Tratamento de TEV e prevenção de TEV recorrente em pacientes pediátricos:
+ Insuficiência renal
+Xarelto® (rivaroxabana) não é recomendado para crianças com 1 ano ou mais com
+insuficiência renal moderada ou grave (taxa de filtração glomerular <50 mL/min/1,73 m 2),
+pois não há dados clínicos disponíveis.
+
+➢ Risco de sangramento
+Xarelto® (rivaroxabana), como outros antitrombóticos, deve ser utilizado com cautela em
+pacientes com risco aumentado de sangramento, tais como:
+- distúrbios hemorrágicos adquiridos ou congênitos;
+- hipertensão arterial grave não controlada;
+- doença gastrintestinal ulcerativa ativa;
+- ulcerações gastrintestinais recentes;
+- retinopatia vascular;
+- hemorragia intracraniana ou intracerebral recente;
+- anormalidades vasculares intraespinais ou intracerebrais;
+
+ 2,5mg-0626-VV-LAB-123201-CCDS19; 10mg-0626-VV-LAB-123201-CCDS19; 15mg-20mg-0626- 27
+VV-LAB-123201-CCDS17
+- cirurgia cerebral, espinhal ou oftalmológica recente;
+- bronquiectasia ou história de sangramento pulmonar.
+O sangramento durante o tratamento antitrombótico pode desmascarar malignidades
+subjacentes ainda desconhecidas, em particular no trato gastrointestinal ou geniturinário.
+Pacientes com doença maligna podem, simultaneamente, apresentar maior risco de
+sangramento e trombose. O benefício individual do tratamento antitrombótico deve ser
+avaliado em relação ao risco de sangramento em pacientes com câncer ativo, dependendo
+da localização do tumor, terapia antineoplásica e estágio da doença.
+Deve-se ter cuidado se os pacientes forem tratados concomitantemente com fármacos que
+interferem na hemostasia, como os anti-inflamatórios não-esteroidais (AINEs), ácido
+acetilsalicílico, os inibidores da agregação plaquetária, outros antitrombóticos ou
+inibidores seletivos da recaptação de serotonina (ISRSs) e inibidores da recaptação de
+serotonina e noradrenalina (IRSNs) (ver “Interações Medicamentosas”).
+Pode-se considerar tratamento profilático adequado para pacientes com risco de doença
+ulcerativa gastrintestinal (ver “Interações Medicamentosas”).
+Qualquer queda de hemoglobina ou da pressão arterial sem explicação deve levar à
+investigação de um local com sangramento.
+
+➢ Cirurgia e intervenções
+Se um procedimento invasivo ou uma intervenção cirúrgica forem necessários, Xarelto®
+(rivaroxabana) deve ser interrompido pelo menos 24 horas antes da intervenção, se
+possível, e com base no julgamento clínico do médico.
+Se o procedimento não puder ser adiado, o aumento do risco de sangramento deve ser
+avaliado em relação à urgência de tal intervenção.
+A administração de Xarelto® (rivaroxabana) deve ser reiniciada o mais rapidamente
+possível após o procedimento invasivo ou a intervenção cirúrgica, desde que a situação
+clínica do paciente permita e a hemostasia adequada tenha sido estabelecida (ver
+“Propriedades Farmacocinéticas”).
+
+➢ Anestesia neuraxial (epidural/espinhal) e punção lombar
+Quando anestesia neuraxial (epidural/espinhal) ou uma punção espinhal é realizada, os
+pacientes tratados com antitrombóticos para prevenção de complicações tromboembólicas
+correm o risco de desenvolver hematoma epidural ou espinhal que pode resultar em
+paralisia prolongada.
+O risco destes eventos é ainda maior pelo uso de cateteres epidurais de demora ou pelo uso
+concomitante de medicamentos que afetem a hemostasia. O risco também pode aumentar
+por punção epidural ou espinhal traumática ou repetida.
+Pacientes devem ser frequentemente monitorados para sinais e sintomas de alteração
+neurológica (por exemplo, dormência ou fraqueza das pernas, disfunção intestinal ou da
+
+ 2,5mg-0626-VV-LAB-123201-CCDS19; 10mg-0626-VV-LAB-123201-CCDS19; 15mg-20mg-0626- 28
+VV-LAB-123201-CCDS17
+bexiga). Se forem observados déficits neurológicos, serão necessários diagnóstico e
+tratamento urgentes.
+O médico deve considerar o benefício potencial em relação ao risco antes da intervenção
+neuraxial em pacientes anticoagulados ou que vão ser anticoagulados para
+tromboprofilaxia.
+Não há experiência clínica com o uso de rivaroxabana 15 mg e 20 mg nestas situações.
+Para reduzir o risco potencial de sangramento associado ao uso concomitante de
+rivaroxabana e anestesia neuraxial (epidural/espinhal) ou punção lombar, deve ser
+considerado o perfil farmacocinético de rivaroxabana. A inserção ou remoção de um
+cateter epidural ou punção lombar é melhor realizada quando o efeito anticoagulante de
+rivaroxabana é estimado ser baixo. No entanto, não é conhecido o momento exato para
+atingir um efeito anticoagulante considerado suficientemente baixo em cada paciente e
+deve ser avaliado em relação à urgência de um procedimento diagnóstico.
+Para a remoção de um cateter epidural, e com base nas características farmacocinéticas
+gerais, deve-se esperar o tempo de pelo menos 2x a meia-vida do medicamento, ou seja,
+pelo menos 18 horas para pacientes adultos jovens e 26 horas para pacientes idosos, após a
+última administração de Xarelto® (rivaroxabana) (ver “Propriedades Farmacocinéticas”).
+Xarelto® (rivaroxabana) deve ser administrado, pelo menos, 6 horas após a remoção do
+cateter.
+Se ocorrer punção traumática, a administração de Xarelto® (rivaroxabana) deverá ser
+adiada por 24 horas.
+
+Não há dados disponíveis sobre o momento da colocação ou remoção do cateter neuraxial
+em crianças durante o tratamento com Xarelto® (rivaroxabana). Descontinue Xarelto®
+(rivaroxabana) e considere anticoagulante parenteral de curta ação.
+
+➢ Prolongamento do QTc
+Não foi observado efeito de prolongamento do QTc com o uso de Xarelto® (rivaroxabana)
+(ver “Propriedades Farmacocinéticas”).
+
+➢ Informação sobre os excipientes
+Como Xarelto® (rivaroxabana) comprimidos contém lactose, os pacientes com problemas
+hereditários raros de intolerância à lactose ou à galactose (por exemplo, deficiência de
+lactase de Lapp ou má absorção de glicose-galactose) não devem tomar Xarelto®
+(rivaroxabana) comprimidos (ver “Composição”).
+Xarelto® (rivaroxabana) comprimidos contém menos de 1 mmol de sódio (23 mg) por
+dose, isto quer dizer que é essencialmente “livre de sódio”.
+
+ 2,5mg-0626-VV-LAB-123201-CCDS19; 10mg-0626-VV-LAB-123201-CCDS19; 15mg-20mg-0626- 29
+VV-LAB-123201-CCDS17
+Atenção: Contém lactose (tipo de açúcar) abaixo de 0,25g/comprimido revestido. Este
+medicamento não deve ser usado por pessoas com síndrome de má-absorção de
+glicose-galactose.
+
+Atenção: Contém os corantes dióxido de titânio e óxido de ferro vermelho.
+
+➢ Tratamento e prevenção de TVP e EP recorrentes: pacientes com embolia
+pulmonar hemodinamicamente instáveis ou pacientes que necessitam de trombólise
+ou embolectomia pulmonar
+Xarelto® (rivaroxabana) não é recomendado como uma alternativa à heparina não
+fracionada em pacientes com embolia pulmonar que estejam hemodinamicamente instáveis
+ou que possam receber trombólise ou embolectomia pulmonar, uma vez que a segurança e
+eficácia de Xarelto® (rivaroxabana) não foram estabelecidas nestas situações clínicas.
+
+➢ Prevenção de acidente vascular cerebral e embolia sistêmica em pacientes com
+fibrilação atrial não-valvular: Pacientes submetidos a Intervenção Coronária
+Percutânea (ICP) com colocação de stent
+Os dados clínicos disponíveis foram gerados a partir de um estudo intervencionista com o
+objetivo primário de avaliar a segurança em pacientes com fibrilação atrial não-valvular
+submetidos à ICP com colocação de stent. Os dados sobre a eficácia nesta popul ação são
+limitados (ver "Posologia e Modo de Usar – Informações adicionais para populações
+especiais" e "Propriedades Farmacodinâmicas").
+
+➢ Gravidez e lactação
+- Gravidez
+A segurança e eficácia de Xarelto® (rivaroxabana) não foram estabelecidas em mulheres
+grávidas.
+Em ratas e coelhas, a rivaroxabana mostrou pronunciada toxicidade materna, com
+alterações placentárias relacionadas ao seu modo de ação farmacológico (por exemplo,
+complicações hemorrágicas) levando à toxicidade reprodutiva (ver “Dados de segurança
+pré-clínicos”). Não se identificou potencial teratogênico primário. Devido ao risco
+intrínseco de sangramentos e à evidência de que a rivaroxabana atravessa a placenta, o uso
+de Xarelto® (rivaroxabana) é contraindicado na gravidez (ver “Contraindicações” e “Dados
+de segurança pré-clínicos”).
+
+- Lactação
+Não foram estabelecidos segurança e eficácia de Xarelto® (rivaroxabana) em lactantes. Em
+ratas, a rivaroxabana é secretada no leite materno. Portanto, Xarelto ® (rivaroxabana) só
+
+ 2,5mg-0626-VV-LAB-123201-CCDS19; 10mg-0626-VV-LAB-123201-CCDS19; 15mg-20mg-0626- 30
+VV-LAB-123201-CCDS17
+pode ser administrado depois de descontinuada a amamentação (ver “Contraindicações” e
+“Dados de segurança pré-clínicos”).
+
+➢ Mulheres em idade fértil/Contracepção
+Xarelto® (rivaroxabana) deve ser utilizado em mulheres em idade fértil somente com um
+método contraceptivo eficaz.
+
+➢ Efeitos sobre a capacidade de dirigir veículos ou operar máquinas
+Foram relatadas síncopes e tonturas, o que podem afetar a habilidade de dirigir veículos e
+operar máquinas (ver “Reações Adversas”). Pacientes que apresentarem estas reações
+adversas não devem dirigir ou operar máquinas.
+
+Em caso de suspeita de dengue, ou quando associado a outros medicamentos que
+aumentem o efeito hemorrágico, a prescrição deste medicamento ou a manutenção do
+tratamento com ele deve ser reavaliada, devido a seu potencial hemorrágico.
+
+Informe a seu paciente que a doação de sangue é absolutamente contraindicada
+durante o tratamento com rivaroxabana e até 5 dias após seu término, devido ao dano
+que ele pode causar ao receptor.
+
+6. INTERAÇÕES MEDICAMENTOSAS
+A extensão das interações na população pediátrica não é conhecida. Os dados de interação
+abaixo mencionados obtidos em adultos e as advertências do item “Advertências e
+Precauções” devem ser levados em consideração para a população pediátrica.
+
+➢ Interações farmacocinéticas
+A rivaroxabana é eliminada principalmente pelo metabolismo hepático mediado pelo
+citocromo P450 (CYP3A4, CYP2J2) e por excreção renal do fármaco inalterado,
+envolvendo sistemas de transportadores glicoproteína-P (gp-P) / proteína de resistência ao
+câncer de mama (Bcrp).
+
+➢ Inibição do CYP
+A rivaroxabana não inibe o CYP3A4 nem qualquer outra isoforma principal de CYP.
+
+➢ Indução do CYP
+A rivaroxabana não induz o CYP3A4 nem qualquer outra isoforma principal de CYP.
+
+➢ Efeitos na rivaroxabana
+
+ 2,5mg-0626-VV-LAB-123201-CCDS19; 10mg-0626-VV-LAB-123201-CCDS19; 15mg-20mg-0626- 31
+VV-LAB-123201-CCDS17
+O uso concomitante de Xarelto® (rivaroxabana) com inibidores potentes da CYP3A4 e
+inibidores da gp-P pode levar à redução da depuração hepática e renal e, deste modo, ao
+aumento significativo da exposição sistêmica.
+A coadministração de Xarelto® (rivaroxabana) com cetoconazol, antimicótico azólico (400
+mg uma vez ao dia), um potente inibidor da CYP3A4 e da gp-P, levou a um aumento de
+2,6 vezes da AUC média da rivaroxabana no estado de equilíbrio e um aumento de 1,7
+vezes da Cmáx média da rivaroxabana, com elevações significativas de seus efeitos
+farmacodinâmicos.
+A coadministração de Xarelto® (rivaroxabana) com o inibidor da protease do HIV ritonavir
+(600 mg duas vezes ao dia), um potente inibidor da CYP3A4 e da gp-P, levou a um
+aumento de 2,5 vezes da AUC média da rivaroxabana e a um aumento de 1,6 vezes da Cmáx
+média de rivaroxabana, com elevações significativas de seus efeitos farmacodinâmicos.
+Portanto, Xarelto® (rivaroxabana) não é recomendado em pacientes que estejam recebendo
+tratamento sistêmico concomitante com antimicóticos azólicos ou inibidores da protease do
+HIV (ver “Advertências e Precauções”).
+Para outros fármacos que inibam potentemente apenas uma das vias de eliminação da
+rivaroxabana, seja CYP3A4 ou gp-P, é esperado que o aumento das concentrações
+plasmáticas de rivaroxabana seja de menor extensão.
+A claritromicina (500 mg duas vezes ao dia), considerada um potente inibidor da CYP3A4
+e inibidor moderado da gp-P, levou ao aumento de 1,5 vezes da AUC média da
+rivaroxabana e de 1,4 vezes da C máx. Este aumento, que está próximo da magnitude da
+variabilidade normal da AUC e Cmáx, é considerado clinicamente irrelevante.
+A eritromicina (500 mg três vezes ao dia), que inibe moderadamente a CYP3A4 e gp -P,
+levou a um aumento de 1,3 vezes da AUC e da Cmáx média da rivaroxabana. Este aumento
+está dentro da magnitude de variabilidade normal da AUC e C máx e é considerado
+clinicamente irrelevante.
+Em indivíduos com insuficiência renal leve, eritromicina (500 mg três vezes ao dia) levou
+a um aumento de 1,8 vezes da AUC média de rivaroxabana e de 1,6 vezes da C máx quando
+comparado a indivíduos com função renal normal sem comedicação. Em indivíduos com
+insuficiência renal moderada, eritromicina levou a um aumento de 2,0 vezes da AUC
+média de rivaroxabana e de 1,6 vezes da Cmáx quando comparado a indivíduos com função
+renal normal sem comedicação (ver “Advertências e Precauções”).
+O fluconazol (400 mg uma vez ao dia), considerado um inibidor moderado da CYP3A4,
+levou a um aumento de 1,4 vezes da AUC média da rivaroxabana e 1,3 vezes da C máx. Este
+aumento está dentro da magnitude de variabilidade normal da AUC e C máx e é considerado
+como clinicamente irrelevante (ver “Advertências e Precauções”).
+Em função de dados clínicos limitados disponíveis com dronedarona, a coadministração
+deve ser evitada.
+
+ 2,5mg-0626-VV-LAB-123201-CCDS19; 10mg-0626-VV-LAB-123201-CCDS19; 15mg-20mg-0626- 32
+VV-LAB-123201-CCDS17
+A coadministração de Xarelto® (rivaroxabana) com rifampicina, indutor potente da
+CYP3A4 e da gp-P, levou a uma diminuição aproximada de 50% da AUC média da
+rivaroxabana, com diminuições paralelas em seus efeitos farmacodinâmicos (ver
+“Propriedades Farmacocinéticas”).
+O uso concomitante de Xarelto® (rivaroxabana) com outros indutores potentes da CYP3A4
+(por exemplo, fenitoína, carbamazepina, fenobarbital ou Erva de São João) também pode
+levar a uma diminuição da concentração plasmática de rivaroxabana. Indutores potentes da
+CYP3A4 devem ser coadministrados com cautela (ver “Propriedades Farmacocinéticas”).
+
+➢ Interações farmacodinâmicas
+Após administração combinada de enoxaparina (40 mg em dose única) com Xarelto®
+(rivaroxabana) (10 mg em dose única), foi observado um efeito aditivo sobre a atividade
+anti-fator Xa sem qualquer efeito adicional sobre os testes de coagulação (TP, TTPa). A
+enoxaparina não afetou a farmacocinética da rivaroxabana (ver “Advertências e
+Precauções”).
+O clopidogrel (300 mg em dose de ataque, seguida por 75 mg de dose de manutenção) não
+mostrou interação farmacocinética (com Xarelto® (rivaroxabana) 15 mg), mas foi
+observado um aumento relevante dos tempos de sangramento em um subgrupo de
+pacientes, e esse efeito não foi correlacionado à agregação plaquetária, à P -selectina ou aos
+níveis do receptor de GPIIb/IIIa (ver “Advertências e Precauções”).
+Não foi observado prolongamento clinicamente relevante do tempo de sangramento após
+administração concomitante de Xarelto® (rivaroxabana) (15 mg) e 500 mg de naproxeno.
+Todavia, pode haver indivíduos com resposta farmacodinâmica mais pronunciada (ver
+“Advertências e Precauções”).
+Ao converter pacientes de varfarina (RNI 2,0 a 3,0) para Xarelto® (rivaroxabana) (20 mg)
+ou de Xarelto® (rivaroxabana) (20 mg) para varfarina (RNI 2,0 a 3,0) houve um aumento
+do tempo de protrombina (TP)/RNI (Neoplastin®) mais que aditivamente (podem ser
+observados valores individuais de RNI de até 12), enquanto os efeitos sobre o TTPa, a
+inibição da atividade do fator Xa e o potencial de trombina endógena foram aditivos.
+Se for desejado testar os efeitos farmacodinâmicos de Xarelto® (rivaroxabana) durante o
+período de conversão, a atividade anti-fator Xa, PiCT e HepTest® podem ser usados como
+testes, uma vez que estes testes não são afetados pela varfarina.
+A partir do quarto dia da interrupção da varfarina, todos os testes (incluindo TP, TTPa,
+inibição da atividade do fator Xa e ETP) refletiram apenas o efeito do Xarelto®
+(rivaroxabana) (ver “Posologia e Modo de Usar”).
+Se for desejado testar os efeitos farmacodinâmicos da varfarina durante o período de
+conversão, a avaliação da RNI pode ser utilizada na Cmin da rivaroxabana (24 horas após a
+ingestão anterior da rivaroxabana), uma vez que este teste é minimamente afetado pela
+rivaroxabana neste ponto de tempo.
+
+ 2,5mg-0626-VV-LAB-123201-CCDS19; 10mg-0626-VV-LAB-123201-CCDS19; 15mg-20mg-0626- 33
+VV-LAB-123201-CCDS17
+Nenhuma interação farmacocinética foi observada entre varfarina e Xarelto®
+(rivaroxabana).
+Tal como acontece com outros anticoagulantes, pode existir a possibilidade de pacientes
+apresentarem um risco aumentado de sangramento em caso de uso concomitante com
+ISRSs ou IRSNs devido ao seu efeito relatado sobre as plaquetas. Quando usado
+concomitantemente no programa clínico de rivaroxabana, foram observadas taxas
+numericamente mais elevadas de sangramento importante ou não importante clinicamente
+relevante em todos os grupos de tratamento.
+
+➢ Alimentos e laticínios
+Xarelto® (rivaroxabana) 15 mg e Xarelto® (rivaroxabana) 20 mg devem ser administrados
+com alimentos (ver “Propriedades Farmacocinéticas”).
+
+➢ Interações cuja existência não foi demonstrada
+Não houve interações farmacocinéticas mútuas entre rivaroxabana e midazolam (substrato
+da CYP3A4), digoxina (substrato de glicoproteína-P) ou atorvastatina (substrato da
+CYP3A4 e gp-P).
+A coadministração do inibidor da bomba de prótons omeprazol, do antagonista do receptor
+H2 ranitidina, do antiácido hidróxido de alumínio/hidróxido de magnésio, naproxeno,
+clopidogrel ou enoxaparina não afetou a biodisponibilidade e a farmacocinética da
+rivaroxabana.
+Não foram observadas interações farmacocinéticas ou farmacodinâmicas clinicamente
+significativas quando Xarelto® (rivaroxabana) foi coadministrado com 500 mg de ácido
+acetilsalicílico.
+
+➢ Interações com parâmetros laboratoriais
+Os testes de parâmetros da coagulação (TP, TTPa, HepTest®) são afetados como esperado
+pelo modo de ação de Xarelto® (rivaroxabana) (ver “Propriedades Farmacodinâmicas”).
+
+8. POSOLOGIA E MODO DE USAR
+➢ Dosagem e método de administração: Prevenção de acidente vascular cerebral
+e embolia sistêmica em pacientes com fibrilação atrial não-valvular em adultos
+
+- Método de administração
+Uso oral
+
+- Dose usual recomendada
+A dose recomendada é de 20 mg uma vez ao dia.
+
+- Duração do tratamento
+A terapia deve ser continuada enquanto os fatores de risco para AVC e embolia sistêmica
+persistirem.
+
+- Método e frequência da administração
+Deve ser ingerido um comprimido de 20 mg de Xarelto® (rivaroxabana) por dia.
+Xarelto® (rivaroxabana) 20 mg e Xarelto® (rivaroxabana) 15 mg devem ser ingeridos com
+alimentos (ver “Propriedades Farmacocinéticas”).
+Para pacientes que não conseguem engolir comprimidos inteiros, o comprimido de
+Xarelto® (rivaroxabana) pode ser triturado e misturado com água ou alimentos pastosos,
+como purê de maçã, imediatamente antes da utilização, e administrado por via oral. Após a
+administração do comprimido triturado de Xarelto® (rivaroxabana) 15 mg ou de Xarelto®
+(rivaroxabana) 20 mg, a dose deve ser imediatamente seguida por alimento.
+O comprimido de Xarelto® (rivaroxabana) triturado pode ser administrado por sonda
+gástrica. Deve-se confirmar o posicionamento da sonda gástrica antes de administrar
+Xarelto® (rivaroxabana). O comprimido triturado deve ser administrado em uma pequena
+quantidade de água através de uma sonda gástrica, que deve ser lavada com água após a
+administração. Após a administração do comprimido triturado de Xarelto® (rivaroxabana)
+15 mg ou de Xarelto® (rivaroxabana) 20 mg, a dose deve ser imediatamente seguida por
+nutrição enteral (ver “Propriedades Farmacocinéticas”).
+
+- Doses esquecidas
+
+ 2,5mg-0626-VV-LAB-123201-CCDS19; 10mg-0626-VV-LAB-123201-CCDS19; 15mg-20mg-0626- 35
+VV-LAB-123201-CCDS17
+Em caso de esquecimento de uma dose, o paciente deve tomar Xarelto® (rivaroxabana)
+imediatamente e continuar com a tomada uma vez ao dia, conforme recomendado, no dia
+seguinte.
+Não deve ser tomada dose em dobro para compensar uma dose esquecida dentro do mesmo
+dia.
+
+- Dose diária máxima
+A dose máxima recomendada diariamente é 20 mg.
+
+- Informações adicionais para populações especiais
+Pacientes com insuficiência hepática
+Xarelto® (rivaroxabana) é contraindicado em pacientes com doença hepática associada à
+coagulopatia e risco de sangramento clinicamente relevante, incluindo pacientes cirróticos
+com Child Pugh B e C (ver “Contraindicações” e “Propriedades Farmacocinéticas”).
+
+Pacientes com insuficiência renal
+Não é necessário ajuste de dose em pacientes com insuficiência renal leve (depuração de
+creatinina (ClCr): ≤ 80-50 mL/min) (ver “Propriedades Farmacocinéticas”). Para pacientes
+com insuficiência renal moderada (depuração de creatinina (ClCr): < 50-30 mL/min) ou
+grave (depuração de creatinina (ClCr): < 30-15 mL/min) a dose recomendada é de 15 mg
+uma vez ao dia (ver “Propriedades Farmacocinéticas”).
+Dados clínicos limitados para pacientes com insuficiência renal grave (ClCr: < 30 -15
+mL/min) indicam que as concentrações plasmáticas da rivaroxabana são significativamente
+aumentadas, portanto, Xarelto® (rivaroxabana) deve ser utilizado com precaução nestes
+pacientes (ver “Advertências e Precauções” e “Propriedades Farmacocinéticas”).
+O uso de Xarelto® (rivaroxabana) não é recomendado em pacientes com ClCr < 15 mL/min
+(ver “Advertências e Precauções” e “Propriedades Farmacocinéticas”).
+
+Convertendo de antagonistas de vitamina K (AVK) para Xarelto® (rivaroxabana)
+O tratamento com AVK deve ser interrompido e iniciada a terapia com Xarelto®
+(rivaroxabana) assim que o valor de RNI for  3,0.
+Em pacientes convertidos de AVKs para Xarelto® (rivaroxabana), os valores de RNI serão
+falsamente elevados após a ingestão de Xarelto® (rivaroxabana). O RNI não é válido para
+medir a atividade anticoagulante de Xarelto® (rivaroxabana), e desta forma não deve ser
+usado para este fim (ver “Interações Medicamentosas”).
+
+Convertendo de Xarelto® (rivaroxabana) para antagonistas de vitamina K (AVK)
+Existe um potencial para anticoagulação inadequada durante a transição de Xarelto®
+(rivaroxabana) para AVK. A anticoagulação adequada contínua deve ser assegurada
+
+ 2,5mg-0626-VV-LAB-123201-CCDS19; 10mg-0626-VV-LAB-123201-CCDS19; 15mg-20mg-0626- 36
+VV-LAB-123201-CCDS17
+durante qualquer transição para um anticoagulante alternativo. Deve ser observado que
+Xarelto® (rivaroxabana) pode contribuir para um valor elevado de RNI.
+Em pacientes convertidos de Xarelto® (rivaroxabana) para AVK, o AVK deve ser
+administrado concomitantemente até que o valor de RNI seja ≥ 2,0. Para os dois primeiros
+dias do período de conversão, a dose padrão de AVK deve ser utilizada seguida pela dose
+de AVK ajustada de acordo com os testes de RNI. Enquanto os pacientes receberem
+ambos, Xarelto® (rivaroxabana) e AVK, a medida de RNI não deve ser realizada antes de
+24 horas (após a dose anterior, mas antes da próxima dose de Xarelto ® (rivaroxabana)).
+Com a descontinuação de Xarelto® (rivaroxabana), o teste de RNI pode ser feito de forma
+confiável 24 horas após a última dose (ver “Interações Medicamentosas”).
+
+Convertendo de anticoagulantes parenterais para Xarelto® (rivaroxabana)
+Para pacientes que estejam atualmente recebendo um anticoagulante parenteral, Xarelto ®
+(rivaroxabana) deve ser iniciado 0 a 2 horas antes do horário previsto para próxima
+administração do medicamento parenteral (por exemplo, heparina de baixo peso
+molecular) ou no momento da descontinuação da administração parenteral contínua do
+medicamento (por exemplo, heparina não fracionada intravenosa).
+
+Convertendo de Xarelto® (rivaroxabana) para anticoagulantes parenterais
+Descontinue o uso de Xarelto® (rivaroxabana) e administre a primeira dose do
+anticoagulante parenteral no momento em que a próxima dose de Xarelto® (rivaroxabana)
+seria administrada.
+
+Pacientes submetidos a Intervenção Coronária Percutânea (ICP) com colocação de
+stent
+Os pacientes com fibrilação atrial não-valvular submetidos a ICP com colocação de stent
+devem receber uma dose reduzida de 15 mg de Xarelto® (rivaroxabana) uma vez ao dia (ou
+10 mg de Xarelto® (rivaroxabana) uma vez ao dia para pacientes com insuficiência renal
+moderada [ClCr: <50-30 mL/min]) associado a um inibidor de P2Y12 (e.x.: clopidogrel).
+Este regime de tratamento é recomendado por no máximo 12 meses após a ICP com
+colocação de stent (ver "Advertência e Precauções" e "Propriedades Farmacodinâmicas").
+Após o término da terapia antiplaquetária, a dose de rivaroxabana deve ser aumentada para
+a dose padrão para pacientes com fibrilação atrial não-valvular.
+Crianças e adolescentes (do nascimento aos 18 anos)
+A segurança e a eficácia não foram estabelecidas em crianças e adolescentes abaixo de 18
+anos.
+
+Pacientes idosos
+Não é necessário ajuste de dose com base na idade do paciente (ver “Propriedades
+Farmacocinéticas”).
+
+ 2,5mg-0626-VV-LAB-123201-CCDS19; 10mg-0626-VV-LAB-123201-CCDS19; 15mg-20mg-0626- 37
+VV-LAB-123201-CCDS17
+Gênero
+Não é necessário ajuste de dose com base no gênero do paciente (ver “Propriedades
+Farmacocinéticas”).
+
+Peso corporal
+Não é necessário ajuste de dose com base no peso corporal do paciente (ver “Propriedades
+Farmacocinéticas”).
+
+Diferenças étnicas
+Não é necessário ajuste de dose com base em diferenças étnicas (ver “Propriedades
+Farmacocinéticas”).
+
+➢ Dosagem e método de administração no tratamento e prevenção de TVP e EP
+recorrentes em adultos
+
+- Método de administração
+Uso oral
+
+- Dose usual recomendada
+A dose recomendada para o tratamento inicial de TVP e EP agudos é de 15 mg de Xarelto®
+(rivaroxabana) duas vezes ao dia para as três primeiras semanas, seguido por 20 mg de
+Xarelto® (rivaroxabana) uma vez ao dia para a continuação do tratamento e para a
+prevenção da TVP e de EP recorrentes.
+Após a conclusão de pelo menos 6 meses de tratamento para TVP ou EP, Xarelto®
+(rivaroxabana) 10 mg uma vez ao dia ou Xarelto® (rivaroxabana) 20 mg uma vez ao dia é
+recomendado com base em uma avaliação de risco individual de TVP ou EP recorrente em
+relação ao risco de sangramento.
+
+ Período de tempo Esquema de dose Dose diária total
+ Tratamento e 15 mg duas vezes ao
+ prevenção de TVP Dia 1 - 21 dia 30 mg
+ ou EP recorrentes
+ Dia 22 em diante 20 mg uma vez ao dia 20 mg
+ Prevenção de TVP Após a conclusão de 10 mg uma vez ao dia
+ ou EP recorrentes pelo menos 6 meses ou 20 mg uma vez ao
+ de tratamento para dia, com base na 10 mg ou 20 mg
+ TVP ou EP avaliação risco-
+ benefício do médico
+
+ 2,5mg-0626-VV-LAB-123201-CCDS19; 10mg-0626-VV-LAB-123201-CCDS19; 15mg-20mg-0626- 38
+VV-LAB-123201-CCDS17
+- Duração do tratamento
+Para TVP e EP, a duração do tratamento deve ser individualizada após cuidadosa avaliação
+do benefício do tratamento contra o risco de sangramento (ver “Advertências e
+Precauções”). A terapia de curta duração (3 meses) deve ser considerada em pacientes com
+TVP ou EP provocada pelos principais fatores de risco transitórios (por exemplo, cirurgia
+importante recente ou trauma).
+A terapia de longa duração deve ser considerada em pacientes com TVP ou EP provocada
+por fatores de risco permanentes, TVP ou EP não provocada, ou história de TVP ou EP
+recorrente.
+
+- Método e frequência da administração
+Durante as primeiras 3 semanas de tratamento agudo, Xarelto® (rivaroxabana) 15 mg deve
+ser tomado 2 vezes ao dia.
+Após as primeiras 3 semanas, o tratamento com Xarelto® (rivaroxabana) deve ser
+continuado com 20 mg uma vez ao dia.
+Após pelo menos 6 meses de tratamento, Xarelto® (rivaroxabana) 10 mg ou 20 mg deve ser
+tomado uma vez ao dia (ver “Propriedades Farmacodinâmicas”).
+
+Xarelto® (rivaroxabana) 15 mg e Xarelto® (rivaroxabana) 20 mg devem ser tomados junto
+com alimentos. Xarelto® (rivaroxabana) 10 mg pode ser tomado com ou sem alimentos
+(ver “Propriedades Farmacocinéticas”).
+Para pacientes que não conseguem engolir comprimidos inteiros, o comprimido de
+Xarelto® (rivaroxabana) pode ser triturado e misturado com água ou alimentos pastosos,
+como purê de maçã, imediatamente antes da utilização, e administrado por via oral. Após a
+administração do comprimido triturado de Xarelto® (rivaroxabana) 15 mg ou de Xarelto®
+(rivaroxabana) 20 mg, a dose deve ser imediatamente seguida por alimento.
+O comprimido de Xarelto® (rivaroxabana) triturado pode ser administrado por sonda
+gástrica. Deve-se confirmar o posicionamento da sonda gástrica antes de administrar
+Xarelto® (rivaroxabana). O comprimido triturado deve ser administrado em uma pequena
+quantidade de água através de uma sonda gástrica, que deve ser lavada com água após a
+administração. Após a administração do comprimido triturado de Xarelto® (rivaroxabana)
+15 mg ou de Xarelto® (rivaroxabana) 20 mg, a dose deve ser imediatamente seguida por
+nutrição enteral (ver “Propriedades Farmacocinéticas”).
+
+- Doses esquecidas
+É essencial aderir ao esquema de dose recomendado.
+Se for esquecida uma dose durante a fase de tratamento com 15 mg duas vezes ao dia (dia
+1 - 21), o paciente deve tomar Xarelto® (rivaroxabana) imediatamente para garantir a
+ingestão de 30 mg por dia do medicamento. Nesse caso, dois comprimidos de 15 mg
+
+ 2,5mg-0626-VV-LAB-123201-CCDS19; 10mg-0626-VV-LAB-123201-CCDS19; 15mg-20mg-0626- 39
+VV-LAB-123201-CCDS17
+podem ser tomados de uma só vez. O paciente deve continuar tomando a dose regular de
+15 mg duas vezes ao dia no dia seguinte, conforme recomendado.
+Se for esquecida uma dose durante a fase de tratamento com uma ingestão ao dia, o
+paciente deve tomar Xarelto® (rivaroxabana) imediatamente e continuar no dia seguinte
+com uma ingestão ao dia, conforme recomendado. A dose não deve ser dobrada no mesmo
+dia para compensar uma dose perdida.
+
+- Dose diária máxima
+A dose diária máxima recomendada é de 30 mg durante as três semanas iniciais do
+tratamento. Na fase de continuação do tratamento a dose diária máxima recomendada é de
+20 mg.
+
+- Informações adicionais para populações especiais
+Pacientes com insuficiência hepática
+Xarelto® (rivaroxabana) é contraindicado em pacientes com doença hepática associada à
+coagulopatia e risco de sangramento clinicamente relevante, incluindo pacientes cirróticos
+com Child Pugh B e C (ver “Contraindicações” e “Propriedades Farmacocinéticas”).
+
+Pacientes com insuficiência renal
+Não é necessário ajuste de dose em pacientes com insuficiência renal leve (depuração de
+creatinina (ClCr): ≤ 80-50 mL/min) (ver “Propriedades Farmacocinéticas”).
+O tratamento para pacientes com insuficiência renal moderada (depuração de creatinina
+(ClCr): < 50–30 mL/min) ou grave (depuração de creatinina (ClCr): < 30 -15 mL/min) deve
+ser 15 mg duas vezes ao dia durante as três primeiras semanas. Posteriormente, quando a
+dose recomendada é de 20 mg uma vez por dia, a redução de dose de 20 mg uma vez por
+dia para 15 mg uma vez por dia deve ser considerada, se o risco de sangramento do
+paciente avaliado supera o risco de TVP e EP recorrente. A recome ndação para o uso de 15
+mg é baseada em modelo de Farmacocinética e não foi estudada em cenário clínico (ver
+“Advertências e Precauções” e “Propriedades Farmacocinéticas”).
+Quando a dose recomendada é de 10 mg uma vez por dia, não é necessário ajuste de dose.
+Dados clínicos limitados para pacientes com insuficiência renal grave (ClCr < 30-15
+mL/min) indicam que as concentrações plasmáticas de rivaroxabana aumentam
+significativamente, portanto, Xarelto® (rivaroxabana) deve ser utilizado com cautela nestes
+pacientes (ver “Advertências e Precauções” e “Propriedades Farmacocinéticas”).
+O uso de Xarelto® (rivaroxabana) não é recomendado para pacientes com ClCr < 15
+mL/min (ver “Advertências e Precauções” e “Propriedades Farmacocinéticas”).
+
+Convertendo de antagonistas de vitamina K (AVK) para Xarelto® (rivaroxabana)
+
+ 2,5mg-0626-VV-LAB-123201-CCDS19; 10mg-0626-VV-LAB-123201-CCDS19; 15mg-20mg-0626- 40
+VV-LAB-123201-CCDS17
+O tratamento com AVK deve ser interrompido e iniciado com Xarelto® (rivaroxabana)
+assim que os valores de RNI forem  2,5.
+Em pacientes convertidos de AVKs para Xarelto® (rivaroxabana), os valores de RNI serão
+falsamente elevados após a administração de Xarelto® (rivaroxabana). A medida de RNI
+não é válida para medir a atividade anticoagulante de Xarelto® (rivaroxabana), e desta
+forma não deve ser usada para este fim (ver “Interações Medicamentosas”).
+Convertendo de Xarelto® (rivaroxabana) para antagonistas de vitamina K (AVK)
+Existe um potencial para anticoagulação inadequada durante a transição de Xarelto ®
+(rivaroxabana) para AVK. A anticoagulação adequada contínua deve ser assegurada
+durante qualquer transição para um anticoagulante alternativo. Deve ser observado que
+Xarelto® (rivaroxabana) pode contribuir para um valor elevado de RNI.
+Em pacientes convertidos de Xarelto® (rivaroxabana) para AVK, o AVK deve ser
+administrado concomitantemente até que o valor de RNI seja ≥ 2,0. Para os dois primeiros
+dias do período de conversão, a dose padrão de AVK deve ser utilizada seguida pela dose
+de AVK ajustada de acordo com os testes de RNI. Enquanto os pacientes receberem
+ambos, Xarelto® (rivaroxabana) e AVK, a medida de RNI não deve ser realizada antes de
+24 horas (após a dose anterior, mas antes da próxima dose de Xarelto ® (rivaroxabana)).
+Com a descontinuação de Xarelto® (rivaroxabana), o teste de RNI pode ser feito de forma
+confiável 24 horas após a última dose (ver “Interações Medicamentosas”).
+Convertendo de anticoagulantes parenterais para Xarelto® (rivaroxabana)
+Para pacientes recebendo atualmente um anticoagulante parenteral, Xarelto ®
+(rivaroxabana) deve ser iniciado 0 a 2 horas antes do horário previsto para próxima
+administração do medicamento parenteral (por exemplo, heparina de baixo peso
+molecular) ou no momento da descontinuação da administração parenteral contínua do
+medicamento (por exemplo, heparina não fracionada intravenosa).
+
+Convertendo de Xarelto® (rivaroxabana) para anticoagulantes parenterais
+Descontinue o uso de Xarelto® (rivaroxabana) e administre a primeira dose do
+anticoagulante parenteral no momento em que a próxima dose de Xarelto® (rivaroxabana)
+seria administrada.
+
+Crianças e adolescentes (do nascimento aos 18 anos)
+Xarelto® (rivaroxabana) 15 mg e 20 mg comprimidos revestidos não é recomendado para
+uso em crianças com menos de 18 anos de idade em outras indicações que não para o
+tratamento de TEV e prevenção de TEV recorrente.
+Pacientes idosos
+Não é necessário ajuste de dose com base na idade do paciente (ver “Propriedades
+Farmacocinéticas”).
+
+ 2,5mg-0626-VV-LAB-123201-CCDS19; 10mg-0626-VV-LAB-123201-CCDS19; 15mg-20mg-0626- 41
+VV-LAB-123201-CCDS17
+Gênero
+Não é necessário ajuste de dose com base no gênero do paciente (ver “Propriedades
+Farmacocinéticas”).
+
+Peso corporal
+Não é necessário ajuste de dose com base no peso corporal do paciente (ver “Propriedades
+Farmacocinéticas”).
+
+Diferenças étnicas
+Não é necessário ajuste de dose com base em diferenças étnicas (ver “Propriedades
+Farmacocinéticas”).
+
+➢ Dosagem e método de administração no tratamento de TEV e prevenção de TEV
+recorrente crianças e adolescentes com menos de 18 anos com peso igual ou superior
+a 30 kg após o início do tratamento padrão de anticoagulação.
+
+- Método de administração
+Uso oral
+Xarelto® (rivaroxabana) está disponível para uso pediátrico como comprimido.
+
+Comprimidos
+O paciente deve ser orientado a engolir o comprimido com líquido.
+
+- Dose usual recomendada
+Crianças e Adolescentes com menos de 18 anos
+O tratamento com Xarelto® (rivaroxabana) para crianças e adolescentes com menos de 18
+anos de idade deve ser iniciado seguido de pelo menos 5 dias de tratamento inicial de
+anticoagulação com heparinas parenterais (ver “Propriedades Farmacodinâmicas”).
+Xarelto® (rivaroxabana) é administrado com base no peso corporal utilizando a formulação
+mais adequada (ver Tabela 11).
+
+- Peso corporal de 30 a 50 kg:
+uma dose diária de 15 mg de rivaroxabana é recomendada. Esta é a dose diária máxima.
+- Peso corporal igual ou superior a 50 kg:
+uma dose diária de 20 mg de rivaroxabana é recomendada. Esta é a dose diária máxima.
+
+Tabela 11: Cronograma de dose de Xarelto® (rivaroxabana) ajustado pelo peso
+corporal para crianças e adolescentes com menos de 18 anos em mg de comprimidos
+
+ 2,5mg-0626-VV-LAB-123201-CCDS19; 10mg-0626-VV-LAB-123201-CCDS19; 15mg-20mg-0626- 42
+VV-LAB-123201-CCDS17
+ Forma Peso corporal (kg) Regime [mg] Dose diária
+ farmacêutica Min. Máx. 1x/dia total [mg]
+ 30 <50 15 mg 15 mg
+ Comprimidos
+ ≥ 50 20 mg 20 mg
+
+O peso das crianças deve ser monitorado e a dosagem revisada regularmente. Isso é para
+garantir que uma dose terapêutica seja mantida.
+
+- Duração do tratamento
+A terapia com Xarelto® (rivaroxabana) deve ser continuada por pelo menos 3 meses em
+crianças e adolescentes. O tratamento pode ser estendido por até 12 meses, quando
+clinicamente necessário. O risco-benefício da terapia continuada após 3 meses deve ser
+avaliado individualmente, levando em consideração o risco de trombose recorrente versus
+o risco potencial de sangramento.
+
+- Método e frequência de administração
+Xarelto® (rivaroxabana) 15 mg ou 20 mg comprimidos devem ser tomados com alimentos
+(ver “Propriedades Farmacocinéticas”).
+Deve ser tomado com intervalo de aproximadamente 24 horas.
+
+Cada dose de Xarelto® (rivaroxabana) deve ser imediatamente seguida pela ingestão de
+uma porção típica de líquido. Esta porção típica pode incluir o volume de líquido usado na
+alimentação.
+Caso o paciente cuspa a dose imediatamente ou vomite 30 minutos após receber a dose,
+uma nova dose deve ser administrada. No entanto, se o paciente vomitar mais de 30
+minutos após a dose, a dose não deve ser administrada novamente e a próxima dose deve
+ser tomada conforme programado.
+
+O comprimido não deve ser dividido na tentativa de fornecer uma fração da dose do
+comprimido.
+
+Para crianças que não conseguem engolir comprimidos inteiros, quando forem prescritas
+doses de Xarelto® (rivaroxabana) 15 mg ou 20 mg, elas podem ser fornecidas triturando o
+comprimido de 15 mg ou 20 mg e misturando-o com água ou alimentos pastosos, como
+purê de maçã, imediatamente antes da utilização, e administrado por via oral (ver
+“Propriedades Farmacocinéticas”).
+
+ 2,5mg-0626-VV-LAB-123201-CCDS19; 10mg-0626-VV-LAB-123201-CCDS19; 15mg-20mg-0626- 43
+VV-LAB-123201-CCDS17
+Xarelto® (rivaroxabana) comprimido triturado pode ser administrado por sonda
+nasogástrica ou gástrica. O comprimido triturado deve ser administrado em uma pequena
+quantidade de água através de uma sonda nasogástrica ou gástrica. Deve-se confirmar o
+posicionamento da sonda gástrica antes de administrar Xarelto® (rivaroxabana). Evite a
+administração de Xarelto® (rivaroxabana) distal ao estômago. Após a administração, a
+sonda de alimentação deve ser lavada com água. Isso deve ser imediatamente seguido por
+alimentação nasogástrica ou gástrica (ver “Propriedades Farmacocinéticas”).
+
+Doses esquecidas
+Uma dose esquecida deve ser tomada o mais rápido possível após ser percebido, mas
+apenas no mesmo dia. Se isso não for possível, o paciente deve pular a dose e continuar
+com a próxima dose conforme prescrito. O paciente não deve tomar duas doses para
+compensar uma dose esquecida.
+
+No dia seguinte, a criança deve continuar com o regime regular uma vez ao dia.
+
+- Informações adicionais para populações especiais
+Pacientes com insuficiência hepática
+Não há dados clínicos disponíveis em crianças com insuficiência hepática.
+Xarelto® (rivaroxabana) é contraindicado em pacientes com doença hepática associada à
+coagulopatia e risco de sangramento clinicamente relevante (ver “Contraindicações”).
+ Não é necessário ajuste de dose em pacientes com outras doenças hepáticas (ver
+“Propriedades Farmacocinéticas”).
+Dados clínicos limitados em pacientes com comprometimento hepático moderado (Child
+Pugh B) indicam um aumento significativo da atividade farmacológica (ver “Propriedades
+Farmacocinéticas”).
+Não existem dados clínicos disponíveis em pacientes com comprometimento hepático
+grave (Child Pugh C) (ver “Contraindicações” e “Propriedades Farmacocinéticas”).
+
+Pacientes com insuficiência renal
+Não é necessário ajuste de dose para crianças e adolescentes com insuficiência renal leve
+(taxa de filtração glomerular: 50-<80 mL/min /1,73 m2), com base em dados em adultos e
+dados limitados em pacientes pediátricos (ver “Propriedades Farmacocinéticas”).
+Xarelto® (rivaroxabana) não é recomendado para crianças e adolescentes com insuficiência
+renal moderada ou grave (taxa de filtração glomerular: <50 mL/min /1,73 m 2), uma vez
+que não há dados clínicos disponíveis (ver “Advertências e Precauções”).
+
+Convertendo de anticoagulantes parenterais para Xarelto® (rivaroxabana)
+
+ 2,5mg-0626-VV-LAB-123201-CCDS19; 10mg-0626-VV-LAB-123201-CCDS19; 15mg-20mg-0626- 44
+VV-LAB-123201-CCDS17
+Para pacientes recebendo atualmente um anticoagulante parenteral, Xarelto ®
+(rivaroxabana) deve ser iniciado 0 a 2 horas antes do horário previsto para próxima
+administração do medicamento parenteral (por exemplo, heparina de baixo peso
+molecular) ou no momento da descontinuação da administração parenteral contínua do
+medicamento (por exemplo, heparina não fracionada intravenosa).
+
+Convertendo de Xarelto® (rivaroxabana) para anticoagulantes parenterais
+Descontinue o uso de Xarelto® (rivaroxabana) e administre a primeira dose do
+anticoagulante parenteral no momento em que a próxima dose de Xarelto® (rivaroxabana)
+seria administrada.
+
+Convertendo de antagonistas de vitamina K (AVK) para Xarelto® (rivaroxabana)
+O tratamento com AVK deve ser interrompido e iniciado com Xarelto® (rivaroxabana)
+assim que os valores de RNI forem  2,5.
+Em pacientes convertidos de AVKs para Xarelto® (rivaroxabana), os valores de RNI serão
+falsamente elevados após a administração de Xarelto® (rivaroxabana). A medida de RNI
+não é válida para medir a atividade anticoagulante de Xarelto® (rivaroxabana), e desta
+forma não deve ser usada para este fim (ver “Interações Medicamentosas”).
+
+Convertendo de Xarelto® (rivaroxabana) para antagonistas de vitamina K (AVK)
+Existe um potencial para anticoagulação inadequada durante a transição de Xarelto®
+(rivaroxabana) para AVK. A anticoagulação adequada contínua deve ser assegurada
+durante qualquer transição para um anticoagulante alternativo. Deve ser observado que
+Xarelto® (rivaroxabana) pode contribuir para um valor elevado de RNI.
+Crianças convertidas de Xarelto® (rivaroxabana) para AVK precisam continuar com o
+Xarelto® (rivaroxabana) por 48 horas após a primeira dose de AVK. Após 2 dias de
+coadministração uma medida de RNI deve ser obtida antes da próxima dose programada de
+Xarelto® (rivaroxabana). É aconselhável continuar a coadministração de Xarelto®
+(rivaroxabana) com AVK até que o valor de RNI seja ≥ 2,0. Uma vez que Xarelto®
+(rivaroxabana) é descontinuado, o teste de RNI pode ser feito de forma confiável 24 horas
+após a última dose (ver “Interações Medicamentosas”).
+
+Gênero
+Não é necessário ajuste de dose com base no gênero do paciente (ver “Propriedades
+Farmacocinéticas”).
+
+Peso corporal
+A dose é determinada com base no peso corporal (ver “Propriedades Farmacocinéticas”).
+
+ 2,5mg-0626-VV-LAB-123201-CCDS19; 10mg-0626-VV-LAB-123201-CCDS19; 15mg-20mg-0626- 45
+VV-LAB-123201-CCDS17
+Diferenças étnicas
+Não é necessário ajuste de dose com base em diferenças étnicas (ver “Propriedades
+Farmacocinéticas”).

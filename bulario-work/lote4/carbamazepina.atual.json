@@ -1,0 +1,17 @@
+{
+  "Risco Gestacional": "D",
+  "Slug": "carbamazepina",
+  "Nomes Comerciais / Produtos ANVISA": "Tegretol; Tegretard; carbamazepina.",
+  "Interações": "Não usar com IMAO, como tranilcipromina, moclobemida, selegilina, rasagilina ou linezolida. É forte indutor enzimático e pode reduzir eficácia de apixabana, rivaroxabana, varfarina, anticoncepcionais hormonais, corticoides, antipsicóticos, antidepressivos, ciclosporina, tacrolimo, levotiroxina e antirretrovirais. Claritromicina, eritromicina, fluconazol, itraconazol, verapamil, diltiazem, isoniazida e suco de grapefruit podem aumentar níveis e toxicidade. Valproato pode aumentar metabólito ativo e toxicidade. Lítio, haloperidol e metoclopramida podem aumentar neurotoxicidade. Erva-de-são-joão deve ser evitada.",
+  "Apresentações / Nomes Comerciais": "Comprimidos 200 mg e 400 mg; comprimidos de liberação controlada; suspensão oral 20 mg/mL conforme fabricante. Exemplos: Tegretol; Tegretard; Carbamazepina EMS; carbamazepina genérica.",
+  "Posologia Pediátrica": "Epilepsia: dose pediátrica deve ser calculada por idade/peso, geralmente em doses divididas e com titulação gradual.\nMonitorar resposta clínica, eventos adversos, hemograma, função hepática e sódio.",
+  "Texto Resumo": "Carbamazepina é um anticonvulsivante usado em crises focais, crises tônico-clônicas, neuralgia do trigêmeo e algumas situações de transtorno bipolar. Exige atenção a interações por indução enzimática, hiponatremia, toxicidade hematológica, hepatotoxicidade e reações cutâneas graves.",
+  "Classe / Categoria": "Anticonvulsivante; estabilizador do humor; bloqueador de canais de sódio.",
+  "Posologia Adulto": "Epilepsia: iniciar geralmente com 100 mg a 200 mg por via oral 1 a 2 vezes ao dia; aumentar gradualmente conforme resposta.\nDose usual: 800 mg a 1200 mg/dia, divididos em 2 a 4 tomadas conforme formulação.\nNeuralgia do trigêmeo: iniciar com 100 mg a 200 mg, 1 a 2 vezes ao dia, ajustando conforme resposta.\nMonitorar níveis séricos quando indicado.",
+  "Contraindicações": "Hipersensibilidade à carbamazepina, antidepressivos tricíclicos ou componentes da fórmula; bloqueio atrioventricular; histórico de depressão da medula óssea; porfiria hepática; uso concomitante ou recente de inibidores da monoaminoxidase.",
+  "Tags Busca": "carbamazepina; anticonvulsivante; epilepsia; neuralgia do trigêmeo; transtorno bipolar; estabilizador do humor; tegretol",
+  "Advertências": "Pode causar sonolência, tontura, diplopia, ataxia, hiponatremia, leucopenia, agranulocitose, anemia aplástica, hepatotoxicidade, reações cutâneas graves, síndrome de Stevens-Johnson e necrólise epidérmica tóxica. Considerar risco genético em populações predispostas. Monitorar hemograma, função hepática e sódio. Não é usualmente eficaz em crises de ausência e mioclônicas.",
+  "Nomes Comerciais OpenAI": "Tegretol; Tegretard; Carbamazepina EMS; Carbamazepina Medley; Carbamazepina União Química.",
+  "Rede SUS (RENAME)": false,
+  "Princípio Ativo": "Carbamazepina"
+}

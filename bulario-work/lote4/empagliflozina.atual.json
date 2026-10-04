@@ -1,0 +1,16 @@
+{
+  "Risco Gestacional": "C",
+  "Slug": "empagliflozina",
+  "Nomes Comerciais / Produtos ANVISA": "Jardiance; Jardiance Duo; Glyxambi; empagliflozina.",
+  "Interações": "Insulina, glibenclamida, gliclazida, glimepirida e outras sulfonilureias aumentam risco de hipoglicemia quando associadas, podendo exigir redução de dose. Diuréticos, como furosemida, hidroclorotiazida e clortalidona, aumentam risco de depleção de volume, hipotensão e lesão renal. IECA/BRA, como captopril, enalapril, losartana, valsartana e candesartana, podem somar efeitos sobre função renal/pressão e requerem monitorização. Corticosteroides, como prednisona, dexametasona e betametasona, podem piorar controle glicêmico. Evitar uso em cetoacidose diabética.",
+  "Apresentações / Nomes Comerciais": "Comprimidos revestidos 10 mg e 25 mg; associações com metformina ou linagliptina conforme produto. Exemplos: Jardiance; Jardiance Duo, quando associado à metformina; Glyxambi, quando associado à linagliptina; empagliflozina genérica/similar.",
+  "Texto Resumo": "Empagliflozina é um inibidor de SGLT2 usado no diabetes tipo 2 e em indicações cardiorrenais, como insuficiência cardíaca e doença renal crônica. Exige atenção a cetoacidose euglicêmica, infecções genitais, depleção de volume e função renal.",
+  "Classe / Categoria": "Antidiabético oral; inibidor do cotransportador sódio-glicose 2; inibidor de SGLT2; cardiometabólico.",
+  "Posologia Adulto": "Diabetes mellitus tipo 2: iniciar com 10 mg por via oral 1 vez ao dia, com ou sem alimento; pode aumentar para 25 mg 1 vez ao dia se necessário para controle glicêmico e se tolerado.\nInsuficiência cardíaca ou doença renal crônica: 10 mg por via oral 1 vez ao dia, conforme indicação e função renal.\nAvaliar taxa de filtração glomerular antes de iniciar e durante o tratamento.",
+  "Contraindicações": "Hipersensibilidade à empagliflozina ou componentes da fórmula; diabetes mellitus tipo 1 para controle glicêmico de rotina; cetoacidose diabética; insuficiência renal grave ou diálise conforme indicação e bula; gravidez e lactação conforme avaliação de risco.",
+  "Tags Busca": "empagliflozina; sglt2; diabetes tipo 2; insuficiência cardíaca; doença renal crônica; jardiance; antidiabético",
+  "Advertências": "Pode causar infecções genitais micóticas, infecção urinária, poliúria, depleção de volume, hipotensão, piora transitória da função renal e cetoacidose diabética, inclusive euglicêmica. Suspender temporariamente em jejum prolongado, cirurgia, doença aguda grave, desidratação ou suspeita de cetoacidose. Usar cautela em idosos, uso de diuréticos, baixa pressão arterial, insuficiência renal e história de infecções genitais recorrentes.",
+  "Nomes Comerciais OpenAI": "Jardiance; Jardiance Duo; Glyxambi; Empagliflozina EMS; Empagliflozina Eurofarma.",
+  "Rede SUS (RENAME)": false,
+  "Princípio Ativo": "Empagliflozina"
+}

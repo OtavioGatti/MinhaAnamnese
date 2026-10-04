@@ -1,0 +1,16 @@
+{
+  "Risco Gestacional": "D",
+  "Slug": "telmisartana",
+  "Nomes Comerciais / Produtos ANVISA": "Micardis; Pritor; telmisartana.",
+  "Interações": "Não usar com alisquireno em diabéticos ou insuficiência renal relevante. IECA, como captopril, enalapril, lisinopril e ramipril, e outros BRA, como losartana, valsartana, candesartana e olmesartana, aumentam risco de hipercalemia, hipotensão e lesão renal. Espironolactona, eplerenona, amilorida, triantereno, suplementos de potássio e sais substitutos com potássio aumentam risco de hipercalemia. AINEs como ibuprofeno, naproxeno, diclofenaco e ácido acetilsalicílico em dose anti-inflamatória podem reduzir efeito anti-hipertensivo e piorar função renal. Lítio pode ter níveis aumentados e toxicidade. Digoxina pode ter níveis aumentados e requer monitorização em alguns pacientes. Diuréticos como furosemida, hidroclorotiazida e clortalidona podem aumentar hipotensão inicial.",
+  "Apresentações / Nomes Comerciais": "Comprimidos 20 mg, 40 mg e 80 mg; associações fixas com hidroclorotiazida ou anlodipino conforme produto. Exemplos: Micardis; Pritor; Telmisartana EMS; Telmisartana Eurofarma.",
+  "Texto Resumo": "Telmisartana é um bloqueador do receptor de angiotensina II usado em hipertensão arterial e redução de risco cardiovascular em pacientes selecionados. Exige monitorização de função renal e potássio, atenção a interações que elevam potássio e contraindicação na gravidez.",
+  "Classe / Categoria": "Antagonista do receptor de angiotensina II; BRA; anti-hipertensivo; cardioprotetor em pacientes selecionados.",
+  "Posologia Adulto": "Hipertensão arterial: 40 mg por via oral 1 vez ao dia; ajustar conforme resposta.\nDose usual: 20 mg a 80 mg por via oral 1 vez ao dia.\nRedução de risco cardiovascular em pacientes selecionados: 80 mg por via oral 1 vez ao dia conforme indicação.\nMonitorar pressão arterial, creatinina e potássio.",
+  "Contraindicações": "Hipersensibilidade à telmisartana ou componentes da fórmula; gravidez; distúrbios obstrutivos biliares; insuficiência hepática grave; uso concomitante com alisquireno em pacientes com diabetes mellitus ou insuficiência renal relevante.",
+  "Tags Busca": "telmisartana; anti-hipertensivo; bra; hipertensão; pressão alta; cardioproteção; micardis",
+  "Advertências": "Pode causar tontura, hipotensão, hipercalemia, piora da função renal e, raramente, angioedema. Monitorar creatinina e potássio, especialmente em insuficiência renal, insuficiência cardíaca, idosos, desidratação, uso de diuréticos, estenose de artéria renal ou associação com fármacos que aumentam potássio. Contraindicada na gravidez pelo risco de lesão e morte fetal.",
+  "Nomes Comerciais OpenAI": "Micardis; Pritor; Telmisartana EMS; Telmisartana Eurofarma; Telmisartana Medley.",
+  "Rede SUS (RENAME)": false,
+  "Princípio Ativo": "Telmisartana"
+}

@@ -1,0 +1,17 @@
+{
+  "Risco Gestacional": "C",
+  "Slug": "haloperidol",
+  "Nomes Comerciais / Produtos ANVISA": "Haldol; Halo; haloperidol.",
+  "Interações": "Medicamentos que prolongam QT aumentam risco de arritmias: amiodarona, sotalol, quinidina, procainamida, citalopram, escitalopram, clorpromazina, quetiapina, ziprasidona, azitromicina, claritromicina, ciprofloxacino, levofloxacino, moxifloxacino, fluconazol, ondansetrona e metadona. Levodopa e agonistas dopaminérgicos, como pramipexol e ropinirol, têm efeito antagonizado. Lítio pode aumentar neurotoxicidade. Benzodiazepínicos, opioides, álcool, zolpidem, prometazina e hidroxizina aumentam sedação. Fluoxetina, paroxetina, quinidina, cetoconazol, itraconazol e ritonavir podem aumentar níveis de haloperidol. Carbamazepina, rifampicina, fenitoína e fenobarbital podem reduzir níveis. Diuréticos que causam hipocalemia, como furosemida e hidroclorotiazida, aumentam risco de arritmia.",
+  "Apresentações / Nomes Comerciais": "Comprimidos 1 mg e 5 mg; solução oral/gotas 2 mg/mL conforme produto; solução injetável 5 mg/mL; formulação decanoato de longa ação conforme fabricante. Exemplos: Haldol; Halo; Haloperidol União Química; haloperidol genérico.",
+  "Posologia Pediátrica": "Uso pediátrico deve ser individualizado por idade, peso, indicação e gravidade.\nNão usar sem avaliação especializada.\nMonitorar sedação, sintomas extrapiramidais, pressão arterial e intervalo QT quando indicado.",
+  "Texto Resumo": "Haloperidol é um antipsicótico típico usado em psicose, agitação e delirium em contextos selecionados. Exige atenção a sintomas extrapiramidais, síndrome neuroléptica maligna, prolongamento de QT, sedação e maior risco em idosos com demência.",
+  "Classe / Categoria": "Antipsicótico típico; butirofenona; neuroléptico; antiemético em contextos selecionados.",
+  "Posologia Adulto": "Agitação psicomotora/psicose: dose deve ser individualizada conforme gravidade, via e perfil do paciente.\nVia oral: iniciar geralmente com 0,5 mg a 5 mg, 2 a 3 vezes ao dia, ajustando conforme resposta.\nVia intramuscular em agitação aguda: 2,5 mg a 5 mg IM, podendo repetir conforme protocolo e monitorização.\nUsar a menor dose eficaz.",
+  "Contraindicações": "Hipersensibilidade ao haloperidol ou componentes da fórmula; doença de Parkinson; demência com corpos de Lewy; depressão grave do sistema nervoso central; coma; prolongamento de QT conhecido; síndrome congênita do QT longo; arritmias ventriculares; hipocalemia ou hipomagnesemia não corrigidas; uso concomitante com medicamentos que prolongam QT sem avaliação de risco.",
+  "Tags Busca": "haloperidol; antipsicótico; agitação; psicose; delirium; neuroléptico; extrapiramidal; haldol",
+  "Advertências": "Pode causar sintomas extrapiramidais, distonia aguda, acatisia, parkinsonismo, discinesia tardia, sedação, hipotensão, hiperprolactinemia, síndrome neuroléptica maligna, convulsões, prolongamento de QT, torsades de pointes e morte súbita. Aumenta mortalidade em idosos com psicose relacionada à demência. Usar cautela em idosos, cardiopatas, epilepsia, doença hepática e distúrbios eletrolíticos.",
+  "Nomes Comerciais OpenAI": "Haldol; Halo; Haloperidol União Química; Haloperidol Cristália; Haloperidol Decanoato Janssen.",
+  "Rede SUS (RENAME)": false,
+  "Princípio Ativo": "Haloperidol"
+}

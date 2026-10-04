@@ -1,0 +1,747 @@
+FONTE: lote4__haloperidol__HALDOL.pdf
+
+===== BLOCO 1 =====
+APRESENTAÇÕES
+Comprimidos de 1 mg ou 5 mg de haloperidol em embalagem com 20 comprimidos.
+
+USO ORAL
+
+USO ADULTO E PEDIÁTRICO ACIMA DE 6 ANOS
+
+Solução gotas de haloperidol (2 mg/mL) em embalagem com frasco gotejador de 30 mL.
+
+USO ORAL
+
+USO ADULTO E PEDIÁTRICO ACIMA DE 6 ANOS
+
+1. INDICAÇÕES
+
+Como agente antipsicótico: em delírios e alucinações na esquizofrenia aguda e crônica. Na confusão mental aguda.
+
+Como um agente antiagitação psicomotor: mania, demência. Agitação e agressividade no idoso. Distúrbios graves do comportamento e nas
+psicoses infantis acompanhadas de excitação psicomotora. Movimentos coreiformes. Tiques. Estados impulsivos e agressivos. Síndrome de
+Tourette.
+
+Haldol®– VPS03 1
+
+Como antiemético: náuseas e vômitos incoercíveis de várias origens, quando outras terapêuticas mais específicas não foram suficientemente
+eficazes.
+
+3. CARACTERÍSTICAS FARMACOLÓGICAS
+
+Mecanismo de ação
+
+Haldol®– VPS03 2
+
+O haloperidol é um antipsicótico pertencente ao grupo das butirofenonas. Ele é um antagonista potente do receptor central de dopamina tipo 2
+e, nas dosagens recomendadas, tem baixa atividade antiadrenérgica alfa 1 e nenhuma atividade anti-histaminérgica ou anticolinérgica.
+
+Efeitos Farmacodinâmicos
+
+O haloperidol suprime delírios e alucinações como consequência direta do bloqueio da sinalização dopaminérgica na via mesolímbica. O efeito
+central de bloqueio da dopamina tem atividade sobre os gânglios da base (feixes nigrostriatais). O haloperidol causa sedação psicomotora
+efetiva, o que explica seus efeitos favoráveis na mania, agitação psicomotora e outras síndromes de agitação.
+
+A atividade em nível dos gânglios da base é provavelmente responsável pelos efeitos extrapiramidais indesejados (distonia, acatisia e
+parkinsonismo).
+
+Os efeitos antidopaminérgicos do haloperidol nos lactotrópios da hipófise anterior explicam a hiperprolactinemia devido à inibição da inibição
+tônica da secreção de prolactina mediada pela dopamina. Além disso, o efeito antidopaminérgico na zona de gatilho dos quimiorreceptores da
+área postrema explica a atividade contra náuseas e vômitos.
+
+Propriedades Farmacocinéticas
+
+Absorção: após a administração oral, a biodisponibilidade média do haloperidol é de 60 % a 70 %. Os níveis do pico plasmático do haloperidol
+são geralmente atingidos entre 2 a 6 horas após a dose oral . Uma alta variabilidade entre os sujeitos nas concentrações plasmáticas foi observada.
+O estado de equilíbrio é atingido no prazo de 1 semana após o início do tratamento.
+
+Distribuição: A ligação média do haloperidol às proteínas plasmáticas em adultos é de aproximadamente 88 a 92%. Existe uma alta
+variabilidade da ligação às proteínas plasmáticas entre indivíduos. O haloperidol é rapidamente distribuído a vários tecidos e órgãos, conforme
+indicado pelo grande volume d e distribuição (valores médios de 8 a 21 L/kg após administração intravenosa). O haloperidol atravessa facilmente
+a barreira hematoencefálica. Também atravessa a placenta e é excretado no leite materno.
+
+Metabolismo: O haloperidol é extensamente metabolizado no fígado. As principais vias metabólicas do haloperidol em humanos incluem
+glicuronidação, redução de cetonas, N -dealquilação oxidativa e formação de metabólitos piridínicos. Não se considera que os metabólitos do
+haloperidol contribuam significativamente para sua atividade. As enzimas do citocromo P450, CYP3A4 e CYP2D6 estão envolvidas no
+metabolismo do haloperidol. A inibição ou indução do CYP3A4 ou inibição do CYP2D6 podem afetar o metabolismo do haloperidol. Uma
+diminuição na atividade da enzima CYP2D6 pode resultar em aumento das concentrações de haloperidol.
+
+Eliminação: a meia -vida de eliminação terminal é , em média, de 24 horas (variando de 1 5 a 37 horas). A depuração aparente do haloperidol
+após administração extravascular varia de 0,9 a 1,5 L/h/kg sendo reduzida em metabolizadores fracos dos substratos do CYP2D6. A
+variabilidade entre indivíduos (coeficiente de variação, %) na depuração do haloperidol fo i estimada em 44% numa análise farmacocinética
+populacional em pacientes com esquizofrenia. Após administração intravenosa de haloperidol, 21% da dose foi eliminada nas fez es e 33% na
+urina. Menos de 3% da dose é excretada inalterada na urina.
+
+Linearidade/não linearidade
+
+Existe uma relação linear entre a dose de haloperidol e as concentrações plasmáticas em adultos.
+
+Populações Especiais
+
+Idoso
+
+Haldol®– VPS03 3
+
+As concentrações plasmáticas de haloperidol em pacientes idosos foram maiores do que em adultos jovens que receberam a mesma dosagem.
+Os resultados de pequenos estudos clínicos sugerem uma depuração menor e uma meia-vida de eliminação mais longa do haloperidol em
+pacientes idosos. Os resultados estão dentro da variabilidade observada na farmacocinética do haloperidol. Recomenda-se ajuste posológico em
+pacientes idosos.
+
+Insuficiência renal
+
+A influência da insuficiência renal na farmacocinética do haloperidol não foi avaliada. Como menos de 3% do haloperidol administrado é
+eliminado inalterado na urina, não se espera que o comprometimento da função renal afete sua eliminação. Portanto, o ajuste da dose não é
+necessário em pacientes com insuficiência renal, mas recomenda-se cautela no tratamento de pacientes com insuficiência renal.
+
+Devido ao alto volume de distribuição do haloperidol e sua alta ligação às proteínas, apenas quantidades muito pequenas são removidas por
+diálise.
+
+Insuficiência hepática
+
+A influência da insuficiência hepática na farmacocinética do haloperidol não foi avaliada. No entanto, a insuficiência hepática pode ter efeitos
+significativos na farmacocinética do haloperidol, pelo fato de ser extensamente metabolizado no fígado. Portanto, recomenda-se ajuste
+posológico e cautela em pacientes com insuficiência hepática (vide “Advertências e precauções - hepatobiliares”).
+
+População pediátrica
+
+Dados limitados de concentração plasmática foram estabelecidos em estudos pediátricos, incluindo 78 pacientes com vários distúrbios
+(esquizofrenia, transtorno psicótico, síndrome de Tourette, autismo) que receberam doses orais de haloperidol até o máximo de 30 mg/dia. Esses
+estudos incluíram principalmente crianças e adolescentes com idade entre 2 e 17 anos. As concentrações plasmáticas medidas em vários
+momentos e após várias durações de tratamento, foram indetectáveis ou variaram até um máximo de 44,3 ng/ml. Tal como nos adultos, observou-
+se uma elevada variabilidade entre indivíduos nas concentrações plasmáticas. Houve uma tendência de meias-vidas mais curtas em crianças em
+comparação com adultos.
+
+Em 2 estudos em crianças que receberam tratamento com haloperidol para tiques e síndrome de Tourette, uma resposta positiva foi associada
+com concentrações plasmáticas de 1 a 4 ng/ml.
+
+Relações farmacocinética / farmacodinâmica
+
+Concentração terapêutica:
+
+Com base nos estudos clínicos com haloperidol, a resposta terapêutica é obtida na maioria dos pacientes com esquizofrenia aguda ou crônica
+em concentrações plasmáticas de 1 a 10 ng/mL, embora alguns pacientes possam necessitar de concentrações de até 17 ng/mL.
+
+Em pacientes com primeiro episódio de esquizofrenia, a resposta terapêutica pode ser obtida em concentrações tão baixas quanto 0,6 a 3,2
+ng/mL, estimadas com base nas mensurações de ocupação dos receptores D2 e assumindo-se que um nível de ocupação dos receptores D2 de
+60 a 80% é o mais apropriado para obter-se resposta terapêutica e limitar os sintomas extrapiramidais.
+
+Devido à grande variabilidade interindividual na farmacocinética do haloperidol e à relação entre concentração e efeito, recomenda-se ajustar a
+dose individual de haloperidol com base na resposta do paciente, levando-se em conta dados que sugerem um período de até 5 dias para se
+alcançar metade da resposta terapêutica máxima.
+
+Efeitos cardiovasculares
+
+O risco de prolongamento do intervalo QTc aumenta com a dose de haloperidol e com as concentrações plasmáticas de haloperidol.
+
+Haldol®– VPS03 4
+
+Dados pré-clínicos de segurança: Dados pré-clínicos baseados nos estudos convencionais de toxicidade de doses repetidas, genotoxicidade,
+carcinogenicidade não revelam riscos para humanos. O haloperidol mostrou diminuir a fertilidade em roedores, limitada teratogenicidade assim
+como efeitos embriotóxicos.
+
+O haloperidol tem demonstrado bloquear os canais cardíacos de hERG em muitos estudos “in vitro” publicados. Em um número de estudos “in
+vivo” a administração IV do haloperidol em alguns modelos animais causou prolongamento significativo do intervalo QTc nas doses de cerca
+de 0,3 mg/kg, fornecendo Cmáx 4 a 8 vezes maior do que a concentração plasmática terapêutica máxima de 17 ng/mL em estudos clínicos . Essas
+doses intravenosas que prolongam o intervalo QTc não causaram arritmias. Em alguns estudos em animais, doses intravenosas mais altas de
+haloperidol, de 1 mg/kg ou maiores, causaram prolongamento do intervalo QTc e/ou arritmia ventricular com Cmáx plasmática de 22 a 81 vezes
+maior do que a concentração plasmática terapêutica máxima em estudos clínicos.
+
+4. CONTRAINDICAÇÕES
+
+Estados comatosos, depressão do Sistema Nervoso Central (SNC) devido a bebidas alcoólicas ou outras drogas depressoras, Doença de
+Parkinson, hipersensibilidade ao haloperidol ou aos outros excipientes da fórmula, Demência com corpos de Lewy, Paralisia supranuclear
+progressiva.
+
+Uso contraindicado no aleitamento ou na doação de leite humano.
+
+Este medicamento é contraindicado durante o aleitamento ou doação de leite, pois pode ser excretado no leite humano e pode causar
+reações indesejáveis no bebê. O médico ou cirurgião-dentista deve apresentar alternativas para o tratamento ou para a alimentação do
+bebê.
+
+Haldol® 1 mg e 5mg:
+
+Este medicamento não deve ser usado por pessoas com síndrome de má-absorção de glicose-galactose.
+
+Haldol® 1 mg:
+
+Este medicamente não deve ser usado por pessoas com insuficiência de sacarose-isomaltase.
+
+5. ADVERTÊNCIAS E PRECAUÇÕES
+
+Mortalidade
+
+Raros casos de morte súbita têm sido reportados em pacientes psiquiátricos que recebem medicamentos antipsicóticos, incluindo Haldol® (vide
+
+“Reações Adversas”).
+
+Pacientes idosos com demência relacionada à psicose tratados com medicamentos antipsicóticos possuem risco de morte aumentado. Análise
+dos 17 estudos clínicos controlados com placebo (duração modal de 10 semanas), mostrou que grande parte dos pacientes que tomam
+antipsicóticos atípicos apresentou risco de morte entre 1,6 a 1,7 vezes maior do que o grupo de pacientes tratados com placebo. Durante o
+período de 10 semanas de estudo controlado, a taxa de morte dos pacientes tratados com o medicamento foi de cerca de 4,5%, comparada com
+a taxa de cerca de 2,6% no grupo do placebo. Embora as causas das mortes tenham sido variadas, a maioria das mortes parece ter sido por razões
+cardiovasculares (como por exemplo , insuficiência cardíaca, morte súbita) ou infecção (pneumonia). Estudos observacionais sugerem que de
+maneira similar aos medicamentos antipsicóticos atípicos, o tratamento com antipsicóticos convencionais pode aumentar a morta lidade. Ainda
+não foi elucidad a a extensão em que os achados do aumento da mortalidade em estudos observacionais podem ser atribuídos ao medicamento
+antipsicótico em oposição a algumas características do paciente.
+
+Haldol®– VPS03 5
+
+Efeitos cardiovasculares
+
+Relatos muito raros de prolongamento do intervalo QTc e/ou arritmias ventriculares em adição aos raros casos de morte súbita têm sido relatados
+com haloperidol (vide “Reações Adversas”). Eles parecem ocorrer com maior frequência em altas doses, em pacientes predispostos ou com
+intervalo QTc que excede 500 ms.
+
+Como um prolongamento do intervalo QTc tem sido observado durante o tratamento com Haldol®, recomenda-se cautela em pacientes com
+
+condições de intervalo QTc prolongado (Síndrome do QT longo, hipopotassemia, hipomagnesemia, desequilíbrio eletrolítico, fármacos que
+sabidamente prolongam o intervalo QTc, doenças cardiovasculares, ou histórico familiar de prolongamento do intervalo QTc), principalmente
+quando Haldol® é administrado parenteralmente (vide “Interações Medicamentosas – Efeitos Cardiovasculares”). O risco de prolongamento do
+
+intervalo QTc e/ou arritmia ventricular pode ser aumentado em casos de doses mais elevadas (vide “Reações Adversas” e “Superdose – Sinais
+e Sintomas”), ou com o uso parenteral, particularmente na administração intravenosa. Monitoramento contínuo do eletrocardiograma deve ser
+feito para prolongamento do intervalo QTc e arritmias cardíacas sérias, se Haldol® for administrado por via intravenosa.
+
+Taquicardia e hipotensão (incluindo hipotensão ortostática) também têm sido relatadas em pacientes ocasionais (vide “Reações Adversas”).
+
+Este medicamento pode potencializar o prolongamento do intervalo QT, o que aumenta o risco de ataque de arritmias ventriculares
+graves do tipo "torsades de pointes", que é potencialmente fatal (morte súbita).
+
+Eventos cerebrovasculares
+
+Em estudos clínicos randomizados, controlados com placebo em população com demência, houve um aumento de aproximadamente 3 vezes no
+risco de eventos adversos cerebrovasculares com algum antipsicótico atípico. Em estudos observacionais comparando a taxa de derrame em
+pacientes idosos expostos a qualquer antipsicótico com a taxa de derrame em pacientes não expostos a este tipo de medicamentos, observou-se
+aumento na taxa de derrame nos pacientes expostos. Este aumento pode ser maior com todas as butirofenonas, incluindo o haloperidol. O
+mecanismo para este aumento do risco é desconhecido. Um aumento do risco não pode ser excluído para outras populações de pacientes.
+Haldol® deve ser usado com precaução em pacientes com fatores de risco para derrame.
+
+Síndrome neuroléptica maligna
+
+Como outros medicamentos antipsicóticos, Haldol® tem sido relacionado com síndrome neuroléptica maligna, resposta idiossincrática rara
+caracterizada por hipertermia, rigidez muscular generalizada, instabilidade autonômica, alteração da consciência e aumento dos níveis séricos
+de creatinafosfoquinase. Hipertermia é geralmente um sinal precoce desta síndrome. O tratamento antipsicótico deve ser descontinuado
+imediatamente e terapia de suporte adequada e cuidadoso monitoramento devem ser instituídos.
+
+Discinesia tardia
+
+Como em todos medicamentos antipsicóticos, discinesia tardia pode aparecer em alguns pacientes em uso prolongado ou após a descontinuação.
+Esta síndrome é principalmente caracterizada por movimentos involuntários rítmicos da língua, face, boca ou maxilares. As manifestações
+podem ser permanentes em alguns pacientes. A síndrome pode ser mascarada quando o tratamento é reinstituído, quando há aumento na dose
+ou quando há a troca para outro medicamento antipsicótico. O tratamento deve ser descontinuado assim que possível.
+
+Sintomas extrapiramidais
+
+É comum de todos medicamentos antipsicóticos, a ocorrência de sintomas extrapiramidais, tais como tremor, rigidez, hipersalivação,
+bradicinesia, acatisia e distonia aguda.
+
+Haldol®– VPS03 6
+
+Medicamentos antiparkinsonianos do tipo anticolinérgicos podem ser prescritos se necessário, mas não devem ser prescritos rotineiramente
+como medida preventiva. Se a administração concomitante de medicamentos antiparkinsonianos é requerida, esta deve ser mantida após a
+interrupção do tratamento com Haldol®, se sua excreção for mais rápida do que a de haloperidol a fim de evitar o desenvolvimento ou piora
+
+dos sintomas extrapiramidais. Um possível aumento da pressão intraocular deve ser considerado quando medicamentos anticolinérgicos,
+incluindo agentes antiparkinsonianos, são administrados concomitantemente com Haldol®.
+
+Convulsões
+
+Foi relatado que Haldol® pode provocar convulsões. Ele deve ser usado com cuidado em situações predispondo a convulsões (abstinência
+
+alcoólica e doença cerebral) e em pacientes epilépticos.
+
+Problemas hepatobiliares
+
+Como haloperidol é extensamente metabolizado pelo fígado, recomenda-se ajuste de dose e cautela em pacientes com insuficiência hepática
+(vide “Posologia e Modo de Usar – População especial – Insuficiência hepática” e “Propriedades farmacocinéticas – População especial –
+Insuficiência hepática”). Casos isolados de anormalidades na função hepática ou hepatite, mais frequentemente colestática, foram relatados
+(vide “Reações Adversas”).
+
+Problemas com sistema endócrino
+
+A tiroxina pode facilitar a toxicidade do haloperidol. A terapia antipsicótica em pacientes com hipertiroidismo deve ser administrada apenas
+com cautela e precisa sempre ser acompanhada por terapia para manter o estado eutireoidiano.
+
+Efeitos hormonais dos medicamentos antipsicóticos incluem: hiperprolactinemia, que pode causar galactorr eia, ginecomastia, oligo menorreia
+ou amenorreia. Casos muito raros de hipoglicemia e síndrome de secreção inapropriada de hormônio antidiurético foram relatados (vide
+“Reações Adversas”).
+
+Tromboembolismo venoso
+
+Casos de tromboembolismo venoso (TEV) foram relatados com medicamentos antipsicóticos. Já que pacientes tratados com antipsic óticos
+frequentemente apresentam fatores de risco adquiridos para TEV, todos os possíveis fatores de risco para TEV devem ser ident ificados antes e
+durante o tratamento com Haldol® e medidas preventivas devem ser tomadas.
+
+Resposta ao tratamento e retirada
+
+Na esquizofrenia, a resposta ao tratamento com medicamentos antipsicóticos pode não ser imediata. Se o tratamento é interrompido, o
+reaparecimento dos sintomas relacionados com a condição subjacente pode não ser aparente por várias semanas ou meses. Houve relatos muito
+raros de sintomas de abstinência aguda (incluindo náusea, vômito e insônia) após interrupção abrupta de altas doses de antipsicóticos. A
+interrupção gradual é aconselhável como medida de precaução.
+
+Pacientes com depressão
+
+Como para todos os medicamentos antipsicóticos. Haldol® não deve ser usado isoladamente em casos em que a depressão é predominante. Ele
+
+deve ser combinado com antidepressivos para tratar aquelas condições onde a depressão e a psicose coexistem (vide “Interações
+Medicamentosas”).
+
+Efeitos sobre a capacidade de dirigir veículos e operar máquinas
+
+Haldol®– VPS03 7
+
+Haldol® pode reduzir a capacidade de atenção, principalmente no início do tratamento e com doses maiores, redução essa que pode ser
+
+potencializada pela ingestão de bebidas alcoólicas.
+
+Oriente seu paciente a não dirigir veículos ou operar máquinas (informar se durante todo o tratamento, no início do tratamento, ao
+aumentar a dose, em tratamento prolongado, ou outra situação), pois sua habilidade e capacidade de reação podem estar prejudicadas.
+
+O uso deste medicamento pode causar tontura, desmaios ou perda da consciência, expondo o paciente a quedas ou acidentes.
+
+Gravidez (Categoria C) e Lactação
+
+Gravidez
+
+Recém-nascidos expostos a medicamentos antipsicóticos (incluindo haloperidol) durante o terceiro trimestre de gravidez correm o risco de
+apresentar sintomas extrapiramidais e/ou de retirada, que podem variar em gravidade após o parto. Estes sintomas em recém-nascidos podem
+incluir agitação, hipertonia, hipotonia, tremor, sonolência, dificuldade respiratória ou transtornos alimentares.
+
+Em estudos populacionais amplos, nenhum aumento significativo nas anormalidades fetais foi associado com o uso de Haldol®. Foram descritos
+casos isolados de malformação congênita após exposição fetal ao Haldol®, a maioria associados a outros medicamentos. Estudos em animais
+demonstraram efeito teratogênico do haloperidol (vide “Dados pré-clínicos de segurança”). Haldol® poderá ser usado durante a gravidez,
+
+quando os benefícios forem claramente superiores aos potenciais riscos fetais.
+
+Este medicamento não deve ser utilizado por mulheres grávidas, sem orientação médica ou do cirurgião-dentista.
+
+Lactação
+
+O haloperidol é excretado no leite materno. Pequenas quantidades de haloperidol foram detectadas no plasma e na urina de recém-nascidos
+amamentados por mães tratadas com haloperidol. Se a administração de Haldol® é considerada essencial, os benefícios da amamentação devem
+
+ser balanceados com os riscos potenciais.
+
+Uso em idosos, crianças e outros grupos de risco
+
+Como os pacientes idosos são sensíveis aos efeitos de Haldol®, recomenda-se prudência na posologia a fim de se evitar efeitos secundários
+
+extrapiramidais e possíveis alterações do apetite e do sono.
+
+Sintomas extrapiramidais têm sido observados em lactentes de mulheres tratadas com Haldol®.
+
+Como Haldol® é metabolizado no fígado, sua utilização em pacientes com doença hepática deve ser feita com cuidado.
+
+A administração deve também ser cautelosa em pacientes com distúrbios cardiovasculares graves.
+
+Informe a seu paciente que a doação de sangue é absolutamente contraindicada durante o tratamento com haloperidol e até 7 dias após
+seu término, devido ao dano que ele pode causar ao receptor.
+
+Haldol® 1mg e 5mg:
+
+Atenção: Contém lactose (tipo de açúcar) abaixo de 0,25g/comprimido.
+
+Haldol®– VPS03 8
+
+Haldol® 1 mg
+
+Atenção: Contém sacarose (tipo de açúcar) abaixo de 0,25g/comprimido. Deve ser usado com cautela por portadores de Diabetes.
+
+Haldol® 5 mg:
+
+Atenção: Contém o corante azul de indigotina.
+
+6. INTERAÇÕES MEDICAMENTOSAS
+
+Efeitos cardiovasculares
+
+Como com outros medicamentos antipsicóticos, deve-se ter cautela quando Haldol® é usado em combinação com medicamentos que
+prolonguem o intervalo QTc (vide “Advertências e Precauções – Efeitos Cardiovasculares”), por exemplo:
+
+• Antiarrítmicos classe IA (por exemplo, disopiramida, quinidina).
+
+• Antiarrítmicos classe III (por exemplo, amiodarona, dofetilida, dronedarona, ibutilida, sotalol).
+
+• Certos antidepressivos (por exemplo, citalopram, escitalopram).
+
+• Certos antibióticos (por exemplo, eritromicina, levofloxacino, moxifloxacino).
+
+• Certos antifúngicos (por exemplo, pentamidina).
+
+• Determinados antimaláricos (por exemplo, halofantrina).
+
+• Certos medicamentos gastrointestinais (por exemplo, dolasetrona).
+
+• Certos medicamentos usados no câncer (por exemplo, toremifeno, vandetanibe).
+
+• Outros medicamentos (por exemplo, bepridil, metadona).
+
+Esta lista não é completa.
+
+Recomenda-se que o uso concomitante de outras drogas antipsicóticas seja evitado.
+
+Recomenda-se cautela quando Haldol® é utilizado em combinação com medicamentos que sabidamente causam desequilíbrio eletrolítico (vide
+
+“Advertências e Precauções - Efeitos Cardiovasculares”).
+
+Drogas que podem aumentar as concentrações plasmáticas de haloperidol
+
+O haloperidol é metabolizado por muitas vias (vide “Características Farmacológicas – Metabolismo”). As principais vias são a glicuronidação
+e a redução de cetonas. O sistema enzimático do citocromo P450 também está envolvido, particularmente o CYP3A4 e, em menor grau, o
+CYP2D6. A inibição destas rotas do metabolismo por outras drogas ou a diminuição da atividade enzimática da CYP2D6 pode resultar em um
+aumento das concentrações de haloperidol. O efeito da inibição do CYP3A4 e da diminuição da atividade da enzima CYP2D6 pode ser aditivo
+(vide “Características Farmacológicas – Metabolismo”). Com base em informações limitadas e por vezes contraditórias, o aumento médio das
+concentrações plasmáticas de haloperidol quando um inibidor do CYP3A4 e/ou CYP2D6 foi coadministrado geralmente variou entre 20 e 40%,
+embora em alguns casos tenham sido relatados aumentos médios de até 100%. Exemplos de medicamentos que podem aumentar as
+concentrações plasmáticas de haloperidol (com base na experiência clínica ou mecanismo de interação medicamentosa) incluem:
+
+• Inibidores do CYP3A4 - alprazolam; itraconazol, cetoconazol e alguns outros azóles; nefazodona; certos antivirais.
+
+Haldol®– VPS03 9
+
+• Inibidores da CYP2D6 - clorpromazina; prometazina; quinidina; paroxetina, sertralina, venlafaxina e alguns outros antidepressivos.
+
+• Inibidores combinados de CYP3A4 e CYP2D6 - fluoxetina, fluvoxamina; ritonavir.
+
+• Mecanismo incerto - buspirona.
+
+Esta lista não é completa.
+
+O aumento das concentrações plasmáticas de haloperidol pode resultar em maior risco de eventos adversos, incluindo prolongamento do
+intervalo QTc (vide “Advertências e Precauções - Efeitos cardiovasculares”). O aumento do QTc foi observado quando o haloperidol foi dado
+em associação com os inibidores metabólicos do cetoconazol (400 mg/dia) e paroxetina (20 mg/dia).
+
+Recomenda-se que os pacientes que tomam haloperidol concomitantemente com esses medicamentos sejam monitorizados quanto a sinais ou
+sintomas de efeitos farmacológicos aumentados ou prolongados do haloperidol e que a dose de Haldol® seja diminuída conforme necessário.
+
+O valproato de sódio, uma droga conhecida por inibir a glicuronidação, não afeta as concentrações plasmáticas de haloperidol.
+
+Drogas que podem diminuir as concentrações plasmáticas de haloperidol
+
+A coadministração de haloperidol com potentes indutores enzimáticos do CYP3A4 pode diminuir grad ativamente as concentrações plasmáticas
+de haloperidol a tal ponto que a eficácia pode ser reduzida. Exemplos (baseados na experiência clínica ou mecanismo de intera ção
+medicamentosa) incluem:
+
+• carbamazepina, fenobarbital, fenitoína, rifampicina, Erva de São João (Hypericum perforatum).
+
+Esta lista não é completa.
+
+A indução enzimática pode ser observada após alguns dias de tratamento. A indução enzimática máxima é geralmente observada em cerca de 2
+semanas e pode então ser mantida durante o mesmo período de tempo após a cessação da terapêutica com o medicamento. Portanto, durante o
+tratamento combinado com indutores do CYP3A4, recomenda-se que os pacientes sejam monitorizados e que se aumente a dose de Haldol®,
+
+conforme necessário. Após a retirada do indutor do CYP3A4, a concentração de haloperidol pode aumentar grad ativamente e, portanto, pode
+ser necessário reduzir a dose de Haldol®.
+
+Efeito do haloperidol em outros medicamentos
+
+Como é o caso para todos os medicamentos antipsicóticos , haloperidol pode aumentar a depressão do Sistema Nervoso Central (SNC) causada
+por outros depressores do SNC, como bebidas alcoólicas, hipnóticos, sedativos e analgésicos potentes. Um aumento dos efeitos do SNC foi
+relatado quando é associado à metildopa.
+
+O haloperidol pode antagonizar a ação da adrenalina e outros agentes simpatomiméticos e reverter os efeitos hipotensores dos agentes
+bloqueadores adrenérgicos , tais como a guanetidina.
+
+O haloperidol pode prejudicar o efeito antiparkinsoniano da levodopa e outros medicamentos agonistas dopaminérgicos .
+
+O haloperidol é um inibidor da CYP2D6. Ele inibe o metabolismo de antidepressivos tricíclicos, aumentando os níveis plasmáticos destes
+medicamentos.
+
+Outras formas de interação
+
+Haldol®– VPS03 10
+
+Em raros casos os seguintes sintomas foram relatados durante uso concomitante de lítio e haloperidol: encefalopatia, sintomas extrapiramidais,
+discinesia tardia, síndrome neuroléptica maligna, distúrbios do tronco cerebral, síndrome cerebral aguda e coma. Muitos destes sintomas foram
+reversíveis.
+
+De qualquer forma, recomenda-se que naqueles pacientes que estejam sendo tratados concomitantemente com lítio e Haldol®, o tratamento seja
+interrompido imediatamente no caso de ocorrência de tais sintomas.
+
+Antagonismo ao efeito anticoagulante da feni ndiona foi relatado.
+
+8. POSOLOGIA E MODO DE USAR
+
+Modo de usar
+
+As doses sugeridas a seguir são doses médias e devem ser adequadas de acordo com a resposta do paciente. Frequentemente, isto implica em
+titulação da dose para cima na fase aguda e redução gradual na fase de manutenção, a fim de determinar a dose mínima eficaz. Doses maiores
+devem ser administradas apenas em pacientes que não respondem bem às doses menores.
+
+Solução Gotas
+
+Haldol®– VPS03 11
+
+ Haldol® solução gotas é fornecido em um frasco gotejador com tampa à prova de criança s e é
+
+ aberto da seguinte forma:
+
+ • Retire a tampa de plástico empurrando-a para baixo (1) e girando-a no sentido anti-
+ horário (2).
+ • Vire o frasco de cabeça para baixo sobre uma colher.
+ • Pressione suavemente as laterais do frasco e conte o número de gotas que você precisa
+ tomar.
+ • Beba a solução imediatamente.
+ • Feche o frasco.
+
+Administração
+
+Haldol® solução gotas e comprimidos são para uso oral.
+
+Haldol® solução gotas pode ser misturado com água para facilitar a administração da dose, mas não deve ser misturado com qualquer outro
+líquido. A solução diluída deve ser tomada imediatamente.
+
+Posologia
+
+Adultos
+
+Dose inicial de 0,5 a 2 mg, 2 a 3 vezes ao dia, podendo ser aumentada progressivamente em função da resposta terapêutica e da tolerabilidade.
+
+Dose de manutenção, entre 1 e 15 mg ao dia, deve, contudo ser reduzida até o nível mais baixo de efetividade.
+
+Pacientes idosos geralmente requerem doses menores.
+
+Pacientes gravemente perturbados ou inadequadamente controlados podem requerer, às vezes, posologia mais elevada. Em alguns casos a
+resposta ótima pode exigir dose diária acima de 100 mg, principalmente em pacientes de alta resistência. Entretanto, não está demonstrada a
+segurança de tais doses em administração prolongada.
+
+Crianças
+
+0,1 mg (1 gota) /3 kg de peso, duas vezes ao dia por via oral, podendo ser ajustada, se necessário.
+
+Se o paciente perder uma dose, ele deve tomar a próxima dose e continuar o tratamento normalmente.
+
+A segurança e eficácia das formulações orais de haloperidol em crianças abaixo de 6 anos não foram estabelecidas.
+
+Populações especiais
+
+Insuficiência renal
+
+A influência do comprometimento renal na farmacocinética do haloperidol não foi avaliada. Não é recomendado ajuste posológico , mas
+recomenda-se precaução ao tratar pacientes com insuficiência renal (ver “Propriedades Farmacocinéticas - Populações especiais: Insuficiência
+renal”).
+
+Insuficiência hepática - formulações orais de haloperidol
+
+Haldol®– VPS03 12
+
+A influência do comprometimento hepático na farmacocinética do haloperidol não foi avaliada. Como o haloperidol é extensament e
+metabolizado no fígado, recomenda -se reduzir pela metade a dose inicial e ajustar a dose com incrementos menores e a intervalos m aiores do
+que em pacientes sem insuficiência hepática (vide “Advertências e precauções - Problemas hepatobiliares” e “Propriedades Farmacocinéticas -
+Populações especiais: Insuficiência hepática”).
+
+Retirada do tratamento
+
+A retirada gradual do haloperidol é aconselhável (vide “Advertências e Precauções - Resposta ao tratamento e retirada”).
+
+Dose perdida - formulações orais de haloperidol
+
+Se os pacientes esquecerem de tomar uma dose, recomenda -se que tomem a dose seguinte como habitualmente. Eles não devem tomar uma
+dose dupla.
+
+9. REAÇÕES ADVERSAS
+
+Nesta seção, as reações adversas são apresentadas. As reações adversas são eventos adversos considerados razoavelmente associ ados ao uso de
+haloperidol (ou decanoato de haloperidol) , com base na avaliação abrangente das informações disponíveis de evento s adversos. Uma relação
+causal com o haloperidol (ou decanoato de haloperidol) não pode ser estabelecida de forma confiável em casos individuais. Além disso, como
+os estudos clínicos são conduzidos sob condições amplamente variadas, as taxas de reaç ões adversas observadas dos estudos clínicos de um
+medicamento não podem ser diretamente comparadas às taxas dos estudos clínicos de outro medicamento e podem não refletir as t axas
+observadas na prática clínica.
+
+Dados de estudos clínicos
+
+Dados de estudos clínicos duplo -cegos, controlados por placebo – reações adversas relatadas com incidência ≥ 1 %.
+
+A segurança de Haldol® (2-20mg/dia) foi avaliada em 566 indivíduos (dos quais 284 foram tratados com Haldol®, 282 receberam placebo) que
+
+participaram de 3 estudos clínicos duplo -cegos, controlados por placebo , dois para o tratamento de esquizofrenia e o terceiro no tratamento do
+distúrbio bipolar.
+
+As reações adversas relatadas por > 1% dos indivíduos tratados com Haldol® nestes estudos estão na Tabela 1.
+
+Tabela 1. Reações adversas relatadas por ≥1% dos indivíduos tratados com Haldol® em três estudos duplo -cegos, paralelos , controlados por
+ placebo, com Haldol®
+
+Sistemas/ Classes de órgãos haloperidol (n=284) Placebo
+Reações adversas % (n=282)
+ %
+Distúrbios do sistema nervoso central
+ Distúrbios extrapiramidais 34,2 8,5
+ Hipercinesia 10,2 2,5
+ Tremor 8,1 3,6
+ Hipertonia 7,4 0,7
+ Distonia 6,3 0,4
+ Sonolência 5,3 1,1
+ Bradicinesia 4,2 0,4
+Distúrbios oftalmológicos
+ Distúrbios visuais 1,8 0,4
+Distúrbios gastrintestinais
+ Constipação 4,2 1,8
+ Boca seca 1,8 0,4
+ Hipersecreção salivar 1,2 0,7
+
+Dados de estudos controlados com comparador ativo – Reações Adversas relatadas com incidência ≥ 1%.
+
+Haldol®– VPS03 13
+
+Dezesseis estudos duplo -cegos controlados com comparador ativo foram selecionados para determinar a incidência das reações adversas. Nestes
+16 estudos, 1.295 indivíduos foram tratados com 1 -45 mg/dia de Haldol® para o tratamento da esquizofrenia. As reações adversas relatadas por
+> 1% dos indivíduos tratados com Haldol®, observadas nos estudos clínicos controlados com comparador ativo estão listad as na Tabela 2.
+
+Tabela 2. Reações adversas relatadas por ≥ 1% dos indivíduos tratados com Haldol® nos 16 estudos duplo-cegos controlados com
+ comparador ativo, de Haldol®
+
+ Sistemas /Classes de órgãos haloperidol
+ Reações adversas (n=1.295)
+ %
+ Distúrbios do sistema nervoso
+ Tontura 4,8
+ Acatisia 2,9
+ Discinesia 2,5
+ Hipocinesia 2,2
+ Discinesia tardia 1,62
+ Distúrbios oftalmológicos
+ Crise oculógira 1,24
+ Distúrbios vasculares
+ Hipotensão ortostática 6,6
+ Hipotensão 1,47
+ Distúrbios do sistema reprodutivo e das mamas
+ Disfunção erétil 1,0
+ Investigações
+ Aumento de peso 7,8
+
+Dados de estudos controlados por placebo e com comparador ativo – Reações Adversas relatadas com incidência < 1%.
+Reações adversas adicionais que ocorreram em < 1% dos indivíduos tratados com Haldol® em qualquer um dos conjuntos de dados clínicos
+
+anteriormente mencionados estão listados na Tabela 3.
+
+Haldol®– VPS03 14
+
+ Tabela 3. Reações adversas relatadas por < 1% dos indivíduos tratados com Haldol® no estudo clínico controlado com placebo ou
+ comparador
+ Distúrbios endócrinos
+ Hiperprolactinemia
+ Distúrbios psiquiátricos
+ Diminuição da libido
+ Perda da libido
+ Inquietação
+ Distúrbios do sistema nervoso
+ Disfunções motoras
+ Contração muscular involuntária
+ Síndrome neuroléptica maligna
+ Nistagmo
+ Parkinsonismo
+ Sedação
+ Distúrbios oftalmológicos
+ Visão embaçada
+ Distúrbios cardíacos
+ Taquicardia
+ Distúrbios musculoesquelético s e do tecido conjuntivo
+ Trismo
+ Torcicolo
+ Rigidez muscular
+ Espasmo muscular
+ Rigidez musculoesquelética
+ Contração muscular
+ Distúrbios do sistema reprodut ivo e das mamas
+ Amenorreia
+ Desconforto nas mamas
+ Dor nas mamas
+ Galactorreia
+ Dismenorreia
+ Disfunção sexual
+ Distúrbios menstruais
+ Menorragia
+ Distúrbios gerais e condições no local da aplicação
+ Distúrbios da marcha
+
+Reações adversas identificadas em ensaios clínicos com decanoato de haloperidol
+
+As reações adversas relatadas por < 0,01% dos indivíduos relacionadas à molécula ativa que foram identificadas em ensaios clínicos com
+decanoato de haloperidol (formulação de depósito de ação prolongada) estão listadas na Tabela 4.
+
+ Tabela 4. Reações Adversas Identificadas em Ensaios Clínicos com decanoato de haloperidol (Formulação de Depósito de Longa
+ Duração)
+ Distúrbios do sistema nervoso
+ Acinesia, rigidez da roda dentada, facies mascarada
+
+Dados pós-comercialização
+
+Eventos adversos in icialmente identificados como reações adversas durante a experiência pós -comercialização com haloperidol estão
+apresentados a seguir , por frequência da categoria estimada a partir de taxas de relatos espontâneos . A revisão pós-comercialização foi baseada
+na revisão de todos os casos que foram relatados com o uso de haloperidol (em ambos haloperidol e decanoato de haloperidol).
+
+Reação muito rara (< 1/10.000), incluindo casos isolados :
+
+- Distúrbios do sistema sanguíneo e linfático: agranulocitose, pancitopenia, trombocitopenia, leucopenia , neutropenia.
+
+- Distúrbios do sistema imunológico: reação anafilática, hipersensibilidade.
+
+- Distúrbios endócrinos: secreção inapropriada do hormônio antidiurético.
+
+Haldol®– VPS03 15
+
+- Distúrbios do metabolismo e nutri cionais: hipoglicemia.
+
+- Distúrbios psiquiátricos: transtorno psicótico, agitação, estado confusional, depressão , insônia.
+
+- Distúrbios do sistema nervoso: convulsão , cefaleia.
+
+- Distúrbios cardíacos: Torsade de Pointes, fibrilação ventricular, taquicardia ventricular, extras sístole.
+
+- Distúrbios do mediastino, respiratório e torácico: broncoespasmo, laringoespasmo, edema de laringe, dispneia.
+
+- Distúrbios gastrintestinais: vômito , náusea.
+
+- Distúrbios hepatobiliares: insuficiência hepática aguda, hepatite, colestase, icterícia, anormalidade no teste da função hepá tica.
+
+- Distúrbios da pele e do tecido subcutâneo: angioedema, vasculite leucocitoclástica, dermatite esfoliativa, urticária, reação de
+fotossensibilidade, erupção cutânea, prurido, hiperidrose .
+
+- Distúrbios musculoesquelético s e do tecido conjuntivo: rabdomi ólise.
+
+- Distúrbios renais e urinários: retenção urinária.
+
+- Gravidez, puerpério e condições perinatais: síndrome neonatal de retirada do medicamento.
+
+- Distúrbios do sistema reprodut ivo e das mamas: priapismo, ginecomastia.
+
+- Distúrbios gerais e condições no local de aplicação: morte súbita, edema de face, edema, hipotermia, hipertermia.
+
+- Investigações: prolongamento do intervalo QT, perda de peso.
+
+Em casos de eventos adversos, notifique pelo Sistema VigiMed, disponível no Portal da Anvisa.
+
+10. SUPERDOSE
+
+Sinais e Sintomas
+
+Os sintomas de superdose de haloperidol constituem uma exacerbação dos efeitos farmacológicos e reações adversas já referidas, predominando
+as reações graves do tipo extrapiramidal, hipotensão e sedação. A reação extrapiramidal é manifestada por rigidez muscular e por tremor
+generalizado ou localizado. Pode ocorrer hipertensão, em vez de hipotensão.
+
+Em casos extremos, o paciente pode apresentar-se comatoso, com depressão respiratória e hipotensão, às vezes grave o suficiente para
+determinar um estado de choque. O risco de arritmias ventriculares possivelmente associadas a um prolongamento do intervalo QTc devem ser
+consideradas.
+
+Tratamento
+
+Não existem antídotos específicos. O tratamento é de suporte. A eficácia de carvão ativado em caso de superdose com haloperidol oral não foi
+estabelecida. A diálise não é recomendada no tratamento da sobredosagem porque remove apenas quantidades muito pequenas de haloperidol
+(vide “Propriedades Farmacocinéticas - Populações especiais: Insuficiência renal”).
+
+Para pacientes comatosos, as vias aéreas devem ser restabelecidas através do uso de uma via orofaríngea ou tubo endotraqueal. A depressão
+respiratória pode necessitar de respiração artificial.
+
+ECG e sinais vitais devem ser monitorizados até que estejam normais. Arritmias cardíacas graves deverão ser tratadas com medidas
+antiarrítmicas adequadas.
+
+Hipotensão e colapso circulatório devem ser controlados com infusão de soro, plasma ou albumina concentrada e agentes vasopressores, como
+dopamina ou noradrenalina (norepinefrina). Não utilizar adrenalina (epinefrina), porque pode causar hipotensão grave quando usada com
+haloperidol.
+
+Haldol®– VPS03 16
+
+Em casos de reações extrapiramidais importantes, administrar medicação antiparkinson iana por via parenteral.
+
+Em caso de intoxicação ligue para 0800 722 6001, se você precisar de mais orientações.

@@ -1,0 +1,533 @@
+FONTE: lote4__esomeprazol__NEXIUM.pdf
+
+===== BLOCO 1 =====
+APRESENTAÇÕES
+Comprimidos revestidos de liberação retardada de 20 mg em embalagens com 7, 14 ou 28 
+comprimidos. 
+Comprimidos revestidos de liberação retardada de 40 mg em embalagens com 14 ou 28 comprimidos. 
+ 
+ 
+VIA ORAL 
+ 
+ 
+USO ADULTO E PEDIÁTRICO A PARTIR DE 12 ANOS
+
+1. INDICAÇÕES 
+ 
+ 
+NEXIUM é indicado para o tratamento de doenças ácido -pépticas e alívio dos sintomas de azia, 
+regurgitação ácida e dor epigástrica. 
+ 
+• Doença do refluxo gastroesofágico (DRGE): 
+ 
+- Tratamento da esofagite de refluxo erosiva. 
+ 
+- Tratamento de manutenção para prevenir a recidiva de esofagite. 
+ 
+- Tratamento dos sintomas da DRGE, tais como: pirose/azia (queimação retroesternal), 
+regurgitação ácida e dor epigástrica. 
+ 
+• Pacientes que precisam de tratamento contínuo com anti-inflamatórios não-esteroidais (AINE): 
+ 
+- Tratamento dos sintomas gastrointestinais altos associados ao tratamento com AINE. 
+ 
+- Cicatrização de úlceras gástricas associadas ao tratamento com AINE, incluindo COX -2 
+seletivos. 
+ 
+- Prevenção de úlceras gástricas e duodenais associadas ao tratamento com AINE, incluindo 
+COX-2 seletivos, em pacientes de risco. 
+ 
+• Tratamento da úlcera duodenal associada a Helicobacter pylori. 
+ 
+• Erradicação de Helicobacter pylori em associação com um tratamento antibacteriano adequado. 
+ 
+• Condições patológicas hipersecretoras incluindo síndrome de Zollinger -Ellison e hipersecreção 
+idiopática. 
+ 
+• Manutenção da hemostasia e prevenção de ressangramento de úlceras gástrica e duodenal após tratamento 
+com esomeprazol sódico intravenoso.
+
+3. CARACTERÍSTICAS FARMACOLÓGICAS 
+ 
+Cada comprimido de NEXIUM contém esomeprazol magnésico tri -hidratado distribuído, juntamente 
+aos excipientes, em aproximadamente 1.000 microgrânulos gastro -resistentes. Os comprimidos se 
+dispersam no estômago, mas o revestimento gastro -resistente dos microgrânulos garante que 
+NEXIUM esteja protegido até alcançar o intestino delgado, onde é absorvido. 
+Propriedades Farmacodinâmicas 
+ 
+O esomeprazol é o isômero S do omeprazol e reduz a secreção ácida gástrica através de um 
+mecanismo de ação específico e direcionado. É um inibidor específico da bomba de prótons na célula 
+parietal. O isômero S e o isômero R de omeprazol possuem atividades farmacodinâmicas 
+semelhantes. 
+ 
+Após 24 horas da administração da última dose no dia 5, os valores do pH gástrico se aproximam dos 
+valores pré-dose, os quais estão dentro dos valores normais de pH gástrico. 
+ 
+ 
+Local e mecanismo de ação 
+ 
+O esomeprazol é uma base fraca, sendo concentrado e convertido para a forma ativa no meio 
+altamente ácido dos canalículos secretores da célula parietal, onde inibe a enzima H +K+-ATPase - a 
+bomba de prótons, inibindo as secreções ácidas basal e estimulada. 
+ 
+Propriedades Farmacocinéticas 
+ 
+Absorção e distribuição 
+O esomeprazol é instável em meio ácido, sendo administrado oralmente em grânulos de revestimento 
+entérico. A conversão in vivo para o isômero R é insignificante. A absorção de esomeprazol é rápida, 
+com níveis de pico plasmático ocorrendo aproximadamente em 1 -2 horas após a dose. A 
+biodisponibilidade absoluta é de 64% após uma dose única de 40 mg e aumenta para 89% após a 
+administração de dose única diária repetida. Para esomeprazol 20 mg os valores correspondentes são 
+50% e 68%, respectivamente. O volume aparente de distribuição no estado de equilíbrio em 
+indivíduos sadios é de aproximadamente 0,22 L/kg de peso corpóreo. O esomeprazol tem uma taxa 
+de ligação às proteínas plasmáticas de 97%. 
+ 
+A ingestão de alimentos retarda e diminui a absorção de esomeprazol, porém não influencia 
+significativamente o efeito de esomeprazol sobre a acidez intragástrica. 
+ 
+Metabolismo e excreção 
+ 
+O esomeprazol é totalmente metabolizado pelo sistema citocromo P450 (CYP). A parte principal de 
+seu metabolismo é dependente de CYP2C19 polimórfico, responsável pela formação de hidróxi e 
+desmetila, metabólitos do esomeprazol. A parte restante é dependente de outra isoforma específica, 
+CYP3A4, responsável pela formação de sulfona esomeprazol, o metabólito principal no plasma. 
+ 
+Os parâmetros abaixo refletem principalmente a farmacocinética em indivíduos com uma enzima 
+CYP2C19 funcional, metabolizadores extensivos. 
+ 
+A depuração plasmática total é de cerca de 17 L/h após uma dose única e cerca de 9 L/h após 
+administração repetida. A meia -vida de eliminação plasmática é de cerca de 1,3 horas após doses 
+repetidas uma vez ao dia. A área sob a curva de concentração plasmática versus tempo (AUC) 
+aumenta com a administração repetida de esomeprazol. Esse aumento é dose -dependente e resulta em 
+uma relação dose/ASC não linear após administração repetida. Essa dependência em relação ao 
+tempo e à dose é devido a uma redução do metabolismo de primeira passagem e depuração sistêmica 
+provavelmente causada por uma inibição da enzima CYP2C19 pelo esomeprazol e/ou seu metabólito 
+sulfona. O esomeprazol é totalmente eliminado do plasma entre as doses, sem tendência de acúmulo 
+durante administração uma vez ao dia. 
+Os principais metabólitos de esomeprazol não têm efeito sobre a secreção ácida gástrica. 
+Aproximadamente 80% de uma dose oral de esomeprazol são excretados como metabólito na urina e 
+o restante pelas fezes. Menos que 1% do fármaco inalterado é encontrado na urina. 
+Populações especiais de pacientes 
+Aproximadamente 3% da população não têm a enzima CYP2C19 funcional e são chamados de 
+metabolizadores fracos. Nesses indivíduos, o metabolismo de esomeprazol é provavelmente 
+catalisado principalmente pelo CYP3A4. Após administração repetida de uma vez ao dia de 40 mg de 
+esomeprazol, a média da AUC foi aproximadamente 100% mais elevada nos metabolizadores fracos 
+do que nos indivíduos que têm enzima CYP2C19 funcional (metabolizadores extensivos). A média 
+do pico das concentrações plasmáticas (Cmax) apresentou um aumento de cerca de 60%. 
+ 
+Estas descobertas não têm implicações na posologia de esomeprazol. 
+ 
+O metabolismo de esomeprazol não é significativamente alterado em idosos (71 -80 anos de idade). 
+ 
+Após a administração de uma dose única de 40 mg de esomeprazol, a média da AUC, é 
+aproximadamente 30% maior em mulheres do que em homens. Não é observada diferença entre os 
+sexos masculino e feminino após administração única diária repetida. Estas descobertas não têm 
+implicações na posologia de esomeprazol. 
+ 
+O metabolismo de esomeprazol em pacientes com insuficiência hepática de leve à moderada pode ser 
+prejudicado. A taxa metabólica é reduzida nos pacientes com insuficiência hepática grave resultando 
+em uma duplicação da AUC do esomeprazol. Portanto, não se deve exceder um máximo de 20 mg em 
+pacientes com insuficiência hepática grave. O esomeprazol ou seus metabólitos principais não 
+mostram qualquer tendência de acúmulo com a dosagem de uma vez ao dia. 
+ 
+Não foram realizados estudos em pacientes com função renal reduzida. Considerando que o rim é 
+responsável pela excreção dos metabólitos de esomeprazol, mas não pela eliminação do composto 
+inalterado, não é esperado que o metabolismo de esomeprazol seja alterado em pacientes com função 
+renal deficiente. 
+ 
+Após administração de doses repetidas de 20 mg e 40 mg de esomeprazol, a exposição total (AUC) e 
+o tempo para alcançar a concentração plasmática máxima do fármaco (tmax), em pacientes de 12 a 18 
+anos, foi similar à de adultos para ambas as doses de esomeprazol. 
+ 
+ 
+Dados de segurança pré -clínica 
+ 
+Os estudos pré -clínicos não revelaram risco particular para os humanos com base nos estudos 
+convencionais de toxicidade de dose repetida, genotoxicidade e toxicidade para reprodução. Os 
+estudos de carcinogenicidade em ratos com a mistura racêmica apresentaram hiperplasia de células 
+enterocromafins gástricas e carcinoides. Esses efeitos gástricos em ratos são o resultado da 
+hipergastrinemia pronunciada e constante, secundária à produção reduzida do ácido gástrico, e são 
+observados após o tratamento prolongado em ratos com inibidores da bomba de prótons. 
+ 
+Não houve toxicidade e/ou outros efeitos inesperados após o tratamento com esomeprazol em ratos ou cães, 
+desde o período neonatal, durante a amamentação e após o desmame, em comparação com aqueles previamente 
+observados em animais adultos. Tampouco houve qualquer ocorrência indicando que os animais em idade 
+neonatal/juvenil são mais suscetíveis a alterações proliferativas na mucosa gástrica após o tratamento com 
+esomeprazol. Portanto, não houve indícios nesses estudos de toxicidade juvenil que indiquem qualquer risco 
+específico na população pediátrica.
+
+4. CONTRAINDICAÇÕES 
+ 
+Hipersensibilidade conhecida ao esomeprazol, benzimidazóis substituídos ou a qualquer outro 
+componente da formulação.
+
+5. ADVERTÊNCIAS E PRECAUÇÕES 
+ 
+Na presença de qualquer sintoma de alarme (ex.: perda de peso não intencional significativa, vômito 
+recorrente, disfagia, hematêmese ou melena) e quando há suspeita ou presença de úlcera gástrica, a 
+malignidade deve ser excluída, pois o tratamento com NEXIUM pode aliviar os sintomas e retardar o 
+diagnóstico. 
+ 
+Os pacientes sob tratamento prolongado (particularmente aqueles tratados por mais de um ano) 
+devem ser mantidos sob supervisão médica constante. 
+ 
+Pacientes em tratamento de uso conforme a necessidade devem ser instruídos a contatar o seu médico 
+caso os seus sintomas mudem de característica. Quando prescrever NEXIUM para uso quando 
+necessário, as implicações de interações com outros medicamentos, devido às oscilações nas 
+concentrações plasmáticas de esomeprazol, devem ser consideradas. 
+ 
+Quando prescrever NEXIUM para erradicação de Helicobacter pylori , devem ser consideradas as 
+possíveis interações medicamentosas para todos os componentes da terapia tripla. A claritromicina é 
+um potente inibidor do CYP3A4 e, portanto, as contraindicações e interações da claritromicina 
+devem ser consideradas quando a terapia tripla é utilizada em pacientes tratados concomitantemente 
+com outros fármacos metabolizados via CYP3A4, como a cisaprida. 
+ 
+Não é recomendada a administração concomitante de esomeprazol com fármacos como o atazanavir e 
+o nelfinavir. 
+ 
+Resultados de estudos em indivíduos saudáveis mostraram uma interação farmacocinética /farmacodinâmica 
+entre o clopidogrel (300 mg, dose de ataque/75 mg, dose de manutenção diária) e esomeprazol (40 mg via oral, 
+diariamente), resultando em diminuição da exposição ao metabólito ativo do clopidogrel em média de 40%, 
+resultando em uma redução da inibição máxima (ADP induzida) de agregação de plaquetas, em média de 14%. 
+Com base nesses dados, o uso concomitante de esomeprazol e clopidogrel deve ser evitado (vide item 
+Interações Medicamentosas - Efeitos de esomeprazol na farmacocinética de outros fármacos). 
+ 
+Alguns estudos observacionais publicados sugerem que a terapia com inibidores da bomba de protons (IBP), 
+pode estar associada a um pequeno aumento do risco de fraturas relacionadas com a osteoporose. No entanto, 
+em outros estudos observacionais semelhantes, nenhum aumento do risco foi evidenciado. 
+ 
+Em estudo clínicos controlados, randomizados, duplo- cego da AstraZeneca com omeprazol e esomeprazol 
+(incluindo dois estudos abertos de longo prazo superiores a 12 anos) não houve indícios que os IBPs estejam 
+associados com fraturas relacionadas à osteoporose. 
+ 
+Embora uma relação causal entre o omeprazol/esomeprazol e fraturas relacionadas à osteoporose não tenha 
+sido estabelecida, aconselha -se que os pacientes de risco para o desenvolvimento de osteoporose ou fraturas 
+relacionadas à osteoporose tenham um acompanhamento clínico adequado, de acordo com as diretrizes clínicas 
+atuais para estas condições. 
+ 
+Pacientes com problemas hereditários raros de intolerância à frutose, má absorção de glicose -
+galactose ou insuficiência de sacarase -isomaltase não devem receber este medicamento. 
+Efeitos sobre a capacidade de dirigir veículos e operar máquinas: não se espera que NEXIUM 
+afete a capacidade de dirigir veículos e operar máquinas. 
+ 
+Categoria de risco para a gravidez: B 
+Este medicamento não deve ser utilizado por mulheres grávidas sem orientação médica ou do 
+cirurgião-dentista. 
+ 
+Dados clínicos limitados estão disponíveis em gestantes expostas ao esomeprazol. Estudos em 
+animais com esomeprazol não indicam efeitos nocivos diretos ou indiretos com relação ao 
+desenvolvimento embrionário/fetal. Estudos em animais com a mistura racêmica não indicam efeitos 
+nocivos diretos ou indiretos com relação à gravidez, parto ou desenvolvimento pós -natal. Deve -se 
+tomar cuidado na prescrição para mulheres grávidas. 
+ 
+Uso criterioso no aleitamento ou na doação de leite humano. O uso deste medicamento no 
+período da lactação depende da avaliação e acompanhamento do seu médico ou cirurgião-
+dentista. 
+ 
+Não se sabe se o esomeprazol é excretado no leite humano. Não foram realizados estudos em 
+lactantes. Portanto, NEXIUM não deve ser usado durante a amamentação. 
+ 
+Atenção: Contém sacarose (tipo de açúcar) abaixo de 0,25g/comprimido . Este medicamento não 
+deve ser usado por pessoas com síndrome de má -absorção de glicose-galactose. Este 
+medicamento não deve ser usado por pessoas com insuficiência de sacarose -isomaltase. Deve ser 
+usado com cautela por portadores de Diabetes . 
+ 
+Atenção: NEXIUM na concentraç ão de 20 mg c ontém os corantes óxido de ferro vermelho, 
+óxido de ferro amarelo e dióxido de titânio . 
+ 
+Atenção: NEXIUM na concentração de 40 mg c ontém os corantes óxido de ferro vermelho e 
+dióxido de titânio.
+
+6. INTERAÇÕES MEDICAMENTOSAS 
+ 
+Efeitos de esomeprazol na farmacocinética de outros fármacos 
+ 
+Como ocorre com outros inibidores da bomba de prótons , a acidez intragástrica reduzida durante o tratamento 
+com esomeprazol pode elevar ou reduzir a absorção das substâncias quando esta é pH dependente. Assim como 
+outros fármacos que reduzem a acidez intragástrica, a absorção de fármacos como cetoconazol, itraconazol e 
+erlotinibe pode diminuir enquanto a absorção de fármacos como digoxina pode aumentar durante o tratamento 
+com esomeprazol. O tratamento concomitante com omeprazol (20 mg/dia) e digoxina em indivíduos sadios 
+aumenta a biodisponibilidade de digoxina em 10% (em até 30% para cada 2 entre 10 indivíduos). 
+ 
+O esomeprazol inibe sua principal enzima de metabolização, CYP2C19 . A administração 
+concomitante de 30 mg de esomeprazol resultou em uma redução de 45% da depuração de diazepam, 
+um substrato do CYP2C19. É improvável que essa interação tenha relevância clínica. A 
+administração concomitante de 40 mg de esomeprazol resultou em um aumento de 13% nos níveis 
+plasmáticos de fenitoína em pacientes epiléticos; o ajuste de dose não foi necessário neste estudo. A 
+administração concomitante de 40 mg de esomeprazol a pacientes tratados com varfarina mostrou 
+que, apesar de uma discreta elevação na concentração plasmática do isômero menos potente da 
+varfarina, o isômero R, os tempos de coagulação estavam dentro da faixa aceitável. Contudo, no uso 
+pós-comercialização têm sido relatados casos clinicamente significativos de elevaçã o do INR durante 
+o tratamento concomitante com a varfarina. É recomendado monitoramento cuidadoso quando o 
+tratamento com a varfarina ou outros derivados cumarínicos é iniciado ou finalizado. 
+ 
+Resultados de estudos em indivíduos saudáveis mostraram uma interação farmacocinética /farmacodinâmica 
+entre o clopidogrel (300 mg, dose de ataque/75 mg, dose de manutenção diária) e esomeprazol (40 mg via oral, 
+diariamente), resultando em diminuição da exposição ao metabólito ativo do clopidogrel em média de 40% , e 
+resultando em uma redução da inibição máxima (ADP induzida) de agregação de plaquetas em média de 14%. 
+ 
+No entanto, é incerta a importância da extensão clínica desta interação. Um estudo prospectivo, randomizado 
+(mas incompleto), em mais de 3760 pacientes, comparando placebo com omeprazol 20 mg em pacientes 
+tratados com clopidogrel e AAS e outros não- randomizados, análises post -hoc de dados de grandes estudos 
+randomizados e prospectivos, de resultados clínicos (em mais de 47000 pacientes) não apresentaram qualquer 
+evidência de um risco aumentado para o resultado cardiovascular adverso quando clopidogrel e IBP, incluindo 
+esomeprazol, foram administrados concomitantemente. 
+ 
+Os resultados de uma série de estudos observacionais são inconsistentes em relação ao aumento do risco ou 
+nenhum risco aumentado de eventos cardiovasculares tromboembólicos quando o clopidogrel é administrado 
+em conjunto com um inibidor de bomba de próton (IBP). 
+ 
+Quando clopidogrel foi administrado em conjunto a uma combinação de dose fixa de esomeprazol 20 mg) + 
+AAS (81mg) comparado ao clopidogrel isolado em um estudo em voluntários saudáveis, houve uma 
+diminuição da exposição de quase 40% do metabólito ativo de clopidogrel. No entanto, os níveis máximos de 
+inibição (ADP induzida) de agregação plaquetária nesses indivíduos eram os mesmos, tanto no grupo de 
+clopidogrel, como naquele de clopidogrel + combinação (esomeprazol + AAS), provavelmente devido à 
+administração concomitante de doses baixas de AAS. 
+ 
+O esomeprazol e o omeprazol atuam como inibidores da CYP 2C19. O omeprazol, administrado em doses de 
+40 mg em indivíduos sadios em um estudo cruzado, aumentou C max e AUC de cilostazol em 18% e 26% 
+respectivamente, e de um de seus metabólitos ativos em 29% e 69% respectivamente. 
+ 
+Em indiví duos sadios, a administração concomitante de 40 mg de esomeprazol resultou em um 
+aumento de 32% na AUC e um prolongamento de 31% da meia -vida de eliminação (t½), mas 
+nenhuma elevação significativa nos níveis do pico plasmático de cisaprida. O discreto prolongamento 
+do intervalo QTc observado após a administração isolada de cisaprida não se intensificou quando a 
+cisaprida foi administrada em associação com esomeprazol. 
+ 
+A administração concomitante de esomeprazol tem sido relacionada ao aumento do nível sérico de tacrolimo. 
+ 
+Quando administrado junto com inibidores da bomba de prótons, houve relatos de aumento nos níveis de 
+metotrexato em alguns pacientes. Em caso de administração de altas doses de metotrexato, a suspensão 
+temporária de esomeprazol deve ser considerada. 
+ 
+Foi relatada a interação de omeprazol com alguns fármacos antirretrovirais. A importância clínica e 
+os mecanismos responsáveis por essas interações relatadas não são conhecidos. O aumento do pH 
+gástrico durante o tratamento com omeprazol pode alterar a absorção do fármaco antirretroviral. 
+Outros possíveis mecanismos de interação são via CYP2C19. Para alguns fármacos antirretrovirais, 
+como atazanavir e nelfinavir, níveis séricos reduzidos foram relatados quando administrados 
+juntamente com omeprazol e, portanto, a administração concomitante não é recomendada. Para 
+outros fármacos antirretrovirais, como o saquinavir, níveis séricos elevados foram relatados. Existem 
+também alguns fármacos antirretrovirais para os quais níveis séricos inalterados foram relatados 
+quando administrados com omeprazol. Devido aos efeitos farmacodinâmicos similares e às 
+propriedades farmacocinéticas de omeprazol e esomeprazol, não é recomendada administração 
+concomitante com esomeprazol e fármacos antirretrovirais, como atazanavir e nelfinavir. 
+ 
+Foi demonstrado que esomeprazol não apresenta efeitos clinicamente relevantes na farmacocinética 
+de amoxicilina ou quinidina. 
+ 
+Estudos que avaliaram a administração concomitante de esomeprazol e naproxeno (AINE não-seletivo) 
+ou rofecoxibe (AINE COX-2 seletivo) não identificaram interação clinicamente relevante. 
+ 
+Efeitos de outros fármacos na farmacocinética de esomeprazol 
+ 
+O esomeprazol é metabolizado pela CYP2C19 e CYP3A4. A administração concomitante de 
+esomeprazol e um inibidor CYP3A4, claritromicina (500 mg duas vezes ao dia), resultou em uma 
+duplicação da exposição (AUC) ao esomeprazol. A administração concomitante do esomeprazol e um 
+inibidor combinado da CYP2C19 e CYP3A4, como o voriconazol, pode resultar em mais do que uma 
+duplicação da exposição ao esomeprazol. Entretanto, o ajuste da dose de NEXIUM não é necessário 
+em qualquer uma destas situações. 
+ 
+Fármacos conhecidos por induzirem a CYP2C19 ou a CYP3A4, ou ambos (tais como rifampicina e erva de São 
+João [Hypericum perforatum]) podem levar à redução dos níveis séricos de esomeprazol devido ao aumento do 
+metabolismo de esomeprazol.
+
+8. POSOLOGIA E MODO DE USAR 
+ 
+Os comprimidos de NEXIUM devem ser administrados inteiros, por via oral, com líquido. 
+NEXIUM pode ser administrado com ou sem alimentos. 
+ 
+Este medicamento não pode ser partido ou mastigado. 
+Nos casos de pacientes com dificuldade para deglutir, o comprimido pode ser disperso em meio copo 
+de água sem gás (não se deve usar outro líquido), mexendo até o comprimido se desintegrar. A 
+dispersão deve ser ingerida ou administrada através de sonda naso -enteral (SNE) em até 30 minutos. 
+Se persistirem microgrânulos aderidos à parede do copo, adicionar um pouco de água, mexer e 
+ingerir, ou administrar por SNE o seu conteúdo. 
+ 
+Os microgrânulos não devem ser mastigados ou esmagados. 
+ 
+Posologia 
+ 
+Adultos 
+ 
+• Doença do Refluxo Gastroesofágico (DRGE): 
+ 
+- Tratamento da esofagite de refluxo erosiva: 40 mg uma vez ao dia por 4 semanas. Um tratamento 
+adicional de 4 semanas é recomendado para pacientes com esofagite não cicatrizada ou que 
+apresentam sintomas persistentes. 
+ 
+- Tratamento de manutenção para prevenir a recidiva em pacientes com esofagite: 20 mg uma vez 
+ao dia. 
+ 
+- Tratamento dos sintomas da DRGE, tais como, pirose/azia (queimação retroesternal), regurgitação 
+ácida e dor epigástrica: 20 mg uma vez ao dia para os pacientes que não apresentam esofagite. Se 
+o controle dos sintomas não for obtido após 4 semanas, o paciente deve ser investigado. Uma vez 
+resolvidos os sintomas da DRGE, o controle dos sintomas pode ser obtido usando -se NEXIUM na 
+dose de 20 mg/dia, quando necessário. Em pacientes de risco tratados com AINE, o controle dos 
+sintomas utilizando-se um tratamento sob demanda, não é recomendado. 
+ 
+• Pacientes que precisam de tratamento contínuo com anti-inflamatórios não-esteroidais (AINE): 
+ 
+- Tratamento dos sintomas gastrointestinais altos associados ao tratamento com AINE: 20 mg uma 
+vez ao dia em pacientes que precisam de tratamento com AINE. Se os sintomas não forem 
+controlados após 4 semanas, o paciente deve ser investigado. 
+ 
+- Cicatrização de úlceras gástricas associadas à terapia com AINE: a dose usual é de 20 mg uma vez 
+ao dia por 4 a 8 semanas. Alguns pacientes podem precisar da dose de 40 mg, uma vez ao dia, por 
+4 a 8 semanas. 
+ 
+- Prevenção de úlceras gástricas e duodenais associadas à terapia com AINE em pacientes de risco: 
+20 mg uma vez ao dia. 
+ 
+• Tratamento da úlcera duodenal associada ao Helicobacter pylori/erradicação do Helicobacter 
+pylori em associação com um antibacteriano adequado: 20 mg de NEXIUM com 1 g de 
+amoxicilina e 500 mg de claritromicina, todos duas vezes ao dia, por 7 dias. Não há necessidade 
+da continuidade do tratamento com fármacos antissecretores para a cicatrização e resolução dos 
+sintomas de úlcera. 
+ 
+• Condições patológicas hipersecretoras incluindo síndrome de Zollinger -Ellison e hipersecreção 
+idiopática: a dose inicial recomendada é de 40 mg de NEXIUM duas vezes ao dia. O ajuste de 
+dose deve ser individualizado e o tratamento continuado pelo tempo indicado clinicamente. Doses 
+de até 120 mg foram administradas duas vezes ao dia. 
+• Manutenção da hemostasia e prevenção de ressangramento de úlceras gástricas e duodenais após 
+tratamento com esomeprazol sódico intravenoso: 40 mg uma vez ao dia por 4 semanas. O período 
+do tratamento oral deve ser precedido por terapia de supressão ácida com esomeprazol sódico 80 
+mg administrado por infusão em bolus por 30 minutos, seguido por uma infusão intravenosa 
+contínua de 8 mg/h administrada durante 3 dias. 
+ 
+Crianças 12-18 anos 
+ 
+• Doença do refluxo gastroesofágico (DRGE): 
+ 
+- Tratamento da esofagite de refluxo erosiva: 40 mg uma vez ao dia por 4 semanas. Um tratamento 
+adicional de 4 semanas é recomendado para os pacientes com esofag ite não cicatrizada ou aqueles 
+que apresentam sintomas persistentes. 
+ 
+- Tratamento dos sintomas da DRGE: 20 mg uma vez ao dia para os pacientes que não apresentam 
+esofagite. Se o controle dos sintomas não for obtido após 4 semanas, o paciente deve ser 
+investigado. Uma vez resolvidos os sintomas da DRGE, NEXIUM pode ser usado na dose de 20 
+mg/dia e sob supervisão médica. 
+ 
+O tratamento com NEXIUM para crianças (12 – 18 anos) deve ser limitado a 8 semanas. 
+ 
+NEXIUM não deve ser usado em crianças menores de 12 anos, pois não há dados disponíveis. 
+ 
+Se o paciente se esquecer de tomar uma dose de NEXIUM, deverá tomá -la assim que lembrar, mas 
+se estiver próximo ao horário da próxima dose, não é necessário tomar a dose esquecida. Deve -se 
+apenas tomar a próxima dose, no horário habitual. O paciente não deve tomar a dose em dobro para 
+compensar a dose esquecida. 
+ 
+Insuficiência renal: não é necessário ajuste de dose para os pacientes com insuficiência renal. 
+Devido à experiência limitada em pacientes com insuficiência renal grave, esses pacientes devem ser 
+tratados com precaução. 
+ 
+Insuficiência hepática: não é necessário ajuste de dose para os pacientes com insuficiência hepática 
+de leve a moderada. Para os pacientes com insuficiência hepática grave, uma dose máxima diária de 
+20 mg de NEXIUM não deve ser excedida. 
+ 
+Idosos: não é necessário ajuste de dose para idosos.
+
+9. REAÇÕES ADVERSAS A MEDICAMENTOS 
+ 
+As seguintes reações adversas ao fármaco foram identificadas ou suspeitas no programa dos estudos 
+clínicos para NEXIUM e/ou no uso pós -comercialização. Nenhuma foi considerada dose -
+relacionada. 
+ 
+As seguintes definições de frequência são utilizadas: comum ( ≥ 1/100), incomum (≥ 1/1.000 e < 1/100), 
+rara (≥ 1/10.000 e < 1/1.000), muito rara (< 1/10.000) e frequência desconhecida: 
+ 
+Distúrbios do sangue e sistema linfático 
+ 
+Rara: leucopenia e trombocitopenia. 
+Muito rara: agranulocitose e pancitopenia. 
+Distúrbios do sistema imune 
+ 
+Rara: reações de hipersensibilidade, como por exemplo, angioedema, reação/choque anafilático. 
+ 
+Distúrbios do metabolismo e nutrição 
+ 
+Incomum: edema periférico. 
+Rara: hiponatremia. 
+Muito rara: hipomagnesemia; hipomagnesemia grave pode resultar em hipocalcemia. A hipomagnesemia 
+também pode causar hipocalemia. 
+ 
+Distúrbios psiquiátricos 
+ 
+Incomum: insônia. 
+Rara: agitação, confusão e depressão. 
+Muito rara: agressividade e alucinação. 
+ 
+Distúrbios do sistema nervoso 
+ 
+Comum: cefaleia. 
+Incomum: tontura, parestesia e sonolência. 
+Rara: distúrbios do paladar. 
+ 
+Distúrbios visuais 
+ 
+Rara: visão turva. 
+ 
+Distúrbios do labirinto e audição 
+ 
+Incomum: vertigem. 
+Frequência desconhecida: zumbido e surdez. 
+ 
+Distúrbios respiratórios, torácicos e do mediastino 
+ 
+Rara: broncoespasmo. 
+ 
+Distúrbios gastrointestinais 
+ 
+Comum: dor abdominal, diarreia, flatulência, náuseas/vômitos e constipação. 
+Incomum: boca seca. 
+Rara: estomatite e candidíase gastrointestinal. 
+Muito rara: colite microscópica. 
+ 
+Distúrbios hepatobiliares 
+ 
+Incomum: aumento das enzimas hepáticas. 
+Rara: hepatite com ou sem icterícia. 
+Muito rara: insuficiência hepática e encefalopatia hepática. 
+ 
+Distúrbios da pele e tecido subcutâneo 
+ 
+Incomum: dermatite, prurido, urticária e rash . 
+Rara: alopécia e fotossensibilidade. 
+Muito rara: eritema multiforme, síndrome de Stevens -Johnson, necrólise epidérmica tóxica (NET), 
+pustulose exantemática generalizada aguda (PEGA) e erupção cutânea à droga com eosinofilia e 
+sintomas sistêmicos (DRESS). 
+ 
+Distúrbios músculo-esqueléticos, do tecido conectivo e ossos 
+ 
+Rara: artralgia e mialgia. 
+Muito rara: fraqueza muscular. 
+ 
+Distúrbios renais e urinários 
+ 
+Muito rara: nefrite intersticial. 
+ 
+Distúrbios do sistema reprodutivo e mamas 
+ 
+Muito rara: ginecomastia. 
+ 
+Distúrbios gerais e do local de aplicação 
+ 
+Rara: mal-estar, hiperidrose e febre. 
+ 
+ 
+Em casos de eventos adversos, notifique pelo Sistema VigiMed, disponível no Portal da Anvisa.
+
+10. SUPERDOSE 
+ 
+Os sintomas descritos com relação à superdosagem deliberada de NEXIUM (experiência limitada de 
+doses com mais de 240 mg/dia) são transitórios. Doses únicas de 80 mg de esomeprazol não 
+apresentaram intercorrências. Não se conhece antídoto específico. O esomeprazol liga -se 
+extensivamente às proteínas plasmáticas e, portanto, não é dialisável. Em caso de superdosagem, o 
+tratamento deve ser sintomático e medidas de suporte gerais devem ser utilizadas. 
+ 
+Os sintomas descritos após a ingestão oral de uma dose de 280 mg de esomeprazol foram alterações 
+gastrointestinais como náusea e fezes amolecidas e fraqueza. 
+ 
+Em caso de intoxicação ligue para 0800 722 6001, se você precisar de mais orientações. 
+ 
+ 
+III)

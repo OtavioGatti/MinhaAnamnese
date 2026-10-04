@@ -1,0 +1,17 @@
+{
+  "Risco Gestacional": "B",
+  "Slug": "aciclovir",
+  "Nomes Comerciais / Produtos ANVISA": "Zovirax; aciclovir.",
+  "Interações": "Probenecida e cimetidina podem reduzir depuração renal do aciclovir e aumentar exposição. Evitar ou monitorar associação com medicamentos nefrotóxicos, como aminoglicosídeos, anfotericina B, vancomicina, ciclosporina, tacrolimo, foscarnet, cisplatina e anti-inflamatórios não esteroidais em pacientes de risco. Micofenolato de mofetila pode ter aumento de exposição quando associado.",
+  "Apresentações / Nomes Comerciais": "Comprimidos 200 mg, 400 mg e 800 mg; creme dermatológico 50 mg/g; pomada oftálmica; solução injetável conforme fabricante. Exemplos: Zovirax; aciclovir genérico; Aciclovir Aché; Aciclovir EMS.",
+  "Posologia Pediátrica": "Varicela: 20 mg/kg por dose, por via oral, 4 vezes ao dia, por 5 dias, dose máxima usual de 800 mg por dose.\nOutras indicações pediátricas devem seguir idade, peso, gravidade e protocolo.\nAjustar dose em insuficiência renal.",
+  "Texto Resumo": "Aciclovir é um antiviral anti-herpético usado no tratamento de herpes simples, herpes-zóster e varicela em situações selecionadas. Requer ajuste em insuficiência renal e maior atenção em idosos pelo risco de toxicidade neurológica.",
+  "Classe / Categoria": "Antiviral; análogo de nucleosídeo; anti-herpético.",
+  "Posologia Adulto": "Herpes simples: 200 mg por via oral, 5 vezes ao dia, a cada aproximadamente 4 horas, omitindo a dose noturna, por 5 dias.\nSupressão de herpes simples: 200 mg por via oral 4 vezes ao dia ou 400 mg 2 vezes ao dia.\nHerpes-zóster: 800 mg por via oral 5 vezes ao dia por 7 dias.\nAjustar dose em insuficiência renal.",
+  "Contraindicações": "Hipersensibilidade ao aciclovir, valaciclovir ou componentes da fórmula.",
+  "Tags Busca": "antiviral; herpes simples; herpes zoster; varicela; anti-herpético; hsv; vzv",
+  "Advertências": "Manter hidratação adequada, especialmente com doses altas, idosos ou insuficiência renal. Reduzir dose em disfunção renal. Pode causar neurotoxicidade, confusão, tremores ou alucinações em idosos e pacientes com insuficiência renal. Iniciar tratamento precocemente para melhor eficácia.",
+  "Nomes Comerciais OpenAI": "Zovirax; Aciclovir Aché; Aciclovir EMS; Aciclovir Medley.",
+  "Rede SUS (RENAME)": false,
+  "Princípio Ativo": "Aciclovir"
+}

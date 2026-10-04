@@ -1,0 +1,530 @@
+FONTE: lote4__metoprolol-succinato__SELOZOK.pdf
+
+===== BLOCO 1 =====
+APRESENTAÇÕES
+Comprimidos revestidos de liberação controlada de 25 mg em embalagens com 10, 30 ou 60 comprimidos.
+Comprimidos revestidos de liberação controlada de 50 mg em embalagens com 10, 30 ou 60 comprimidos.
+Comprimidos revestidos de liberação controlada de 100 mg em embalagens com 30 ou 60 comprimidos.
+
+VIA ORAL
+
+USO ADULTO
+
+1. INDICAÇÕES
+
+Hipertensão arterial: redução da pressão arterial, da morbidade e do risco de mortalidade de origem
+cardiovascular e coronária (incluindo morte súbita); Angina do peito; Adjuvante na terapia da insuficiência
+cardíaca crônica sintomática, leve a grave: aumento da sobrevida, redução da hospitalização, melhora na função
+ventricular esquerda, melhora na classe funcional da New York Heart Association (NYHA) e melhora na
+qualidade de vida; Alterações do ritmo cardíaco, incluindo especialmente taquicardia supraventricular;
+Tratamento de manutenção após infarto do miocárdio; Alterações cardíacas funcionais com palpitações;
+Profilaxia da enxaqueca.
+
+3. CARACTERÍSTICAS FARMACOLÓGICAS
+
+Propriedades Farmacodinâmicas
+
+O metoprolol é um bloqueador beta-1 seletivo, isto é, bloqueia os receptores beta-1 em doses muito menores
+que as necessárias para bloquear os receptores beta-2.
+O metoprolol possui um insignificante efeito estabilizador de membrana e não apresenta atividade agonista
+parcial.
+
+O metoprolol reduz ou inibe o efeito agonista das catecolaminas no coração (as quais são liberadas durante o
+estresse físico e mental). Isto significa que o aumento usual da frequência cardíaca, do débito cardíaco, da
+contractilidade cardíaca e da pressão arterial, produzido pelo aumento agudo das catecolaminas, é reduzido pelo
+metoprolol. Durante altos níveis endógenos de adrenalina, o metoprolol interfere muito menos no controle da
+pressão arterial do que os betabloqueadores não-seletivos.
+
+O metoprolol em formulação de liberação controlada (SELOZOK) proporciona um perfil constante de
+concentração plasmática no tempo e efeito bloqueador beta-1 durante 24 horas diferentemente dos comprimidos
+convencionais de bloqueadores beta-1, incluindo formulações de tartarato de metoprolol.
+
+Devido à inexistência de picos pronunciados na concentração plasmática, a seletividade clínica aos receptores
+beta-1 é aumentada com metoprolol em formulação de liberação controlada, quando comparada às formulações
+de comprimidos convencionais de bloqueadores beta-1 seletivos. Além disso, o risco potencial de reações
+adversas relacionadas aos picos de concentração plasmática, tais como, bradicardia e fadiga nas pernas, é
+reduzido.
+
+Quando necessário, pode-se administrar metoprolol em associação com um agonista beta-2 em pacientes com
+sintomas de doença pulmonar obstrutiva.
+
+Quando administrado junto com um agonista beta-2, metoprolol, nas doses terapêuticas, interfere menos na
+broncodilatação causada pelo agonista beta-2 do que os beta-bloqueadores não-seletivos.
+
+SELOZOK interfere menos na liberação de insulina e no metabolismo dos carboidratos do que os
+betabloqueadores não-seletivos.
+
+SELOZOK interfere muito menos na resposta cardiovascular para hipoglicemia do que os betabloqueadores
+não-seletivos.
+
+Estudos de curto prazo demonstraram que SELOZOK pode causar um discreto aumento nos triglicérides e
+uma redução nos ácidos graxos livres no sangue. Em alguns casos, foi observada uma pequena redução na
+fração de lipoproteínas de alta densidade (HDL), embora em uma proporção menor do que a observada após a
+administração de betabloqueadores não-seletivos. Entretanto, foi demonstrada uma redução significativa nos
+níveis séricos totais de colesterol após tratamento com o metoprolol em um estudo realizado durante vários
+anos.
+
+A qualidade de vida é mantida inalterada ou é melhorada durante o tratamento com SELOZOK.
+
+Foi observada uma melhora na qualidade de vida após tratamento com metoprolol em pacientes após infarto do
+miocárdio. Além disso, SELOZOK demonstrou aumentar a qualidade de vida em pacientes com insuficiência
+cardíaca crônica.
+
+Efeitos na hipertensão
+
+SELOZOK reduz a pressão arterial elevada tanto em pacientes na posição supina quanto na ortostática. Pode
+ser observado aumento na resistência periférica após a instituição do tratamento com metoprolol, mas com
+curta duração (poucas horas) e clinicamente insignificante. Durante tratamento à longo prazo, a resistência
+periférica total pode ser reduzida, devido a reversão da hipertrofia na resistência arterial dos vasos. Também
+foi demonstrado que o tratamento anti-hipertensivo à longo prazo com o metoprolol reduz a hipertrofia
+ventricular esquerda e melhora a função diastólica ventricular esquerda e o enchimento ventricular esquerdo.
+
+Em homens com hipertensão arterial leve a moderada, metoprolol tem demonstrado reduzir o risco de morte
+por doença cardiovascular, principalmente devido ao risco reduzido de morte cardiovascular súbita, reduzir o
+risco de infarto do miocárdio fatal e não-fatal e de acidente vascular cerebral.
+
+Efeitos na angina do peito
+
+Em pacientes com angina do peito, metoprolol tem demonstrado reduzir a frequência, a duração e a gravidade,
+tanto das crises de angina, quanto dos episódios de isquemia silenciosa e demonstrou aumentar a capacidade
+física de trabalho.
+
+Efeitos no rítmo cardíaco
+
+Em casos de taquicardia supraventricular ou fibrilação atrial e na presença de extra-sístoles ventriculares,
+SELOZOK reduz a frequência ventricular e as extra-sístoles ventriculares. Sua ação antiarrítmica é devida
+principalmente à inibição da automaticidade das células marcapasso e ao prolongamento do tempo de condução
+A-V.
+Efeitos no infarto do miocárdio
+
+Em pacientes com suspeita ou infarto do miocárdio confirmado, o metoprolol reduz a mortalidade,
+principalmente devido à redução do risco de morte súbita.
+
+Presume-se que este efeito seja em parte devido à prevenção da fibrilação ventricular.
+
+O efeito antifibrilatório pode ser devido a um mecanismo duplo: um efeito vagal na barreira hematoencefálica,
+influenciando de maneira benéfica a estabilidade elétrica do coração, e um efeito antiisquêmico cardíaco direto
+simpático, influenciando de maneira benéfica à contractilidade, a frequência cardíaca e a pressão arterial. Tanto
+na intervenção precoce, como na intervenção tardia, a redução da mortalidade também é observada em
+pacientes de alto risco com doença cardiovascular prévia e em pacientes com diabetes mellitus.
+
+O metoprolol tem também demonstrado reduzir o risco de reinfarto do miocárdio não-fatal.
+
+Efeitos nas desordens cardíacas com palpitações
+
+SELOZOK é adequado para o tratamento de transtornos cardíacos funcionais com palpitações.
+
+Efeitos na enxaqueca
+
+SELOZOK é adequado para o tratamento profilático da enxaqueca.
+
+Propriedades Farmacocinéticas
+
+Absorção e distribuição
+
+O metoprolol é completamente absorvido após administração oral. Devido ao extenso metabolismo de primeira
+passagem, a biodisponibilidade sistêmica do metoprolol em uma dose única oral é de aproximadamente 50%. A
+biodisponibilidade da preparação de liberação controlada é reduzida em aproximadamente 20-30% quando
+comparada com o comprimido convencional. Entretanto, isso demonstrou não ter significância para a eficácia
+clínica, uma vez que a área sob a curva de efeito (AUC) para a frequência cardíaca é a mesma que para os
+comprimidos convencionais. A ligação do metoprolol às proteínas plasmáticas é baixa, aproximadamente 5-
+10%.
+O comprimido revestido de liberação controlada consiste de múltiplos grânulos de succinato de metoprolol.
+Cada grânulo é recoberto com uma membrana de polímero que controla a velocidade de liberação do
+metoprolol.
+
+O comprimido desintegra-se rapidamente após a ingestão, dispersando os grânulos ao longo do trato
+gastrointestinal, os quais vão liberando o metoprolol continuamente por cerca de 20 horas. A meia-vida de
+eliminação do metoprolol é em média de 3,5 horas. Assim, uma concentração plasmática constante de
+metoprolol é alcançada com intervalo de administração de 24 horas. A velocidade de liberação é independente
+de fatores fisiológicos, tais como, pH, alimentos e peristaltismo.
+
+Metabolismo e eliminação
+
+O metoprolol sofre metabolismo oxidativo no fígado primariamente pela isoenzima CYP2D6. Três principais
+metabólitos foram identificados, entretanto nenhum deles tem efeito betabloqueador de importância clínica.
+
+Via de regra, mais de 95% da dose oral pode ser recuperada na urina. Aproximadamente 5% da dose
+administrada é excretada na urina como fármaco inalterado, podendo aumentar para até 30% em casos isolados.
+A meia-vida de eliminação do metoprolol no plasma é em média de 3,5 horas (extremos: 1 e 9 horas). A taxa de
+depuração total é de aproximadamente 1 L/min.
+
+Os pacientes idosos não apresentam alterações significativas na farmacocinética do metoprolol, em comparação
+com pessoas jovens. A biodisponibilidade sistêmica e a eliminação do metoprolol não são alteradas em
+pacientes com função renal reduzida. Entretanto, a excreção dos metabólitos é reduzida. Foi observado um
+acúmulo significativo dos metabólitos em pacientes com uma taxa de filtração glomerular inferior a 5 mL/min.
+Esse acúmulo de metabólitos, entretanto, não aumenta o efeito betabloqueador.
+
+A farmacocinética do metoprolol é pouco afetada pela diminuição da função hepática. Entretanto, em pacientes
+com cirrose hepática grave e derivação portacava, a biodisponibilidade do metoprolol pode aumentar e a
+depuração total pode ser reduzida. Os pacientes com anastomose portacava apresentaram uma depuração total
+de aproximadamente 0,3 L/min e valores da área sob a curva de concentração plasmática versus tempo (AUC)
+até 6 vezes maiores que em indivíduos sadios.
+Dados de segurança pré-clínica
+
+Nenhum dado relevante foi encontrado.
+
+4. CONTRAINDICAÇÕES
+
+SELOZOK é contraindicado em pacientes com hipersensibilidade ao metoprolol, aos demais componentes da
+fórmula ou a outros betabloqueadores.
+
+Bloqueio atrioventricular de grau II ou de grau III, pacientes com insuficiência cardíaca não compensada
+instável (edema pulmonar, hipoperfusão ou hipotensão), e pacientes com terapia inotrópica contínua ou
+intermitente agindo através de agonista do receptor beta, bradicardia sinusal clinicamente relevante, síndrome
+do nó sino-atrial (a não ser que um marcapasso permanente esteja em uso), choque cardiogênico e arteriopatia
+periférica grave.
+
+O metoprolol não deve ser administrado em pacientes com suspeita de infarto agudo do miocárdio, enquanto a
+frequência cardíaca for < 45 batimentos/minuto, o intervalo PQ for > 0,24 segundos ou a pressão sistólica for <
+100 mmHg.
+
+5. ADVERTÊNCIAS E PRECAUÇÕES
+
+Não se deve realizar administração intravenosa de antagonistas de cálcio do tipo verapamil em pacientes
+tratados com betabloqueadores.
+
+Pacientes com doenças broncoespásticas, em geral, não devem receber betabloqueadores. Porém, devido à sua
+relativa seletividade beta-1, SELOZOK pode ser usado com cautela em pacientes com doença broncoespástica
+que não respondem, ou não toleraram tratamento com outros anti -hipertensivos.
+
+Geralmente, quando estiver tratando pacientes com asma, deve -se administrar terapia concomitante com
+agonista beta-2 (comprimidos e/ou inalação). Pode haver necessidade de ajuste da dose do agonista beta -2
+(aumento) quando o tratamento com SELOZOK é iniciado. O risco de SELOZOK interferir com receptores
+beta-2 é, entretanto, menor quando comparado a formulações convencionais de bloqueadores beta-1 seletivos.
+SELOZOK deve ser usado com cautela em pacientes diabéticos. Betabloqueadores podem mascarar
+taquicardia ocorrendo com hipoglicemia, mas outras manifestações como vertigem e sudorese podem não ser
+significativamente afetadas. Durante o tratamento com SELOZOK, o risco de interferência com o metabolismo
+de carboidratos ou de mascarar a hipoglicemia é provavelmente menor do que com tratamento com
+comprimidos convencionais de bloqueadores beta-1 seletivos e muito menor do que com betabloqueadores não-
+seletivos.
+
+A estimulação simpática é um componente vital de suporte da função circulatória em pacientes com
+insuficiência cardíaca congestiva e os betabloqueadores possuem o risco potencial de depressão da
+contractilidade do miocárdio, podendo precipitar uma insuficiência cardíaca mais severa. Em pacientes
+hipertensos e com angina que têm insuficiência cardíaca congestiva controlada por digitálicos e diuréticos,
+SELOZOK deve ser administrado com cautela. Tanto digitálicos quanto SELOZOK diminuem a condução A-
+V. Muito raramente, uma alteração preexistente da condução A-V de grau moderado pode ser agravada
+(levando, possivelmente, a bloqueio A-V).
+
+O uso de betabloqueadores por um período de tempo prolongado pode, em alguns casos, levar à insuficiência
+cardíaca. Nos primeiros sinais ou sintomas de iminência de insuficiência cardíaca, os pacientes devem ser
+totalmente digitalizados e/ou receber diuréticos. A resposta deve ser atentamente observada. Se a insuficiência
+cardíaca persistir, o tratamento com SELOZOK deve ser suspenso.
+
+Se os pacientes desenvolverem crescente bradicardia, deve-se reduzir a dose de SELOZOK ou suspender a
+medicação gradualmente.
+
+SELOZOK pode agravar os sintomas de arteriopatia periférica.
+
+Se utilizado em pacientes com feocromocitoma, deve-se administrar concomitantemente um alfa-bloqueador.
+
+A biodisponibilidade do metoprolol pode estar aumentada em pacientes com cirrose hepática, por isso deve ser
+usado sob cuidado nestes pacientes.
+
+A suspensão abrupta de betabloqueadores é perigosa, especialmente em pacientes de alto risco e, portanto, não
+deve ser realizada. Após a interrupção abrupta da terapia com certos agentes bloqueadores, tem ocorrido
+exacerbações de angina do peito e, em alguns casos, infarto do miocárdio.
+Se houver a necessidade de descontinuar o tratamento com SELOZOK, recomenda-se que seja feito de forma
+gradual, em um período mínimo de 2 semanas, em que a dose é reduzida pela metade, a cada redução, até a
+etapa final em que a dose de 25 mg é reduzida à metade.
+
+A dose final deve ser administrada, no mínimo, por 4 dias antes da descontinuação. Se a angina piorar ou se
+desenvolver uma insuficiência coronariana aguda, a administração de SELOZOK deve ser imediatamente
+reiniciada, pelo menos temporariamente, e devem ser tomadas outras medidas apropriadas para o controle da
+angina instável. Sabendo-se que a doença da artéria coronária é comum e pode não estar diagnosticada,
+aconselha-se que o tratamento não seja interrompido abruptamente, mesmo em pacientes tratados apenas para
+hipertensão. Se ocorrerem sintomas, recomenda-se a diminuição da velocidade de retirada. A retirada abrupta
+de betabloqueador pode agravar a insuficiência cardíaca crônica e também aumentar o risco de infarto do
+miocárdio e morte súbita.
+
+A necessidade ou desejo de retirar a terapia betabloqueadora antes de cirurgias maiores é controversa, a
+habilidade prejudicada do coração para responder a estímulos adrenérgicos reflexos pode aumentar os riscos de
+anestesia geral e procedimentos cirúrgicos. SELOZOK, como outros betabloqueadores, é um inibidor
+competitivo de agonistas de beta-receptores e seus efeitos podem ser revertidos pela administração destes
+agentes, por exemplo, dobutamina ou isoproterenol. Entretanto, estes pacientes podem estar sujeitos a
+hipotensão severa prolongada. Dificuldade em reiniciar e manter os batimentos cardíacos tem sido também
+relatada com betabloqueadores.
+
+Antes de cirurgias, o anestesista deve ser informado de que o paciente está tomando SELOZOK. Não é
+recomendado interromper o tratamento com betabloqueador em pacientes que serão submetidos à cirurgia.
+Início agudo com altas doses de metoprolol para pacientes submetidos à cirurgia não-cardíaca deve ser evitado,
+pois tem sido associada com bradicardia, hipotensão arterial e acidente vascular cerebral, inclusive fatais, em
+pacientes com fatores de risco cardiovascular.
+
+Em pacientes utilizando betabloqueadores, o choque anafilático manifesta-se com maior intensidade.
+
+O bloqueio beta-adrenérgico pode mascarar certos sinais clínicos de hipertireoidismo (ex.: taquicardia).
+Pacientes suspeitos de apresentarem tireotoxicoses devem ser controlados cuidadosamente para evitar
+interrupção abrupta do bloqueio beta, o que pode precipitar uma descompensação do quadro.
+Efeitos sobre a capacidade de dirigir veículos e operar máquinas: deve-se avaliar a reação dos pacientes ao
+medicamento antes de dirigir veículos e operar máquinas, porque, ocasionalmente, podem ocorrer vertigem ou
+fadiga.
+
+Informe ao seu paciente que ele deve evitar se levantar rapidamente, dirigir veículos e/ou operar
+máquinas, principalmente no início do tratamento e ao aumentar a dose.
+
+Gravidez e lactação
+
+Categoria de risco na gravidez: C
+
+Este medicamento não deve ser utilizado por mulheres grávidas sem orientação médica ou do cirurgião-
+dentista.
+
+Uso criterioso no aleitamento ou na doação de leite humano. O uso deste medicamento no período da
+lactação depende da avaliação e acompanhamento do seu médico ou cirurgião-dentista.
+
+SELOZOK não deve ser usado durante a gravidez ou lactação ao menos que o seu uso seja considerado
+essencial. Em geral, os betabloqueadores reduzem a perfusão placentária, o que tem sido associado com retardo
+de crescimento, morte intrauterina, aborto e parto prematuro. Sugere-se que acompanhamento materno-fetal
+apropriado seja realizado em mulheres grávidas tratadas com metoprolol. Os betabloqueadores podem causar
+efeitos adversos, como por exemplo, bradicardia no feto, no recém-nascido e em crianças sob aleitamento
+materno.
+
+A quantidade de metoprolol ingerida pelo lactente através do leite materno, entretanto, parece ser insignificante
+com relação ao efeito betabloqueador no lactente, se a mãe é tratada com metoprolol em doses terapêuticas
+normais.
+
+Informe a seu paciente que a doação de sangue é absolutamente contraindicada durante o tratamento
+com succinato de metoprolol e até 48 horas após seu término, devido ao dano que ele pode causar ao
+receptor. Se o paciente desejar doar sangue, o tratamento não deve ser interrompido sem consultar o
+médico responsável, que avaliará caso a caso.
+
+Este medicamento pode causar doping.
+Atenção: contém o corante dióxido de titânio.
+
+6. INTERAÇÕES MEDICAMENTOSAS
+
+O metoprolol é um substrato metabólico para o citocromo P450 isoenzima CYP2D6. Fármacos que atuam
+como substâncias indutores enzimáticos e inibidores enzimáticos podem exercer uma influência sobre os níveis
+plasmáticos de metoprolol. Os níveis plasmáticos de metoprolol podem ser elevados pela co-administração de
+compostos metabolizados pelo CYP2D6, ex.: antiarrítimicos, anti-histamínicos, antagonistas do receptor de
+histamina-2, antidepressivos, antipsicóticos e inibidores da COX-2. A concentração plasmática de metoprolol é
+diminuída pela rifampicina e pode ser elevada pelo álcool e hidralazina.
+
+Recomenda-se cuidado especial a pacientes recebendo tratamento concomitante com agentes bloqueadores
+ganglionares simpáticos, outros betabloqueadores (ex.: colírio) ou inibidores da MAO (monoaminoxidase).
+
+Se tratamento concomitante com clonidina for descontinuado, a medicação betabloqueadora deve ser retirada
+vários dias antes da clonidina.
+
+Pode ocorrer aumento dos efeitos negativos sobre o inotropismo e cronotropismo quando metoprolol for
+administrado junto com antagonistas do cálcio do tipo verapamil e diltiazem. Pacientes tratados com
+betabloqueadores, não devem receber administração intravenosa de antagonistas de cálcio do tipo verapamil.
+
+Os betabloqueadores podem aumentar os efeitos negativos sobre o inotropismo e o dromotropismo de agentes
+antiarrítmicos (do tipo da quinidina e amiodarona).
+
+A associação de digitálicos glicosídeos e betabloqueadores pode aumentar o tempo de condução
+atrioventricular e pode induzir a bradicardia.
+
+Em pacientes recebendo terapia com betabloqueador, os anestésicos inalatórios aumentam o efeito
+cardiodepressor.
+
+O tratamento concomitante com indometacina ou outros fármacos inibidores da prostaglandina sintetase pode
+diminuir o efeito anti-hipertensivo dos betabloqueadores.
+Sob certas condições, quando a adrenalina é administrada em pacientes tratados com betabloqueadores, os
+betabloqueadores cardiosseletivos interferem em menor grau com o controle da pressão sanguínea que os não-
+seletivos.
+
+Pode ser necessário um ajuste da dose de hipoglicemiantes orais em pacientes sob tratamento com
+betabloqueadores.
+
+O metoprolol pode reduzir a taxa de depuração plasmática de outros fármacos (ex.: lidocaína).
+
+Fármacos depletores das catecolaminas (ex.: reserpina), proporcionam um efeito aditivo quando usados junto a
+agentes betabloqueadores.
+
+Interferências com exames laboratoriais: o uso de SELOZOK pode apresentar níveis séricos elevados das
+transaminases, fosfatase alcalina e lactato desidrogenase (DHL).
+
+8. POSOLOGIA E MODO DE USAR
+
+SELOZOK deve ser administrado em dose única diária por via oral, com líquido, podendo ser ingerido com as
+refeições ou com o estômago vazio.
+
+- Hipertensão:
+
+A dosagem recomendada para pacientes com hipertensão leve à moderada é 50 mg de SELOZOK uma vez ao
+dia. Em pacientes que não respondem a 50 mg, a dose pode ser aumentada para 100 a 200 mg uma vez ao dia
+e/ou combinada com outros agentes anti-hipertensivos.
+
+O tratamento anti-hipertensivo de longa duração com doses diárias de 100-200 mg de metoprolol tem
+demonstrado reduzir a mortalidade total, incluindo morte cardiovascular súbita, acidente vascular cerebral e
+eventos coronarianos em pacientes hipertensos.
+
+- Angina do peito:
+
+A dosagem recomendada é 100-200 mg de SELOZOK uma vez ao dia. Se necessário, SELOZOK pode ser
+combinado com outros agentes antianginosos.
+
+- Insuficiência cardíaca crônica:
+
+A dose de SELOZOK deve ser ajustada individualmente em pacientes com insuficiência cardíaca crônica
+estabilizados com outro tratamento de insuficiência cardíaca. Uma dose inicial recomendada durante as duas
+primeiras semanas é um comprimido de 25 mg uma vez ao dia. Recomenda-se que os pacientes com classes
+funcionais III-IV de NYHA comecem com meio comprimido de 25 mg uma vez ao dia, na primeira semana.
+Recomenda-se que a dose seja dobrada a cada 2 semanas, até uma dose máxima de 200 mg de metoprolol uma
+vez ao dia (ou até a dose máxima tolerada). Durante o tratamento à longo prazo, o objetivo deve ser atingir a
+dose de 200 mg de metoprolol uma vez ao dia (ou a dose máxima tolerada).
+
+Em cada nível posológico, o paciente deve ser avaliado cuidadosamente no que se refere à tolerabilidade. Em
+caso de hipotensão, pode ser necessário reduzir a medicação concomitante. A hipotensão inicial não significa
+necessariamente que a dose não possa ser tolerada no tratamento crônico, mas o paciente deve ser mantido com
+a menor dose, até se estabilizar.
+
+- Arritmias cardíacas:
+
+A dosagem recomendada é de 100-200 mg de SELOZOK uma vez ao dia.
+
+- Tratamento de manutenção após infarto do miocárdio:
+
+Foi demonstrado que o tratamento à longo prazo com o metoprolol em doses de 200 mg, administrados uma
+vez ao dia, reduz o risco de morte (incluindo morte súbita) e reduz o risco de reinfarto (também em pacientes
+com diabetes mellitus).
+
+- Alterações cardíacas funcionais com palpitações:
+
+A dosagem recomendada é 100 mg uma vez ao dia. Se necessário, a dose pode ser aumentada para 200 mg.
+
+- Profilaxia da enxaqueca:
+
+A dosagem recomendada é 100-200 mg uma vez ao dia.
+
+Crianças: há experiência limitada do tratamento de crianças com SELOZOK.
+
+Insuficiência hepática: normalmente, não é necessário ajuste de dose em pacientes com cirrose hepática,
+porque o metoprolol tem uma baixa taxa de ligação protéica (5%-10%). Quando há sinais de sério
+comprometimento da função hepática (por exemplo, pacientes submetidos à cirurgia de derivação), deve-se
+considerar uma redução da dose.
+Insuficiência renal: não é necessário ajuste de dose em pacientes com insuficiência renal.
+
+Idosos: não é necessário ajuste de dose.
+
+Se o paciente esquecer de tomar o comprimido de SELOZOK, ele deverá tomar apenas a próxima dose
+programada. Não dobrar a dose. O médico pode orientar o paciente sobre a melhor conduta no caso de
+esquecimento de dose considerando o caso específico do paciente.
+
+Este medicamento não deve ser esmagado ou mastigado.
+
+9. REAÇÕES ADVERSAS
+
+SELOZOK é bem tolerado e as reações adversas têm sido geralmente leves e reversíveis. Os eventos a seguir
+têm sido relatados como eventos adversos em estudos clínicos ou em uso de rotina, principalmente, com o
+metoprolol convencional (tartarato de metoprolol). Em muitos casos, não foi estabelecida uma relação com o
+tratamento com metoprolol.
+
+As seguintes definições de frequência são usadas: muito comum (≥ 1/10), comum (≥ 1/100 e < 1/10), incomum
+(≥ 1/1.000 e < 1/100), rara (≥ 1/10.000 e < 1/1.000) e muito rara (< 1/10.000).
+
+Sistema Cardiovascular:
+
+- Comum: bradicardia, alterações posturais (muito raramente com síncope), mãos e pés frios, fenômeno de
+Raynaud e palpitações.
+
+- Incomum: deterioração dos sintomas de insuficiência cardíaca, choque cardiogênico em pacientes com infarto
+agudo do miocárdio*, bloqueio cardíaco de primeiro grau, edema, dor precordial e hipotensão.
+
+- Rara: alterações da condução cardíaca e arritmias cardíacas.
+
+- Muito rara: gangrena em pacientes com alterações circulatórias periféricas graves preexistentes.
+* Excesso de frequência de 0,4% comparado com placebo em um estudo com 46000 pacientes com infarto
+agudo do miocárdio quando a frequência de choque cardiogênico foi de 2,3% no grupo metoprolol e 1,9% no
+grupo placebo no subgrupo de pacientes com menor índice de risco de choque. O índice de risco de choque foi
+baseado no risco absoluto em cada paciente individualmente derivado da idade, sexo, time delay, classe Killip,
+pressão sanguínea, frequência cardíaca, anormalidades no ECG e histórico de hipertensão prévia. O grupo de
+pacientes com menor índice de risco de choque corresponde aos pacientes nos quais metoprolol é recomendado
+para o uso em infarto agudo do miocárdio.
+
+Sistema Nervoso Central:
+
+Muito comum: fadiga e astenia.
+
+Comum: vertigem e cefaléia.
+
+Incomum: parestesia e cãibras musculares.
+
+Sistema Gastrointestinal:
+
+Comum: náuseas, dor abdominal, diarréia e constipação.
+
+Incomum: vômitos.
+
+Rara: boca seca.
+
+Sistema Hematológico:
+
+Muito rara: trombocitopenia, agranulocitose e púrpura trombocitopênica.
+
+Sistema Hepático:
+
+Rara: alterações de testes da função hepática.
+
+Muito rara: hepatite.
+Metabolismo:
+
+Incomum: ganho de peso.
+
+Músculo-esquelético:
+
+Muito rara: artralgia.
+
+Efeitos Psiquiátricos:
+
+Incomum: depressão, dificuldade de concentração, sonolência ou insônia e pesadelos.
+
+Rara: nervosismo, ansiedade e impotência/disfunção sexual.
+
+Muito rara: amnésia/comprometimento da memória, confusão e alucinações.
+
+Sistema Respiratório:
+
+Comum: dispnéia de esforço.
+
+Incomum: broncospasmo.
+
+Rara: rinite.
+
+Órgãos dos Sentidos:
+
+Rara: distúrbios da visão, irritação e/ou ressecamento dos olhos e conjuntivite.
+
+Muito rara: zumbido e distúrbios do paladar.
+
+Pele:
+
+Incomum: exantema (na forma de urticária psoriasiforme e lesões cutâneas distróficas) e sudorese aumentada.
+
+Rara: perda de cabelo.
+Muito rara: reações de fotossensibilidade e agravamento da psoríase.
+
+Em casos de eventos adversos, notifique pelo Sistema VigiMed, disponível no Portal da Anvisa.
+
+10. SUPERDOSE
+
+Sintomas
+
+Os sintomas da superdose podem incluir hipotensão, insuficiência cardíaca aguda, bradicardia e bradiarritmias,
+distúrbios na condução cardíaca e broncoespasmo.
+
+Tratamento
+
+O tratamento deve ser realizado em local com medidas de atendimento, monitoramento e supervisão
+adequados.
+
+Se necessário, lavagem gástrica e carvão ativado podem ser administrados.
+
+Atropina, fármacos estimulantes do sistema adrenérgico ou marcapasso podem ser utilizados para tratar
+bradicardia e desordens de condução.
+
+Hipotensão, insuficiência cardíaca aguda e choque devem ser adequadamente tratados com expansores de
+volume, injeção de glucagon (seguido de uma infusão intravenosa de glucagon, se necessário), administração
+intravenosa de fármacos estimulantes do sistema adrenérgico como a dobutamina, combinada com fármacos
+agonistas alfa 1 quando houver vasodilatação.
+O uso intravesono de Ca2+ também pode ser considerado.
+
+Broncoespasmo pode geralmente ser revertido por broncodilatadores.
+
+Em caso de intoxicação ligue para 0800 722 6001, se você precisar de mais orientações.
+
+III)

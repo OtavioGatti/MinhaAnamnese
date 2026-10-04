@@ -1,0 +1,529 @@
+FONTE: lote4__sitagliptina-fosfato__JANUVIA.pdf
+
+===== BLOCO 1 =====
+APRESENTAÇÕES
+JANUVIA®
+Comprimidos revestidos
+- 25 mg em embalagem com 28 comprimidos revestidos
+- 50 mg em embalagem com 28 comprimidos revestidos
+- 100 mg em embalagem com 14 ou 28 comprimidos revestidos
+
+USO ORAL
+
+USO ADULTO
+
+1. INDICAÇÕES
+Monoterapia
+JANUVIA® é indicado como adjuvante à dieta e à prática de exercícios para melhorar o controle glicêmico em pacientes com diabetes
+mellitus tipo 2.
+
+Terapia combinada com metformina
+JANUVIA® é indicado para pacientes com diabetes mellitus tipo 2 para melhorar o controle glicêmico em combinação com a
+metformina como terapia inicial ou quando o tratamento com agente único, associado a dieta e exercícios, não proporciona controle
+glicêmico adequado.
+
+Terapia combinada com sulfonilureia
+JANUVIA® é indicado para pacientes com diabetes mellitus tipo 2 para melhorar o controle glicêmico em combinação com uma
+sulfonilureia quando o tratamento com agente único, associado a dieta e exercícios, não proporciona controle glicêmico adequado.
+
+Terapia combinada com agonistas do PPARγ
+JANUVIA® é indicado para pacientes com diabetes mellitus tipo 2 para melhorar o controle glicêmico em combinação com agonistas
+do PPARγ (tiazolidinedionas) como terapia inicial ou quando o tratamento com agente único, mais dieta e exercícios, não proporciona
+controle glicêmico adequado.
+
+Terapia combinada com metformina e uma sulfonilureia
+JANUVIA® é indicado para pacientes com diabetes mellitus tipo 2 para melhorar o controle glicêmico em combinação com
+metformina e uma sulfonilureia quando a terapia dupla com esses agentes, mais dieta e exercícios, não proporciona controle glicêmico
+adequado.
+
+Terapia combinada com metformina e um agonista do PPARγ
+JANUVIA® é indicado para pacientes com diabetes mellitus tipo 2 para melhorar o controle glicêmico em combinação com
+metformina e um agonista do PPARγ quando a terapia dupla com esses agentes, mais dieta e exercícios, não proporciona controle
+glicêmico adequado.
+
+Terapia combinada com insulina
+JANUVIA® é indicado para pacientes com diabetes mellitus tipo 2 como adjuvante a dieta e exercícios para melhorar o controle
+glicêmico em combinação com insulina (associado ou não à metformina).
+
+3. CARACTERÍSTICAS FARMACOLÓGICAS
+Os comprimidos de JANUVIA® contêm sitagliptina, um inibidor potente e seletivo ativo por via oral da dipeptidil peptidase-4 (DPP-
+4).
+
+Mecanismo de Ação
+JANUVIA® pertence a uma classe de agentes antidiabéticos orais denominada inibidores da DPP-4, que melhoram o controle
+glicêmico em pacientes com diabetes mellitus tipo 2 por meio do aumento dos níveis de hormônios incretina ativos. Os hormônios
+incretina, inclusive o GLP-1 (peptídeo-1 glucagon símile) e GIP (polipeptídeo insulinotrópico dependente de glicose), são liberados
+pelo intestino ao longo do dia e seus níveis aumentam em resposta a uma refeição. As incretinas são parte de um sistema endóg eno
+envolvido na regulação fisiológica da homeostase da glicose. Quando as concentrações sanguíneas de glicose estão normais ou
+elevadas, o GLP-1 e o GIP aumentam a síntese e a liberação de insulina pelas células β-pancreáticas por meio de vias sinalizadoras
+intracelulares que envolvem o AMP cíclico. O tratamento com GLP-1 ou com inibidores da DPP-4 em modelos animais de diabetes
+mellitus tipo 2 demonstrou melhorar a responsividade das células β à glicose circulante estimulando a biossíntese e a liberação de
+insulina. Com níveis de insulina mais altos, aumenta a captação tecidual de glicose. Além disso, o GLP-1 diminui a secreção de
+glucagon pelas células α-pancreáticas. A redução das concentrações de glucagon, associada a níveis mais altos de insulina, resulta em
+redução da produção hepática de glicose e consequente redução da glicemia. Os efeitos do GLP-1 e GIP são dependentes da glicose tal
+que quando as concentrações sanguíneas de glicose estão baixas, não são observadas estimulação da liberação de insulina e sup ressão
+da secreção de glucagon pelo GLP-1. Tanto para o GLP-1 como para o GIP, o estímulo à secreção de insulina ocorre quando a
+glicemia encontra-se acima das concentrações normais. Além disso, O GLP-1 não impede a resposta normal do glucagon à
+hipoglicemia. A atividade do GLP-1 e do GIP é limitada pela enzima DPP-4, que hidrolisa rapidamente os hormônios incretina para
+produzir produtos inativos. A sitagliptina evita a hidrólise dos hormônios incretina pela DPP-4, aumentando consequentemente as
+concentrações plasmáticas das formas ativas de GLP-1 e GIP. Ao aumentar os níveis de incretina ativa, a sitagliptina aumenta a
+liberação de insulina e diminui os níveis de glucagon de forma dependente da glicose. Em pacientes com diabetes mellitus tipo 2 com
+hiperglicemia, essas alterações nos níveis de insulina e de glucagon resultam em níveis mais baixos de hemoglobina A1c (HbA1c) e
+concentrações mais baixas de glicemia de jejum e pós-prandial. Esse mecanismo dependente da glicose é diferente do mecanismo
+observado com as sulfonilureias, no qual a insulina é liberada mesmo quando os níveis de glicose estão baixos, o que pode levar à
+hipoglicemia em pacientes com diabetes mellitus tipo 2 e em indivíduos normais. A sitagliptina é um inibidor potente e altamente
+seletivo da enzima DPP-4 e não inibe as enzimas estreitamente relacionadas DPP-8 ou DPP-9 em concentrações terapêuticas.
+Farmacocinética
+A farmacocinética da sitagliptina foi amplamente caracterizada em indivíduos sadios e em pacientes com diabetes mellitus tipo 2.
+Após a administração de uma dose de 100 mg por via oral a voluntários sadios, a sitagliptina foi rapidamente absorvida e as
+concentrações plasmáticas máximas (Tmáx mediano) ocorreram 1 a 4 horas após a dose. A área sob a curva (AUC) plasmática da
+sitagliptina aumentou de forma proporcional à dose. Após uma dose única de 100 mg por via oral a voluntários sadios, a AUC
+plasmática média da sitagliptina foi de 8,52 mcgM•h, a concentração máxima (Cmáx) foi de 950 nM e a meia-vida terminal aparente (t½)
+foi de 12,4 horas. No estado de equilíbrio, a AUC plasmática da sitagliptina aumentou aproximadamente 14% após doses de 100 mg
+em comparação com a primeira dose. Os coeficientes de variação intraindividuais e interindividuais para a AUC da sitagliptina foram
+pequenos (5,8% e 15,1%). A farmacocinética da sitagliptina foi, em geral, semelhante em voluntários sadios e em pacientes com
+diabetes mellitus tipo 2.
+Absorção: a biodisponibilidade absoluta da sitagliptina é de aproximadamente 87%. Uma vez que a coadministração de uma refeição
+rica em gordura com JANUVIA® não exerceu efeito na farmacocinética, JANUVIA® pode ser administrado com ou sem alimentos.
+Distribuição: após a administração de uma dose única de 100 mg de sitagliptina por via intravenosa a voluntários sadios, o volume
+médio de distribuição no estado de equilíbrio é de aproximadamente 198 litros. A fração da sitagliptina que se liga reversivelmente às
+proteínas plasmáticas é pequena (38%).
+Metabolismo: a sitagliptina é eliminada principalmente de forma inalterada na urina; o metabolismo é uma via de menor importância.
+Aproximadamente 79% da sitagliptina é excretada de forma inalterada na urina.
+Após uma dose oral de [14C]sitagliptina, aproximadamente 16% da radioatividade foi excretada na forma de metabólitos de
+sitagliptina. Seis metabólitos foram detectados em níveis-traço e não se espera que contribuam para a atividade inibitória da DPP-4
+plasmática da sitagliptina. Estudos in vitro indicaram que a principal enzima responsável pelo metabolismo limitado da sitagliptina foi
+a CIP3A4, com contribuição da CIP2C8.
+Eliminação: após a administração de uma dose de [14C]sitagliptina por via oral a voluntários sadios, aproximadamente 100% da
+radioatividade administrada foi eliminada nas fezes (13%) ou na urina (87%) uma semana após a administração. A t½ terminal aparente
+após uma dose de 100 mg de sitagliptina por via oral foi de aproximadamente 12,4 horas e a depuração renal foi de aproximadamente
+350 mL/min.
+A eliminação da sitagliptina ocorre principalmente por excreção renal e envolve secreção tubular ativa. A sitagliptina é um substrato
+para o transportador-3 aniônico orgânico humano (hOAT-3), que pode estar envolvido na eliminação renal da sitagliptina. A
+relevância clínica do hOAT-3 no transporte da sitagliptina não foi estabelecida. A sitagliptina também é um substrato da glicoproteína-
+p, que também pode estar envolvida na mediação da eliminação renal da sitagliptina. No entanto, a ciclosporina, um inibidor da
+glicoproteína-p, não reduziu a depuração renal da sitagliptina.
+
+Populações Específicas
+Comprometimento renal: foi conduzido um estudo aberto, de dose única, para avaliar a farmacocinética de JANUVIA® (dose de 50
+mg) em pacientes com graus variados de comprometimento renal crônico em comparação com voluntários sadios utilizados como
+grupo controle. O estudo incluiu pacientes com comprometimento renal leve, moderado e grave, assim como pacientes com IRT em
+hemodiálise. Adicionalmente, os efeitos do comprometimento renal na farmacocinética da sitagliptina em pacientes com diabetes tipo
+2 e comprometimento renal leve, moderado ou grave (incluindo IRT) foram avaliados utilizando análises farmacocinéticas
+populacionais.
+Em comparação aos indivíduos normais e saudáveis do grupo controle, a AUC plasmática da sitagliptina aumentou aproximadam ente
+1,2 e 1,6 vez em pacientes com comprometimento renal leve (eGFR ≥ 60 mL/min/1,73 m2 a < 90 mL/min/1,73 m2) e em pacientes com
+comprometimento renal moderado (eGFR ≥ 45 mL/min/1,73 m2 a < 60 mL/min/1,73 m2), respectivamente. Como aumentos dessa
+magnitude não são clinicamente relevantes, não é necessário ajuste de dose para estes pacientes.
+A AUC plasmática da sitagliptina aumentou aproximadamente 2 vezes em pacientes com comprometimento renal moderado (eGFR
+≥ 30 mL/min/1,73 m2 a < 45 mL/min/1,73 m2), aproximadamente 4 vezes em pacientes com comprometimento renal grave (eGFR
+< 30 mL/min/1,73 m2), incluindo pacientes com IRT em hemodiálise. A sitagliptina foi modestamente removida por hemodiálise
+(13,5% durante uma sessão de hemodiálise de 3 a 4 horas, iniciando-se 4 horas após a dose). Para atingir concentrações plasmáticas de
+sitagliptina semelhantes às observadas em pacientes com função renal normal, recomenda-se doses mais baixas para pacientes com
+eGFR <45 mL/min/1,73 m2 (veja POSOLOGIA E MODO DE USAR, Pacientes com Comprometimento Renal).
+Comprometimento hepático: após a administração de uma dose única de 100 mg de JANUVIA® a pacientes com comprometimento
+hepático moderado (escore de Child-Pugh de 7 a 9), a AUC média e a Cmáx da sitagliptina aumentaram aproximadamente 21% e 13%,
+respectivamente, em comparação aos controles pareados sadios. Essas diferenças não são consideradas clinicamente significativas.
+Não é necessário ajuste posológico de JANUVIA® para pacientes com comprometimento hepático leve ou moderado.
+Não existe experiência clínica em pacientes com comprometimento hepático grave (escore de Child-Pugh > 9). No entanto, como a
+sitagliptina é eliminada principalmente por via renal, não se espera que o comprometimento hepático grave afete a farmacocinética da
+sitagliptina.
+Idosos: não é necessário ajuste posológico com base na idade. A idade não exerceu impacto clinicamente significativo na
+farmacocinética da sitagliptina com base em uma análise da farmacocinética populacional dos dados de estudo s fases I e II. Os
+voluntários idosos (65 a 80 anos de idade) apresentaram concentrações plasmáticas da sitagliptina aproximadamente 19% mais al tas
+em comparação com os voluntários mais jovens.
+Pacientes pediátricos: um estudo clínico conduzido com JANUVIA® não demonstrou eficácia significativa em pacientes de 10 a 17
+anos. Não foram conduzidos estudos com JANUVIA® em pacientes pediátricos < 10 anos de idade.
+Sexo: não é necessário ajuste posológico com base no sexo. O sexo não exerceu efeito clinicamente significativo na farmacocinética
+da sitagliptina com base em uma análise composta dos dados de farmacocinética de estudos fase I e em uma análise de farmacocinética
+populacional dos dados de estudos fases I e II.
+Raça: não é necessário ajuste posológico com base na raça. A raça não exerceu efeito clinicamente significativo na farmacocinética da
+sitagliptina com base em uma análise composta dos dados de farmacocinética de estudos fase I e em uma análise de farmacocinét ica
+populacional dos dados de estudos fases I e II, que incluíram voluntários brancos, hispânicos, negros, asiáticos e de outros grupos
+raciais.
+Índice de Massa Corporal (IMC): não é necessário ajuste posológico com base no IMC. O índice de massa corporal não exerceu
+efeito clinicamente significativo na farmacocinética da sitagliptina com base em uma análise composta dos dados de farmacocinética
+de estudos fase I e em uma análise de farmacocinética populacional dos dados de estudos fases I e II.
+Diabetes mellitus tipo 2: a farmacocinética da sitagliptina em pacientes com diabetes tipo 2 é, em geral, semelhante à de voluntários
+sadios.
+
+Farmacodinâmica
+Geral: em pacientes com diabetes tipo 2, a administração de doses únicas de JANUVIA® por via oral leva à inibição da atividade
+enzimática da dipeptidil peptidase-4 (DPP-4) por um período de 24 horas, o que resulta em aumento de 2 a 3 vezes nos níveis
+circulantes de GLP-1 e GIP ativos, aumento dos níveis plasmáticos de insulina e de peptídeo-C, redução das concentrações de
+glucagon, redução da glicemia de jejum e redução dos picos glicêmicos após uma sobrecarga oral de glicose ou refeição.
+Em um estudo que envolveu pacientes com diabetes tipo 2 inadequadamente controlados com monoterapia com metformina, os níveis
+de glicose monitorados ao longo do dia foram significativamente mais baixos entre os pacientes que receberam 100 mg/dia de
+sitagliptina (50 mg duas vezes ao dia) em combinação com metformina em relação aos observados entre os pacientes que recebera m
+placebo e metformina (veja Figura 2).
+
+Figura 2: Perfil de Glicose Plasmática nas 24 Horas após Tratamento de Quatro Semanas com Sitagliptina 50 mg Duas Vezes
+ao Dia e Metformina ou Placebo e Metformina
+
+ Café da manhã Almoço Jantar
+ 230
+ 210
+ 190
+ 170
+ 150
+ 130
+ 110
+ Dia 1 Dia 2
+ TempoTime
+
+ Sitagliptin and Metformin Placebo and Metformin Sitagliptina e Metformina Placebo e Metformina
+
+Nos estudos clínicos fase III, com duração de 18 e 24 semanas, o tratamento com 100 mg/dia de JANUVIA® em pacientes com
+diabetes tipo 2 melhorou significativamente a função das células beta, conforme determinado por vários marcadores, inclusive
+HOMA-BETA (modelo de avaliação da homeostase – função das células beta), razão pró-insulina:insulina e medidas de
+responsividade das células beta ao teste de tolerância à refeição com mensuração periódica.
+Nos estudos fase II, a administração de 50 mg de JANUVIA® duas vezes ao dia não proporcionou eficácia glicêmica adicional em
+comparação com a dose de 100 mg uma vez ao dia.
+
+Em um estudo randômico, controlado com placebo, duplo-cego, duplo-simulado, cruzado, com quatro períodos e que incluiu
+voluntários adultos saudáveis, os efeitos sobre a concentração plasmática pós-prandial de GLP-1 ativo e total e de glicose após a
+coadministração de sitagliptina com metformina foram comparados aos efeitos após a administração de sitagliptina isoladamente,
+metformina isoladamente, ou placebo, cada qual administrado por dois dias. A concentração média ponderada incremental de GLP -1
+nas 4 horas pós-prandiais aumentaram em aproximadamente 2 vezes tanto após a administração da sitagliptina isoladamente, como
+após metformina isoladamente, em comparação com o placebo. Os efeitos sobre a concentração de GLP-1 ativo após a
+coadministração de sitagliptina e metformina foram aditivos, com aumento da concentração de GLP-1 ativo em aproximadamente 4
+vezes em comparação com o placebo. A sitagliptina isoladamente aumentou apenas as concentrações de GLP-1 ativo, refletindo a
+inibição de DPP-4, ao passo que a metformina isoladamente aumentou a concentração de GLP-1 ativo e total em um grau semelhante.
+Esses dados são consistentes com os diferentes mecanismos para o aumento das concentrações de GLP-1 ativo. Os resultados do
+estudo também demonstraram que a sitagliptina, mas não a metformina, aumenta as concentrações de GIP ativo.
+
+Nos estudos que envolveram voluntários sadios, JANUVIA® não diminuiu a glicemia nem causou hipoglicemia, o que sugere que as
+ações insulinotrópicas e supressoras de glucagon do fármaco são dependentes da glicose.
+
+Efeitos na pressão arterial: em um estudo cruzado, randômico, controlado com placebo, conduzido em pacientes hipertensos que
+recebiam um ou mais anti-hipertensivos (inclusive inibidores da enzima conversora de angiotensina, antagonistas da angiotensina II,
+bloqueadores dos canais de cálcio, betabloqueadores e diuréticos), a coadministração de JANUVIA® foi geralmente bem tolerada.
+Nesses pacientes, JANUVIA® exerceu efeito redutor discreto na pressão arterial; em comparação com o placebo, o tratamento com 100
+mg/dia de JANUVIA® reduziu a pressão arterial sistólica ambulatorial média de 24 horas em aproximadamente 2 mmHg. Não foram
+observadas reduções em voluntários normotensos.
+
+Eletrofisiologia cardíaca: em um estudo cruzado, randômico, controlado com placebo, 79 voluntários sadios receberam uma dose
+única de 100 mg e de 800 mg de JANUVIA® (8 vezes a dose recomendada) por via oral e placebo. A dose recomendada de 100 mg
+não exerceu efeito no intervalo QTc na concentração plasmática máxima ou em qualquer outro ponto de tempo durante o estudo. Após
+a dose de 800 mg, o aumento máximo da alteração média do intervalo QTc corrigida pelo placebo em relação ao período basal, tr ês
+horas após a dose foi de 8,0 ms; este pequeno aumento não foi considerado clinicamente significativo. As concentrações plasmá ticas
+máximas de 800 mg de sitagliptina foram aproximadamente 11 vezes mais altas do que as concentrações máximas após uma dose de
+100 mg.
+
+Os pacientes com diabetes mellitus tipo 2 que receberam 100 mg (N = 81) ou 200 mg de JANUVIA® (N = 63) diariamente não
+apresentaram alterações significativas no intervalo QTc com base nos dados de ECG obtidos no momento da concentração plasmática
+máxima esperada.
+
+4. CONTRAINDICAÇÕES
+JANUVIA® é contraindicado para pacientes com hipersensibilidade a qualquer um dos seus componentes (veja ADVERTÊNCIAS E
+PRECAUÇÕES, Reações de Hipersensibilidade e REAÇÕES ADVERSAS).
+
+5. ADVERTÊNCIAS E PRECAUÇÕES
+JANUVIA® não deve ser utilizado por pacientes com diabetes tipo 1 ou para o tratamento de cetoacidose diabética.
+Pancreatite: houve relatos de pancreatite aguda, incluindo pancreatite hemorrágica ou necrosante fatal e não fatal (veja REAÇÕES
+ADVERSAS), em pacientes que tomaram sitagliptina. Os pacientes devem ser informados do sintoma característico da pancreatite
+aguda: dor abdominal grave e persistente. A resolução da pancreatite foi observada após a descontinuação do tratamento com
+sitagliptina. Se houver suspeita de pancreatite, JANUVIA® e outros medicamentos potencialmente suspeitos devem ser interrompidos.
+
+Uso em pacientes com comprometimento renal: JANUVIA® é excretado por via renal. Para atingir as concentrações plasmáticas de
+JANUVIA® semelhantes às de pacientes com função renal normal, são recomendadas doses mais baixas para pacientes com eGFR< 45
+mL/min/1,73 m2, bem como para pacientes com IRT com necessidade de hemodiálise ou diálise peritoneal (veja POSOLOGIA E
+MODO DE USAR, Pacientes com Comprometimento Renal).
+
+Hipoglicemia na combinação com uma sulfonilureia ou com insulina: nos estudos clínicos de JANUVIA® como monoterapia e
+como parte da terapia combinada com agentes não conhecidos por causar hipoglicemia (por exemplo, metformina ou agonistas do
+PPAR [tiazolidinedionas]), a incidência de hipoglicemia relatada com JANUVIA® foi semelhante à observada em pacientes que
+recebiam placebo.
+A exemplo de outros agentes anti-hiperglicêmicos, quando JANUVIA® foi utilizado em combinação com uma sulfonilureia ou insulina,
+medicamentos que sabidamente causam hipoglicemia, a incidência de hipoglicemia induzida por sulfonilureia ou insulina foi maior em
+relação ao placebo (veja REAÇÕES ADVERSAS). Portanto, para reduzir o risco de hipoglicemia induzida por sulfonilureia ou
+insulina, deve-se considerar a redução da dose de sulfonilureia ou insulina (veja POSOLOGIA E MODO DE USAR).
+
+Reações de hipersensibilidade: após a comercialização, houve relatos de reações graves de hipersensibilidade em pacientes tratados
+com JANUVIA®. Essas reações incluem anafilaxia, angioedema e condições exfoliativas da pele, inclusive síndrome de Stevens-
+Johnson. Como estas reações são relatadas voluntariamente por uma população de tamanho incerto, geralmente não é possível estimar
+de forma confiável a frequência ou estabelecer relação causal com a exposição ao medicamento. O início destas reações ocorreu nos
+primeiros 3 meses após o início do tratamento com JANUVIA®, com alguns relatos após a primeira dose. Se houver suspeita de reação
+de hipersensibilidade, deve-se descontinuar JANUVIA®, avaliar outras causas possíveis para o evento e instituir um tratamento
+alternativo para o diabetes (veja CONTRAINDICAÇÕES e REAÇÕES ADVERSAS).
+Atenção: Contém os corantes dióxido de titânio, óxido de ferro amarelo e óxido de ferro vermelho.
+
+Penfigoide bolhoso: após a comercialização, houve relatos de casos de penfigoide bolhoso relacionados ao uso de inibidores de DPP-
+4, que exigiram hospitalização. Nos casos relatados, os pacientes geralmente se recuperaram com a administração de
+imunossupressores tópicos ou sistêmicos e a descontinuação dos inibidores de DPP-4. Oriente os pacientes a relatarem o
+desenvolvimento de bolhas ou erosões na pele enquanto estiverem recebendo JANUVIA®. Em caso de suspeita de penfigoide bolhoso,
+JANUVIA® deve ser descontinuado, e deve-se considerar o encaminhamento do paciente ao dermatologista, para que ele receba
+diagnóstico e tratamento apropriados.
+Gravidez: categoria de risco B.
+A sitagliptina não foi teratogênica para ratos em doses orais de até 250 mg/kg ou para coelhos que receberam 125 mg/kg durante a
+organogênese (até 32 e 22 vezes, respectivamente, a exposição humana com base na dose diária recomendada de 100 mg/dia para
+humanos adultos). Em ratos, observou-se discreto aumento da incidência de malformações das costelas fetais (ausência, hipoplasia e
+costelas flutuantes) com doses orais de 1.000 mg/kg/dia (aproximadamente 100 vezes a exposição em humanos com base na dose
+diária recomendada de 100 mg/dia para humanos adultos). Na prole de ratos que receberam doses orais de 1.000 mg/kg/dia, foi
+observada discreta redução do peso corporal médio pré-desmame em ambos os sexos e ganho de peso corporal pós-desmame em
+machos. No entanto, estudos de reprodução animal nem sempre são preditivos da resposta humana.
+Não existem estudos adequados e bem controlados conduzidos em mulheres grávidas, portanto, não se conhece a segurança de
+JANUVIA® nessa população. O uso de JANUVIA®, assim como o de outros agentes anti-hiperglicêmicos orais, não é recomendado na
+gravidez.
+Este medicamento não deve ser utilizado por mulheres grávidas sem orientação médica ou do cirurgião-dentista.
+Lactação: a sitagliptina é secretada no leite de ratas lactantes. Não se sabe se a sitagliptina é secretada no leite humano, portanto
+JANUVIA® não deve ser utilizado por lactantes.
+Uso criterioso no aleitamento ou na doação de leite humano: O uso deste medicamento no período da lactação depende da
+avaliação e acompanhamento do seu médico ou cirurgião-dentista.
+Uso pediátrico: o tratamento com JANUVIA® 100 mg não melhorou significativamente a HbA1C em 20 semanas. Em pacientes
+pediátricos de 10 a 17 anos com diabetes tipo 2, o perfil de efeitos colaterais foi comparável ao observado em adultos. JANUVIA® não
+foi estudado em pacientes pediátricos com menos de 10 anos de idade.
+
+Uso em idosos: nos estudos clínicos, a segurança e a eficácia de JANUVIA® em idosos (≥ 65 anos, N = 409) foram comparáveis às
+observadas em pacientes mais jovens (< 65 anos). Não é necessário ajuste posológico com base na idade. A probabilidade de pacientes
+idosos apresentarem comprometimento renal é maior; assim como para outros pacientes, podem ser necessários ajustes posológicos
+para os idosos na presença de comprometimento renal significativo (veja 8. POSOLOGIA E MODO DE USAR, Pacientes com
+comprometimento renal).
+Dirigir e operar máquinas: não foi realizado nenhum estudo sobre os efeitos de JANUVIA® sobre a capacidade de dirigir e operar
+máquinas. No entanto, não se espera que JANUVIA® afete a capacidade de dirigir veículos e operar máquinas.
+
+Eventos macrovasculares: O Estudo de Segurança Cardiovascular TECOS não indicou aumento de risco cardiovascular com o uso de
+JANUVIA®. Não existem dados clínicos que comprovem redução de risco ou benefício cardiovascular como uso desta medicação.
+
+6. INTERAÇÕES MEDICAMENTOSAS
+JANUVIA® pode ser tomado com ou sem alimentos.
+
+Avaliação In Vitro de Interações Medicamentosas:
+A sitagliptina não inibe as isoenzimas do sistema do citocromo P450 (CIP) 3A4, 2C8, 2C9, 2D6, 1A2, 2C19 ou 2B6 e não induz a
+isoenzima 3A4 desse sistema enzimático. A sitagliptina é um substrato da glicoproteína-p, mas não inibe o transporte de digoxina
+mediado por glicoproteína-p. Com base nesses resultados, considera-se improvável que a sitagliptina cause interações com outros
+fármacos que utilizem essas vias metabólicas.
+A sitagliptina não se liga em grande extensão às proteínas plasmáticas. Portanto, é muito baixa a propensão de que a sitagliptina
+participe de uma interação fármaco-fármaco clinicamente significativa que seja mediada pelo deslocamento da ligação às proteínas
+plasmáticas.
+
+Avaliação In Vivo de Interações Medicamentosas
+Efeito da Sitagliptina sobre Outros Fármacos
+Nos estudos clínicos, como se descreve a seguir, a sitagliptina não alterou significativamente a farmacocinética da metformina, da
+glibenclamida, da sinvastatina, da rosiglitazona, da varfarina ou dos anticoncepcionais orais, fornecendo evidências in vivo de baixa
+propensão a causar interações medicamentosas com substratos do citocromo P450 3A4, citocromo P450 2C8, citocromo P450 2C9 e
+do transportador orgânico catiônico (TOC). Doses múltiplas da sitagliptina aumentaram discretamente as concentrações de digoxina;
+no entanto, esses aumentos não parecem ser clinicamente significativos e não são atribuídos a um mecanismo específico.
+Metformina: a coadministração de doses múltiplas duas vezes ao dia de sitagliptina com metformina, um substrato do transportador
+orgânico catiônico, não alterou significativamente a farmacocinética da metformina em pacientes com diabetes mellitus tipo 2,
+portanto a sitagliptina não é um inibidor do transporte mediado pelo transportador orgânico catiônico.
+Sulfonilureias: a farmacocinética de uma dose única de glibenclamida, um substrato do citocromo P450 2C9, não foi
+significativamente alterada em voluntários que receberam doses múltiplas de sitagliptina. Não são esperadas interações clinicamente
+significativas com outras sulfonilureias (por exemplo, glipizida, tolbutamida e glimepirida), as quais, a exemplo da glibenclamida, são
+eliminadas principalmente pelo citocromo P450 2C9.
+Sinvastatina: a farmacocinética de uma dose única de sinvastatina, um substrato do citocromo P450 3A4, não foi alterada
+significativamente em voluntários que receberam doses múltiplas diárias de sitagliptina, portanto a sitagliptina não é um inibidor do
+metabolismo mediado pelo citocromo P450 3A4.
+Tiazolidinedionas: a farmacocinética de uma dose única de rosiglitazona não foi alterada significativamente em voluntários que
+receberam doses múltiplas diárias da sitagliptina, portanto a sitagliptina não é um inibidor do metabolismo mediado pelo citocromo
+P450 2C8. Não são esperadas interações clinicamente significativas com a pioglitazona, porque o metabolismo da pioglitazona é
+mediado predominantemente pelo citocromo P450 2C8 ou pelo citocromo P450 3A4.
+Varfarina: doses múltiplas diárias de sitagliptina não alteraram significativamente a farmacocinética – conforme determinado pela
+medição dos enantiômeros S(-) ou R(+) varfarina – ou a farmacodinâmica – conforme determinado pela medição da INR da
+protrombina – de uma dose única de varfarina. Uma vez que a S(-) varfarina é metabolizada principalmente pelo citocromo P450 2C9,
+esses dados também fundamentam a conclusão de que a sitagliptina não é um inibidor do citocromo P450 2C9.
+Anticoncepcionais orais: a coadministração com a sitagliptina não alterou significativamente a farmacocinética no estado de
+equilíbrio da noretindrona ou do etinilestradiol.
+Digoxina: a sitagliptina exerce efeito mínimo na farmacocinética da digoxina. Após a administração de 0,25 mg de digoxina
+concomitantemente com 100 mg de JANUVIA® diariamente por 10 dias, a AUC plasmática da digoxina aumentou 11% e a Cmáx
+plasmática, 18%. Esses aumentos não são considerados clinicamente significativos.
+
+Efeitos de Outros Fármacos sobre a Sitagliptina
+Os dados clínicos descritos abaixo sugerem que a sitagliptina não é passível de interações clinicamente significativas quando
+coadministrada com os seguintes medicamentos:
+Metformina: a coadministração de doses múltiplas duas vezes ao dia de metformina com sitagliptina não alterou significativamente a
+farmacocinética da sitagliptina em pacientes com diabetes mellitus tipo 2.
+Ciclosporina: foi conduzido um estudo para determinar o efeito da ciclosporina, um potente inibidor da glicoproteína -p, sobre a
+farmacocinética da sitagliptina. A coadministração de uma dose única de 100 mg de JANUVIA® por via oral e de uma dose única de
+600 mg de ciclosporina por via oral aumentou a AUC e a Cmáx da sitagliptina aproximadamente 29% e 68%, respectivamente. Essas
+modestas alterações na farmacocinética da sitagliptina não foram consideradas clinicamente significativas. A depuração renal da
+sitagliptina também não foi alterada significativamente. Portanto, não são esperadas interações significativas com outros inibidores da
+glicoproteína-p.
+Farmacocinética populacional: foram conduzidas análises de farmacocinética populacional em pacientes com diabetes mellitus tipo
+2. Os medicamentos concomitantes não causaram efeito clinicamente significativo sobre a farmacocinética da sitagliptina. Os
+medicamentos avaliados foram aqueles comumente administrados a pacientes com diabetes mellitus tipo 2, inclusive agentes
+hipolipemiantes (por exemplo, vastatinas, fibratos, ezetimiba), agentes antiplaquetários (por exemplo, clopidogrel), anti-hipertensivos
+(por exemplo, inibidores da ECA, bloqueadores do receptor da angiotensina, betabloqueadores, bloqueadores dos canais de cálcio,
+hidroclorotiazida), analgésicos e anti-inflamatórios não-esteroides (por exemplo, naproxeno, diclofenaco, celecoxibe), antidepressivos
+(por exemplo., bupropiona, fluoxetina, sertralina), anti-histamínicos (por exemplo, cetirizina), inibidores da bomba de prótons (por
+exemplo, omeprazol, lansoprazol) e medicamentos para disfunção erétil (por exemplo, sildenafila).
+
+8. POSOLOGIA E MODO DE USAR
+A dose recomendada de JANUVIA® é de 100 mg em dose única diária como monoterapia ou em terapia combinada com metformina,
+uma sulfonilureia, insulina (associada ou não com metformina), um agonista de PPAR (tiazolidinedionas), metformina e uma
+sulfonilureia, ou metformina e um agonista de PPAR. JANUVIA® pode ser tomado com ou sem alimentos.
+
+Quando JANUVIA® for usado em combinação com uma sulfonilureia ou com insulina, deve-se considerar uma dose menor de
+sulfonilureia ou de insulina, para reduzir o risco de hipoglicemia induzida por sulfonilureia ou por insulina (veja ADVERTÊNCIAS E
+PRECAUÇÕES, Hipoglicemia na combinação com uma sulfonilureia ou com insulina).
+
+Pacientes com Comprometimento Renal
+Como há um ajuste de dose com base na função renal, recomenda-se a avaliação da função renal antes de iniciar JANUVIA® e
+periodicamente a partir de então.
+
+Para pacientes com comprometimento renal leve (taxa de filtração glomerular [ eGFR] ≥ 60 mL/min/1,73 m2 a < 90 mL/min/1,73 m2),
+não é necessário ajuste posológico de JANUVIA®.
+
+Para pacientes com comprometimento renal moderado (eGFR ≥ 45 mL/min.1,73 m2 a < 60 mL/min.1,73 m2), nenhum ajuste de dose
+para JANUVIA® é necessário.
+
+Para pacientes com comprometimento renal moderado (eGFR ≥ 30 ml/min/1,73 m2 a <45 mL/min//1,73 m2), a posologia de
+JANUVIA® é de 50 mg em dose única diária.
+
+Para pacientes com comprometimento renal grave (eGFR ≥ 15 mL/min/1,73 m2 a < 30 mL/min/1,73 m2) ou com IRT (eGFR
+< 15 mL/min/1,73 m2), incluindo aqueles que necessitam de hemodiálise ou diálise peritoneal, a dose de JANUVIA® é de 25 mg em
+dose única diária. JANUVIA® pode ser administrado independentemente dos horários da diálise.
+
+9. REAÇÕES ADVERSAS
+Reações adversas graves incluindo pancreatite e reações de hipersensibilidade foram relatadas. Hipoglicemia foi relatada na combinação
+com sulfonilureia (4.7 %-13.8 %) e insulina (9.6 %).
+
+As reações adversas consideradas como relacionadas ao medicamento (exceto quando observadas), relatadas em pacientes tratados
+com sitagliptina, ocorrendo em taxas maiores (> 0,2% e diferença > 1 paciente) do que as obtidas em pacientes tratados com pl acebo
+estão listadas abaixo por classe de sistema de órgãos e frequência (Tabela 12). As frequências são definidas como: muito comum (≥
+1/10); comum (≥ 1/100 a < 1/10); incomum (≥ 1/1.000 a < 1/100); raro (≥ 1/10.000 a < 1/1.000); muito raro (< 1/10.000) e
+desconhecida.
+
+Tabela 12
+Frequência de Reações Adversas Identificadas nos Estudos Clínicos Controlados com Placebo em Monoterapia com Sitagliptina e
+na Experiência Pós-comercialização
+ Reação Adversa Frequência da reação adversa
+
+ Distúrbios do sangue e sistema linfático
+ Trombocitopenia Rara
+ Distúrbios do Sistema Imune
+
+ Reações de hipersensibilidade incluindo respostas
+ anafiláticas*, † Frequência desconhecida
+
+ Distúrbios Metabólicos e Nutricionais
+
+ Hipoglicemia† Comum
+
+ Distúrbios do Sistema Nervoso
+
+ Cefaleia Comum
+
+ Tontura Incomum
+
+ Respiratory, thoracic and mediastinal disorders
+ Distúrbios respiratórios, toráxicos e mediastenais
+
+ doença pulmonar intersticial* Frequência desconhecida
+
+ Distúrbios Gastrintestinais
+
+ Constipação Incomum
+
+ Vômito* Frequência desconhecida
+
+ Pancreatite aguda*, ‡, † Frequência desconhecida
+
+ Pancreatite hemorrágica e necrotizante fatal e não
+ fatal*, † Frequência desconhecida
+
+ Distúrbios da Pele e do Tecido Subcutâneo
+
+ Prurido* Incomum
+
+ Angioedema*,† Frequência desconhecida
+
+ Erupção cutânea*, † Frequência desconhecida
+
+ Urticária*, † Frequência desconhecida
+
+ Vasculite cutânea*, † Frequência desconhecida
+
+ Condições de pele esfoliativas incluindo síndrome de
+ Stevens-Johnson*, † Frequência desconhecida
+
+ Lesão dermatológica penfigoide* Frequência desconhecida
+
+ Distúrbios Musculoesqueléticos e do Tecido Conjuntivo
+
+ Artralgia* Frequência desconhecida
+
+ Mialgia* Frequência desconhecida
+
+ Dor nas costas* Frequência desconhecida
+
+ Artropatia* Frequência desconhecida
+
+ Distúrbios Renais e Urinários
+
+ Comprometimento da função renal* Frequência desconhecida
+
+ Insuficiência renal aguda* Frequência desconhecida
+
+*As reações adversas foram identificadas através da vigilância pós-comercialização
+†Veja 5. ADVERTÊNCIAS E PRECAUÇÕES
+‡Veja Estudo de Segurança Cardiovascular TECOS abaixo.
+
+Além das reações adversas relacionadas ao medicamento descritas acima, reações adversas relatadas independentemente da relação causal
+com o medicamento e ocorrendo em pelo menos 5% e mais comumente em pacientes tratados com sitagliptina, incluíram infecção do trato
+respiratório superior e nasofaringite. Reações adversas adicionais reportadas independentemente da relação causal com o medicamento que
+ocorreram mais frequentemente em pacientes tratados com sitagliptina (não atingindo o nível de 5%, mas ocorrendo com uma incidência>
+0,5% maior com sitagliptina do que no grupo controle) incluíam osteoartrite e dor nas extremidades.
+
+Algumas reações adversas foram observadas mais frequentemente em estudos sobre o uso combinado de sitagliptina com outros
+medicamentos antidiabéticos do que nos estudos de monoterapia com sitagliptina. Estes incluem hipoglicemia (frequência muito comum
+com a associação de sulfonilureia e metformina), influenza (comum com insulina, com ou sem metformina), náuseas e vômitos (comum
+com metformina), flatulência (comum com metformina ou pioglitazona), constipação (comum com a combinação de sulfonilureia e
+metformina), edema periférico (comum com pioglitazona ou com a combinação de pioglitazona e metformina), sonolência e diarréia
+(incomum com metformina) e boca seca (incomum com insulina, com ou sem metformina).
+
+JANUVIA® foi geralmente bem tolerado nos estudos clínicos controlados tanto em monoterapia como em terapia combinada e a
+descontinuação da terapia devido a eventos adversos clínicos também foi semelhante à observada com o placebo.
+
+Pancreatite: em uma análise combinada de 19 estudos clínicos duplos-cegos que incluiu dados de 10.246 pacientes distribuídos de
+forma randômica para receber sitagliptina 100 mg/dia (N = 5.429) ou controle correspondente (ativo ou placebo) (N = 4.817), a
+incidência de pancreatite aguda não adjudicada foi de 0,1 por 100 pacientes-ano em cada grupo (4 pacientes com um evento em
+4.708 pacientes-ano para o grupo da sitagliptina e 4 pacientes com um evento em 3.942 pacientes-ano para o grupo controle). Veja
+também Estudo de Segurança Cardiovascular TECOS, a seguir. (Veja ADVERTÊNCIAS E PRECAUÇÕES, Pancreatite).
+Nenhuma alteração clinicamente significativa nos sinais vitais ou no ECG (incluindo no intervalo QTc) foi observada em pacien tes
+tratados com JANUVIA®.
+
+Estudo de Segurança Cardiovascular TECOS:
+O estudo de avaliação de desfechos cardiovasculares com sitagliptina (TECOS – Trial Evaluating Cardiovascular Outcomes with
+Sitagliptin) incluiu 7.332 pacientes tratados com JANUVIA® 100 mg diariamente (ou 50 mg diariamente, se a taxa basal de filtração
+glomerular estimada [eGFR] era de ≥ 30 e < 50 mL/min/1,73 m2) e 7.339 pacientes que receberam placebo na população de intenção
+de tratar. Ambos os tratamentos foram adicionados ao tratamento usual objetivando o controle da HbA1c conforme os padrões regionais
+e fatores de risco CV. A população do estudo incluiu um total de 2.004 pacientes ≥ 75 anos de idade (970 tratados com JANUVIA® e
+1.034 que receberam placebo). A incidência geral de eventos adversos graves em pacientes que receberam JANUVIA® foi semelhante
+à em pacientes que receberam placebo. A avaliação de complicações relacionadas a diabetes pré-especificadas revelou incidências
+semelhantes entre os grupos, incluindo infecções (18,4% dos pacientes tratados com JANUVIA® e 17,7% dos pacientes que receberam
+placebo) e insuficiência renal (1,4% dos pacientes tratados com JANUVIA® e 1,5% dos que receberam placebo). O perfil de evento s
+adversos em pacientes ≥ 75 anos de idade foi geralmente semelhante à população geral.
+
+Na população de ITT, entre os pacientes que estavam usando insulina e/ou sulfonilureia ao entrar no estudo, a incidência de
+hipoglicemia grave foi de 2,7% em pacientes tratados com JANUVIA® e de 2,5% em pacientes que receberam placebo; entre os
+pacientes que não estavam usando insulina e/ou sulfonilureiaao entrar no estudo, a incidência de hipoglicemia grave foi de 1,0% em
+pacientes tratados com JANUVIA® e de 0,7% nos que receberam placebo. A incidência de eventos de pancreatite confirmados por
+adjudicação foi de 0,3% em pacientes tratados com JANUVIA® e de 0,2% em pacientes que receberam placebo. A incidência de
+eventos de malignidade confirmados por adjudicação foi de 3,7% em pacientes tratados com JANUVIA® e de 4,0% nos que receberam
+placebo.
+
+População pediátrica: em pacientes pediátricos de 10 a 17 anos de idade com diabetes tipo 2, o perfil de segurança de JANUVIA® em
+um estudo clínico foi semelhante ao placebo.
+
+ACHADOS DE EXAMES LABORATORIAIS
+A incidência de achados adversos laboratoriais foi semelhante em pacientes tratados com JANUVIA® 100 mg/dia em comparação com
+pacientes que receberam placebo. Em todos os estudos, pequeno aumento no número de leucócitos (aproximadamente 200
+células/microL de diferença versus o placebo; número médio de leucócitos no período basal de aproximadamente 6.600
+células/microL) consequente ao aumento de neutrófilos. Esse fato foi observado na maioria, porém não em todos os estudos. Ess as
+alterações nos parâmetros laboratoriais não são consideradas clinicamente significativas.
+Em casos de eventos adversos, notifique pelo Sistema VigiMed, disponível no Portal da Anvisa.
+
+10. SUPERDOSE
+Durante os estudos clínicos controlados em voluntários sadios, doses únicas de até 800 mg de JANUVIA®, em geral, foram bem
+toleradas. Em um estudo com uma dose de 800 mg de JANUVIA®, foram observados aumentos mínimos de QTc, não considerados
+clinicamente relevantes (veja CARACTERÍSTICAS FARMACOLÓGICAS, Farmacodinâmica, Eletrofisiologia cardíaca). Não
+existem estudos clínicos com doses acima de 800 mg. Nos estudos Fase I com doses múltiplas, não houve reação adversa clínica
+relacionada à dose observada com JANUVIA® com doses de até 600 mg/dia por períodos de até 10 dias e 400 mg/dia por períodos de
+até 28 dias.
+No caso de superdose, é razoável utilizar medidas de suporte habituais, por exemplo, remoção de material não absorvido do tra to
+gastrintestinal, monitoramento clínico (incluindo a obtenção de um eletrocardiograma) e terapia de suporte, se necessário.
+A sitagliptina é moderadamente dialisável. Nos estudos clínicos, aproximadamente 13,5% da dose foi removida durante uma sessão de
+hemodiálise de 3 a 4 horas. Pode ser considerada uma sessão de hemodiálise prolongada, se clinicamente apropriado. Não se sabe se a
+sitagliptina é dialisável por diálise peritoneal.
+Em caso de intoxicação ligue para 0800 722 6001, se você precisar de mais orientações.

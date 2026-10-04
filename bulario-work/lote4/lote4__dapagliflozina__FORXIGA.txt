@@ -1,0 +1,1004 @@
+FONTE: lote4__dapagliflozina__FORXIGA.pdf
+
+===== BLOCO 1 =====
+APRESENTAÇÕES
+FORXIGA (dapagliflozina) é apresentado na forma farmacêutica de:
+Comprimidos revestidos de 5 mg em embalagens com 30 comprimidos.
+Comprimidos revestidos de 10 mg em embalagens com 14 ou 30 comprimidos.
+
+USO ORAL
+
+USO ADULTO
+
+1. INDICAÇÕES
+
+Diabetes mellitus tipo 2
+
+Monoterapia: FORXIGA é indicado como adjuvante à dieta e exercícios para melhora do controle glicêmico
+em pacientes com diabetes mellitus tipo 2.
+
+Combinação: FORXIGA é indicado em pacientes com diabetes mellitus tipo 2, para melhora do controle
+glicêmico, em combinação com metformina; uma tiazolidinediona; uma sulfonilureia; um inibidor da DPP4
+(com ou sem metformina); metformina e uma sulfonilureia, ou insulina (isolada ou com até duas medicações
+antidiabéticas orais), quando a terapia existente juntamente com dieta e exercícios não proporciona controle
+glicêmico adequado.
+
+Combinação inicial: FORXIGA é indicado como terapia de combinação inicial com metformina, como
+adjuvante à dieta e prática de exercícios, para melhora do controle glicêmico em pacientes com diabetes mellitus
+tipo 2, quando ambas as terapias com dapagliflozina e metformina são apropriadas.
+
+FORXIGA é indicado para prevenção de desenvolvimento ou agravamento de insuficiência cardíaca ou morte
+cardiovascular e para a prevenção de desenvolvimento ou agravamento de nefropatia em pacientes com diabetes
+mellitus tipo 2.
+
+Insuficiência cardíaca
+
+FORXIGA é indicado para o tratamento de insuficiência cardíaca crônica (NYHA II-IV) em pacientes adultos.
+
+Doença renal crônica
+
+FORXIGA é indicado para o tratamento de doença renal crônica em pacientes adultos.
+
+Limitações de uso
+
+FORXIGA não é indicado para uso por pacientes com diabetes mellitus tipo 1.
+
+FORXIGA não deve ser utilizado para o tratamento de cetoacidose diabética.
+
+3. CARACTERÍSTICAS FARMACOLÓGICAS
+
+Propriedades Farmacodinâmicas
+
+Descrição
+
+FORXIGA (dapagliflozina) é um inibidor potente, altamente seletivo e ativo por via oral, do cotransportador
+sódio-glicose 2 (SGLT2) renal humano, o principal transportador responsável pela reabsorção da glicose renal.
+
+A dapagliflozina é descrita quimicamente como D-glucitol, 1,5-anidro-1-C-[4-cloro-3-[(4-
+ethoxifenil)metil]fenil]-, (1S)-, conjugado a (2S)-1,2-propanodiol, hidrato (1:1:1). A fórmula empírica é
+C21H25ClO6 •C3H8O2 •H2O e o peso molecular é 502,98. A fórmula estrutural é:
+Mecanismo de Ação
+
+A dapagliflozina é um inibidor altamente potente, seletivo e reversível do cotransportador sódio-glicose 2
+(SGLT2) que melhora o controle glicêmico em pacientes com diabetes mellitus e promove benefícios
+cardiovasculares. FORXIGA é disponibilizado para uso por via oral e requer administração uma vez ao dia.
+
+A inibição do SGLT2 pela dapagliflozina reduz a absorção de glicose do filtrado glomerular no túbulo renal
+proximal, com redução concomitante da reabsorção de sódio, levando à excreção urinária da glicose e diurese
+osmótica. A dapagliflozina, portanto, aumenta a entrega de sódio ao túbulo distal, o qual aumenta a
+retroalimentação no túbulo glomerular e reduz a pressão intraglomerular. Este efeito combinado com a diurese
+osmótica leva a uma redução na sobrecarga de volume, redução na pressão sanguínea e menor pré-carga e pós-
+carga, o que pode ter efeito benéfico na remodelação cardíaca e na função diastólica, além de preservar a função
+renal. Outros efeitos incluem um aumento do hematócrito e redução de peso.
+
+Os benefícios cardiovasculares da dapagliflozina vão além do efeito da diminuição da glicemia sanguínea, e não
+são limitados a pacientes com diabetes. Adicionalmente à osmose diurética e às ações hemodinâmicas
+relacionadas à inibição do SGLT2, efeitos secundários significativos no metabolismo do miocárdio, canais
+iônicos, fibrose, adipocinas e ácido úrico, podem ser mecanismos subjacentes dos efeitos positivos da
+dapaglilozina no sistema cardio-renal.
+
+A dapagliflozina melhora tanto os níveis de glicose em jejum como pós-prandiais por redução da reabsorção da
+glicose renal levando a excreção urinária do excesso de glicose. Essa excreção de glicose (efeito glicosúrico) é
+observada após a primeira dose, continua ao longo do intervalo de 24 horas entre doses e se mantém ao longo
+de todo o tratamento. A quantidade de glicose removida pelo rim por esse mecanismo é dependente da
+concentração de glicose no sangue e da taxa de filtração glomerular (TFG). Assim, em sujeitos com glicose
+sanguínea normal e/ou um baixo nível de TFG, a dapagliflozina apresenta baixa propensão para causar
+hipoglicemia, já que a quantidade de glicose filtrada é pequena e pode ser reabsorvida pelos transportadores
+SGLT1 e SGLT2 desbloqueados. A dapagliflozina não prejudica a produção normal endógena de glicose em
+resposta à hipoglicemia. A dapagliflozina age independentemente da secreção e da ação da insulina. Ao longo
+do tempo, a melhoria na função das células beta (HOMA -2) tem sido observada em estudos clínicos com
+
+dapagliflozina.
+
+A maior parte da redução de peso é devida à perda de gordura corporal, incluindo gordura visceral, e não de
+tecido magro ou perda de fluidos, conforme demonstrado pela DXA e RNM.
+
+SGLT2 é expresso seletivamente nos rins. A dapagliflozina não inibe outros transportadores importantes de
+glicose no que diz respeito ao transporte de glicose para os tecidos periféricos e é maior que 1400 vezes mais
+seletivo para SGLT2 versus SGLT1, o principal transportador no intestino para absorção de glicose.
+
+Farmacodinâmica
+
+Geral
+
+Foram observadas elevações na quantidade de glicose excretada na urina em indivíduos sadios e em pacientes
+com diabetes mellitus tipo 2 após a administração da dapagliflozina (Figura 27). Aproximadamente 70 g de
+glicose foi excretada na urina por dia (correspondendo a 280 kcal/dia) com uma dose de 10 mg/dia de
+dapagliflozina em pacientes com diabetes mellitus tipo 2 por 12 semanas. Esta taxa de eliminação de glicose
+chegou à máxima excreção observada com 20 mg/dia de dapagliflozina. Foram observadas evidências de
+excreção prolongada de glicose em pacientes com diabetes mellitus tipo 2 que receberam dapagliflozina 10
+mg/dia por até 2 anos.
+
+Essa excreção urinária de glicose com dapagliflozina também resulta em diurese osmótica e aumentos no
+volume urinário. Volume urinário aumentado em pacientes com diabetes mellitus tipo 2 tratados com
+FORXIGA 10 mg ainda estava presente em 12 semanas e chegou a aproximadamente 375 mL/dia. O aumento
+
+no volume urinário foi associado a um aumento pequeno e transitório na excreção urinária de sódio não
+associado com alterações nas concentrações séricas de sódio.
+
+A excreção urinária de ácido úrico também aumentou transitoriamente (por 3-7 dias) e foi acompanhada por
+uma redução na concentração de ácido úrico sérico. Em 24 semanas, as reduções nas concentrações séricas de
+ácido úrico variaram de 0,33 mg/dL a 0,87 mg/dL.
+Figura 27: Gráfico de dispersão e eixo ajustado da alteração em relação ao basal da quantidade de
+
+glicose urinária em 24 horas vs dose de dapagliflozina em indivíduos sadios e indivíduos com DMT2
+(Plotagem semi-logarítmica)
+ 150
+ 130
+ 110
+ 90
+ 70
+ 50
+ 30
+ 10
+ -10
+ 0.0001 0.001 0.01 0.1 1 10 100 1000
+ Dose de dapagliflozina (mg)
+ PLOT Valores Observados em Sujeitos Sadios
+ Valores Observados em Sujeitos com DMT2
+ Eixo ajustado para Sujeitos Sadios
+ Eixo ajustado para Sujeitos com DMT2
+
+Eletrofisiologia cardíaca
+
+A dapagliflozina não foi associada ao prolongamento clinicamente significativo do intervalo QTc em doses
+diárias de até 150 mg (15 vezes a dose recomendada) em um estudo com sujeitos sadios. Além disso, não foi
+observado efeito clinicamente significativo sobre o intervalo QTc após doses únicas de até 500 mg (50 vezes a
+dose recomendada) de dapagliflozina em indivíduos sadios.
+
+Propriedades Farmacocinéticas
+
+Absorção
+
+A dapagliflozina é rapidamente bem absorvida após a administração oral e pode ser administrada na presença
+ou ausência de alimentos. As concentrações plasmáticas máximas de dapagliflozina (Cmax) são usualmente
+alcançadas dentro de 2 horas após a administração em jejum. Os valores de Cmax e área sob a curva (AUC)
+aumentaram em proporção direta ao incremento na dose de dapagliflozina. A biodisponibilidade oral absoluta
+da dapagliflozina após a administração da dose de 10 mg é de 78%. Os alimentos possuem efeitos relativamente
+modestos sobre a farmacocinética d a dapagliflozina em sujeitos sadios. A administração com refeições ricas em
+
+gordura reduz a Cmax da dapagliflozina em até 50% e prolonga o Tmax em aproximadamente 1 hora, mas não
+altera a AUC em comparação com a administração em jejum. Essas alterações não são consideradas
+
+clinicamente significativas.
+
+Distribuição
+
+Aproximadamente 91% de dapagliflozina liga-se a proteínas. A ligação proteica não é alterada em vários estados
+patológicos (por exemplo, insuficiência renal ou hepática).
+
+Metabolismo
+
+A dapagliflozina é um glicosídeo ligado a carbono, significando que o componente aglicona é ligado à glicose
+por uma ligação carbono-carbono, conferindo, assim, estabilidade contra a enzima gl icosidase. A meia-vida
+plasmática terminal média (t1/2) para a dapagliflozina é de 12,9 horas após uma dose oral única de dapagliflozina
+10 mg a indivíduos sadios. A dapagliflozina é extensamente metabolizada, primariamente para liberar
+dapagliflozina 3-O-glicuronídeo que é um metabólito inativo. A dapagliflozina 3-O-glicuronídeo foi
+responsável por 61% de uma dose de 50 mg de [14C] -dapagliflozina e é o componente predominante
+relacionado à droga no plasma humano, correspondendo por 42% [com base na ASC (0-12 h)] da radioatividade
+plasmática total, similar à contribuição de 39% pela droga-mãe. Com base na AUC, nenhum outro metabólito
+representa radioatividade total no plasma > 5%. Nenhum outro metabólito correspondeu por mais que 5% da
+radioatividade plasmática total em nenhuma das medidas avaliadas. A dapagliflozina 3-O-glicuronídeo ou
+outros metabólitos não contribuem com os efeitos redutores de glicemia. A formação de dapagliflozina 3-O-
+glicuronídeo é mediada pela UGT1A9, uma enzima presente no fígado e nos rins, e o metabolismo mediado
+pela CYP é uma via de depuração pouco representativa em seres humanos.
+
+Eliminação
+
+A dapagliflozina e os metabólitos relacionados são eliminados primariamente via excreção urinária, dos quais
+menos de 2% são dapagliflozina inalterada. Após a administração de uma dose de 50 mg de
+[14C]-dapagliflozina, 96% é recuperado, 75% na urina e 21% nas fezes. Nas fezes, aproximadamente 15% da
+dose é excretada na forma de droga inalterada.
+Populações Especiais
+
+Com base nas análises farmacocinéticas, não são recomendados ajustes de dose para insuficiência renal leve,
+moderada e severa; insuficiência hepática leve, moderada ou grave; idade, sexo, raça e peso corporal.
+
+Insuficiência renal
+
+Em estado de equilíbrio (20 mg de dapagliflozin a uma vez ao dia por 7 dias), pacientes com diabetes tipo 2 e
+insuficiência renal leve, moderada ou grave (d e acordo com a determinação pel a depuração do iohexol)
+apresentaram exposições sistêmicas médias à dapagliflozina 32%, 60% e 87% mais altas, respectivamente, do
+que os pacientes com diabetes tipo 2 e função renal normal. Com dapagliflozina na dose de 20 mg uma vez ao
+dia, a exposição sistêmica mais alta à dapagliflozina em pacientes com diabetes mellitus tipo 2 e insuficiência
+renal não resultou em uma depuração de glicose ou excreção de glicose proporcionalmente mais alta em 24
+horas. A depuração renal de glicose e excreção de glicose em 24 horas foram mais baixas em pacientes com
+insuficiência renal moderada ou grave do que em pacientes com função renal normal e insuficiência renal leve.
+A excreção urinária de glicose em 24 h em estado de equilíbrio foi altamente dependente da função renal e 85,
+52, 18 e 11 g de glicose/dia foram excretados pelos pacientes com diabetes mellitus tipo 2 e função renal normal
+ou insuficiência renal leve, moderada ou grave, respectivamente. Não se observaram diferenças na ligação
+proteica da dapagliflozina entre os grupos de insuficiência renal ou em comparação a sujeitos sadios. O impacto
+da hemodiálise sobre a exposição à dapagliflozina não é conhecido. O efeito da redução da função renal na
+exposição sistêmica foi avaliado em um modelo farmacocinético populacional. Consistente com os resultados
+prévios, o modelo previu que a AUC seria maior em pacientes com doença renal crônica quando comparado aos
+pacientes com função renal normal, e não foi significativamente diferente em pacientes com doença renal
+crônica com diabetes mellitus tipo 2 e pacientes não diabéticos.
+
+Insuficiência hepática
+
+Para as recomendações de dose a pacientes com insuficiência hepática moderada ou grave ver item Posologia.
+Um estudo de farmacologia clínica de dose única (10 mg) de dapagliflozina foi conduzido em pacientes com
+insuficiência hepática leve, moderada ou grave (Child-Pugh classes A, B e C, respectivamente) e controles
+sadios correspondentes para comparação das características farmacocinéticas da dapagliflozina entre essas
+populações. Não se observaram diferenças na ligação proteica da dapagliflozina entre pacientes com
+insuficiência hepática em comparação a pacientes sadios. Em pacientes com insuficiência hepática leve ou
+moderada, Cmax e ASC médios da dapagliflozina foram até 12% e 36% mais altas, respectivamente, em
+comparação aos pacientes sadios controle correspondentes. Essas diferenças não foram consideradas
+clinicamente significativas e não é proposto ajuste de dose da dapagliflozina de dose usual de 10 mg uma vez
+ao dia para essas populações. Em pacientes com insuficiência hepática grave (Child-Pugh classe C), Cmax e ASC
+médios da dapagliflozina foram até 40% e 67% mais altas do que os controles sadios correspondentes,
+
+respectivamente. Não é necessário ajuste de dose em pacientes com insuficiência hepática grave. Entretanto, o
+risco-benefício para o uso de dapagliflozina em pacientes com insuficiência hepática grave deve ser avaliado
+individualmente, uma vez que a segurança e a eficácia da dapagliflozina não foram estudadas especificamente
+nessa população.
+
+Idosos
+
+Não é recomendado ajuste na dose de 10 mg de dapagliflozina uma vez ao dia com base na idade. O efeito da
+idade (jovens: ≥18 a <40 anos [n=105] e idosos: ≥ 65 anos [n=224]) foi avaliado como uma covariável em um
+modelo de farmacocinética populacional e comparado a pacientes com ≥40 a < 65 anos utilizando-se dados de
+estudos com indivíduos sadios e pacientes. A exposição sistêmica média à dapagliflozina (ASC) em pacientes
+jovens foi estimada como sendo 10,4% mais baixa que no grupo de referência [IC 90%: 87,9, 92.2%] e 25%
+mais alta em pacientes idosos em comparação com o grupo de referência [IC 90%: 123, 129%]. Essas diferenças
+na exposição sistêmica não foram consideradas clinicamente significativas.
+
+Pediatria e adolescência
+
+A farmacocinética na população pediátrica e adolescente não foi estudada.
+
+Sexo
+
+Não é recomendado ajuste na dose de 10 mg de dapagliflozina uma vez ao dia com base no sexo do paciente. O
+sexo do paciente foi avaliado como uma co-variável em um modelo farmacocinético populacional utilizando-se
+dados de indivíduos sadios e estudos em pacientes. A AUC média da dapagliflozina em mulheres (n=619) foi
+estimada como sendo 22% mais alta do que em homens (n=634) [IC 90%: 117,124].
+
+Raça
+
+Não é recomendado ajuste na dose de 10 mg de dapagliflozina uma vez ao dia com base na raça. A raça (branca,
+negra ou asiática) foi avaliada como uma co-variável em um modelo de farmacocinética populacional
+utilizando-se dados de estudos com indivíduos sadios e com pacientes. As diferenças nas exposições sistêmicas
+entre essas raças foram pequenas. Em comparação com brancos (n=1147), indivíduos asiáticos (n=47) não
+mostraram diferenças na média estimada de exposições sistêmicas a dapagliflozina [faixa IC 90%; 3,7% inferior,
+1% superior]. Em comparação com brancos, indivíduos negros (n=43) apresentaram média estimada de
+exposições sistêmicas 4,9% mais baixas [faixa IC 90%; 7,7% inferior, 3,7% inferior].
+Peso Corporal
+
+Não são recomendados ajustes na dose proposta de 10 mg de dapagliflozina uma vez ao dia em pacientes com
+diabetes mellitus ou em pacientes não diabéticos com base no peso.
+
+Em uma análise de farmacocinética populacional utilizando dados de estudos com indivíduos sadios e com
+pacientes, as exposições sistêmicas em indivíduos com alto peso corporal (≥120 kg, n=91) foram estimadas em
+78,3% [IC 90%; 78,2%, 83,2%] daqueles dos indivíduos de referência com peso corporal entre 75 e 100 kg.
+Esta diferença é considerada pequena e, portanto, não é recomendado ajuste de dose para a dose proposta de 10
+mg de dapagliflozina uma vez ao dia em pacientes com diabetes mellitus tipo 2 com alto peso corporal (≥
+120kg).
+
+Indivíduos com baixo peso corporal (<50 kg) não foram bem representados nos estudos com indivíduos sadios
+e com pacientes usados na análise farmacocinética populacional. Portanto, as exposições sistêmicas à
+dapagliflozina foram simuladas com um grande número de indivíduos. As exposições sistêmicas médias
+simuladas em indivíduos com baixo peso corporal foram estimadas como sendo 29% mais altas do que em
+indivíduos com o peso corporal do grupo de referência. Esta diferença é considerada pequena e com base nesses
+achados, não se recomenda ajuste de dose para a dose proposta de 10 mg de dapagliflozina uma vez ao dia em
+pacientes com diabetes mellitus tipo 2 com baixo peso corporal (<50 kg).
+
+Dados de segurança pré-clínica
+
+Carcinogênese, Mutagênese e Redução da Fertilidade
+
+A dapagliflozina não induziu tumores em camundongos ou ratos em qualquer das doses avaliadas em estudos
+de carcinogenicidade de 2 anos. As doses orais a camundongos consistiram de 5, 15 e 40 mg/kg/dia em machos
+e 2, 10 e 20 mg/kg/dia em fêmeas e as doses orais em ratos foram 0,5, 2 e 10 mg/kg/dia tanto para machos como
+para fêmeas. As doses mais altas avaliadas em camundongos foram equivalentes a ASC de exposições múltiplas
+de aproximadamente 72 vezes (machos) e 105 vezes (fêmeas) a ASC em humanos na dose máxima recomendada
+para humanos (MRHD - sigla em inglês) de 10 mg por dia. Em ratos, as exposições da ASC foram
+aproximadamente 131 vezes (machos) e 186 vezes (fêmeas) a ASC humana na MRHD.
+
+A dapagliflozina foi negativa no ensaio de mutagenicidade de Ames e foi positiva em um ensaio in vitro de
+
+clastogenicidade, mas apenas na presença de ativação S9 e em concentrações 100 g/mL. É importante
+ressaltar que a dapagliflozina foi negativa para clastogenicidade in vivo em uma série de estudos avaliando
+micronúcleos ou reparo de DNA em ratos em exposições múltiplas mais que 2100 vezes a exposição humana
+na MRHD. Esses estudos, juntamente com a ausência de achados tumorais nos estudos de carcinogenicidade
+em ratos e camundongos, dão suporte à afirmação de que a dapagliflozina não representa risco genotóxico a
+
+seres humanos.
+
+Mudanças de transcrição de genes relacionados à dapagliflozina foram avaliadas nos rins, fígado, tecido
+adiposo, músculo esquelético de ratos ZDF (do inglês, Zucker Diabetic Fatty) tratados diariamente com
+dapagliflozina durante 5 semanas. Estes órgãos foram especificamente selecionados visto que representam os
+órgãos-alvo no tratamento da diabetes. Não houve evidência de que a dapagliflozina causa alterações na
+transcrição que são preditivos de promotores de tumor.
+
+A dapagliflozina e seu principal metabólito humano (3-O-glucuronida) não aumentaram o crescimento in vitro
+de seis linhas celulares humanas de carcinomas de células transicionais (TCC, da sigla em inglês) de bexiga
+urinária em concentrações ≥ 100 × Cmax humano no MRHD. Em um estudo de xenoenxerto, a administração
+diária da dapagliflozina em camundongos nus machos e fêmeas implantados com tumores de TCC humanos
+não apresentou aumento significativo no tamanho dos tumores em até 75 × e até 0,9 × de exposição clínica no
+MRHD para dapagliflozina e seu metabólito 3-O-glucuronida, respectivamente. Estes estudos fornecem
+evidências de que dapagliflozina e seu principal metabólito humano não aumentam o crescimento de tumor da
+bexiga urinária.
+
+Em um estudo de fenotipagem de 15 meses, não havia nenhuma evidência de qualquer diferença na
+sobrevivência, peso corporal, parâmetros de patologia clínica ou achados histopatológicos entre camundongos
+SGLT2 KO e seus homólogos do tipo selvagem (WT). Camundongos SGLT2 KO tiveram glicosúria, ao
+contrário dos camundongos WT. Apesar de um tempo de vida de glicosúria, não houve evidência de qualquer
+alteração da função renal ou de alterações proliferativas observadas nos rins ou bexigas urinárias dos
+camundongos SGLT2 KO. Estes dados sugerem fortemente que níveis elevados de glicose urinária não
+provocam tumores do trato urinário ou aceleram a patologia do trato urinário relacionada à idade.
+
+Em um estudo de fertilidade e desenvolvimento embrionário inicial em ratos foram administradas doses de 15,
+75 ou 300/210 mg/kg/dia de dapagliflozina em machos (a dose de 300 mg/kg/dia foi reduzida para 210
+mg/kg/dia após 4 dias) e doses de 3, 15 ou 75 mg/kg/dia foram administradas a fêmeas. A dapagliflozina não
+teve efeitos sobre o acasalamento, fertilidade ou desenvolvimento embrionário inicial em machos e fêmeas
+tratados com qualquer das doses testadas (em exposições múltiplas 1708 vezes e 998 vezes a MRHD em
+machos e fêmeas, respectivamente). Entretanto, na dose de 300/210 mg/kg/dia, os pesos das vesículas seminais
+e do epidídimo foram reduzidos, a motilidade espermática e a contagem de esperma foram reduzidos e se
+observou baixos números de esperma morfologicamente anormal.
+Teratogenicidade e prejuízo do desenvolvimento precoce
+
+Administração direta de dapagliflozina aos ratos jovens desmamados e exposição indireta no final da gravidez
+e lactação (período correspondente ao segundo e terceiro trimestre de gestação no que diz respeito à maturação
+renal humana) está associada ao aumento da incidência e/ou gravidade da dilatação renal pélvica e tubular na
+progênie.
+
+Em um estudo de toxicidade juvenil, quando a dapagliflozina foi administrada diretamente em ratos jovens
+desde o dia 21 pós-natal (DPN) até o DPN 90 em doses de 1, 15 ou 75 mg/kg/dia, foram relatadas dilatações
+renal pélvica e tubulares em todas as doses. Exposições de filhotes à menor dose testada foram ≥ 15 vezes o
+MRHD. Estes resultados foram associados com aumentos dose-dependentes no peso dos rins e ampliação
+macroscópica dos rins observada em todas as doses. As dilatações renal pélvica e tubular observadas em animais
+jovens não reverteram totalmente dentro do período de recuperação de aproximadamente 1 mês.
+
+Em um estudo separado de desenvolvimento pré e pós-natal, as ratas prenhes foram tratadas desde o sexto dia
+de gestação (DG) até o DPN 21 (também com 1, 15 ou 75 mg/kg/dia), e os filhotes foram indiretamente expostos
+no útero e durante a lactação. Um estudo satélite foi conduzido para avaliar as exposições da dapagliflozina no
+leite e filhotes. Aumento da incidência ou gravidade da dilatação da pélvica renal foi novamente observado na
+prole adulta de fêmeas tratadas, embora apenas com 75 mg/kg/dia (exposições associadas das fêmeas e filhotes
+à dapagliflozina foram 1415 vezes e 137 vezes, respectivamente, os valores humanos de MRHD).
+Desenvolvimento adicional de toxicidade foi limitado a reduções dose-dependentes nos pesos corporais dos
+filhotes e observados apenas em doses  15 mg/kg/dia (associados com exposições aos filhotes que são  29
+vezes os valores humanos na MRHD). A toxicidade materna foi evidente apenas na dose de 75 mg/kg/dia, e
+limitada a uma redução transitória do peso corporal e consumo de alimentos no início dose. O nível sem efeitos
+adversos (NOAEL) para toxicidade no desenvolvimento, 1 mg/kg/dia, está associado a uma exposição materna
+sistêmica múltipla, que é aproximadamente 19 vezes o valor humano de MRHD.
+
+Em estudos adicionais de desenvolvimento embrionário-fetal em ratos e coelhos, dapagliflozina foi
+administrada por intervalos coincidentes com os períodos principais de organogênese em cada espécie. Não foi
+observada toxicidade materna nem de desenvolvimento em coelhos, em qualquer dose testada (20, 60 ou 180
+mg/kg/dia). A dose de 180 mg/kg/dia está associada a uma exposição sistêmica múltipla de aproximadamente
+1191 vezes o MRHD. Em ratos, a dapagliflozina não foi embrioletal ou teratogênica nas doses de até 75
+mg/kg/dia (1441 vezes o MRHD). Doses  150 mg/kg/dia (≥ 2344 vezes os valores humanos de MRHD) foram
+associados com toxicidade materna e de desenvolvimento. Toxicidade materna, incluiu a mortalidade, sinais
+clínicos adversos e decréscimo no peso corporal e consumo de alimentos. Toxicidade de desenvolvimento
+consistiu em aumento de letalidade embrio-fetal, aumento da incidência de malformações fetais e alterações
+esqueléticas, e redução do peso corporal do feto. As malformações incluíram uma incidência baixa de
+malformações de grandes vasos, costelas e vértebras fundidas e manúbrio e esterno duplicados. As variações
+
+foram primariamente ossificações reduzidas.
+
+Toxicologia e/ou farmacologia animal
+
+A maior parte dos efeitos observados nos estudos pivotais de toxicidade de doses repetidas, tanto em ratos como
+em cães, foram considerados secundários às elevações farmacologicamente mediadas na glicose urinária e
+incluíram redução e/ou aumento dos pesos corporais, aumento do consumo de alimentos e aumentos nos
+volumes urinários devido à diurese osmótica. A dapagliflozina foi bem tolerada quando administrada por via
+oral a ratos por até 6 meses em doses 25 mg/kg/dia (346 vezes as exposições na MRHD) e em cães por até
+12 meses em doses 120 mg/kg/dia (3200 vezes as exposições humanas na MRHD). Ainda, estudos de dose
+única com dapagliflozina indicaram que o metabólito da dapagliflozina 3-O-glicuronídeo teria sido formado nos
+estudos de toxicidade, tanto de ratos como de cães, em níveis de exposição (ASC) aproximadamente iguais ou
+maiores que as exposições previstas em seres humanos à dapagliflozina 3-O-glucuronídeo após a administração
+de dapagliflozina na MRHD. Em ratos, o achado de toxicidade não clínica mais importante de aumento da
+mineralização trabecular óssea e tecidual (associada a um aumento do cálcio sérico), foi apenas observado em
+exposições múltiplas elevadas (2100 vezes com base nas exposições humanas na MRHD). Apesar de serem
+atingidas em múltiplas exposições 3200 vezes a exposição humana na MRHD, não foram identificadas
+toxicidades dose-limitantes ou de órgão alvo no estudo de 12 meses em cães.
+
+4. CONTRAINDICAÇÕES
+
+FORXIGA é contraindicado a pacientes com conhecida hipersensibilidade a dapagliflozina ou aos
+outros componentes da fórmula.
+
+5. ADVERTÊNCIAS E PRECAUÇÕES
+
+Uso em pacientes com insuficiência renal
+
+Há poucos dados sobre o tratamento inicial de FORXIGA em pacientes com TFGe < 25 mL/min/1,73m2.
+
+Os resultados do estudo da dapagliflozina em pacientes com doença renal crônica (DAPA-CKD) incluíram
+pacientes com diabetes mellitus tipo 2 e pacientes não diabéticos, com TFGe ≥ 25 e ≤ 75 mL/min/1,73m2.
+
+Durante o estudo, o tratamento foi continuado mesmo com a queda da TFGe a níveis menores que 25
+mL/min/1,73m2.
+A eficácia da dapagliflozina na redução da glicose é dependente da função renal, e é reduzida em pacientes cuja
+TFGe é <45 mL/min/1,73m2 (vide seção 8. POSOLOGIA)
+
+Cetoacidose em pacientes com diabetes mellitus
+
+Fatores predisponentes para cetoacidose incluem comprometimento significativo da função da célula beta
+resultante de perturbações pancreáticas (por exemplo, diabete tipo 1, história de pancreatite ou cirurgia de
+pâncreas), a redução da dose de insulina, redução da ingestão calórica ou aumento das necessidades de insulina
+devido a infecções, doença ou cirurgia ou abuso de álcool. FORXIGA deve ser usado com precaução nestes
+pacientes.
+
+Os pacientes tratados com FORXIGA que apresentam sinais e sintomas compatíveis com cetoacidose, incluindo
+náuseas, vômito, dor abdominal, mal-estar e falta de ar, devem ser avaliados para cetoacidose, mesmo se os
+níveis de glicose no sangue estiverem abaixo de 14 mmol/L (250 mg/dl). Se houver suspeita de cetoacidose, a
+suspensão temporária ou interrupção do FORXIGA deve ser considerada e o paciente deve ser prontamente
+avaliado.
+
+Houve relatos de cetoacidose, incluindo cetoacidose diabética, em pacientes com diabetes mellitus tipo 2
+tomando FORXIGA e outros inibidores de SGLT2. FORXIGA não é indicado para o tratamento de pacientes
+com diabetes mellitus tipo 1.
+
+Fasciíte necrosante do períneo (Gangrena de Fournier)
+
+Casos muito raros, mas potencialmente fatais, de fasciíte necrosante ou gangrena de Fournier foram relatados
+no período pós-comercialização. Se ocorrerem sintomas como sensibilidade, vermelhidão ou inchaço na área
+genital, acompanhados de febre e mal-estar, deve-se interromper imediatamente o uso do medicamento (ver
+seção Experiência pós-comercialização no item Reações Adversas).
+
+Uso com medicações conhecidas por causar hipoglicemia
+
+Insulina e seus secretagogos, tais como sulfonilureias, causam hipoglicemia. Portanto, uma dose menor de
+insulina ou de secretagogos de insulina pode ser necessária para reduzir o risco de hipoglicemia quando usada
+em combinação com FORXIGA (ver item Reações Adversas).
+Gravidez
+
+Categoria de risco na gravidez: C.
+
+Este medicamento não deve ser utilizado por mulheres grávidas sem orientação médica ou do cirurgião
+dentista.
+
+FORXIGA não deve ser usado no segundo e terceiro trimestres de gravidez. No período correspondente ao
+segundo e terceiro trimestres da gravidez no que diz respeito à maturação renal humana, a exposição materna à
+dapagliflozina em estudos com ratos foi associada à maior incidência e/ou gravidade de dilatações renais
+pélvicas e tubulares na progênie (ver item Dados de Segurança Pré-Clínica na seção 3. CARACTERÍSTICAS
+FARMACOLÓGICAS).
+
+Em estudos convencionais de desenvolvimento embrio-fetal em ratos e coelhos, a dapagliflozina foi
+administrada em intervalos coincidentes com o período do primeiro trimestre da organogênese não renal em
+seres humanos. Não foram observadas toxicidades de desenvolvimento em coelhos com nenhuma das doses
+testadas (1191 vezes a dose máxima recomendada a humanos [MRHD]). Em ratos, a dapagliflozina não foi nem
+embrio-letal nem teratogênica (1441× a MRHD) na ausência de toxicidade materna.
+
+Não existem estudos adequados e bem controlados de FORXIGA em mulheres grávidas. Quando a gravidez for
+detectada, FORXIGA deve ser descontinuado.
+
+Lactação
+
+Uso contraindicado no aleitamento ou na doação de leite humano. Este medicamento é contraindicado
+durante o aleitamento ou doação de leite. Seu médico ou cirurgião-dentista deve apresentar alternativas
+para o seu tratamento ou para a alimentação do bebê.
+
+FORXIGA não deve ser utilizado em mulheres que estejam amamentando. Estudos em ratos mostraram
+excreção de FORXIGA no leite. A exposição direta e indireta a FORXIGA em ratos juvenis e durante as fases
+tardias da gravidez são associadas com aumento na incidência e/ou gravidade de dilatações renais pélvicas e
+tubulares na progênie, apesar das consequências funcionais de longo prazo desses efeitos serem desconhecidas.
+Esses períodos de exposição coincidem com uma janela crítica de maturação renal em ratos. Como a maturação
+funcional dos rins em humanos continua nos 2 primeiros anos de vida, as dilatações pélvicas e tubulares renais
+associadas à FORXIGA observadas em ratos juvenis poderiam constituir potencial risco para a maturação renal
+humana durante os primeiros 2 anos de vida. Ainda, os efeitos negativos sobre o ganho de peso corporal
+associados com a exposição lactacional em ratos jovens sugerem que FORXIGA deve ser evitado durante os
+
+primeiros 2 anos de vida (ver item Dados de Segurança Pré-Clínica).
+
+Não se sabe se FORXIGA e/ou seus metabólitos são excretados no leite humano.
+
+Uso pediátrico
+
+A segurança e a eficácia de FORXIGA em pacientes pediátricos não foram estabelecidas.
+
+Uso geriátrico
+
+Não são recomendadas alterações de dose de FORXIGA com base na idade.
+
+Efeitos sobre a capacidade de dirigir e operar máquinas
+
+Não foram realizados estudos sobre os efeitos na capacidade de dirigir veículos e operar máquinas.
+
+Excipientes:
+
+Atenção: Contém lactose (tipo de açúcar) abaixo de 0,25 g/comprimido. Este medicamento não deve ser
+usado por pessoas com síndrome de má-absorção de glicose-galactose.
+
+Atenção: Contém os corantes dióxido de titânio e óxido de ferro amarelo.
+
+6. INTERAÇÕES MEDICAMENTOSAS
+
+O metabolismo de dapagliflozina é mediado principalmente pela UGT1A9-dependente da conjugação
+glicuronídeo. O principal metabolito, dapagliflozina 3-O-glucuronideo, não é um inibidor SGLT2.
+
+Em estudos in vitro, dapagliflozina e dapagliflozina 3-O-glucuronídeo não inibiram as CYP 1A2, 2C9, 2C19,
+2D6, 3A4, nem induziram as CYP1A2, 2B6 ou 3A4. Portanto, não se espera que dapagliflozina altere a
+depuração metabólica de medicamentos coadministrados que são metabolizados por essas enzimas e
+medicamentos que inibem ou reduzem essas enzimas não devem alterar a depuração metabólica da
+dapagliflozina. A dapagliflozina é um substrato fraco do transportador ativo de P-glicoproteína (P-gp) e
+dapagliflozina 3-O-glucuronídeo é um substrato para o transportador ativo OAT3. A dapagliflozina ou
+dapagliflozina 3-O-glucuronídeo não inibiram significativamente os transportadores ativos P-gp, OCT2, OAT1
+ou OAT3. No geral, é improvável que dapagliflozina afete a farmacocinética de medicações administradas
+
+concomitantemente que sejam substratos para P-gp, OCT2, OAT1, ou OAT3.
+
+Efeitos de outras drogas sobre a dapagliflozina
+
+Em estudos de interação realizados em indivíduos saudáveis, utilizando principalmente uma dose única, a
+farmacocinética da dapagliflozina não foi alterada pela metformina (um substrato hOCT-1 e hOCT-2),
+pioglitazona (um substrato do CYP2C8 [maior] e CYP3A4 [menor]), sitagliptina (um substrato de hOAT-3 e
+substrato da glicoproteína-P), glimepirida (um substrato do CYP2C9), voglibose (um inibidor da α-glicosidase),
+hidroclorotiazida, bumetanida, valsartan ou sinvastatina (um substrato da CYP3A4). Portanto, não seria de
+esperar uma interação significativa da dapagliflozina com outros substratos de hOCT-1, hOCT-2, hOAT-3, P-
+gp, CYP2C8, CYP2C9, CYP3A4 e outro inibidor da α-glucosidase.
+
+Após a administração concomitante de dapagliflozina com rifampicina (um indutor de vários transportadores
+ativos e enzimas de metabolização de drogas) ou ácido mefenâmico (um inibidor do UGT1A9), uma redução
+de 22% e um aumento de 51%, respectivamente, na exposição sistêmica de dapagliflozina foi observada, mas
+com nenhum efeito clinicamente significativo na excreção urinária de glicose de 24 horas em ambos os casos.
+
+A co-administração de dapagliflozina e bumetanida não alterou significativamente o efeito farmacodinâmico da
+dapagliflozina para aumentar a excreção urinária de glicose em indivíduos saudáveis.
+
+Efeitos da dapagliflozina sobre outras drogas
+
+O uso concomitante de dapagliflozina e lítio pode levar a uma redução nas concentrações séricas de lítio devido
+a um possível aumento da depuração urinária de lítio. A dose de lítio pode precisar de ajuste.
+
+Em estudos de interação conduzidos em indivíduos sadios, utilizando principalmente o desenho de dose única,
+a dapagliflozina não alterou significativamente a farmacocinética da metformina, pioglitazona, sitagliptina,
+glimepirida, hidroclorotiazida, bumetanida, valsartana, sinvastatina, digoxina (um substrato da gp-P) ou
+varfarina (a varfarina é um substrato do CYP2C). Portanto, a dapagliflozina não é um inibidor clínico
+significativo da via de transporte de hOCT-1, hOCT-2, hOAT-3, gp-P e metabolismo mediado pelo CYP2C8,
+CYP2C9, CYP2C19 e CYP3A4.
+
+A co-administração de dapagliflozina e bumetanida não alterou significativamente as respostas
+farmacodinâmicas no estado estacionário (excreção urinária de sódio, volume urinário) à bumetanida em
+indivíduos saudáveis.
+A dapagliflozina não afetou a atividade anticoagulante da varfarina, medida pelo tempo de protrombina
+
+(International Normalised Ratio [INR]).
+
+Outras interações
+
+Os efeitos da dieta, tabagismo, produtos à base de plantas e uso de álcool sobre a farmacocinética da
+dapagliflozina não foram especificamente estudados.
+
+Interferência com ensaio 1,5-anidroglucitol (1,5 AG)
+
+Monitoramento do controle glicêmico com ensaio de 1,5-AG não é recomendado visto que medições de 1,5-
+AG não são confiáveis na avaliação do controle glicêmico em pacientes que tomam inibidores de SGLT2.
+Recomenda-se o uso de métodos alternativos para monitorar o controle glicêmico.
+
+8. POSOLOGIA E MODO DE USAR
+
+Diabetes mellitus tipo 2
+
+Monoterapia e terapia de combinação
+
+A dose recomendada de FORXIGA é de 10 mg uma vez ao dia como monoterapia ou como terapia de
+combinação com metformina (com ou sem sulfoniluréia); tiazolidinedionas; sulfonilureias; inibidores da DPP4
+(com ou sem metformina); ou insulina (com ou sem terapia antidiabética oral, terapia dupla com metformina e
+insulina ou terapia tripla com insulina incluindo metformina ou sulfonilureias).
+
+Terapia de combinação inicial
+
+As doses iniciais recomendadas de FORXIGA e metformina, quando usados como terapia de combinação
+inicial, é de FORXIGA 10 mg mais metformina 500 mg uma vez ao dia. Pacientes com controle glicêmico
+inadequado neste esquema posológico devem ter a dose de metformina aumentada de acordo com as práticas
+locais aprovadas.
+
+Insuficiência cardíaca
+
+A dose recomendada de FORXIGA é de 10 mg uma vez ao dia, a qualquer hora do dia, independentemente das
+refeições.
+
+Nos estudos DAPA-HF e DELIVER, FORXIGA foi administrado em conjunto com outras terapias para
+insuficiência cardíaca (ver item 2. RESULTADOS DE EFICÁCIA).
+
+Doença renal crônica
+
+A dose recomendada de FORXIGA é de 10 mg uma vez ao dia, a qualquer hora do dia, independentemente das
+refeições.
+
+No estudo DAPA-CKD, FORXIGA foi administrado em conjunto com outras terapias para doença renal crônica
+(ver item 2. RESULTADOS DE EFICÁCIA).
+Populações Especiais
+
+Pacientes com insuficiência renal
+
+Não é necessário ajuste de dose com base na função renal.
+
+A eficácia de FORXIGA na redução da glicose é menor em pacientes com TFGe < 45 mL/min/1,73m2 (ver itens
+Advertências e Precauções e Reações Adversas). Portanto, se a TFGe estiver abaixo de 45 mL/min/1,73m2, deve
+
+ser considerado tratamento adicional para redução da glicose em pacientes com diabetes mellitus.
+
+Pacientes com insuficiência hepática
+
+Não é necessário ajuste da dose de FORXIGA em pacientes com insuficiência hepática leve, moderada ou grave
+(ver item Resultados de Eficácia).
+
+Pacientes pediátricos e adolescentes
+
+A segurança e eficácia de FORXIGA em pacientes pediátricos e adolescentes não foram estabelecidas.
+
+Pacientes geriátricos
+
+Não é necessário ajuste de dose de FORXIGA com base na idade do paciente (ver item Advertências e
+Precauções).
+
+Pacientes mais velhos são mais propensos a ter insuficiência renal. As recomendações de função renal fornecidas
+para todos os pacientes também se aplicam a pacientes idosos (ver item Advertências e Precauções).
+
+Este medicamento não deve ser partido, aberto ou mastigado.
+
+Para segurança e eficácia desta apresentação, FORXIGA não deve ser administrado por vias não
+recomendadas. A administração deve ser somente pela via oral.
+
+9. REAÇÕES ADVERSAS
+
+Experiência de estudos clínicos
+O perfil de segurança da dapagliflozina foi avaliado em programas de desenvolvimento clínico para diabetes
+
+mellitus tipo 2, para insuficiência cardíaca e para doença renal crônica. Isto inclui mais de 15000 indivíduos
+tratados com dapagliflozina para diabetes tipo 2, mais de 5000 para insuficiência cardíaca e mais de 2000 para
+doença renal crônica. Para mais informações sobre os estudos clínicos, consulte o item Resultados de Eficácia.
+
+A incidência de reações adversas foi determinada utilizando um conjunto pré -especificado de pacientes a partir
+de 13 estudos de curta duração (duração média de 22 semanas) controlados por placebo para diabetes tipo 2.
+Ao longo destes 13 estudos, 2360 doentes foram tratados uma vez por dia com FORXIGA 10 mg e 2295 foram
+tratados com placebo (em monoterapia ou em combinação com outras terapêuticas antidiabéticas).
+
+Além disso, FORXIGA 5 mg foi avaliado em 12 estudos de curta duração, controlado por placebo, que incluiu
+1145 pacientes tratados com FORXIGA 5 mg, (média de exposição = 22 semanas) e 1393 pacientes tratados
+com placebo (média de exposição = 21 semanas), tanto em monoterapia como em combinação com outras
+terapias anti-diabéticas.
+
+No estudo de desfechos cardiovasculares (CV) dedicado a pacientes com diabetes mellitus tipo 2 (DECLARE),
+8574 pacientes receberam FORXIGA 10 mg e 8569 receberam placebo por um tempo médio de exposição de
+48 meses. No total, houve 30623 pacientes-ano expostos ao FORXIGA.
+
+Nos resultados do estudo da dapagliflozina em pacientes com insuficiência cardíaca com fração de ejeção
+reduzida (DAPA-HF), 2368 pacientes foram tratados com dapagliflozina 10 mg e 2368 pacientes foram tratados
+com placebo por um tempo de exposição de 18 meses. A população incluiu pacientes com diabetes mellitus tipo
+2 e pacientes sem diabetes, além de pacientes com TFGe ≥ 30 mL/min/1,73 m2. No estudo de desfecho
+
+cardiovascular da dapagliflozina em pacientes com insuficiência cardíaca com fração de ejeção do ventrículo
+esquerdo (FEVE) > 40% (DELIVER), 3126 pacientes foram tratados com dapagliflozina 10 mg e 3127 pacientes
+foram tratados com placebo por um tempo médio de exposição de 27 meses. A população incluiu pacientes com
+diabetes mellitus tipo 2 e pacientes sem diabetes, além de pacientes com TFGe ≥ 25 mL/min/1,73 m2.
+
+Nos resultados do estudo da dapagliflozina em pacientes com doença renal crônica (DAPA-CKD), 2149
+pacientes foram tratados com dapagliflozina 10 mg enquanto 2149 foram tratados com placebo, por um tempo
+mediano de exposição de 27 meses. A população do estudo incluiu pacientes com diabetes mellitus tipo 2 e
+pacientes não diabéticos, com TFGe ≥ 25 e ≤ 75 mL/min/1,73m2. O tratamento foi continuado mesmo se a TFGe
+caísse a níveis menores que 25 mL/min/1,73m2.
+
+No geral, o perfil de segurança da dapagliflozina foi consistente através das indicações estudadas. A cetoacidose
+diabética foi observada apenas em pacientes com diabetes mellitus.
+Lista tabelada de reações adversas
+
+As seguintes reações adversas foram identificadas nos estudos clínicos controlados por placebo e na vigilância
+pós-comercialização. Nenhuma reação encontrada foi relacionada à dose. As reações adversas listadas abaixo
+são classificadas de acordo com a frequência e as classes de sistemas e órgãos (SOC). As categorias de
+frequência são definidas de acordo com a seguinte convenção: muito comum (≥ 1/10), comum (≥ 1/100 a <
+1/10), incomum (≥ 1/1.000 a < 1/100), raro (≥ 1/ 10.000 a < 1/1.000), muito raro (< 1/10.000) e desconhecido
+(não pode ser estimado a partir dos dados disponíveis)
+
+Tabela 15. Reações adversas em estudos clínicos controlados por placeboa e experiência pós-
+comercialização
+ Classes de Sistemas e Muito Comum* Incomum** Raro Muito raro
+
+ Órgãos comum
+ Infecções e infestações Vulvovaginite, Infecção Fasceíte
+ balanite e fúngica ** necrosante do
+
+ infecções períneo
+ genitais (gangrena de
+ relacionadas*,b, Fournier)b,i
+
+ c
+
+ Infecção do
+ trato
+ urinário*,b,d
+
+ Distúrbios do sistema Tontura
+ nervoso
+ Distúrbios Constipação**
+ gastrointestinais Boca seca**
+ Distúrbios Dor nas costas*
+
+ musculoesqueléticos e
+ do tecido conjuntivo
+ Distúrbios renais e Disúria Noctúria** Nefrite
+ urinários Poliúria *,f tubulointersticial
+ Comum* Incomum** Raro Muito raro
+ Classes de Sistemas e Muito
+ Órgãos comum
+ Distúrbios metabólicos Hipoglicemi Depleção de Cetoacidose
+ e nutricionais a volumeb,e diabética
+ (quando Sede** (quando
+
+ usado com usada no
+ SU ou diabetes
+ insulina)b mellitus
+ tipo 2)b,i,k
+
+ Distúrbios dos tecidos Irritação na Angioedema
+ cutâneos e pelej
+
+ subcutâneos
+ Distúrbios do sistema Prurido
+ reprodutor e da mama vulvovaginal*
+
+ *
+
+ Prurido
+ genital**
+
+ Investigações Hematócrito Aumento da
+ aumentadog creatinina
+
+ Diminuição da sanguínea
+ depuração durante o
+ renal da tratamento
+ creatinina inicial**,b
+
+ durante o Uréia
+ tratamento sanguínea
+ inicialb aumentada**
+ Dislipidemiah Diminuição
+ do peso**
+
+a A tabela mostra dados de até 24 semanas (curto prazo), independentemente do resgate glicêmico.
+
+b Consulte a subseção correspondente abaixo para obter informações adicionais.
+
+c Vulvovaginite, balanite e infecções genitais relacionadas incluem, por ex. os termos preferenciais predefinidos: infecção mic ótica
+
+vulvovaginal, infecção vaginal, balanite, infecção genital fúngica, candidíase vulvovaginal, vulvovaginite, balanite candida , candidíase
+genital, infecção genital, infecção genital masculina, infecção peniana, vulvite, vaginite bacteriana, abscesso vulvar.
+
+d Infecção do trato urinário inclui os seguintes termos preferidos, listados em ordem de frequência relatada: infecção do trato urinário,
+
+cistite, infecção do trato urinário por Escherichia, infecção do trato geniturinário, pielonefrite, trigonite, uretrite , infecção renal e
+prostatite.
+
+e A depleção de volume inclui, por ex. os termos preferenciais predefinidos: desidratação, hipovolemia, hipotensão.
+
+f Poliúria inclui os termos preferidos: polaquiúria, poliúria, aumento do débito urinário.
+g As alterações médias do hematócrito em relação ao valor basal foram de 2,30% para dapagliflozina 10 mg versus –0,33% para placebo.
+
+Valores de hematócrito >55% foram relatados em 1,3% dos indivíduos tratados com dapagliflozina 10 mg versus 0,4% dos indivíduos
+que receberam placebo.
+
+h A alteração percentual média em relação ao valor basal para dapagliflozina 10 mg versus placebo, respectivamente, foi: colesterol total
+
+2,5% versus 0,0%; Colesterol HDL 6,0% versus 2,7%; Colesterol LDL 2,9% versus -1,0%; triglicerídeos -2,7% versus -0,7%.
+
+i Consulte a seção 5. Advertências e precauções.
+
+j A reação adversa foi identificada através da vigilância pós-comercialização. A erupção cutânea inclui os seguintes termos preferidos,
+
+listados por ordem de frequência nos estudos clínicos: erupção cutânea, erupção cutânea generalizada, erupção cutânea pruriginosa,
+erupção cutânea macular, erupção cutânea maculopapular, erupção cutânea pustulosa, erupção cutânea vesicular e erupção cutânea
+eritematosa. Em estudos clínicos controlados por placebo e ativo (dapagliflozina, N = 5.936, todos os controles, N = 3 .403), a frequência
+de erupção cutânea foi semelhante para dapagliflozina (1,4%) e todos os controles (1,4%), respectivamente.
+
+k Relatado nos resultados do estudo de resultados cardiovasculars em pacientes com diabetes tipo 2 (DECLARE). A frequência é ba seada
+
+na taxa anual.
+* Relatado em ≥ 2% dos indivíduos e ≥ 1% mais e pelo menos mais 3 indivíduos tratados com dapagliflozina 10 mg em comparação
+com placebo.
+** Relatado pelo investigador como possivelmente relacionado, provavelmente relacionado ou relacionado ao tratamento do estud o e
+relatado em ≥ 0,2% dos indivíduos e ≥ 0,1% mais e pelo menos mais 3 indivíduos tratados com dapagliflozina 10 mg em comparaçã o
+com placebo.
+
+Descrição das reações adversas
+
+Infecções genitais
+
+Eventos de infecções genitais foram relatados em 5,5% e 0,6% dos pacientes que receberam FORXIGA 10 mg
+e placebo, respectivamente, em 13 estudos de curta duração, controlados por placebo. Os eventos de infecções
+genitais relatados em pacientes tratados com FORXIGA 10 mg foram todos leves a moderados. A maioria dos
+eventos de infecção genital respondeu a um curso inicial de tratamento padronizado e raramente resultou em
+descontinuação do estudo (0,2% FORXIGA 10 mg vs. 0% placebo). Infecções foram mais frequentemente
+relatadas em mulheres (8,4% FORXIGA 10 mg vs. 1,2% placebo) do que em homens (3,4% FORXIGA 10 mg
+vs. 0,2% placebo). As infecções genitais relatadas mais frequentemente foram infecções micóticas
+vulvovaginais em mulheres e balanite em homens.
+
+No estudo DECLARE, o número de pacientes com eventos adversos sérios (EAS) de infecções genitais foi
+reduzido e equilibrado: 2 (<0,1%) pacientes em cada um dos grupos FORXIGA e placebo.
+
+No estudo DAPA-HF, nenhum paciente do grupo FORXIGA e um paciente do grupo placebo reportou EASs
+de infecções genitais. Sete pacientes (0,3%) do grupo FORXIGA e nenhum do grupo placebo apresentaram
+eventos adversos de infecções genitais que levaram à descontinuação do tratamento. No estudo DELIVER, um
+paciente (<0,1%) de cada um dos grupos do estudo reportou a reação adversa de infecção genital. Três pacientes
+(0,1%) do grupo FORXIGA e nenhum do grupo placebo apresentaram eventos adversos de infecções genitais
+
+que levaram à descontinuação do tratamento.
+
+No estudo DAPA-CKD, foram relatados EAS de infecções genitais em 3 (0,1%) pacientes do grupo FORXIGA
+e em nenhum paciente do grupo placebo. Três pacientes (0,1%) do grupo FORXIGA descontinuaram o
+tratamento em decorrência de infecções genitais, nenhum paciente descontinuou o tratamento por este motivo
+no grupo placebo.
+
+Fasceíte necrosante do períneo (gangrena de Fournier)
+
+Foram notificados casos de gangrena de Fournier pós-comercialização em pacientes tomando inibidores de
+SGLT2, incluindo dapagliflozina (consulte seção 5. Advertências e Precauções).
+
+No estudo DECLARE com 17.160 pacientes com diabetes mellitus tipo 2 e um tempo de exposição mediano de
+48 meses, foram notificados um total de 6 casos de gangrena de Fournier, um no grupo tratado com
+dapagliflozina e 5 no grupo placebo.
+
+Hipoglicemia
+
+A frequência da hipoglicemia dependeu do tipo de terapia de base utilizada nos estudos clínicos na diabetes
+mellitus.
+
+Para estudos de dapagliflozina em monoterapia, como adição à metformina ou como adição à sitagliptina (com
+ou sem metformina), a frequência de episódios menores de hipoglicemia foi semelhante (< 5%) entre os grupos
+de tratamento, incluindo placebo até 102 semanas de tratamento. Em todos os estudos, eventos maiores de
+hipoglicemia foram incomuns e comparáveis entre os grupos tratados com dapagliflozina ou placebo. Estudos
+com terapias adjuvantes de sulfonilureia e insulina apresentaram taxas mais altas de hipoglicemia (consulte
+seção 6. Interação medicamentosa).
+
+Num estudo de adição à glimepirida, nas semanas 24 e 48, foram notificados episódios menores de hipoglicemia
+com maior frequência no grupo tratado com dapagliflozina 10 mg mais glimepirida (6,0% e 7,9%,
+respetivamente) do que no grupo placebo mais glimepirida (2,1% e 2,1%, respectivamente).
+Num estudo de adição à insulina, foram notificados episódios maiores de hipoglicemia em 0,5% e 1,0% dos
+
+indivíduos tratados com dapagliflozina 10 mg mais insulina nas semanas 24 e 104, respetivamente, e em 0,5%
+dos indivíduos tratados com placebo mais insulina nas semanas 24 e 104. Nas semanas 24 e 104, foram relatados
+episódios menores de hipoglicemia, respectivamente, em 40,3% e 53,1% dos indivíduos que receberam
+dapagliflozina 10 mg mais insulina e em 34,0% e 41,6% dos indivíduos que receberam placebo mais insulina.
+
+Num estudo de associação à metformina e sulfonilureia, até 24 semanas, não foram notificados episódios
+maiores de hipoglicemia. Foram notificados episódios menores de hipoglicemia em 12,8% dos indivíduos que
+receberam 10 mg de dapagliflozina mais metformina e sulfonilureia e em 3,7% dos indivíduos que receberam
+placebo mais metformina e sulfonilureia.
+
+No estudo DECLARE, não foi observado risco aumentado de hipoglicemia grave com a terapia com
+dapagliflozina em comparação com o placebo. Foram notificados eventos maiores de hipoglicemia em 58
+(0,7%) pacientes tratados com dapagliflozina e 83 (1,0%) pacientes tratados com placebo.
+
+No estudo DAPA-HF, foram notificados eventos maiores de hipoglicemia em 4 (0,2%) pacientes em ambos os
+grupos de tratamento com dapagliflozina e placebo. No estudo DELIVER, foram notificados eventos maiores
+de hipoglicemia em 6 (0,2%) pacientes no grupo dapagliflozina e 7 (0,2%) no grupo placebo. Eventos maiores
+de hipoglicemia foram observados apenas em pacientes com diabetes mellitus tipo 2.
+
+No estudo DAPA-CKD, foram notificados eventos maiores de hipoglicemia em 14 (0,7%) pacientes no grupo
+dapagliflozina e 28 (1,3%) pacientes no grupo placebo e observados apenas em pacientes com diabetes mellitus
+tipo 2.
+
+Depleção do volume
+
+Em 13 estudos de segurança, foram notificadas reações sugestivas de depleção de volume (incluindo
+notificações de desidratação, hipovolemia ou hipotensão) em 1,1% e 0,7% dos indivíduos que receberam 10 mg
+de dapagliflozina e placebo, respetivamente; ocorreram reações graves em < 0,2% dos indivíduos de forma
+equilibrada entre o grupo de dapagliflozina 10 mg e o do placebo (vide seção 5. Advertências e Precauções).
+No estudo DECLARE, o número de pacientes com eventos sugestivos de depleção de volume foi equilibrado
+
+entre os grupos de tratamento: 213 (2,5%) e 207 (2,4%) nos grupos de dapagliflozina e placebo,
+respectivamente. Eventos adversos graves foram relatados em 81 (0,9%) e 70 (0,8%) no grupo dapagliflozina e
+placebo, respectivamente. Os eventos foram geralmente equilibrados entre os grupos de tratamento em
+subgrupos de idade, uso de diuréticos, pressão arterial e uso de inibidores da enzima de conversão da
+angiotensina (iECA)/bloqueadores dos receptores tipo 1 da angiotensina II (BRA). Em pacientes com TFGe <
+60 mL/min/1,73 m2 no início do estudo, ocorreram 19 eventos adversos graves sugestivos de depleção de
+volume no grupo dapagliflozina e 13 eventos no grupo placebo.
+
+No estudo DAPA-HF, o número de pacientes com eventos sugestivos de depleção de volume foi de 170 (7,2%)
+no grupo dapagliflozina e 153 (6,5%) no grupo placebo. Houve menos pacientes com eventos graves com
+sintomas sugestivos de depleção de volume no grupo dapagliflozina (23 [1,0%]) em comparação com o grupo
+placebo (38 [1,6%]). Os resultados foram semelhantes, independentemente da presença de diabetes no início do
+estudo e da TFGe no início do estudo. No estudo DELIVER, o número de pacientes com eventos graves e
+sintomas sugestivos de depleção de volume foi de 35 (1,1%) no grupo dapagliflozina e 31 (1,0%) no grupo
+placebo.
+
+No estudo DAPA-CKD, o número de pacientes com eventos sugestivos de depleção de volume foi de 120
+(5,6%) no grupo dapagliflozina e 84 (3,9%) no grupo placebo. Houve 16 (0,7%) pacientes com eventos graves
+e sintomas sugestivos de depleção de volume no grupo dapagliflozina e 15 (0,7%) pacientes no grupo placebo.
+
+Infecções do trato urinário
+
+Eventos de infecções do trato urinário (ITU) foram relatados em 4,7% e 3,5% dos pacientes que receberam
+FORXIGA 10 mg e placebo, respectivamente, nos 13 estudos de curto-prazo, controlado por placebo. A maioria
+dos eventos de infecção de trato urinário relatados em pacientes tratados com FORXIGA 10 mg foram leves a
+moderados. A maioria dos pacientes respondeu a um curso inicial de tratamento padronizado e infecções do
+trato urinário raramente provocaram descontinuação do estudo (0,2% FORXIGA 10 mg vs. 0,1% placebo).
+Infecções foram relatadas mais frequentemente em mulheres (8,5% FORXIGA 10 mg vs. 6,7% placebo) do que
+em homens (1,8% FORXIGA 10 mg vs. 1,3% placebo) (ver Advertências e Precauções).
+
+No estudo DECLARE houve menos pacientes com EASs de ITU no grupo FORXIGA em comparação com o
+grupo placebo: 79 (0,9%) e 109 (1,3%), respectivamente.
+O número de pacientes com EASs decorrente de infecções do trato urinário (ITU) foi pequeno e equilibrado nos
+
+estudos DAPA-HF e DELIVER: no DAPA-HF houve 14 (0,6%) pacientes do grupo FORXIGA e 17 (0,7%) do
+grupo placebo, enquanto no DELIVER houve 41 (1,3%) pacientes do grupo FORXIGA e 37 (1,2%) do grupo
+placebo. No estudo DAPA-HF, houve 5 pacientes (0,2%) que descontinuaram o tratamento devido aos eventos
+adversos de infecção do trato urinário tanto no grupo FORXIGA quanto no grupo placebo. No estudo
+DELIVER, 13 pacientes (0,4%) do grupo FORXIGA descontinuaram o tratamento devido aos eventos adversos
+de infecção do trato urinário e 9 (0,3%) do grupo placebo.
+
+No estudo DAPA-CKD, foram relatados EAS de ITU em 29 (1,3%) pacientes do grupo FORXIGA e em 18
+(0,8%) pacientes do grupo placebo. Oito pacientes (0,1%) descontinuaram o tratamento em decorrência de
+infecções no trato urinário no grupo FORXIGA e 3 (0,1%) pacientes no grupo placebo.
+
+Aumento da creatinina
+
+As reações adversas relacionadas ao aumento da creatinina foram agrupadas (por exemplo, diminuição da
+depuração renal da creatinina, insuficiência renal, aumento da creatinina sanguínea e diminuição da taxa de
+filtração glomerular). Em 13 estudos de segurança, este agrupamento de reações foi relatado em 3,2% e 1,8%
+dos pacientes que receberam dapagliflozina 10 mg e placebo, respectivamente. Em pacientes com função renal
+normal ou insuficiência renal leve (TFGe basal ≥ 60 mL/min/1,73 m2), esse agrupamento de reações foi relatado
+em 1,3% e 0,8% dos pacientes que receberam dapagliflozina 10 mg e placebo, respectivamente. Estas reações
+foram mais comuns em pacientes com TFGe basal ≥ 30 e < 60 mL/min/1,73 m2 (18,5% de dapagliflozina 10
+mg versus 9,3% de placebo).
+
+Uma avaliação mais aprofundada dos pacientes que tiveram eventos adversos relacionados à função renal
+mostrou que a maioria apresentou alterações na creatinina sérica de ≤ 44 micromoles/L (≤ 0,5 mg/Dl) desde o
+início do estudo. Os aumentos da creatinina foram geralmente transitórios durante o tratamento contínuo ou
+reversíveis após a descontinuação do tratamento.
+
+No estudo DECLARE, incluindo pacientes idosos e pacientes com insuficiência renal (TFGe inferior a 60
+mL/min/1,73 m2), a TFGe diminuiu ao longo do tempo em ambos os grupos de tratamento. Em 1 ano, a TFGe
+média foi ligeiramente menor e, em 4 anos, a TFGe média foi ligeiramente maior no grupo dapagliflozina em
+comparação com o grupo placebo.
+Nos estudos DAPA-HF e DELIVER, a TFGe diminuiu ao longo do tempo tanto no grupo dapagliflozina como
+
+no grupo placebo. No DAPA-HF, a diminuição inicial na média da TFGe foi de -4,3 mL/min/1,73 m2 no grupo
+dapagliflozina e -1,1 mL/min/1,73 m2 no grupo placebo. Aos 20 meses, a alteração em relação ao valor basal
+na TFGe foi semelhante entre os grupos de tratamento: -5,3 mL/min/1,73 m2 para dapagliflozina e -4,5
+mL/min/1,73 m2 para placebo. No DELIVER, a diminuição da TFGe média em um mês foi de -3,7 mL/min/1,73
+m2 no grupo dapagliflozina e -0,4 mL/min/1,73 m2 no grupo placebo. Aos 24 meses, a alteração em relação ao
+valor basal na TFGe foi semelhante entre os grupos de tratamento: -4,2 mL/min/1,73 m2 no grupo dapagliflozina
+e -3,2 mL/min/1,73 m2 no grupo placebo.
+
+No estudo DAPA-CKD, a TFGe diminuiu ao longo do tempo tanto no grupo dapagliflozina como no grupo
+placebo. A diminuição inicial (dia 14) na média da TFGe foi de -4,0 mL/min/1,73 m2 no grupo dapagliflozina
+e -0,8 mL/min/1,73 m2 no grupo placebo. Aos 28 meses, a alteração em relação ao valor basal na TFGe foi de
+-7,4 mL/min/1,73 m2 no grupo dapagliflozina e -8,6 mL/min/1,73 m2 no grupo placebo.
+
+Cetoacidose diabética (CAD)
+
+Diabetes mellitus tipo 2
+No estudo DECLARE com um tempo médio de exposição de 48 meses, os eventos de CAD foram relatados em
+27 pacientes no grupo FORXIGA 10 mg e 12 pacientes no grupo placebo. Os eventos ocorreram uniformemente
+distribuídos ao longo do período do estudo. Dos 27 pacientes com eventos de CAD no grupo FORXIGA, 22
+tiveram tratamento com insulina concomitante no momento do evento. Os fatores precipitantes da CAD foram
+os esperados numa população com diabetes mellitus tipo 2.
+
+No estudo DAPA-HF, foram reportados eventos adversos de CAD em 3 pacientes com diabetes mellitus tipo 2
+do grupo FORXIGA, e nenhum no grupo placebo. No estudo DELIVER, foram reportados eventos adversos de
+CAD em 2 pacientes com diabetes mellitus tipo 2 do grupo FORXIGA, e nenhum do grupo placebo.
+
+No estudo DAPA-CKD, não foram relatados eventos de CAD em nenhum paciente do grupo FORXIGA ,
+entretanto foram reportados em 2 pacientes com diabetes mellitus tipo 2 do grupo placebo.
+
+Atenção: este produto é um medicamento que possui nova indicação terapêutica no país e, embora as
+pesquisas tenham indicado eficácia e segurança aceitáveis, mesmo que indicado e utilizado corretamente,
+podem ocorrer eventos adversos imprevisíveis ou desconhecidos. Nesse caso, notifique os eventos adversos
+pelo Sistema VigiMed, disponível no Portal da Anvisa.
+
+10. SUPERDOSE
+
+Foi demonstrado que dapagliflozina administrada por via oral é segura e bem tolerada em indivíduos sadios em
+doses únicas de até 500 mg (50 vezes a MRHD). Esses indivíduos apresentaram glicose detectável na urina por
+um período de tempo relacionado à dose (pelo menos 5 dias para a dose de 500 mg), sem relatos de desidratação,
+hipotensão ou desequilíbrio eletrolítico e sem efeitos clinicamente significativos no intervalo QTc. A incidência
+de hipoglicemia em pacientes tratados com dapagliflozina foi similar à do placebo. Nos estudos clínicos, em
+que doses de dapagliflozina de até 100 mg uma vez ao dia (10 vezes a MRHD) foram administradas por 2
+semanas a indivíduos sadios e pacientes com diabetes tipo 2, a incidência de hipoglicemia em pacientes que
+
+usaram dapagliflozina foi levemente mais alta do que com placebo e não foi relacionada à dose. As taxas de
+eventos adversos incluindo desidratação ou hipotensão em pacientes tratados com dapagliflozina foram
+similares às observadas com placebo e não ocorreram alterações clinicamente significativas relacionadas à dose
+nos parâmetros laboratoriais incluindo eletrólitos séricos e biomarcadores de função renal.
+
+Na ocorrência de uma superdosagem, devem ser iniciados tratamentos apropriados de suporte, de acordo com
+estado clínico do paciente. A remoção da dapagliflozina por hemodiálise não foi estudada.
+
+Em caso de intoxicação ligue para 0800 722 6001 se você precisar de mais orientações.
+
+III.

@@ -1,0 +1,811 @@
+FONTE: lote4__empagliflozina__JARDIANCE.pdf
+
+===== BLOCO 1 =====
+APRESENTAÇÕES
+Comprimidos revestidos de 10 mg ou 25 mg: embalagens com 10 ou 30 comprimidos.
+
+ USO ORAL
+ USO ADULTO E PEDIÁTRICO A PARTIR DE 10 ANOS
+
+1. INDICAÇÕES
+
+ Controle glicêmico: JARDIANCE é indicado para o tratamento do diabetes mellitus tipo 2 (DM2) em adultos e crianças
+ a partir de 10 anos de idade para melhorar o controle glicêmico em conjunto com dieta e exercícios.
+ • Em adultos, pode ser utilizado como monoterapia ou em associação com metformina, tiazolidinedionas, metformina
+ mais sulfonilureia, ou insulina com ou sem metformina com ou sem sulfonilureia.
+ • Em crianças a partir de 10 anos de idade, pode ser utilizado como monoterapia ou em associação com metformina,
+ insulina ou ambas.
+
+ Prevenção de eventos cardiovasculares: JARDIANCE é indicado para pacientes adultos com diabetes mellitus tipo 2 e
+ doença cardiovascular estabelecida para reduzir o risco de:
+ - Mortalidade por todas as causas por reduzir a morte cardiovascular.
+ - Morte cardiovascular ou hospitalização por insuficiência cardíaca.
+
+ Insuficiência cardíaca (IC): JARDIANCE é indicado para pacientes adultos com insuficiência cardíaca (Associação de
+ cardiologia de Nova Iorque - NYHA classe II-IV) independente da fração de ejeção do ventrículo esquerdo, com ou sem
+ diabetes mellitus tipo 2 para:
+ - Reduzir o risco de morte cardiovascular e hospitalizações por insuficiência cardíaca;
+ - Retardar a perda da função renal.
+
+ Doença renal crônica (DRC): JARDIANCE é indicado em adultos para o tratamento de doença renal crônica.
+
+3. CARACTERÍSTICAS FARMACOLÓGICAS
+ Modo de Ação
+ A empagliflozina é um inibidor competidor reversível, altamente potente e seletivo do SGLT-2 (cotransportador de sódio
+ e glicose 2) com um IC50 de 1,3 nM, que tem uma seletividade 5.000 vezes maior em relação ao SGLT1 (cotransportador
+ de sódio e glicose 1) humano (IC50 de 6.278 nM), responsável pela absorção da glicose no intestino. Além disso, a
+ seletividade elevada pode ser demonstrada para outros transportadores de glicose (GLUTs) responsáveis pela homeostase
+ da glicose em diferentes tecidos.
+ O SGLT-2 é altamente expresso no rim, enquanto a expressão em outros tecidos não ocorre ou é muito baixa. Ele é
+ responsável como transportador predominante pela reabsorção de glicose do filtrado glomerular de volta para a circulação.
+ Em pacientes com diabetes mellitus tipo 2 (DM2) e hiperglicemia, uma quantidade maior de glicose é filtrada e
+ reabsorvida.
+ A empagliflozina melhora o controle glicêmico em pacientes com DM2, reduzindo a reabsorção renal de glicose. A
+ quantidade de glicose removida pelo rim através deste mecanismo glicosúrico é dependente da concentração de glicose
+ no sangue e da taxa de filtração glomerular. Através da inibição do SGLT-2 em pacientes com DM2 e hiperglicemia, a
+ glicose em excesso é excretada na urina.
+ Em pacientes com diabetes mellitus tipo 2, a excreção urinária de glicose aumentou imediatamente após a primeira dose
+ de empagliflozina e se manteve durante o intervalo de dosagem de 24 horas. A excreção urinária de glicose foi mantida
+ no final do período de tratamento de 4 semanas, com uma média aproximada de 78 g/dia, com empagliflozina 25 mg uma
+ vez por dia. O aumento da glicosúria resultou em uma redução imediata da glicemia em pacientes com DM2.
+ A empagliflozina (10 mg e 25 mg) melhora a glicemia tanto em jejum como pós-prandial.
+ O mecanismo de ação da empagliflozina é independente da função das células beta e da insulina, contribuindo para um
+ baixo risco de hipoglicemia. Percebeu-se uma melhora dos marcadores substitutos da função das células beta, incluindo
+ a Avaliação do Modelo de Homeostase (HOMA-β) e a razão pró-insulina/insulina. Além disso, a excreção urinária de
+ glicose desencadeia a perda de calorias, associada com a perda de gordura corporal e redução de peso corporal.
+ A glicosúria observada com a empagliflozina é acompanhada de diurese leve que pode contribuir para a redução
+ sustentada e moderada da pressão arterial.
+ A empagliflozina também reduz a reabsorção de sódio e aumenta a entrada de sódio no túbulo distal. Isto pode influenciar
+ em várias funções fisiológicas incluindo, mas não restrito a, aumento no feedback tubuloglomerular e redução da pressão
+ intraglomerular, diminuindo a pré- e pós-carga cardíaca, diminuindo a resposta da atividade simpática e reduzindo o
+ estresse da parede ventricular esquerda, conforme evidenciado pelos valores mais baixos de NT-proBNP, que podem ter
+ efeitos benéficos no remodelamento cardíaco, pressões de enchimento e função diastólica, bem como preservar a estrutura
+ e função renal. Outros efeitos, tais como aumento no hematócrito, redução no peso corporal e na pressão arterial também
+ podem contribuir para os efeitos benéficos cardíacos e renais.
+
+ JARDIANCE_Bula Profissional 25-7439660/C25 -03 40
+ JARDIANCE PROFISSIONAL DA SAÚDE
+
+ Farmacocinética
+ Absorção
+ A farmacocinética da empagliflozina tem sido amplamente caracterizada em voluntários sadios e em pacientes com
+ diabetes mellitus tipo 2. Após a administração oral, a empagliflozina foi rapidamente absorvida com picos de
+ concentrações plasmáticas ocorrendo no t máx médio de 1,5 h após a dose. Depois disso, as concentrações no plasma
+ diminuíram de uma maneira bifásica com uma fase de distribuição rápida e uma fase terminal relativamente lenta. A AUC
+ (área sob a curva) plasmática média no estado de equilíbrio foi de 4.740 nmol.h/L e a Cmáx foi de 687 nmol/L, com 25 mg
+ de empagliflozina uma vez por dia. A exposição sistêmica da empagliflozina aumentou de forma proporcional à dose. Os
+ parâmetros farmacocinéticos de dose única e no estado de equilíbrio da empagliflozina foram semelhantes, sugerindo
+ uma farmacocinética linear em função do tempo. Não houve diferenças clinicamente relevantes na farmacocinética da
+ empagliflozina entre voluntários sadios e em pacientes com DM2.
+ A administração de 25 mg de empagliflozina após uma refeição rica em gordura e de elevado teor calórico resultou em
+ uma exposição levemente menor; a AUC diminuiu em aproximadamente 16% e a Cmáx diminuiu em aproximadamente
+ 37%, em relação ao estado de jejum. O efeito observado do alimento na farmacocinética da empagliflozina não foi
+ considerado clinicamente relevante e a mesma pode ser administrada com ou sem alimentos.
+
+ Distribuição
+ O volume de distribuição aparente no estado de equilíbrio foi estimado ser 73,8 L, com base em uma análise
+ farmacocinética da população. Após a administração de uma solução oral de empagliflozina-[14C] a indivíduos sadios, a
+ presença em células vermelhas foi de aproximadamente 36,8% e a ligação às proteínas plasmáticas foi de 86,2%.
+
+ Biotransformação
+ Nenhum dos principais metabólitos de empagliflozina foi detectado no plasma humano e os metabólitos mais abundantes
+ foram três conjugados glucuronídeos (2-O-, 3-O-, e 6-O-glicuronídeo). A exposição sistêmica de cada metabólito foi
+ menor que 10% do total do medicamento ingerido. Estudos in vitro sugerem que a via principal de metabolismo de
+ empagliflozina em humanos seja a glicuronidação por uridina 5’-difosfo--glicuronosiltransferases UGT2B7, UGT1A3,
+ UGT1A8 e UGT1A9.
+
+ Excreção
+ A meia-vida terminal aparente de eliminação da empagliflozina foi estimada em 12,4 horas e a depuração oral aparente
+ foi 10,6 L/h com base na análise farmacocinética da população. As variabilidades inter-indivíduos e residual para
+ depuração oral de empagliflozina foram de 39,1% e 35,8%, respectivamente. Com uma dose única diária, as
+ concentrações plasmáticas no estado de equilíbrio da empagliflozina foram atingidas na quinta dose. Consistente com a
+ meia-vida observou-se no estado de equilíbrio, uma acumulação de até 22%, em relação à AUC plasmática. Após
+ administração de uma solução oral de empagliflozina-[14C] a indivíduos sadios, cerca de 95,6% da radioatividade
+ relacionada ao fármaco foi eliminada nas fezes (41,2%) ou na urina (54,4%). A maioria da radioatividade relacionada ao
+ fármaco recuperada nas fezes era o fármaco inalterado e cerca de metade da radioatividade excretada na urina era o
+ fármaco inalterado.
+
+ Populações Especiais
+ Comprometimento renal: em pacientes com insuficiência renal leve (taxa de filtração glomerular: 60 - < 90 mL/min/1,73
+ m²), moderada (taxa de filtração glomerular: 30 - < 60 mL/min/1,73 m²), grave (taxa de filtração glomerular: < 30
+ mL/min/1,73 m²) e pacientes com insuficiência renal/doença renal terminal, a AUC da empagliflozina aumentou em
+ aproximadamente 18%, 20%, 66% e 48%, respectivamente, em comparação com indivíduos com função renal normal.
+ Os níveis de picos plasmáticos da empagliflozina foram semelhantes em indivíduos com insuficiência renal moderada, e
+ com insuficiência renal/doença renal terminal em comparação com pacientes com função renal normal. Os níveis de picos
+ plasmáticos de empagliflozina foram cerca de 20% superiores em indivíduos com insuficiência renal leve e grave, em
+ comparação com indivíduos com função renal normal. Em conformidade com o estudo de Fase I, a análise
+ farmacocinética da população mostrou que a depuração oral aparente da empagliflozina diminuiu com a redução da taxa
+ de filtração glomerular levando a um aumento da exposição ao fármaco. Com base na farmacocinética, não se recomenda
+ ajuste da dose para pacientes com insuficiência renal.
+
+ Comprometimento hepático: em indivíduos com insuficiência hepática leve, moderada e grave, de acordo com a
+ classificação de Child-Pugh, a AUC da empagliflozina aumentou aproximadamente 23%, 47% e 75% e a Cmáx em cerca
+ de 4%, 23% e 48%, respectivamente, em comparação com indivíduos com função hepática normal. Com base na
+ farmacocinética, não se recomenda ajuste da dose para pacientes com insuficiência hepática.
+
+ JARDIANCE_Bula Profissional 25-7439660/C25 -03 41
+ JARDIANCE PROFISSIONAL DA SAÚDE
+
+ Índice de Massa Corporal (IMC): não é necessário ajuste posológico com base no IMC. O índice de massa corporal
+ não teve efeito clinicamente relevante sobre a farmacocinética da empagliflozina com base na análise farmacocinética da
+ população.
+
+ Sexo: nenhum ajuste de dose é necessário com base no sexo. O sexo não teve efeito clinicamente relevante sobre a
+ farmacocinética da empagliflozina com base na análise farmacocinética da população.
+
+ Raça: nenhum ajuste posológico é necessário com base na raça. Com base na análise farmacocinética da população, a
+ AUC foi estimada em 13,5% maior em pacientes asiáticos com um IMC de 25 kg/m2 em comparação aos pacientes não
+ asiáticos com um IMC de 25 kg/m2.
+
+ Idosos: a idade não teve um impacto clinicamente significativo na farmacocinética da empagliflozina com base na análise
+ farmacocinética da população.
+
+ Crianças: a farmacocinética e farmacodinâmica de uma dose única de empagliflozina 5 mg, 10 mg e 25 mg foram
+ investigadas em crianças e adolescentes entre 10 e 17 anos de idade com DM2. A farmacocinética e a relação
+ farmacocinética-farmacodinâmica observada (excreção urinária de glicose) em pacientes adultos e pediátricos foi
+ comparável após contabilização de covariáveis significativas.
+ A farmacocinética e farmacodinâmica (alteração da HbA1c a partir do valor basal) da empagliflozina 10 mg com um
+ possível aumento da dose para 25 mg foram investigadas em crianças e adolescentes entre 10 e 17 anos de idade com
+ DM2. A relação exposição-resposta observada foi de forma geral comparável em adultos, crianças e adolescentes. A
+ administração oral de empagliflozina resultou numa exposição dentro do intervalo observado em pacientes adultos. As
+ concentrações mínimas médias geométricas e as concentrações médias geométricas observadas 1,5 hora após a
+ administração no estado de equilíbrio foram de 26,6 nmol/L e 308 nmol/L com empagliflozina 10 mg uma vez por dia e
+ 67,0 nmol/L e 525 nmol/L com empagliflozina 25 mg uma vez por dia.
+
+4. CONTRAINDICAÇÕES
+ JARDIANCE é contraindicado para pacientes com hipersensibilidade à empagliflozina, ou aos excipientes da fórmula,
+ ou em caso de doenças hereditárias raras que podem ser incompatíveis com os excipientes da fórmula.
+
+5. ADVERTÊNCIAS E PRECAUÇÕES
+ JARDIANCE não deve ser usado em pacientes com diabetes mellitus do tipo 1.
+
+ Cetoacidose
+ Casos de cetoacidose, uma condição grave com risco de vida e com necessidade de hospitalização urgente, foram relatados
+ em pacientes com diabetes mellitus tratados com empagliflozina, incluindo casos fatais. Em um número de casos
+ relatados, a apresentação desta condição foi atípica com valores de glicemia discretamente aumentada, abaixo de 250
+ mg/dL. Embora a cetoacidose seja menos provável de ocorrer em pacientes sem diabetes mellitus, também foram
+ relatados casos nesses pacientes.
+ O risco de cetoacidose deve ser considerado no caso de sintomas não específicos como náusea, vômito, anorexia, dor
+ abdominal, sede excessiva, dificuldade de respiração, confusão, cansaço anormal e sonolência.
+ Os pacientes devem ser avaliados quanto à cetoacidose imediatamente se estes sintomas ocorrerem, independentemente
+ do nível de glicemia. Se houver suspeita de cetoacidose, o tratamento com JARDIANCE deve ser interrompido, o paciente
+ deve ser avaliado e tratamento imediato deve ser instituído.
+ Em alguns pacientes, a cetoacidose e a glicosúria podem persistir após a suspensão do medicamento JARDIANCE, ou
+ seja, pode durar mais que as 5 meias-vidas plasmáticas esperadas de empagliflozina (vide 3. CARACTERÍSTICAS
+ FARMACOLÓGICAS – Farmacocinética). Há relatos de excreção urinária de glicose por três dias após a descontinuação
+ do medicamento JARDIANCE. Houve, ainda, na experiência de pós-comercialização, relatos de glicosúria com duração
+ superior a seis dias e, em alguns casos, até duas semanas após a descontinuação dos inibidores dos cotransportadores de
+ sódio e glicose 2 (SGLT-2).
+ JARDIANCE deve ser usado com cautela em pacientes que possam apresentar um maior risco de cetoacidose enquanto
+ usam JARDIANCE, incluindo aqueles sob uma dieta com restrição de carboidratos (visto que a combinação pode
+ aumentar ainda mais a produção de corpos cetônicos), pacientes com doenças agudas, doenças pancreáticas sugerindo
+ deficiência de insulina (por exemplo, diabetes tipo 1, história de pancreatite ou cirurgia de pâncreas), redução da dose de
+ insulina (incluindo a falha da bomba de insulina), abuso de álcool, desidratação grave e pacientes com história de
+ cetoacidose. Deve-se ter cautela ao reduzir a dose de insulina (vide “8. POSOLOGIA E MODO DE USAR”). Em
+
+ JARDIANCE_Bula Profissional 25-7439660/C25 -03 42
+ JARDIANCE PROFISSIONAL DA SAÚDE
+
+ pacientes tratados com JARDIANCE deve -se considerar monitoramento da cetoacidose e a interrupção temporária de
+ JARDIANCE em situações clínicas conhecidas por predispor à cetoacidose (por exemplo, jejum prolongado devido à
+ doença aguda ou cirurgia). Nestas situações, considerar o monitoramento de cetonas, mesmo que o tratamento com
+ JARDIANCE tenha sido interrompido.
+
+ Fasciíte necrosante do períneo (gangrena de Fournier)
+ Foram relatados casos de fasciíte necrosante do períneo (também conhecida como gangrena de Fournier), uma infecção
+ necrosante rara, porém grave e com risco de vida, em pacientes do sexo feminino e masculino com diabetes mellitus
+ tratados com inibidores de SGLT-2, incluindo a empagliflozina. Casos graves incluíram hospitalização, cirurgias
+ múltiplas e óbito.
+ Pacientes tratados com JARDIANCE que apresentem dor ou sensibilidade, vermelhidão, inchaço na área genital ou do
+ períneo, febre e mal-estar devem ser avaliados para fasciíte necrosante. Se houver suspeita, o uso de JARDIANCE deve
+ ser descontinuado e o tratamento imediato deve ser iniciado (incluindo antibióticos de amplo espectro e desbridamento
+ cirúrgico, se necessário).
+
+ Pacientes com comprometimento renal
+ Devido à experiência limitada, não é recomendado iniciar o tratamento com empagliflozina em pacientes em diálise.
+ A eficácia glicêmica da empagliflozina é dependente da função renal e provavelmente ausente em pacientes com TFGe
+ < 30 mL/min/1,73m2 (veja seção 8. POSOLOGIA E MODO DE USAR).
+
+ Monitoramento da função renal
+ Recomenda-se a avaliação da função renal antes do início do tratamento com JARDIANCE e periodicamente durante o
+ tratamento, ou seja, pelo menos anualmente.
+
+ Pacientes com risco de hipovolemia
+ Com base no mecanismo de ação dos inibidores de SGLT-2, a diurese osmótica que acompanha a glicosúria pode levar a
+ uma modesta redução na pressão arterial. Portanto, recomenda -se precaução em pacientes para os quais uma queda da
+ pressão arterial induzida pela empagliflozina pode representar um risco, como em pacientes com doença cardiovascular
+ conhecida, pacientes em terapia anti -hipertensiva com histórico de hipotensão ou pacientes com 75 anos ou mais.
+ Em caso de condições que podem levar à perda de líquido (por exemplo, doença gastrintestinal), recomenda -se um
+ cuidadoso monitoramento do volume (por exemplo, exame físico, medidas de pressão arterial, exames laboratoriais
+ incluindo hematócrito) e eletrólitos para pacientes que fazem uso de empagliflozina. A interrupção temporária do
+ tratamento com JARDIANCE a deve ser considerada até que a perda de líquido seja corrigida.
+
+ Infecções complicadas do trato urinário
+ Casos de infecções complicadas do trato urinário incluindo pielonefrite e urosepse foram relatados em pacientes tratados
+ com empagliflozina (vide “9. REAÇÕES ADVERSAS”). Deve-se considerar a interrupção temporária de JARDIANCE
+ em pacientes com infecções complicadas do trato urinário.
+
+ Pacientes idosos
+ Pacientes com 75 anos de idade ou mais podem apresentar risco elevado de hipovolemia, portanto, JARDIANCE deve
+ ser prescrito com cautela a estes pacientes.
+
+ Atenção: Contém lactose (tipo de açúcar) abaixo de 0,25g/comprimido revestido.
+ Este medicamento não deve ser usado por pessoas com síndrome de má-absorção de glicose-galactose.
+
+ Corantes
+ Atenção: Contém os corantes dióxido de titânio e óxido de ferro amarelo.
+
+ Sódio
+ Os comprimidos de JARDIANCE 10 mg e JARDIANCE 25 mg contêm menos de 23 mg de sódio, sendo, portanto,
+ considerados livres de sódio.
+
+ Efeitos sobre a capacidade de dirigir e operar máquinas
+ Não foram realizados estudos sobre os efeitos na capacidade de dirigir e operar máquinas.
+
+ JARDIANCE_Bula Profissional 25-7439660/C25 -03 43
+ JARDIANCE PROFISSIONAL DA SAÚDE
+
+ Gravidez, lactação e fertilidade
+ Gravidez
+ Existem poucos dados sobre a utilização de JARDIANCE em mulheres grávidas. Estudos pré -clínicos não indicaram
+ efeitos prejudiciais diretos ou indiretos com relação à toxicidade reprodutiva. Como medida de precaução, recomenda-se
+ evitar o uso de JARDIANCE durante a gravidez a menos que seja claramente necessário.
+ Lactação
+ Não há dados em humanos sobre a excreção da empagliflozina no leite. Dados pré-clínicos disponíveis em animais
+ mostraram excreção de empagliflozina no leite. Não se pode excluir um risco para os recém-nascidos/bebês. Recomenda-
+ se descontinuar a amamentação durante o tratamento com JARDIANCE.
+ O uso deste medicamento no período da lactação depende da avaliação e acompanhamento do seu médico ou
+ cirurgião-dentista.
+ Uso criterioso no aleitamento ou na doação de leite humano.
+
+ Fertilidade
+ Nenhum estudo sobre o efeito na fertilidade humana foi realizado com JARDIANCE. Estudos pré -clínicos em animais
+ não indicaram efeitos prejudiciais diretos ou indiretos sobre a fertilidade.
+
+ JARDIANCE está classificado na categoria B de risco na gravidez.
+ Este medicamento não deve ser utilizado por mulheres grávidas sem orientação médica ou do cirurgião-dentista.
+
+6. INTERAÇÕES MEDICAMENTOSAS
+
+ Interações farmacodinâmicas
+
+ Diuréticos: a empagliflozina pode aumentar o efeito diurético de tiazídicos e diuréticos de alça e pode aumentar o risco
+ de desidratação e hipotensão.
+
+ Insulina e secretagogos de insulina tais como as sulfonilureias, podem aumentar o risco de hipoglicemia. Portanto, uma
+ dose mais baixa de insulina ou um secretagogo de insulina pode ser necessário para reduzir o risco de hipoglicemia,
+ quando usados em combinação com empagliflozina.
+ Interferência com teste de 1,5-anidroglucitol (1,5-AG): o monitoramento do controle da glicemia com teste de 1,5-AG
+ não é recomendado, pois as medidas de 1,5-AG não são confiáveis na avaliação do controle glicêmico nos pacientes em
+ uso de inibidores de SGLT-2. Utilizar métodos alternativos para monitorar o controle glicêmico.
+
+ Interações farmacocinéticas
+ Lítio
+ O uso concomitante de inibidores da SGLT-2, incluindo a empagliflozina, com lítio pode diminuir os níveis sanguíneos
+ de lítio através do aumento da eliminação renal de lítio. Assim, as concentrações séricas de lítio devem ser monitoradas
+ mais frequentemente com o início da empagliflozina ou após alterações da dose. Por favor, encaminhe o paciente ao
+ médico que prescreveu o lítio para monitorar a concentração sérica do lítio.
+
+ Avaliação in vitro de interações farmacológicas: a empagliflozina não inibe, inativa ou induz as isoformas do CYP450.
+ Os dados in vitro sugerem que a via principal de metabolismo da empagliflozina em humanos é a glicuronidação pela
+ uridina 5'-difosfo-glicuronosiltransferases UGT2B7, UGT1A3, UGT1A8 e UGT1A9. A empagliflozina não inibe a
+ UGT1A1, UGT1A3, UGT1A8, UGT1A9 ou UGT2B7. Em doses terapêuticas, o potencial para a empagliflozina inibir
+ ou inativar reversivelmente as principais isoformas do CYP450 e UGT é remota. Interações medicamentosas envolvendo
+ as principais isoformas do CYP450 e UGT com empagliflozina e substratos administrados concomitantemente destas
+ enzimas são, portanto, consideradas improváveis.
+ A empagliflozina é um substrato da glicoproteína P (P-gp) e da proteína de resistência ao câncer de mama (BCRP), mas
+ não inibe estes transportadores de efluxo em doses terapêuticas. Com base nos estudos in vitro, considera-se improvável
+ que a empagliflozina cause interações com medicamentos que são substratos da glicoproteína P. A empagliflozina é um
+ substrato dos transportadores humanos de captação de OAT3, OATP1B1 e OATP1B3, mas não de OAT1 e OCT2. A
+ empagliflozina não inibe nenhum desses transportadores humanos de captação em concentrações no plasma clinicamente
+ relevantes e, como tal, considera-se improvável interações medicamentosas com os substratos destes transportadores de
+ captação.
+
+ JARDIANCE_Bula Profissional 25-7439660/C25 -03 44
+ JARDIANCE PROFISSIONAL DA SAÚDE
+
+ Avaliação in vivo de interações farmacológicas: não se observou interações farmacocinéticas clinicamente
+ significativas quando a empagliflozina foi coadministrada com outros medicamentos habitualmente utilizados. Com base
+ nos resultados dos estudos farmacocinéticos, não se recomenda ajuste na dose de JARDIANCE quando coadministrado
+ com outros medicamentos prescritos com frequência.
+ A farmacocinética da empagliflozina foi semelhante com e sem a coadministração de metformina, glimepirida,
+ pioglitazona, sitagliptina, linagliptina, varfarina, verapamil, ramipril e sinvastatina em voluntários sadios e com ou sem
+ coadministração de torasemida e hidroclorotiazida em pacientes com diabetes mellitus tipo 2. Observou -se aumentos na
+ exposição total (AUC) da empagliflozina após coadministração com genfibrozila (59%), rifampicina (35%), ou
+ probenecida (53%). Estas alterações não foram consideradas clinicamente significativas.
+ A empagliflozina não teve efeito clinicamente relevante sobre a farmacocinética da metformina, glimepirida,
+ pioglitazona, sitagliptina, linagliptina, varfarina, digoxina, ramipril, sinvastatina, hidroclorotiazida, torasemida e
+ contraceptivos orais, quando coadministradas em voluntários sadios.
+
+ Pacientes pediátricos: os estudos de interação foram realizados somente em adultos.
+
+8. POSOLOGIA E MODO DE USAR
+ O comprimido de JARDIANCE deve ser ingerido por via oral, com ou sem alimentos.
+ A dose inicial recomendada para o tratamento da diabetes mellitus tipo 2 é de 10 mg uma vez ao dia. O tratamento da
+ hiperglicemia em pacientes com diabetes mellitus tipo 2 deve ser individualizado com base na eficácia e tolerabilidade.
+ Em pacientes que toleram empagliflozina 10 mg uma vez ao dia, que apresentam TFGe ≥ 30 ml/min/1,73 m² e que
+ requerem controle glicêmico mais rigoroso, a dose pode ser aumentada para 25 mg uma vez ao dia. A dose máxima diária
+ para o tratamento da diabetes mellitus tipo 2 é 25 mg e não deve ser excedida.
+ A dose recomendada para o tratamento da insuficiência cardíaca é de 10 mg uma vez ao dia.
+ A dose recomendada para o tratamento da doença renal crônica é de 10 mg uma vez ao dia.
+
+ Pacientes com comprometimento renal:
+ A empagliflozina 10 mg pode ser usada independente da função renal. No entanto, devido à experiência limitada, não é
+ recomendado iniciar o tratamento com JARDIANCE em pacientes em diálise.
+ A eficácia glicêmica da empagliflozina é dependente da função renal e provavelmente ausente em pacientes com
+ comprometimento renal grave. Se TFGe < 30 mL/min/1,73m² a dose recomendada de empagliflozina é limitada a 10 mg,
+ e um tratamento com medicamento redutor de glicose adicional deve ser considerado, se necessário (veja seção 5.
+ ADVERTÊNCIAS E PRECAUÇÕES).
+
+ Pacientes com comprometimento hepático:
+ Não se recomenda ajuste de dose em pacientes com insuficiência hepática.
+
+ Pacientes idosos:
+ Não se recomenda ajuste de dose em pacientes idosos.
+
+ Pacientes pediátricos:
+ A dose inicial recomendada para o tratamento da diabetes mellitus tipo 2 é de 10 mg uma vez ao dia. Em pacientes que
+ toleram 10 mg uma vez ao dia e que requerem controle glicêmico adicional, a dose pode ser aumentada para 25 mg uma
+ vez ao dia. Não há dados disponíveis em crianças com TFGe <60ml/min/1,73 m2 e em crianças abaixo de 10 anos.
+
+ JARDIANCE_Bula Profissional 25-7439660/C25 -03 45
+ JARDIANCE PROFISSIONAL DA SAÚDE
+
+ Não foram estabelecidas a segurança e eficácia de JARDIANCE para tratamento de insuficiência cardíaca em crianças
+ abaixo de 18 anos. Não foram estabelecidas a segurança e eficácia de JARDIANCE para tratamento da doença renal
+ crônica em crianças abaixo de 18 anos.
+
+ Terapia de combinação:
+ Quando JARDIANCE é utilizado em combinação com uma sulfonilureia ou com insulina, pode-se considerar a dose mais
+ baixa destas para reduzir o risco de hipoglicemia.
+
+ Esquecimento de dose:
+ Se uma dose for esquecida, deve ser tomada assim que o paciente se recordar. Não se deve tomar uma dose duplicada no
+ mesmo dia.
+
+ Este medicamento não deve ser partido, aberto ou mastigado.
+
+9. REAÇÕES ADVERSAS
+
+ • Diabetes mellitus tipo 2
+ Um total de 15.582 pacientes com diabetes tipo 2 foram tratados em estudos clínicos para avaliar a segurança de
+ empagliflozina, dos quais 10.004 pacientes foram tratados com empagliflozina, sozinha ou em combinação com
+ metformina, sulfonilureia, agonista de PPARγ (receptor ativado por proliferadores de peroxissoma-gama), inibidores de
+ DPP4 ou insulina.
+ Este conjunto inclui o estudo EMPA-REG OUTCOME® envolvendo 7.020 pacientes com alto risco cardiovascular (idade
+ média de 63,1 anos; 9,3% dos pacientes com pelo menos 75 anos de idade; 28,5% mulheres) tratados com JARDIANCE
+ 10 mg ao dia (n = 2.345), JARDIANCE 25 mg ao dia (n = 2.342), ou placebo (n = 2.333) por até 4,5 anos. O perfil de
+ segurança global da empagliflozina neste estudo foi comparável ao perfil de segurança previamente conhecido.
+ Nos estudos descritos acima, a frequência de eventos adversos que conduziu à descontinuação foi semelhante em grupos
+ tratados com placebo, JARDIANCE 10 mg e JARDIANCE 25 mg.
+ Os estudos controlados por placebo, duplo-cego, de 18 a 24 semanas de exposição incluíram 3.534 pacientes, dos quais
+ 1.183 foram tratados com placebo, 1.185 foram tratados com JARDIANCE 10 mg e 1.166 foram tratados com
+ JARDIANCE 25 mg.
+ A reação adversa mais frequente foi a hipoglicemia, que depende do tipo de terapia de base usada nos respectivos estudos
+ (vide “Descrição de reações adversas selecionadas” a seguir).
+
+ • Insuficiência cardíaca
+ Os estudos EMPEROR Reduced e Preserved incluíram pacientes com insuficiência cardíaca e fração de ejeção reduzida
+ (N = 3726) ou preservada (N = 5985) respectivamente, tratados com empagliflozina 10 mg ou placebo. Aproximadamente
+ metade dos pacientes tinha diabetes mellitus tipo 2.
+ A reação adversa mais frequente foi a hipovolemia (empagliflozina 10 mg: 11,4%; placebo 9,7%).
+
+ • Doença renal crônica
+ O estudo EMPA-KIDNEY incluiu pacientes com doença renal crônica (N = 6609) tratados com 10 mg de empagliflozina
+ ou placebo. Aproximadamente 44% dos pacientes tinham diabetes mellitus tipo 2. Não foram identificadas novas reações
+ adversas no estudo EMPA-KIDNEY.
+
+ O perfil global de segurança de JARDIANCE foi em geral consistente entre as indicações estudadas.
+
+ JARDIANCE_Bula Profissional 25-7439660/C25-03 46
+ JARDIANCE PROFISSIONAL DA SAÚDE
+
+ Tabela 25 Reações adversas para Diabetes Mellitus tipo 2 (DM2) e Insuficiência Cardíaca (IC) derivadas de
+ experiências pós comercialização (DM2) e estudos clínicos EMPEROR (IC).
+
+ Terminologia MedDRA – Frequência
+ Sistema de Classificação de DM2 – Adulto DM2 – Adulto DM2 – Pediátrico IC – Adulto
+ Órgãos empagliflozina empagliflozina empagliflozina empagliflozina
+ 25 mg 10 mg 10 mg e 25 mg 10 mg
+ Infecções e infestações
+ Monilíase vaginal,
+ vulvovaginite, balanite e Comum Comum Comum Comum
+ outras infecções genitaisa
+ Infecções do trato urinárioa
+ (incluindo pielonefrite e Comum Comum Comum Comum
+ urosepse)b
+ Fasciíte necrosante do
+ períneo (gangrena de Desconhecido Desconhecido Desconhecido Raro
+ Fournier)b, d.
+ Distúrbios do metabolismo e nutrição
+ Hipoglicemia (quando
+ utilizado com sulfonilureia Muito comum Muito comum Muito comum Comum
+ ou insulina)a
+ Cetoacidoseb Desconhecido Incomum Desconhecido Incomum
+ Distúrbios gastrointestinais
+ Constipação Incomum Comum Desconhecido Comum
+ Distúrbios da pele e do tecido subcutâneo
+ Prurido Comum Comum Desconhecido Comum
+ Reações alérgicas de pele Comum Comum Comum Comum
+ (ex. rash, urticária)b
+ Angioedemab Desconhecido Desconhecido Desconhecido Incomum
+ Distúrbios vasculares
+ Hipovolemiaa Incomum Incomum Desconhecido Muito comum
+ Distúrbios dos sistemas urinário e renal
+ Micção aumentadaa Comum Comum Comum Incomum
+ Disúria Incomum Incomum Desconhecido Incomum
+ Distúrbios gerais e condições do local de administração
+ Sede Comum Comum Comum Incomum
+ Investigações
+ Aumento da creatinina Incomum Incomum Desconhecido Incomum
+ séricaa
+ Taxa de filtração glomerular Desconhecido Incomum Desconhecido Incomum
+ diminuídaa
+ Aumento do hematócritoc Incomum Raro Desconhecido Incomum
+ Aumento dos lipídios Comum Comum Comum Comum
+ séricosc
+
+ a vide subitens a seguir para informações adicionais para pacientes com diabete mellitus.
+ b derivadas de experiência pós-comercialização.
+ c vide “2. RESULTADOS DE EFICÁCIA” para informações adicionais.
+ d para indicação de insuficiência cardíaca: observado em pacientes com diabetes mellitus.
+ As reações adversas são classificadas conforme as suas frequências, definidas como: Reação muito comum (≥ 1/10), Reações comuns
+ (≥ 1/100 e < 1/10), Reações incomuns (≥ 1/1.000 e < 1/100), Reação rara (≥ 1/10.000 e < 1/1000) e Desconhecido (não pôde ser
+ determinado com as informações disponíveis).
+
+ JARDIANCE_Bula Profissional 25-7439660/C25 -03 47
+ JARDIANCE PROFISSIONAL DA SAÚDE
+
+ Descrição de reações adversas selecionadas
+ As frequências das reações adversas abaixo foram calculadas independentemente de suas causalidades.
+
+ Hipoglicemia
+ A frequência de hipoglicemia dependeu da terapia de base que foi utilizada nos respectivos estudos e foi semelhante na
+ monoterapia com JARDIANCE e com o placebo, em combinação com metformina, em combinação com pioglitazona
+ com ou sem metformina e em combinação com linagliptina mais metformina. A frequência de pacientes com hipoglicemia
+ foi maior em pacientes tratados com JARDIANCE em comparação ao placebo, quando administrado em combinação com
+ metformina mais sulfonilureia, e em combinação com insulina com ou sem metformina e com ou sem sulfonilureia.
+
+ Hipoglicemia grave (eventos que necessitam de assistência)
+ A frequência de pacientes com eventos hipoglicêmicos graves foi baixa (<1%) e semelhante na monoterapia com
+ JARDIANCE e com o placebo, em combinação com metformina com ou sem sulfonilureia, em combinação com
+ pioglitazona com ou sem metformina e em combinação com linagliptina mais metformina.
+ A frequência de pacientes com eventos hipoglicêmicos graves foi maior em pacientes tratados com JARDIANCE em
+ comparação ao placebo, quando administrado em combinação com insulina com ou sem metformina e com ou sem
+ sulfonilureia.
+
+ Tabela 26. Frequência de pacientes com eventos de hipoglicemia confirmados por estudo (1245.19; 1245.20;
+ 1245.23(met); 1245.23(met+SU); 1245.33, 1245.49; 1275.9(lina+met) e 1245.25 Conjunto Tratado1).
+ Grupo de Tratamento Placebo JARDIANCE 10 mg JARDIANCE 25 mg
+ Monoterapia (1245.20) (24 semanas)
+ n 229 224 223
+ Geral confirmado (%) 0,4% 0,4% 0,4%
+ Grave (%) 0% 0% 0%
+ Em combinação com metformina (1245.23 (met)) (24 semanas)
+ n 206 217 214
+ Geral confirmado (%) 0,5% 1,8% 1,4%
+ Grave (%) 0% 0% 0%
+ Em combinação com metformina + sulfonilureia (1245.23 (met + SU)) (24 semanas)
+ n 225 224 217
+ Geral confirmado (%) 8,4% 16,1% 11,5%
+ Grave (%) 0% 0% 0%
+ Em combinação com pioglitazona com ou sem metformina (1245.19) (24 semanas)
+ n 165 165 168
+ Geral confirmado (%) 1,8% 1,2% 2,4%
+ Grave (%) 0% 0% 0%
+ Em combinação com insulina basal (1245.33) (18 semanas2 / 78 semanas)
+ n 170 169 155
+ Geral confirmado (%) 20,6%/ 35,3% 19,5%/ 36,1% 28,4%/ 36,1%
+ Grave (%) 0%/ 0% 0%/ 0% 1,3%/ 1,3%
+ Em combinação com insulina em múltiplas doses com ou sem metformina (1245.49) (18 semanas2 / 52 semanas)
+
+ n 188 186 189
+ Geral confirmado (%) 37,2%/ 58,0% 39,8%/ 51,1% 41,3%/ 57,7%
+ Grave (%) 0,5%/ 1,6% 0,5%/ 1,6% 0,5%/ 0,5%
+ Em combinação com metformina e linagliptina (1275.9) (24 semanas)3
+ n n=110 n=112 n=110
+ Geral confirmado (%) 0,9% 0,0% 2,7%
+ Grave (%) 0% 0% 0,9%
+
+ JARDIANCE_Bula Profissional 25-7439660/C25 -03 48
+ JARDIANCE PROFISSIONAL DA SAÚDE
+
+ EMPA-REG OUTCOME ® (1245.25)
+ n 2333 2345 2342
+ Geral confirmado (%) 27,9% 28% 27,6%
+ Grave (%) 1,5% 1,4% 1,3%
+ Confirmado: glicemia ≤70 mL/dL ou assistência necessária.
+ Grave: assistência necessária.
+ 1 Ou seja, pacientes que receberam pelo menos uma dose do fármaco no estudo
+ 2 A dose de insulina como medicação de base deveria ser estável durante as primeiras 18 semanas
+ 3 Esta foi uma combinação em dose fixa de empagliflozina com linagliptina 5 mg com um tratamento de base com metformina (vide
+ “2. RESULTADOS DE EFICÁCIA”)
+ Dados Fonte: 1245.19 [U12-1516, Tabela 15.3.2.3: 3], 1245.20 [c01950507-04, Tabela 15.3.2.3: 2], 1245.23 [U12-1518, Tabelas
+ 15.1.3.2.3: 3 e 15.2.3.2.3: 3], 1245.33 [U12-3817, Tabelas 15.3.2.3: 3 e 15.4.5: 3], 1245.49 [U13-2122, Tabelas 15.3.2.4: 3 e
+ 15.3.2.5: 3], 1275.9 [c02820144-02 Tabela 15.3.1.3: 6], 1245.25 [c02695839-01, tabela 15.3.1.4:4].
+
+ Infecção do trato urinário
+ A frequência global de eventos adversos de infecção do trato urinário foi semelhante nos pacientes tratados com
+ JARDIANCE 25 mg e placebo (7,0% e 7,2%) e superior nos pacientes tratados com JARDIANCE 10 mg (8,8 %).
+ Semelhante ao placebo, a infecção do trato urinário foi relatada com mais frequência para JARDIANCE em pacientes
+ com histórico de infecções do trato urinário crônicas ou recorrentes. A intensidade de infecções do trato urinário foi
+ semelhante à do placebo para relatos de intensidade leve, moderada e grave. Eventos de infecções do trato urinário foram
+ relatados mais frequentemente para empagliflozina em comparação com placebo em pacientes do sexo feminino, mas não
+ em pacientes do sexo masculino.
+
+ Monilíase vaginal, vulvovaginites, balanite e outras infecções genitais
+ Monilíase vaginal, vulvovaginites, balanite e outras infecções genitais foram relatadas mais frequentemente para
+ JARDIANCE 10 mg (4,0%) e JARDIANCE 25 mg (3,9%) em comparação com placebo (1,0%) e foram mais frequentes
+ para empagliflozina comparado ao placebo em pacientes do sexo feminino. A diferença de frequência foi menos
+ pronunciada em pacientes do sexo masculino. As infecções do trato genital foram de intensidade leve ou moderada, e não
+ houve eventos de intensidade grave.
+ Casos de fimose/fimose adquirida foram reportados concomitantemente com infecções genitais.
+
+ Aumento da micção
+ Como esperado, devido ao seu mecanismo de ação, observou -se em frequências mais elevadas aumento da micção (tal
+ como avaliado pela pesquisa de termo preferencial incluindo polaciúria, poliúria, noctúria) em pacientes tratados com
+ JARDIANCE 10 mg (3,5%) e JARDIANCE 25 mg (3,3%) em comparação ao placebo (1,4%). O aumento da micção foi
+ em sua maioria de intensidade leve ou moderada. A frequência de noctúria relatada foi comparável entre placebo e
+ JARDIANCE (<1%).
+
+ Hipovolemia
+ A frequência global de hipovolemia (incluindo os termos predefinidos, queda da pressão arterial (ambulatorial), queda da
+ pressão arterial sistólica, desidratação, hipotensão, hipovolemia, hipotensão ortostática e síncope) foi semelhante ao
+ placebo (JARDIANCE 10 mg = 0,6 %, JARDIANCE 25 mg = 0,4% e placebo = 0,3%). O efeito da empagliflozina na
+ excreção urinária de glicose está associado à diurese osmótica, o que poderia afetar o estado de hidratação de pacientes
+ com 75 anos de idade ou mais. Em pacientes com 75 anos ou mais de idade (agrupamento de todos os pacientes com
+ diabetes, n = 13.402), a frequência de eventos de hipovolemia foi semelhante para JARDIANCE 10 mg (2,3%) em
+ comparação com o placebo (2,1%), mas aumenta com JARDIANCE 25 mg (4,3%).
+
+ Aumento da creatinina sérica e taxa de filtração glomerular diminuída
+ A frequência global de pacientes com aumento da creatinina sérica e diminuição da taxa de filtração glomerular foi
+ semelhante entre empagliflozina e placebo (aumento da creatinina sérica: empagliflozina 10 mg= 0,6%, empagliflozina
+ 25 mg= 0,1%, placebo= 0,5%; taxa de filtração glomerular diminuída: empagliflozina 10 mg= 0,1 %, empagliflozina 25
+ mg= 0%, placebo= 0,3%).
+ Em estudos duplo-cegos, controlados por placebo e de duração de 76 semanas, foram observados aumentos transitórios
+ iniciais da creatinina (alteração média em relação ao basal após 12 semanas: empagliflozina 10 mg= 0,02 mg/dL,
+ empagliflozina 25 mg= 0,01 mg/dL) e diminuição transitória inicial nas taxas de filtração glomerular estimada (alteração
+ média em relação ao basal após 12 semanas: empagliflozina 10 mg= -1,34 mL/min/1,73m2, empagliflozina 25 mg= -1,37
+ mL/min/1,73m2). Estas alterações foram geralmente reversíveis durante o tratamento contínuo ou após a descontinuação
+
+ JARDIANCE_Bula Profissional 25-7439660/C25 -03 49
+ JARDIANCE PROFISSIONAL DA SAÚDE
+
+ do medicamento (vide “2. RESULTADOS DE EFICÁCIA”, figura 6: TFGe ao longo do tempo, do estudo EMPA -REG
+ OUTCOME®).
+
+ Pacientes pediátricos
+ No estudo DINAMO foram tratadas 157 crianças a partir de 10 anos com diabetes tipo 2, das quais 52 receberam
+ empagliflozina, 52 linagliptina e 53 receberam placebo.
+ Durante a fase controlada por placebo, a reação adversa mais frequente foi hipoglicemia (empagliflozina 10 mg e 25 mg,
+ agrupados: 23,1%, placebo: 9,4%). Nenhuma dessas reações foi grave ou necessitou de assistência. De forma geral, o
+ perfil de segurança em crianças foi semelhante ao perfil de segurança em adultos com DM2.
+
+ Atenção: este produto é um medicamento que possui nova indicação terapêutica no país e, embora as pesquisas
+ tenham indicado eficácia e segurança aceitáveis, mesmo que indicado e utilizado corretamente, podem ocorrer
+ eventos adversos imprevisíveis ou desconhecidos. Nesse caso, notifique os eventos adversos pelo Sistema VigiMed,
+ disponível no Portal da Anvisa.
+
+10. SUPERDOSE
+ Durante os estudos clínicos controlados em indivíduos sadios, doses únicas de até 800 mg de empagliflozina, foram bem
+ toleradas.
+ Tratamento
+ Na eventualidade de uma superdose, deve-se iniciar tratamento de suporte apropriado ao estado clínico do paciente. Não
+ há estudos sobre a remoção de empagliflozina por hemodiálise.
+
+ Em caso de intoxicação ligue para 0800 722 6001, se você precisar de mais orientações.
+
+ Registro: 1.0367.0172
+
+ Importado e Registrado por:
+ Boehringer Ingelheim do Brasil Quím. e Farm. Ltda.
+ Av. das Nações Unidas nº 14171, Torre Marble 17º/18º andares
+ Vila Gertrudes - São Paulo – SP - CEP 04794-000
+ CNPJ: 60.831.658/0001-77
+ SAC 0800 701 6633
+
+ Produzido por:
+ Boehringer Ingelheim Pharma GmbH & Co. KG
+ Ingelheim am Rhein, Alemanha
+ ou
+ Boehringer Ingelheim Promeco S.A. de C.V.
+ Cidade do México, México
+
+ Venda sob prescrição
+
+ 25-7439660/C25 -03
+
+ JARDIANCE_Bula Profissional 25-7439660/C25 -03 50
+ Histórico de Alteração da Bula
+
+ Dados da submissão eletrônica Dados da petição/notificação que altera bula Dados das alterações de bulas
+
+ Data do Nº do Assunto Data do Nº do Assunto Data de Itens de bula Versões Apresentações
+ expediente expediente expediente expediente aprovação (VP/VPS) relacionadas
+
+ - 10 MG COM
+ Envio inicial do texto REV CT BL AL
+ de bula em PLAS X 10
+ 10458 - 10458 - cumprimento ao Guia - 10 MG COM
+ MEDICAMENTO MEDICAMENTO de submissão REV CT BL AL
+ 07/01/2015 0011793/15-5 NOVO - Inclusão 07/01//2015 0011793/15-5 NOVO - Inclusão 07/01/2015 eletrônica de bula, VPS PLAS X 30
+ Inicial de Texto Inicial de Texto juntamente com - 25 MG COM
+ de Bula – RDC de Bula – RDC atualização do item REV CT BL AL
+ 60/12 60/12 abaixo: PLAS X 10
+ - POSOLOGIA E - 25 MG COM
+ MODO DE USAR REV CT BL AL
+ PLAS X 30
+
+ - 10 MG COM
+ REV CT BL AL
+ 10451- - RESULTADOS DE PLAS X 10
+ MEDICAMENTO 10451- EFICÁCIA - 10 MG COM
+ NOVO- MEDICAMENTO - INTERAÇÕES REV CT BL AL
+ 10/02/2015 0128483/15-5 Notificação de 10/02/2015 0128483/15-5 NOVO- Notificação 10/02/2015 MEDICAMENTOSAS VPS PLAS X 30
+ Alteração de de Alteração de - REAÇÕES - 25 MG COM
+ Texto de Bula – Texto de Bula –RDC ADVERSAS REV CT BL AL
+ RDC 60/12 60/12 PLAS X 10
+ - 25 MG COM
+ REV CT BL AL
+ PLAS X 30
+ - 10 MG COM
+ REV CT BL AL
+ 10451- - COMPOSIÇÃO PLAS X 10
+ MEDICAMENTO 10451- - RESULTADOS DE - 10 MG COM
+ NOVO- MEDICAMENTO EFICÁCIA REV CT BL AL
+ 20/05/2015 0443931/15-7 Notificação de 20/05/2015 0443931/15-7 NOVO- Notificação 20/05/2015 - CUIDADOS DE VPS PLAS X 30
+ Alteração de de Alteração de ARMAZENAMENTO - 25 MG COM
+ Texto de Bula – Texto de Bula –RDC DO MEDICAMENTO REV CT BL AL
+ RDC 60/12 60/12 - REAÇÕES PLAS X 10
+ ADVERSAS - 25 MG COM
+ REV CT BL AL
+ PLAS X 30
+
+ - 10 MG COM
+ REV CT BL AL
+ 10451- PLAS X 10
+ MEDICAMENTO 10451- - 10 MG COM
+ NOVO- MEDICAMENTO - RESULTADOS DE REV CT BL AL
+ 13/08/2015 0719766/15-7 Notificação de 13/08/2015 0719766/15-7 NOVO- Notificação 13/08/2015 EFICÁCIA VPS PLAS X 30
+ Alteração de de Alteração de - ADVERTÊNCIAS E - 25 MG COM
+ Texto de Bula – Texto de Bula – RDC PRECAUÇÕES REV CT BL AL
+ RDC 60/12 60/12 PLAS X 10
+ - 25 MG COM
+ REV CT BL AL
+ PLAS X 30
+
+ - 10 MG COM
+ 10451- REV CT BL AL
+ MEDICAMENTO 10451- - RESULTADOS DE PLAS X 10
+ MEDICAMENTO EFICÁCIA - 10 MG COM
+ NOVO- NOVO- Notificação - ADVERTÊNCIAS E REV CT BL AL
+ 30/11/2015 1037872/15-3 Notificação de 30/11/2015 1037872/15-3 30/11/2015 PRECAUÇÕES VPS PLAS X 30
+ Alteração de de Alteração de - POSOLOGIA E - 25 MG COM
+ Texto de Bula – RDC MODO DE USAR REV CT BL AL
+ Texto de Bula – 60/12 - REAÇÕES PLAS X 10
+ RDC 60/12 ADVERSAS - 25 MG COM
+ REV CT BL AL
+ PLAS X 30
+ - 10 MG COM
+ 10451- REV CT BL AL
+ MEDICAMENTO 10451- PLAS X 10
+ MEDICAMENTO - ADVERTÊNCIAS E - 10 MG COM
+ NOVO- NOVO- Notificação PRECAUÇÕES REV CT BL AL
+ 11/02/2016 1258309/16-0 Notificação de 11/02/2016 1258309/16-0 11/02/2016 VPS PLAS X 30
+ Alteração de de Alteração de - REAÇÕES - 25 MG COM
+ Texto de Bula – RDC ADVERSAS REV CT BL AL
+ Texto de Bula – 60/12 PLAS X 10
+ RDC 60/12 - 25 MG COM
+ REV CT BL AL
+ PLAS X 30
+
+ - 10 MG COM
+ 10451- REV CT BL AL
+ MEDICAMENTO 10451- PLAS X 10
+ MEDICAMENTO - 10 MG COM
+ NOVO- REV CT BL AL
+ 02/06/2016 1860234/16-7 Notificação de 02/06/2016 1860234/16-7 NOVO- Notificação 02/06/2016 - REAÇÕES VPS PLAS X 30
+ Alteração de de Alteração de ADVERSAS - 25 MG COM
+ Texto de Bula – RDC REV CT BL AL
+ Texto de Bula – 60/12 PLAS X 10
+ RDC 60/12 - 25 MG COM
+ REV CT BL AL
+ PLAS X 30
+
+ - 10 MG COM
+ 10451- 10451- REV CT BL AL
+ MEDICAMENTO MEDICAMENTO PLAS X 10
+ - RESULTADOS DE - 10 MG COM
+ NOVO- NOVO- EFICÁCIA REV CT BL AL
+ 15/09/2016 2289207/16-9 Notificação de 15/09/2016 2289207/16-9 Notificação de 15/09/2016 VPS PLAS X 30
+ Alteração de Alteração de - REAÇÕES - 25 MG COM
+ ADVERSAS REV CT BL AL
+ Texto de Bula – Texto de Bula – PLAS X 10
+ RDC 60/12 RDC 60/12 - 25 MG COM
+ REV CT BL AL
+ PLAS X 30
+ - 10 MG COM
+ 10451- 10451- REV CT BL AL
+ MEDICAMENTO MEDICAMENTO PLAS X 10
+ - 10 MG COM
+ NOVO- NOVO- - REAÇÕES REV CT BL AL
+ 22/05/2017 0961781/17-7 Notificação de 22/05/2017 0961781/17-7 Notificação de 22/05/2017 VPS PLAS X 30
+ Alteração de Alteração de ADVERSAS - 25 MG COM
+ REV CT BL AL
+ Texto de Bula – Texto de Bula – PLAS X 10
+ RDC 60/12 RDC 60/12 - 25 MG COM
+ REV CT BL AL
+ PLAS X 30
+
+ - 10 MG COM
+ 10451- 10451- REV CT BL AL
+ MEDICAMENTO MEDICAMENTO - ADVERTÊNCIAS E PLAS X 10
+ - 10 MG COM
+ NOVO - NOVO - PRECAUÇÕES REV CT BL AL
+ 24/11/2017 2231754/17-6 Notificação de 24/11/2017 2231754/17-6 Notificação de 24/11/2017 - REAÇÕES VPS PLAS X 30
+ Alteração de Alteração de ADVERSAS - 25 MG COM
+ REV CT BL AL
+ Texto de Bula – Texto de Bula – PLAS X 10
+ RDC 60/12 RDC 60/12 - 25 MG COM
+ REV CT BL AL
+ PLAS X 30
+
+ - 10 MG COM
+ REV CT BL AL
+ 10451- 10451- PLAS X 10
+ MEDICAMENTO - ADVERTÊNCIAS E - 10 MG COM
+ NOVO - MEDICAMENTO PRECAUÇÕES REV CT BL AL
+ 04/07/2018 0531327/18-9 Notificação de 04/07/2018 0531327/18-9 NOVO - Notificação 04/07/2018 - INTERAÇÕES VPS PLAS X 30
+ Alteração de de Alteração de MEDICAMENTOSAS - 25 MG COM
+ Texto de Bula – - SUPERDOSE REV CT BL AL
+ Texto de Bula – RDC 60/12 PLAS X 10
+ RDC 60/12 - 25 MG COM
+ REV CT BL AL
+ PLAS X 30
+ - 10 MG COM
+ 10451- REV CT BL AL
+ MEDICAMENTO 10451- PLAS X 10
+ MEDICAMENTO - ADVERTÊNCIAS E - 10 MG COM
+ NOVO - REV CT BL AL
+ 17/10/2018 1006316/18-1 Notificação de 17/10/2018 1006316/18-1 NOVO - Notificação 17/10/2018 PRECAUÇÕES VPS PLAS X 30
+ Alteração de de Alteração de - REAÇÕES - 25 MG COM
+ Texto de Bula – ADVERSAS REV CT BL AL
+ Texto de Bula – RDC 60/12 PLAS X 10
+ RDC 60/12 - 25 MG COM
+ REV CT BL AL
+ PLAS X 30
+
+ - INDICAÇÕES - 10 MG COM
+ 10451- - RESULTADOS DE REV CT BL AL
+ MEDICAMENTO EFICÁCIA PLAS X 10
+ 1449 Medicamento - ADVERTÊNCIAS E - 10 MG COM
+ NOVO - Novo - Inclusão de REV CT BL AL
+ 21/01/2019 0058315/19-4 Notificação de 26/11/2015 1033756/15-3 Indicação Terapêutica 24/12/2018 PRECAUÇÕES VPS PLAS X 30
+ Alteração de Nova No País - REAÇÕES - 25 MG COM
+ ADVERSAS REV CT BL AL
+ Texto de Bula – - Alteração da PLAS X 10
+ RDC 60/12 responsabilidade - 25 MG COM
+ técnica REV CT BL AL
+ PLAS X 30
+
+ - 10 MG COM
+ 10451- REV CT BL AL
+ MEDICAMENTO PLAS X 10
+ 10451- - 10 MG COM
+ NOVO - MEDICAMENTO REV CT BL AL
+ 16/12/2019 3474337/19-5 Notificação de 16/12/2019 3474337/19-5 NOVO - Notificação de 16/12/2019 5. ADVERTÊNCIAS VPS PLAS X 30
+ Alteração de E PRECAUÇÕES - 25 MG COM
+ Alteração de Texto de REV CT BL AL
+ Texto de Bula – Bula – RDC 60/12 PLAS X 10
+ RDC 60/12 - 25 MG COM
+ REV CT BL AL
+ PLAS X 30
+
+ 10451- - 10 MG COM
+ MEDICAMENTO 9. REAÇÕES REV CT BL AL
+ 10451- 20/04/2021 1512913/21-6 NOVO - Notificação de 20/04/2021 ADVERSAS PLAS X 10
+ MEDICAMENTO Alteração de Texto de - 10 MG COM
+ NOVO - Bula – RDC 60/12 REV CT BL AL
+ 20/04/2021 1512913/21-6 PLAS X 30
+ Notificação de 11023 - RDC 73/2016 - VPS - 25 MG COM
+ Alteração de NOVO - Inclusão de

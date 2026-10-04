@@ -1,0 +1,16 @@
+{
+  "Risco Gestacional": "B",
+  "Slug": "sitagliptina-fosfato",
+  "Nomes Comerciais / Produtos ANVISA": "Januvia; Janumet; fosfato de sitagliptina.",
+  "Interações": "Insulina, glibenclamida, gliclazida, glimepirida e outras sulfonilureias aumentam risco de hipoglicemia quando associadas, podendo exigir redução da dose. Digoxina pode ter exposição discretamente aumentada, exigindo cautela em pacientes de risco. Associação com metformina, dapagliflozina, empagliflozina, pioglitazona ou agonistas GLP-1 deve seguir objetivo glicêmico e risco de eventos adversos. Evitar duplicidade com outros inibidores DPP-4, como linagliptina, vildagliptina, saxagliptina e alogliptina.",
+  "Apresentações / Nomes Comerciais": "Comprimidos revestidos 25 mg, 50 mg e 100 mg; associações fixas com metformina conforme produto. Exemplos: Januvia; Janumet, quando associado à metformina; Sitagliptina EMS; sitagliptina genérica/similar.",
+  "Texto Resumo": "Sitagliptina é um inibidor da DPP-4 usado no diabetes mellitus tipo 2, com baixo risco de hipoglicemia quando usado isoladamente. Requer ajuste em insuficiência renal e atenção a pancreatite, reações de hipersensibilidade e hipoglicemia quando associada a insulina ou sulfonilureias.",
+  "Classe / Categoria": "Antidiabético oral; inibidor da DPP-4; incretinomimético indireto.",
+  "Posologia Adulto": "Diabetes mellitus tipo 2: 100 mg por via oral 1 vez ao dia, com ou sem alimento.\nAjustar dose em insuficiência renal: doses menores podem ser necessárias conforme taxa de filtração glomerular.\nPode ser usada isoladamente ou associada a metformina, insulina, sulfonilureias ou outros antidiabéticos conforme avaliação.",
+  "Contraindicações": "Hipersensibilidade à sitagliptina ou componentes da fórmula; diabetes mellitus tipo 1; cetoacidose diabética.",
+  "Tags Busca": "sitagliptina; fosfato de sitagliptina; dpp-4; diabetes tipo 2; antidiabético; januvia; janumet",
+  "Advertências": "Pode causar nasofaringite, cefaleia, sintomas gastrointestinais, pancreatite aguda rara, reações de hipersensibilidade, angioedema, urticária, síndrome de Stevens-Johnson rara, dor articular intensa e penfigoide bolhoso. Suspender e avaliar se houver dor abdominal intensa persistente, vômitos importantes, rash grave ou suspeita de pancreatite. Hipoglicemia é mais provável quando associada a insulina ou sulfonilureias.",
+  "Nomes Comerciais OpenAI": "Januvia; Janumet; Sitagliptina EMS; Sitagliptina Eurofarma; Sitagliptina Medley.",
+  "Rede SUS (RENAME)": false,
+  "Princípio Ativo": "Sitagliptina Fosfato"
+}

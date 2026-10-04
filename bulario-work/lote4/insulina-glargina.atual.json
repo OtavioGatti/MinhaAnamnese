@@ -1,0 +1,17 @@
+{
+  "Risco Gestacional": "C",
+  "Slug": "insulina-glargina",
+  "Nomes Comerciais / Produtos ANVISA": "Lantus; Toujeo; Basaglar; Glargilin; insulina glargina.",
+  "Interações": "Aumentam risco de hipoglicemia: álcool, sulfonilureias como glibenclamida, gliclazida e glimepirida, agonistas GLP-1, inibidores SGLT2, salicilatos, IECA e alguns antidepressivos. Podem reduzir efeito: corticosteroides como prednisona e dexametasona, diuréticos tiazídicos, beta-2 agonistas como salbutamol, antipsicóticos, hormônios tireoidianos, contraceptivos hormonais e simpatomiméticos. Betabloqueadores podem mascarar sintomas de hipoglicemia. Pioglitazona associada à insulina pode aumentar risco de edema e insuficiência cardíaca em predispostos.",
+  "Apresentações / Nomes Comerciais": "Solução injetável em caneta preenchida, refil ou frasco, em concentrações como 100 U/mL, 300 U/mL ou conforme produto. Exemplos: Lantus; Basaglar; Toujeo; Glargilin; Abasaglar.",
+  "Posologia Pediátrica": "Uso pediátrico depende da idade aprovada, peso, tipo de diabetes, rotina alimentar e esquema terapêutico.\nDose deve ser individualizada, com monitorização glicêmica frequente.\nEm diabetes tipo 1, usar em associação com insulina rápida/ultrarrápida para refeições.",
+  "Texto Resumo": "Insulina Glargina é uma insulina basal de ação prolongada usada para controle glicêmico no diabetes tipo 1 e tipo 2. Deve ser aplicada por via subcutânea, geralmente uma vez ao dia, com ajuste individual e atenção a hipoglicemia e técnica de aplicação.",
+  "Classe / Categoria": "Insulina basal de ação prolongada; antidiabético injetável; análogo de insulina humana.",
+  "Posologia Adulto": "Diabetes mellitus tipo 1 ou tipo 2: dose individualizada conforme glicemias, HbA1c, peso, alimentação, atividade física, função renal/hepática e tratamento associado.\nAdministrar por via subcutânea 1 vez ao dia, no mesmo horário, conforme concentração e produto.\nEm diabetes tipo 1, deve ser associada a insulina prandial.\nAjustar dose gradualmente conforme automonitorização glicêmica.",
+  "Contraindicações": "Hipersensibilidade à insulina glargina ou componentes da fórmula; episódio de hipoglicemia atual; administração intravenosa; mistura com outras insulinas na mesma seringa ou caneta, salvo orientação específica da apresentação.",
+  "Tags Busca": "insulina glargina; insulina basal; diabetes tipo 1; diabetes tipo 2; hipoglicemia; lantus; toujeo",
+  "Advertências": "Pode causar hipoglicemia, reação no local da aplicação, lipodistrofia, ganho de peso, edema e reações alérgicas raras. Não administrar por via intravenosa, pois pode causar hipoglicemia grave. Não misturar com outras insulinas. Rodiziar locais de aplicação. Necessidades podem mudar com doença aguda, exercício, dieta, insuficiência renal/hepática e medicamentos concomitantes.",
+  "Nomes Comerciais OpenAI": "Lantus; Toujeo; Basaglar; Abasaglar; Semglee; Glargilin.",
+  "Rede SUS (RENAME)": false,
+  "Princípio Ativo": "Insulina Glargina"
+}

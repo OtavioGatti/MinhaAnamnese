@@ -1,0 +1,575 @@
+FONTE: lote4__insulina-glargina__LANTUS.pdf
+
+===== BLOCO 1 =====
+APRESENTAÇÕES
+Solução Injetável 100 U/mL.
+LANTUS refil: embalagem com 1 refil com 3 mL para utilização com caneta compatível para aplicação
+de insulina.
+LANTUS frasco-ampola: embalagem com 1 frasco-ampola com 10 mL.
+
+USO SUBCUTÂNEO.
+USO ADULTO E PEDIÁTRICO ACIMA DE 2 ANOS.
+
+1. INDICAÇÕES
+LANTUS é indicado para o tratamento de diabetes mellitus tipo 2 em adultos e também é indicado para o
+tratamento de diabetes mellitus tipo 1 em adultos e em crianças com 2 anos de idade ou mais que necessitam
+de insulina basal (longa duração) para o controle da hiperglicemia.
+
+3. CARACTERÍSTICAS FARMACOLÓGICAS
+Propriedades farmacodinâmicas
+LANTUS é um antidiabético que contém insulina glargina. A insulina glargina é uma insulina humana
+análoga produzida por tecnologia de DNA-recombinante, utilizando Escherichia coli (cepa K12) como
+organismo produtor. LANTUS é uma insulina humana análoga desenhada para ter baixa solubilidade em
+pH neutro. Em pH 4 [como na solução injetável de LANTUS], é completamente solúvel. Após ser injetada
+no tecido subcutâneo, a solução ácida é neutralizada, levando a formação de micro-precipitados do qual
+pequenas quantidades de insulina glargina são liberadas continuamente, levando a um perfil de
+concentração / tempo previsível, sem pico e suave, com duração de ação prolongada, que suporta a
+administração uma vez ao dia.
+
+A insulina glargina é metabolizada em dois metabólitos ativos M1 e M2 (vide Propriedades
+farmacocinéticas).
+Ligação ao receptor de insulina: os estudos “in vitro” indicam que a afinidade da insulina glargina e de seus
+metabolitos M1 e M2 ao receptor da insulina em humanos é similar àquela da insulina humana.
+Ligação ao receptor IGF-1: a afinidade da insulina glargina ao receptor IGF-1 humano é aproximadamente
+5 a 8 vezes maior que a da insulina humana (mas aproximadamente 70 a 80 vezes menor que àquela do
+IGF-1), enquanto que M1 e M2 se ligam ao receptor IGF-1 com uma afinidade um pouco menor comparada
+a insulina humana.
+
+A concentração terapêutica total de insulina (insulina glargina e seus metabólitos) encontrada em pacientes
+com diabetes tipo 1 foi acentuadamente menor que aquela que seria requerida para ocupação máxima de
+metade dos receptores IGF-1 e a subsequente ativação da via proliferativa mitogênica iniciada pelo receptor
+IGF-1. As concentrações fisiológicas do IGF-1 endógeno podem ativar a via proliferativa mitogênica;
+entretanto, as concentrações terapêuticas encontradas na terapia com insulina, incluindo a terapia com
+LANTUS, são consideravelmente menores que as concentrações farmacológicas requeridas para ativar a
+via IGF-1.
+
+A atividade fundamental da insulina, incluindo insulina glargina, é a regulação do metabolismo da glicose.
+A insulina e seus análogos diminuem os níveis glicêmicos estimulando a captação da glicose periférica,
+especialmente pelo músculo esquelético e tecido adiposo, e pela inibição da produção da glicose hepática.
+Insulina inibe a lipólise no adipócito, inibe a proteólise e aumenta a síntese proteica.
+Em estudos clínicos farmacológicos, os usos intravenosos de insulina glargina e insulina humana
+demonstraram ser equipotentes quando realizados nas mesmas doses.
+Em estudos de clamp euglicêmico em indivíduos sadios ou em pacientes com diabetes tipo 1, o início da
+ação da insulina glargina administrada via subcutânea foi mais lento do que com a insulina humana NPH;
+e seu efeito foi suave e sem pico, com duração prolongada.
+O gráfico a seguir demonstra os resultados de um estudo farmacodinâmico em pacientes. O tempo médio
+entre a injeção da droga e o final do seu efeito farmacológico foi de 14,5 horas para a insulina NPH,
+enquanto que o tempo médio para a insulina glargina foi de 24 horas (a maioria dos pacientes sob insulina
+glargina continuava mostrando resposta no final do período de observação, indicando duração de ação mais
+prolongada).
+
+ de observação
+* Determinada como quantidade de glicose infusionada para manter os níveis plasmáticos de glicose
+constantes.
+A duração de ação prolongada da insulina glargina é diretamente relacionada à sua menor taxa de absorção,
+o que permite uma única administração diária. O tempo de ação da insulina e seus análogos tais como
+insulina glargina pode variar consideravelmente em indivíduos diferentes ou no mesmo indivíduo, porém
+devido à ausência de um pico, há menor variabilidade com insulina glargina do que com insulina NPH.
+
+Estudos de clamp euglicêmico, em voluntários sadios, mostraram menor variabilidade intra individual (dia
+a dia) no perfil farmacodinâmico para insulina glargina quando comparado à insulina humana ultralenta.
+
+Propriedades farmacocinéticas
+Após a injeção subcutânea de insulina glargina em indivíduos sadios e em pacientes diabéticos, as
+concentrações séricas de insulina indicaram uma absorção mais lenta e bem mais prolongada e ausência de
+um pico quando comparada com a insulina humana NPH. As concentrações foram, portanto, consistentes
+com o perfil de tempo da atividade farmacodinâmica da insulina glargina. Após a injeção subcutânea de 0,3
+U/kg de insulina glargina em pacientes diabéticos, um perfil concentração / tempo uniforme foi
+demonstrado; isso também é refletido no amplo intervalo de valores de Tmáx (entre 1,5 e 22,5 horas)
+comparado ao da NPH (2,5 a 10 horas). Quando administrada intravenosamente, os perfis de concentração
+e a meia-vida de eliminação aparente da insulina glargina e da insulina humana foram comparáveis.
+
+Não foram observadas diferenças significativas nos níveis séricos de insulina após a administração da
+insulina glargina no abdome, músculo deltoide ou na coxa. A insulina glargina possui menor variabilidade
+intra e inter indivíduo em seu perfil farmacocinético e farmacodinâmico quando comparada com a insulina
+humana ultralenta.
+
+Após injeção subcutânea de LANTUS em indivíduos sadios e pacientes diabéticos, a insulina glargina é
+rapidamente metabolizada no terminal carboxil da cadeia Beta com a formação de dois metabólitos ativos
+M1 (21A-gly-insulina) e M2 (21A-gly-des-30B-Thr-insulina). No plasma, o principal composto circulante
+é o metabólito M1. A exposição ao M1 aumenta com a dose administrada de LANTUS. Os achados
+farmacocinéticos e farmacodinâmicos indicam que o efeito da injeção subcutânea de LANTUS é
+principalmente baseado na exposição ao M1. A insulina glargina e o metabólito M2 não foram detectáveis
+na ampla maioria dos indivíduos e, quando eles foram detectáveis, suas concentrações foram independentes
+da dose administrada de LANTUS.
+
+Populações especiais
+Idade e sexo
+Não existem informações sobre o efeito da idade e do sexo sobre o perfil farmacocinético da insulina
+glargina. No entanto, em vários estudos clínicos, as análises dos subgrupos baseadas na idade e sexo não
+indicaram qualquer diferença na segurança e eficácia nos pacientes tratados com insulina glargina quando
+comparados à população total do estudo. O mesmo ocorre em pacientes tratados com insulina NPH.
+
+Fumantes
+Em estudos clínicos, a análise dos subgrupos não demonstrou qualquer diferença na segurança e eficácia
+da insulina glargina entre os grupos de fumantes e da população total do estudo. O mesmo ocorre com a
+insulina NPH.
+
+Obesidade
+Em estudos clínicos, a análise dos subgrupos baseada no índice de massa corpórea não demonstrou qualquer
+diferença na segurança e eficácia da insulina glargina neste grupo de pacientes comparado à população total
+do estudo. O mesmo ocorre com a insulina NPH.
+
+Crianças
+A farmacocinética em crianças de 2 a menos de 6 anos de idade com diabetes mellitus tipo 1 foi avaliada
+em um estudo clínico (ver Propriedades farmacodinâmicas). Os níveis plasmáticos “mínimos” de insulina
+glargina e seus principais metabólitos M1 e M2 foram medidos em crianças tratadas com insulina glargina,
+revelando padrões de concentração plasmática similares aos dos adultos, e, não demonstrando evidências
+de acúmulo de insulina glargina ou seus metabólitos com a administração crônica.
+
+4. CONTRAINDICAÇÕES
+LANTUS é contraindicado para pacientes com hipersensibilidade à insulina glargina ou a qualquer um dos
+componentes da fórmula.
+
+5. ADVERTÊNCIAS E PRECAUÇÕES
+Geral
+A terapia com insulina geralmente requer habilidades apropriadas para o autocontrole do diabetes, incluindo
+monitorização da glicemia, técnicas de injeção adequadas, medidas para o reconhecimento e controle de
+aumentos ou reduções nos níveis glicêmicos (hipoglicemia ou hiperglicemia). Adicionalmente, os pacientes
+devem aprender como lidar com situações especiais como administração de doses de insulina
+inadvertidamente aumentadas, doses inadequadas ou esquecidas, ingestão inadequada de alimentos ou
+perda de refeições. O grau de participação do paciente no próprio controle do diabetes é variável e é
+geralmente determinado pelo médico.
+O tratamento com insulina requer constante vigilância para a possibilidade de hiper e hipoglicemia. Os
+pacientes e seus familiares devem saber quais passos devem tomar se ocorrer ou houver suspeita de
+hiperglicemia ou hipoglicemia e devem saber quando informar o médico.
+Na ocorrência de controle de glicemia insuficiente ou tendência de ocorrência de episódios hipo ou
+hiperglicêmicos, outros fatores como, a aderência do paciente ao tratamento prescrito, a escolha do local
+de injeção e técnicas de manuseio de aparelhagem para injeção e todos os outros fatores relevantes devem
+ser revistos antes de considerar um ajuste de dose.
+
+Os pacientes devem ser instruídos a realizar a rotação contínua do local da injeção para reduzir o risco de
+desenvolver lipodistrofia (alteração na distribuição de gordura no subcutâneo, neste caso, causado pela
+aplicação da medicação repetidas vezes no mesmo local) e amiloidose cutânea localizada (depósito de
+amiloide, uma substância que surge de lesões na pele). Há um risco potencial de absorção retardada de
+insulina e piora do controle glicêmico após injeções de insulina em locais com essas reações. Foi relatado
+que uma mudança repentina no local da injeção para uma área não afetada resultou em hipoglicemia
+(diminuição da taxa de açúcar no sangue). O monitoramento da glicose no sangue é recomendado após a
+mudança no local da injeção, e o ajuste da dose dos medicamentos antidiabéticos pode ser considerado
+(vide REAÇÕES ADVERSAS).
+
+Hipoglicemia
+O tempo para a ocorrência da hipoglicemia depende do perfil de ação das insulinas usadas e pode, portanto,
+alterar quando o tratamento é substituído.
+
+Assim como com todas as insulinas, deve ser exercido cuidado particular e a monitoração intensificada da
+glicemia é aconselhável, em pacientes nos quais sequelas de episódios hipoglicêmicos podem ser de
+particular relevância clínica. Por exemplo, podem ser pacientes com estenoses significativas das artérias
+coronárias ou das veias sanguíneas que suprem o cérebro (risco de complicações cardíacas ou cerebrais da
+hipoglicemia), bem como pacientes com retinopatia proliferativa, particularmente quando não tratados com
+fotocoagulação (risco de cegueira transitória após hipoglicemia).
+
+Em um estudo clínico, sintomas de hipoglicemia ou respostas hormonais contra regulatórias foram similares
+após administração intravenosa de insulina glargina e insulina humana tanto em voluntários sadios quanto
+em pacientes com diabetes tipo 1. Contudo, sob certas circunstâncias, assim como com todas as insulinas,
+os sintomas iniciais que indicam o início da hipoglicemia ("sintomas de aviso") podem se alterar, ser menos
+pronunciados ou ausentes, por exemplo, nas seguintes situações: controle glicêmico acentuadamente
+melhor, hipoglicemia de desenvolvimento gradual, idade avançada, na presença de neuropatia autonômica,
+em pacientes com história longa de diabetes, em pacientes com doenças psiquiátricas ou que estejam sob
+uso concomitante de outros medicamentos (vide INTERAÇÕES MEDICAMENTOSAS). Nestas
+circunstâncias, a hipoglicemia severa (ou mesmo a perda de consciência) pode desenvolver-se sem que o
+paciente perceba.
+O efeito prolongado da insulina glargina subcutânea, pode atrasar a recuperação de hipoglicemia. Se valores
+normais ou diminuídos de hemoglobina glicosilada forem notados, a possibilidade de episódios de
+hipoglicemia periódicos ou desconhecidos (especialme nte noturnos) devem ser considerados.
+
+A aderência do paciente com a dose prescrita e restrições na dieta, o procedimento correto para a
+administração da insulina e o reconhecimento dos sintomas da hipoglicemia são essenciais na redução do
+risco de hipoglicemia.
+
+A presença de fatores que aumentam a susceptibilidade à hipoglicemia requer monitoração particularmente
+cuidadosa e pode necessitar ajuste da dose. Estes incluem:
+- alteração da área da injeção;
+- aumento na sensibilidade à insulina (por exemplo: remoção dos fatores de stress);
+- atividade física aumentada ou prolongada ou falta de hábito no exercício físico;
+- doenças intercorrentes (por exemplo: vômito ou diarreia);
+- ingestão inadequada de alimentos;
+- consumo de álcool;
+- certos distúrbios endócrinos não compensados;
+- uso concomitante de outros medicamentos (vide INTERAÇÕES MEDICAMENTOSAS ).
+
+Hipoglicemia pode ser corrigida geralmente pela ingestão imediata de carboidrato. Pelo fato de a ação
+corretiva inicial ter que ser tomada imediatamente, os pacientes devem transportar consigo pelo menos 20
+g de carboidrato durante todo o tempo, bem como alguma informação que os identifique como diabéticos.
+
+Doenças intercorrentes
+O médico deve ser informado caso ocorram doenças intercorrentes, uma vez que a situação necessita da
+intensificação da monitoração metabólica. Em muitos casos, testes de urina para cetonas são indicados e
+frequentemente é necessário ajuste de dose da insulina. A necessidade de insulina é frequentemente
+aumentada. Em pacientes com diabetes tipo 1, o suprimento de carboidrato deve ser mantido mesmo se os
+pacientes forem capazes de comer ou beber apenas um pouco ou nenhum alimento, ou estiverem vomitando,
+etc.; em pacientes com diabetes do tipo 1 a insulina não deve nunca ser omitida completamente.
+
+Precauções ao viajar
+Antes de viajar, o paciente deve ser informado sobre:
+- a disponibilidade da insulina no local de destino;
+- o suprimento de insulina, seringas etc.;
+- a correta armazenagem da insulina durante a viagem;
+- o ajuste das refeições e a administração de insulina durante a viagem;
+- a possibilidade da alteração dos efeitos em diferentes tipos de zonas climáticas;
+- a possibilidade de novos riscos à saúde nas cidades que serão visitadas.
+
+Gravidez e lactação
+Não há nenhum estudo clínico controlado com o uso de insulina glargina em mulheres grávidas. Um amplo
+número (mais de 1000 resultados de gravidez retrospectiva e prospectiva) de gestantes expostas ao produto,
+determinado por dados de Farmacovigilância no pós-comercialização, indicam que não há efeitos adversos
+específicos da insulina glargina em gestantes ou na saúde de fetos ou recém-nascidos. Além disso, uma
+meta-análise de oito estudos clínicos observacionais incluindo 331 mulheres utilizando insulina glargina e
+371 mulheres utilizando insulina NPH foi realizada para avaliar a segurança da insulina glargina e da
+insulina NPH em diabetes gestacional e preexistente. Não foram observadas diferenças com relação à
+segurança materna ou neonatal entre a insulina glargina e a insulina NPH durante a gravidez.
+Estudos em animais, com doses de até 6-40 vezes a dose humana, não indicam efeitos prejudiciais diretos
+na gravidez.
+Mulheres com diabetes preexistente ou gestacional devem manter um bom controle metabólico durante a
+gravidez para prevenir resultados adversos associados com a hiperglicemia. LANTUS pode ser utilizada
+durante a gravidez, se clinicamente necessário.
+Nos três primeiros meses, as necessidades de insulina podem diminuir e geralmente aumentam durante o
+segundo e terceiro trimestres. Imediatamente após o parto, as necessidades de insulina diminuem
+rapidamente (aumento do risco de hipoglicemia). Portanto, monitoração cuidadosa da glicemia é essencial
+nessas pacientes.
+Ajustes das doses de insulina e dieta podem ser necessários em mulheres que estão amamentando.
+
+Uso criterioso no aleitamento ou na doação de leite humano.
+
+Categoria de risco na gravidez: C. Este medicamento não deve ser utilizado por mulheres grávidas
+sem orientação médica.
+
+Populações especiais
+Pacientes idosos
+Recomenda-se que as doses iniciais, os aumentos de dose e doses de manutenção sejam conservadoras
+para se evitar as reações hipoglicêmicas.
+Crianças
+LANTUS pode ser administrada em crianças com 2 anos de idade ou mais. Ainda não foi estudada a
+administração em crianças abaixo de 2 anos de idade.
+O perfil de segurança para pacientes menores de 18 anos é semelhante ao perfil de segurança para pacientes
+maiores de 18 anos.
+Não há dados clínicos de segurança disponíveis em pacientes com idade abaixo de 2 anos de idade.
+
+Insuficiência renal
+Em pacientes com insuficiência renal, as necessidades de insulina podem ser menores devido ao
+metabolismo de insulina reduzido.
+Em idosos, a deterioração progressiva da função renal pode levar a uma redução estável das necessidades
+de insulina.
+
+Insuficiência hepática
+Em pacientes com insuficiência hepática severa, as necessidades de insulina podem ser menores devido à
+capacidade reduzida para gliconeogênese e ao metabolismo de insulina reduzido.
+
+Alterações na capacidade de dirigir veículos e operar máquinas
+Como resultado de hipoglicemia, hiperglicemia ou visão prejudicada (vide REAÇÕES ADVERSAS), a
+habilidade de concentração e reação pode ser afetada, possivelmente constituindo risco em situações onde
+estas habilidades são de particular importância.
+Os pacientes devem ser aconselhados a tomarem precauções para evitarem hipoglicemia enquanto dirigem.
+Isso é particularmente importante naqueles que reduziram ou que não conhecem os "sintomas de aviso" de
+hipoglicemia ou que têm episódios frequentes de hipoglicemia. A prudência no dirigir deve ser considerada
+nessas circunstâncias.
+
+Este medicamento pode causar doping.
+
+6. INTERAÇÕES MEDICAMENTOSAS
+Várias substâncias afetam o metabolismo da glicose e podem requerer ajuste da dose de insulina e
+particularmente monitorização cuidadosa.
+
+Um aumento no efeito de redução de glicemia e na susceptibilidade à hipoglicemia pode ocorrer no uso
+concomitante de, por exemplo: antidiabéticos orais, inibidores da ECA, salicilatos, disopiramida, fibratos,
+fluoxetina, inibidores da MAO, pentoxifilina, propoxifeno e antibióticos sulfonamídicos.
+
+Uma diminuição no efeito de redução de glicemia pode ocorrer com o uso concomitante de corticosteroides,
+danazol, diazóxido, diuréticos, agentes simpatomiméticos (como epinefrina, salbutamol, terbutalina),
+glucagon, isoniazida, derivados da fenotiazina, somatropina, hormônios da tireoide, estrógenos e
+progestágenos (por exemplo: em contraceptivos orais), inibidores da protease e medicações antipsicóticas
+atípicas (por exemplo, olanzapina e clozapina).
+Os betabloqueadores, clonidina, sais de lítio e álcool podem tanto potencializar ou diminuir o efeito de
+redução da glicemia da insulina. A pentamidina pode causar hipoglicemia, que pode algumas vezes ser
+seguida por hiperglicemia.
+
+Além disso, sob a influência de medicamentos simpatolíticos como, por exemplo, beta-bloqueadores,
+clonidina, guanetidina e reserpina, os sinais de contra regulação adrenérgica podem ficar reduzidos ou
+ausentes.
+
+8. POSOLOGIA E MODO DE USAR
+LANTUS é administrada por injeção tecidual subcutânea. Não deve ser administrado intravenosamente.
+Dentro de uma determinada área de injeção (abdome, coxa ou deltoide), deve ser escolhido um diferente
+local para cada injeção, para reduzir o risco de lipodistrofia e amiloidose cutânea localizada. Não aplicar
+em áreas com lipodistrofia ou amiloidose cutânea localizada (vide ADVERTÊNCIAS E PRECAUÇÕES e
+REAÇÕES ADVERSAS). A absorção de insulina glargina não é diferente entre as áreas de injeção
+subcutânea do abdome, coxa ou deltoide. Assim como para todas as insulinas, a taxa de absorção e
+consequentemente o início e duração da ação podem ser afetados por exercício e outras variáveis.
+
+A prolongada duração de ação da insulina glargina é dependente da injeção no espaço subcutâneo. A
+administração intravenosa da dose subcutânea usual pode resultar em hipoglicemia severa.
+
+Instruções para uso dos frascos-ampola da LANTUS
+Inspecionar cada frasco antes do uso. Somente utilizar se a solução estiver clara, incolor, sem a presença
+de partículas visíveis e se estiver com a consistência de água. Por não ser suspensão, não é necessária a
+ressuspensão antes do uso. As seringas não devem conter quaisquer outros medicamentos ou vestígios de
+outros medicamentos (por exemplo, traços de heparina).
+LANTUS não deve ser misturada ou diluída com qualquer outra insulina, pois existe risco de alterar
+o perfil de tempo/ação da LANTUS ou causar a sua precipitação.
+
+Recomenda-se anotar a data do primeiro uso da solução injetável do frasco-ampola no rótulo do mesmo,
+onde aparece uma linha tracejada.
+LANTUS frascos-ampola: Recomenda-se a utilização de seringa de insulina com agulha fixa de 6 a 8 mm.
+
+Instruções para uso dos refis da LANTUS
+LANTUS em refil para utilização com caneta compatível para aplicação de insulina deve ser utilizada no
+mecanismo de injeção da caneta. O usuário deve saber operar o mecanismo corretamente e ter
+conhecimento dos possíveis problemas e medidas corretivas a tomar (ler o manual de instruções ao adquirir
+a caneta). Em caso de dúvidas relacionadas à caneta e sua utilização, entrar em contato com o Serviço de
+Atendimento ao Consumidor da Sanofi Medley.
+
+Inspecionar cada refil antes do uso. Somente utilizar se a solução estiver clara, incolor, sem a presença de
+partículas visíveis e se estiver com o aspecto de água. Como a LANTUS em refil para utilização com caneta
+compatível para aplicação de insulina não é uma suspensão, não é necessária a ressuspensão antes do uso.
+Antes de inserir na caneta, manter o refil da LANTUS em temperatura ambiente durante 1 a 2 horas. Siga
+cuidadosamente as instruções contidas no manual de instruções da caneta.
+
+LANTUS não deve ser misturada ou diluída com qualquer outra insulina, pois existe risco de alterar
+o perfil de tempo/ação da LANTUS ou causar a sua precipitação. Não encher os refis vazios.
+
+LANTUS refil: Recomenda-se agulha de 4 a 6 mm compatível com caneta para aplicação de insulina.
+
+Em casos de mau funcionamento da caneta, você pode transferir a insulina do refil para uma seringa
+(adequada para uma insulina de 100 UI/mL) e utilizá-la para injeção. As seringas não devem conter
+quaisquer outros medicamentos ou vestígios de outros medicamentos.
+Após a inserção de um novo refil, verificar se a caneta compatível para aplicação de insulina está
+funcionando corretamente antes de injetar a primeira dose. Veja o manual de instruções da caneta para
+maiores detalhes.
+
+POSOLOGIA
+Insulina glargina é uma nova insulina humana recombinante análoga, equipotente à insulina humana.
+Devido ao perfil de redução de glicose sem pico com duração de ação prolongada da LANTUS, a dose é
+administrada por via subcutânea uma vez ao dia. Pode ser administrada a qualquer hora do dia, entretanto,
+no mesmo horário todos os dias. Os níveis desejados de glicemia, bem como as doses e intervalos das
+medicações antidiabéticas devem ser determinadas e ajustadas individualmente.
+
+Os ajustes na dose podem também ser necessários, por exemplo, se houver alterações de peso, estilo de
+vida, planejamento da dose de insulina dos pacientes, ou outras circunstâncias que possam promover
+aumento na susceptibilidade à hipoglicemia ou hiperglicemia (vide ADVERTÊNCIAS E PRECAUÇÕES).
+Qualquer alteração de dose deve ser feita somente sob supervisão médica.
+
+Em regimes de injeção basal em bolus, geralmente 40-60% da dose diária é administrada como insulina
+glargina para cobrir os requerimentos de insulina basal. Num estudo clínico com pacientes diabéticos tipo
+2, sob tratamento com antidiabético oral, foi iniciada terapia com dose de 10 UI de insulina glargina, 1 vez
+ao dia, e subsequentemente o tratamento foi ajustado individualmente.
+
+LANTUS não é a insulina de escolha para o tratamento de cetoacidose diabética. Insulina intravenosa de
+curta duração deve ser o tratamento preferido.
+
+Quando ocorrer a alteração de um tratamento com insulina intermediária ou uma insulina de longa-duração
+para um tratamento com LANTUS, pode ser necessário ajuste na quantidade e intervalo da insulina de curta
+duração ou da insulina análoga de ação rápida ou da dose de qualquer antidiabético oral.
+Para reduzir o risco de hipoglicemia, quando os pacientes são transferidos de insulina glargina 300 U/mL
+uma vez ao dia, para LANTUS 100U/mL uma vez ao dia, a dose inicial recomendada Lantus 100 U/mL é
+de 80% da dose de insulina glargina 300 U/ml que será descontinuada.
+
+Nos estudos clínicos realizados quando os pacientes foram transferidos de insulina NPH uma vez ao dia ou
+insulina ultralenta para LANTUS administrada uma vez ao dia, a dose inicial utilizada foi geralmente
+inalterada (por exemplo: quantidade de unidades, UI, da LANTUS por dia foi igual às UI de insulina NPH).
+Para aqueles que foram transferidos de insulina NPH duas vezes ao dia para LANTUS uma vez ao dia, a
+dose inicial (UI) foi geralmente reduzida em aproximadamente 20% (comparada com a dose total diária em
+UI de insulina NPH) e então ajustada com base na resposta do paciente, de forma a reduzir o risco de
+hipoglicemia.
+
+Um programa de monitorização metabólica cuidadosa, sob supervisão médica, é recomendado durante a
+transferência, e nas semanas iniciais subsequentes. Assim como com todas as insulinas análogas, isso é
+particularmente verdadeiro para pacientes que, devido a os anticorpos à insulina humana, necessitam de
+altas doses de insulina e podem apresentar uma resposta acentuadamente melhor com insulina glargina.
+
+Um controle metabólico melhor pode resultar em aumento da sensibilidade à insulina (necessidades
+reduzidas de insulina) podendo ser necessário posterior ajuste das doses da LANTUS e outras insulinas ou
+antidiabéticos orais.
+A monitorização da glicemia é recomendada para todos os pacientes com diabetes.
+
+Populações especiais
+Crianças acima de 2 anos
+Assim como nos pacientes adultos, a dose de Lantus dos pacientes pediátricos deve ser individualizada pelo
+médico baseada nas necessidades metabólicas e na monitorização frequente dos níveis de glicose.
+O perfil de segurança para pacientes ≤ 18 anos é semelhante ao perfil de segurança para pacientes maiores
+de 18 anos. Não há dados clínicos de segurança disponíveis em pacientes com idade abaixo de 2 anos de
+idade.
+
+Uso em idosos
+recomenda-se que as doses iniciais, os aumentos de dose e doses de manutenção sejam conservadoras para
+se evitar as reações hipoglicêmicas. Pode ser difícil reconhecer a hipoglicemia em idosos.
+
+Conduta necessária caso haja esquecimento de administração
+Caso tenha sido esquecida a administração de uma dose da LANTUS ou caso tenha sido administrada uma
+dose muito baixa da LANTUS, o nível glicêmico pode se elevar demasiadamente. Checar o nível glicêmico
+frequentemente.
+
+9. REAÇÕES ADVERSAS
+Hipoglicemia
+Pode ocorrer hipoglicemia (em geral a reação adversa mais frequente da terapia com insulina), caso a dose
+de insulina seja muito alta em relação às necessidades de insulina. Assim como com todas as insulinas,
+ataques hipoglicêmicos severos, especialmente se recorrentes, podem levar a distúrbios neurológicos.
+Episódios hipoglicêmicos severos ou prolongados podem ser de risco à vida. Em muitos pacientes, os sinais
+e sintomas de neuroglicopenia são precedidos por sinais de contra regulação adrenérgica. Geralmente,
+quanto mais rápido e maior o declínio na glicemia, mais acentuados são os fenômenos de contra regulação
+e os seus sintomas.
+
+Visão
+Uma alteração acentuada nos níveis glicêmicos pode causar distúrbios visuais temporários, devido à
+alteração temporária na turgidez e índice de refração das lentes. O controle glicêmico melhorado a longo
+prazo diminui o risco de progressão de retinopatia diabética. Contudo, como com todos os tratamentos com
+insulina, a terapia intensificada com insulina com melhora repentina nos níveis de glicemia pode estar
+associada com a piora temporária da retinopatia diabética. Em pacientes com retinopatia proliferativa,
+particularmente se não forem tratados com fotocoagulação, episódios hipoglicêmicos severos podem causar
+perda transitória da visão (vide RESULTADOS DE EFICÁCIA).
+
+Reações do tecido cutâneo e subcutâneo
+Assim como com todas as terapias com insulina, pode ocorrer lipodistrofia no local da injeção e retardo da
+absorção da insulina. Em estudos clínicos, em tratamentos que incluíam insulina glargina, foi observada
+lipo-hipertrofia em 1 a 2% dos pacientes, enquanto lipoatrofia era incomum.
+Amiloidose cutânea localizada ocorreu no local da injeção com insulinas. Hiperglicemia foi relatada com
+injeções repetidas de insulina em áreas de amiloidose cutânea localizada; hipoglicemia foi relatada com
+uma mudança repentina para um local de injeção não afetado.
+A rotação contínua do local de injeção dentro de determinada área pode ajudar a reduzir ou evitar essas
+reações. (vide ADVERTÊNCIAS E PRECAUÇÕES).
+
+Local da injeção e reações alérgicas
+Em estudos clínicos usando tratamentos que incluíam insulina glargina, reações no local das injeções foram
+observadas em 3 a 4% dos pacientes. Assim como com qualquer terapia com insulina, tais reações incluem
+rubor, dor, coceira, urticária, inchaço, inflamação. A maioria das pequenas reações geralmente é resolvida
+em poucos dias ou poucas semanas.
+
+Reações alérgicas do tipo imediata são raras. Tais reações à insulina (incluindo insulina glargina) ou aos
+excipientes podem, por exemplo, ser associadas com reações cutâneas generalizadas, angioedema,
+broncoespasmo, hipotensão e choque, podendo ser de risco à vida.
+
+Outras reações
+A administração de insulina pode causar a formação de anticorpos. Em estudos clínicos, os anticorpos que
+têm reação cruzada com insulina humana e insulina glargina foram observados tanto nos grupos de
+tratamento com NPH quanto nos grupos com insulina glargina, com incidências similares. Em casos raros,
+a presença de tais anticorpos pode necessitar ajuste de dose da insulina para corrigir a tendência à
+hiperglicemia ou hipoglicemia. Raramente, a insulina pode causar retenção de sódio e edema,
+particularmente após melhora significativa do controle metabólico em associação com a terapia
+intensificada por insulina.
+
+Foram relatados erros de medicação nos quais outras insulinas, particularmente insulinas de ação curta,
+foram administradas acidentalmente ao invés de insulina glargina.
+
+População pediátrica
+Em geral, o perfil de segurança para pacientes ≤ 18 anos é semelhante ao perfil de segurança para pacientes
+maiores de 18 anos.
+As reações adversas reportadas no pós-comercialização incluem relativamente com maior frequência em
+crianças e adolescentes (≤ 18 anos) que nos adultos: reações no local da injeção e reações na pele (rash,
+urticária).
+
+Em casos de eventos adversos, notifique pelo Sistema VigiMed, disponível no Portal da Anvisa.
+
+10. SUPERDOSE
+Sintomas
+A superdose com insulina, relacionada com a ingestão de alimentos, consumo de energia ou ambos, pode
+levar à hipoglicemia severa e algumas vezes prolongada e apresentar risco de vida. Checar a glicemia
+frequentemente.
+
+Tratamento
+Episódios leves de hipoglicemia podem geralmente ser tratados com carboidratos por via oral. Os ajustes
+da dose, padrões de alimentação ou atividade física podem ser necessários. Episódios mais severos
+culminando em coma, convulsões ou danos neurológicos podem ser tratados com glucagon ou solução de
+glicose intravenosa concentrada. A ingestão sustentada de carboidrato e observação podem ser necessárias
+devido à possibilidade de recorrência de hipoglicemia após aparente recuperação clínica.
+
+Em caso de intoxicação ligue para 0800 722 6001, se você precisar de mais orientações.
+
+===== BLOCO 2 =====
+8. POSOLOGIA E MODO DE USAR
+LANTUS é administrada por injeção tecidual subcutânea. Não deve ser administrado intravenosamente. Dentro de
+uma determinada área de injeção (abdome, coxa ou deltoide), deve ser escolhido um diferente local para cada
+injeção, para reduzir o risco de lipodistrofia e amiloidose cutânea localizada. Não aplicar em áreas com lipodistrofia
+ou amiloidose cutânea localizada (vide ADVERTÊNCIAS E PRECAUÇÕES e REAÇÕES ADVERSAS). A
+absorção de insulina glargina não é diferente entre as áreas de injeção subcutânea do abdome, coxa ou deltoide.
+Assim como para todas as insulinas, a taxa de absorção e consequentemente o início e duração da ação podem ser
+afetados por exercício e outras variáveis.
+
+A prolongada duração de ação da insulina glargina é dependente da injeção no espaço subcutâneo. A administração
+intravenosa da dose subcutânea usual pode resultar em hipoglicemia severa.
+
+Instruções para uso da LANTUS SOLOSTAR
+Inspecionar a caneta antes do uso. Somente utilizar se a solução estiver clara, incolor, sem a presença de partículas
+visíveis e se estiver com a consistência de água. Por não ser suspensão, não é necessária a ressuspensão antes do
+uso.
+LANTUS não deve ser misturada ou diluída com qualquer outra insulina, pois existe risco de alterar o perfil
+de tempo/ação da LANTUS ou causar a sua precipitação.
+
+Recomenda-se anotar a data do primeiro uso da caneta.
+LANTUS libera insulina em quantidades de 1 U até uma dose única máxima de 80 U.
+
+Como utilizar a caneta
+LANTUS apresenta-se em refis lacrados nas canetas injetoras descartáveis. Ler cuidadosamente o Manual de
+Instruções antes de utilizar LANTUS SOLOSTAR.
+
+Mantenha a caneta em temperatura ambiente durante 1 ou 2 horas antes de utilizá-la. Antes da administração,
+remover todas as bolhas de ar. Assegurar que álcool, desinfetantes ou outras substâncias não contaminem a insulina.
+Não reutilizar canetas vazias. As canetas vazias não devem ser recarregadas, devendo ser adequadamente
+descartadas.
+Para evitar a transmissão de doenças, cada caneta deve ser utilizada somente por um único paciente.
+
+Recomenda-se agulha de 4 a 6 mm compatível com caneta para aplicação de insulina.
+ Confidential - Sensitive
+
+Acoplar uma agulha nova antes de cada aplicação. Remover a agulha após cada aplicação e armazenar a caneta
+sem agulha. Certificar-se de que houve a remoção da agulha antes de descartar a caneta. As agulhas nunca devem
+ser reutilizadas.
+A caneta para insulina não deve sofrer quedas ou impactos. Caso isto ocorra, utilize uma nova caneta.
+Não use qualquer outro tipo de insulina sem a orientação médica.
+
+POSOLOGIA
+Insulina glargina é uma nova insulina humana recombinante análoga, equipotente à insulina humana.
+Devido ao perfil de redução de glicose sem pico com duração de ação prolongada da LANTUS, a dose é
+administrada por via subcutânea uma vez ao dia. Pode ser administrada a qualquer hora do dia, entretanto, no
+mesmo horário todos os dias. Os níveis desejados de glicemia, bem como as doses e intervalos das medicações
+antidiabéticas devem ser determinadas e ajustadas individualmente.
+
+Os ajustes na dose podem também ser necessários, por exemplo, se houver alterações de peso, estilo de vida,
+planejamento da dose de insulina dos pacientes, ou outras circunstâncias que possam promover aumento na
+susceptibilidade à hipoglicemia ou hiperglicemia (vide ADVERTÊNCIAS E PRECAUÇÕES). Qualquer alteração
+de dose deve ser feita somente sob supervisão médica.
+
+Em regimes de injeção basal em bolus, geralmente 40-60% da dose diária é administrada como insulina glargina
+para cobrir os requerimentos de insulina basal. Num estudo clínico com pacientes diabéticos tipo 2, sob tratamento
+com antidiabético oral, foi iniciada terapia com dose de 10 U de insulina glargina, 1 vez ao dia, e subsequentemente
+o tratamento foi ajustado individualmente.
+
+LANTUS não é a insulina de escolha para o tratamento de cetoacidose diabética. Insulina intravenosa de curta
+duração deve ser o tratamento preferido.
+
+Quando ocorrer a alteração de um tratamento com insulina intermediária ou uma insulina de longa-duração para
+um tratamento com LANTUS, pode ser necessário ajuste na quantidade e intervalo da insulina de curta duração ou
+da insulina análoga de ação rápida ou da dose de qualquer antidiabético oral.
+
+Para reduzir o risco de hipoglicemia, quando os pacientes são transferidos de insulina glargina 300 U/mL uma vez ao
+dia, para LANTUS 100U/mL uma vez ao dia, a dose inicial recomendada Lantus 100 U/mL é de 80% da dose de
+insulina glargina 300 U/ml que será descontinuada.
+
+Nos estudos clínicos realizados quando os pacientes foram transferidos de insulina NPH uma vez ao dia ou insulina
+ultralenta para LANTUS administrada uma vez ao dia, a dose inicial utilizada foi geralmente inalterada (por
+exemplo: quantidade de unidades, U, da LANTUS por dia foi igual às U de insulina NPH). Para aqueles que foram
+transferidos de insulina NPH duas vezes ao dia para LANTUS uma vez ao dia, a dose inicial (U) foi geralmente
+reduzida em aproximadamente 20% (comparada com a dose total diária em U de insulina NPH) e então ajustada
+com base na resposta do paciente, de forma a reduzir o risco de hipoglicemia.
+
+Um programa de monitorização metabólica cuidadosa, sob supervisão médica, é recomendado durante a
+transferência, e nas semanas iniciais subsequentes. Assim como com todas as insulinas análogas, isso é
+particularmente verdadeiro para pacientes que, devido aos anticorpos à insulina humana, necessitam de altas doses
+de insulina e podem apresentar uma resposta acentuadamente melhor com insulina glargina.
+
+Um controle metabólico melhor pode resultar em aumento da sensibilidade à insulina (necessidades reduzidas de
+insulina) podendo ser necessário posterior ajuste das doses da LANTUS e outras insulinas ou antidiabéticos orais.
+A monitorização da glicemia é recomendada para todos os pacientes com diabetes.
+
+Populações especiais
+Crianças acima de 2 anos: assim como nos pacientes adultos, a dose de Lantus dos pacientes pediátricos deve ser
+individualizada pelo médico baseada nas necessidades metabólicas e na monitorização frequente dos níveis de glicose.
+O perfil de segurança para pacientes ≤ 18 anos é semelhante ao perfil de segurança para pacientes maiores de 18 anos.
+Não há dados clínicos de segurança disponíveis em pacientes com idade abaixo de 2 anos de idade.
+
+Uso em idosos: recomenda-se que as doses iniciais, os aumentos de dose e doses de manutenção sejam
+conservadoras para se evitar as reações hipoglicêmicas.
+ Confidential - Sensitive
+
+Conduta necessária caso haja esquecimento de administração
+Caso tenha sido esquecida a administração de uma dose da LANTUS ou caso tenha sido administrada uma dose
+muito baixa da LANTUS, o nível glicêmico pode se elevar demasiadamente. Checar o nível glicêmico
+frequentemente.

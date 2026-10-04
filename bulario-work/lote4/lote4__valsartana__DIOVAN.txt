@@ -1,0 +1,489 @@
+FONTE: lote4__valsartana__DIOVAN.pdf
+
+===== BLOCO 1 =====
+APRESENTAÇÕES
+Diovan® 40 mg: embalagem com 28 comprimidos revestidos.
+Diovan® 80 mg: embalagem com 28 comprimidos revestidos.
+Diovan® 160 mg ou 320 mg: embalagem com 14 e 28 comprimidos revestidos.
+
+VIA ORAL
+USO ADULTO
+
+1. INDICAÇÕES
+• Tratamento da hipertensão arterial.
+• Tratamento de insuficiência cardíaca (classes II a IV da NYHA) em pacientes recebendo tratamento padrão tais como
+ diuréticos, digitálicos e também inibidores da enzima de conversão da angiotensina (ECA) ou betabloqueadores, mas
+ não ambos; a presença de todas estas terapêuticas padronizadas não é obrigatória.
+ Diovan® melhora a morbidade nesses pacientes, principalmente através da redução da hospitalização por insuficiência
+ cardíaca. Diovan® retarda também a progressão da insuficiência cardíaca, melhora a classe funcional da NYHA, a
+ fração de ejeção, os sinais e sintomas da insuficiência cardíaca e melhora a qualidade de vida versus o placebo (vide
+ “Características farmacológicas”).
+• Diovan® é indicado para melhorar a sobrevida após infarto do miocárdio em pacientes clinicamente estáveis com
+ sinais, sintomas ou evidência radiológica de insuficiência ventricular esquerda e/ou com disfunção sistólica
+ ventricular esquerda (vide “Características farmacológicas”).
+
+3. CARACTERÍSTICAS FARMACOLÓGICAS
+Grupo farmacoterapêutico: bloqueadores do receptor da angiotensina II simples. Código ATC: C09CA03.
+
+Farmacodinâmica
+O hormônio ativo do SRAA é a angiotensina II, formada a partir da angiotensina I pela ECA. A angiotensina II se liga a
+receptores específicos localizados na membrana das células de vários tecidos, exercendo diversos efeitos fisiológicos,
+inclusive, em particular, no envolvimento direto e indireto na regulação da pressão arterial. Como um potente
+vasoconstritor, a angiotensina II exerce uma resposta pressora direta. Além disso, promove retenção de sódio e
+estimulação da secreção de aldosterona.
+
+VPS20 = Diovan_Bula_Profissional
+Diovan® (valsartana) é um potente e específico antagonista dos receptores de angiotensina II (Ang II) ativo por via oral.
+Ele atua seletivamente no receptor subtipo AT1, responsável pelas conhecidas ações da angiotensina II. As concentrações
+plasmáticas aumentadas de Ang II seguindo-se ao bloqueio do receptor AT1 com valsartana pode estimular o receptor
+AT2 não bloqueado, o que parece contrabalançar o efeito do receptor AT1. A valsartana não apresenta atividade agonista
+parcial sobre os receptores AT1 e tem afinidade muito maior (cerca de 20.000 vezes) para com receptores AT1 do que
+para com receptores AT2.
+
+A valsartana não inibe a ECA, também conhecida como cininase II, que converte Ang I em Ang II e degrada a bradicinina.
+Uma vez que não existe efeito sobre a ECA e nenhuma potencialização da bradicinina ou substância P, é improvável que
+os antagonistas de angiotensina II estejam associados à tosse. Em estudos clínicos em que a valsartana foi comparada aos
+inibidores da ECA, a incidência de tosse seca foi significativamente menor (P < 0,05) em pacientes tratados com
+valsartana do que naqueles tratados com inibidores da ECA (2,6% versus 7,9%, respectivamente). Em um estudo clínico
+em pacientes com história de tosse seca durante terapêutica com inibidores da ECA, 19,5% dos pacientes que recebiam
+valsartana e 19,0% desses que recebiam um diurético tiazídico apresentaram episódios de tosse, comparados a 68,5%
+daqueles tratados com inibidores da ECA (P < 0,05). A valsartana não se liga ou bloqueia outros receptores hormonais
+ou canais de íons conhecidos, importantes na regulação cardiovascular.
+
+Farmacocinética
+- Absorção
+Após a administração oral de valsartana isolada, o pico da concentração plasmática da valsartana é atingido em 2-4 horas.
+A biodisponibilidade absoluta média é de 23%. Quando a valsartana é administrada com alimentos, a área sob a curva de
+concentração plasmática (AUC) de valsartana sofre redução de 48%, embora cerca de 8 horas após a administração, as
+concentrações plasmáticas de valsartana sejam similares em pacientes que ingeriram o produto em jejum ou com
+alimentos. Entretanto, esta redução da AUC não se acompanha de redução clinicamente significativa nos efeitos
+terapêuticos, podendo a valsartana ser administrada com ou sem alimentos.
+
+- Distribuição
+O volume de distribuição no steady-state (estado de equilíbrio) da valsartana após administração intravenosa, é cerca de
+17 litros, indicando que a valsartana não é distribuída extensivamente pelos tecidos. A valsartana tem alta taxa de ligação
+às proteínas séricas (94 – 97%), principalmente à albumina sérica.
+
+- Biotransformação
+A valsartana não é biotransformada em grande extensão uma vez que apenas cerca de 20% da dose é recuperada como
+metabólitos. Um metabólito hidróxi foi identificado no plasma em baixas concentrações (menos de 10% da AUC de
+valsartana). Este metabólito é farmacologicamente inativo.
+
+- Eliminação
+A valsartana apresenta um decaimento cinético multiexponencial (t1/2 α < 1h e t1/2 β cerca de 9 h). A valsartana é eliminada
+principalmente nas fezes (cerca de 83% da dose) e urina (cerca de 13% da dose), principalmente como fármaco inalterado.
+Após administração intravenosa, o clearance (depuração) plasmático da valsartana é cerca de 2 L/h e seu clearance
+(depuração) renal é de 0,62 L/h (cerca de 30% do clearance total). A meia-vida da valsartana é de 6 horas.
+
+A farmacocinética de valsartana é linear no intervalo de dose testada. Não ocorrem alterações na cinética de valsartana
+em administrações repetidas e há pouco acúmulo quando administrado uma vez ao dia. As concentrações plasmáticas
+observadas foram similares em homens e mulheres.
+
+O tempo médio para o pico de concentração e a meia-vida de eliminação da valsartana em pacientes com insuficiência
+cardíaca é similar ao observado em pacientes sadios. Os valores AUC e Cmáx da valsartana aumentam linearmente e são
+praticamente proporcionais com o aumento da dose dentro da faixa clínica (40 a 160 mg duas vezes ao dia). O fator de
+acumulação médio é aproximadamente 1,7. O clearance (depuração) aparente da valsartana após uma administração oral
+é aproximadamente 4,5 L/h. A idade não afeta o clearance (depuração) aparente em pacientes com insuficiência cardíaca.
+
+Populações especiais de pacientes
+- Pacientes geriátricos (65 anos ou acima)
+Maior exposição sistêmica à valsartana foi observada em indivíduos idosos comparados com indivíduos jovens;
+entretanto, isso não apresentou nenhum significado clínico.
+
+VPS20 = Diovan_Bula_Profissional
+- Insuficiência renal
+Como esperado para um composto no qual o clearance (depuração) renal contribui com apenas 30% do clearance
+(depuração) plasmático total, não existe correlação entre a função renal e a exposição sistêmica à valsartana. Portanto,
+não é necessário ajuste de dose em pacientes com insuficiência renal. Nenhum estudo foi realizado em pacientes sob
+diálise. No entanto, valsartana possui alta taxa de ligação às proteínas plasmáticas, sendo improvável sua remoção por
+diálise.
+
+- Insuficiência hepática
+Cerca de 70% da dose absorvida é excretada na bile, principalmente como composto inalterado. A valsartana não sofre
+biotransformação extensiva e, como esperado, a exposição sistêmica à valsartana não se relaciona com o grau de disfunção
+hepática. Portanto, nenhum ajuste de dose é necessário em pacientes com insuficiência hepática de origem não biliar e
+sem colestase. Observou-se que a AUC da valsartana é aproximadamente o dobro em pacientes com cirrose biliar ou
+obstrução biliar (vide “Advertências e precauções”).
+
+Dados de segurança pré-clínicos
+Dados pré-clínicos não revelaram riscos especiais para humanos, baseados em estudos convencionais de segurança
+farmacológica, genotoxicidade, potencial carcinogênico e efeitos na fertilidade.
+
+Segurança farmacológica e toxicidade de longo prazo: Em diversos estudos pré-clínicos de segurança realizados com
+várias espécies de animais, não houve resultados que excluem o uso de doses terapêuticas de valsartana em humanos. Em
+estudos de segurança pré-clínicos, altas doses de valsartana (200 a 600 mg/kg/dia de peso corporal) em ratos, causou uma
+redução dos parâmetros dos glóbulos vermelhos (eritrócitos, hemoglobina, hematócrito) e evidência de alterações na
+hemodinâmica renal (nitrogênio na ureia levemente aumentado no sangue, hiperplasia tubular renal e basofilia nos
+machos). Estas doses em ratos (200 e 600 mg/kg/dia) são aproximadamente 6 e 18 vezes a dose humana máxima
+recomendada com base em mg/m2 (cálculos assumem uma dose oral de 320 mg/dia e um paciente de 60 kg). Em macacos
+saguis, em doses comparáveis, as alterações foram semelhantes, embora mais graves, particularmente nos rins onde as
+alterações desenvolveram para uma nefropatia, incluindo aumento no sangue de nitrogênio na ureia e creatinina. A
+hipertrofia das células justaglomerulares renais também foi observada em ambas as espécies. Todas as alterações foram
+consideradas como sendo causadas pela ação farmacológica da valsartana, que produziu hipotensão prolongada,
+particularmente nos macacos saguis. Para doses terapêuticas de valsartana em humanos, a hipertrofia das células
+justaglomerulares renais não parece ter qualquer relevância.
+
+Toxicidade reprodutiva: Valsartana não apresentou reações adversas sobre o desempenho reprodutivo de ratos machos
+ou fêmeas com doses orais de até 200 mg/kg/dia, aproximadamente 6 vezes a dose humana máxima recomendada numa
+base de mg/m2 (os cálculos assumem uma dose oral de 320 mg/dia em um paciente de 60 kg).
+
+Mutagenicidade: A valsartana foi isenta de potencial mutagênico em estudos de genotoxicidade , quer ao nível do gene
+ou cromossomo, quando investigada em vários padrões in vitro e in vivo.
+
+Carcinogenicidade: Não houve evidência de carcinogenicidade quando a valsartana foi administrada na dieta a
+camundongos e ratos por 2 anos em doses de até 160 e 200 mg/kg/dia, respectivamente.
+
+4. CONTRAINDICAÇÕES
+Hipersensibilidade conhecida à valsartana ou a qualquer dos excipientes de Diovan® (vide “Composição”).
+Uso concomitante de bloqueadores de receptores de angiotensina – incluindo Diovan® – ou inibidores da enzima
+conversora de angiotensina (IECAs) com alisquireno em pacientes com diabetes tipo 2 (vide “Interações medicamentosas
+– Duplo bloqueio do sistema renina-angiotensina (SRA) com BRA`s, IECAs ou alisquireno”).
+
+Este medicamento é contraindicado para uso por lactantes.
+Este medicamento é contraindicado durante a gravidez.
+
+5. ADVERTÊNCIAS E PRECAUÇÕES
+Pacientes com depleção do volume e/ou de sódio
+Em pacientes com depleção grave de sódio e/ou hipovolemia, como nos que estejam recebendo altas doses de diuréticos,
+pode ocorrer, em casos raros, hipotensão sintomática após o início da terapêutica com Diovan®. A depleção de sódio e/ou
+a hipovolemia devem ser corrigidas antes do início do tratamento com Diovan®, por exemplo, pela redução da dose do
+diurético.
+VPS20 = Diovan_Bula_Profissional
+Se ocorrer hipotensão, manter o paciente em posição supina e, se necessário, administrar uma infusão intravenosa de
+solução salina fisiológica. O tratamento pode ser continuado, uma vez que a pressão arterial esteja estabilizada.
+
+Pacientes com estenose de artéria renal
+A administração de Diovan® por curto prazo a doze pacientes com hipertensão renovascular, secundária a estenose de
+artéria renal unilateral, não induziu qualquer alteração significativa na hemodinâmica renal, na creatinina sérica ou na
+ureia nitrogenada sanguínea (UNS). No entanto, como os medicamentos que afetam o sistema renina -angiotensina-
+aldosterona (SRAA) podem aumentar a ureia sanguínea e a creatinina sérica em pacientes com estenose de artéria renal
+unilateral ou bilateral, recomenda -se a monitoração de ambos parâmetros desse s pacientes como medida de segurança.
+
+Pacientes com insuficiência renal
+Nenhum ajuste de dose é necessário em pacientes com insuficiência renal. No entanto, não existem dados disponíveis em
+casos graves [clearance (depuração) de creatinina < 10 mL/min], recomenda ndo-se cautela.
+O uso de bloqueadores de receptores de angiotensina – incluindo Diovan® – ou inibidores da ECA juntamente com
+alisquireno deve ser evitado em pacientes com insuficiência renal grave (TFG < 30 mL/min) (vide “Interações
+medicamentosas – Duplo bloqueio do sistema renina-angiotensina (SRA) com BRA`s, IECAs ou alisquireno”) .
+
+Pacientes com insuficiência hepática
+Não é necessário ajuste de dose em pacientes com insuficiência hepática. A valsartana é eliminada principalmente como
+composto inalterado na bile, e pacientes com distúrbios biliares obstrutivos mostraram clearance (depuração) mais baixo
+de valsartana (vide “Farmacocinética”). Deve-se tomar cuidado especial ao se administrar valsartana a pacientes com
+distúrbios biliares obstrutivos.
+
+Pacientes com insuficiência cardíaca/Pós-infarto do miocárdio
+Pacientes com insuficiência cardíaca ou em tratamento do pós -infarto do miocárdio que utilizam Diovan® normalmente
+apresentam alguma redução na pressão arterial, mas a descontinuação da terapêutica devida a uma hipotensão sintomática
+persistente não é usualmente necessária quando a posologia correta é seguida.
+Cuidados devem ser tomados ao iniciar o tratamento em pacientes com insuficiência cardíaca ou pós -infarto do miocárdio
+(vide “Posologia e modo de usar”).
+
+Como consequência da inibição do SRAA, alterações na função renal podem ser antecipadas em indivíduos suscetíveis.
+Nos pacientes com insuficiência cardíaca grave, cuja função renal pode depender da atividade do SRAA, o tratamento
+com inibidores da ECA ou com antagonistas do receptor da angiotensina foi associado à oligúria e/ou azotemia e
+(raramente) com insuficiência renal aguda e/ou morte. A avaliação dos pacientes com insuficiência cardíaca ou pós-infarto
+do miocárdio deve sempre incluir a avaliação da função renal.
+
+Em pacientes com insuficiência cardíaca, cuidados devem ser tomados com a tripla combinação de um inibidor da ECA,
+de um betabloqueador e valsartana (vide “Características farmacológicas”).
+
+Para pacientes com infarto do miocárdio recente, a combinação de captopril e valsartana não demonstrou nenhum
+benefício clínico adicional, porém demonstraram um aumento no risco dos efeitos adversos comparado à monoterapia.
+Portanto, esta combinação não é recomendada para pacientes com infarto do miocárdio recente, ao contrário da
+monoterapia com Diovan®, que é indicado para melhorar a sobrevida após infarto do miocárdio em pacientes clinicamente
+estáveis (vide “Indicações”).
+
+Angioedema
+Em pacientes tratados com valsartana tem sido reportado angioedema, incluindo inchaço de laringe e glote, levando a
+obstrução das vias áreas e/ou inchaço de face, lábios, faringe e/ou língua. Alguns destes pacientes apresentaram
+previamente angioedema com outros fármacos, incluindo inibidores da ECA. Diovan® deve ser imediatamente
+descontinuado em pacientes que desenvolverem angioedema, e não deve ser readministrado.
+
+Duplo Bloqueio do Sistema Renina-Angiotensina (SRA)
+É necessário precaução na coadministração de bloqueadores de receptores de angiotensina (BRAs), incluindo Diovan®,
+com outros agentes inibidores do sistema renina-angiotensina, como IECAs ou alisquireno.
+
+VPS20 = Diovan_Bula_Profissional
+Gravidez
+Sumário de risco
+Como qualquer fármaco que atua diretamente sobre o SRAA, Diovan® não deve ser usado durante a gravidez (vide
+“Contraindicações”). Devido ao mecanismo de ação dos antagonistas de angiotensina II, o risco para o feto não deve ser
+excluído. Em exposição in utero a inibidores da ECA (uma classe específica de medicamentos que agem no SRAA),
+durante o segundo e terceiro trimestres da gestação, houve relatos de lesões e morte de fetos em desenvolvimento. Além
+disso, nos dados retrospectivos, o uso de inibidores da ECA no primeiro trimestre foi associado a um risco potencial de
+anomalias congênitas. Houve relatos de aborto espontâneo, oligodrâmnio e disfunção renal em recém-nascidos quando
+mulheres grávidas tomaram inadvertidamente a valsartana. Se gravidez for detectada durante o tratamento, Diovan® deve
+ser descontinuado assim que possível (vide “Dados de segurança pré-clínicos”).
+Este medicamento pertence à categoria de risco na gravidez D, portanto este medicamento não deve ser utilizado por
+mulheres grávidas sem orientação médica. Informe imediatamente seu médico em caso de suspeita de gravidez.
+
+Considerações Clínicas
+Risco materno e/ou embrionário/fetal associado à doença
+A hipertensão na gravidez aumenta o risco materno de pré-eclâmpsia, diabetes gestacional, parto prematuro e
+complicações do parto (por exemplo, necessidade de cesariana e hemorragia pós-parto). A hipertensão aumenta o risco
+fetal para restrição do crescimento intrauterino e morte intrauterina.
+
+Risco fetal/neonatal
+Oligodrâmnio em gestantes que usam medicamentos que afetam o sistema renina-angiotensina no segundo e terceiro
+trimestres da gravidez pode resultar em: redução da função renal fetal levando a anúria e insuficiência renal, hipoplasia
+pulmonar fetal, deformações esqueléticas, incluindo hipoplasia craniana, hipotensão e morte. Em caso de exposição
+acidental à terapia BRA, deve ser considerada uma monitorização fetal adequada.
+Bebês cujas mães fizeram terapia BRA devem ser cuidadosamente observados quanto à hipotensão.
+
+Dados em animais
+Em estudos de desenvolvimento embrionário em camundongos, ratos e coelhos, observou-se fetotoxicidade em
+associação com toxicidade materna em ratos com doses de valsartan a de 600 mg/kg/dia aproximadamente 18vezes a
+dose humana máxima recomendada numa base de mg/m2 (os cálculos pressupõem uma dose oral de 320 mg/dia e m um
+paciente de 60 kg) e em coelhos com doses de 10 mg/kg/dia aproximadamente 0,6 vezes a dose humana máxima
+recomendada numa base de mg/m2 (os cálculos assumem uma dose oral de 320 mg/dia em um paciente de 60 kg). Não
+houve evidência de toxicidade materna ou fetotoxicidade em camundongos até um nível de dose de 600 mg/kg/dia
+aproximadamente 9 vezes a dose humana máxima recomendada em mg/m 2 (os cálculos assumem uma dose oral de 320
+mg/dia em um paciente de 60 kg).
+
+Lactação
+Sumário de risco
+Não se sabe se a valsartana é transferida para o leite humano. A valsartana foi transferida para o leite de ratas lactantes.
+Portanto, não se recomenda o uso de Diovan® em lactantes.
+Uso contraindicado no aleitamento ou na doação de leite humano : este medicamento é contraindicado durante o
+aleitamento ou doação de leite, pois pode ser excretado no leite humano e pode causar reações indesejáveis no bebê.
+Seu médico ou cirurgião-dentista deve apresentar alternativas para o seu tratamento ou para a ali mentação do
+bebê
+
+Mulheres em idade fértil
+Como qualquer fármaco que atua diretamente sobre o SRAA, Diovan ® não deve se usado por mulheres que planejam
+engravidar. Os médicos que prescrevem qualquer agente que atue no SRAA devem aconselhar as mulheres com potencial
+de engravidar sobre o risco potencial destes agentes durante a gravidez.
+
+Infertilidade
+Não há dados dos efeitos de Diovan® na fertilidade humana. Estudos em ratos não demonstraram qualquer efeito da
+valsartana na fertilidade (vide “Dados de segurança pré-clínicos”).
+
+Efeitos sobre a habilidade de dirigir veículos e/ou operar máquinas
+Nenhum estudo sobre o efeito na habilidade de dirigir ou operar máquinas foi realizado. Deve-se levar em consideração,
+quando se dirigir veículos ou operar máquinas, que podem ocorrer tonturas ocasionais ou cansaço. Informe ao seu
+
+VPS20 = Diovan_Bula_Profissional
+paciente que ele deve evitar se levantar rapidamente, dirigir veículos e/ou operar máquinas, principalmente
+durante todo o tratamento.
+
+Excipientes especiais
+
+Diovan® 40mg:
+Atenção: Contém os corantes óxido de ferro amarelo, óxido de ferro vermelho, óxido de ferro preto e dióxido de
+titânio.
+
+Diovan® 80mg:
+Atenção: Contém os corantes óxido de ferro amarelo, óxido de ferro vermelho e dióxido de titânio.
+
+Diovan® 160mg:
+Atenção: Contém os corantes óxido de ferro amarelo, óxido de ferro vermelho, óxido de ferro preto e dióxido de
+titânio.
+
+Diovan® 320mg:
+Atenção: Contém os corantes óxido de ferro amarelo, óxido de ferro vermelho, óxido de ferro preto e dióxido de
+titânio.
+
+6. INTERAÇÕES MEDICAMENTOSAS
+Duplo bloqueio do Sistema Renina-Angiotensina (SRA) com BRAs, IECAs ou alisquireno: o uso concomitante de
+bloqueadores de receptores de angiotensina (BRAs), incluindo Diovan®, com outros medicamentos que agem no SRA é
+associado com o aumento da incidência de hipotensão, hipercalemia e alterações na função renal em comparação com a
+monoterapia. É recomendada a monitoração da pressão arterial, função renal e eletrólitos em pacientes em tratamento
+com Diovan® e outros agentes que afetam o SRA (vide “Advertências e precauções”).
+O uso concomitante de BRAs, incluindo Diovan®, ou IECAs com alisquireno deve ser evitado em pacientes com
+insuficiência renal grave (TFG < 30 mL/min) (vide “Advertências e precauções”).
+O uso concomitante de BRAs, incluindo Diovan®, ou IECAs com alisquireno é contraindicado em pacientes com diabetes
+tipo 2 (vide “Contraindicações”).
+
+Potássio: o uso concomitante com diuréticos poupadores de potássio (por exemplo, espironolactona, triantereno,
+amilorida), suplementos à base de potássio, substitutos do sal que contenham potássio ou outros medicamentos que podem
+aumentar os níveis de potássio (heparina, etc.) podem acarretar aumento do potássio sérico e, em pacientes com
+insuficiência cardíaca, aumento de creatinina sérica. Se o uso simultâneo desses compostos for considerado necessário,
+recomenda-se monitoramento do potássio sérico.
+
+Agentes anti-inflamatórios não esteroidais (AINEs) incluindo inibidor seletivo da ciclooxigenase 2 (inibidor da
+COX2): quando os antagonistas de angiotensina II são administrados simultaneamente com os AINEs, pode ocorrer
+atenuação do efeito anti-hipertensivo. Além disso, em pacientes idosos, com depleção de volume (incluindo aqueles sobre
+terapia com diurético) ou que tiver comprometimento da função renal, o uso concomitante de antagonistas da angiotensina
+II e AINEs pode levar ao aumento de risco da piora da função renal. Portanto, recomenda-se o monitoramento da função
+renal quando se inicia ou modifica o tratamento em pacientes com valsartana e que estão tomando AINEs
+simultaneamente.
+
+Lítio: foram relatados aumentos reversíveis nas concentrações séricas de lítio e toxicidade durante a administração
+concomitante de lítio e inibidores da ECA ou bloqueadores do receptor de angiotensina II, incluindo o Diovan®. Portanto,
+recomenda-se monitoração cuidadosa das concentrações séricas de lítio durante o uso concomitante. Se um diurético
+também for usado, o risco de toxicidade por lítio pode presumidamente ser aumentado ainda mais com Diovan®.
+
+Transportadores: o resultado de um estudo humano in vitro com tecido de fígado indicou que a valsartana é um substrato
+para o transportador hepático de captação OATP1B1 e para o transportador - hepático de efluxo MRP2. A coadministração
+de inibidores do transportador por captação (por exemplo, rifampicina e ciclosporina) ou do transportador de efluxo (por
+exemplo, ritonavir) pode aumentar a exposição sistêmica da valsartana.
+O uso concomitante de valsartana com:
+- lítio: pode levar a uma intoxicação por lítio
+- anti-inflamatórios não esteroidais (AINEs): pode reduzir a eficácia anti-hipertensiva
+
+VPS20 = Diovan_Bula_Profissional
+- ritonavir: aumento da exposição da valsartana
+- agentes que bloqueiam o SRAA: pode levar à hipercalemia
+
+Não foram observadas interações de significância clínica. Entre os fármacos com os quais se realizaram estudos clínicos
+incluem-se: cimetidina, varfarina, furosemida, digoxina, atenolol, indometacina, hidroclorotiazida, anlodipino e
+glibenclamida.
+
+Como a valsartana não sofre extensa metabolização, interações do tipo medicamento-medicamento clinicamente
+relevantes, em termos de indução ou inibição metabólica do sistema do citocromo P450, não são esperadas com a
+valsartana. Embora a valsartana possua alta taxa de ligação às proteínas plasmáticas, estudos in vitro não mostraram
+qualquer interação nesse nível com uma série de moléculas que também têm alta taxa de ligação às proteínas plasmáticas,
+como diclofenaco, furosemida e varfarina.
+
+8. POSOLOGIA E MODO DE USAR
+Método de administração
+Diovan® pode ser administrado independentemente das refeições e deve ser administrado com água por via oral.
+
+Hipertensão
+A dose inicial recomendada de Diovan® é de um comprimido revestido de 80 mg ou 160 mg uma vez ao dia, independente
+da raça, idade ou sexo. O efeito anti-hipertensivo manifesta-se efetivamente dentro de 2 semanas e o efeito máximo após
+
+VPS20 = Diovan_Bula_Profissional
+4 semanas. Nos pacientes que não apresentarem controle adequado da pressão arterial, a dose diária pode ser aumentada
+para um comprimido revestido de 320 mg, ou um diurético pode ser associado.
+Diovan® pode ser administrado concomitantemente com outros agentes anti-hipertensivos.
+
+Insuficiência cardíaca
+A dose diária recomendada para o início de tratamento é de um comprimido revestido de 40 mg de Diovan® duas vezes
+ao dia. A titulação para 80 mg e 160 mg duas vezes ao dia deve ser feita para a maior dose conforme tolerado pelo
+paciente. Deve-se considerar a redução da dose dos diuréticos concomitantes. A dose máxima diária administrada nos
+estudos clínicos é de 320 mg em doses fracionadas.
+A avaliação dos pacientes com insuficiência cardíaca deve sempre incluir a avaliação da função renal.
+
+Pós-infarto do miocárdio
+A terapêutica pode ser iniciada 12 horas após um infarto do miocárdio. Após uma dose inicial de 20 mg duas vezes ao
+dia, a terapêutica com valsartana deve ser titulada para um comprimido revestido de 40 mg, 80 mg e 160 mg duas vezes
+ao dia durante as próximas semanas. A dose inicial é oferecida por comprimidos de 40 mg divisíveis.
+A dose-alvo máxima é 160 mg duas vezes ao dia. Em geral, é recomendado que os pacientes atinjam um nível de dose de
+80 mg duas vezes ao dia por duas semanas após o início do tratamento e que o atingimento da dose-alvo máxima ocorra
+em três meses com base na tolerabilidade do paciente à valsartana durante a titulação. Se hipotensão sintomática ou
+disfunção renal ocorrer, deve-se considerar a redução da dose.
+A valsartana pode ser usada em pacientes tratados com outras terapêuticas do pós-infarto do miocárdio, por exemplo,
+trombolíticos, ácido acetilsalicílico, betabloqueadores ou estatinas.
+A avaliação em pacientes com pós-infarto do miocárdio deve sempre incluir uma avaliação da função renal.
+
+Insuficiência hepática
+Pacientes com insuficiência hepática de leve a moderada somente devem tomar doses acima de 80 mg duas vezes ao dia
+se o benefício clínico for superior ao risco associado com a exposição aumentada à valsartana.
+
+OBSERVAÇÃO para todas as indicações: nenhum ajuste de dose é requerido para pacientes com a disfunção renal ou
+para pacientes com insuficiência hepática de origem não biliar e sem colestase.
+
+No Brasil, Diovan® não é aprovado para crianças e adolescentes (menores de 18 anos).
+
+A dose máxima diária de Diovan® é de 320 mg.
+
+Comprimidos fabricados por Siegfried Barbera: Este medicamento não deve ser partido, aberto ou mastigado.
+Exceto o comprimido de 40 mg que pode ser partido.
+
+Comprimidos fabricados por Novartis Farma S.p.A: Este medicamento não deve ser aberto ou mastigado.
+
+9. REAÇÕES ADVERSAS
+Em estudos clínicos controlados com pacientes adultos com hipertensão, a incidência geral de reações adversas foi
+comparável ao placebo e é consistente com a farmacologia da valsartana. A incidência de reações adversas não está
+relacionada com a dose ou duração do tratamento e também pareceu não estar associada ao sexo, idade ou etnia.
+Os relatos de reações adversas dos estudos clínicos, da experiência pós-comercialização e dos achados laboratoriais estão
+listados abaixo de acordo com a classificação dos sistemas de órgãos.
+As reações adversas estão classificadas por frequência, sendo as mais frequentes listadas no início, utilizando-se o seguinte
+critério: muito comum (≥ 1/10); comum (≥ 1/100 a < 1/10); incomum (≥ 1/1.000 a < 1/100); rara (≥ 1/10.000 a < 1/1.000);
+muito rara (< 1/10.000), incluindo relatos isolados. Dentro de cada grupo de frequência, as reações adversas estão
+classificadas em ordem decrescente de gravidade.
+Todas as reações adversas relatadas em experiência pós-comercialização e em achados laboratoriais possuem a frequência
+descrita como “desconhecida” uma vez que não é possível aplicar a frequência de reações adversas.
+
+Reações adversas em Hipertensão
+ Distúrbios dos sistemas linfático e sanguíneo
+ Desconhecido Hemoglobina diminuída, hematócrito diminuído, neutropenia, trombocitopenia
+ Distúrbios do sistema imunológico
+ Desconhecido Hipersensibilidade incluindo doença do soro
+VPS20 = Diovan_Bula_Profissional
+ Distúrbios nutricionais e metabólicos
+ Desconhecido Potássio no sangue aumentado
+ Distúrbios do labirinto e ouvido
+ Incomum Vertigem
+ Distúrbios vasculares
+ Desconhecido Vasculite
+ Distúrbios mediastinais, torácicos e respiratórios
+ Incomum Tosse
+ Distúrbios gastrointestinais
+ Incomum Dor abdominal
+ Distúrbios hepatobiliares
+ Desconhecido Teste da função hepática anormal, incluindo aumento da bilirrubina no sangue
+ Distúrbios do tecido subcutâneo e pele
+ Desconhecido Angioedema, dermatite bolhosa, erupção cutânea e prurido
+ Distúrbios musculoesqueléticos e do tecido conjuntivo
+ Desconhecido Mialgia
+ Distúrbios urinários e renais
+ Desconhecido Insuficiência e disfunção renal, creatinina no sangue aumentada
+ Distúrbios gerais e condições do local de administração
+ Incomum Fadiga
+
+Os seguintes eventos também foram observados durante os estudos clínicos com pacientes hipertensos, desconsiderando
+sua associação causal com o medicamento em estudo: artralgia, astenia, dor nas costas, diarreia, tontura, dor de cabeça,
+insônia, diminuição da libido, náusea, edema, faringite, rinite, sinusite, infecção do trato respiratório superior, infecções
+virais.
+
+Pós-infarto do miocárdio e/ou Insuficiência cardíaca
+O perfil de segurança observado em estudos clínicos controlados em pacientes com pós-infarto do miocárdio e/ou
+insuficiência cardíaca varia com relação ao perfil de segurança observado em pacientes hipertensos. Este fato pode estar
+relacionado a doenças subjacentes. As reações adversas que ocorreram em pacientes com pós-infarto do miocárdio e/ou
+insuficiência cardíaca estão listadas abaixo.
+
+Reações adversas em Pós-infarto do miocárdio e/ou Insuficiência cardíaca
+ Distúrbios dos sistemas linfático e sanguíneo
+ Desconhecido Trombocitopenia
+ Distúrbios do sistema imunológico
+ Desconhecido Hipersensibilidade incluindo doença do soro
+ Distúrbios nutricionais e metabólicos*
+ Incomum Hipercalemia
+ Distúrbios do sistema nervoso
+ Comum Tontura, tontura postural
+ Incomum Síncope, dor de cabeça
+ Distúrbios do labirinto e ouvido
+ Incomum Vertigem
+ Distúrbios cardíacos
+ Incomum Insuficiência cardíaca
+ Distúrbios vasculares
+ Comum Hipotensão, hipotensão ortostática
+ Desconhecido Vasculite
+ Distúrbios mediastinais, torácicos e respiratórios
+ Incomum Tosse
+ Distúrbios gastrointestinais
+ Incomum Náusea, diarreia
+ Distúrbios hepatobiliares
+ Desconhecido Teste da função hepática anormal
+
+VPS20 = Diovan_Bula_Profissional
+ Distúrbios do tecido subcutâneo e pele
+ Incomum Angioedema
+ Desconhecido Dermatite bolhosa, erupção cutânea, prurido
+ Distúrbios musculoesqueléticos e do tecido conjuntivo
+ Desconhecido Mialgia
+ Distúrbios urinários e renais
+ Comum Disfunção e insuficiência renal
+ Incomum Insuficiência renal aguda, creatinina no sangue aumentada
+ Desconhecido Ureia do sangue aumentada
+ Distúrbios gerais e condições do local de administração
+ Incomum Astenia, fadiga
+*Potássio no sangue aumentado (frequência desconhecida) – relatado no relatório de pós-comercialização.
+
+Os seguintes eventos também foram observados durante os estudos clínicos em pacientes com pós-infarto do miocárdio
+e/ou insuficiência cardíaca desconsiderando sua associação causal com o medicamento em estudo: artralgia, dor
+abdominal, dor nas costas, insônia, diminuição da libido, neutropenia, edema, faringite, rinite, sinusite, infecção do trato
+respiratório superior, infecções virais.
+
+Em casos de eventos adversos, notifique pelo Sistema VigiMed, disponível no Portal da Anvisa.
+
+10. SUPERDOSE
+A superdose com Diovan® pode resultar em acentuada hipotensão que pode levar a uma depressão do nível de consciência,
+colapso circulatório e/ou choque. Se a ingestão foi recente, deve-se induzir o vômito. Caso a ingestão tenha ocorrido há
+mais tempo, o tratamento usual seria a infusão intravenosa de solução salina fisiológica.
+É improvável que a valsartana seja removida por hemodiálise.
+
+Em caso de intoxicação ligue para 0800 722 6001 se você precisar de mais orientações.

@@ -1,0 +1,17 @@
+{
+  "Risco Gestacional": "C",
+  "Slug": "rivaroxabana",
+  "Nomes Comerciais / Produtos ANVISA": "Xarelto; Vynaxa; rivaroxabana.",
+  "Interações": "Outros anticoagulantes e antiagregantes, como varfarina, heparina, enoxaparina, dabigatrana, apixabana, edoxabana, ácido acetilsalicílico, clopidogrel, prasugrel e ticagrelor, aumentam risco de sangramento, exceto em esquemas especificamente indicados. AINEs como ibuprofeno, naproxeno, diclofenaco e cetoprofeno aumentam risco hemorrágico. ISRS/IRSN, como sertralina, fluoxetina, paroxetina, escitalopram, venlafaxina e duloxetina, podem aumentar sangramento. Inibidores fortes de CYP3A4/P-gp, como cetoconazol, itraconazol, posaconazol, voriconazol, ritonavir, cobicistate e claritromicina, podem aumentar exposição. Indutores fortes, como rifampicina, carbamazepina, fenitoína, fenobarbital e Hypericum perforatum, podem reduzir efeito anticoagulante.",
+  "Apresentações / Nomes Comerciais": "Comprimidos revestidos 2,5 mg, 10 mg, 15 mg e 20 mg conforme indicação. Exemplos: Xarelto; Vynaxa; Rivaroxabana EMS; Rivaroxabana Eurofarma.",
+  "Posologia Pediátrica": "Uso pediátrico depende da indicação, peso, idade e apresentação.\nTratamento/profilaxia de tromboembolismo em crianças deve seguir protocolo especializado e dose por peso.\nNão informado na fonte consultada para uma dose pediátrica única aplicável a todas as indicações.",
+  "Texto Resumo": "Rivaroxabana é um anticoagulante oral direto inibidor do fator Xa usado em fibrilação atrial não valvar, tratamento/prevenção de tromboembolismo venoso e profilaxia pós-operatória. Exige atenção a sangramentos, função renal/hepática, adesão e interações com inibidores/indutores de CYP3A4 e P-gp.",
+  "Classe / Categoria": "Anticoagulante oral direto; inibidor direto do fator Xa; DOAC.",
+  "Posologia Adulto": "Prevenção de AVC em fibrilação atrial não valvar: 20 mg por via oral 1 vez ao dia com alimento; considerar 15 mg 1 vez ao dia em insuficiência renal conforme bula/protocolo.\nTratamento de TVP/TEP: 15 mg por via oral a cada 12 horas por 21 dias, seguido de 20 mg 1 vez ao dia com alimento.\nProfilaxia pós-artroplastia: 10 mg por via oral 1 vez ao dia, conforme duração definida por cirurgia.\nDose varia conforme indicação e função renal.",
+  "Contraindicações": "Hipersensibilidade à rivaroxabana ou componentes da fórmula; sangramento ativo clinicamente significativo; lesão ou condição com alto risco de sangramento maior; doença hepática associada a coagulopatia e risco hemorrágico clinicamente relevante; gravidez e lactação conforme bula; uso concomitante com outros anticoagulantes fora de transição terapêutica orientada.",
+  "Tags Busca": "rivaroxabana; xarelto; anticoagulante; fator xa; trombose; embolia pulmonar; fibrilação atrial; doac",
+  "Advertências": "Aumenta risco de sangramento, incluindo sangramento gastrointestinal e intracraniano. Avaliar função renal e hepática antes e durante o tratamento. Não suspender abruptamente sem alternativa anticoagulante quando houver indicação, pelo risco trombótico. Em procedimentos cirúrgicos ou invasivos, planejar suspensão conforme risco de sangramento e função renal. Antídoto específico pode incluir andexanet alfa onde disponível; complexo protrombínico pode ser considerado conforme protocolo.",
+  "Nomes Comerciais OpenAI": "Xarelto; Vynaxa; Rivaroxabana EMS; Rivaroxabana Eurofarma; Rivaroxabana Medley; Rivaroxabana Sandoz.",
+  "Rede SUS (RENAME)": false,
+  "Princípio Ativo": "Rivaroxabana"
+}

@@ -1,0 +1,17 @@
+{
+  "Risco Gestacional": "C",
+  "Slug": "risperidona",
+  "Nomes Comerciais / Produtos ANVISA": "Risperdal; Zargus; risperidona.",
+  "Interações": "Fluoxetina, paroxetina, bupropiona e quinidina podem aumentar níveis de risperidona por inibição de CYP2D6. Carbamazepina, rifampicina, fenitoína e fenobarbital podem reduzir níveis e eficácia. Levodopa e agonistas dopaminérgicos, como pramipexol e ropinirol, podem ter efeito antagonizado. Álcool, benzodiazepínicos, opioides, zolpidem, prometazina, hidroxizina, mirtazapina e trazodona aumentam sedação. Anti-hipertensivos podem aumentar hipotensão. Medicamentos que prolongam QT, como amiodarona, sotalol, haloperidol, clorpromazina, quetiapina, citalopram, escitalopram, azitromicina, claritromicina, levofloxacino, moxifloxacino e ondansetrona, aumentam risco arrítmico.",
+  "Apresentações / Nomes Comerciais": "Comprimidos 1 mg, 2 mg e 3 mg; solução oral 1 mg/mL; comprimidos orodispersíveis; formulação injetável de longa ação conforme produto. Exemplos: Risperdal; Zargus; Risperidona EMS; Risperidona Eurofarma.",
+  "Posologia Pediátrica": "Uso pediátrico depende da indicação aprovada, idade, peso e avaliação especializada.\nIrritabilidade associada ao transtorno do espectro autista e outros usos devem seguir titulação por peso e monitorização rigorosa.\nNão informado na fonte consultada para uma dose pediátrica única aplicável a todas as indicações.",
+  "Texto Resumo": "Risperidona é um antipsicótico atípico usado em esquizofrenia, transtorno bipolar e irritabilidade em indicações específicas. Exige atenção a sintomas extrapiramidais, hiperprolactinemia, ganho de peso, síndrome metabólica, prolongamento de QT e maior risco em idosos com demência.",
+  "Classe / Categoria": "Antipsicótico atípico; antagonista dopaminérgico D2 e serotoninérgico 5-HT2.",
+  "Posologia Adulto": "Esquizofrenia: iniciar geralmente com 1 mg por via oral 1 a 2 vezes ao dia; titular gradualmente conforme resposta.\nDose usual: 2 mg a 6 mg/dia.\nTranstorno bipolar, episódio maníaco: 1 mg a 2 mg por via oral 1 vez ao dia, ajustando conforme resposta.\nAgitação/irritabilidade em contextos específicos: dose individualizada.\nUsar menor dose eficaz, especialmente em idosos.",
+  "Contraindicações": "Hipersensibilidade à risperidona, paliperidona ou componentes da fórmula; uso com cautela extrema em idosos com psicose relacionada à demência pelo aumento de mortalidade e eventos cerebrovasculares.",
+  "Tags Busca": "risperidona; antipsicótico; esquizofrenia; transtorno bipolar; irritabilidade; autismo; psicose; risperdal",
+  "Advertências": "Pode causar sonolência, tontura, sintomas extrapiramidais, acatisia, parkinsonismo, hiperprolactinemia, galactorreia, ginecomastia, alterações menstruais, ganho de peso, hiperglicemia, dislipidemia, hipotensão ortostática, prolongamento de QT, discinesia tardia e síndrome neuroléptica maligna. Aumenta risco de AVC e mortalidade em idosos com demência. Monitorar peso, glicemia, lipídios, prolactina quando indicado e sintomas motores.",
+  "Nomes Comerciais OpenAI": "Risperdal; Zargus; Risperidona EMS; Risperidona Eurofarma; Risperidona Medley; Risperdal Consta.",
+  "Rede SUS (RENAME)": false,
+  "Princípio Ativo": "Risperidona"
+}

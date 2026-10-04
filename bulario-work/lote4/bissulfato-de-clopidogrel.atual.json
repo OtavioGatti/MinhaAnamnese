@@ -1,0 +1,16 @@
+{
+  "Risco Gestacional": "B",
+  "Slug": "bissulfato-de-clopidogrel",
+  "Nomes Comerciais / Produtos ANVISA": "Plavix; Iscover; Clopid; bissulfato de clopidogrel.",
+  "Interações": "Aumenta risco de sangramento com ácido acetilsalicílico, heparina, enoxaparina, varfarina, apixabana, rivaroxabana, dabigatrana, alteplase, tenecteplase, prasugrel, ticagrelor e AINEs como ibuprofeno, naproxeno e diclofenaco. Omeprazol e esomeprazol podem reduzir ativação do clopidogrel por inibição de CYP2C19; preferir pantoprazol quando IBP for necessário. Fluoxetina, fluvoxamina e outros inibidores de CYP2C19 podem reduzir eficácia. Rifampicina pode aumentar formação do metabólito ativo e risco de sangramento.",
+  "Apresentações / Nomes Comerciais": "Comprimido revestido 75 mg. Exemplos: Plavix; Iscover; Clopid; bissulfato de clopidogrel genérico.",
+  "Texto Resumo": "Bissulfato de clopidogrel é um antiagregante plaquetário usado na prevenção de eventos aterotrombóticos, especialmente após infarto, AVC, doença arterial periférica e síndromes coronarianas. O principal cuidado é risco de sangramento e interação com anticoagulantes, AINEs e alguns inibidores de CYP2C19.",
+  "Classe / Categoria": "Antiagregante plaquetário; inibidor do receptor P2Y12; tienopiridínico.",
+  "Posologia Adulto": "Prevenção secundária de eventos aterotrombóticos: 75 mg por via oral 1 vez ao dia.\nSíndrome coronariana aguda sem supra de ST: dose de ataque usual de 300 mg, seguida de 75 mg 1 vez ao dia, geralmente em associação com ácido acetilsalicílico conforme protocolo.\nIAM com supra de ST: esquema conforme protocolo, idade, estratégia de reperfusão e risco hemorrágico.",
+  "Contraindicações": "Hipersensibilidade ao clopidogrel ou componentes da fórmula; sangramento patológico ativo, como úlcera péptica sangrante ou hemorragia intracraniana; insuficiência hepática grave.",
+  "Tags Busca": "clopidogrel; antiagregante; antiplaquetário; p2y12; stent; síndrome coronariana aguda; avc; plavix",
+  "Advertências": "Aumenta risco de sangramento. Usar cautela em trauma, cirurgia recente, lesões com risco hemorrágico, insuficiência hepática e uso de anticoagulantes ou anti-inflamatórios. Pode causar púrpura trombocitopênica trombótica, embora rara. Considerar suspensão antes de cirurgia eletiva conforme risco trombótico e orientação médica.",
+  "Nomes Comerciais OpenAI": "Plavix; Iscover; Clopid; Clopidogrel EMS; Clopidogrel Medley; Clopidogrel Eurofarma.",
+  "Rede SUS (RENAME)": false,
+  "Princípio Ativo": "Bissulfato de Clopidogrel"
+}

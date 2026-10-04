@@ -1,0 +1,620 @@
+FONTE: lote4__bissulfato-de-clopidogrel__PLAVIX.pdf
+
+===== BLOCO 1 =====
+1. INDICAÇÕES
+PLAVIX é indicado para a prevenção secundária dos eventos aterotrombóticos [infarto agudo do miocárdio (IAM),
+acidente vascular cerebral (AVC) e morte vascular] em pacientes adultos que apresentaram IAM ou AVC recente
+ou doença arterial periférica estabelecida.
+
+Síndrome coronária aguda
+Nos pacientes com SCA sem elevação do segmento ST (angina instável ou IAM sem onda Q), incluindo tanto
+aqueles controlados clinicamente, quanto os submetidos à Intervenção Coronária Percutânea (ICP) (com ou sem
+colocação de stent), PLAVIX demonstrou uma redução na taxa de ocorrência do desfecho combinado de morte
+cardiovascular, IM ou AVC, assim como na taxa de ocorrência do desfecho combinado de morte cardiovascular,
+IM, AVC ou isquemia refratária.
+Para os pacientes com IM com elevação do segmento ST, clopidogrel mostrou reduzir a relação de morte por
+qualquer causa e a relação do desfecho combinado de morte, reinfarto ou AVC.
+
+PLAVIX 75 mg é indicado em adultos para a prevenção de eventos aterotrombóticos e tromboembólicos em:
+
+Fibrilação atrial
+Em pacientes com fibrilação atrial (FA) que possuem pelo menos um fator de risco para eventos vasculares e que
+não podem fazer uso de terapia com antagonistas da vitamina K (AVK) [ex. risco específico de hemorragia,
+avaliação médica de que o paciente é incapaz de cumprir com o monitoramento pela RNI (razão normalizada
+internacional) ou que o uso de AVK é inapropriado], PLAVIX é indicado em combinação com o ácido
+acetilsalicílico (AAS) na prevenção de eventos aterotrombóticos e tromboembólicos, incluindo acidente vascular
+cerebral (AVC). PLAVIX em combinação com AAS demonstrou reduzir a taxa do desfecho combinado de AVC,
+infarto do miocárdio (IM), embolismo sistêmico fora do sistema nervoso central, ou morte vascular, basicamente
+devida à redução de AVC (vide “Resultados de Eficácia”).
+Em pacientes com fibrilação atrial com risco aumentado para eventos vasculares, que podem fazer uso de terapia
+com AVK, estes demonstraram ter um benefício clínico melhor que o AAS isoladamente ou em combinação com
+clopidogrel na redução de AVC.
+
+3. CARACTERÍSTICAS FARMACOLÓGICAS
+ VV-REG-1773504 1.0
+Farmacodinâmica
+O clopidogrel é um pró-fármaco, e um de seus metabólitos é inibidor da agregação plaquetária. O clopidogrel deve
+ser metabolizado pelas enzimas do citocromo P-450 para produzir o metabólito ativo que inibe a agregação
+plaquetária. O metabólito ativo de clopidogrel inibe, seletivamente, a ligação da adenosina difosfato (ADP) ao seu
+receptor plaquetário P2Y12 e, subsequente, ativação do complexo glicoproteíco GPIIb/IIIa mediado por ADP, e,
+portanto, inibição da agregação plaquetária. Devido à ligação irreversível, as plaquetas expostas estão com suas
+vidas úteis afetadas (aproximadamente 7-10 dias) e a recuperação da função plaquetária normal ocorre a uma taxa
+consistente da movimentação plaquetária. A agregação plaquetária induzida por agonistas, exceto por ADP,
+também é inibida pelo bloqueio da amplificação da ativação plaquetária por liberação de ADP.
+Nem todos os pacientes terão inibição plaquetária adequada uma vez que o metabólito ativo é formado pelas
+enzimas do citocromo P-450, sendo algumas destas enzimas polimórficas ou sujeitas à inibição por outras drogas.
+Doses repetidas de 75 mg por dia apresentaram inibição substancial na agregação plaquetária induzida pelo ADP
+a partir do primeiro dia e esta inibição aumentou progressivamente e atingiu o estado de equilíbrio (40 a 60%, em
+média, de inibição) entre o terceiro e o sétimo dia de administração. Uma vez descontinuado o tratamento, a
+agregação plaquetária e o tempo de sangramento retornam gradualmente aos valores basais dentro de 5 dias, em
+geral.
+
+Farmacocinética
+- Absorção
+Após dose oral única e repetida de 75 mg ao dia, o clopidogrel é rapidamente absorvido. O pico médio do nível
+plasmático de clopidogrel inalterado (aproximadamente 2,2 – 2,5 ng/mL após a dose única oral) ocorreu
+aproximadamente 45 minutos após a ingestão. A absorção é de, pelo menos 50%, baseada com a excreção urinária
+de metabólitos de clopidogrel.
+
+- Distribuição
+O clopidogrel e o seu principal metabólito circulante (inativo) ligam-se reversivelmente “in vitro” às proteínas do
+plasma humano (98% e 94%, respectivamente). A ligação não é saturável “in vitro” na concentração de 100 mg/L.
+
+- Metabolismo
+O clopidogrel é extensivamente metabolizado pelo fígado. O clopidogrel é metabolizado por duas vias metabólicas
+principais: uma mediada pelas esterases conduzindo à hidrólise em seus derivados de ácido carboxílico inativos
+(85% do metabólito circulante), e outra mediada pelos múltiplos citocromos P-450. O clopidogrel é primeiramente
+metabolizado a um metabólito intermediário: 2-oxo-clopidogrel. O metabolismo subsequente do metabólito
+intermediário 2-oxo-clopidogrel resulta na formação de metabólito ativo, um tiol derivado de clopidogrel. O
+metabólito ativo é formado principalmente pelo CYP2C19 com contribuições de várias outras enzimas CYP,
+incluindo CYP1A2, CYP2B6 e CYP3A4. O metabólito ativo tiol liga-se rápida e irreversivelmente ao receptor
+plaquetário, consequentemente inibindo a agregação plaquetária.
+O Cmax do metabólito ativo é duas vezes maior após uma única dose de ataque de 300 mg de clopidogrel do que
+após 4 dias na dose de manutenção de 75 mg. O Cmax ocorre aproximadamente 30 a 60 minutos após a dose.
+
+- Eliminação
+Após administração oral de clopidogrel marcado com 14C, em seres humanos, aproximadamente 50% são
+excretados na urina e aproximadamente 46% nas fezes no intervalo de 120 horas após a dose. Após dose oral única
+de 75 mg, o clopidogrel apresenta meia-vida de aproximadamente 6 horas. A meia-vida de eliminação do principal
+metabólito circulante (inativo) foi de 8 horas, após administração única e em dose repetida.
+
+Farmacogenética
+A CYP2C19 está envolvida na formação dos metabólitos ativo e intermediário (2-oxo-clopidogrel). Os efeitos
+antiplaquetários e farmacocinéticos do metabólito ativo de clopidogrel, medido pelo ensaio ex vivo da agregação
+plaquetária, difere segundo o genótipo da enzima CYP2C19. O alelo CYP2C19*1 corresponde ao funcionamento
+total do metabolismo enquanto os alelos CYP2C19*2 e CYP2C19*3 não são funcionais. Os alelos CYP2C19*2 e
+CYP2C19*3 são responsáveis pela maioria dos alelos para função reduzida em metabolizadores lentos brancos
+(85%) e asiáticos (99%). Os outros alelos associados à ausência ou redução do metabolismo são menos frequentes
+e incluem, mas não são limitados, CYP2C19*4, *5, *6, *7 e *8. Um paciente em condição de metabolizador lento
+irá possuir dois alelos sem função , conforme descrito anteriormente. As frequências divulgadas para os genótipos
+ VV-REG-1773504 1.0
+dos metabolizadores lentos de CYP2C19 são aproximadamente 2% para brancos, 4% para negros e 14% para
+chineses.
+Um estudo cruzado em 40 indivíduos sadios, 10 em cada grupo de metabolizadores da CYP2C19 (ultrarrápido,
+extensivo, intermediário e lento), avaliou a farmacocinética e a reposta antiplaquetária usando 300 mg seguido de
+75 mg/dia e 600 mg seguido de 150 mg/dia, em um total de 5 dias (estado de equilíbrio). Não foram observadas
+diferenças fundamentais na exposição do metabólito ativo e inibição média de agregação plaquetária (IAP) entre
+metabolizadores ultrarrápidos, extensivos e intermediários. Em metabolizadores lentos, a exposição do metabólito
+ativo foi reduzida em 63-71% comparada aos metabolizadores extensivos. Após a posologia de 300 mg/75 mg, as
+respostas antiplaquetárias foram reduzidas nos metabolizadores lentos com IAP médio (ADP 5 µM) de 24% (24
+horas) e 37% (dia 5) quando comparado a IAP de 39% (24 horas) e 58% (dia 5) nos metabolizadores extensivos e
+37% (24 horas) e 60% (dia 5) nos metabolizadores intermediários. Quando os metabolizadores lentos receberam
+a dose de 600 mg/150 mg, a exposição do metabólito ativo foi maior que com a dose de 300 mg/75 mg.
+Adicionalmente, a IAP foi 32% (24 horas) e 61% ( dia 5), os quais foram maiores que em metabolizadores lentos
+recebendo dose de 300 mg/75 mg, e foram similares ao outro grupo de metabolizadores da CYP2C19 recebendo
+a dose de 300 mg/75 mg. Uma posologia apropriada para esta população de pacientes não foi estabelecida nos
+resultados de estudos clínicos.
+Em uma metanálise incluindo 6 estudos com 335 indivíduos tratados com clopidogrel no estado de equilíbrio, foi
+demonstrado que a exposição ao metabólito ativo diminuiu em 28% para metabolizadores intermediários, e 72%
+para metabolizadores lentos enquanto a inibição da agregação plaquetária (ADP 5 µM) foi reduzida com diferenças
+na IAP de 5,9% e 21,4%, respectivamente, quando comparada aos metabolizadores extensivos.
+A influência do genótipo CYP2C19 nos resultados clínicos em pacientes tratados com clopidogrel não foi avaliada
+em testes controlados, prospectivos, randomizados. Houve um número de análise retrospectiva, no entanto, para
+avaliar este efeito em pacientes tratados com clopidogrel para os quais há resultados de genotipagem: CURE
+(n=2.721), CHARISMA (n=2 .428), CLARITY -TIMI 28 (n=227), TRITON -TIMI 38 (n=1.477), E ACTIVE -A
+(n=601), bem como um número de estudos de coorte divulgados.
+Em 3 dos estudos de coorte (Collet, Si bbing, Giusti) e TRITON-TIMI 38 o grupo combinado de pacientes com
+estado metabolizador intermediário ou lento tiveram uma taxa maior de eventos cardiovasculares (morte, IM e
+AVC) ou trombose de stent comparada aos metabolizadores extensivos.
+Em um estudo de coorte (Simon) e CHARISMA, uma taxa de evento aumentada foi observada somente em
+metabolizadores lentos quando comparado aos metabolizadores extensivos.
+Em um estudo de coorte (Trenk), CURE, CLARITY e ACTIVE-A, não foi observado taxa de evento aumentado
+nos estados dos metabolizadores.
+Nenhuma destas análises foi adequadamente classificada para detectar diferenças nos resultados nos
+metabolizadores lentos.
+
+Populações especiais
+A farmacocinética do metabólito ativo de clopidogrel não é conhecida em populações especiais.
+
+- Sexo
+Em um pequeno estudo comparativo entre homens e mulheres, observou-se nas mulheres, uma menor inibição da
+agregação plaquetária induzida pelo ADP, não havendo, entretanto, diferenças no prolongamento do tempo de
+sangramento. Em um grande estudo clínico controlado (CAPRIE), a incidência de desfechos clínicos, outros
+eventos adversos clínicos e parâmetros clínicos laboratoriais anormais foram semelhantes entre homens e
+mulheres.
+
+- Pacientes idosos
+Em voluntários idosos (≥ 75 anos) comparados com voluntários jovens e saudáveis, não foram encontradas
+diferenças na agregação plaquetária e no tempo de sangramento. Não é necessário ajuste na dose em pacientes
+idosos.
+
+- Pacientes pediátricos
+Não há dados disponíveis.
+
+- Pacientes com insuficiência hepática
+ VV-REG-1773504 1.0
+Após doses repetidas de 75 mg diários de PLAVIX por 10 dias em pacientes com insuficiência hepática severa, a
+inibição da agregação plaquetária induzida por ADP foi semelhante à observada em indivíduos saudáveis. A média
+de prolongamento do tempo de sangramento também foi semelhante nos dois grupos.
+
+- Pacientes com insuficiência renal
+Após doses diárias repetidas de 75 mg de PLAVIX, em pacientes com insuficiência renal severa (“clearance” de
+creatinina de 5 a 15 mL/min), a inibição da agregação plaquetária induzida pelo ADP foi menor (25%) que aquela
+observada em voluntários saudáveis, porém, o prolongamento do tempo de sangramento foi similar ao de
+indivíduos saudáveis que receberam 75 mg de PLAVIX por dia.
+
+- Etnia
+A prevalência de alelos CYP2C19 que resultam em metabolismo lento e intermediário de CYP2C19 difere
+conforme a etnia (vide “Características Farmacológicas - Farmacocinética e Farmacogenética”). Dados limitados
+da literatura em populações asiáticas estão disponíveis para avaliar a implicação clínica da genotipagem do CYP
+nos resultados clínicos.
+
+Dados de Segurança Pré-Clínicos
+
+- Farmacologia animal
+Estudos de farmacologia de segurança não revelaram nenhum efeito relevante no sistema nervoso central, sistemas
+cardiovascular, respiratório, gastrointestinal e renal.
+
+- Toxicidade aguda
+Em doses muito elevadas (≥ 1.500 mg/kg), uma tolerância gástrica fraca (erosões gástricas e/ou vômitos) de
+clopidogrel foi relatada em ratos, camundongos e babuínos.
+
+- Toxicidade crônica
+Durante estudos pré-clínicos em ratos e babuínos, os efeitos mais frequentemente observados em doses muito altas
+(mais de 300 vezes a dose terapêutica de 75 mg/dia com base em mg/kg) foram gastrite aguda, erosões gástricas
+e/ou vômitos. Em doses mais baixas, observou-se aumento no peso do fígado em camundongos, ratos e babuínos
+associados a aumentos nos níveis plasmáticos de colesterol em ratos e babuínos e uma ligeira hipertrofia do retículo
+endoplasmático liso em hepatócitos centrilobulares em ratos. Não foram observadas alterações histopatológicas
+em camundongos ou babuínos. Os achados do fígado foram uma consequência de um efeito nas enzimas
+metabolizadoras hepáticas observadas em altas doses, um fenômeno geralmente reconhecido como não tendo
+relevância para humanos que recebem doses terapêuticas mais baixas. Após um ano de tratamento em doses que
+representam pelo menos 7 vezes (ratos) ou entre 10 ou 23 vezes (babuínos), a exposição observada em humanos
+que recebem a dose clínica de 75 mg/dia, nenhum destes efeitos foi observado.
+
+- Carcinogenicidade
+Não houve evidência de tumorigenicidade quando o clopidogrel foi administrado durante 78 semanas em
+camundongo e em 104 semanas em ratos com doses de até 100 mg/kg/dia, o que proporcionou exposições ao
+plasma > 25 vezes a dose diária recomendada em humanos de 75 mg/dia.
+
+- Genotoxicidade
+O clopidogrel foi testado em uma gama de estudos de genotoxicidade “in vitro” e “in vivo” e não mostrou atividade
+genotóxica.
+
+- Teratogenicidade e prejuízo na fertilidade
+Verificou-se que clopidogrel não teve efeito sobre a fertilidade de ratos machos e fêmeas e não foi teratogênico
+em ratos ou coelhos (em doses até 52 vezes a dose humana recomendada em mg/m2).
+Quando administrado a ratos em lactação, o clopidogrel causou um ligeiro atraso no desenvolvimento da prole.
+Estudos farmacocinéticos específicos realizados com clopidogrel radiomarcado mostraram que o composto
+original ou seus metabolitos são excretados no leite. Consequentemente, um efeito direto (ligeira toxicidade), ou
+um efeito indireto (baixa palatabilidade) não pode ser excluído.
+ VV-REG-1773504 1.0
+
+4. CONTRAINDICAÇÕES
+- Hipersensibilidade à substância ativa ou a qualquer dos componentes do produto;
+- Sangramento patológico ativo, como úlcera péptica ou hemorragia intracraniana.
+
+Este medicamento não deve ser usado por pessoas com síndrome de má-absorção de glicose-galactose.
+
+5. ADVERTÊNCIAS E PRECAUÇÕES
+Distúrbios hematológicos e sangramento
+Devido ao risco de sangramento e efeitos hematológicos indesejáveis, a contagem de células sanguíneas e/ou
+outros testes apropriados devem ser considerados sempre que surgirem sintomas clínicos suspeitos durante o
+tratamento (vide “Reações Adversas”). Devido ao risco aumentado de sangramento, a administração concomitante
+de varfarina e clopidogrel deve ser realizada com cautela.
+
+Como qualquer outro agente antiplaquetário, clopidogrel deve ser utilizado com cautela em pacientes que se
+encontram sob risco aumentado de sangramento decorrente de trauma, cirurgia ou outras condições patológicas, e
+em pacientes que estejam sob tratamento com ácido acetilsalicílico, heparina, inibidores da glicoproteína IIb/IIIa,
+anti-inflamatórios não esteroidais (AINEs), ou inibidores seletivos da recaptação de serotonina (ISRSs) ou fortes
+indutores do CYP2C19. Devido ao risco aumentado de hemorragia, a terapia antiplaquetária tripla (clopidogrel +
+aspirina + dipiridamol) para prevenção secundária de AVC não é recomendada em pacientes com AVC isquêmico
+não cardioembólico agudo ou ataque isquêmico transitório (AIT). Se um paciente for submetido a uma cirurgia
+eletiva e não for desejável o efeito antiplaquetário, clopidogrel deve ser descontinuado 5 a 7 dias antes da cirurgia.
+
+O clopidogrel prolonga o tempo de sangramento e deve ser usado com cautela em pacientes que tiveram lesões
+com propensão a sangrar (particularmente gastrintestinal e intraocular). Os medicamentos que podem induzir
+lesões gastrintestinais (como ácido acetilsalicílico - AAS e anti-inflamatórios não esteroidais - AINEs) devem ser
+usados com cautela em pacientes tomando clopidogrel.
+
+Os pacientes devem ser avisados que pode demorar mais que o usual para parar o sangramento quando eles
+tomarem clopidogrel isolado ou em combinação com AAS, e que devem relatar qualquer sangramento incomum
+(local ou duração) ao médico. Os pacientes devem informar aos médicos e dentistas que eles estão tomando
+clopidogrel antes que qualquer cirurgia seja marcada e antes de tomar qualquer outro medicamento.
+
+Em caso de suspeita de dengue, ou quando associado a outros medicamentos que aumentem o efeito
+hemorrágico, a prescrição deste medicamento ou a manutenção do tratamento com ele deve ser reavaliada,
+devido a seu potencial hemorrágico.
+
+Acidente vascular cerebral recente
+Em pacientes com alto risco de eventos isquêmicos recorrentes com ataque isquêmico transitório ou AVC recente,
+a associação de AAS e clopidogrel evidenciou aumento de sangramentos maiores. Portanto, esta associação deve
+ser feita com precaução fora de situações clínicas nas quais os benefícios foram comprovados.
+
+Púrpura Trombocitopênica Trombótica (PTT)
+Muito raramente têm sido reportados casos de púrpura trombocitopênica trombótica (PTT) após o uso de
+clopidogrel, algumas vezes após uma pequena exposição ao clopidogrel. Isto se caracteriza por trombocitopenia e
+anemia hemolítica microangiopática, podendo estar associada com sintomas neurológicos, disfunção renal ou
+febre. A PTT é uma condição potencialmente fatal requerendo tratamento imediato, incluindo plasmaferese (troca
+plasmática).
+
+Hemofilia adquirida
+Hemofilia adquirida tem sido relatada após o uso de clopidogrel. Em casos confirmados de prolongamento isolado
+do Tempo de Tromboplastina Parcial ativada (TTPa) com ou sem sangramento, hemofilia adquirida deve ser
+considerada. Pacientes com diagnóstico confirmado de hemofilia adquirida devem ser monitorados e tratados por
+especialistas e clopidogrel deve ser descontinuado.
+ VV-REG-1773504 1.0
+Citocromo P450 2C19 (CYP2C19)
+Farmacogenética: em pacientes metabolizadores lentos da CYP2C19, clopidogrel nas doses recomendadas forma
+menos do metabólito ativo de clopidogrel e tem um efeito menor na função plaquetária. Os metabolizadores lentos
+com síndrome coronariana aguda ou submetidos a intervenção coronariana percutânea tratados com clopidogrel
+nas doses recomendadas podem apresentar maiores taxas de eventos cardiovasculares do que os pacientes com
+função da CYP2C19 normal (vide “Características Farmacológicas - Farmacocinética e Farmacogenética”).
+
+Espera-se que o uso de drogas que induzam a atividade do CYP2C19 resulte no aumento dos níveis do metabólito
+ativo do clopidogrel e podem potencializar o risco de sangramento. Como precaução, o uso concomitante de fortes
+indutores do CYP2C19 deve ser desencorajado (vide “Interações Medicamentosas”.)
+
+Testes para identificar o genótipo CYP2C19 estão disponíveis; estes testes podem ser usados como uma ajuda na
+determinação da estratégia terapêutica. Considerar o uso de doses maiores de clopidogrel em pacientes que são
+conhecidamente metabolizadores lentos da CYP2C19 (vide “Características Farmacológicas – Farmacogenética”
+e “Posologia e Modo de Usar”).
+
+Sensibilidade cruzada entre tienopiridinas
+Pacientes devem ser avaliados quanto ao histórico de hipersensibilidade às tienopiridinas (como clopidogrel,
+ticlopidina, prasugrel), já que reatividade cruzada entre tienopiridinas tem sido reportada (vide “Reações
+Adversas”). As tienopiridinas podem causar reações alérgicas moderadas a severas, tais como: rash, angioedema,
+ou reações cruzadas hematológicas como trombocitopenia e neutropenia.
+Pacientes que desenvolveram reações alérgicas e/ou hematológicas anteriormente a alguma tienopiridina pode ter
+um maior risco de desenvolvimento da mesma ou nova reação a outra tienopiridina. Aconselha-se monitoramento
+dos sinais de sensibilidade cruzada em pacientes com alergia conhecida às tienopiridinas.
+
+Atenção: Contém os corantes dióxido de titânio e óxido de ferro vermelho.
+
+Atenção: Contém lactose (tipo de açúcar) abaixo de 0,25g por comprimido revestido.
+
+Populações especiais
+
+Insuficiência renal: a experiência com clopidogrel é limitada em pacientes com insuficiência renal severa.
+Portanto, clopidogrel deve ser usado com cautela nesta população.
+Doença hepática: a experiência é limitada em pacientes com doença hepática severa que possam apresentar
+diátese hemorrágica. O clopidogrel deve ser utilizado com cautela nesta população.
+Pacientes com intolerância à galactose: em virtude da presença de lactose nos excipientes, os pacientes com
+problemas hereditários raros de intolerância à galactose, como deficiência de Lapp lactase ou a má absorção
+glicose-galactose, não devem utilizar este medicamento.
+
+Efeitos na capacidade de conduzir/operar máquinas
+Não foi observada qualquer alteração na capacidade de condução ou desempenho psicométrico dos pacientes após
+administração de clopidogrel.
+
+Gravidez e lactação
+PLAVIX não deve ser usado durante a gravidez a menos que na opinião do médico seja evidente a sua necessidade.
+
+Categoria de risco na gravidez: categoria B. Este medicamento não deve ser utilizado por mulheres grávidas
+sem orientação médica ou do cirurgião-dentista.
+
+Visto que muitos fármacos são excretados no leite materno, e devido ao risco potencial de reações adversas sérias
+no lactente, deve-se tomar a decisão de interromper a amamentação ou descontinuar o tratamento com este
+fármaco, considerando-se a importância deste para a mãe.
+
+Estudos realizados em ratos demonstraram que o clopidogrel e/ou os seus metabólitos são excretados no leite. Não
+se sabe se este medicamento é excretado no leite humano.
+ VV-REG-1773504 1.0
+Uso contraindicado no aleitamento ou na doação de leite humano. Este medicamento é contraindicado
+durante o aleitamento ou doação de leite, pois é excretado no leite humano e pode causar reações
+indesejáveis no bebê. Seu médico ou cirurgião-dentista deve apresentar alternativas para o seu tratamento
+ou para a alimentação do bebê.
+
+Informe a seu paciente que a doação de sangue é absolutamente contraindicada durante o tratamento com
+Plavix (bissulfato de clopidogrel) e até 10 dias após o seu término, devido ao dano que ele pode causar ao
+receptor.
+
+6. INTERAÇÕES MEDICAMENTOSAS
+Medicamentos associados com o risco de hemorragia: existe um risco aumentado de hemorragia devido ao
+efeito potencial aditivo. A administração concomitante de medicamentos associados ao risco de hemorragia deve
+ser feita com precaução (vide “Advertências e Precauções”).
+
+Trombolíticos: a segurança da administração concomitante de clopidogrel, trombolíticos e heparina foi estudada
+em pacientes com IM agudo. A incidência de hemorragias clinicamente significativas foi similar àquela observada
+quando trombolíticos e heparina foram administrados concomitantemente com AAS (ácido acetilsalicílico).
+
+Inibidores da glicoproteína IIb/IIIa: como uma interação farmacodinâmica entre clopidogrel e os inibidores da
+glicoproteína IIb/IIIa é possível, a utilização concomitante desses dois produtos deve ser feita com cautela.
+
+Anticoagulantes injetáveis: em um estudo clínico realizado em indivíduos saudáveis, o clopidogrel não exigiu
+modificação da dose de heparina ou alterou o efeito da heparina na coagulação. A coadministração de heparina
+não teve efeito sobre a inibição da agregação plaquetária induzida por clopidogrel, Como a interação
+farmacodinâmica de clopidogrel e heparina é possível, o uso concomitante necessita ser feito com cuidado.
+
+Anticoagulante oral: devido ao risco aumentado de sangramento a administração concomitante de varfarina e
+clopidogrel necessita ser avaliada com cautela.
+
+Ácido acetilsalicílico: não modificou a inibição mediada por clopidogrel da agregação plaquetária induzida por
+ADP, mas o clopidogrel potenciou o efeito do ácido acetilsalicílico na agregação plaquetária induzida por
+colágeno. No entanto, a administração concomitante de 500 mg de ácido acetilsalicílico duas vezes ao dia por um
+dia não aumentou significativamente o prolongamento do tempo de sangramento induzido pelo consumo de
+clopidogrel. Como uma possível interação farmacodinâmica entre o clopidogrel e o AAS, o uso concomitante
+desses dois produtos deve ser feito com cautela. Entretanto a associação de clopidogrel e AAS (75 - 325 mg uma
+vez ao dia) tem sido feita por até um ano.
+
+Anti-inflamatórios não esteroidais (AINEs): em um estudo clínico realizado em voluntários saudáveis, a
+administração concomitante de clopidogrel e naproxeno aumentou a perda de sangue gastrointestinal oculta. No
+entanto, devido à falta de estudos de interação com outros AINEs, atualmente não está claro se existe um risco
+aumentado de sangramento gastrointestinal com todos os AINEs. Consequentemente, os AINEs e clopidogrel
+devem ser coadministrados com cautela.
+
+Inibidores seletivos da recaptação de serotonina (ISRSs): uma vez que estes medicamentos afetam a ativação
+plaquetária e aumentam o risco de sangramento, a administração concomitante de clopidogrel e os ISRSs devem
+ser realizados com cautela.
+
+Outras terapias concomitantes:
+
+Indutores do CYP2C19
+Como o clopidogrel é parcialmente metabolizado em seu metabólito ativo pelo CYP2C19, com o uso de drogas
+que induzem a atividade dessa enzima espera-se que resulte em níveis aumentados do metabólito ativo do
+clopidogrel.
+ VV-REG-1773504 1.0
+A rifampicina induz fortemente o CYP2C19, resultando em um nível aumentado do metabólito ativo do
+clopidogrel e na inibição plaquetária, que em particular podem potencializar o risco de sangramento. Como
+precaução, o uso concomitante de fortes indutores do CYP2C19 deve ser desencorajado (vide Advertências e
+Precauções).
+
+Inibidores do CYP2C19
+Uma vez que clopidogrel é metabolizado em seu metabólito ativo parcialmente pela enzima CYP2C19, seria
+esperado que o uso de medicamentos que inibem a atividade desta enzima resulte na diminuição do nível do
+metabólito ativo de clopidogrel. A relevância clínica desta interação é indeterminada. O uso concomitante de
+inibidores fortes ou moderados da CYP2C19 (por exemplo, omeprazol e esomeprazol) é desaconselhado (vide
+“Advertências e Precauções” e “Características Farmacológicas – Farmacocinética”). Caso um inibidor de bomba
+de próton seja usado concomitantemente ao clopidogrel, considerar o uso de um com menos atividade inibidora
+da CYP2C19, como o pantoprazol.
+
+Em dois estudos realizados, clopidogrel (dose padrão) foi usado em associação com omeprazol 80mg. Em um
+destes estudos os dois fármacos foram administrados no mesmo horário e no segundo estudo, com diferença de 12
+horas. Estes estudos demonstraram resultados similares onde houve a diminuição tanto no nível do metabólito
+ativo do clopidogrel quanto na inibição da agregação plaquetária.
+
+Em outro estudo que analisou o uso concomitante de clopidogrel (dose padrão) e pantoprazol 80mg, observou-se
+também a diminuição tanto no nível do metabólito ativo do clopidogrel quanto na inibição da agregação
+plaquetária, porém, com índices menores que os observados com o omeprazol.
+
+Não foram observadas interações farmacodinâmicas clinicamente significativas quando da administração
+concomitante de clopidogrel e atenolol, nifedipina ou atenolol e nifedipina concomitantemente. Além disso, a
+atividade farmacodinâmica de clopidogrel não foi significativamente influenciada pela coadministração de
+fenobarbital ou estrogênio.
+
+As farmacocinéticas da digoxina ou da teofilina não foram alteradas pela administração concomitante de
+clopidogrel. Os antiácidos não alteraram a absorção do clopidogrel.
+
+Embora a administração de 75 mg/dia de clopidogrel não tenha modificado a farmacocinética da S-varfarina (um
+substrato da CYP2C9) ou Coeficiente Internacional Normatizado (CIN) em pacientes recebendo terapia com
+varfarina a longo prazo, a coadministração de clopidogrel e varfarina aumenta o risco de sangramento devido aos
+efeitos independentes na homeostase. No entanto, em altas concentrações “in vitro”, clopidogrel inibe a CYP2C9.
+É improvável que clopidogrel possa interferir no metabolismo de fármacos como a fenitoína, tolbutamida e AINEs
+que são metabolizados pelo citocromo P-450 2C9. Dados do estudo CAPRIE indicam que a fenitoína e a
+tolbutamida podem ser coadministradas com clopidogrel de forma segura.
+
+Medicamentos substrato do CYP2C8: o clopidogrel mostrou aumentar a exposição da repaglinida em
+voluntários saudáveis. Estudos “in vitro” mostram que o aumento na exposição da repaglinida é devido à inibição
+do CYP2C8 pelo metabólito glucuronido de clopidogrel. Devido ao risco de concentrações plasmáticas
+aumentadas, a administração concomitante de clopidogrel e medicamentos eliminados principalmente pelo
+metabolismo CYP2C8 (por exemplo, repaglinida, paclitaxel) deve ser feita com cautela.
+
+Além dos estudos de interação específicos acima mencionados, os pacientes admitidos nos amplos estudos clínicos
+(CAPRIE e CURE) receberam uma variedade de medicações concomitantes, incluindo diuréticos,
+betabloqueadores, inibidores da enzima conversora de angiotensina (ECA), antagonistas do cálcio, redutores do
+colesterol, vasodilatadores coronarianos, antidiabéticos (incluindo insulina), antiepiléticos, antagonistas
+GPIIb/IIIa e terapia de reposição hormonal, sem evidência de interações adversas clinicamente significativas.
+
+Como com outros inibidores orais do P2Y12, a coadministração de agonistas opioides tem o potencial de retardar
+e reduzir a absorção do clopidogrel presumivelmente devido ao esvaziamento gástrico retardado. A relevância
+clínica é desconhecida. Deve-se considerar o uso de um agente antiplaquetário parenteral em pacientes com
+síndrome coronariana aguda que requerem coadministração de morfina ou outros agonistas opioides.
+ VV-REG-1773504 1.0
+Rosuvastatina: Foi demonstrado que o clopidogrel aumenta a exposição à rosuvastatina em 2 vezes (AUC) e 1,3
+vezes (Cmax) em pacientes, após a administração de uma dose de 300 mg de clopidogrel, e em 1,4 vezes (AUC)
+sem efeito na Cmax após a administração repetida de uma dose de 75 mg de clopidogrel.
+
+Interação em exames laboratoriais e não laboratoriais
+Foram detectadas alterações nos testes de função hepática e aumento da creatinina sanguínea.
+
+Interação com alimentos
+PLAVIX pode ser administrado com ou sem alimentos.
+
+8. POSOLOGIA E MODO DE USAR
+PLAVIX deve ser administrado com líquido, por via oral. PLAVIX pode ser administrado antes, durante ou após
+as refeições.
+
+Nas situações de IM e AVC isquêmico recentes ou doença arterial periférica estabelecida, a dose recomendada de
+PLAVIX é de 75 mg em dose única diária.
+
+Síndrome Coronária Aguda
+Para pacientes com SCA sem elevação do segmento ST (angina instável ou IM sem presença de onda Q), PLAVIX
+deve ser iniciado com dose de ataque de 300 mg e mantido com uma dose única diária de 75 mg. O ácido
+acetilsalicílico (AAS) (75 a 325 mg em dose única diária) deve ser iniciado e continuado em combinação com
+PLAVIX. No estudo CURE, a maioria dos pacientes com SCA, também receberam heparina.
+
+Para pacientes com IM com elevação do segmento ST, a dose recomendada de PLAVIX é de 75 mg em dose única
+diária, administrada em associação com AAS, com ou sem trombolítico. PLAVIX deve ser iniciado com ou sem
+dose de ataque (300 mg foi utilizado no estudo CLARITY).
+
+Fibrilação atrial
+O PLAVIX deve ser administrado em dose única diária de 75 mg. O AAS (75-100 mg ao dia) deve ter seu uso
+iniciado e continuado em combinação com o clopidogrel (vide “Resultados de Eficácia”).
+
+Não há estudos dos efeitos de PLAVIX administrado por vias não recomendadas. Portanto, por segurança e para
+garantir a eficácia deste medicamento, a administração deve ser somente por via oral.
+
+Populações especiais
+
+Farmacogenética: pacientes que apresentam uma metabolização lenta da enzima CYP2C19 apresentam uma
+diminuição da resposta antiplaquetária do clopidogrel. Uma posologia maior para estes pacientes aumenta a
+resposta antiplaquetária. O uso de doses maiores de clopidogrel deve ser considerado, porém a posologia
+apropriada para esta população de pacientes não foi estabelecida em ensaios clínicos.
+ VV-REG-1773504 1.0
+Pacientes pediátricos: a segurança e a eficácia não foram estabelecidas na população pediátrica.
+
+Pacientes idosos: nenhum ajuste na dosagem se faz necessário para os pacientes idosos.
+
+Pacientes com insuficiência nos rins e no fígado: nenhum ajuste na dosagem se faz necessário.
+
+Este medicamento não deve ser partido, aberto ou mastigado.
+
+9. REAÇÕES ADVERSAS
+Os efeitos adversos clinicamente relevantes observados nos estudos CAPRIE, CURE, CLARITY, COMMIT e
+ACTIVE-A são discutidos a seguir.
+
+Distúrbios hemorrágicos:
+No estudo CAPRIE a incidência global de hemorragia nos pacientes tratados tanto com clopidogrel e AAS foi a
+mesma (9,3%). A incidência de casos severos foi de 1,4% para o clopidogrel e 1,6% para o AAS. Em pacientes
+que receberam clopidogrel, as hemorragias gastrintestinais ocorreram a uma taxa de 2,0% e requereram
+hospitalização em 0,7%. Nos pacientes que receberam AAS, as taxas correspondentes foram 2,7% e 1,1%,
+respectivamente. A incidência global de outros tipos de hemorragia foi superior no grupo que recebeu clopidogrel
+em comparação aquele que recebeu AAS (7,3% vs 6,5%). No entanto, a incidência de reações adversas severas
+foi similar para ambos os grupos de tratamento (0,6% vs 0,4%). As reações adversas mais frequentemente relatadas
+foram: púrpura/equimoses e epistaxe. Outras reações adversas menos frequentemente relatad as foram hematoma,
+hematúria e hemorragia ocular (principalmente conjuntival).
+A incidência de hemorragia intracraniana foi de 0,4% com clopidogrel comparada a 0,5% com o AAS.
+No estudo CURE houve um aumento de sangramentos de maior e menor gravidade entre o grupo que tomou
+clopidogrel + AAS comparado ao que fez uso de AAS + placebo (3,7% de registros de eventos vs 2,7%,
+respectivamente para sangramentos mais graves e 5,1% vs 2,4% para sangramentos de menor gravidade). Os
+principais locais de sangramentos de maior gravidade incluíram o trato gastrintestinal e sítios de punção-arterial.
+O aumento do risco de morte por sangramento no grupo de clopidogrel e AAS comparado com o placebo e AAS
+não foi estatisticamente significante (2,2% vs 1,8%). Não houve diferença entre os dois grupos nos registros de
+sangramentos fatais (0,2% em ambos os grupos). A relação de sangramentos de maior gravidade sem risco de
+morte foi significativamente maior no grupo de clopidogrel e AAS quando comparado com o grupo de placebo e
+AAS (1,6% vs 1%), e a incidência de sangramento intracraniano foi de 0,1% em ambos os grupos.
+A taxa de sangramentos de maior gravidade no grupo tratado com clopidogrel e AAS foi dose dependente de AAS
+(< 100mg: 2,6%, 100-200mg: 3,5%, > 200mg: 4,9%). O mesmo ocorreu para os sangramentos de maior gravidade
+no grupo tratado com placebo e AAS (< 100mg: 2,0%, 100-200mg: 2,3%, >200mg: 4,0%).
+Não houve um aumento de sangramento dentro dos sete dias após a realização de cirurgias de revascularização em
+pacientes que interromperam a terapia mais de cinco dias antes da cirurgia (4,4% no grupo tratado com clopidogrel
++ AAS vs 5,3% no grupo tratado com placebo + AAS). Nos pacientes que permaneceram em uso da terapia dentro
+de cinco dias para a cirurgia de revascularização, os registros de eventos foram 9,6% para clopidogrel e AAS e
+6,3% para placebo e AAS.
+No estudo CLARITY, a incidência de sangramentos importantes (definidos como sangramento intracraniano ou
+sangramento associado com uma queda na hemoglobina > 5 g/dL) foi similar entre os grupos (1,3% vs 1,1% no
+grupo clopidogrel + AAS e no grupo placebo + AAS, respectivamente). Isto foi consistente através de subgrupos
+de pacientes definidos pelas características do estado basal e o tipo de fibrinolítico ou terapia com heparina. A
+incidência de sangramento fatal (0,8% vs 0,6% no grupo tratado com clopidogrel + AAS e no grupo com placebo
++ AAS, respectivamente) e hemorragia intracraniana (0,5% vs 0,7%, respectivamente) foram pequenas e similares
+em ambos os grupos.
+A relação global de sangramento maior não-cerebral ou sangramento cerebral no estudo COMMIT foi pequena e
+similar em ambos os grupos.
+No estudo ACTIVE-A, a taxa de hemorragia importante foi mais significativa no grupo de pacientes tratados com
+clopidogrel + AAS que no grupo que usou placebo + AAS (6,7% versus 4,3%). Hemorragia importante foi
+principalmente de origem extracraniana em ambos os grupos (5,3% no grupo clopidogrel + AAS; 3,5% no grupo
+placebo + AAS) e no trato gastrintestinal (3,5% vs 1,8%). Houve um excedente de hemorragia intracraniana no
+grupo tratado com clopidogrel + AAS comparado com o grupo placebo + AAS (1,4% versus 0,8%,
+respectivamente). Não houve diferença estatisticamente significativa entre os grupos nas taxas de hemorragia fatal
+e acidente vascular cerebral (AVC) hemorrágico (0,8% e 0,6%, respectivamente).
+ VV-REG-1773504 1.0
+Distúrbios hematológicos:
+No estudo CAPRIE, foi observado, neutropenia severa (< 0,450 g/L) em quatro pacientes tratados com clopidogrel
+(0,04%) e em dois pacientes tratados com o AAS (0,02%). Dois dos 9.599 pacientes que receberam clopidogrel e
+nenhum dos 9.586 pacientes que receberam AAS tiveram contagem de neutrófilos igual a zero. Embora seja
+mínimo o risco de mielotoxicidade com clopidogrel, esta possibilidade deve ser considerada quando um paciente
+em uso de clopidogrel apresentar febre ou outros sinais de infecção.
+Durante o tratamento com clopidogrel ocorreu um caso de anemia aplástica.
+A incidência de trombocitopenia severa (< 80g/L) foi de 0,2% para o grupo tratado com clopidogrel e 0,1% para
+o grupo com AAS. Foram muito raros os relatos de casos com contagem plaquetária < 30g/L.
+A seguinte taxa de frequência CIOMS é utilizada, quando aplicável:
+
+Reação muito comum (> 1/10); reação comum (> 1/100 e < 1/10); reação incomum (> 1/1.000 e < 1/100); reação
+rara (> 1/10.000 e < 1/1.000); reação muito rara (< 1/10.000); desconhecidas (não podem ser estimadas pelos dados
+disponíveis).
+
+Sistema Nervoso Central e Periférico:
+ • Incomum: dor de cabeça, tontura, parestesia;
+ • Rara: vertigens.
+
+Gastrintestinais:
+ • Comum: dispepsia, dor abdominal e diarreia;
+ • Incomum: náusea, gastrite, flatulência, constipação, vômito, úlcera gástrica, úlcera duodenal.
+
+Plaquetas, sangramento e distúrbios da coagulação:
+ • Incomum: aumento do tempo de sangramento, decréscimo do número de plaquetas.
+
+Pele e anexos:
+ • Incomum: rash e prurido.
+
+Glóbulos brancos e Sistema retículo endotelial:
+ • Incomum: leucopenia, diminuição de neutrófilos e eosinofilia.
+
+Reações adversas após o início da comercialização:
+ • As frequências para as seguintes reações adversas são desconhecidas (não podem ser estimadas pelos
+ dados disponíveis).
+
+Sangue e sistema linfático:
+ • Casos graves de sangramentos principalmente na pele, sistema músculo esquelético, olhos (conjuntiva,
+ ocular e retina), e sangramento do trato respiratório, epistaxe, hematúria, hemorragia de ferida operatória,
+ casos de sangramentos com resultados fatais (especialmente hemorragias intracranianas, gastrintestinais
+ e retroperitoneais), agranulocitose, anemia aplástica/pancitopenia, púrpura trombocitopênica trombótica
+ (PTT), hemofilia A adquirida.
+
+Distúrbios cardíacos:
+ • Síndrome de Kounis (angina alérgica vasoespástica/infarto do miocárdio alérgico) no contexto de uma
+ reação de hipersensibilidade pelo clopidogrel.
+
+Sistema imunológico:
+ • Reação anafilática, doença do soro;
+ • Reação cruzada de hipersensibilidade à droga entre tienopiridinas (como ticlopidina, prasugrel) (vide
+ “Advertências e Precauções”);
+ • Síndrome autoimune da insulina, que pode levar a hipoglicemia grave, particularmente em pacientes com
+ subtipo HLA DRA4 (mais frequente na população japonesa).
+ VV-REG-1773504 1.0
+Alterações psiquiátricas:
+ • Confusão, alucinação.
+
+Sistema nervoso:
+ • Alteração no paladar, ageusia.
+
+Sistema vascular:
+ • Vasculite, hipotensão.
+
+Distúrbios respiratórios, torácicos e no mediastino:
+ • Broncoespasmo, pneumonia intersticial, pneumonia eosinofílica.
+
+Distúrbios gastrintestinais:
+ • Colite (incluindo ulcerativa ou colite linfocítica), pancreatite, estomatite.
+
+Distúrbios hepatobiliares:
+ • Hepatite (não infecciosa), insuficiência hepática aguda.
+
+Pele e tecido subcutâneo:
+ • Rash maculopapular, eritematoso ou esfoliativo, urticária, prurido, angioedema, dermatite bolhosa
+ (eritema multiforme, síndrome de Stevens Johnson, necrólise epidérmica tóxica, pustulose exante mática
+ generalizada aguda (PEGA) ), síndrome de hipersensibilidade medicamentosa, rash medicamentoso com
+ eosinofilia e sintomas sistêmicos (DRESS), eczema, líquen planus.
+
+Aparelho musculoesquelético, tec ido conectivo e medula óssea:
+ • Artralgia, artrite , mialgia.
+
+Distúrbios urinários e renais :
+ • Glomerulopatia.
+
+Sistema reprodutivo e distúrbios da mama:
+ • Ginecomastia.
+
+Alterações gerais e condições no local da administração :
+ • Febre.
+
+Investigações:
+ • Teste de função hepática anormal e aumento da creatinina sanguínea.
+
+Em casos de eventos adversos, notifique pelo Sistema VigiMed, disponível no Portal da Anvisa.
+
+10. SUPERDOSE
+A superdosagem com clopidogrel pode levar a um aumento do tempo de sangramento e subsequentes complicações
+hemorrágicas. Terapia apropriada precisa ser considerada se sangramento for observado. Não foi encontrado
+nenhum antídoto para a atividade farmacológica do clopidogrel. Se for necessária a correção imediata do
+prolongamento do tempo de sangramento, a transfusão de plaquetas pode reverter os efeitos do clopidogrel.
+Em caso de intoxicação ligue para 0800 722 6001, se você precisar de mais orientações.

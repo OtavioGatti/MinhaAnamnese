@@ -1,0 +1,17 @@
+{
+  "Risco Gestacional": "C",
+  "Slug": "fexofenadina-cloridrato",
+  "Nomes Comerciais / Produtos ANVISA": "Allegra; Altiva; Fexx; cloridrato de fexofenadina.",
+  "Interações": "Antiácidos contendo alumínio ou magnésio reduzem absorção da fexofenadina; administrar com intervalo de pelo menos 2 horas. Sucos de frutas, como laranja, maçã e grapefruit, podem reduzir absorção; preferir água. Eritromicina e cetoconazol podem aumentar níveis de fexofenadina, geralmente sem grande relevância clínica. Álcool, benzodiazepínicos como clonazepam, diazepam e alprazolam, opioides, zolpidem, prometazina, hidroxizina, quetiapina e olanzapina podem somar sonolência em pacientes suscetíveis.",
+  "Apresentações / Nomes Comerciais": "Comprimidos revestidos 60 mg, 120 mg e 180 mg; suspensão oral 6 mg/mL ou outras apresentações conforme fabricante. Exemplos: Allegra; Altiva; Fexx; Fexofenadina EMS.",
+  "Posologia Pediátrica": "Crianças de 6 a 11 anos: 30 mg por via oral a cada 12 horas, conforme apresentação.\nAdolescentes a partir de 12 anos: usar dose de adulto conforme indicação.\nDoses para menores de 6 anos dependem da formulação e bula específica.",
+  "Texto Resumo": "Fexofenadina é um anti-histamínico H1 de segunda geração usado em rinite alérgica e urticária. Tem baixo potencial sedativo, mas sua absorção pode ser reduzida por antiácidos com alumínio/magnésio e sucos de frutas.",
+  "Classe / Categoria": "Anti-histamínico H1 de segunda geração; antialérgico não sedativo.",
+  "Posologia Adulto": "Rinite alérgica: 120 mg por via oral 1 vez ao dia ou 60 mg a cada 12 horas, conforme apresentação.\nUrticária: 180 mg por via oral 1 vez ao dia.\nAdministrar com água; evitar tomar com sucos de frutas.",
+  "Contraindicações": "Hipersensibilidade à fexofenadina ou componentes da fórmula; crianças abaixo da idade permitida para a apresentação utilizada.",
+  "Tags Busca": "fexofenadina; antialérgico; anti-histamínico; rinite alérgica; urticária; allegra; alergia",
+  "Advertências": "Geralmente tem baixo potencial sedativo, mas pode causar cefaleia, tontura, náusea, sonolência e fadiga em alguns pacientes. Usar cautela em idosos, insuficiência renal ou hepática conforme avaliação clínica. Evitar exceder dose recomendada.",
+  "Nomes Comerciais OpenAI": "Allegra; Altiva; Fexx; Fexofenadina EMS; Fexofenadina Eurofarma; Fexofenadina Medley.",
+  "Rede SUS (RENAME)": false,
+  "Princípio Ativo": "Fexofenadina Cloridrato"
+}
