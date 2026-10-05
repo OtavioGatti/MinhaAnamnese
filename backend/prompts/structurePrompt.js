@@ -138,10 +138,14 @@ function buildInterpretiveFieldRules(templateConfig) {
       .replace(/[\u0300-\u036f]/g, '')
       .toLowerCase();
 
+    // Conduta entra aqui porque, sem a trava, a geriatria escrevia plano que
+    // ninguém decidiu ("Avaliar necessidade de investigação das causas das
+    // quedas") em 4 de 10 rodadas de um caso sem conduta no texto.
     return (
       normalized.includes('hipotese') ||
       normalized.includes('problemas ativos') ||
       normalized.includes('impressao clinica') ||
+      normalized.includes('conduta') ||
       normalized === 'hd'
     );
   });
@@ -150,20 +154,24 @@ function buildInterpretiveFieldRules(templateConfig) {
     return '';
   }
 
+  // O marcador é o mesmo que os prompts do CMS exigem para seção vazia: este
+  // bloco entra dentro deles, e pedir aqui um marcador diferente contradizia
+  // o prompt que o envolve.
   return `CAMPOS INTERPRETATIVOS SENSÍVEIS
 
 Os campos abaixo exigem blindagem máxima contra inferência:
 ${interpretiveSections.map((section) => `* ${section}`).join('\n')}
 
 Regras obrigatórias para esses campos:
-* Só preencher se o problema, diagnóstico, hipótese ou impressão estiver explicitamente declarado no texto original.
+* Só preencher se o problema, diagnóstico, hipótese, impressão ou conduta estiver explicitamente declarado no texto original.
+* Não sugerir conduta, investigação, exame ou encaminhamento que o texto original não traga.
 * Não transformar sinais, sintomas ou queixas em doença.
 * Não converter dor torácica em angina, infarto ou síndrome coronariana se isso não estiver escrito.
 * Não converter tontura em distúrbio vestibular se isso não estiver escrito.
 * Não converter parestesia, cefaleia ou déficit referido em AVC, AIT ou outra hipótese se isso não estiver escrito.
 * Não criar "impressão clínica inicial" interpretativa além do que foi dito.
 * Não completar duração, antecedentes ou detalhes ausentes.
-* Se não houver base textual explícita para preencher esses campos, usar [INFORMAÇÃO INSUFICIENTE].`;
+* Se não houver base textual explícita para preencher esses campos, usar [Não relatado].`;
 }
 
 function buildClinicalWritingRules() {
@@ -180,6 +188,7 @@ COMO REESCREVER
 * Usar construções clínicas naturais: "Refere", "Relata", "Nega", "Evolui com", "Em uso de".
 * Padronizar a cronologia no formato clínico: "há 2 dias", "há cerca de 3 semanas", "com início há 6 meses".
 * Normalizar abreviações e unidades consagradas quando o dado estiver explícito (mmHg, bpm, irpm, mg, °C).
+* Manter a locução de tempo do relato: "ontem de madrugada" continua "ontem de madrugada" (nunca "ontem à madrugada").
 * Escrever sempre em caixa de sentença, mesmo que o texto original esteja todo em CAIXA ALTA: não espelhar a caixa do texto base. Manter em caixa alta apenas as siglas clínicas (PA, FC, HAS, DM, MMII, EF, HD) e as unidades consagradas.
 * Eliminar ruído de digitação, repetição e marcas de fala sem descartar informação clínica.
 
@@ -191,6 +200,15 @@ Mas a negativa consolidada precisa ficar SEM AMBIGUIDADE de escopo, porque o mot
 * Errado: "Refere febre e tosse produtiva, nega dispneia, dor torácica e síncope." (o leitor não sabe onde a negação começa)
 * Errado: "Nega dispneia, dor torácica e refere síncope." (afirmação escondida dentro da lista negada)
 * Só consolidar itens que estão de fato negados no texto original. Nunca arrastar para dentro da negativa um achado que foi afirmado.
+
+QUEIXA DITA COMO FALTA NÃO É NEGATIVA (regra de segurança)
+"Nega" registra apenas o que o paciente negou ter. Queixa formulada com "mal", "sem", "pouco" ou "não consegue" é um achado AFIRMADO e sai com "Refere" ou "Relata":
+* "dorme mal" -> "Refere sono de má qualidade." (nunca "Nega dormir bem")
+* "sem fome" -> "Refere inapetência." (nunca "Nega apetite" nem "Nega anorexia")
+* "não consegue andar direito" -> "Refere dificuldade para deambular."
+* Nunca escrever "Nega" seguido do oposto de uma queixa relatada.
+* Não usar negativa genérica para preencher seção: "Nega alteração de humor", "Nega alteração de apetite" ou "Nega alteração de sono" só aparecem se o texto original negou exatamente isso. Seção sem informação recebe o marcador de ausência.
+* "Não lembra" não é "Nega": "não lembra de ter feito esforço" -> "Não recorda esforço desencadeante."
 
 Exemplo de reescrita fiel (história da moléstia atual):
 Entrada: "dor de barriga forte ha 2 dias, vomitou 3x, sem febre, piora qnd come"
@@ -211,7 +229,9 @@ Reescrever muda a FORMA das mesmas informações. Nunca muda, acrescenta ou remo
 * Não aumentar nem reduzir intensidade, duração, frequência ou grau de certeza do que foi relatado.
 * Não completar duração, antecedentes ou detalhes ausentes.
 * Se o texto já vier semi-estruturado, preservar a riqueza das informações em vez de comprimir o conteúdo em blocos genéricos.
-* Quando a mesma frase trouxer doença e medicamento juntos (ex.: "HAS e DM em uso de losartana e metformina"), separar: a doença vai para a seção de comorbidades/antecedentes e o medicamento vai para a seção de medicações em uso contínuo. Não deixar a seção de medicações vazia quando houver medicamento citado em qualquer parte do texto.
+* Nenhum fato do texto original pode sumir da saída. Antes de responder, conferir frase por frase do texto original se cada informação está em alguma seção. Sem seção específica, usar a mais próxima: ocupação, trabalho atual ou passado e exposições vão para hábitos de vida (ou para a identificação, se o modelo não tiver hábitos de vida); circunstâncias da queixa, inclusive o que o paciente não lembra, vão para a história da moléstia atual.
+* Doença e medicamento citados juntos são separados, qualquer que seja a forma da frase: "HAS e DM em uso de losartana e metformina", "hipertenso, usa losartana", "diabética, toma metformina", "faz uso de AAS por causa do coração". A doença vai para a seção de comorbidades/antecedentes SEM o nome do remédio, e o medicamento vai para a seção de medicações em uso contínuo. Ex.: "hipertenso, usa losartana" -> antecedentes: "Hipertensão arterial." / medicações: "Losartana."
+* Não deixar a seção de medicações vazia quando houver medicamento de uso contínuo citado em qualquer parte do texto. Remédio tomado só para a queixa atual (ex.: "já tomou dipirona") fica na história da moléstia atual.
 
 ${buildExamFormatRules()}`;
 }
@@ -310,12 +330,12 @@ REGRAS DE ESTRUTURA
 * A saída deve ser dinâmica e respeitar exatamente as seções do template selecionado.
 * Não comprimir o conteúdo em 6 blocos fixos.
 * Não fundir várias seções do template em blocos genéricos se o texto trouxer riqueza suficiente para separá-las.
-* Usar [DADO AUSENTE] quando a seção existir, mas a informação não tiver sido fornecida.
-* Usar [INFORMAÇÃO INSUFICIENTE] quando houver menção parcial, vaga ou incompleta.
+* Usar [Não relatado] quando a seção existir, mas a informação não tiver sido fornecida.
+* Menção parcial, vaga ou incompleta é escrita como veio, sem completar.
 * Não inferir conteúdo.
 * Não criar nenhuma seção fora da lista acima.
 * Manter os títulos das seções exatamente na ordem definida.
-* Se uma seção pedir hipóteses diagnósticas, problemas ativos ou impressão clínica e isso não estiver explicitamente no texto, usar [INFORMAÇÃO INSUFICIENTE].
+* Se uma seção pedir hipóteses diagnósticas, problemas ativos, impressão clínica ou conduta e isso não estiver explicitamente no texto, usar [Não relatado].
 
 CONTEXTO
 

@@ -18,6 +18,7 @@ const {
   removeLinhasVaziasDoExame,
 } = require('../utils/examSectionCleanup');
 const { isCustomTemplateId } = require('./userTemplates');
+const { normalizeMissingMarkers } = require('../utils/missingMarkers');
 
 function validateProcessAnamnesisInput(payload) {
   const { template, texto } = payload || {};
@@ -132,9 +133,11 @@ async function processAnamnesis({ template, texto, userId }) {
   // sobrescreveu "AP: Murmúrios abolidos em base, estertorando difusamente",
   // que desapareceu. O prompt já foi corrigido, mas prompt é pedido, não
   // garantia. Ver utils/examSectionCleanup.js.
+  // Antes de tudo, a grafia do marcador de seção vazia é padronizada: prompt do
+  // CMS já pediu "[nao relatado]" sem acento. Ver utils/missingMarkers.js.
   const resultado = preservaAchadosDoExame(
     removeLinhasVaziasDoExame(
-      sanitizeText(response.choices?.[0]?.message?.content || '').trim(),
+      normalizeMissingMarkers(sanitizeText(response.choices?.[0]?.message?.content || '').trim()),
       templateConfig?.secoes,
     ),
     sanitizedText,

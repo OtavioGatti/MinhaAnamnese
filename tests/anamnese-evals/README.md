@@ -98,3 +98,17 @@ Campos:
 - título redundante presente: sim
 - erro de parsing: não
 ```
+
+## Regressões de fidelidade (rodadas repetidas)
+
+A saída do modelo varia entre rodadas, então um caso que passou uma vez não prova nada. `cases.fidelity-regressions.json` guarda os casos de defeitos já vistos (queixa afirmada virando "Nega", marcador fora do padrão, remédio preso na comorbidade, dado descartado, qualificador inventado nas hipóteses), cada um com verificações objetivas.
+
+```bash
+node backend/scripts/run-fidelity-evals.js --runs 10 --label antes
+```
+
+- O relatório mostra "falhas / rodadas" por verificação: compare a taxa antes e depois de mexer em prompt.
+- `--override slug=arquivo.txt` troca um prompt do CMS por um arquivo local, para medir uma edição do Notion antes de publicar.
+- `--reeval test-results/<relatório>.json` reaplica as verificações atuais a saídas já geradas, sem chamar o modelo.
+- `--only id1,id2` roda só alguns casos.
+- Hipóteses rodam em sequência (limite de tokens por minuto do gpt-4o) e não gravam o backlog editorial.

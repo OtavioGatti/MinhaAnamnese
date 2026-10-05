@@ -1,0 +1,223 @@
+[
+  {
+    "id": "fid-sono-cm",
+    "titulo": "Queixa afirmada virando negativa (dorme mal) - clínica médica",
+    "kind": "structure",
+    "templateId": "clinica_medica",
+    "origem": "Bug relatado em 04/10/2026: 'dorme mal' saiu como 'HV: Nega dormir bem.'",
+    "rawText": "mulher 78a, caiu em casa ontem de madrugada indo no banheiro, ficou tonta quando levantou da cama. segunda queda no mes. nao desmaiou nem bateu a cabeca. hipertensa e diabetica, dorme mal. mora sozinha.",
+    "checks": [
+      {
+        "id": "queixa-negada",
+        "label": "Sono afirmado virou negativa",
+        "type": "mustNotMatch",
+        "pattern": "\\bnega\\b[^.\\n]*\\b(dorm\\w*|sono|ins[oô]nia)\\b"
+      },
+      {
+        "id": "sono-preservado",
+        "label": "Queixa de sono presente na saída",
+        "type": "mustMatch",
+        "pattern": "(sono|dorm\\w*|ins[oô]nia)"
+      },
+      {
+        "id": "crase-madrugada",
+        "label": "Crase indevida em 'ontem à madrugada'",
+        "type": "mustNotMatch",
+        "pattern": "à madrugada"
+      },
+      {
+        "id": "mora-sozinha",
+        "label": "Mora sozinha preservado",
+        "type": "mustMatch",
+        "pattern": "sozinha"
+      },
+      {
+        "id": "negativa-sem-base",
+        "label": "Negativa que não está no texto original",
+        "type": "negationsOnlyAbout",
+        "pattern": "(desmai\\w*|s[ií]ncope|perda de consci\\w*|trauma\\w*|TCE|cabe[cç]a|craniano)"
+      },
+      {
+        "id": "hd-sem-invencao",
+        "label": "HD preenchido sem base no texto",
+        "type": "sectionIsMarker",
+        "section": "HD"
+      }
+    ]
+  },
+  {
+    "id": "fid-sono-ger",
+    "titulo": "Mesmo caso no modelo de geriatria (marcador e sono)",
+    "kind": "structure",
+    "templateId": "geriatria",
+    "origem": "Bug relatado em 04/10/2026: geriatria escreveu '[nao relatado]' e 'dorme mal' sumiu.",
+    "rawText": "mulher 78a, caiu em casa ontem de madrugada indo no banheiro, ficou tonta quando levantou da cama. segunda queda no mes. nao desmaiou nem bateu a cabeca. hipertensa e diabetica, dorme mal. mora sozinha.",
+    "checks": [
+      {
+        "id": "queixa-negada",
+        "label": "Sono afirmado virou negativa",
+        "type": "mustNotMatch",
+        "pattern": "\\bnega\\b[^.\\n]*\\b(dorm\\w*|sono|ins[oô]nia)\\b"
+      },
+      {
+        "id": "sono-preservado",
+        "label": "Queixa de sono presente na saída",
+        "type": "mustMatch",
+        "pattern": "(sono|dorm\\w*|ins[oô]nia)"
+      },
+      {
+        "id": "crase-madrugada",
+        "label": "Crase indevida em 'ontem à madrugada'",
+        "type": "mustNotMatch",
+        "pattern": "à madrugada"
+      },
+      {
+        "id": "mora-sozinha",
+        "label": "Mora sozinha preservado",
+        "type": "mustMatch",
+        "pattern": "sozinha"
+      },
+      {
+        "id": "negativa-sem-base",
+        "label": "Negativa que não está no texto original",
+        "type": "negationsOnlyAbout",
+        "pattern": "(desmai\\w*|s[ií]ncope|perda de consci\\w*|trauma\\w*|TCE|cabe[cç]a|craniano)"
+      },
+      {
+        "id": "hd-sem-invencao",
+        "label": "HD/Problemas ativos preenchido sem base no texto",
+        "type": "sectionIsMarker",
+        "section": "HD/Problemas ativos"
+      },
+      {
+        "id": "conduta-sem-invencao",
+        "label": "Conduta inventada",
+        "type": "sectionIsMarker",
+        "section": "Conduta"
+      }
+    ]
+  },
+  {
+    "id": "fid-lombar-cm",
+    "titulo": "Remédio preso na comorbidade e dados descartados (lombalgia)",
+    "kind": "structure",
+    "templateId": "clinica_medica",
+    "origem": "Bug relatado em 04/10/2026: losartana ficou em Antecedentes, MUC vazio; roça e esforço sumiram.",
+    "rawText": "homem 67a, dor nas costas faz umas 6 semanas, na lombar, nao lembra de ter feito esforco. piora de noite, acorda com a dor, nao melhora deitado. ja tomou dipirona e diclofenaco, melhora pouco. perdeu uns 5kg nesse tempo sem fazer dieta. trabalhou a vida toda na roca. hipertenso, usa losartana. fumou 30 anos, parou faz 5. nega febre, nega perda de forca nas pernas, urina e evacua normal.",
+    "checks": [
+      {
+        "id": "muc-losartana",
+        "label": "Losartana na seção MUC",
+        "type": "mustMatch",
+        "pattern": "losartana",
+        "section": "MUC"
+      },
+      {
+        "id": "antecedente-sem-remedio",
+        "label": "Antecedentes sem o remédio",
+        "type": "mustNotMatch",
+        "pattern": "losartana",
+        "section": "Antecedentes pessoais e comorbidades"
+      },
+      {
+        "id": "ocupacao-roca",
+        "label": "Ocupação (roça) preservada",
+        "type": "mustMatch",
+        "pattern": "(ro[cç]a|rural|lavrador|agricult\\w*|lavoura)"
+      },
+      {
+        "id": "esforco",
+        "label": "'Não lembra de esforço' preservado",
+        "type": "mustMatch",
+        "pattern": "esfor[cç]o"
+      },
+      {
+        "id": "perda-peso",
+        "label": "Perda de 5 kg preservada",
+        "type": "mustMatch",
+        "pattern": "5\\s?kg"
+      },
+      {
+        "id": "negativa-sem-base",
+        "label": "Negativa que não está no texto original",
+        "type": "negationsOnlyAbout",
+        "pattern": "(febre|for[cç]a|fraqueza|d[eé]ficit|paresia|dieta|lembra\\w*|urin\\w*|evacua\\w*|intestin\\w*|miccion\\w*|esf[ií]ncter\\w*)"
+      },
+      {
+        "id": "hd-sem-invencao",
+        "label": "HD preenchido sem base no texto",
+        "type": "sectionIsMarker",
+        "section": "HD"
+      }
+    ]
+  },
+  {
+    "id": "fid-deficit-sintetico",
+    "titulo": "Caso sintético: várias queixas ditas como falta (sem fome, sem energia, não dorme)",
+    "kind": "structure",
+    "templateId": "clinica_medica",
+    "origem": "Caso montado para a mesma família do bug ('sem fome' virou 'Nega anorexia'), para não ajustar a regra só ao exemplo do sono.",
+    "rawText": "homem 52a, dor de barriga faz 3 dias, sem fome, enjoado, anda sem energia. nao consegue dormir direito por causa da dor. nega febre, nega vomito.",
+    "checks": [
+      {
+        "id": "queixa-negada",
+        "label": "Queixa afirmada virou negativa",
+        "type": "mustNotMatch",
+        "pattern": "\\bnega\\b[^.\\n]*\\b(apetite|fome|anorexia|hiporexia|inapet\\w*|energia|astenia|fadiga|dorm\\w*|sono|ins[oô]nia)\\b"
+      },
+      {
+        "id": "apetite-preservado",
+        "label": "Falta de apetite presente",
+        "type": "mustMatch",
+        "pattern": "(apetite|fome|anorexia|hiporexia|inapet\\w*)"
+      },
+      {
+        "id": "energia-preservada",
+        "label": "Falta de energia presente",
+        "type": "mustMatch",
+        "pattern": "(energia|astenia|fadiga|cansa\\w*|indisposi\\w*)"
+      },
+      {
+        "id": "negativas-reais",
+        "label": "Negativas reais preservadas (febre)",
+        "type": "mustMatch",
+        "pattern": "\\bnega\\b[^.\\n]*febre"
+      },
+      {
+        "id": "negativa-sem-base",
+        "label": "Negativa que não está no texto original",
+        "type": "negationsOnlyAbout",
+        "pattern": "(febre|v[oô]mit\\w*|[eê]mese)"
+      }
+    ]
+  },
+  {
+    "id": "fid-hipoteses-lombar",
+    "titulo": "Hipóteses sobre a lombalgia de 6 semanas",
+    "kind": "hypotheses",
+    "templateId": "clinica_medica",
+    "origem": "Bug relatado em 04/10/2026: 'Dor Lombar Crônica' com 6 semanas; Neoplasia Maligna e Metástase Óssea em cartões separados. Entrada fixa = saída do bug 3, para medir só o motor de hipóteses.",
+    "structuredText": "ID: Homem, 67 anos\nQP: Dor lombar há aproximadamente 6 semanas.\nHDA: Refere dor nas costas, localizada na região lombar, com início há cerca de 6 semanas. Relata piora da dor à noite, levando a despertares, e que não melhora na posição deitado. Já utilizou dipirona e diclofenaco, com pouca melhora. Relata perda de peso de aproximadamente 5 kg nesse período, sem relato de dieta.\nAntecedentes pessoais e comorbidades: Hipertensão arterial, em uso de losartana.\nMUC: [Não relatado]\nHF: [Não relatado]\nHV: Fumou por 30 anos, parou há 5 anos.\nInterrogatório sintomatológico: Nega febre. Nega perda de força nas pernas. Relata urina e evacuação normais.\nExames complementares: [Não relatado]\nEF: [Não relatado]\nHD: [Não relatado]",
+    "checks": [
+      {
+        "id": "qualificador-inventado",
+        "label": "'Crônica' acrescentado no nome",
+        "type": "namesNotMatch",
+        "pattern": "cr[oô]nic"
+      },
+      {
+        "id": "redundancia-oncologica",
+        "label": "Mais de um cartão para a mesma ideia oncológica",
+        "type": "maxItemsMatching",
+        "pattern": "neoplas|malign|met[aá]st|tumor|c[aâ]ncer|mieloma|oncol",
+        "max": 1
+      },
+      {
+        "id": "melhora-pouco-distorcido",
+        "label": "'Melhora pouco' virou 'não alivia'",
+        "type": "textNotMatch",
+        "pattern": "((sem|n[aã]o)\\s+(\\S+\\s+){0,2}(al[ií]vi\\w*|melhor\\w*|respo\\w*)(?:(?!pouc)[^.]){0,60}(medica\\w*|analg\\w*|dipirona|diclofenaco|anti-?inflamat\\w*|AINE)|refrat[aá]ri)"
+      }
+    ]
+  }
+]
