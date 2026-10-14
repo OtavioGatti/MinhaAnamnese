@@ -9,6 +9,7 @@ const {
 const { getActiveBillingSubscriptionByUserId } = require('./billingSubscriptions');
 const { getBillingPaymentByPaymentId } = require('./billingPayments');
 const { getTrialUsageSummary } = require('./trialUsage');
+const { normalizeBrazilianMobile } = require('../utils/phone');
 
 // Janela de arrependimento (CDC art. 49): o cliente pode pedir reembolso do
 // último pagamento em até 7 dias. Espelha REFUND_WINDOW no cancel-subscription.
@@ -35,6 +36,9 @@ const OPTIONAL_PROFILE_COLUMNS = [
   'cookie_consent_version',
   'display_name',
   'output_case_style',
+  'phone',
+  'phone_collected_at',
+  'whatsapp_opt_in_at',
 ];
 
 // Atividade do usuario para o painel de metricas. Uma escrita por requisicao
@@ -233,6 +237,35 @@ function getMetadataText(user, ...keys) {
   return null;
 }
 
+// Celular do cadastro. Quem se cadastra sem sessão (o e-mail ainda vai ser
+// confirmado) só consegue mandar o número pelo user_metadata do signUp, igual
+// aos aceites legais; ele vira coluna no primeiro perfil criado. Depois disso o
+// metadata é ignorado — a pessoa troca o número pelo próprio perfil. Serve só
+// para contato: nunca decide acesso (o metadata é gravável pelo usuário).
+function resolvePhoneFields(user, existingProfile, overrides) {
+  const existingPhone = normalizeBrazilianMobile(existingProfile?.phone);
+  const fromMetadata = existingPhone ? null : normalizeBrazilianMobile(user?.user_metadata?.phone);
+  const overridePhone = normalizeBrazilianMobile(overrides.phone);
+  const phone = overridePhone || existingPhone || fromMetadata || null;
+  const phoneChanged = Boolean(phone) && phone !== existingPhone;
+
+  let whatsappOptInAt = normalizePlanExpiresAt(existingProfile?.whatsapp_opt_in_at);
+
+  if (overrides.whatsapp_opt_in_at !== undefined) {
+    whatsappOptInAt = normalizePlanExpiresAt(overrides.whatsapp_opt_in_at);
+  } else if (fromMetadata && !overridePhone && user?.user_metadata?.whatsapp_opt_in === true) {
+    whatsappOptInAt = getMetadataTimestamp(user, 'whatsapp_opt_in_at') || new Date().toISOString();
+  }
+
+  return {
+    phone,
+    phone_collected_at: phoneChanged
+      ? new Date().toISOString()
+      : normalizePlanExpiresAt(existingProfile?.phone_collected_at),
+    whatsapp_opt_in_at: whatsappOptInAt,
+  };
+}
+
 function buildProfileFallback(user, existingProfile = null, overrides = {}) {
   const profile = {
     id: user?.id || existingProfile?.id || null,
@@ -315,6 +348,7 @@ function buildProfileFallback(user, existingProfile = null, overrides = {}) {
       Object.prototype.hasOwnProperty.call(overrides, 'last_payment_id')
         ? overrides.last_payment_id || null
         : existingProfile?.last_payment_id || null,
+    ...resolvePhoneFields(user, existingProfile, overrides),
     created_at: existingProfile?.created_at || null,
     updated_at: existingProfile?.updated_at || null,
   };
@@ -450,6 +484,18 @@ async function upsertProfile(fields) {
     payload.last_payment_id = fields.last_payment_id || null;
   }
 
+  if ('phone' in fields) {
+    payload.phone = normalizeBrazilianMobile(fields.phone);
+  }
+
+  if ('phone_collected_at' in fields) {
+    payload.phone_collected_at = normalizePlanExpiresAt(fields.phone_collected_at);
+  }
+
+  if ('whatsapp_opt_in_at' in fields) {
+    payload.whatsapp_opt_in_at = normalizePlanExpiresAt(fields.whatsapp_opt_in_at);
+  }
+
   const { url, serviceRoleKey } = getProfilesAdminConfig();
   const query = new URLSearchParams({
     on_conflict: 'id',
@@ -539,7 +585,10 @@ function shouldUpdateProfile(existingProfile, nextProfile) {
       normalizePlanExpiresAt(nextProfile.cookie_consent_at) ||
     normalizeLegalVersion(existingProfile.cookie_consent_version) !==
       normalizeLegalVersion(nextProfile.cookie_consent_version) ||
-    (existingProfile.last_payment_id || null) !== (nextProfile.last_payment_id || null)
+    (existingProfile.last_payment_id || null) !== (nextProfile.last_payment_id || null) ||
+    normalizeBrazilianMobile(existingProfile.phone) !== normalizeBrazilianMobile(nextProfile.phone) ||
+    normalizePlanExpiresAt(existingProfile.whatsapp_opt_in_at) !==
+      normalizePlanExpiresAt(nextProfile.whatsapp_opt_in_at)
   );
 }
 
@@ -664,6 +713,9 @@ async function ensureUserProfile(user, overrides = {}) {
     cookie_consent_at: fallbackProfile.cookie_consent_at,
     cookie_consent_version: fallbackProfile.cookie_consent_version,
     last_payment_id: fallbackProfile.last_payment_id,
+    phone: fallbackProfile.phone,
+    phone_collected_at: fallbackProfile.phone_collected_at,
+    whatsapp_opt_in_at: fallbackProfile.whatsapp_opt_in_at,
   });
 
   return withActiveSubscriptionFlag(

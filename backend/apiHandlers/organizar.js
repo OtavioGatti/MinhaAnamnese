@@ -11,6 +11,16 @@ const ORGANIZAR_RATE_LIMIT = {
   windowMs: 10 * 60 * 1000,
 };
 
+const LOGIN_REQUIRED_MESSAGE = 'Entre ou crie sua conta grátis para organizar a anamnese.';
+
+// Organizar só com conta: liga com ORGANIZE_LOGIN_REQUIRED=true no Render (e
+// VITE_ORGANIZE_LOGIN_REQUIRED=on na Vercel, para o site pedir o cadastro antes
+// de chamar aqui). Desligado, segue aberto como sempre foi. A trava real é esta:
+// sem ela, qualquer um chamaria a OpenAI direto pela API.
+function isOrganizeLoginRequired() {
+  return String(process.env.ORGANIZE_LOGIN_REQUIRED || '').trim().toLowerCase() === 'true';
+}
+
 async function resolveOptionalUserId(req) {
   if (!getAccessTokenFromRequest(req)) {
     return null;
@@ -46,6 +56,15 @@ module.exports = async function handler(req, res) {
 
   try {
     const resolvedUserId = await resolveOptionalUserId(req);
+
+    if (!resolvedUserId && isOrganizeLoginRequired()) {
+      return res.status(401).json({
+        success: false,
+        error: LOGIN_REQUIRED_MESSAGE,
+        code: 'LOGIN_REQUIRED',
+      });
+    }
+
     const rateLimit = await consumeRateLimit({
       req,
       scope: 'organizar',
@@ -76,3 +95,6 @@ module.exports = async function handler(req, res) {
     });
   }
 };
+
+// Anexado depois da atribuição acima, para o teste da chave.
+module.exports.isOrganizeLoginRequired = isOrganizeLoginRequired;

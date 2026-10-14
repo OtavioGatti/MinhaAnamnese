@@ -15,3 +15,7 @@ export const CARD_CHECKOUT_FLAG = String(import.meta.env.VITE_CARD_CHECKOUT || '
 // só do semestral. "on" liga para todos; ?checkout_cartao=1 liga neste navegador.
 export const MERCADO_PAGO_ORDERS_PUBLIC_KEY = import.meta.env.VITE_MERCADO_PAGO_ORDERS_PUBLIC_KEY || '';
 export const SEMIANNUAL_PAGE_CHECKOUT_FLAG = String(import.meta.env.VITE_SEMIANNUAL_PAGE_CHECKOUT || '').toLowerCase();
+// Organizar a anamnese só com conta. "on" liga para todos; sem isso só liga no
+// navegador aberto com ?exigir_login=1. O servidor tem a própria chave
+// (ORGANIZE_LOGIN_REQUIRED no Render), que é a trava de verdade.
+export const ORGANIZE_LOGIN_REQUIRED_FLAG = String(import.meta.env.VITE_ORGANIZE_LOGIN_REQUIRED || '').toLowerCase();

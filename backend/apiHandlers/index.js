@@ -60,6 +60,7 @@ const apiRoutes = {
   '/api/admin/billing/reconcile': require('./admin/billing-reconcile'),
   '/api/admin/reengagement/run': require('./admin/reengagement-run'),
   '/api/admin/metrics': require('./admin/metrics'),
+  '/api/admin/leads': require('./admin/leads'),
   '/api/webhook/mercadopago': require('./webhook/mercadopago'),
   '/api/webhook/notion/prescription-guides': require('./webhook/notion/prescription-guides'),
   '/api/webhook/notion/templates': require('./webhook/notion/templates'),

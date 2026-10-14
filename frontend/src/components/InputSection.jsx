@@ -24,6 +24,9 @@ function InputSection({
   drugMentionsEnabled = false,
   onOpenDrugCatalog,
   reorganizeFromResult = false,
+  loginRequiredHint = false,
+  pendingOrganizeNotice = false,
+  onDismissPendingOrganize,
 }) {
   const drugMentions = useClinicalDrugMentions({
     enabled: drugMentionsEnabled,
@@ -172,6 +175,19 @@ function InputSection({
         </p>
       ) : null}
 
+      {/* Voltou do cadastro (ou da confirmação do e-mail): o texto digitado
+          antes continua aqui, e falta só o clique. */}
+      {pendingOrganizeNotice && !loading ? (
+        <div className="organize-pending-notice" role="status">
+          <span>Conta pronta. Seu texto continua aqui — clique em <strong>Organizar anamnese</strong> para continuar.</span>
+          {onDismissPendingOrganize ? (
+            <button type="button" className="organize-pending-dismiss" onClick={onDismissPendingOrganize} aria-label="Fechar aviso">
+              ×
+            </button>
+          ) : null}
+        </div>
+      ) : null}
+
       <div className="botoes">
         <button
           className="btn btn-primario"
@@ -214,6 +230,10 @@ function InputSection({
           Limpar
         </button>
       </div>
+
+      {loginRequiredHint ? (
+        <p className="organize-login-hint">Crie sua conta grátis para organizar. Seu texto fica salvo.</p>
+      ) : null}
 
       {erro && (
         <div className="erro">

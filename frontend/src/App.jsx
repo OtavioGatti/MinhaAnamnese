@@ -20,8 +20,20 @@ import {
   DIAGNOSTIC_HYPOTHESES_ENABLED,
   MERCADO_PAGO_ORDERS_PUBLIC_KEY,
   MERCADO_PAGO_PUBLIC_KEY,
+  ORGANIZE_LOGIN_REQUIRED_FLAG,
   SEMIANNUAL_PAGE_CHECKOUT_FLAG,
 } from './config';
+import { formatBrazilianMobileInput, normalizeBrazilianMobile, PHONE_INVALID_MESSAGE } from './lib/phone';
+import {
+  canSkipPhonePrompt,
+  isPendingOrganizeValid,
+  ORGANIZE_LOGIN_OVERRIDE_KEY,
+  PENDING_ORGANIZE_KEY,
+  phonePromptSkipKey,
+  resolveOrganizeLoginRequired,
+  shouldAskForPhone,
+} from './lib/signupGate';
+import PhoneCaptureModal from './components/PhoneCaptureModal';
 import DiagnosticHypothesesPanel from './components/DiagnosticHypothesesPanel';
 import FocusedClinicalReview from './components/FocusedClinicalReview';
 import InputSection from './components/InputSection';
@@ -72,6 +84,11 @@ const ANAMNESIS_DRAFT_KEY = 'minha-anamnese-draft';
 const MAX_ANAMNESIS_TEXT_LENGTH = 20000;
 const TRACKING_SESSION_ID_KEY = 'tracking-session-id';
 const COOKIE_CONSENT_KEY = 'minha-anamnese-cookie-consent';
+// Versão do consentimento de cookies, separada da versão dos Termos e da
+// Política: mudar a Política (ex.: celular no cadastro, 14/10/2026) não pode
+// reabrir o banner de cookies para todo mundo — até a pessoa clicar de novo, os
+// eventos de uso deixariam de ser medidos. Só sobe se a parte de cookies mudar.
+const COOKIE_CONSENT_VERSION = '2026-07-13';
 const AFFILIATE_REFERRAL_KEY = 'minha-anamnese-affiliate-ref';
 // Como o código chegou (link ou digitado): vai ao checkout para registro.
 const AFFILIATE_REFERRAL_SOURCE_KEY = 'minha-anamnese-affiliate-ref-source';
@@ -378,7 +395,7 @@ function readAffiliateReferralSource() {
 function buildCookieConsent(status) {
   return {
     status,
-    version: LEGAL_DOCUMENT_VERSION,
+    version: COOKIE_CONSENT_VERSION,
     decidedAt: new Date().toISOString(),
   };
 }
@@ -395,7 +412,7 @@ function readCookieConsent() {
 
     if (
       (parsed?.status === 'accepted' || parsed?.status === 'rejected') &&
-      parsed.version === LEGAL_DOCUMENT_VERSION
+      parsed.version === COOKIE_CONSENT_VERSION
     ) {
       return parsed;
     }
@@ -411,7 +428,7 @@ function saveCookieConsent(consent) {
 }
 
 function canTrackNonEssentialCookies(consent) {
-  return consent?.status === 'accepted' && consent?.version === LEGAL_DOCUMENT_VERSION;
+  return consent?.status === 'accepted' && consent?.version === COOKIE_CONSENT_VERSION;
 }
 
 function formatRelativeTime(value) {
@@ -993,6 +1010,9 @@ function App() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  // Celular do cadastro (contato) e aceite opcional de mensagens no WhatsApp.
+  const [signupPhone, setSignupPhone] = useState('');
+  const [signupWhatsappOptIn, setSignupWhatsappOptIn] = useState(false);
   const [termsAccepted, setTermsAccepted] = useState(false);
   const [signupLegalConsent, setSignupLegalConsent] = useState(null);
   const [legalConsentModalOpen, setLegalConsentModalOpen] = useState(false);
@@ -1141,6 +1161,48 @@ function App() {
       }),
     };
   });
+  // Organizar só com conta (VITE_ORGANIZE_LOGIN_REQUIRED=on, ou
+  // ?exigir_login=1 neste navegador). O servidor tem a própria chave.
+  const [organizeLoginRequired] = useState(() => {
+    let guardado = null;
+
+    try {
+      guardado = window.localStorage.getItem(ORGANIZE_LOGIN_OVERRIDE_KEY);
+    } catch {
+      guardado = null;
+    }
+
+    const decisao = resolveOrganizeLoginRequired({
+      flag: ORGANIZE_LOGIN_REQUIRED_FLAG,
+      search: window.location.search,
+      stored: guardado,
+    });
+
+    try {
+      if (decisao.stored) {
+        window.localStorage.setItem(ORGANIZE_LOGIN_OVERRIDE_KEY, decisao.stored);
+      } else {
+        window.localStorage.removeItem(ORGANIZE_LOGIN_OVERRIDE_KEY);
+      }
+    } catch {
+      // Sem armazenamento, vale só para esta visita.
+    }
+
+    return decisao.required;
+  });
+  // Clicou em Organizar sem conta: na volta (já logado) o texto continua no
+  // rascunho e um aviso diz isso.
+  const [pendingOrganize, setPendingOrganize] = useState(() => {
+    try {
+      return isPendingOrganizeValid(window.localStorage.getItem(PENDING_ORGANIZE_KEY));
+    } catch {
+      return false;
+    }
+  });
+  const [phoneCaptureState, setPhoneCaptureState] = useState({ open: false, canSkip: true });
+  // Salvou o celular mas o perfil voltou sem ele (SQL ainda não aplicado):
+  // não pergunta de novo nesta visita.
+  const [phonePromptSuppressed, setPhonePromptSuppressed] = useState(false);
   const [checkoutSuccessBannerVisible, setCheckoutSuccessBannerVisible] = useState(false);
   const [emailConfirmedBanner, setEmailConfirmedBanner] = useState(null);
   const [welcomeOnboardingOpen, setWelcomeOnboardingOpen] = useState(false);
@@ -1963,12 +2025,16 @@ function App() {
         setOrganizeBaseline({ texto, resultado: nextResultado });
         setLatestScoreComparison(response.data.comparison || null);
         setEvolutionRefreshToken((current) => current + 1);
+        clearPendingOrganize();
         trackEvent('anamnese_gerada', {
           template: templateSelecionado,
           text_length: sourceTexto.trim().length,
           is_pro: isPro,
           source: sourceKind,
         });
+      } else if (response.code === 'LOGIN_REQUIRED' && !user?.id) {
+        // O servidor já exige conta, mesmo com a chave do site desligada.
+        startOrganizeSignup();
       } else {
         setErro(response.error || 'Não foi possível estruturar a anamnese.');
       }
@@ -1976,6 +2042,43 @@ function App() {
       setErro(err.message || 'Ocorreu um erro ao estruturar a anamnese.');
     } finally {
       setLoading(false);
+    }
+  };
+
+  const clearPendingOrganize = () => {
+    try {
+      window.localStorage.removeItem(PENDING_ORGANIZE_KEY);
+    } catch {
+      // Sem armazenamento: o aviso some só nesta visita.
+    }
+
+    setPendingOrganize(false);
+  };
+
+  // Organizar sem conta com a trava ligada: o texto já está no rascunho do
+  // navegador; abre o cadastro e marca para avisar na volta.
+  const startOrganizeSignup = () => {
+    try {
+      window.localStorage.setItem(PENDING_ORGANIZE_KEY, String(Date.now()));
+    } catch {
+      // Sem armazenamento, segue sem o aviso da volta.
+    }
+
+    setPendingOrganize(true);
+    trackEvent('organizar_login_exigido', {
+      template: templateSelecionado || null,
+      text_length: texto.trim().length,
+    });
+    handleChangeAuthMode('signup');
+    setAuthFeedback('Crie sua conta grátis para organizar. Seu texto fica salvo neste navegador.');
+    setAuthPanelAberto(true);
+  };
+
+  const readPhoneSkipCount = (userId) => {
+    try {
+      return Number(window.localStorage.getItem(phonePromptSkipKey(userId))) || 0;
+    } catch {
+      return 0;
     }
   };
 
@@ -1987,6 +2090,76 @@ function App() {
       return;
     }
 
+    if (!user?.id && organizeLoginRequired) {
+      if (!texto.trim()) {
+        setErro('Preencha a anamnese antes de continuar.');
+        return;
+      }
+
+      startOrganizeSignup();
+      return;
+    }
+
+    // Conta de antes do celular no cadastro: pede o número antes de organizar.
+    if (shouldAskForPhone({ userId: user?.id, profile, suppressed: phonePromptSuppressed })) {
+      setPhoneCaptureState({
+        open: true,
+        canSkip: canSkipPhonePrompt({ skipCount: readPhoneSkipCount(user.id), accessState }),
+      });
+      return;
+    }
+
+    await proceedOrganizar();
+  };
+
+  // Salva o celular pelo perfil (modal do organizar ou página de Perfil).
+  const handleSavePhone = async (digits, whatsappOptIn, origin) => {
+    const response = await api.post('/profile', { phone: digits, whatsapp_opt_in: Boolean(whatsappOptIn) });
+
+    if (!response.success) {
+      return { ok: false, error: response.error || 'Não foi possível salvar o celular agora.' };
+    }
+
+    if (response.data) {
+      setProfile(response.data);
+    }
+
+    if (!response.data?.phone) {
+      setPhonePromptSuppressed(true);
+    }
+
+    trackEvent('celular_completado', { origin, whatsapp_opt_in: Boolean(whatsappOptIn) });
+    return { ok: true };
+  };
+
+  const handleSavePhoneAndOrganize = async (digits, whatsappOptIn) => {
+    const result = await handleSavePhone(digits, whatsappOptIn, 'organizar');
+
+    if (result.ok) {
+      setPhoneCaptureState({ open: false, canSkip: true });
+      await proceedOrganizar();
+    }
+
+    return result;
+  };
+
+  const handleSkipPhoneCapture = async () => {
+    if (user?.id) {
+      try {
+        window.localStorage.setItem(phonePromptSkipKey(user.id), String(readPhoneSkipCount(user.id) + 1));
+      } catch {
+        // Sem armazenamento, o adiamento vale só nesta visita.
+      }
+    }
+
+    trackEvent('celular_adiado', { origin: 'organizar' });
+    setPhoneCaptureState({ open: false, canSkip: true });
+    // Adiou: não pergunta de novo nesta visita.
+    setPhonePromptSuppressed(true);
+    await proceedOrganizar();
+  };
+
+  const proceedOrganizar = async () => {
     // Reorganizar partindo do resultado editado evita perder o que foi escrito
     // direto nele — antes o app reprocessava o texto base parado no tempo.
     if (canReorganizeFromResult) {
@@ -2826,6 +2999,8 @@ function App() {
     setEmail('');
     setPassword('');
     setConfirmPassword('');
+    setSignupPhone('');
+    setSignupWhatsappOptIn(false);
     setTermsAccepted(false);
     setSignupLegalConsent(null);
     setLegalConsentModalOpen(false);
@@ -2911,6 +3086,13 @@ function App() {
       return;
     }
 
+    const phoneDigits = normalizeBrazilianMobile(signupPhone);
+
+    if (!phoneDigits) {
+      setAuthError(PHONE_INVALID_MESSAGE);
+      return;
+    }
+
     if (!legalConsent) {
       setAuthError('');
       setAuthFeedback('');
@@ -2944,6 +3126,10 @@ function App() {
           privacy_scrolled_at: legalConsent.privacyScrolledAt || acceptedAt,
           privacy_version: legalVersion,
           legal_acceptance_flow: 'signup_scroll_modal',
+          // Vira profiles.phone no primeiro acesso (backend/services/profiles.js).
+          phone: phoneDigits,
+          whatsapp_opt_in: signupWhatsappOptIn,
+          whatsapp_opt_in_at: signupWhatsappOptIn ? acceptedAt : null,
         },
       },
     });
@@ -2955,15 +3141,20 @@ function App() {
       return;
     }
 
-    if (data?.session?.user) {
-      resetAuthFormState();
+    if (data?.user && Array.isArray(data.user.identities) && data.user.identities.length === 0) {
+      setAuthError('Este e-mail já está cadastrado. Tente entrar na sua conta.');
+      setLegalConsentModalOpen(false);
       setLoadingAuth(false);
       return;
     }
 
-    if (data?.user && Array.isArray(data.user.identities) && data.user.identities.length === 0) {
-      setAuthError('Este e-mail já está cadastrado. Tente entrar na sua conta.');
-      setLegalConsentModalOpen(false);
+    trackEvent('cadastro_enviado', {
+      origin: pendingOrganize ? 'organizar' : 'outro',
+      whatsapp_opt_in: signupWhatsappOptIn,
+    });
+
+    if (data?.session?.user) {
+      resetAuthFormState();
       setLoadingAuth(false);
       return;
     }
@@ -2973,6 +3164,8 @@ function App() {
     // que fazia muita gente achar que tinha digitado o e-mail errado.
     setPassword('');
     setConfirmPassword('');
+    setSignupPhone('');
+    setSignupWhatsappOptIn(false);
     setTermsAccepted(false);
     setSignupLegalConsent(null);
     setLegalConsentModalOpen(false);
@@ -3705,6 +3898,25 @@ function App() {
               />
             )}
 
+            {!signupConfirmationPending && authMode === 'signup' && (
+              <input
+                type="tel"
+                inputMode="numeric"
+                autoComplete="tel-national"
+                value={signupPhone}
+                onChange={(e) => {
+                  setSignupPhone(formatBrazilianMobileInput(e.target.value));
+                  if (authError) {
+                    setAuthError('');
+                  }
+                }}
+                placeholder="Celular com DDD (WhatsApp)"
+                aria-label="Celular com DDD"
+                disabled={loadingAuth}
+                className="topbar-auth-input"
+              />
+            )}
+
             {!signupConfirmationPending && authMode !== 'forgotPassword' && (
               <input
                 ref={passwordInputRef}
@@ -3736,6 +3948,18 @@ function App() {
                 disabled={loadingAuth}
                 className="topbar-auth-input"
               />
+            )}
+
+            {!signupConfirmationPending && authMode === 'signup' && (
+              <label className="signup-whatsapp-optin">
+                <input
+                  type="checkbox"
+                  checked={signupWhatsappOptIn}
+                  onChange={(e) => setSignupWhatsappOptIn(e.target.checked)}
+                  disabled={loadingAuth}
+                />
+                <span>Aceito receber dicas e novidades pelo WhatsApp. Posso cancelar quando quiser.</span>
+              </label>
             )}
 
             {!signupConfirmationPending && authMode === 'signup' && (
@@ -3958,6 +4182,9 @@ function App() {
                 loadingInsights={loadingInsights}
                 onOrganizar={handleOrganizar}
                 reorganizeFromResult={canReorganizeFromResult}
+                loginRequiredHint={organizeLoginRequired && !user?.id}
+                pendingOrganizeNotice={Boolean(pendingOrganize && user?.id && texto.trim() && !resultado)}
+                onDismissPendingOrganize={clearPendingOrganize}
                 onLimpar={handleLimpar}
                 erro={erro}
                 onDismissErro={() => setErro('')}
@@ -4225,6 +4452,7 @@ function App() {
           justCancelledAccessUntil={cancelSubscriptionAccessUntil}
           justCancelledRefund={cancelSubscriptionRefund}
           onSaveDisplayName={handleSaveDisplayName}
+          onSavePhone={(digits, whatsappOptIn) => handleSavePhone(digits, whatsappOptIn, 'perfil')}
           onUpdateContextualTab={handleUpdateContextualTab}
           savingPreference={savingPreference}
           onExportData={handleExportData}
@@ -4261,6 +4489,13 @@ function App() {
           <a href="/privacidade">Política de Privacidade</a>
         </div>
       </footer>
+
+      <PhoneCaptureModal
+        open={phoneCaptureState.open}
+        canSkip={phoneCaptureState.canSkip}
+        onSave={handleSavePhoneAndOrganize}
+        onSkip={handleSkipPhoneCapture}
+      />
 
       <PlanComparisonModal
         open={planComparisonState.open}

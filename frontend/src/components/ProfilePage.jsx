@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { PRO_PLAN_PERIOD_COPY, PRO_PLAN_PRICE_COPY } from '../billingPlans';
+import { formatBrazilianMobileInput, normalizeBrazilianMobile, PHONE_INVALID_MESSAGE } from '../lib/phone';
 
 const DISPLAY_NAME_MAX_LENGTH = 60;
 
@@ -73,6 +74,80 @@ function DisplayNameField({ initialValue, onSave }) {
       </div>
       {error ? <div className="topbar-auth-error">{error}</div> : null}
       {saved && !error ? <small className="profile-name-saved">Nome atualizado.</small> : null}
+    </div>
+  );
+}
+
+// Celular de contato e o aceite de mensagens no WhatsApp, editáveis aqui.
+function PhoneField({ initialPhone, initialOptIn, onSave }) {
+  const [draft, setDraft] = useState(formatBrazilianMobileInput(initialPhone || ''));
+  const [optIn, setOptIn] = useState(Boolean(initialOptIn));
+  const [saving, setSaving] = useState(false);
+  const [error, setError] = useState('');
+  const [saved, setSaved] = useState(false);
+
+  const digits = normalizeBrazilianMobile(draft);
+  const isDirty = (digits || draft.replace(/\D/g, '')) !== (initialPhone || '') || optIn !== Boolean(initialOptIn);
+
+  const handleSave = async () => {
+    if (!isDirty || saving) {
+      return;
+    }
+
+    if (!digits) {
+      setError(PHONE_INVALID_MESSAGE);
+      return;
+    }
+
+    setSaving(true);
+    setError('');
+    setSaved(false);
+
+    const result = await onSave?.(digits, optIn);
+    setSaving(false);
+
+    if (!result?.ok) {
+      setError(result?.error || 'Não foi possível salvar o celular agora.');
+      return;
+    }
+
+    setSaved(true);
+    window.setTimeout(() => setSaved(false), 2000);
+  };
+
+  return (
+    <div className="profile-name-field">
+      <label htmlFor="profile-phone">Celular (WhatsApp)</label>
+      <div className="profile-name-input-row">
+        <input
+          id="profile-phone"
+          type="tel"
+          inputMode="numeric"
+          autoComplete="tel-national"
+          value={draft}
+          onChange={(event) => {
+            setDraft(formatBrazilianMobileInput(event.target.value));
+            setError('');
+          }}
+          placeholder="(11) 98765-4321"
+        />
+        <button type="button" className="btn btn-secundario" onClick={handleSave} disabled={!isDirty || saving}>
+          {saving ? 'Salvando...' : 'Salvar'}
+        </button>
+      </div>
+      <label className="signup-whatsapp-optin">
+        <input
+          type="checkbox"
+          checked={optIn}
+          onChange={(event) => {
+            setOptIn(event.target.checked);
+            setError('');
+          }}
+        />
+        <span>Aceito receber dicas e novidades pelo WhatsApp.</span>
+      </label>
+      {error ? <div className="topbar-auth-error">{error}</div> : null}
+      {saved && !error ? <small className="profile-name-saved">Celular atualizado.</small> : null}
     </div>
   );
 }
@@ -290,6 +365,7 @@ function ProfilePage({
   justCancelledAccessUntil,
   justCancelledRefund,
   onSaveDisplayName,
+  onSavePhone,
   onUpdateContextualTab,
   savingPreference,
   onExportData,
@@ -420,6 +496,15 @@ function ProfilePage({
             </div>
 
             <DisplayNameField initialValue={profile?.display_name || ''} onSave={onSaveDisplayName} />
+
+            {onSavePhone ? (
+              <PhoneField
+                key={`${profile?.phone || ''}:${profile?.whatsapp_opt_in_at ? 1 : 0}`}
+                initialPhone={profile?.phone || ''}
+                initialOptIn={Boolean(profile?.whatsapp_opt_in_at)}
+                onSave={onSavePhone}
+              />
+            ) : null}
 
             <div className="profile-card-actions profile-card-actions-stack">
               <div className="profile-inline-actions">

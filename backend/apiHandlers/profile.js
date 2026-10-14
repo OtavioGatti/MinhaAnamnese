@@ -1,6 +1,9 @@
 const { ensureUserProfile } = require('../services/profiles');
 const { getStoredReferralAffiliate, summarizeReferral } = require('../services/affiliates');
 const { resolveSupabaseUser } = require('../utils/supabaseAuth');
+const { normalizeBrazilianMobile } = require('../utils/phone');
+
+const PHONE_INVALID_MESSAGE = 'Informe um celular válido com DDD, por exemplo (11) 98765-4321.';
 
 function getProfileUpdatesFromRequest(req) {
   const body = req.body || {};
@@ -39,7 +42,28 @@ function getProfileUpdatesFromRequest(req) {
       Object.prototype.hasOwnProperty.call(body, 'cookie_consent_version')
         ? body.cookie_consent_version
         : undefined,
+    phone:
+      Object.prototype.hasOwnProperty.call(body, 'phone')
+        ? normalizeBrazilianMobile(body.phone)
+        : undefined,
+    // true grava o aceite agora; false retira (null). Ausente não mexe.
+    whatsapp_opt_in_at:
+      typeof body.whatsapp_opt_in === 'boolean'
+        ? (body.whatsapp_opt_in ? now : null)
+        : undefined,
   };
+}
+
+// Celular é obrigatório para quem informa: número inválido não pode virar
+// "sem alteração" em silêncio, senão a tela diz que salvou e nada mudou.
+function getProfileValidationError(req) {
+  const body = req.body || {};
+
+  if (Object.prototype.hasOwnProperty.call(body, 'phone') && !normalizeBrazilianMobile(body.phone)) {
+    return PHONE_INVALID_MESSAGE;
+  }
+
+  return null;
 }
 
 module.exports = async function handler(req, res) {
@@ -47,6 +71,15 @@ module.exports = async function handler(req, res) {
     return res.status(405).json({
       success: false,
       error: 'M\u00e9todo n\u00e3o permitido',
+    });
+  }
+
+  const validationError = req.method === 'POST' ? getProfileValidationError(req) : null;
+
+  if (validationError) {
+    return res.status(400).json({
+      success: false,
+      error: validationError,
     });
   }
 

@@ -61,6 +61,8 @@ async function exportUserData(user) {
     profile: profile
       ? {
           display_name: profile.display_name || null,
+          phone: profile.phone || null,
+          whatsapp_opt_in_at: profile.whatsapp_opt_in_at || null,
           current_plan: profile.current_plan,
           billing_status: profile.billing_status,
           access_source: profile.access_source,

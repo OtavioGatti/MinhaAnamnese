@@ -35,6 +35,13 @@ const ALLOWED_EVENTS = new Set([
   'site_visita',
   // Origem: chegada por link de afiliado (topo do funil)
   'afiliado_link_visita',
+  // Cadastro: o site pediu conta para organizar (com a trava ligada), o
+  // cadastro foi enviado e o celular foi informado ou adiado por quem já tinha
+  // conta sem ele.
+  'organizar_login_exigido',
+  'cadastro_enviado',
+  'celular_completado',
+  'celular_adiado',
   // Boas-vindas
   'onboarding_exibido',
   'onboarding_fechado',
@@ -116,6 +123,8 @@ function sanitizeMetadata(metadata) {
     // nele (soma do que aparece no bloco "no seu teste você usou").
     'teste_encerrado',
     'uso_teste',
+    // Cadastro: se aceitou contato pelo WhatsApp (nunca o número).
+    'whatsapp_opt_in',
   ];
 
   allowedKeys.forEach((key) => {
