@@ -77,6 +77,7 @@ module.exports = async function handler(req, res) {
       return res.status(402).json(buildPaywallResponse(profile));
     }
 
+    const startedAt = Date.now();
     const hypotheses = await generateDiagnosticHypotheses({
       template,
       structuredText,
@@ -93,6 +94,9 @@ module.exports = async function handler(req, res) {
         template,
         hypothesisCount: hypotheses.hypotheses.length,
         status: hypotheses.status,
+        // Para acompanhar a troca de modelo (gpt-4o -> gpt-6-luna) em produção.
+        model: hypotheses.generation?.model || null,
+        durationMs: Date.now() - startedAt,
       },
     }).catch(() => null);
 
