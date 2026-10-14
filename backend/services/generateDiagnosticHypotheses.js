@@ -19,8 +19,18 @@ const { recordUnmatchedManeuvers } = require('./unmatchedManeuvers');
 const { resolveTemplateById } = require('./templates');
 const { sanitizeText } = require('../utils/textSanitization');
 
-const DEFAULT_MODEL = 'gpt-4o';
-const ALLOWED_MODELS = new Set(['gpt-4o', 'gpt-4o-mini', 'gpt-4.1-mini']);
+// A OpenAI desliga gpt-4o, gpt-4o-mini e gpt-4.1-mini em 14/01/2027; o
+// substituto é o gpt-6-luna. Comparado em 14/10/2026 com os casos de avaliação:
+// sem raciocínio ("none") ele errou menos que o gpt-4o (0 de 9 verificações x 3
+// de 9) a ~3% do custo, mas ~2 s mais lento. Raciocinar mais ficou mais lento
+// (mediana de 14 s no "medium") sem melhorar o resultado.
+//
+// Ordem de decisão: DIAGNOSTIC_MODEL (Render) > campo "modelo" do prompt no
+// Notion > padrão. Voltar atrás = DIAGNOSTIC_MODEL=gpt-4o (até 14/01/2027).
+const DEFAULT_MODEL = 'gpt-6-luna';
+const ALLOWED_MODELS = new Set(['gpt-6-luna', 'gpt-4o', 'gpt-4o-mini', 'gpt-4.1-mini']);
+const REASONING_MODELS = new Set(['gpt-6-luna']);
+const ALLOWED_REASONING_EFFORTS = new Set(['none', 'low', 'medium', 'high']);
 
 function isDiagnosticHypothesesEnabled() {
   return String(process.env.DIAGNOSTIC_HYPOTHESES_ENABLED || 'true').toLowerCase() !== 'false';
@@ -29,6 +39,26 @@ function isDiagnosticHypothesesEnabled() {
 function resolveDiagnosticModel(cmsModel) {
   const configuredModel = String(process.env.DIAGNOSTIC_MODEL || cmsModel || DEFAULT_MODEL).trim();
   return ALLOWED_MODELS.has(configuredModel) ? configuredModel : DEFAULT_MODEL;
+}
+
+// Parâmetros de raciocínio só para modelos que raciocinam (os antigos recusam).
+// O raciocínio também consome o limite de saída: com ele ligado, o teto sobe.
+function resolveReasoningEffort(model) {
+  if (!REASONING_MODELS.has(model)) {
+    return null;
+  }
+
+  const configured = String(process.env.DIAGNOSTIC_REASONING_EFFORT || 'none').trim().toLowerCase();
+  return ALLOWED_REASONING_EFFORTS.has(configured) ? configured : 'none';
+}
+
+const BASE_MAX_OUTPUT_TOKENS = 2200;
+const REASONING_EXTRA_OUTPUT_TOKENS = 6000;
+
+function resolveMaxOutputTokens(effort) {
+  return effort && effort !== 'none'
+    ? BASE_MAX_OUTPUT_TOKENS + REASONING_EXTRA_OUTPUT_TOKENS
+    : BASE_MAX_OUTPUT_TOKENS;
 }
 
 function validateDiagnosticHypothesesInput({ template, structuredText }) {
@@ -125,9 +155,13 @@ async function createStructuredDiagnosticResponse({
   safetyIdentifier,
   promptVersion,
 }) {
+  const effort = resolveReasoningEffort(model);
+  const maxOutputTokens = resolveMaxOutputTokens(effort);
+
   try {
     const response = await openai.responses.create({
       model,
+      ...(effort ? { reasoning: { effort } } : {}),
       instructions,
       input,
       text: {
@@ -138,7 +172,7 @@ async function createStructuredDiagnosticResponse({
           schema: DIAGNOSTIC_HYPOTHESES_SCHEMA,
         },
       },
-      max_output_tokens: 2200,
+      max_output_tokens: maxOutputTokens,
       store: false,
       safety_identifier: safetyIdentifier,
       metadata: {
@@ -171,7 +205,9 @@ async function createStructuredDiagnosticResponse({
         schema: DIAGNOSTIC_HYPOTHESES_SCHEMA,
       },
     },
-    max_tokens: 2200,
+    ...(effort
+      ? { reasoning_effort: effort, max_completion_tokens: maxOutputTokens }
+      : { max_tokens: maxOutputTokens }),
     store: false,
     safety_identifier: safetyIdentifier,
   });
@@ -325,6 +361,7 @@ module.exports = {
   parseDiagnosticResponse,
   parseChatCompletionResponse,
   resolveDiagnosticModel,
+  resolveReasoningEffort,
   shouldFallbackToChatCompletions,
   validateDiagnosticHypothesesInput,
 };

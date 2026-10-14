@@ -10,6 +10,7 @@ const {
   createSafetyIdentifier,
   parseDiagnosticResponse,
   resolveDiagnosticModel,
+  resolveReasoningEffort,
   validateDiagnosticHypothesesInput,
 } = require('../services/generateDiagnosticHypotheses');
 const {
@@ -103,9 +104,48 @@ test('escopo da negação é blindado e sobrevive a qualquer prompt do CMS', () 
   }
 });
 
-test('modelo do CMS passa por allowlist', () => {
-  assert.equal(resolveDiagnosticModel('gpt-4o-mini'), 'gpt-4o-mini');
-  assert.equal(resolveDiagnosticModel('modelo-inexistente'), 'gpt-4o');
+test('modelo do CMS passa por allowlist; desconhecido cai no gpt-6-luna', () => {
+  const anterior = process.env.DIAGNOSTIC_MODEL;
+  delete process.env.DIAGNOSTIC_MODEL;
+
+  try {
+    assert.equal(resolveDiagnosticModel('gpt-4o-mini'), 'gpt-4o-mini');
+    assert.equal(resolveDiagnosticModel('gpt-6-luna'), 'gpt-6-luna');
+    assert.equal(resolveDiagnosticModel('modelo-inexistente'), 'gpt-6-luna');
+    assert.equal(resolveDiagnosticModel(''), 'gpt-6-luna');
+
+    // A variável do Render vence o campo do Notion (é por ela que se volta atrás).
+    process.env.DIAGNOSTIC_MODEL = 'gpt-6-luna';
+    assert.equal(resolveDiagnosticModel('gpt-4o'), 'gpt-6-luna');
+    process.env.DIAGNOSTIC_MODEL = 'gpt-4o';
+    assert.equal(resolveDiagnosticModel('gpt-6-luna'), 'gpt-4o');
+  } finally {
+    if (anterior === undefined) {
+      delete process.env.DIAGNOSTIC_MODEL;
+    } else {
+      process.env.DIAGNOSTIC_MODEL = anterior;
+    }
+  }
+});
+
+test('raciocínio só vai para o gpt-6-luna, desligado por padrão', () => {
+  const anterior = process.env.DIAGNOSTIC_REASONING_EFFORT;
+  delete process.env.DIAGNOSTIC_REASONING_EFFORT;
+
+  try {
+    assert.equal(resolveReasoningEffort('gpt-4o'), null);
+    assert.equal(resolveReasoningEffort('gpt-6-luna'), 'none');
+    process.env.DIAGNOSTIC_REASONING_EFFORT = 'low';
+    assert.equal(resolveReasoningEffort('gpt-6-luna'), 'low');
+    process.env.DIAGNOSTIC_REASONING_EFFORT = 'qualquer';
+    assert.equal(resolveReasoningEffort('gpt-6-luna'), 'none');
+  } finally {
+    if (anterior === undefined) {
+      delete process.env.DIAGNOSTIC_REASONING_EFFORT;
+    } else {
+      process.env.DIAGNOSTIC_REASONING_EFFORT = anterior;
+    }
+  }
 });
 
 test('safety identifier é estável e não expõe o id original', () => {
