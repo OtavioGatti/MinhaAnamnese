@@ -24,7 +24,10 @@ const {
 } = require('./notionClinicalToolSchema');
 const { createStructuredProtocolResponse } = require('./generateProtocol');
 
-const DEFAULT_MODEL = 'gpt-4.1';
+// gpt-6-luna desde 15/10/2026: o gpt-4.1 sai em 14/01/2027. Na comparação (bulário e
+// exames) preencheu todos os campos, com posologia igual ou mais completa, a
+// ~7% do custo. PROTOCOL_MODEL (ou a variável do gerador) volta atrás.
+const DEFAULT_MODEL = 'gpt-6-luna';
 
 function resolveClinicalToolModel() {
   return String(
