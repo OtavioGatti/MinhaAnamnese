@@ -799,6 +799,42 @@ function hasDetailedHmaContext(contextText) {
   return countTextMatches(documentedText, HMA_DETAIL_PATTERNS) >= 4;
 }
 
+// Itens de medicação que dispensam dose para a seção cumprir a função:
+// uso eventual/se necessário e suplementos de rotina (ex.: sulfato ferroso e
+// ácido fólico no pré-natal). Lista mista ("losartana e ácido fólico") continua
+// cobrando dose do que não é eventual nem suplemento.
+const EVENTUAL_USE_PATTERN = /\b(eventual|eventualmente|ocasional|ocasionalmente|se necessario|quando necessario|s\/n|sos|em crises?|se dor|se febre)\b/;
+const ROUTINE_SUPPLEMENT_PATTERN = /\b(sulfato ferroso|ferro|acido folico|polivitaminico|vitamina|carbonato de calcio|citrato de calcio|omega|suplement\w*|probiotic\w*|colageno)\b/;
+const EVENTUAL_QUALIFIER_ONLY = /^(?:(?:de|em|para|uso|usa|faz)\s+)*(?:eventual|eventualmente|ocasional|ocasionalmente|se necessario|quando necessario|s\/n|sos)$/;
+
+function medicationsDispenseDose(evidence) {
+  const items = normalizeForSearch(evidence)
+    .replace(/\.$/, '')
+    .split(/\s*[,;]\s*|\s+e\s+/)
+    .map((item) => item.trim())
+    .filter(Boolean);
+
+  if (!items.length) {
+    return false;
+  }
+
+  const flags = [];
+
+  for (const item of items) {
+    // "Dipirona, uso eventual": o qualificador solto vale para o item anterior.
+    if (EVENTUAL_QUALIFIER_ONLY.test(item)) {
+      if (flags.length) {
+        flags[flags.length - 1] = true;
+      }
+      continue;
+    }
+
+    flags.push(EVENTUAL_USE_PATTERN.test(item) || ROUTINE_SUPPLEMENT_PATTERN.test(item));
+  }
+
+  return flags.length > 0 && flags.every(Boolean);
+}
+
 function getSectionQualityDowngrade(section, contextText = '') {
   if (section?.status !== 'present') {
     return null;
@@ -835,7 +871,12 @@ function getSectionQualityDowngrade(section, contextText = '') {
     };
   }
 
-  if ((id.includes('medic') || label.includes('medic')) && !/\b\d/.test(evidence) && evidence.length < 70) {
+  if (
+    (id.includes('medic') || label.includes('medic')) &&
+    !/\b\d/.test(evidence) &&
+    evidence.length < 70 &&
+    !medicationsDispenseDose(evidence)
+  ) {
     return {
       status: 'partial',
       reason: 'insufficient_medication_detail',
@@ -1067,6 +1108,21 @@ function findTextPriorityGroup(value) {
   return bestMatch?.group || null;
 }
 
+// A seção foi rebaixada só porque os remédios vieram sem dose: dizer
+// "medicações ou alergias" aí parecia erro para quem tinha escrito "nega
+// alergias" e listado os medicamentos.
+function isDoseOnlyGap(section) {
+  return section?.status === 'partial' && /sem dose/i.test(String(section.issue || ''));
+}
+
+// A seção caiu no grupo "medicações" só porque a observação dela cita alergias
+// (ex.: "Antecedentes: faltam comorbidades e alergias"), com os remédios em ordem.
+function isAllergyOnlyGap(section) {
+  const label = normalizeForSearch([section?.id, section?.label].filter(Boolean).join(' '));
+  const note = normalizeForSearch([section?.issue, section?.recommendation].filter(Boolean).join(' '));
+  return !/medic|muc|remedio|uso continuo/.test(label) && /alergi/.test(note);
+}
+
 function buildAcuteCriticalInsight(candidate) {
   if (!candidate?.section) {
     return '';
@@ -1080,6 +1136,24 @@ function buildAcuteCriticalInsight(candidate) {
       'CONSEQUENCIA NA LEITURA -> Limita a leitura objetiva de gravidade, estabilidade clínica e evolução do quadro',
       'IMPACTO NA QUALIDADE -> Reduz a segurança documental e a utilidade da anamnese para revisão clínica',
       'ACAO DIRETA -> Registre sinais vitais e achados objetivos relevantes na próxima coleta',
+    ].join(' -> ');
+  }
+
+  if (candidate.key === 'medications' && isAllergyOnlyGap(candidate.section)) {
+    return [
+      'FALHA -> Alergias não documentadas em contexto agudo',
+      'CONSEQUENCIA NA LEITURA -> Limita a segurança para prescrever ou administrar medicamentos no atendimento',
+      'IMPACTO NA QUALIDADE -> Reduz a completude documental de segurança do registro',
+      'ACAO DIRETA -> Registre alergias (ou a ausência delas) na próxima coleta',
+    ].join(' -> ');
+  }
+
+  if (candidate.key === 'medications' && isDoseOnlyGap(candidate.section)) {
+    return [
+      'FALHA -> Medicações citadas sem dose ou frequência em contexto agudo',
+      'CONSEQUENCIA NA LEITURA -> Dificulta conferir doses, adesão e uso recente no atendimento agudo',
+      'IMPACTO NA QUALIDADE -> Reduz a completude documental de segurança do registro',
+      'ACAO DIRETA -> Registre dose e frequência das medicações em uso na próxima coleta',
     ].join(' -> ');
   }
 
@@ -1134,6 +1208,14 @@ function buildAcuteCriticalInsight(candidate) {
 function buildAcuteJustification(candidate, fallbackJustification) {
   if (!candidate?.section) {
     return fallbackJustification;
+  }
+
+  if (candidate.key === 'medications' && isAllergyOnlyGap(candidate.section)) {
+    return 'A anamnese traz dados relevantes da queixa atual, mas em contexto agudo não registra alergias (nem a ausência delas), dado de segurança para qualquer prescrição ou administração de medicamentos. Lacunas como história familiar ou hábitos de vida podem ser completadas depois.';
+  }
+
+  if (candidate.key === 'medications' && isDoseOnlyGap(candidate.section)) {
+    return 'A anamnese traz dados relevantes da queixa atual e cita as medicações em uso, mas sem dose ou frequência. Em contexto agudo, esses detalhes ajudam a conferir adesão, uso recente e segurança da continuidade do cuidado. Lacunas como história familiar ou hábitos de vida podem ser completadas depois.';
   }
 
   if (candidate.key === 'medications') {
@@ -1579,3 +1661,7 @@ module.exports = {
   parseUnifiedAnalysisResponse,
   normalizeUnifiedAnalysisPayload,
 };
+
+// Anexados para os testes da régua das medicações.
+module.exports.medicationsDispenseDose = medicationsDispenseDose;
+module.exports.buildAcuteCriticalInsight = buildAcuteCriticalInsight;

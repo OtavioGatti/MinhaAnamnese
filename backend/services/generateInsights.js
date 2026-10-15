@@ -19,7 +19,7 @@ const {
   registerAnamneseMetric,
 } = require('./anamneseMetrics');
 
-const { buildChatModelParams, resolveModelChoice } = require('../utils/openaiModels');
+const { buildChatModelParams, isReasoningModel, resolveModelChoice } = require('../utils/openaiModels');
 
 const DEBUG_MODE = process.env.DEBUG_INSIGHTS === 'true';
 const UNIFIED_ANALYSIS_PROMPT_SLUG = 'unified_anamnesis_analysis_user';
@@ -296,8 +296,10 @@ async function generateUnifiedInsights({
     templateConfig,
     promptTemplate: syncedPrompt?.promptBody || null,
   });
-  const response = await openai.chat.completions.create({
-    ...buildChatModelParams(resolveInsightsModel(syncedPrompt?.model), { temperature: 0, topP: 1, maxTokens: 2200 }),
+  const unifiedModel = resolveInsightsModel(syncedPrompt?.model);
+  const request = {
+    // Modelos novos escrevem o JSON mais longo que o gpt-4o.
+    ...buildChatModelParams(unifiedModel, { temperature: 0, topP: 1, maxTokens: isReasoningModel(unifiedModel) ? 4000 : 2200 }),
     messages: [
       {
         role: 'user',
@@ -305,12 +307,29 @@ async function generateUnifiedInsights({
       },
     ],
     response_format: { type: 'json_object' },
-  });
-  const rawAnalysis = sanitizeText(response.choices?.[0]?.message?.content || '').trim();
-  const data = parseUnifiedAnalysisResponse(rawAnalysis, {
-    originalText,
-    structuredText: trimmedText,
-  });
+  };
+  // No modo JSON livre o modelo às vezes emenda espaços e quebras de linha até
+  // estourar o limite e o JSON sai cortado (visto no gpt-5.6-luna em ~1 de cada
+  // 10 avaliações, 10/2026). Uma nova tentativa resolve quase sempre; se falhar
+  // de novo, o erro sobe e generateInsights cai no caminho de reserva.
+  let data = null;
+
+  for (let attempt = 1; attempt <= 2 && !data; attempt += 1) {
+    const response = await openai.chat.completions.create(request);
+    const rawAnalysis = sanitizeText(response.choices?.[0]?.message?.content || '').trim();
+
+    try {
+      data = parseUnifiedAnalysisResponse(rawAnalysis, {
+        originalText,
+        structuredText: trimmedText,
+      });
+    } catch (error) {
+      if (attempt === 2) {
+        throw error;
+      }
+    }
+  }
+
   const previousMetric = await getLatestAnamneseMetric(userId, {
     analysisEngine: DEFAULT_ANALYSIS_ENGINE,
   }).catch(() => null);
