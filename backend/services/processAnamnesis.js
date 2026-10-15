@@ -20,6 +20,29 @@ const {
 const { isCustomTemplateId } = require('./userTemplates');
 const { normalizeMissingMarkers } = require('../utils/missingMarkers');
 
+// Modelo do organizar. A OpenAI desliga o gpt-4o-mini em 14/01/2027; o
+// substituto é o gpt-6-luna, que roda aqui sem raciocínio ("none"): organizar é
+// reescrita fiel, e raciocinar só deixou mais lento (4 s x 2 s) sem melhorar.
+// Troca e volta pelo Render: ORGANIZE_MODEL=gpt-6-luna | gpt-4o-mini.
+const DEFAULT_ORGANIZE_MODEL = 'gpt-4o-mini';
+const ALLOWED_ORGANIZE_MODELS = new Set(['gpt-4o-mini', 'gpt-6-luna']);
+const REASONING_ORGANIZE_MODELS = new Set(['gpt-6-luna']);
+const ORGANIZE_MAX_OUTPUT_TOKENS = 2048;
+
+function resolveOrganizeModel() {
+  const configured = String(process.env.ORGANIZE_MODEL || DEFAULT_ORGANIZE_MODEL).trim();
+  return ALLOWED_ORGANIZE_MODELS.has(configured) ? configured : DEFAULT_ORGANIZE_MODEL;
+}
+
+// Modelos de raciocínio recusam temperature e max_tokens.
+function buildOrganizeModelParams(model) {
+  if (REASONING_ORGANIZE_MODELS.has(model)) {
+    return { model, reasoning_effort: 'none', max_completion_tokens: ORGANIZE_MAX_OUTPUT_TOKENS };
+  }
+
+  return { model, temperature: 0.1, max_tokens: ORGANIZE_MAX_OUTPUT_TOKENS };
+}
+
 function validateProcessAnamnesisInput(payload) {
   const { template, texto } = payload || {};
 
@@ -106,7 +129,7 @@ async function processAnamnesis({ template, texto, userId }) {
   ]);
 
   const response = await openai.chat.completions.create({
-    model: 'gpt-4o-mini',
+    ...buildOrganizeModelParams(resolveOrganizeModel()),
     messages: [
       {
         role: 'system',
@@ -120,8 +143,6 @@ async function processAnamnesis({ template, texto, userId }) {
         content: `Template: ${templateConfig.nome}\n\nTexto:\n${sanitizedText}`,
       },
     ],
-    temperature: 0.1,
-    max_tokens: 2048,
   });
 
   // Garantia determinística de que sistema não examinado não vira linha vazia
@@ -199,6 +220,8 @@ async function processAnamnesis({ template, texto, userId }) {
 }
 
 module.exports = {
+  buildOrganizeModelParams,
   processAnamnesis,
+  resolveOrganizeModel,
   validateProcessAnamnesisInput,
 };

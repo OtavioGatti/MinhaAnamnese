@@ -191,6 +191,7 @@ COMO REESCREVER
 * Manter a locução de tempo do relato: "ontem de madrugada" continua "ontem de madrugada" (nunca "ontem à madrugada").
 * Escrever sempre em caixa de sentença, mesmo que o texto original esteja todo em CAIXA ALTA: não espelhar a caixa do texto base. Manter em caixa alta apenas as siglas clínicas (PA, FC, HAS, DM, MMII, EF, HD) e as unidades consagradas.
 * Eliminar ruído de digitação, repetição e marcas de fala sem descartar informação clínica.
+* Não usar colchetes no texto além do marcador de ausência: nada de "[sic]", "[?]" ou notas entre colchetes. Dado ambíguo no original é reescrito como veio, sem comentário.
 
 CONSOLIDAÇÃO DE NEGATIVAS (regra de segurança)
 Repetições de "Nega" podem ser unidas numa única negativa: "Nega alteração visual, rigidez de nuca e déficit neurológico" é preferível a repetir o verbo três vezes.

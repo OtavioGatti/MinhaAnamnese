@@ -285,3 +285,31 @@ test('a regra de segurança chega a todos os templates', () => {
     );
   });
 });
+
+test('organizar: modelo pelo ORGANIZE_MODEL, com parâmetros certos para cada um', () => {
+  const { buildOrganizeModelParams, resolveOrganizeModel } = require('../services/processAnamnesis');
+  const anterior = process.env.ORGANIZE_MODEL;
+
+  try {
+    delete process.env.ORGANIZE_MODEL;
+    assert.equal(resolveOrganizeModel(), 'gpt-4o-mini');
+    process.env.ORGANIZE_MODEL = 'gpt-6-luna';
+    assert.equal(resolveOrganizeModel(), 'gpt-6-luna');
+    process.env.ORGANIZE_MODEL = 'modelo-inexistente';
+    assert.equal(resolveOrganizeModel(), 'gpt-4o-mini');
+  } finally {
+    if (anterior === undefined) {
+      delete process.env.ORGANIZE_MODEL;
+    } else {
+      process.env.ORGANIZE_MODEL = anterior;
+    }
+  }
+
+  // Modelo de raciocínio recusa temperature e max_tokens.
+  assert.deepEqual(buildOrganizeModelParams('gpt-6-luna'), { model: 'gpt-6-luna', reasoning_effort: 'none', max_completion_tokens: 2048 });
+  assert.deepEqual(buildOrganizeModelParams('gpt-4o-mini'), { model: 'gpt-4o-mini', temperature: 0.1, max_tokens: 2048 });
+});
+
+test('redação proíbe colchetes além do marcador de ausência', () => {
+  assert.match(buildStructurePrompt(templates.clinica_medica), /nada de "\[sic\]"/);
+});
