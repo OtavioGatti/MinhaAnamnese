@@ -142,55 +142,18 @@ function parseChatCompletionResponse(completion) {
   return parseDiagnosticResponse({ output_text: message.content || '' });
 }
 
-function shouldFallbackToChatCompletions(error) {
-  const message = String(error?.message || '').toLowerCase();
-  return error?.status === 401 && message.includes('api.responses.write');
-}
-
+// Chat Completions direto. A chave não tem o escopo api.responses.write: a
+// tentativa pela Responses API falhava sempre e só então caía aqui (até
+// 15/10/2026), gastando uma ida à OpenAI por geração.
 async function createStructuredDiagnosticResponse({
   openai,
   model,
   instructions,
   input,
   safetyIdentifier,
-  promptVersion,
 }) {
   const effort = resolveReasoningEffort(model);
   const maxOutputTokens = resolveMaxOutputTokens(effort);
-
-  try {
-    const response = await openai.responses.create({
-      model,
-      ...(effort ? { reasoning: { effort } } : {}),
-      instructions,
-      input,
-      text: {
-        format: {
-          type: 'json_schema',
-          name: 'diagnostic_hypotheses',
-          strict: true,
-          schema: DIAGNOSTIC_HYPOTHESES_SCHEMA,
-        },
-      },
-      max_output_tokens: maxOutputTokens,
-      store: false,
-      safety_identifier: safetyIdentifier,
-      metadata: {
-        feature: 'diagnostic_hypotheses',
-        prompt_version: String(promptVersion || 0),
-      },
-    });
-
-    return {
-      parsed: parseDiagnosticResponse(response),
-      apiSurface: 'responses',
-    };
-  } catch (error) {
-    if (!shouldFallbackToChatCompletions(error)) {
-      throw error;
-    }
-  }
-
   const completion = await openai.chat.completions.create({
     model,
     messages: [
@@ -214,7 +177,7 @@ async function createStructuredDiagnosticResponse({
 
   return {
     parsed: parseChatCompletionResponse(completion),
-    apiSurface: 'chat_completions_fallback',
+    apiSurface: 'chat_completions',
   };
 }
 
@@ -362,6 +325,5 @@ module.exports = {
   parseChatCompletionResponse,
   resolveDiagnosticModel,
   resolveReasoningEffort,
-  shouldFallbackToChatCompletions,
   validateDiagnosticHypothesesInput,
 };

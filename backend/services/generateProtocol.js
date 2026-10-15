@@ -5,6 +5,7 @@
 // chat.completions. A saída passa SEMPRE pela trava de revisão humana
 // (finalizeAutomationProtocol) — nunca sai pronta/publicada de um fluxo de IA.
 
+const { buildChatModelParams } = require('../utils/openaiModels');
 const OpenAI = require('openai');
 const {
   buildProtocolSchema,
@@ -29,34 +30,6 @@ function resolveModel() {
   return String(process.env.PROTOCOL_MODEL || DEFAULT_MODEL).trim() || DEFAULT_MODEL;
 }
 
-function extractResponseRefusal(response) {
-  for (const outputItem of response?.output || []) {
-    for (const contentItem of outputItem?.content || []) {
-      if (contentItem?.type === 'refusal' && contentItem.refusal) {
-        return String(contentItem.refusal);
-      }
-    }
-  }
-
-  return '';
-}
-
-function extractResponseText(response) {
-  if (response?.output_text) {
-    return String(response.output_text);
-  }
-
-  for (const outputItem of response?.output || []) {
-    for (const contentItem of outputItem?.content || []) {
-      if (contentItem?.type === 'output_text' && contentItem.text) {
-        return String(contentItem.text);
-      }
-    }
-  }
-
-  return '';
-}
-
 function parseModelJson(rawText) {
   const text = String(rawText || '').trim();
 
@@ -75,47 +48,12 @@ function parseModelJson(rawText) {
   }
 }
 
-function shouldFallbackToChatCompletions(error) {
-  const message = String(error?.message || '').toLowerCase();
-  return error?.status === 401 && message.includes('api.responses.write');
-}
-
+// Chat Completions direto: a chave não tem o escopo api.responses.write (a
+// tentativa pela Responses API falhava sempre antes de cair aqui). Serve aos
+// cinco geradores editoriais (protocolos, bulário, exames, manobras, ferramentas).
 async function createStructuredProtocolResponse({ openai, model, instructions, input, schema }) {
-  try {
-    const response = await openai.responses.create({
-      model,
-      instructions,
-      input,
-      text: {
-        format: {
-          type: 'json_schema',
-          name: SCHEMA_NAME,
-          strict: true,
-          schema,
-        },
-      },
-      max_output_tokens: MAX_OUTPUT_TOKENS,
-      store: false,
-      safety_identifier: SAFETY_IDENTIFIER,
-      metadata: { feature: 'protocol_generation' },
-    });
-
-    const refusal = extractResponseRefusal(response);
-    if (refusal) {
-      const error = new Error(`O modelo recusou gerar o protocolo: ${refusal}`);
-      error.statusCode = 422;
-      throw error;
-    }
-
-    return { raw: parseModelJson(extractResponseText(response)), apiSurface: 'responses' };
-  } catch (error) {
-    if (!shouldFallbackToChatCompletions(error)) {
-      throw error;
-    }
-  }
-
   const completion = await openai.chat.completions.create({
-    model,
+    ...buildChatModelParams(model, { maxTokens: MAX_OUTPUT_TOKENS }),
     messages: [
       { role: 'system', content: instructions },
       { role: 'user', content: input },
@@ -124,7 +62,6 @@ async function createStructuredProtocolResponse({ openai, model, instructions, i
       type: 'json_schema',
       json_schema: { name: SCHEMA_NAME, strict: true, schema },
     },
-    max_tokens: MAX_OUTPUT_TOKENS,
     store: false,
     safety_identifier: SAFETY_IDENTIFIER,
   });
@@ -136,7 +73,7 @@ async function createStructuredProtocolResponse({ openai, model, instructions, i
     throw error;
   }
 
-  return { raw: parseModelJson(message.content || ''), apiSurface: 'chat_completions_fallback' };
+  return { raw: parseModelJson(message.content || ''), apiSurface: 'chat_completions' };
 }
 
 /**
