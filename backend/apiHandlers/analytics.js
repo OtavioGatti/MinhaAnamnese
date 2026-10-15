@@ -125,6 +125,8 @@ function sanitizeMetadata(metadata) {
     'uso_teste',
     // Cadastro: se aceitou contato pelo WhatsApp (nunca o número).
     'whatsapp_opt_in',
+    // Organizar: modelo que respondeu (acompanhar a troca de modelo).
+    'model',
   ];
 
   allowedKeys.forEach((key) => {

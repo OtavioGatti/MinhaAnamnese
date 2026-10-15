@@ -293,8 +293,8 @@ test('organizar: modelo pelo ORGANIZE_MODEL, com parâmetros certos para cada um
   try {
     delete process.env.ORGANIZE_MODEL;
     assert.equal(resolveOrganizeModel(), 'gpt-4o-mini');
-    process.env.ORGANIZE_MODEL = 'gpt-6-luna';
-    assert.equal(resolveOrganizeModel(), 'gpt-6-luna');
+    process.env.ORGANIZE_MODEL = 'gpt-5.4-mini';
+    assert.equal(resolveOrganizeModel(), 'gpt-5.4-mini');
     process.env.ORGANIZE_MODEL = 'modelo-inexistente';
     assert.equal(resolveOrganizeModel(), 'gpt-4o-mini');
   } finally {
@@ -306,7 +306,7 @@ test('organizar: modelo pelo ORGANIZE_MODEL, com parâmetros certos para cada um
   }
 
   // Modelo de raciocínio recusa temperature e max_tokens.
-  assert.deepEqual(buildOrganizeModelParams('gpt-6-luna'), { model: 'gpt-6-luna', reasoning_effort: 'none', max_completion_tokens: 2048 });
+  assert.deepEqual(buildOrganizeModelParams('gpt-5.4-mini'), { model: 'gpt-5.4-mini', reasoning_effort: 'none', max_completion_tokens: 2048 });
   assert.deepEqual(buildOrganizeModelParams('gpt-4o-mini'), { model: 'gpt-4o-mini', temperature: 0.1, max_tokens: 2048 });
 });
 

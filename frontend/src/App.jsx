@@ -2031,6 +2031,7 @@ function App() {
           text_length: sourceTexto.trim().length,
           is_pro: isPro,
           source: sourceKind,
+          model: response.data.model || null,
         });
       } else if (response.code === 'LOGIN_REQUIRED' && !user?.id) {
         // O servidor já exige conta, mesmo com a chave do site desligada.

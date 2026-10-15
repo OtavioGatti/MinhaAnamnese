@@ -20,13 +20,16 @@ const {
 const { isCustomTemplateId } = require('./userTemplates');
 const { normalizeMissingMarkers } = require('../utils/missingMarkers');
 
-// Modelo do organizar. A OpenAI desliga o gpt-4o-mini em 14/01/2027; o
-// substituto é o gpt-6-luna, que roda aqui sem raciocínio ("none"): organizar é
-// reescrita fiel, e raciocinar só deixou mais lento (4 s x 2 s) sem melhorar.
-// Troca e volta pelo Render: ORGANIZE_MODEL=gpt-6-luna | gpt-4o-mini.
+// Modelo do organizar. A OpenAI desliga o gpt-4o-mini em 14/01/2027.
+// Comparação de 15/10/2026 (55 organizações por modelo, sem raciocínio):
+// - gpt-5.4-mini: 0 falhas, 1,2 s, ~US$ 0,002 por organização — o escolhido;
+// - gpt-5.6-luna: 1 falha de formato, 2,2 s, ~US$ 0,0005;
+// - gpt-6-luna: perdeu "fala frases curtas" (asma) em 2 de 6 rodadas — fora;
+// - gpt-5.4-nano: inventou negativas e sai em 04/2027 — fora.
+// Troca e volta pelo Render: ORGANIZE_MODEL=gpt-5.4-mini | gpt-4o-mini.
 const DEFAULT_ORGANIZE_MODEL = 'gpt-4o-mini';
-const ALLOWED_ORGANIZE_MODELS = new Set(['gpt-4o-mini', 'gpt-6-luna']);
-const REASONING_ORGANIZE_MODELS = new Set(['gpt-6-luna']);
+const ALLOWED_ORGANIZE_MODELS = new Set(['gpt-4o-mini', 'gpt-5.4-mini', 'gpt-5.6-luna', 'gpt-6-luna']);
+const REASONING_ORGANIZE_MODELS = new Set(['gpt-5.4-mini', 'gpt-5.6-luna', 'gpt-6-luna']);
 const ORGANIZE_MAX_OUTPUT_TOKENS = 2048;
 
 function resolveOrganizeModel() {
@@ -128,8 +131,9 @@ async function processAnamnesis({ template, texto, userId }) {
     getPublishedDefaultPromptByType('structure_system').catch(() => null),
   ]);
 
+  const model = resolveOrganizeModel();
   const response = await openai.chat.completions.create({
-    ...buildOrganizeModelParams(resolveOrganizeModel()),
+    ...buildOrganizeModelParams(model),
     messages: [
       {
         role: 'system',
@@ -216,6 +220,8 @@ async function processAnamnesis({ template, texto, userId }) {
     score: qualityScore.score,
     comparison,
     metricRecorded,
+    // Para acompanhar a troca de modelo pelos eventos de uso.
+    model,
   };
 }
 
