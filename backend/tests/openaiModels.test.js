@@ -20,13 +20,13 @@ test('variável do Render vence o CMS; valor sem cara de modelo é ignorado', ()
   assert.equal(resolveModelChoice({ envValue: 'lixo; drop', cmsValue: '', fallback: 'gpt-4o-mini' }), 'gpt-4o-mini');
 });
 
-test('avaliação completa e cartas seguem nos modelos atuais até a variável ser trocada', () => {
+test('avaliação completa e cartas: padrão do código e troca pela variável', () => {
   const anteriores = { i: process.env.INSIGHTS_MODEL, l: process.env.LETTERS_MODEL };
   delete process.env.INSIGHTS_MODEL;
   delete process.env.LETTERS_MODEL;
 
   try {
-    assert.equal(resolveInsightsModel(''), 'gpt-4o');
+    assert.equal(resolveInsightsModel(''), 'gpt-5.6-luna');
     assert.equal(resolveLettersModel(), 'gpt-4o-mini');
     process.env.INSIGHTS_MODEL = 'gpt-6-luna';
     process.env.LETTERS_MODEL = 'gpt-5.4-mini';

@@ -25,9 +25,9 @@ const DEBUG_MODE = process.env.DEBUG_INSIGHTS === 'true';
 const UNIFIED_ANALYSIS_PROMPT_SLUG = 'unified_anamnesis_analysis_user';
 
 // Modelo da avaliação completa: INSIGHTS_MODEL (Render) > campo do prompt no
-// Notion > gpt-4o. O gpt-4o sai em 14/01/2027 — a troca é pela variável.
+// Notion > gpt-5.6-luna (desde 15/10/2026; o gpt-4o sai em 14/01/2027).
 function resolveInsightsModel(cmsModel) {
-  return resolveModelChoice({ envValue: process.env.INSIGHTS_MODEL, cmsValue: cmsModel, fallback: 'gpt-4o' });
+  return resolveModelChoice({ envValue: process.env.INSIGHTS_MODEL, cmsValue: cmsModel, fallback: 'gpt-5.6-luna' });
 }
 
 function getTrendFromScores(previousScore, currentScore) {
@@ -404,8 +404,8 @@ async function generateLegacyInsights({
   );
 
   const response = await openai.chat.completions.create({
-    // Caminho de reserva: sempre usou gpt-4o, ignorando o campo do Notion
-    // (que marca gpt-4o-mini); segue assim, salvo INSIGHTS_MODEL.
+    // Caminho de reserva: ignora o campo do Notion (que marca gpt-4o-mini, e o
+    // código nunca usou); vai no padrão (gpt-5.6-luna), salvo INSIGHTS_MODEL.
     ...buildChatModelParams(resolveInsightsModel(null), { temperature: 0, topP: 1, maxTokens: 1600 }),
     messages: [
       {
