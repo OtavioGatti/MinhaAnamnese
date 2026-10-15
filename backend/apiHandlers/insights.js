@@ -105,6 +105,9 @@ module.exports = async function handler(req, res) {
       feature: 'insights',
       metadata: {
         templateId,
+        // Modelo e motor usados (unified_ai ou caminho de reserva).
+        model: data?.model || null,
+        engine: data?.analysisEngine || null,
       },
     }).catch(() => null);
 

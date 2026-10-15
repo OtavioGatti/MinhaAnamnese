@@ -367,6 +367,8 @@ async function generateUnifiedInsights({
     comparison,
     metricRecorded,
     analysisEngine: 'unified_ai',
+    // Para acompanhar a troca de modelo em produção.
+    model: unifiedModel,
   };
 }
 
