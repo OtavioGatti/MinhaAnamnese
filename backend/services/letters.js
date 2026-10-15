@@ -1,3 +1,4 @@
+const { buildChatModelParams, resolveModelChoice } = require('../utils/openaiModels');
 const OpenAI = require('openai');
 const { getTextLimitError } = require('../utils/requestLimits');
 const { sanitizeText } = require('../utils/textSanitization');
@@ -217,6 +218,12 @@ function buildLetterUserMessage(type, { fields = {}, texto, structuredText }) {
   return lines.join('\n');
 }
 
+// Modelo das cartas e documentos: LETTERS_MODEL (Render) > gpt-4o-mini, que a
+// OpenAI desliga em 14/01/2027 — a troca é pela variável.
+function resolveLettersModel() {
+  return resolveModelChoice({ envValue: process.env.LETTERS_MODEL, fallback: 'gpt-4o-mini' });
+}
+
 async function generateLetter({ letterType, fields = {}, texto, structuredText = '', formatTemplate = '' }) {
   const validationError = validateLetterInput({ letterType, texto, structuredText, fields });
 
@@ -246,13 +253,11 @@ async function generateLetter({ letterType, fields = {}, texto, structuredText =
   );
 
   const response = await openai.chat.completions.create({
-    model: 'gpt-4o-mini',
+    ...buildChatModelParams(resolveLettersModel(), { temperature: 0.1, maxTokens: 900 }),
     messages: [
       { role: 'system', content: systemPrompt },
       { role: 'user', content: buildLetterUserMessage(type, { fields: normalizedFields, texto, structuredText }) },
     ],
-    temperature: 0.1,
-    max_tokens: 900,
   });
 
   const letter = sanitizeText(response.choices?.[0]?.message?.content || '').trim();
@@ -270,6 +275,7 @@ async function generateLetter({ letterType, fields = {}, texto, structuredText =
 }
 
 module.exports = {
+  resolveLettersModel,
   MAX_FORMAT_TEMPLATE_LENGTH,
   applyConditionalFormatBlocks,
   buildLetterSystemPrompt,

@@ -19,6 +19,7 @@ const {
 } = require('../utils/examSectionCleanup');
 const { isCustomTemplateId } = require('./userTemplates');
 const { normalizeMissingMarkers } = require('../utils/missingMarkers');
+const { hasUnexpectedForeignScript } = require('../utils/openaiModels');
 
 // Modelo do organizar. A OpenAI desliga o gpt-4o-mini em 14/01/2027.
 // Comparação de 15/10/2026 (55 organizações por modelo, sem raciocínio):
@@ -132,7 +133,7 @@ async function processAnamnesis({ template, texto, userId }) {
   ]);
 
   const model = resolveOrganizeModel();
-  const response = await openai.chat.completions.create({
+  const request = {
     ...buildOrganizeModelParams(model),
     messages: [
       {
@@ -147,7 +148,13 @@ async function processAnamnesis({ template, texto, userId }) {
         content: `Template: ${templateConfig.nome}\n\nTexto:\n${sanitizedText}`,
       },
     ],
-  });
+  };
+  let response = await openai.chat.completions.create(request);
+
+  // Palavra de outro alfabeto que não estava no texto: refaz uma vez.
+  if (hasUnexpectedForeignScript(response.choices?.[0]?.message?.content, sanitizedText)) {
+    response = await openai.chat.completions.create(request);
+  }
 
   // Garantia determinística de que sistema não examinado não vira linha vazia
   // no exame físico. O prompt pede isso, mas pedir não garante: sobravam 2-3

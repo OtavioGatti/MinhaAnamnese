@@ -19,13 +19,15 @@ const {
   registerAnamneseMetric,
 } = require('./anamneseMetrics');
 
+const { buildChatModelParams, resolveModelChoice } = require('../utils/openaiModels');
+
 const DEBUG_MODE = process.env.DEBUG_INSIGHTS === 'true';
 const UNIFIED_ANALYSIS_PROMPT_SLUG = 'unified_anamnesis_analysis_user';
 
-function resolveOpenAiModel(value, fallback = 'gpt-4o') {
-  const model = String(value || '').trim();
-
-  return /^gpt-[a-z0-9.-]+$/i.test(model) ? model : fallback;
+// Modelo da avaliação completa: INSIGHTS_MODEL (Render) > campo do prompt no
+// Notion > gpt-4o. O gpt-4o sai em 14/01/2027 — a troca é pela variável.
+function resolveInsightsModel(cmsModel) {
+  return resolveModelChoice({ envValue: process.env.INSIGHTS_MODEL, cmsValue: cmsModel, fallback: 'gpt-4o' });
 }
 
 function getTrendFromScores(previousScore, currentScore) {
@@ -295,16 +297,13 @@ async function generateUnifiedInsights({
     promptTemplate: syncedPrompt?.promptBody || null,
   });
   const response = await openai.chat.completions.create({
-    model: resolveOpenAiModel(syncedPrompt?.model),
+    ...buildChatModelParams(resolveInsightsModel(syncedPrompt?.model), { temperature: 0, topP: 1, maxTokens: 2200 }),
     messages: [
       {
         role: 'user',
         content: prompt,
       },
     ],
-    temperature: 0,
-    top_p: 1,
-    max_tokens: 2200,
     response_format: { type: 'json_object' },
   });
   const rawAnalysis = sanitizeText(response.choices?.[0]?.message?.content || '').trim();
@@ -384,16 +383,15 @@ async function generateLegacyInsights({
   );
 
   const response = await openai.chat.completions.create({
-    model: 'gpt-4o',
+    // Caminho de reserva: sempre usou gpt-4o, ignorando o campo do Notion
+    // (que marca gpt-4o-mini); segue assim, salvo INSIGHTS_MODEL.
+    ...buildChatModelParams(resolveInsightsModel(null), { temperature: 0, topP: 1, maxTokens: 1600 }),
     messages: [
       {
         role: 'user',
         content: prompt,
       },
     ],
-    temperature: 0,
-    top_p: 1,
-    max_tokens: 1600,
   });
 
   const insights = sanitizeText(response.choices?.[0]?.message?.content || '').trim();
@@ -510,6 +508,7 @@ async function generateInsights({ texto, templateId, userId, originalText }) {
 }
 
 module.exports = {
+  resolveInsightsModel,
   generateInsights,
   validateGenerateInsightsInput,
 };
