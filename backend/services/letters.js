@@ -271,6 +271,7 @@ async function generateLetter({ letterType, fields = {}, texto, structuredText =
   return {
     letter,
     letterType: normalizeLetterTypeKey(letterType),
+    model: resolveLettersModel(),
   };
 }
 

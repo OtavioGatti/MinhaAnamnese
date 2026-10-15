@@ -92,7 +92,8 @@ module.exports = async function handler(req, res) {
     await recordFeatureUsage({
       userId: auth.user.id,
       feature: 'referralLetters',
-      metadata: { letterType: normalizeLetterTypeKey(letterType) },
+      // model: para acompanhar a troca de modelo (LETTERS_MODEL) em produção.
+      metadata: { letterType: normalizeLetterTypeKey(letterType), model: data?.model || null },
     }).catch(() => null);
 
     if (accessState?.isTrialAccess) {
