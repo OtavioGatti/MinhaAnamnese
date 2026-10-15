@@ -11,7 +11,16 @@
 const OpenAI = require('openai');
 const { normalizeForMatch } = require('../utils/stringSimilarity');
 
-const MODEL = 'gpt-4o-mini';
+const { buildChatModelParams, resolveModelChoice } = require('../utils/openaiModels');
+
+// gpt-5.6-luna desde 15/10/2026 (gpt-4o-mini sai em 14/01/2027): 9 de 10 buscas
+// leigas acharam o CID certo, como o 4o-mini, com termos mais limpos.
+// CID10_EXPANSION_MODEL troca pelo Render.
+const DEFAULT_MODEL = 'gpt-5.6-luna';
+
+function resolveExpansionModel() {
+  return resolveModelChoice({ envValue: process.env.CID10_EXPANSION_MODEL, fallback: DEFAULT_MODEL });
+}
 const MAX_TERMS = 4;
 const REQUEST_TIMEOUT_MS = 6000;
 const CACHE_LIMIT = 500;
@@ -127,21 +136,23 @@ async function expandCid10QueryWithAi(query) {
 
   try {
     const openai = new OpenAI({ apiKey, timeout: REQUEST_TIMEOUT_MS });
-    const response = await openai.responses.create({
-      model: MODEL,
-      instructions: INSTRUCTIONS,
-      input: key,
-      text: {
-        format: {
-          type: 'json_schema',
-          name: 'cid10_query_expansion',
-          strict: true,
-          schema: EXPANSION_SCHEMA,
-        },
+    const model = resolveExpansionModel();
+    // Chat Completions, não Responses: a chave de produção não tem o escopo
+    // api.responses.write, e com Responses esta expansão falhava sempre, em
+    // silêncio (visto em 15/10/2026).
+    const completion = await openai.chat.completions.create({
+      ...buildChatModelParams(model, { maxTokens: 200 }),
+      messages: [
+        { role: 'system', content: INSTRUCTIONS },
+        { role: 'user', content: key },
+      ],
+      response_format: {
+        type: 'json_schema',
+        json_schema: { name: 'cid10_query_expansion', strict: true, schema: EXPANSION_SCHEMA },
       },
-      max_output_tokens: 200,
       store: false,
     });
+    const response = { output_text: completion?.choices?.[0]?.message?.content || '' };
 
     const responseText = extractResponseText(response).trim();
 
@@ -164,5 +175,6 @@ module.exports = {
   clearCid10AiExpansionCache: () => cache.clear(),
   expandCid10QueryWithAi,
   isAiExpansionEnabled,
+  resolveExpansionModel,
   sanitizeTerms,
 };

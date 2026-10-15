@@ -1,7 +1,8 @@
 const OpenAI = require('openai');
 const { normalizeCustomTemplateEnrichment } = require('../contracts/customTemplateEnrichment');
+const { buildChatModelParams, resolveModelChoice } = require('../utils/openaiModels');
 
-const DEFAULT_MODEL = 'gpt-4o-mini';
+const DEFAULT_MODEL = 'gpt-5.6-luna';
 const ENRICHMENT_TIMEOUT_MS = 20000;
 const DEBUG_TEMPLATES = process.env.DEBUG_TEMPLATES === 'true';
 
@@ -14,7 +15,7 @@ function logTemplateError(message, context = {}) {
 }
 
 function resolveEnrichmentModel() {
-  return String(process.env.TEMPLATE_ENRICHMENT_MODEL || DEFAULT_MODEL).trim() || DEFAULT_MODEL;
+  return resolveModelChoice({ envValue: process.env.TEMPLATE_ENRICHMENT_MODEL, fallback: DEFAULT_MODEL });
 }
 
 function isEnrichmentEnabled() {
@@ -101,7 +102,7 @@ async function enrichCustomTemplate({ name, categoryLabel, sections }) {
     const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
     const completion = await openai.chat.completions.create(
       {
-        model: resolveEnrichmentModel(),
+        ...buildChatModelParams(resolveEnrichmentModel(), { temperature: 0.2, maxTokens: 1600 }),
         messages: [
           { role: 'system', content: buildInstructions() },
           { role: 'user', content: buildInput({ name, categoryLabel, sections }) },
@@ -114,8 +115,6 @@ async function enrichCustomTemplate({ name, categoryLabel, sections }) {
             schema: ENRICHMENT_SCHEMA,
           },
         },
-        max_tokens: 1600,
-        temperature: 0.2,
         store: false,
       },
       { signal: controller.signal },
@@ -135,4 +134,5 @@ async function enrichCustomTemplate({ name, categoryLabel, sections }) {
 module.exports = {
   enrichCustomTemplate,
   isEnrichmentEnabled,
+  resolveEnrichmentModel,
 };
