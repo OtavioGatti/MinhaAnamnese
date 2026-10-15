@@ -84,10 +84,11 @@
         "pattern": "(desmai\\w*|s[ií]ncope|perda de consci\\w*|trauma\\w*|TCE|cabe[cç]a|craniano)"
       },
       {
-        "id": "hd-sem-invencao",
-        "label": "HD/Problemas ativos preenchido sem base no texto",
-        "type": "sectionIsMarker",
-        "section": "HD/Problemas ativos"
+        "id": "hd-sem-diagnostico-inventado",
+        "label": "HD/Problemas ativos com diagnóstico que o texto não traz (quedas e tontura relatadas podem entrar como problema ativo)",
+        "type": "mustNotMatch",
+        "section": "HD/Problemas ativos",
+        "pattern": "(hipotens\\w*|ortost\\w*|s[ií]ncope|labirint\\w*|vertigem|vestibul\\w*|AVC|isquemi\\w*|fratura|TCE|osteopor\\w*|ins[oô]nia|dem[eê]ncia)"
       },
       {
         "id": "conduta-sem-invencao",
