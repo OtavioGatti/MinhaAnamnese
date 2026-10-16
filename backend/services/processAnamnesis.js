@@ -27,8 +27,8 @@ const { hasUnexpectedForeignScript } = require('../utils/openaiModels');
 // - gpt-5.6-luna: 1 falha de formato, 2,2 s, ~US$ 0,0005;
 // - gpt-6-luna: perdeu "fala frases curtas" (asma) em 2 de 6 rodadas — fora;
 // - gpt-5.4-nano: inventou negativas e sai em 04/2027 — fora.
-// Troca e volta pelo Render: ORGANIZE_MODEL=gpt-5.4-mini | gpt-4o-mini.
-const DEFAULT_ORGANIZE_MODEL = 'gpt-4o-mini';
+// Em produção desde 15/10/2026: gpt-5.6-luna (padrão). Troca pelo Render: ORGANIZE_MODEL.
+const DEFAULT_ORGANIZE_MODEL = 'gpt-5.6-luna';
 const ALLOWED_ORGANIZE_MODELS = new Set(['gpt-4o-mini', 'gpt-5.4-mini', 'gpt-5.6-luna', 'gpt-6-luna']);
 const REASONING_ORGANIZE_MODELS = new Set(['gpt-5.4-mini', 'gpt-5.6-luna', 'gpt-6-luna']);
 const ORGANIZE_MAX_OUTPUT_TOKENS = 2048;

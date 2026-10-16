@@ -218,10 +218,10 @@ function buildLetterUserMessage(type, { fields = {}, texto, structuredText }) {
   return lines.join('\n');
 }
 
-// Modelo das cartas e documentos: LETTERS_MODEL (Render) > gpt-4o-mini, que a
-// OpenAI desliga em 14/01/2027 — a troca é pela variável.
+// Modelo das cartas e documentos: LETTERS_MODEL (Render) > gpt-5.6-luna (desde 15/10/2026; o gpt-4o-mini, que a
+// OpenAI desliga em 14/01/2027, era o anterior). Troca pelo Render.
 function resolveLettersModel() {
-  return resolveModelChoice({ envValue: process.env.LETTERS_MODEL, fallback: 'gpt-4o-mini' });
+  return resolveModelChoice({ envValue: process.env.LETTERS_MODEL, fallback: 'gpt-5.6-luna' });
 }
 
 async function generateLetter({ letterType, fields = {}, texto, structuredText = '', formatTemplate = '' }) {

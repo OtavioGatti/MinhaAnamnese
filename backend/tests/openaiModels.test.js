@@ -27,7 +27,7 @@ test('avaliação completa e cartas: padrão do código e troca pela variável',
 
   try {
     assert.equal(resolveInsightsModel(''), 'gpt-5.6-luna');
-    assert.equal(resolveLettersModel(), 'gpt-4o-mini');
+    assert.equal(resolveLettersModel(), 'gpt-5.6-luna');
     process.env.INSIGHTS_MODEL = 'gpt-6-luna';
     process.env.LETTERS_MODEL = 'gpt-5.4-mini';
     assert.equal(resolveInsightsModel('gpt-4o'), 'gpt-6-luna');
