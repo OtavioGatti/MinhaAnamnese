@@ -1,139 +1,18 @@
 import { useEffect, useMemo, useState } from 'react';
 import { api } from '../apiClient';
+import {
+  buildSectionsByTab,
+  DRUG_TABS,
+  getDrugMetaParts,
+  getDrugTitle,
+  getPregnancyLabel,
+  getPregnancyRiskClass,
+} from '../lib/clinicalDrugDisplay';
+import { ClinicalDrugSection, ReferenceList, ReviewNotice } from './ClinicalDrugBlocks';
 
 const DEFAULT_QUERY = '';
 const SEARCH_DEBOUNCE_MS = 320;
 const DRUG_PATH_PREFIX = '/bulario';
-
-const TABS = [
-  { id: 'principal', label: 'Principal' },
-  { id: 'ajustes', label: 'Ajustes' },
-  { id: 'cuidados', label: 'Cuidados' },
-];
-
-// `read` devolve o texto da seção. Seções vazias não aparecem: com a bula
-// completa sendo preenchida aos poucos, mostrar "ainda não preenchido" em cada
-// campo novo encheria a tela de avisos.
-const SECTION_DEFINITIONS = [
-  { key: 'summary', tab: 'principal', title: 'Resumo clínico', read: (drug) => drug.summaryText },
-  { key: 'indications', tab: 'principal', title: 'Indicações', read: (drug) => drug.monograph?.indications },
-  { key: 'adultDosage', tab: 'principal', title: 'Posologia adulto', read: (drug) => drug.adultDosage },
-  { key: 'pediatricDosage', tab: 'principal', title: 'Posologia pediátrica', read: (drug) => drug.pediatricDosage },
-  { key: 'administration', tab: 'principal', title: 'Administração', read: (drug) => drug.monograph?.administration },
-  { key: 'presentations', tab: 'principal', title: 'Apresentações', read: (drug) => drug.presentations || drug.anvisaPresentations },
-  { key: 'commercialNames', tab: 'principal', title: 'Nomes comerciais', read: (drug) => getCommercialNames(drug).join('\n') },
-  { key: 'mechanism', tab: 'principal', title: 'Mecanismo de ação', read: (drug) => drug.monograph?.mechanism },
-  { key: 'renalAdjustment', tab: 'ajustes', title: 'Ajuste renal', read: (drug) => drug.monograph?.renalAdjustment },
-  { key: 'hepaticAdjustment', tab: 'ajustes', title: 'Ajuste hepático', read: (drug) => drug.monograph?.hepaticAdjustment },
-  { key: 'pregnancyUse', tab: 'ajustes', title: 'Gestação', read: (drug) => drug.monograph?.pregnancyUse },
-  { key: 'lactation', tab: 'ajustes', title: 'Lactação', read: (drug) => drug.monograph?.lactation },
-  { key: 'geriatricUse', tab: 'ajustes', title: 'Uso geriátrico', read: (drug) => drug.monograph?.geriatricUse },
-  { key: 'perioperative', tab: 'ajustes', title: 'Perioperatório', read: (drug) => drug.monograph?.perioperative },
-  { key: 'monitoring', tab: 'ajustes', title: 'Monitoramento', read: (drug) => drug.monograph?.monitoring },
-  { key: 'contraindications', tab: 'cuidados', title: 'Contraindicações', read: (drug) => drug.contraindications },
-  { key: 'warnings', tab: 'cuidados', title: 'Advertências', read: (drug) => drug.warnings },
-  { key: 'adverseEffects', tab: 'cuidados', title: 'Efeitos adversos', read: (drug) => drug.monograph?.adverseEffects },
-  { key: 'interactions', tab: 'cuidados', title: 'Interações', read: (drug) => drug.interactions },
-];
-
-function normalizeDisplayText(value) {
-  return String(value || '').trim();
-}
-
-function getDrugTitle(drug) {
-  return drug?.activeIngredient || 'Medicamento';
-}
-
-// Nomes vêm de duas fontes (Anvisa e levantamento complementar) que se repetem
-// entre si; a tela mostra cada nome uma vez só.
-function getCommercialNames(drug) {
-  const seen = new Set();
-  const names = [];
-
-  [drug?.commercialNamesAnvisa, drug?.commercialNamesOpenai].forEach((value) => {
-    normalizeDisplayText(value)
-      .split(/\r?\n|;/)
-      .map((item) => item.replace(/^\s*[-•]\s*/, '').replace(/\.$/, '').trim())
-      .filter(Boolean)
-      .forEach((name) => {
-        const key = name.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
-
-        if (!seen.has(key)) {
-          seen.add(key);
-          names.push(name);
-        }
-      });
-  });
-
-  return names;
-}
-
-function getPregnancyLabel(drug) {
-  return drug?.monograph?.pregnancyRiskLabel || drug?.pregnancyRisk || '';
-}
-
-function getDrugMetaParts(drug) {
-  const pregnancy = getPregnancyLabel(drug);
-
-  return [
-    drug?.classCategory,
-    pregnancy ? `Gestação ${pregnancy}` : '',
-  ].filter(Boolean);
-}
-
-function splitListText(value) {
-  const text = normalizeDisplayText(value);
-
-  if (!text) {
-    return [];
-  }
-
-  return text
-    .split(/\r?\n|;/)
-    .map((item) => item.replace(/^\s*[-•]\s*/, '').trim())
-    .filter(Boolean);
-}
-
-function isLikelyList(value) {
-  const text = normalizeDisplayText(value);
-  const items = splitListText(text);
-
-  return items.length > 1 && (text.includes('\n') || text.includes(';') || /^\s*[-•]/.test(text));
-}
-
-function getPregnancyRiskClass(drug) {
-  const code = normalizeDisplayText(drug?.pregnancyRisk).toUpperCase();
-
-  if (['D', 'X', 'EVITAR'].includes(code)) {
-    return 'danger';
-  }
-
-  if (['A', 'B'].includes(code)) {
-    return 'success';
-  }
-
-  if (['C', 'INDEFINIDO'].includes(code)) {
-    return 'warning';
-  }
-
-  return '';
-}
-
-function getSourceUrl(drug) {
-  const candidates = [drug?.sourceBula, drug?.pdfFile].map(normalizeDisplayText);
-  return candidates.find((value) => /^https?:\/\//i.test(value)) || '';
-}
-
-function formatDate(value) {
-  if (!value) {
-    return '';
-  }
-
-  const date = new Date(value.length === 10 ? `${value}T12:00:00` : value);
-  return Number.isNaN(date.getTime())
-    ? ''
-    : date.toLocaleDateString('pt-BR', { day: '2-digit', month: 'short', year: 'numeric' });
-}
 
 function getSlugFromPath() {
   if (typeof window === 'undefined') {
@@ -195,123 +74,6 @@ function ClinicalDrugSidebar({
         )}
       </div>
     </aside>
-  );
-}
-
-function ClinicalDrugSection({ title, text, expanded, onToggle }) {
-  const content = normalizeDisplayText(text);
-
-  return (
-    <section className="clinical-drug-section">
-      <button
-        type="button"
-        className="clinical-drug-section-trigger"
-        aria-expanded={expanded}
-        onClick={onToggle}
-      >
-        <span>
-          <span className="protocol-chevron">{expanded ? '▾' : '▸'}</span>
-          {title}
-        </span>
-      </button>
-
-      {expanded ? (
-        <div className="clinical-drug-section-content">
-          {isLikelyList(content) ? (
-            <ul className="protocol-simple-list">
-              {splitListText(content).map((item, index) => (
-                <li key={`${title}-${item}-${index}`}>{item}</li>
-              ))}
-            </ul>
-          ) : (
-            <pre>{content}</pre>
-          )}
-        </div>
-      ) : null}
-    </section>
-  );
-}
-
-// O que dá (ou não) para confiar no conteúdo, sempre visível no topo da bula.
-function ReviewNotice({ drug }) {
-  const monograph = drug?.monograph || {};
-  const status = normalizeDisplayText(monograph.clinicalReviewStatus);
-  const reviewedAt = formatDate(monograph.reviewedAt);
-  const updatedAt = formatDate(drug?.sourceUpdatedAt || drug?.updatedAt);
-
-  if (/revisado por m[eé]dico/i.test(status)) {
-    return (
-      <div className="clinical-drug-review success">
-        <strong>Revisado por médico</strong>
-        <span>
-          {[monograph.reviewedBy, reviewedAt ? `em ${reviewedAt}` : ''].filter(Boolean).join(' ')}
-        </span>
-      </div>
-    );
-  }
-
-  if (/aguardando revis/i.test(status)) {
-    return (
-      <div className="clinical-drug-review warning">
-        <strong>Aguardando revisão médica</strong>
-        <span>Conteúdo elaborado a partir das referências listadas no fim da bula, ainda não revisado por médico.</span>
-      </div>
-    );
-  }
-
-  if (/precisa corre/i.test(status)) {
-    return (
-      <div className="clinical-drug-review danger">
-        <strong>Em correção</strong>
-        <span>Este conteúdo foi marcado para correção. Confira na bula oficial antes de usar.</span>
-      </div>
-    );
-  }
-
-  return (
-    <div className="clinical-drug-review neutral">
-      <strong>Sem revisão documentada</strong>
-      <span>{updatedAt ? `Atualizado em ${updatedAt}. ` : ''}Confira na bula oficial antes de usar.</span>
-    </div>
-  );
-}
-
-function ReferenceList({ drug }) {
-  const references = splitListText(drug?.monograph?.references);
-  const sourceUrl = getSourceUrl(drug);
-
-  if (references.length === 0 && !sourceUrl) {
-    return null;
-  }
-
-  return (
-    <section className="clinical-drug-source-box">
-      <strong>Referências</strong>
-      <ol className="clinical-drug-reference-list">
-        {references.map((reference, index) => {
-          const url = reference.match(/https?:\/\/\S+/i)?.[0]?.replace(/[).,]+$/, '') || '';
-          const label = url ? reference.replace(url, '').replace(/[\s—–-]+$/, '').trim() : reference;
-
-          return (
-            <li key={`${reference}-${index}`}>
-              {label || url}
-              {url ? (
-                <>
-                  {' '}
-                  <a href={url} target="_blank" rel="noreferrer">acessar</a>
-                </>
-              ) : null}
-            </li>
-          );
-        })}
-        {sourceUrl ? (
-          <li>
-            Bula de referência{' '}
-            <a href={sourceUrl} target="_blank" rel="noreferrer">acessar</a>
-          </li>
-        ) : null}
-      </ol>
-    </section>
   );
 }
 
@@ -390,13 +152,7 @@ function ClinicalDrugDetail({ drug }) {
   const [activeTab, setActiveTab] = useState('principal');
   const [expanded, setExpanded] = useState({});
 
-  const sectionsByTab = useMemo(() => TABS.reduce((accumulator, tab) => ({
-    ...accumulator,
-    [tab.id]: SECTION_DEFINITIONS
-      .filter((definition) => definition.tab === tab.id)
-      .map((definition) => ({ ...definition, text: normalizeDisplayText(definition.read(drug)) }))
-      .filter((definition) => definition.text),
-  }), {}), [drug]);
+  const sectionsByTab = useMemo(() => buildSectionsByTab(drug), [drug]);
 
   const visibleSections = sectionsByTab[activeTab] || [];
 
@@ -407,7 +163,7 @@ function ClinicalDrugDetail({ drug }) {
       <SafetyNotice />
 
       <div className="prescription-section-tabs" role="tablist" aria-label="Seções da bula">
-        {TABS.map((tab) => (
+        {DRUG_TABS.map((tab) => (
           <button
             key={tab.id}
             type="button"

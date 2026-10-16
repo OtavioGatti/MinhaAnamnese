@@ -4228,7 +4228,14 @@ function App() {
                 erro={erro}
                 onDismissErro={() => setErro('')}
                 drugMentionsEnabled={Boolean(user?.id && isPro)}
-                onOpenDrugCatalog={() => handleNavigate('clinicalDrugs')}
+                onOpenDrugCatalog={(slug) => {
+                  // Com o medicamento, abre direto a bula dele (/bulario/<slug>);
+                  // a página do Bulário lê o endereço ao abrir.
+                  if (slug) {
+                    window.history.pushState(null, '', `/bulario/${encodeURIComponent(slug)}`);
+                  }
+                  handleNavigate('clinicalDrugs');
+                }}
               />
 
               {resultado && (

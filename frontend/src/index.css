@@ -5245,62 +5245,43 @@ body {
   gap: 0.45rem;
 }
 
-.clinical-drug-quick-highlights {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.7rem;
+/* Sem isto o grid do corpo cresce até a largura do item mais longo (o selo de
+   classe) e, no celular, o texto da posologia passa da borda. */
+.clinical-drug-quick-body {
+  grid-template-columns: minmax(0, 1fr);
 }
 
-.clinical-drug-quick-highlight {
+.clinical-drug-quick-body > *,
+.clinical-drug-quick-meta > * {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.clinical-drug-quick-essentials {
   display: grid;
-  align-content: start;
+  gap: 0.6rem;
+}
+
+.clinical-drug-quick-essential {
+  display: grid;
   gap: 0.35rem;
-  min-height: 96px;
-  padding: 0.85rem 0.9rem;
+  padding: 0.8rem 0.9rem;
   border: 1px solid rgba(191, 219, 254, 0.9);
   border-radius: 12px;
   background: linear-gradient(180deg, #eff6ff 0%, #fff 100%);
 }
 
-.clinical-drug-quick-highlight span {
+.clinical-drug-quick-essential > span {
   color: var(--primary-700);
   font-size: 0.76rem;
   font-weight: 850;
-  letter-spacing: 0;
   text-transform: uppercase;
 }
 
-.clinical-drug-quick-highlight p {
+.clinical-drug-quick-essential pre,
+.clinical-drug-quick-essential li {
   margin: 0;
   color: var(--gray-800);
-  font-size: 0.86rem;
-  line-height: 1.5;
-}
-
-.clinical-drug-quick-sections {
-  display: grid;
-  align-content: start;
-  gap: 0.7rem;
-}
-
-.clinical-drug-quick-section,
-.clinical-drug-quick-source {
-  border: 1px solid var(--gray-200);
-  border-radius: 10px;
-  background: #fff;
-  overflow: hidden;
-}
-
-.clinical-drug-quick-section-content {
-  padding: 0.85rem 0.9rem;
-}
-
-.clinical-drug-quick-section pre,
-.clinical-drug-quick-section p,
-.clinical-drug-quick-source-content span,
-.clinical-drug-quick-source-content a {
-  margin: 0;
-  color: var(--gray-700);
   font: inherit;
   font-size: 0.87rem;
   line-height: 1.55;
@@ -5308,53 +5289,29 @@ body {
   white-space: pre-wrap;
 }
 
-.clinical-drug-quick-section p {
+.clinical-drug-quick-empty {
+  margin: 0;
   color: var(--gray-500);
+  font-size: 0.85rem;
 }
 
-.clinical-drug-quick-source-content a {
-  color: var(--primary-700);
-  font-weight: 700;
-}
-
-.clinical-drug-quick-section-trigger {
-  width: 100%;
-  min-height: 44px;
+/* No modal as três abas dividem a largura (no celular não cabem com o
+   espaçamento da página). */
+.clinical-drug-quick-tabs {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.75rem;
-  padding: 0.72rem 0.85rem;
-  border: none;
-  background: var(--gray-50);
-  color: var(--gray-900);
-  font: inherit;
-  text-align: left;
-  cursor: pointer;
+  margin: 0.15rem 0 0;
 }
 
-.clinical-drug-quick-section-title,
-.clinical-drug-quick-source .clinical-drug-quick-section-title {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.48rem;
-  padding: 0;
-  color: var(--gray-900);
-  font-size: 0.92rem;
-  font-weight: 750;
-  line-height: 1.25;
-  white-space: normal;
+.clinical-drug-quick-tabs .prescription-section-tab {
+  flex: 1 1 0;
+  justify-content: center;
+  min-width: 0;
+  padding: 0.5rem 0.4rem;
 }
 
-.clinical-drug-quick-section-trigger .protocol-chevron {
-  display: inline-flex;
-  padding: 0;
-  color: var(--gray-500);
-}
-
-.clinical-drug-quick-source-content span,
-.clinical-drug-quick-source-content a {
-  padding: 0;
+.clinical-drug-review-badge.neutral {
+  background: var(--gray-100);
+  color: var(--gray-600);
 }
 
 .clinical-drug-quick-disclaimer {
@@ -7448,10 +7405,6 @@ body {
   .drug-detected-chip-copy strong,
   .drug-detected-chip-copy small {
     max-width: 100%;
-  }
-
-  .clinical-drug-quick-highlights {
-    grid-template-columns: 1fr;
   }
 
   .clinical-drug-quick-actions {

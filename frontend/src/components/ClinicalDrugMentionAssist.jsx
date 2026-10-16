@@ -1,4 +1,13 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import {
+  buildSectionsByTab,
+  DRUG_TABS,
+  ESSENTIAL_SECTION_KEYS,
+  getEssentialSections,
+  getPregnancyLabel,
+  getPregnancyRiskClass,
+} from '../lib/clinicalDrugDisplay';
+import { ClinicalDrugSection, ClinicalDrugSectionBody, ReferenceList, ReviewNotice } from './ClinicalDrugBlocks';
 
 // Folga entre a linha do cursor e a caixa, para não encostar no texto.
 const CARET_GAP_PX = 6;
@@ -16,44 +25,6 @@ function getDrugSubtitle(drug) {
     drug?.classCategory,
     drug?.pregnancyRisk ? `Gestação ${drug.pregnancyRisk}` : '',
   ].filter(Boolean).join(' · ');
-}
-
-function getDrugPresentationText(drug) {
-  return [
-    drug?.presentations,
-    drug?.commercialNamesAnvisa,
-    drug?.commercialNamesOpenai,
-  ]
-    .map(normalizeDisplayText)
-    .filter(Boolean)
-    .join('\n');
-}
-
-function getDrugSourceText(drug) {
-  return [
-    drug?.sourceBula,
-    drug?.pdfFile,
-  ]
-    .map(normalizeDisplayText)
-    .filter(Boolean)
-    .join('\n');
-}
-
-function getShortText(value, maxLength = 180) {
-  const text = normalizeDisplayText(value).replace(/\s+/g, ' ');
-
-  if (text.length <= maxLength) {
-    return text;
-  }
-
-  return `${text.slice(0, maxLength).trim()}...`;
-}
-
-function splitDisplayLines(value) {
-  return normalizeDisplayText(value)
-    .split(/\r?\n/)
-    .map((item) => item.trim())
-    .filter(Boolean);
 }
 
 function getRiskClass(value) {
@@ -610,96 +581,18 @@ function ClinicalDrugSafetyAlerts({ mention }) {
   );
 }
 
-function QuickHighlight({ title, text, empty }) {
-  const content = normalizeDisplayText(text);
-
-  return (
-    <div className="clinical-drug-quick-highlight">
-      <span>{title}</span>
-      <p>{content ? getShortText(content) : empty}</p>
-    </div>
-  );
-}
-
-function QuickSection({
-  title,
-  text,
-  empty = 'Campo ainda não preenchido no Bulário.',
-  expanded,
-  onToggle,
-}) {
-  const content = normalizeDisplayText(text);
-
-  return (
-    <section className="clinical-drug-quick-section">
-      <button
-        type="button"
-        className="clinical-drug-quick-section-trigger"
-        aria-expanded={expanded}
-        onClick={onToggle}
-      >
-        <span className="clinical-drug-quick-section-title">
-          <span className="protocol-chevron">{expanded ? '▾' : '▸'}</span>
-          {title}
-        </span>
-      </button>
-
-      {expanded ? (
-        <div className="clinical-drug-quick-section-content">
-          {content ? <pre>{content}</pre> : <p>{empty}</p>}
-        </div>
-      ) : null}
-    </section>
-  );
-}
-
-function QuickSourceSection({ items, expanded, onToggle }) {
-  if (!items.length) {
-    return null;
-  }
-
-  return (
-    <section className="clinical-drug-quick-source">
-      <button
-        type="button"
-        className="clinical-drug-quick-section-trigger"
-        aria-expanded={expanded}
-        onClick={onToggle}
-      >
-        <span className="clinical-drug-quick-section-title">
-          <span className="protocol-chevron">{expanded ? '▾' : '▸'}</span>
-          Fonte
-        </span>
-      </button>
-
-      {expanded ? (
-        <div className="clinical-drug-quick-section-content clinical-drug-quick-source-content">
-          {items.map((item, index) => (
-            /^https?:\/\//i.test(item) ? (
-              <a href={item} target="_blank" rel="noreferrer" key={`${item}-${index}`}>{item}</a>
-            ) : (
-              <span key={`${item}-${index}`}>{item}</span>
-            )
-          ))}
-        </div>
-      ) : null}
-    </section>
-  );
-}
-
+// Consulta rápida aberta durante a escrita: o essencial para prescrever fica
+// aberto e inteiro no topo (nunca cortar posologia no meio da dose); o resto
+// da bula vem nas mesmas abas da página do Bulário, com as seções fechadas.
 function ClinicalDrugQuickModal({ drug, onClose, onOpenCatalog }) {
-  const source = getDrugSourceText(drug);
-  const sourceItems = splitDisplayLines(source);
-  const presentations = getDrugPresentationText(drug);
-  const hasMeta = Boolean(drug?.pregnancyRisk || drug?.classCategory);
-  const [expandedSections, setExpandedSections] = useState({});
-
-  function toggleQuickSection(key) {
-    setExpandedSections((currentSections) => ({
-      ...currentSections,
-      [key]: !currentSections[key],
-    }));
-  }
+  const [activeTab, setActiveTab] = useState('principal');
+  const [expanded, setExpanded] = useState({});
+  const essentials = getEssentialSections(drug);
+  const sectionsByTab = buildSectionsByTab(drug, { exclude: ESSENTIAL_SECTION_KEYS });
+  const visibleTabs = DRUG_TABS.filter((tab) => sectionsByTab[tab.id].length > 0);
+  const currentTab = visibleTabs.some((tab) => tab.id === activeTab) ? activeTab : visibleTabs[0]?.id;
+  const visibleSections = currentTab ? sectionsByTab[currentTab] : [];
+  const pregnancy = getPregnancyLabel(drug);
 
   useEffect(() => {
     function handleKeyDown(event) {
@@ -713,7 +606,8 @@ function ClinicalDrugQuickModal({ drug, onClose, onOpenCatalog }) {
   }, [onClose]);
 
   useEffect(() => {
-    setExpandedSections({});
+    setExpanded({});
+    setActiveTab('principal');
   }, [drug?.slug]);
 
   return (
@@ -729,7 +623,6 @@ function ClinicalDrugQuickModal({ drug, onClose, onOpenCatalog }) {
           <div>
             <span className="clinical-drug-eyebrow">Consulta rápida</span>
             <h2 id="clinical-drug-quick-title">{getDrugTitle(drug)}</h2>
-            <p>{getDrugSubtitle(drug) || 'Informações essenciais do Bulário Clínico.'}</p>
           </div>
           <button type="button" className="btn btn-secundario" onClick={onClose}>
             Fechar
@@ -738,81 +631,59 @@ function ClinicalDrugQuickModal({ drug, onClose, onOpenCatalog }) {
 
         <div className="clinical-drug-quick-body">
           <div className="clinical-drug-quick-meta">
-            {drug?.classCategory ? (
-              <span className="protocol-meta-chip">
-                {drug.classCategory}
-              </span>
+            {drug?.classCategory ? <span className="protocol-meta-chip">{drug.classCategory}</span> : null}
+            {pregnancy ? (
+              <span className={`protocol-status-badge ${getPregnancyRiskClass(drug)}`}>Gestação: {pregnancy}</span>
             ) : null}
-            {drug?.pregnancyRisk ? (
-              <span className={`protocol-status-badge ${getRiskClass(drug.pregnancyRisk)}`}>
-                Risco gestacional {drug.pregnancyRisk}
-              </span>
-            ) : null}
-            {!hasMeta ? <span className="protocol-meta-chip">Bulário clínico</span> : null}
+            <ReviewNotice drug={drug} compact />
           </div>
 
-          <div className="clinical-drug-quick-highlights">
-            <QuickHighlight
-              title="Posologia adulto"
-              text={drug?.adultDosage}
-              empty="Sem posologia adulta preenchida."
-            />
-            <QuickHighlight
-              title="Contraindicações"
-              text={drug?.contraindications}
-              empty="Sem contraindicações preenchidas."
-            />
-          </div>
+          <section className="clinical-drug-quick-essentials" aria-label="Essencial para prescrever">
+            {essentials.map((section) => (
+              <div className="clinical-drug-quick-essential" key={section.key}>
+                <span>{section.title}</span>
+                {section.text ? (
+                  <ClinicalDrugSectionBody title={section.title} text={section.text} />
+                ) : (
+                  <p className="clinical-drug-quick-empty">Ainda não preenchido no Bulário.</p>
+                )}
+              </div>
+            ))}
+          </section>
 
-          <div className="clinical-drug-quick-sections">
-            <QuickSection
-              title="Resumo"
-              text={drug?.summaryText}
-              expanded={Boolean(expandedSections.summary)}
-              onToggle={() => toggleQuickSection('summary')}
-            />
-            <QuickSection
-              title="Posologia adulto"
-              text={drug?.adultDosage}
-              expanded={Boolean(expandedSections.adultDosage)}
-              onToggle={() => toggleQuickSection('adultDosage')}
-            />
-            <QuickSection
-              title="Posologia pediátrica"
-              text={drug?.pediatricDosage}
-              expanded={Boolean(expandedSections.pediatricDosage)}
-              onToggle={() => toggleQuickSection('pediatricDosage')}
-            />
-            <QuickSection
-              title="Contraindicações"
-              text={drug?.contraindications}
-              expanded={Boolean(expandedSections.contraindications)}
-              onToggle={() => toggleQuickSection('contraindications')}
-            />
-            <QuickSection
-              title="Advertências"
-              text={drug?.warnings}
-              expanded={Boolean(expandedSections.warnings)}
-              onToggle={() => toggleQuickSection('warnings')}
-            />
-            <QuickSection
-              title="Interações"
-              text={drug?.interactions}
-              expanded={Boolean(expandedSections.interactions)}
-              onToggle={() => toggleQuickSection('interactions')}
-            />
-            <QuickSection
-              title="Apresentações / nomes comerciais"
-              text={presentations}
-              expanded={Boolean(expandedSections.presentations)}
-              onToggle={() => toggleQuickSection('presentations')}
-            />
-            <QuickSourceSection
-              items={sourceItems}
-              expanded={Boolean(expandedSections.source)}
-              onToggle={() => toggleQuickSection('source')}
-            />
-          </div>
+          {visibleTabs.length > 0 ? (
+            <>
+              <div className="prescription-section-tabs clinical-drug-quick-tabs" role="tablist" aria-label="Seções da bula">
+                {visibleTabs.map((tab) => (
+                  <button
+                    key={tab.id}
+                    type="button"
+                    role="tab"
+                    aria-selected={currentTab === tab.id}
+                    className={`prescription-section-tab ${currentTab === tab.id ? 'active' : ''}`}
+                    onClick={() => setActiveTab(tab.id)}
+                  >
+                    {tab.label}
+                    <span className="clinical-drug-tab-count">{sectionsByTab[tab.id].length}</span>
+                  </button>
+                ))}
+              </div>
+
+              <div className="clinical-drug-section-list">
+                {visibleSections.map((section) => (
+                  <ClinicalDrugSection
+                    key={section.key}
+                    title={section.title}
+                    text={section.text}
+                    expanded={Boolean(expanded[section.key])}
+                    onToggle={() => setExpanded((current) => ({ ...current, [section.key]: !current[section.key] }))}
+                  />
+                ))}
+              </div>
+            </>
+          ) : null}
+
+          <ReferenceList drug={drug} />
         </div>
 
         <div className="clinical-drug-quick-disclaimer">
@@ -827,10 +698,10 @@ function ClinicalDrugQuickModal({ drug, onClose, onOpenCatalog }) {
               className="btn btn-secundario"
               onClick={() => {
                 onClose();
-                onOpenCatalog();
+                onOpenCatalog(drug?.slug);
               }}
             >
-              Abrir Bulário completo
+              Abrir bula completa
             </button>
           ) : null}
           <button type="button" className="btn btn-primario" onClick={onClose}>
@@ -852,7 +723,7 @@ function ClinicalDrugMentionAssist({ enabled, mention, onOpenCatalog }) {
       <div className="drug-mention-helper-row">
         <span>Digite <strong>@</strong> para inserir medicamentos do Bulário.</span>
         {onOpenCatalog ? (
-          <button type="button" onClick={onOpenCatalog}>
+          <button type="button" onClick={() => onOpenCatalog()}>
             Abrir Bulário
           </button>
         ) : null}
