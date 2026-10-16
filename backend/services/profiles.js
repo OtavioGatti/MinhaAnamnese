@@ -39,6 +39,8 @@ const OPTIONAL_PROFILE_COLUMNS = [
   'phone',
   'phone_collected_at',
   'whatsapp_opt_in_at',
+  'signup_origin',
+  'signup_campaign',
 ];
 
 // Atividade do usuario para o painel de metricas. Uma escrita por requisicao
@@ -266,6 +268,27 @@ function resolvePhoneFields(user, existingProfile, overrides) {
   };
 }
 
+// Canal de origem do cadastro (tiktok, instagram…), mandado pelo site no
+// signUp. Vira coluna uma vez e não muda mais: é a origem do cadastro.
+function normalizeOriginTag(value) {
+  const text = String(value || '').trim().toLowerCase().replace(/[^a-z0-9._-]/g, '').slice(0, 60);
+  return text || null;
+}
+
+function resolveSignupOrigin(user, existingProfile) {
+  if (existingProfile?.signup_origin) {
+    return {
+      signup_origin: normalizeOriginTag(existingProfile.signup_origin),
+      signup_campaign: normalizeOriginTag(existingProfile.signup_campaign),
+    };
+  }
+
+  return {
+    signup_origin: normalizeOriginTag(user?.user_metadata?.signup_origin),
+    signup_campaign: normalizeOriginTag(user?.user_metadata?.signup_campaign),
+  };
+}
+
 function buildProfileFallback(user, existingProfile = null, overrides = {}) {
   const profile = {
     id: user?.id || existingProfile?.id || null,
@@ -349,6 +372,7 @@ function buildProfileFallback(user, existingProfile = null, overrides = {}) {
         ? overrides.last_payment_id || null
         : existingProfile?.last_payment_id || null,
     ...resolvePhoneFields(user, existingProfile, overrides),
+    ...resolveSignupOrigin(user, existingProfile),
     created_at: existingProfile?.created_at || null,
     updated_at: existingProfile?.updated_at || null,
   };
@@ -496,6 +520,14 @@ async function upsertProfile(fields) {
     payload.whatsapp_opt_in_at = normalizePlanExpiresAt(fields.whatsapp_opt_in_at);
   }
 
+  if ('signup_origin' in fields) {
+    payload.signup_origin = normalizeOriginTag(fields.signup_origin);
+  }
+
+  if ('signup_campaign' in fields) {
+    payload.signup_campaign = normalizeOriginTag(fields.signup_campaign);
+  }
+
   const { url, serviceRoleKey } = getProfilesAdminConfig();
   const query = new URLSearchParams({
     on_conflict: 'id',
@@ -588,7 +620,8 @@ function shouldUpdateProfile(existingProfile, nextProfile) {
     (existingProfile.last_payment_id || null) !== (nextProfile.last_payment_id || null) ||
     normalizeBrazilianMobile(existingProfile.phone) !== normalizeBrazilianMobile(nextProfile.phone) ||
     normalizePlanExpiresAt(existingProfile.whatsapp_opt_in_at) !==
-      normalizePlanExpiresAt(nextProfile.whatsapp_opt_in_at)
+      normalizePlanExpiresAt(nextProfile.whatsapp_opt_in_at) ||
+    normalizeOriginTag(existingProfile.signup_origin) !== normalizeOriginTag(nextProfile.signup_origin)
   );
 }
 
@@ -716,6 +749,8 @@ async function ensureUserProfile(user, overrides = {}) {
     phone: fallbackProfile.phone,
     phone_collected_at: fallbackProfile.phone_collected_at,
     whatsapp_opt_in_at: fallbackProfile.whatsapp_opt_in_at,
+    signup_origin: fallbackProfile.signup_origin,
+    signup_campaign: fallbackProfile.signup_campaign,
   });
 
   return withActiveSubscriptionFlag(

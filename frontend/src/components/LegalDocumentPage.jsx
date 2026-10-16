@@ -1,5 +1,5 @@
-export const LEGAL_DOCUMENT_VERSION = '2026-10-14';
-export const LEGAL_LAST_UPDATED = '14/10/2026';
+export const LEGAL_DOCUMENT_VERSION = '2026-10-16';
+export const LEGAL_LAST_UPDATED = '16/10/2026';
 
 const TERMS_SECTIONS = [
   {
@@ -66,6 +66,7 @@ const PRIVACY_SECTIONS = [
     paragraphs: [
       'Para o funcionamento da plataforma, coletamos dados de cadastro e perfil, como e-mail, nome, número de celular, dados do plano escolhido e preferências de acesso, gerenciados através do Supabase.',
       'O celular é usado para falar com você sobre a sua conta, o suporte e os pagamentos. Mensagens com dicas e novidades pelo WhatsApp só são enviadas a quem aceitar no cadastro ou no perfil, e esse aceite pode ser retirado a qualquer momento no perfil ou pelo e-mail de suporte.',
+      'Registramos também o canal pelo qual você chegou ao site (por exemplo, Instagram, TikTok ou busca), a partir do link de acesso, para saber quais canais de divulgação funcionam. Não registramos a página de onde você veio.',
       'Também podemos armazenar dados de uso e histórico, incluindo histórico de anamneses, logs de uso, métricas de análise e templates criados pelo usuário em nosso banco de dados no Supabase.',
       'Informações de checkout, auditoria de pagamentos e eventos de faturamento são processados e gerenciados diretamente pelo Mercado Pago. Não armazenamos dados sensíveis de cartão de crédito em nossos servidores.',
     ],

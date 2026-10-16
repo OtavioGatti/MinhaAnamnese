@@ -17,6 +17,8 @@ const LEAD_COLUMNS = [
   'billing_status',
   'plan_expires_at',
   'last_seen_at',
+  'signup_origin',
+  'signup_campaign',
 ];
 
 function getConfig() {
@@ -56,6 +58,8 @@ function toLead(row) {
     status: row?.billing_status || '',
     vence: formatDate(row?.plan_expires_at),
     ultimoAcesso: formatDate(row?.last_seen_at),
+    origem: row?.signup_origin || '',
+    campanha: row?.signup_campaign || '',
   };
 }
 
@@ -72,6 +76,8 @@ const CSV_HEADER = [
   ['status', 'Status'],
   ['vence', 'Vence em'],
   ['ultimoAcesso', 'Último acesso'],
+  ['origem', 'Origem do cadastro'],
+  ['campanha', 'Campanha'],
 ];
 
 function csvCell(value) {

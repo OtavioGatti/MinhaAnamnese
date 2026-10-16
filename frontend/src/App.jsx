@@ -34,6 +34,7 @@ import {
   shouldAskForPhone,
 } from './lib/signupGate';
 import PhoneCaptureModal from './components/PhoneCaptureModal';
+import { classifyTrafficOrigin, ORIGIN_STORAGE_KEY, parseStoredOrigin, resolveStoredOrigin } from './lib/trafficOrigin';
 import DiagnosticHypothesesPanel from './components/DiagnosticHypothesesPanel';
 import FocusedClinicalReview from './components/FocusedClinicalReview';
 import InputSection from './components/InputSection';
@@ -1199,6 +1200,26 @@ function App() {
       return false;
     }
   });
+  // De onde veio a visita (TikTok, Instagram…), para saber qual canal traz
+  // cadastro. Calculada na chegada; vai para a visita, para o cadastro e para o
+  // perfil (signup_origin). Guardada no navegador só com consentimento.
+  const [trafficOrigin] = useState(() => {
+    const current = classifyTrafficOrigin({
+      search: window.location.search,
+      referrer: document.referrer,
+      userAgent: window.navigator.userAgent,
+      ownHost: window.location.hostname,
+    });
+    let stored = null;
+
+    try {
+      stored = parseStoredOrigin(window.localStorage.getItem(ORIGIN_STORAGE_KEY));
+    } catch {
+      stored = null;
+    }
+
+    return resolveStoredOrigin({ current, stored });
+  });
   const [phoneCaptureState, setPhoneCaptureState] = useState({ open: false, canSkip: true });
   // Salvou o celular mas o perfil voltou sem ele (SQL ainda não aplicado):
   // não pergunta de novo nesta visita.
@@ -1351,7 +1372,19 @@ function App() {
       return;
     }
 
-    trackEvent('site_visita', { logado: Boolean(user) }, { eventKey: 'site_visita' });
+    try {
+      window.localStorage.setItem(ORIGIN_STORAGE_KEY, JSON.stringify(trafficOrigin));
+    } catch {
+      // Sem armazenamento, a origem vale só para esta visita.
+    }
+
+    trackEvent('site_visita', {
+      logado: Boolean(user),
+      canal: trafficOrigin.canal,
+      utm_source: trafficOrigin.utm_source,
+      utm_campaign: trafficOrigin.utm_campaign,
+      ref_host: trafficOrigin.ref_host,
+    }, { eventKey: 'site_visita' });
   }, [cookieConsent, loadingUser, user]);
 
   useEffect(() => {
@@ -3129,6 +3162,9 @@ function App() {
           legal_acceptance_flow: 'signup_scroll_modal',
           // Vira profiles.phone no primeiro acesso (backend/services/profiles.js).
           phone: phoneDigits,
+          // Canal de origem (vira profiles.signup_origin no primeiro acesso).
+          signup_origin: trafficOrigin.canal,
+          signup_campaign: trafficOrigin.utm_campaign || trafficOrigin.utm_source || null,
           whatsapp_opt_in: signupWhatsappOptIn,
           whatsapp_opt_in_at: signupWhatsappOptIn ? acceptedAt : null,
         },
@@ -3152,6 +3188,8 @@ function App() {
     trackEvent('cadastro_enviado', {
       origin: pendingOrganize ? 'organizar' : 'outro',
       whatsapp_opt_in: signupWhatsappOptIn,
+      canal: trafficOrigin.canal,
+      utm_campaign: trafficOrigin.utm_campaign,
     });
 
     if (data?.session?.user) {

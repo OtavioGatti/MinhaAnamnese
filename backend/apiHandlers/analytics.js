@@ -127,6 +127,12 @@ function sanitizeMetadata(metadata) {
     'whatsapp_opt_in',
     // Organizar: modelo que respondeu (acompanhar a troca de modelo).
     'model',
+    // Origem da visita: canal (tiktok, instagram…), utm do link e só o
+    // domínio de onde veio (nunca a página).
+    'canal',
+    'utm_source',
+    'utm_campaign',
+    'ref_host',
   ];
 
   allowedKeys.forEach((key) => {
