@@ -1,0 +1,695 @@
+FONTE: lote5__rosuvastatina-calcica__CRESTOR.pdf
+
+===== BLOCO 1 =====
+APRESENTAÇÕES
+Comprimidos revestidos de 5 mg em embalagens com 10, 30 ou 60 comprimidos.
+Comprimidos revestidos de 10 mg em embalagens com 10 ou 30 comprimidos.
+Comprimidos revestidos de 20 mg em embalagens com 30 comprimidos.
+Comprimidos revestidos de 40 mg em embalagens com 30 comprimidos.
+
+VIA ORAL
+
+USO ADULTO E PEDIÁTRICO ACIMA DE 6 ANOS (vide indicações)
+
+1. INDICAÇÕES
+
+CRESTOR deve ser usado como adjuvante à dieta quando a resposta à dieta e aos exercícios é
+inadequada.
+
+Em pacientes adultos com hipercolesterolemia CRESTOR é indicado para:
+
+• Redução do LDL-colesterol, colesterol total e triglicérides elevados; aumento d o HDL-colesterol
+ em pacientes com hipercolesterolemia primária (familiar heterozigótica e não familiar) e
+ dislipidemia mista (Fredrickson tipos IIa e IIb). CRESTOR também diminui ApoB, não- HDL-C,
+ VLDL-C, VLDL-TG, e as razões LDL-C/HDL-C, C- total/HDL-C, não-HDL-C/HDL-C,
+ ApoB/ApoA- I e aumenta ApoA-I nestas populações.
+
+• Tratamento da hipertrigliceridemia isolada (hiperlipidemia de Fredrickson tipo IV).
+
+• Redução do colesterol total e LDL-C em pacientes com hipercolesterolemia familiar homozigótica,
+ tanto isoladamente quanto como um adjuvante à dieta e a outros tratamentos de redução de lipídios
+ (por ex.: aférese de LDL), se tais tratamentos não forem suficientes.
+
+• Retardamento ou redução da progressão da aterosclerose.
+
+Crianças e adolescentes de 6 a 17 anos de idade
+
+CRESTOR é indicado para redução do colesterol total, LDL-C e ApoB em pacientes com
+hipercolesterolemia familiar heterozigótica (HeFH).
+
+3. CARACTERÍSTICAS FARMACOLÓGICAS
+
+Propriedades Farmacodinâmicas
+
+- Mecanismo de ação
+
+A rosuvastatina é um seletivo e potente inibidor competitivo da HMG-CoA redutase, a enzima que
+limita a taxa de conversão da 3-hidroxi-3-metilglutaril coenzima A para mevalonato, um precursor do
+colesterol. Os triglicérides (TG) e o colesterol são incorporados no fígado à apolipoproteína B
+(ApoB), e liberados no plasma como lipoproteína de densidade muito baixa (VLDL), para serem
+distribuídos nos tecidos periféricos. As partículas VLDL são ricas em triglicérides. A lipoproteína de
+baixa densidade (LDL), rica em colesterol, é formada a partir de VLDL e captada principalmente
+através do receptor de LDL de alta afinidade no fígado.
+
+A rosuvastatina exerce seus efeitos modificadores sobre os lipídios de duas maneiras: ela aumenta o
+número de receptores LDL hepáticos na superfície celular, aumentando a captação e o catabolismo do
+LDL, e inibe a síntese hepática de VLDL, reduzindo, assim, o número total de partículas de VLDL e
+LDL.
+
+A lipoproteína de alta densidade (HDL) que contém ApoA-I é envolvida, entre outros, no transporte
+do colesterol dos tecidos de volta para o fígado (transporte reverso de colesterol).
+O envolvimento do LDL-C na aterogênese está bem documentado. Estudos epidemiológicos
+estabeleceram que LDL-C e TG altos e HDL-C e ApoA-I baixos foram associados a um maior risco
+de doença cardiovascular. Estudos de intervenção mostraram os benefícios da redução de LDL-C e
+TG ou do aumento do HDL-C sobre as taxas de mortalidade e de eventos cardiovasculares (CV).
+Dados mais recentes associaram os efeitos benéficos dos inibidores da HMG-CoA redutase à
+diminuição do não- HDL (por ex.: todo colesterol circulante que não está em HDL) e da ApoB ou à
+redução da razão ApoB/ApoA-I.
+
+Propriedades Farmacocinéticas
+
+CRESTOR é administrado por via oral na forma ativa, com picos de níveis plasmático s ocorrendo 5
+horas após a administração. A absorção aumenta linearmente com a faixa de dose. A meia- vida é de
+19 horas e não aumenta com a elevação da dose. A biodisponibilidade absoluta é de 20%. Há um
+acúmulo mínimo com dose única diária repetida.
+
+A rosuvastatina sofre metabolismo de primeira passagem no fígado, que é o local primário da síntese
+de colesterol e da depuração de LDL-C.
+
+Aproximadamente 90% da rosuvastatina ligam- se às proteínas plasmáticas, principalmente à
+albumina. Mais de 90% da atividade inibitória para a HMG- CoA redutase circulante é atribuída ao
+princípio ativo.
+
+A rosuvastatina sofre metabolismo limitado (aproximadamente 10%), principalmente para a forma N-
+desmetila, e 90% são eliminados como droga inalterada nas fezes, sendo o restante excretado na urina.
+
+- Populações especiais
+
+- Idade e sexo: não houve efeito clinicamente relevante associado à idade ou sexo na farmacocinética
+da rosuvastatina em adultos. A exposição em crianças e adolescentes com hipercolesterolemia
+heretozigótica familiar aparenta ser similar ou menor que em adultos com dislipidemia.
+
+- Raça: estudos farmacocinéticos mostram uma elevação de aproximadamente duas vezes na mediana
+da área sob a curva (ASC) em descendentes asiáticos comparados com caucasianos. Uma análise da
+farmacocinética da população não revelou diferenças clinicamente relevantes na farmacocinética entre
+caucasianos, hispânicos e negros ou grupos de afro- caribenhos.
+
+- Insuficiência renal: em um estudo realizado em indivíduos com graus variáveis de insuficiência
+renal, a doença renal de leve a moderada apresentou pouca influência nas concentrações plasmáticas
+da rosuvastatina. Entretanto, indivíduos com insuficiência grave (depuração de creatinina < 30
+mL/min) apresentaram um aumento de 3 vezes na concentração plasmática em comparação com
+voluntários sadios.
+
+- Insuficiência hepática: em um estudo realizado em indivíduos com graus variáveis de insuficiência
+hepática, não houve evidência de aumento da exposição à rosuvastatina, exceto em 2 indivíduos com
+doença hepática mais grave (graus 8 e 9 de Child-Pugh). Nestes indivíduos, a exposição sistêmica foi
+aumentada em no mínimo 2 vezes em comparação aos indivíduos com grau menor de Child- Pugh.
+
+- Polimorfismos genéticos: a disponibilidade dos inibidores da HMG-CoA redutase, incluindo a
+rosuvastatina, envolve OATP1B1 e as proteínas transportadoras BCRP. Em pacientes com
+polimorfismos genéticos em SLCO1B1 (OATP1B1) e/ou ABCG2 (BCRP) existe um risco de maior
+exposição à rosuvastatina. Polimorfismos individuais de SLCO1B1 c.521CC e ABCG2 c.421AA
+estão associados com uma exposição (ASC) à rosuvastatina aproximadamente 1,6 ou 2,4 vezes maior,
+respectivamente, em comparação com os genótipos SLCO1B1 c.521TT ou ABCG2 c.421CC.
+Dados de segurança pré- clínica
+
+Os dados pré- clínicos não revelam danos especiais em humanos, tendo como base estudos
+convencionais de farmacologia de segurança, toxicidade de dose repetida, genotoxicidade, potencial
+carcinogênico e toxicidade reprodutiva.
+
+Reações adversas não observadas em estudos clínicos, mas detectadas em animais com níveis de
+exposição semelhantes aos níveis clínicos foram as seguintes: Em estudos de toxicidade de dose
+repetida, alterações histopatológicas no fígado, provavelmente devido à ação farmacológica da
+rosuvastatina, foram observadas em camundongos e ratos, e em menor grau com efeitos na vesícula
+biliar em cães, mas não em macacos.
+
+A administração oral diária de 0, 20, 60 e 200 mg/kg/dia durante 13 semanas em camundongos da
+linhagem B6C3F1 (10 machos e 10 fêmeas por grupo experimental) resultou em aumento do peso do
+fígado (≥ 60 mg/kg/dia) e hipertrofia centrolobular hepática (≥ 60 mg/kg/dia em machos, 200
+mg/kg/dia em fêmeas). A exposição plasmática no Nível Sem Efeito Observado (NOEL) foi de 0,7
+(machos) e 1,5 (fêmeas) vez a exposição humana na dose máxima recomendada de 40 mg.
+
+A administração oral diária de 0, 2, 6 e 20 mg/kg/dia por 6 meses em ratos da linhagem Sprague
+Dawley (20 machos e 20 fêmeas por grupo experimental) resultou em aumento reversível do peso do
+fígado em fêmeas, hipertrofia e aumento da degeneração gordurosa dos hepatócitos perilobulares,
+fibrose perilobular e focos de alterações celulares em um ou ambos os sexos na dose de 20 mg/kg/dia.
+A exposição plasmática no Nível Sem Efeito Adverso Observado (NOAEL) foi de 0,7 vez a
+exposição humana na dose máxima recomendada de 40 mg.
+
+A administração oral diária de 0, 1, 3 ou 6 mg/kg/dia durante 12 meses em cães da raça Beagle (4
+machos e 4 fêmeas por grupo experimental) resultou em hemorragia discreta e reversível da lâmina
+própria da mucosa na dose de 6 mg/kg/dia. A exposição plasmática no NOAEL foi 3 vezes a
+exposição humana na dose máxima recomendada de 40 mg.
+
+4. CONTRAINDICAÇÕES
+
+CRESTOR é contraindicado para pacientes com hipersensibilidade à rosuvastatina cálcica ou aos
+outros componentes da fórmula.
+
+Uso contraindicado no aleitamento ou na doação de leite humano. Este medicamento é
+contraindicado durante o aleitamento ou doação de leite, pois é excretado no leite humano e
+pode causar reações indesejáveis no bebê. Seu médico ou cirurgião -dentista deve apresentar
+alternativas para o seu tratamento ou para a alimentação do bebê.
+
+5. ADVERTÊNCIAS E PRECAUÇÕES
+
+Fígado
+
+Como outros inibidores da HMG-CoA redutase, CRESTOR deve ser usado com cautela em pacientes
+que consomem quantidades excessivas de álcool e/ou que tenham uma história de doença hepática.
+
+Este medicamento pode causar hepatotoxicidade. Por isso , requer uso cuidadoso, sob vigilância
+médica estrita e acompanhado por controles periódicos da função hepática antes do início, 12
+semanas após o início, no caso de qualquer elevação de dose e periodicamente, conforme
+indicado clinicamente.
+Sistema musculoesquelético
+
+Como com outros inibidores da HMG-CoA redutase, foram relatados efeitos musculoesqueléticos ,
+como mialgia, miopatia e, raramente, rabdomiólise em pacientes tratados com rosuvastatina. Assim
+como outros inibidores da HMG-CoA redutase, a frequência de rabdomiólise no uso pós-
+comercialização é maior com as doses mais altas administradas. Pacientes que desenvolverem
+quaisquer sinais ou sintomas sugestivos de miopatia devem ter os seus níveis de creatinoquinase (CK)
+medidos. O tratamento com CRESTOR deve ser interrompido se os níveis de CK estiverem
+notadamente elevados (>10 vezes o limite superior de normalidade, LSN) ou se houver diagnóstico ou
+suspeita de miopatia.
+
+Houve relatos muito raros de uma miopatia necrotizante imunomediada caracterizada clinicamente
+por fraqueza muscular proximal persistente e elevação da creatinoquinase sérica durante o tratamento
+ou após a descontinuação de estatinas, incluindo a rosuvastatina. Testes neuromusculares e
+sorológicos adicionais podem ser necessários. Tratamento com agentes imunossupressores podem ser
+requeridos.
+
+Estatinas podem, em casos raros, induzir ou agravar miastenia gravis ou miastenia ocular (vide seção
+9. Reações Adversas), incluindo relatos de recorrência quando a mesma ou uma diferente estatina for
+administrada. CRESTOR deve ser usado com cautela em pacientes com essas condições e deve ser
+descontinuado se elas forem induzidas ou agravad as.
+
+Nos estudos com CRESTOR não houve evidência de aumento de efeitos musculoesqueléticos na
+administração concomitante com qualquer terapia. Entretanto, foi observado um aumento da
+incidência de miosite e miopatia em pacientes que estavam recebendo outros inibidores da HMG-CoA
+redutase junto com ciclosporina, derivados do ácido fíbrico, incluindo genfibrozila, ácido nicotínico,
+antifúngicos do grupo azóis e antibióticos macrolídeos.
+
+CRESTOR deve ser prescrito com precaução em pacientes com fatores de pré- disposição para
+miopatia, tais como, insuficiência renal, idade avançada e hipotireoidismo, ou situações em que pode
+ocorrer um aumento nos níveis plasmáticos (vide 6. Interações Medicamentosas e 3. Características
+Farmacológicas – Propriedades Farmacodinâmicas).
+
+O uso de CRESTOR deve ser temporariamente interrompido em qualquer paciente com uma
+condição aguda grave sugestiva de miopatia ou que predispõe ao desenvolvimento de insuficiência
+renal secundária à rabdomiólise (por exemplo: sépsis; hipotensão; cirurgia de grande porte; trauma;
+alterações metabólicas, endócrinas e eletrolíticas graves; ou convulsões não-controladas).
+
+Diabetes Mellitus
+
+Assim como com outros inibidores da HMG-CoA redutase, foi observado em pacientes tratados com
+rosuvastatina um aumento dos níveis de HbA1c e de glicose sérica e, em alguns casos, estes aumentos
+podem exceder o limiar para o diagnóstico do diabetes, principalmente em pacientes com alto risco de
+para o desenvolvimento do diabetes mellitus (vide 9. Reações Adversas) .
+
+Raça
+
+Estudos de farmacocinética mostraram um aumento na exposição em pacientes descendentes asiáticos
+comparados com pacientes caucasianos (vide 8. Posologia e Modo de Usar e 3. Características
+Farmacológicas - Propriedades Farmacocinéticas).
+
+Crianças e adolescentes de 6 a 17 anos de idade
+A avaliação do crescimento linear (altura), peso, índice de massa corpórea e características
+secundárias de maturidade sexual pelo estágio de Tanner em pacientes pediátricos que utilizam
+rosuvastatina, é limitada ao período de dois anos (vide 3. Características Farmacológicas -
+Propriedades Farmacocinéticas).
+
+Para informações referentes a ajuste de dose para pacientes idosos, crianças, pacientes com
+insuficiência renal e/ou hepática, ver item “Posologia e Modo de Usar ”.
+
+Efeito sobre a capacidade de dirigir veículos e operar máquinas: testes farmacológicos não
+revelaram evidências de efeito sedativo de CRESTOR. A partir do perfil de segurança, não se espera
+que CRESTOR afete a capacidade de dirigir veículos e operar máquinas.
+
+Uso durante a gravidez e lactação
+
+Categoria de risco na gravidez: D.
+Este medicamento não deve ser utilizado por mulheres grávidas sem orientação médica. Informe
+imediatamente seu médico em caso de suspeita de gravidez.
+
+Gravidez
+
+O uso de CRESTOR não é recomendado em mulheres grávidas. CRESTOR deve ser descontinuado assim que
+a gestação for identificada. Entretanto, a necessidade de terapia contínua e o benefício-risco individual em
+pacientes com risco muito alto de eventos cardiovasculares devem ser considerados.
+
+Dados publicados sobre o uso de estatinas em mulheres no primeiro trimestre de gravidez não identificaram
+risco significante de más- formações congênitas graves associado ao medicamento após ajuste estatístico para
+corrigir potenciais efeitos causados por fatores de confusão como idade materna, diabetes mellitus, hipertensão,
+obesidade, uso de tabaco e uso de álcool. As limitações do estudo incluem a dependência da codificação médica
+para definir a presença de uma malformação, a falta de controle para certos fatores de confusão, como o índice
+de massa corporal, o uso de dispensação de prescrição como verificação para o uso da estatina e a falta de
+informações sobre abortos espontâneos. Devido ao mecanismo de ação de CRESTOR, existe um risco
+potencial de reações adversas no feto.
+
+Lactação
+
+A amamentação é contraindicada durante o tratamento com CRESTOR. Dados limitados de relatórios
+publicados indicam que CRESTOR está presente no leite humano. Em decorrência do mecanismo de ação de
+CRESTOR, existe um risco potencial de reações adversas no lactente. Não há informação disponível sobre os
+efeitos do medicamento no lactente ou na produção de leite.
+
+Dados em Animais
+
+Em estudos de reprodução animal, não foram observados efeitos adversos no desenvolvimento em ratas ou
+coelhas grávidas, que receberam rosuvastatina por via oral durante o período de organogênese, em doses que
+resultaram em exposições sistêmicas equivalentes às exposições humanas na dose máxima recomendada para
+humanos (DMRH) de 40 mg/dia, com base em Área Sob a Curva ASC e superfície corporal (mg/m²),
+respectivamente.
+
+Em ratas fêmeas (Sprague Dawley, 24 animais por grupo) que receberam 5, 15 e 50 mg/kg/dia de rosuvastatina
+antes do acasalamento até o dia 7 de gestação, observou-se redução no peso corporal fetal (filhotes fêmeas) e
+atraso na ossificação com a dose de 50 mg/kg/dia (10 vezes a exposição humana na Dose Máxima
+Recomendada para Humanos (DMRH) de 40 mg/dia com base na ASC).
+
+Em ratas grávidas (Sprague Dawley , 24 animais por grupo, acasalamento em tempo controlado) que receberam
+2, 10 e 50 mg/kg/dia de rosuvastatina a partir do dia 7 de gestação até o dia 21 de lactação (desmame), foi
+observado uma diminuição na sobrevivência dos filhotes com a dose de 50 mg/kg/dia (dose equivalente a 12
+vezes a DMRH de 40 mg/dia com base na superfície corporal).
+
+Em coelhas grávidas (Japanese White, 17 animais por grupo) que receberam 0,3, 1 e 3 mg/kg/dia, por via oral,
+de rosuvastatina a partir do dia 6 até o dia 18 de gestação, observou-se redução na viabilidade fetal e aumento da
+mortalidade materna com a dose de 3 mg/kg/dia (dose equivalente à DMRH de 40 mg/dia com base na
+superfície corporal). Também foram observados perda de peso materna, hipoatividade, mortalidade e alterações
+em órgãos como fígado, vesícula biliar, rins, bexiga, estômago, além de músculos como os intercostais e
+cardíacos. Toxicidades semelhantes foram observadas em um estudo investigativo realizado em coelhos machos
+com dose de 5 mg/kg/dia (dose aproximadamente equivalente à DMRH de 40 mg/dia, com base na área de
+superfície corporal).
+
+A rosuvastatina atravessa a placenta em ratos e coelhos, sendo encontrada no tecido fetal e no líquido amniótico
+em 3% e 20%, respectivamente, da concentração plasmática materna após uma dose única por gavagem oral de
+25 mg/kg de rosuvastatina no dia 16 de gestação em ratos. Em coelhos, a distribuição no tecido fetal foi de 25%
+da concentração plasmática materna após uma dose única por gavagem oral de 1 mg/kg no dia 18 de gestação.
+
+Carcinogenicidade
+
+Em um estudo de carcinogenicidade de 104 semanas em ratos (Sprague Dawley, sendo 50 machos e
+50 fêmeas em cada grupo), foram administradas doses de 2, 20, 60 ou 80 mg/kg/dia de rosuvastatina
+por gavagem oral, foi observado que a incidência de pólipos estromais uterinos aumentou
+significativamente em fêmeas que receberam a dosagem de 80 mg/kg/dia, com uma exposição
+sistêmica 20 vezes maior que a exposição humana na dose de 40 mg/dia de rosuvastatina com base na
+ASC. O aumento da incidência de pólipos não foi observado em doses mais baixas.
+
+Em um estudo de carcinogenicidade de 107 semanas em camundongos (B6C3F1, sendo 51 machos e
+51 fêmeas em cada grupo), aos quais foram administradas doses de 10, 60 ou 200 mg/kg/dia de
+rosuvastatina por gavagem oral, foi observada uma incidência aumentada de adenoma/carcinoma
+hepatocelular na dose de 200 mg/kg/dia, com exposições sistêmicas 20 vezes maiores que a exposição
+humana na dose de 40 mg/dia com base na ASC. O aumento da incidência de tumores hepatocelulares
+não foi observado em doses mais baixas.
+
+Mutagenicidade
+
+A rosuvastatina não foi mutagênica ou clastogênica, com ou sem ativação metabólica, no teste de
+Ames realizado com Salmonella typhimurium e Escherichia coli, no ensaio de linfoma de
+camundongo, e no ensaio de mutação cromossômica em células pulmonares de hamster chinês. A
+rosuvastatina foi negativa no teste de micronúcleo in vivo em camundongos.
+
+Toxicidade Reprodutiva
+
+Em estudos de fertilidade em ratos (Sprague Dawley), que receberam doses de 5, 15 e 50 mg/kg/dia
+administrada por gavagem oral sendo 24 machos e 24 fêmeas em cada grupo), os machos foram
+tratados por 9 semanas antes e durante o acasalamento, e as fêmeas foram tratadas 2 semanas antes do
+acasalamento e durante o acasalamento até o dia 7 de gestação. Nenhum efeito adverso na fertilidade
+foi observado com a administração de 50 mg/kg/dia (exposições sistêmicas até 10 vezes a exposição
+humana na dose de 40 mg/dia com base na ASC).
+
+Nos testículos de cães tratados com rosuvastatina a 30 mg/kg/dia por um mês, foram observadas
+células espermáticas gigantes. Células espermáticas gigantes também foram observadas em macacos
+após 6 meses de tratamento com rosuvastatina a 30 mg/kg/dia, além de vacuolização do epitélio dos
+túbulos seminíferos. As exposições em cães foram 20 vezes e, em macacos, 10 vezes a exposição
+humana na dose de 40 mg/dia com base na superfície corporal.
+
+Atenção: Contém lactose (tipo de açúcar) abaixo de 0,25g/comprimido. Este medicamento não
+deve ser usado por pessoas com síndrome de má-absorção de glicose-galactose.
+
+Crestor 5 mg: Atenção: Contém os corantes dióxido de titânio e óxido de ferro amarelo.
+
+Crestor 10 mg, 20 mg e 40 mg: Atenção: Contém os corantes dióxido de titânio e óxido de ferro
+vermelho.
+
+Informe a seu paciente de que a doação de sangue é contraindicada durante o tratamento com
+rosuvastatina para hipercolesterolemia familiar, devido ao potencial risco que essa condição de
+base pode causar ao receptor.
+
+6. INTERAÇÕES MEDICAMENTOSAS
+
+Efeito de medicamentos coadministrados sobre a rosuvastatina
+
+Dados in vitro e in vivo indicam que a rosuvastatina não tem interação clinicamente significativa com
+o citocromo P450 (como um substrato, inibidor ou indutor). A rosuvastatina é um substrato para
+determinadas proteínas transportadoras, incluindo o transportador hepático de captação OATP1B1 e o
+transportador de efluxo BCRP. A administração concomitante de CRESTOR com medicamentos que
+são inibidores destas proteínas transportadoras pode resultar em maior concentração plasmática de
+rosuvastatina e maior risco de miopatia (vide Tabela 4, 8. Posologia e Modo de Usar e 5.
+Advertências e Precauções).
+
+Interações que requerem ajuste da dose de rosuvastatina (vide também Tabela 4).
+
+Quando é necessária a coadministração de CRESTOR com outros medicamentos que
+conhecidamente aumentam a exposição à rosuvastatina, a dose de CRESTOR deve ser ajustada. É
+recomendado que o médico consulte as informações relevantes dos medicamentos quando considerar
+administrar esses medicamentos concomitantemente com CRESTOR.
+
+Se for observado que o medicamento aumenta a área sobre a curva ( ASC) da rosuvastatina em
+aproximadamente 2 vezes ou mais, a dose inicial de CRESTOR não deve exceder 5 mg uma vez ao
+dia. A dose máxima diária de CRESTOR deve ser ajustada para que a exposição esperada à
+rosuvastatina não venha a exceder a dose diária de 40mg de CRESTOR administrado sem
+medicamentos que possam interagir, por exemplo, uma dose de 5 mg de CRESTOR com
+ciclosporina (aumento de 7,1 vezes na exposição), uma dose de 10 mg de CRESTOR com
+ritonavir/atazanavir combinados (aumento de 3,1 vezes) e uma dose de 20 mg de CRESTOR com
+genfibrozila (aumento de 1,9 vezes).
+Se for observado que o medicamento aumenta a ASC da rosuvastatina em menos de duas vezes, a
+dose inicial não precisa ser diminuída, mas deve- se ter cuidado ao aumentar a dose de CRESTOR
+acima de 20 mg.
+
+Inibidores de protease: A coadministração de rosuvastatina com certos inibidores de protease ou
+combinação de inibidores de protease pode aumentar a exposição à rosuvastatina (ASC) em até 7
+vezes (consulte a Tabela 4). O ajuste da dose é necessário dependendo do nível de efeito na exposição
+à rosuvastatina (vide 8. Posologia e Modo de Usar e 5. Advertências e Precauções).
+
+Tabela 4. Efeito da coadministração de medicamentos sobre a exposição de
+rosuvastatina (ASC; em ordem decrescente de magnitude) de ensaios clínicos
+publicados.
+
+Aumento de 2 vezes ou maior que 2 vezes na ASC da rosuvastatina
+Esquema posológico da droga Esquema posológico de Alteração na ASC de
+coadministrada rosuvastatina rosuvastatina*
+sofosbuvir/velpatasvir/voxilaprevir (400 10 mg, dose única 7,39 vezes ↑
+mg- 100 mg- 100 mg) + v oxilaprevir
+(100 mg) uma vez ao dia por 15 dias
+ciclosporina 75 mg, duas vezes ao dia a 10 mg uma vez ao dia, 10 dias 7,1 vezes ↑
+200 mg duas vezes ao dia, 6 meses
+darolutamida 600 mg duas vezes ao dia, 5 mg, dose única 5,2 vezes ↑
+5 dias
+belumosudil 200 mg, uma vez ao dia por 10 mg, dose única administrada 4,6 vezes ↑
+8 dias em 2 dias diferentes
+regorafenibe 160 mg uma vez ao dia, 14 5 mg, dose única 3,8 vezes ↑
+dias
+enasidenibe 100 mg, uma vez ao dia por 10 mg, dose única 3,4 vezes ↑
+28 dias
+atazanavir 300 mg/ritonavir 100 mg uma 10 mg, dose única 3,1 vezes ↑
+vez ao dia, 8 dias
+roxadustate 200 mg dia sim, dia não 10 mg, dose única 2,9 vezes ↑
+simeprevir 150 mg uma vez ao dia, 7 10 mg, dose única 2,8 vezes ↑
+dias
+momelotinibe 200 mg, uma vez ao dia, 10 mg, dose única 2,7 vezes ↑
+por 5 dias
+velpatasvir 100 mg uma vez ao dia 10 mg, dose única 2,69 vezes ↑
+ombitasvir 25 mg/paritaprevir 150 5 mg, dose única 2,59 vezes ↑
+mg/ritonavir 100 mg/dasabuvir 400 mg
+duas vezes ao dia
+teriflunomida Não disponível 2,51 vezes ↑
+vadadustate 600 mg uma vez ao dia, por 20 mg, dose única administrada 2,47 vezes ↑
+8 dias em 2 dias diferentes
+grazoprevir 200 mg/elbasvir 50 mg uma 10 mg, dose única 2,26 vezes ↑
+vez ao dia
+Tabela 4. Efeito da coadministração de medicamentos sobre a exposição de
+rosuvastatina (ASC; em ordem decrescente de magnitude) de ensaios clínicos
+publicados.
+
+glecaprevir 400 mg/pibrentasvir 120 mg 5mg uma vez ao dia 2,2 vezes ↑
+uma vez ao dia por 7 dias
+lopinavir 400 mg/ritonavir 100 mg duas 20 mg uma vez ao dia, 7 dias 2,1 vezes ↑
+vezes ao dia, 17 dias
+
+capmatinibe 400 mg duas vezes ao dia 10 mg, dose única 2,08 vezes ↑
+tafamidis 61 mg duas vezes ao dia nos 10 mg, dose única 1,97 vezes ↑
+Dias 1 e 2, seguido de uma vez ao dia
+nos Dias 3 a 9
+fostamatinibe 100 mg duas vezes ao dia 20 mg, dose única 1,96 vezes ↑
+febuxostate 120 mg uma vez ao dia 10 mg, dose única 1,9 vezes ↑
+genfibrozila 600 mg duas vezes ao dia, 7 80 mg, dose única 1,9 vezes ↑
+dias
+Aumento menor que 2 vezes na ASC da rosuvastatina
+Esquema posológico da droga Esquema posológico de Alteração na ASC de
+coadministrada rosuvastatina rosuvastatina*
+eltrombopag 75 mg uma vez ao dia, 5 10 mg, dose única 1,6 vezes ↑
+dias
+darunavir 600 mg/ritonavir 100 mg, 10 mg uma vez ao dia, 7 dias 1,5 vezes ↑
+duas vezes ao dia, 7 dias
+tipranavir 500 mg/ritonavir 200 mg duas 10 mg, dose única 1,4 vezes ↑
+vezes ao dia, 11 dias
+dronedarona 400 mg, duas vezes ao dia Não disponível 1,4 vezes ↑
+itraconazol 200 mg uma vez ao dia, 5 10 mg ou 80 mg, dose única 1,4 vezes ↑
+dias
+ezetimiba 10 mg uma vez ao dia, 14 dias 10 mg, uma vez ao dia, 14 dias 1,2 vezes ↑
+
+Diminuição da ASC da rosuvastatina
+Esquema posológico da droga Esquema posológico de Alteração na ASC de
+coadministrada rosuvastatina rosuvastatina*
+eritromicina 500 mg quatro vezes ao dia, 80 mg, dose única 20% ↓
+7 dias
+baicalina 50 mg três vezes ao dia, 14 20 mg, dose única 47% ↓
+dias
+* Os dados apresentados como alteração em X vezes representam uma proporção simples entre a coadministração e a
+rosuvastatina isoladamente.
+ Os dados fornecidos em % de variação representam a % de diferença em relação à rosuvastatina isoladamente.
+ O aumento é indicado como "↑", e a diminuição como "↓".
+ ASC = área sob a curva
+
+Os seguintes medicamentos/combinações não tiveram um efeito clinicamente significativo na relação
+ASC da rosuvastatina na coadministração:
+aleglitazar 0,3 mg , por 7 dias; f enofibrato 67 mg três vezes ao dia, por 7 dias; fluconazol 200 mg uma
+vez ao dia, por 11 dias; f osamprenavir 700 mg/ritonavir 100 mg duas vezes ao dia, por 8 dias;
+cetoconazol 200 mg duas vezes ao dia, por 7 dias; rifampicina 450 mg uma vez ao dia, por 7 dias;
+silimarina 140 mg três vezes ao dia, por 5 dias.
+
+A modelagem farmacocinética baseada em fisiologia (PBPK) prevê que não há interação
+medicamentosa clinicamente relevante entre o clopidogrel e a rosuvastatina quando utilizado um
+regime posológico de clopidogrel com dose de ataque de 300 mg, seguida de dose de manutenção de
+75 mg uma vez ao dia.
+
+Interação com outros medicamentos
+
+- antiácidos: a administração simultânea de CRESTOR com uma suspensão de antiácido contendo
+hidróxido de alumínio e hidróxido de magnésio resultou em diminuição da concentração plasmática
+da rosuvastatina de aproximadamente 50%. Este efeito foi reduzido quando o antiácido foi
+administrado 2 horas após CRESTOR. A relevância clínica desta interação não foi estudada.
+
+- ácido fusídico: estudos de interação com rosuvastatina e ácido fusídico não foram conduzidos.
+Assim como com outras estatinas, eventos musculares relacionados incluindo rabdomiólise foram
+relatados na experiência pós- comercialização com a administração concomitante de rosuvastatina e
+ácido fusídico. Os pacientes devem ser rigorosamente monitorados e a suspensão temporária do
+tratamento com rosuvastatina pode ser apropriada.
+
+- ticagrelor: Foi demonstrado que o ticagrelor aumenta a área sob a curva (ASC) da rosuvastatina em
+2,3 vezes, o que pode resultar em risco aumentado de miopatia. Devem ser considerados os benefícios
+da prevenção de eventos cardiovasculares adversos maiores através da utilização de rosuvastatina e os
+riscos associados ao aumento das concentrações plasmáticas de rosuvastatina.
+
+Efeito da rosuvastatina sobre medicamentos coadministrados
+
+- varfarina: a farmacocinética da varfarina não é significativamente afetada após a coadministração
+com CRESTOR. Entretanto, como com outros inibidores da HMG-CoA redutase, a coadministração
+de CRESTOR e varfarina pode resultar em um aumento da razão internacional normalizada (INR)
+em comparação com a varfarina isoladamente. Em pacientes em tratamento com antagonistas da
+vitamina K, recomenda-se a monitorização da INR, tanto no início quanto no término do tratamento
+com CRESTOR ou após ajuste de dose.
+
+- fenofibratos / derivados do ácido fíbrico: embora nenhuma interação farmacocinética entre rosuvastatina e
+fenofibrato tinha sido observada, uma interação farmacodinâmica pode ocorrer. A g enfibrozila, o fenofibrato e
+outros ácidos fíbricos, incluindo o ácido nicotínico, podem aumentar o risco de miopatia quando administrados
+concomitantemente com inibidores da HMG-CoA redutase (vide 5. Advertências e Precauções ).
+
+- ciclosporina: a coadministração de CRESTOR com ciclosporina não resultou em alterações
+significativas na concentração plasmática da ciclosporina.
+
+- outros medicamentos: não houve interações clinicamente significativas com contraceptivo oral,
+digoxina, ezetimiba ou fenofibrato.
+
+Em estudos clínicos, CRESTOR foi coadministrado com agentes anti-hipertensivos, agentes
+antidiabéticos e terapia de reposição hormonal. Esses estudos não demonstraram evidência de
+interações adversas clinicamente significativas.
+Apesar de estudos clínicos terem demonstrado que CRESTOR em monoterapia não reduz a
+concentração de cortisol plasmático basal ou prejudique a reserva adrenal, deve- se ter cautela se
+CRESTOR for administrado concomitantemente com fármacos que podem diminuir os níveis ou a
+atividade de hormônios esteroidais endógenos, tais como cetoconazol, espironolactona e cimetidina.
+
+8. POSOLOGIA E MODO DE USAR
+
+Modo de Usar
+
+CRESTOR deve ser administrado por via oral, a qualquer hora do dia, com ou sem a ingestão de
+alimentos.
+
+Este medicamento não deve ser partido ou mastigado.
+
+Posologia
+
+A faixa de dose usual é de 10 mg a 40 mg, por via oral, uma vez ao dia. A dose máxima diária é de 40
+mg. A dose de CRESTOR deve ser individualizada de acordo com a meta da terapia e a resposta do
+paciente. A maioria dos pacientes é controlada na dose inicial. Entretanto, se necessário, o ajuste de
+dose pode ser feito em intervalos de 2 a 4 semanas.
+
+Adultos:
+
+- Hipercolesterolemia primária (incluindo hipercolesterolemia familiar heterozigótica),
+dislipidemia mista, hipertrigliceridemia isolada e tratamento da aterosclerose: a dose inicial
+habitual é de 10 mg uma vez ao dia. Uma dose inicial de 5 mg está disponível para populações
+especiais de pacientes quando necessário. Para pacientes com hipercolesterolemia grave (incluindo
+hipercolesterolemia familiar heterozigótica) ou aqueles pacientes que necessitam atingir metas
+agressivas de redução de LDL-C, pode-se considerar uma dose inicial de 20 mg.
+- Hipercolesterolemia familiar homozigótica: recomenda- se uma dose inicial de 20 mg uma vez ao
+dia.
+
+Crianças e adolescentes de 6 a 17 anos de idade:
+
+Em crianças de 6 a 9 anos de idade com hipercolesterolemia familiar heterozigótica a dose usual é de
+5 mg a 1 0 mg uma vez ao dia por via oral. A segurança e eficácia de doses maiores que 10 mg não
+foram estudadas nessa população.
+
+Em crianças e adolescentes de 10 a 17 anos de idade com hipercolesterolemia familiar heterozigótica
+a dose usual é de 5 mg a 20 mg uma vez ao dia por via oral. A segurança e eficácia de doses maiores
+que 20 mg não foram estudadas nessa população.
+
+A dose deve ser apropriadamente titulada para atingir o objetivo do tratamento.
+
+Populações especiais:
+
+- Idosos: utiliza-se a faixa de dose habitual.
+
+- Pacientes com insuficiência renal: a faixa de dose habitual se aplica a pacientes com insuficiência
+renal de leve a moderada. Para pacientes com insuficiência renal grave, a dose de CRESTOR não
+deve exceder 10 mg uma vez ao dia (ver item “Propriedades Farmacocinéticas”).
+
+- Pacientes com insuficiência hepática: a faixa de dose habitual se aplica a pacientes com
+insuficiência hepática de leve a moderada. Foi observado aumento da exposição sistêmica a
+rosuvastatina em pacientes com insuficiência hepática grave, portanto, o uso de doses superiores a 10
+mg deve ser cuidadosamente considerado (ver item “Propriedades Farmacocinéticas”).
+
+- Raça: a dose inicial de 5 mg de CRESTOR deve ser considerada para pacientes descendentes
+asiáticos. Tem sido observada uma concentração plasmática aumentada de rosuvastatina em
+descendentes asiáticos (ver itens “Propriedades Farmacocinéticas” e “Advertências e Precauções”). O
+aumento da exposição sistêmica deve ser levado em consideração no tratamento de pacientes
+descendentes asiáticos cuja hipercolesterolemia não é adequadamente controlada com doses diárias de
+até 20 mg.
+
+- Polimorfismo genético: genótipos de SLCO1B1 (OATP1B1) c.521CC e ABCG2 (BCRP) c.421AA
+têm mostrado serem associados com um aumento da exposição à rosuvastatina (ASC) em comparação
+com SLCO1B1 c.521TT e ABCG2 c.421CC. Para os pacientes com genótipo c.521CC ou c.421AA,
+recomenda-se uma dose máxima de 20 mg de CRESTOR, uma vez ao dia (vide 5. Advertências e
+Precauções e 6. Interações Medicamentosas e 3. Características Farmacológicas - Propriedades
+Farmacocinéticas).
+
+- Terapia concomitante: a rosuvastatina é um substrato de várias proteínas transportadoras (por
+exemplo, OATP1B1 e BCRP). O risco de miopatia (incluindo rabdomiólise) é maior quando
+CRESTOR é administrado concomitantemente com certos medicamentos que podem aumentar a
+concentração plasmática da rosuvastatina devido às interações com essas proteínas transportadoras
+(por exemplo, ciclosporina, ticagrelor e alguns inibidores de protease, incluindo combinações de
+ritonavir com atazanavir, lopinavir, e/ou tipranavir, vide 5. Advertências e Precauções e 6. Interaç ões
+Medicamentosas). É recomendado que o médico consulte as informações relevantes dos
+medicamentos quando considerar administrar esses medicamentos concomitantemente com
+CRESTOR. Sempre que possível, medicamentos alternativos devem ser considerados e, se
+necessário, considerar a interrupção temporária da terapia com CRESTOR. Em situações em que a
+coadministração destes medicamentos com CRESTOR é inevitável, o benefício e o risco do
+tratamento concomitante e ajustes da posologia de CRESTOR devem ser cuidadosamente
+considerados (vide 6. Interações Medicamentosas).
+
+ - Interações que requerem ajuste de dose
+Vide item 6. Interações Medicamentosas.
+
+Conduta em caso de esquecimento de dose
+
+Se o paciente se esquecer de tomar uma dose de CRESTOR, não é necessário tomar a dose
+esquecida, deve-se apenas tomar a próxima dose, no horário habitual. Nunca deve ser tomada uma
+dose dobrada para compensar uma dose perdida.
+
+9. REAÇÕES ADVERSAS
+
+CRESTOR é geralmente bem tolerado. Os eventos adversos observados com CRESTOR são
+geralmente leves e transitórios. Em estudos clínicos controlados, menos de 4% dos pacientes tratados
+com CRESTOR foram retirados dos estudos devido a eventos adversos. Esta taxa de retirada foi
+comparável à relatada em pacientes recebendo placebo.
+
+Reação comum (≥1/100, < 1/10): cefaleia, mialgia, astenia, constipação, vertigem, náusea e dor
+abdominal.
+
+Reação incomum (≥1/1000, <1/100): prurido, exantema e urticária.
+
+Reação rara (≥1/10.000, <1/1000): miopatia (incluindo miosite), reações de hipersensibilidade
+(incluindo angioedema), rabdomiólise e pancreatite.
+
+Como ocorre com outros inibidores da HMG-CoA redutase, a incidência de reações adversas ao
+fármaco tende a aumentar com a elevação da dose.
+
+Efeitos musculoesqueléticos: raros casos de rabdomiólise, os quais foram ocasionalmente associados
+com dano da função renal, foram relatados com rosuvastatina e com outras estatinas.
+
+Efeitos laboratoriais: como com outros inibidores da HMG-CoA redutase, foi observado um
+aumento relacionado à dose das transaminases hepáticas e da CK em um pequeno número de
+pacientes em tratamento com rosuvastatina. Foi observado aumento da HbA1c em pacientes tratados
+com CRESTOR. Foram observados testes de análise de urina anormais (teste de fita reagente
+positivo para proteinúria) em um pequeno número de pacientes tomando CRESTOR e outros
+inibidores da HMG-CoA redutase. A proteína detectada foi principalmente de origem tubular. Na
+maioria dos casos, a proteinúria diminui ou desaparece espontaneamente com a continuação do
+tratamento e ela não é um indicativo de doença renal aguda ou progressiva.
+
+Outros efeitos: em um estudo clínico controlado de longo prazo, CRESTOR mostrou não ter efeitos
+nocivos ao cristalino.
+
+Nos pacientes tratados com CRESTOR, não houve danos na função adrenocortical.
+
+O evento adverso faringite (rosuvastatina 9,0% vs placebo 7,6%) e outros eventos respiratórios como
+infecções das vias aéreas superiores (rosuvastatina 2,3% vs placebo 1,8%), rinite (rosuvastatina 2,2%
+vs placebo 2,1%) e sinusite (rosuvastatina 2,0% vs placebo 1,8%), foram relatados em estudos
+clínicos, independentemente da causalidade.
+Experiência pós- comercialização
+
+Em adição às relatadas acima, as seguintes reações adversas têm sido relatadas durante a
+comercialização de CRESTOR:
+
+Distúrbios oculares
+Frequência desconhecida: miastenia ocular.
+
+Distúrbios hematológicos
+Frequência desconhecida: trombocitopenia.
+
+Distúrbios hepatobiliares
+Muito raras: icterícia e hepatite.
+Rara: aumento das transaminases hepáticas.
+
+Distúrbios musculoesqueléticos
+Muito raras: artralgia.
+Frequência desconhecida: miopatia necrotizante imunomediada.
+
+Como com outros inibidores da HMG-CoA redutase, a frequência relatada para rabdomiólise no uso
+pós-comercialização é maior com as doses mais altas administradas.
+
+Distúrbios do sistema nervoso
+Muito raras: perda de memória.
+Frequência desconhecida: neuropatia periférica, miastenia gravis.
+
+Distúrbios psiquiátricos
+Frequência desconhecida: depressão e distúrbios do sono (incluindo insônia e pesadelos).
+
+Distúrbios do sistema reprodutivo e mamas
+Frequência desconhecida: ginecomastia.
+
+Distúrbios da pele e tecido subcutâneo
+Frequência desconhecida: erupção cutânea à droga com eosinofilia e sintomas sistêmicos (DRESS),
+erupção liquenóide medicamentosa.
+
+Crianças e adolescentes de 6 – 17 anos de idade
+O perfil de segurança de CRESTOR é semelhante em crianças ou adolescentes e adultos embora
+elevações de CK > 10 x LSN e sintomas musculares após exercício ou aumento da atividade física,
+que se resolveram mesmo com a continuação do tratamento, foram observados com maior frequência
+nos estudos clínicos com crianças e adolescentes. Entretanto, as mesmas precauções e advertências
+para os pacientes adultos são também aplicáveis para crianças e adolescentes (vide 5. Advertências e
+Precauções).
+
+Em casos de eventos adversos, notifique pelo Sistema VigiMed, disponível no Portal da Anvisa.
+
+10. SUPERDOSE
+
+Não há um tratamento específico para a superdosagem. No caso de superdosagem, o paciente deve ser
+tratado sintomaticamente e devem ser instituídas medidas de suporte conforme a necessidade. É
+improvável que a hemodiálise possa exercer algum efeito benéfico na superdosagem por
+rosuvastatina.
+Em caso de intoxicação ligue para 0800 722 6001, se você precisar de mais orientações.
+
+III)

@@ -1,0 +1,560 @@
+FONTE: lote5__paroxetina__AROPAX.pdf
+
+===== BLOCO 1 =====
+APRESENTAÇÕES
+Comprimidos revestidos, apresentados em embalagem com 30 unidades de 20 mg.
+
+USO ORAL
+USO ADULTO
+
+1. INDICAÇÕES
+
+Adultos
+Transtorno depressivo maior
+Aropax® é indicado no tratamento depressivo maior (TDM)
+Resultados de estudos realizados com pacientes sob tratamento de Aropax® por mais de um ano indica que Aropax® é eficaz na prevenção
+de recaídas e também na recorrência dos sintomas depressivos.
+
+Transtornos de ansiedade
+  Tratamento dos sintomas e prevenção de recidiva do transtorno obsessivo-compulsivo (TOC).
+  Tratamento dos sintomas e prevenção de recidiva do transtorno do pânico com ou sem agorafobia.
+  Tratamento de fobia social/transtorno de ansiedade social.
+  Tratamento dos sintomas e prevenção de recidiva do transtorno de ansiedade generalizada.
+  Tratamento do transtorno de estresse pós-traumático.
+
+Crianças e adolescentes menores de 18 anos
+Todas as indicações
+Aropax® não é indicado para crianças nem adolescentes menores de 18 anos (ver 5. Advertências e Precauções).
+Estudos clínicos controlados feitos com crianças e adolescentes que apresentavam transtorno depressivo maior não evidenciaram eficácia
+e não embasam o uso de Aropax® no tratamento de depressão nessa população (ver 5. Advertências e Precauções). A eficácia e a segurança
+do uso de Aropax® em crianças menores de 7 anos não foram estudadas.
+
+3. CARACTERÍSTICAS FARMACOLÓGICAS
+
+Propriedades Farmacodinâmicas
+A paroxetina é um potente ISRS, isto é, inibidor seletivo da recaptação de 5-hidroxitriptamina (5-HT ou serotonina). Acredita-se que sua
+ação antidepressiva e sua eficácia no tratamento do transtorno obsessivo-compulsivo (TOC) e do transtorno do pânico estejam relacionadas
+à inibição específica da 5-HT nos neurônios cerebrais.
+A paroxetina não está quimicamente relacionada aos antidepressivos tricíclicos, tetracíclicos nem a outros antidepressivos disponíveis.
+Modelo de texto de bula – Profissional de Saúde
+Aropax® Comprimidos revestidos
+
+Os tratamentos prolongados com Aropax® evidenciam que sua ação antidepressiva se mantém por no mínimo um ano.
+Em estudos clínicos controlados por placebo, a eficácia de Aropax® no tratamento do transtorno do pânico também se manteve por pelo
+menos um ano.
+
+Efeitos Farmacodinâmicos
+Paroxetina não prejudica a função psicomotora e não potencializa os efeitos depressores do etanol.
+Assim como outros inibidores seletivos da recaptação de 5-HT, a paroxetina causa sintomas de estimulação excessiva dos receptores de 5-
+HT quando administrada a animais que previamente receberam inibidores da monoamina oxidase (IMAO) ou triptofano.
+Estudos comportamentais e de EEG indicam que a paroxetina é fracamente ativadora em doses geralmente acima daquelas necessárias para
+inibir a recaptação de 5-HT. As propriedades ativadoras não são semelhantes às das anfetaminas.
+Estudos em animais indicam que a paroxetina é bem tolerada pelo sistema cardiovascular.
+A paroxetina não produz alterações clinicamente significativas na pressão arterial, na frequência cardíaca e no ECG após a administração
+a indivíduos saudáveis. Um estudo com 38 indivíduos saudáveis não encontrou associação entre as concentrações plasmáticas de paroxetina
+e os intervalos PR, QRS ou QTc após doses diárias repetidas de 20 mg, 40 mg ou 60 mg de paroxetina. Neste estudo, a paroxetina não
+prolongou o QTc em níveis terapêuticos (ver 5. Advertências e Precauções).
+Estudos indicam que, em contraste com antidepressivos que inibem a recaptação de noradrenalina, a paroxetina tem uma propensão muito
+reduzida a inibir os efeitos anti-hipertensivos da guanetidina.
+
+Propriedades Farmacocinéticas
+Absorção
+O estado de equilíbrio dos níveis sistêmicos é atingido no período de 7 a 14 dias após o início do tratamento e a farmacocinética parece não
+se alterar durante as terapias prolongadas.
+A paroxetina é bem absorvida após administração oral e apresenta metabolismo de primeira passagem.
+
+Metabolismo
+Os principais metabólitos da paroxetina são polares e conjugados por produtos de oxidação e metilação e rapidamente metabolizados.
+Considerando-se a relativa falta de atividade farmacológica, é muito pouco provável que contribuam com os efeitos terapêuticos de
+Aropax®.
+
+Eliminação
+A meia-vida de eliminação, embora variável, é geralmente de cerca de um dia.
+
+4. CONTRAINDICAÇÕES
+
+Aropax® é contraindicado para pacientes com conhecida hipersensibilidade à droga ou a qualquer componente da fórmula.
+Aropax® não deve ser usado concomitantemente com inibidores da monoaminoxidase (IMAO), inclusive a linezolida antibiótico inibidor
+não seletivo reversível da MAO e cloridrato de metiltionina (azul de metileno), nem no período de duas semanas após o término do
+tratamento com esses inibidores. Da mesma forma, não se recomenda iniciar terapia com os IMAO antes de duas semanas após o término
+do tratamento com Aropax® (ver 6. Interações Medicamentosas).
+ Aropax® não deve ser utilizado em pacientes recebendo medicação que pode prolongar o intervalo QT e são também metabolizadas por
+CYP450 2D6, tais como tioridazida ou pimozida (ver 6. Interações Medicamentosas).
+
+Este medicamento é contraindicado para menores de 18 anos de idade.
+
+5. ADVERTÊNCIAS E PRECAUÇÕES
+
+Crianças e adolescentes menores de 18 anos
+O tratamento com antidepressivos associa-se ao aumento do risco de pensamento e/ou comportamento suicida em crianças e adolescentes
+com transtorno depressivo maior e outros transtornos psiquiátricos. Em estudos clínicos realizados com crianças e adolescentes que usavam
+Aropax®, observaram-se com mais frequência eventos adversos relacionados à possibilidade de suicídio (pensamentos ou tentativas
+suicidas) e à hostilidade (predominantemente agressão, comportamento opositor ou raiva) nos pacientes tratados com Aropax® do que nos
+que receberam placebo (ver 9. Reações Adversas). Existem poucos dados sobre segurança de longo prazo do uso do medicamento em
+crianças e adolescentes relacionados a crescimento, maturidade e desenvolvimento comportamental e cognitivo.
+
+Piora do quadro clínico e risco de suicídio entre adultos
+Os adultos jovens, especialmente os que apresentam transtorno depressivo maior, podem correr mais risco de manifestar comportamento
+suicida durante o tratamento com Aropax®. A análise de estudos clínicos controlados por placebo em pacientes adultos com transtornos
+psiquiátricos evidenciou maior frequência de comportamento suicida nos adultos jovens (prospectivamente definidos como de 18 a 24 anos
+de idade) tratados com paroxetina em comparação com placebo (17/776 [2,19%] versus 5/542 [0,92%]); entretanto, essa diferença não foi
+estatisticamente significativa. No grupo de participantes mais velhos (de 25 a 64 anos e maiores de 65 anos), não se observou esse aumento.
+Entre os adultos com transtorno depressivo maior (de todas as idades), houve aumento significativo da frequência de comportamento suicida
+nos pacientes tratados com paroxetina em comparação com placebo (11/3.455 [0,32%] versus 1/1.978 [0,05%]; todos esses eventos se
+configuraram como tentativas de suicídio). Entretanto, a maior parte das tentativas (8 em 11) ocorreu entre adultos jovens de 18 a 30 anos
+Modelo de texto de bula – Profissional de Saúde
+Aropax® Comprimidos revestidos
+
+que usavam paroxetina. Esses dados sobre transtorno depressivo maior sugerem que a frequência mais alta observada na população adulta
+jovem com transtornos psiquiátricos pode ser estendida além dos 24 anos de idade.
+Os pacientes com depressão podem apresentar piora dos sintomas depressivos ou o surgimento de pensamento e/ou comportamento suicida
+tomando ou não medicação antidepressiva. O risco persiste até a ocorrência de remissão significativa. A experiência clínica com terapias
+antidepressivas indica, de modo geral, que o risco de suicídio aumenta no estágio inicial de recuperação.
+Outros distúrbios psiquiátricos para os quais Aropax® é indicado podem estar associados ao aumento do risco de comportamento suicida,
+e essas condições também são comorbidades associadas ao transtorno depressivo maior. Ademais, pacientes com história de pensamento
+e/ou comportamento suicida, adultos jovens e que exibem um grau significativo de ideação suicida antes do início do tratamento possuem
+um risco mais elevado para pensamentos e tentativas de suicídio. Todos os pacientes devem ser monitorados quanto à piora do quadro
+clínico (inclusive desenvolvimento de novos sintomas) e risco de suicídio durante o tratamento, especialmente no início ou em qualquer
+momento em que haja alteração de dose (aumento ou redução).
+Os pacientes (e os cuidadores) devem ser alertados sobre a necessidade de monitorar qualquer piora do quadro geral (inclusive
+desenvolvimento de novos sintomas) e/ou o aparecimento de comportamentos ou ideação suicidas, ou pensamentos de ferir a si mesmos e
+de procurar auxílio médico imediatamente caso isso aconteça. É importante reconhecer que o surgimento de sintomas como agitação,
+acatisia ou mania pode estar relacionado com a doença subjacente ou com o próprio medicamento (ver Acatisia e Mania e Transtorno
+Bipolar abaixo e 9. Reações Adversas).
+Deve-se considerar a possibilidade de alterar o regime terapêutico, inclusive de descontinuar a medicação, no caso dos pacientes com
+histórico de piora clínica (inclusive desenvolvimento de novos sintomas) e/ou de surgimento de ideias ou comportamentos suicidas,
+especialmente se esses sintomas forem graves, de início abrupto ou se não faziam parte do quadro inicial.
+
+Acatisia
+Raramente o uso de Aropax® ou de outro inibidor seletivo da recaptação de serotonina (ISRS) relaciona-se ao desenvolvimento de acatisia,
+caracterizada por sensação de inquietude, agitação psicomotora e incapacidade do paciente de permanecer na mesma posição e geralmente
+associada a uma sensação de desconforto subjetivo. É mais provável que isso ocorra nas primeiras semanas de tratamento.
+
+Síndrome serotoninérgica/síndrome neuroléptica maligna
+Em raros casos, o desenvolvimento de eventos relacionados à síndrome serotoninérgica ou à síndrome neuroléptica maligna pode ocorrer
+em associação ao tratamento com Aropax®, particularmente quando administrado com outra droga serotoninérgica ou neuroléptica. Como
+essas síndromes podem resultar em risco potencial de morte, deve-se descontinuar o tratamento com Aropax® se tais eventos ocorrerem
+(caracterizados por sintomas como hipertermia, rigidez, mioclonias, instabilidade autonômica com possíveis flutuações rápidas dos sinais
+vitais, mudanças de estado mental, incluindo confusão, irritabilidade e agitação extrema progredindo para delírio e coma) e iniciar terapia
+sintomática de suporte. Aropax® não deve ser usado em associação com precursores de serotonina (tais como L-triptofano e oxitriptano)
+devido ao risco de síndrome serotoninérgica (ver as 4. Contraindicações e 6. Interações Medicamentosas).
+
+Mania e transtorno bipolar
+Um episódio depressivo grave pode ser a manifestação inicial do transtorno bipolar. Acredita-se, de modo geral (hipótese não confirmada
+por ensaios clínicos), que tratar tal episódio apenas com antidepressivo pode aumentar a probabilidade de precipitação de um episódio de
+mania misto nos pacientes sob risco de transtorno bipolar. Antes de iniciar o tratamento com antidepressivo, os pacientes devem ser
+adequadamente avaliados para que se determine o risco de transtorno bipolar. Essa avaliação deve abranger história psiquiátrica detalhada,
+inclusive história familiar de suicídio, transtorno bipolar e depressão. Deve-se notar que Aropax® não foi aprovado para uso no tratamento
+de depressão no transtorno bipolar. Como todo antidepressivo, a paroxetina deve ser usada com cautela em pacientes com história de mania.
+
+Tamoxifeno
+Alguns estudos têm demonstrado que a eficácia do tamoxifeno, medida pelo risco de recaída do câncer de mama/mortalidade, pode ser
+reduzida quando prescrito em associação com Aropax® como um resultado da inibição irreversível da paroxetina ao CYP2D6 (ver 6.
+Interações Medicamentosas). Este risco pode aumentar com a longa duração da coadministração. Quando o tamoxifeno é usado para o
+tratamento ou prevenção de câncer de mama, os médicos devem considerar o uso de um antidepressivo alternativo com pouca ou nenhuma
+inibição de CYP2D6.
+
+Fratura óssea
+Estudos epidemiológicos sobre risco de fratura após exposição a alguns antidepressivos, inclusive os ISRS, relatam associação co m fraturas.
+O risco ocorre durante o tratamento e é maior nas fases iniciais. A possibilidade de fratura deve ser considerada no tratamento de pacientes
+com Aropax®.
+
+Inibidores da monoaminoxidase (IMAO)
+O tratamento com Aropax® deve ser iniciado cautelosamente no mínimo duas semanas após o término do tratamento com inibidores da
+MAO, aumentando-se gradativamente a dosagem de Aropax® até alcançar resposta adequada (ver 4. Contraindicações e 6. Interações
+Medicamentosas).
+
+Insuficiência renal/hepática
+Deve-se ter cautela ao administrar este medicamento a pacientes com insuficiência renal grave ou hepática (ver 8. Posologia e Modo de
+Usar).
+Modelo de texto de bula – Profissional de Saúde
+Aropax® Comprimidos revestidos
+
+Epilepsia
+Da mesma forma que outros antidepressivos, Aropax® deve ser usado com cuidado nos pacientes com epilepsia.
+
+Convulsões
+Em geral, a incidência de convulsões é menor que 0,1% entre os pacientes tratados com Aropax®. Deve-se descontinuar o medicamento
+quando o paciente apresentar convulsão.
+
+Glaucoma
+Assim como ocorre com outros ISRS, Aropax® pode causar midríase e deve ser usado com cautela nos pacientes com glaucoma de ângulo
+agudo.
+
+Eletroconvulsoterapia (ECT)
+Há pouca experiência clínica com a administração concomitante de Aropax® em pacientes sob ECT. Entretanto, existem raros relatos de
+prolongamento de convulsões induzidas pelo ECT e/ou convulsões secundárias em pacientes tratados com ISRS.
+
+Hiponatremia
+Houve relatos raros, predominantemente em idosos. A hiponatremia geralmente se reverte com a descontinuação da paroxetina.
+
+Hemorragia
+Há relatos de sangramento na pele e nas membranas mucosas (inclusive sangramento gastrintestinal e ginecológico) após tratamento com
+Aropax®. Deve-se, portanto, usar o medicamento com cautela em pacientes predispostos a condições hemorrágicas, com tendência a
+sangramento conhecida ou sob tratamento concomitante com drogas que aumentam o risco de sangramento (ver 9. Reações Adversas). Os
+ISRS podem aumentar o risco de hemorragia pós-parto (ver Gravidez e Lactação).
+
+Problemas cardíacos
+Deve-se manter as precauções usuais no tratamento de pacientes com doenças cardíacas.
+
+Prolongamento do Intervalo QT
+
+Casos de prolongamento do intervalo QT têm sido reportados, embora a causalidade com Aropax® não foi estabelecida. Em um estudo
+com indivíduos saudáveis, a paroxetina administrada em doses diárias repetidas de até 60 mg não prolongou o intervalo QTc (ver 3.
+Características Farmacológicas).
+Aropax® deve ser utilizado com cuidado em pacientes com histórico de intervalo QT prolongado, pacientes tomando antiarrítmicos ou
+outros medicamentos que possam potencialmente prolongar o intervalo QT, ou aqueles com doenças cardíacas pré-existentes relevantes.
+Para mais informações, veja 4. Contraindicações.
+
+Este medicamento pode potencializar o prolongamento do intervalo QT, o que aumenta o risco de ataque de arritmias ventriculares
+graves do tipo "torsades de pointes", que é potencialmente fatal (morte súbita).
+
+Sintomas observados com a descontinuação de Aropax® em adultos
+Em estudos clínicos conduzidos com adultos, observaram-se eventos adversos decorrentes da descontinuação do tratamento em 30% dos
+pacientes que receberam Aropax® em comparação a 20% dos tratados com placebo. Os sintomas decorrentes da descontinuação são
+diferentes dos resultantes da dependência produzida pelo abuso de substâncias lícitas ou ilícitas.
+Há relatos de vertigens, distúrbios sensoriais (inclusive parestesia, sensação de choque elétrico e zumbido), distúrbios do sono (inclusive
+sonhos intensos), agitação ou ansiedade, náuseas, tremor, confusão, sudorese, cefaleia e diarreia. Geralmente esses sintomas variam de
+leves a moderados; entretanto, em alguns casos, podem ser graves. Eles ocorrem, normalmente, nos dias seguintes à descontinuação do
+tratamento, mas existem raros relatos de ocorrências após o esquecimento de uma dose. Esses sintomas são, de modo geral, autolimitados
+e desaparecem em duas semanas, embora, em alguns indivíduos, esse tempo se prolongue (de dois a três meses ou mais). Dessa forma,
+recomenda-se retirar Aropax® gradualmente, por várias semanas ou meses, até a descontinuação total do tratamento, de acordo com as
+necessidades do paciente (ver Descontinuação de Aropax®, em 8. Posologia e Modo de Usar).
+
+Disfunção sexual
+ Os ISRS podem causar sintomas de disfunção sexual (ver reações adversas). Houve relatos de disfunção sexual duradoura em que os
+sintomas continuaram apesar da descontinuação dos ISRS.
+
+Sintomas observados com a descontinuação de Aropax® em crianças e adolescentes
+Em estudos clínicos conduzidos com crianças e adolescentes, observaram-se eventos adversos decorrentes da descontinuação do tratamento
+em 32% dos pacientes que receberam Aropax® em comparação a 24% dos tratados com placebo. Houve relatos de eventos causados pela
+descontinuação de Aropax® em pelo menos 2% dos pacientes e cuja ocorrência foi no mínimo duas vezes maior do que entre os pacientes
+tratados com placebo. Esses eventos foram labilidade emocional (inclusive ideação suicida, tentativa de suicídio, alterações de humor e
+vontade de chorar), nervosismo, vertigem, náusea e dor abdominal (ver 9. Reações Adversas).
+
+Efeitos sobre a capacidade de dirigir veículos e de operar máquinas
+Modelo de texto de bula – Profissional de Saúde
+Aropax® Comprimidos revestidos
+
+A experiência clínica demonstra que a terapia com Aropax® não está associada à deterioração da função cognitiva nem da função
+psicomotora. Contudo, como é o caso de todas as drogas psicoativas, os pacientes devem ser advertidos sobre a capacidade de dirigir
+veículos motorizados ou de operar máquinas.
+Apesar de Aropax® não aumentar as deficiências mentais e habilidades motoras causadas por álcool, o uso concomitante de Aropax® com
+álcool não é recomendado.
+
+Oriente seu paciente a não dirigir veículos ou operar máquinas durante todo o tratamento, pois sua habilidade e capacidade de
+reação podem estar prejudicadas.
+
+O uso deste medicamento pode causar tontura, desmaios ou perda da consciência, expondo o paciente a quedas ou acidentes.
+
+Fertilidade
+Alguns estudos clínicos têm demonstrado que os ISRS (incluindo Aropax®), podem afetar a qualidade do esperma. Este efeito parece ser
+reversível após a descontinuação do tratamento. Alterações na qualidade do esperma pode afetar a fertilidade em alguns homens.
+
+Gravidez
+Estudos com animais não demonstraram efeitos teratogênicos nem embriotóxicos seletivos.
+Estudos epidemiológicos recentes conduzidos entre mulheres grávidas expostas a antidepressivos durante o primeiro trimestre de gestação
+mostraram aumento do risco de malformações congênitas, particularmente cardiovasculares (como defeitos do septo atrial e ventricular),
+associadas ao uso da paroxetina. Os dados sugerem que o risco do feto apresentar defeito cardiovascular após exposição materna à
+paroxetina é de aproximadamente 1/50 em comparação com a taxa esperada de incidência desses efeitos na população geral, que é de
+aproximadamente 1/100.
+O médico precisa avaliar alternativas possíveis de tratamento para mulheres grávidas ou que planejam engravidar e somente prescrever
+Aropax® quando os benefícios potenciais justificarem os riscos. No caso da opção pela descontinuação do tratamento em mulheres
+grávidas, o médico deve observar a seção Descontinuação de Aropax®, em 8. Posologia e Modo de Usar e a seção Sintomas Observados
+com a Descontinuação de Aropax® em Adultos, acima.
+Houve relatos de nascimento prematuro em casos de mulheres grávidas expostas à paroxetina ou a outros ISRS, entretanto não se
+estabeleceu nenhuma relação causal.
+Os dados observacionais forneceram evidências de um risco aumentado (menos de duas vezes) de hemorragia pós-parto após a exposição
+a ISRS um mês antes do nascimento.
+Deve-se monitorar o recém-nascido caso a mãe tenha dado continuidade ao tratamento com Aropax® nos estágios finais da gravidez, uma
+vez que houve relatos de complicações em neonatos expostos à paroxetina ou a outros ISRS após o terceiro trimestre de gravidez.
+Entretanto, não foi possível estabelecer uma relação causal com a terapia. Os achados clínicos relatados incluem: desconforto respiratório,
+cianose, apneia, convulsões, instabilidade térmica, dificuldade de amamentar, vômito, hipoglicemia, hipertonia, hipotonia, hiperreflexia,
+tremor, nervosismo, irritabilidade, letargia, choro constante e sonolência. Em alguns casos, os sintomas foram descritos como síndrome de
+abstinência neonatal. A maior parte das complicações ocorreu imediatamente ou pouco após o nascimento (menos de 24 horas).
+Estudos epidemiológicos mostraram que o uso de ISRS (inclusive da paroxetina) na gravidez, particularmente na gravidez avançada,
+associou-se ao aumento do risco de hipertensão pulmonar persistente em recém-nascidos. O aumento de risco entre crianças nascidas de
+mulheres que usaram ISRS nos estágios mais avançados de gestação revelou-se de quatro a cinco vezes maior que o observado na população
+geral (taxa de 1 a 2 em cada grupo de 1.000 grávidas).
+
+Categoria D de risco na gravidez.
+Este medicamento não deve ser utilizado por mulheres grávidas, sem orientação médica. Informe imediatamente seu médico em
+caso de suspeita de gravidez.
+
+Lactação
+Uma pequena quantidade de paroxetina é excretada no leite materno. Em estudos publicados, as concentrações séricas em crianças
+amamentadas foram indetectáveis (<2 ng/mL) ou muito baixas (<4 ng/mL). Não se observaram sinais de efeitos da droga nessas crianças.
+Contudo, Aropax® não deve ser usado durante a amamentação, a menos que os benefícios esperados para a mãe justifiquem os riscos
+potenciais para a criança.
+
+Uso criterioso no aleitamento ou na doação de leite humano. O uso deste medicamento no período da lactação depende da avaliação
+e acompanhamento do seu médico ou cirurgião-dentista.
+
+Toxicidade
+Estudos toxicológicos foram conduzidos em macacos rhesus e ratos albinos; em ambos, a via metabólica é semelhante à que foi descrita
+em humanos. Como esperado, com as aminas lipofílicas, incluindo antidepressivos tricíclicos, foi detectado fosfolipidose em ratos. A
+fosfolipidose não foi observada em estudos de duração de até um ano em primatas, com doses que foram seis vezes maior do que o intervalo
+de doses clínicas aconselhável.
+
+Carcinogenicidade
+Em estudos de dois anos conduzidos em camundongos e ratos, a paroxetina não apresentou efeito carcinogênico.
+Modelo de texto de bula – Profissional de Saúde
+Aropax® Comprimidos revestidos
+
+Genotoxicidade
+Não foi observada genotoxicidade em uma série de ensaios in vitro e in vivo.
+
+Atenção: Contém o corante dióxido de titânio.
+
+6. INTERAÇÕES MEDICAMENTOSAS
+
+Drogas serotoninérgicas: assim como ocorre com outros ISRS, a coadministração de drogas serotoninérgicas pode levar ao aumento dos
+efeitos associados à 5-HT, ou síndrome serotoninérgica (ver 5. Advertências e Precauções). Deve-se ter cuidado e efetuar monitoramento
+clínico minucioso ao combinar Aropax® com drogas serotoninérgicas (inclusive L-triptofano, triptana, tramadol, ISRS, lítio, fentanila e
+preparações à base de Erva de São João, ou Hypericum perforatum).
+O uso concomitante de Aropax® e inibidores da MAO, incluindo linezolida, um antibiótico que é um inibidor reversível não seletivo da
+MAO e cloreto de metiltionina (azul de metileno) é contraindicado (ver 4. Contraindicações).
+
+pimozida: em estudo de dose única e baixa da pimozida (2 mg), em coadministração com a paroxetina, foi demonstrado aumento nos
+níveis de pimozida. Isso se explica pelas conhecidas propriedades da paroxetina de inibir a CYP2D6. Devido à estreita janela terapêutica
+da pimozida e a sua conhecida capacidade de prolongar o intervalo QT, seu uso concomitante com Aropax® é contraindicado (ver 4.
+Contraindicações).
+
+Enzimas metabolizadoras de drogas: o metabolismo e a farmacocinética da paroxetina podem ser afetados pela indução ou inibição de
+enzimas metabolizadoras de drogas.
+Quando Aropax® é coadministrado com um inibidor conhecido da enzima metabolizadora, deve-se cogitar o uso das doses mais baixas da
+faixa terapêutica. Não se deve considerar necessário nenhum ajuste da dose inicial quando a droga coadministrada for um indutor conhecido
+(como carbamazepina, rifampicina, fenobarbital e fenitoína). Qualquer ajuste de dose subsequente deve ser determinado pelos efeitos
+clínicos (tolerabilidade e eficácia).
+
+fosamprenavir/ritonavir: a coadministração de fosamprenavir/ritonavir e da paroxetina reduz significativamente os níveis plasmáticos
+desta última. Qualquer ajuste de dose deve levar em conta o efeito clínico (tolerabilidade e eficácia).
+
+prociclidina: a administração diária da paroxetina aumenta significativamente os níveis plasmáticos da prociclidina. Se houver efeitos
+anticolinérgicos, a dose de prociclidina deve ser reduzida.
+
+Anticonvulsivantes: a administração concomitante de drogas como carbamazepina, fenitoína e valproato de sódio não parece interferir no
+perfil farmacocinético/farmacodinâmico em pacientes epiléticos.
+
+Bloqueadores neuromusculares: Os inibidores seletivos da recaptação da serotonina (ISRS) reduzem a atividade da colinesterase
+plasmática resultando em um prolongamento da ação do bloqueio muscular de mivacúrio e suxametônio.
+
+Potencial inibitório da paroxetina sobre a CYP2D6: assim como os demais antidepressivos, inclusive outros ISRS, a paroxetina inibe a
+CYP2D6, enzima hepática do citocromo P450. Essa inibição pode conduzir ao aumento da concentração plasmática de drogas
+coadministradas metabolizadas pela CYP2D6. Isso abrange certos antidepressivos tricíclicos (como amitriptilina, nortriptilina, imipramina
+e desipramina), neurolépticos fenotiazínicos (como perfenazina e tioridazina [ver 4. Contraindicações]), risperidona, atomoxetina, certos
+antiarrítmicos do tipo 1c (como propafenona e flecainida) e metoprolol.
+Tamoxifeno tem um metabólito ativo importante, endoxifeno, que é produzido pela CYP2D6 e que contribui significativamente para a
+eficácia do tamoxifeno. A inibição irreversível da CYP2D6 pela paroxetina leva a concentrações plasmáticas reduzidas de endoxifeno (ver
+5. Advertências e Precauções).
+
+CYP3A4: um estudo de interação in vivo sobre coadministração, no estado de equilíbrio, de paroxetina e terfenadina, um substrato da
+enzima 3A4 do citocromo P450 (CYP3A4), revelou que a paroxetina não afetou a farmacocinética da terfenadina. Um estudo similar sobre
+interação in vivo revelou que a paroxetina não afetou a farmacocinética do alprazolam e vice-versa. A administração concomitante de
+paroxetina com terfenadina, alprazolam ou outras drogas que sejam substratos da CYP3A4 não devem ser consideradas perigosas.
+
+Fármacos que alteram o pH gástrico: estudos clínicos demonstraram que a absorção e a farmacocinética da paroxetina não são afetadas
+ou são marginalmente afetadas (em níveis que não exigem ajustes de dose) por:
+  alimentos;
+  antiácidos;
+  digoxina;
+  propranolol;
+  álcool (a paroxetina não potencializa a redução da habilidade motora e mental causada pelo álcool, entretanto, o uso
+ concomitante de paroxetina e álcool não é recomendável).
+
+8. POSOLOGIA E MODO DE USAR
+
+Modo de usar
+Recomenda-se que Aropax® seja administrado em dose única diária, pela manhã, com a alimentação. Os comprimidos devem ser engolidos
+e, de preferência, com um copo de água. Os comprimidos de 20 mg têm sulco funcional que permite a divisão do comprimido ao meio,
+obtendo doses de 10 mg, se necessário.
+
+Posologia
+
+Adultos
+Segundo se recomenda no caso de todas as drogas antidepressivas, a posologia deve ser avaliada e ajustada, se necessário, duas ou três
+semanas após o início do tratamento, reajustando-se, a partir de então, conforme for clinicamente apropriado.
+Os pacientes devem ser tratados por período suficiente para garantir a resolução dos sintomas. Esse período pode ser de vários meses para
+o tratamento da depressão ou mais longo para o tratamento do transtorno obsessivo-compulsivo ou do transtorno do pânico.
+Assim como ocorre com muitos fá rmacos psicoativos, deve-se evitar a descontinuação abrupta de Aropax® (ver 9. Reações Adversas).
+
+Transtorno depressivo maior (TDM)
+A dose recomendada é de 20 mg ao dia. Para alguns pacientes, pode ser necessário aumentar a dosagem. Isso deve ser feito gradativamente,
+com acréscimos de 10 mg até atingir a dose máxima de 50 mg, de acordo com a resposta do paciente.
+
+Transtorno obsessivo-compulsivo (TOC)
+A dose recomendada é de 40 mg ao dia. O tratamento deve ser iniciado com 20 mg ao dia, aumentando-se semanalmente a dose com
+acréscimos de 10 mg. Alguns pacientes se beneficiam do aumento da dosagem até o máximo de 60 mg/dia.
+
+Transtorno do pânico
+A dose recomendada é de 40 mg ao dia. O tratamento deve ser iniciado com 10 mg ao dia, aumentando-se semanalmente a dose, com
+acréscimos de 10 mg, de acordo com a resposta dos pacientes. Alguns se beneficiam do aumento da dosagem até o máximo de 50 mg/dia.
+Recomenda-se uma dose inicial baixa, pois conforme é geralmente reconhecido, existe um potencial de piora da sintomatologia do pânico
+no início do tratamento.
+
+Fobia social/transtorno de ansiedade social
+A dose recomendada é de 20 mg ao dia. Os pacientes que não responderem a essa posologia podem beneficiar-se de aumentos de 10 mg,
+conforme necessário, até o máximo de 50 mg/dia. As alterações de dosagem devem ocorrer em intervalos de pelo menos uma semana, de
+acordo com sua resposta.
+
+Transtorno de ansiedade generalizada
+A dose recomendada é de 20 mg ao dia. Alguns pacientes não respondem a essa posologia e podem beneficiar-se de aumentos de 10 mg,
+conforme necessário, até a dose máxima de 50 mg/dia, de acordo com sua resposta.
+
+Transtorno de estresse pós-traumático
+A dose recomendada é de 20 mg ao dia. Alguns pacientes não respondem a essa posologia e podem beneficiar-se de aumentos de 10 mg,
+conforme necessário, até o máximo de 50 mg/dia, de acordo com sua resposta.
+
+Descontinuação de Aropax®
+Assim como ocorre com outros medicamentos psicoativos, deve-se evitar a descontinuação abrupta de Aropax® (ver 9. Reações Adversas
+e 5. Advertências e Precauções). O regime de diminuição de dose, usado em estudos clínicos recentes, envolve redução na dose diária de
+10 mg em intervalos semanais.
+Modelo de texto de bula – Profissional de Saúde
+Aropax® Comprimidos revestidos
+
+Ao atingir a dose diária de 20 mg, os pacientes mantiveram essa posologia por uma semana antes da descontinuação do tratamento. Caso
+ocorram sintomas intoleráveis após a redução da dose ou a descontinuação do tratamento, deve-se considerar o uso da dosagem prescrita
+previamente. Na sequência, o médico deve continuar reduzindo a dose de modo mais gradual.
+
+Populações especiais
+
+Pacientes idosos
+Entre os pacientes idosos, ocorre aumento das concentrações plasmáticas da paroxetina, mas a faixa de concentrações se sobrepõe àquela
+observada em indivíduos mais jovens.
+Deve-se iniciar com a posologia recomendada para início do tratamento em adultos, que pode ser aumentada semanalmente com acréscimos
+de 10 mg/dia, até o máximo de 40 mg/dia, de acordo com a resposta do paciente.
+
+Crianças e adolescentes menores de 18 anos
+O uso de Aropax® não é indicado para crianças e adolescentes menores de 18 anos (ver 1. Indicações e 5. Advertências e Precauções).
+
+Insuficiência renal/hepática
+Ocorre aumento das concentrações plasmáticas da paroxetina entre os pacientes com insuficiência renal grave (clearance de creatinina <30
+mL/min) ou insuficiência hepática. A dose recomendada é de 20 mg/dia. Os aumentos de posologia devem restringir-se à menor dose
+eficaz.
+
+Este medicamento não deve ser mastigado.
+
+9. REAÇÕES ADVERSAS
+
+Algumas das reações adversas listadas abaixo podem diminuir de intensidade e frequência com a continuação do tratamento e geralmente
+não levam a sua suspensão. As reações adversas estão listadas abaixo e classificadas por frequência, definidas como muito comuns (>1/10),
+comuns (>1/100 e ≤1/10), incomuns (>1/1.000 e ≤1/100), raras (>1/10.000 e ≤1/1.000) e muito raras (≤1/10.000), incluindo-se os casos
+isolados. As frequências das reações adversas comuns e incomuns foram geralmente determinadas com base em dados de segurança
+agrupados, obtidos de estudos clínicos com população superior a 8.000 pacientes tratados com paroxetina e avaliados como de incidência
+maior que no grupo placebo. Os eventos raros e muito raros foram determinados, de modo geral, com base em informações obtidas no
+período de pós-comercialização e se referem mais à taxa de relatos do que à frequência real.
+
+Reações muito comuns (>1/10)
+  náusea;
+  disfunção sexual.
+
+Reações comuns (>1/100 e ≤1/10)
+  astenia, ganho de peso corporal;
+  sudorese;
+  constipação, diarreia, vômitos, boca seca;
+  bocejos;
+  visão turva;
+  vertigem, tremor e dor de cabeça;
+  sonolência, insônia, agitação, sonhos anormais (inclusive pesadelos);
+  aumento dos níveis de colesterol, diminuição do apetite.
+
+Reações incomuns (>1/1.000 e ≤1/100)
+  retenção urinária, incontinência urinária;
+  rash cutâneo (exantema);
+  midríase (ver 5. Advertências e Precauções);
+  hipotensão postural;
+  taquicardia sinusal;
+  distúrbios extrapiramidais (houve relatos de distúrbios extrapiramidais, inclusive de distonia orofacial, ocorridos em pacientes
+ com transtornos de movimento subjacentes ou que faziam uso de medicação neuroléptica);
+  confusão, alucinações;
+  sangramento anormal, predominantemente da pele e das membranas mucosas;
+  leucopenia.
+
+Reações raras (>1/10.000 e ≤1/1.000)
+  hiperprolactinemia/galactorreia, distúrbios menstruais (incluindo menorragia, metrorragia e amenorreia);
+Modelo de texto de bula – Profissional de Saúde
+Aropax® Comprimidos revestidos
+
+  elevação das enzimas hepáticas (houve relatos de aumento das enzimas hepáticas e, muito raramente, também de eventos
+ hepáticos pós-comercialização, como hepatite, às vezes associad a à icterícia, ou deficiência hepática); a descontinuação do uso
+ da paroxetina deve ser considerada se houver elevação dos resultados dos testes de função hepática;
+  convulsões, acatisia, síndrome das pernas inquietas (SPI);
+  hiponatremia (houve relatos de hiponatremia predominantemente em pacientes idosos e, algumas vezes, devido à síndrome de
+ secreção inapropriada do hormônio antidiurético, ou ADH);
+  manifestações maníacas (tais sintomas também podem ser decorrentes de doença subjacente).
+
+Reações muito raras (≤1/10.000)
+  trombocitopenia;
+  manifestações alérgicas graves (inclusive reações anafiláticas e angioedema);
+  síndrome de secreção inapropriada do hormônio antidiurético (ADH);
+  síndrome serotoninérgica (os sintomas incluem agitação, confusão, diaforese, alucinações, hiperreflexia, mioclonia, taquicardia
+ e tremores);
+  glaucoma agudo;
+  sangramento gastrintestinal;
+  eventos hepáticos (como hepatite, às vezes associada à icterícia, ou insuficiência hepática); houve relatos de elevação das
+ enzimas hepáticas e também, muito raramente, de eventos hepáticos pós-comercialização, como hepatite, às vezes associada à
+ icterícia, ou deficiência hepática; a descontinuação do uso da paroxetina deve ser considerada se houver elevação dos resultados
+ dos testes de função hepática);
+  edema periférico;
+  reações cutâneas graves (incluindo eritema multiforme, síndrome de Stevens-Johnson e necrólise epidérmica tóxica), urticária
+ e reações de fotossensibilidade.
+
+Sintomas observados na descontinuação do tratamento com paroxetina
+
+Reações comuns (>1/100 e ≤1/10)
+  vertigem;
+  distúrbios sensoriais;
+  distúrbios do sono;
+  ansiedade;
+  dor de cabeça.
+
+Reações incomuns (>1/1.000 e ≤1/100)
+  agitação;
+  náusea;
+  tremor;
+  confusão;
+  sudorese;
+  diarreia.
+
+Assim como ocorre com muitos medicamentos psicoativos, a descontinuação de Aropax® (particularmente de forma abrupta) pode causar
+sintomas como vertigem, distúrbios sensoriais (inclusive parestesia, sensação de choque elétrico e zumbido), distúrbios do sono (inclusive
+sonhos intensos), agitação ou ansiedade, náusea, dor de cabeça, tremor, confusão, diarreia e sudorese. Na maioria dos pacientes, esses
+eventos variam de leves a moderados e são autolimitados. Nenhum grupo particular de pacientes apresentou um risco aumentado para esses
+sintomas; entretanto, recomenda-se que, quando o tratamento com Aropax® não for mais necessário, a descontinuação seja gradual, com
+redução da dose (ver 8. Posologia e Modo de Usar e 5. Advertências e Precauções).
+
+Reações adversas observadas em estudos clínicos pediátricos
+Nesses estudos, houve relatos dos seguintes eventos adversos ocorridos entre pelo menos 2% dos pacientes, com incidência no mínimo
+duas vezes maior do que a observada no grupo de placebo: labilidade emocional (inclusive autoagressão, pensamento e/ou comportamento
+suicida, choro e flutuações de humor), hostilidade, diminuição do apetite, tremor, sudorese, hipercinesia e agitação. Sintomas como
+pensamento e/ou comportamento suicida foram observados principalmente em estudos clínicos que envolveram adolescentes com
+transtorno depressivo maior. Observou-se hostilidade particularmente em crianças com transtorno obsessivo-compulsivo e, em especial,
+em crianças menores de 12 anos de idade.
+Em estudos que utilizaram esquema de titulação de dose (redução da posologia de 10 mg/dia em intervalos semanais até a dose de 10
+mg/dia por uma semana), os sintomas reportados durante a fase de titulação ou com a descontinuação de Aropax® entre pelo menos 2%
+dos pacientes ocorridos no mínimo duas vezes mais que no grupo de placebo foram: labilidade emocional, nervosismo, vertigem, náuseas
+e dores abdominais (ver 5. Advertências e Precauções).
+
+Em caso de eventos adversos, notifique pelo sistema VigiMed, disponível no portal da ANVISA.
+Modelo de texto de bula – Profissional de Saúde
+Aropax® Comprimidos revestidos
+
+10. SUPERDOSE
+
+Sintomas e sinais
+Uma ampla margem de segurança fica evidente tomando-se como base os dados disponíveis. Houve relatos de casos de superdosagem em
+pacientes que tomaram até 2.000 mg de paroxetina isoladamente ou em combinação com outras drogas, inclusive álcool. As experiências
+de superdosagem de Aropax® demonstraram, além dos eventos observados em 9. Reações Adversas, os seguintes sintomas: febre,
+alterações da pressão arterial, contrações musculares involuntárias, ansiedade e taquicardia.
+Houve relatos ocasionais de coma ou alterações do ECG, muito raramente com evolução fatal, em especial quando Aropax® foi
+administrado em associação com outras drogas psicotrópicas, com ou sem álcool.
+
+Tratamento
+Não se conhece nenhum antídoto específico.
+O tratamento deve consistir de medidas gerais empregadas nos casos de superdosagem de qualquer antidepressivo. São indicadas medidas
+de suporte geral, com monitoramento frequente dos sinais vitais, além de cuidadosa observação. O cuidado com o paciente deve estar de
+acordo com a indicação clínica ou conforme recomendações dos centros nacionais de intoxicação (se disponíveis).
+
+Em caso de intoxicação ligue para 0800 722 6001, se você precisar de mais orientações.
+
+III)

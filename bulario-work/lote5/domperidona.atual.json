@@ -1,0 +1,17 @@
+{
+  "Risco Gestacional": "C",
+  "Slug": "domperidona",
+  "Nomes Comerciais / Produtos ANVISA": "Motilium; Domperix; domperidona.",
+  "Interações": "Não usar com inibidores potentes de CYP3A4 ou fármacos que prolongam QT: cetoconazol, itraconazol, voriconazol, posaconazol, fluconazol em dose alta, claritromicina, eritromicina, ritonavir, indinavir, cobicistate, amiodarona, sotalol, haloperidol, clorpromazina, quetiapina, citalopram, escitalopram, azitromicina, levofloxacino, moxifloxacino, ciprofloxacino, ondansetrona e metadona. Anticolinérgicos, como biperideno, oxibutinina, solifenacina, escopolamina, ipratrópio e amitriptilina, podem reduzir efeito procinético. Levodopa pode ter níveis aumentados, embora sem necessidade usual de ajuste.",
+  "Apresentações / Nomes Comerciais": "Comprimidos 10 mg; suspensão oral 1 mg/mL conforme fabricante. Exemplos: Motilium; Domperix; Domperidona EMS; Domperidona Medley.",
+  "Posologia Pediátrica": "Uso pediátrico deve ser restrito e individualizado por peso, idade e risco cardíaco.\nNão recomendado para automedicação em crianças.\nQuando indicado, respeitar dose por peso, dose máxima e duração curta conforme bula/protocolo.",
+  "Texto Resumo": "Domperidona é um antiemético e procinético usado para náuseas, vômitos e sintomas de lentificação gastrointestinal. Seu principal cuidado é o risco de prolongamento de QT e arritmias, especialmente com macrolídeos, azólicos, antiarrítmicos e outros fármacos pró-arrítmicos.",
+  "Classe / Categoria": "Antiemético; procinético gastrointestinal; antagonista dopaminérgico periférico D2.",
+  "Posologia Adulto": "Náuseas e vômitos: 10 mg por via oral até 3 vezes ao dia, antes das refeições.\nDose máxima usual: 30 mg/dia.\nUsar pelo menor tempo possível, geralmente não excedendo 7 dias sem reavaliação.",
+  "Contraindicações": "Hipersensibilidade à domperidona ou componentes da fórmula; prolactinoma; hemorragia gastrointestinal; obstrução mecânica ou perfuração gastrointestinal; insuficiência hepática moderada a grave; prolongamento conhecido do intervalo QT; distúrbios eletrolíticos significativos; doença cardíaca relevante; uso concomitante com inibidores potentes de CYP3A4 ou medicamentos que prolongam QT.",
+  "Tags Busca": "domperidona; antiemético; procinético; náuseas; vômitos; refluxo; gastroparesia; motilium",
+  "Advertências": "Pode causar prolongamento de QT, arritmias ventriculares e morte súbita, especialmente em idosos, doses altas, doença cardíaca, distúrbios eletrolíticos ou uso de inibidores de CYP3A4/QT. Pode elevar prolactina, causando galactorreia, ginecomastia e alterações menstruais. Evitar uso prolongado e reavaliar se sintomas persistirem.",
+  "Nomes Comerciais OpenAI": "Motilium; Domperix; Domperidona EMS; Domperidona Medley; Domperidona Eurofarma.",
+  "Rede SUS (RENAME)": false,
+  "Princípio Ativo": "Domperidona"
+}

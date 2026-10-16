@@ -1,0 +1,1636 @@
+FONTE: lote5__claritromicina__KLARICID.pdf
+
+===== BLOCO 1 =====
+APRESENTAÇÕES
+KLARICID (claritromicina) grânulos para suspensão pediátrica 25 mg/mL (equivale a 125mg/5mL) ou 50
+ mg/mL (equivale a 250 mg/5mL) : frasco contendo claritromicina na forma de grânulos com marcação para
+ acréscimo de água filtrada ou fervida e resfriada o suficiente para formar 60 mL de suspensão, adaptador e seringa
+ dosadora para administração oral.
+
+ VIA ORAL
+ USO PEDIÁTRICO ACIMA DE 6 MESES DE IDADE
+
+1. INDICAÇÕES
+
+ KLARICID (claritromicina) é indicado ao tratamento de infecções das vias aéreas superiores e inferiores e
+ infecções de pele e tecidos moles causadas por todos os micro-organismos sensíveis a claritromicina. KLARICID ®
+ também é indicado para o tratamento de infecções disseminadas ou localizadas produzidas por Mycobacterium
+ avium ou Mycobacterium intracellulare , e infecções localizadas causadas por Mycobacterium chelonae ,
+ Mycobacterium fortuitum ou Mycobacterium kansasii .
+
+3. CARACTERÍSTICAS FARMACOLÓGICAS
+
+ Claritromicina é um antibiótico macrolídeo semissintético obtido pela substituição do grupo CH 3O pelo hidroxilo
+ (OH) na posição 6 do anel lactônico da eritromicina. Especialmente para a claritromicina é a 6-O-metil-
+ eritromicina. A claritromicina é um pó branco ou esbranquiçado, amargo e praticamente sem cheiro, insolúvel em
+ água, levemente solúvel em metanol, etanol e acetonitrila, e praticamente insolúvel em água. O peso molecular é
+ 747,96.
+
+ Microbiologia
+ A claritromicina exerce sua ação antibacteriana através de sua ligação às subunidades ribossômicas 50S dos
+ agentes patogênicos sensíveis, suprimindo-lhes a síntese proteica.
+ A claritromicina apresenta excelente atividade in vitro tanto contra cepas padronizadas de bactérias quanto contra
+ bactérias isoladas na clínica. A claritromicina é altamente potente contra uma grande variedade de organismos
+ Gram-positivos e Gram-negativos aeróbios e anaeróbios. As concentrações inibitórias mínimas (CIMs) da
+ claritromicina geralmente são uma diluição log 2 mais potente do que as CIMs da eritromicina.
+ Os dados in vitro também indicam que a claritromicina apresenta uma excelente atividade contra Legionella
+ pneumophilia , Mycoplasma pneumoniae e Helicobacter pylori . Esta atividade é maior em pH neutro do que em
+ pH ácido. Dados in vitro e in vivo mostram que este antibiótico apresenta atividade contra espécies de
+
+ Page 3 of 25
+ Abbott Laboratórios do Brasil Ltda.
+ Rua Michigan, 735
+ São Paulo, Brasil
+ CEP: 04566-905
+ T: (11) 5536-7000
+
+ micobactérias clinicamente significativa. Os dados in vitro indicam que espécies de Enterobacteriaceae e de
+ pseudomonas e outros bacilos Gram-negativos não fermentadores de lactose não são sensíveis à claritromicina.
+ A claritromicina tem se mostrado ativa contra a maioria das cepas dos seguintes micro-organismos, tanto in vitro
+ quanto em infecções clínicas:
+ Micro-organismos Gram-positivos aeróbios : Staphylococcus aureus, Streptococcus pneumoniae, Streptococcus
+ pyogenes, Listeria monocytogenes .
+ Micro-organismos Gram-negativos aeróbios : Haemophilus influenzae, Haemophilus parainfluenzae, Moraxella
+ catarrhalis, Neisseria gonorrhoeae, Legionella pneumophila.
+ Outros micro-organismos : Mycoplasma pneumoniae, Chlamydia pneumoniae (TWAR).
+ Micobactérias : Mycobacterium leprae, Mycobacterium kansasii, Mycobacterium chelonae, Mycobacterium
+ fortuitum, Mycobacterium avium complex (MAC) consistindo de: Mycobacterium avium e Mycobacterium
+ intracellulare .
+ A produção de betalactamase não deve apresentar efeitos sobre a atividade da claritromicina.
+ NOTA: a maioria das cepas de estafilococos resistentes à meticilina e à oxacilina são resistentes a claritromicina.
+ Helicobacter : Helicobacter pylori : em culturas realizadas antes do tratamento, o H. pylori foi isolado e as CIMs
+ da claritromicina foram determinadas em 104 pacientes. Destes, quatro pacientes apresentavam cepas resistentes,
+ dois apresentavam cepas com sensibilidade intermediária e 98 apresentavam cepas sensíveis.
+
+ Os seguintes dados in vitro estão disponíveis, mas seu significado clínico é desconhecido. A claritromicina
+ apresenta atividade in vitro contra a maioria das cepas dos seguintes micro-organismos; entretanto, a segurança e
+ eficácia da claritromicina no tratamento de infecções clínicas devido a esses micro-organismos ainda não foram
+ estabelecidas em estudos clínicos adequados e bem controlados.
+ Micro-organismos Gram-positivos aeróbios : Streptococcus agalactiae, Streptococci (Grupo C, F e G),
+ Streptococcus viridans .
+ Micro-organismos Gram-negativos aeróbios : Bordetella pertussis, Pasteurella multocida.
+ Micro-organismos Gram-positivos anaeróbios : Propionibacterium acnes, Clostridium perfringens,
+ Peptococcus niger.
+ Micro-organismos Gram-negativos anaeróbios : Bacteroides melaninogenicus .
+ Espiroquetas : Borrelia burgdorferi, Treponema pallidum .
+
+ Campilobacter : Campylobacter jejuni .
+
+ O principal metabólito da claritromicina em humanos e outros primatas é o metabólito biologicamente ativo 14-
+ OH-claritromicina. Este metabólito é tão ativo quanto, ou 1 a 2 vezes menos ativo do que a substância-mãe para a
+ maioria dos micro-organismos, exceto contra o H. influenzae contra o qual é duas vezes mais ativo. A substância-
+ mãe e o metabólito 14-OH exercem tanto atividade aditiva, quanto efeito sinérgico sobre o H. influenzae in vitro
+ e in vivo, dependendo da cepa bacteriana.
+ A claritromicina se mostrou duas a dez vezes mais ativa do que a eritromicina em vários modelos experimentais
+ em animais. Foi demonstrado, por exemplo, que ela é mais ativa do que eritromicina em infecções sistêmicas, em
+ abscessos cutâneos e infecções do trato respiratório em camundongos, causadas por S. pneumoniae, S. aureus, S.
+ pyogenes e H. influenzae . Em cobaias com infecção por Legionella , este efeito foi mais pronunciado; uma dose
+ intraperitoneal de 1,6 mg/kg/dia de claritromicina foi mais efetiva do que 50 mg/kg/dia de eritromicina.
+
+ Testes de sensibilidade
+ Os métodos quantitativos que requerem medida dos diâmetros das zonas fornecem estimativas mais precisas da
+ sensibilidade antibiótica. Um procedimento recomendado utiliza discos impregnados com 15 mcg de
+ claritromicina para testar a sensibilidade (teste de difusão de Kirby-Bauer); as interpretações correlacionam o
+ diâmetro das zonas do disco de teste com os valores das CIMs para a claritromicina. As CIMs são determinadas
+
+ Page 4 of 25
+ Abbott Laboratórios do Brasil Ltda.
+ Rua Michigan, 735
+ São Paulo, Brasil
+ CEP: 04566-905
+ T: (11) 5536-7000
+
+ pelo método de diluição em caldo ou ágar. Com este procedimento, um relatório do laboratório de “sensível” indica
+ que o organismo infectante provavelmente responderá ao tratamento. Um relatório de “resistente” indica que o
+ organismo infectante provavelmente não responderá ao tratamento. Um relatório de “sensibilidade intermediária”
+ sugere que o efeito terapêutico da substância pode ser duvidoso ou que o organismo poderia ser sensível se fossem
+ utilizadas doses maiores (este último também é referido como “moderadamente sensível”).
+
+ Farmacocinética
+ Absorção
+ Estudos iniciais de farmacocinética foram obtidos com a claritromicina na forma farmacêutica de comprimidos.
+ Esses dados indicaram que a absorção é rápida pelo trato gastrointestinal e a biodisponibilidade absoluta de um
+ comprimido de 250 mg de claritromicina é de aproximadamente 50%. Tanto o início da absorção quanto a
+ formação do metabólito 14-OH-claritromicina foram levemente retardados na presença de alimento, mas a
+ biodisponibilidade não foi afetada na administração do medicamento no estado de desjejum.
+ Distribuição, Biotransformação e Eliminação
+ In vitro: estudos in vitro mostraram que a média de ligação proteica da claritromicina no plasma humano foi de
+ 70% a concentrações clinicamente relevantes de 0,45 a 4,5 mcg/mL.
+ Indivíduos normais
+ A biodisponibilidade e farmacocinética de KLARICID ® grânulos para suspensão pediátrica foram investigadas em
+ adultos e pacientes pediátricos. Um estudo de dose única em adultos mostrou que a biodisponibilidade da
+ formulação pediátrica é equivalente ou levemente maior que a biodisponibilidade do comprimido (dosagem de 250
+ mg). Assim como no comprimido, a administração da suspensão pediátrica com alimentos leva a um discreto
+ retardo no início da absorção, mas não afeta a biodisponibilidade total da claritromicina. A C máx, ASC (área sob a
+ curva) e o T 1/2 da claritromicina suspensão foram de 0,95 mcg/mL, 6,5 mcg hr/mL e 3,7 horas respectivamente,
+ enquanto que, para a forma farmacêutica de comprimidos 250 mg foram 1,10 mcg/mL, 6,3 mcg hr/mL e 3,3 horas,
+ respectivamente.
+ Em um estudo de dose múltipla em adultos, no qual foram administrados 250 mg de KLARICID ® grânulos para
+ suspensão pediátrica a cada 12 horas, o “steady-state” foi alcançado após a quinta dose. Os parâmetros
+ farmacocinéticos após a quinta dose de KLARICID ® grânulos para suspensão pediátrica foram: C max 1,98 mcg/mL,
+ ASC 11,5 mcg hr/mL, T max 2,8 horas e T 1/2 3,2 horas para a claritromicina e 0,67; 5,33; 2,9 e 4,9 respectivamente,
+ para o metabólito 14-OH-claritromicina.
+ Em indivíduos saudáveis em jejum, o pico de concentração sérica foi atingido 2 horas após a ingestão da dose oral.
+ Com a dose duas vezes ao dia, sendo administrado um comprimido de 250 mg a cada 12 horas, o pico de
+ concentração sérica de claritromicina no “steady-state” foi alcançado em 2 a 3 dias e foi de, aproximadamente, 1
+ mcg/mL. O pico de concentração sérica correspondente à dose de 500 mg administrada a cada 12 horas, foi de 2 a
+ 3 mcg/mL.
+ A meia-vida de eliminação da claritromicina foi em torno de 3 a 4 horas para o comprimido de 250 mg administrado
+ a cada 12 horas e aumentou para 5 a 7 horas quando foram administrados 500 mg a cada 12 horas. O metabólito
+ principal, 14-OH-claritromicina, alcança um pico de concentração no “steady-state” de aproximadamente 0,6
+ mcg/mL e a meia-vida de eliminação é de 5 a 6 horas depois da administração de 250 mg a cada 12 horas. Com a
+ dose de 500 mg a cada 12 horas, o pico de concentração no “steady-state” do 14-OH-claritromicina é discretamente
+ mais alto (até 1mcg/mL), e a meia-vida de eliminação é em torno de 7 horas. Com esta dose, o “steady-state” deste
+ metabólito é alcançado em 2 ou 3 dias.
+ Aproximadamente 20% da dose oral de 250 mg de claritromicina administrada a cada 12 horas é excretado na
+ urina de forma inalterada. Para a dose de 500 mg administrada a cada 12 horas, a excreção na urina na forma
+ inalterada é de aproximadamente 30%. No entanto, o clearance renal da claritromicina é relativamente
+ independente da dose e se aproxima do índice regular de filtração glomerular. O principal metabólito encontrado
+ na urina é a 14-OH-claritromicina, o qual responde por 10 a 15% adicionais, tanto para doses de 250 mg ou 500
+ mg, administradas a cada 12 horas.
+ Pacientes
+ A claritromicina e seu metabólito 14-OH são facilmente distribuídos nos tecidos e fluidos corporais.
+
+ Page 5 of 25
+ Abbott Laboratórios do Brasil Ltda.
+ Rua Michigan, 735
+ São Paulo, Brasil
+ CEP: 04566-905
+ T: (11) 5536-7000
+
+ A concentração nos tecidos é normalmente maior que a concentração sérica. Exemplos de concentrações séricas
+ dos tecidos e fluídos corporais são apresentados abaixo:
+
+ Concentração (após 250 mg a cada 12 hs)
+ Tipo do tecido Concentração no tecido (mcg/g) Concentração sérica (mcg/mL)
+ Tonsila palatina 1,6 0,8
+ Pulmão 8,8 1,7
+
+ Em pacientes pediátricos, a claritromicina demonstrou boa biodisponibilidade com um perfil farmacocinético
+ coerente com resultados prévios de adultos usando a mesma formulação de suspensão. Os resultados indicaram
+ uma absorção rápida e extensa em pacientes pediátricos e, com exceção de um leve retardo no início da absorção,
+ a alimentação parece não afetar significantemente a biodisponibilidade e perfil farmacocinético da claritromicina.
+ Os parâmetros farmacocinéticos obtidos após a nona dose no quinto dia de tratamento foram os seguintes para a
+ claritromicina: C max 4,60 mcg/mL, ASC 15,7 mcg/hr/mL e T max 2,8 horas. Os valores correspondentes para o
+ metabólito 14-OH-claritromicina foram: 1,64 mcg/mL, 6,69 mcg/hr/mL e 2,7 horas, respectivamente. A meia-vida
+ de eliminação foi de aproximadamente 2,2 horas e 4,3 horas para a substância-mãe e seu metabólito,
+ respectivamente.
+ Em outro estudo, informações foram obtidas a partir da administração de claritromicina no ouvido médio em
+ pacientes com otite. Aproximadamente 2,5 horas depois de receber a quinta dose (a dose era de 7,5 mg/kg duas
+ vezes ao dia), a concentração de claritromicina era de 2,53 mcg/g de fluido no ouvido médio e a concentração do
+ metabólito 14-OH-claritromicina era de 1,27 mcg/g. A concentração da substância-mãe e seu metabólito foram
+ quase o dobro da concentração sérica correspondente.
+
+ Insuficiência hepática
+ A concentração de claritromicina no “steady-state” em indivíduos com insuficiência hepática, não difere da
+ concentração em indivíduos sadios. No entanto, a concentração do metabólito 14-OH-claritromicina foi menor em
+ indivíduos com insuficiência hepática. O decréscimo na formação desse metabólito compensou o aumento no
+ clearance renal da claritromicina quando comparados a indivíduos sadios.
+
+ Insuficiência renal
+ A farmacocinética da claritromicina foi alterada em indivíduos com insuficiência renal que receberam múltiplas
+ doses de 500 mg. Os níveis plasmáticos, a meia-vida, C máx, Cmín e a ASC da claritromicina e de seu metabólito
+ foram maiores nos pacientes com insuficiência renal. Essas alterações são correlacionadas ao grau de insuficiência
+ renal; quanto mais grave a insuficiência, mais significativa é a diferença.
+
+ Pacientes idosos
+ Em um estudo comparativo entre indivíduos jovens sadios e idosos sadios recebendo 500 mg de claritromicina em
+ doses orais múltiplas, os níveis plasmáticos foram maiores e a eliminação foi mais lenta no grupo dos idosos. No
+ entanto, não houve diferença entre os dois grupos quando o clearance renal da claritromicina foi relacionado com
+ o clearance da creatinina. Concluiu-se que qualquer efeito com relação à claritromicina não está ligado à idade do
+ paciente, e sim à função renal.
+
+ Pacientes com infecções por micobactérias
+ As concentrações de equilíbrio da claritromicina e seu metabólito 14-OH-claritromicina, observadas após
+ administração das doses usuais em pacientes infectados pelo HIV (comprimidos para os adultos e suspensão
+ pediátrica para as crianças), foram semelhantes àquelas observadas em indivíduos normais. Entretanto, com as
+ doses elevadas que podem ser requeridas para o tratamento de infecções por micobactérias, as concentrações da
+ claritromicina podem ser muito maiores do que aquelas observadas com as doses usuais.
+
+ Page 6 of 25
+ Abbott Laboratórios do Brasil Ltda.
+ Rua Michigan, 735
+ São Paulo, Brasil
+ CEP: 04566-905
+ T: (11) 5536-7000
+
+ Em crianças infectadas pelo HIV utilizando entre 15 a 30 mg/kg/dia de claritromicina divididas em duas
+ administrações, a C máx, geralmente foi entre 8 e 20 mcg/mL. Entretanto, foram observados valores de C máx,
+ superiores a 23 mcg/mL em crianças infectadas pelo HIV que utilizaram 30 mg/Kg/dia divididas em duas
+ administrações de claritromicina suspensão pediátrica. A meia-vida de eliminação mostra-se mais longa nas altas
+ doses comparando-se com as doses usuais administradas em indivíduos normais. Os dados de farmacocinética de
+ maior concentração plasmática e meia-vida de eliminação mais longa observados nestas circunstâncias são
+ consistentes com a conhecida não linearidade da farmacocinética da claritromicina.
+
+ Estudos clínicos
+
+ Experiência clínica em pacientes com infecções não causadas por micobactérias: em estudos clínicos, a
+ claritromicina, na dose de 7,5 mg/kg duas vezes ao dia, se mostrou segura e eficaz no tratamento de pacientes
+ pediátricos com infecções que requeriam tratamento antibiótico oral. A claritromicina foi avaliada em mais de
+ 1200 crianças, de idade entre seis meses e 12 anos, com otite média, faringite, infecções cutâneas e infecções do
+ trato respiratório inferior. Nesses estudos, a claritromicina, na dose de 7,5 mg/kg das vezes ao dia, apresentou
+ eficácia clínica e bacteriológica comparável àquela dos agentes de referência, incluindo a penicilina-V,
+ amoxicilina, amoxicilina-clavulanato, etilssuccinato de eritromicina, cefaclor e cefadroxila.
+ Experiência clínica em pacientes com infecções causadas por micobactérias: um estudo preliminar em
+ pacientes pediátricos (alguns dos quais HIV positivos) com infecções causadas por micobactérias, demonstrou que
+ a claritromicina foi segura e eficaz quando administrada isoladamente ou em combinação com a zidovudina ou
+ dideoxinosina. A claritromicina suspensão pediátrica foi administrada nas doses de 7,5 mg/kg, 15 mg/kg ou 30
+ mg/kg, divididas em duas administrações. Foram observados alguns efeitos sobre os parâmetros de farmacocinética
+ quando a claritromicina foi administrada concomitantemente com compostos antirretrovirais, mas as alterações
+ foram mínimas e provavelmente sem significado clínico. As doses de claritromicina de até 30 mg/kg/dia foram
+ bem toleradas. A claritromicina foi eficaz no tratamento de infecções disseminadas causadas por bactérias do
+ complexo M. avium em pacientes pediátricos com AIDS, sendo que em alguns pacientes foi demonstrada eficácia
+ após mais de um ano de tratamento.
+
+ Dados de segurança pré-clínica
+ Estudos de toxicidade oral aguda e subcrônica:
+ Valores de DL 50 oral aguda para a claritromicina suspensão administrada em 3 dias em camundongos velhos foi
+ de 1290 mg/Kg para machos e 1230 mg/Kg em fêmeas. Os valores DL 50 de 3 dias em ratos velhos foram de 1330
+ mg/Kg para machos e 1270 mg/Kg em fêmeas. Por comparação, a DL 50 de claritromicina administrada oralmente
+ é cerca de 2700 mg/kg em camundongos adultos e cerca de 3000 mg/Kg em ratos adultos. Estes resultados são
+ coerentes com outros grupos de antibióticos penicilínicos, cefalosporínicos e macrolídeos em que, geralmente, a
+ DL50 é menor em animais mais jovens do que em adultos.
+ Em ambos os camundongos e ratos, o peso corpóreo foi reduzido ou seu aumento suprimido e a amamentação e
+ movimentos espontâneos foram deprimidos para os primeiros dias seguintes da administração do fármaco. A
+ necropsia dos animais mortos revelou pulmões escuro-avermelhados em camundongos e em cerca de 25% dos
+ ratos; ratos tratados com 2197 mg/Kg ou mais de claritromicina suspensão também notaram uma substância
+ negro-avermelhada no intestino, provavelmente devido à sangramento. A morte desses animais foi devido à
+ debilitação resultante do comportamento de amamentação deprimida ou do sangramento intestinal.
+ Foi administrada claritromicina suspensão, por duas semanas, em ratos pré-desmame (5 dias de vida), nas doses
+ de 0, 15, 55 e 200 mg/Kg/dia. Animais do grupo de 200 mg/Kg/dia diminuíram o ganho de peso corporal,
+ diminuíram os valores médios de hemoglobina e hematócrito, e aumentaram a média relativa de peso dos rins, em
+ comparação à animais do grupo controle.
+ Foram também observados em animais deste grupo de tratamento, mínima a leve degeneração vacuolar multifocal
+ do epitélio do ducto biliar intra-hepático e uma incidência aumentada de lesões nefríticas, relacionadas ao
+ tratamento. Para este estudo, a dose de efeito “não-tóxico” foi de 55 mg/Kg/dia.
+
+ Page 7 of 25
+ Abbott Laboratórios do Brasil Ltda.
+ Rua Michigan, 735
+ São Paulo, Brasil
+ CEP: 04566-905
+ T: (11) 5536-7000
+
+ Foi conduzido um estudo de toxicidade oral, no qual foi administrada claritromicina suspensão em ratos imaturos,
+ com doses diárias de 0,15, 50, e 150 base/Kg/dia, durante 6 semanas. Não ocorreram mortes e os sinais clínicos
+ observados foram salivação excessiva para alguns dos animais após 1 ou 2 horas da administração da dosagem
+ mais alta, durante as últimas três semanas de tratamento. Quando comparados ao grupo controle, os ratos do grupo
+ com dosagem de 150 mg/Kg tiveram peso corpóreo médio mais baixo durante as primeiras três semanas e
+ observou-se diminuição do valor médio de albumina sérica e um aumento do peso relativo médio do fígado.
+ Foram encontradas alterações histopatológicas brutas ou microscópicas não relacionadas ao tratamento. A dose de
+ 150 mg/Kg produziu toxicidade leve nos ratos e a dose de 50 mg/Kg/dia foi considerada “sem efeito de dose”.
+ Em cães juvenis da raça beagle, com 3 semanas de idade, tratados durante 4 semanas com doses orais diárias de 0,
+ 30, 100, ou 300 mg/Kg de claritromicina, seguido de um período de recuperação de 4 semanas, não ocorreu nenhum
+ óbito e também não foi observada nenhuma alteração na condição geral dos animais.
+ A necropsia não revelou anormalidades. No grupo de dose de 300 mg/Kg, sob exame histológico, foram
+ observadas, deposição de gordura de hepatócitos centrolobulares e infiltração celular de área portal por
+ microscopia de luz e por microscopia eletrônica foram notados aumento de gotículas de gordura hepatocelulares.
+ A dose tóxica em cães beagles juvenis foi considerada maior do que 300 mg/Kg e de 100 mg/Kg considerou-se
+ “sem efeito de dose”.
+
+ Fertilidade, Reprodução e Teratogenicidade
+ Estudos de fertilidade e reprodução em ratos fêmeas têm mostrado que doses de 150 mg/kg/dia (dose mais alta
+ testada) não causaram eventos adversos no ciclo fértil, fertilidade, parto e no número e viabilidade da prole. Em
+ ratos machos, não houve evidência de toxicidade adversa na fertilidade até 250 mg/kg. Estudos de teratogenicidade
+ realizados em ratos, coelhos e macacos não demonstraram qualquer efeito teratogênico com o uso de
+ claritromicina. Somente em um estudo adicional em ratos Sprague-Dawley, com doses e condições essencialmente
+ similares, ocorreu uma incidência muito baixa e estatisticamente insignificante (aproximadamente 6%) de
+ anormalidades cardiovasculares. Essas anomalias parecem ser devido à expressão espontânea de mudanças
+ genéticas dentro da colônia. Dois estudos realizados em camundongos revelaram uma incidência variável da fenda
+ palatina (3 a 30%) em doses 70 vezes acima da dose habitual diária utilizada em humanos (500 mg 2x/dia), mas
+ não mais que 35 vezes a dose máxima diária sugerindo toxicidade materna e fetal, mas não teratogenicidade.
+ Doses de claritromicina, aproximadamente dez vezes maiores que a dose habitual máxima utilizada em humanos
+ (500 mg 2x/dia), administradas em macacos a partir do 20° dia de gravidez tem demonstrado perda embrionária.
+ Esse efeito tem sido atribuído à toxicidade materna da droga em altas doses. Um estudo adicional em macacas
+ grávidas utilizando doses aproximadamente 2,5 a 5,0 vezes maiores que a dose habitual (500 mg 2x/dia) não
+ demonstraram nenhum risco ao embrião.
+ O teste letal dominante em camundongos utilizando 1000 mg/kg/dia (aproximadamente 70 vezes da dose máxima
+ diária em humanos de 500 2x/dia) foi claramente negativo para qualquer atividade mutagênica e em um estudo
+ com ratos tratados com 500 mg/kg/dia (aproximadamente 35 vezes da dose máxima diária em humanos de 500
+ 2x/dia) por 80 dias não evidenciaram riscos funcionais na fertilidade masculina em exposição em longo prazo com
+ doses muito altas de claritromicina.
+
+ Mutagenicidade
+ Foram realizados estudos para avaliar o potencial mutagênico da claritromicina, através de sistemas de testes com
+ microssomas hepáticos de ratos ativados e não ativados (Teste de Ames). Os resultados desses estudos não
+ evidenciaram potencial mutagênico para concentrações iguais ou menores a 25 mcg de claritromicina por placas
+ de Petri. Numa concentração de 50 mcg, a droga foi tóxica para todas as cepas testadas.
+
+4. CONTRAINDICAÇÕES
+
+ KLARICID é contraindicado para o uso por pacientes com conhecida hipersensibilidade aos antibióticos
+ macrolídeos e a qualquer componente da fórmula.
+ A administração concomitante de claritromicina com astemizol, cisaprida, pimozida e terfenadina está
+ contraindicada, pois pode resultar em prolongamento QT e arritmias cardíacas incluindo taquicardia ventricular,
+ fibrilação ventricular e torsades de pointes .
+
+ Page 8 of 25
+ Abbott Laboratórios do Brasil Ltda.
+ Rua Michigan, 735
+ São Paulo, Brasil
+ CEP: 04566-905
+ T: (11) 5536-7000
+
+ A administração concomitante de claritromicina com alcaloides de ergot (ex: ergotamina ou diidroergotamina) é
+ contraindicada pois, pode resultar em toxicidade ao ergot.
+ A coadministração de claritromicina e midazolam oral é contraindicada (ver Interações Medicamentosas).
+
+ A claritromicina não deve ser administrada a pacientes com histórico de prolongamento do intervalo QT (congênito
+ ou adquirido) ou arritmia ventricular cardíaca, incluindo torsades de pointes (ver Advertências e Precauções e
+ Interações medicamentosas).
+
+ Claritromicina não deve ser indicada para pacientes com distúrbios eletrolíticos (hipocalemia ou hipomagnesemia,
+ devido ao risco de prolongamento do intervalo QT).
+
+ Claritromicina não deve ser usada em pacientes que sofrem de insuficiência hepática grave em combinação com
+ insuficiência renal.
+
+ A claritromicina não deve ser utilizada concomitantemente com inibidores da HMG-CoA redutase (estatinas) que
+ são extensivamente metabolizados pela CYP3A4 (lovastatina ou sinvastatina), devido a um aumento no risco de
+ miopatia, incluindo rabdomiólise (ver Advertências e Precauções).
+
+ Claritromicina (e outros inibidores fortes de CYP3A4) não deve ser utilizada em combinação com colchicina (ver
+ Advertências e Precauções e Interações Medicamentosas).
+
+ A administração concomitante com ticagrelor, ivabradina ou ranolazina é contraindicada.
+
+ A administração concomitante de claritromicina e lomitapida é contraindicada (ver Interações Medicamentosas).
+
+ Este medicamento é contraindicado para menores de 6 meses de idade.
+
+ Atenção: deve ser usado com cautela em portadores de Diabetes.
+
+ Este medicamento contém sacarose. Pacientes com problema hereditário raro de intolerância à frutose, má
+ absorção de glicose-galactose ou insuficiência de sacarose-isomaltase não devem tomar este medicamento.
+
+ Quando prescrever para pacientes diabéticos, levar em conta o conteúdo de sacarose.
+
+5. ADVERTÊNCIAS E PRECAUÇÕES
+
+ O uso prolongado deste medicamento, assim como de outros antibióticos, pode resultar na colonização por
+ bactérias e fungos não sensíveis ao tratamento. Na ocorrência de superinfecção, uma terapia adequada deve ser
+ estabelecida.
+
+ A claritromicina é metabolizada principalmente pelo fígado, devendo ser administrada com cautela a pacientes
+ com função hepática alterada. Deve ser também administrada com precaução a pacientes com comprometimento
+ moderado a grave da função renal.
+ Recomenda-se precaução a pacientes com insuficiência renal severa.
+
+ Disfunção hepática, incluindo aumento de enzimas hepáticas e hepatite hepatocelular e/ou colestática, com ou sem
+ icterícia foram relatadas com claritromicina. Esta disfunção hepática pode ser severa e é comumente reversível.
+ Em alguns casos, relatou-se falência hepática com desfecho fatal e, geralmente, foi associada com doenças
+ subjacentes sérias e/ou medicações concomitantes. A claritromicina deve ser descontinuada imediatamente se
+ sinais e sintomas de hepatite ocorrerem como anorexia, icterícia, urina escura, prurido ou sensibilidade abdominal.
+
+ Colite pseudomembranosa foi descrita para quase todos os agentes antibacterianos, incluindo macrolídeos,
+ Page 9 of 25
+ Abbott Laboratórios do Brasil Ltda.
+ Rua Michigan, 735
+ São Paulo, Brasil
+ CEP: 04566-905
+ T: (11) 5536-7000
+
+ podendo sua gravidade variar de leve a risco de vida. Diarreia associada à Clostridioides difficile (CDAD) foi
+ relatada com o uso de quase todos os agentes antibacterianos, incluindo claritromicina, podendo sua gravidade
+ variar de diarreia leve a colite fatal. O tratamento com agentes antibacterianos altera a flora normal do cólon, o que
+ pode levar à proliferação de C. difficile . CDAD deve ser considerada em todos os pacientes que apresentarem
+ quadro de diarreia após o uso de antibiótico. Um minucioso histórico médico é necessário para o diagnóstico, já
+ que a ocorrência de CDAD foi relatada ao longo de dois meses após a administração de agentes antibacterianos.
+
+ Colchicina: há relatos pós-comercialização de toxicidade por colchicina quando administrada concomitantemente
+ com claritromicina, especialmente em pacientes idosos e com insuficiência renal. Óbitos foram reportados em
+ alguns destes pacientes (ver Interações Medicamentosas). A administração de claritromicina e colchicina é
+ contraindicada (ver Contraindicações).
+
+ Recomenda-se precaução com relação à administração concomitante de claritromicina e benzodiazepínicos, como
+ o triazolam e o midazolam intravenoso ou midazolam bucal (ver Interações Medicamentosas).
+
+ Eventos cardiovasculares:
+ A repolarização cardíaca e intervalo QT prolongado, que confere risco no desenvolvimento de arritimia cardíaca
+ e torsades de pointes, têm sido observados em pacientes em tratamento com macrolídeos incluindo claritromicina.
+ Portanto, tal situação pode levar ao aumento da arritmia ventricular (incluindo torsades de pointes ), com isso
+ claritromicina deve ser utilizada com precaução nos seguintes pacientes:
+ - Pacientes com doença arterial coronariana, insuficiência cardíaca grave, distúrbios de condução ou bradicardia
+ clinicamente relevante;
+ - Claritromicina não deve ser utilizada em pacientes com hipocalemia ou hipomagnesemia (ver seção
+ Contraindicações);
+ - Pacientes que utilizam concomitantemente outro medicamento associado com tempo de prolongamento do
+ intervalo QT (ver Interações Medicamentosas);
+ - O uso concomitante de claritromicina com astemizol, cisaprida, pimozida e terfenadina é contraindicado (ver
+ seção Contraindicações);
+ - Claritromicina não deve ser utilizada em pacientes com prolongamento do intervalo de QT congênito ou
+ documentado, ou história de arritimia ventricular (ver seção Contraindicações).
+
+ Considere cuidadosamente o equilíbrio entre benefícios e riscos antes de prescrever claritromicina para qualquer
+ paciente que esteja tomando hidroxicloroquina ou cloroquina, devido ao potencial risco aumentado de eventos
+ cardiovasculares e mortalidade cardiovascular (ver Interações Medicamentosas).
+
+ Este medicamento pode potencializar o prolongamento do intervalo QT, o que aumenta o risco de ataque
+ de arritmias ventriculares graves do tipo "torsades de pointes", que é potencialmente fatal (morte súbita).
+
+ Estudos epidemiológicos que investigam o risco de eventos cardiovasculares com macrolídeos mostraram
+ resultados variáveis. Alguns estudos observacionais identificaram a curto prazo um risco raro de arritmia, infarto
+ do miocardio e mortalidade cardiovascular associada a macrolídeos, incluindo claritromicina. A consideração
+ desses achados deve ser equilibrada com os benefícios do tratamento quando prescrever claritromicina.
+ Pneumonia: tendo em vista a resistência emergente de Streptococcus pneumoniae para macrolídeos, é importante
+ que o teste de sensibilidade seja realizado quando a claritromicina for prescrita para pneumonia adquirida na
+ comunidade. Em pneumonia adquirida em ambiente hospitalar, a claritromicina deve ser utilizada em combinação
+ com antibióticos adicionais apropriados.
+
+ Infecções de pele e tecidos moles de severidade leve a moderada: estas infecções são causadas mais
+ frequentemente por Staphylococcus aureus e Streptococcus pyogenes , os quais, ambos podem ser resistentes a
+ macrolídeos. Por este motivo, é importante que o teste de sensibilidade seja realizado. Em casos onde antibióticos
+ betalactâmicos não podem ser utilizados (ex. alergia), outros antibióticos, tais como a clindamicina, podem ser os
+ fármacos de primeira escolha. Atualmente, considera-se que os macrolídeos somente possuem ação em algumas
+ infecções de pele e tecidos moles, como as causadas por Corynebacterium minutissimum , acne vulgaris e erisipelas
+ Page 10 of 25
+ Abbott Laboratórios do Brasil Ltda.
+ Rua Michigan, 735
+ São Paulo, Brasil
+ CEP: 04566-905
+ T: (11) 5536-7000
+
+ e em situações onde o tratamento com penicilinas não pode ser utilizado.
+
+ No caso de reações de hipersensibilidade aguda severa, como anafilaxia, reação adversa cutânea severa (SCAR)
+ (por exemplo, pustulose generalizada exantemática aguda - PGEA), Síndrome de Stevens-Johnson, necrólise
+ epidérmica tóxica e Síndrome DRESS (erupção cutânea associada ao fármaco com eosinofilia e sintomas
+ sistêmicos), o tratamento com claritromicina deve ser descontinuado imediatamente e um tratamento apropriado
+ deve ser urgentemente iniciado.
+
+ A claritromicina deve ser utilizada com cautela quando administrada concomitantemente com medicamentos
+ indutores das enzimas do citocromo CYP3A4 (ver Interações Medicamentosas).
+
+ Deve ser considerada a possibilidade de resistência bacteriana cruzada entre a claritromicina e os outros
+ macrolídeos, assim como para lincomicina e a clindamicina.
+
+ Inibidores da HMG-CoA redutase (estatinas): o uso concomitante de claritromicina com lovastatina ou
+ sinvastatina é contraindicado (ver Contraindicações). Precaução deve ser tomada quando a claritromicina for
+ prescrita com outras estatinas. Foram recebidos relatos de rabdomiólise em pacientes que administraram
+ claritromicina concomitantemente a estatinas. Os pacientes devem ser monitorados para sinais e sintomas de
+ miopatia. Em situações onde o uso concomitante da claritromicina com estatinas não pode ser evitado, recomenda-
+ se prescrever a menor dose registrada de estatina. O uso de estatinas que não são dependentes do metabolismo da
+ CYP3A (ex. fluvastatina) pode ser considerado.
+
+ Agentes hipoglicêmicos orais/Insulina: o uso concomitante de claritromicina e agentes hipoglicêmicos orais
+ (como as sulfonilureias) e/ou insulina, pode resultar em uma hipoglicemia significativa. Recomenda-se um
+ monitoramento cuidadoso da glicose.
+
+ Anticoagulantes orais : existe um risco de hemorragia grave e elevações significativas na RNI (Razão
+ Normalizada Internacional; ou INR, em inglês) e tempo de protrombina quando claritromicina é coadministrada
+ com varfarina. A RNI e os tempos de protrombina devem ser frequentemente monitorados quando pacientes
+ estiverem recebendo concomitantemente claritromicina e anticoagulantes orais.
+
+ Deve-se ter precaução quando a claritromicina for administrada concomitantemente com anticoagulantes orais de
+ ação direta, como dabigatrana, rivaroxabana, apixabana e edoxabana, particularmente em pacientes com alto risco
+ de sangramento (ver Interações Medicamentosas).
+ Este medicamento contém sacarose.
+ Pacientes com problema hereditário raro de intolerância à frutose, má absorção de glicose-galactose ou
+ insuficiência de sacarose-isomaltase não deve tomar este medicamento.
+ Quando prescrever para pacientes diabéticos, levar em conta o conteúdo de sacarose.
+
+ Cuidados e advertências para populações especiais
+
+ Uso na gravidez: a segurança do uso da claritromicina na gravidez não foi estabelecida. Com base em resultados
+ variáveis obtidos em estudos em animais e experiência em humanos, a possibilidade de efeitos adversos no
+ desenvolvimento embriofetal não pode ser excluída. Alguns estudos observacionais que avaliaram a exposição à
+ claritromicina durante o primeiro e segundo trimestres relataram um risco aumentado de aborto espontâneo em
+ comparação com o não uso de antibióticos ou uso de outros antibióticos durante o mesmo período. Os estudos
+ epidemiológicos disponíveis sobre o risco de malformações congênitas maiores com o uso de macrolídeos,
+ incluindo claritromicina durante a gravidez, fornecem resultados conflitantes. Dessa forma, os benefícios e os
+ riscos da utilização de KLARICID  na mulher grávida devem ser ponderados pelo médico prescritor.
+
+ Uso na amamentação: a claritromicina é excretada no leite materno em pequenas quantidades. Estima-se que um
+ lactente em aleitamento materno exclusivo receberia cerca de 1,7% da dose materna de claritromicina ajustada ao
+ peso. A segurança do uso da claritromicina durante o aleitamento materno não foi estabelecida.
+ Page 11 of 25
+ Abbott Laboratórios do Brasil Ltda.
+ Rua Michigan, 735
+ São Paulo, Brasil
+ CEP: 04566-905
+ T: (11) 5536-7000
+
+ Fertilidade: Em ratos, os estudos de fertilidade não mostraram qualquer evidência de efeitos nocivos
+
+ O uso deste medicamento no período da lactação depende da avaliação e acompanhamento do seu médico ou
+ cirurgião-dentista.
+ Uso em crianças: a segurança e a eficácia da claritromicina em crianças com idade inferior a 6 meses não foi
+ determinada.
+
+ Categoria de risco: C - Este medicamento não deve ser utilizado por mulheres grávidas sem orientação
+ médica ou do cirurgião-dentista.
+
+ Efeitos na capacidade de dirigir e operar máquinas: não há informações sobre os efeitos da claritromicina na
+ capacidade de dirigir ou operar máquinas. O potencial para tontura, vertigem, confusão e desorientação que podem
+ ocorrer com o uso do medicamento deve ser levado em conta antes do paciente dirigir ou operar máquinas.
+
+ ATENÇÃO: CONTÉM SACAROSE E MALTODEXTRINA
+
+ KLARICID OS 25mg/mL:
+ Atenção: Contém 558,50 mg de sacarose / mL de suspensão reconstituída.
+ Atenção: Contém 57,14 mg de maltodextrina / mL de suspensão reconstituída.
+
+ KLARICID OS 50mg/mL:
+ Atenção: contém 454,24 mg de sacarose / ml de suspensão reconstituída.
+ Atenção: contém 47,62 mg de maltodextrina / ml de suspensão reconstituída.
+
+ Para prevenir o desenvolvimento de bactérias resistentes, este medicamento deverá ser usado somente
+ para o tratamento ou prevenção de infecções causadas ou fortemente suspeitas de serem causadas por
+ microrganismos sensíveis a este medicamento.
+
+ Atenção: contém o corante dióxido de titânio
+
+6. INTERAÇÕES MEDICAMENTOSAS
+
+ O uso dos seguintes medicamentos é estritamente contraindicado, devido à gravidade dos efeitos causados
+ pelas possíveis interações medicamentosas:
+
+ Cisaprida, pimozida, astemizole e terfenadina : foram relatados aumentos dos níveis de cisaprida em pacientes
+ tratados concomitantemente com claritromicina e cisaprida. Isto pode resultar em prolongamento do intervalo QT
+ e arritmias cardíacas incluindo taquicardia ventricular, fibrilação ventricular e torsades de pointes. Efeitos
+ semelhantes foram observados em pacientes tratados concomitantemente com claritromicina e pimozida (ver
+ Contraindicações).
+ Foi relatado que os macrolídeos alteram o metabolismo da terfenadina, resultando no aumento do nível desta
+ substância que, ocasionalmente, foi associado a arritmias cardíacas, tais como prolongamento do intervalo QT,
+ taquicardia ventricular, fibrilação ventricular e torsades de pointes (ver Contraindicações). Em um estudo com 14
+ voluntários sadios, o uso concomitante de claritromicina e terfenadina resultou em um aumento de duas a três
+ vezes nos níveis séricos do metabólito ácido da terfenadina e em prolongamento do intervalo QT, que não levou a
+ qualquer efeito clínico detectável. Efeitos similares têm sido observados com o uso concomitante de astemizol e
+ outros macrolídeos.
+ Alcaloides de ergot: estudos de pós-comercialização indicaram que a coadministração de claritromicina com
+ Page 12 of 25
+ Abbott Laboratórios do Brasil Ltda.
+ Rua Michigan, 735
+ São Paulo, Brasil
+ CEP: 04566-905
+ T: (11) 5536-7000
+
+ ergotamina ou diidroergotamina foi associada com toxicidade aguda de ergot, caracterizada por vasoespasmos e
+ isquemia das extremidades e outros tecidos, inclusive sistema nervoso central. A administração concomitante de
+ claritromicina com alcaloides de ergot é contraindicada (ver Contraindicações).
+
+ Midazolam oral: quando midazolam foi coadministrado com comprimidos de claritromicina (500 mg duas vezes
+ ao dia), a área sobre a curva (AUC) de midazolam sofreu um aumento de 7 vezes após a administração de
+ midazolam. A administraçção concomitante de midazolam oral e claritromicina é contraindicada.
+
+ Inibidores da HMG-CoA redutase (estatinas): O uso concomitante de claritromicina com lovastatina ou
+ sinvastatina é contraindicado (ver Contraindicações), uma vez que estas estatinas são metabolizadas
+ extensivamente pela CYP3A4 e o tratamento concomitante com claritromicina aumenta sua concentração
+ plasmática, o que aumenta o risco de miopatia, incluindo rabdomiólise. Foram recebidos relatos de rabdomiólise
+ em pacientes que administraram claritromicina concomitantemente a estas estatinas. Se o tratamento com
+ claritromicina não puder ser evitado, a terapia com lovastatina ou sinvastatina deve ser suspenso durante o
+ tratamento.
+
+ Deve-se ter precaução quando houver prescrição de claritromicina com estatinas. Em situações onde o uso
+ concomitante de claritromicina com estatinas não puder ser evitado, é recomendado que seja prescrito a menor
+ dose registrada de estatina. O uso de estatina que não é dependente do metabolismo por CYP3A (ex: fluvastatina)
+ pode ser considerado. Os pacientes devem ser monitorados por sinais e sintomas de miopatia.
+
+ Lomitapida: a administração concomitante de claritromicina com lomitapida está contraindicada devido ao
+ potencial para transaminases marcadamente aumentadas (ver Contraindicações).
+
+ O uso de claritromicina também é contraindicado com ticagrelor, ivabradina e ranolazina metabolizados
+ principalmente pelo CYP3A4 (ver Contraindicações).
+
+ Efeitos de outros medicamentos na terapia com claritromicina
+
+ Fármacos indutores da CYP3A4, como por exemplo, rifampicina, fenitoína, carbamazepina, fenobarbital e erva de
+ São João, podem induzir o metabolismo da claritromicina. Isso pode resultar em níveis subterapêuticos de
+ claritromicina levando à eficácia reduzida. Por isso, deve-se monitorar esses medicamentos na corrente sanguínea
+ devido à um possível aumento dessas substâncias devido à inibição da CYP3A pela claritromicina.
+ A administração concomitante de claritromicina e rifabutina resultou em um aumento de rifabutina e diminuição
+ dos níveis sanguíneos de claritromicina juntamente com risco aumentado de uveíte.
+
+ Os seguintes medicamentos sabidamente alteram ou são suspeitos de alterar a concentração de
+ claritromicina na circulação sanguínea. Ajustes posológicos da dose de claritromicina ou a adoção de
+ tratamento alternativo devem ser considerados:
+
+ Efavirenz, nevirapina, rifampicina, rifabutina e rifapentina: fortes indutores do metabolismo do citocromo
+ P450, tais como efavirenz, nevirapina, rifampicina, rifabutina e rifapentina podem acelerar o metabolismo da
+ claritromicina e, portanto, diminuir os níveis plasmáticos desta substância e aumentar os níveis de 14(R)-hidroxi-
+ claritromicina (14-OH-claritromicina), um metabólito que também é biologicamente ativo. Uma vez que as
+ atividades microbiológicas da claritromicina e da 14-OH-claritromicina são diferentes para diferentes bactérias, o
+ efeito terapêutico pretendido pode ser prejudicado durante a administração concomitante de claritromicina e
+ indutores enzimáticos.
+ Etravirina: este fármaco diminuiu a exposição à claritromicina; no entanto, as concentrações do metabólito ativo,
+ 14-OH-claritromicina foram aumentadas. Devido este metabólito ter atividade reduzida contra o Mycobacterium
+ avium complex (MAC), a atividade em geral contra este patógeno pode estar alterada; portanto, para o tratamento
+ do MAC, alternativas à claritromicina devem ser consideradas.
+ Fluconazol: a administração concomitante de fluconazol 200 mg diariamente e claritromicina 500 mg duas vezes
+ por dia a 21 voluntários sadios conduziu a um aumento na concentração mínima média no “steady-state” de
+ Page 13 of 25
+ Abbott Laboratórios do Brasil Ltda.
+ Rua Michigan, 735
+ São Paulo, Brasil
+ CEP: 04566-905
+ T: (11) 5536-7000
+
+ claritromicina (C min) e da área sob a curva (ASC), de 33% e 18%, respectivamente. As concentrações no “steady-
+ state” do metabólito ativo 14-OH-claritromicina não foram significativamente afetadas pela administração
+ concomitante de claritromicina e fluconazol. Não é necessário ajuste posológico da dose de claritromicina.
+ Ritonavir: um estudo farmacocinético demonstrou que a administração concomitante de 200 mg de ritonavir a
+ cada 8 horas e 500 mg de claritromicina a cada 12 horas resultou em acentuada inibição do metabolismo da
+ claritromicina. O C max da claritromicina aumentou 31%, o C min aumentou 182% e ASC aumentou 77% com a
+ administração concomitante de ritonavir. Foi observada uma completa inibição da formação do metabólito 14-OH-
+ claritromicina. Devido à grande janela terapêutica da claritromicina, não é necessária redução de dose em pacientes
+ com função renal normal. Entretanto, em pacientes com disfunção renal, os seguintes ajustes deverão ser
+ considerados: para pacientes com CL CR entre 30 e 60 mL/min, a dose de claritromicina deve ser reduzida em 50%.
+ Para pacientes com CL CR menor que 30 mL/min, a dose de claritromicina deve ser reduzida em 75%. Doses de
+ claritromicina maiores que 1g/dia não devem ser administradas concomitantemente com ritonavir.
+ Ajustes similares de dose devem ser considerados em pacientes com redução da função renal quando ritonavir é
+ utilizado como um potencializador farmacocinético com outros inibidores de protease, incluindo atazanavir e
+ saquinavir (ver Interações medicamentosas bidirecionais).
+
+ Efeitos da claritromicina na terapia com outros medicamentos
+
+ Antiarrítmicos: há relatos de pós-comercialização de casos de torsades de pointes , que ocorreram com o uso
+ concomitante de claritromicina e quinidina ou disopiramida. Eletrocardiogramas devem ser monitorados para o
+ prolongamento de QTc durante a coadministração de claritromicina e antiarrítmicos. Os níveis séricos destes
+ medicamentos devem ser monitorados durante a terapia com claritromicina.
+ Há relatos pós-comercialização de hipoglicemia com administração concomitante de claritromicina e
+ disopiramida. Desta forma, os níveis de glicose no sangue devem ser monitorados durante a administração
+ concomitante de claritromicina e disopiramida.
+
+ Agentes hipoglicêmicos orais/Insulina: Com certos medicamentos hipoglicêmicos como nateglinida erepaglinida
+ pode ocorrer a inibição da enzima CYP3A pela claritromicina, causando hipoglicemia quando usados
+ concomitantemente. O monitoramento cuidadoso da glicemia é recomendado.
+
+ Interações relacionadas à CYP3A4: a coadministração de claritromicina (inibidora da enzima CYP3A) e de um
+ fármaco metabolizado principalmente por CYP3A pode estar associada à elevação da concentração do fármaco,
+ podendo aumentar ou prolongar os efeitos terapêuticos e adversos do medicamento associado. A claritromicina
+ deve ser usada com cuidado em pacientes recebendo tratamento com drogas conhecidas por serem substratos da
+ enzima CYP3A, principalmente se este substrato possuir uma margem de segurança estreita (ex. carbamazepina)
+ e/ou se o substrato for totalmente metabolizado por esta enzima. Ajustes de dose devem ser considerados, e quando
+ possível, as concentrações séricas das drogas metabolizadas pela CYP3A devem ser cuidadosamente monitoradas
+ em pacientes que estejam recebendo claritromicina concomitantemente.
+
+ Corticosteroides: deve-se ter cautela no uso concomitante de claritromicina com corticosteroides sistêmicos e
+ inalados que são metabolizados principalmente pelo CYP3A devido ao potencial de aumento da exposição
+ sistêmica aos corticosteroides. Se ocorrer uso concomitante, os pacientes devem ser monitorados de perto quanto
+ a efeitos indesejáveis dos corticosteroides sistêmicos.
+ As seguintes substâncias são sabidamente ou supostamente metabolizadas pela mesma isoenzima CYP3A. São
+ exemplos, mas não se resume a: alprazolam, astemizol, carbamazepina, cilostazol, cisaprida, ciclosporina,
+ disopiramida, alcalóides do ergot, lovastatina, metilprednisolona, midazolam, omeprazol, anticoagulantes orais
+ (ex: varfarina, rivaroxabana, apixabana, edoxabana), antipsicóticos atípicos (ex: quetiapina), pimozida, quinidina,
+ rifabutina, sildenafila, sinvastatina, tacrolimus, terfenadina, triazolam e vinblastina. Substâncias que interagem por
+ mecanismos semelhantes através de outras isoenzimas dentro do sistema citocromo P450 incluem a fenitoína,
+ teofilina e valproato.
+
+ Anticoagulantes orais de ação direta (DOACs): os DOAC dabigatrana e edoxabana são um substrato para o
+ transportador de efluxo P-gp. A rivaroxabana e a apixabana são metabolizadas via CYP3A4 e também são
+ Page 14 of 25
+ Abbott Laboratórios do Brasil Ltda.
+ Rua Michigan, 735
+ São Paulo, Brasil
+ CEP: 04566-905
+ T: (11) 5536-7000
+
+ substratos da P-gp. Recomenda-se precaução quando a claritromicina é administrada concomitantemente com estes
+ medicamentos, particularmente em pacientes com elevado risco de hemorragia
+
+ Omeprazol: claritromicina (500 mg a cada 8 horas) foi administrada concomitantemente com omeprazol (40 mg
+ por dia) em indivíduos adultos sadios. No “steady state”, as concentrações plasmáticas de omeprazol aumentaram
+ (Cmax, ASC0-24 e t1/2 tiveram aumento de 30%, 89% e 34%, respectivamente) com a administração concomitante
+ de claritromicina. A média do pH gástrico em 24 horas foi de 5,2 quando o omeprazol foi administrado
+ isoladamente, e 5,7 quando foi coadministrado com claritromicina.
+ Sildenafila, tadalafila e vardenafila: cada um destes inibidores da fosfodiesterase é metabolizado, pelo menos
+ em parte, pela CYP3A, que pode ser inibida pela administração concomitante de claritromicina. A coadministração
+ de claritromicina com sildenafila, vardenafila ou tadalafila pode resultar no aumento da exposição de inibidores
+ da fosfodiesterase. Uma redução na dose de sildenafila, vardenafila ou tadalafila deve ser considerada quando estas
+ são administradas concomitantemente com claritromicina.
+ Teofilina, carbamazepina: resultados de estudos clínicos revelaram que existe um aumento discreto, mas
+ estatisticamente significativo (p  0,05), nos níveis circulantes de teofilina ou de carbamazepina, quando algum
+ desses medicamentos é administrado concomitantemente com a claritromicina.
+ Tolterodina: a principal rota metabólica da tolterodina é via isoforma 2D6 do citocromo P450 (CYP2D6). No
+ entanto, em uma amostra da população desprovida de CYP2D6, o metabolismo da tolterodina é através da CYP3A.
+ Nesta população, a inibição da CYP3A resulta em um aumento significativo da concentração sérica de tolterodina.
+ Uma redução na dose de tolterodina pode ser necessária na presença de inibidores de CYP3A, assim como a
+ redução nas doses de claritromicina em populações com deficiência no metabolismo da CYP2D6.
+ Benzodiazepínicos (ex. alprazolam, midazolam, triazolam): quando midazolam é coadministrado via oral ou
+ intravenosa com claritromicina comprimidos (500 mg duas vezes por dia), a ASC do midazolam apresenta um
+ aumento de 2,7 vezes após a administração de midazolam intravenoso. Se midazolam via intravenosa for
+ administrado concomitantemente com claritromicina, o paciente deve ser cuidadosamente monitorado para
+ permitir um ajuste de dose adequado. A administração de midazolam via bucal, que ultrapasse a eliminação pre-
+ sistêmica da droga provavelmente resultará em uma interação semelhante à observada após a administração de
+ midazolam intravenoso, ao invés de midazolam oral. As mesmas precauções devem ser tomadas para outros
+ benzodiazepínicos metabolizados pela CYP3A, incluindo triazolam e alprazolam. Para benzodiazepínicos, cuja
+ eliminação não depende da CYP3A (temazepam, nitrazepam, lorazepam), a ocorrência de interação
+ medicamentosa é improvável. Há relatos pós-comercialização de interações medicamentosas e de efeitos no
+ sistema nervoso central (ex: sonolência e confusão) devido ao uso concomitante de claritromicina e triazolam.
+ Sugere-se monitorar pacientes que apresentarem aumento dos efeitos farmacológicos no sistema nervoso central.
+
+ Outras interações medicamentosas
+
+ Colchicina: a colchicina é um substrato para CYP3A e para o transportador de efluxo, P-glicoproteína (Pgp). A
+ claritromicina e outros macrolídeos são inibidores conhecidos da CYP3A e Pgp. Quando claritromicina e
+ colchicina são administradas concomitantemente, a inibição da Pgp e/ou do CYP3A pela claritromicina pode levar
+ a um aumento da exposição a colchicina. O uso concomitante de claritromicina e colchicina é contraindicado.
+ Digoxina: acredita-se que a digoxina seja um substrato da proteína transportadora de efluxo, P-glicoproteína (Pgp).
+ A claritromicina é um inibidor conhecido de Pgp. Quando claritromicina e digoxina são administradas
+ concomitantemente, a inibição de Pgp pela claritromicina pode elevar a exposição à digoxina. Em estudos pós-
+ comercialização foram relatadas concentrações séricas elevadas de digoxina em pacientes recebendo claritromicina
+ e digoxina concomitantemente. Alguns pacientes apresentaram fortes sinais de intoxicação por digoxina, incluindo
+ arritmias potencialmente fatais. As concentrações séricas de digoxina devem ser atentamente monitoradas quando
+ pacientes estão recebendo digoxina e claritromicina simultaneamente.
+ Zidovudina: a administração simultânea de comprimidos de claritromicina e zidovudina a pacientes adultos
+ infectados pelo HIV pode resultar na diminuição das concentrações de zidovudina no “steady-state”. Devido a
+ aparente interferência da claritromicina com a absorção de zidovudina administrada via oral, esta interação pode
+ ser amplamente evitada através do escalonamento das doses de claritromicina e zidovudina em um intervalo de 4
+ horas entre cada medicamento. Esta interação não parece ocorrer em pacientes pediátricos infectados pelo HIV,
+ tratados concomitantemente com claritromicina suspensão e zidovudina ou dideoxiinosina. Esta interação é
+ Page 15 of 25
+ Abbott Laboratórios do Brasil Ltda.
+ Rua Michigan, 735
+ São Paulo, Brasil
+ CEP: 04566-905
+ T: (11) 5536-7000
+
+ improvável quando claritromicina é administrada via infusão intravenosa.
+
+ Fenitoína e valproato: há relatos publicados ou espontâneos de interações entre inibidores da CYP3A4, incluindo
+ a claritromicina, com medicamentos que não são sabidamente metabolizadas pela CYP3A4 (ex: fenitoína e
+ valproato). Quando esses fármacos são administrados juntamente com a claritromicina, é recomendada a
+ determinação dos níveis sanguíneos destes medicamentos. Foi relatado aumento nestes níveis.
+
+ Interações medicamentosas bidirecionais
+
+ Hidroxicloroquina e cloroquina: dados observacionais demonstraram que a coadministração de azitromicina
+ com hidroxicloroquina em pacientes com artrite reumatoide está associada a um risco aumentado de eventos
+ cardiovasculares e mortalidade cardiovascular. A claritromicina deve ser usada com cautela em pacientes que
+ recebem estes medicamentos conhecidos por prolongar o intervalo QT devido ao potencial de induzir arritmia
+ cardíaca e eventos cardiovasculares adversos graves.
+
+ Atazanavir: tanto a claritromicina quanto o atazanavir são substratos e inibidores da CYP3A, e há evidência de
+ interação medicamentosa bidirecional entre tais medicamentos. A coadministração de claritromicina (500 mg duas
+ vezes ao dia) com atazanavir (400 mg uma vez por dia) resultou em aumento de duas vezes na exposição à
+ claritromicina, decréscimo de 70% na exposição à 14-OH-claritromicina e aumento de 28% na ASC do atazanavir.
+ Devido à ampla janela terapêutica da claritromicina, pacientes com função renal normal não necessitam reduzir a
+ dose desta medicação. Para pacientes com função renal moderada ( clearance de creatinina entre 30 e 60 mL/min),
+ a dose de claritromicina deverá ser reduzida em 50%. Para pacientes com clearance da creatinina <30 mL/min, a
+ dose de claritromicina deve ser reduzida em 75%, formulação adequada deve ser utilizada. Doses de claritromicina
+ superiores a 1000 mg por dia não devem ser administradas concomitantemente com inibidores de protease.
+ Bloqueadores de canais de cálcio: deve-se ter precaução ao administrar concomitantemente claritromicina e
+ bloqueadores de canais de cálcio metabolizados por CYP3A4 (ex. verapamil, amlodipino, diltiazem) devido ao
+ risco de hipotensão. As concentrações plasmáticas de claritromicina e dos bloqueadores de canais de cálcio podem
+ aumentar devido a interação. Hipotensão, bradiarritmia e acidose lática tem sido observadas em pacientes tomando
+ claritromicina e verapamil concomitantemente.
+ Itraconazol: tanto a claritromicina quanto o itraconazol são substratos e inibidores da CYP3A, levando a uma
+ interação medicamentosa bidirecional. A claritromicina pode levar ao aumento nos níveis plasmáticos de
+ itraconazol, enquanto o itraconazol pode aumentar os níveis plasmáticos da claritromicina. Pacientes utilizando
+ concomitantemente itraconazol e claritromicina devem ser monitorados cuidadosamente quanto a sinais ou
+ sintomas de aumento ou prolongamento dos efeitos farmacológicos.
+ Saquinavir: tanto a claritromicina quanto o saquinavir são substratos e inibidores da CYP3A, e há evidência de
+ interação medicamentosa bidirecional entre tais medicamentos. A administração concomitante de claritromicina
+ (500 mg 2x/dia) e saquinavir (cápsulas gelatinosas moles, 1200 mg três vezes ao dia) a 12 voluntários sadios
+ resultou em valores de ASC e C max de saquinavir, no “steady-state”, de 177% e 187%, respectivamente, superiores
+ aos valores observados com a administração de saquinavir isoladamente. Os valores de ASC e C max de
+ claritromicina foram aproximadamente 40% maiores do que os valores observados quando claritromicina é
+ administrada isoladamente. Não é necessário ajuste de dose quando os dois medicamentos, nas doses e nas
+ formulações estudadas, são coadministrados por um período limitado de tempo. Os dados obtidos nos estudos de
+ interações medicamentosas utilizando-se cápsula gelatinosa mole podem não representar os efeitos decorrentes da
+ utilização de cápsula gelatinosa dura. Os dados obtidos nos estudos de interações medicamentosas utilizando-se
+ saquinavir isoladamente podem não representar os efeitos decorrentes da terapia conjunta de saquinavir/ritonavir.
+ Quando saquinavir é coadministrado com ritonavir, recomenda-se atenção para os potenciais efeitos do ritonavir
+ na terapia com claritromicina (ver Interações medicamentosas – ritonavir).
+
+ Interação com alimentos
+ KLARICID grânulos para suspensão pediátrica pode ser administrado tanto em jejum quanto com alimentos. O
+ consumo de alimentos pouco antes da ingestão de KLARICID ® pode retardar ligeiramente o início da absorção da
+ claritromicina; entretanto, não prejudica a sua biodisponibilidade nem as suas concentrações no organismo.
+
+ Page 16 of 25
+ Abbott Laboratórios do Brasil Ltda.
+ Rua Michigan, 735
+ São Paulo, Brasil
+ CEP: 04566-905
+ T: (11) 5536-7000
+
+8. POSOLOGIA E MODO DE USAR
+
+ Preparo de suspensão
+
+ Para a reconstituição e administração de KLARICID  grânulos para suspensão pediátrica, vide o folheto
+ informativo após o item 10 desta bula contendo as instruções de uso.
+
+ O modo de preparo de KLARICID ® grânulos para suspensão pediátrica também encontra-se disponível em vídeo
+ no site da empresa, através do link: http://www.abbottbrasil.com.br/nossas-bulas.html
+
+ Agite o frasco ainda lacrado para que os grânulos fiquem mais soltos. Isso facilitará a reconstituição. Os
+ grânulos devem estar soltos e fluidos.
+
+ Posologia
+
+ Estudos clínicos foram conduzidos utilizando suspensão pediátrica de claritromicina em crianças entre 6 meses e
+ 12 anos de idade. Por este motivo, crianças com menos de 12 anos de idade devem utilizar suspensão pediátrica
+ de claritromicina (grânulos para suspensão oral).
+
+ A dose diária recomendada, para crianças de 6 meses a 12 anos, é de 7,5 mg/kg de peso corporal (correspondentes
+ a 0,3 mL/kg de peso corporal da suspensão reconstituída de 25 mg/mL; ou correspondente a 0,15 mL/kg de peso
+ corporal da suspensão reconstituída de 50 mg/mL), duas vezes ao dia até uma dose máxima de 500 mg duas vezes
+ ao dia para infecções não micobacterianas. A duração normal do tratamento é de 5 a 10 dias, dependendo do
+ patógeno envolvido e da gravidade do quadro. A suspensão pode ser administrada com ou sem alimentos e pode
+ ser tomada com leite.
+
+ Page 17 of 25
+ Abbott Laboratórios do Brasil Ltda.
+ Rua Michigan, 735
+ São Paulo, Brasil
+ CEP: 04566-905
+ T: (11) 5536-7000
+
+ Guia de dosagem para pacientes pediátricos
+
+ (baseado no peso corporal)
+
+ Peso* 7,5 mg/Kg duas vezes ao dia
+
+ Kg 25 mg/mL 50 mg/mL
+
+ 8-11 2,5 mL 1,25 mL
+
+ 12-19 5 mL 2,5 mL
+
+ 20-29 7,5 mL 3,75 mL
+
+ 30-40 10 mL 5 mL
+
+ *Crianças que pesam menos que 8 Kg devem ser seguir a mesma dosagem por Kg de
+ 7,5 mg/Kg duas vezes ao dia.
+
+ Tratamento de infecções por micobactérias
+ Em crianças com infecções disseminadas ou localizadas por micobactérias ( M. avium, M. intracellulare, M.
+
+ chelonae, M. fortuitum, M. kansasii ), a dose de claritromicina recomendada para tratamento é de 7 a 15 mg/kg de
+ peso corporal, não excedendo a dose máxima de 500 mg, duas vezes ao dia. Nesses casos, o tratamento com
+ claritromicina deve continuar pelo tempo em que for demonstrado benefício clínico. A adição de outros
+ medicamentos contra micobactérias pode ser benéfica.
+
+ Guia de dosagem para pacientes pediátricos com infecções por micobactérias
+
+ (baseado no peso corporal)
+
+ Peso* Klaricid® 25 mg/mL (125 Klaricid ® 50 mg/mL (250
+ mg/5mL) duas vezes ao dia mg/5mL) duas vezes ao dia
+
+ Kg 7,5 mg/Kg 15 mg/Kg 7,5 mg/Kg 15 mg/Kg
+
+ 8-11 2,5 mL 5 mL 1,25 mL 2,5 mL
+
+ 12-19 5 mL 10 mL 2,5 mL 5 mL
+
+ 20-29 7,5 mL 15mL 3,75 mL 7,5 mL
+
+ Page 18 of 25
+ Abbott Laboratórios do Brasil Ltda.
+ Rua Michigan, 735
+ São Paulo, Brasil
+ CEP: 04566-905
+ T: (11) 5536-7000
+
+ 30-40 10 mL 20 mL 5 mL 10 mL
+
+ *Crianças que pesam menos que 8 Kg devem ser seguir a mesma dosagem por Kg de
+ 7,5 mg/Kg duas vezes ao dia.
+
+ Insuficiência renal
+ Para crianças com clearance de creatinina menor que 30 mL/min/1,73 m 2 a dose de claritromicina deve ser
+ reduzida pela metade, ou seja, de 250 mg uma vez ao dia, ou 250 mg duas vezes ao dia em infecções mais severas.
+ A dose não deve ser mantida por mais de 14 dias nesses pacientes.
+
+9. REAÇÕES ADVERSAS
+
+ As reações adversas mais comuns e frequentes relacionadas à terapia com claritromicina tanto na população adulta
+ quanto pediátrica são: náuseas, vômito, dor abdominal, diarreia e paladar alterado. Estas reações adversas
+ geralmente são de intensidade leve e corroboram com o perfil de segurança conhecido dos antibióticos
+ macrolídeos.
+
+ Não houve diferença significante na incidência destes efeitos gastrointestinais durante os estudos clínicos entre a
+ população de pacientes com ou sem infecções micobacterianas pré-existentes.
+
+ Os dados abaixo são referentes às reações adversas reportadas nos estudos clínicos e em relatos pós-
+ comercialização.
+
+ As reações consideradas possíveis de estarem relacionadas à claritromicina são classificadas da seguinte forma:
+ muito comuns (≥ 1/10), comuns (≥ 1/100 a ≤ 1/10), incomuns (≥ 1/1000 a < 1/100) e com frequência desconhecida
+ (reações adversar relatadas pós-comercialização; não podem ser estimadas a partir dos dados disponíveis). Dentro
+ de cada grupo de frequência, as reações adversas são apresentadas em ordem decrescente de seriedade, quando a
+ seriedade pôde ser avaliada.
+
+ Reações comuns (≥ 1/100 a < 1/10):
+ Distúrbios psiquiátricos: insônia.
+ Distúrbios de sistema nervoso: disgeusia e cefaleia. Distúrbios gastrointestinais: diarreia, vômito, dispepsia, náusea
+ e dor abdominal.
+ Distúrbios hepatobiliares: teste de função hepática anormal.
+ Distúrbios de pele e tecidos subcutâneos: rash e hiperidrose.
+ Reações incomuns (≥ 1/1000 a < 1/100):
+ Infecções e infestações: candidíase, infecção e infecção vaginal.
+ Sistema sanguíneo e linfático: leucopenia e trombocitopenia.
+ Distúrbios do sistema imunológico: hipersensibilidade.
+ Distúrbios nutricionais e do metabolismo: anorexia e diminuição de apetite.
+ Distúrbios psiquiátricos: ansiedade, nervosismo.
+ Distúrbios de sistema nervoso: tontura, tremor e sonolência.
+ Distúrbios do ouvido e labirinto: vertigem, deficiência auditiva e tinido.
+ Distúrbios cardíacos: eletrocardiograma QT prolongado e palpitações.
+ Distúrbios gastrointestinais: gastrite, estomatite, glossite, constipação, boca seca, eructação e flatulência.
+ Distúrbios hepatobiliares: alanina aminotransferase e aspartato aminotransferase aumentadas.
+ Distúrbios de pele e tecidos subcutâneos: prurido, urticária e rash maculopapular.
+ Distúrbios musculoesqueléticos e de tecidos conectivos: espasmos musculares.
+ Distúrbios gerais: pirexia e astenia.
+
+ Reações de frequência desconhecida:
+
+ Page 19 of 25
+ Abbott Laboratórios do Brasil Ltda.
+ Rua Michigan, 735
+ São Paulo, Brasil
+ CEP: 04566-905
+ T: (11) 5536-7000
+
+ Infecções e infestações: colite pseudomembranosa, erisipela.
+ Sistema sanguíneo e linfático: agranulocitose e trombocitopenia.
+ Distúrbios do sistema imunológico: reação anafilática, angioedema.
+ Distúrbios psiquiátricos: transtorno psicótico, estado de confusão, despersonalização, depressão, desorientação,
+ alucinações, sonhos anormais e mania.
+ Distúrbios de sistema nervoso: convulsão, ageusia, parosmia, anosmia e parestesia.
+ Distúrbios do ouvido e labirinto: surdez.
+
+ Distúrbios cardíacos: torsades de pointes , taquicardia ventricular e fibrilação ventricular.
+ Distúrbios vasculares: hemorragia.
+ Distúrbios gastrointestinais: pancreatite aguda, descoloração da língua e dos dentes.
+ Distúrbios hepatobiliares: disfunção hepática e icterícia hepatocelular.
+ Distúrbios de pele e tecidos subcutâneos: reação adversa cutânea severa (SCAR) (por exemplo, pustulose
+ generalizada exantemática aguda - PGEA, Síndrome de Stevens-Johnson, necrólise epidérmica tóxica, rash com
+ eosinofilia e sintomas sistêmicos (Síndrome DRESS), acne.
+ Distúrbios musculoesqueléticos e de tecidos conectivos: miopatia.
+ Distúrbios renais e urinários: disfunção renal e nefrite intersticial.
+ Investigacionais: INR aumentado, tempo de protrombina aumentado e cor de urina anormal.
+
+ É esperado que a frequência, o tipo e a gravidade das reações adversas em crianças sejam iguais nos adultos.
+
+ Pacientes imunocomprometidos
+ Em pacientes com AIDS ou outros pacientes imunocomprometidos tratados com doses mais elevadas de
+ claritromicina durante períodos prolongados para infecções por micobactérias, é frequentemente difícil distinguir
+ os eventos adversos possivelmente associados com a administração de claritromicina dos sinais da doença
+ subjacente do HIV ou de uma doença intercorrente.
+
+ Em pacientes adultos, os eventos adversos frequentemente relatados por pacientes tratados com doses totais diárias
+ de 1000 mg de claritromicina foram: náusea e vômito, alteração do paladar, dor abdominal, diarreia, rash ,
+ flatulência, cefaleia, constipação, alterações da audição, elevação sérica das transaminases glutâmico oxalacética
+ (TGO) e glutâmico pirúvica (TGP). Eventos adicionais de baixa frequência incluíram: dispneia, insônia e boca
+ seca.
+ Nesses pacientes imunocomprometidos, a avaliação dos exames laboratoriais foi realizada analisando-se os valores
+ muito fora dos níveis normais (isto é, extremamente elevados ou abaixo do limite) para os testes especificados.
+ Com base nesse critério, cerca de 2 a 3% dos pacientes que receberam 1000 mg de claritromicina ao dia
+ apresentaram níveis intensamente anormais de TGO e TGP e contagem anormalmente baixa de plaquetas e
+ leucócitos. Uma porcentagem menor de pacientes também apresentou níveis elevados de ureia nitrogenada
+ sanguínea (BUN).
+
+ Em casos de eventos adversos, notifique à empresa e ao Sistema VigiMed, disponível no Portal da Anvisa.
+
+10. SUPERDOSE
+
+ Sintomas: Alguns relatos indicam que a ingestão de grandes quantidades de claritromicina pode produzir sintomas
+ gastrointestinais. Foi relatado um caso de paciente com histórico de transtorno bipolar que ingeriu oito gramas de
+ claritromicina e apresentou estado mental alterado, comportamento paranoico, hipopotassemia e hipoxemia.
+ Tratamento: A superdosagem deve ser tratada com a imediata eliminação do produto não absorvido e com medidas
+ de suporte. Da mesma forma que com outros macrolídeos, não há evidências de que a claritromicina possa ser
+ eliminada por hemodiálise ou diálise peritoneal.
+
+ Em caso de intoxicação ligue para 0800 722 6001, se você precisar de mais orientações sobre como proceder.
+ Page 20 of 25
+ Abbott Laboratórios do Brasil Ltda.
+ Rua Michigan, 735
+ São Paulo, Brasil
+ CEP: 04566-905
+ T: (11) 5536-7000
+
+ FOLHETO INFORMATIVO
+
+ Reconstitua a suspensão de acordo com as seguintes instruções:
+
+ Agite o frasco ainda lacrado para que os grânulos fiquem mais soltos. Isso facilitará a reconstituição. Os
+ grânulos devem estar soltos e fluidos.
+
+ 1- Acrescente água filtrada ao frasco até a marca indicada pela flecha no rótulo.
+
+ 2- Agite bem até que todas as partículas estejam suspensas.
+
+ 3- Verifique se a mistura atingiu a marca indicada no rótulo. Caso contrário, acrescente
+ água filtrada até que o volume do frasco atinja novamente a marca indicada pela flecha
+ e agite até a obtenção de uma suspensão homogênea. Evite agitar vigorosamente e/ou
+ por tempo prolongado. Agite antes de cada uso para garantir a ressuspensão.
+
+ Depois de preparada, a suspensão poderá conter partículas não dissolvidas, o que não impede sua utilização.
+ O volume final do medicamento preparado é de 60 mL.
+ Para melhor absorção, recomenda-se ingerir um pouco de água ou leite após cada dose. A suspensão deve
+ ser bem agitada antes de cada administração. Lavar bem a seringa dosadora toda vez que a mesma for
+ utilizada.
+
+ Para a administração de KLARICID  grânulos para suspensão pediátrica, siga as instruções abaixo
+
+ Page 21 of 25
+ Abbott Laboratórios do Brasil Ltda.
+ Rua Michigan, 735
+ São Paulo, Brasil
+ CEP: 04566-905
+ T: (11) 5536-7000
+
+ 1- Retire a tampa perfurada da extremidade inferior da seringa.
+
+ 2- Acople a mesma na boca do frasco e pressione até que se encaixe totalmente na
+ boca do frasco.
+
+ 3- Certifique- se de que a seringa esteja completamente sem ar, pressionando seu
+ êmbolo até o final. Introduza a seringa no orifício da tampa perfurada até que esta
+ fique firmemente encaixada ao frasco.
+
+ 4- Inverta o frasco, retire através da seringa a quantidade de suspensão até alcançar
+ a marca da dose recomendada.
+
+ Page 22 of 25
+ Abbott Laboratórios do Brasil Ltda.
+ Rua Michigan, 735
+ São Paulo, Brasil
+ CEP: 04566-905
+ T: (11) 5536-7000
+
+ 5- Esvazie o conteúdo da seringa diretamente na boca no paciente.
+
+ 6- Feche o frasco com a tampa original, retirando a tampa perfurada.
+
+ Page 23 of 25
+ Abbott Laboratórios do Brasil Ltda.
+ Rua Michigan, 735
+ São Paulo, Brasil
+ CEP: 04566-905
+ T: (11) 5536-7000
+
+ 7- Separe os componentes da seringa e tampa perfurada, e lave por fora e por dentro
+ com água em abundância.
+
+ Em caso de dúvidas, entrar em contato com a Abbott Center, através do telefone 08007031050, antes da
+ reconstituição e administração do produto.
+
+ III)
+
+===== BLOCO 2 =====
+APRESENTAÇÕES
+KLARICID UD (claritromicina) comprimidos de liberação prolongada de 500 mg: embalagem com 7 ou 10
+comprimidos.
+
+VIA ORAL
+USO ADULTO
+
+COMPOSIÇ ÃO
+Cada comprimido de liberação prolongada de KLARICID  UD 500 mg contém:
+claritromicina...................................................................................................................................................500 mg
+Excipientes: ácido cítrico anidro, alginato de sódio, alginato de cálcio e sódio, lactose, povidona, talco, ácido
+esteárico, estearato de magnésio, hipromelose, macrogol dióxido de titânio, corante amarelo quinolina, ácido
+sórbico.
+
+II)
+
+5. ADVERTÊNCIAS E PRECAUÇÕES
+
+O uso prolongado deste medicamento, assim como com outros antibióticos, pode resultar na colonização por
+bactérias e fungos não sensíveis ao tratamento. Na ocorrência de superinfecção, uma terapia adequada deve ser
+estabelecida.
+
+A claritromicina é metabolizada principalmente pelo fígado, devendo ser administrada com cautela a pacientes
+com função hepática alterada. Deve ser também administrada com precaução a pacientes com comprometimento
+moderado a grave da função renal.
+
+Recomenda- se precaução a pacientes com insuficiência renal severa.
+
+Disfunção hepática, incluindo aumento de enzimas hepáticas e hepatite hepatocelular e/ou colestática, com ou sem
+icterícia foram relatadas com claritromicina. Esta disfunção hepática pode ser severa e é comumente reversível.
+Em alguns casos, relatou-se falência hepática com desfechos fatais e geralmente foram associados com doenças
+subjacentes sérias e/ou medicações concomitantes. A claritromicina deve ser descontinuada, imediatamente, se
+sinais e sintomas de hepatite ocorrerem, tais como, anorexia, icterícia, urina escura, prurido ou sensibilidade
+abdominal.
+
+Colite pseudomembranosa foi descrita para quase todos os agentes antibacterianos, incluindo macrolídeos,
+podendo sua gravidade variar de leve a risco de vida. Diarreia associada à Clo stridioide s difficile (CDAD) foi
+relatada com o uso de quase todos os agentes antibacterianos, incluindo claritromicina, podendo sua gravidade
+variar de diarreia leve a colite fatal. O tratamento com agentes antibacterianos altera a flora normal do cólon, o que
+pode levar à proliferação de C. Difficile. CDAD deve ser considerada em todos os pacientes que apresentarem
+quadro de diarreia após o uso de antibiótico. Um minucioso histórico médico é necessário para o diagnóstico, já
+que a ocorrência de CDAD foi relatada ao longo de dois meses após a administração de agentes antibacterianos.
+
+Colchicina: há relatos pós-comercialização de toxicidade por colchicina quando administrada concomitantemente
+com claritromicina, especialmente em pacientes idosos e com insuficiência renal. Óbitos foram reportados em
+alguns destes pacientes (ver Interações Medicamentosas). A administração de claritromicina e colchicina é
+contraindicada (ver Contraindicações).
+
+Recomenda- se precaução com relação à administração concomitante de claritromicina e
+triazolobenzodiazepínicos, tais como, o triazolam e o midazolam intravenoso ou midazolam bucal (ver Interações
+Medicamentosas).
+
+Eventos cardiovasculares:
+A repolarização cardíaca e intervalo QT prolongado, que confere risco no desenvolvimento de arritmia cardíaca e
+torsades de pointes, têm sido observados em pacientes em tratamento com macrolídeos incluindo claritromicin.
+Portanto, tal situação pode levar ao aumento da arritmia ventricular (incluindo torsades de pointes), com isso
+claritromicina deve ser utilizada com precaução nos seguintes pacientes:
+- Pacientes com doença arterial coronariana, insuficiência cardíaca grave, distúrbios de condução ou bradicardia
+clinicamente relevante;
+- Claritromicina não deve ser utilizada em pacientes com hipocalemia ou hipomagnesemia (ver seção
+Contraindicações);
+- Pacientes que utilizam concomitantemente outro medicamento associado com tempo de prolongamento do
+intervalo QT (ver Interações Medicamentosas);
+
+ Page 15 of 26
+ Abbott Laboratórios do Brasil Ltda.
+ Rua Michigan, 735
+ São Paulo, Brasil
+ CEP: 04566-905
+ T: (11) 5536-7000
+
+- O uso concomitante de claritromicina com astemizol, cisaprida, pimozida e terfenadina é contraindicado (ver
+seção Contraindicações);
+- Claritromicina não deve ser utilizada em pacientes com prolongamento do intervalo de QT congênito ou
+documentado, ou história de arritmia ventricular (ver seção Contraindicações).
+Considere cuidadosamente o equilíbrio entre benefícios e riscos antes de prescrever claritromicina para qualquer
+paciente que esteja tomando hidroxicloroquina ou cloroquina, devido ao potencial risco aumentado de eventos
+cardiovasculares e mortalidade cardiovascular (ver Interações Medicamentosas).
+
+Este medicamento pode potencializar o prolongamento do intervalo QT, o que aumenta o risco de ataque
+de arritmias ventriculares graves do tipo "torsades de pointes", que é potencialmente fatal (morte súbita).
+
+Estudos epidemiológicos que investigam o risco de eventos cardiovasculares com macrolídeos mostraram
+resultados variáveis. Alguns estudos observacionais identificaram a curto prazo um risco raro de arritmia, infarto
+do miocardio e mortalidade cardiovascular associada a macrolídeos, incluindo claritromicina. A consideração
+desses achados deve ser equilibrada com os benefícios do tratamento quando prescrever claritromicina.
+
+Pneumonia: tendo em vista a resistência emergente de Streptococcus pneumoniae para macrolídeos, é importante
+que o teste de sensibilidade seja realizado quando a claritromicina for prescrita para pneumonia adquirida na
+comunidade. Em pneumonia adquirida em ambiente hospitalar, a claritromicina deve ser utilizada em combinação
+com antibióticos adicionais apropriados.
+
+Infecções de pele e tecidos moles de severidade leve a moderada: estas infecções são causadas mais
+frequentemente por Staphylococcus aureus e Streptococcus pyogenes, os quais, ambos podem ser resistentes aos
+macrolídeos. Por este motivo, é importante que o teste de sensibilidade seja realizado. Em casos onde antibióticos
+betalactâmicos não podem ser utilizados (ex. alergia), outros antibióticos, tais como a clindamicina, podem ser os
+fármacos de primeira escolha. Atualmente, considera- se que os macrolídeos somente desempenham ação em
+algumas infecções de pele e tecidos moles, tais como as causadas por Corynebacterium minutissimum , acne
+vulgaris e erisipela e em situações em que o tratamento com penicilinas não pode ser utilizado.
+
+No caso de reações de hipersensibilidade aguda severa, como anafilaxia, reação adversa cutânea severa (SCAR)
+(por exemplo, pustulose generalizada exantemática aguda - PGEA), síndrome de Stevens-Johnson, necrólise
+epidérmica tóxica e Síndrome DRESS (erupção cutânea associada ao fármaco com eosinofilia e sintomas
+sistêmicos), o tratamento com claritromicina deve ser descontinuado imediatamente e um tratamento apropriado
+deve ser urgentemente iniciado.
+
+A claritromicina deve ser utilizada com cautela quando administrada concomitantemente com medicamentos
+indutores das enzimas do citocromo CYP3A4 (ver Interações Medicamentosas).
+
+Deve-se considerar a possibilidade de resistência bacteriana cruzada entre a claritromicina e os outros macrolídeos,
+assim como para lincomicina e a clindamicina.
+
+Inibidores da HMG-CoA redutase (estatinas): o uso concomitante de claritromicina com lovastatina ou
+sinvastatina é contraindicado (ver Contraindicações). Precaução deve ser tomada quando a claritromicina for
+prescrita com outras estatinas. Foram recebidos relatos de rabdomiólise em pacientes que administraram
+claritromicina concomitantemente a estatinas. Os pacientes devem ser monitorados para sinais e sintomas de
+miopatia. Em situações onde o uso concomitante da claritromicina com estatinas não pode ser evitado, recomenda-
+se prescrever a menor dose registrada de estatina. O uso de estatinas que não são dependentes do metabolismo da
+CYP3A (ex. fluvastatina) pode ser considerado (ver Interações Medicamentosas).
+
+ Page 16 of 26
+ Abbott Laboratórios do Brasil Ltda.
+ Rua Michigan, 735
+ São Paulo, Brasil
+ CEP: 04566-905
+ T: (11) 5536-7000
+
+Agentes hipoglicêmicos orais/insulina: o uso concomitante de claritromicina com agentes hipoglicêmicos orais
+(como as sulfonilureias) e/ou insulina pode resultar em uma hipoglicemia significante. Recomenda-se
+monitoramento cuidadoso da glicose.
+
+Anticoagulantes orais: existe um risco de hemorragia grave e elevações significativas na RNI (Razão
+Normalizada Internacional; ou INR, em inglês) e tempo de protrombina quando claritromicina é coadministrada
+com varfarina. A RNI e os tempos de protrombina devem ser frequentemente monitorados quando pacientes
+estiverem recebendo concomitantemente claritromicina e anticoagulantes orais.
+
+Deve-se ter precaução quando a claritromicina for administrada concomitantemente com anticoagulantes orais de
+ação direta, como dabigatrana, rivaroxabana, apixabana e edoxabana, particularmente em pacientes com alto risco
+de sangramento (ver Interações Medicamentosas).
+
+Cuidados e advertências para populações especiais
+
+Uso na gravidez: a segurança do uso da claritromicina na gravidez não foi estabelecida. Com base em resultados
+variáveis obtidos em estudos em animais e experiência em humanos, a possibilidade de efeitos adversos no
+desenvolvimento embriofetal não pode ser excluída. Alguns estudos observacionais que avaliaram a exposição à
+claritromicina durante o primeiro e segundo trimestres relataram um risco aumentado de aborto espontâneo em
+comparação com o não uso de antibióticos ou uso de outros antibióticos durante o mesmo período. Os estudos
+epidemiológicos disponíveis sobre o risco de malformações congênitas maiores com o uso de macrolídeos,
+incluindo claritromicina durante a gravidez, fornecem resultados conflitantes. Dessa forma, os benefícios e os
+riscos da utilização de KLARICID UD na mulher grávida devem ser ponderados pelo médico prescritor.
+
+Uso na amamentação: a claritromicina é excretada no leite materno em pequenas quantidades. Estima- se que um
+lactente em aleitamento materno exclusivo receberia cerca de 1,7% da dose materna de claritromicina ajustada ao
+peso. A segurança do uso da claritromicina durante o aleitamento materno não foi estabelecida.
+
+O uso deste medicamento no período da lactação depende da avaliação e acompanhamento do seu médico
+ou cirurgião-dentista.
+
+Fertilidade: em ratos, os estudos de fertilidade não mostraram qualquer evidência de efeitos nocivos
+
+Uso em crianças: até o momento, não há dados que suportem o uso de KLARICID  UD em pacientes na faixa
+etária pediátrica.
+
+Categoria de Risco: C - Este medicamento não deve ser utilizado por mulheres grávidas sem orientação
+médica ou do cirurgião -dentista.
+
+Efeitos na capacidade de dirigir e operar máquinas: não há informações sobre os efeitos da claritromicina na
+capacidade de dirigir ou operar máquinas. O potencial para tontura, vertigem, confusão e desorientação que podem
+ocorrer com o uso do medicamento deve ser levado em conta antes do paciente dirigir ou operar máquinas.
+
+Atenção: contém 115,00 mg de lactose/comprimido.
+
+Pacientes com problema hereditário raro de intolerância a galactose, deficiência total de lactose ou má
+absorção de glicose-galactose não devem tomar esse medicamento.
+
+ Page 17 of 26
+ Abbott Laboratórios do Brasil Ltda.
+ Rua Michigan, 735
+ São Paulo, Brasil
+ CEP: 04566-905
+ T: (11) 5536-7000
+
+KLARICID® UD contém 15,3 mg de sódio por comprimido. Caso o paciente tome 2 comprimidos ao dia de
+KLARICID® UD a dose total ingerida de sódio será de 30,6 mg, este valor deve ser levado em consideração no
+caso de pacientes que possuem uma dieta controlada de sódio.
+
+Para prevenir o desenvolvimento de bactérias resistentes, este medicamento deverá ser usado somente para
+o tratamento ou prevenção de infecções causadas ou fortemente suspeitas de serem causadas por
+microrganismos sensíveis a este medicamento.
+
+Atenção: contém os corantes dióxido de titânio e am arelo quinolina.
+
+6. INTER AÇÕES MEDIC A MEN TOSA S
+
+O uso dos seguintes medicamentos é estritamente contraindicado, devido à gravidade dos efeitos causados
+pelas possíveis interações medicamentosas:
+
+Cisaprida, pimozida, astemizole e terfenadina: foram relatados aumentos dos níveis de cisaprida em pacientes
+tratados concomitantemente com claritromicina e cisaprida. Isto pode resultar em prolongamento do intervalo QT
+e arritmias cardíacas incluindo taquicardia ventricular, fibrilação ventricular e torsades de pointes. Efeitos
+semelhantes foram observados em pacientes tratados concomitantemente com claritromicina e pimozida (ver
+Contraindicações).
+Foi relatado que os macrolídeos alteram o metabolismo da terfenadina resultando no aumento do nível desta
+substância que, ocasionalmente, foi associado a arritmias cardíacas, tais como prolongamento do intervalo QT,
+taquicardia ventricular, fibrilação ventr icu lar e torsades de pointes (ver Contraindicações) . Em um estudo com 14
+voluntários sadios, o uso concomitante de claritromicina e terfenadina resultou em um aumento de duas a três
+vezes nos níveis séricos do metabólito ácido da terfenadina e em prolongamento do intervalo QT, que não levou a
+qualquer efeito clínico detectável. Efeitos similares têm sido observados com o uso concomitante de astemizol e
+outros macrolídeos.
+
+Alcaloides de ergot: estudos de pós-comercialização indicaram que a coadministração de claritromicina com
+ergotamina ou diidroergotamina foi associada com toxicidade aguda de ergot, caracterizada por vasoespasmos e
+isquemia das extremidades e outros tecidos, inclusive sistema nervoso central. A administração concomitante de
+claritromicina com alcaloides de ergot é contraindicada (ver Contraindicações).
+
+Midazolam oral: quando midazolam foi coadministrado com comprimidos de claritromicina (500 mg duas vezes
+ao dia), a área sobre a curva (AUC) de midazolam sofreu um aumento de 7 vezes após a administração de
+midazolam. A administração concomitante de midazolam oral e claritromicina é contraindicada.
+
+Inibidores da HMG-CoA redutase (estatinas): O uso concomitante de claritromicina com lovastatina ou
+sinvastatina é contraindicado (ver Contraindicações), uma vez que estas estatinas são metabolizadas
+extensivamente pela CYP3A4 e o tratamento concomitante com claritromicina aumenta sua concentração
+plasmática, o que aumenta o risco de miopatia, incluindo rabdomiólise. Foram recebidos relatos de rabdomiólise
+em pacientes que administraram claritromicina concomitantemente a estas estatinas. Se o tratamento com
+claritromicina não puder ser evitado, a terapia com lovastatina ou sinvastatina deve ser suspensa durante o
+tratamento.
+
+Deve-se ter precaução quando houver prescrição de claritromicina com estatinas. Em situações onde o uso
+concomitante de claritromicina com estatinas não puder ser evitado, é recomendado que seja prescrito a menor
+dose registrada de estatina. O uso de estatina que não é dependente do metabolismo por CYP3A (ex: fluvastatina)
+pode ser considerado. Os pacientes devem ser monitorados por sinais e sintomas de miopatia.
+
+ Page 18 of 26
+ Abbott Laboratórios do Brasil Ltda.
+ Rua Michigan, 735
+ São Paulo, Brasil
+ CEP: 04566-905
+ T: (11) 5536-7000
+
+Lomitapida: a administração concomitante de claritromicina com lomitapida está contraindicada devido ao
+potencial para transaminases marcadamente aumentadas (ver Contraindicações).
+
+O uso de claritromicina também é contraindicado com ticagrelor, ivabradina e ranolazina metabolizados
+principalmente pelo CYP3A4 (ver Contraindicações).
+
+Efeitos de outros medicamentos na terapia com claritromicina
+
+Fármacos indutores da CYP3A4 como, por exemplo, rifampicina, fenitoína, carbamazepina, fenobarbital e erva de
+São João, podem induzir o metabolismo da claritromicina. Isto pode resultar em níveis subterapêuticos de
+claritromicina, levando à uma eficácia reduzida. Por isso, deve- se monitorar esses medicamentos na corrente
+sanguínea devido a um possível aumento dessas substâncias devido à inibição da CYP3A pela claritromicina.
+A administração concomitante de claritromicina e rifabutina resultou em um aumento de rifabutina e diminuição
+dos níveis sanguíneos de claritromicina juntamente com risco aumentado de uveíte.
+
+Os seguintes medicamentos sabidamente alteram ou são suspeitos de alterar a concentração de
+claritromicina na circulação sanguínea. Ajustes posológicos da dose de claritromicina ou a adoção de
+tratamento alternativo devem ser considerados:
+
+Efavirenz, nevirapina, rifampicina, rifabutina e rifapentina: fortes indutores do metabolismo do citocromo
+P450, tais como efavirenz, nevirapina, rifampicina, rifabutina e rifapentina podem acelerar o metabolismo da
+claritromicina e, portanto, diminuir os níveis plasmáticos desta substância, e aumentar os níveis de 14(R) hidroxi-
+claritromicina (14-OH- claritromicina), um metabólito que também é biologicamente ativo. Uma vez que as
+atividades microbiológicas da claritromicina e da 14 -OH- claritromicina são diferentes para diferentes bactérias, o
+efeito terapêutico pretendido pode ser prejudicado durante a administração concomitante de claritromicina e
+indutores enzimáticos.
+Etravirina: este fármaco diminuiu a exposição à claritromicina; no entanto, as concentrações do metabólito ativo,
+14- OH- claritromicina foram aumentadas. Devido este metabólito ter atividade reduzida contra o Mycobacterium
+avium complex (MAC), a atividade em geral contra este patógeno pode estar alterada; portanto, para o tratamento
+do MAC, alternativas à claritromicina devem ser consideradas.
+Fluconazol: a administração concomitante de fluconazol 200 mg diariamente e claritromicina 500 mg duas vezes
+por dia a 21 voluntários sadios conduziu a um aumento na concentração mínima média no “steady-state” de
+claritromicina (Cmin) e da área sob a curva (ASC), de 33% e 18%, respectivamente. As concentrações no “steady-
+state” do metabólito ativo 14- OH- claritromicina não foram significativamente afetadas pela administração
+concomitante de claritromicina e fluconazol. Não é necessário ajuste posológico da dose de claritromicina.
+Ritonavir: um estudo farmacocinético demonstrou que a administração concomitante de 200 mg de ritonavir a
+cada 8 horas e 500 mg de claritromicina a cada 12 horas resultou em acentuada inibição do metabolismo da
+claritromicina. O Cmax da claritromicina aumentou 31%, o Cmin aumentou 182% e ASC aumentou 77% com a
+administração concomitante de ritonavir. Foi observada uma completa inibição da formação do metabólito 14- OH-
+claritromicina. Devido à grande janela terapêutica da claritromicina, não é necessária redução de dose em pacientes
+com função renal normal. Entretanto, em pacientes com disfunção renal, os seguintes ajustes deverão ser
+considerados: para pacientes com clearence de creatinina entre 30 e 60 mL/min, a dose de claritromicina deve ser
+reduzida em 50%. Para pacientes com CLCR menor que 30 mL/min, a dose de claritromicina deve ser reduzida
+em 75%. Doses de claritromicina maiores que 1g/dia não devem ser administradas concomitantemente com
+ritonavir.
+Ajustes similares de dose devem ser considerados em pacientes com redução da função renal quando ritonavir é
+utilizado como um potencializador farmacocinético com outros inibidores de protease, incluindo atazanavir e
+saquinavir (ver Interações Medicamentosas).
+
+ Page 19 of 26
+ Abbott Laboratórios do Brasil Ltda.
+ Rua Michigan, 735
+ São Paulo, Brasil
+ CEP: 04566-905
+ T: (11) 5536-7000
+
+Efeitos da claritromicina na terapia com outros medicamentos
+
+Antiarrítmicos: há relatos de pós -comercialização de casos de torsades de pointes , que ocorreram com o uso
+concomitante de claritromicina e quinidina ou disopiramida. Eletrocardiogramas devem ser monitorados para o
+prolongamento de QTc durante a coadministração de claritromicina e antiarrítmicos. Os níveis séricos deste s
+medicamentos devem ser monitorados durante a terapia com claritromicina.
+Há relatos pós-comercialização de hipoglicemia com administração concomitante de claritromicina e
+disopiramida. Desta forma, os níveis de glicose no sangue devem ser monitorados durante a administração
+concomitante de claritromicina e disopiramida.
+
+Agentes hipoglicêmicos orais/Insulina: Com certos medicamentos hipoglicêmicos como nateglinida e
+repaglinida pode ocorrer a inibição da enzima CYP3A pela claritromicina, causando hipoglicemia quando usados
+concomitantemente. O monitoramento cuidadoso da glicemia é recomendado.
+
+Interações relacionadas à CYP3A4: a coadministração de claritromicina (inibidora da enzima CYP3A) e de um
+fármaco metabolizado principalmente por CYP3A pode estar associada à elevação da concentração do fármaco,
+podendo aumentar ou prolongar os efeitos terapêuticos e adversos do medicamento associado. A claritromicina
+deve ser usada com cuidado em pacientes recebendo tratamento com drogas conhecidas por serem substratos da
+enzima CYP3A, principalmente se este substrato possuir uma margem de segurança estreita (ex. carbamazepina)
+e/ou se o substrato for totalmente metabolizado por esta enzima. Ajustes de dose devem ser considerados, e quando
+possível, as concentrações séricas das drogas metabolizadas pela CYP3A devem ser cuidadosamente monitoradas
+em pacientes que estejam recebendo claritromicina concomitantemente.
+
+Corticosteroides: deve-se ter cautela no uso concomitante de claritromicina com corticosteroides sistêmicos e
+inalados que são metabolizados principalmente pelo CYP3A devido ao potencial de aumento da exposição
+sistêmica aos corticosteroides. Se ocorrer uso concomitante, os pacientes devem ser monitorados de perto quanto
+a efeitos indesejáveis dos corticosteroides sistêmicos.
+
+As seguintes substâncias são sabidamente ou supostamente metabolizadas pela mesma isoenzima CYP3A. São
+exemplos, mas não se resume a: alprazolam, astemizol, carbamazepina, cilostazol, cisaprida, ciclosporina,
+disopiramida, alcalóides do ergot, lovastatina, metilprednisolona, midazolam, omeprazol, anticoagulantes orais
+(ex: varfarina, rivaroxabana, apixabana, edoxabana), antipsicóticos atípicos (ex: quetiapina), pimozida, quinidina,
+rifabutina, sildenafila, sinvastatina, tacrolimus, terfenadina, triazolam e vinblastina. Substâncias que interagem por
+mecanismos semelhantes através de outras isoenzimas dentro do sistema citocromo P450 incluem a fenitoína,
+teofilina e valproato.
+
+Anticoagulantes orais de ação direta (DOACs): os DOAC dabigatrana e edoxabana são um substrato para o
+transportador de efluxo P-gp. A rivaroxabana e a apixabana são metabolizadas via CYP3A4 e também são
+substratos da P-gp. Recomenda-se precaução quando a claritromicina é administrada concomitantemente com estes
+medicamentos, particularmente em pacientes com elevado risco de hemorragia.
+
+Omeprazol: claritromicina (500 mg a cada 8 horas) foi administrada concomitantemente com omeprazol (40 mg
+por dia) em indivíduos adultos sadios. No “steady state”, as concentrações plasmáticas de omeprazol aumentaram
+(Cmax, ASC0-24 e t1/2 tiveram aumento de 30%, 89% e 34%, respectivamente) com a administração concomitante
+de claritromicina. A média do pH gástrico em 24 horas foi de 5,2 quando o omeprazol foi administrado
+isoladamente, e 5,7 quando foi coadministrado com claritromicina.
+Sildenafila, tadalafila e vardenafila: cada um destes inibidores da fosfodiesterase é metabolizado, pelo menos
+em parte, pela CYP3A, que pode ser inibida pela administração concomitante de claritromicina. A coadministração
+de claritromicina com sildenafila, vardenafila ou tadalafila pode resultar no aumento da exposição de inibidores
+
+ Page 20 of 26
+ Abbott Laboratórios do Brasil Ltda.
+ Rua Michigan, 735
+ São Paulo, Brasil
+ CEP: 04566-905
+ T: (11) 5536-7000
+
+da fosfodiesterase. Uma redução na dose de sildenafila, vardenafila ou tadalafila deve ser considerada quando estas
+são administradas concomitantemente com claritromicina.
+Teofilina, carbamazepina: resultados de estudos clínicos revelaram que existe um aumento discreto, mas
+estatisticamente significativo (p ≤ 0,05), nos níveis circulantes de teofilina ou de carbamazepina, quando algum
+desses medicamentos é administrado concomitantemente com a claritromicina.
+Tolterodina: a principal rota metabólica da tolterodina é via isoforma 2D6 do citocromo P450 (CYP2D6). No
+entanto, em uma amostra da população desprovida de CYP2D6, o metabolismo da tolterodina é através da CYP3A.
+Nesta população, a inibição da CYP3A resulta em um aumento significativo da concentração sérica de tolterodina.
+Uma redução na dose de tolterodina pode ser necessária na presença de inibidores de CYP3A, assim como a
+redução nas doses de claritromicina em populações com deficiência no metabolismo da CYP2D6.
+Benzodiazepínicos: (ex. alprazolam, midazolam, triazolam) quando midazolam é coadministrado via oral ou
+intravenosa com claritromicina comprimidos (500 mg duas vezes por dia), a ASC do midazolam apresenta um
+aumento de 2,7 vezes após a administração de midazolam intravenoso. Se midazolam via intravenosa for
+administrado concomitantemente com claritromicina, o paciente deve ser cuidadosamente monitorado para
+permitir um ajuste de dose adequado. A administração de midazolam via bucal, que ultrapasse a eliminação pré-
+sistêmica da droga provavelmente resultará em uma interação semelhante à observada após a administração de
+midazolam intravenoso, ao invés de midazolam oral. As mesmas precauções devem ser tomadas para outros
+benzodiazepínicos metabolizados pela CYP3A, incluindo triazolam e alprazolam. Para benzodiazepínicos, cuja
+eliminação não depende da CYP3A (temazepam, nitrazepam, lorazepam), a ocorrência de interação
+medicamentosa é improvável. Há relatos pós-comercialização de interações medicamentosas e de efeitos no
+sistema nervoso central (ex. sonolência e confusão) devido ao uso concomitante de claritromicina e triazolam.
+Sugere-se monitorar pacientes que apresentarem aumento dos efeitos farmacológicos no sistema nervoso central.
+
+Outras interações medicamentosas
+Colchicina: a colchicina é um substrato para CYP3A e para o transportador de efluxo, P -glicoproteína (Pgp). A
+claritromicina e outros macrolídeos são inibidores conhecidos da CYP3A e Pgp. Quando claritromicina e
+colchicina são administradas concomitantemente, a inibição da Pgp e/ou da CYP3A pela claritromicina pode levar
+a um aumento da exposição à colchicina. O uso concomitante de claritromicina e colchicina é contraindicado.
+Digoxina: acredita -se que a digoxina seja um substrato da proteína transportadora de efluxo, P-glicoproteína (Pgp).
+A claritromicina é um inibidor conhecido de Pgp. Quando claritromicina e digoxina são administradas
+concomitantemente, a inibição de Pgp pela claritromicina pode elevar a exposição à digoxina. Em estudos pós-
+comercialização foram relatadas concentrações séricas elevadas de digoxina em pacientes recebendo claritromicina
+e digoxina concomitantemente. Alguns pacientes apresentaram fortes sinais de intoxicação por digoxina, incluindo
+arritmias potencialmente fatais. As concentrações séricas de digoxina devem ser atentamente monitoradas quando
+pacientes estão recebendo digoxina e claritromicina simultaneamente.
+Zidovudi na: a administração simultânea de comprimidos de claritromicina e zidovudina a pacientes adultos
+infectados pelo HIV pode resultar na diminuição das concentrações de zidovudina no “steady- state”. Devido a
+aparente interferência da claritromicina com a absorção de zidovudina administrada via oral, esta interação pode
+ser amplamente evitada através do escalonamento das doses de claritromicina e zidovudina em um intervalo de 4
+horas entre cada medicamento. Esta interação não parece ocorrer em pacientes pediátricos infectados pelo HIV,
+tratados concomitantemente com claritromicina suspensão e zidovudina ou dideoxiinosina. Esta interação é
+improvável quando claritromicina é administrada via infusão intravenosa .
+Fenitoína e valproato: há relatos publicados ou espontâneos de interações entre inibidores da CYP3A4, incluindo
+a claritromicina, com medicamentos que não são sabidamente metabolizadas pela CYP3A4 (ex. fenitoína e
+valproato). Quando esses fármacos são administrados juntamente com a claritromicina, é recomendada a
+determinação dos níveis sanguíneos destes medicamentos. Foi relatado aumento nestes níveis.
+
+Interações medicamentosas bidirecionais
+
+ Page 21 of 26
+ Abbott Laboratórios do Brasil Ltda.
+ Rua Michigan, 735
+ São Paulo, Brasil
+ CEP: 04566-905
+ T: (11) 5536-7000
+
+Hidroxicloroquina e cloroquina: dados observacionais demonstraram que a coadministração de azitromicina
+com hidroxicloroquina em pacientes com artrite reumatoide está associada a um risco aumentado de eventos
+cardiovasculares e mortalidade cardiovascular. A claritromicina deve ser usada com cautela em pacientes que
+recebem estes medicamentos conhecidos por prolongar o intervalo QT devido ao potencial de induzir arritmia
+cardíaca e eventos cardiovasculares adversos graves.
+
+Atazanavir: tanto a claritromicina quanto o atazanavir são substratos e inibidores da CYP3A, e há evidência de
+interação medicamentosa bidirecional entre tais medicamentos. A coadministração de claritromicina (500 mg -
+duas vezes ao dia) com atazanavir (400 mg uma vez por dia) resultou em aumento de duas vezes na exposição à
+claritromicina, decréscimo de 70% na exposição à 14-OH- claritromicina e aumento de 28% na ASC do atazanavir.
+Devido à ampla janela terapêutica da claritromicina, pacientes com função renal normal não necessitam reduzir a
+dose desta medicação. Para pacientes com função renal moderada (clearance de creatinina entre 30 e 60 mL/min),
+a dose de claritromicina deverá ser reduzida em 50%. Para pacientes com clearance da creatinina <30 mL/min, a
+dose de claritromicina deve ser reduzida em 75%, formulação adequada deve ser utilizada. Doses de claritromicina
+superiores a 1000 mg por dia não devem ser administradas concomitantemente com inibidores de protease.
+Bloqueadores de canais de cálcio: deve-se ter precaução ao administrar concomitantemente claritromicina e
+bloqueadores de canais de cálcio metabolizados por CYP3A4 (ex. verapamil, amlodipino, diltiazem) devido ao
+risco de hipotensão. As concentrações plasmáticas de claritromicina e dos bloqueadores de canais de cálcio podem
+aumentar devido à interação. Hipotensão, bradiarritmia e acidose lática têm sido observadas em pacientes tomando
+claritromicina e verapamil concomitantemente.
+Itraconazol: tanto a claritromicina quanto o itraconazol são substratos e inibidores da CYP3A, levando a uma
+interação medicamentosa bidirecional. A claritromicina pode levar ao aumento nos níveis plasmáticos de
+itraconazol, enquanto o itraconazol pode aumentar os níveis plasmáticos da claritromicina. Pacientes utilizando
+concomitantemente itraconazol e claritromicina devem ser monitorados cuidadosamente quanto a sinais ou
+sintomas de aumento ou prolongamento dos efeitos farmacológicos.
+Saquinavir: tanto a claritromicina quanto o saquinavir são substratos e inibidores da CYP3A, e há evidência de
+interação medicamentosa bidirecional entre tais medicamentos. A administração concomitante de claritromicina
+(500 mg 2x/dia) e saquinavir (cápsulas gelatinosas moles, 1200 mg três vezes ao dia) a 12 voluntários sadios
+resultou em valores de ASC e Cmax de saquinavir, no “steady-state”, de 177% e 187%, respectivamente, superiores
+aos valores observados com a administração de saquinavir isoladamente. Os valores de ASC e C max de
+claritromicina foram aproximadamente 40% maiores do que os valores observados quando claritromicina é
+administrada isoladamente. Não é necessário ajuste de dose quando os dois medicamentos, nas doses e nas
+formulações estudadas, são coadministrados por um período limitado de tempo. Os dados obtidos nos estudos de
+interações medicamentosas utilizando-se cápsula gelatinosa mole podem não representar os efeitos decorrentes da
+utilização de cápsula gelatinosa dura. Os dados obtidos nos estudos de interações medicamentosas utilizando- se
+saquinavir isoladamente podem não representar os efeitos decorrentes da terapia conjunta de saquinavir/ritonavir.
+Quando saquinavir é coadministrado com ritonavir, recomenda-se atenção para os potenciais efeitos do ritonavir
+na terapia com claritromicina (ver Interações Medicamentosas – ritonavir).
+
+8. POSOLOGIA E MODO DE USAR
+
+A posologia habitual de KLARICID UD para adultos é de 1 comprimido de liberação prolongada de 500 mg, via
+oral, uma vez ao dia com alimento.
+
+Nas infecções mais graves, a posologia pode ser aumentada para 1000 mg (2 comprimidos de 500 mg), uma vez
+ao dia.
+
+A duração habitual do tratamento é de 5 a 14 dias, exceto os tratamentos da pneumonia adquirida na comunidade
+e sinusites, que requerem de 6 a 14 dias de tratamento.
+
+Insuficiência renal
+KLARICID UD não deve ser utilizado em pacientes com insuficiência renal significante (depuração de creatinina
+menor do que 30 mL/min), pois a redução apropriada na dose de claritromicina não é possível para essa forma
+farmacêutica. Para pacientes com disfunção renal moderada (depuração de creatinina de 30 a 60 mL/min.), a dose
+deve ser reduzida em 50%, resultando na dose máxima de um comprimido de claritromicina de liberação
+prolongada (KLARICID® UD) ao dia.
+
+Este medicamento não deve ser partido, aberto ou mastigado.
+
+10. SUPERDOSE
+Sintomas: Relatos indicam que a ingestão de grandes quantidades de claritromicina produz sintomas
+gastrointestinais. Foi relatado um caso de paciente com histórico de transtorno bipolar que ingeriu oito gramas de
+claritromicina comprimidos e apresentou estado mental alterado, comportamento paranoico, hipocalemia e
+hipoxemia.
+Tratamento: A superdose deve ser tratada com a imediata eliminação do produto não absorvido e com medidas de
+suporte. Da mesma forma que com outros macrolídeos, não há evidências de que a claritromicina possa ser
+eliminada por hemodiálise ou diálise peritoneal.
+
+Em caso de intoxicação ligue para 0800 722 6001, se você precisar de mais orientações sobre como proceder.
+
+III) D IZERES LEGAIS
+
+Registro: n° 1.0553.0200
+
+Registrado e Importado por:
+Abbott Laboratórios do Brasil Ltda.
+Rua Michigan, 735
+São Paulo - SP
+CNPJ 56.998.701/0001- 16
+
+Produzido por:
+Abbott Laboratories Argentina S.A.
+Buenos Aires – Argentina
+
+BU 21
+
+ABBO TT C EN TER
+Central de Relacionamento com o Cliente
+0800 703 1050
+www.abbottbrasil.com.br
+
+VENDA SOB PRESCRIÇÃO
+COM RETENÇÃO DA RECEITA
+
+ Page 25 of 26
+ Abbott Laboratórios do Brasil Ltda.
+ Rua Michigan, 735
+ São Paulo, Brasil
+ CEP: 04566-905
+ T: (11) 5536-7000
+
+Esta bula foi aprovada pela ANVISA em 11/ 03/2026.
+
+ Page 26 of 26
+ Abbott Laboratórios do Brasil Ltda.
+ Rua Michigan, 735
+ São Paulo, Brasil
+ CEP: 04566-905
+ T: (11) 5536-7000
+
+ Histórico de alterações do texto de bula – KLARICID® UD
+
+ Dados da Submissão Eletrônica Dados da Petição/ notificação que altera a bula Dados das alterações de bulas
+
+ Data do Nº do Assunto Data do Nº do Assunto Data de Itens de bula Versões Apresentações
+expediente expediente expediente expediente aprovação (VP/VPS) relacionadas
+ 10451 - MEDICAMENTO 500 MG COM LIB PROL CT BL AL
+ NOVO – Notificação de 3.CARACTERÍSTICAS PLAS INC X 7
+ 11/03/2026 Versão atual Alteração de Texto de - - - - FARMACOLÓGICAS VPS 500 MG COM LIB PROL CT BL AL
+ Bula – publicação no PLAS INC X 10
+ Bulário RDC 60/12
+ 10451 - MEDICAMENTO 500 MG COM LIB PROL CT BL AL
+ NOVO – Notificação de 4. CONTRAINDICAÇÕES
+ 11/12/2025 1589157/25-7 Alteração de Texto de - - - - 5.ADVERTÊNCIAS E VP e VPS PLAS INC X 7
+ PRECAUÇÕES 500 MG COM LIB PROL CT BL AL
+ Bula – publicação no PLAS INC X 10
+ Bulário RDC 60/12
+ 10451 - MEDICAMENTO 500 MG COM LIB PROL CT BL AL
+ NOVO – Notificação de 3.CARACTERÍSTICAS PLAS INC X 7
+ 17/07/2025 0927669/25-1 Alteração de Texto de - - - - FARMACOLÓGICAS VPS 500 MG COM LIB PROL CT BL AL
+ Bula – publicação no PLAS INC X 10
+ Bulário RDC 60/12
+ Abbott Laboratórios do Brasil Ltda.
+ Rua Michigan, 735
+ São Paulo, Brasil
+ CEP: 04566-905
+ T: (11) 5536-7000
+
+ 10451 - MEDICAMENTO 4. CONTRAINDICAÇÕES
+ NOVO – Notificação de 5. ADVERTÊNCIAS E 500 MG COM LIB PROL CT BL AL
+ PRECAUÇÕES PLAS INC X 7
+05/04/2024 0435276/24-7 Alteração de Texto de - - - - 6. INTERAÇÕES VPS 500 MG COM LIB PROL CT BL AL
+ Bula – publicação no MEDICAMENTOSAS PLAS INC X 10
+ Bulário RDC 60/12
+ 10451 - MEDICAMENTO 5. ADVERTÊNCIAS E 500 MG COM LIB PROL CT BL AL
+ PRECAUÇÕES
+13/01/2022 0165221/22-4 NOVO - Notificação de - - - - 6. INTERAÇÕES VPS PLAS INC X 7
+ Alteração de Texto de MEDICAMENTOSAS 500 MG COM LIB PROL CT BL AL
+ Bula – RDC 60/12 PLAS INC X 10
+
+ 10451 - MEDICAMENTO 500 MG COM LIB PROL CT BL AL
+16/11/2021 4535416/21-4 NOVO - Notificação de - - - - III)

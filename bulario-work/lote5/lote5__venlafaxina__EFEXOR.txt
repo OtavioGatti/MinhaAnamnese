@@ -1,0 +1,949 @@
+FONTE: lote5__venlafaxina__EFEXOR.pdf
+
+===== BLOCO 1 =====
+APRESENTAÇÕES
+Efexor® XR 37,5 mg, 75 mg ou 150 mg em embalagens contendo 7, 14 ou 30 cápsulas duras de liberação prolongada. 
+ 
+VIA DE ADMINISTRAÇÃO: USO ORAL 
+ 
+USO ADULTO
+
+1. INDICAÇÕES 
+ 
+Efexor® XR (cloridrato de venlafaxina) está indicado para: 
+• Tratamento da depressão, incluindo depressão com ansiedade associada. 
+• Prevenção de recaída e recorrência da depressão. 
+• Tratamento de ansiedade ou transtorno de ansiedade generalizada (TAG), incluindo tratamento em longo 
+prazo. 
+• Tratamento do transtorno de ansiedade social (TAS), também conhecido como fobia social. 
+• Tratamento do transtorno do pânico, com ou sem agorafobia, conforme definido no DSM -IV.
+
+3. CARACTERÍSTICAS FARMACOLÓGICAS 
+ 
+Propriedades Farmacodinâmicas 
+A venlafaxina e a O-desmetilvenlafaxina (ODV), seu metabólito ativo, são inibidores potentes da recaptação neuronal 
+de serotonina e norepinefrina e inibidores fracos da recaptação da dopamina. Acredita -se que a atividade 
+antidepressiva da venlafaxina esteja relacionada à potencialização da atividade neurotransmissora no Sistema Nervoso 
+Central (SNC). A venlafaxina e a ODV não tem afinidade significante in vitro por receptores muscarínicos, 
+histaminérgicos ou α1-adrenérgicos. A atividade nesses receptores está potencialmente relacionada com vários efeitos 
+anticolinérgicos, sedativos, e cardiovasculares observados com outros medicamentos psicotrópicos. 
+Em modelos pré -clínicos com roedores, a venlafaxina demonstrou atividade preditiva de ações ansiolíticas e 
+antidepressivas e propriedades de aprimoramento cognitivo. 
+ 
+Eletrofisiologia cardíaca 
+Em um estudo QTc completo e dedicado em indivíduos saudáveis, a venlafaxina não prolongou o intervalo QT em 
+qualquer extensão clinicamente relevante a uma dose de 450 mg/dia (na forma de 225 mg administrada duas vezes ao 
+dia). 
+ 
+Propriedades Farmacocinéticas 
+ 
+Absorção 
+Após a administração de venlafaxina cápsulas de liberação prolongada, as concentrações plasmáticas máximas de 
+venlafaxina e ODV foram alcançadas em 5,5 e 9 horas, respectivamente. 
+ 
+Distribuição 
+As concentrações plasmáticas no estado de equilíbrio da venlafaxina e da ODV são atingidas em 3 dias de 
+tratamento em dose múltipla com venlafaxina de liberação imediata. Ambas apresentam cinética linear no intervalo 
+ 
+ 
+EFEXOR XR_CDSv36.0_28Apr2023_EFXCAP_31_VPS 4 
+de dose de 75 a 450 mg/dia após administração a cada 8 horas. As respectivas taxas de ligação às proteínas 
+plasmáticas humanas da venlafaxina e da ODV são de aproximadamente 27% e 30%. Como essa ligação não 
+depende das respectivas concentrações do fármaco até 2.215 e 500 ng/m L, tanto a venlafaxina como a ODV 
+apresentam baixo potencial de interações medicamentosas significantes que envolvem deslocamento do fármaco 
+das proteínas séricas. O volume de distribuição da venlafaxina no estado de equilíbrio é de 4,4 + 1,9 L/kg após a 
+administração intravenosa. 
+ 
+Metabolismo 
+A venlafaxina sofre extenso metabolismo hepático. Estudos in vitro e in vivo indicam que a venlafaxina é 
+biotransformada no seu principal metabólito ativo, a ODV, pela isoenzima CYP2D6 do P450. Estudos in vitro e 
+in vivo indicam que a venlafaxina é metabolizada em um metabólito secundário, menos ativo, a N -
+desmetilvenlafaxina, pela CYP3A4. Embora a atividade relativa da CYP2D6 possa ser diferente entre os pacientes, 
+não há necessidade de modificação do esquema posológico d a venlafaxina. A exposição ao fármaco (AUC) e a 
+variação nos níveis plasmáticos da venlafaxina e da ODV foram equivalentes após a administração de doses diárias 
+iguais em esquemas duas vezes ao dia ou três vezes ao dia de venlafaxina de liberação imediata. 
+ 
+Eliminação 
+A venlafaxina e seus metabólitos são excretados principalmente pelos rins. Aproximadamente 87% da dose de 
+venlafaxina é recuperada na urina em até 48 horas tanto como venlafaxina inalterada (5%), ODV não conjugada 
+(29%), ODV conjugada (26%) ou outros metabólitos secundários inativos (27%). 
+ 
+Efeito dos alimentos 
+Os alimentos não exercem efeito significante sobre a absorção da venlafaxina ou a formação da ODV. 
+ 
+Pacientes com insuficiência hepática 
+Ocorre alteração significante da disposição farmacocinética da venlafaxina e da ODV em alguns pacientes com 
+cirrose hepática compensada (dano hepático moderado) após dose única oral de venlafaxina. Em pacientes com 
+insuficiência hepática, os valores da dep uração plasmática média da venlafaxina e da ODV diminuem em 
+aproximadamente 30% a 33%, e de meia -vida média de eliminação aumentam, 2 vezes ou mais em comparação 
+aos indivíduos normais. 
+ 
+Em um segundo estudo, a venlafaxina foi administrada por via oral e por via intravenosa em indivíduos normais 
+(n = 21) e indivíduos Child- Pugh A (n = 8) e Child- Pugh B (n = 11) , insuficiência hepática leve e moderada, 
+respectivamente. A biodisponibilidade por via oral aproximadamente dobrou em pacientes com insuficiência 
+hepática em comparação aos indivíduos normais. Nos pacientes com insuficiência hepática, a meia- vida de 
+eliminação da venlafaxina oral foi aproximadamente duas vezes maior e o clearance por via oral foi reduzido em 
+mais da metade em comparação aos indivíduos normais. Em pacientes com insuficiência hepática a meia-vida de 
+eliminação da ODV oral foi prolongada em cerca de 40% ao passo que o clearance da ODV foi semelhante à de 
+indivíduos normais. Observou-se um grau elevado de variabilidade interindividual. 
+ 
+Pacientes com insuficiência renal 
+As meias-vidas de eliminação da venlafaxina e da ODV aumenta ram com o grau de comprometimento da função 
+renal. A meia-vida de eliminação aumentou em aproximadamente 1,5 vezes em pacientes com insuficiência renal 
+moderada e por aproximadamente 2,5 vezes e 3 vezes em pacientes com doença renal em estágio terminal. 
+ 
+Estudos em Idade e Sexo 
+Uma análise de farmacocinética populacional com 404 pacientes tratados com venlafaxina de liberação imediata 
+em dois estudos com esquemas de administração de duas vezes ao dia e três vezes ao dia demonstrou que os níveis 
+plasmáticos mínimos de venlafaxina ou ODV, normalizados pela dose, não foram alterados por diferenças de idade 
+ou sexo. 
+ 
+Dados Pré-clínicos de Segurança 
+ 
+Carcinogenicidade 
+A venlafaxina foi administrada por gavagem a camundongos por 18 meses em doses de até 120 mg/kg por dia, 1,7 
+vezes a dose humana máxima recomendada, em uma relação mg/m 2. A venlafaxina também foi administrada a 
+ratos por gavagem por 24 meses em doses de até 120 mg/kg por dia. Em ratos que receberam a dose de 120 mg/kg, 
+as concentrações plasmáticas de venlafaxina na necropsia eram 6 vezes (ratos fêmeas) e 1 vez (rato macho) as 
+ 
+ 
+EFEXOR XR_CDSv36.0_28Apr2023_EFXCAP_31_VPS 5 
+concentrações plasmáticas de pacientes que receberam a dose humana máxima recomendada. Os níveis 
+plasmáticos de ODV foram inferiores em ratos quando comparados aos pacientes que receberam a dose máxima 
+recomendada. Tumores não foram aumentados pelo tratamento com venlafaxina em camundongos ou ratos. 
+ 
+Mutagenicidade 
+A venlafaxina e ODV não foram mutagênicas no teste de Ames de mutação reversa com a bactéria Salmonella ou 
+teste de ovário de hamster chinês/hipoxantina guanina fosforibosil transferase ( HGPRT) de mutação genética de 
+célula de mamíferos. A venlafaxina também não foi mutagênica ou clastogênica no ensaio in vitro BALB/c-3T3 
+de transformação de célula de camundongo, no teste de troca entre cromátides irmãs em culturas de células de 
+ovários de hamster chinês, ou teste in vivo de aberração cromossômica em medula óssea de ratos. A ODV não foi 
+clastogênica no ensaio in vitro de aberração cromossômica em células de ovários de hamster chinês, ou em ensaio 
+in vivo de aberração cromossômica em medula óssea de ratos. 
+ 
+Prejuízo à fertilidade 
+Os estudos de reprodução e fertilidade em ratos não mostraram nenhum efeito sobre a fertilidade masculina ou 
+feminina em doses orais de até 8 vezes a dose humana máxima recomendada diariamente, em uma base de mg/kg, 
+ou de até 2 vezes numa base de mg/m2. 
+ 
+Observou-se redução da fertilidade em um estudo em que ratos machos e fêmeas foram expostos ao principal 
+metabólito de venlafaxina (ODV). Esta exposição à ODV foi aproximadamente 2 a 3 vezes a da dose humana de 
+225 mg/dia de venlafaxina. A relevância desta descoberta sobre humanos é desconhecida. 
+ 
+Teratogenicidade 
+A venlafaxina não causou malformações na prole de ratos ou coelhos quando administrada em doses até 11 vezes 
+(ratos) ou 12 vezes (coelhos) a dose humana de 375 mg/dia de venlafaxina em uma base de mg/kg, ou 2,5 vezes 
+(ratos) e 4 vezes (coelhos) a dose humana de 375 mg/dia de venlafaxina , em uma relação mg/m2.
+
+4. CONTRAINDICAÇÕES 
+ 
+Hipersensibilidade a venlafaxina ou a qualquer componente da fórmula. 
+ 
+Uso concomitante da venlafaxina e de qualquer inibidor da monoaminoxidase (IMAO). 
+ 
+O tratamento com a venlafaxina não deve ser iniciado no período de, no mínimo, 14 dias após a descontinuação 
+do tratamento com um IMAO; um intervalo menor pode ser justificado se o IMAO for do tipo reversível (veja 
+informação de prescrição de IMAO do tipo reversível) . A venlafaxina deve ser descontinuada por, no mínimo, 7 
+dias antes do início do tratamento com qualquer IMAO (vide item 6. Interações Medicamentosas). 
+ 
+Este medicamento é contraindicado para uso por menores de 18 anos. 
+ 
+Efexor® XR é um medicamento classificado na categoria C de risco de gravidez. Portanto, este medicamento 
+não deve ser utilizado por mulheres grávidas sem orientação médica ou do cirurgião -dentista.
+
+5. ADVERTÊNCIAS E PRECAUÇÕES 
+ 
+Superdosagem 
+Os pacientes devem ser aconselhados a não consumir álcool, considerando seus efeitos no SNC e potencial de 
+causar piora clínica de quadros psiquiátricos e potencial de interagir adversamente com venlafaxina, incluindo 
+efeitos depressores sobre o SNC (vide item 6. Interações Medicamentosas). 
+Superdosagem com venlafaxina foi reportada predominantemente em combinação com álcool e/ou outros 
+medicamentos, incluindo casos com desfecho fatal (vide item 10. Superdose). 
+Para diminuir o risco de superdosagem, as prescrições de venlafaxina devem ser feitas na menor quantidade de 
+medicamento consistente com o bom manejo do paciente (vide item 10. Superdose). 
+ 
+Suicídio/Pensamentos Suicidas ou Agravamento Clínico 
+Todos os pacientes tratados com venlafaxina devem ser apropriadamente monitorados e atentamente observados 
+quanto à piora clínica e risco de suicídio. Os pacientes, seus familiares e cuidadores devem ser orientados a ficar 
+ 
+ 
+EFEXOR XR_CDSv36.0_28Apr2023_EFXCAP_31_VPS 6 
+alertas quanto ao aparecimento de ansiedade, agitação, ataques de pânico, insônia, irritabilidade, hostilidade, 
+agressividade, impulsividade, acatisia (agitação psicomotora), hipomania, mania, outras alterações incomuns de 
+comportamento, piora da depressão e ideação suicida, principalmente no início do tratamento ou durante qualquer 
+alteração de dose ou esquema posológico. O risco de tentativa de suicídio deve ser considerado principalmente 
+nos pacientes com depressão. Visando reduzir o risco de superdosage m, deve-se fornecer a menor quantidade 
+possível do medicamento, consistente com o bom manejo do paciente (vide item 9 . Reações Adversas). 
+ 
+O suicídio é um risco conhecido de depressão e de outros distúrbios psiquiátricos, estes distúrbios por si só são fortes 
+predisponentes ao risco de suicídio. As análises associadas de estudos clínicos placebo-controlados de curta duração 
+com medicamentos antidepressivos (inibidores seletivos da recaptação de serotonina [ISRSS] e outros) mostraram que 
+estes medicamentos aumentam o risco de suicídio em crianças, adolescentes e jovens (entre 18–24 anos de idade) com 
+depressão maior e outros distúrbios psiquiátricos. Estudos de curta duração não demonstraram um crescimento no risco 
+de suicídio com antidepressivos comparado com placebo em adultos com mais de 24 anos de idade; houve uma redução 
+no risco de suicídio com antidepressivos comparado com placebo em adultos com 65 anos ou mais. 
+ 
+Agressividade 
+Pode ocorrer agressividade em alguns pacientes que receberam antidepressivos, incluindo o tratamento com 
+venlafaxina, redução de dose ou descontinuação. Como com outros antidepressivos, a venlafaxina deve ser usada 
+com cautela em pacientes com histórico de agressividade. 
+ 
+Descontinuação 
+Sabe-se que os efeitos da descontinua ção ocorrem com os antidepressivos e, por vezes, estes efeitos podem ser 
+prolongados e graves ( vide item 9. Reações Adversas ). Suicídio / pensamentos suicidas e agressividade foram 
+observados em pacientes durante mudanç as no regime posol ógico de venlafaxina, inclusive durante a 
+descontinuação (ver acima n o item - Suicídio/Pensamentos Suicidas ou Agravamento Clínico). Recomenda -se, 
+portanto, que a dose de venlafaxina seja reduzida gradual e individualmente e que os pacientes sejam monitorados 
+rigorosamente durante a descontinua ção ( vide item 8. Posologia e Modo de Usar ). Em alguns pacientes, a 
+descontinuação pode levar meses ou mais. 
+ 
+Disfunção Sexual 
+Os inibidores da recaptação da serotonina-noradrenalina (IRSNs) podem causar sintomas de disfunção sexual (vide 
+item 9. Reações Adversas). Houve relatos de disfunção sexual de longa duração, em que os sintomas continuaram, 
+apesar da descontinuação dos IRSNs. 
+ 
+Fraturas ósseas 
+Estudos epidemiológicos mostraram um risco aumentado de fraturas ósseas em pacientes que utilizam inibidores 
+da recaptação da serotonina (IRS) incluindo venlafaxina. O mecanismo que leva a este risco não é inteiramente 
+conhecido. 
+ 
+Uso em Crianças e Adolescentes 
+A eficácia em menores de 18 anos de idade não foi estabelecida. 
+ 
+Reações de síndrome neuroléptica maligna (SMN) 
+Como com outros agentes serotonérgicos, a síndrome serotoninérgica, uma condição potencialmente fatal ou reações 
+como a síndrome neuroléptica maligna (SMN), pode ocorrer com o tratamento com a venlafaxina, particularmente 
+com o uso concomitante de outros fármacos serotonérgicos incluindo SSRIs, IRSNs, anfetaminas e triptanos, opioides, 
+(ex: fentanila, dextrometorfano, tramadol, tapentadol, meperidina, metadona, pentazocina), com medicamentos que 
+prejudicam o metabolismo da serotonina incluindo IMAOs, por ex.: azul de metileno, ou com antipsicóticos ou outros 
+antagonistas da dopamina. Sintomas da síndrome serotonérgica podem incluir alterações do estado mental (ex.: 
+agitação, alucinações, e coma), instabilidade autonômica (ex.: taquicardia, oscilação da pressão arterial, e hipertermia), 
+aberrações neuromusculares (ex.: hiperreflexia, falta de coordenação) e/ou sintomas gastrointestinais (ex.: náusea, 
+vômito e diarreia). A síndrome serotoninérgica, em sua forma mais grave , pode assemelhar-se a SMN, que inclui 
+hipertermia, rigidez muscular, instabilidade autonômica com possíveis flutuações rápidas dos sinais vitais e alterações 
+do estado mental (vide item 6. Interações Medicamentosas). 
+ 
+Se o tratamento concomitante com venlafaxina e outros agentes que possam afetar o sistema neurotransmissor 
+serotonérgico e/ou dopaminérgico for autorizado pelo médico responsável, é aconselhada observação cuidadosa do 
+paciente, particularmente no início do tratamento ou aumento da dose. 
+ 
+ 
+EFEXOR XR_CDSv36.0_28Apr2023_EFXCAP_31_VPS 7 
+ 
+O uso concomitante de venlafaxina com precursores da serotonina tais como suplementos contendo triptofano não é 
+recomendado. 
+ 
+Glaucoma de Ângulo Fechado 
+Pode ocorrer midríase associada ao tratamento com a venlafaxina. Recomenda- se monitorização rigorosa dos 
+pacientes com pressão intraocular elevada ou com risco de glaucoma agudo de ângulo estreito (glaucoma de ângulo 
+fechado). 
+ 
+Sistema Cardiovascular 
+A venlafaxina ainda não foi avaliada em pacientes com história recente de infarto do miocárdio ou doença cardíaca 
+instável. Portanto, deve ser utilizada com cautela nesses pacientes. 
+ 
+Há relatos de aumento da pressão arterial relacionado à dose em alguns pacientes tratados com a venlafaxina. 
+Casos de pressão arterial elevada requerendo tratamento imediato foram relatados na experiência pós -
+comercialização. Recomenda -se a determinação da pressão arterial nos pacientes tratados com a venlafaxina. 
+Hipertensão preexistente deve ser controlada antes do tratamento com venlafaxina. Deve -se ter cautela em 
+pacientes com condições subjacentes que possam ser comprometidas por aumentos da pressão arterial. 
+ 
+Pode ocorrer aumento da frequência cardíaca, particularmente nas doses mais altas. Deve- se ter cautela em 
+pacientes em condições subjacentes que podem ser comprometidas pelo aumento da frequência cardíaca. 
+ 
+Casos de prolongamento do intervalo QTc, Torsade de Pointes (TdP), taquicardia ventricular e morte súbita foram 
+relatados durante o uso pós -comercialização da venlafaxina. A maioria dos relatos ocorreu em associação com 
+superdosagem ou em pacientes com outros fatores de risco para prolongamento do intervalo QTc/Torsade de 
+Pointes. Portanto, a venlafaxina deve ser usada com precaução em pacientes com fatores de risco para 
+prolongamento do intervalo QTc. 
+ 
+Convulsões 
+Podem ocorrer convulsões com o tratamento com a venlafaxina. Assim como ocorre com todos os antidepressivos, 
+o tratamento com a venlafaxina deve ser introduzido com cautela em pacientes com história de convulsões. 
+ 
+Mania/Hipomania 
+Pode ocorrer mania/hipomania em uma pequena parcela de pacientes com distúrbios de humor que receberam 
+antidepressivos, incluindo a venlafaxina. Assim como ocorre com outros antidepressivos, a venlafaxina deve ser 
+usada com cautela em pacientes com história pessoal ou familiar de transtorno bipolar. 
+ 
+Hiponatremia 
+Casos de hiponatremia e/ou síndrome da secreção inapropriada do hormônio antidiurético (SIADH) podem ocorrer 
+com a venlafaxina, usualmente em pacientes com depleção de volume ou desidratados. Pacientes idosos, pacientes 
+fazendo uso de diuréticos e pacientes com depleção de volume, podem ter risco aumentado para esse evento. 
+ 
+Sangramento 
+Medicamentos que inibem a recaptação de serotonina podem ocasionar anormalidades na agregação plaquetária. 
+Existem relatos de anormalidades de sangramento com a venlafaxina, desde sangramento cutâneo e das membranas 
+mucosas e hemorragia gastrintestinal, inclusive com risco de morte . Como ocorre com outros inibidores da 
+recaptação da serotonina (IRSs), deve-se ter cuidado ao administrar a venlafaxina em pacient es predispostos a 
+sangramentos, incluindo pacientes que fazem uso de anticoagulantes e inibidores plaquetários. 
+ 
+Redução de Peso 
+A segurança e a eficácia da terapia com a venlafaxina em associação a agentes redutores de peso, incluindo a 
+fentermina, ainda não foram estabelecidas. Não se recomenda a administração concomitante do cloridrato de 
+venlafaxina com agentes redutores de peso. O cloridrato de venlafaxina não é indicado para redução de peso, nem 
+em monoterapia nem em associação com outros produtos. 
+ 
+Colesterol Sérico 
+Observou-se aumento , clinicamente relevante, do colesterol sérico em 5,3% dos pacientes tratados com a 
+venlafaxina e 0,0% nos pacientes que receberam placebo, por no mínimo 3 meses, em estudos clínicos controlados 
+ 
+ 
+EFEXOR XR_CDSv36.0_28Apr2023_EFXCAP_31_VPS 8 
+por placebo. A determinação dos níveis de colesterol sérico deve ser considerada durante o tratamento em longo 
+prazo. 
+ 
+Abuso e Dependência 
+Estudos clínicos não evidenciaram comportamento de busca por drogas (lícitas e ilícitas), desenvolvimento de 
+tolerância, ou elevação indevida de dose da venlafaxina durante o período de uso. 
+Estudos in vitro revelaram que a venlafaxina praticamente não tem afinidade com opiáceos, benzodiazepínicos, a 
+fenciclidina (PCP) ou receptores de ácido N-metil-D- aspártico (NMDA). Não foi demonstrado que a venlafaxina 
+apresenta qualquer atividade estimulante do sistema nervoso central (SNC) significativa em roedores. Em estudos 
+de discriminação do medicamento com primatas, a venlafaxina não mostrou nenhum risco significativo de abus o 
+por efeitos estimulantes ou depressores. Em um estudo de autoadministração, macacos rhesus autoadministraram 
+a venlafaxina intravenosamente. 
+ 
+Gravidez 
+A segurança da venlafaxina durante a gravidez em humanos ainda não foi estabelecida. A venlafaxina deve ser 
+administrada a mulheres grávidas apenas se os benefícios esperados superarem os riscos possíveis. Se a 
+venlafaxina for usada até o nascimento ou um pouco antes do nascimento, os efeitos da descontinuação no recém-
+nascido devem ser considerados. Alguns neonatos expostos a venlafaxina no final do terceiro trimestre da gestação 
+desenvolveram complicações que requereram alimentação enteral , suporte respir atório, ou hospitalização 
+prolongada. Essas complicações podem surgir imediatamente após o parto. 
+ 
+Quando a venlafaxina foi administrada por via oral em ratas prenhas ao longo de toda a gestação e lactação, houve 
+diminuição no peso dos filhotes, aumento no número de natimortos e aumento no número de mortes das crias 
+durante os primeiros 5 dias da lactação, quando a administração da dosagem foi iniciada durante a gravidez e 
+continuou até o desmame. A causa da morte não é conhecida. Estes efeitos ocorreram com doses 10 vezes (numa 
+base mg/kg) ou 2,5 vezes (numa base mg/m 2) a dose diária humana de 375 mg de venlafaxina. A dose sem efeito 
+sobre a mortalidade d a prole de ratos foi 1,4 vezes a dose humana , em uma base mg/kg , ou 0,25 vezes a dose 
+humana, em uma base mg/m2. 
+ 
+Um estudo longitudinal prospectivo de 201 mulheres com história de depressão maior que eram eutímicas no início 
+da gravidez mostrou que as mulheres que interromperam a medicação antidepressiva durante a gravidez tinham 
+maior probabilidade de apresentar uma recidiva da depressão maior do que as mulheres que continuaram a 
+medicação antidepressiva. 
+ 
+A exposição a IRSNs do meio ao final da gravidez pode aumentar o risco de pré-eclâmpsia, e a exposição a IRSNs 
+perto do parto pode aumentar o risco de hemorragia pós-parto. 
+ 
+Efexor® XR é um medicamento classificado na categoria C de risco de gravidez. Portanto, este medicamento 
+não deve ser utilizado por mulheres grávidas sem orientação médica ou do cirurgião -dentista. 
+ 
+Lactação 
+A venlafaxina e a ODV são excretadas no leite materno; portanto, deve-se decidir entre amamentar ou descontinuar 
+o uso de venlafaxina. 
+Este medicamento é contraindicado durante o aleitamento ou doação de leite, pois é excretado no leite 
+humano e pode causar reações indesejáveis no bebê. Seu médico ou cirurgião -dentista deve apresentar 
+alternativas para o seu tratamento ou para a alimentação do bebê. 
+ 
+Uso em Idosos 
+Não há recomendação específica para ajuste de dose da venlafaxina de acordo com a idade do paciente. 
+ 
+Efeitos sobre a capacidade de dirigir veículos e operar máquinas 
+Em voluntários saudáveis, a venlafaxina não alterou o desempenho psicomotor, cognitivo ou comportamental 
+complexo. No entanto, qualquer psicofármaco pode comprometer o julgamento, o raciocínio e a capacidade 
+motora. Portanto, os pacientes devem ser alertados quanto aos efeitos sobre a capacidade de dirigir veículos e 
+operar máquinas perigosas. 
+ 
+Oriente seu paciente a não dirigir veículos ou operar máquinas durante todo o tratamento com Efexor® XR, 
+pois sua habilidade e capacidade de reação podem estar prejudicadas. 
+ 
+ 
+EFEXOR XR_CDSv36.0_28Apr2023_EFXCAP_31_VPS 9 
+O uso deste medicamento pode causar tontura, desmaios ou perda da consciência, expondo o paciente a 
+quedas ou acidentes. 
+As cápsulas de Efexor® XR contêm esferas que são liberam lentamente o medicamento no trato digestivo. A porção 
+insolúvel destas esferas é eliminada e pode ser vista nas fezes. 
+ 
+Atenção: Contém, os corantes dióxido de titânio, óxido de ferro vermelho, óxido de ferro amarelo e (apenas 
+para cápsulas de 37,5 mg) óxido de ferro preto.".
+
+6. INTERAÇÕES MEDICAMENTOSAS 
+ 
+Inibidores da monoaminoxidase 
+Foram relatadas reações adversas graves, em pacientes que interromperam recentemente o tratamento com um inibidor 
+da monoaminoxidase (IMAO) e iniciaram o tratamento com a venlafaxina, ou que recentemente interromperam a 
+terapia com a venlafaxina antes do início do tratamento com um IMAO (vide item 4. Contraindicação). Essas reações 
+incluíram: tremores, mioclonia, diaforese, náuseas, vômitos, rubor, tontura, e hipertermia com quadro semelhante à 
+síndrome neuroléptica maligna, convulsões e óbito. 
+ 
+Medicamentos ativos no SNC 
+O risco do uso da venlafaxina em associação a outros medicamentos ativos no SNC ainda não foi sistematicamente 
+avaliado. Consequentemente, recomenda -se cautela caso seja necessária à administração concomitante da 
+venlafaxina e desses medicamentos. 
+ 
+Síndrome serotoninérgica 
+Como com outros agentes serotonérgicos, a síndrome serotoninérgica, uma condição potencialmente de risco de vida, 
+pode ocorrer durante o tratamento com a venlafaxina, particularmente com o uso concomitante de outros agentes que 
+podem afetar o sistema neurotransmissor serotonérgico como os triptanos, os ISRSs*, outros IRSNs**, anfetaminas, 
+o lítio, a sibutramina, opioides (ex:fentanila e seus análogos, tramadol, dextrometorfano, tapentadol, meperidina, 
+metadona, pentazocina) ou a erva-de-São-João (Hypericum perforatum), com medicamentos que comprometem o 
+metabolismo da serotonina, como os IMAOs, incluindo a linezolida (um antibiótico que é um IMAO não seletivo 
+reversível) e azul de metileno); ou com precursores da serotonina, como suplementos contendo triptofano (vide 
+item 4. Contraindicações e item 5. Advertências e Precauções). 
+ 
+Se o tratamento concomitante da venlafaxina com um ISRS*, um IRSN** ou um agonista de receptor da 5-
+hidroxitriptamina (triptano) for clinicamente justificado, recomenda -se observação cuidadosa do paciente, 
+especialmente no início do tratamento e no caso de aumento da dose. 
+ 
+O uso concomitante da venlafaxina com precursores da serotonina, como suplementos contendo triptofano, não é 
+recomendado (vide item 5. Advertências e Precauções). 
+ 
+* ISRS = inibidor seletivo da recaptação de serotonina 
+** IRSN = inibidor da recaptação de serotonina e norepinefrina 
+ 
+Medicamentos que prolongam o intervalo QT 
+O risco de prolongamento do intervalo QTc e/ou de arritmias ventriculares (por exemplo, torsade de pointes) aumenta 
+com o uso concomitante de outros medicamentos que prolongam o intervalo QTc (por exemplo, alguns antipsicóticos 
+e antibióticos) (vide item 5. Advertências e Precauções). 
+ 
+indinavir 
+Em um estudo de farmacocinética com indinavir, resultou em diminuição de 28% da área sob a curva de 
+concentração versus tempo (AUC) e diminuição de 36% da C máx do indinavir. O indinavir não alterou a 
+farmacocinética da venlafaxina e da ODV. É desconhecida a significância clínica desse achado. 
+ 
+Álcool 
+Os pacientes devem ser aconselhados a não consumir álcool, considerando seus efeitos no SNC e potencial de 
+causar agravamento clínico de quadros psiquiátricos e potencial de interagir adversamente com venlafaxina, 
+incluindo efeitos depressivos sobre o SNC. 
+ 
+haloperidol 
+ 
+ 
+EFEXOR XR_CDSv36.0_28Apr2023_EFXCAP_31_VPS 10 
+Um estudo farmacocinético com haloperidol mostrou uma diminuição de 42% no total do clearance oral, um 
+aumento de 70% na AUC, um aumento de 88% no C máx, mas não alterou a meia- vida. Isto deve ser levado em 
+conta em pacientes tratados com haloperidol e venlafaxina concomitantemente. 
+ 
+cimetidina 
+No estado de equilíbrio, a cimetidina resultou na inibição do metabolismo de primeira passagem hepática da 
+venlafaxina; no entanto a cimetidina não teve nenhum efeito na farmacocinética da ODV. Está previsto que a 
+atividade global da venlafaxina mais ODV aumente apenas discretamente na maioria dos pacientes. Em idosos e 
+em pacientes com disfunção hepática esta interação pode ser mais acentuada. 
+ 
+imipramina 
+A venlafaxina não alterou a farmacocinética da imipramina e da 2 -OH-imipramina. No entanto, a AUC, a C máx e 
+a C mín da desipramina aumentaram cerca de 35% na presença da venlafaxina. A AUC da 2 -OH-desipramina 
+aumentou2,5 vezes e 4,5 vezes. A imipramina não alterou a farmacocinética da venlafaxina e da ODV. Isso deve 
+ser considerado para pacientes tratados concomitantemente com o imipramina e a venlafaxina. 
+ 
+cetoconazol 
+Um estudo farmacocinético com cetoconazol em metabolizadores extensos (ME) e metabolizadores fracos (MF) 
+do CYP2D6 resultou em concentrações plasmáticas mais elevadas tanto de venlafaxina quanto de ODV nos 
+indivíduos, após a administração de cetoconazol. A Cmáx da venlafaxina aumentou em 26% em indivíduos ME e 
+48% em indivíduos MF. Os valores de C máx para ODV aumentaram em 14% e 29% em indivíduos ME e MF, 
+respectivamente. AUC da venlafaxina aumentou em 21% em indivíduos ME e 70% em indivíduos MF. Valores 
+de AUC para ODV aumentaram em 23% e 33% em indivíduos ME e MF, respectivamente (vide item 6. Interações 
+Medicamentosas - Potencial de outros medicamentos afetarem a venlafaxina). 
+ 
+metoprolol 
+A administração concomitante da venlafaxina (50 mg a cada 8 horas por 5 dias) e metoprolol (100 mg a cada 24 
+horas por 5 dias) a voluntários saudáveis em um estudo de interação farmacocinética dos dois medicamentos 
+resultou em aumento de 30% -40% das concentrações plasmáticas do metoprolol sem alterar as concentrações 
+plasmáticas do seu metabólito ativo, o alfa-hidroximetoprolol. A venlafaxina pareceu diminuir o efeito redutor da 
+pressão arterial do metoprolol nesse estudo em voluntários saudáveis. A relevância clínica dessa observação em 
+pacientes hipertensos é desconhecida. O metoprolol não alterou o perfil farmacocinético da venlafaxina nem de 
+seu metabólito ativo, a ODV. Deve -se ter cautela com a administração concomitante da venlafaxina com o 
+metoprolol. 
+ 
+risperidona 
+A venlafaxina aumentou aproximadamente 32% da AUC da risperidona, mas não alterou significantemente o perfil 
+farmacocinético da porção ativa total (risperidona mais 9 -hidroxirisperidona). A significância clínica desta 
+interação não é conhecida. 
+ 
+diazepam 
+O diazepam não pareceu alterar a farmacocinética da venlafaxina ou da ODV. A venlafaxina também não 
+apresentou nenhum efeito sobre a farmacocinética e farmacodinâmica do diazepam e de seu metabólito ativo , 
+desmetildiazepam. 
+ 
+lítio 
+Não houve alteração da farmacocinética do estado de equilíbrio da venlafaxina e ODV co administrada com lítio. 
+A venlafaxina não teve efeito sobre a farmacocinética do lítio ( vide subitem Medicamentos Ativos no SNC a 
+seguir). 
+ 
+Medicamentos com alta taxa de ligação a proteínas plasmáticas 
+A venlafaxina não apresenta alta taxa de ligação a proteínas plasmáticas (27%); assim, a administração de 
+venlafaxina a um paciente que toma outro medicamento com alta taxa de ligação a proteínas não deve provocar 
+aumento das concentrações livres do outro medicamento. 
+ 
+Medicamentos metabolizados pelas isoenzimas do citocromo P450 
+Os estudos indicam que a venlafaxina é um inibidor relativamente fraco da CYP2D6. A venlafaxina não inibiu in 
+vitro CYP3A4, CYP1A2 e CYP2C9. Isto foi confirmado em estudos in vivo com os seguintes medicamentos: 
+ 
+ 
+EFEXOR XR_CDSv36.0_28Apr2023_EFXCAP_31_VPS 11 
+alprazolam (CYP3A4), cafeína (CYP1A2), carbamazepina (CYP3A4), diazepam (CYP3A4 e CYP2C19) e 
+tolbutamida (CYP2C9). 
+ 
+Potencial de outros medicamentos afetarem a venlafaxina 
+As vias de metabolização da venlafaxina incluem CYP2D6 e CYP3A4. A venlafaxina é primariamente 
+metabolizada no seu metabólito ativo, ODV, pela enzima CYP2D6 do citocromo P450. CYP3A4 é a via secundária 
+de metabolização quando comparada com CYP2D6 no metabolismo da venlafaxina. 
+ 
+Inibidores de CYP2D6 
+O uso concom itante de inibidores de CYP2D6 e da venlafaxina pode reduzir a metabolização da venlafaxina a 
+ODV, resultando em aumento das concentrações plasmáticas da venlafaxina e decréscimo das concentrações 
+plasmáticas de ODV. Como venlafaxina e ODV são ambos farmacologicamente ativos, não é necessário ajuste de 
+dose quando a venlafaxina é coadministrada com inibidores da CYP2D6. 
+ 
+Inibidores de CYP3A4 
+O uso concomitante de inibidores de CYP3A4 e da venlafaxina pode aumentar os níveis de venlafaxina e de ODV 
+(vide item 6. Interações Medicamentosas). Portanto, recomenda-se cautela se o tratamento de um paciente incluir 
+um inibidor da CYP3A4 e a venlafaxina concomitantemente. 
+ 
+Inibidores de CYP2D6 e CYP3A4 
+Não foi estudado o uso concomitante da venlafaxina com medicamento(s) que potencialmente inibe(m) tanto a 
+CYP2D6 quanto a CYP3A4, enzimas metabolizadoras primárias da venlafaxina. Entretanto, no uso concomitante 
+se pode esperar um aumento das concentrações plasmáticas de venlafaxina. Portanto, recomenda -se cautela se o 
+tratamento de um paciente incluir qualquer agente que produza m inibições simultâneas desses dois sistemas 
+enzimáticos. 
+ 
+Terapia Eletroconvulsiva 
+Não há dados clínicos que estabeleçam o benefício da terapia eletroconvulsiva combinada ao tratamento com 
+venlafaxina. 
+ 
+Interação com medicamentos de testes laboratoriais 
+Falso-positivos em urina nos testes de imunoensaio de fenciclidina (PCP) e anfetaminas têm sido relatados em 
+pacientes que tomam venlafaxina devido à falta de especificidade dos testes. Resultados falso-positivos podem ser 
+esperados durante vários dias após interrupção da terapêutica com a venlafaxina. Os testes confirmatórios, tais 
+como cromatografia gasosa / espectrometria de massa, vão distinguir a venlafaxina de PCP e anfetaminas.
+
+8. POSOLOGIA E MODO DE USAR 
+ 
+Efexor® XR deve ser administrado com alimentos, aproximadamente no mesmo horário todos os dias. As cápsulas 
+devem ser tomadas inteiras com algum líquido e não devem ser divididas, trituradas, mastigadas ou dissolvidas, 
+ou podem ser administradas cuidadosamente abrindo- se a cápsula e espalhando todo o conteúdo em uma colher 
+de purê de maçã. Esta mistura de medicamento/alimento deve ser engolida imediatamente sem mastigar e deve ser 
+seguida de um copo de água para assegurar a completa deglutição dos princípios ativos. 
+ 
+Depressão maior 
+A dose inicial recomendada de Efexor® XR é de 75 mg, administrada uma vez por dia (1x/dia). Os pacientes que não 
+respondem à dose inicial de 75 mg/dia podem beneficiar-se com o aumento da dose até, no máximo, 225 mg/dia. 
+ 
+Transtorno de ansiedade generalizada 
+A dose inicial recomendada de Efexor® XR é de 75 mg, administrada uma vez por dia (1x/dia). Os pacientes que não 
+respondem à dose inicial de 75 mg/dia podem beneficiar-se com o aumento da dose até, no máximo, 225 mg/dia. 
+ 
+Fobia social 
+A dose inicial recomendada de Efexor® XR é de 75 mg, administrada uma vez por dia (1x/dia). Não há evidências de 
+que doses maiores proporcionem algum benefício adicional. 
+ 
+Transtorno do pânico 
+Recomenda-se que a dose de 37,5 mg/dia de Efexor® XR seja usada por 7 dias. A dose deve ser aumentada para 75 
+mg/dia. Os pacientes que não respondem à dose inicial de 75 mg/dia podem beneficiar-se com o aumento da dose até, 
+no máximo, 225 mg/dia. 
+ 
+Descontinuando a venlafaxina 
+Recomenda-se a redução gradual da dose ao descontinuar o tratamento com Efexor® XR (vide item 5. Advertência e 
+Precauções e item 9. Reações Adversas). Em estudos clínicos com venlafaxina cápsulas de liberação prolongada, o 
+medicamento foi reduzido gradualmente alcançando o intervalo de dose diária de 75 mg a cada semana. Entretanto, o 
+período de tempo necessário para a redução gradual e a quantidade de redução da dose pode depender da dose, duração 
+do tratamento e de cada paciente individualmente. Em alguns pacientes, a descontinuação pode precisar ocorrer muito 
+gradualmente durante período de meses ou mais. 
+ 
+Uso em pacientes com insuficiência renal 
+A dose diária total d e Efexor® XR deve ser reduzida em 25% a 50% nos pacientes com insuficiência renal com 
+taxa de filtração glomerular (TFG) de 10 a 70 mL/min. 
+ 
+A dose diária total de Efexor® XR deve ser reduzida em até 50% nos pacientes em hemodiálise. 
+ 
+Devido à variabilidade individual no clearance nesses pacientes, doses individuais podem ser aconselhadas. 
+ 
+Uso em pacientes com insuficiência hepática 
+A dose diária total de Efexor® XR deve ser reduzida em até 50% em pacientes com insuficiência hepática leve a 
+moderada. Em alguns pacientes, reduções maiores que 50% podem ser adequadas. 
+ 
+Devido à variabilidade individual no clearance, doses individuais podem ser aconselhadas. 
+ 
+Uso em crianças e adolescentes 
+Não há experiência suficiente com o uso de Efexor® XR em pacientes com menos de 18 anos de idade ( vide item 
+5. Advertência e Precauções e item 9. Reações Adversas). 
+ 
+Uso em Idosos 
+Não há recomendação específica para ajuste da dose de Efexor® XR de acordo com a idade do paciente. 
+ 
+Este medicamento não deve ser partido, aberto ou mastigado. 
+ 
+ 
+ 
+EFEXOR XR_CDSv36.0_28Apr2023_EFXCAP_31_VPS 13
+
+9. REAÇÕES ADVERSAS 
+A tabela a seguir lista as reações adversas por Classe de Sistema de Órgãos em ordem decrescente de gravidade 
+médica. 
+ 
+Reações adversas por Classe de Sistema de Órgãos e pelas categorias de freq uência CIOMS (Council for 
+International Organizations of Medical Sciences) em ordem decrescente de gravidade médica dentro de 
+cada categoria de frequência e de Classe de Sistema de Órgãos: 
+Classe de 
+Sistema de 
+Órgãos 
+Muito 
+Comum 
+≥ 1/10 
+Comum 
+≥ 1/100 a 
+<1/10 
+Incomum 
+≥ 1/1.000 a 
+<1/100 
+Raro 
+≥ 1/10.000 a 
+< 1/1.000 
+Muito Raro 
+< 1/10.000 
+Frequência 
+não 
+conhecida 
+(não pode 
+ser 
+estimada a 
+partir dos 
+dados 
+disponíveis) 
+Distúrbios do 
+sistema linfático 
+e sangue 
+ Agranulocit
+ose*§, 
+anemia 
+aplástica*§, 
+pancitopenia
+*§, 
+neutropenia*
+§ 
+Trombocitope
+nia* 
+ 
+Distúrbios do 
+sistema imune 
+ Reação 
+Anafilática*§ 
+ 
+Distúrbios do 
+sistema 
+endócrino 
+ Secreção 
+inapropriada 
+do hormônio 
+antidiurético
+*§ 
+Prolactina 
+sanguínea 
+aumentada* 
+ 
+Distúrbios do 
+metabolismo e 
+nutrição 
+ Diminuição 
+do apetite 
+ Hiponatremi
+a* 
+ 
+Distúrbios 
+psiquiátricos 
+Insônia Sonhos 
+anormais, 
+nervosismo, 
+diminuição 
+da libido, 
+agitação*, 
+anorgasmia 
+Estado de 
+confusão*, 
+mania, 
+hipomania, 
+despersonalizaç
+ão, alucinação, 
+orgasmo 
+anormal, 
+bruxismo*, 
+apatia 
+Delírio*§ 
+Distúrbio do 
+sistema nervoso 
+Dor de 
+cabeça*, 
+tontura, 
+sedação 
+Acatisia*, 
+tremor, 
+parestesia, 
+disgeusia 
+Síncope, 
+mioclonia, 
+distúrbio do 
+equilíbrio * 
+coordenação 
+anormal*, 
+discinesia* 
+Síndrome 
+neuroléptica 
+maligna*§, 
+síndrome da 
+serotonina*§, 
+convulsão, 
+distonia* 
+Discinesia 
+tardia* 
+ 
+Distúrbio ocular Deficiência 
+visual, 
+distúrbio de 
+acomodação
+, midríase 
+ Glaucoma 
+de ângulo 
+fechado*§ 
+ 
+ 
+ 
+EFEXOR XR_CDSv36.0_28Apr2023_EFXCAP_31_VPS 14 
+Classe de 
+Sistema de 
+Órgãos 
+Muito 
+Comum 
+≥ 1/10 
+Comum 
+≥ 1/100 a 
+<1/10 
+Incomum 
+≥ 1/1.000 a 
+<1/100 
+Raro 
+≥ 1/10.000 a 
+< 1/1.000 
+Muito Raro 
+< 1/10.000 
+Frequência 
+não 
+conhecida 
+(não pode 
+ser 
+estimada a 
+partir dos 
+dados 
+disponíveis) 
+Distúrbios do 
+ouvido e labirinto 
+ Tinido* 
+Distúrbios 
+cardíacos 
+ Taquicardia, 
+palpitação 
+ Torsade de 
+pointes*§, 
+taquicardia 
+ventricular 
+*§, fibrilação 
+ventricular 
+*§, 
+eletrocardio
+grama com 
+prolongame
+nto do 
+intervalo QT 
+*, 
+cardiomiopa
+tia do 
+estresse 
+(cardiomiop
+atia de 
+takotsubo) * 
+§ 
+ 
+Distúrbios 
+vasculares 
+ Hipertensão, 
+ondas de 
+calor 
+Hipotensão 
+ortostática, 
+hipotensão* 
+ 
+Distúrbios 
+respiratório, 
+torácico e 
+mediastinal 
+ Dispneia*, 
+bocejo 
+ Doença 
+intersticial 
+pulmonar*§, 
+eosinofilia 
+pulmonar *§ 
+ 
+Distúrbios 
+gastrintestinais 
+Náusea, boca 
+seca, 
+constipação 
+Diarreia*, 
+vômito 
+Hemorragia 
+gastrointestinal* 
+Pancreatite* 
+Distúrbios 
+hepatobiliares 
+ Teste de função 
+hepática 
+anormal * 
+Hepatite*§ 
+Distúrbios da 
+pele e tecido 
+subcutâneo 
+Hiperidrose* Erupção 
+cutânea, 
+prurido*, 
+suor 
+noturno* 
+Urticária*, 
+alopecia*, 
+equimose, 
+reação de 
+fotossensibi-
+lidade 
+Síndrome de 
+Stevens- 
+-Johnson *§, 
+necrólise 
+epidérmica 
+tóxica*§, 
+angioedema
+*§, eritema 
+multiforme*§ 
+ 
+ 
+ 
+EFEXOR XR_CDSv36.0_28Apr2023_EFXCAP_31_VPS 15 
+Classe de 
+Sistema de 
+Órgãos 
+Muito 
+Comum 
+≥ 1/10 
+Comum 
+≥ 1/100 a 
+<1/10 
+Incomum 
+≥ 1/1.000 a 
+<1/100 
+Raro 
+≥ 1/10.000 a 
+< 1/1.000 
+Muito Raro 
+< 1/10.000 
+Frequência 
+não 
+conhecida 
+(não pode 
+ser 
+estimada a 
+partir dos 
+dados 
+disponíveis) 
+Distúrbios 
+musculoesqueléti
+-cos e do tecido 
+conjuntivo 
+ Hipertonia Rabdomiólis
+e *§ 
+ 
+Distúrbios renal e 
+urinário 
+ Hesitação 
+urinária, 
+retenção 
+urinária, 
+polaciúria* 
+Incontinência 
+urinária* 
+ 
+Distúrbios do 
+Sistema 
+reprodutivo e 
+mama 
+ Disfunção 
+erétil, 
+distúrbio da 
+ejaculação 
+Metrorragia*, 
+menorragia* 
+ 
+Distúrbios gerais 
+e condições no 
+local da 
+administração 
+ Fadiga, 
+astenia, 
+calafrios* 
+ Hemorragia 
+da mucosa* 
+ 
+Laboratoriais Perda de 
+peso, 
+aumento de 
+peso 
+Colesterol 
+sérico 
+aumentado 
+ Tempo de 
+sangramento 
+prolongado* 
+ 
+Lesões, 
+envenenamento e 
+complicações 
+durante o 
+procedimento 
+ Fratura óssea 
+*Reações adversas identificadas pós-comercialização. 
+§A frequência das reações adversas foi estimada usando “a regra de 3”. 
+ 
+Efeitos da Descontinuação 
+ 
+Os seguintes sintomas foram relatados em associação com a repentina interrupção ou redução de dose ou retirada 
+de tratamento: hipomania, ansiedade, agitação, nervosismo, confusão, insônia ou outros distúrbios do sono, fadiga, 
+sonolência, parestesia, tontura, convulsão, vertigem, cefaleia, sintomas de gripe, tinido, coordenação e equilíbrio 
+prejudicados, tremor, sudorese, boca seca, anorexia, diarreia, náusea, vômito, deficiência visual e hipertensão. Em 
+estudos anteriores à comercialização, a maioria das reações à interrupção foi leve e resolvida sem tratamento (vide 
+itens 8. Posologia e Modo de Usar e 5. Advert ências e Precau ções). Embora estes eventos sejam geralmen te 
+autolimitados, te m havido relatos de sintomas de descontinua ção graves e, por vezes, estes efeitos podem ser 
+prolongados e graves. 
+ 
+Em casos de eventos adversos, notifique pelo Sistema VigiMed, disponível no Portal da Anvisa.
+
+10. SUPERDOSE 
+ 
+Na experiência pós-comercialização, a superdosagem com venlafaxina ocorreu predominantemente em associação a 
+álcool e/ou outros medicamentos, incluindo casos com desfecho fatal. Os eventos mais frequentemente relatados em 
+superdosagem incluem taquicardia, alterações do nível de consciência (variando de sonolência a coma), midríase, 
+ 
+ 
+EFEXOR XR_CDSv36.0_28Apr2023_EFXCAP_31_VPS 16 
+convulsão, vômitos e hipoglicemia. Outros eventos relatados incluem alterações no eletrocardiograma (por exemplo, 
+prolongamento do intervalo QT, bloqueio de ramo, prolongamento do complexo QRS), taquicardia ventricular, 
+bradicardia, hipotensão, vertigem e morte. Sintomas severos de intoxicação podem ocorrer em adultos após a ingestão 
+de aproximadamente 3 gramas de venlafaxina. 
+ 
+Estudos retrospectivos publicados relatam que a superdosagem com a venlafaxina pode estar associada a um 
+aumento do risco de resultados fatais em comparação ao observado com os antidepressivos ISRS, mas inferiores 
+aos relacionados aos antidepressivos tricíclicos. Estudos epidemiológicos demonstraram que os pacientes tratados 
+com a venlafaxina apresentam mais fatores de risco de suicídio do que os tratados com ISRS. Não se sabe ao certo 
+qual o grau em que a observação de risco aumentado de resultados fatais pode ser atribuída à toxicidade da 
+venlafaxina na superdosagem em oposição a algumas características dos pacientes tratados com a venlafaxina. 
+ 
+Tratamento recomendado 
+A intoxicação grave pode exigir tratamento e monitoramento de emergência complexos. Portanto, em caso de 
+suspeita de superdose envolvendo venlafaxina, entre em contato com o telefone informado abaixo imediatamente. 
+Recomendam-se medidas gerais de suporte e tratamento sintomático, além de monitorização do ritmo cardíaco e 
+dos sinais vitais. Não se recomenda a indução de vômitos quando houver risco de aspiração. Pode haver indicação 
+para lavagem gástrica caso essa lavagem seja realizada logo após a ingestão ou em pacientes sintomáticos. A 
+administração de carvão ativado também pode limitar a absorção do fármaco. É provável que diurese forçada, 
+diálise, hemoperfusão e exsangu íneo transfusão não apresentem benefícios. Não são conhecidos antídotos 
+específicos da venlafaxina. 
+Em caso de intoxicação ligue para 0800 722 6001, se você precisar de mais orientações. 
+ 
+III -

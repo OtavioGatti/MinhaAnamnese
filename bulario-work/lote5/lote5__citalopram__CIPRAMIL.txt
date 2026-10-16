@@ -1,0 +1,676 @@
+FONTE: lote5__citalopram__CIPRAMIL.pdf
+
+===== BLOCO 1 =====
+APRESENTAÇÕES
+COMPRIMIDOS REVESTIDOS
+USO ADULTO
+
+ADMINISTRAÇÃO
+VIA ORAL
+
+CIPRAMIL® 20 mg comprimidos: cartuchos de cartolina com 2 cartelas com 14 comprimidos cada.
+
+1. INDICAÇÕES
+CIPRAMIL® é usado para tratar a depressão e, após a melhora, para prevenir a recorrência dos sintomas associados
+a esta doença.
+CIPRAMIL® é usado em tratamentos de longo prazo para prevenir a recorrência de novos episódios depressivos em
+pacientes que tem depressão recorrente.
+CIPRAMIL® é eficaz também para o tratamento de pacientes com transtorno do pânico com ou sem agorafobia e
+para o tratamento de pacientes com transtorno obsessivo compulsivo (TOC).
+
+3. CARACTERÍSTICAS FARMACOLÓGICAS
+FARMACODINÂMICA
+
+MECANISMO DE AÇÃO
+Estudos bioquímicos e comportamentais mostraram que o citalopram é um potente inibidor da recaptação da
+serotonina (5- HT). A tolerância para a inibição da recaptação de 5-HT não é induzida pelo tratamento prolongado
+com o citalopram. O citalopram é um dos inibidores seletivos da recaptação de serotonina (ISRS) de maior
+seletividade descritos até o momento, com nenhum ou mínimo efeito sobre a recaptação da noradrenalina (NA),
+dopamina (DA) e ácido gamaminobutírico (GABA).
+Ao contrário dos antidepressivos tricíclicos e de alguns dos mais novos inibidores da recaptação da serotonina, o
+citalopram não apresenta afinidade, ou esta é muito baixa, aos receptores 5-HT1A, 5-HT2, DA, D1 e D2, aos
+adrenoreceptores α1-, α2-, ß, aos receptores histamínicos H1, aos receptores colinérgicos, benzodiazepínicos e
+opioides.
+Uma série de testes funcionais in vitro em órgãos isolados, bem como testes func ionais in vivo, confirmaram a falta
+de afinidade por esses receptores. Essa ausência de efeitos sobre receptores poderia explicar porque o citalopram
+produz uma quantidade menor de efeitos colaterais tradicionalmente relacionados aos antidepressivos como boca
+seca, distúrbios vesicais e intestinais, visão turva, sonolência, cardiotoxicidade e hipotensão ortostática.
+
+Os principais metabólitos do citalopram são também ISRSs, embora as relações de potência e seletividade deles
+sejam menores que as do citalopram. No entanto, as relações de seletividade dos metabólitos são maiores que as de
+vários dos ISRSs mais novos. Os metabólitos não contribuem para o efeito antidepressivo total.
+
+PROPRIEDADES FARMACODINÂMICAS
+
+A supressão do sono durante o estágio REM (rapid eyes moviment - movimento rápido dos olhos) é considerada um
+fator preditivo da atividade antidepressiva. Como os ADT, outros ISRSs e os inibidores da monoaminooxidase
+(IMAO), o citalopram suprime o sono REM e aumenta o sono profundo de ondas lentas.
+Embora não se ligue a receptores opioides, o citalopram potencializa o efeito antinociceptivo de analgésicos
+opioides comumente utilizados.
+
+Em humanos o citalopram não compromete os desempenhos cognitivo e psicomotor e apresenta pouca ou nenhuma
+propriedade sedativa, seja sozinho ou em associação com álcool.
+O citalopram não reduziu o fluxo de saliva em um estudo de dose única em voluntários humanos e não teve
+nenhuma influência significativa sobre parâmetros cardiovasculares em nenhum dos estudos com voluntários sadios.
+Citalopram não altera níveis séricos de hormônio do crescimento. Citalopram como outros ISRSs pode aumentar a
+prolactina no plasma, um efeito secundário sobre a prolactina estimulando a serotonina (ver: Reações Adversas).
+
+Em um estudo duplo- cego de ECG, placebo controlado em voluntários sadios, a alteração da linha de base QTc
+(Fridericia-correction) foi 7.5 (90%Cl 5.9-9.1)ms com uma dose de 20 mg/dia e 16.7 (90%Cl 15.0- 18.4)ms com
+uma dose de 60 mg/dia (Ver: Contra-Indicações, Advertências e Precauções, Interações Medicamentosas, Reações
+Adversas e Superdose).
+
+PROPRIEDADES FARMACOCINÉTICAS
+
+ABSORÇÃO
+A absorção do citalopram é quase completa e independe da ingestão de alimentos (T máx médio de 3 horas).
+A biodisponibilidade absoluta é aproximadamente 80%.
+
+DISTRIBUIÇÃO
+O volume de distribuição aparente (Vd)β é cerca de 12 a 17 l/kg, após administração oral. A ligação às proteínas
+plasmáticas é menor que 80% para o citalopram e seus principais metabólitos.
+
+BIOTRANSFORMAÇÃO
+O citalopram é metabolizado nos derivados ativos desmetilcitalopram, didesmetilcitalopram e citalopram-N-óxido, e
+em um derivado inativo, o ácido propiônico deaminado. Todos os metabólitos ativos também são inibidores
+seletivos da recaptação da serotonina (ISRSs), porém mais fracos que o composto original. O citalopram inalterado é
+o composto predominante no plasma. As concentrações de desmetilcitalopram e didesmetilcitalopram geralmente
+correspondem a 30% - 50% e 5% – 10% da concentração de citalopram, respectivamente. A biotransformação do
+citalopram em desmetilcitalopram é mediada pela isoenzima CYP2C19 (aproximadamente 38%), CYP3A4
+(aproximadamente 31%) e CYP2D6 (aproximadamente 31%).
+
+ELIMINAÇÃO
+A meia-vida de eliminação (T1/2β) é de cerca de um dia e meio, o clearance plasmático do citalopram sistêmico (Cls)
+é de aproximadamente 0,3 a 0,4 l/min e a o clearance plasmático do citalopram oral é de aproximadamente 0,4
+l/min. O citalopram é excretado principalmente através do fígado (85%) e o restante (15%) através dos rins; 12% a
+23% da dose diária são excretados através da urina na forma de citalopram inalterado. A depuração hepática
+(residual) é de aproximadamente 0,3 l/min e a depuração renal é de aproximadamente 0,05 a 0,08 l/min.
+
+LINEARIDADE
+A cinética é linear. Os níveis plasmáticos são alcançados em uma a duas semanas. Concentrações médias de 300
+nmol/l (165 a 405 nmol/l) são alcançadas com uma dose diária de 40 mg.
+
+PACIENTES IDOSOS (> 65 ANOS)
+As meias-vidas mais longas (1,5 a 3,75 dias) e os valores de depuração diminuídos (0,08 a 0,3 l/min), decorrentes de
+uma redução da velocidade de metabolização, foram demonstrados em pacientes idosos. O tempo da concentração
+de estado de equilíbrio em idosos foi cerca de duas vezes maior que em pacientes mais jovens tratados com a mesma
+dose.
+
+FUNÇÃO HEPÁTICA REDUZIDA
+O citalopram é eliminado mais lentamente em pacientes com função hepática reduzida. A meia- vida do citalopram,
+nesses casos, foi aproximadamente duas vezes mais longa e as concentrações de citalopram em equilíbrio, em uma
+determinada dose, serão duas vezes maiores que em pacientes com função hepática normal.
+
+FUNÇÃO RENAL REDUZIDA
+O citalopram é eliminado mais lentamente em pacientes com redução leve a moderada da função renal, sem nenhum
+impacto maior em sua farmacocinética. No momento, não há nenhuma informação disponível para o tratamento de
+pacientes com função renal gravemente reduzida (clearance de creatinina < 30 ml/min) (Ver: Posologia e Modo de
+Usar).
+
+POLIMORFISMO
+Pesquisas in vivo mostraram que a metabolização do citalopram não exibe nenhum polimorfismo clinicamente
+importante na oxidação da esparteína/debrisoquina (CYP2D6). Como precaução, no caso de metabolizadores pobres
+da enzima CYP2C19, deve ser considerada uma dose inicial de 10 mg/dia (ver: Posologia e Modo de Usar).
+
+RELAÇÃO FARMACOCINÉTICA/FARMACODINÂMICA
+Não há relação clara entre níveis plasmáticos de citalopram e resposta terapêutica ou eventos adversos.
+Os metabólitos não contribuem para o efeito antidepressivo geral.
+
+4. CONTRAINDICAÇÕES
+
+O CIPRAMIL® é contraindicado em pacientes que apresentam hipers ensibilidade ao citalopram ou a qualquer um
+de seus componentes (ver: Composição).
+
+O tratamento concomitante com IMAO (inibidores da monoaminoxidase) e pimozida é contraindicado (ver:
+Interações Medicamentosas).
+
+Citalopram não deve ser dado a pacientes recebendo Inibidores de Monoamino Oxidase (IMAOs) incluindo
+selegilina em doses diárias que excedam 10 mg/dia. Citalopram não deve ser administrado por até catorze dias após
+a descontinuação de um IMAO irreversível ou pelo tempo especificado após a descontinuação de um IMAO
+reversível (RIMA), como descrito no texto de bula do RIMA. IMAOs não devem ser introduzidos antes de sete dias
+após descontinuação do citalopram (ver: Interações Medicamentosas).
+
+Citalopram é contraindicado para uso concomitante com linezolida a menos que seja possível monitorar de perto a
+pressão sanguínea do paciente (ver Interações Medicamentosas).
+
+Citalopram é contraindicado em pacientes que apresentam prolongamento do intervalo QT ou síndrome congênita
+do prolongamento QT
+
+FERTILIDADE, GRA VIDEZ E LACTAÇÃO
+
+GRAVIDEZ
+Categoria de risco B: não há dados clínicos disponíveis do citalopram sobre a exposição durante a gravidez.
+
+Uma grande quantidade de dados de mulheres grávidas (mais do que 2500 exposições relatadas) indicou não haver
+malformação do feto ou toxicidade neonatal. Entretanto, o citalopram não deve ser usado durante a gravidez a menos que
+seja claramente necessário e somente após uma avaliação criteriosa do benefício/risco.
+
+Recém-nascidos devem ser observados se o uso materno de CIP RAMIL® continua nas fases finais da gravidez,
+especialmente no terceiro trimestre. A descontinuação abrupta deve ser evitada durante a gravidez.
+
+Os seguintes sintomas podem ocorrer nos neonatos após uso maternal de ISRS / uso IR SN nos estágios mais
+avançados da gravidez: dificuldade respiratória, cianose, apnéia, convulsões, instabilidade térmica, dificuldade de
+alimentação, vômitos, hipoglicemia, hipertonia, hipotonia, hiperreflexia, tremor, agitação, irritabilidade, letargia,
+choro constante, sonolência e dificuldade para dormir. Estes sintomas podem ser devido a efeitos serotoninérgicos
+ou sintomas de descontinuação. Na maioria dos casos, as complicações iniciam-se imediatamente ou brevemente
+(<24 horas) após o parto.
+
+Dados epidemiológicos sugerem que o uso de ISRS durante a gravidez, especialmente no final da gravidez, podem
+aumentar o risco de hipertensão pulmonar persistente do recém-nascido (HPP). O risco observado foi de cerca de 5
+casos por 1000 gestações. Na população geral 1-2 casos de HPP por 1000 gestações ocorrem.
+Baseado em dados de estudos de toxicidade reprodutiva (segmento I, II e III) não há nenhuma razão para ter
+preocupação especial com o uso de citalopram em mulheres em idade fértil.
+Os dados observacionais indicam um risco aumentado (menos de 2 vezes) de hemorragia pós-parto após exposição a
+ISRS / IRSN no mês anterior ao nascimento (ver: Advertências e Precauções, Reações Adversas).
+
+LACTAÇÃO
+O citalopram é excretado no leite materno em baixas concentrações. Estima-se que o lactente receberá cerca de 5%
+do peso da dose diária materna relacionados (em mg/kg). Nenhuma ou apenas pequenos eventos têm sido
+observados em lactentes. No entanto, a informação existente é insuficiente para a avaliação do risco para a criança.
+Recomenda-se precaução.
+
+FERTILIDADE
+Dados de estudos em animais mostraram que o citalopram pode afetar a qualidade do esperma (ver: Dados de
+Segurança Pré-Clinica).
+Relatos de casos em humanos com alguns ISRSs mostram que este efeito na qualidade do esperma é reversível.
+Até o momento não foi observado impacto na fertilidade humana.
+
+Não usar CIPRAMIL® durante a gravidez, a menos que a necessidade seja clara e seja avaliado
+cuidadosamente o risco-benefício do uso deste medicamento.
+
+ESTE MEDICAMENTO NÃO DEVE SER UTILIZADO POR MULHERES GRÁVIDAS SEM
+ORIENTAÇÃO MÉDICA OU DO CIRURGIÃO-DENTISTA
+
+5. ADVERTÊNCIAS E PRECAUÇÕES
+As seguintes advertências e precauções aplicam-se à classe terapêutica dos ISRSs (Inibidores Seletivos da
+Recaptação de Serotonina).
+
+CRIANÇAS E ADOLESCENTES (< 18 ANOS DE IDADE)
+Não usar o CIPRAMIL ® para tratar crianças ou adolescentes menores de 18 anos, a menos que a necessidade
+clínica seja clara e o paciente seja cuidadosamente monitorado pelo médico quanto ao aparecimento de sintomas
+suicidas. Em estudos clínicos realizados com crianças e adolescentes tratados com antidepressivos, comparados com
+o placebo, foi observado aumento da hostilidade e do comportamento suicida (tentativas de suicídio e pensamentos
+suicidas). Não existem dados de longo- prazo pela utilização por crianças e adolescentes no que se refere a
+crescimento, maturação e desenvolvimento cognitivo e comportamental.
+
+ANSIEDADE PARADOXAL
+Alguns pacientes com transtorno do pânico podem apresentar sintomas de ansiedade intensificados no início do
+tratamento com antidepressivos. Esta reação paradoxal geralmente desaparece dentro de 02 semanas durante o
+tratamento contínuo. Recomenda-se uma dose inicial baixa para reduzir a probabilidade de um efeito ansiogênico
+paradoxal (ver: Posologia).
+
+HIPONATREMIA
+Hiponatremia, provavelmente relacionada à secreção inapropriada de hormônio antidiurético (SIADH), foi relatada
+como efeito adverso raro com o uso de ISRS e geralmente se resolve com a descontinuação do tratamento. Pacientes
+idosos (especialmente mulheres) parecem ter o risco aumentado.
+
+SUICÍDIO/ PENSAMENTOS SUICIDAS OU PIORA CLÍNICA
+A depressão está associada com um aumento dos pensamentos suicidas, atos de auto-flagelação e suicídio (eventos
+relacionados ao suicídio). Este risco persiste até que ocorra uma remissão significativa da doença. Como não há uma
+melhora expressiva nas primeiras semanas de tratamento, os pacientes devem ser cuidadosamente monitorados até
+que uma melhora significativa ocorra. É observado na prática clínica um aumento do risco de suicídio no início do
+tratamento, quando há uma pequena melhora parcial.
+Outras doenças psiquiátricas para as quais o citalopram é indicado também podem estar associadas a um aumento do
+risco de suicídio ou eventos a ele relacionados. Estas doenças podem ser co -mórbidas à depressão. As mesmas
+precauções indicadas nos casos de tratamento dos pacientes com depressão devem ser aplicadas quando são tratados
+pacientes com outros transtornos psiquiátricos.
+Os pacientes com histórias de tentativas de suicídio e/ou com ideação suicida, ambas prévias ao início do
+tratamento, apresentam um risco maior para tentativas de suicídio e devem ser monitorados cuidadosamente durante
+o tratamento antidepressivo.
+
+Uma meta- análise de estudos clínicos placebo-controlados de drogas antidepressivas em pacientes adultos com
+distúrbios psiquiátricos mostrou um risco aumentado de comportamento suicida com o uso de antidepressivos
+comparado ao placebo em pacientes com menos de 25 anos de idade.
+Uma supervisão dos pacientes, em especial estes de alto risco, devem ter a terapia medicamentosa acompanhada
+especialmente no início do tratamento e na mudança de doses. Pacientes (e cuidadores) precisam ser alertados sobre
+a necessidade de monitorar qualquer agravamento da situação clínica , comportamento suicida ou pensamentos ou
+mudanças não-usuais no comportamento e devem procurar aconselhamento médico imediatamente caso estes
+sintomas se façam presentes.
+
+ACATISIA/ AGITAÇÃO PSICOMOTORA
+O uso de ISRS e IRSN tem sido associado ao desenvolvimento de acatisia, caracterizada por uma inquietude
+desagradável ou desconfortável e necessidade de se movimentar associada a incapacidade de ficar sentado ou em pé,
+parado.
+Quando ocorre é mais comum nas primeiras semanas de tratamento. Os pacientes que desenvolverem estes sintomas
+podem piorar dos mesmos com o aumento da dose.
+
+MANIA
+Em pacientes com doença maníaco-depressiva, uma mudança de fase maníaca pode ocorrer. Descontinuar os ISRSs
+em qualquer paciente que entre em fase maníaca.
+
+CONVULSÕES
+Convulsões são riscos potenciais com as drogas antidepressivas. O citalopram deve ser descontinuado em qualquer
+paciente que apresente convulsões.
+Evitar o uso dos ISRSs em pacientes com epilepsia instável e pacientes com epilepsia controlada precisam ser
+cuidadosamente monitorados por um médico. Descontinuar o uso dos ISRSs caso haja um aumento da frequ ência de
+convulsões.
+
+DIABETES
+Em pacientes diabéticos, o tratamento com ISRSs poderá alterar o controle glicêmico. Pode ser necessário um ajuste
+na dose de insulina e/ou hipoglicemiantes orais em uso.
+
+SÍNDROME SEROTONINÉRGICA
+Em casos raros, síndrome serotoninérgica foi relatada em pacientes que utilizam ISRSs. A combinação de sintomas
+como agitação, tremor, mioclonia e hipert ermia podem indicar o desenvolvimento desta condição. O tratamento com
+citalopram precisa ser descontinuado imediatamente e tratamento sintomático deve ser iniciado.
+
+MEDICAMENTOS SEROTONINÉRGICOS
+O citalopram não deve ser usado concomitantemente com medicamentos de efeitos serotoninérgicos tais como
+triptanos (incluindo sumatriptano e oxitriptano), opió ides (incluindo tramadol) e triptofano.
+
+HEMORRAGIA
+Há relatos de sangramentos cutâneos com tempo e/ou características anormais, tais como equimoses, hemorragias
+ginecológicas, sangramentos gastrointestinais e outro s sangramentos cutâneos ou das mucosas com o uso dos ISRSs
+(ver: Reações Adversas). Os ISRS/IRSN podem aumentar o risco de hemorragia pós -parto (ver: Fert ilidade,
+Gravidez e Lactação; Reações Adversas). Recomenda -se cautela no caso de pacientes em tratamen to com ISRSs,
+especialmente em uso concomitantemente com medicamentos conhecidos por afetar a função de plaquetas ou outros
+medicamentos que possam aumentar o risco de hemorragia, bem como em pacientes com conhecida tendência a
+sangramentos (ver: Interações Medicamentosas).
+
+ELETROCONVULSOTERAPIA (ECT)
+A experiência clínica no uso combinado de ISRSs e ECT é limitada, portanto recomenda-se cautela.
+
+ERVA DE SÃO JOÃO
+Efeitos indesejáveis podem ser mais comuns durante a utilização concomitante de citalopram e produtos
+fitoterápicos contendo Erva de São João (Hypericum perforatum). Sendo assim, o citalopram e produtos
+fitoterápicos a base de Erva de São João (Hypericum perforatum) não devem ser utilizados concomitantemente (ver:
+Interações Medicamentosas ).
+
+SINTOMAS DE DESCONTINUAÇÃO
+Sintomas de descontinuação são comuns ao interromper o tratamento, particularmente se a descontinuação for
+abrupta (ver: Reações Adversas). Em um estudo clínico de prevenção das recorrências com o citalopram, os eventos
+adversos após a descontinuação do tratamento com citalopram foram observados em 40% dos pacientes versus 20%
+dos pacientes que continuavam o uso de citalopram.
+O risco de sintomas de descontinuação podem ser dependentes de diversos fatores incluindo a duração e a dose do
+tratamento e a taxa de redução da dose. Tonturas, distúrbios sensoriais (incluindo parestesia), distúrbios do sono
+(incluindo insônia e sonhos intensos ), agitação ou ansiedade, náusea e/ ou vômitos, tremor, confusão, sudorese, dor
+de cabeça, diarreia, palpitações, instabilidade emocional, irritabilidade e distúrbios visuais são as reações mais
+comumente relatadas. Geralmente estes sintomas são leves a moderados, entretanto, em alguns pacientes podem ser
+severos na intensidade.
+Eles geralmente ocorrem nos primeiros dias de descontinuação do tratamento, mas há relatos muito raros destes
+sintomas em pacientes que inadvertidamente esqueceram uma dose.
+Geralmente esses sintomas são auto-limitados e usualmente desaparecem em 2 semanas, embora em alguns
+pacientes possam ser prolongados (2 -3 meses ou mais). Sendo assim, é recomendado que a concentração do
+citalopram seja gradualmente diminuída quando o tratamento for descontinuado durante algumas semanas ou meses,
+de acordo com as necessida des do paciente (ver: Sintomas de Descontinuação de ISRS).
+
+PSICOSE
+O tratamento de paciente psicóticos com depressão pode aumentar os sintomas psicóticos.
+
+PROLONGAMENTO DO INTERVALO QT
+Citalopram mostrou causar um aumento do prolongamento do intervalo QT dose-dependente. Casos de
+prolongamento do intervalo QT e arritmia ventricular, incluindo Torsade de Pointes foram relatados durante o
+período de pós-comercialização do produto, predominantemente em pacientes do sexo feminino, com hipocalemia,
+ou com prolongamento QT ou outras doenças cardíacas pré- existentes (ver: Contra-Indicações, Interações
+Medicamentosas, Reações Adversas, Superdose e Propriedades Farmacodinâmicas).
+Recomenda-se precaução nos pacientes que apresentam bradicardia significativa ou em pacientes que sofreram
+infarto agudo do miocárdio recentemente ou insuficiência cardíaca descompensada.
+Distúrbios eletrolíticos como hipocalemia e hipomagnesemia aumentam o risco de arritmias malignas e devem ser
+tratadas antes do início do tratamento com citalopram.
+Uma revisão do ECG deve ser considerada antes do início do tratamento com citalopram nos pacientes que
+apresentam doença cardíaca estável.
+Se ocorrerem sinais de arritmia cardíaca durante o tratamento com citalopram, o tratamento deve ser descontinuado
+e deve ser realizado um ECG.
+
+GLAUCOMA
+Como ocorre com outros ISRSs, citalopram pode causar midríase e deve ser usado com precaução em pacientes com
+aumento da pressão intra-ocular ou aqueles com glaucoma de ângulo estreito.
+
+EFEITOS NA CAPACIDADE DE DIRIGIR OU OPERAR MÁQUINAS
+O citalopram tem influência menor ou moderada na habilidade de dirigir ou operar máquinas. Medicamentos
+psicoativos podem reduzir a capacidade de julgamento e de reagir a emergências. Os pacientes devem ser
+informados sobre esses efeitos e alertados quanto ao risco de interferência na sua capacidade de dirigir automóveis e
+de operar máquinas.
+
+GERALMENTE CIPRAMIL® NÃO AFETA A HABILIDADE DE SUAS ATIVIDADES DIÁRIAS
+NORMAIS. ENTRETANTO, É PRECISO TER CAUTELA QUANDO DIRIGIR VEÍCULOS, OPERAR
+MÁQUINAS OU REALIZAR ATIVIDADES QUE REQUEIRAM SUA ATENÇÃO.
+
+USO EM IDOSOS, CRIANÇAS E OUTROS GRUPOS DE RISCO
+Para o uso em idosos, crianças e outros grupos de risco, ver Posologia.
+
+O CIPRAMIL® 20mg contém LACTOSE.
+Os comprimidos contêm lactose. Pacientes com problemas hereditários raros de intolerância à galactose, deficiência
+de lactase ou malabsorção de glucose-galactose não devem tomar este medicamento.
+
+6. INTERAÇÕES MEDICAMENTOSAS
+
+INTERAÇÕES FARMACODINÂMICAS
+Em um nível farmacodinâmico casos de síndrome serotoninérgica de citalopram com moclobemida e buspirona já
+foram relatados.
+
+COMBINAÇÕES CONTRAINDICADAS
+
+INIBIDORES DA MAO
+Não administrar o citalopram em combinação com IMAOs.
+O uso concomitante do citalopram e IMAOs pode causar graves efeitos adversos, incluindo síndrome
+serotoninérgica. Casos de reações graves e algumas vezes fatais foram relatadas em pacientes recebendo um ISRS
+em combinação com um inibidor da monoamina oxidase (IMAO), incluindo o IMAO irreversível selegilina, os
+IMAOs reversíveis moclobemida e linezolida e em pacientes que tenham descontinuado recentemente ISRS e
+iniciaram com um IMAO. Em alguns casos os pacientes apresentaram sintomas semelhantes à síndrome
+serotoninérgica. Sintomas de uma interação medicamento sa com um IMAO incluem: hipertermia, rigidez, mioclonia,
+instabilidade autonômica com possíveis flutuações rápidas dos sinais vitais, alterações do estado mental que incluem
+confusão, irritabilidade e agitação extrema progredindo para delírio e coma (ver: Reações Adversas).
+
+PIMOZIDA
+A co-administração de uma dose única de pimozida 2 mg em indivíduos tratados com citalopram racêmico 40
+mg/dia durante 11 dias causou um aumento na ASC e Cmax da pimozida, embora não consistentemente em todo o
+estudo. A coadministração de pimozida e citalopram resultou num aumento médio do intervalo QTc de
+aproximadamente 10 ms. Devido a interação observada com uma baixa dose de pimozida, a administração
+concomitante de citalopram e pimozida é contraindicada.
+
+COMBINAÇÕES QUE REQUEREM PRECAUÇÃO
+
+SELEGILINA (INIBIDOR SELETIVO MAO B)
+Um estudo de interação farmacocinética/ farmacodinâmica com a administração concomitante de citalopram (20
+mg/dia) e selegilina (10mg/dia) não demonstrou interações clinicamente relevantes. O uso concomitante de
+citalopram e selegilina (em doses acima de 10 mg/dia) é contraindicada.
+
+MEDICAMENTOS SEROTONINÉRGICOS
+LÍTIO E TRIPTOFANO
+Nenhuma interação farmacodinâmica foi encontrada em estudos clínicos nos quais o citalopram tenha sido
+administrado concomitantemente ao lítio. Entretanto, houve relatos de aumento de reações quando foram
+administrados ISRSs concomitantemente com lítio ou triptofano; como tal, o uso concomitante de ISRSs com essas
+drogas deve ser feito com cautela. Monitoramento de rotina dos níveis de lítio deve ser continuado como usual.
+
+Co-administração com produtos serotoninérgicos ex.: opió ides (incluindo tramadol) e triptanos (incluindo
+sumatriptano e oxitriptano) pode levar ao aumento de eventos adversos associados ao 5- HT. Até mais informação
+ser disponibilizada, o uso simultâneo de citalopram e agonistas da 5-HT, tais como sumatriptanos e outros triptanos
+não é recomendado.
+
+ERVA DE SÃO JOÃO
+Interações dinâmicas entre ISRSs e produtos fitoterápicos que contenham a Erva de São João (Hypericum
+perforatum) podem ocorrer, resultando num aumento da incidência de reações adversas (ver: Advertências).
+Interações farmacocinéticas não foram investigadas.
+
+HEMORRAGIA
+Recomenda-se precaução em pacientes que estejam em tratamento simultâneo com anticoagulantes ou
+medicamentos que afetam a função plaquetária, como anti -inflamatórios não esteroidais (AINE’s), ácido acetil
+salicílico, dipiramol e ticlopidina e outros medicamentos (por ex.: antipsicóticos atípicos, fenotiazina,
+antidepressivos tricíclicos) que podem aumentar o risco de hemorragia (ver: Advertências).
+
+ELETROCONVULSOTERAPIA (ECT)
+Não existem estudos clínicos estabelecendo os riscos ou benefícios do uso combinado de eletroconvulsivoterapia
+(ECT) e citalopram (ver: Advertências).
+
+ÁLCOOL
+Nenhuma interação farmacodinâmica ou farmacocinética é esperada entre o citalopram e o álcool. Entretanto, a
+combinação com álcool não é recomendada.
+
+MEDICAMENTOS QUE DIMINUEM O LIMIAR CONVULSIVO
+Os ISRSs podem diminuir o limiar convulsivo. Aconselha-se precaução ao utilizar concomitantemente outros
+medicamentos capazes de diminuir o limiar de convulsão (por exemplo, os antidepressivos [tricíclicos, ISRS],
+neurolépticos [fenotiazinas, tioxantenos e butirofenonas] , mefloquina, bupropiona e tramadol).
+
+NEUROLÉPTICOS
+Experiência com citalopram não revelou quaisquer interações clinicamente relevantes com neurolépticos. No
+entanto, assim como com outros ISRS, a possibilidade de uma interação farmacodinâmica não pode ser excluída .
+
+PROLONGAMENTO DO INTERVALO QT
+Não foram realizados estudos farmacodinâmicos e farmacocinéticos entre citalopram e outros medicamentos que
+prolongam o intervalo QT. Entretanto, não se pode descartar um efeito aditivo entre esses medicamentos e
+citalopram. Desta forma, a coadmnistração de citalopram e med icamentos que prolongam o intervalo QT, como
+antiarrítmicos Classes IA e III, antipsicóticos (ex.: derivados de fenotiazina, pimozida e haloperidol),
+antidepressivos tricíclicos, alguns agentes antimicrobianos (ex.: esparfloxacina, moxifloxacina, eritromic ina IV,
+pentamidina) e anti-maláricos (particularmente halofantrina), alguns anti-histamínicos (astemizol e mizolastina) e
+etc., somente devem ser prescritos após uma avaliação criteriosa.
+
+INTERAÇÕES FARMACOCINÉTICAS
+Biotransformação do citalopram para desmetilcitalopram é mediada pelas isoenzimas do sistema do citocromo P450:
+CYP2C19 (aproximadamente 38%), CYP3A4 (aprox. 31%) e CYP2D6 (aproximadamente 31%). O fato de que o
+citalopram é metabolizado por mais de um CYP significa que a inibição de sua biotransformação é menos provável
+pois a inibição de uma enzima pode ser compensada por outra. Portanto, a coadministração de citalopram com
+outros medicamentos na prática clínica tem probabilidade muito baixa de produzir interações farmacocinéticas.
+
+ALIMENTO
+A absorção e outras propriedades farmacocinéticas do citalopram não é afetada pelos alimentos.
+
+EFEITO DE OUTROS MEDICAMENTOS NA FARMACOCINÉTICA DO CITALOPRAM
+
+Co-administração de cetoconazol (potente inibidor da CYP3A4 ) não alterou a farmacocinética do citalopram. Um
+estudo de interação farmacocinética de lítio e citalopram não revelou qualquer interação farmacocinética (ver
+também acima).
+Cimetidina (potente inibidor de CYP2D6, 3A4 e 1A2) causou um aumento moderado nos níveis de citalopram.
+Recomenda-se cautela na administração de citalopram combinado à cimetidina. Pode ser necessário um ajuste de
+dose.
+
+EFEITOS DO CITALOPRAM SOBRE OUTROS MEDICAMENTOS
+Um estudo de interação farmacocinética/farmacodinâmica com a administração concomitante de citalopram e
+metoprolol (um substrato da CYP2D6) mostrou um duplo aumento das concentrações de metoprolol, mas não teve
+aumento estatisticamente significante no efeito do metoprolol sobre a pressão sanguínea e a frequ ência cardíaca de
+voluntários saudáveis . Recomenda-se precaução quando metoprolol e citalopram são administrados
+concomitantemente. Um ajuste de dose pode ser necessário.
+Citalopram e desmetilcitalopram são insignificantes inibidores da CYP2C9, CYP2E1 e CYP3A4, e inibidores fracos
+da CYP1A2, CYP2C19 e CYP2D6 quando em comparação com outros ISRS estabelecidos como ini bidores
+significantes.
+
+LEVOMEPROMAZINA, DIGOXINA, CARBAMAZEPINA
+Nenhuma mudança ou apenas mudanças muito pequenas de pouca importância clínica foram observada s quando o
+citalopram foi dado com substratos CYP1A2 (clozapina e teofilina), CYP2C9 (varfarina), CYP2C19 (imipramina e
+mefenitoína), CYP2D6 (esparteína, imipramina, amitriptilina, risperidona) e CYP3A4 (varfarina, carbamazepina (e
+seu metabólito carbamazepina epoxido ) e triazolam. Nenhuma interação farmacocinética foi observada entre
+citalopram e levomepromazina, ou digoxina (indicando que o citalopram nem induz nem inibe a glicoproteína-P).
+
+IMIPRAMINA, DESIPRAMINA
+Em um estudo farmacocinético nenhum efeito foi demonstr ado em ambos os níveis de citalopram ou imipramina,
+embora o nível de desipramina, o metabólito primário da imipramina foi aumentada. Quando desipramina é
+combinada com citalopram, um aumento da concentração plasmática desipramina tem sido observado. A redução da
+dose de desipramina pode ser necessária.
+
+8. POSOLOGIA E MODO DE USAR
+
+MODO DE USAR
+Os comprimidos do CIPRAMIL® são administrados por via oral, uma única vez ao dia. Os comprimidos do
+CIPRAMIL® podem ser tomados em qualquer momento do dia, com ou sem alimentos. Engolir os comprimidos
+com água, sem mastigá- los.
+
+TRATAMENTO DA DEPRESSÃO
+Administrar o CIPRAMIL ® na forma de uma dose oral única de 20 mg por dia. Dependendo da resposta individual
+do paciente e da gravidade da depressão, aumentar a dose até um máximo de 40 mg por dia.
+
+Duração do tratamento
+O efeito antidepressivo geralmente inicia-se após 2-4 semanas. Tratamento com antidepressivos é sintomático e
+deve ser continuado por um período de tempo apropriado, geralmente até 6 meses após a recuperação, a fim de
+evitar uma recaída. Em pacientes com depressão recorrente (unipolar), a terapia de manutenção pode precisar de ser
+continuada por vários anos para prevenir novos episódios.
+
+TRATAMENTO DO TRANSTORNO DO PÂNICO
+Uma dose oral única de 10 mg é recomendada na primeira semana, antes de se aumentar a dose para 20 mg por dia.
+Dependendo da resposta individual, aumentar a dose até um máximo de 40 mg por dia.
+
+Duração do tratamento
+A efetividade máxima do citalopram no tratamento do pânico é alcançado após aproximadamente 3 meses e a
+resposta é mantida durante a continuação do tratamento.
+
+TRATAMENTO DO TRANSTORNO OBSESSIVO COMPULSIVO
+É recomendada a dose inicial de 20 mg. Dependendo da resposta individual, aumentar a dose até um máximo de 40
+mg por dia.
+
+Duração do tratamento
+O início de ação no tratamento do TOC é de 2-4 semanas, com melhorias contínuas ao longo do tempo.
+
+PACIENTES IDOSOS (> 65 ANOS DE IDADE)
+Para pacientes idosos, a dose precisa ser reduzida para a metade da dose recomendada, por ex.: 10- 20 mg/dia. A
+dose máxima recomendada para idosos é 20 mg/dia.
+
+CRIANÇAS E ADOLESCENTES
+CIPRAMIL® não deve ser usado para o tratamento de crianças e adolesc entes com menos de 18 anos de idade (ver:
+Advertências e Precauções).
+
+FUNÇÃO RENAL REDUZIDA
+Não é necessário o ajuste da posologia em pacientes com comprometimento renal leve ou moderado. Não está
+disponível nenhuma informação sobre o tratamento de pacientes com função renal gravemente reduzida (clearance
+de creatinina < 30 ml/min).
+
+FUNÇÃO HEPÁTICA REDUZIDA
+Uma dose diária inicial de 10 mg nas primeiras duas semanas de tratamento é recomendada em pacientes com
+comprometimento hepático leve a moderado. Dependendo da resposta individual, a dose pode ser aumentada para
+um máximo de 20 mg diários. Cuidados e uma cuidadosa titulação da dose são aconselháveis em paci entes com
+comprometimento hepático grave.
+
+METABOLIZADORES POBRES CYP2C19
+Para pacientes que são metabolizadores pobres da enzima CYP2C19, recomenda-se uma dose inicial de 10 mg
+durante as duas primeiras semanas de tratamento. A dose poderá ser aumentada até no máximo 20 mg/dia,
+dependendo da resposta individual.
+
+DESCONTINUAÇÃO
+A descontinuação abrupta precisa ser evitada. Ao interromper o tratamento com o CIPRAMIL ®, reduzir
+gradualmente a dose durante um período de uma ou duas semanas, para evitar possíveis sintomas de descontinuação
+(ver: Advertências e Reações Adversas). Se sintomas intoleráveis ocorrerem após redução da dose ou
+descontinuação do tratamento, retornar à dose anteriormente pre scrita e reiniciar a redução da dose de forma mais
+gradual.
+
+ESQUECIMENTO DA DOSE
+A meia-vida do CIPRAMIL® é de aproximadamente 1½ dia, o que permite que o esquecimento da ingestão da dose
+diária possa ser contornado com a simples supressão daquela dose. Retomar a prescrição usual. Não dobrar a dose.
+
+9. REAÇÕES ADVERSAS
+As reações adversas observadas com citalopram são em geral moderadas e transitórias. As reaçõ es adversas são mais
+frequentes durante a primeira ou segunda semana de tratamento e, geralmente, diminuem de intensidade e
+frequência com a continuação do tratamento. Para as reações após uma dose -resposta foi descoberto: aumento da
+sudorese, boca seca, insônia, sonolência, diarreia, náuseas e fadiga.
+A tabela mostra o percentual de reações adversas associadas com ISRSs e/ ou citalopram visto em ≥ 1% dos
+pacientes em estudos duplo-cego placebo-controlados ou no período pós-comercialização. As frequências foram
+definidas como: muito comum (>1/10), comum (>1/100 a < 1/10), incomum (>1/1000 e < 1/100), raro (>1/10000 e
+<1/1000), muito raro (<1/10000), desconhecido (não pode ser estimado com os dados atuais):
+
+ Muito Comum Incomum Raro Desconhecido
+ comum
+ Distúrbios Trombocitopenia
+ sanguíneos e
+ linfáticos
+ Distúrbios do Hipersensibilidade,
+ sistema reação anafilática
+ imunológico
+ Distúrbios Secreção inadequada
+ endócrinos do hormônio
+ antidiurético
+ Hiperprolactinemia3
+ Distúrbios de Diminuição Aumento do Hiponatremia Hipocalemia
+ metabolismo e do apetite, apetite, aumento
+ nutrição diminuição do peso
+ do peso
+ Distúrbios Agitação, Agressividade, Ataque de pânico,
+ psiquiátricos diminuição alucinações, bruxismo, agitação,
+ da libido, despersonalização ideação suicida e
+ ansiedade, , mania comportamento
+ nervosismo, suicida1
+ confusão,
+ sonhos
+ anormais,
+ orgasmo
+ anormal em
+ mulheres
+ Distúrbios do Insônia, Tremores, Síncope Convulsão de Convulsões,
+ si stema nervoso sonolênci parestesia, grande mal, síndrome
+ a tontura, discinesia, serotoninérgica,
+ distúrbio da alterações no distúrbio
+ atenção paladar extrapiramidal,
+ acatisia, distúrbios
+ do movimento
+ Distúrbios de Midríase (que Distúrbio visual
+ visão pode levar ao
+ glaucoma agudo
+ de ângulo
+ fechado), ver
+ Advertências e
+ Precauções
+ Distúrbios de Tinitus
+ audição
+ Distúrbios Taquicardia Intervalo QT
+ Cardíacos Bradicardia prolongado do
+ eletrocardiograma,
+ arritmia ventricular
+ incluindo Torsade
+ de Pointes
+ Distúrbios Hemorragia Hipotensão
+ vasculares ortostática
+ Distúrbios Bocejo Epistaxe
+ respiratórios,
+ torácicos e
+ mediastinos
+ Distúrbios Boca Diarreia, Hemorragia
+ gastrointestinais seca, vômitos, gastrointestinal
+ náusea constipação (inclui hemorragia
+ retal)
+ Distúrbios Hepatite Exames de função
+ hepatobiliares hepática anormais
+ Distúrbios da Aumento Prurido Urticária,
+ pele e do tecido da alopécia, eritema Equimoses,
+ subcutâneo sudorese (rash), púrpura, angioedemas
+ fotossensibilidade
+ Distúrbios dos Artralgias,
+ tecidos músculo- mialgias
+ esqueléticos
+ e conectivos
+ Distúrbios renais Retenção urinária
+ e urinários
+ Distúrbios do Impotência, Mulheres: Galactorréia
+ sistema alterações da menorragia Mulheres:
+ reprodutor e ejaculação, metrorragia,
+ mamas falha da hemorragia pós-
+ ejaculação parto2
+ Homens: priapismo
+ Distúrbios gerais Fadiga Edema Pirexia
+ e problemas no
+ local de
+ administração
+
+1 Casos de ideação suicida e comportamentos suicidas foram relatados durante a terapia do citalopram ou logo após a
+descontinuação do tratamento (ver: Advertências).
+
+2 Este evento foi relatado para a classe terapêutica de ISRS/IRSN (ver: Fertilidade, Gravidez e Lactação; Reações
+Adversas, Propriedades Farmacodinâmicas).
+
+3 Este evento foi relatado para a classe terapêutica de ISRS/IRSN (ver seção 3. Características Farmacológicas).
+
+Fraturas Ósseas
+Estudos epidemiológicos, conduzidos principalmente em pacientes com 50 anos de idade e mais velhos, mostra m
+um aumento do risco de fraturas ósseas em doentes tratados com ISRS e antidepressivos tricíclicos. O mecanismo
+que leva a este risco é desconhecido.
+
+Prolongamento do Intervalo QT
+Casos de Prolongamento do intervalo QT e arritmia ventricular incluindo Torsade de Pointes foram relatados
+durante o período de comercialização, predominantemente em pacientes do sexo feminino, com hipocalemia ou com
+prolongamento do intervalo QT pré-existente causado por outras doenças cardíacas (ver: Contra- Indicações,
+Advertências e Precauções, Interações Medicamentosas, Superdose e Propriedades Farmacodinâmicas).
+
+As seguintes reações adversas a medicamentos também fo ram reportadas para a classe terapêutica dos ISRSs:
+inquietude psicomotora/acatisia (ver: Advertências) e anorexia.
+
+Sintomas observados na descontinuação do tratamento com ISRSs
+A descontinuação do citalopram (particularmente quando abrupta) causa sintomas de descontinuaçã o.
+Tonturas, alterações da senso-percepção (inclui parestesias), alterações do sono (inclui insônia e sonhos vívidos),
+agitação ou ansiedade, náusea e/ou vômitos, tremores, confusão, sudorese, cefaléia, diarreia, palpitações,
+instabilidade emocional, irritabilidade e alterações visuais são as reações mais comumente reportadas. Geralmente,
+esses eventos são de intensidade leve a moderada e auto-limitados, porém em alguns pacientes podem ser graves
+e/ou prolongados. Os eventos geralmente se resolvem dentro de 2 semanas, embora em alguns indivíduos este tempo
+possa se prolongar (2- 3 meses ou mais). Logo, quando o tratamento com o citalopram não for mais necessário,
+recomenda- se fazer uma descontinuação gradual, com diminuição progressiva da dose (Vide Posologia e
+Advertências e Precauções).
+
+Em casos de eventos adversos, notifique pelo Sistema VigiMed, disponível no Portal da Anvisa.
+
+10. SUPERDOSE
+TOXICIDADE
+Dados clínicos relativos à intoxicação com citalopram são limitados e muitos casos envolvem o uso concomitante
+com outras drogas e/ou álcool. Casos fatais de overdose já foram reportados com o uso do citalopram. Entretanto, a
+maioria dos casos fatais de overdose envolveram o uso associado com outros medicamentos.
+
+SINTOMAS
+Os seguintes sintomas têm sido reportados em casos de overdose de citalopram: convulsões, taquicardia, sonolência,
+prolongamento do intervalo QT, coma, vômitos, tremores, hipotensão, parada cardíaca, náusea, síndrome
+serotoninérgica, agitação, bradicardia, tontura bloqueio de ramo, alargame nto do complexo QRS, hipertensão,
+midríase, torsade de pointes, sudorese, estupor, cianose, hiperventilação e arritmias atriais e ventriculares.
+
+CONDUTA EM CASO DE SUPERDOSE
+Não existe um antídoto específico conhecido para o citalopram. O tratamento deve ser sintomático e de suporte.
+Carvão ativo, laxantes osmóticos (como sulfato de sódio) e esvaziamento gástrico deve ser considerado. Lavagem
+gástrica deve ser realizada assim que possível. Estabelecer e ma nter as vias aéreas, garantindo adequada oxigenação
+e função respiratória. Se a consciência for afetada, o paciente deve ser intubado. Recomenda-se monitorar os sinais
+cardíacos e vitais, em conjunto com medidas de suporte e sintomáticas gerais.
+É recomendável o monitoramento por ECG em caso de superdose, em pacientes com insuficiência cardíaca
+congestiva/ bradiarritmias, que utilizam concomitantemente medicamentos que prolongam o intervalo QT ou com
+alteração de metabolismo ex. insuficiência hepática.
+
+Em caso de intoxicação ligue para 0800 722 6001, se você precisar de mais orientações.

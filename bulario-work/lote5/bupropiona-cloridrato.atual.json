@@ -1,0 +1,16 @@
+{
+  "Risco Gestacional": "C",
+  "Slug": "bupropiona-cloridrato",
+  "Nomes Comerciais / Produtos ANVISA": "Wellbutrin XL; Zetron; Bup; cloridrato de bupropiona.",
+  "Interações": "Não usar com IMAO, como tranilcipromina, moclobemida, selegilina, rasagilina ou linezolida. Não associar a outros produtos com bupropiona. Medicamentos que reduzem limiar convulsivo, como tramadol, clozapina, haloperidol, quetiapina, olanzapina, risperidona, antidepressivos tricíclicos, fluoxetina, paroxetina, sertralina, teofilina, aminofilina e corticosteroides sistêmicos, aumentam risco de convulsão. Inibe CYP2D6 e pode aumentar níveis de metoprolol, carvedilol, propranolol, nortriptilina, amitriptilina, paroxetina, fluoxetina, risperidona e haloperidol. Ritonavir, efavirenz, carbamazepina, fenitoína e fenobarbital podem reduzir exposição.",
+  "Apresentações / Nomes Comerciais": "Comprimidos revestidos ou de liberação prolongada 150 mg e 300 mg conforme fabricante. Exemplos: Wellbutrin XL; Zetron; Bup; bupropiona genérica.",
+  "Texto Resumo": "Bupropiona é um antidepressivo noradrenérgico/dopaminérgico usado em depressão e cessação do tabagismo. O principal cuidado clínico é o risco de convulsões, especialmente em pacientes predispostos ou com uso de fármacos que reduzem o limiar convulsivo.",
+  "Classe / Categoria": "Antidepressivo; inibidor da recaptação de noradrenalina e dopamina; auxiliar na cessação do tabagismo.",
+  "Posologia Adulto": "Depressão: iniciar com 150 mg por via oral 1 vez ao dia; pode aumentar para 300 mg/dia conforme resposta e formulação.\nCessação do tabagismo: iniciar 150 mg por via oral 1 vez ao dia por 3 dias, depois 150 mg 2 vezes ao dia conforme formulação e protocolo.\nDose máxima usual: 300 mg/dia para muitas formulações; algumas formulações permitem até 450 mg/dia em depressão conforme bula específica.",
+  "Contraindicações": "Hipersensibilidade à bupropiona ou componentes da fórmula; epilepsia ou transtorno convulsivo; diagnóstico atual ou prévio de bulimia ou anorexia nervosa; uso concomitante ou recente de inibidores da monoaminoxidase; retirada abrupta de álcool, benzodiazepínicos, barbitúricos ou antiepilépticos; uso concomitante de outro produto contendo bupropiona.",
+  "Tags Busca": "bupropiona; antidepressivo; depressão; tabagismo; cessação tabágica; noradrenalina; dopamina; wellbutrin",
+  "Advertências": "Pode aumentar risco de convulsões de forma dose-dependente. Usar cautela em traumatismo craniano, tumor de SNC, uso de medicamentos que reduzem limiar convulsivo, álcool, diabetes em uso de hipoglicemiantes/insulina e insuficiência hepática ou renal. Pode causar insônia, ansiedade, hipertensão, boca seca, náusea e perda de peso. Monitorar piora clínica, ideação suicida e sintomas neuropsiquiátricos.",
+  "Nomes Comerciais OpenAI": "Wellbutrin XL; Zetron; Bup; Bupropiona Eurofarma; Bupropiona EMS; Bupropiona Germed.",
+  "Rede SUS (RENAME)": false,
+  "Princípio Ativo": "Bupropiona Cloridrato"
+}

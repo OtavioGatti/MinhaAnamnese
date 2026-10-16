@@ -1,0 +1,16 @@
+{
+  "Risco Gestacional": "C",
+  "Slug": "carvedilol",
+  "Nomes Comerciais / Produtos ANVISA": "Coreg; Cardilol; Corediol; carvedilol.",
+  "Interações": "Verapamil e diltiazem podem causar bradicardia, bloqueio AV e insuficiência cardíaca; evitar ou monitorar rigorosamente. Digoxina, amiodarona, clonidina, ivabradina, atenolol, propranolol, metoprolol e bisoprolol aumentam risco de bradicardia/bloqueio. Insulina, glibenclamida, gliclazida, glimepirida e outros antidiabéticos podem ter sintomas de hipoglicemia mascarados. Fluoxetina, paroxetina, bupropiona e quinidina podem aumentar níveis de carvedilol por CYP2D6. Rifampicina pode reduzir exposição. AINEs como ibuprofeno, naproxeno e diclofenaco podem reduzir efeito anti-hipertensivo. Adrenalina pode ter resposta pressórica alterada.",
+  "Apresentações / Nomes Comerciais": "Comprimidos 3,125 mg, 6,25 mg, 12,5 mg e 25 mg conforme fabricante. Exemplos: Coreg; Cardilol; Corediol; carvedilol genérico.",
+  "Texto Resumo": "Carvedilol é um betabloqueador com ação alfa-1 bloqueadora usado em hipertensão, angina e insuficiência cardíaca crônica estável. Exige titulação gradual e monitorização de frequência cardíaca, pressão arterial e sinais de piora da insuficiência cardíaca.",
+  "Classe / Categoria": "Betabloqueador não seletivo com ação alfa-1 bloqueadora; anti-hipertensivo; antianginoso; medicamento para insuficiência cardíaca.",
+  "Posologia Adulto": "Hipertensão arterial: iniciar com 6,25 mg por via oral 2 vezes ao dia ou 12,5 mg 1 vez ao dia conforme apresentação; titular até 25 mg 2 vezes ao dia ou dose máxima conforme bula.\nInsuficiência cardíaca: iniciar com 3,125 mg por via oral 2 vezes ao dia por 2 semanas; titular gradualmente para 6,25 mg, 12,5 mg e 25 mg 2 vezes ao dia conforme tolerância.\nAngina: iniciar com 12,5 mg 2 vezes ao dia; titular conforme resposta.",
+  "Contraindicações": "Hipersensibilidade ao carvedilol ou componentes da fórmula; insuficiência cardíaca descompensada que necessite inotrópico intravenoso; asma brônquica ou broncoespasmo clinicamente relevante; bloqueio atrioventricular de segundo ou terceiro grau sem marca-passo; bradicardia grave; choque cardiogênico; hipotensão grave; insuficiência hepática clinicamente manifesta.",
+  "Tags Busca": "carvedilol; betabloqueador; insuficiência cardíaca; hipertensão; angina; beta bloqueador; coreg",
+  "Advertências": "Pode causar bradicardia, hipotensão, tontura, fadiga, broncoespasmo, piora inicial da insuficiência cardíaca, retenção hídrica e mascaramento de hipoglicemia. Não suspender abruptamente em doença coronariana. Usar cautela em diabetes, DPOC, doença vascular periférica, bloqueios de condução, insuficiência renal e pacientes em uso de diuréticos.",
+  "Nomes Comerciais OpenAI": "Coreg; Cardilol; Corediol; Carvedilol EMS; Carvedilol Medley; Carvedilol Aché.",
+  "Rede SUS (RENAME)": false,
+  "Princípio Ativo": "Carvedilol"
+}

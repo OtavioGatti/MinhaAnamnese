@@ -1,0 +1,16 @@
+{
+  "Risco Gestacional": "C",
+  "Slug": "citalopram",
+  "Nomes Comerciais / Produtos ANVISA": "Cipramil; Cittá; citalopram.",
+  "Interações": "Não usar com IMAO, como tranilcipromina, moclobemida, selegilina, rasagilina ou linezolida, pelo risco de síndrome serotoninérgica. Não usar com pimozida. Evitar associação com medicamentos que prolongam QT, como amiodarona, sotalol, haloperidol, clorpromazina, quetiapina, ziprasidona, azitromicina, claritromicina, ciprofloxacino, levofloxacino, moxifloxacino, ondansetrona e metadona. Tramadol, lítio, triptanos, venlafaxina, duloxetina, sertralina, fluoxetina, paroxetina e Hypericum perforatum aumentam risco serotoninérgico. Varfarina, ácido acetilsalicílico, clopidogrel, apixabana, rivaroxabana e AINEs aumentam risco de sangramento.",
+  "Apresentações / Nomes Comerciais": "Comprimidos 20 mg e 40 mg; gotas/solução oral conforme fabricante. Exemplos: Cipramil; Cittá; Citalopram Neo Química; Citalopram EMS.",
+  "Texto Resumo": "Citalopram é um ISRS usado no tratamento da depressão e transtorno do pânico. Exige atenção a prolongamento de QT, síndrome serotoninérgica, risco de sangramento e interações com IMAO, pimozida e fármacos pró-arrítmicos.",
+  "Classe / Categoria": "Antidepressivo; inibidor seletivo da recaptação de serotonina; ISRS.",
+  "Posologia Adulto": "Depressão: iniciar com 20 mg por via oral 1 vez ao dia; ajustar conforme resposta.\nTranstorno do pânico: iniciar com 10 mg por via oral 1 vez ao dia na primeira semana, depois 20 mg 1 vez ao dia.\nDose máxima usual: 40 mg/dia.\nIdosos, insuficiência hepática ou metabolizadores lentos CYP2C19: dose máxima usual: 20 mg/dia.",
+  "Contraindicações": "Hipersensibilidade ao citalopram ou componentes da fórmula; uso concomitante ou recente de inibidores da monoaminoxidase; uso concomitante com pimozida; prolongamento de QT conhecido ou síndrome congênita do QT longo; uso com medicamentos que prolongam QT sem avaliação de risco.",
+  "Tags Busca": "citalopram; antidepressivo; isrs; depressão; pânico; serotonina; qt; cipramil",
+  "Advertências": "Pode causar náuseas, insônia, sonolência, disfunção sexual, sudorese, tremor, ansiedade inicial, hiponatremia, sangramento, síndrome serotoninérgica e prolongamento de QT. Monitorar risco suicida no início e em ajustes de dose. Usar cautela em epilepsia, doença cardíaca, bradicardia, hipocalemia, hipomagnesemia e uso de anticoagulantes ou antiagregantes.",
+  "Nomes Comerciais OpenAI": "Cipramil; Cittá; Citalopram EMS; Citalopram Neo Química; Citalopram Medley.",
+  "Rede SUS (RENAME)": false,
+  "Princípio Ativo": "Citalopram"
+}

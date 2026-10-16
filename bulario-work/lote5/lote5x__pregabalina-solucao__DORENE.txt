@@ -1,0 +1,449 @@
+FONTE: lote5x__pregabalina-solucao__DORENE.pdf
+
+===== BLOCO 1 =====
+APRESENTAÇÕES
+Solução de 25 mg/ml: embalagens contendo 18 ml, 60 ml ou 90 ml + seringa dosadora + adaptador.
+
+USO ORAL
+USO ADULTO ACIMA DE 18 ANOS DE IDADE
+
+1. INDICAÇÕES
+Dor neuropática
+Dorene líquido é indicado para o tratamento da dor neuropática em adultos.
+
+Epilepsia
+Dorene líquido é indicado como terapia adjunta das crises parciais, com ou sem generalização secundária, em pacientes adultos.
+
+Transtorno de ansiedade generalizada (TAG)
+Dorene líquido é indicado para o tratamento do Transtorno de Ansiedade Generalizada (TAG) em adultos.
+
+Fibromialgia
+Dorene líquido é indicado para o controle de fibromialgia.
+
+3. CARACTERÍSTICAS FARMACOLÓGICAS
+Propriedades farmacodinâmicas
+O ingrediente ativo, pregabalina (ácido (S) -3-(aminometil)-5-metil-hexanoico), é um análogo do ácido gama -aminobutírico
+(GABA).
+
+Mecanismo de ação
+Estudos in vitro mostram que a pregabalina liga -se a uma subunidade proteica auxiliar (α2 -δ) dos canais de cálcio voltagem -
+dependentes no sistema nervoso central.
+Evidências de modelos experimentais em animais, com indução de lesão nervosa, demonstram que a pregabalina reduz a liberação
+na medula espinhal de neurotransmissores pró -nociceptivos dependentes de cálcio, possivelmente, pela interrupção do transporte
+de cálcio e/ou através da redução da corrente de cálcio para o interior da célula.
+
+Evidências de outros modelos de lesão nervosa em animais sugerem que a atividade antinociceptiva também pode ser mediada
+pela interação com vias descendentes noradrenérgicas e serotoninérgicas.
+
+Propriedades farmacocinéticas
+A farmacocinética da pregabalina no estado de equilíbrio é semelhante em voluntários sadios, pacientes com epilepsia recebend o
+antiepiléticos e em pacientes com dor crônica.
+
+Absorção: a pregabalina é rapidamente absorvida quando administrada em jejum, com o pico das concentrações plasmáticas
+ocorrendo dentro de 1 hora após administração tanto de doses únicas como múltiplas. A biodisponibilidade oral da pregabalina
+foi estimada em ≥ 90%, sendo independente da dose. Após repetidas administrações, o estado de equilíbrio é alcançado dentro de
+24 a 48 horas. O índice de absorção da pregabalina é reduzido quando administrado com alimentos, resultando numa diminuição
+
+ Dorene Líquido_BU03_VPS_768
+da Cmáx de aproximadamente 25-30% e retardo do Tmáx em aproximadamente 2,5 horas. Entretanto, a administração de
+pregabalina com alimentos não apresenta efeito clinicamente significativo sobre o grau de absorção deste medicamento.
+
+Distribuição: em estudos pré-clínicos, observou-se que a pregabalina atravessa a barreira hematoencefálica em camundongos,
+ratos e macacos. O fármaco demonstrou atravessar a placenta em ratas e está presente no leite de ratas lactantes. Em humanos, o
+volume aparente de distribuição após administração oral é de aproximadamente 0,56 L/kg. A pregabalina não se liga a proteínas
+plasmáticas.
+
+Metabolismo: a pregabalina sofre metabolismo desprezível em humanos. Após uma dose radiomarcada, aproximadamente 98%
+da radioatividade recuperada na urina foram da pregabalina inalterada. O derivado N -metilado da pregabalina, o principal
+metabólito encontrado na urina, foi responsável por 0,9% da dose. Em estudos pré -clínicos, não houve indicações de racemização
+do S-enantiômero em R -enantiômero da pregabalina.
+
+Eliminação: a pregabalina é eliminada da circulação sistêmica principalmente por excreção renal como fármaco inalterado. A
+meia-vida de eliminação da pregabalina é de 6,3 horas. O clearance plasmático e o clearance renal são diretamente proporcionais
+ao clearance de creatinina (vide Item 3. Características Farmacológicas – Propriedades Farmacocinéticas – Farmacocinética em
+Grupos Especiais de Pacientes).
+É necessário o ajuste de dose em pacientes com função renal reduzida ou submetidos à hemodiálise (vide Item 8. Posologia e
+Modo de usar – Tabela 1”).
+
+Linearidade / não linearidade: a farmacocinética da pregabalina é linear na faixa de doses diárias recomendadas. A variabilidade
+entre indivíduos é baixa (<20%). A farmacocinética das doses múltiplas é previsível a partir dos dados para dose única. Porta nto,
+não há necessidade de monito ração de rotina das concentrações plasmáticas da pregabalina.
+
+Farmacocinética em grupos especiais de pacientes
+Sexo: estudos clínicos indicam que o sexo não tem influência clinicamente significativa sobre as concentrações plasmáticas da
+pregabalina.
+Insuficiência renal: o clearance da pregabalina é diretamente proporcional ao clearance de creatinina. Além disso, a pregabalina
+é removida do plasma por hemodiálise de modo eficaz (após 4 horas de hemodiálise, as concentrações plasmáticas de pregabalina
+ficam reduzidas em aproximadamente 50%). Como a eliminação renal é a principal via de exc reção, é necessária a redução da
+dose em pacientes com insuficiência renal e suplementação da dose após hemodiálise (vide Item 8. Posologia e Modo de usar –
+Tabela 1).
+Insuficiência hepática: nenhum estudo farmacocinético específico foi conduzido em pacientes com insuficiência hepática. Como
+a pregabalina não sofre metabolismo significativo, sendo excretada predominantemente como fármaco inalterado na urina, a
+insuficiência hepática não deve al terar significativamente as concentrações plasmáticas de pregabalina.
+Idosos (mais de 65 anos de idade): o clearance da pregabalina tende a diminuir com o avanço da idade. Esta diminuição no
+clearance da pregabalina oral está relacionada com as reduções no clearance de creatinina associadas ao avanço idade. Pode ser
+necessária redução na dose em pacientes com função renal comprometida devido à idade (vide Item 8. Posologia e Modo de usar
+– Tabela 1).
+Lactantes: A farmacocinética de 150 mg de pregabalina administrados a cada 12 horas (dose diária de 300 mg) foi avaliada em
+10 mulheres lactantes que estavam a pelo menos 12 semanas pós-parto. A lactação apresentou pouca ou nenhuma influência na
+farmacocinética da pregabalina. A pregabalina foi excretada no leite materno com concentração média no estado de equilíbrio de
+aproximadamente 76% da concentração no plasma materno. A dose média diária estimada de pregabalina recebida pela criança
+pelo leite materno (assumindo um consumo médio de leite de 150 mL/kg/dia) foi 0,31 mg/kg/dia, a qual, em termos de mg/kg
+seria, aproximadamente, 7% da dose recebida pela mãe.
+
+Dados de segurança pré-clínicos
+Em estudos convencionais de segurança farmacológica em animais, a pregabalina foi bem tolerada nas doses clinicamente
+relevantes. Em estudos de toxicidade das doses repetidas em ratos e macacos, foram observados efeitos no SNC, incluindo
+hipoatividade, hiperatividade e ataxia. Foi comumente observado um aumento da incidência de atrofia da retina em ratos albinos
+com idade avançada após exposições prolongadas à pregabalina em doses ≥5 vezes a média de exposição humana na dose clínica
+máxima recomendada.
+Teratogenicidade: a pregabalina não foi teratogênica em camundongos, ratos ou coelhos. A toxicidade fetal em ratos e coelhos
+ocorreu somente em exposições suficientemente acima da exposição humana. Em estudos de toxicidade pré- e pós-natal, a
+pregabalina induziu toxicidade no desenvolvimento da cria em ratos, com exposições
+>2 vezes a exposição máxima recomendada para humanos.
+Mutagenicidade: a pregabalina não é genotóxica, baseando-se nos resultados de uma bateria de testes in vitro e in vivo.
+Carcinogenicidade: estudos de carcinogenicidade de 2 anos com pregabalina foram realizados com ratos e camundongos.
+Nenhum tumor foi observado em ratos expostos a até 24 vezes o valor médio da exposição humana na dose clínica máxima
+recomendada de 600 mg/dia. Em camundongos, não houve aumento da incidência de tumores com exposições semelhantes a
+média da exposição humana, mas observou-se um aumento da incidência de hemangiossarcoma com altas exposições. O
+mecanismo não genotóxico da pregabalina de indução de formação de tumores em camundongos envolve alterações plaquetárias
+associadas à proliferação de células endoteliais. Estas alterações plaquetárias não estavam presentes em ratos ou humanos baseado
+em dados clínicos em curto prazo ou longo prazo limitado. Não há evidências sugerindo risco a humanos.
+Em ratos jovens a toxicidade não diferiu qualitativamente da observada em ratos adultos. Entretanto, os ratos jovens foram mais
+sensíveis. Em exposições terapêuticas houve evidência de sinais clínicos de hiperatividade do SNC e bruxismo e algumas
+alterações no crescimento (supressão transitória do ganho de peso corporal). Foi observado efeito sobre o ciclo estral com 5 vezes
+a exposição terapêutica humana. Efeitos neurocomportamentais/cognitivos foram observados em ratos jovens 1-2 semanas após
+a exposição >2 vezes (resposta acústica de sobressalto) ou >5 vezes (aprendizado/memória) a exposição terapêutica humana.
+Resposta acústica de sobressalto reduzida foi observada em ratos jovens, 1-2 semanas após exposição >2 vezes a exposição
+terapêutica humana. Nove semanas após a exposição, este efeito não foi mais observado.
+
+4. CONTRAINDICAÇÕES
+Dorene líquido é contraindicado a pacientes com hipersensibilidade conhecida à pregabalina ou a qualquer componente da
+fórmula.
+
+ Dorene Líquido_BU03_VPS_768
+
+5. ADVERTÊNCIAS E PRECAUÇÕES
+Pacientes com problemas hereditários raros de intolerância a galactose, deficiência de lactase de Lapp ou má -absorção de glicose-
+galactose não devem utilizar pregabalina.
+Alguns pacientes diabéticos sob tratamento com pregabalina que obtiverem ganho de peso podem necessitar de ajuste da
+medicação hipoglicêmica.
+
+Houve relatos no período pós -comercialização de reações de hipersensibilidade, incluindo casos de angioedema. pregabalina deve
+ser descontinuado imediatamente se ocorrerem sintomas de angioedema, tais como edema facial, perioral ou da via aérea superio r.
+
+O tratamento com pregabalina está associado com tontura e sonolência, que pode aumentar a ocorrência de acidentes (queda) na
+população idosa. Houve também relatos pós -comercialização de perda de consciência, confusão e dano mental. Portanto, pacientes
+devem ser alertados para ter cautela até que os efeitos potenciais de pregabalina sejam familiares.
+Na experiência pós-comercialização, visão borrada transitória e outras alterações na acuidade visual foram reportadas por
+pacientes tratados com pregabalina. A descontinuação da pregabalina pode resultar na resolução ou melhora desses sintomas
+visuais.
+Não há dados suficientes para a suspensão de medicamentos antiepiléticos concomitantes, uma vez que o controle das convulsões
+com pregabalina foi atingido na situação de uso concomitante com outra droga antiepilética e adoção de monoterapia com
+pregabalina.
+Foram observados sintomas de retirada em alguns pacientes após a descontinuação do tratamento prolongado e de curto prazo
+com pregabalina. Os seguintes eventos foram mencionados: insônia, dor de cabeça, náusea, ansiedade, hiper -hidrose, diarreia,
+síndrome gripal, nervosismo, depressão, dor, convulsão e tontura (vide Item 9. Reações Adversas). O paciente deve ser informado
+sobre estes eventos no início do tratamento. As convulsões, incluindo estado epilético e convulsões do tipo grande mal, podem
+ocorrer durante o uso ou logo após a descontinuação de Dorene líquido.
+A pregabalina não é conhecida como sendo ativa em locais de receptores associados com abuso de drogas. Casos de mau uso e
+abuso foram relatados na base de dados de pós -comercialização. Como é o caso com qualquer droga ativa do SNC, deve -se avaliar
+cuidadosamente o histórico de pacientes quanto ao abuso de drogas e observá -los quanto a sinais de mau uso ou abuso da
+pregabalina (por exemplo, desenvolvimento de tolerância, aumento da dosagem e comportamento de procura de droga).
+Embora os efeitos da descontinuação sobre a reversibilidade da insuficiência renal não tenham sido sistematicamente estudados,
+foi relatada melhora da função renal após a descontinuação ou redução da dose de pregabalina.
+Embora não tenha sido identificada nenhuma relação causal entre a exposição ao pregabalina e insuficiência cardíaca congestiv a,
+houve relatos pós-comercialização de insuficiência cardíaca congestiva em alguns pacientes recebendo pregabalina. Em estudos
+de curto prazo com pacientes sem doença vascular periférica ou cardíaca clinicamente significante, não houve associação aparente
+entre edema periférico e complicações cardiovasculares tais como hipertensão ou insuficiência cardíaca congestiva. Devido aos
+dados limitados de pacientes com insuficiência cardíaca congestiva grave, pregabalina deve ser administrado com cautela nesses
+pacientes (vide Item 9. Reações Adversas).
+Aconselha-se precaução quando se prescreve pregabalina concomitantemente com opioides devido ao risco de depressão do SNC.
+Num estudo observacional de consumidores de opioides, os pacientes que tomaram pregabalina concomitantemente com um
+opioide tiveram um risco aumentado de morte relacionada com opioides comparativamente ao consumo de opioide isoladamente
+(odds ratio ajustada [aOR], 1,68 [IC 95%, 1,19 a 2,36]).
+A ideação e o comportamento suicida foram relatados em pacientes tratados com agentes antiepiléticos em diversas indicações.
+A metanálise de estudos randomizados e placebo-controlados de medicamentos antiepiléticos também mostrou um pequeno risco
+de aumento de ideação e comportamento suicida. O mecanismo deste fenômeno é desconhecido e os dados disponíveis não
+excluem a possibilidade de um risco aumentado para a pregabalina.
+Portanto, os pacientes devem ser monitorados para sinais de ideação e comportamento suicida e, o tratamento apropriado deve
+ser considerado. Os pacientes e/ou cuidadores devem ser advertidos quanto à necessidade de buscar ajuda médica se surgirem
+sinais de ideação ou comportamento suicida.
+Foram relatados casos de encefalopatia, principalmente em pacientes com condições de base que facilitem a precipitação do
+quadro.
+
+Uso durante a gravidez
+Não há dados adequados sobre o uso de pregabalina em mulheres grávidas.
+Estudos em animais mostraram toxicidade reprodutiva (vide Item 3. Características Farmacológicas – Dados de Segurança Pré-
+Clínicos). O risco potencial a humanos é desconhecido. Portanto, pregabalina não deve ser utilizado durante a gravidez, a men os
+que o benefício à mãe justifique claramente o risco potencial ao feto. Métodos contraceptivos eficazes devem ser utilizados por
+mulheres com potencial de engravidar. Categoria de risco na gravidez: C.
+
+Este medicamento não deve ser utilizado por mulheres grávidas sem orientação médica ou do cirurgião -dentista.
+
+Uso durante a lactação
+A pregabalina é excretada no leite de mães lactantes (vide Item 3. Características Farmacológicas – Propriedades
+Farmacocinéticas). Como a segurança da pregabalina em lactentes é desconhecida, não é recomendada a amamentação durante o
+tratamento com pregabalina. Deve ser tomada uma decisão entre descontinuar a amamentação ou descontinuar o tratamento com
+pregabalina, levando em conta o benefício da amamentação para a criança e o benefício do tratamento para a mulher.
+
+Este medicamento é contraindicado durante o aleitamento ou doação de leite, pois é excretado no leite humano e pode
+causar reações indesejáveis no bebê. Seu médico ou cirurgião -dentista deve apresentar alternativas para o seu tratamento
+ou para a alimentação do bebê.
+
+Efeitos sobre a habilidade de dirigir e operar máquinas
+A pregabalina pode causar tontura e sonolência que, portanto, podem prejudicar a habilidade de dirigir e operar máquinas. Os
+pacientes devem ser aconselhados a não dirigir, operar máquinas complexas, ou se engajar em outras atividades potencialmente
+perigosas até que se saiba se este medicamento afeta a sua capacidade de executar tais atividades.
+
+Oriente seu paciente a não dirigir veículos ou operar máquinas até que se saiba que este medicamento afeta a capacidade
+de exercer tais tarefas, pois sua habilidade e capacidade de reação podem estar prejudicadas.
+
+ Dorene Líquido_BU03_VPS_768
+O uso deste medicamento pode causar tontura, desmaios ou perda da consciência, expondo o paciente a quedas ou
+acidentes.
+
+Oriente seu paciente quanto à quantidade do medicamento que deve ser utilizada, pois o uso acima do recomendado na
+bula pode causar nefropatia aguda e insuficiência renal.
+
+6. INTERAÇÕES MEDICAMENTOSAS
+A pregabalina provavelmente não produzirá, nem estará sujeita, a interações farmacocinéticas, uma vez que é predominantemente
+excretada na urina na forma inalterada, sofre metabolismo desprezível em humanos (<2% de uma dose recuperada na urina como
+metabólitos), não inibe o metabolismo de fármacos in vitro e nem se liga a proteínas plasmáticas.
+Do mesmo modo, em estudos in vivo, nenhuma interação farmacocinética clinicamente relevante foi observada entre a pregabalina
+e a fenitoína, carbamazepina, ácido valproico, lamotrigina, gabapentina, lorazepam, oxicodona ou etanol. Além disso, a anális e
+farmacocinética populacional indicou que hipoglicemiantes orais, diuréticos, insulina, fenobarbital, tiagabina e topiramato, não
+tiveram efeito clinicamente significativo sobre o clearance da pregabalina.
+
+A coadministração de pregabalina com os contraceptivos orais noretisterona e/ou etinilestradiol não influencia a farmacocinét ica
+de qualquer um dos agentes no estado de equilíbrio. A pregabalina pode potencializar os efeitos do etanol e lorazepam. Em est udos
+clínicos controlados, doses orais múltiplas de pregabalina coadministrada com oxicodona, lorazepam ou etanol não resultaram
+em efeitos clinicamente importantes sobre a respiração. A pregabalina parece ter efeito aditivo no prejuízo da função cognitiva e
+coordenação motora grosseira causado pela oxicodona.
+
+Em experiência pós-comercialização, houve relatos de insuficiência respiratória, coma e morte em pacientes sob tratamento com
+pregabalina e outros medicamentos depressores do SNC, inclusive em pacientes que abusam da substância. Há relatos pós -
+comercialização de eventos relacionados à redução da motilidade do trato gastrintestinal inferior (por ex, obstrução intestinal, íleo
+paralítico, constipação) quando a pregabalina foi coadministrada com medicamentos que têm o potencial para produzir
+constipação, tais como analgésicos opioides.
+Não foram conduzidos estudos de interação farmacodinâmica específica em voluntários idosos.
+
+8. POSOLOGIA E MODO DE USAR
+Dorene líquido pode ser ingerido com ou sem alimentos.
+Recomenda-se que, para a administração deste medicamento, seja utilizado a seringa dosadora que acompanha o frasco na
+embalagem.
+
+Dor neuropática
+A dose inicial recomendada de Dorene líquido é de 75 mg (3 m l) duas vezes ao dia (150 mg/dia). Em estudos clínicos, a eficácia
+da pregabalina foi demonstrada em pacientes que receberam uma faixa de 150 (6 m l) a 600 mg/dia (24 ml).
+Para a maioria dos pacientes, 150 mg (6 ml) duas vezes ao dia é a dose ideal. A eficácia da pregabalina foi demonstrada na
+primeira semana. Entretanto, com base na resposta individual e na tolerabilidade do paciente, a dose poderá ser aumentada par a
+150 mg duas vezes ao dia após um intervalo de 3 a 7 dias e, se necessário, até uma dose máxima de 300 mg (12 m l), duas vezes
+ao dia, após mais uma semana.
+
+Epilepsia
+A dose inicial recomendada de Dorene líquido é de 75 mg (3 m l) duas vezes ao dia (150 mg/dia), com ou sem alimentos. Em
+estudos clínicos, a eficácia de pregabalina foi demonstrada em pacientes que receberam uma faixa de 150 mg (6 m l) a 600 mg/dia
+(24 ml). A eficácia de pregabalina foi demonstrada já na primeira semana. Entretanto, com base na resposta e tolerabilidade
+individuais do paciente, a dose poderá ser aumentada para 150 mg duas vezes ao dia após 1 semana. A dose máxima de 300 mg
+(12 ml) duas vezes ao dia pode ser atingida após mais 1 semana.
+Não é necessário monitorar as concentrações plasmáticas de pregabalina para otimizar a terapia com tal agente. A pregabalina
+não altera as concentrações plasmáticas de outros medicamentos anticonvulsivantes frequentemente utilizados. Do mesmo modo,
+medicamentos anticonvulsivantes frequentemente usados não alteram as concentrações plasmáticas da pregabalina (vide Item 6.
+Interações Medicamentosas).
+
+Transtorno de ansiedade generalizada (TAG)
+A dose varia de 150 mg (6 m l) a 600 mg/dia (24 m l), divididas em duas ou três doses. A necessidade para o tratamento deve ser
+reavaliada regularmente.
+A dose inicial eficaz recomendada de Dorene líquido é de 75 mg (3 m l), duas vezes ao dia (150 mg/dia), com ou sem alimentos.
+Em estudos clínicos, a eficácia de pregabalina foi demonstrada em pacientes que receberam uma faixa de 150 a 600 mg/dia. Com
+base na resposta e tolerabilidade individuais do paciente, a dose pode ser aumentada para 300 mg (12 m l) ao dia após 1 semana.
+Após mais uma semana, a dose pode ser aumentada para 450 mg (18 m l) ao dia. A dose máxima de 600 mg (24 ml) ao dia pode
+ser atingida após mais 1 semana.
+
+ Dorene Líquido_BU03_VPS_768
+Fibromialgia
+A dose recomendada de Dorene líquido é de 300 (12 ml) a 450 mg/dia (18 ml) para a maioria dos pacientes, divididas em duas
+doses. Alguns pacientes podem obter benefícios adicionais com 600 mg (24 ml) por dia. A dose deve ser iniciada com 75 mg duas
+vezes ao dia (150 mg/dia) e pode ser aumentada para 150 mg (6 ml) duas vezes ao dia (300 mg/dia) em uma semana baseado na
+eficácia e tolerabilidade. Pacientes que não experimentaram benefícios suficientes com uma dose de 300 mg/dia podem ter a dose
+aumentada para 225 mg duas vezes ao dia (450 mg/dia). Com base na resposta e tolerabilidade individual, em alguns pacientes
+pode ser necessário o aumento de dose até o máximo de 600 mg/dia após uma semana adicional.
+
+Descontinuação do tratamento
+Caso Dorene líquido seja descontinuado, é recomendado que isto seja feito gradualmente durante, no mínimo, 1 semana.
+
+Uso em pacientes com insuficiência renal
+A redução da dosagem em pacientes com a função renal comprometida deve ser individualizada de acordo com o clearance de
+creatinina (CLcr) (vide Item 3. Características Farmacológicas – Propriedades Farmacocinéticas – Farmacocinética em Grupos
+Especiais de Pacientes – Insuficiência Renal), conforme indicado na Tabela 1, utilizando a seguinte fórmula:
+
+ CLcr (mL/min) = [140 - idade (anos)] x peso (kg) (x 0,85 para mulheres)
+
+ 72 x creatinina sérica (mg/dL)
+
+Para pacientes submetidos a hemodiálise, além da dose diária ajustada com base na função renal, uma dose suplementar deve ser
+administrada imediatamente após cada tratamento de 4 horas de hemodiálise (vide Tabela 1).
+
+Tabela 1. Ajuste da dose de Dorene líquido baseado na função renal
+
+ Dose diária total de Dorene líquido (1)
+
+ Clearance de creatinina Dose inicial (mg/dia) (mL) Dose máxima (mg/dia) Regime terapêutico
+ (CLcr) (mL/min)
+ ≥ 60 150 (6 ml) 600 (24 ml) 2 ou 3 vezes ao dia
+ ≥ 30 - < 60 75 (3 ml) 300 (12 ml) 2 ou 3 vezes ao dia
+ ≥ 15 - < 30 25 (1 ml) – 50 (2 ml) 150 (6 ml) 1 ou 2 vezes ao dia
+ < 15 25 (1 ml) 75 (3 ml) 1 vez ao dia
+ Dosagem complementar após hemodiálise (mg)
+ 25 (1 ml) 100 (4 ml) Dose única (2)
+(1) A dose diária total (mg/dia) deve ser dividida conforme indicado pelo regime terapêutico para resultar em mg/dose;
+(2) Dose suplementar é uma dose única adicional.
+
+Uso em pacientes com insuficiência hepática
+Nenhum ajuste de dose é necessário para pacientes com insuficiência hepática (vide Item 3. Características Farmacológicas –
+Propriedades Farmacocinéticas – Farmacocinética em Grupos Especiais de Pacientes – Insuficiência Hepática).
+
+Uso em crianças e adolescentes (12 a 17 anos de idade)
+A segurança e a eficácia de Dorene líquido em pacientes pediátricos abaixo de 12 anos de idade ainda não foram estabelecidas.
+A segurança e eficácia da substância pregabalina não foram estabelecidas em pacientes adolescentes (12 a 17 anos) para as
+indicações aprovadas (incluindo epilepsia).
+O uso em crianças não é recomendado (vide Item 3. Características Farmacológicas – Dados de Segurança Pré-clínicos).
+
+Uso em pacientes idosos (acima de 65 anos de idade)
+Pacientes idosos podem necessitar de redução da dose de Dorene líquido devido à diminuição da função renal (vide Item 3.
+Características Farmacológicas – Propriedades Farmacocinéticas – Farmacocinética em Grupos Especiais de Pacientes – Idosos
+(mais de 65 anos de idade).
+
+Dose omitida
+Caso o paciente esqueça-se de tomar Dorene líquido no horário estabelecido, deve tomá-lo assim que lembrar. Entretanto, se já
+estiver perto do horário de tomar a próxima dose, deve desconsiderar a dose esquecida e tomar a próxima. Neste caso, o paciente
+não deve tomar a dose duplicada para compensar doses esquecidas. O esquecimento de dose pode comprometer a eficácia do
+tratamento.
+
+9. REAÇÕES ADVERSAS
+O programa clínico de pregabalina envolveu mais de 12.000 pacientes expostos à pregabalina, dos quais mais de 7.000
+participaram de estudos duplo-cegos, placebo- controlados. As reações adversas mais frequentemente notificadas foram tontura e
+sonolência. As reações adversas foram, em geral, de intensidade leve a moderada. Em todos os estudos controlados, o índice de
+descontinuação devido a eventos adversos foi de 14% para pacientes recebendo pregabalina e de 5% para pacientes recebendo
+placebo. As reações adversas mais comuns que resultaram em descontinuação nos grupos de tratamento com pregabalina foram
+tontura e sonolência.
+Reações adversas selecionadas que foram relacionadas ao tratamento em uma análise conjunta de ensaios clínicos estão listadas
+na tabela abaixo por Classe de Sistema de Órgãos (SOC). A frequência desses termos tem se baseado em todas as causalidades
+das reações adversas no conjunto de dados do ensaio clínico (muito comuns (≥1/10), comuns (≥1/100, <1/10), incomuns
+(≥1/1.000, <1/100) e raras (<1/1.000).
+
+ Dorene Líquido_BU03_VPS_768
+As reações adversas listadas poderão estar associadas a doenças subjacentes e/ou medicamentos concomitantes.
+
+ Classe de Sistema de Órgãos Reações Adversas ao Medicamento
+ Infecções e Infestações
+ Comuns Nasofaringite.
+ Sangue e sistema linfático
+ Incomuns Neutropenia.
+ Metabólicos e nutricionais
+ Comuns Aumento de apetite.
+ Incomuns Anorexia, hipoglicemia.
+ Psiquiátricos
+ Comuns Humor eufórico, confusão, irritabilidade, depressão, desorientação,
+ insônia, diminuição da libido.
+ Incomuns Alucinações, inquietação, agitação, humor deprimido, humorelevado,
+ mudanças de humor, despersonalização, sonhos anormais, dificuldade de
+ encontrar palavras, aumento da libido, anorgasmia.
+ Raros Crise de pânico, desinibição, apatia.
+ Sistema nervoso
+ Muito comuns Tontura, sonolência.
+ Comuns Ataxia, coordenação anormal, tremores, disartria, amnésia, dificuldade de
+ memória, distúrbios de atenção, parestesia, hipoestesia, sedação, transtorno
+ de equilíbrio, letargia.
+ Incomuns Síncope, mioclonia, hiperatividade psicomotora, discinesia, hipotensão
+ postural, tremor de intenção, nistagmo, transtornos cognitivos, transtornos
+ da fala, hiporreflexia, hiperestesia, sensação de queimação.
+ Raros Estupor, parosmia, hipocinesia, ageusia, disgrafia.
+ Oftalmológicos
+ Comuns Visão turva, diplopia.
+ Incomuns Perda de visão periférica, alteração visual, inchaço ocular, deficiência no
+ campo visual, redução da acuidade visual, dor ocular, astenopia, fotopsia,
+ olhos secos, aumento do lacrimejamento, irritação ocular.
+ Raros Oscilopsia, percepção visual de profundidade alterada, midríase,
+ estrabismo, brilho visual.
+ Auditivos e de labirinto
+ Comuns Vertigem.
+ Incomuns Hiperacusia.
+ Cardíacos
+ Incomuns Taquicardia, bloqueio atrioventricular de primeiro grau, bradicardia
+ sinusal.
+ Raros Taquicardia sinusal, arritmia sinusal.
+ Vasculares
+ Incomuns Hipotensão arterial, hipertensão arterial, ondas de calor, rubores, frio
+ nas extremidades.
+ Respiratórios, torácicos e mediastinais
+ Incomuns Dispneia, epistaxe, tosse, congestão nasal, rinite, ronco.
+ Raros Aperto na garganta, secura nasal.
+ Gastrintestinais
+ Comuns Vômitos, constipação, flatulência, distensão abdominal, boca seca.
+ Incomuns Refluxo gastresofágico, hipersecreção salivar, hipoestesia oral.
+ Raros Ascite, pancreatite, disfagia.
+ Pele e tecido subcutâneo
+ Incomuns Erupções cutâneas papulares (rash), urticária, sudorese.
+ Raros Suor frio.
+ Musculoesqueléticos e tecido conjuntivo
+ Comuns Cãibra muscular, artralgia, dor lombar, dor nos membros, espasmo
+ cervical.
+ Incomuns Inchaço articular, mialgia, espasmo muscular, dor cervical, rigidez
+ muscular
+ Raros Rabdomiólise.
+ Renais e urinários
+ Incomuns Incontinência urinária, disúria.
+ Raros Insuficiência renal, oligúria.
+ Sistema reprodutor e mama
+ Incomuns Disfunção erétil, disfunção sexual, retardo na ejaculação,
+ dismenorreia.
+ Raros Dor mamária, amenorreia, secreção de mama, ginecomastia.
+ Gerais
+ Comuns Edema periférico, edema, marcha anormal, quedas, sensação de
+ embriaguez, sensação anormal, fadiga.
+ Incomuns Edema generalizado, aperto no peito, dor, pirexia, sede, calafrio,
+ astenia.
+ Exames laboratoriais
+ Comuns Aumento de peso
+
+ Dorene Líquido_BU03_VPS_768
+ Incomuns Elevação de creatina fosfoquinase sanguínea, elevação de alanina
+ aminotransferase, elevação de aspartato aminotransferase, elevação
+ da glicose sanguínea, diminuição da contagem de plaquetas,
+ diminuição do potássio sanguíneo, diminuição de peso.
+ Raros Diminuição de leucócitos, elevação da creatinina sanguínea.
+
+As seguintes reações adversas fora m relatadas durante a pós-comercialização:
+Distúrbios do sistema imune: incomuns: hipersensibilidade. Raros: angioedema e reação alérgica.
+Distúrbios do sistema nervoso: muito comuns: dor de cabeça . Incomuns: perda de consciência e prejuízo cognitivo
+Distúrbios Oftalmológicos: raro: ceratite.
+Distúrbios Cardíacos: raro: insuficiência cardíaca congestiva.
+Distúrbios respiratório, torácico e mediastinal: raro: ede ma pulmonar.
+Distúrbios gastrintestinais: comuns: náusea, diarreia. Raro: ede ma da língua.
+Distúrbios de pele e tecido subcutâneo: incomuns: inchaço da face e prurido.
+Distúrbios renais e urinários: raro: retenção urinária.
+Distúrbios do sistema reprodutor e mamas: raro: ginecomastia.
+Distúrbios gerais: incomum: mal-estar.
+Distúrbios Psiquiátricos: incomum : agressividade. Raro: ideação suicida.
+
+Estimativa de frequência de reação adversa do medicamento feita usando a "Regra de três"
+Idosos (acima de 65 anos de idade) : num total de 998 pacientes idosos, não fora m observada s diferença s quanto a segurança
+geral, em comparação ao s pacientes com meno s de 65 anos de idade.
+
+Atenção: este produto é um medicamento que possui nova forma farmacêutica no país e, embora as pesquisas tenham
+indicado eficácia e segurança aceitáveis, mesmo que indicado e utilizado corretamente, podem ocorrer eventos adversos
+imprevisíveis ou desconhecidos. Nesse caso, notifique os eventos adversos pelo Sistema VigiMed, disponível no Portal da
+Anvisa.
+
+10. SUPERDOSE
+Em superdoses de até 15 g nenhuma reação adversa inesperada foi notificada.
+Em experiência pós-comercialização, os evento s adversos mai s comumente relatados quando houve superdose de pregabalina
+incluem distúrbios afetivos, sonolência, estado de confusão, depressão, agitação e inquietação. Convulsões também foram
+relatadas.
+O tratamento da superdose com pregabalina deve incluir medidas gerai s de suporte, podendo ser necessária hemodiálise (vide
+Item 8. Posologia e Modo de usar – Tabela 1).
+Em caso de intoxicação ligue para 0800 722 6001, se você precisar de mais orientações.
+
+III-

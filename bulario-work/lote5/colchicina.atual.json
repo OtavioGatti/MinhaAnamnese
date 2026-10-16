@@ -1,0 +1,17 @@
+{
+  "Risco Gestacional": "C",
+  "Slug": "colchicina",
+  "Nomes Comerciais / Produtos ANVISA": "Colchis; colchicina.",
+  "Interações": "Inibidores potentes de CYP3A4/P-gp, como claritromicina, eritromicina, cetoconazol, itraconazol, voriconazol, posaconazol, ritonavir, cobicistate, ciclosporina, tacrolimo, verapamil e diltiazem, podem aumentar muito a toxicidade e devem ser evitados ou exigir ajuste rigoroso. Estatinas, como sinvastatina, atorvastatina, rosuvastatina e pravastatina, e fibratos, como gemfibrozila e fenofibrato, aumentam risco de miopatia/rabdomiólise. Digoxina pode aumentar risco de toxicidade muscular por P-gp. Azitromicina exige cautela menor que claritromicina, mas ainda pode aumentar exposição em pacientes de risco.",
+  "Apresentações / Nomes Comerciais": "Comprimidos 0,5 mg ou 1 mg conforme fabricante. Exemplos: Colchis; Colchicina EMS; Colchicina Apsen; colchicina genérica/similar.",
+  "Posologia Pediátrica": "Febre familiar do Mediterrâneo ou outras indicações pediátricas: dose deve ser individualizada por idade, peso, função renal/hepática e resposta clínica.\nUso pediátrico deve ser especializado, com monitorização de eventos gastrointestinais, hematológicos e musculares.\nNão informado na fonte consultada para uma dose pediátrica única aplicável a todas as indicações.",
+  "Texto Resumo": "Colchicina é usada no tratamento e prevenção de crises de gota e em condições como febre familiar do Mediterrâneo. Tem margem terapêutica estreita e interações críticas com inibidores de CYP3A4/P-gp, exigindo cautela em idosos, insuficiência renal/hepática e uso concomitante de estatinas.",
+  "Classe / Categoria": "Antigotoso; anti-inflamatório específico; inibidor da polimerização de microtúbulos; agente para gota e febre familiar do Mediterrâneo.",
+  "Posologia Adulto": "Crise aguda de gota: esquema comum é 1 mg por via oral ao primeiro sinal de crise, seguido de 0,5 mg após 1 hora; não repetir por pelo menos 3 dias conforme protocolo e função renal.\nProfilaxia de gota ao iniciar hipouricemiante: 0,5 mg 1 a 2 vezes ao dia, conforme tolerabilidade e função renal.\nFebre familiar do Mediterrâneo: dose individualizada conforme resposta e tolerabilidade.\nAjustar em insuficiência renal, insuficiência hepática e idosos.",
+  "Contraindicações": "Hipersensibilidade à colchicina ou componentes da fórmula; insuficiência renal grave ou insuficiência hepática grave associada ao uso de inibidores potentes de CYP3A4 ou P-gp; discrasias sanguíneas graves; doença gastrointestinal, renal, hepática ou cardíaca grave sem avaliação; gravidez e lactação conforme risco-benefício.",
+  "Tags Busca": "colchicina; gota; crise de gota; antigotoso; febre familiar do mediterrâneo; hiperuricemia; colchis",
+  "Advertências": "Margem terapêutica estreita. Pode causar diarreia, náuseas, vômitos e dor abdominal, que podem sinalizar toxicidade. Toxicidade grave inclui mielossupressão, rabdomiólise, neuropatia, insuficiência renal, arritmias, choque e morte. Risco aumenta em idosos, insuficiência renal/hepática e uso com inibidores de CYP3A4/P-gp. Suspender e avaliar se houver sintomas gastrointestinais intensos, fraqueza muscular, parestesias, infecção ou sangramentos.",
+  "Nomes Comerciais OpenAI": "Colchis; Colchicina EMS; Colchicina Apsen; Colchicina Eurofarma; Colcrys, conforme disponibilidade internacional.",
+  "Rede SUS (RENAME)": false,
+  "Princípio Ativo": "Colchicina"
+}

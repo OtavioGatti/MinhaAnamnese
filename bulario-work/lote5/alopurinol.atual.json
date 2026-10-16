@@ -1,0 +1,17 @@
+{
+  "Risco Gestacional": "C",
+  "Slug": "alopurinol",
+  "Nomes Comerciais / Produtos ANVISA": "Zyloric; Lopurax; alopurinol.",
+  "Interações": "Azatioprina e mercaptopurina têm metabolismo inibido pelo alopurinol, com risco de mielossupressão grave; associação exige grande redução de dose e monitorização especializada. Didanosina pode ter níveis aumentados e toxicidade. Varfarina pode ter efeito aumentado em alguns pacientes. Ampicilina e amoxicilina podem aumentar risco de rash. Diuréticos tiazídicos, como hidroclorotiazida e clortalidona, podem aumentar risco de hipersensibilidade, especialmente em doença renal. Ciclosporina pode ter níveis/toxicidade aumentados. Inibidores da ECA, como enalapril, lisinopril e ramipril, podem aumentar risco de reações de hipersensibilidade em alguns pacientes.",
+  "Apresentações / Nomes Comerciais": "Comprimidos 100 mg e 300 mg conforme fabricante. Exemplos: Zyloric; Lopurax; Alopurinol EMS; Alopurinol Medley; alopurinol genérico.",
+  "Posologia Pediátrica": "Uso pediátrico é geralmente restrito a hiperuricemia secundária, doenças metabólicas ou contexto oncológico, com dose calculada por peso ou superfície corporal.\nDose deve ser individualizada conforme ácido úrico, função renal e indicação.\nNão informado na fonte consultada para uma dose pediátrica única aplicável a todas as indicações.",
+  "Texto Resumo": "Alopurinol é um inibidor da xantina oxidase usado para reduzir ácido úrico em gota crônica, hiperuricemia e situações selecionadas. Deve ser iniciado em dose baixa, ajustado à função renal e suspenso diante de rash pelo risco de reações cutâneas graves.",
+  "Classe / Categoria": "Antigotoso; inibidor da xantina oxidase; redutor da produção de ácido úrico.",
+  "Posologia Adulto": "Hiperuricemia/gota crônica: iniciar geralmente com 100 mg por via oral 1 vez ao dia, após refeição.\nAjustar gradualmente conforme ácido úrico sérico e tolerabilidade.\nDose usual: 100 mg a 300 mg/dia; casos selecionados podem exigir doses maiores com monitorização.\nAjustar dose em insuficiência renal.\nNão iniciar durante crise aguda sem cobertura anti-inflamatória adequada.",
+  "Contraindicações": "Hipersensibilidade ao alopurinol ou componentes da fórmula; crise aguda de gota como início isolado de tratamento sem manejo anti-inflamatório adequado; uso concomitante com azatioprina ou mercaptopurina sem redução rigorosa de dose e monitorização especializada.",
+  "Tags Busca": "alopurinol; gota; ácido úrico; hiperuricemia; xantina oxidase; zyloric; nefrolitíase",
+  "Advertências": "Pode causar rash, prurido, náuseas, diarreia, elevação de enzimas hepáticas e, raramente, síndrome de hipersensibilidade ao alopurinol, síndrome de Stevens-Johnson, necrólise epidérmica tóxica, hepatite, nefrite e eosinofilia. Suspender imediatamente se houver rash ou sinais sistêmicos. Risco maior em insuficiência renal, doses iniciais altas e alguns grupos genéticos. Hidratação e ajuste renal reduzem risco de toxicidade.",
+  "Nomes Comerciais OpenAI": "Zyloric; Lopurax; Alopurinol EMS; Alopurinol Medley; Alopurinol Neo Química.",
+  "Rede SUS (RENAME)": false,
+  "Princípio Ativo": "Alopurinol"
+}

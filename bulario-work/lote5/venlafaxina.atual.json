@@ -1,0 +1,17 @@
+{
+  "Risco Gestacional": "C",
+  "Slug": "venlafaxina",
+  "Nomes Comerciais / Produtos ANVISA": "Efexor XR; Venlift; Alenthus XR; cloridrato de venlafaxina.",
+  "Interações": "Não usar com IMAO, como tranilcipromina, moclobemida, selegilina, rasagilina ou linezolida. Serotonérgicos, como sertralina, fluoxetina, paroxetina, escitalopram, citalopram, duloxetina, clomipramina, amitriptilina, tramadol, fentanil, triptanos, lítio e Hypericum perforatum, aumentam risco de síndrome serotoninérgica. Varfarina, ácido acetilsalicílico, clopidogrel, prasugrel, ticagrelor, apixabana, rivaroxabana, heparina, enoxaparina e AINEs aumentam risco de sangramento. Bupropiona, fluoxetina, paroxetina, quinidina e ritonavir podem alterar metabolismo por CYP2D6. Medicamentos que aumentam pressão arterial ou estimulantes, como pseudoefedrina, metilfenidato, anfetaminas e noradrenérgicos, podem somar hipertensão/taquicardia.",
+  "Apresentações / Nomes Comerciais": "Cápsulas ou comprimidos de liberação prolongada 37,5 mg, 75 mg e 150 mg; comprimidos de liberação imediata conforme fabricante. Exemplos: Efexor XR; Venlift; Alenthus XR; Venlafaxina EMS; venlafaxina genérica.",
+  "Posologia Pediátrica": "Não se recomenda o uso de venlafaxina em pacientes pediátricos para as indicações aprovadas, pois a segurança e eficácia não foram estabelecidas.",
+  "Texto Resumo": "Venlafaxina é um IRSN usado em depressão e transtornos de ansiedade. Exige atenção a aumento de pressão arterial, síndrome serotoninérgica, sangramento, risco suicida inicial e sintomas de descontinuação, que podem ser relevantes se suspensa abruptamente.",
+  "Classe / Categoria": "Antidepressivo; inibidor da recaptação de serotonina e noradrenalina; IRSN.",
+  "Posologia Adulto": "Depressão maior: iniciar geralmente com 75 mg por via oral ao dia em formulação de liberação prolongada, podendo iniciar com 37,5 mg/dia em pacientes sensíveis.\nDose usual: 75 mg a 225 mg/dia.\nAnsiedade generalizada, ansiedade social ou pânico: iniciar com 37,5 mg a 75 mg ao dia e titular conforme resposta.\nEvitar suspensão abrupta; reduzir gradualmente.",
+  "Contraindicações": "Hipersensibilidade à venlafaxina ou componentes da fórmula; uso concomitante ou recente de inibidores da monoaminoxidase; hipertensão arterial não controlada conforme avaliação clínica; uso com cautela em risco elevado de arritmia, convulsão ou síndrome serotoninérgica.",
+  "Tags Busca": "venlafaxina; antidepressivo; irsn; depressão; ansiedade; pânico; efexor; serotonina; noradrenalina",
+  "Advertências": "Pode causar náuseas, boca seca, insônia, sonolência, sudorese, tremor, constipação, perda de apetite, disfunção sexual, aumento da pressão arterial, taquicardia, hiponatremia, sangramento, convulsões, mania/hipomania, síndrome serotoninérgica e sintomas de descontinuação importantes. Monitorar pressão arterial, risco suicida no início e em ajustes, humor, sangramento e sintomas de síndrome serotoninérgica.",
+  "Nomes Comerciais OpenAI": "Efexor XR; Venlift; Alenthus XR; Venlafaxina EMS; Venlafaxina Eurofarma; Venlafaxina Medley.",
+  "Rede SUS (RENAME)": false,
+  "Princípio Ativo": "Venlafaxina"
+}

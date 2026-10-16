@@ -1,0 +1,605 @@
+FONTE: lote5__alopurinol__ZYLORIC.pdf
+
+===== BLOCO 1 =====
+1. INDICAÇÕES 
+Zyloric® (alopurinol) é indicado para redução da formação de urato/ácido úrico nas principais 
+manifestações de depósito dessas duas substâncias – o que ocorre em indivíduos com artrite gotosa, tofos 
+cutâneos e nefrolitíase ou naqueles que apresentam um risco clínico potencial (por exemplo, que estão em 
+tratamento de tumores que podem desencadear nefropatia aguda por ácido úrico). 
+As principais patologias clínicas que podem levar ao depósito de urato/ácido úrico são: 
+- gota idiopática; 
+- litíase por ácido úrico; 
+- nefropatia aguda por ácido úrico; 
+- doença neoplásica ou doença mieloproliferativa com altas taxas de processamento celular, situações 
+em que ocorrem níveis elevados de uratos espontaneamente ou após tratamento citotóxico; 
+- certas disfunções enzimáticas que levam a uma superprodução de urato, como as de: 
+• hipoxantina-guanina fosforibosil transferase (que inclui a síndrome Lesch-Nyhan); 
+• glicose-6-fosfatase (que inclui a doença de armazenamento de glicogênio); 
+• fosforibosilpirofosfato sintetase; 
+• fosforibosilpirofosfato amidotransferase; 
+• adenina fosforibosil transferase. 
+ 
+Zyloric® é indicado para o controle de cálculos renais de 2,8-diidroxiadenina (2,8-DHA), relacionados com 
+atividade deficiente de adenina fosforibosil transferase. 
+Zyloric® é indicado para o controle de cálculos renais mistos de oxalato de cálcio recorrentes, na presença 
+de hiperuricosúria, quando tiverem falhado medidas de hidratação, dietéticas e semelhantes. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Zyloric_BU_PS_011 
+Página 3 de 13
+
+3. CARACTERÍSTICAS FARMACOLÓGICAS 
+Propriedades farmacodinâmicas 
+O alopurinol é um inibidor da xantina oxidase. 
+O alopurinol e o oxipurinol, seu principal metabólito, diminuem os níveis de ácido úrico no plasma e na 
+urina através da inibição da xantina oxidase, enzima que catalisa a oxidação de hipoxantina em xantina e 
+de xantina em ácido úrico. 
+Além da inibição do catabolismo da purina, a biossíntese da purina de novo é deprimida através da inibição 
+do feedback de hipoxantina-guanina fosforibosil transferase em alguns dos pacientes hiperuricêmicos, mas 
+não em todos. 
+ 
+Propriedades farmacocinéticas Absorção 
+O alopurinol é ativo quando administrado por via oral e é rapidamente absorvido no trato gastrintestinal 
+superior. Estudos realizados detectaram o alopurinol no sangue 30 a 60 minutos após a administração. 
+Estimativas da biodisponibilidade variam de 67% a 90%. 
+Os picos plasmáticos do alopurinol geralmente ocorrem aproximadamente 1,5 hora após a administração 
+oral de Zyloric®, mas caem rapidamente e quase não são detectados após 6 horas. Os picos plasmáticos 
+do oxipurinol geralmente ocorrem 3 a 5 horas após a administração oral de Zyloric® e são muito mais 
+sustentáveis. O tempo médio estimado para início da ação farmacológica do medicamento é de uma a duas 
+semanas (efeito máximo). 
+ 
+Distribuição 
+A ligação do alopurinol às proteínas plasmáticas é desprezível, e por isso não se espera que variações nessa 
+ligação alterem significativamente o clearance. O volume de distribuição aparente do alopurinol é de 
+aproximadamente 1,6L/kg, o que sugere captação relativamente alta pelos tecidos. As concentrações 
+tissulares do alopurinol não foram relatadas em humanos, mas é provável que o alopurinol e o oxipurinol 
+estejam presentes em concentrações mais altas no fígado e na mucosa intestinal, onde a atividade da xantina 
+oxidase é alta. 
+ 
+Biotransformação 
+O metabólito principal do alopurinol é o oxipurinol. Outros metabólitos do alopurinol incluem o alopurinol-
+ribosídeo e o oxipurinol-7-ribosídeo. 
+ 
+Eliminação 
+Aproximadamente 20% do alopurinol ingerido é excretado nas fezes. Sua eliminação é feita principalmente 
+pela conversão metabólica em oxipurinol pela xantina e aldeído oxidase, com menos de 10% da droga 
+inalterada excretada na urina. 
+O alopurinol tem meia-vida plasmática de cerca de 0,5 a 1,5 hora. 
+O oxipurinol é um inibidor da xantina oxidase menos potente que o alopurinol, mas sua meia - vida 
+plasmática é muito mais prolongada (segundo estimativa, de 13 a 30 horas no homem). Dessa forma, a 
+inibição eficaz da xantina oxidase é mantida pelo período de 24 horas com uma única dose diária de 
+Zyloric®. Pacientes com função renal normal acumularão o oxipurinol de forma gradual até que seja 
+atingida uma concentração plasmática no estado de equilíbrio. Ao receber 300 mg de alopurinol por dia, 
+esses pacientes geralmente apresentarão concentrações plasmáticas de oxipurinol de 5 a 10 mg/L. 
+O oxipurinol é eliminado inalterado na urina, mas, por sofrer reabsorção tubular, tem uma longa meia-vida 
+de eliminação: os valores variam de 13,6 a 29 horas, conforme descrito. A grande discrepância entre esses 
+números pode ser resultado de variações no esquema do estudo e/ou deverem-se ao clearance da creatinina 
+nos pacientes. 
+ 
+Farmacocinética em pacientes com insuficiência renal 
+O clearance do alopurinol e do oxipurinol é muito reduzido em pacientes com insuficiência da função renal, 
+o que resulta em níveis plasmáticos mais altos em caso de terapia crônica. Pacientes com insuficiência renal, 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Zyloric_BU_PS_011 
+Página 5 de 13 
+cujo clearance de creatinina esteve entre 10 e 20 mL/min, apresentaram concentrações plasmáticas de 
+oxipurinol de cerca de 30 mg/L após tratamento prolongado com 300 mg de alopurinol por dia. Essa é, 
+aproximadamente, a concentração que seria atingida com doses diárias de 600 mg/dia em indivíduos com 
+função renal normal. Assim, é necessária uma redução da dose de Zyloric® 
+em caso de insuficiência renal. 
+ 
+Farmacocinética em pacientes idosos 
+Não é provável que a cinética da droga seja alterada por outras causas além da deterioração da função renal.
+
+4. CONTRAINDICAÇÕES 
+Zyloric® não deve ser administrado a indivíduos com conhecida hipersensibilidade ao alopurinol ou a 
+qualquer outro componente da fórmula. 
+ 
+Este medicamento é contraindicado para o uso por mulheres em período de amamentação . 
+Este medicamento é contraindicado para menores de 10 anos.
+
+5. ADVERTÊNCIAS E PRECAUÇÕES 
+Síndrome de hipersensibilidade, Síndrome de Stevens Johnson (SJS) e Necrólise tóxica epidermal 
+(TEN) 
+Reações de hipersensibilidade ao alopurinol podem se manifestar de variadas formas, incluindo exantema 
+maculopapular, síndrome de hipersensibilidade (também conhecida como DRESS) e SJS/TEN. Essas 
+reações são reconhecidas através de diagnóstico clínico e suas apresentações clínicas continuam sendo a 
+base para a tomada de decisões. Caso ocorram essas reações a qualquer momento do tratamento, Zyloric® 
+deve ser descontinuado imediatamente. A reexposição ao medicamento não deve ser feita em pacientes 
+com síndrome de hipersensibilidade e SJS/TEN. Para o tratamento de reações de hipersensibilidade, 
+corticosteróides podem ser benéficos. 
+ 
+Alelo HLA-B*5801 
+O alelo HLA-B*5801 tem sido identificado por estar associado com o risco de desenvolvimento de síndrome 
+de hipersensibilidade associada ao alopurinol e SJS/TEN. A frequência do alelo HLA-B*5801 varia muito 
+entre as populações étnicas: até 20% na população chinesa da etnia Han, cerca de 12% na população coreana 
+e entre 1-2% de indivíduos de origem japonesa ou europeia. O uso de genotipagem como uma ferramenta 
+de triagem para tomar decisões sobre o tratamento com Zyloric® não foi estabelecido. Se o paciente 
+for um portador conhecido do alelo HLA-B*5801, o uso de alopurinol pode ser considerado caso os 
+benefícios forem superiores aos riscos. É necessária uma vigilância extra para sinais de síndrome de 
+hipersensibilidade ou SJS/TEN, e o paciente deve ser informado da necessidade de interromper o 
+tratamento imediatamente no primeiro aparecimento dos sintomas. 
+ 
+Insuficiência hepática e renal 
+As doses devem ser reduzidas em caso de insuficiência hepática ou renal. Pacientes em tratamento de 
+hipertensão ou insuficiência cardíaca, por exemplo, em tratamento com diuréticos ou inibidores da ECA, 
+podem algum comprometimento concomitante da função renal e o alopurinol deve ser utilizado com cautela 
+nesse grupo de pacientes. 
+ 
+Este medicamento pode causar hepatotoxicidade. Por isso, requer uso cuidadoso, sob vigilância 
+médica estrita e acompanhado por controles periódicos da função hepática durante as fases iniciais 
+do tratamento, especialmente em pacientes com insuficiência hepática. 
+ 
+A insuficiência renal crônica e o uso concomitante de diuréticos, em particular as tiazidas, tem sido 
+associado a um risco aumentado de SJS/TEN e de outras reações graves de hipersensibilidade associados 
+ao alopurinol. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Zyloric_BU_PS_011 
+Página 6 de 13 
+Hiperuricemia assintomática 
+Por si só, a hiperuricemia assintomática geralmente não é considerada uma indicação de uso de Zyloric®. 
+A modificação da dieta e da ingestão de líquidos, com controle da causa subjacente, pode corrigir essa 
+condição. 
+ 
+Ataques agudos de gota 
+O tratamento com alopurinol não deve ser iniciado até que um ataque agudo de gota tenha terminado 
+completamente, pois pode desencadear novos ataques. 
+No início do tratamento com Zyloric®, assim como com outros agentes uricosúricos, pode desencadear-se 
+um ataque agudo de artrite gotosa. Dessa forma, é aconselhável administrar, de maneira profilática, um 
+agente anti -inflamatório adequado ou colchicina, por alguns meses. Deve-se consultar a literatura para 
+detalhes sobre dose apropriada, precauções e advertências. 
+Caso ocorra um ataque agudo de gota em pacientes que usam alopurinol, o tratamento deve ser mantido 
+com a mesma dose e o ataque agudo deve ser tratado com um agente anti -inflamatório adequado. 
+ 
+Depósito de xantina 
+Em condições em que a velocidade de formação de urato é muito aumentada (por exemplo, em doenças 
+malignas e respectivos tratamentos, e na síndrome de Lesch-Nyhan), a concentração absoluta de xantina na 
+urina pode, em raros casos, aumentar o suficiente para permitir o depósito no trato urinário. Esse risco 
+pode ser minimizado com hidratação adequada para permitir uma diluição ideal na urina. 
+ 
+Impacto de cálculos renais de ácido úrico 
+O tratamento adequado com Zyloric® levará à dissolução de grandes cálculos renais de ácido úrico, com 
+a remota possibilidade de impactação no ureter. 
+ 
+Distúrbios da tireoide 
+Em um estudo aberto de longa duração, foram observados valores aumentados de TSH (>5.5 µUI/mL) em 
+pacientes em tratamento de longa duração com alopurinol (5,8%). 
+ 
+Mielossupressão 
+A mielossupressão, manifestada por anemia, leucopenia ou trombocitopenia, foi relatada em pacientes 
+recebendo alopurinol. Descontinuar o uso de alopurinol empacientes com citopenias inexplicadas. O uso 
+concomitante de alopurinol com medicamentos citotóxicos pode aumentar o risco de mielossupressão. 
+Monitorar o hemograma com maior frequência (ver Interações Medicamentosas). 
+ 
+Uso concomitante de alopurinol com 6 -mercaptopurina ou azatioprina deve ser evitado pois há relatos de 
+casos fatais. Reduzir a dose de mercaptopurina ou azatioprina quando usados concomitantemente com 
+alopurinol (ver Interações Medicamentosas). 
+ 
+Uso na Gravidez 
+Não há evidência suficiente da segurança de Zyloric® na gravidez humana, não obstante este medicamento 
+tenha sido largamente usado, por muitos anos, sem consequência danosa aparente. O uso na gravidez deve 
+ser considerado apenas quando não houver alternativa mais segura e quando a doença em si representar 
+riscos para a mãe ou para o feto. 
+ 
+Categoria de risco C. 
+Este medicamento não deve ser utilizado por mulheres grávidas sem orientação médica ou do 
+cirurgião-dentista. 
+ 
+Uso na lactação 
+Relatos indicam que Zyloric ® é excretado no leite materno, porém não são conhecidos os efeitos dessa 
+excreção para o bebê. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Zyloric_BU_PS_011 
+Página 7 de 13 
+Relatos indicam que o alopurinol e o oxipurinol são excretados no leite humano. Foram demonstradas 
+concentrações de 1,4mg/L de alopurinol e 53,7 mg/L de oxipurinol no leite de uma paciente que recebia 
+300mg/dia de Zyloric®. No entanto, não há dados relativos aos efeitos do alopurinol ou de seus 
+metabólitos no bebê alimentado com leite materno após exposição materna ao medicamento. 
+ 
+Este medicamento não deve ser usado sem orientação médica por mulheres grávidas ou que estejam 
+amamentando. 
+ 
+Capacidade para dirigir e operar máquinas 
+Este medicamento pode causar sonolência, vertigem e ataxia. 
+Dessa forma, o paciente que faz tratamento com Zyloric ® deve ter cuidado ao dirigir veículos, operar 
+máquinas ou participar de qualquer outra atividade perigosa, até que esteja certo de que Zyloric® não afeta 
+seu desempenho. 
+ 
+Uso em idosos, crianças e outros grupos de risco 
+Para o tratamento de pacientes com condições de alta substituição de urato, insuficiência renal e hepática, 
+ver maiores informações sobre a dosagem adequada em Posologia. 
+O uso em crianças é raramente indicado, exceto em condições malignas (especialmente leucemia) e em 
+certas disfunções enzimáticas, como a síndrome de Lesch-Nyhan. 
+Em pacientes idosos, na ausência de dados específicos, deve-se usar a menor dose que produza redução 
+satisfatória de urato. Deve-se dispensar especial atenção aos casos de disfunção renal. 
+ 
+ Atenção: Contém lactose (tipo de açúcar) abaixo de 0,25g/comprimido. Este medicamento não deve 
+ser usado por pessoas com síndrome de má-absorção de glicose-galactose.
+
+6. INTERAÇÕES MEDICAMENTOSAS 
+ 6-mercaptopurina e azatioprina 
+A azatioprina é metabolizada para 6 -mercaptopurina, a qual é inativada pela ação da xantina-oxidase. 
+Quando a 6- mercaptopurina ou a azatioprina são administradas concomitantemente com Zyloric® , a 
+inibição da xantina -oxidase prolongará a atividade dos mesmos. As concentrações séricas de 6 -
+mercaptopurina ou azatioprina podem atingir níveis tóxicos, com consequente pancitopenia e 
+mielossupressão potencialmente fatais, quando estes medicamentos são administrados concomitantemente 
+com alopurinol. 
+ 
+Portanto, o uso concomitante de alopurinol com 6-mercaptopurina ou azatioprina deve ser evitado. Se for 
+determinado que a coadministração com 6-mercaptopurina ou azatioprina é clinicamente necessária, a dose 
+deve ser reduzida para um quarto (25%) da dose habitual de 6- mercaptopurina ou azatioprina e um 
+monitoramento hematológico frequente deve ser assegurado. Os pacientes devem ser aconselhados a relatar 
+quaisquer sinais ou sintomas de supressão da medula óssea (hematomas ou sangramento inexplicáveis, dor 
+de garganta, febre). 
+ 
+Vidarabina (adenina arabinosídeo) 
+Evidências sugerem que a meia- vida plasmática da vidarabina é aumentada na presença do alopurinol. 
+Quando os dois produtos são usados concomitantemente é necessário redobrar a vigilância, a fim de 
+identificar o aumento de efeitos tóxicos. 
+ 
+Salicilatos e agentes uricosúricos 
+O oxipurinol, principal metabólito do alopurinol, é por si só terapeuticamente ativo, sendo excretado pelos 
+rins de modo semelhante ao urato. Por isso, as drogas com atividade uricosúrica, como a probenecida e o 
+salicilato (este em altas doses), podem acelerar a excreção do oxipurinolIsto pode diminuir a atividade 
+terapêutica de Zyloric®, mas o significado desse evento deve ser avaliado em cada caso. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Zyloric_BU_PS_011 
+Página 8 de 13 
+Clorpropamida 
+Quando Zyloric® for administrado em associação com a clorpropamida e a função renal for reduzida, pode 
+haver um aumento do risco de prolongamento da atividade hipoglicêmica, pois o alopurinol e a 
+clorpropamida podem competir pela excreção no túbulo renal. 
+ 
+Anticoagulantes cumarínicos 
+Há raros casos de aumento do efeito da varfarina ou de outro anticoagulante cumarínico quando esses 
+medicamentos foram administrados concomitantemente com o alopurinol. Portanto, todos os pacientes que 
+tomem anticoagulantes devem ser cuidadosamente controlados. 
+ 
+Fenitoína 
+O alopurinol pode inibir a oxidação hepática da fenitoína, mas a importância clínica dessa possibilidade 
+ainda não foi demonstrada. 
+ 
+Teofilina 
+Foi relatada inibição do metabolismo da teofilina. O mecanismo de interação pode ser explicado pelo 
+envolvimento da xantina oxidase na biotransformação da teofilina no homem. 
+Os níveis de teofilina devem ser controlados no início da terapia com alopurinol e quando suas doses são 
+aumentadas. 
+ 
+Ampicilina/amoxicilina 
+Foi relatado um aumento da frequência de rash cutâneo entre os pacientes que usavam ampicilina ou 
+amoxicilina concomitantemente com o alopurinol, em comparação aos que não recebiam as duas primeiras 
+drogas. Não foi estabelecida a causa da associação. No entanto, recomenda-se que seja utilizada, sempre 
+que possível, uma alternativa à ampicilina ou à amoxicilina em pacientes em tratamento com alopurinol. 
+ 
+Ciclofosfamida, doxorrubicina, bleomicina, procarbazina, mecloroetamina 
+Foi relatado aumento da supressão da medula óssea por ciclofosfamida e outros agentes citotóxicos entre 
+pacientes com doença neoplásica (outras que não a leucemia) que tomavam o alopurinol. Contudo, em um 
+estudo bem controlado de pacientes tratados com ciclofosfamida, doxorrubicina, bleomicina, procarbazina 
+e/ou mecloroetamina (cloridrato de mustina), o alopurinol não pareceu aumentar a reação tóxica desses 
+agentes citotóxicos. 
+ 
+Ciclosporina 
+Relatos sugerem que a concentração plasmática da ciclosporina pode ser aumentada durante o tratamento 
+concomitante com alopurinol. A possibilidade de aumento da toxicidade da ciclosporina deve ser 
+considerada se as drogas forem administradas simultaneamente. 
+ 
+Didanosina 
+Em voluntários sadios e em pacientes HIV - positivos que recebiam didanosina, a Cmáx e a ASC (área sob 
+a curva) de didanosina plasmática apresentaram valores aproximadamente dobrados com a administração 
+concomitante de alopurinol (300mg diários), sem afetar a meia-vida terminal. Dessa forma, reduções das 
+doses de didanosina podem ser requeridas quando essa droga é administrada concomitantemente com 
+alopurinol. 
+ 
+Diuréticos 
+Foi relatada uma interação entre alopurinol e furosemida que resulta em aumento de urato sérico e 
+concentrações plasmáticas de oxipurinol. 
+Um risco aumentado de hipersensibilidade foi relatado quando o alopurinol é administrado com diuréticos, 
+em particular tiazidas, especialmente em quadros de insuficiência renal. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Zyloric_BU_PS_011 
+Página 9 de 13 
+Inibidores da enzima conversora da angiotensia (ECA) 
+Um risco aumentado de hipersensibilidade foi relatado quando o alopurinol é administrado com inibidores 
+da ECA, especialmente em quadros de insuficiência renal. 
+ 
+Interações com etanol/alimentos 
+O uso concomitante de álcool pode diminuir a efetividade do alopurinol. Com o uso de suplemento de 
+ferro pode haver aumento da captação de ferro pelo fígado. Altas doses de vitamina C (ácido ascórbico) 
+podem acidificar a urina e aumentar o risco de formação de cálculos renais. 
+ 
+Interações Medicamento-Exame Laboratorial e Não Laboratorial 
+Desconhece-se que o alopurinol altere a exatidão de exames laboratoriais ou não laboratoriais.
+
+8.POSOLOGIA E MODO DE USAR 
+Zyloric® pode ser tomado uma vez ao dia, por via oral, após a refeição. É bem tolerado, especialmente 
+quando usado depois da ingestão de alimentos. 
+As doses devem ser ajustadas por meio do controle das concentrações séricas de urato/ácido úrico em 
+intervalos adequados. Se a dose diária exceder 300 mg e houver manifestação de intolerância gastrintestinal, 
+pode ser apropriado um esquema de doses divididas. 
+ 
+Adultos e crianças maiores de 10 anos 
+Recomenda-se iniciar o tratamento com uma dose baixa (ex. 100mg/dia) a fim de reduzir os riscos de 
+reações adversas. A dose deve ser aumentada somente se a resposta referente à redução de urato for 
+insatisfatória. Deve-se ter precaução extra se a função renal estiver comprometida (Vide item “Posologia - 
+Insuficiência Renal”). 
+O seguinte esquema de dosagem deve ser considerado: 
+- de 100 a 200mg diários em condições leves; 
+- de 300 a 600mg diários em condições moderadamente graves; 
+- de 700 a 900mg diários em condições graves. 
+Se for requerida uma dosagem em função de mg/kg de peso corporal, a dosagem de 2 a 10 mg/kg de 
+peso corporal por dia deve ser usada. 
+ 
+Crianças menores de 10 anos 
+De 10 a 20mg/kg de peso corporal por dia, até o máximo de 400mg diários. O uso em crianças é raramente 
+indicado, exceto em condições malignas (especialmente leucemia) e em certas disfunções enzimáticas, 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Zyloric_BU_PS_011 
+Página 10 de 13 
+como a síndrome de Lesch-Nyhan. 
+ 
+Idosos 
+Na ausência de dados específicos, deve-se usar a menor dose que produza redução satisfatória de urato. 
+Deve-se dispensar especial atenção aos casos de disfunção renal e às situações descritas no item 
+Advertências. 
+ 
+Insuficiência renal 
+Como o alopurinol e seus metabólitos são excretados pelos rins, o comprometimento da função renal pode 
+levar à retenção do fármaco e/ou de seus metabólitos, com consequente prolongamento das meias -vidas 
+plasmáticas. Na presença de insuficiência renal grave pode ser aconselhável utilizar doses menores que 
+100mg/dia ou doses únicas de 100mg em intervalos maiores que um dia. 
+Se houver disponibilidade de controle das concentrações plasmáticas do oxipurinol, a dose deve ser ajustada 
+para que os níveis plasmáticos dessa substância (principal metabólito do alopurinol) sejam mantidos abaixo 
+de 100µmol/L (15,2mg/L). 
+O alopurinol e seus metabólitos são removidos por diálise renal. Se for necessária diálise duas a três vezes 
+por semana, deve -se considerar um esquema posológico alternativo de 300 a 400mg de Zyloric® 
+imediatamente após cada sessão, sem doses intermediárias. 
+ 
+Insuficiência hepática 
+Devem ser utilizadas doses reduzidas em pacientes com insuficiência hepática. 
+Nos estágios iniciais do tratamento, recomenda-se que sejam realizados testes periódicos da função 
+hepática. 
+Tratamento de condições de alta substituição de urato (por ex. neoplasias e síndrome de Lesch -
+Nyhan) 
+É aconselhável corrigir com Zyloric® a hiperuricemia e/ou a hiperuricosúria existentes antes de iniciar o 
+tratamento citotóxico. É importante assegurar a hidratação adequada do paciente para que se mantenha 
+ótima diurese e seja obtida a alcalinização da urina, aumentando -se assim a solubilidade de urato/ácido. A 
+dose de Zyloric® deve estar na faixa mais baixa das doses recomendadas. 
+Se a nefropatia por urato ou outra patologia comprometer a função renal, devem-se seguir as recomendações 
+de dose do item Posologia (Insuficiência Renal). Dessa forma pode-se reduzir o risco de depósito de xantina 
+e/ou oxipurinol, evitando que a situação clínica se complique (Veja também os itens Interações 
+medicamentosas e Reações adversas). 
+Os comprimidos de Zyloric® devem ser tomados após as refeições, com um copo de água. A ingestão de 
+bastante líquido é recomendada para permitir a eliminação de uma urina neutra ou ligeiramente alcalina e 
+uma diurese de aproximadamente 2 litros por dia (em adultos). 
+ 
+Duração de tratamento 
+A dosagem de alopurinol é baseada nas condições clínicas e resposta do paciente ao tratamento. Este 
+medicamento deverá ser usado regularmente para que o paciente possa se beneficiar dos seus efeitos 
+terapêuticos. Para tratamento da gota poderá ser necessário toma- lo por várias semanas até que o efeito 
+desejado seja obtido. Você poderá ter ainda outras crises de gota durante vários meses após ter iniciado o 
+tratamento com este medicamento até que o seu corpo remova o ácido úrico em excesso. O alopurinol não 
+é analgésico. Para alívio da dor produzida pela gota, continue tomando também os seus medicamentos 
+analgésicos e anti-inflamatórios prescritos nas crises de gota, como orientado por seu médico. 
+Este medicamento não deve ser partido, aberto ou mastigado.
+
+9. REAÇÕES ADVERSAS 
+Algumas pessoas podem apresentar reações adversas ao fazer uso de Zyloric® . Se você sentir algum dos 
+sintomas abaixo enquanto usar este medicamento, pare de ingeri -lo e informe seu médico o mais rápido 
+possível. 
+A divisão das reações adversas em categorias, por frequência, foi feita por estimativa, uma vez que não 
+estão disponíveis dados adequados para calcular a incidência da maior parte delas. As raras e muito raras 
+foram identificadas por meio da farmacovigilância pós -comercialização. A seguinte classificação de 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Zyloric_BU_PS_011 
+Página 11 de 13 
+frequência tem sido utilizada: 
+muito comum >1/10 (>10%) 
+comum >1/100 e < 1/10 (>1% e < 10%) 
+incomum > 1/1.000 e < 1/100 (> 0,1% e < 1%) 
+rara >1/10.000 e <1/1.000 (>0,01% e <0,1%) 
+muito rara <1/10.000 (<0,01%) 
+São raras as reações adversas a Zyloric® na população geral tratada com este medicamento, além de, na 
+maioria dos casos, apresentarem menor importância. A incidência é mais alta na presença de disfunção 
+renal e/ou hepática. 
+ 
+Sistema Órgão Frequência Reação adversa 
+Infecções e infestações Muito raro Furúnculo 
+Distúrbios do sangue e do sistema 
+linfático Muito raro 
+Agranulocitose1 
+Anemia aplástica1 
+Trombocitopenia1 
+Distúrbios do sistema imunológico 
+Incomum Hipersensibilidade2 
+Muito raro Linfoma de célula T 
+angioimunoblástico3 
+Distúrbios do metabolismo e nutrição Muito raro Diabetes mellitus 
+Hiperlipidemia 
+Distúrbios psiquiátricos Muito raro 
+Coma 
+Paralisia 
+Ataxia 
+Neuropatia periférica 
+Parestesia 
+Sonolência 
+Dor de cabeça 
+Disgeusia 
+Distúrbios oculares Muito raro 
+Catarata 
+Comprometimento da visão 
+Maculopatia 
+Distúrbios do ouvido e do labirinto Muito raro Vertigem 
+Distúrbios cardíacos Muito raro Angina pectoris 
+Bradicardia 
+Distúrbios vasculares Muito raro Hipertensão 
+Distúrbios gastrointestinais 
+Incomum Vômito4 
+Náusea4 
+Muito raro 
+Hematemese 
+Esteatorreia 
+Estomatite 
+Mudança do hábito intestinal 
+Distúrbios hepatobiliares 
+Incomum Teste de função hepática anormal5 
+Raro Hepatite (incluindo necrose hepática e 
+hepatite granulomatosa) 5 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Zyloric_BU_PS_011 
+Página 12 de 13 
+Sistema Órgão Frequência Reação adversa 
+Distúrbios dos tecidos 
+cutâneos e subcutâneos 
+Comum Rash 
+Raro Síndrome de Stevens-Johnson (SJS)/Necrólise 
+epidérmica tóxica (TEN) 6 
+Muito raro 
+Angioedema7 
+Erupção cutânea 
+Alopecia 
+Alteração da coloração do cabelo 
+Distúrbios renais e urinários Muito raro Hematúria 
+Azotemia 
+Distúrbios mamários e do sistema 
+reprodutivo Muito raro 
+Infertilidade masculina 
+Disfunção erétil 
+Ginecomastia 
+Distúrbios gerais e condições do local 
+de administração Muito raro 
+Edema 
+Mal estar 
+Astenia 
+Pirexia8 
+ 
+1. Foram notificados casos muito raros de trombocitopenia, agranulocitose e anemia 
+aplástica, particularmente em indivíduos com comprometimento da função renal e/ou hepática, 
+reforçando a necessidade de cuidados específicos nesse grupo de pacientes. 
+2. Transtorno de hipersensibilidade de múltiplos órgãos em atraso (conhecido como síndrome de 
+hipersensibilidade ou DRESS) com febre, erupções cutâneas, vasculite, linfadenopatia, pseudo-
+linfoma, artralgia, leucopenia, eosinofilia, hepatoesplenomegalia, testes anormais de função 
+hepática e desaparecimento da síndrome do ducto biliar (destruição e desaparecimento) dos ductos 
+biliares intra- hepáticos) ocorrendo em várias combinações. Outros órgãos também podem ser 
+afetados (por exemplo, fígado, pulmões, rins, pâncreas, miocárdio e cólon). Se tais reações 
+ocorrerem, pode ser a qualquer momento durante o tratamento, o alopurinol deve ser descontinuado 
+imediatamente e permanentemente. 
+A reexposição ao medicamento não deve ser realizada em pacientes com síndrome de 
+hipersensibilidade e SJS/TEN. Os corticosteróides podem ser benéficos no tratamento de reações 
+cutâneas de hipersensibilidade. Quando ocorrem reações de hipersensibilidade generalizada, 
+distúrbio renal e/ou hepático geralmente acontecem concomitantemente, particularmente quando o 
+desfecho é fatal. 
+3. O linfoma de células T angioimunoblásticas foi descrito muito raramente após a biópsia de uma 
+linfadenopatia generalizada. Parece ser reversível com a retirada do alopurinol. 
+4. Nos primeiros estudos clínicos, náuseas e vômitos foram relatados. Outros relatos sugerem que 
+essa reação não é um problema significativo e pode ser evitada com a administração de Zyloric® 
+após as refeições. 
+5. A disfunção hepática foi relatada sem evidência conclusiva de hipersensibilidade mais 
+generalizada. 
+6. As reações cutâneas são as reações mais comuns e podem ocorrer a qualquer momento durante 
+o tratamento. Podem ser pruriginosas, maculopapulares, às vezes escamosas, às vezes purpúricas e 
+raramente esfoliativas, como a síndrome de Stevens -Johnson e a necrólise epidérmica tóxica 
+(SJS/TEN). 
+Zyloric® deve ser retirado IMEDIATAMENTE em qualquer paciente que desenvolva sinais ou 
+sintomas de SJS/ TEN ou outras reações graves de hipersensibilidade. O risco mais elevado de SJS 
+e TEN, ou outras reações de hipersensibilidade graves, ocorre nas primeiras semanas de tratamento. 
+Os melhores resultados no gerenciamento de tais reações vêm do diagnóstico precoce e da 
+interrupção imediata de qualquer medicamento suspeito. Se o tratamento com Zyloric® tiver sido 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Zyloric_BU_PS_011 
+Página 13 de 13 
+descontinuado devido a reações cutâneas brandas (ou seja, sem sinais ou sintomas de SJS/TEN ou 
+de outra reação de hipersensibilidade grave), Zyloric® pode ser reintroduzido em uma dose baixa 
+(p.ex. 50 mg/dia) e depois gradualmente aumentado. O alelo HLA -B * 5801 tem sido demonstrado 
+estar associado ao risco de desenvolver síndrome de hipersensibilidade relacionada ao alopurinol e 
+SJS/TEN. O uso de genotipagem como uma ferramenta de triagem para tomar decisões sobre o 
+tratamento com alopurinol não foi estabelecido. Se os sintomas originais recorrerem, Zyloric® deve 
+ser retirado PERMANENTEMENTE uma vez que podem ocorrer reações de hipersensibilidade 
+mais graves (Vide seção “9. REAÇÕES ADVERSAS” item “ Distúrbios do Sistema 
+Imunológico”). Se SJS/TEN ou outras reações graves de hipersensibilidade não puderem ser 
+descartadas, NÃO reintroduza o Zyloric® devido ao potencial para uma reação grave ou até fatal. 
+O diagnóstico clínico de SJS/TEN ou outras reações graves de hipersensibilidade continuam sendo 
+a base para a tomada de decisão. 
+7. Angioedema tem sido reportado associado ou não a sinais e sintomas de uma reação de 
+hipersensibilidade ao alopurinol mais generalizada. 
+8. Febre foi relatada associada ou não a sinais e sintomas de uma reação de hipersensibilidade ao 
+alopurinol mais generalizada (Vide seção “9. REAÇÕES ADVERSAS”, item “Distúrbios do 
+Sistema Imunológico”). 
+ 
+Em casos de eventos adversos, notifique pelo Sistema VigiMed, disponível no Portal da ANVISA.
+
+10. SUPERDOSE 
+ 
+Foi relatada ingestão de até 22,5 g de alopurinol, sem efeitos adversos. Sinais e sintomas como náusea, 
+vômito, diarreia e tonteira foram relatados em um paciente que ingeriu 20g de alopurinol. Houve 
+recuperação após medidas gerais de suporte. 
+A absorção maciça de Zyloric® pode conduzir a uma considerável inibição da atividade da xantina oxidase, 
+a qual não deve produzir efeitos indesejáveis, a não ser afetar o efeito de alguma medicação concomitante, 
+especialmente a mercaptopurina e/ou azatioprina. A hidratação adequada do paciente para manteruma 
+diurese ideal facilita a excreção do alopurinol e de seus metabólitos. Se for considerada necessária, pode ser 
+utilizada hemodiálise. 
+ 
+Em caso de intoxicação ligue para 0800 722 6001 se você precisar de mais orientações. 
+ 
+III -

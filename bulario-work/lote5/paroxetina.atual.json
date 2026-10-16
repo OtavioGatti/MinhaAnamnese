@@ -1,0 +1,16 @@
+{
+  "Risco Gestacional": "D",
+  "Slug": "paroxetina",
+  "Nomes Comerciais / Produtos ANVISA": "Aropax; Pondera; Paxil CR; cloridrato de paroxetina.",
+  "Interações": "Não usar com IMAO, como tranilcipromina, moclobemida, selegilina, rasagilina ou linezolida. Não usar com pimozida ou tioridazina. Serotonérgicos, como tramadol, venlafaxina, duloxetina, fluoxetina, sertralina, citalopram, escitalopram, clomipramina, amitriptilina, lítio, triptanos, fentanil e Hypericum perforatum, aumentam risco de síndrome serotoninérgica. Varfarina, ácido acetilsalicílico, clopidogrel, prasugrel, apixabana, rivaroxabana, enoxaparina, heparina e AINEs aumentam risco de sangramento. Paroxetina inibe CYP2D6 e pode aumentar níveis de metoprolol, carvedilol, propranolol, risperidona, haloperidol, nortriptilina, amitriptilina e atomoxetina. Pode reduzir ativação de tamoxifeno e codeína, reduzindo eficácia clínica.",
+  "Apresentações / Nomes Comerciais": "Comprimidos revestidos 10 mg, 20 mg, 30 mg e 40 mg conforme fabricante; comprimidos de liberação controlada conforme produto. Exemplos: Aropax; Pondera; Paxil CR; Paroxetina EMS; paroxetina genérica.",
+  "Texto Resumo": "Paroxetina é um ISRS usado em depressão e transtornos de ansiedade, incluindo pânico, TOC, ansiedade social, ansiedade generalizada e TEPT. Tem maior risco de sintomas de descontinuação e interações por CYP2D6, incluindo redução da ativação de tamoxifeno e codeína.",
+  "Classe / Categoria": "Antidepressivo; inibidor seletivo da recaptação de serotonina; ISRS.",
+  "Posologia Adulto": "Depressão: 20 mg por via oral 1 vez ao dia, geralmente pela manhã.\nTranstorno do pânico: iniciar com 10 mg por via oral 1 vez ao dia e aumentar gradualmente; dose usual 40 mg/dia.\nTranstorno de ansiedade social, ansiedade generalizada, TOC ou TEPT: dose usual 20 mg a 50 mg/dia conforme indicação e resposta.\nDose máxima depende da indicação e apresentação.\nEvitar suspensão abrupta.",
+  "Contraindicações": "Hipersensibilidade à paroxetina ou componentes da fórmula; uso concomitante ou recente de inibidores da monoaminoxidase; uso concomitante com tioridazina; uso concomitante com pimozida.",
+  "Tags Busca": "paroxetina; antidepressivo; isrs; depressão; ansiedade; pânico; toc; aropax; pondera",
+  "Advertências": "Pode causar náuseas, sonolência, insônia, sudorese, tremor, disfunção sexual, ganho de peso, boca seca, constipação, hiponatremia, sangramento, síndrome serotoninérgica e sintomas de descontinuação importantes. Monitorar risco suicida no início e em ajustes de dose. Usar cautela em epilepsia, transtorno bipolar, insuficiência hepática/renal, idosos, risco de sangramento e glaucoma de ângulo fechado.",
+  "Nomes Comerciais OpenAI": "Aropax; Pondera; Paxil CR; Paroxetina EMS; Paroxetina Eurofarma; Paroxetina Medley.",
+  "Rede SUS (RENAME)": false,
+  "Princípio Ativo": "Paroxetina"
+}

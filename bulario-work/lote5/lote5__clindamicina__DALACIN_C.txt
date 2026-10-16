@@ -1,0 +1,484 @@
+FONTE: lote5__clindamicina__DALACIN_C.pdf
+
+===== BLOCO 1 =====
+APRESENTAÇÕES
+Dalacin® C 300 mg em embalagens contendo 16 cápsulas duras.
+
+VIA DE ADMINISTRAÇÃO: USO ORAL
+
+USO ADULTO
+
+1. INDICAÇÕES
+
+Dalacin® C (cloridrato de clindamicina) cápsulas é indicado no tratamento das infecções causadas por bactérias
+anaeróbicas susceptíveis, por cepas susceptíveis de bactérias aeróbias Gram-positivas como estreptococos,
+estafilococos e pneumococos, tais como:
+
+ • Infecções do trato respiratório superior, incluindo amidalite, faringite, sinusite, otite média;
+ • Infecções do trato respiratório inferior, incluindo bronquite e pneumonia;
+ • Infecções da pele e partes moles, incluindo acne, furúnculos, celulite, impetigo, abscessos e feridas
+ infeccionadas. Para infecções específicas da pele e partes moles, como erisipela e panarício, parece
+ lógico que essas condições responderiam muito bem à terapia com Dalacin® C;
+ • Infecções ósseas e infecções das articulações, incluindo osteomielite aguda ou crônica e artrite séptica;
+ • Infecções dentárias, incluindo abscessos periodontais, periodontite, gengivite e abscessos periapicais;
+ • Infecções da pelve e do trato genital feminino, tais como endometrite, abscessos tubo-ovarianos não
+ gonocócicos, celulite pélvica, infecção vaginal pós-cirúrgica, salpingite e doença inflamatória pélvica
+ (DIP), quando associado a um antibiótico apropriado de espectro Gram-negativo aeróbico. Em casos de
+ cervicite por Chlamydia trachomatis, a monoterapia com clindamicina tem se mostrado eficaz na
+ erradicação do organismo.
+
+3. CARACTERÍSTICAS FARMACOLÓGICAS
+
+A clindamicina é um antibiótico semissintético produzido pela substituição do grupo 7(R)-hidroxi de um
+derivado da lincomicina, pelo grupo 7(S)-cloro.
+
+Propriedades Farmacodinâmicas
+
+Mecanismo de ação
+A clindamicina é um antibiótico da classe das lincosamidas que inibe a síntese proteica bacteriana. Ela se liga à
+subunidade ribossomal 50S e afeta a montagem do ribossomo e o processo de tradução. Embora o fosfato de
+clindamicina seja inativo in vitro, a hidrólise rápida in vivo converte esse composto na clindamicina
+antibacteriana ativa. Em doses usuais, a clindamicina exibe atividade bacteriostática in vitro.
+
+Efeitos farmacodinâmicos
+A eficácia está relacionada ao período de tempo em que o nível do agente está acima da concentração inibitória
+mínima (CIM) do patógeno (% T/CIM).
+
+Resistência
+A resistência à clindamicina é mais frequente devido a mutações no sítio de ligação ao antibiótico do rRNA ou a
+metilação de nucleotídeos específicos no RNA 23S da subunidade ribossomal 50S. Essas alterações podem
+determinar a resistência cruzada in vitro a macrolídeos e estreptograminas B (fenótipo MLSB). A resistência é
+ocasionalmente devido a alterações nas proteínas ribossomais. A resistência à clindamicina pode ser induzida por
+macrolídeos em isolados bacterianos resistentes a macrolídeos. A resistência induzível pode ser demonstrada
+com teste de disco (teste de zona D) ou em caldo. Os mecanismos de resistência menos frequentemente
+encontrados envolvem modificação do antibiótico e do efluxo ativo. Há uma resistência cruzada completa entre
+clindamicina e lincomicina. Assim como acontece com muitos antibióticos, a incidência de resistência varia com
+as espécies bacterianas e a área geográfica. A incidência de resistência à clindamicina é maior entre os isolados
+estafilocócicos resistentes à meticilina e os isolados pneumocócicos resistentes à penicilina do que entre os
+organismos suscetíveis a esses agentes.
+
+Atividade antimicrobiana
+A clindamicina demonstrou ter atividade in vitro contra a maioria dos isolados dos seguintes microrganismos:
+
+Bactérias aeróbicas
+ Bactérias gram-positivas
+ • Staphylococcus aureus (isolados suscetíveis à meticilina)
+ • Estafilococos coagulase-negativas (isolados suscetíveis à meticilina)
+ • Streptococcus pneumoniae (isolados suscetíveis à penicilina)
+ • Estreptococos beta-hemolíticos dos grupos A, B, C e G
+
+LLD_ Bra_CDSv22.0_19Dec2025_v2_DLCCAP_24_VPS 5
+27/Ago/2026
+ • Estreptococos do grupo Viridans
+ • Corynebacterium spp.
+
+ Bactérias gram-negativas
+ • Chlamydia trachomatis
+
+Bactérias anaeróbicas
+ Bactérias gram-positivas
+ • Actinomyces spp.
+ • Clostridioides spp. (exceto Clostridioides difficile)
+ • Eggerthella (Eubacterium) spp.
+ • Peptococcus spp.
+ • Peptostreptococcus spp. (Finegoldia magna, Micromonas micros)
+ • Propionibacterium acnes
+
+ Bactérias gram-negativas
+ • Bacteroides spp.
+ • Fusobacterium spp.
+ • Gardnerella vaginalis
+ • Prevotella spp.
+
+Fungos
+ • Pneumocystis jirovecii
+
+Protozoários
+ • Toxoplasma gondii
+ • Plasmodium falciparum
+
+Pontos de interrupção
+A prevalência de resistência adquirida pode variar geograficamente e com o tempo para espécies selecionadas e
+informações locais sobre resistência são desejáveis, particularmente no tratamento de infecções graves. Se
+necessário, deve ser procurado um parecer especializado quando a prevalência local de resistência é tal que a
+utilidade do agente em pelo menos alguns tipos de infecções é questionável. Particularmente em infecções
+graves ou falha terapêutica, o diagnóstico microbiológico com verificação do patógeno e sua susceptibilidade à
+clindamicina é recomendado.
+A resistência é geralmente definida pelo critério interpretativo de susceptibilidade (pontos de interrupção)
+estabelecidos pelo Instituto de Padrões Clínicos e Laboratoriais (CLSI) ou pelo Comitê Europeu de Testes de
+Susceptibilidade Antimicrobiana (EUCAST) para antibióticos administrados sistematicamente.
+Os pontos de interrupção do Instituto de Padrões Clínicos e Laboratoriais (CLSI) para organismos relevantes
+estão listados abaixo.
+
+ Tabela 1. Critério interpretativo de susceptibilidade do CLSI para clindamicina
+ Patógeno Concentrações Inibitória Mínima Disco-difusão
+ (mcg/mL) (Diâmetro do halo em mm)a
+ S I R S I R
+ Staphylococcus spp. ≤0,5 1–2 ≥4 ≥21 15–20 ≤14
+ Streptococcus spp. ≤0,25 0,5 ≥1 ≥19 16–18 ≤15
+ Bactéria anaeróbicab ≤2 4 ≥8 NA NA NA
+ NA=não aplicável; S=suscetível; I=intermediário; R=resistente.
+ aConteúdo do disco 2 microgramas de clindamicina.
+ bFaixas de CIM para anaeróbicos são baseadas na metodologia de diluição em ágar.
+
+Um relatório de "Suscetíveis" (S) indica que o patógeno provavelmente será inibido se o composto
+antimicrobiano no sangue atingir as concentrações geralmente alcançáveis. Um relatório de "Intermediário" (I)
+indica que o resultado deve ser considerado equivocado e, se o micro-organismo não é totalmente suscetível a
+
+LLD_ Bra_CDSv22.0_19Dec2025_v2_DLCCAP_24_VPS 6
+27/Ago/2026
+drogas alternativas, clinicamente viáveis, o teste deve ser repetido. Esta categoria implica em uma possível
+aplicabilidade clínica em locais do corpo onde o fármaco é fisiologicamente concentrado ou em situações em
+que pode ser utilizada uma dose elevada de fármaco. Esta categoria também fornece uma zona tampão que
+impede que fatores técnicos pequenos e não controlados causem grandes discrepâncias na interpretação. Um
+relatório de "Resistente" (R) indica que o patógeno não é susceptível a ser inibido se o composto antimicrobiano
+no sangue atingir as concentrações geralmente alcançáveis; outra terapia deve ser selecionada.
+
+Os procedimentos de teste de susceptibilidade padronizados exigem o uso de controles de laboratório para
+monitorar e garantir a acurácia e precisão dos suprimentos e reagentes utilizados no ensaio e as técnicas dos
+indivíduos que realizam o teste. O pó de clindamicina padrão deve fornecer as faixas de CIM na Tabela 2. Para a
+técnica de disco-difusão usando o disco de 2 mcg de clindamicina, os critérios fornecidos na Tabela 2 devem ser
+alcançados.
+
+ Tabela 2. Faixas de Controle de Qualidade (CQ) aceitáveis do CLSI para a clindamicina a ser
+ usada na validação dos resultados dos testes de suscetibilidade
+ Cepa do CQ Faixa da concentração Faixa de disco-difusão
+ inibitória mínima (mcg/mL) (diâmetro do halo em mm)
+ Staphylococcus aureus 0,06–0,25 NA
+ ATCC 29213
+ Staphylococcus aureus NA 24–30
+ ATCC 25923
+ Streptococcus pneumoniae 0,03–0,12 19–25
+ ATCC 49619
+ Bacteroides fragilis 0,5–2a NA
+ ATCC 25285
+ Bacteroides thetaiotaomicron 2–8a NA
+ ATCC 29741
+ Eggerthella lenta 0,06–0,25a NA
+ ATCC 43055
+ NA=Não aplicável.
+ ATCC® é uma marca registrada da American Type Culture Collection.
+ aFaixas de CIM para anaeróbicos são baseadas na metodologia de diluição em ágar.
+
+Os pontos de interrupção do Comitê Europeu de Testes de Susceptibilidade Antimicrobiana (EUCAST) estão
+apresentados abaixo.
+
+ Tabela 3. Critério Interpretativo de Susceptibilidade do EUCAST para clindamicina
+ Pontos de interrupção da CIM Pontos de interrupção do
+ (mg/L) diâmetro do halo (mm)a
+ Organismo S ≤ R > S ≥ R <
+ Staphylococcus spp. 0,25 0,5 22 19
+ Streptococcus
+ Grupos A, B, C e G 0,5 0,5 17 17
+ Streptococcus pneumoniae 0,5 0,5 19 19
+ Viridans group streptococci 0,5 0,5 19 19
+ Gram-positive anaerobes 4 4 NA NA
+ Gram-negative anaerobes 4 4 NA NA
+ Corynebacterium spp. 0,5 0,5 20 20
+ aConteúdo do disco de 2 µg de clindamicina
+ NA=não aplicável; S=suscetível; R=resistente
+
+Faixas de CQ do EUCAST para determinação da CIM e do halo do disco estão na tabela abaixo.
+
+LLD_ Bra_CDSv22.0_19Dec2025_v2_DLCCAP_24_VPS 7
+27/Ago/2026
+ Tabela 4. Faixas de Controle de Qualidade (CQ) aceitáveis do EUCAST para a clindamicina
+ a ser usada na validação dos resultados dos testes de suscetibilidade
+ Cepa do CQ Faixa da concentração inibitória Faixa de disco-difusão
+ mínima (mcg/mL) (diâmetro do halo em mm)
+ Staphylococcus aureus 0,06–0,25 23-29
+ ATCC 29213
+ Streptococcus 0,03–0,125 22-28
+ pneumoniae
+ ATCC 49619
+ ATCC® é uma marca registrada da American Type Culture Collection
+
+Propriedades Farmacocinéticas
+Estudos de níveis séricos conduzidos com uma dose oral de 150 mg de cloridrato de clindamicina em 24
+voluntários adultos normais mostraram que a clindamicina foi rapidamente absorvida após administração oral.
+Foi atingido nível sérico médio de 2,50 µg/mL em 45 minutos; os níveis séricos foram em média de 1,51 µg/mL
+em 3 horas e de 0,70 µg/mL em 6 horas. A absorção de uma dose oral é quase completa (90%) e a administração
+concomitante de alimentos não modifica, de forma considerável, as concentrações séricas; os níveis séricos
+foram uniformes e previsíveis de pessoa para pessoa e entre as doses. Estudos de níveis séricos conduzidos após
+doses múltiplas de cloridrato de clindamicina por até 14 dias não apresentaram evidências de acúmulo ou de
+alteração do metabolismo do medicamento. A meia-vida sérica da clindamicina aumentou discretamente em
+pacientes com função renal acentuadamente reduzida. A hemodiálise e a diálise peritoneal não são eficazes na
+remoção da clindamicina do soro. As concentrações séricas da clindamicina aumentaram de forma linear com o
+aumento da dose. Os níveis séricos superaram a CIM (concentração inibitória mínima) para a maioria dos
+microrganismos indicados por, pelo menos, seis horas após a administração de doses usualmente recomendadas.
+A clindamicina é amplamente distribuída nos fluidos e tecidos corpóreos (incluindo ossos). Estudos in vitro em
+fígado humano e microssomas intestinais indicaram que a clindamicina é predominantemente oxidada pela
+CYP3A4, com menor contribuição da CYP3A5, para formar sulfóxido de clindamicina e um metabólito menor,
+a N-desmetilclindamicina. A meia-vida biológica média é de 2,4 horas. Aproximadamente 10% dos metabólitos
+ativos são excretados na urina e 3,6% nas fezes; o restante é excretado na forma de metabólitos inativos. Doses
+de até 2 gramas de clindamicina por dia, durante 14 dias, foram bem toleradas por voluntários sadios, com
+exceção da incidência de efeitos colaterais gastrintestinais ser maior com doses mais altas. Nenhum nível
+significativo de clindamicina é atingido no líquido cerebrospinal, mesmo na presença de meninges inflamadas.
+Estudos farmacocinéticos em voluntários idosos (61 – 79 anos) e adultos jovens (18 – 39 anos) indicam que
+apenas a idade não altera a farmacocinética da clindamicina (clearance, meia-vida de eliminação, volume de
+distribuição e área sob a curva) após administração IV do fosfato de clindamicina. Após administração oral de
+cloridrato de clindamicina, a meia-vida de eliminação aumentou para aproximadamente 4,0 horas (variação de
+3,4 – 5,1 h) em idosos, em comparação com 3,2 horas (variação de 2,1 – 4,2 h) em adultos jovens. O grau de
+absorção, no entanto, não é diferente entre as faixas etárias e não é necessária alteração posológica para idosos
+com função hepática normal e função renal normal (ajustada para a idade).
+
+Adultos obesos com idade entre 18 e 20 anos
+Uma análise dos dados farmacocinéticos em adultos obesos com 18 a 20 anos de idade demonstrou que a
+depuração da clindamicina e o volume de distribuição normalizado pelo peso corporal total são comparáveis,
+independentemente da obesidade.
+
+Dados de Segurança Pré-Clínicos
+
+Carcinogênese
+Estudos de longa duração não foram realizados em animais para avaliar o potencial carcinogênico.
+
+Mutagenicidade
+Testes de genotoxicidade realizados incluíram o teste do micronúcleo em ratos e um teste de Ames Salmonella
+invertido. Ambos os testes foram negativos.
+
+LLD_ Bra_CDSv22.0_19Dec2025_v2_DLCCAP_24_VPS 8
+27/Ago/2026
+Alterações na Fertilidade
+Estudos de fertilidade em ratos tratados com até 300 mg/kg/dia (aproximadamente 1,1 vezes a maior dose
+recomendada em adultos humanos; dose calculada em mg/m2), por via oral, não revelaram efeitos na fertilidade
+ou no acasalamento.
+
+Em estudos de desenvolvimento fetal em ratos com clindamicina oral não foi observado desenvolvimento de
+toxicidade, exceto em doses que produziram toxicidade materna.
+
+4. CONTRAINDICAÇÕES
+
+Dalacin® C é contraindicado a pacientes que já apresentaram hipersensibilidade à clindamicina ou à lincomicina
+ou a qualquer componente da fórmula.
+
+Informe a seu paciente que a doação de sangue é absolutamente contraindicada durante o tratamento com
+cloridrato de clindamicina e até 15 dias após seu término, devido ao dano que ele pode causar ao receptor.
+Após 15 dias, a doação deve ser avaliada por profissional qualificado.
+
+5. ADVERTÊNCIAS E PRECAUÇÕES
+
+Para prevenir o desenvolvimento de bactérias resistentes, este medicamento deverá ser usado somente
+para o tratamento ou prevenção de infecções causadas ou fortemente suspeitas de serem causadas por
+microrganismos sensíveis a este medicamento.
+
+Reações de hipersensibilidade graves, incluindo reações cutâneas graves, como reação medicamentosa com
+eosinofilia e sintomas sistêmicos (DRESS), síndrome de Stevens-Johnson (SSJ), necrólise epidérmica tóxica
+(NET), pustulose exantemática aguda generalizada (PEAG) e síndrome de Kounis têm sido relatados em
+pacientes recebendo terapia com clindamicina. Se ocorrer hipersensibilidade ou reação cutânea grave, a
+clindamicina deve ser descontinuada e uma terapia apropriada deve ser iniciada (vide item 4. Contraindicações e
+item 9. Reações Adversas).
+
+Colite pseudomembranosa foi relatada em associação a quase todos os agentes an tibacterianos, inclusive
+clindamicina, e pode variar, em gravidade, de leve até risco de morte. Portanto, é importante considerar esse
+diagnóstico em pacientes que apresentam diarreia subsequente à administração de agentes antibacterianos.
+
+O tratamento com agentes antibacterianos altera a flora normal do cólon e pode permitir o supercrescimento de
+clostridia. Os estudos indicam que a toxina produzida pelo Clostridioides difficile é a principal causa de “colite
+associada a antibiótico”. Após se estabelecer diagnóstico de colite pseudomembranosa, as medidas terapêuticas
+devem ser iniciadas. Casos leves de colite pseudomembranosa geralmente respondem à interrupção do fármaco
+isoladamente. Em casos moderados a graves, deve-se considerar o tratamento hidroeletrolítico, suplementação
+proteica e tratamento com um fármaco antibacteriano clinicamente eficaz contra colite por Clostridioides
+difficile.
+
+Diarreia associada à Clostridioides difficile (CDAD) foi relatada com o uso de quase todos os agentes
+antibacterianos, incluindo clindamicina, podendo variar em gravidade de diarreia leve a colite fatal. O tratamento
+com antibacterianos altera a flora normal do cólon resultando em um crescimento excessivo das cepas de C.
+difficile.
+
+As toxinas A e B produzidas por C. difficile contribuem para o desenvolvimento de CDAD. Hipertoxina
+produzida por cepas de C. difficile resultam em aumento da morbidade e mortalidade, uma vez que estas
+infecções podem ser refratárias a antimicrobianos e podem requerer colectomia. CDAD deve ser considerada
+para todos os pacientes que apresentam diarreia seguida do uso de antibióticos. Há relatos que CDAD pode
+ocorrer em até dois meses após a administração de antibacterianos, portanto, é necessário cuidado na tomada do
+histórico médico e acompanhamento.
+
+LLD_ Bra_CDSv22.0_19Dec2025_v2_DLCCAP_24_VPS 9
+27/Ago/2026
+A clindamicina não deve ser usada no tratamento da meningite, pois não penetra adequadamente no líquido
+cefalorraquidiano.
+
+Durante terapia prolongada devem ser realizados testes periódicos de função hepática.
+Este medicamento pode causar hepatotoxicidade. Por isso, requer uso cuidadoso, sob vigilância médica
+estrita e acompanhado por controles periódicos da função hepática.
+Não é necessária a redução da dose em pacientes com doença renal e hepática. Entretanto, determinações
+periódicas de enzimas hepáticas devem ser realizadas durante o tratamento com clindamicina de pacientes com
+doença hepática grave.
+
+A clindamicina é potencialmente nefrotóxica. Foi relatada lesão renal aguda, incluindo insuficiência renal aguda.
+Portanto, o monitoramento da função renal deve ser considerado durante a terapia de pacientes com disfunção
+renal pré-existente ou tomando concomitantemente medicamentos nefrotóxicos e o monitoramento da função
+renal deve ser realizado se o tratamento for prolongado.
+
+Devido ao risco de esofagite e úlcera esofágica, é importante assegurar a conformidade com as orientações de
+administração (vide item 8 Posologia e Modo de Usar e item 9. Reações Adversas).
+
+Uso durante a Gravidez
+Estudos de toxicidade reprodutiva em ratos e coelhos com clindamicina oral não revelaram qualquer evidência
+de diminuição da fertilidade ou dano ao feto, exceto em doses que causaram toxicidade materna. Estudos de
+reprodução em animais nem sempre reproduzem a resposta em humanos.
+
+A clindamicina atravessa a placenta em humanos. Após doses múltiplas, as concentrações no líquido amniótico
+foram de, aproximadamente, 30% das concentrações sanguíneas maternas.
+
+Em estudos clínicos com mulheres grávidas, a administração sistêmica de clindamicina durante o segundo e
+terceiro trimestre de gravidez não tem sido associada a um aumento da frequência de anomalias congênitas. Não
+existem estudos adequados e bem controlados em mulheres grávidas durante o primeiro trimestre de gravidez.
+A clindamicina deve ser utilizada na gravidez apenas se claramente necessária.
+
+Dalacin® C é um medicamento classificado na categoria B de risco de gravidez. Portanto, este
+medicamento não deve ser utilizado por mulheres grávidas sem orientação médica ou do cirurgião-
+dentista.
+
+Uso durante a Lactação
+A clindamicina foi detectada no leite materno em concentrações de <0,5 a 3,8 mcg/mL.
+A clindamicina tem o potencial de causar efeitos adversos na flora gastrointestinal do lactente, como diarreia ou
+sangue nas fezes, ou erupção cutânea. Se a clindamicina administrada por via oral ou intravenosa for exigida a
+uma lactante, não é um motivo para interromper a amamentação, mas uma droga alternativa pode ser preferida.
+Os benefícios da amamentação no desenvolvimento e na saúde devem ser considerados juntamente com a
+necessidade clínica da mãe de clindamicina e quaisquer potenciais efeitos adversos no lactente da clindamicina
+ou da condição materna subjacente.
+
+Uso criterioso no aleitamento ou na doação de leite humano.
+O uso deste medicamento no período da lactação depende da avaliação e acompanhamento do seu médico
+ou cirurgião-dentista.
+
+Efeito na Habilidade de Dirigir ou Operar Máquinas
+O efeito da clindamicina na habilidade de dirigir ou operar máquinas ainda não foi sistematicamente avaliado.
+
+Atenção: contém 294 mg de lactose (tipo de açúcar)/cápsula dura.
+
+Este medicamento não deve ser usado por pessoas com síndrome de má-absorção de glicose-galactose.
+
+LLD_ Bra_CDSv22.0_19Dec2025_v2_DLCCAP_24_VPS 10
+27/Ago/2026
+Atenção: Contém os corantes dióxido de titânio, azul brilhante, vermelho allura 129 e vermelho de
+eritrosina dissódica.
+
+6. INTERAÇÕES MEDICAMENTOSAS
+
+Estudos demonstraram que a clindamicina apresenta propriedades de bloqueio neuromuscular que podem
+intensificar a ação de outros fármacos com atividade semelhante. Portanto, a clindamicina deve ser usada com
+cautela em pacientes sob terapia com tais agentes.
+
+A clindamicina é metabolizada predominantemente pela CYP3A4 e, em menor grau pela CYP3A5, para o
+metabólito principal sulfóxido de clindamicina e para o menor metabolito N-desmetilclindamicina. Deste modo,
+os inibidores de CYP3A4 e CYP3A5 podem reduzir a depuração da clindamicina e os indutores destas
+isoenzimas podem aumentar a depuração da clindamicina. Na presença de indutores fortes de CYP3A4 como a
+rifampicina, monitorar a perda de eficácia.
+
+Estudos in vitro indicam que a clindamicina não inibe CYP1A2, CYP2C9, CYP2C19, CYP2E1 ou CYP2D6 e
+apenas inibe moderadamente a CYP3A4. Portanto, as interações clinicamente importantes entre clindamicina e
+fármacos coadministrados metabolizados por estas enzimas CYP são improváveis.
+
+8. POSOLOGIA E MODO DE USAR
+
+Uso em Adultos
+A dose diária recomendada é de 600 – 1.800 mg, dividida em 2, 3 ou 4 doses iguais. Para evitar a possibilidade
+de irritação do esôfago, Dalacin® C deve ser administrado com um copo cheio de água e pelo menos 30 minutos
+antes de se deitar.
+
+Uso em Idosos
+Estudos farmacocinéticos com clindamicina mostraram que não há diferenças importantes entre pacientes jovens
+e idosos com a função hepática e renal normal (ajustado pela idade), após administração oral ou intravenosa.
+Portanto, o ajuste da dose não é necessário em pacientes idosos com a função hepática e renal normal (ajustado
+pela idade) (vide item 3. Características Farmacológicas - Propriedades Farmacocinéticas).
+
+Uso em Pacientes com Insuficiência Renal
+Não é necessário o ajuste de dose em pacientes com insuficiência renal.
+
+Uso em Pacientes com Insuficiência Hepática
+Não é necessário o ajuste de dose em pacientes com insuficiência hepática.
+
+Doses em indicações específicas
+
+Tratamento de infecções por estreptococo beta-hemolítico: Consulte as recomendações de dosagem “Uso em
+Adultos”. O tratamento deverá continuar pelo menos durante dez dias.
+
+LLD_ Bra_CDSv22.0_19Dec2025_v2_DLCCAP_24_VPS 11
+27/Ago/2026
+Tratamento intra-hospitalar de doença inflamatória pélvica: 900 mg de fosfato de clindamicina, por via
+intravenosa, a cada 8 horas, concomitantemente a um antibiótico de espectro aeróbio Gram-negativo apropriado,
+como gentamicina 2,0 mg/kg, administrado por via IV, seguido de 1,5 mg/kg a cada 8 horas em pacientes com
+função renal normal. O tratamento IV deve ser continuado por pelo menos 4 dias e por pelo menos 48 horas após
+a recuperação da paciente.
+
+Continua-se então o tratamento com Dalacin® C cápsulas, administrando-se por via oral 450-600 mg a cada 6
+horas até completar 10 – 14 dias de tratamento total.
+
+Tratamento de amidalite e faringite agudas causadas por estreptococo: Dalacin® C 300 mg (1 cápsula) 2
+vezes ao dia, durante 10 dias.
+
+Dose Omitida
+Caso o paciente esqueça-se de administrar Dalacin® C no horário estabelecido, ele deve fazê-lo assim que
+lembrar. Entretanto, se já estiver perto do horário de administrar a próxima dose, o paciente deve desconsiderar a
+dose esquecida e utilizar a próxima. Neste caso, o paciente não deve utilizar a dose duplicada para compensar
+doses esquecidas. O esquecimento da dose pode comprometer a eficácia do tratamento.
+
+Este medicamento não deve ser partido, aberto ou mastigado.
+
+9. REAÇÕES ADVERSAS
+
+Reações adversas ao medicamento por categoria de frequência do Sistema de Classe de Órgãos (SOC) e CIOMS
+(Council for International Organizations of Medical Sciences) listados em ordem decrescente de gravidade
+médica dentro de cada categoria de frequência e SOC.
+
+Classe de Comum Incomum Rara Frequência não conhecida (não
+Sistema de >1/100 a ≤1/10 >1/1000 a >1/10000 a pode ser estimada a partir dos
+Órgãos ≤1/100 ≤1/1000 dados disponíveis)
+Infecções e colite colite por Clostridioides difficile⃰,
+infestações pseudomembranosa ⃰ infecção vaginal ⃰
+Distúrbios eosinofilia agranulocitose ⃰, neutropenia ⃰,
+sanguíneos e do trombocitopenia ⃰, leucopenia ⃰
+sistema
+linfático
+Distúrbios do choque anafilático ⃰, reação
+sistema anafilactoide*, reação anafilática ⃰,
+imunológico síndrome de Kounis*,
+ hipersensibilidade ⃰
+Distúrbios do disgeusia
+sistema nervoso
+Distúrbios diarreia dor úlcera esofágica⃰ ‡≠, esofagite*‡≠
+gastrointestinais abdominal,
+ vômito,
+ icterícia* náusea
+Distúrbios
+hepatobiliares
+Distúrbios na rash maculopapular urticária eritema necrólise epidérmica tóxica
+pele ou no multiforme, (NET)*, síndrome de Steven
+tecido pruridos Johnson (SSJ)*, reação
+subcutâneo medicamentosa com eosinofilia e
+ sintomas sistêmicos (DRESS)*,
+ pustulose exantemática aguda
+ generalizada (PEAG)*,
+
+LLD_ Bra_CDSv22.0_19Dec2025_v2_DLCCAP_24_VPS 12
+27/Ago/2026
+ angioedema*, dermatite
+ esfoliativa*, dermatite bolhosa*,
+ vasculite cutânea*, rash
+ morbiliforme*, exantema
+ intertriginoso e flexural simétrico
+ relacionado a medicamentos*
+Distúrbios lesão renal aguda*
+renais e
+urinários
+Exames exame de função
+Laboratoriais hepática anormal
+*Reação Adversa a Medicamento identificada pós-comercialização
+‡ Reação Adversa a Medicamento aplicável somente a formulação oral
+≠ Possível ocorrência de esofagite (incluindo esofagite necrosante) e úlcera esofágica, especialmente se tomadas
+em posição deitada e/ou com uma pequena quantidade de água.
+
+Em casos de eventos adversos, notifique pelo Sistema VigiMed, disponível no Portal da Anvisa.
+
+10. SUPERDOSE
+
+Hemodiálise e diálise peritonial não são meios eficazes para a eliminação do composto do sangue.
+
+Em caso de superdose, empregar tratamento sintomático e de suporte.
+
+Em caso de intoxicação ligue para 0800 722 6001, se você precisar de mais orientações.
+
+LLD_ Bra_CDSv22.0_19Dec2025_v2_DLCCAP_24_VPS 13
+27/Ago/2026
+III –

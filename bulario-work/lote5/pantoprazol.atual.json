@@ -1,0 +1,17 @@
+{
+  "Risco Gestacional": "B",
+  "Slug": "pantoprazol",
+  "Nomes Comerciais / Produtos ANVISA": "Pantozol; Pantocal; Pantopaz; pantoprazol.",
+  "Interações": "Pode reduzir absorção de medicamentos dependentes de acidez gástrica, como cetoconazol, itraconazol, posaconazol, erlotinibe, atazanavir, rilpivirina e sais de ferro em algumas situações. Pode aumentar níveis de metotrexato em altas doses. Varfarina pode ter INR alterado em pacientes suscetíveis. Digoxina pode ter absorção aumentada em alguns pacientes. Em geral, tem menor interferência com clopidogrel que omeprazol/esomeprazol, mas monitorar conforme risco cardiovascular e necessidade de gastroproteção.",
+  "Apresentações / Nomes Comerciais": "Comprimidos gastrorresistentes 20 mg e 40 mg; pó liofilizado para solução injetável 40 mg conforme fabricante. Exemplos: Pantozol; Pantocal; Pantopaz; Pantoprazol EMS; pantoprazol genérico.",
+  "Posologia Pediátrica": "Uso pediátrico depende da idade, peso, indicação e apresentação.\nDRGE/esofagite em crianças: dose deve seguir bula específica e avaliação médica.\nNão informado na fonte consultada para todas as faixas etárias.",
+  "Texto Resumo": "Pantoprazol é um inibidor da bomba de prótons usado em refluxo gastroesofágico, esofagite, gastrite, úlcera péptica e esquemas para Helicobacter pylori. Deve ser usado na menor dose efetiva, com atenção a sinais de alarme gastrointestinais, interações e riscos do uso prolongado.",
+  "Classe / Categoria": "Inibidor da bomba de prótons; antiulceroso; redutor da secreção ácida gástrica.",
+  "Posologia Adulto": "DRGE, esofagite de refluxo, gastrite ou úlcera péptica: 20 mg a 40 mg por via oral 1 vez ao dia, preferencialmente antes do café da manhã.\nEsofagite erosiva ou quadros mais graves: 40 mg por via oral 1 vez ao dia por 4 a 8 semanas, conforme resposta.\nErradicação de Helicobacter pylori: 40 mg por via oral a cada 12 horas associado a antibióticos conforme esquema.\nUso intravenoso hospitalar: 40 mg IV ao dia ou conforme protocolo.",
+  "Contraindicações": "Hipersensibilidade ao pantoprazol, benzimidazóis substituídos ou componentes da fórmula; uso concomitante com medicamentos cuja absorção dependa criticamente do pH gástrico quando não houver alternativa segura, conforme avaliação clínica.",
+  "Tags Busca": "pantoprazol; inibidor da bomba de prótons; refluxo; gastrite; úlcera; h pylori; antiácido; pantozol",
+  "Advertências": "Uso prolongado pode estar associado a hipomagnesemia, deficiência de vitamina B12, fraturas, nefrite intersticial, infecções gastrointestinais, pneumonia e pólipos de glândulas fúndicas. Investigar sinais de alarme, como perda de peso, disfagia, vômitos persistentes, anemia, hematêmese ou melena. Pode mascarar sintomas de neoplasia gástrica.",
+  "Nomes Comerciais OpenAI": "Pantozol; Pantocal; Pantopaz; Pantoprazol EMS; Pantoprazol Medley; Pantoprazol Eurofarma.",
+  "Rede SUS (RENAME)": false,
+  "Princípio Ativo": "Pantoprazol"
+}

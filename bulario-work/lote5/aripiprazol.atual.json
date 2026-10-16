@@ -1,0 +1,17 @@
+{
+  "Risco Gestacional": "C",
+  "Slug": "aripiprazol",
+  "Nomes Comerciais / Produtos ANVISA": "Abilify; Aristab; aripiprazol.",
+  "Interações": "Inibidores fortes de CYP3A4 e CYP2D6, como cetoconazol, itraconazol, claritromicina, ritonavir, fluoxetina, paroxetina e quinidina, podem aumentar níveis de aripiprazol e exigir redução de dose. Indutores fortes de CYP3A4, como carbamazepina, rifampicina, fenitoína, fenobarbital e Hypericum perforatum, podem reduzir níveis e eficácia. Benzodiazepínicos, como clonazepam, diazepam, lorazepam, alprazolam e midazolam, álcool, opioides e zolpidem aumentam sedação. Anti-hipertensivos como losartana, enalapril, captopril, anlodipino e atenolol podem aumentar risco de hipotensão.",
+  "Apresentações / Nomes Comerciais": "Comprimidos 5 mg, 10 mg, 15 mg, 20 mg e 30 mg conforme fabricante; solução oral; comprimido orodispersível; formulações injetáveis de longa ação conforme produto. Exemplos: Abilify; Aristab; Aripiprazol EMS; aripiprazol genérico.",
+  "Posologia Pediátrica": "Esquizofrenia em adolescentes e transtorno bipolar pediátrico: dose deve ser individualizada por idade, indicação e resposta, geralmente com titulação gradual.\nIrritabilidade associada ao transtorno do espectro autista: esquemas pediátricos variam conforme idade/peso e bula específica.\nNão usar sem avaliação especializada.",
+  "Texto Resumo": "Aripiprazol é um antipsicótico atípico usado em esquizofrenia, transtorno bipolar e outras indicações psiquiátricas selecionadas. Costuma ter menor risco de sedação e hiperprolactinemia que alguns antipsicóticos, mas pode causar acatisia, sintomas extrapiramidais e alterações metabólicas.",
+  "Classe / Categoria": "Antipsicótico atípico; agonista parcial dopaminérgico D2 e serotoninérgico 5-HT1A; antagonista 5-HT2A.",
+  "Posologia Adulto": "Esquizofrenia: 10 mg a 15 mg por via oral 1 vez ao dia; dose máxima usual: 30 mg/dia.\nTranstorno bipolar, episódio de mania ou misto: 15 mg por via oral 1 vez ao dia; dose máxima usual: 30 mg/dia.\nTratamento adjuvante em depressão maior: iniciar geralmente com 2 mg a 5 mg por via oral 1 vez ao dia, ajustando conforme resposta e tolerabilidade.",
+  "Contraindicações": "Hipersensibilidade ao aripiprazol ou componentes da fórmula.",
+  "Tags Busca": "aripiprazol; antipsicótico; esquizofrenia; transtorno bipolar; mania; autismo; abilify",
+  "Advertências": "Pode causar acatisia, inquietação, insônia, náuseas, sonolência, sintomas extrapiramidais, hipotensão ortostática, síndrome neuroléptica maligna, discinesia tardia, hiperglicemia, dislipidemia e ganho de peso. Aumenta mortalidade em idosos com psicose relacionada à demência. Monitorar risco suicida, sintomas motores, glicemia, lipídios e peso.",
+  "Nomes Comerciais OpenAI": "Abilify; Aristab; Aripiprazol EMS; Aripiprazol Eurofarma; Aripiprazol Aché.",
+  "Rede SUS (RENAME)": false,
+  "Princípio Ativo": "Aripiprazol"
+}

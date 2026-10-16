@@ -1,0 +1,136 @@
+{
+  "_normas": {
+    "antimicrobiano": "Antimicrobiano — receita em 2 vias | Fonte: ANVISA RDC nº 471/2021 (art. 10: retenção da 2ª via) e IN nº 360/2025 (lista de antimicrobianos; receita válida por 10 dias).",
+    "C1": "Controle especial — Lista C1/C5 em 2 vias | Fonte: Portaria SVS/MS nº 344/1998, Anexo I atualizado pela RDC ANVISA nº 1.036/2026 (Lista C1 — Receita de Controle Especial em duas vias)."
+  },
+  "_observacao_geral": "Se 'empresa' estiver vazia em fontes.json, use o nome do titular do registro que aparece no começo do texto da bula. 'publicacao' vazia: procure 'aprovada pela Anvisa em' no texto; se não houver, omita a data.",
+  "acido-valproico": {
+    "principal": [
+      "lote5/lote5__acido-valproico__DEPAKENE.txt"
+    ],
+    "receituario": "C1"
+  },
+  "alopurinol": {
+    "principal": [
+      "lote5/lote5__alopurinol__ZYLORIC.txt"
+    ]
+  },
+  "aripiprazol": {
+    "principal": [
+      "lote5/lote5__aripiprazol__ARISTAB.txt"
+    ],
+    "complementares": [
+      "lote5/lote5x__aripiprazol-comp__ARISTAB.txt (Aristab — outra bula profissional do mesmo produto (Aché, publicada 19/11/2025); some as apresentações)"
+    ],
+    "receituario": "C1"
+  },
+  "bupropiona-cloridrato": {
+    "principal": [
+      "lote5/lote5__bupropiona-cloridrato__WELLBUTRIN.txt"
+    ],
+    "receituario": "C1"
+  },
+  "carvedilol": {
+    "principal": [
+      "lote5/lote5__carvedilol__CARVEDILOL.txt"
+    ]
+  },
+  "citalopram": {
+    "principal": [
+      "lote5/lote5__citalopram__CIPRAMIL.txt"
+    ],
+    "receituario": "C1",
+    "observacao": "A bula (de 2023) só diz \"venda sob prescrição médica\", mas o citalopram está na Lista C1 da Portaria 344: use a norma C1 do manifesto."
+  },
+  "claritromicina": {
+    "principal": [
+      "lote5/lote5__claritromicina__KLARICID.txt"
+    ],
+    "complementares": [
+      "lote5/lote5x__claritromicina-iv__CLARITROMICINA.txt (claritromicina pó liofilizado para infusão 500 mg, Blau, genérico, publicada 30/07/2026 — via IV)"
+    ],
+    "receituario": "antimicrobiano"
+  },
+  "clindamicina": {
+    "principal": [
+      "lote5/lote5__clindamicina__DALACIN_C.txt"
+    ],
+    "complementares": [
+      "lote5/lote5x__clindamicina-injetavel__CLINDAMICINA.txt (fosfato de clindamicina solução injetável 150 mg/mL, Hipolabor, genérico, publicada 02/10/2026 — via IV/IM)"
+    ],
+    "receituario": "antimicrobiano"
+  },
+  "colchicina": {
+    "principal": [
+      "lote5/lote5__colchicina__COLCHIS.txt"
+    ]
+  },
+  "domperidona": {
+    "principal": [
+      "lote5/lote5__domperidona__MOTILIUM.txt"
+    ]
+  },
+  "indapamida": {
+    "principal": [
+      "lote5/lote5__indapamida__NATRILIX.txt"
+    ]
+  },
+  "lamotrigina": {
+    "principal": [
+      "lote5/lote5__lamotrigina__LAMICTAL.txt"
+    ],
+    "receituario": "C1"
+  },
+  "levofloxacino": {
+    "principal": [
+      "lote5/lote5__levofloxacino__LEVAQUIN.txt"
+    ],
+    "complementares": [
+      "lote5/lote5x__levofloxacino-iv__LEVOFLOXACINO.txt (levofloxacino solução para infusão 5 mg/mL, Halex Istar, genérico, publicada 13/03/2026 — via IV)"
+    ],
+    "receituario": "antimicrobiano"
+  },
+  "mirtazapina": {
+    "principal": [
+      "lote5/lote5__mirtazapina__REMERON.txt"
+    ],
+    "receituario": "C1"
+  },
+  "pantoprazol": {
+    "principal": [
+      "lote5/lote5__pantoprazol__PANTOZOL.txt"
+    ]
+  },
+  "paroxetina": {
+    "principal": [
+      "lote5/lote5__paroxetina__AROPAX.txt"
+    ],
+    "receituario": "C1"
+  },
+  "pregabalina": {
+    "principal": [
+      "lote5/lote5__pregabalina__LYRICA.txt"
+    ],
+    "complementares": [
+      "lote5/lote5x__pregabalina-solucao__DORENE.txt (Dorene Líquido (pregabalina solução oral), Aché, medicamento novo, publicada 12/11/2025)"
+    ],
+    "receituario": "C1"
+  },
+  "rosuvastatina-calcica": {
+    "principal": [
+      "lote5/lote5__rosuvastatina-calcica__CRESTOR.txt"
+    ]
+  },
+  "topiramato": {
+    "principal": [
+      "lote5/lote5__topiramato__TOPAMAX.txt"
+    ],
+    "receituario": "C1"
+  },
+  "venlafaxina": {
+    "principal": [
+      "lote5/lote5__venlafaxina__EFEXOR.txt"
+    ],
+    "receituario": "C1"
+  }
+}

@@ -1,0 +1,288 @@
+FONTE: lote5x__clindamicina-injetavel__CLINDAMICINA.pdf
+
+===== BLOCO 1 =====
+1. INDICAÇÕES
+O fosfato de clindamicina solução injetável é indicado para o tratamento de infecções causadas por variedades susceptíveis do s seguintes micro-organismos
+sensíveis à clindamicina: estreptococos e estafilococos: infecções do trato respiratório superior, inf ecções da pele e dos tecidos moles, septicemia; pneumococos:
+infecções do trato respiratório superior e inferior; bactérias anaeróbicas: infecções do trato respiratório inferior, tais co mo empiema, pneumonite anaeróbica e
+abscessos pulmonares; infecções da pele e dos tecidos moles; septicemia; infecções intra-abdominais, tais como peritonite e abscesso intra-abdominal
+(tipicamente resultantes de micro-organismos anaeróbicos residentes no trato gastrintestinal normal); infecções da pelve e do trato genital f eminino, tais como
+endometrite, abscessos tubo-ovarianos não gonocócicos, celulite pélvica, infecção vaginal pós-cirúrgica e doença inflamatória pélvica (DIP), quando associado
+a um antibiótico apropriado de espectro Gram-negativo aeróbico. O fosfato de clindamicina é indicado no tratamento em infecções dentárias causadas por micro-
+organismos susceptíveis.
+
+3. CARACTERÍSTICAS FARMACOLÓGICAS
+O fosfato de clindamicina é um antibiótico semissintético, produzido pela substituição do grupo 7(R)-hidroxi de um derivado da lincomicina, pelo grupo 7(S)-
+cloro. O fosfato de clindamicina é o éster hidrossolúvel da clindamicina e do ácido fosfórico.
+
+Propriedades farmacodinâmicas
+O fosfato de clindamicina é um antibiótico inibidor da síntese proteica bacteriana.
+Embora o fosfato de clindamicina seja inativo in vitro, in vivo é rapidamente hidrolisado a clindamicina ativa.
+A clindamicina demonstrou ter atividade in vitro contra os seguintes microrganismos isolados:
+- cocos aeróbicos gram-positivos: Staphylococcus aureus; Staphylococcus epidermidis (cepas produtoras de penicilinase e não penicilinase). Em testes in vitro
+algumas cepas de estafilococos resistentes à eritromicina, rapidamente desenvolveram resistência à clindamicina; estreptococo (exceto Streptococcus faecalis)
+e pneumococo.
+- bacilos anaeróbicos gram -negativos: Bacteroides spp. (incluindo os grupos Bacteroides fragilis e Bacteroides melaninogenicus); Fusobacterium spp.
+- bacilos anaeróbicos gram-positivos não formadores de esporos: Propionibacterium, Eubacterium, Actinomyces spp.
+- cocos anaeróbicos e microaerófilos gram-positivo: Peptococcus spp.; Peptostreptococcus spp. e Microaerophilic streptococci.
+- Clostridia: é mais resistente que os outros micro -organismos anaeróbicos à clindamicina. Muitos Clostridium perfringens são susceptíveis, mas outras espécies
+como Clostridium sporogenes e Clostridium tertium são frequentemente resistentes à clindamicina.
+Devem ser feitos testes de susceptibilidade. Foi demonstrada resistência cruzada entre clindamicina e lincomicina. Foi demonstrado antagonismo entre
+clindamicina e eritromicina.
+
+Propriedades farmacocinéticas
+Estudos de níveis séricos conduzidos com uma dose oral de 150 mg de cloridrato de clindamicina em 24 voluntários adultos normais mostraram que a
+clindamicina foi rapidamente absorvida após administração oral. Foi atingido nível sérico médio de 2,50 μg/mL em 45 minutos; os níveis séricos foram em
+média de 1,51 μg/mL em 3 horas e de 0,70 μg/mL em 6 horas. A absorção de uma dose oral é quase completa (90%) e a administração concomitante de alimentos
+não modifica, de forma considerável, as concentrações séricas; os níveis séricos foram uniformes e previsíveis de pessoa para pessoa e entre as doses. Estudos
+de níveis séricos conduzidos após doses múltiplas de cloridrato de clindamicina por até 14 dias não apresentaram evidências de acúmulo ou de alteração do
+metabolismo do medicamento. A meia-vida sérica da clindamicina aumentou discretamente em pacientes com função renal acentuadamente reduzida. A
+hemodiálise e a diálise peritoneal não são eficazes na remoção da clindamicina do soro. As concentrações séricas da clindamicina aumentaram de forma linear
+com o aumento da dose. Os níveis séricos excederam a CIM (concentração inibitória mínima) para a maioria dos micro-organismos indicados por, pelo menos,
+seis horas após a administração de doses usualmente recomendadas. A clindamicina é amplamente distribuída nos fluidos e tecidos corpóreos (incluindo ossos).
+A meia-vida biológica média é de 2,4 horas. Aproximadamente 10% do ativo é excretado na urina e 3,6% nas fezes; o restante é excretado na forma de metabólitos
+inativos. Doses de até 2 gramas de clindamicina por dia, durante 14 dias, foram bem toleradas por voluntários sadios, com exceção da incidência de efeitos
+colaterais gastrintestinais ser maior com doses mais altas. Nenhum nível significativo de clindamicina é atingido no líquido cerebrospinal, mesmo na presença
+de meninges inflamadas. Estudos farmacocinéticos em voluntários idosos (61-79 anos) e adultos jovens (18-39 anos) indicam que apenas a idade não altera a
+farmacocinética da clindamicina (clearance, meia-vida de eliminação, volume de distribuição e área sob a curva) após administração IV do fosfato de
+clindamicina. Após administração oral de cloridrato de clindamicina, a meia-vida de eliminação aumentou para aproximadamente 4,0 horas (variação de 3,4 –
+5,1 h) em idosos, em comparação com 3,2 horas (variação de 2,1 – 4,2 h) em adultos jovens. O grau de absorção, no entanto, não é diferente entre as faixas
+etárias e não é necessária alteração posológica para idosos com função hepática normal e função r enal normal (ajustada para a idade).
+
+Dados de segurança pré-clínicos
+Carcinogênese: estudos de longa duração não foram realizados em animais para avaliar o potencial carcinogênico.
+Mutagenicidade: testes de genotoxicidade realizados incluíram o teste do micronúcleo em ratos e um teste de Ames Salmonella invertido. Ambos foram
+negativos.
+Alterações na fertilidade: estudos de fertilidade em ratos tratados com até 300 mg/kg/dia (aproximadamente 1,1 vezes a maior dose recomendada em adultos
+humanos; dose calculada em mg/m 2), por via oral, não revelaram efeitos na fertilidade ou no acasalamento.
+Em estudos de desenvolvimento embrio -fetal em ratos com clindamicina oral e em ratos e coelhos com clindamicina subcutânea, não foram observados
+desenvolvimento de toxicidade, exceto em doses que produziram toxicidade materna.
+
+4. CONTRAINDICAÇÕES
+O fosfato de clindamicina é contraindicado a pacientes que já apresentaram hipersensibilidade à clindamicina, à lincomicina o u a qualquer componente da
+fórmula.
+
+Uso contraindicado no aleitamento ou na doação de leite humano. Este medicamento é contraindicado durante o aleitamento ou do ação de leite, pois é
+excretado no leite humano e pode causar reações indesejáveis no bebê. Seu médico ou cirurgião -dentista deve apresentar alternativas para o seu
+tratamento ou para a alimentação do bebê.
+Informe a seu paciente que a doação de sangue é absolutamente contraindicada durante o tratamento com fosfato de clindamicina devido ao dano que
+esse medicamento pode causar ao receptor.
+
+5. ADVERTÊNCIAS E PRECAUÇÕES
+Colite pseudomembranosa foi relatada em associação a quase todos os agentes antibióticos, inclusive clindamicina, podendo variar em gravidade, de leve até
+risco de morte. Portanto, é importante considerar esse diagnóstico em pacientes que apresentam diarreia subsequente à administração de agentes antibacterianos.
+O tratamento com agentes antibacterianos altera a flora normal do cólon e pode permitir o supercrescimento de clostridia. Os estudos indicam que a toxina
+produzida pelo Clostridium difficile é a principal causa de “colite associada a antibiótico”. Após se estabelecer diagnóstico de colite pseudomembranosa, as
+medidas terapêuticas devem ser iniciadas. Casos leves de colite pseudomembranosa geralmente respondem à interrupção do fármaco isoladamente. Em casos
+moderados a graves, deve-se considerar o tratamento hidroeletrolítico, suplementação proteica e tratamento com um fármaco antibacteriano clinicamente eficaz
+contra colite por Clostridium difficile.
+A clindamicina não deve ser usada no tratamento da meningite, pois não penetra adequadamente no líquido cefalorraquidiano.
+Durante terapia prolongada, devem ser realizados testes periódicos da função hepática e renal.
+O uso de fosfato de clindamicina pode resultar em proliferação de micro -organismos não susceptíveis, particularmente leveduras. Diarreia associada à
+Clostridium difficile (CDAD) foi relatada com o uso de quase todos os agentes antibacterianos, inclusive clindamicina, podendo variar em gravidade de diarreia
+leve a colite fatal. O tratamento com antibacterianos altera a flora normal do cólon resultando em um crescimento exces sivo de cepas de C. difficile. As toxinas
+A e B produzidas por C. difficile contribuem para o desenvolvimento de CDAD. Hipertoxina produzida por cepas de C. difficile resultam em aumento da
+morbidade e mortalidade, uma vez que estas infecções podem ser refratárias a antimicrobianos e podem requerer colectomia. CDA D deve ser considerado para
+todos os pacientes que apresentam diarreia durante o uso de antibióticos. Há rel atos que CDAD pode ocorrer em até dois meses após a administração de
+antibacterianos, portanto, é necessário cuidado na tomada do histórico médico e acompanhamento.
+O fosfato de clindamicina não deve ser injetado em bolus por via intravenosa sem ser diluído, mas sim posto em infusão por, pelo menos, 10 – 60 minutos,
+conforme indicado no item "8. Posologia e modo de usar ".
+
+A clindamicina é potencialmente nefrotóxica. Foi relatada lesão renal aguda, incluindo insuficiência renal aguda. Portanto, o monitoramento da função renal
+deve ser considerado durante a terapia de pacientes com disfunção renal pré -existente, em pacientes utilizando concomitantemente medicamentos nefrotóxicos
+ou caso o tratamento com o medicamento seja prolongado.
+
+Uso durante a gravidez
+Estudos de toxicidade reprodutiva em ratos e coelhos com clindamicina oral e subcutânea não revelaram qualquer evidência de d iminuição da fertilidade ou
+dano ao feto, exceto em doses que causaram toxicidade materna. Estudos de reprodução em animais nem sem pre reproduzem a resposta em humanos.
+A clindamicina atravessa a placenta em humanos. Após doses múltiplas, as concentrações no líquido amniótico foram de, aproxim adamente, 30% das
+concentrações sanguíneas maternas.
+Em estudos clínicos com mulheres grávidas, a administração sistêmica de clindamicina durante o segundo e terceiro trimestre d e gravidez não tem sido associada
+a um aumento da frequência de anomalias congênitas. Não existem estudos adequados e bem controlad os em mulheres grávidas durante o primeiro trimestre de
+gravidez.
+A clindamicina deve ser utilizada na gravidez a penas se claramente necessária.
+
+O fosfato de clindamicina é um medicamento classificado na categoria B de risco de gravidez. Este medicamento não deve ser utilizado por mulheres
+grávidas sem orientação m édica ou do cirurgião -dentista.
+
+Uso durante a lactação
+A clindamicina foi detectada no leite materno em concentrações de 0,7 a 3,8 mcg/mL. Devido aos potenciais efeitos adversos da clindamicina em neonatos,
+clindamicina não deve ser utilizada em mulheres que estão amamentando.
+
+Efeito na habilidade de dirigir ou operar máquinas
+O efeito de fosfato de clindamicina na habilidade de dirigir ou operar máquinas ainda não foi sistematicamente avaliado.
+
+Uso em pacientes idosos
+O ajuste da dose não é necessário em pacientes idosos com a função hepática normal e função renal normal (ver item “8. Posolo gia e modo de usar”).
+
+Uso em pacientes pediátricos
+Ver item “8. Posologia e modo de usar”.
+
+Uso em pacientes com insuficiência renal e hepática
+Não é necessário o ajuste de dose em pacientes com insuficiência renal e hepática (ver item “8. Posologia e modo de usar”).
+
+Para prevenir o desenvolvimento de bactérias resistentes, este medicamento deverá ser usado somente para o tratamento ou prev enção de infecções
+causadas ou fortemente suspeitas de serem causadas por microrganismos sensíveis a este medicamento.
+Quando usado durante terapia prolongada:
+Este medicamento pode causar hepatotoxicidade. Por isso, requer uso cuidadoso, sob vigilância médica estrita e acompanhado por controles periódicos
+da função hepática durante terapia prolongada.
+
+Este medicamento contém álcool benzílico, que pode ser tóxico, principalmente para recém-nascidos e crianças de até 3 anos.
+
+Este medicamento contém 7,914 mg de sódio/mL, o que deve ser considerado quando utilizado por pacientes hipertensos ou em dieta de restrição de
+sódio.
+
+6. INTERAÇÕES MEDICAMENTOSAS
+Foi demonstrado antagonismo in vitro entre a clindamicina e a eritromicina. Devido ao possível significado clínico, os dois fármacos não devem ser administrados
+concomitantemente.
+Estudos demonstraram que a clindamicina apresenta propriedades de bloqueio neuromuscular que podem intensificar a ação de outros fármacos com atividade
+semelhante. Portanto, fosfato de clindamicina deve ser usado com cautela em pacientes sob terapia com tais agentes.
+
+8. POSOLOGIA E MODO DE USAR
+É necessário adquirir a agulha separadamente. Para aspiração do produto da embalagem, recomenda-se o uso de agulha com bisel longo.
+O fosfato de clindamicina administração IM deve ser utilizado sem diluição.
+O fosfato de clindamicina administração IV deve ser diluída (ver “Índices de diluição e infusão para uso IV” abaixo).
+O fosfato de clindamicina deve ser utilizado por via intramuscular ou intravenosa. Cada mL de fosfato de clindamicina contém 178,23 mg de fosfato de
+clindamicina, equivalente a 150 mg de clindamicina base.
+
+Uso em adultos: via parenteral (administração IM ou IV): para infecções intra-abdominais, infecções da pelve feminina e outras complicações ou infecções
+graves, a dose usual diária de fosfato de clindamicina é 2.400 – 2.700 mg em 2, 3 ou 4 doses iguais. Infecções mais moderadas causadas por micro-organismos
+susceptíveis podem responder com 1.200 – 1.800 mg/dia, em 3 ou 4 doses iguais. Doses maiores que 4.800 mg/dia foram usadas com sucesso. Doses únicas IM
+maiores que 600 mg não são recomendadas.
+
+Uso em crianças (com mais de 1 mês de idade): via parenteral (administração IM ou IV): 20 – 40 mg/kg/dia em 3 ou 4 doses iguais.
+
+Uso em pacientes idosos: estudos farmacocinéticos com clindamicina mostraram que não há diferenças importantes entre pacientes jovens e idosos com a
+função hepática e renal normal (ajustado pela idade), após administração oral ou intravenosa. Portanto, o ajuste da dose não é necessário em pacientes idosos
+com a função hepática e renal normal (ajustado pela idade) (ver item “3. Características farmacológicas – Propriedades farmacocinéticas”).
+
+Uso em pacientes com insuficiência renal e hepática: não é necessário o ajuste de dose em pacientes com insuficiência renal e hepática.
+
+Doses em indicações específicas
+Tratamento de infecções por estreptococo beta-hemolítico: consulte as recomendações de dosagem acima, uso em adultos e crianças. Em infecções por
+estreptococos beta-hemolíticos, o tratamento deve ser mantido por pelo menos 10 dias.
+Tratamento intra-hospitalar de doença inflamatória pélvica: em doença inflamatória pélvica (DIP), o tratamento deve ser iniciado com 900 mg de fosfato
+de clindamicina, por via intravenosa a cada 8 horas, concomitantemente a um antibiótico de espectro aeróbio gram-negativo apropriado, como gentamicina 2,0
+mg/kg, administrado via IV, seguido de 1,5 mg/kg, a cada 8 horas em pacientes com função renal normal. O tratamento IV deve ser continuado por pelo menos
+4 dias e por pelo menos 48 horas após a recuperação da paciente.
+Continua-se então o tratamento com cloridrato de clindamicina, por via oral, administrando-se 450 – 600 mg, a cada 6 horas até completar 10 – 14 dias de
+tratamento total.
+Dose omitida: caso haja o esquecimento da utilização de fosfato de clindamicina no horário estabelecido, deve administrá-lo assim que lembrar. Entretanto, se
+já estiver perto do horário de administrar a próxima dose, deve-se desconsiderar a dose esquecida e administrar apenas a próxima dose. Neste caso, o paciente
+não deve receber dose duplicada. O esquecimento da dose pode comprometer a eficácia do tratamento.
+
+Índices de diluição e infusão para uso IV
+A concentração de clindamicina com diluente não deve exceder 18 mg/mL e a TAXA DE INFUSÃO NÃO DEVE EXCEDER 30 MG/MIN. As taxas de infusão
+usuais são as seguintes:
+
+ Dose Diluente Tempo
+ 300 mg 50 mL 10 min
+ 600 mg 50 mL 20 min
+ 900 mg 50 – 100 mL 30 min
+ 1.200 mg 100 mL 40 min
+
+Não é recomendada a administração de mais de 1 .200 mg em uma infusão única de 1 hora.
+
+Diluição e compatibilidade
+Estudos de compatibilidade física e biológica, monitorados durante 24 horas, à temperatura ambiente, não demonstraram qualque r inativação ou
+incompatibilidade com o uso de fosfato de clindamicina em soluções intravenosas contendo cloreto de sódio, glicose, cálcio, potássio e soluções contendo
+vitaminas do complexo B, em concentrações clinicamente utilizadas.
+A compatibilidade e a duração da estabilidade de misturas de fármacos dependem, sempre, das concentrações e de outras condiçõ es associadas.
+
+Estabilidade físico-química de soluções diluídas de fosfato de clindamicina:
+
+ Diluentes Concentração da solução de Conservação sob refrigeração
+ clindamicina1 após diluição (2 a 8°C)
+
+ 2 6 mg/mL Até 48 horas
+ Dextrose 5% injetável 12 mg/mL Até 48 horas
+
+ NaCl 0,9% injetável³ 6 mg/mL Até 48 horas
+ 12 mg/mL Até 48 horas
+ Ringer lactato 6 mg/mL Até 48 horas
+ injetável³ 12 mg/mL Até 48 horas
+
+1. equivalente a clindamicina base.
+2. as soluções injetáveis de dextrose que diluem a clindamicina nas concentrações de 6, 9 e 12 mg/mL são apresentadas em fras cos de vidro ou bolsas enquanto
+que aquela que dilui a clindamicina em 18 mg/mL, é apresentada em bolsas.
+3. as soluções injetáveis de NaCl e Ringer lactato são apresentadas em frascos de vidro ou bolsas.
+4. as soluções injetáveis de dextrose, NaCl e Ringer lactato são apresentadas em bolsas.
+
+As boas práticas de manipulação sugerem que misturas medicamentosas (diluições) devem ser utilizadas após a preparação.
+Soluções congeladas devem ser descongeladas em temperatura ambiente e não devem ser congeladas novamente.
+
+Modo de usar
+
+Orientações para abertura da ampola:
+A ampola de fosfato de clindamicina possui sistema de quebra que facilita sua abertura. Este sistema de quebra pode ser por m eio de anel de ruptura (Vibrac) ou
+ponto único (OPC).
+No sistema de anel de ruptura (Vibrac ) há um anel aplicado no gargalo da ampola composto por tinta específica que fragiliza o vidro e facilita a ruptura neste
+local.
+No sistema de ponto único (OPC) há um ponto de tinta comum que tem função de orientar o local de apoio para que se faça a for ça que irá gerar o rompimento
+da ampola no gargalo. Neste caso o gargalo não possui anel de tinta, porém, possui uma incisão superf icial (fio cut) que facilita a ruptura neste local.
+
+Siga as orientações abaixo para realizar a abertura da ampola de forma correta.
+
+Anel de ruptura (Vibrac):
+1. Segure a ampola inclinada em um ângulo de 45°.
+2. Posicione os dedos polegares no gargalo da ampola, onde possui o anel de ruptura, que corresponde ao local indicado para rompimento.
+3. Posicione os dedos indicadores na haste e no corpo da ampola, de forma que o gargalo que é o local da ruptura esteja no centro desta distância.
+4. Certifique-se de que não está apertando a haste da ampola, para evitar que ela se quebre.
+5. Exerça força com os polegares para frente e com o indicador que está na haste da ampola para trás, para realizar a abertura da ampola.
+Ponto único (OPC):
+1. Segure a ampola pelo corpo.
+2. Com a outra mão segure a haste de forma que o polegar e o indicador estejam posicionados na direção do ponto de tinta.
+3. Exerça força sobre a haste fazendo um movimento de rotação para trás para realizar a abertura da ampola.
+
+9. REAÇÕES ADVERSAS
+Todos os efeitos indesejados relacionados no rótulo são apresentados na MedDRA SOC. Dentro de cada categoria de frequência, os efeitos indesejáveis
+são apresentados na ordem de frequência e, depois, de importância clínica.
+
+Tabela de reações adversas
+ Rara Muito Frequência
+ Sistema de classe de órgãos Comum > 1/100 a < 1/10 Incomum > 1/10000 a rara desconhecida (não pode
+ > 1/1000 a < 1/100 < 1/1000 < 1/10000 ser estimada a partir dos
+ dados disponíveis)
+
+ Infecções e infestações Colite pseudomembranosa
+
+ Distúrbios sanguíneos e do Agranulocitose, leucopenia,
+ sistema linfático Eosinofilia neutropenia,
+ trombocitopenia
+
+ Reações anafiláticas,
+ Distúrbios do sistema Reações com eosinofilia e
+ imunológico sintomas sistêmicos
+ (DRESS)
+ Distúrbios do sistema nervoso Disgeusia
+ Parada
+ Distúrbios cardíacos cardiorrespiratória,
+ hipotensão
+ Distúrbios vasculares Tromboflebite
+
+ Distúrbios gastrointestinais Diarreia, dor abdominal Náusea, vômito
+
+ Distúrbios hepatobiliares Exame de função hepática Icterícia
+ anormal
+ Necrólise epidérmica
+ tóxica, síndrome de Steven
+ Eritrema Johnson, dermatite
+ Distúrbios na pele ou no tecido Rash maculopapular Urticária multiforme, esfoliativa, dermatite
+ subcutâneo pruridos bolhosa, rash morbiliforme,
+ infecção vaginal, pustulose
+ exantemática generalizada
+ aguda
+ Distúrbios gerais e condições do Dor, abcesso Irritação no local da injeção
+ local da administração
+ Distúrbios renais e do sistema Lesão renal aguda*
+ urinário
+
+*Reação adversa a medicamento identificada no período pós comercialização.
+
+Em casos de eventos adversos, notifique pelo Sistema VigiMed, disponível no Portal da Anvisa.
+
+10. SUPERDOSE
+Em casos de superdose, hemodiálise e diálise peritoneal não são meios eficazes para a eliminação da clindamicina do sangue.
+Em caso de superdose, empregar tratamento sintomático e de suporte.
+
+Em caso de intoxicação ligue para 0800 722 6001, se você precisar de mais orientações.

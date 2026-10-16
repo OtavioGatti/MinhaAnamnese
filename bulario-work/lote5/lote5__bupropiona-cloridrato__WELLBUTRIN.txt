@@ -1,0 +1,538 @@
+FONTE: lote5__bupropiona-cloridrato__WELLBUTRIN.pdf
+
+===== BLOCO 1 =====
+APRESENTAÇÕES
+Wellbutrin ® XL comprimidos revestidos de liberação prolongada contém 150 mg ou 300 mg de cloridrato de bupropiona, apresentados
+em embalagens contendo 7 ou 30 comprimidos.
+
+1. INDICAÇÕES
+Wellbutrin ® XL é indicado no tratamento de episódios depressivos maioresou na prevenção de recaídas e recorrências de episódios
+depressivos após resposta inicial satisfatória.
+
+3. CARACTERÍSTICAS FARMACOLÓGICAS
+
+Propriedades Farmacodinâmicas
+
+Código ATC
+GrupoOutros Antidepressivos
+Código ATC: N06 AX12
+
+Mecanismo de Ação
+A bupropiona é um inibidor seletivo da recaptação neuronal de catecolaminas (norepinefrina e dopamina),com efeito mínimo na recaptação
+de indolaminas (serotonina) e que não inibe a monoaminoxidase (MAO). O mecanismo exato de ação da bupropiona, assim como o de
+muitos antidepressivos, é desconhecido. Presume-se que o mecanismo de ação da bupropiona seja mediado por mecanismos
+noradrenérgicos e/ou dopaminérgicos.
+
+Em estudo com voluntários sadios, não foi observado efeito clinicamente significativo sobre o intervalo QTcF, após o intervalo de 14 dias
+de administração (para atingir a dosagem de equilíbrio), ao se comparar os comprimidos de liberação prolongada (450 mg/dia) com o
+placebo.
+
+Estudos in vitro com o canal de sódio cardíaco (NaV1.5) identificaram que a adição de nortriptilina potencializa a inibição do canal iônico
+pela hidroxibupropiona. Experimentos adicionais in vitro foram repetidos com outros bloqueadores do NaV1.5, trazodona e flecainida, e
+não foram observados efeitos comparáveis.
+
+A modelagem farmacocinética fisiologicamente baseada (PBPK) previu que a coadministração com nortriptilina pode fazer com quea
+exposição à hidroxibupropiona exceda seu limiar reduzido de inibição do NaV1.5 após todas as doses clinicamente relevantes de
+bupropiona. Além disso, prevê-se que a coadministração de bupropiona aumente a exposição à nortriptilina, podendo levar a uma inibição
+adicional do NaV1.5 (ver InteraçõesMedicamentosas).
+
+Propriedades Farmacocinéticas
+Absorção
+Após administração oral da bupropiona a voluntários sadios, os picos de concentração plasmática são alcançados após aproximadamente
+cinco horas. A bupropiona e seus metabólitos apresentam cinética linear após administração crônica de 150 a 300 mg,diariamente.
+Não existem alterações significativas na absorção da bupropiona quando administrada com alimentos.
+
+Distribuição
+Modelo de Texto de Bula Profissional de saúde
+Wellbutrin®XL comprimidos revestidos de liberação prolongada
+
+A bupropiona é largamente distribuída, com volume aparente de distribuição de aproximadamente 2.000 litros. A bupropiona e a
+hidroxibupropiona se ligam moderadamente às proteínas plasmáticas (84% e 77%, respectivamente). A extensão da ligação do metabólito
+treoidrobupropiona às proteínas é aproximadamentemetade da observada com a bupropiona.
+
+Metabolismo
+A bupropiona é extensivamente metabolizada em humanos. Três metabólitos farmacologicamente ativos da bupropiona foram identificados
+no plasma: a hidroxibupropiona e os isômeros aminoálcool, treoidrobupropiona e eritroidrobupropiona. Estes metabólitos podemter
+importância clínica quando suas concentrações plasmáticas são altas ou maiores que as da bupropiona.
+A eritroidrobupropiona não pôde ser medida no plasma após uma dose única de Wellbutrin ® XL. Os metabólitos ativos são posteriormente
+metabolizados em metabólitos inativos e excretados na urina.
+
+Estudos in vitro demonstram que a bupropiona é metabolizada em seus principais metabólitos ativos primariamente pelo CYP2B6,e que o
+sistema enzimático citocromo P450 não está envolvido na formação da treoidrobupropiona (ver Interações Medicamentosas).
+
+A bupropiona e a hidroxibupropiona são inibidores competitivos, relativamente fracos, da isoenzima CYP2D6,com valores de Ki de 21 e
+13,3 µM, respectivamente. Em voluntários que metabolizam largamente pela isoenzima CYP2D6, a administração concomitante de
+bupropiona e desipramina resultou em aumento da Concentração máxima (C máx)e da área sob a curva (ASC) da desipramina de duas e
+cinco vezes, respectivamente. Este efeito tende a permanecer por pelo menos sete dias após a última dose de bupropiona. Uma vez quea
+bupropiona não é metabolizada pela via CYP2D6, a desipramina não afeta a farmacocinética da bupropiona. A PBPK previu que a
+coadministração de bupropiona aumenta a exposição à nortriptilina (Cmax em 2,2 vezes e AUC em 3,6 vezes) em pacientes que são
+metabolizadores extensivos da CYP2D6, alcançando níveis comparáveis aos observados em metabolizadores lentos da CYP2D6 na mesma
+dose. Portanto,recomenda-se cuidado quando Wellbutrin® XL é administrado com substratos da via CYP2D6 (ver Interações
+Medicamentosas).
+
+Em animais, a bupropiona demonstrou induzir seu próprio metabolismo após administração subcrônica. Em humanos, não existem
+evidências de indução enzimática da bupropiona e hidroxibupropiona em voluntários ou pacientes recebendo as doses recomendadas de
+bupropiona por 10 a 45 dias.
+
+Concentrações plasmáticas máximas de hidroxibupropiona são,aproximadamente,10 vezes o nível de pico do fármaco no estado
+estacionário. Os tempos para as concentrações máximas para o eritroidrobupropiona e metabólitos treoidrobupropiona são semelhantes aos
+metabólitos da hidroxibupropiona.
+Em humanos, as concentrações plasmáticas do pico de hidroxibupropiona ocorrem cerca de 7 horas após a administração de bupropiona de
+liberação prolongada.
+
+Em um estudo com voluntários saudáveis, ritonavir, numa dose de 100 mg duas vezes ao dia, reduziu a ASC e a C máx de bupropiona em
+22% e 21%, respectivamente. A ASC e a Cmáx dos metabólitos da bupropiona foram reduzidas a 0 a 44%. Em um segundo estudo com
+voluntários saudáveis, ritonavir, numa dose de 600 mg duas vezes por dia, diminui a ASC e a C máx da bupropiona em 66% e 62%,
+respectivamente. A ASC e a C máx de metabólitos da bupropiona foram reduzidas a 42 e 78%, respectivamente.
+
+Em outro estudo com voluntários saudáveis, lopinavir 400 mg/ritonavir 100 mg, duas vezes ao dia, diminuíram a ASC e a C máx da
+bupropiona em 57%. A ASC e a C máx da hidroxibupropiona foram reduzidas em 50% e 31%, respectivamente.
+
+Eliminação
+Após administração oral de 200 mg de bupropiona marcada com C14 em humanos, 87% e 10% da dose radiomarcada foram eliminados
+na urina e nas fezes, respectivamente. A fração da dose oral de bupropiona excretada inalterada foi de apenas 0,5%, um dado que estáde
+acordo com o extenso metabolismo da bupropiona. Menos de10% da dose radiomarcada foi encontrada na urina, como metabólito ativo.
+
+Após administração oral, o clearance médio aparente da bupropiona é, aproximadamente, 200 litros/hora,e a meia-vida de eliminação
+média da bupropiona é de cerca de 20 horas.
+
+A meia-vida de eliminação da hidroxibupropiona é de, aproximadamente, 20 horas,e a área sob a curva da concentração plasmática da
+droga versus tempo (ASC), no estado de equilíbrio, é cerca de 17 vezes a da bupropiona. As meias-vidas de eliminação da
+treoidrobupropiona e da eritroidrobupropiona são mais longas (37 e 33 horas, respectivamente),e os valores da área sob a curva, no estado
+de equilíbrio, são 8 e 1,6 vezes maiores do que os valores da bupropiona, respectivamente. O estado de equilíbrio para a bupropiona e seus
+metabólitos é alcançado dentro de oito dias.
+
+O revestimento insolúvel do comprimido de liberação prolongada pode permanecer intacto durante o trânsito gastrintestinal e ser eliminado
+nas fezes.
+
+Pacientes com insuficiência renal
+Modelo de Texto de Bula Profissional de saúde
+Wellbutrin®XL comprimidos revestidos de liberação prolongada
+
+A eliminação da bupropiona e dos seus principais metabólitos pode ser reduzida em pacientes com insuficiência renal (ver Advertênciase
+Precauções). Em indivíduos com danos renais moderados a graves ou insuficiência renal, a exposição àbupropiona e/ou seus metabólitos
+foi aumentada.
+
+Pacientes com insuficiência hepática
+A farmacocinética da bupropiona e dos seus metabólitos ativos não foi estatisticamente diferente em pacientes com cirrose leve a moderada,
+quando comparada a voluntários sadios. Entretanto, uma variação maior foi observada entre pacientes, individualmente.Em pacientes com
+cirrose hepática grave, a C máx e a área sob a curva (ASC) da bupropiona foram significativamente aumentadas (diferença média de,
+aproximadamente, 70% e três vezes, respectivamente) e mais variáveis, quando comparadas aos valores de voluntários sadios. O tempo de
+meia-vida também foi aumentado em, aproximadamente, 40%. Para os metabólitos, a C máx média foi menor (em aproximadamente 30 a
+70%), a área sob a curva (ASC) média tendeu a ser maior (em aproximadamente 30 a 50%), o T máx médio foi retardado (em
+aproximadamente 20 horas) e as meias-vidas foram aumentadas (aproximadamente duas a quatrovezes), quando comparados aos valores
+encontrados em voluntários sadios(ver Advertênciase Precauções).
+
+Pacientes idosos
+Estudos farmacocinéticos em idosos têm demonstrado resultados variáveis. Um estudo com dose única revelou parâmetros similares entre
+idosos e adultos jovens. Outro estudo farmacocinético, de dose única e múltipla,sugeriu maior acúmulo da bupropiona e dos seus
+metabólitos nestes pacientes. A experiência clínica não identificou diferenças na tolerabilidade à bupropiona entre idosos e pacientes mais
+jovens. Entretanto, uma maior sensibilidade a este agente por acúmulo ou por outras patologias sistêmicas associadas não pode ser
+descartada neste grupo.
+
+4. CONTRAINDICAÇÕES
+Wellbutrin ® XL é contraindicado apacientes com hipersensibilidade conhecida à bupropiona ou a qualquer componente da fórmula.
+A bupropiona é contraindicada em pacientes com diagnóstico de epilepsia ou outros distúrbios convulsivos e diagnóstico atual ou prévio
+de bulimia ou anorexia nervosa, uma vez que foi observada alta incidência de convulsões nestes pacientes quando a bupropiona foi
+administrada.
+Wellbutrin ® XL não deve ser administrado em pacientes tratados com qualquer outro medicamento que contenha bupropiona, uma vez
+que a incidência das convulsões é dose-dependente.
+É contraindicada a administração concomitante de inibidores da monoaminoxidase (IMAOs) ou o uso associado de bupropiona dentro de
+até 14 dias após ainterrupção do tratamento com IMAOs.
+Wellbutrin ® XL é contraindicado em pacientes em processo de descontinuação abrupta do uso de sedativos ou álcool.
+
+Este medicamento é contraindicado para menores de 18 anos.
+
+Categoria Dde risco na gravidez.
+Este medicamento não deve ser utilizado por mulheres grávidas sem orientação médica. Informe imediatamente seu médico em
+caso de suspeita de gravidez.
+
+5. ADVERTÊNCIAS E PRECAUÇÕES
+Wellbutrin ® XL não deve ser utilizado concomitantemente com outros medicamentos que contenham bupropiona.
+
+Convulsões
+A dose recomendada de Wellbutrin® XL não deve ser excedida, uma vez que a bupropiona está associada a risco de convulsão dose-
+dependente. A incidência de convulsões com Wellbutrin ® XL em doses maiores que 300 mg/dia é de aproximadamente 0,1%.
+O risco de convulsão decorrente do uso de bupropiona parece estar fortemente associado a fatores de risco predisponentes. Portanto,
+Wellbutrin ® XL deve ser administrado com extrema precaução em pacientes com uma ou mais condições predisponentes que possam
+baixar o limiar de convulsão. Estas incluem:
+-histórico de traumatismo craniano;
+-tumor no sistema nervoso central;
+-histórico de convulsões;
+-administração concomitante de medicamentos que baixem o limiar da convulsão.
+
+Além disso, os cuidados devem ser redobrados em circunstâncias clínicas associadas ao aumento do risco de convulsões. Estas incluem
+abuso de álcool ou sedativos (ver Contraindicações), diabetes tratado com hipoglicemiantes ou insulina e uso de estimulantes ou produtos
+anorexígenos.
+Wellbutrin ® XL deve ser descontinuado e não deve ser reiniciado em pacientes que apresentem convulsão durante o tratamento.
+
+Reações de hipersensibilidade
+Modelo de Texto de Bula Profissional de saúde
+Wellbutrin®XL comprimidos revestidos de liberação prolongada
+
+Wellbutrin ® XL deve ser suspenso imediatamente em pacientes que apresentem reações de hipersensibilidade durante o tratamento (ver
+Reações Adversas). Os médicos devem estar cientes de que os sintomas podem permanecer, mesmo após a suspensão do medicamento.
+Portanto,um monitoramento clínico adequado deve ser providenciado.
+
+ECG tipo Brugada
+A bupropiona pode desmascarar a síndrome de Brugada, uma doença hereditária rara do canal de sódio cardíaco com alterações
+características no ECG (elevação do segmento ST e anormalidades da onda T nas derivações precordiais direitas), que pode levar à parada
+cardíaca e/ou morte súbita. Recomenda-se cautela em pacientes com síndrome de Brugada ou fatores de risco, como histórico familiar de
+parada cardíaca ou morte súbita.
+
+Insuficiência hepática
+No fígado, a bupropiona é extensamente metabolizada em metabólitos ativos, que serão posteriormente metabolizados. Não existediferença
+estatisticamente significativa na farmacocinética da bupropiona entre pacientes com cirrose hepática moderada e voluntários saudáveis.
+Entretanto, os níveis plasmáticos de bupropiona apresentaram maior variabilidade entre pacientes individuais. Portanto, Wellbutrin® XL
+deve ser usado com precaução em pacientes com insuficiência hepática,e a redução na frequência das doses deve ser considerada em
+pacientes com cirrose hepática leve a moderada (ver Posologia e Modo de Usar e Propriedades Farmacocinéticas, em Características
+Farmacológicas).
+Wellbutrin ® XL deve ser utilizado com extremo cuidado em pacientes com cirrose hepática grave. Nestes pacientes, a frequência das doses
+deverá ser reduzida, uma vez que níveis sanguíneos de bupropiona podem mostrar-se substancialmente aumentados, podendo ocorrer
+acúmulo da substância numa extensão maior do que a usual (ver Posologia e Modo de Usar e Propriedades Farmacocinéticas, em
+Características Farmacológicas).
+Todos os pacientes com insuficiência hepática devem ser monitorados,em virtude da possibilidade de efeitos adversos, que podem indicar
+altos níveis da droga ou de seus metabólitos,como insônia, boca seca e convulsões.
+
+Insuficiência renal
+Após a passagem pelo fígado,a bupropiona é metabolizada,e os metabólitos ativos serãoposteriormente metabolizados eexcretados pelos
+rins. Portanto, os pacientes com insuficiência renal devem iniciar o tratamento com doses e/ou frequência reduzidas, uma vez que tanto a
+bupropiona quanto seus metabólitos tendem a se acumular numa extensão maior do que a usual nestes indivíduos. O paciente deveser
+cuidadosamente monitorado em relação às possíveis reações adversas (por exemplo: insônia, boca seca e convulsões), que poderiam indicar
+altos níveis da droga ou de seus metabólitos.
+
+Idosos
+A experiência clínica com a bupropiona não demonstrou qualquer diferença na tolerabilidade entre pacientes idosos e outros pacientes.
+Entretanto, a maior sensibilidade de alguns pacientes idosos à bupropiona não pode ser ignorada. Por isso, podem necessitar de redução da
+dosagem e/ou da frequência das doses (ver Propriedades Farmacocinéticas, em Características Farmacológicas).
+
+Crianças e adolescentes menores de 18 anos
+O tratamento com antidepressivos está associado aoaumento do risco de pensamentos e comportamentos suicidas em crianças e
+adolescentes com desordem depressiva principale outras desordens psiquiátricas.
+
+Agravamento clínico e risco de suicídio associados a transtornos psiquiátricos
+Os pacientes com depressão podem experimentar agravamento dos sintomas depressivos e/ou o aparecimento de ideação e comportamentos
+suicidas (suicidalidade), quer estejam ou não tomando medicações antidepressivas. Esse risco persiste até que ocorra remissão significativa.
+Como há a possibilidade de que não ocorra melhora durante as primeiras semanas ou mais de tratamento, os pacientes devem ser
+rigorosamente monitorados para detecção de agravamento clínico (incluindo desenvolvimento de novos sintomas) e suicidalidade,
+principalmente no início de um ciclo de tratamento ou nas ocasiões de mudança da dose, seja aumento ou diminuição. Segundo a experiência
+clínica geral com todos os tratamentos antidepressivos, o risco de suicídio pode aumentar nos estágios iniciais de recuperação.
+
+Pacientes com histórico de comportamento e pensamentos suicidas, adultos jovens e aqueles pacientes que exibem grau significativo de
+ideação suicida antes do início do tratamento correm maior risco de pensamentos suicidas ou tentativas de suicídio,e devem ser
+cuidadosamente monitorados durante o tratamento.
+
+Além disso, umameta-análise de ensaios clínicos de medicamentos antidepressivos controlados por placebo em adultos com transtorno
+depressivo maior e outros transtornos psiquiátricos mostraram aumento do risco de pensamentos e comportamentos suicidas associados
+com uso de antidepressivos em comparação aoplacebo nospacientes com menos de 25 anos.
+Os pacientes (e as pessoas que cuidam deles) devem ser alertados sobre a necessidade de estarem atentos para qualquer agravamento da
+doença (incluindo desenvolvimento de novos sintomas) e/ou o aparecimento de ideação/comportamento suicidasou pensamentos sobre
+ferir a si mesmos e devem buscar assistência médica imediatamente se esses sintomas surgirem.
+Deve-se reconhecer que o início de alguns sintomas neuropsiquiátricos podem estar relacionadostanto com a doença subjacente ou com a
+terapia medicamentosa(ver Sintomas neuropsquiátricos incluindo mania e o transtorno bipolar, abaixo eReações Adversas).
+
+Pode ser necessário considerar a alteração do regime terapêutico, assim como a possível descontinuação da medicação,em pacientes que
+apresentaram agravamento clínico (incluindo desenvolvimento de novos sintomas) e/ou aparecimento de ideiase comportamentos suicidas,
+Modelo de Texto de Bula Profissional de saúde
+Wellbutrin®XL comprimidos revestidos de liberação prolongada
+
+especialmente se estes sintomas forem graves, abruptos no início, ou se não faziam parte dos sintomas apresentados inicialmente pelo
+paciente.
+
+Sintomas neuropsiquiátricos,incluindo mania e transtorno bipolar.
+Sintomas neuropsiquiátricos foram relatados (ver Reações Adversas). Em particular, sintomas psicóticos e maníacos têm sido observados,
+principalmente em pacientes com histórico de doenças psiquiátricas. Além disso,um episódio depressivo maior pode ser a manifestação
+inicial do transtorno bipolar. Em geral, considera-se (embora isso não tenha sido estabelecido em estudos controlados) que tratar esse
+episódio com um antidepressivo como monoterapia pode aumentar a probabilidade de precipitação de um episódio misto/maníaco em
+pacientes com risco de apresentar transtorno bipolar. Dados clínicos limitados sobre o uso de bupropiona em combinação com
+estabilizadores do humor em pacientes com histórico de transtorno bipolar sugerem baixo índice de mudança para mania. Antes de iniciar
+o tratamento com um antidepressivo, os pacientes devem ser adequadamente avaliados para determinar se correm risco de apresentar um
+transtorno bipolar. Essa avaliação deve englobarhistórico psiquiátrico detalhado, incluindo histórico familiar de suicídio, transtorno bipolar
+e depressão.
+
+Doença cardiovascular
+É limitada a experiência clínica com o uso de bupropiona para tratar depressão em pacientes com doença cardiovascular. Deve-se ter cautela
+se Wellbutrin ® XL for usado nestes pacientes. No entanto, bupropiona demonstrou ser bem tolerada em um estudo para interrupção do
+tabagismo em pacientes com doença cardiovascular isquêmica.
+
+Pressão arterial
+Em um estudo com indivíduos não-deprimidos (incluindo fumantes e não-fumantes) com hipertensão de Estágio I não-tratada, bupropiona
+não produziu efeito estatisticamente significativo sobre a pressão arterial. No entanto, relatos espontâneos de aumento da pressão arterial
+(algumas vezes,severo) foram recebidos (verReações Adversas),e o uso concomitante de bupropiona e um Sistema Transdérmico de
+Nicotina pode resultar em elevações da pressão arterial (verInteraçõesMedicamentosas).
+
+Vias de administração inadequadas
+A bupropiona é destinada apenas para uso oral. A inalação de comprimidos triturados ou a injeção de bupropiona dissolvida foram relatadas,
+podendo levar a uma rápida liberação e absorção, além de potencial overdose. Convulsões e/ou casos de morte foram relatados quando a
+bupropiona foi administrada por via intranasal ou por injeção parenteral.
+
+Síndrome da serotonina
+A síndrome da serotonina foi relatada quando a bupropiona é coadministrada com medicamentos conhecidos por estarem associadosà
+síndrome da serotonina, incluindo inibidores seletivos da recaptação da serotonina (ISRSs) ou inibidores da recaptação da serotonina
+norepinefrina (IRSNs). Se o tratamento concomitante com outros agentes serotoninérgicos for clinicamente justificado, recomenda-se a
+observação cuidadosa do paciente, particularmente durante o início do tratamento e aumentos de dose (ver Interações Medicamentosas).
+
+A síndrome da serotonina também foi relatada em casos de superdosagem com bupropiona (ver Superdose).
+
+Efeitos na capacidade de dirigir e operar máquinas
+Como ocorre com outras substâncias que atuam no sistema nervoso central, a bupropiona pode afetar a capacidade de desenvolvertarefas
+que requeiram raciocínio, habilidade cognitivase motoras. Desta forma, os pacientes devem ter cuidado ao dirigir ou operar máquinas até
+que estejam certos de que Wellbutrin ® XL não afetou adversamente seu desempenho.
+
+Oriente seu paciente a não dirigir veículos ou operar máquinas durante todo o tratamento, pois sua habilidade e capacidade de
+reação podem estar prejudicadas.
+
+O uso deste medicamento pode causar tontura, desmaios ou perda da consciência, expondo o paciente a quedasou acidentes.
+
+Fertilidade
+Não existem dados sobre o efeito da bupropiona na fertilidade humana. Um estudo de reprodução em ratas não apresentou evidências de
+alteração da fertilidadeem doses de até 7 vezes a dose humana máxima recomendada combase emmg/m 2.
+
+Gravidez
+Alguns estudos epidemiológicos sobre os resultados da gravidez após a exposição materna à bupropiona no primeiro trimestre têm relatado
+uma associação com o aumento do risco de algumas malformações congênitas cardiovasculares. Estes resultados não são consistentes em
+todos os estudos. O médico deverá ponderar a opção de tratamentos alternativos em mulheres que estão grávidas ou que estão planejando
+engravidar, e só devem prescrever bupropiona se os benefícios esperados forem maiores que os riscos potenciais.
+A proporção de defeitos cardíacos congênitos observada prospectivamente em gestações com exposição pré-natal à bupropiona no primeiro
+trimestre no Registro Internacional de Gravidez ( International Pregnancy Registry ) foi 9/675 (1,3%).
+Um estudo retrospectivo de banco de dados de atendimentoincluiu 7.005 bebês. Segundo esses dados, entre os bebês de mulheres que
+fizeram uso de bupropiona no primeiro trimestre de gravidez (n=1.213 bebês) a frequência de malformações congênitas foi de 2,3% e a de
+malformações cardiovasculares de 1,1%. Entre os bebês daquelas que nesse mesmo período de gestação tomaram outros antidepressivos
+Modelo de Texto de Bula Profissional de saúde
+Wellbutrin®XL comprimidos revestidos de liberação prolongada
+
+(n=4.743 bebês), as proporções foram as mesmas: 2,3% e 1,1%, respectivamente. Os índices referentes aos bebês cujas mães só usaram
+bupropiona após o primeiro trimestre de gravidez (n=1.049 bebês) foram de 2,2% e 1%.
+Em uma análise retrospectiva de caso-controle, utilizando dados do Estudo Nacional de Prevenção de malformações congênitas ( National
+Birth Defects Prevention Study ), tinham 12.383 casos de recém-nascido e 5.869 recém-nascidos de controle. Uma associação
+estatisticamente significativa foi observada entre a ocorrência de um defeito de escoamento do trato cardíaco esquerdo na criança e o
+autorrelato do uso de bupropiona materna no início da gravidez (n = 10; OR ajustado = 2,6 IC 95% 1,2, 5,7). Nenhuma associação foi
+observada entre o uso de bupropiona materna e qualquer outro tipo de defeito cardíaco ou todas as categorias de defeitos cardíacos
+combinados.
+Uma recente análise de um caso-controle relatado a partir do Slone Epidemiology Center Birth Defects incluia 7.913 casos de recém-
+nascidos com defeitos cardíacos e 8.611 controles. Este não encontrou nenhum aumento estatisticamente significativo de defeitos de
+escoamento do trato cardíaco esquerdo com o uso de bupropiona materna (n = 2; OR ajustado = 0,4,IC 95% 0,1, 1,6). No entanto, uma
+associação estatisticamente significativa foi observada para os defeitos do septo ventricular (n = 17; ajustado OR = 2,5 IC 95% 1,3, 5,0)
+após o uso de bupropiona durante o primeiro trimestre.
+
+Categoria Dde risco na gravidez.
+Este medicamento não deve ser utilizado por mulheres grávidas sem orientação médica. Informe imediatamente seu médico em
+caso de suspeita de gravidez.
+
+Lactação
+Foi demonstrado que a bupropiona e seus metabólitos são excretados pelo leite materno. Portanto, devido às potenciais reaçõesadversas,
+recomenda-se que mães que estejam recebendo tratamento com Wellbutrin ® XL não amamentem.
+
+Uso contraindicado no aleitamento ou na doação de leite humano. Este medicamento é contraindicado durante o aleitamento ou
+doação de leite, pois é excretado no leite humano e pode causar reações indesejáveis no bebê. Seu médico ou cirurgião-dentista deve
+apresentar alternativas para o seu tratamento ou para a alimentação do bebê.
+
+Este produto contém bupropiona, que está incluída na lista de substâncias proibidas da Agência Mundial Antidoping.
+Este medicamento pode causar doping.
+
+Carcinogênese/mutagênese
+Estudos de oncogenicidade em ratos e camundongos confirmaram a ausência de carcinogenicidade nestas espécies.
+
+Toxicologia animal e/ou farmacológica
+Alterações hepáticas foram observadas em estudos com animais, mas estes refletem a ação de um indutor de enzima hepática. No homem,
+em doses clínicas, não há nenhuma evidência de qualquer indução enzimática, o que sugere que os achados hepáticos em animaisde
+laboratório têm apenas importância limitada na evolução e avaliação do risco da bupropiona.
+
+Teratogenicidade
+Não há evidênciasde teratogenicidade em ratos ou coelhos em doses de até 11 e 7 vezes a dose humana máxima recomendada, com base
+em mg/m2, respectivamente (a exposição em altas doses em um dos estudos com ratos, a 300 mg/kg/dia, foi 1,7 vezes a dose humana, com
+base nos valores de ASC no estado de equilíbrio). Em coelhos, um leve aumento em alterações no esqueleto (aumento da incidência de
+variação anatômica comum de uma costela torácica acessória e ossificação tardia de falanges) foi observado em doses aproximadamente
+iguais à dose máxima humana ou superiores, e o peso fetal diminuiu em doses maternais tóxicas. Em exposições de até 7 vezes a dose
+humana máxima recomendada com base em mg/m 2, nenhum evento adverso foi observado nos descendentes de ratos em que a bupropiona
+foi administrada antes do acasalamento e durante a gravidez e lactação.
+
+Atenção: Contém o corante óxido de ferro preto.
+
+Reações cutâneas adversas graves (SCARs)
+Reações cutâneas adversas graves (SCARs), como síndrome de Stevens-Johnson (SJS), necrólise epidérmica tóxica (NET), pustulose
+exantemática generalizada aguda (PEGA) e reação medicamentosa com eosinofilia e sintomas sistêmicos (DRESS), potencialmente fatais
+ou com risco de morte, foram relatadas em associação ao tratamento com bupropiona.
+
+Os pacientes devem ser orientados quanto aos sinais e sintomas dessas reações e monitorados cuidadosamente para o surgimento de
+alterações cutâneas. Caso apareçam sinais e sintomas sugestivos dessas reações, a bupropiona deve ser descontinuada imediatamente,
+devendo-se considerar tratamento alternativo, conforme apropriado.
+
+Se o paciente desenvolver uma reação grave, como SJS, NET, PEGA ou DRESS, associada ao uso de bupropiona, o tratamento não deve
+ser reiniciado em hipótese alguma.
+
+6. INTERAÇÕES MEDICAMENTOSAS
+Estudos in vitro indicam que a bupropiona é metabolizada em seu principal metabólito ativo, a hidroxibupropiona, principalmente através
+do citocromo P450 2B6 (CYP2B6) (ver Propriedades Farmacocinéticas, em Características Farmacológicas). Deve-se ter cuidado ao
+Modelo de Texto de Bula Profissional de saúde
+Wellbutrin®XL comprimidos revestidos de liberação prolongada
+
+administrar Wellbutrin® XL concomitantemente com drogas que afetam a isoenzima CYP2B6, como orfenadrina, ciclofosfamida,
+isofosfamida, triclopidina e clopidogrel.
+
+Embora a bupropiona não seja metabolizada pela isoenzima CYP2D6, estudos in vitro com citocromos P450 humanos têm demonstrado
+que a bupropiona e a hidroxibupropiona são inibidores da via CYP2D6. Em um estudo de farmacocinética em humanos, a administração
+de bupropiona aumentou os níveis plasmáticos da desipramina. Este efeito foi mantido por pelo menos sete dias após a última dose de
+bupropiona. Aterapia concomitante com drogas predominantemente metabolizadas por esta isoenzima (como betabloqueadores,
+antiarrítmicos, ISRSs, TCAs, antipsicóticos) deve ser iniciada pela dose inferior, segundo a faixa de doses da medicação concomitante. Se
+Wellbutrin ® XL for adicionado ao tratamento em pacientes que já estejam recebendo drogas metabolizadas pela isoenzima CYP2D6, deve
+ser considerada a redução da dose da medicação original, particularmente para aquelas medicações concomitantes com estreito índice
+terapêutico (ver Propriedades Farmacocinéticas, em Características Farmacológicas).
+
+Estudos in vitro demonstraram uma interação farmacodinâmica entre a nortriptilina e a hidroxibupropiona, o principal metabólito ativo da
+bupropiona, resultando na inibição do canal de sódio cardíaco (ver Propriedades Farmacodinâmicas). A administração concomitante de
+bupropiona e nortriptilina pode resultar em um risco potencial de eventos cardíacos, incluindo prolongamento do complexo QRS,arritmias
+ventriculares e morte súbita. Essa interação pode desmascarar a síndrome de Brugada, além do conhecido efeito de desmascaramento
+associado a cada um dos medicamentos individualmente (ver Advertências e Precauções).Portanto, recomenda-se cautela durante a
+administração concomitante de bupropiona e nortriptilina, ou ao realizar a transição de bupropiona para nortriptilina, uma vez que os efeitos
+da hidroxibupropiona sobre o canal de sódio cardíaco podem persistir por até 9 semanas (com base em uma análise farmacocinética
+fisiologicamente baseada (PBPK)). Da mesma forma, a meia-vida de eliminação da nortriptilina deve ser considerada ao realizar a transição
+de nortriptilina para bupropiona.
+Drogas que requerem ativação metabólica pelo CYP2D6, a fim de serem eficazes (por exemplo, tamoxifeno), podem ter uma eficácia
+reduzida quando administradas concomitantemente com inibidores da CYP2D6, como a bupropiona
+
+Embora o citalopram (um ISRS) não seja primariamente metabolizado pelo CYP2D6, em um estudo, a bupropiona aumentou a C máx e a
+ASC do citalopram em 30% e 40%, respectivamente.
+
+Uma vez que a bupropiona é extensamente metabolizada, a coadministração com drogas capazes de induzir o metabolismo (como
+carbamazepina, fenobarbitona, fenitoína, ritonavir e efavirenz) ou inibi-lo pode afetar sua atividade clínica.
+
+Em uma série de estudos com pacientes sadios, ritonavir (100 mg,duas vezes ao dia, ou 600 mg,duas vezes ao dia) ou ritonavir 100 mg
+associado a lopinavir 400 mg,duas vezes ao dia,reduziu a exposição da bupropiona e de seus principais metabólitos de maneira dose-
+dependente em aproximadamente 20% a 80%. De modo similar, efavirenz 600 mg, uma vez por diapor duas semanas,reduziu a exposição
+da bupropiona e de seus principais metabólitos de maneira dose-dependente em aproximadamente 55%. Acredita-se que esse efeito do
+ritonavir, ritonavir associado a lopinavire do efavirenz ocorra devido à indução do metabolismo da bupropiona. Pacientes que estejam
+recebendo qualquer uma dessas drogas associadas à bupropiona podem precisar de doses maiores de bupropiona, mas a dose máxima
+recomendada não deve ser excedida.
+
+Mesmo não havendo estudos clínicos que identifiquem interações farmacocinéticas entre a bupropiona e o álcool, existem raros relatos de
+eventos adversos neuropsiquiátricos ou redução da tolerância alcoólica em pacientes que fazem uso de bebidas alcoólicas durante o
+tratamento. O consumo de álcool durante o tratamento deve ser minimizado ou evitado.
+Os dados pós-comercialização mostram uma possível interação farmacodinâmica entre bupropiona e ISRSs e IRSNs resultando em um
+risco aumentado de síndrome da serotonina (ver Advertências e Precauções).
+Dados clínicos limitados sugerem uma alta incidência de eventos adversos neuropsiquiátricos em pacientes que receberam bupropiona
+juntamente com levodopa ou amantadina. A administração concomitante de Wellbutrin® XL em pacientes que tomam levodopa ou
+amantadina deve ser feita com cautela.
+O uso concomitante de Wellbutrin ® XL e Sistemas Transdérmicos de Nicotina (STN) pode resultar na elevação da pressão sanguínea.
+
+Doses orais múltiplas de bupropiona não tiveram efeitos estatisticamente significativos sobre a farmacocinética de dose únicade lamotrigina
+em 12 indivíduos e mostraram apenas um ligeiro aumento na área sob a curva (ASC) de lamotrigina glicuronídeo.
+
+A coadministração de digoxina com bupropiona pode diminuir os níveis de digoxina.
+A ASC 0 24h de digoxina diminuiu 1,6 vezes e o clearance renal aumentou 1,8 vezes em um estudo com voluntários sadios.
+
+Testes laboratoriais
+Bupropiona tem demonstrado interferir em testes usados para detecção de drogasem urina, podendo resultar em falsos positivos,
+particularmente para anfetaminas. Um método laboratorialalternativo mais específico deve ser utilizado para confirmar um resultado
+positivo.
+
+8. POSOLOGIA E MODO DE USAR
+Os comprimidos de Wellbutrin ® XL devem ser engolidos inteiros. Os comprimidos não podem serpartidos,triturados ou mastigados, pois
+isto pode ocasionar aumento no risco de efeitos adversos, incluindo convulsões.
+Wellbutrin ® XL pode ser administrado com ou sem alimentos.
+
+Este medicamento não deve ser partido, aberto ou mastigado.
+
+Adultos
+A dose diária máxima de Wellbutrin® XL é 300mg.
+Deve haver um intervalo de pelo menos 24 horas entre doses sucessivas.
+
+Insônia é um efeito adversomuitocomum, frequentemente transitório, e pode ser reduzido evitando-se a administração do medicamento
+próxima ao horário de dormir (contanto que haja o intervalo de, no mínimo, 24 horas entre as doses) ou, se clinicamente indicado, reduzir
+a dose.
+
+Tratamento inicial:
+A dose inicial é de 150 mg, administrada como dose única diária, pela manhã. Pacientes que não estão respondendo adequadamente à dose
+de 150 mg/dia podem se beneficiar com um aumento para a dose adulta usual de 300 mg/dia, administrada pela manhã. A dose diária
+máxima é de 300 mg, uma vez ao dia.
+O início da ação da bupropiona foi observado no período de 14 dias após o início do tratamento.
+O efeito antidepressivo completo do Wellbutrin ® XL pode não ser evidente até depois de algumas semanas de tratamento, assim como
+acontece com quase todos os antidepressivos.
+Pacientes que estavam em tratamento com Wellbutrin ® SR:
+Quando se alterao tratamento de pacientes de Wellbutrin ® SR para os comprimidos de Wellbutrin® XL, deve-se administrar, quando
+possível, a mesma dose máxima diária. Os pacientes que estão atualmente sendo tratados com300 mg/dia de Wellbutrin ® SR (por exemplo,
+150 mg duas vezes ao dia) podem ter a terapia trocada para 300 mg de Wellbutrin ® XL uma vez por dia.
+
+Terapêutica de manutenção:
+Considera-se que episódios agudos de depressão necessitam de seis meses ou mais de tratamento com drogas antidepressivas. Wellbutrin ®
+XL (300 mg/dia) tem demonstrado eficácia durante tratamentos prolongados (estudos com até um ano de duração).
+
+Crianças e adolescentes com menos de 18 anos
+Não é indicado o uso de Wellbutrin® XL em crianças ou adolescentes com menos de 18 anos de idade (ver Advertênciase Precauções).
+A segurança e eficácia do Wellbutrin ® XL comprimidos em pacientes com menos de 18 anos não foram estabelecidas.
+
+Idosos:
+Uma maior sensibilidade de alguns idosos àbupropiona não pôde ser descartada. Assim, a redução na frequência e/ou na dose pode ser
+necessária. (ver Advertênciase Precauções).
+
+Uso em pacientes com insuficiência hepática
+Wellbutrin ® XL deve ser utilizado com cautela em pacientes com insuficiência hepática.
+
+Face à maior variação da farmacocinética em pacientes com cirrose hepática leve a moderada, deve ser considerada a redução nafrequência
+da dosagem (ver Advertênciase Precauções). Nestes casos, Wellbutrin ® XL deve ser usado com extremo cuidado em pacientes com cirrose
+hepática grave. Nestes pacientes, a dose não deve exceder 150 mg em dias alternados (ver Advertênciase Precauções).
+
+Uso em pacientes com insuficiência renal:
+O tratamento de pacientes com insuficiência renal deve ser iniciado com frequência e/ou dose reduzidas, uma vez que a bupropiona e seus
+metabólitos ativos podem se acumular nestes pacientes mais que o normal. (ver Advertênciase Precauções).
+Modelo de Texto de Bula Profissional de saúde
+Wellbutrin®XL comprimidos revestidos de liberação prolongada
+
+Este medicamento não deve ser partido, trituradoou mastigado.
+
+9. REAÇÕES ADVERSAS
+Os dados abaixo fornecem informações sobre as reações adversas, identificadas em estudos clínicos, listadas por frequência das reações.
+
+Reações muito comuns (>1/10): insônia, cefaleia, boca seca,transtornos gastrintestinaiscomo náusea e vômito.
+
+Reações comuns (>1/100 e 1/10): reações de hipersensibilidade, como urticária, anorexia, agitação, ansiedade, tremor, vertigem,
+transtornosno paladar, transtornos na visão, tinido, aumento da pressão sanguínea (em alguns casos, grave), calor e rubor,dor abdominal,
+constipação, rash (erupções cutâneas), prurido, sudorese, febre, dores no peito, astenia.
+
+Reações incomuns (>1/1.000 e 1/100): perda de peso, depressão, confusãomental, taquicardia, distúrbios deconcentração.
+
+Reação rara (>1/10.000 e 1.000): convulsões (ver Advertências e Precauções).
+
+Reações muito raras ( 1/10.000): Reações de hipersensibilidade mais graves, incluindo angioedema, dispneia, broncoespasmo e choque
+anafilático;artralgia, mialgia e febre também foram relatadas em associação com rash e outros sintomas sugestivos de hipersensibilidade
+tardia. Esses sintomas podem lembrar a Doença do soro. Agressão, hostilidade, irritabilidade, inquietação, alucinações, sonhos anormais,
+despersonalização, delírio, ideação paranoide, ataque de pânico; alterações da glicemia, hiponatremia; distonia, ataxia, parkinsonismo,
+alterações na coordenação motora, alterações de memória, parestesias,disfemia,síncopes; palpitações; vasodilatação, hipotensão postural;
+elevação no nível de enzimas hepáticas, icterícia, hepatite; eritema multiforme, síndrome de Stevens-Johnson, necrólise epidérmica tóxica,
+síndrome de lúpus eritematoso sistêmico agravado, lúpus eritematoso cutâneo, pustulose exantemática generalizada aguda; movimentos
+involuntários; aumento da frequência urinária ou retenção urinária; incontinência urinária, alopecia.
+
+Dados pós-comercialização
+As reações adversas a seguir foram identificadas durante o uso pós-aprovação de Wellbutrin®XL. Uma vez que essas reações foram
+relatadas voluntariamente por uma população com tamanho incerto, nem sempre é possível estimar a frequência ou estabelecer uma relação
+de exposição à droga.
+
+Gerais: artralgia, mialgia e febre com erupção cutânea e outros sintomas sugestivos de hipersensibilidade tardia. Estes sintomas podem
+assemelhar-se à doença do soro (ver Advertências e Precauções);
+Cardiovascular : hipertensão (em alguns casos grave), hipotensão ortostática, bloqueio cardíaco de terceiro grau;
+Endócrino: síndrome da secreção inapropriada de hormônio antidiurético, hiperglicemia e hipoglicemia;
+Gastrointestinal: esofagite e hepatite;
+Circulatório e linfático: equimose, leucocitose, leucopenia e trombocitopenia. Alterações no INR e/ou TP, raramente associadas a
+complicações hemorrágicas ou trombóticas, foram observadas quando a bupropiona foi coadministrada com varfarina;
+Músculo-esquelético: rigidez muscular/ rabdomiólise e fraqueza muscular;
+Sistema nervoso: agressão, coma, suicídio completo, delírio, sonhos anormais, ideias paranóicas, parestesia, inquietação, tentativa de
+suicídio e discinesia tardia desmascarada;
+Pele e anexos da pele: síndrome de Stevens Johnson(SJS), angioedema, dermatite esfoliativa e urticária, reação medicamentosa com
+eosinofilia e sintomas sistêmicos (DRESS);
+Sentidos especiais: tinido e aumento da pressão intraocular.
+
+Em caso de eventos adversos, notifique pelo Sistema VigiMed, disponível no portal da ANVISA.
+
+10. SUPERDOSE
+Foram descritos casos de ingestão aguda de doses até 10 vezes maiores que as doses terapêuticas máximas. Além dos eventos descritos no
+item Reações adversas, a superdosagem tem ocasionado sintomas que incluem sonolência, redução do nível de consciência e alterações
+ECGs, tais como distúrbios de condução (incluindo prolongamento do intervalo QRS) e arritmias.Foram relatados alguns casos que
+resultaram em morte.
+Tratamento: na ocorrência de superdosagem, o paciente deve ser hospitalizado. ECG e sinais vitais devem ser monitorados.
+É necessário assegurar oxigenação e ventilação adequadas. O uso de carvão ativado também é recomendado. Não se conhece nenhum
+antídoto específico para a bupropiona. O gerenciamento futuro deve ser feito de acordo com as indicações clínicas e as recomendações do
+centro de toxicologia de referência, quando disponível.
+
+Em caso de intoxicação ligue para 0800 722 6001,se você precisar de mais orientações.
+
+III)

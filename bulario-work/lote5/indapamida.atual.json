@@ -1,0 +1,16 @@
+{
+  "Risco Gestacional": "B",
+  "Slug": "indapamida",
+  "Nomes Comerciais / Produtos ANVISA": "Natrilix; Natrilix SR; indapamida.",
+  "Interações": "Lítio pode ter níveis aumentados e toxicidade. Antiarrítmicos e fármacos que prolongam QT, como amiodarona, sotalol, quinidina, haloperidol, clorpromazina, escitalopram, moxifloxacino e ondansetrona, têm risco arrítmico aumentado por hipocalemia. Corticosteroides, anfotericina B, laxantes estimulantes e beta-2 agonistas, como salbutamol e fenoterol, aumentam hipocalemia. IECA/BRA, como enalapril, ramipril, losartana e valsartana, podem aumentar hipotensão inicial e alterar função renal. AINEs reduzem efeito anti-hipertensivo e podem piorar função renal. Digoxina tem toxicidade favorecida por hipocalemia.",
+  "Apresentações / Nomes Comerciais": "Comprimidos 1,25 mg, 1,5 mg de liberação prolongada ou 2,5 mg conforme fabricante; associações fixas com perindopril ou outros anti-hipertensivos conforme disponibilidade. Exemplos: Natrilix; Natrilix SR; Fludex; Indapamida EMS.",
+  "Texto Resumo": "Indapamida é um diurético tiazídico-like usado no tratamento da hipertensão arterial. Exige monitorização de eletrólitos e função renal, com atenção a hipocalemia, hiponatremia, hiperuricemia, hipotensão e interações que aumentam risco de arritmias.",
+  "Classe / Categoria": "Diurético tiazídico-like; anti-hipertensivo; sulfonamida diurética.",
+  "Posologia Adulto": "Hipertensão arterial: 1,25 mg a 2,5 mg por via oral 1 vez ao dia pela manhã, conforme apresentação.\nFormulação de liberação prolongada: geralmente 1,5 mg por via oral 1 vez ao dia pela manhã.\nDoses maiores tendem a aumentar eventos adversos sem ganho proporcional de efeito anti-hipertensivo.\nMonitorar eletrólitos e função renal.",
+  "Contraindicações": "Hipersensibilidade à indapamida, sulfonamidas ou componentes da fórmula; insuficiência renal grave; encefalopatia hepática ou insuficiência hepática grave; hipocalemia; hiponatremia importante conforme avaliação; gravidez e lactação conforme risco-benefício.",
+  "Tags Busca": "indapamida; diurético; tiazídico-like; hipertensão; pressão alta; hipocalemia; natrilix",
+  "Advertências": "Pode causar hipocalemia, hiponatremia, hipomagnesemia, hipercalcemia, hiperuricemia, aumento de glicemia, tontura, hipotensão, desidratação, câimbras, fotossensibilidade e piora de função renal em suscetíveis. Monitorar sódio, potássio, creatinina, ácido úrico e glicemia, especialmente em idosos, desnutridos, cirróticos, insuficiência cardíaca, uso de laxantes ou associação com antiarrítmicos.",
+  "Nomes Comerciais OpenAI": "Natrilix; Natrilix SR; Fludex; Indapamida EMS; Indapamida Servier.",
+  "Rede SUS (RENAME)": false,
+  "Princípio Ativo": "Indapamida"
+}

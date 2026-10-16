@@ -1,0 +1,453 @@
+FONTE: lote5__carvedilol__CARVEDILOL.pdf
+
+===== BLOCO 1 =====
+APRESENTAÇÕES
+Comprimidos de 6,25 mg; 12,5 mg e 25 mg em embalagens com 30 comprimidos.
+
+ USO ORAL
+ USO ADULTO
+
+1. INDICAÇÕES
+ Hipertensão arterial: carvedilol é indicado para tratamento de hipertensão arterial, isoladamente ou em associação a outros agentes anti-
+ hipertensivos, especialmente diuréticos tiazídicos.
+ Angina do peito: carvedilol demonstrou eficácia clínica no controle das crises de angina do peito. Dados preliminares de estudos indicaram eficácia e
+ segurança do uso de carvedilol em pacientes com angina instável e isquemia silenciosa do miocárdio.
+ Insuficiência cardíaca congestiva: carvedilol é indicado para tratamento de pacientes com insuficiência cardíaca congestiva estável e sintomática
+ leve, moderada e grave, de etiologia isquêmica e não isquêmica. Em adição à terapia padrão (incluindo inibidores da enzima conversora de
+ angiotensina e diuréticos, com ou sem digitálicos opcional), carvedilol demonstrou reduzir a morbidade (hospitalizações cardiovasculares e melhora
+ do bem-estar do paciente) e a mortalidade, bem como a progressão da doença.
+ Pode ser usado como adjunto à terapia padrão, em pacientes incapazes de tolerar inibidores da ECA e em pacientes que não estejam recebendo
+ tratamen to co m dig itálico s, hid ralazina ou nitrato s.
+ De acordo com os resultados de um estudo (Copernicus), carvedilol é eficaz e bem tolerado em pacientes com insuficiência cardíaca crônica grave.
+
+3. CARACTERÍSTICAS FARMACOLÓGICAS
+ Carvedilol é um antagonista neuro-hormonal de ação múltipla, com propriedades betabloqueadoras não seletivas, alfabloqueadora e antioxidante. O
+ carvedilol reduz a resistência vascular periférica por vasodilatação mediada pelo bloqueio alfa1 e suprime o sistema renina-angiotensina-aldosterona
+ devido ao bloqueio beta; retenção hídrica é, po rt ant o, u ma o co rrên ci a rara. O carvedilol não apresenta atividade simpatomimética intrínseca e, como o
+ propranolol, apresenta propriedades estabilizadoras de membrana.
+ O carvedilol é uma mistura racêmica de dois estereoisômeros. Em animais, ambos os enantiômeros apresentam propriedades bloqueadoras de
+ receptores alfa- adrenérgicos. As propriedades bloqueadoras do receptor beta- adrenérgico não são seletivas para os receptores beta1 e beta2 e estão
+ associadas ao enantiômero levógiro do carvedilol.
+ O carvedilol é um potente antioxidante e neutralizador de radicais de oxigênio, demonstrado por estudos em animais, in vitro e in vivo, e em vários
+ tipos de células humanas, in vitro. Carvedilol exibe efeito antiproliferativo nas células musculares lisas de vasos sanguíneos de humanos e efeitos
+ protetores de órgãos.
+ O carvedilol não exerce efeitos adversos no perfil lipídico. A relação HDL/LDL se mantém normal.
+
+ Fa rmaco ci néti ca
+ Abso rção
+ Após administração oral, carvedilol é rapidamente absorvido. O carvedilol é um substrato do transportador de efluxo intestinal P-glicoproteína que
+ desempenha um papel importante na biodisponibilidade de certas drogas.
+ Em voluntários saudáveis, a concentração sérica máxima é alcançada em aproximadamente 1 hora. A biodisponibilidade absoluta de carvedilol no
+ homem é de aproximadamente 25%. Alimentos não alteram a extensão da biodisponibilidade, embora aumentem o tempo para atingir a con centração
+ plasmática máxima.
+ Distribuição
+ O carvedilol é altamente lipofílico; aproximadamente 98 – 99% do carvedilol se liga às proteínas plasmáticas; o volume de distribuição é de
+ aproximadamente 2 L/kg.
+ Metabolismo
+ No ser humano, o carvedilol é extensamente metabolizado no fígado através de oxidação e conjugação, produzindo diversos metabólitos que são
+ eliminados principalmente na bile. O efeito de primeira passagem após administração oral é cerca de 60 – 75%. A circulação êntero -hepática da
+ substância original foi demonstrada em animais. Desmetilação e hidroxilação do anel fenólico produzem três metabólitos com atividade
+ betabloqueadora. Com base em estudos pré-clínicos, o metabólito 4’-hidroxifenol é, aproximadamente, 13 vezes mais potente do que o carvedilol para
+ bloqueio beta. Comparados ao carvedilol, os três metabólitos exibem atividade vasodilatadora fraca. No ser humano, as concentrações dos três
+ metabólitos ativos são, aproximadamente, 10 vezes mais baixas do que as da substância original. Dois metabólitos do carvedilol são antioxidantes
+ extremamente potentes (30 a 80 vezes mais potentes que o carvedilol).
+ O metabolismo oxidativo do carvedilol é estero-seletivo. O R -enantiômero é metabolizado predominantemente por CYP2D6 e CYP1A2, enquanto
+ que o S-enantiômero é metabolizado principalmente pelo CYP2C9 e, em menor extensão, pelo CYP2D6. Outras isoenzimas CYP450 envolvidas n o
+ metabolismo do carvedilol incluem CYP3A4, CYP2E1 e CYP2C19. A concentração plasmática máxima de R-carvedilol é aproximadamente duas
+ vezes maior do que a de S-carvedilol. O R-enantiômero é metabolizado predominantemente através de hidroxilação. Em metabolizadores lentos de
+ CYP2D6, pode ocorrer um aumento da concentração plasmática de carvedilol, principalmente o R-enantiômero, levando a um aumento da atividade
+ alfabloqueadora.
+ Eliminação
+ A meia-vida de eliminação média do carvedilol é de aproximadamente 6 horas. A depuração plasmática é de 500 – 700 mL/min. A eliminação é
+ primariamente biliar, sendo as fezes a principal via de excreção. Menor fração é eliminada pelos rins na forma de metabólitos. É improvável que
+ ocorra acúmulo do carvedilol durante o tratamento prolongado, se usado conforme recomendado.
+ Tera togeni ci da de
+ Estudos em animais mostraram que carvedilol não possui efeitos teratogênicos.
+
+ Fa rmaco cinética em populações especiais
+ Pacientes com insuficiência renal
+ O fluxo sanguíneo e a filtração glomerular mantêm -se preservados durante a terapia crô ni ca co m carv ed il ol .
+ Em pacientes com insuficiência renal e hipertensão, a área sob a curva da concentração plasmática v e rsu s tempo, a meia-vida de eliminação e a
+ concentração plasmática máxima não se alteram significativamente. A excreção renal do fármaco inalterado diminui em pacientes com insuficiência
+ renal, embora não ocorram modificações significativas nos parâmetros farmacocinéticos. Diversos estudos abertos mostraram que carvedilol é um
+ agente efetivo em pacientes com hipertensão renal. O mesmo foi verificado e m pacientes com insuficiência renal crônica, naqueles sob hemodiálise
+ ou após transplante renal. O carvedilol leva uma redução gradual da pressão sanguínea nos dias com ou sem diálise e os efeitos na diminuição da
+ pressão sanguínea são comparáveis aos obtidos em pacientes com função renal normal. O carvedilo l não é eliminado durante diálise, pois não
+ atravessa a membrana de diálise, provavelmente devido à sua elevada ligação às proteínas do plasma. Com base nos resultados obtidos em ensaios
+ comparativos de pacientes em hemodiálise, pode- se concluir que carvedilol é mais efetivo que bloqueadores de canal de cálcio e melhor tolerado.
+ Pacientes com insuficiência hepática
+ Em pacientes com cirrose hepática, a biodisponibilidade pode aumentar em até 80% por redução do efeito de primeira passagem. Portanto, é
+ contraindicado em pacientes com insuficiência hepática clinicamente manifestada.
+ Pacientes com insuficiência cardíaca
+ Modelo de Bula
+ PROFISSIONAL
+
+ Em um estudo incluindo 24 pacientes japoneses com insuficiência cardíaca, o cl ea ra nce de R- e S-carvedilo l foi significativamente menor do que o
+ previamente estimado em voluntários saudáveis. Esses resultados sugerem que a farmacocinética de R - e S-carvedilol é significativamente alterada
+ pela insuficiência cardíaca.
+
+ Pacientes diabéticos
+ Em pacientes hipertensos e portadores de diabetes tipo 2, não se observou influência do carvedilol na glicemia de jejum ou pós-prandial, nos níveis de
+ hemoglobina glicosilada ou necessidade de se alterar a dose dos agentes antidiabéticos. Nos pacientes com resistência à insulina, o carvedilol
+ melhorou a sensibilidade à insulina.
+ Pacientes idosos/pediátricos
+ A farmacocinética do carvedilol em pacientes hipertensos não é afetada pela idade. Um estudo em pacientes idosos hipertensos demonstrou que não
+ há diferença no perfil dos efeitos adversos, comparado com pacientes mais jovens. Outro estudo que incluiu pacientes idosos com doença arterial
+ coronária demonstrou não haver diferença nos efeitos adversos relatados versus os relatados por pacientes mais jovens.
+ Os dados farmacocinéticos disponíveis em pacientes com menos de 18 anos de idade são limitados.
+
+4. CONTRAINDICAÇÕES
+ Carvedilol é contraindicado em pacientes com hipersensibilidade conhecida ao carvedilol ou a qualquer um dos componentes do produto;
+ insuficiência cardíaca descompensada/instável, que exija terapia inotrópica intravenosa; insuficiência hepática clinicamente manifesta. Como com
+ qualquer outro betabloqueador, o carvedilol não deve ser usado em pacientes com asma brônquica ou doença pulmonar obstrutiva crônica (DPOC)
+ com componente broncoespástico; bloqueio atrioventricular (AV) de segundo ou terceiro grau (a menos que o paciente tenha um marca- p a sso
+ permanente); bradicardia grave (< 50 bpm); síndrome do nó sinusal (incluindo bloqueio sinoatrial); choque cardiogênico; hipotensão grave (pressão
+ arterial sistólica < 85 mmHg).
+ Este medicamento não deve ser usado por pessoas com insuficiência de sacarose- isomaltase e/ou por pessoas com síndrome de má -absorção
+ de glicose- galactose.
+
+5. ADVERTÊNCIAS E PRECAUÇÕES
+ Gera l
+ Insuficiência cardíaca congestiva crônica
+ Em pacientes com insuficiência cardíaca congestiva pode ocorrer piora da insuficiência cardíaca ou retenção hídrica durante a titulação do carvedilol.
+ Caso isso ocorra, a dose do diurético deve ser aumentada e a dose de carvedilol deve ser mantida até que a estabilidade clínica seja novamente
+ atingida. Ocasionalmente, pode ser necessário reduzir a dose do carvedilol ou, em casos raros, descontinuá- lo temporariamente. Tais episódios não
+ impedem o sucesso de titulação subsequente de carvedilol. O carvedilol deve ser usado com cautela em combinação com digitálicos, pois ambos os
+ fármacos lentificam a condução AV (vide item “Interações medicamentosas”).
+ Diabetes
+ Deve-se ter cautela ao administrar carvedilol a pacientes com diabetes mellitu s, pois pode estar relacionado com a piora do controle da glicemia ou os
+ sinais e sintomas precoces de hipoglicemia podem ser mascarados ou atenuados. Portanto, a monitoração regular da glicemia é necessária nos
+ diabéticos quando carvedilol for iniciado ou titulado e a terapia hipoglicemiante ajustada adequadamente (vide item “Interações medicamentosas” e
+ “Advertências e precauções – Uso em populações especiais - Pacientes diabéticos”).
+ Deve ser usado com cautela po r portadores de Diabetes.
+ Função renal em pacientes com insuficiência cardíaca congestiva
+ Deterioração reversível da função renal foi observada durante tratamento com carvedilol em pacientes com insuficiência cardíaca congestiva e baixa
+ pressão arterial (PA sistólica < 100 mmHg), cardiopatia isquêmica, doença vascular difusa e/ou insuficiência renal subjacente. Nesses pacientes, a
+ função renal deve ser monitorada durante a titulação do carvedilol. Descontinuar a medicação ou reduzir a dose caso ocorra piora da função renal.
+ Doença pulmonar obstrutiva crônica
+ Carvedilol deve ser usado com cautela em pacientes com doença pulmonar obstrutiva crônica (DPOC) com componente broncoespástico e que não
+ estejam recebendo medicação oral ou inalatória, se o benefício potencial superar o risco potencial. Em pacientes com tendência a broncoespasmo,
+ pode ocorrer insuficiência respiratória por possível aumento da resistência das vias aéreas. Os pacientes devem ser monitorados cuidadosamente
+ durante o início e titulação de carvedilol e a dose do carvedilol reduzida se for observado broncoespasmo durante o tratamento.
+ Lentes de contato
+ Usuários de lentes de contato devem lembrar-se da possibilidade de redução do lacrimejamento.
+ Descontinuação do tratamento
+ O tratamento com carvedilol não deve ser descontinuado abruptamente, principalmente em pacientes com cardiopatia isquêmica. A retirada do
+ carvedilol, nesses pacientes, deve ser gradual (ao longo de duas semanas).
+ Tireotoxicose
+ Carvedilol como outros betabloqueadores, pode mascarar os sintomas de tireotoxicose.
+ Reações de hipersensibilidade
+ Deve-se ter cuidado ao administrar carvedilol a pacientes com história de reações graves de hipersensibilidade e naqueles submetidos à terapia de
+ dessensibilização, pois os betabloqueadores podem aumentar tanto a sensibilidade aos alérgenos quanto a gravidade das reações de hipersensibilidade.
+ Carvedilol 6,25mg: Atenção : Co ntém o co ra nte óx i do de ferro ama relo.
+ Carvedilol 12,5mg: Atenção: Contém os corantes óxido de ferro amarelo e óxi do de ferro v ermel ho .
+ Reações adversas cutâneas graves
+ Casos muito raros de reações adversas cutâneas graves, tais como necrólise epidérmica tóxica e síndrome de Stevens-Johnson, foram relatados
+ durante o tratamento com carvedilol (vide item “Reações adversas – Experiência pós-comercialização”). Carvedilol deve ser permanentemente
+ descontinuado em pacientes que apresentarem reações adversas cutâneas graves possivelmente relacionadas com o carvedilol.
+ Psoríase
+ Pacientes com história de psoríase associada a tratamento com betabloqueadores só deverão tomar carv edilo l após se considerar a relação risco
+ versus benefício.
+ Modelo de Bula
+ PROFISSIONAL
+
+ Interações com outros medicamentos
+ Há um número de importantes interações farmacocinéticas e farmacodinâmicas com outras drogas (por exemplo, digoxina, ciclosporin a, rifamp icin a,
+ drogas anestésicas e antiarrítmicas) (vide item “Interações medicamentosas” para mais detalhes).
+ Feocro mo ci toma
+ Em pacientes com Feocromocitoma, deve-se iniciar um agente alfabloqueador antes do uso de qualquer betabloqueador. Apesar de carvedilol exercer
+ atividades alfa e betabloqueadora, não existe experiência de uso nesses casos. Portanto, deve- se ter cautela ao se administrar carvedilol a pacientes
+ com suspeita de feocromocitoma.
+ Angina variante de Prinzmetal
+ Betabloqueadores não seletivos podem provocar dor torácica em pacientes com angina variante de Prinzmetal. Não há experiência clínica com
+ carvedilol nesses pacientes, apesar de sua atividade alfabloqueadora poder prevenir esses sintomas. Deve- se ter cautela ao administrar carvedilol a
+ pacientes com suspeita de angina variante de Prinzmetal.
+
+ Doença vascular periférica e fenômeno de Raynaud
+ O carvedilol deve ser usado com cautela em pacientes com doença vascular periférica (por exemplo, fenômeno de Raynaud), pois o s
+ betabloqueadores podem precipitar ou agravar os sintomas de insuficiência arterial.
+ Bra di ca rdia
+ Carvedilol pode provocar bradicardia. Se a frequência cardíaca reduzir para menos de 55 batimentos por minuto, a dose do carvedilol deve ser
+ reduzida.
+
+ Uso em populações especiais
+ Pacientes com menos de 18 anos de idade
+ O uso de carvedilol não é recomendado a pacientes com menos de 18 anos de idade (vide item “Posologia e modo de usar - Pacien tes com men o s de
+ 18 anos de idade”).
+ Pacientes idosos
+ Um estudo realizado em pacientes idosos hipertensos mostrou que não há diferença no perfil de eventos adversos, em comparação com pacientes mais
+ jovens. Outro estudo, que incluiu pacientes idosos com doença coronariana, não mostrou diferença de eventos adversos relatados, em comparação
+ com os relatados por pacientes mais jovens. Portanto, nenhum ajuste de dose da dose inicial é exigido para pacientes idosos.
+ Pacientes com insuficiência renal
+ O suprimento de sangue renal autorregulador é preservado e a filtração glomerular mantém-se in alterad a du ran te o tratamen to crô nico co m carv edilo l.
+ Em pacientes com insuficiência renal moderada a grave, não há necessidade de alterar as recomendações de dosagem de carvedilol (vide item
+ “Posologia e modo de usar – Paci en tes com in su fi ci ên ci a ren al”).
+ Pacientes com insuficiência hepática
+ Carvedilol é contraindicado para pacientes com insuficiência hepática clinicamente manifesta (vide item “Contraindicações”). Um estudo de
+ farmacocinética em pacientes cirróticos demonstrou que a exposição (AUC) a carvedilol aumentou 6,8 vezes em pacientes com insuficiência hepática
+ quando comparados com indivíduos sadios.
+ Pacientes diabéticos
+ Betabloqueadores podem aumentar a resistência à insulina e mascarar os sintomas da hipoglicemia. Entretanto, vários estudos estabeleceram que os
+ betabloqueadores vasodilatadores, como o carvedilol, estão relacionados com efeitos mais favoráveis nos perfis de glicose e lipídeos. Tem sido
+ demonstrado que carvedilol possui propriedades insulino-sensíveis modestas e pode atenuar algumas manifestações da síndrome metabólica.
+
+ Gestação e lactação
+ Categoria de risco na gravidez: C.
+ Este medicamento não deve ser utilizado por mulheres grávidas sem orientação médica ou do cirurgião-dentista.
+
+ Estudos em animais demonstraram toxicidade reprodutiva. O risco potencial para os humanos é desconhecido. Não há experiência clínica adequada
+ c o m carvedilol em mulheres grávidas. Betabloqueadores reduzem a perfusão placentária, podendo resultar em morte fetal intrauterina e parto
+ prematuro. Além disso, efeitos adversos (hipoglicemia e bradicardia) podem ocorrer no feto e no recém-nascido. Existe risco aumentado de
+ complicações cardíacas e pulmonares no recém -nascido. Não existem evidências a partir de estudos em animais de laboratório de que carvedilol
+ apresente efeitos teratogênicos.
+ Carvedilol não deve ser usado durante a gravidez a menos que os benefícios potenciais justifiquem o risco potencial.
+ Estudos em animais demonstraram que carvedilol e/ou seus metabólitos são excretados no leite de ratas. A excreção do carvedilol no leite humano
+ não foi estabelecida. Entretanto, a maioria dos betabloqueadores, em particular os compostos lipofílicos, passa para o leite materno, embora seja em
+ quantidades variáveis. Portanto, a amamentação não é recomendada após a administração de carvedilol.
+
+ Efeitos sobre a capacidade de dirigir e operar máquinas
+ Não foram realizados estudos dos efeitos sobre a capacidade de dirigir veículos e operar máquinas. Devido a reações individuais variáveis (tonturas,
+ cansaço), a capacidade do paciente para dirigir veículos ou operar máquinas pode estar comprometida, principalmente no início do tratamento e após
+ os aumentos de doses, nas modificações de terapias ou em combinação com álcool.
+ Informe ao seu paciente que ele deve evitar se levantar rapidamente, dirigir veículos e/ou operar máquinas, principalmente no início do
+ tratamento e ao aumentar a dose.
+ Atenção: Contém lactose e sacarose (tipos de açúcar) abaixo do 0,25g/comprimido.
+ Este medicamento pode causar doping.
+
+6. INTERAÇÕES MEDICAMENTOSAS
+ Interações Farmacocinéticas
+ Efeitos do carvedilol na farmacocinética de outras drogas
+ Carvedilol é um substrato e t a mb ém um inibidor de P-glicoproteína. Portanto, a biodisponibilidade de fármacos transportados pela P-glicoproteína
+ Modelo de Bula
+ PROFISSIONAL
+
+ pode ser aumentada pela administração concomitante de carvedilol. Além disso, a biodisponibilidade de carvedilol pode ser modificada por indutores
+ ou inibidores de P-glicoproteína.
+ Digoxina: foi demonstrado um aumento da exposição de digoxina de até 20% em alguns estudos em indivíduos sadios e pacientes com insufici ên ci a
+ cardíaca. Um efeito significantemente maior foi observado em pacientes do sexo masculino em comparação com pacientes do sexo feminino.
+ Portanto, é recomendado o monitoramento dos níveis de digoxina quando o tratamento com carvedilol é iniciado, ajustado ou descontinuado (vide
+ item “Advertências e precauções”). O carvedilol não tem efeito sobre a digoxina quando administrado por via intravenosa.
+ Ci c lo s po r i na : dois estudos em pacientes submetidos a transplantes renal e cardíaco recebendo ciclosporina por via oral (VO) demonstraram um
+ aumento na concentração plasmática de ciclosporina depois da introdução de carvedilol. O carvedilol parece aumentar a exposição de ciclosporina
+ VO em cerca de 10 a 20%. Na tentativa de manter níveis terapêuticos de ciclosporina, foi necessária a redução média de 10 – 20% da dose de
+ ciclosporina. O mecanismo para a interação não é conhecido , mas a inibição da atividade da P-glicoproteína no intestino pode estar envolvida. Devido
+ à ampla variabilidade interindividual nos níveis de ciclosporina, recomenda-se que as suas concentrações sejam monitoradas cuidadosamente depois
+ da introdução da terapia com carvedilol e que a dose de ciclosporina seja ajustada adequadamente. No caso de administração intravenosa de
+ ciclosporina, nenhuma interação com carvedilol é esperada.
+ Efeitos de outras drogas na farmacocinética de carvedilol
+ Inibidores e indutores de CYP2D6 e CYP2C9 podem modificar estéreo-seletivamente o metabolismo sistêmico e/ou pré-sistêmico do carvedilol,
+ resultando em concentrações plasmáticas aumentadas ou diminuídas do R e S- carvedilol (vide item “Características farmacológicas – Met abo li smo ”).
+ Exemplos observados em pacientes ou em indivíduos saudáveis são apresentados a seguir.
+ Cimetidina: é necessário cautela em pacientes em uso de inibidores de oxidases de função mista, como a cimetidina, pois o nível sérico pode ser
+ aumentado. Entretanto, com base no pequeno efeito da cimetidina sobre os níveis de carvedilol, a probabilidade de interações cl ini camen t e
+ significativas é mínima.
+ Rifampicina: em um estudo incluindo 12 indivíduos sadios, a exposição ao carvedilol diminui cerca de 60% durante a administração concomitante
+ com a rifampicina e foi observada uma diminuição do efeito do carvedilol na pressão sanguínea sistólica. O mecanismo de interação n ão é conhecido,
+ mas a inibição da atividade da P- glicoproteína no intestino pode estar envolvida. Aconselha-se o monitoramento cuidadoso da atividade
+ betabloqueadora em pacientes tratados com carvedilol e rifampicina concomitantemente.
+ Amiodarona: um estudo in vitro com microssomos do fígado humano demonstrou que a amiodarona e a desetilamiodarona inibem a oxidação do R e
+ S-carvedilol. A concentração mínimado R e S-carvedilol foi significativamente aumentada em 2,2 vezes em pacientes com insuficiência cardíaca
+ recebendo, concomitantemente, carvedilol e amiodarona quando comparados a pacientes recebendo carvedilol em monoterapia. O efeito do S-
+ carvedilol foi atribuído à desetilamiodarona, um metabólito da amiodarona, que é um potente inibidor da CYP2C9. Aconselha-se o monitoramento da
+ atividade betabloqueadora em pacientes tratados, com carvedilol e amiodarona, concomitantemente.
+ Fluoxetina e paroxetina: em um estudo randomizado, cruzado, incluindo 10 pacientes com insuficiência cardíaca, a coadministração de fluoxetina,
+ um potente inibidor de CYP2D6, resultou em inibição estéreo-seletiva do metabolismo de carvedilol, com um aumento de 77% em AUC do
+ enantiômero R(+), e um aumento não-estatístico de 35% em AUC do enantiômero S(-) quando comparado com o grupo placebo. No entanto, não fo i
+ notada nenhuma diferença em eventos adversos, pressão arterial ou frequência cardíaca entre grupos de tratamento. O efeito de uma dose de
+ paroxetina, um inibidor potente da CYP2D6, na farmacocinética do carvedilol, foi investigado em 12 indivíduos sadios após a administração oral.
+ Apesar do aumento significativo na exposição do R e S-carvedilol, nenhum efeito clínico foi observado nesses indivíduos sadios.
+
+ Interações Farmacodinâmicas
+ Insulina ou hipoglicemiantes orais: agentes com propriedades betabloqueadoras podem aumentar o efeito redutor da glicemia da insulina e de
+ hipoglicemiantes orais. Os sinais de hipoglicemia podem ser mascarados ou atenuados (especialmente a taquicardia). Em pacientes recebendo insulina
+ ou hipoglicemiantes orais, o monitoramento regular de glicemia é, portanto, recomendável (vide item “Advertências e precauções” ).
+ Agentes depletores de catecolaminas: pacientes em uso concomitante de agentes com propriedades betabloqueadoras e fármacos que possam
+ depletar catecolaminas (por exemplo, reserpina e inibidores de monoamina- oxidase) devem ser observados com cuidado em relação a sinais de
+ hipotensão e/ou bradicardia grave.
+ Digoxina: o uso combinado de beta-bloqueadores e digoxina podem resultar no prolongamento aditivo de tempo de condução átrio-ventricular (AV).
+ Bloqueadores do canal de cálcio não diidropiridina, amiodarona ou outros antiarrítmicos: em combinação com carvedilol, podem aumentar o
+ risco de distúrbios de condução AV. Casos isolados de distúrbios da condução (raramente com comprometimento hemodinâmico) foram observados
+ quando carvedilol é coadministrado com diltiazem. Tal como acontece com outros betabloqueadores, se o carvedilol f administrado por via oral com
+ bloqueadores do canal de cálcio não diidropiridina do tipo verapamil ou diltiazem, amiodarona ou outros antiarrítmicos, recomenda-se o
+ monitoramento do ECG e da pressão arterial.
+ Clonidina: a administração de clonidina associada a betabloqueadores pode potencializar os efeitos de redução de pressão arterial e frequ ên cia
+ cardíaca. Quando for necessário interromper o tratamento com agentes betabloqueadores e clonidina, o betabloqueador deve ser o primeiro a ser
+ retirado. A terapia com clonidina pode ser descontinuada vários dias depois, reduzindo gradualmente a dose.
+ Anti-hipertensivos: como outros betabloqueadores, carvedilol pode potencializar o efeito de outros fármacos administrados concomitantemente que
+ apresentem ação anti-hipertensiva (por exemplo, antagonistas de receptor alfa- 1) ou tenham hipotensão como parte de seu perfil de efeitos adversos.
+ Agentes anestésicos: recomenda- se monitoramento cuidadoso de sinais vitais durante anestesia devido aos efeitos inotrópicos negativos e
+ hipotensores sinérgicos de carvedilol e fármacos anestésicos.
+ AINEs: o uso concomitante de anti-inflamatórios não esteróides (AINEs) e bloqueadores beta- adrenérgicos pode resultar em aumento de pressão
+ arterial e menor controle da pressão arterial.
+ Broncodilatadores beta-agonistas: betabloqueadores não cardiosseletivos fazem oposição aos efeitos broncodilatadores de fármacos com ação
+ brônquica beta-agonista. Recomenda-se monitoramento cuidadoso dos pacientes.
+
+8. POSOLOGIA E MODO DE USAR
+ Carvedilol deve ser administrado por via oral.
+ Duração do tratamento: o tratamento com carvedilol é normalmente prolongado e não deverá ser interrompido abruptamente, mas gradualmente
+ redu zido a in tervalo s seman ai s, part icu larmen t e em paci en tes co m do en ça art eri al co ro nári a con co mit an te.
+
+ Hipertensão essencial
+ Adultos: A dose inicial recomendada é 12,5 mg, uma vez ao dia, durante os dois primeiros dias. A seguir, a dose recomendada é 25 mg, uma v ez ao
+ dia. Se necessário, a dose poderá ser aumentada a intervalos mínimos de duas semanas até a dose diária máxima recomendada de 50 mg, em dose
+ única diária ou dividida em duas doses.
+ Idosos: A dose inicial recomendada é 12,5 mg, uma vez ao dia. Se necessário, a dose poderá ser aumentada a intervalos mínimos de duas semanas até
+ a dose diária máxima recomendada de 50 mg, em dose única diária ou dividida em duas doses.
+ Angina do peito
+ A dose inicial recomendada é 12,5 mg, duas vezes ao dia, durante os dois primeiros dias. A seguir, a dose recomendada é 25 mg, du as v ezes ao dia.
+ Se necessário, poderá ser aumentada a intervalos mínimos de duas semanas até a dose máxima diária recomendada de 100 mg, admin i st ra da e m d o se s
+ fracionadas (duas vezes ao dia). A dose diária máxima recomendada para idosos é 50 mg, administrada em doses fracionadas (duas vezes ao dia).
+ Insuficiência cardíaca congestiva (ICC)
+ A dose deve ser individualizada e cuidadosamente monitorada pelo médico durante a fase de titulação. Para pacientes em uso de d ig it ál i co s, diu réti cos
+ e inibidores da ECA, as doses desses medicamentos devem ser estabilizadas antes de iniciar o tratamento com carvedilol.
+ A dose inicial recomendada é 3,125 mg, duas vezes ao dia, por duas semanas. Se esta dose for tolerada, poderá ser aumentada subsequentemente, a
+ intervalos mínimos de duas semanas, para 6,25 mg, duas vezes ao dia, 12,5 mg, duas vezes ao dia e 25 mg, duas vezes ao dia. As doses devem ser
+ aumentadas até o nível máximo tolerado pelo paciente.
+ A dose máxima recomendada é 25 mg, duas vezes ao dia, para todos os pacientes com ICC leve, moderada ou grave, com peso inferior a 85 kg. Em
+ pacientes com ICC leve ou moderada, com peso superior a 85 kg, a dose máxima recomendada é 50 mg, duas vezes ao dia.
+ Antes de cada aumento de dose, o paciente deve ser avaliado pelo médico quanto a sintomas de vasodilatação ou piora da insuficiência cardíaca. A
+ piora transitória da insuficiência cardíaca ou a retenção de líquidos devem ser tratadas com aumento da dose do diurético. Ocasionalmente, pode ser
+ necessário reduzir a dose ou descontinuar temporariamente o tratamento com carvedilol.
+ Se o carvedilol for descontinuado por mais de duas semanas, a terapia deverá ser reiniciada com 3,125 mg, duas vezes ao dia, e a titulação realizada
+ conforme as recomendações acima.
+ Sintomas de vasodilatação podem ser tratados inicialmente pela redução da dose do diurético. Se persistirem, a dose do inibidor da ECA, se utilizado,
+ deverá ser reduzida, seguida por redução da dose do carvedilol, se necessário. A dose de carvedilol não deverá ser aumentada até que os sintomas de
+ piora da insuficiência cardíaca ou de vasodilatação estejam estabilizados.
+ O carvedilol não necessariamente deve ser ingerido junto a alimentos; entretanto, em pacientes com insuficiência cardíaca, deverá ser administrado
+ com alimentos para reduzir a velocidade de absorção e diminuir a incidência de efeitos ortostáticos.
+ Pacientes com insuficiência renal
+ Dados farmacocinéticos disponíveis (vide item “Farmacocinética em populações especiais”) e estudos clínicos publicados (vide item “Advertências e
+ precauções – Uso em populações especiais – Insuficiência renal”) em pacientes com diversos graus de comprometimento de função renal (incluindo
+ insuficiência renal) sugerem que não são necessárias alterações nas doses recomendadas de carvedilol em pacientes com insuficiên cia ren al mo derada
+ a grave.
+ Pacientes com menos de 18 anos de idade
+ A segurança e eficácia do carvedilol em crianças e adolescentes (< 18 anos) ainda não foram estabelecidas (vide item “Farmacocinética em
+ populações especiais” e “Advertências e precauções - Uso em populações especiais”).
+
+ Este medicamento não deve ser partido ou mastigado.
+
+9. REAÇÕES ADVERSAS
+ As reações adversas ao medicamento estão listadas de acordo com as classes dos sistemas orgânicos definidos pelo MedDRA e CIOMS (Council fo r
+ International Organizations of Medical Sciences). As categorias de frequências são:
+ Muito comum ≥1/10
+ Comum ≥1/100 e <1/10
+ Incomum ≥1/1.000 e <1/100
+ Rara ≥1/10.000 e <1/1.000
+ Muito rara <1/10.000
+ A tabela 1 abaixo resume os efeitos indesejáveis que foram reportados com o uso de carvedilol em estudos clínicos pivotais:
+
+ Tabela 1 - Reações adversas ao medicamento em estudos clínicos
+ Classe do sistema orgânico Reação adversa Frequência
+ Distú rbios do sistema lin fático e do sangue Anemia Comum
+ Trombocitop enia Rara
+ Leucopenia Muito Rara
+ Modelo de Bula
+ PROFISSIONAL
+
+ Distúrbios cardíacos Insufici ência cardíaca Muito comum
+ Bradicardia Comum
+ Hipervolemia Comum
+ Sobrecarga hídrica Comum
+ Bloqueio atriov entricular In c omum
+ Angina pectori s Incomum
+ Distú rbios nos olhos Alterações visu ais Comum
+ Redução do lacrimej amento (secura do olho) Comum
+ Irritação ocular Comum
+ Distú rbio s ga strintestinais Náu sea Comum
+ Diarreia Comum
+ Vômito Comum
+ Dispepsia Comum
+ Dor abdomin al Comum
+ Con stip ação In c omum
+ Secura da boca Rara
+ Distú rbio s ge rais e das condições do local de Astenia (fadiga) Muito comum
+ admin ist ração Edema Comum
+ Dor Comum
+ Distú rbios hepatob iliares Aumento da alanina aminotransferase Muito Ra ra
+ (ALT), aspartato aminotran sferase (AST) e
+ gama- glutamiltransferase (GGT)
+ Distúrbios do sistema imune Hipersensibilidade (reações alérgicas) Muito Rara
+ Infecções e infestações Pn eumonia Comum
+ Bronquite Comum
+ Infecção do trato respiratório superior Comum
+ Infecção do trato urinário Comum
+ Distú rbios do met abolismo e nutricionais Aumento do peso Comum
+ Hipercolesterolemia Comum
+ Piora do controle d a glicemia Comum
+ (hip e rglicemia, h ipo glicemia) em pacientes
+ com diabetes preexistente
+
+ Distú rbio s muscoesqueléticos e do tecido Dor em extremidades Comum
+ Distú rbios do sis tema nervoso Tontura Muito comum
+ Cefaleia Muito comum
+ Síncope, pre-síncope Comum
+ Parestesia In c omum
+ Distú rbios psiquiátrico s Depressão, humor deprimido Comum
+ Distú rbios do sono In c omum
+ Distú rbios renais e urinários Insuficiência ren al e an o rmal id ades n a Comum
+ fu nção ren al em paci en tes co m do en ça
+ vascular difusa e/ou insuficiência renal
+ su bj acen te
+ Distú rbio s miccionais Rara
+ Distú rbio s da mama e do sistema re p ro dutor Disfunção erétil Incomum
+ Distú rbio s re spiratórios, to rácico s e do mediastino Dispneia Comum
+ Edema pulmonar Comum
+ Asma em pacientes predispostos Comum
+ Congestão nasal Rara
+ Distú rbios de pele e tecidos Reações na pele (por exemplo, exantema Incomum
+ subcut âneos alérgica, dermatite, u rticária, prurido, lesõe s
+ psoriásicas e do tipo líquen plano )
+
+ Distú rbio s va sculares Hipoten sã o Muito comum
+ Hipotensão ortostática Comum
+ Modelo de Bula
+ PROFISSIONAL
+
+ Distúrbios da circulação periférica Comum
+ (extremidades frias, doença vascula r
+ periférica, exacerbação de claudicação
+ intermitente e fenômeno d e Raynaud)
+
+ Hiperten são Comum
+
+ Descrição das reações adversas selecionadas
+ A frequência de reações adversas não é dependente da dose, com exceção de tonturas, alterações visuais e bradicardia. Tontura, síncope, cefaleia e
+ astenia são, normalmente, leves e ocorrem, geralmente, no início do tratamento.
+ Em pacientes com insuficiência cardíaca congestiva pode ocorrer piora da insuficiência cardíaca ou retenção hídrica durante a titulação do carvedilol
+ (vide item “Advertências e precauções”).
+ A insuficiência cardíaca foi um evento adverso reportado muito comumente em ambos os grupos de tratamento com placebo (14,5%) e carvedilol
+ (15,4%), em pacientes com disfunção ventricular esquerda após infarto agudo do miocárdio.
+ Deterioração reversível da função renal foi observada durante tratamento com carvedilol em pacientes com insuficiência cardíaca congestiva e baixa
+ pressão arterial, cardiopatia isquêmica, doença vascular difusa e/ou insuficiência renal subjacente (vide item “Advertências e precauções”).
+ Experiência pós-comercia li za ção
+ Os seguintes eventos adversos foram identificados durante o uso de carvedilol pós-comercialização. Por esses eventos serem reportados por uma
+ população de tamanho indefinido, não é sempre possível estimar as suas frequências e/ou estabelecer uma relação causal com a exposição à droga.
+ Distúrbios de metabolismo e nutricionais: devido às propriedades betabloqueadoras, é possível que diabetes mellitu s latente se manifeste, que
+ diabetes manifestado se agrave e que a contra- regulação da glicose seja inibida. Além disso, também devido à ação betabloqueadora, é possível que a
+ hipercalemia (aumento do nível sanguíneo de potássio) se manifeste no paciente.
+ Distúrbios de pele e tecidos subcutâneos: alopecia. Reações adversas cutâneas grave, como necrólise epidérmica tóxica e síndrome de Stevens-
+ Johnson (vide item “Advertências e precauções”).
+ Distúrbios renais e urinários: foram reportados casos isolados de incontinência urinária em mulheres, os quais foram resolvidos com a
+ descontinuação da medicação.
+
+ Em casos de eventos adversos, notifique pelo Sistema VigiMed, disponível no Portal da Anvisa.
+
+10.SUPERDOSE
+ Sintomas e sinais de superdose
+ A superdose pode causar hipotensão grave, bradicardia, insuficiência cardíaca, choque cardiogênico e parada cardíaca. Problemas respiratórios,
+ broncoespasmo, vômitos, alterações da consciência e convulsões generalizadas também podem ocorrer.
+ Tratamento da superdose
+ Os pacientes devem ser monitorados para os sinais e sintomas mencionados acima e gerenciados de acordo com o melhor julgamento clínico e de
+ acordo com prática padrão para pacientes com superdose de
+ betabloqueadores (por exemplo, atropina, marca-passo transvenoso, glucagon, inibidor da fosfodiesterase, tais como amiodarona ou milrinona e beta-
+ simpatico mimético s).
+ Nota importante
+ Nos casos de intoxicação grave, com choque, o tratamento de suporte deve ser contínuo, por período de tempo suficientemente longo, pois se espera
+ que ocorra prolongamento da meia-vida de eliminação e redistribuição do carvedilol de compartimentos mais profundos. A duração da terapia de
+ suporte/antídotos depende da gravidade da superdose e deverá ser mantida até a estabilização da condição do paciente.
+ Foram relatados casos de superdose com carvedilol isoladamente ou em combinação com outros medicamentos. As quantidades ingeridas n esses
+ casos excederam 1000 miligramas. Os sintomas incluíram diminuição da pressão arterial e da frequência cardíaca. Os indivíduos se recuperaram após
+ tratamento de suporte.
+ Em caso de intoxicação ligue para 0800 722 6001, se você precisar de mais orientações.
+
+ III-

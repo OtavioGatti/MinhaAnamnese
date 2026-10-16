@@ -1,0 +1,354 @@
+FONTE: lote5__domperidona__MOTILIUM.pdf
+
+===== BLOCO 1 =====
+APRESENTAÇÕES
+Comprimidos de 10 mg de domperidona em embalagem contendo 30, 60 e 90 comprimidos. 
+ 
+USO ORAL 
+ 
+USO ADULTO E PEDIÁTRICO ACIMA DE 35 KG (comprimidos)
+
+1. INDICAÇÕES 
+Este medicamento é destinado ao tratamento de: 
+• Síndromes dispépticas frequentemente associadas a um retardo de esvaziamento gástrico, refluxo gastroesofágico e esofagite: 
+- sensação de empachamento epigástrico, saciedade precoce, distensão abdominal, dor abdominal alta; 
+- eructação, flatulência; 
+- náuseas e vômitos; 
+- azia, queimação epigástrica com ou sem regurgitação de conteúdo gástrico. 
+• Náuseas e vômitos de origem funcional, orgânica, infecciosa ou alimentar ou induzidas por radioterapia ou tratamento medicamentoso 
+(anti-inflamatórios, antineoplásicos). Uma indicação específica são as náuseas e vômitos induzidos pelos agonistas dopaminérgicos 
+usados no tratamento da Doença de Parkinson como a L-dopa e bromocriptina.
+
+3. CARACTERÍSTICAS FARMACOLÓGICAS 
+Os distúrbios digestivos provocados por uma discinesia esôfago -gastro-duodenal pós-prandial, correspondem hoje a uma das síndromes mais 
+frequentes que se apresentam na prática clínica. Pelas suas manifestações funcionais - distensão gástrica, azia, pirose ou mesmo dores 
+epigástricas - esta síndrome traduz, freq uentemente, uma desarmonia motora do esfíncter inferior do esôfago, das contrações antrais e do 
+ritmo de abertura e fechamento do esfíncter pilórico. Conseq uentemente à sua ação antidopaminérgica, Motilium restaura a harmonia 
+rítmica motora do esôfago, estômago e duodeno, possibilitando a reorganização da seq uência das etapas digestivas. Além disso, a 
+domperidona possui potente ação antiemética. 
+ 
+Propriedades farmacodinâmicas 
+Motilium contém domperidona, um antagonista da dopamina com propriedades antieméticas. A domperidona não atravessa imediatamente a 
+barreira hematoencefálica. Nos usuários de domperidona, especialmente em adultos, os efeitos extrapiramidais são muito raros, mas a 
+domperidona estimula a liberação de prolactina a partir da hipófise. Os seus efeitos antieméticos podem ser devidos a uma combinação de um 
+efeito periférico (gastrocinético) com o antagonismo dos receptores dopaminérgicos na zona quimioreceptora de gatilho, que fi ca fora da 
+barreira hematoencefálica na área postrema. 
+Estudos em animais e as baixas concentrações encontradas no cérebro indicam um efeito periférico predominante da domperidona nos 
+receptores dopaminérgicos. 
+Estudos em humanos mostram que a domperidona oral aumenta a pressão esofágica inferior, melhora a motilidade antroduodenal e acelera o 
+esvaziamento gástrico. Não há qualquer efeito sobre a secreção gástrica. 
+ 
+Efeito no intervalo QT/QTc e na eletrofisiologia cardíaca 
+Conforme estabelecido em guias do ICH -E14, foi realizado um estudo completo de intervalo QT em pacientes saudáveis. Este estudo foi 
+conduzido utilizan do as doses supra terapêuticas recomendadas (10 e 20 mg, administrado 4 vezes ao dia) e incluiu um placebo, um 
+comparador ativo e um controle positivo. Neste estudo observou-se uma diferença máxima do intervalo QTc entre a domperidona e o placebo 
+em médias dos mínimos quadrados na alteração em relação ao basal de 3,4 mseg para 20 mg de domperidona administrada 4 vezes ao dia , no 
+Dia 4 e o intervalo de confian ça de 90% bicaudal (1,0; 5,9 mseg) não excedeu 10 mseg. Em outro estudo envolvendo sujeitos adultos 
+saudáveis chineses, foi utilizado um desenho randomizado, controlado por placebo e positivo, de múltiplas doses, em um único centro, Fase 1, 
+com um desenho cruzado de 4 vias, para avaliar os efeitos da domperidona (10 e 20 mg três vezes ao dia) sobre a duração do in tervalo QTc. 
+Neste estudo, a maior diferença na média LS da mudança em relação ao placebo a partir da linha de base foi de 2,7 mseg para 2 0 mg três 
+vezes ao dia no Dia 4, e o IC (intervalo de confiança) bilateral de 90% (0,46 - 4,99 mseg) também não excedeu o limite de 10 mseg no ICH -
+E14. O prolongamento no intervalo QT ob servado em ambos os estudos, quando a domperidona foi administrada de acordo com o esquema 
+posológico recomendado, não são clinicamente relevantes. 
+Esta falta de relevância clínica é corroborada pela farmacocinética e pelos dados de intervalo QTc a partir de dois estudos a nteriores, os quais 
+envolveram o tratamento de 5 dias com 20 mg e 40 mg de domperidona , administrada 4 vezes ao dia. Os eletrocardiogramas foram gravados 
+antes do estudo, 1 hora após a dose da manhã (aproximadamente no t máx) no Dia 5 e 3 dias após. Em ambos estudos, não foi observada 
+diferença no intervalo QTc entre o tratamento ativo e o placebo. Portanto, foi concluído que a administração de doses diárias de 80 e 160 mg 
+de domperidona não teve efeito clinicamente significativo no intervalo QTc de pacientes saudáveis. 
+ 
+Propriedades farmacocinéticas 
+Absorção 
+Uma diferença significativa foi observada na absorção de domperidona entre sujeitos em jejum e alimentados. Após a administração oral de 
+um comprimido de 10 mg de domperidona, os valores médios de Tmax em sujeitos em jejum e alimentados foram de 0,79 horas e 1,66 horas, 
+respectivamente. Os valores médios de concentr ação máxima em sujeitos em jejum e alimentados são de 16,97 μg/L e 15,11 μg/L, 
+respectivamente. Os valores médios de AUC0 –t em sujeitos em jejum e alimentados são de 56,76 h×μg/L e 75,71 h×μg/L, respectivamente. 
+Os valores médios de AUC0–∞ em sujeitos em jejum e alimentados são de 64,58 h×μg/L e 86,48 h×μg/L, respectivamente. 
+Distribuição 
+A ligação a proteínas plasmáticas da domperidona é de 91-93%. Os estudos de distribuição com o fármaco radiomarcado em animais mostrou 
+uma ampla distribuição tecidual, mas baixas concentrações no cérebro. Pequenas quantidades d o medicamento atravessam a placenta em 
+ratas. Os valores médios do volume de distribuição para a fase de disposição terminal (Vz/F) da domperidona em sujeitos em jejum e 
+alimentados são de 1,92 L e 1,53 L, respectivamente. Os valores médios de depuração da dose oral (Cl/F) em sujeitos em jejum e alimentados 
+são de 0,20 L/h e 0,12 L/h, respectivamente. 
+ 
+Metabolismo 
+A domperidona sofre um rápido e extenso metabolismo hepático pela hidroxilação e N-dealquilação. Experimentos do metabolismo “in vitro” 
+com inibidores diagnósticos revelaram que o CYP3A4 é a principal forma do citocromo P -450 envolvida na N-dealquilação da domperidona, 
+enquanto que o CYP3A4, o CYP1A2 e o CYP2E1 estão envolvidos na hidroxilação aromática da domperidona. 
+ 
+Excreção 
+As excreções urinária e fecal são respectivamente de 31 e 66% da dose oral. A proporção de medicamento excretado inalterado é pequena 
+(10% da excreção fecal e aproximadamente 1% da excreção urinária). A meia- vida plasmática após a dose oral única é 7 -9 horas em 
+indivíduos saudáveis, mas é prolongada em pacientes com insuficiência renal severa . A meia-vida de eliminação na fase terminal (T1/2) da 
+domperidona em sujeitos alimentados é de 8,72 horas, enquanto em sujeitos em jejum é de apenas 7,15 horas. 
+ 
+Insuficiência hepática 
+Em indivíduos com insuficiência hepática moderada (escore de Pugh 7 a 9 e Child-Pugh B), a AUC e a Cmáx de domperidona é 2,9 e 1,5 vezes 
+maiores, respectivamente, quando comparadas a indivíduos saudáveis. A fração não ligada é aumentada em 25% e a meia -vida de eliminação 
+terminal é prolongada de 15 para 23 horas. Indivíduos com insuficiência hepática leve tem menor exposição sistêmica do que in divíduos 
+saudáveis, baseando na Cmáx e AUC, sem alteração na ligação às proteínas plasmáticas ou na meia-vida terminal. Indivíduos com insuficiência 
+hepática severa não foram estudados (vide “Contraindicações”). 
+ 
+Insuficiência renal 
+Em pacientes com insuficiência renal severa (creatinina sérica > 6 mg/100 mL ou >0,6 mmol/L) a meia -vida de domperidona aumenta de 7,4 
+para 20,8 horas, mas os níveis plasmáticos d o medicamento foram inferiores aos de voluntários com função renal normal . Uma pequena 
+quantidade inalterada é excretada pela via renal (aproximadamente 1%) (vide “Posologia e Modo de Usar”). 
+ 
+Dados pré-clínicos 
+Em dose alta e tóxica para as ratas mães de 200 mg/kg/dia, f oram observados efeitos teratogênicos nos ratos (anormalidades dos órgãos, tais 
+como anoftalmia, microftalmia e deslocamento da artéria subclávia) . A significância clínica desses achados é desconhecida. Não foi 
+observada teratogenicidade em camundongos e coelhos. 
+Estudos eletrofisiológicos “in vitro” e “in vivo” mostraram que a domperidona, em concentrações altas, pode prolongar o intervalo QTc. 
+Em ratos juvenis , um ní vel sem eventos adversos observados de 10 mg/kg foi observado após a administração de 30 dias de doses 
+intraperitoniais repetidas, uma vez ao dia. Doses únicas intraperitoniais ou intravenosas mostraram valores de DL50 similares (intervalo médio 
+53-76 mg/kg) tanto em ratos juvenis como em adultos.
+
+4. CONTRAINDICAÇÕES 
+Motilium é contraindicado em pacientes com hipersensibilidade à domperidona ou a qualquer um dos excipientes. 
+Motilium não deve ser utilizado sempre que a estimulação da motilidade gástrica possa ser perigosa, por exemplo, na presença de 
+hemorragia gastrintestinal, obstrução mecânica ou perfuração. 
+Motilium também é contraindicado em pacientes com tumor hipofisário secretor de prolactina (prolactinoma). 
+A administração concomitante de Motilium® com inibidores potentes do CYP3A4 que demonstraram causar um prolongamento do intervalo 
+QT, tais como claritromicina, eritromicina, itraconazol, cetoconazol oral, posaconazol, ritonavir, saquinavir, telitromicina, telaprevir e 
+voriconazol, é contraindicada (vide “Advertências e Precauções” e “Interações Medicamentosas”). 
+Feocromocitoma confirmado ou suspeito devido ao risco de episódios de hipertensão grave. 
+Motilium é contraindicado em pacientes com insuficiência hepática moderada ou severa (vide “Características Farmacológicas – 
+Propriedades Farmacocinéticas). 
+Atenção: Contém lactose (tipo de açúcar) abaixo de 0,25g/comprimido. Este medicamento não deve ser usado por pessoas com 
+síndrome de má-absorção de glicose-galactose.
+
+5. ADVERTÊNCIAS E PRECAUÇÕES 
+Efeitos cardíacos 
+Estudos epidemiológicos mostraram que a domperidona pode estar associada a um risco aumentado de arritmias ventriculares graves ou morte 
+cardíaca súbita (vide “Reações Adversas”) . Esses estudos sugerem que este risco aumentado pode ser maior em pacientes com mais de 60 
+anos de idade ou em pacientes tomando doses orais maiores que 30 mg por dia. Portanto, Motilium deve ser usado com cautela em pacientes 
+idosos. 
+Devido ao aumento do risco de arritmia intraventricular, não é recomendado o uso de Motilium em pacientes apresentando prolongamento 
+conhecido dos intervalos de condução cardíaca, particularmente do intervalo QTc, em pacientes com distúrbios eletrolíticos significativos 
+(hipocalemia, hipercalemia, hipomagnesemia), ou bradicardia, ou em pacientes com doenças cardíacas subjacentes, tais como insuficiência 
+cardíaca congestiva. 
+Distúrbios eletrolíticos (hipocalemia, hipercalemia, hipomagnesemia) e bradicardia são condições conhecidas por aumentarem o risco pró -
+arrítmico. 
+O tratamento com Motilium deve ser interrompido se sinais ou sintomas que podem estar associados à arritmia cardíaca ocorrerem e os 
+pacientes devem contatar o médico imediatamente. 
+Este medicamento pode potencializar o prolongamento do intervalo QT, o que aumenta o risco de ataque de arritmias ventricular es 
+graves do tipo “torsades de pointes”, que é potencialmente fatal (morte súbita). 
+Potencial para interação medicamentosa 
+A principal via metabólica da domperidona é através da CYP3A4. Os dados em humanos e “in vitro” mostram que o uso concomitante de 
+medicamentos que inibem significativamente esta enzima pode resultar em aumento dos níveis plasmáticos de domperidona. A 
+coadministração de domperidona com inibidores potentes da CYP3A4, que demonstraram causar prolongamento do intervalo QT, é 
+contraindicado (vide “Contraindicações”). 
+Deve-se ter cautela quando domperidona é coadministrada com inibidores potentes da CYP3A4 que não demonstraram causar prolongamento 
+do intervalo QT, tais como indinavir, e os pacientes devem ser monitorados de perto para sinais e sintomas de reações adversas (vide 
+“Reações Adversas”). 
+Deve-se ter cautela quando domperidona é coadministrada com medicamentos que demonstraram causar prolongamento do intervalo QT, e os 
+pacientes devem ser monitorados de perto para sinais e sintomas de reações adversas cardiovasculares (vide “Reações Adversas”). Exemplos 
+incluem: 
+• Antiarrítmicos classe IA (exemplos: disopiramida, quinidina) 
+• Antiarrítmicos classe III (exemplos: amiodarona, dofetilida, dronedarona, ibutilida, sotalol) 
+• Certos antipsicóticos (exemplos: haloperidol, pimozida, sertindol) 
+• Certos antidepressivos (exemplos: citalopram, escitalopram) 
+• Certos antibióticos (exemplos: levofloxacino, moxifloxacino) 
+• Certos agentes antifúngicos (exemplo: pentamidina) 
+• Certos agentes antimaláricos (exemplo: halofantrina) 
+• Certos medicamentos gastrintestinais (exemplo: dolasetrona) 
+• Certos medicamentos contra câncer (exemplos: toremifeno, vandetanibe) 
+• Outros medicamentos (exemplos: bepridil, metadona) 
+ 
+A listagem anterior é representativa e não exaustiva. 
+ 
+Antiácidos ou agentes antis secretores não devem ser tomados simultaneamente com Motilium, uma vez que eles reduzem a 
+biodisponibilidade oral da domperidona. Quando usados concomitantemente, Motilium deve ser tomado antes das refeições e antiácidos ou 
+agentes antissecretores, após as refeições. 
+ 
+Excipientes 
+Os comprimidos contêm lactose e podem ser inadequados para pacientes com intolerância à lactose, galactosemia ou má absorção da glicose e 
+da galactose. 
+ 
+Efeitos sobre a capacidade de dirigir veículos e operar máquinas 
+Foram observadas tontura e sonolência com o uso de domperidona (vide “ Reações Adversas ”). Tenha cautela ao dirigir um veículo 
+motorizado ou operar máquinas. 
+ 
+Gravidez (Categoria C) e lactação 
+Gravidez 
+Não existem estudos adequados e bem controlados em mulheres grávidas ou que estejam amamentando. 
+Este produto não deve ser utilizado durante a gravidez ou a lactação, a menos que o benefício potencial do tratamento para a mãe supere os 
+possíveis riscos para o feto em desenvolvimento ou o bebê que está sendo amamentado. 
+Consulte um médico antes de usar se você estiver grávida ou amamentando. 
+Uso criterioso no aleitamento ou na doação de leite humano. O uso deste medicamento no período da lactação depende da avaliação e 
+acompanhamento do seu médico ou cirurgião-dentista. 
+ 
+Este medicamento não deve ser utilizado por mulheres grávidas sem orientação médica ou do cirurgião-dentista. 
+ 
+Lactação 
+A quantidade de domperidona que poderia ser ingerida por um lactente através do leite materno é baixa. A dose máxima relativa para o 
+lactente (em %) é estimada como 0,1% do peso materno ajustado à dose. Não se sabe se isto é nocivo ao recém -nascido. Por essa razão a 
+amamentação não é recomendável às mulheres que estão tomando Motilium.
+
+6. INTERAÇÕES MEDICAMENTOSAS 
+A principal via metabólica da domperidona é através do CYP3A4. Dados “in vitro” e em humanos demonstram que o uso concomitante de 
+fármacos que inibem esta enzima de forma significativa pode resultar em níveis plasmáticos elevados de domperidona. 
+Quando a domperidona foi coadministrada com inibidores potentes da CYP3A4 que demonstraram causar prolongamento do intervalo QT, 
+foram observadas alterações clinicamente significativas nos intervalos QT. Portanto, a coadministração de domperidona com certos 
+medicamentos é contraindicada (vide “Contraindicações”). 
+Deve-se ter cautela quando domperidona é coadministrada com inibidores potentes da CYP3A4 que não demonstraram causar prolongamento 
+do intervalo QT ou medicamentos que demonstraram causar prolongamento do intervalo QT (vide “Advertências e Precauções”). 
+A administração concomitante de medicamentos anticolinérgicos (exemplos: dextrometorfano, difenidramina) pode antagonizar o e feito 
+antidispéptico de Motilium. 
+Teoricamente, como o Motilium  tem um efeito gastrocinético, ele pode influenciar na absorção de fármacos administrados 
+concomitantemente por via oral, particularmente aqueles com liberação prolongada ou formulações com comprimidos de liberação entérica. 
+Contudo, em pacientes já estabilizados num tratamento com digoxina ou paracetamol, o uso simultâneo da domperidona não influe ncia os 
+níveis sanguíneos destes medicamentos. 
+Motilium pode também ser administrado com: 
+- neurolépticos, pois a ação deles não é potencializada. 
+- agonistas dopaminérgicos (bromocriptina, L-dopa), cujos efeitos periféricos indesejáveis, como distúrbios digestivos, náuseas e vômitos, 
+são suprimidos sem neutralização das suas propriedades centrais. 
+ 
+Interação com alimentos 
+É recomendado o uso de Motilium antes das refeições. Se ele for tomado após as refeições, a absorção do medicamento será retardada.
+
+8. POSOLOGIA E MODO DE USAR 
+ 
+Posologia 
+- Síndromes dispépticas 
+Adultos e adolescentes ≥ 12 anos de idade e com peso ≥ 35 kg e crianças < 12 anos e com peso ≥ 35 kg: 
+A dose de Motilium deve ser a menor dose eficaz para a situação individual (tipicamente 30 mg/dia) e pode ser aumentada, se necessário, 
+a uma dose diária oral máxima de 40 mg. 
+Geralmente, a duração máxima de tratamento não deve exceder uma semana para o tratamento de náusea e vômito agudos. Se a náusea ou 
+o vômito persistirem por mais de uma semana, o paciente deverá consultar seu médico. 
+Para as outras indicações, a duração inicial do tratamento é de até quatro semanas. Se o tratamento exceder quatro semanas, os pacientes e 
+a necessidade de continuação do tratamento devem ser reavaliados. 
+• 10 mg (1 comprim ido) 3 vezes ao dia, 15 a 30 minutos antes das refeições e, se necessário, 10 mg (1 comprimido) ao deitar, 
+respeitando a dose diária máxima de 40 mg (4 comprimidos de 10 mg). 
+ 
+- Náuseas e vômitos 
+Adultos e adolescentes ≥ 12 anos de idade e com peso ≥ 35 kg e crianças < 12 anos e com peso ≥ 35 kg: 
+A dose de Motilium deve ser a menor dose eficaz para a situação individual (tipicamente 30mg/dia) e pode ser aumentada, se necessário, 
+até uma dose diária oral máxima de 40 mg. 
+Geralmente, a duração máxima de tratamento não deve exceder uma semana para o tratamento de náusea e vômito agudos. Se a náusea ou 
+o vômito persistirem por mais de uma semana, o paciente deverá consultar seu médico. 
+Para as outras indicações, a duração inicial do tratamento é de até quatro semanas. Se o tratamento exceder quatro semanas, o s pacientes e 
+a necessidade de continuação do tratamento devem ser reavaliados. 
+• A duração inicial do tratamento é de até quatro semanas. Se o tratamento exceder quatro semanas, os pacientes e a necessidade de 
+continuação do tratamento devem ser reavaliados. 
+10 mg (1 comprimido) 3 vezes ao dia, 15 a 30 minutos antes das refeições e, se necessário, 10 mg (1 comprimido) ao deitar, respeitando a 
+dose diária máxima de 40 mg (4 comprimidos de 10 mg ou). 
+Nota: 
+- É recomendado o uso de Motilium antes das refeições. Se ele for tomado após as refeições, a absorção do medicamento será 
+retardada. 
+- Os comprimidos não devem ser administrados em crianças com peso inferior a 35 kg. 
+ 
+Lactentes e crianças < 12 anos de idade com peso < 35 kg 
+A eficácia de Motilium não foi estabelecida em lactentes e crianças < 12 anos de idade e pesando < 35 kg (vide “Características 
+Farmacológicas – Lactentes e crianças < 12 anos de idade”). 
+ 
+Insuficiência renal 
+Como a meia-vida de eliminação de domperidona é prolongada nos pacientes com insuficiência renal grave (creatinina sérica > 6 mg/100 mL, 
+ou seja, > 0,6 mmol/L), a frequência da administração de Motilium deve ser reduzida para 1 ou 2 vezes ao dia, dependendo da severidade do 
+distúrbio, e pode ser necessário reduzir a dose. Pacientes com insuficiência renal grave devem ser avaliados regularmente (vide 
+“Características Farmacológicas – Propriedades Farmacocinéticas). 
+ 
+Insuficiência hepática 
+Motilium é contraindicado para pacientes com insuficiência hepática moderada (Child -Pugh 7 a 9) ou grave (Child-Pugh > 9) (vide 
+“Contraindicações”). Não é necessário ajuste de dose para pacientes com insuficiência hepática leve (Child-Pugh 5 a 6) (vide “Características 
+Farmacológicas – Propriedades Farmacocinéticas). 
+ 
+Motilium comprimido não deve ser partido, aberto ou mastigado.
+
+9. REAÇÕES ADVERSAS 
+Reações adversas são eventos adversos que são considerados como razoavelmente associados ao uso de domperidona, com base na avaliação 
+abrangente das informações disponíveis sobre eventos adversos. A relação causal com domperidona não pode ser estabelecida de forma 
+confiável a partir de casos individuais. Adicionalmente, como os estudos clínicos são conduzidos sob condições amplamente variáveis, taxas 
+de reações adversas observadas em estudos clínicos do medicamento não podem ser diretamente comparadas às taxas em estudos clínicos de 
+outros medicamentos e podem não refletir as taxas observadas na prática clínica. 
+Dados de estudos clínicos 
+A segurança de Motilium® foi avaliada em 1.221 pacientes com gastroparesia, dispepsia, doença do refluxo gatroesofágico (DRGE), ou outra 
+condição relacionada em 45 estudos clínicos incluídos na base de dados de segurança. Todos os pacientes tinham 15 anos ou mai s e 
+receberam ao menos uma dose oral de domperidona. Um pouco menos da metade dos pacientes (553/1.221) eram diabéticos. A dose mediana 
+diária total foi de 80 mg (faixa de 10 a 160 mg), sendo que 230 pacientes receberam uma dose maior que a de 80 mg. A mediana da duração 
+de exposição foi de 56 dias (faixa de 1 a 2.248 dias). 
+As reações adversas relatadas por 1% ou mais dos pacientes tratados com domperidona nesses 45 estudos clínicos são apresentadas na Tabela 
+1 a seguir. 
+Tabela 1. Reações adversas relatadas por ≥ 1% de pacientes tratados com domperidona em 45 estudos clínicos. 
+Sistema/Classe de Órgão 
+Reação Adversa 
+domperidona 
+(n=1.221) 
+% 
+Distúrbios psiquiátricos 
+Depressão 2,5 
+Ansiedade 1,6 
+Diminuição da libido/perda da libido 1,5 
+Distúrbios do sistema nervoso 
+Cefaleia 5,6 
+Sonolência 2,5 
+Acatisia 1,0 
+Distúrbios gastrintestinais 
+Diarreia 5,2 
+Distúrbios da pele e do tecido subcutâneo 
+Erupção cutânea 2,8 
+Prurido 1,7 
+As reações adversas ocorridas em <1% de pacientes tratados com domperidona em 45 estudos clínicos (n=1.221) estão listadas a seguir na 
+Tabela 2. 
+ 
+Tabela 2. Reações adversas relatadas por < 1% de pacientes tratados com domperidona em 45 estudos clínicos. 
+Sistema/Classe de Órgão 
+Reação Adversa 
+domperidona 
+(n=1.221) 
+% 
+Distúrbios do sistema imunológico 
+Hipersensibilidade 0,2 
+Distúrbios da pele e do tecido subcutâneo 
+Urticária 0,7 
+Distúrbios do sistema reprodutivo e das mamas 
+Descarga mamilar 
+Inchaço das mamas 
+0,8 
+0,5 
+ 
+A seguinte reação adversa foi reportada com o uso sem receita: boca seca. 
+ 
+Experiência pós-comercialização 
+As reações adversas a medicamentos identificadas durante a experiência pós -comercialização (frequência baseada nas taxas de relatos 
+espontâneos) com domperidona estão incluídas abaixo: 
+Reação muito rara (< 1/10.000): 
+- Distúrbios do sistema imunológico: reação anafilática (incluindo choque anafilático); 
+- Distúrbios psiquiátricos: agitação, nervosismo; 
+- Distúrbios do sistema nervoso: tontura, distúrbios extrapiramidais, convulsão; 
+- Distúrbios cardíacos: morte cardíaca súbita*, arritmia ventricular (grave)* (vide “Advertências e Precauções”); 
+- Distúrbios da pele e do tecido subcutâneo: angioedema; 
+- Distúrbios renal e urinário: retenção urinária; 
+- Investigação: testes da função hepática anormais, aumento da prolactina no sangue. 
+*Baseado em dados epidemiológicos. 
+Tabela 1. Reações adversas relatadas por ≥ 1% de pacientes tratados com domperidona em 45 estudos clínicos. 
+Sistema/Classe de Órgão 
+Reação Adversa 
+domperidona 
+(n=1.221) 
+% 
+Distúrbios do sistema reprodutivo e das mamas 
+Aumento das mamas/ginecomastia 5,3 
+Sensibilidade das mamas ao toque 4,4 
+Galactorreia 3,3 
+Amenorreia 2,9 
+Dor nas mamas 2,3 
+Menstruação irregular 2,0 
+Distúrbios da lactação 1,6 
+Distúrbios gerais e condições no local da administração 
+Astenia 1,9 
+População pediátrica 
+Durante a experiência de pós-comercialização, não houve diferenças entre o perfil de segurança de adultos e crianças. 
+ 
+Em casos de eventos adversos, notifique pelo Sistema VigiMed, disponível no Portal da Anvisa.
+
+10. SUPERDOSE 
+Superdose tem sido relatada principalmente em lactentes e crianças. 
+ 
+Sinais e sintomas 
+Os sintomas da superdose podem incluir agitação, alteração da consciência, convulsão, desorientação, sonolência e reações extrapiramidais. 
+ 
+Tratamento 
+Não existe nenhum antídoto específico contra a domperidona. 
+Supervisão médica de perto e medidas de suporte são recomendadas. 
+Em caso de overdose, oriente o paciente a entrar em contato imediatamente com um Centro de Controle de Intoxicação. 
+Em caso de intoxicação ligue para 0800 722 6001, se você precisar de mais orientações.

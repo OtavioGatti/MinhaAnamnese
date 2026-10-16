@@ -1,0 +1,1338 @@
+FONTE: lote5__topiramato__TOPAMAX.pdf
+
+===== BLOCO 1 =====
+APRESENTAÇÕES
+Comprimidos revestidos de 25 mg de topiramato em embalagem com 60 comprimidos.
+
+Comprimidos revestidos de 50 mg de topiramato em embalagem com 60 comprimidos.
+
+Comprimidos revestidos de 100 mg de topiramato em embalagem com 60 comprimidos.
+
+USO ORAL
+
+USO ADULTO E PEDIÁTRICO
+
+1. INDICAÇÕES
+
+Topamax® é indicado em monoterapia tanto em pacientes com epilepsia recentemente diagnosticada como em pacientes que recebiam terapia
+
+adjuvante e serão convertidos à monoterapia.
+
+Topamax® é indicado, para adultos e crianças, como adjuvante no tratamento de crises epilépticas parciais, com ou sem generalização
+
+secundária e crises tônico-clônicas generalizadas primárias.
+
+Topamax® é indicado, também, para adultos e crianças como tratamento adjuvante das crises associadas à Síndrome de Lennox -Gastaut.
+Topamax® é indicado, em adultos, como tratamento profilático da enxaqueca. O uso de Topamax® para o tratamento agudo da enxaqueca não
+
+foi estudado.
+
+3. CARACTERÍSTICAS FARMACOLÓGICAS
+
+Propriedades Farmacocinéticas
+
+Em comparação ao perfil farmacocinético de outras drogas antiepilépticas, o topiramato apresenta uma meia-vida plasmática longa,
+farmacocinética linear, depuração predominantemente renal, ausência de ligação significante a proteínas e de metabólitos ativos clinicamente
+significantes.
+
+O topiramato não é um indutor potente de enzimas relacionadas à biotransformação de fármacos, pode ser administrado com ou sem alimentos
+e não requer monitorização de rotina de níveis plasmáticos. Em estudos clínicos, não houve relação consistente entre concentrações plasmáticas
+e eficácia ou eventos adversos.
+
+Absorção
+
+O topiramato é rapidamente e bem absorvido. Após a administração oral de 100 mg de topiramato a voluntários sadios, o pico médio de
+concentração plasmática (Cmáx) foi de 1,5 g/mL, obtido num período de 2 a 3 horas (Tmáx). Com base na recuperação da radioatividade na
+urina, a extensão média de absorção de uma dose oral de 100 mg de topiramato marcado com 14C foi de, no mínimo, 81%. A biodisponibilidade
+
+do topiramato não é afetada de forma clinicamente significante pela ingestão de alimentos.
+
+Distribuição
+
+A ligação de topiramato à proteínas plasmáticas é, em geral, de 13 a 17%. Observa-se baixa capacidade de ligação do topiramato aos eritrócitos,
+saturável em concentrações plasmáticas acima de 4 g/mL. O volume de distribuição variou de forma inversamente proporcional à dose. A
+média do volume de distribuição aparente foi de 0,80 a 0,55 L/kg, para uma única dose entre 100 a 1.200 mg. Um efeito do gênero sobre o
+volume de distribuição foi detectado, com valores em mulheres cerca de 50% dos obtidos em homens. Esta diferença foi atribuída à maior
+porcentagem de gordura corpórea em pacientes do sexo feminino, sem consequência clínica.
+
+Biotransformação
+
+Em voluntários sadios, o topiramato não sofre biotransformação extensa (aproximadamente 20%). É biotransformado em até 50% em uso
+adicional com indutores reconhecidos de enzimas relacionadas à biotransformação de fármacos. Seis metabólitos, formados por hidroxilação,
+hidrólise e glicuronidação, foram identificados, caracterizados e isolados no plasma, urina e fezes de humanos. Cada metabólito representa
+menos de 3% da radioatividade total excretada após a administração do topiramato marcado com 14C. Dois metabólitos, que conservam a maior
+
+parte da estrutura química do topiramato, foram testados e apresentaram pouca ou nenhuma atividade anticonvulsivante.
+
+Eliminação
+
+Em humanos, a principal via de eliminação do topiramato inalterado e de seus metabólitos é a renal (no mínimo 81% da dose). Aproximadamente
+66% de uma dose de topiramato marcado com 14C foi excretada inalterada na urina, em quatro dias. Após a administração de doses de 50 mg e
+
+100 mg de topiramato, duas vezes ao dia, a depuração renal média foi de aproximadamente 18 mL/min e 17 mL/min, respectivamente. Há
+evidência de reabsorção tubular renal do topiramato. Este achado é comprovado por estudos conduzidos em ratos, onde o topiramato foi
+associado à probenecida, tendo sido observado um aumento significante da depuração renal do topiramato. De modo geral, a depuração
+plasmática do topiramato em humanos é de aproximadamente 20 a 30 mL/min, após a administração oral.
+
+O topiramato apresenta baixa variação interindividual nas concentrações plasmáticas e, portanto, apresenta farmacocinética previsível. A
+farmacocinética do topiramato é linear, com a depuração plasmática permanecendo constante e a área sob a curva de concentração plasmática
+aumentando de modo proporcional a doses orais, em uma faixa posológica de 100 a 400 mg, em voluntários sadios. Pacientes com função renal
+normal podem levar 4 a 8 dias para atingir as concentrações plasmáticas do estado de equilíbrio. Após a administração de doses orais múltiplas
+de 100 mg, duas vezes ao dia, a voluntários sadios, a Cmáx média foi de 6,76 mcg/mL. A meia-vida de eliminação plasmática média após a
+administração de doses múltiplas de 50 mg e 100 mg de topiramato, duas vezes ao dia, foi de aproximadamente 21 horas.
+
+Uso com outras drogas antiepiléticas (AEDs)
+
+O uso concomitante de topiramato, em doses múltiplas de 100 a 400 mg, duas vezes por dia, com fenitoína ou carbamazepina, demonstrou
+aumentos proporcionais à dose nas concentrações plasmáticas do topiramato.
+
+Populações especiais
+
+Insuficiência Renal
+
+As depurações plasmática e renal do topiramato diminuíram em pacientes com insuficiência renal moderada e severa (CLCR < 70 mL/min).
+Como resultado, concentrações plasmáticas do estado de equilíbrio mais elevadas são esperadas para uma determinada dose de topiramato
+administrada, em pacientes com insuficiência renal, em comparação às obtidas em pacientes com função renal normal. Adicionalmente,
+pacientes com insuficiência renal irão necessitar de um tempo maior para atingir o estado de equilíbrio em cada dose. Em pacientes com
+insuficiência renal moderada e severa, é recomendada a administração de metade da dose usual de início e de manutenção (vide “Posologia e
+modo de usar”).
+
+O topiramato pode ser removido do plasma, com eficácia, por hemodiálise. Um período prolongado de hemodiálise pode provocar queda da
+concentração de topiramato a níveis abaixo dos necessários para manter o efeito contra as crises. Para evitar quedas rápidas na concentração
+plasmática de topiramato durante a hemodiálise, uma dose suplementar de topiramato pode ser requerida. O ajuste real deve levar em
+consideração: 1) a duração do período de diálise, 2) a taxa de depuração do sistema de diálise a ser utilizado, e 3) a depuração renal efetiva de
+topiramato no paciente em diálise.
+
+Idosos
+
+A depuração plasmática do topiramato permanece inalterada em indivíduos idosos, na ausência de doença renal subjacente.
+
+Insuficiência Hepática
+
+A depuração plasmática do topiramato diminuiu numa média de 26% em pacientes com insuficiência hepática moderada a severa. Portanto, o
+topiramato deve ser administrado com cautela em pacientes com insuficiência hepática.
+
+Crianças de até 12 anos de idade
+
+A farmacocinética do topiramato é linear tanto em crianças, como em adultos em terapia “add on”, com taxa de depuração independente da
+dose e concentrações plasmáticas de equilíbrio com aumentos proporcionais à dose. No entanto, crianças têm depuração mais elevada e meia-
+vida de eliminação mais curta. Consequentemente, concentrações plasmáticas de topiramato para a mesma dose em mg/kg podem ser menores
+em crianças comparadas às obtidas em adultos. Assim como em adultos, drogas antiepilépticas indutoras de enzimas hepáticas diminuem as
+concentrações plasmáticas do estado de equilíbrio.
+
+Propriedades Farmacodinâmicas
+
+O topiramato é classificado como monossacarídeo sulfamato-substituído. O mecanismo preciso pelo qual o topiramato exerce seus efeitos anti-
+convulsivante e na profilaxia da enxaqueca é desconhecido. Estudos eletrofisiológicos e bioquímicos em cultura de neurônios identificaram três
+propriedades que podem contribuir para a eficácia antiepiléptica do topiramato. Potenciais de ação provocados repetidamente pela
+despolarização contínua de neurônios foram bloqueados temporariamente pelo topiramato, sugerindo um bloqueio dos canais de sódio
+dependentes de voltagem. O topiramato aumenta a frequência com que o ácido gama-aminobutírico (GABA) ativa receptores GABAA e aumenta
+a capacidade do GABA de induzir o influxo de íons cloreto, sugerindo que o topiramato potencializa a atividade desse neurotransmissor
+inibitório.
+
+Este efeito não foi bloqueado pelo flumazenil, um antagonista benzodiazepínico e o topiramato não aumentou a duração da abertura do canal,
+o que o diferencia de barbitúricos que modulam receptores GABAA.
+
+Como o perfil antiepiléptico do topiramato difere acentuadamente do das benzodiazepinas, ele pode modular um subtipo do receptor GABAA
+insensível à benzodiazepina. O topiramato antagoniza a capacidade do cainato em ativar o subtipo AMPA/cainato (ácido alfa-amino-3-hidróxi-
+5-metilisoxazol-4-propiônico) do receptor aminoácido excitatório (glutamato), mas não exerce nenhum efeito aparente na atividade do N-metil-
+D-aspartato (NMDA) no subtipo de receptor NMDA. Estes efeitos do topiramato são dependentes da concentração, em uma faixa de 1 mcM a
+200 mcM, com atividade mínima observada entre 1 mcM e 10 mcM.
+
+Além disso, o topiramato inibe algumas isoenzimas da anidrase carbônica. Este efeito farmacológico é muito mais fraco do que o da
+acetazolamida, um conhecido inibidor da anidrase carbônica, e não é considerado um componente importante da atividade antiepiléptica do
+topiramato.
+Em estudos experimentais, o topiramato apresenta atividade anticonvulsivante em ratos e camundongos, em crises induzidas por eletrochoque
+máximo, e é eficaz em modelos de epilepsia em roedores (MES), que incluem crises tônicas e crises semelhantes a crises de ausência, em ratos
+com epilepsia espontânea (SER), e crises tônico-clônicas induzidas em ratos por abrasamento da amígdala ou isquemia global. O topiramato é
+apenas discretamente eficaz no bloqueio de crises clônicas induzidas pelo pentilenotetrazol, um antagonista de receptor GABAA.
+
+Estudos realizados em camundongos submetidos à administração concomitante de topiramato e carbamazepina ou fenobarbital demonstraram
+atividade anticonvulsivante sinérgica, enquanto que a associação com fenitoína mostrou atividade anticonvulsivante aditiva. Em estudos clínicos
+bem controlados de uso adicional, não foi verificada nenhuma correlação entre concentrações plasmáticas de vale do topiramato e sua eficácia
+clínica. Não há evidência de tolerância em humanos.
+
+Para a monoterapia em pacientes recém diagnosticados com epilepsia ou para conversão à monoterapia em pacientes com epilepsia, a ação
+terapêutica foi observada dentro de duas semanas de tratamento.
+
+Na terapia adjuvante em adultos e crianças com convulsões parciais ou generalizadas tônico-clônicas, a ação terapêutica foi observada nas
+primeiras quatro semanas de tratamento.
+
+Para a profilaxia de enxaqueca em adultos, a ação terapêutica foi observada dentro do primeiro mês após início do tratamento.
+
+Dados pré-clínicos de segurança
+
+A exposição aguda e em longo prazo ao topiramato foi bem tolerada em camundongos, ratos, cães e coelhos. Hiperplasia das células epiteliais
+gástricas foi observada apenas em roedores e foi reversível em ratos após 9 semanas sem tratamento.
+
+Carcinogenicidade e mutagenicidade
+
+Os tumores de músculo liso originados na bexiga urinária foram observados apenas em camundongos (doses orais até 300 mg/kg por 21 meses)
+e parecem ser exclusivos para a espécie. Uma vez que não existe contraprova em humanos, eles não foram considerados clinicamente relevantes.
+Tais achados não ocorreram no estudo de carcinogenicidade em ratos (doses orais até 120 mg/kg/dia por 24 meses). Outros efeitos toxicológicos
+e patológicos do topiramato observados nestes estudos podem estar relacionados com a indução fraca de enzimas de metabolização de drogas
+ou inibição fraca da anidrase carbônica.
+
+Em uma bateria de testes de mutagenicidade “in vitro” e “in vivo”, o topiramato não demonstrou potencial genotóxico.
+
+Fertilidade
+
+Apesar da toxicidade materna e paterna com apenas 8 mg/kg/dia, nenhum efeito foi observado sobre a fertilidade em ratos macho s ou fêmeas
+com até 100 mg/kg/dia.
+
+Toxicologia reprodutiva e de desenvolvimento
+
+Em estudos pré-clínicos, o topiramato apresentou efeitos teratogênicos nas espécies estudadas (camundongos, ratos e coelhos). Em
+camundongos, os pesos e a ossificação dos fetos foram reduzidos com 500 mg/kg/dia em associação com toxicidade materna. Os nú meros gerais
+de malformação fetal em camundongo estavam aumentados para todos os grupos tratados com o fármaco (20, 100 e 500 mg/kg/dia), mas
+nenhuma diferença significante ou relação dose-resposta foram observadas para as malformações globais ou específicas , sugerindo que outros
+fatores, tais como toxicidade materna, podem estar envolvidos.
+
+Em ratos, toxicidade materna e embrio-fetal (pesos reduzidos e/ou ossificação do esqueleto) relacionada à dose foram observadas para 20
+mg/kg/dia com efeitos teratogênicos (defeitos de membros e dedos) em 400 mg/kg/dia e acima. Em coelhos, toxicidade materna relacionada à
+dose foi observada com 10 mg/kg/dia, com toxicidade embrio -fetal (letalidade aumentada) com 35 mg/kg/dia e efeitos teratogênicos
+(malformações de costela e vertebral) com 120 mg/kg/dia.
+Os efeitos teratogênicos observados em ratos e coelhos foram semelhantes àqueles observados com inibidores da anidrase carbônica, os quais
+não foram associados à malformação em humanos. Os efeitos sobre o crescimento também foram indicados pelos pesos menores ao nascimento
+e durante a lactação para filhotes de ratas tratadas com 20 ou 100 mg/kg/dia durante a gestação e a lactação. Em ratos, o topiramato cruza a
+barreira placentária.
+
+Em ratos jovens, a administração oral diária de topiramato em doses até 300 mg/kg/dia durante o período de desenvolvimento correspondendo
+à infância e adolescência resultou em toxicidade semelhante àquela em animais adultos (consumo reduzido de ração com ganho de peso
+reduzido, hipertrofia hepatocelular centrolobular e hiperplasia urotelial leve na bexiga urinária). Não houve efeitos relevantes sobre o
+crescimento (tíbia) ou densidade mineral (fêmur) de ossos longos, desenvolvimento pré-desmame e reprodutivo, desenvolvimento neurológico
+(incluindo avaliações da memória e do aprendizado), acasalamento e fertilidade ou parâmetros de histerotomia.
+
+4. CONTRAINDICAÇÕES
+
+Hipersensibilidade a qualquer componente da fórmula do produto. Não deve ser administrado durante a gravidez (categoria D).
+
+Na indicação de profilaxia da enxaqueca, Topamax® é contraindicado durante a gravidez e em mulheres com potencial para engravidar, caso
+
+não estejam utilizando um método contraceptivo altamente eficaz.
+
+Este medicamento não deve ser utilizado por mulheres grávidas sem orientação médica. Informe imediatamente seu médico em caso
+de suspeita de gravidez.
+
+Uso contraindicado no aleitamento ou na doação de leite humano: Este medicamento é contraindicado durante o aleitamento ou doação
+de leite, pois é excretado no leite humano e pode causar reações indesejáveis no bebê. Seu médico ou cirurgião -dentista deve apresentar
+alternativas para o seu tratamento ou para a alimentação do bebê.
+
+5. ADVERTÊNCIAS E PRECAUÇÕES
+
+Interrupção do tratamento com Topamax®
+
+Nos pacientes com ou sem histórico de crises epilépticas ou epilepsia, as drogas antiepilépticas incluindo o Topamax® devem ser
+
+gradativamente descontinuadas, para minimizar a possibilidade de crises epilépticas ou aumento da freq uência de crises epilépticas.
+
+Em estudos clínicos, as doses diárias foram diminuídas em intervalos semanais de 50 a100 mg em adultos com epilepsia e 25 a 50 mg em
+adultos recebendo Topamax® em doses de até 100 mg/dia para a profilaxia da enxaqueca. Em estudos clínicos em crianças, Topamax® foi
+retirado gradualmente por um período de 2 a 8 semanas. Nas situações onde a retirada rápida de Topamax® é por solicitação médica, é
+
+recomendada monitoração apropriada.
+
+Insuficiência renal
+
+A principal via de eliminação do topiramato inalterado e seus metabólitos é através dos rins. A eliminação pelos rins é dependente da função
+renal e independe da idade. Pacientes com insuficiência renal moderada ou severa podem levar de 10 a 15 dias para atingir as concentrações
+plasmáticas no estado de equilíbrio, em comparação com o período de 4 a 8 dias, observado em pacientes com função renal normal.
+
+Em todos os pacientes, a titulação da dose deverá ser orientada pelo resultado clínico (isto é, controle das crises, evitando efeitos colaterais),
+considerando-se que pacientes sabidamente portadores de insuficiência renal poderão precisar de um tempo mais longo para alcançar o estado
+de equilíbrio, a cada dose (vide “Posologia e modo de usar - Populações especiais, Insuficiência renal e Propriedades Farmacocinéticas -
+Populações especiais, Insuficiência renal”).
+
+Hidratação
+Oligo-hidrose (diminuição da transpiração) e anidrose foram reportadas em associação com o uso de topiramato. Diminuição da transpiração e
+hipertermia (aumento da temperatura corpórea) podem ocorrer especialmente em crianças jovens expostas a altas temperaturas ambientais (vide
+“Reações adversas”).
+
+Hidratação adequada durante o uso de topiramato é muito importante. A hidratação pode reduzir o risco de nefrolitíase (vide “Advertências e
+precauções – Nefrolitíase”). Hidratação apropriada antes e durante atividades como exercícios físicos ou exposição a temperaturas elevadas
+pode reduzir o risco de eventos adversos relacionados ao calor (vide “Reações adversas”).
+
+Transtornos do humor / Depressão
+
+Um aumento na incidência de transtornos do humor e depressão tem sido observado durante o tratamento com topiramato.
+
+Ideação suicida / suicídio
+
+Fármacos antiepilépticos, inclusive Topamax®, aumentam o risco de pensamentos ou comportamento suicidas em pacientes que utilizam estes
+
+fármacos para qualquer indicação. Uma meta-análise de estudos randomizados, controlados por placebo, com medicamentos antiepilépticos
+mostrou um aumento do risco de ideação e comportamento suicida (0,43% em medicamentos antiepilépticos versus 0,24% com placebo). O
+mecanismo para este risco não é conhecido.
+
+Em estudos clínicos duplo-cegos, eventos relacionados ao suicídio (ideação suicida, tentativa de suicídio e suicídio) ocorreram com frequência
+de 0,5% nos pacientes tratados com topiramato (46 dos 8652 pacientes tratados) comparado com 0,2% dos pacientes tratados com placebo (8
+entre 4025 pacientes tratados). Um caso de suicídio foi relatado em paciente tratado com topiramato em estudo duplo-cego para transtorno
+bipolar.
+
+Os pacientes devem ser monitorados para os sinais de ideação e comportamento suicida e tratamento apropriado deve ser considerado . Os
+pacientes (e quando apropriado os cuidadores do paciente) devem ser avisados a procurar imediatamente cuidado médico quando ap arecerem
+sintomas de ideação ou comportamento suicida.
+
+Reações cutâneas graves
+
+Reações cutâneas graves [síndrome de Stevens-Johnson (SSJ) e necrólise epidérmica tóxica (NET)] foram relatadas em pacientes utilizando
+Topamax®. A maioria dos casos ocorreram em pacientes utilizando concomitantemente outros medicamentos conhecidamente associados à
+
+SSJ e NET. Houve, também, vários casos em pacientes recebendo monoterapia. Recomenda-se que os pacientes sejam informados sobre os
+sinais de reações cutâneas graves. Caso haja suspeita de SSJ ou NET, o tratamento com Topamax® deve ser descontinuado.
+
+Nefrolitíase
+
+Alguns pacientes, especialmente aqueles com predisposição à nefrolitíase, podem ter risco aumentado de formação de cálculo re nal e sinais e
+sintomas associados, tais como cólica renal, dor renal e dor em flanco.
+
+Fatores de risco de nefrolitíase incluem antecedentes de cálculo renal, histórico familiar de nefrolitíase e hipercalciúria (vide “Advertências e
+Precauções – Acidose metabólica e sequelas”). Nenhum desses fatores de risco pode antecipar com certeza a formação de cálculo durante
+tratamento com topiramato. Além disso, pacientes utilizando outros medicamentos associados à possibilidade de ocorrência de n efrolitíase
+podem ter um risco aumentado (vide “Interações medicamentosas - Outras Formas de Interação, Agentes que predispõem à nefrolitíase”).
+
+Insuficiência hepática
+Topamax® deve ser administrado com cuidado em pacientes com insuficiência hepática, uma vez que a depuração do topiramato pode estar
+
+reduzida neste grupo de pacientes (vide “Posologia e modo de usar - Populações especiais, Insuficiência hepática e Propriedades
+Farmacocinéticas - Populações especiais, Insuficiência hepática”).
+
+Síndrome da miopia aguda associada com glaucoma agudo de ângulo fechado secundário
+
+Uma síndrome consistindo de miopia aguda associada com glaucoma de ângulo fechado secundário tem sido relatada em pacientes em uso de
+Topamax. Os sintomas incluem início agudo de redução da acuidade visual e/ou dor ocular. Achados oftalmológicos podem incluir alguns ou
+
+todos os seguintes: miopia, midríase, redução da câmara anterior, hiperemia ocular (vermelhidão), descolamento da coroide, descolamento do
+epitélio pigmentado da retina, estrias maculares e aumento da pressão intraocular. Esta síndrome pode estar associada com efusão supraciliar
+resultando no deslocamento anterior do cristalino e da íris, com glaucoma de ângulo fechado secundário. Os sintomas ocorrem,
+caracteristicamente, no primeiro mês após do início do tratamento com Topamax. Ao contrário do glaucoma de ângulo fechado primário, que
+
+é raro em pessoas com menos de 40 anos, o glaucoma de ângulo fechado secundário associado com topiramato tem sido relatado tanto em
+pacientes pediátricos como adultos. O tratamento inclui a interrupção do Topamax, o mais rápido possível de acordo com a avaliação do
+
+médico, e medidas apropriadas para reduzir a pressão intraocular. Estas medidas geralmente resultam na redução da pressão intraocular.
+
+Elevada pressão intraocular de qualquer etiologia, se não for tratada, pode acarretar em graves sequelas, incluindo perda permanente da visão.
+
+Alterações no campo visual
+
+Alterações no campo visual têm sido relatadas em pacientes que receberam topiramato, independente da pressão intraocular elevada. Em estudos
+clínicos, a maioria destas alterações foram reversíveis após a interrupção do tratamento com topiramato. Se ocorrerem problemas visuais durante
+qualquer momento do tratamento com topiramato, deve-se considerar a possibilidade de interromper o tratamento.
+
+Acidose metabólica e sequelas
+
+Hipercloremia, hiato não aniônico, acidose metabólica (isto é, redução do bicarbonato sérico abaixo do intervalo de referência normal na
+ausência de alcalose respiratória) estão associados ao tratamento com topiramato. Esta redução no bicarbonato sérico está relacionada ao efeito
+inibitório do topiramato na anidrase carbônica renal. A redução no bicarbonato ocorre geralmente no início do tratamento, mas pode ocorrer ao
+longo da duração do tratamento. Estas reduções são usualmente leves a moderadas (redução média de 4 mmol/L em doses de 100 mg/dia ou
+acima em adultos e aproximadamente 6 mg/kg/dia em pacientes pediátricos). Os pacientes raramente apresentaram redução a valores menores
+que 10 mmol/L. As condições ou terapias que predispõem a acidose (como doença renal, distúrbios respiratórios severos, “status epilepticus”,
+diarreia, cirurgia, dieta cetogênica, ou alguns fármacos) podem ser aditivas aos efeitos do topiramato na redução do bicarbonato.
+
+A acidose metabólica crônica não tratada pode aumentar o risco de nefrolitíase ou nefrocalcinose (vide “Advertências e Precauções –
+Nefrolitíase”).
+
+Acidose metabólica crônica em pacientes pediátricos pode reduzir as taxas de crescimento. O efeito do topiramato no crescimento e sequela
+relativa aos ossos não foi avaliado sistematicamente em pacientes adultos. Um estudo aberto, de 1 ano, em pacientes pediátricos com idade de
+6 a 15 anos, incluindo 63 pacientes com epilepsia de início recente ou novo foi conduzido para avaliar os efeitos do topiramato (28 indivíduos)
+versus levetiracetam no crescimento, desenvolvimento e mineralização óssea. Crescimento contínuo foi observado em ambos os grupos de
+tratamento, mas o grupo do topiramato mostrou reduções estatisticamente significantes na alteração anual média, em relação à linha de base,
+no peso corporal e na densidade mineral óssea comparado com o grupo do levetiracetam. Tendência similar também foi observada para altura
+e velocidade de crescimento, mas não foram estatisticamente significantes. As alterações relacionadas ao crescimento não foram clinicamente
+significativas nem limitantes do tratamento. Outros fatores de confusão não podem ser excluídos.
+Dependendo das condições de base, recomenda-se avaliação adequada, incluindo níveis de bicarbonato sérico, durante o tratamento com
+topiramato. Se a acidose metabólica ocorrer e persistir, deve-se considerar redução da dose ou interrupção do topiramato (usando redução
+gradual da dose).
+
+Hiperamonemia e encefalopatia
+
+Hiperamonemia com ou sem encefalopatia foi relatada no tratamento com topiramato (vide “Reações adversas”). O risco para hiperamonemia
+com topiramato parece estar relacionado à dose. A hiperamonemia foi relatada com mais frequência quando o topiramato foi utilizado
+concomitantemente ao ácido valproico (vide “Interações medicamentosas”).
+
+Os sintomas clínicos de encefalopatia hiperamonêmica muitas vezes incluem alterações agudas no nível de consciência e/ou da função cognitiva
+com letargia. Na maioria dos casos, a encefalopatia hiperamonêmica desaparece com a descontinuação do tratamento. Em pacientes que
+desenvolvem letargia inexplicável, ou alterações no estado mental associadas à monoterapia com topiramato ou como terapia adicional,
+recomenda-se considerar a encefalopatia hiperamonêmica e a medição dos níveis de amônia.
+
+Suplementação nutricional
+
+A suplementação da dieta ou o aumento da ingestão de alimentos deve ser considerado se o paciente apresentar perda de peso durante o
+tratamento com topiramato.
+
+Efeitos sobre a capacidade de dirigir veículos e operar máquinas
+
+Topamax® age sobre o sistema nervoso central, podendo produzir sonolência, tontura ou outros sintomas relacionados. Isto pode causar
+
+distúrbios visuais e/ou visão turva. Tais reações adversas podem ser potencialmente perigosas para pacientes dirigindo veículos ou operando
+máquinas, particularmente até que se conheça a reação individual do paciente ao fármaco.
+
+Oriente seu paciente a não dirigir veículos ou operar máquinas até que a reação individual do paciente ao medicamento seja conhecida,
+pois sua habilidade e capacidade de reação podem estar prejudicadas.
+
+O uso deste medicamento pode causar tontura, desmaio ou perda da consciência, expondo o paciente a quedas ou acidentes.
+
+Lactose
+
+Este medicamento não deve ser usado por pessoas com síndrome de má-absorção de glicose-galactose.
+
+Atenção: Contém lactose (tipo de açúcar) abaixo de 0,25g/comprimido revestido.
+
+Corante
+
+Apresentação de 25 mg:
+
+Atenção: Contém o corante dióxido de titânio.
+
+Apresentação de 50 mg e 100mg:
+
+Atenção: Contém os corantes dióxido de titânio e óxido de ferro amarelo.
+
+Gravidez (Categoria D) e Lactação
+
+- Mulheres com potencial para engravidar
+Topamax pode causar danos fetais quando administrado a uma mulher grávida. Existe um risco aumentado de trabalho de parto prematuro e
+
+parto prematuro associado ao uso de medicamentos antiepilépticos, incluindo o topiramato.
+
+Antes do início do tratamento com topiramato em mulheres com potencial para engravidar, deve ser realizado um teste de gravidez, e um método
+contraceptivo altamente eficaz deve ser utilizado. A paciente deve ser devidamente informada sobre os riscos relacionados ao uso de topiramato
+durante a gravidez.
+
+Na indicação de profilaxia da enxaqueca, Topamax é contraindicado durante a gravidez e em mulheres com potencial para engravidar , caso
+não estejam utilizando um método contraceptivo altamente eficaz (vide “Contraindicações” e “Interações Medicamentosas”). Topamax só
+
+deve ser utilizado durante a gravidez se o benefício potencial justificar o risco potencial para o feto (vide “Contraindicações”).
+
+- Uso durante a gravidez
+
+Estudos em animais demonstraram toxicidade relacionada à reprodução (vide “Dados pré-clínicos de segurança - Toxicologia reprodutiva e de
+desenvolvimento”). Em ratos, o topiramato atravessou a barreira placentária. Em humanos, o topiramato atravessa a placenta e concentrações
+similares foram relatadas no cordão umbilical e no sangue materno.
+
+Não foram realizados estudos adequados e bem controlados com Topamax® em gestantes.
+
+Topamax® pode causar dano fetal quando administrado em gestantes. . Isto foi relatado em monoterapia com topiramato e em regimes
+
+politerápicos no qual topiramato fazia parte.
+
+Malformações congênitas
+
+Dados de registros de gravidez indicam que bebês expostos ao topiramato “in utero” têm um risco aumentado de malformações congênitas (por
+exemplo, defeitos craniofaciais, como fissura labiopalatina, hipospádia e anomalias envolvendo vários sistemas do corpo).
+
+Além disso, dados de outros estudos indicam que, em comparação com a monoterapia, há um risco aumentado de efeitos teratogênicos
+associados ao uso de drogas antiepilépticas (AEDs) em terapia associada. O risco foi observado com todas as doses e os efeitos foram relatados
+como dependentes da dose. Em mulheres tratadas com topiramato que tiveram um filho com malformação congênita, parece haver maior risco
+de malformações em gestações subsequentes quando expostas ao topiramato. Existe maior risco de trabalho de parto prematuro e parto
+prematuro associados ao uso de medicamentos antiepilépticos, incluindo o topiramato.
+
+PIG
+
+Comparado com o grupo referência que não toma medicamentos antiepilépticos, os dados registrados para a monoterapia com Topamax®
+
+demonstraram uma maior prevalência de nascidos com baixo peso (< 2500 gramas). Um registro sobre gravidez relatou um aumento da
+frequência de crianças que eram muito pequenas para a idade gestacional (PIG; definido como peso de nascimento abaixo do percentil 10
+corrigido para a sua idade gestacional, estratificado por sexo) entre aquelas expostas ao topiramato em monoterapia in utero. PIG foi observado
+em todas as doses e é dose-dependente. A prevalência de PIG é maior em mulheres que receberam doses mais elevadas de topiramato durante
+a gravidez. Além disso, a prevalência de PIG em mulheres que continuaram a usar topiramato no final da gravidez é maior em comparação com
+mulheres que pararam de usar antes do terceiro trimestre. As consequências em longo prazo nos achados de PIG não puderam ser determinadas.
+Uma relação causal para o baixo peso de nascimento e PIG não foi estabelecida.
+
+Distúrbios do neurodesenvolvimento
+Dados de um estudo de coorte observacional dos EUA não sugeriram um aumento da incidência cumulativa de transtorno do espectro autista
+aos 8 anos de idade em 1030 filhos de mães com epilepsia expostas ao topiramato “in útero”, em comparação com filhos de mães com epilepsia
+não expostas ao topiramato, após ajuste para indicação e outros fatores de confusão.
+Dados de dois estudos observacionais de registro de base populacional realizados em grande parte no mesmo conjunto de dados dos países
+nórdicos sugerem que pode haver uma prevalência 2 a 3 vezes maior de transtornos do espectro autista, deficiência intelectual ou transtorno de
+déficit de atenção e hiperatividade (TDAH) em quase 300 filhos de mães com epilepsia expostas ao topiramato “in útero”, em comparação com
+filhos de mães com epilepsia não expostas a uma droga antiepiléptica (AED).
+
+Indicação para epilepsia
+
+É recomendado considerar opções terapêuticas alternativas em mulheres com potencial para engravidar. Caso Topamax® seja utilizado em
+
+mulheres com potencial para engravidar, é recomendado que um método contraceptivo altamente eficaz seja utilizado (vide “Interações
+Medicamentosas”), e que a mulher esteja devidamente informada sobre os riscos conhecidos de epilepsia não controlada para a gravidez e dos
+potenciais riscos do medicamento para o feto. Caso a mulher planeje engravidar, recomenda-se uma visita pré-concepcional para reavaliar o
+tratamento e para considerar outras opções terapêuticas. No caso de administração durante o primeiro trimestre, um acompanhamento pré-natal
+cuidadoso deve ser realizado.
+
+Indicação para profilaxia da enxaqueca
+
+Topamax® é contraindicado durante a gravidez e em mulheres com potencial para engravidar, caso não estejam utilizando um método
+
+contraceptivo altamente eficaz (vide “Contraindicações”).
+
+Risco relacionado à epilepsia e AEDs em geral
+
+Aconselhamento especializado deve ser dado a mulheres com potencial para engravidar. A necessidade de tratamento com AEDs deve ser
+revista quando a mulher planejar engravidar. Em mulheres em tratamento para epilepsia, a descontinuação repentina da terapia com AEDs deve
+ser evitada, pois isso pode levar a crises convulsivas com sérias consequências para a mulher e o feto. A monoterapia deve ser preferida sempre
+que possível, porque a terapia com múltiplos AEDs pode estar associada a um risco maior de malformações congênitas do que a monoterapia,
+dependendo dos antiepilépticos associados.
+
+Topamax® deve ser usado durante a gravidez apenas se os benefícios potenciais justificarem os riscos potenciais para o feto (vide
+
+“Contraindicações”). Ao tratar e aconselhar mulheres em idade reprodutiva o médico deve pesar os benefícios da terapia contra os riscos
+potenciais e considerar opções terapêuticas alternativas. Se este medicamento está sendo usado durante a gravidez ou se a paciente ficar grávida
+durante o tratamento com este medicamento, a paciente deve ser advertida sobre os potenciais riscos para o feto.
+
+Este medicamento não deve ser utilizado por mulheres grávidas sem orientação médica. Informe imediatamente seu médico em caso
+de suspeita de gravidez.
+
+- Uso durante a lactação
+
+O topiramato é eliminado no leite de ratas. A excreção do topiramato no leite humano não foi avaliada em estudos controlados. A observação
+em um número limitado de pacientes sugere uma excreção extensa do topiramato no leite. Diarréia e sonolência têm sido relatadas em bebês
+amamentados cujas mães recebem tratamento com topiramato. Portanto, deve-se decidir entre evitar a amamentação ou descontinuar o
+tratamento com a droga, levando-se em consideração o benefício da amamentação para a criança e o benefício do medicamento para a mãe.
+
+6. INTERAÇÕES MEDICAMENTOSAS
+
+Para o proposto nesta seção, uma dose sem efeito é definida como uma alteração ≤ 15%.
+- Efeitos do Topamax® sobre outras drogas antiepilépticas
+
+A associação de Topamax® a outras drogas antiepilépticas (fenitoína, carbamazepina, ácido valproico, fenobarbital, primidona) não afeta suas
+concentrações plasmáticas no estado de equilíbrio, exceto, ocasionalmente, em alguns pacientes, em que a adição de Topamax® à fenitoína
+
+poderá resultar em aumento das concentrações plasmáticas de fenitoína. Isto se deve possivelmente à inibição de uma isoforma específica de
+uma enzima polimórfica (CYP2C19). Consequentemente deverá ser realizada monitorização do nível plasmático de fenitoína em qualquer
+paciente em tratamento com fenitoína que apresente sinais ou sintomas clínicos de toxicidade.
+
+Um estudo de interação farmacocinética em pacientes com epilepsia demonstrou que a associação do topiramato à lamotrigina não apresentou
+efeito na concentração plasmática de lamotrigina no estado de equilíbrio com doses de topiramato de 100 a 400 mg/dia. Além disso, a
+concentração plasmática de topiramato no estado de equilíbrio não sofreu alteração durante ou após a retirada do tratamento com lamotrigina
+(dose média de 327 mg/dia).
+
+- Efeitos de outras drogas antiepilépticas sobre Topamax®
+
+A fenitoína e a carbamazepina diminuem as concentrações plasmáticas do Topamax®. A adição ou descontinuação da fenitoína ou da
+carbamazepina ao tratamento com Topamax® poderá requerer um ajuste de dose deste último. A titulação da dose deverá ser realizada de
+
+acordo com o efeito clínico. Tanto a adição quanto a retirada do ácido valproico não produzem mudanças clinicamente significativas nas
+concentrações plasmáticas de Topamax® e, portanto, não exigem ajuste da dose do Topamax®. Os resultados destas interações estão resumidos
+
+na tabela a seguir.
+
+ AED coadministrada Concentração da AED Concentração de Topamax®
+ fenitoína   (48%)
+ carbamazepina (CBZ)   (40%)
+ ácido valproico  
+ lamotrigina  
+ fenobarbital  NE
+ primidona  NE
+ = sem efeito sobre as concentrações plasmáticas (alteração  15%).
+ = concentrações plasmáticas aumentadas em alguns pacientes.
+ = diminuição das concentrações plasmáticas.
+NE = não estudado.
+AED = droga antiepiléptica.
+
+- Outras interações medicamentosas
+
+digoxina: Em um estudo de dose única, a administração concomitante de Topamax® provocou uma redução de 12% na área sob a curva de
+concentração plasmática (ASC) da digoxina. A importância clínica desta observação não foi determinada. Quando o Topamax® for associado
+
+ou descontinuado em pacientes submetidos a tratamento com a digoxina, recomenda-se atenção à monitoração rotineira e cuidadosa das
+concentrações séricas de digoxina.
+
+anticoncepcionais: Em um estudo de interação farmacocinética em voluntárias sadias, com administração concomitante de contraceptivo oral
+combinado contendo 1 mg de noretindrona (NET) e 35 mcg de etinilestradiol (EE), Topamax®, administrado isoladamente nas doses de 50 a
+
+200 mg/dia, não foi associado a alterações estatisticamente significantes na exposição média (ASC) em ambos os componentes do contraceptivo
+oral. Em outro estudo, a exposição ao etinilestradiol apresentou redução estatisticamente significante com doses de 20 0, 400 e 800 mg/dia (18%,
+21% e 30% respectivamente) quando administrado como terapia adicional em pacientes em uso de ácido valproico. Em ambos os estudos,
+Topamax® (50 mg/dia a 800 mg/dia) não afetou significantemente a exposição à noretindrona. Embora, nas doses entre 200-800 mg/dia tenha
+
+havido uma redução dose-dependente na exposição ao etinilestradiol, nas doses de 50-200 mg/dia, não houve alteração dose-dependente
+significativa na exposição ao etinilestradiol. A significância clínica das alterações observadas não é conhecida. A possibilidade de redução da
+eficácia do contraceptivo e aumento no sangramento de escape deve ser considerada em pacientes em uso de con traceptivos hormonais e
+Topamax®. Deve-se solicitar a pacientes em uso de contraceptivos hormonais contendo estrogênios ou apenas progestagênios que relatem
+
+qualquer alteração em seus padrões menstruais. A eficácia contraceptiva pode ser reduzida, mesmo na ausência de sangramento de escape.
+
+lítio: Em voluntários saudáveis, foi observada uma redução (18% para ASC) na exposição sistêmica para o lítio durante a administração
+concomitante com topiramato 200 mg/dia. Nos pacientes com transtorno bipolar, a farmacocinética do lítio não foi afetada durante o tratamento
+com topiramato em doses de 200 mg/dia; entretanto, foi observado aumento na exposição sistêmica (26% para ASC) depois de doses do
+topiramato de até 600 mg/dia. Os níveis do lítio devem ser monitorados quando coadministrados com topiramato.
+
+risperidona: os estudos de interação droga-droga conduzidos sob condições de dose única e múltipla em voluntários saudáveis e em pacientes
+com transtorno bipolar atingiram resultados similares. Quando administrado concomitantemente com topiramato em doses escalonadas de 100,
+250 e 400 mg/dia houve uma redução na exposição sistêmica (16% e 33% para ASC no estado de equilíbrio nas doses de 250 e 400 mg/dia,
+respectivamente) de risperidona (administrada em doses variando de 1 a 6 mg/dia). Alterações mínimas na farmacocinética do total de partes
+ativas (risperidona mais 9-hidróxirisperidona) e nenhuma alteração para 9-hidróxirisperidona foram observadas. Não houve mudança
+clinicamente significativa na exposição sistêmica do total de partes ativas da risperidona ou do topiramato; portanto, não é provável que esta
+interação tenha significância clínica.
+
+hidroclorotiazida (HCTZ): Um estudo de interação medicamentosa conduzido em voluntários sadios avaliou a farmacocinética no estado de
+equilíbrio da hidroclorotiazida (25 mg a cada 24 horas) e do topiramato (96 mg a cada 12 horas) quando administrados isolados ou
+concomitantemente. Os resultados deste estudo indicaram que a C máx do topiramato aumentou 27% e a ASC aumentou 29% quando a
+hidroclorotiazida foi associada ao topiramato. A significância clínica desta alteração é desconhecida. A associação de hidroc lorotiazida ao
+tratamento com topiramato pode precisar de um ajuste da dose do topiramato. A farmacocinética da hidroclorotiazida no estado de equilíbrio
+não foi influenciada significativamente pela administração concomitante do topiramato. Os resultados laboratoriais clínicos indicaram redução
+no potássio sérico após administração do topiramato ou da hidroclorotiazida, sendo maior quando a hidroclorotiazida e o topir amato foram
+administrados em combinação.
+
+metformina: Um estudo de interação medicamentosa conduzido em voluntários sadios avaliou a farmacocinética da metformina e do topiramato
+no estado de equilíbrio no plasma quando a metformina foi administrada isolada e quando a metformina e o topiramato foram adm inistrados
+simultaneamente. Os resultados do estudo indicaram que a C máx média e a ASC0-12 h média da metformina aumentaram em 18% e 25%,
+respectivamente, enquanto que a depuração média diminuiu 20% quando a metformina foi coadministrada com topirama to. O topiramato não
+afetou o Tmáx da metformina. A significância clínica do efeito do topiramato na farmacocinética da metformina não está clara. A depuração
+plasmática oral do topiramato parece ser reduzida quando administrado com metformina. A extensão da alteração na depuração é desconhecida.
+A significância clínica do efeito da metformina na farmacocinética do topiramato não está clara. Quando Topamax é administrado ou retirado
+
+em pacientes tratados com metformina, deve -se dar atenção especial à monitorização rotineira para um controle adequado do diabetes.
+
+pioglitazona: Um estudo de interação medicamentosa conduzido em voluntários sadios avaliou a farmacocinética no estado de equilíbrio do
+topiramato e da pioglitazona quando administrados isolada ou concomitantemente. Uma redução de 15% na ASC, ss de pioglitazona sem
+alteração na Cmáx, ss foi observada. Este achado não foi estatisticamente significante. Além disso, reduções de 13% na Cmáx, ss e de 16% na ASC,
+
+ss do hidróxi-metabólito ativo foram observadas, assim como uma redução de 60% tanto na C máx, ss como na ASC, ss do ceto-metabólito ativo
+foram observadas. A significância clínica destes achados é desconhecida. Quando Topamax® é associado ao tratamento com pioglitazona ou
+pioglitazona é associada ao tratamento com Topamax®, deve-se dar atenção especial à monitorização rotineira dos pacientes para um controle
+
+adequado do diabetes.
+gliburida: Um estudo de interação droga-droga conduzido nos pacientes com diabetes tipo 2 avaliou a farmacocinética no estado de equilíbrio
+da gliburida (5 mg/dia) isolada e concomitantemente com topiramato (150 mg/dia). Houve uma redução de 25% na ASC24h da gliburida durante
+a administração do topiramato. A exposição sistêmica dos metabólitos ativos, 4-trans-hidróxi-gliburida (M1) e 3-cis-hidróxi-gliburida (M2),
+também foram reduzidas em 13% e 15%, respectivamente. A farmacocinética no estado de equilíbrio do topiramato não foi afetada pela
+administração concomitante da gliburida. Quando o topiramato é adicionado à terapia da gliburida ou a gliburida é adicionada a terapia do
+topiramato, deve-se dar atenção especial à monitorização rotineira dos pacientes para um controle adequado do diabetes.
+
+Interação com álcool e depressores do SNC: Não houve avaliação nos estudos clínicos, da administração concomitante de Topamax® e álcool
+ou outras drogas depressoras do SNC. Recomenda-se que Topamax® não seja utilizado concomitantemente com bebidas alcoólicas ou com
+
+outros medicamentos depressores do SNC.
+
+- Outras formas de interação:
+
+Agentes que predispõem à nefrolitíase: Topamax® pode aumentar o risco de nefrolitíase em pacientes em uso concomitante de outros agentes
+que predispõem à nefrolitíase. Durante o tratamento com Topamax®, tais agentes deverão ser evitados, uma vez que eles criam um ambiente
+
+fisiológico que aumenta o risco de formação de cálculo renal.
+
+ácido valproico: A administração concomitante do topiramato e do ácido valproico foi associada com hiperamonemia com ou sem encefalopatia
+nos pacientes que toleraram uma ou outra droga isolada. Na maioria dos casos, os sintomas e os sinais cessaram com a desconti nuação de uma
+ou outra droga (vide “Advertências e precauções” e “Reações adversas”). Esta reação adversa não é devido a uma interação farmacocinética.
+
+Hipotermia, definida como queda não intencional da temperatura corpórea para < 35º C, foi relatada em associação com o uso concomitante de
+topiramato e ácido valproico (VPA), ambos em conjunto com hiperamonemia e na ausência de hiperamonemia. Esse evento adverso em
+pacientes usando concomitantemente topiramato e valproato pode ocorrer após o início do tratamento com topiramato ou após o aumento da
+dose diária de topiramato.
+
+Medicamentos anticoagulantes antagonistas de vitamina K
+
+Respostas diminuídas do Tempo de Protrombina / Razão Normalizada Internacional (TP / RNI) foram relatadas após administração
+concomitante de topiramato com medicamentos anticoagulantes antagonistas de vitamina K. Monitore cuidadosamente a RNI durante
+administração concomitante de terapia com topiramato e medicamentos anticoagulantes antagonistas de vitamina K.
+
+Estudos adicionais de interação medicamentosa farmacocinética: Estudos clínicos foram conduzidos para avaliar a farmacocinética
+potencial da interação medicamentosa entre o topiramato e outros agentes. As alterações na Cmáx ou na ASC, como resultado das interações,
+estão descritas a seguir. A segunda coluna (concentração do fármaco concomitante) descreve o que acontece com a concentração do fármaco
+concomitante listado na primeira coluna quando topiramato é associado. A terceira coluna (concentração do topiramato) menciona como a
+coadministração do fármaco listado na primeira coluna modifica a concentração do topiramato.
+
+Resumo dos resultados dos estudos clínicos adicionais de interação medicamentosa farmacocinética
+ Fármaco concomitante Concentração do fármaco concomitantea Concentração do topiramatoa
+ 
+ amitriptilina 20% de aumento na Cmáx e na ASC do NE
+ metabólito nortriptilina
+ di-hidroergotamina (oral e  
+ subcutânea)
+ haloperidol  NE
+ 31% de aumento na ASC do metabólito
+ reduzido
+  9% e 16% de aumento na C , 9% e 17% de
+ 17% de aumento na C para 4- máx
+ propranolol máx aumento na ASC (40 mg e 80 mg de
+ hidróxipropranolol (50 mg de topiramato a cada propranolol a cada 12 horas, respectivamente)
+ 12 horas)
+ sumatriptana (oral e subcutâneo)  NE
+
+ pizotifeno  
+
+ diltiazem 25% de diminuição na ASC do diltiazem e 18% 20% de aumento na ASC
+ de diminuição na DEA, e  para DEM*
+ venlafaxina  
+
+ flunarizina 16% de aumento na ASC 
+ (50 mg de topiramato a cada 12 horas)b
+
+a Os valores % são as variações na média da Cmáx ou ASC do tratamento em relação à monoterapia.
+ = sem efeito sobre a Cmáx e ASC (alteração  15%) do componente originário.
+NE = não estudado.
+*DEA = Des acetil diltiazem, DEM = N-demetil diltiazem.
+b A ASC da flunarizina aumentou 14% em indivíduos com uso isolado de flunarizina. O aumento na exposição pode ser atribuído ao acúmulo
+durante o estado de equilíbrio.
+
+Interação com alimentos
+
+Topamax® pode ser administrado com ou sem alimentos.
+
+8. POSOLOGIA E MODO DE USAR
+Para o controle ideal, tanto em adultos como em crianças, recomenda-se iniciar o tratamento com uma dose baixa, seguida de titulação até uma
+dose eficaz.
+
+Topamax® está disponível em comprimidos. Recomenda-se não partir os comprimidos.
+
+Não é necessário monitorar as concentrações plasmáticas de topiramato para otimizar o tratamento com Topamax®. Raramente, o tratamento
+
+concomitante com fenitoína poderá exigir o ajuste de dose da fenitoína para que resultados clínicos ótimos sejam alcançados. A adição ou
+retirada da fenitoína e da carbamazepina do tratamento coadjuvante com Topamax® poderá exigir o ajuste da dose do Topamax®. Topamax®
+
+pode ser administrado com ou sem alimentos.
+
+▪ Tratamento adjuvante em epilepsia
+
+Adultos
+
+A dose mínima eficaz é 200 mg ao dia. Em geral, a dose total diária varia de 200 mg a 400 mg, dividida em duas tomadas. Alguns pacientes
+eventualmente poderão necessitar de doses de até 1600 mg por dia, que é a dose máxima. Recomenda-se que o tratamento seja iniciado com
+uma dose baixa, seguida por uma titulação da dose até que se chegue à dose adequada.
+
+O tratamento deve ser iniciado com 25 a 50 mg, administrados à noite, durante uma semana. Posteriormente, a intervalos de 1 ou 2 semanas, a
+dose deverá ser aumentada de 25 a 50 mg/dia e dividida em duas tomadas. A titulação da dose deverá ser orientada pelos resultados clínicos.
+Alguns pacientes poderão obter eficácia com uma dose única diária.
+
+Essas recomendações posológicas se aplicam a todos os pacientes adultos, incluindo idosos, desde que não haja doença renal subjacente (vide
+“Advertências e Precauções – insuficiência renal”). Porém, nos pacientes sob tratamento com hemodiálise, há necessidade de uma dose
+suplementar.
+
+Crianças acima de 2 anos de idade
+
+A dose total diária de Topamax® recomendada para crianças é de 5 a 9 mg/kg/dia, dividida em duas tomadas. A titulação deve ser iniciada com
+
+25 mg (ou menos, baseado na faixa de 1 a 3 mg/kg/dia) administrados à noite, durante a primeira semana. Posteriormente, a dose deve ser
+aumentada em 1 a 3 mg/kg/dia (dividida em duas tomadas), à intervalos de 1 ou 2 semanas, até alcançar uma resposta clínica ótima. A titulação
+de dose deve ser orientada pela resposta clínica.
+
+Doses diárias de até 30 mg/kg/dia foram bem toleradas nos estudos realizados.
+
+▪ Monoterapia em epilepsia
+
+Quando drogas antiepilépticas (AEDs) concomitantes são retiradas a fim de manter o tratamento com topiramato em monoterapia, deve-se
+considerar os efeitos que isto pode ter sobre o controle das crises convulsivas. Exceto por razões de segurança que exijam uma retirada abrupta
+das outras drogas antiepilépticas, recomenda-se a descontinuação gradual com redução de aproximadamente um terço da dose a cada 2 semanas
+(vide “Advertências e Precauções - Interrupção do tratamento com Topamax®”).
+
+Quando fármacos indutores enzimáticos são retirados, os níveis plasmáticos de topiramato irão aumentar. Uma diminuição da dose de
+Topamax® pode ser necessária, se for clinicamente indicado.
+
+Adultos
+
+A titulação da dose deve ser iniciada com 25 mg, administrado à noite, por uma semana. Então, a dose deve ser aumentada em 25 ou 50 mg ao
+dia, a intervalos de 1 ou 2 semanas, dividida em duas tomadas. Se o paciente for incapaz de tolerar o esquema de titulação, aumentos menores
+ou intervalos mais longos entre os aumentos da dose podem ser usados. A dose e a velocidade de titulação devem ser orientadas pelo resultado
+clínico.
+Em adultos, a dose alvo inicial recomendada para o topiramato em monoterapia é de 100 mg/dia e a dose diária máxima recomendada é 500
+mg. Alguns pacientes com formas refratárias de epilepsia toleraram doses de 1000 mg/dia de topiramato em monoterapia. Estas recomendações
+aplicam-se a todos os adultos, incluindo idosos sem doença renal subjacente.
+
+Crianças acima de 2 anos de idade
+
+Em crianças acima de 2 anos de idade a dose inicial varia de 0,5 a 1 mg/kg, à noite, durante uma semana. A seguir a dose deve ser aumentada
+em 0,5 a 1 mg/kg/dia à intervalos de 1 a 2 semanas, dividida em duas tomadas. Se a criança for incapaz de tolerar o esquema de titulação da
+dose, aumentos menores ou intervalos maiores entre os aumentos da dose podem ser usados. A dose e a velocidade da titulação devem ser
+orientadas pelo resultado clínico.
+
+A dose-alvo inicial recomendada para o topiramato em monoterapia em crianças é de 3 a 6 mg/kg/dia. Crianças com crises de início parcial de
+diagnóstico recente receberam doses de até 500 mg/dia.
+
+▪ Enxaqueca
+
+Adultos
+
+O tratamento deve ser iniciado com 25 mg à noite durante 1 semana. A dose deve então ser aumentada em 25 mg/dia, uma vez por semana. Se
+o paciente for incapaz de tolerar o esquema de gradação, intervalos maiores entre os ajustes de dose podem ser usados.
+
+A dose total diária de topiramato recomendada na profilaxia de enxaqueca é 100 mg/dia, divididos em duas tomadas. Alguns pacientes podem
+se beneficiar de uma dose diária total de 50 mg. Pacientes receberam dose diária total de até 200 mg/dia. A dose e a velocidade de gradação
+devem ser orientadas pelo resultado clínico (Vide “Resultados de eficácia - Estudos clínicos em enxaqueca”).
+
+▪ Populações especiais
+
+Insuficiência renal
+
+Pacientes com insuficiência renal moderada e severa (CLCR < 70 mL/min) podem necessitar de uma redução de dose. É recomendada a
+administração de metade da dose usual de início e de manutenção (vide “Propriedades farmacocinéticas - Populações especiais, Insuficiência
+renal”).
+
+Topamax® é removido do plasma por hemodiálise, uma dose suplementar de Topamax® igual a aproximadamente metade da dose diária deverá
+
+ser administrada nos dias de hemodiálise. Esta dose suplementar deverá ser dividida em duas tomadas, ao início e ao término da hemodiálise.
+A dose suplementar poderá ser ajustada dependendo das características do equipamento de diálise que estiver sendo utilizado (vide
+“Propriedades farmacocinéticas - Populações especiais, Insuficiência renal”).
+
+Insuficiência hepática
+
+O topiramato deve ser administrado com cautela em pacientes com insuficiência hepática (vide “Propriedades farmacocinéticas - Populações
+especiais, Insuficiência hepática”).
+
+Uso em idosos
+
+Não foram observadas diferenças farmacocinéticas relacionadas apenas à idade, embora a possibilidade de alterações da função renal associadas
+à idade deva ser considerada.
+Este medicamento não deve ser partido, aberto ou mastigado.
+
+9. REAÇÕES ADVERSAS
+
+As reações adversas são apresentadas nesta seção. Reações adversas são eventos adversos que foram considerados razoavelmente associados
+ao uso de topiramato, com base na avaliação abrangente das informações de eventos adversos disponíveis. Em casos individuais, uma relação
+causal com o topiramato não pode ser estabelecida com confiança. Portanto, pelo fato de que os estudos clínicos são conduzidos em condições
+amplamente variadas, as taxas de reações adversas observadas nos estudos clínicos de um medicamento não podem ser diretamente comparadas
+com as taxas nos estudos clínicos de outros medicamentos e podem não refletir as taxas observadas na prática clínica.
+
+Dados de estudos clínicos
+
+A segurança de Topamax® foi avaliada a partir de um banco de dados de estudos clínicos composto de 4.111 pacientes (3.182 tratados com
+Topamax® e 929 com placebo) que participaram de 20 estudos duplo-cegos e 2.847 pacientes que participaram de 34 estudos abertos,
+
+respectivamente, para o tratamento de convulsões tônico-clônicas generalizadas primárias, convulsões de início parcial, convulsões associadas
+à síndrome de Lennox-Gastaut, epilepsia ou enxaqueca de diagnóstico novo ou recente. As informações apresentadas neste item foram obtidas
+a partir de dados agrupados.
+
+A maioria das reações adversas foi de severidade leve a moderada.
+
+Dados de estudos duplo-cegos, controlados por placebo, de terapia adjuvante para epilepsia – Pacientes adultos.
+
+As reações adversas relatadas em  1% dos pacientes adultos tratados com o Topamax® em estudos duplo-cegos, controlados por placebo de
+
+terapia adjuvante para epilepsia são apresentadas na Tabela 2. As reações adversas com incidência > 5% no intervalo de dose recomendado
+(200 a 400 mg/dia) em adultos em estudos duplo-cegos, controlados por placebo de terapia adjuvante para epilepsia em ordem decrescente de
+frequência incluíram sonolência, tontura, fadiga, irritabilidade, perda de peso, bradipsiquismo, parestesia, diplopia, coordenação anormal,
+náusea, nistagmo, letargia, anorexia, disartria, visão turva, diminuição do apetite, comprometimento de memória e diarreia.
+Tabela 2: Reações Adversas Relatadas por ≥ 1% dos Pacientes Adultos Tratados com Topamax em Estudos Duplo-Cegos, Controlados
+
+por Placebo de Terapia Adjuvante para Epilepsia
+ Topamax Topamax Placebo
+
+ 200-400 mg/dia 600-1.000 mg/dia
+Classe de Sistema/Órgão (N=354) (N=437) (N=382)
+Reação Adversa % % %
+Distúrbios do Metabolismo e da Nutrição
+Anorexia 5,4 6,2 1,8
+Diminuição do apetite 5,1 8,7 3,7
+
+Transtornos Psiquiátricos
+Bradipsiquismo 8,2 19,5 3,1
+Transtorno de linguagem expressiva 4,5 9,4 1,6
+Estado confusional 3,1 5,0 0,8
+Depressão 3,1 11,7 3,4
+Insônia 3,1 6,4 4,5
+Agressão 2,8 3,2 1,8
+Agitação 1,7 2,3 1,3
+Raiva 1,7 2,1 0,5
+Ansiedade 1,7 6,6 2,9
+Desorientação 1,7 3,2 1,0
+Humor alterado 1,7 4,6 1,0
+
+Transtornos do Sistema Nervoso
+Sonolência 17,8 17,4 8,4
+Tontura 16,4 34,1 13,6
+Parestesia 8,2 17,2 3,7
+Coordenação anormal 7,1 11,4 4,2
+Nistagmo 6,2 11,7 6,8
+Letargia 5,6 8,0 2,1
+Disartria 5,4 6,2 1,0
+Comprometimento da memória 5,1 10,8 1,8
+Distúrbio de atenção 4,5 11,9 1,8
+Tremor 4,0 9,4 5,0
+Amnésia 3,4 5,3 1,0
+Distúrbio do equilíbrio 3,4 3,9 2,4
+Hipoestesia 3,1 5,9 1,0
+Tremor intencional 3,1 4,8 2,9
+Disgeusia 1,4 4,3 0,8
+Comprometimento mental 1,4 5,0 1,3
+Distúrbio da fala 1,1 2,7 0,5
+
+Distúrbios Oftalmológicos
+Diplopia 7,3 12,1 5,0
+Visão turva 5,4 8,9 2,4
+Distúrbio visual 2,0 1,4 0,3
+
+Distúrbios Gastrintestinais
+Tabela 2: Reações Adversas Relatadas por ≥ 1% dos Pacientes Adultos Tratados com Topamax em Estudos Duplo-Cegos, Controlados
+
+por Placebo de Terapia Adjuvante para Epilepsia
+ Topamax Topamax Placebo
+
+ 200-400 mg/dia 600-1.000 mg/dia
+Classe de Sistema/Órgão (N=354) (N=437) (N=382)
+Reação Adversa % % %
+Náusea 6,8 15,1 8,4
+Diarreia 5,1 14,0 5,2
+Dor abdominal superior 3,7 3,9 2,1
+Constipação 3,7 3,2 1,8
+Desconforto estomacal 3,1 3,2 1,3
+Dispepsia 2,3 3,0 2,1
+Boca seca 1,7 3,7 0,3
+Dor abdominal 1,1 2,7 0,8
+
+Distúrbios do Tecido Musculoesquelético e do
+Tecido Conjuntivo
+Mialgia 2,0 2,5 1,3
+Espasmos musculares 1,7 2,1 0,8
+Dor torácica musculoesquelética 1,1 1,8 0,3
+
+Distúrbios Gerais e Condições no Local da
+Administração
+Fadiga 13,0 30,7 11,8
+Irritabilidade 9,3 14,6 3,7
+Astenia 3,4 3,0 1,8
+Distúrbio da marcha 1,4 2,5 1,3
+
+Investigações
+Perda de peso 9,0 11,9 4,2
+A dose recomendada para a terapia adjuvante de epilepsia em adultos é de 200-400 mg/dia.
+
+Dados de estudos duplo-cegos, controlados por placebo, de terapia adjuvante para epilepsia – Pacientes pediátricos
+
+As reações adversas relatadas em > 2% dos pacientes pediátricos tratados com o Topamax® (2 a 16 anos de idade) em estudos duplo-cegos,
+
+controlados por placebo de terapia adjuvante para epilepsia são apresentadas na Tabela 3. As reações adversas com incidência > 5% no intervalo
+de dose recomendado (5 a 9 mg/kg/dia) em ordem decrescente de frequência incluíram diminuição do apetite, fadiga, sonolência, letargia,
+irritabilidade, distúrbio de atenção, perda de peso, agressão, erupção cutânea, comportamento anormal, anorexia, distúrbio do equilíbrio e
+constipação.
+
+Tabela 3: Reações Adversas Relatadas por ≥ 2% dos Pacientes Pediátricos Tratados com o Topamax em Estudos Duplo-Cegos,
+
+Controlados por Placebo de Terapia Adjuvante para Epilepsia
+ Topamax Placebo
+
+Classe de Sistema/Órgão (N=104) (N=102)
+ Reação Adversa % %
+Distúrbios do Metabolismo e da Nutrição
+ Diminuição do apetite 19,2 12,7
+ Anorexia 5,8 1,0
+
+Transtornos Psiquiátricos
+ Agressão 8,7 6,9
+ Comportamento anormal 5,8 3,9
+ Estado confusional 2,9 2,0
+ Humor alterado 2,9 2,0
+
+Transtornos do Sistema Nervoso
+ Sonolência 15,4 6,9
+ Letargia 13,5 8,8
+ Distúrbio de atenção 10,6 2,0
+ Distúrbio do equilíbrio 5,8 2,0
+ Tontura 4,8 2,9
+ Comprometimento da memória 3,8 1,0
+
+Distúrbios Respiratórios, Torácicos e Mediastinais
+ Epistaxe 4,8 1,0
+
+Distúrbios Gastrintestinais
+ Constipação 5,8 4,9
+
+Distúrbios do Tecido Cutâneo e Subcutâneo
+ Erupção cutânea 6,7 5,9
+
+Distúrbios Gerais e Condições no Local da Administração
+ Fadiga 16,3 4,9
+ Irritabilidade 11,5 8,8
+ Distúrbio da marcha 4,8 2,0
+
+Investigações
+ Perda de peso 9,6 1,0
+A dose recomendada para a terapia adjuvante de epilepsia em crianças (2-16 anos de idade) é de 5 a 9 mg/kg/dia.
+
+Dados dos estudos duplo-cegos, controlados e de monoterapia para epilepsia – Pacientes adultos
+
+As reações adversas relatadas em  1% dos pacientes adultos tratados com o Topamax em estudos duplo-cegos, controlados e de monoterapia
+
+para epilepsia são apresentadas na Tabela 4. As reações adversas que apresentaram incidência > 5% na dose recomendada (400 mg/dia) em
+ordem decrescente de frequência incluíram parestesia, perda de peso, fadiga, anorexia, depressão, comprometimento da memória, ansiedade,
+diarreia, astenia, disgeusia e hipoestesia.
+Tabela 4: Reações Adversas Relatadas por ≥ 1% dos Pacientes Adultos Tratados com o Topamax em Estudos Duplo-Cegos,
+
+Controlados de Monoterapia para Epilepsia
+ Topamax Topamax
+
+ 50 mg/dia 400 mg/dia
+Classe de Sistema/Órgão (N=257) (N=153)
+ Reação Adversa % %
+Distúrbios do Sangue e do Sistema Linfático
+Anemia 0,8 2,0
+
+Distúrbios do Metabolismo e da Nutrição
+Anorexia 3,5 12,4
+Diminuição do apetite 2,3 2,6
+
+Transtornos Psiquiátricos
+Depressão 4,3 8,5
+Ansiedade 3,9 6,5
+Bradipsiquismo 2,3 4,6
+Transtorno de linguagem expressiva 3,5 4,6
+Humor depressivo 0,8 2,6
+Humor alterado 0,4 2,0
+Alterações de humor 1,6 2,0
+
+Transtornos do Sistema Nervoso
+Parestesia 18,7 40,5
+Comprometimento da memória 1,2 7,2
+Disgeusia 2,3 5,9
+Hipoestesia 4,3 5,2
+Distúrbio do equilíbrio 1,6 3,3
+Disartria 1,6 2,6
+Distúrbio cognitivo 0,4 2,0
+Letargia 1,2 2,0
+Comprometimento mental 0,8 2,0
+Comprometimento das habilidades psicomotoras 0 2,0
+Sedação 0 1,3
+Alteração de campo visual 0,4 1,3
+
+Distúrbios Oftalmológicos
+Olho seco 0 1,3
+
+Distúrbios do Ouvido e do Labirinto
+Dor de ouvido 0 1,3
+Zumbido 1,6 1,3
+
+Distúrbios Respiratórios, Torácicos e Mediastinais
+Dispneia 1,2 2,0
+Rinorreia 0 1,3
+A dose recomendada para monoterapia em adultos é de 400 mg/dia.
+ (continua)
+Tabela 4: Reações Adversas a Medicamentos Relatadas por ≥ 1% dos Pacientes Adultos Tratados com o Topamax em Estudos Duplo-
+
+Cegos, Controlados de Monoterapia para Epilepsia
+ Topamax Topamax
+
+ 50 mg/dia 400 mg/dia
+Classe de Sistema/Órgão (N=257) (N=153)
+ Reação Adversa % %
+Distúrbios Gastrintestinais
+Diarreia 5,4 6,5
+Parestesia oral 1,2 3,3
+Boca seca 0,4 2,6
+Gastrite 0,8 2,6
+Dor abdominal 1,2 2,0
+Doença do refluxo gastroesofágico 0,4 2,0
+Sangramento gengival 0 1,3
+
+Distúrbios do Tecido Cutâneo e Subcutâneo
+Erupção cutânea 0,4 3,9
+Alopecia 1,6 3,3
+Prurido 0,4 3,3
+Hipoestesia facial 0,4 2,0
+Prurido generalizado 0 1,3
+
+Distúrbios do Tecido Musculoesquelético e do Tecido Conjuntivo
+Espasmos musculares 2,7 3,3
+Artralgia 1,9 2,0
+Espasmos musculares involuntários 0,4 1,3
+
+Distúrbios Renais e Urinários
+Nefrolitíase 0 2,6
+Disúria 0,8 2,0
+Polaciúria 0,8 2,0
+
+Distúrbios do Sistema Reprodutivo e das Mamas
+Disfunção erétil 0,8 1,3
+
+Distúrbios Gerais e Condições no Local da Administração
+Fadiga 15,2 14,4
+Astenia 3,5 5,9
+Irritabilidade 3,1 3,3
+
+Investigações
+Perda de peso 7,0 17,0
+A dose recomendada para monoterapia em adultos é de 400 mg/dia.
+
+Dados de estudos duplo-cegos, controlados e de monoterapia para epilepsia – Pacientes pediátricos
+As reações adversas relatadas em  2% dos pacientes pediátricos tratados com o Topamax® (10 a 16 anos de idade) em estudos duplo-cegos,
+
+controlados e de monoterapia para epilepsia são apresentadas na Tabela 5. As reações adversas com incidência > 5% na dose recomendada (400
+mg/dia) em ordem decrescente de frequência incluíram perda de peso, parestesia, diarreia, distúrbio de atenção, pirexia e alopecia.
+
+Tabela 5: Reações Adversas Relatadas por  2% dos Pacientes Pediátricos Tratados com o Topamax em Estudos Duplo-Cegos,
+
+Controlados de Monoterapia para Epilepsia
+ Topamax Topamax
+
+ 50 mg/dia 400 mg/dia
+Classe de Sistema/Órgão (N=77) (N=63)
+Reação Adversa % %
+Distúrbios do Metabolismo e da Nutrição
+Diminuição do apetite 1,3 4,8
+
+Transtornos Psiquiátricos
+Bradipsiquismo 0 4,8
+Humor alterado 1,3 4,8
+Depressão 0 3,2
+
+Transtornos do Sistema Nervoso
+Parestesia 3,9 15,9
+Distúrbio de atenção 3,9 7,9
+
+Distúrbios do Ouvido e do Labirinto
+Vertigem 0 3,2
+
+Distúrbios Respiratórios, Torácicos e Mediastinais
+Epistaxe 0 3,2
+
+Distúrbios Gastrintestinais
+Diarreia 3,9 9,5
+Vômitos 3,9 4,8
+
+Distúrbios do Tecido Cutâneo e Subcutâneo
+Alopecia 0 6,3
+
+Distúrbios Gerais e Condições no Local da Administração
+Pirexia 0 6,3
+Astenia 0 4,8
+
+Investigações
+Perda de peso 7,8 20,6
+
+Circunstâncias Sociais
+Dificuldade de aprendizado 0 3,2
+A dose recomendada para monoterapia em crianças de 10 anos ou mais é de 400 mg/dia.
+
+Dados de estudos duplo-cegos, controlados por placebo, de profilaxia de enxaqueca – Pacientes adultos
+As reações adversas relatadas em  1% dos pacientes adultos tratados com o Topamax® em estudos duplo-cegos, controlados por placebo de
+
+profilaxia de enxaqueca são apresentadas na Tabela 6. As reações adversas com incidência > 5% na dose recomendada (100 mg/dia) em ordem
+decrescente de frequência incluíram parestesia, fadiga, náusea, diarreia, perda de peso, disgeusia, anorexia, diminuição do apetite, insônia,
+hipoestesia, distúrbio de atenção, ansiedade, sonolência, e transtorno de linguagem expressiva.
+Tabela 6: Reações Adversas Relatadas por ≥ 1% dos Pacientes Adultos Tratados com o Topamax em Estudos Duplo-Cegos,
+
+Controlados por Placebo de Profilaxia de Enxaqueca
+ Topamax Topamax Topamax Placebo
+
+ 50 mg/dia 100 mg/dia 200 mg/dia
+Classe de Sistema/Órgão (N=227) (N=374) (N=501) (N=436)
+Reação Adversa % % % %
+Distúrbios do Metabolismo e da Nutrição
+Anorexia 3,5 7,5 7,2 3,0
+Diminuição do apetite 5,7 7,0 6,8 3,0
+
+Transtornos Psiquiátricos
+Insônia 4,8 7,0 5,6 3,9
+Ansiedade 4,0 5,3 5,0 1,8
+Distúrbio de linguagem expressiva 6,6 5,1 5,2 1,4
+Depressão 3,5 4,8 7,4 4,1
+Humor depressivo 0,4 2,9 2,0 0,9
+Estado confusional 0,4 1,6 2,0 1,1
+Alterações de humor 1,8 1,3 1,0 0,2
+Labilidade de afeto 0,4 1,1 0,2 0,2
+Bradipsiquismo 1,8 1,1 3,4 1,4
+
+Transtornos do Sistema Nervoso
+Parestesia 35,7 50,0 48,5 5,0
+Disgeusia 15,4 8,0 12,6 0,9
+Hipoestesia 5,3 6,7 7,4 1,4
+Distúrbio de atenção 2,6 6,4 9,2 2,3
+Sonolência 6,2 5,1 6,8 3,0
+Comprometimento da memória 4,0 4,5 6,2 1,6
+Amnésia 3,5 2,9 5,2 0,5
+Tremor 1,3 1,9 2,4 1,4
+Distúrbio do equilíbrio 0,4 1,3 0,4 0
+Comprometimento mental 0,4 1,1 1,8 0,9
+
+Distúrbios Oftalmológicos
+Visão turva 4,0 2,4 4,4 2,5
+
+Distúrbios do Ouvido e do Labirinto
+Zumbido 0,4 1,3 1,6 0,7
+
+Distúrbios Respiratórios, Torácicos e
+Mediastinais
+Dispneia 1,3 2,7 1,6 1,4
+Epistaxe 0,4 1,1 0,6 0,5
+
+Distúrbios Gastrintestinais
+Náusea 9,3 13,6 14,6 8,3
+Diarreia 9,3 11,2 10,0 4,4
+Boca seca 1,8 3,2 5,0 2,5
+Tabela 6: Reações Adversas Relatadas por ≥ 1% dos Pacientes Adultos Tratados com o Topamax em Estudos Duplo-Cegos,
+
+Controlados por Placebo de Profilaxia de Enxaqueca
+ Topamax Topamax Topamax Placebo
+
+ 50 mg/dia 100 mg/dia 200 mg/dia
+Classe de Sistema/Órgão (N=227) (N=374) (N=501) (N=436)
+Reação Adversa % % % %
+Parestesia oral 1,3 2,9 1,6 0,5
+Constipação 1,8 2,1 1,8 1,4
+Distensão abdominal 0 1,3 0,2 0,2
+Desconforto estomacal 2,2 1,3 1,0 0,2
+Doença do refluxo gastroesofágico 0,4 1,1 1,2 0,5
+
+Distúrbios do Tecido Musculoesquelético e
+do Tecido Conjuntivo
+Espasmos musculares involuntários 1,8 1,3 1,8 0,7
+
+Distúrbios Gerais e Condições no Local da
+Administração
+Fadiga 15,0 15,2 19,2 11,2
+Astenia 0,9 2,1 2,6 0,5
+Irritabilidade 3,1 1,9 2,4 0,9
+Sede 1,3 1,6 1,0 0,5
+
+Investigações
+Perda de peso 5,3 9,1 10,8 1,4
+A dose recomendada para profilaxia de enxaqueca é de 100 mg/dia.
+
+Outros Dados de Estudos Clínicos – pacientes adultos
+
+As reações adversas relatadas em estudos clínicos duplo-cegos controlados em < 1% dos pacientes adultos tratados com o Topamax® ou em
+qualquer taxa em estudos clínicos abertos em pacientes adultos tratados com o Topamax® são apresentadas na Tabela 7.
+
+ Tabela 7. Reações Adversas Relatadas em Estudos Clínicos Duplo-Cegos Controlados em < 1% dos Pacientes Adultos Tratados com
+ o Topamax ou em Qualquer Taxa em Estudos Clínicos Abertos dos Pacientes Adultos Tratados com o Topamax
+
+ Distúrbios do Sangue e do Sistema Linfático
+ Leucopenia, linfadenopatia, trombocitopenia
+ Distúrbios do Sistema Imunológico
+ Hipersensibilidade
+ Distúrbios do Metabolismo e da Nutrição
+ Acidose hiperclorêmica, hipocalemia, aumento do apetite, acidose metabólica, polidipsia
+ Transtornos Psiquiátricos
+ Comportamento anormal, anorgasmia, apatia, choro, distração, distúrbio no desejo sexual, disfemia, despertar precoce, humor e levado,
+ humor eufórico, afeto embotado, alucinação, alucinação auditiva, alucinação visual, hipomania, insônia inicial, ausência de fala
+ espontânea, diminuição da libido, apatia, perda de libido, mania, insônia de manutenção, sensação orgásmica diminuída, ataque de pânico,
+ distúrbio do pânico, reação de pânico, paranoia, perseveração, distúrbio de leitura, inquietação, distúrbio do sono, ideação suicida, tentativa
+ de suicídio, choro excessivo, pensamento anormal
+ Transtornos do Sistema Nervoso
+ Tabela 7. Reações Adversas Relatadas em Estudos Clínicos Duplo-Cegos Controlados em < 1% dos Pacientes Adultos Tratados com
+ o Topamax ou em Qualquer Taxa em Estudos Clínicos Abertos dos Pacientes Adultos Tratados com o Topamax
+
+ Ageusia, acinesia, anosmia, afasia, apraxia, aura, sensação de queimação, síndrome cerebelar, distúrbio do ritmo circadiano d o sono, falta
+ de coordenação motora, crises parciais complexas, convulsões, nível de consciência diminuíd a, tontura postural, hipersecreção salivar,
+ disestesia, disgrafia, discinesia, disfasia, distonia, tremor essencial, formigamento, convulsão do tipo grande mal, hiperestesia, hipersônia,
+ hipogeusia, hipocinesia, hiposmia, neuropatia periférica, parosmia, sono de baixa qualidade, pré-síncope, fala repetitiva, distúrbio
+ sensorial, perda sensorial, estupor, síncope, não-responsividade a estímulo
+ Distúrbios Oftalmológicos
+ Distúrbio de acomodação, percepção de profundidade visual alterada, ambliopia, blefarospasmo, cegueira transitória, cegueira unilateral,
+ glaucoma, lacrimação aumentada, midríase, cegueira noturna, fotopsia, presbiopia, escotoma cintilante, escotoma, acuidade visual
+ reduzida
+ Distúrbios do Ouvido e do Labirinto
+ Surdez, surdez neurosensorial, surdez unilateral, desconforto no ouvido, audição comprometida
+ Distúrbios Cardíacos
+ Bradicardia, bradicardia sinusal, palpitações
+ Distúrbios Vasculares
+ Rubor, ondas de calor, hipotensão ortostática, fenômeno de Raynauds
+ Distúrbios Respiratórios, Torácicos e Mediastinais
+ Disfonia, dispneia exercional, congestão nasal, hipersecreção sinusal paranasal.
+ Distúrbios Gastrintestinais
+ Desconforto abdominal, dor abdominal inferior, sensibilidade abdominal, hálito com odor, desconforto epigástrico, flatulência,
+ glossodinia, hipoestesia oral, dor oral, pancreatite, hipersecreção salivar
+ Distúrbios do Tecido Cutâneo e Subcutâneo
+ Anidrose, dermatite alérgica, eritema, erupção cutânea macular, descoloração da pele, odor anormal da pele, rosto inchado, urticária,
+ urticária localizada
+ Distúrbios do Tecido Musculoesquelético e do Tecido Conjuntivo
+ Dor no flanco, fadiga muscular, fraqueza muscular, rigidez musculoesquelética
+ Distúrbios Renais e Urinários
+ Cálculo uretérico, cálculo urinário, hematúria, incontinência, urgência urinária, cólica renal, dor renal, incontinência urinária
+ Distúrbios do Sistema Reprodutivo e das Mamas
+ Disfunção sexual
+ Distúrbios Gerais
+ Edema facial, sensação anormal, sensação de estar bêbado, sensação de nervosismo, mal-estar, frio periférico, lentidão
+ Investigações
+ Bicarbonato sanguíneo diminuído, cristais presentes na urina, teste de marcha em tandem anormal, contagem de leucócitos diminuída
+
+Outros Dados de Estudos Clínicos – pacientes pediátricos
+
+As reações adversas relatadas em estudos clínicos duplo-cegos controlados em < 2% dos pacientes pediátricos tratados com o Topamax® ou
+em qualquer taxa em estudos clínicos abertos em pacientes pediátricos tratados com o Topamax® são apresentadas na Tabela 8.
+
+ Tabela 8. Reações Adversas Relatadas em Estudos Clínicos Duplo-Cegos Controlados em < 2% dos Pacientes Pediátricos Tratados
+ com o Topamax ou em Qualquer Taxa em Estudos Clínicos Abertos em Pacientes Pediátricos Tratados com o Topamax
+
+ Distúrbios do Sangue e do Sistema Linfático
+ Eosinofilia, leucopenia, linfadenopatia, trombocitopenia
+ Distúrbios do Sistema Imunológico
+ Hipersensibilidade
+ Tabela 8. Reações Adversas Relatadas em Estudos Clínicos Duplo-Cegos Controlados em < 2% dos Pacientes Pediátricos Tratados
+ com o Topamax ou em Qualquer Taxa em Estudos Clínicos Abertos em Pacientes Pediátricos Tratados com o Topamax
+
+ Distúrbios Metabólicos e da Nutrição
+ Acidose hiperclorêmica, hipocalemia, aumento do apetite
+ Transtornos Psiquiátricos
+ Raiva, apatia, choro, distração, transtorno da linguagem de expressão, insônia inicial, insônia, insônia de manutenção, alterações de humor,
+ perseveração, distúrbio do sono, ideação suicida, tentativa de suicídio
+ Transtornos do Sistema Nervoso
+ Distúrbio no ritmo circadiano do sono, convulsão, disartria, disgeusia, convulsão do tipo grande mal, hipoestesia, comprometimento
+ mental, nistagmo, parosmia, sono de baixa qualidade, hiperatividade psicomotora, habilidades psicomotoras comprometidas, síncope,
+ tremores
+ Distúrbios Oftalmológicos
+ Diplopia, lacrimação aumentada, visão turva
+ Distúrbios do Ouvido e do Labirinto
+ Dor de ouvido
+ Distúrbios Cardíacos
+ Palpitações, bradicardia sinusal
+ Distúrbios Vasculares
+ Hipotensão ortostática
+ Distúrbios Respiratórios, Torácicos e Mediastinais
+ Congestão nasal, hipersecreção sinusal paranasal, rinorreia
+ Distúrbios Gastrintestinais
+ Desconforto abdominal, dor abdominal, boca seca, flatulência, gastrite, doença do refluxo gastroesofágico, sangramento gengival,
+ glossodinia, pancreatite, parestesia oral, desconforto estomacal
+ Distúrbios do Tecido Musculoesquelético e do Tecido Conjuntivo
+ Artralgia, rigidez musculoesquelética, mialgia
+ Distúrbios Renais e Urinários
+ Incontinência, urgência urinária, polaciúria
+ Distúrbios Gerais
+ Sensação anormal, hipertermia, mal-estar, lentidão
+
+Dados Pós-Comercialização
+
+Os eventos adversos primeiramente identificados como as reações adversas durante a experiência pós-comercialização com o Topamax® estão
+
+a seguir por categoria de frequência com base nas taxas de relatos espontâneos.
+
+Reação muito rara (< 1/10.000):
+
+- Infecções e infestações: nasofaringite;
+
+- Distúrbios do sangue e do sistema linfático: neutropenia;
+
+- Distúrbios do sistema imunológico: edema alérgico;
+
+- Distúrbios do metabolismo e da nutrição: hiperamonemia, encefalopatia hiperamonêmica;
+
+- Transtornos psiquiátricos: sensação de desespero;
+
+- Distúrbios oculares: sensação anormal nos olhos, glaucoma de ângulo fechado, edema conjuntival, distúrbio do movimento ocular, edema
+na pálpebra, maculopatia, miopia;
+- Distúrbios respiratórios, torácicos e mediastinais: tosse;
+
+- Distúrbios do tecido cutâneo e subcutâneo: eritema multiforme, edema periorbital, síndrome de Stevens-Johnson, necrólise epidérmica
+tóxica;
+
+- Distúrbios do tecido musculoesquelético e conjuntivo: inchaço articular, desconforto em membro;
+
+- Distúrbios renais e urinários: acidose tubular renal, nefrocalcinose;
+
+- Distúrbios gerais e reações no local da administração: edema generalizado, doença do tipo gripe;
+
+- Investigações: aumento de peso.
+
+Em casos de eventos adversos, notifique pelo Sistema VigiMed, disponível no Portal da Anvisa.
+
+10. SUPERDOSE
+
+Sinais e sintomas
+
+Superdose de topiramato tem sido relatada. Sinais e sintomas incluem convulsão, sonolência, distúrbio da fala, visão borrada, diplopia, atividade
+mental prejudicada, letargia, coordenação anormal, estupor, hipotensão, dor abdominal, agitação, vertigem e de pressão. As consequências
+clínicas não foram graves na maioria dos casos, mas foram relatados casos de óbitos após superdoses com diversas drogas, incl uindo o
+topiramato.
+
+Superdose com topiramato pode resultar em acidose metabólica severa (vide “Advertências e precauções - Acidose metabólica e sequelas”).
+
+A maior superdose relatada com topiramato foi calculada em 96-110 g e resultou em coma com duração de 20-24 horas seguido de recuperação
+total após 3 a 4 dias.
+
+Tratamento
+
+Em caso de superdose, o topiramato deve ser descontinuado e deve ser administrado tratamento de suporte geral até que a toxic idade clínica
+tenha diminuído ou resolvido. A hemodiálise é um método eficaz para a retirada do topiramato do organismo. O paciente deve ser bem hidratado.
+
+É aconselhável entrar em contato com um centro de controle de intoxicação para obter as recomendações mais recentes para o gerenciamento
+de uma superdose.
+
+Em caso de intoxicação ligue para 0800 722 6001, se você precisar de mais orientações sobre como proceder.

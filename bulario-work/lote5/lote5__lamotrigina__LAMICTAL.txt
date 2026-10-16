@@ -1,0 +1,1186 @@
+FONTE: lote5__lamotrigina__LAMICTAL.pdf
+
+===== BLOCO 1 =====
+APRESENTAÇÕES
+Lamictal® 5 mg está disponível em embalagens contendo 30 comprimidos em frascos de PEAD com tampa resistente à abertura por crianças, com
+fecho inviolável ou com rosca contínua.
+Lamictal® 25 mg, 50 mg, 100 mg e 200 mg estão disponíveis em embalagens contendo 30 comprimidos em blister de PVC/PVdC/folha de
+alumínio/papel resistente à abertura por crianças.
+
+USO ORAL
+USO ADULTO E PEDIÁTRICO (ACIMA DE 2 ANOS)
+
+1. INDICAÇÕES
+
+Epilepsia: Adultos e crianças acima de 12 anos
+Lamictal® é indicado como adjuvante ou em monoterapia, para o tratamento de crises convulsivas parciais e crises generalizadas, incluindo crises
+tônico-clônicas.
+
+Epilepsia: crianças de 2 a 12 anos
+Lamictal® é indicado como adjuvante no tratamento da epilepsia, para o tratamento de crises convulsivas parciais e crises generalizadas, incluindo
+crises tônico-clônicas.
+Não se recomenda tratamento inicial em esquema de monoterapia, em pacientes pediátricos com diagnóstico recente.
+Após o controle epiléptico ter sido alcançado, durante terapia combinada, drogas antiepilépticas (DAEs) concomitantes geralmente podem ser
+retiradas, substituindo-as pela monoterapia com Lamictal®.
+
+Transtorno bipolar: adultos (acima de 18 anos)
+Lamictal® é indicado na prevenção de episódios d e alteração d o humor, em pacientes com transtorno bipolar, predominantemente p ara prevenir os
+episódios depressivos.
+Modelo de Texto de Bula – Profissional de Saúde
+Lamictal® Comprimidos Dispersíveis
+
+3. CARACTERÍSTICAS FARMACOLÓGICAS
+
+Propriedades farmacodinâmicas
+
+Modo de ação: os resultados de estudos farmacológicos sugerem que a lamotrigina age nos canais de sódio sensíveis à diferença de potencial (ddp),
+estabilizando as membranas neuronais e inibindo a liberação de neurotransmissores, principalmente de glutamato, um aminoácido excitatório que
+desempenha papel-chave no desencadeamento de ataques epiléticos.
+
+Farmacodinâmica:
+Estudos in vitro mostram que a lamotrigina exibe atividade antiarrítmica Classe IB em concentrações terapeuticamente relevantes. Ela inibe os
+canais de sódio cardíacos humanos com rápida cinética de abertura e fechamento e alta dependência de volagem, consistente com outros agentes
+antiarrítmicos de Classe IB. Em doses terapêuticas, a lamotrigina não reduziu a condução ventricular (ampliação do QRS) em pacientes saudáveis
+em um estudo QT completo; no entanto, em pacientes com doença cardíaca estrutural ou funcional clinicamente importante, a lamotrigina pode
+retardar a condução ventricular (ampliar o QRS) e induzir pró-arritmia.
+
+Em testes destinados a avaliar os efeitos de drogas sobre o sistema nervoso central, usando -se doses de 240 mg de lamotrigina, administradas a
+voluntários adultos sadios, os resultados não diferiram daqueles obtidos com placebo, ao passo que 1000 mg de fenito ína e 10 mg de diazepam
+Modelo de Texto de Bula – Profissional de Saúde
+Lamictal® Comprimidos Dispersíveis
+
+comprometeram significativamente a coordenação motora visual fina e os movimentos oculares, aumentaram a instabilidade corporal e produziram
+efeitos sedativos subjetivos. Em outro estudo, doses orais únicas de 600 mg de carbamazepina comprometeram significativamente a coordenação
+motora visual fina e os movimentos oculares, ao mesmo tempo em que aumentaram a instabilidade corporal e a frequência cardíaca, enquanto os
+resultados com a lamotrigina (em doses de 150 mg e 300 mg) não diferiram daqueles com placebo.
+
+Propriedades farmacocinéticas
+
+Absorção: a lamotrigina é rapidamente e completamente absorvida pelo intestino, sem significativo metabolismo de primeira passagem. O pico de
+concentração plasmática ocorre aproximadamente 2,5 horas após a administração oral da droga. O tempo necessário para que se atinja a concentração
+máxima é discretamente retardado após alimentação, porém, a extensão da absorção não é afetada. O perfil farmacocinético é linear até 450 mg, a
+mais alta dose única testada. Há variação considerável das concentrações máximas no estado de equilíbrio entre indivíduos, mas, individualmente,
+esta concentração varia muito pouco.
+
+Distribuição: a lamotrigina apresenta ligação de 55% às proteínas plasmáticas, e é muito improvável que seu deslocamento das mesmas resulte em
+toxicidade. Seu volume de distribuição é de 0,92 a 1,22 L/kg.
+
+Metabolismo: UDP-glucoronil transferases têm sido identificadas como as enzimas responsáveis pelo metabolismo da lamotrigina. A lamotrigina
+induz discretamente seu próprio metabolismo, dependendo da dose. Entretanto, não existem evidências de que a lamotrigina afet e a farmacocinética
+de outras drogas antiepilépticas. Dados sugerem que são pouco prováveis as interações entre a lam otrigina e as drogas metabolizadas pelas enzimas
+do citocromo P450.
+
+Eliminação: o clearance (depuração) médio de adultos saudáveis, no estado de equilíbrio, é de 39  14 mL/min. O clearance da lamotrigina é
+primariamente metabólico, com eliminação subseq uente do material conjugado à glicuronídeo na urina. Menos de 10% da lamotrigina são excretados
+pela urina na forma inalterada. Apenas 2% de substâncias re lacionadas à droga são excretada s nas fezes. O clearance e a meia-vida são independentes
+da dose. A meia-vida de eliminação média em adultos saudáveis é de 24 a 35 horas. Em estudo com indivíduos afetados pela Síndrome de Gilbert,
+o clearance médio aparente foi reduzido em 32%, quando comparado com os controles normais, porém os valores estão dentro da faixa da população
+em geral.
+A meia-vida da lamotrigina é significativamente afetada por medicação concomitante. A meia-vida média é reduzida para aproximadamente 14
+horas quando a lamotrigina é administrada com drogas indutoras de glicuronidação, como carbamazepina e fenitoína, e é aumentada para uma média
+de aproximadamente 70 horas quando coadministrada com valproato (ver Posologia e Modo de Usar).
+
+Populações de pacientes especiais
+
+Crianças: o clearance ajustado ao peso corporal é maior em crianças do que em adultos, com valores mais altos em crianças abaixo de 5 anos.
+A meia-vida da lamotrigina é, geralmente, menor em crianças do que em adultos, com valor médio de aproximadamente 7 horas, quando
+administrada juntamente com drogas indutoras enzimáticas , como carbamazepina e fenitoína.
+A meia-vida da lamotrigina é aumentada para um valor médio de 45 a 50 horas quando coadministrada com valproato (ver Posologia e Modo de
+Usar).
+
+Idosos: resultados da análise farmacocinética de uma população, incluindo pacientes jovens e idosos com epilepsia, envolvidos nos mes mos estudos
+clínicos, indicaram que o clearance da lamotrigina não se altera em extensão clinicamente relevante. Após a administração de doses únicas isoladas,
+o clearance aparente decresceu em 12%, de 35 mL/min para pacientes com 20 anos até 31 mL/min para pacientes com 70 anos. O decréscimo após
+48 semanas de tratamento foi de 10%, de 41 para 37 mL/min entre grupos jovens e idosos. Em adição, a farmacocinética da lamotrigina foi estudada
+em 12 indivíduos idosos saudáveis, após uma dose única de 150mg. O clearance médio nestes idosos (0,39 mL/min/kg) encontrou-se dentro da
+faixa dos valores médios de clearance (0,31 a 0,65 mL/min/kg) obtidos em nove estudos com adultos não idosos depois de uma dose única de 30 a
+450 mg.
+
+Insuficiência renal: em 12 voluntários com insuficiência renal crônica, e em outros seis indivíduos em hemodiálise, foram administrados 100 mg
+de lamotrigina em dose única. O CL/F médio foi de 0,42 mL/min/kg (insuficiência renal crônica), 0,33 mL/min/kg (entre as sessões de hemodiálise)
+e 1,57 mL/min/kg (durante hemodiálise), comparado a 0,58 mL/min/kg em voluntários saudáveis. As meias–vidas plasmáticas médias foram de
+42,9 h (insuficiência renal crônica), 57,4 h (entre as sessões de hemodiálises) e 13,0 h (durante a hemodiálise), comparado a 26,2 h em voluntários
+saudáveis. Na média, aproximadamente 20 % (faixa = 5,6 a 35,1) do total de lamotrigina presente no corpo foram eliminados durante uma sessão
+de hemodiálise de 4 horas de duração. Para esta população de pacientes, as doses iniciais de lamotrigina devem ser baseadas no regime
+anticonvulsivante dos pacientes. Doses de manutenção reduzidas podem ser eficazes para pacientes com insuficiência renal funcional significativa.
+
+Insuficiência hepática: estudo farmacocinético com dose única envolveu 24 pacientes com diferentes graus de insuficiência hepática e 12 indivíduos
+saudáveis como controle. O clearance mediano aparente da lamotrigina foi 0,31; 0,24 ou 0,10 mL/min/kg em pacientes com insuficiência hepática
+de grau A, B ou C ( Child-Pugh), respectivamente, comparado a 0,34 mL/min/kg nos indivíduos controle. As doses inicial, de escalonamento e de
+manutenção devem ser geralmente reduzidas à metade em pacientes com prejuízo hepático moderado ( Child-Pugh grau B), e a 75% em pacientes
+com insuficiência hepática grave ( Child-Pugh grau C). As doses de escalonamento e manutenção devem ser ajustadas de acordo com a resposta
+clínica.
+Modelo de Texto de Bula – Profissional de Saúde
+Lamictal® Comprimidos Dispersíveis
+
+4. CONTRAINDICAÇÕES
+Lamictal® é contraindicado a indivíduos com conhecida hipersensibilidade à lamotrigina e a outros componentes da formulação.
+
+Este medicamento é contraindicado para menores de 2 anos de idade.
+
+5. ADVERTÊNCIAS E PRECAUÇÕES
+
+Exantema
+Existem relatos de reações adversas dermatológicas que, geralmente, têm ocorrido nas primeiras oito semanas após o início do tratamento com
+Lamictal®. A maioria dos exantemas ( rash) é leve e autolimitado. Entretanto, também foram relatados exantemas de pele graves que requeriam
+hospitalização e descontinuação de Lamictal®, incluindo exantemas com potencial risco de morte, como Síndrome de Stevens Johnson (SJS) e
+necrólise epidérmica tóxica (NET, Síndrome de Lyell) (ver Reações Adversas).
+
+Nos adultos participantes dos estudos, utilizando as doses recomendadas, o índice de exantema de pele grave foi de aproximada mente 1:500 em
+pacientes epilépticos. Aproximadamente metade desses casos foi relatad a como SJS (1:1000).
+
+Em estudos clínicos com pacientes com transtorno bipolar, a incidência de exantema grave foi de 1:1000.
+
+O risco de exantema grave em crianças é maior do que nos adultos. Dados disponíveis sugerem que a incidência de exantemas associados à
+hospitalização de crianças é de 1:300 a 1:100.
+
+Em crianças, a presença inicial de exantema pode ser confundida com infecção. Os médicos devem considerar a possibilidade de reação
+medicamentosa em crianças que desenvolvem sintomas de exantema e febre durante as primeiras oito semanas de tratamento.
+
+Além disso, o risco global de aparecimento de um exantema pode estar fortemente associado a:
+
+• altas doses iniciais de lamotrigina e doses que excedam o escalonamento de doses recomendado (ver Posologia e Modo de Usar)
+• uso concomitante de valproato (ver Posologia e Modo de Usar).
+
+Deve-se ter cuidado ao tratar pacientes com história de alergia ou rash cutâneo a outras drogas antiepiléticas, já que a freq uência de rash não grave
+após tratamento com Lamictal® foi aproximadamente três vezes maior nestes pacientes do que nos que não apresentavam história de alergia e/ou
+rash.
+
+Todos os pacientes (adultos e crianças) que desenvolverem exantema devem ser rapidamente avaliados, e o uso de Lamictal®, descontinuado, a
+menos que o exantema se mostre claramente não relacionado à droga. É recomendado que Lamictal® não seja reiniciado em pacientes que tiveram
+a terapia suspensa por ter apresentado exantema no tratamento anterior com Lamictal®, a menos que o benefício se sobreponha claramente ao risco.
+
+O exantema também tem sido relatado como parte de Reações Medicamentosas com eosinofilia e sintomas sistêmicos (DRESS); também conhecida
+como síndrome de hipersensibilidade. Essa condição é associada a um padrão variável de sintomas sistêmicos - incluindo febre, linfadenopatia,
+edema facial, anormalidades hematológicas, hepáticas e renais e meningite asséptica (ver Reações Adversas). A síndrome mostra um largo espectro
+de gravidade clínica e pode, raramente, levar à coagulação intravascular disseminada (CID) e à falência de múltiplos órgãos. É importante notar que
+manifestações de hipersensibilidade precoce (por exemplo: febr e, linfadenopatia) podem estar presentes, mesmo que não ocorra exant ema. Se tais
+sinais e sintomas estiverem presentes, o paciente deve ser avaliado imediatamente, e o uso de Lamictal®, descontinuado, a menos que possa ser
+estabelecida uma etiologia alternativa.
+
+A meningite asséptica foi reversível com a retirada da droga na maioria dos casos, mas reapareceu em alguns casos de re -exposição à lamotrigina.
+A re-exposição resultou em um retorno rápido dos sintomas, que eram frequentemente mais graves. A lamotrigina n ão deve ser reiniciada em
+pacientes que tenham interrompido devido à meningite asséptica relacionada ao tratamento prévio com lamotrigina.
+
+Em pacientes tratados com a lamotrigina, foi demonstrado que o alelo HLA -B*1502 nos indivíduos de origem asiática (principalmente chineses
+Han e tailandeses) está associado ao risco de desenvolver a síndrome de Stevens -Johnson (SJS) e a necrólise epidérmic a tóxica (NET). Contudo,
+alguns pacientes com o alelo HLA-B*1502 não desenvolvem S JS/NET, e e stas complicações podem ocorrer mesmo em pacientes sem este alelo
+que usam Lamictal®. Os benefícios do tratamento com Lamictal® em pacientes positivos para HLA -B*1502 devem ser cuidadosamente avaliados
+em relação ao risco de desenvolver SJS/NET.
+
+Linfoistiocitose hemofagocítica (HLH)
+A HLH foi observada em pacientes que fazem o uso de Lamictal® (ver Reações Adversas). A HLH é uma síndrome de ativação imuno patológica,
+que pode ser fatal, caracterizada por sinais e sintomas clínicos como febre, erupção cutânea (rash), sintomas neurológicos, h epatoesplenomegalia,
+linfadenopatia, citopenias, ferriti na sérica elevada, hipertrigliceridemia e anormalidades da função hepática e coagulação. Os sintomas ocorrem
+geralmente dentro de 4 semanas após o início do tratamento.
+Modelo de Texto de Bula – Profissional de Saúde
+Lamictal® Comprimidos Dispersíveis
+
+Deve-se avaliar imediatamente os pacientes com esses sinais e sintomas e o diagnóstico de HLH deve ser levado em consideração. O uso de
+Lamictal® deve ser descontinuado a menos que uma etiologia alternativa seja estabelecida.
+
+Risco de suicídio
+Sintomas de depressão e/ou transtorno bipolar podem ocorrer em pacientes com epilepsia, e existem evidências de que os pacientes com epilepsia
+e transtorno bipolar apresentam risco elevado para suicidalidade.
+De 25% a 50% dos pacientes com transtorno bipolar tentam suicidar-se pelo menos uma vez e podem apresentar piora dos sintomas depressivos
+e/ou o aparecimento de ideias e comportamentos suicidas (suicidalidade), estejam tomando ou não medicações para o transtorno bipolar, incluindo
+Lamictal®.
+Ideação e comportamento suicidas foram relatados em pacientes tratados com DAEs em diversas indicações, incluindo epilepsia e transtorno bipolar.
+Uma meta-análise de estudos randomizados controlados com placebo com DAEs (inclusive lamotrigina) também demonstrou pequeno aumento no
+risco de ideação e comportamento suicidas. O mecanismo desse risco não é conhecido, e os dados disponíveis não descartam a possibilidade de
+risco aumentado para lamotrigina.
+
+Portanto, os pacientes devem ser monitorados para detecção de sinais de ideação e comportamento suicidas. Os pacientes (e os cuidadores deles)
+devem ser aconselhados a buscar auxílio médico caso apareçam sinais de ideação ou comportamento suicidas.
+
+Agravamento clínico no transtorno bipolar
+Pacientes recebendo Lamictal® para transtorno bipolar devem ser rigorosamente monitorados para detecção do agravamento clínico (incluindo o
+desenvolvimento de novos sintomas) e suicidalidade, sobretudo no início de um ciclo de tratamento ou na ocasião em que a dose for modificada.
+Alguns pacientes, como aqueles com histórico de comportamento ou pensamentos suicidas, adultos jovens e aqueles pacientes apresentand o grau
+significativo de ideação suicida antes do início do tratamento, podem correr maior risco de pensamentos suicidas ou de tentativas de suicídio, e
+devem receber monitoramento cuidadoso durante o tratamento.
+Os pacientes (e os cuidadores de les) devem ser alertados sobre a necessidade de monitoramento para detecção de qualquer agravamento da doença
+(incluindo o desenvolvimento de novos sintomas) e/ou o aparecimento de ideia/comportamento suicida ou ideia de ferir a si mesmos e buscar
+assistência médica imediatamente se esses sintomas se apresentarem.
+Deve-se considerar cuidadosamente a modificação do esquema terapêutico, incluindo a possibilidade de descontinuação da medicação, em pacientes
+que experimentarem agravamento clínico (incluindo o desenvolvimento de novos sintomas) e/ou o aparecimento de ideação/comportamento
+suicidas, sobretudo se esses sintomas forem graves, de início abrupto ou se não faziam parte dos sintomas do paciente.
+
+Efeito de produtos contendo estrogênio, incluindo contraceptivos hormonais na eficácia de Lamictal®:
+Foi demonstrado que a associação de etinilestradiol/levonorgestrel (30 mcg/150 mcg) aumenta o clearance da lamotrigina em aproximadamente
+duas vezes, resultando em redução dos níveis de lamotrigina (ver Interações Medicamentosas). Após a titulação, doses de manutenção mais elevadas
+de lamotrigina podem ser necessárias (em até duas vezes ou mais) para atingir a resposta terapêutica máxima. Em mulheres que não estejam usando
+substâncias indutoras de glicuronidação da lamotrigina e façam uso de contraceptivos hormonais que incluam uma semana de medicação inativa
+(por exemplo, uma semana sem pílula), aumentos graduais transitórios nos níveis de lamotrigina ocorrerão durante a semana de medicação inativa.
+Esses aumentos devem ser maiores quando o aumento da dose de lamotrigina se der nos dias que antecedem ou durante a semana de medicação
+inativa. Para instruções de dosagem ver Posologia e Modo de Usar- Recomendações gerais para populações de pacientes especiais.
+Os médicos devem garantir acompanhamento clínico apropriado à mulher que comece ou pare de tomar contraceptivos hormonais durante o
+tratamento com Lamictal®, uma vez que ajustes na dosagem de lamotrigina serão necessários na maioria dos casos.
+Outros contraceptivos orais e outras terapias contendo o estrogênio (como TRH) não foram estudados. Entretanto, eles podem, de forma similar,
+afetar os parâmetros farmacocinéticos da lamotrigina.
+
+Efeito do Lamictal® na eficácia de contraceptivos hormonais:
+Estudo de interação com 16 voluntárias saudáveis demonstrou que, quando a lamotrigina e o contraceptivo hormonal (associação de
+etinilestradiol/levonorgestrel) são administrados em associação, há discreto aumento no clearance do levonorgestrel e alterações nos níveis de FSH
+e LH séricos (ver Interações Medicamentosas). O impacto dessas alterações na atividade ovulatória é desconhecido. Entretanto, não pode ser
+excluída a possibilidade de essas alterações resultarem na diminuição da eficácia contraceptiva em algumas pacientes que estejam tomando
+medicações hormonais e Lamictal®. Assim, as pacientes devem ser instruídas a relatar imediatamente ao médico qualquer alteração em seu ciclo
+menstrual, como sangramentos entre os períodos .
+
+Efeito da lamotrigina nos substratos do transportador catiônico orgânico 2 (OCT2).
+A lamotrigina é um inibidor da secreção tubular renal via proteínas OCT 2 (ver Interações Medicamentosas). Isso pode resultar em aumento dos
+níveis plasmáticos de certas drogas que são substancialmente excretadas por esta via. A coadministração de Lamictal® com os substratos OCT 2s
+com um índice terapêutico estreito, por exemplo a dofetilida não é recomendado
+
+Diidrofolato redutase
+Lamictal® é um fraco inibidor de diidrofolato -redutase. Portanto, há possibilidade de interferência com o metabolismo do folato durante tratamentos
+prolongados. Entretanto, em períodos de até um ano, a lamotrigina não provocou alterações significativas na concentração da h emoglobina, no
+Modelo de Texto de Bula – Profissional de Saúde
+Lamictal® Comprimidos Dispersíveis
+
+volume corpuscular médio e nas concentrações de folato em nível sérico ou das hemácias. Em períodos de tratamento de até cinco anos não houve
+alterações significativas na concentração de folato das hemácias.
+
+Insuficiência renal
+Em estudos com dose única, em pacientes com insuficiência renal terminal, as concentrações plasmáticas de lamotrigina não foram
+significativamente alteradas. No entanto, como é esperado que haja acúmulo do metabólito glicuronato, deve-se ter cuidado ao tratar pacientes com
+insuficiência renal.
+
+Pacientes sendo tratados com outras formulações contendo lamotrigina
+Lamictal® não deve ser administrado a pacientes que estejam sendo tratados com outras formulações contendo lamotrigina sem recomendação
+médica.
+
+ECG Síndrome de Brugada
+Uma associação muito rara com ECG padrão do tipo Brugada foi observada, embora uma relação causal não tenha sido estabelecida. Portanto, deve-
+se ter cautela com o uso de Lamictal® em pacientes com Síndrome de Brugada.
+
+Ritmo cardíaco e anormalidades de condução
+Testes in vitro mostraram que Lamictal® apresenta atividade antiarrítmica Classe IB em concentrações terapeuticamente relevantes. Com base
+nestes achados in vitro, Lamictal® pode potencialmente retardar a condução ventricular (ampliar o QRS) e induzir pró -arritmia em pacientes com
+doença cardíaca estrutural ou funcional clinicamente importante. Portanto, qualquer benefício esperado ou observado de Lamictal® para esses
+pacientes deve ser cuidadosamente avaliado em relação aos riscos potenciais de eventos cardíacos graves ou fatais. O uso conc omitante de outros
+bloqueadores de canais de sódio pode aumentar ainda mais o risco de pró -arritmia.
+
+Epilepsia
+Como ocorre com outras drogas antiepilépticas, a suspensão abrupta de Lamictal® pode provocar crises de rebote. A menos que seja necessári a a
+interrupção abrupta (em casos de exantema, por exemplo), a dose de Lamictal® deve sofrer redução gradual ao longo de duas semanas.
+Há relatos na literatura de que crises convulsivas graves, incluindo estado de mal epiléptico, podem levar à rabdomiólise, di sfunção de múltiplos
+órgãos e coagulação intravascular disseminada, algumas vezes levando à morte. Casos semelhantes têm ocorrido e m associação com o uso de
+Lamictal®.
+
+Transtorno bipolar
+Crianças e adolescentes (menores de 18 anos de idade) :
+Tratamento com antidepressivos está associado ao aumento do risco de pensamento e comportamento suicidas em crianças e adolescentes com
+transtorno depressivo maior e outros distúrbios psiquiátricos.
+
+Testes laboratoriais
+Lamictal® tem demonstrado interferir em testes rápidos de urina usados para detecção de drogas, podendo resultar em falsos positivos,
+particularmente para fenciclidina. Um método químico alternativo mais específico deve ser utilizado para confirmar um resultado positivo.
+
+Gravidez e lactação
+A administração de Lamictal® não prejudicou a fertilidade de animais, em estudos de reprodução. Não há experiência do efeito do Lamictal® sobre
+a fertilidade humana.
+Dados pós-comercialização, resultantes de diversos registros de gravidezes prospectivas, documentaram resultados de cerca de 12.700 mulheres
+expostas ao Lamictal® usado em monoterapia e politerapia durante o primeiro trimestre de gravidez. Globalmente, esses dados não são sugestivos
+de aumento substancial do risco de malformações congênitas maiores na monoterapia com lamotrigina. Embora dados de um número limitado de
+registros apresentem relatos de aumento do risco de fendas orais, um estudo de caso-controle completo não demonstrou maior risco de fendas orais
+em comparação a outras malformações maiores após a exposição à lamotrigina. Os dados relacionados ao uso de Lamictal® em associação a outros
+fármacos são insuficientes para avaliar se o risco de malformações associado a outros agentes é afetado pelo uso concomitante de Lamictal®.
+Como a maioria das drogas, Lamictal® não deve ser usado na gravidez, a menos que, a critério clínico, o benefício potencial para a mãe justifique
+qualquer risco possível ao desenvolvimento fetal.
+As alterações fisiológicas relacionadas à gravidez podem afetar os níveis e/ou efeitos terapêuticos da lamotrigina. Há relato s de diminuição dos
+níveis de lamotrigina durante a gravidez. Deve -se assegurar o adequado acompanhamento clínico à mulher grávida que esteja em tratamento com
+Lamictal®.
+Houve relatos de que lamotrigina passa para o leite materno em concentrações altamente variáveis, resultando em níveis totais de lamotrigina em
+bebês de até cerca de 50% dos níveis observados nas mães. Portanto, em alguns bebês amamentados, as concentrações séricas de lamotrigina podem
+atingir níveis nos quais ocorrem efeitos farmacológicos .
+O benefício potencial da amamentação deve ser considerado frente ao risco potencial de efeitos adversos nos bebês.
+
+Categoria C de risco na gravidez
+Este medicamento não deve ser utilizado por mulheres grávidas sem orientação médica ou do cirurgião -dentista.
+Modelo de Texto de Bula – Profissional de Saúde
+Lamictal® Comprimidos Dispersíveis
+
+Uso criterioso no aleitamento ou na doação de leite humano. O uso deste medicamento no período da lactação depende da avaliação e
+acompanhamento do seu médico ou cirurgião-dentista.
+
+Teratogenicidade: Estudos de toxicologia reprodutiva com lamotrigina em animais, em doses inferiores a 400 mg/dia para seres humanos [em uma
+área de superfície corporal (mg/m2)], mostraram toxicidade no desenvolvimento (aumento da mortalidade, diminui ção do peso corporal, aumento
+das variações estruturais, anormalidades neurocomportamentais), mas não mostraram efeitos teratogênicos. Entretanto, como a lamotrigina é um
+fraco inibidor de diidrofolato redutase, existe risco teórico de ocorrerem malformações fetais humanas, qua ndo a mãe é tratada com um inibidor de
+folato durante a gravidez.
+
+Efeitos na capacidade de dirigir veículos e operar máquinas
+Dois estudos com voluntários demonstraram que o efeito d e Lamictal® sobre a coordenação motora visual, movimentos dos olhos, movimentos
+corporais e de sedação não diferiram do placebo. Em estudos clínicos com Lamictal®, eventos adversos neurológicos, como vertigem e diplopia,
+têm sido reportados. Desta forma, os pacientes devem avaliar como serão afetados pela terapia com Lamictal® antes de dirigir e operar máquinas.
+Como existe uma variação individual em resposta a todas as terapias com drogas antiepilépticas, o paciente deve consultar seu médico
+especificamente sobre a questão de dirigir e a epilepsia.
+
+Oriente seu paciente a não dirigir veículos ou operar máquinas durante todo o tratamento, pois sua habilidade e capacidade de reação
+podem estar prejudicadas.
+
+O uso deste medicamento pode causar tontura, desmaios ou perda da consciência, expondo o paciente a quedas ou acidentes.
+
+Contém sacarina sódica (edulcorante).
+
+6. INTERAÇÕES MEDICAMENTOSAS
+
+A uridina 5’-difosfo (UDP)-glicuronil transferase (UGTs) foi identificada como sendo a enzima responsável pelo metabolismo da lamotrigina.
+Fármacos que induzem ou inibem a glicuronidação podem, portanto, afetar o clearance aparente da lamotrigina. Indutores fortes ou moder ados da
+enzima citocromo P450 3ª4 (CYP3A4), também conhecidos por induzir a UGTs, podem aumentar o metabolismo da lamotrigina. Não há evidências
+de que a lamotrigina causa indução ou inibição clinicamente relevante de enzimas citocromo P450. A lamotrigina pode induzir seu próprio
+metabolismo, mas o efeito é modesto e, provavelmente, não apresenta consequências clínicas significativas.
+
+Os fármacos que demonstraram ter um impacto clinicamente relevante na concentração da lamotrigina são descrit os na Tabela 1. A orientação
+posológica específica para esses fármacos é fornecida na seção Posologia e Modo de Usar. Além disso, a Tabela 1 lista os medicamentos que
+demonstraram ter pouco ou nenhum efeito na concentra ção de lamotrigina. Geralmente, não se espera que a administração concomitante de tais
+medicamentos resulte em nenhum impacto clínico. No entanto, deve-se considerar pacientes cuja epilepsia é especialmente sensível a flutuações
+nas concentrações de lamotrigina.
+
+Tabela 1: Efeito de drogas na concentração da lamotrigina (ver Posologia e Modo de Usar)
+ Drogas que aumentam a concentração da Drogas que reduzem a concentração da Drogas que têm pouco ou nenhum efeito na
+ lamotrigina lamotrigina concentração da lamotrigina
+ lítio
+ bupropiona
+ carbamazepina olanzapina
+ fenitoína oxcarbazepina
+ primidona felbamato
+ fenobarbital gabapentina
+ valproato rifampicina levetiracetam
+ lopinavir/ritonavir pregabalina
+ atazanavir/ritonavir* topiramato
+ Associação de etinilestradiol/levonorgestrel** zonisamida
+ aripripazol
+ lacosamida
+ perampanel
+ paracetamol
+
+*Para orientações de dosagem, ver Posologia e Modo de usar – Recomendações gerais para populações de pacientes especiais, adicionalmente para
+mulheres tomando contraceptivos orais ver também Advertências e Precauções – Efeitos de produtos contendo estrogênio, inlcuindo contraceptivos
+hormonais, na eficácia da lamotrigina e Efeitos da lamotrigina na eficácia dos contraceptivos hormonais.
+Modelo de Texto de Bula – Profissional de Saúde
+Lamictal® Comprimidos Dispersíveis
+
+Interações envolvendo DAEs (ver Posologia e Modo de Usar)
+O valproato, que inibe a glicuronidação da lamotrigina, reduz o metabolismo e aumenta a meia-vida média da lamotrigina em cerca de duas vezes.
+Alguns DAEs (como fenitoína, carbamazepina, fenobarbital e primidona), que induzem as enzimas do citocromo P450 induzem também induzem
+as UGTs e, portanto, aumentam o metabolismo da lamotrigina. Há relatos de eventos em nível do sistema nervoso central – incluindo vertigem,
+ataxia, diplopia, visão turva e náuseas – em pacientes recebendo carbamazepina após a introdução de lamotrigina. Esses eventos são normalmente
+resolvidos quando a dose de carbamazepina é reduzida. Efeito similar foi observado durante estudo com oxcarbazepina e lamotrigina em voluntários
+adultos saudáveis, mas a redução da dose não foi investigada.
+Em estudo com voluntários adultos saudáveis, utilizando doses de 200 mg de lamotrigina e 1.200 mg de oxcarbazepina, observou-se que a
+oxcarbazepina não altera o metabolismo da lamotrigina, e a lamotrigina não altera o metabolismo da oxcarbazepina.
+Em estudo com voluntários sadios, a coadministração de felbamato (1.200 mg, duas vezes ao dia) e Lamictal® (100 mg, duas vezes ao dia por 10
+dias) não demonstrou ter efeitos clínicos relevantes na farmacocinética da lamotrigina.
+Baseado nas análises retrospectivas dos níveis plasmáticos em pacientes que recebiam Lamictal® isolada ou juntamente com gabapentina, o
+clearance da lamotrigina não pareceu ser alterado pela gabapentina.
+Interações potenciais entre levetiracetam e lamotrigina foram pesquisadas, avaliando-se as concentrações séricas de ambos os agentes durante estudo
+clínico placebo -controlado. Os dados indicaram que a lamotrigina não influencia a farmacocinética do levetiracetam , e o levetiracetam não afeta a
+farmacocinética da lamotrigina.
+O estado de equilíbrio das concentrações plasmáticas de lamotrigina não fo i afetado pela administração concomitante com pregabalina ( 200 mg,
+três vezes ao dia). Não há interações farmacocinéticas entre lamot rigina e pregabalina.
+O topiramato não alterou as concentrações plasmáticas de lamotrigina . Entretanto, a administração de lamotrigina resultou em aumento de 15% nas
+concentrações de topiramato.
+Em estudo com pacientes com epilepsia, a coadministração de zonisamide (200 a 400 mg/dia) com Lamictal® (150 a 500 mg/dia) durante 35 dias
+não teve efeito significativo na farmacocinética da lamotrigina.
+Em estudo placebo-controlado com pacientes no início de crises convulsivas parciais, a concentração plasmática da lamotrigina não foi afetada pelo
+uso concomitante de lacosomida (200, 400 ou 600 mg/dia).
+Em uma análise conjunta de dados de três estudos clínicos placebo -controlado que investigavam o perampanel em terapia combinada em pacientes
+com início de crises convulsivas parciais e crises convulsivas tônico -clônicas generalizadas primárias, a maior dos e de perampanel avaliada (12
+mg/dia) aumentou o clearance da lamotrigina em menos de 10%.
+Apesar de terem sido relatadas alterações nas concentrações plasmáticas com outras drogas antiepiléticas, estudos controlados não demonstraram
+evidências de que a lamotrigina afeta as concentrações plasmáticas de drogas antiepiléticas quando administradas concomitantemente. Evidências
+de estudos in vitro indicaram que a lamotrigina não altera a ligação de outras drogas antiepiléticas às proteínas.
+
+Interações envolvendo outros agentes psicoativos (ver Posologia e Modo de Usar)
+A farmacocinética do lítio, após a administração de 2 g de gliconato de lítio anidro, duas vezes ao dia, durante seis dias, a 20 indivíduos saudáveis,
+não foi alterada pela administração concomitante de 100 mg/dia de lamotrigina.
+Múltiplas doses orais de bupropiona não tiveram efeitos estatisticamente significativos na farmacocinética de dose única de l amotrigina em 12
+indivíduos, e houve somente leve aumento na área sob a curva (A UC) do metabólito glicuronídeo de lamotrigina.
+Em estudo com voluntários adultos saudáveis, 15 mg de olanzapin a reduziu a área sob a curva ( AUC) e a concentração máxima (Cmáx) da lamotrigina
+numa média de 24% e 20%, respectivamente. A lamotrigina, em doses de 200 mg , não afetou a farmacocinética da olanzapina.
+Doses múltiplas orais de Lamictal® (400 mg/dia) não tiveram efeito clínico significa tivo na farmacocinética de uma única dose de 2 mg de
+risperidona em 14 voluntários adultos saudáveis. Após a coadministração de risperidona 2 mg com lamotrigina, 12 dos 14 volunt ários apresentaram
+sonolência, comparado a 1 (um) de 20 quando tomaram risperidona isoladamente, e nenhum , quando Lamictal® foi administrado isoladamente.
+
+Em um estudo com 18 pacientes adultos com transtorno bipolar I, que recebe ram um esquema estabelecido de lamotrigina (> / = 100 mg / dia), as
+doses de aripiprazol foram aumentadas de 10 mg / dia para uma dose alvo de 30 mg / dia ao longo de 7 dias período e continua das uma vez ao dia
+por mais 7 dias. Uma redução média de cerca de 10% na C máx e AUC da lamotrigina foi observada.
+
+Experimentos de inibição in vitro indicaram que a formação do metabólito primário da lamotrigina, o 2 -N-glicuronídeo, foi minimamente afetado
+pela coincubação com amitriptilina, bupropiona, clonazepam, fluoxetina, haloperidol ou lorazepam. Dados sobre o metabolismo d o bufuralol,
+obtidos de microssoma hepático humano , sugeriu que a lamotrigina não reduz o clearance das drogas eliminadas predomina ntemente pelo CYP2D6.
+Resultados de experimentos in vitro também sugerem que é improvável que o clearance da lamotrigina seja afetado pela clozapina, fenelzina,
+risperidona, sertralina ou trazodona.
+
+Interações com contraceptivos hormonais
+Efeito de contraceptivos hormonais na farmacocinética da lamotrigina:
+Em estudo com 16 voluntárias, verificou -se que o uso de contraceptivo contendo 30 mcg de etinilestradiol e 150 mcg de levonorgestrel associados
+causou aumento no clearance oral da lamotrigina em aproximadamente duas vezes, resultando numa redução média de 52% e 39% na área sob a
+curva (AUC) e na Cmáx, respectivamente. As concentrações séricas da lamotrigina aumentaram gradualmente durante o curso de uma semana de
+medicação inativa (por exemplo, uma semana sem contraceptivo), com concentrações pré-dose ao final da semana de medicação inativa sendo, em
+média, aproximadamente duas vezes mais altas que durante a coterapia. Ver Posologia e Modo de Usar - Recomendações gerais para populações de
+pacientes especiais (para instruções de dosagem para mulheres tomando produtos que contêm estrogênio, incluindo contraceptivos hormonais); e
+Modelo de Texto de Bula – Profissional de Saúde
+Lamictal® Comprimidos Dispersíveis
+
+Advertências e Precauções – Efeitos de produtos contendo estrogênio, incluindo contraceptivos hormonais, na eficácia da lamotrigina e Efeitos da
+lamotrigina na eficácia dos contraceptivos hormonais.)
+
+Efeito da lamotrigina na farmacocinética dos contraceptivos hormonais:
+Em estudo com 16 voluntárias, a dose de equilíbrio de 300 mg de lamotrigina não afetou a farmacocinética do componente etinilestradiol do
+contraceptivo oral combinado. Um discreto aumento no clearance oral do componente levonorgestrel foi observado, resultando numa redução média
+de 19% e 12% na área sob a curva (AUC) e na Cmáx do levonorgestrel, respectivamente. Medidas das concentrações séricas de FSH, LH e estradiol
+durante o estudo indicaram certa perda da supressão da atividade hormonal ovariana em algumas mulheres, embora a medida da pr ogesterona sérica
+tenha indicado que não houve evidência hormonal de ovulação em nenhuma das 16 voluntárias. O impacto do discreto aumento do clearance do
+levonorgestrel e das alterações das concentrações séricas de FSH e LH na atividade ovulatória é desconhecido (ver Advertências e Precauções). O
+efeito de doses diferentes de 300 mg/dia de lamotrigina não foi estudado , e estudos com outras formulações hormonais femininas (incluindo TRH
+com progesterona/progesterona) não foram conduzidos.
+
+Interações envolvendo outras medicações
+Em estudo com 10 voluntários do sexo masculino, verificou -se que a rifampicina aumentou o clearance e diminuiu a meia-vida da lamotrigina pela
+indução das enzimas hepáticas responsáveis pela glicuronidação. Em pacientes recebendo terapia concomitante com rifampicina, deve-se empregar
+o regime de tratamento recomendado para a lamotrigina e m uso conjunto com indutores de glicuronidação (ver Posologia e Modo de Usar).
+Em estudo com voluntários saudáveis, lopinavir/ritonavir reduziram aproximadamente pela metade as concentrações plasmáticas de lamotrigina,
+provavelmente pela indução da glicuronidação. Em pacientes recebendo terapia concomitante com lopinavir/ritonavir, o regime de tratamento
+recomendado para lamotrigina e indutores da glicuronidação deve ser considerado. (ver Posologia e Modo de Usar).
+Em estudo com voluntários adultos sadios, atazanavir/ritonavir (300 mg/100mg) reduziram a área sob a curva (AUC) e a Cmáx de Lamictal® (dose
+única de 100 mg) em uma média de 32% e 6%, respectivamente (veja Posologia e Modo de Usar – Recomendações gerais para populações de
+pacientes especiais).
+
+Em um estudo em voluntários adultos saudáveis, paracetamol 1g (quatro vezes ao dia) reduz a área sob a curva (AUC) e a Cmáx de Lamictal® até
+uma média de 20% e 25%, respectivamente.
+Resultados semelhantes foram observados em um estudo de modelagem farmacocinética baseado em fisiologia, que incluiu crianças (2 a 12 anos)
+e adultos (até 98 anos).
+
+Os dados da avaliação in vitro do efeito da lamotrigina no OCT 2 demonstram que lamotrigina, mas não o metabólito N (2)-glucuronídeo, é um
+inibidor de OCT 2 em concentrações potencialmente relevantes clinicamente. Estes dados demonstram que a lamotrigina é um inibidor de OCT 2,
+com valor IC50 de 53,8 µM (ver Advertências e Precauções).
+
+8. POSOLOGIA E MODO DE USAR
+Lamictal® comprimido dispersível pode ser mastigado, disperso em um pequeno volume de água (no mínimo, a quantidade suficiente para cob rir
+o comprimido) ou engolido inteiro com um pouco de água. Não tente administrar quantidades parciais dos comprimidos dispersíveis.
+Modelo de Texto de Bula – Profissional de Saúde
+Lamictal® Comprimidos Dispersíveis
+
+Lamictal® não deve ser partido ou fracionado. Se uma dose calculada de Lamictal® (por exemplo: para uso em crianças e pacientes com
+insuficiência hepática) não puder ser dividida em doses menores, a dose a ser administrada será igual à menor dose equivalente a um comprimido
+inteiro.
+
+Os comprimidos dispersíveis de 25 mg, 50 mg, 100 mg e 200 mg podem ser fornecidos em embalagem resistente à abertura por crianças:
+
+1. Separe um comprimido: rasgue ao longo das linhas de corte para separar uma “bolsa” do blister.
+
+2. Retire a camada externa: começando pelo canto, levante e abra a bolsa.
+
+3. Empurre o comprimido para fora: empurre suavemente uma extremidade do comprimido através da camada de alumínio.
+
+Reintrodução da terapia
+Os médicos devem avaliar a necessidade de escalonamento da dose ao reintroduzir a terapia com Lamictal®, em pacientes que descontinuaram seu
+uso por alguma razão, uma vez que há sérios riscos de exantema associados a altas doses iniciais e ao se exceder a dose recomendada para o
+escalonamento de Lamictal® (ver Advertências e Precauções). Quanto maior o intervalo entre o uso prévio e a reintrodução, maior o cuidado que
+se deve tomar no escalonamento da dose de manutenção. Quando este intervalo exceder cinco meias-vidas (ver Caracterí sticas Farmacológicas -
+Propriedades Farmacocinéticas), Lamictal® deve ser escalonado à dose de manutenção de acordo com um programa apropriado.
+Recomenda-se que Lamictal® não seja reiniciado em pacientes que tenham descontinuado seu uso por causa de exantema associado ao tratamento
+prévio com Lamictal®, a menos que o potencial benefício ultrapasse os possíveis riscos.
+Modelo de Texto de Bula – Profissional de Saúde
+Lamictal® Comprimidos Dispersíveis
+
+Epilepsia
+Quando drogas antiepilépticas de uso concomitante são retiradas para monoterapia com Lamictal®, ou quando outra droga antiepilética (DAE) é
+adicionada ao regime de tratamento contendo lamotrigina, deve-se considerar os efeitos sobre a farmacocinética da lamotrigina (ver Interações
+Medicamentosas).
+
+Dosagem em monoterapia: adultos e crianças acima de 12 anos de idade
+A dose inicial de Lamictal® em monoterapia é de 25 mg uma vez ao dia, por duas semanas, seguida por 50 mg uma vez ao dia, por duas semanas.
+A partir daí, a dose deve ser aumentada em até um máximo de 50-100 mg a cada uma ou duas semanas, até que uma resposta ótima seja alcançada.
+A dose usual de manutenção, para se alcançar uma resposta ideal, é de 100-200mg/dia, administrados uma vez ao dia ou em duas doses fracionadas.
+Alguns pacientes necessitam de até 500 mg/dia de Lamictal® para alcançar a resposta desejada.
+
+Devido ao risco de exantema (rash), a dose inicial e o escalonamento de doses subsequentes não devem ser excedidos (ver Advertências e
+Precauções).
+
+Dosagem em terapia combinada: adultos e crianças acima de 12 anos
+Nos pacientes recebendo valproato, com ou sem outra droga antiepilética (DAE), a dose inicial de Lamictal® deve ser de 25mg, em dias alternados,
+por duas semanas, seguida por 25 mg, uma vez ao dia, por duas semanas. Em seguida, a dose deve ser aumentada até um máximo de 25 -50mg, a
+cada uma ou duas semanas, até que uma resposta adequada seja alcançada. A dose usual de manutenção para se obter uma resposta ótima é de 100-
+200 mg/dia, administrados uma vez ao dia ou em duas doses fracionadas.
+Nos pacientes tomando DAEs concomitantes ou outras medicações (ver Interações Medicamentosas) que induzam a glicuronidação da lamotrigina,
+com ou sem outras DAEs (exceto valproato), a dose inicial de Lamictal® é de 50 mg, uma vez ao dia, por duas semanas, seguid a por 100 mg/dia,
+administrados em duas doses fracionadas, por duas semanas.
+
+A partir daí, a dose deve ser aumentada, até um máximo de 100mg a cada uma a duas semanas, até que uma resposta adequada seja alcançada. A
+dose usual de manutenção para se obter uma resposta ótima é de 200 -400 mg /dia, administrados em duas doses fracionadas. Alguns pacientes
+podem necessitar de até 700mg/dia de Lamictal® para alcançar a resposta desejada.
+
+Em pacientes usando outras drogas que não induzem ou inibem significativamente a glicuronidação da lamotrigina (ve r Interações Medicamentosas),
+a dose inicial de Lamictal® é 25 mg, uma vez ao dia, por duas semanas, seguida por 50 mg, uma vez ao dia, por duas semanas. A partir daí, a dose
+deve ser aumentada até um máximo de 50 a 100 mg a cada uma a duas semanas, até que uma resposta adequada seja alcançada. A dose usual de
+manutenção para se obter uma resposta ótima é de 100 -200 mg /dia, administrados uma vez ao dia ou em duas doses fracionadas .
+
+Tabela 2 – Regime de tratamento recomendado em epilepsia para adultos e maiores de 12 anos
+ Regime de tratamento Semanas 1 + 2 Semanas 3 + 4 Dose de manutenção
+ 100-200 mg
+ 25 mg 50 mg (uma vez ao dia ou duas doses fracionadas).
+ Monoterapia (uma vez ao dia) (uma vez ao dia) Para se atingir a dose de manutenção, as
+ doses podem ser aumentadas até 50-100 mg
+ a cada 1-2 semanas.
+ 12,5 mg 100-200 mg
+ Terapia combinada com valproato, (25 mg 25 mg (uma vez ao dia ou duas doses fracionadas).
+ independentemente do uso de qualquer outra administrados (uma vez ao dia) Para se atingir a dose de manutenção, as
+ medicação concomitante em dias doses podem ser aumentadas até 25 -50 mg a
+ alternados) cada 1-2 semanas.
+ Este regime de doses deve ser usado 100-200 mg
+ com outras drogas que não induzem 25 mg 50 mg (uma vez ao dia ou duas doses fracionadas).
+ ou inibem significativamente a (uma vez ao dia) (uma vez ao dia) Para se atingir a dose de manutenção, as
+ glicuronidação da lamotrigina (ver doses podem ser aumentadas até 50 -100 mg
+ Terapia Interações Medicamentosas) a cada 1-2 semanas.
+ combinada Este regime de doses deve ser usado
+ sem com: 200-400 mg
+ valproato fenitoína 50 mg 100 mg (duas doses fracionadas)
+ carbamazepina (uma vez ao dia) (duas doses Para se atingir a dose de manutenção, as
+ fenobarbital fracionadas) doses podem ser aumentadas até 100 mg a
+ primidona cada 1-2 semanas.
+ ou com outros indutores da
+ glicuronidação da lamotrigina
+ Nota: Em pacientes tomando DAEs cuja interação farmacocinética com a lamotrigina seja desconhecida, deve ser utilizado o regime de tratamento
+ recomendado para o uso da associação lamotrigina/valproato.
+Modelo de Texto de Bula – Profissional de Saúde
+Lamictal® Comprimidos Dispersíveis
+
+Devido ao risco de exantema (rash), a dose inicial e o escalonamento de doses subsequentes não devem ser excedidos (ver Advertências e
+Precauções).
+
+Dosagem em terapia combinada na epilepsia: crianças de 2 a 12 anos:
+Nos pacientes recebendo valproato, com ou sem outra droga antiepilética (DAE), a dose inicial de Lamictal® deve ser de 0,15 mg/kg de peso
+corporal/dia, uma vez ao dia por duas semanas, seguida por 0,3 mg/kg de peso corporal/dia, uma vez ao dia, por duas semanas. Em seguida, a dose
+deve ser aumentada até um máximo de 0,3 mg/kg, a cada uma ou duas semanas, até que uma resposta adequada seja alcançada. A dose usual de
+manutenção para se obter uma resposta ótima é de 1-5 mg/kg/dia, administrados uma vez ao dia ou fracionados em duas tomadas, até um máximo
+de 200 mg/dia.
+
+Nos pacientes tomando DAEs concomitantes ou outras medicações (ver Interações Medicamentosas) que induzam a glicuronidação da lamotrigina,
+com ou sem outras DAEs (exceto valproato), a dose inicial de Lamictal® é de 0,6 mg/kg de peso corporal/dia, fracionados em duas tomadas, por
+duas semanas, seguida por 1,2 mg/kg/dia, fracionados em duas tomadas, por duas semanas.
+A partir daí, a dose deve ser aumentada, até um máximo de 1,2 mg/kg a cada uma a duas semanas, até que uma resposta adequada seja alcançada.
+A dose usual de manutenção para se obter uma resposta ótima é de 5-15 mg/kg/dia, administrados uma vez ao dia ou fracionados em duas doses,
+até um máximo de 400 mg/dia.
+
+Em pacientes usando outras drogas que não induzem ou inibem significativamente a glicuronidação da lamotrigina ( ver Interações Medicamentosas),
+a dose inicial de Lamictal® é de 0,3 mg/kg de peso corporal/dia , administrados uma vez ao dia ou fracionados em duas tomadas, por duas semanas,
+seguida de 0,6 mg/kg de peso corporal/dia, administrados uma vez ao dia ou fracionados em duas tomadas, por duas semanas. Em seguida, a dose
+deve ser aumentada até um máximo de 0,6 mg/kg a cada uma a duas semanas, até que uma resposta adequada seja alcançada. A dose usual de
+manutenção para se obter uma resposta ótima é de 1 -10 mg/kg/dia fracionados em uma ou duas doses, até um máximo de 200 mg/dia.
+
+Para assegurar que a dose terapêutica seja mantida, deve-se monitorar o peso da criança, e a dose deve ser reavaliada caso ocorra alteração de peso.
+
+Tabela 3: Regime de tratamento recomendado para crianças entre 2 e 12 anos de idade (dose diária total em mg/kg de peso corporal/dia).
+ Regime de tratamento Semanas 1 + 2 Semanas 3 + 4 Dose de manutenção
+
+ Aumentos de 0,3mg/kg a cada 1-2
+ Terapia combinada com valproato, 0,15 mg/kg (uma vez 0,3 mg/kg semanas para se atingir a dose de
+ independentemente do uso de qualquer outra ao dia) (uma vez ao dia) manutenção de 1-5 mg/kg
+ medicação concomitante (uma vez ao dia ou fracionada em duas
+ doses) até um máximo de 200mg/dia
+
+ Este regime de doses deve ser usado 0,3 mg/kg 0,6 mg/kg Aumentos de 0,6 mg/kg a cada 1-2
+ com outras drogas que não induzem (em uma dose ou (em uma dose ou semanas para se atingir a dose de
+ ou inibem significativamente a divididos em duas divididos em duas manutenção de 1-10 mg/kg (uma vez ao
+ glicuronidação da lamotrigina (ver doses) doses) dia ou fracionada em duas doses) até um
+ Interações Medicamentosas) máximo de 200 mg/dia.
+ Terapia Este regime de doses deve ser usado
+ combina com:
+ da sem fenitoína 0,6 mg/kg 1,2 mg/kg Aumentos de 1,2 mg/kg a cada 1-2
+ valproato carbamazepina (em duas doses (em duas doses semanas para se atingir a dose de
+ fenobarbital fracionadas) fracionadas) manutenção de 5-15 mg/kg (uma vez ao
+ primidona dia ou fracionada em duas doses) até um
+ ou com outros indutores da máximo de 400 mg/dia.
+ glicuronidação da lamotrigina
+ (ver Interações Medicamentosas)
+ Nota: Em pacientes tomando DAEs cuja interação farmacocinética com a lamotrigina seja desconhecida, deve ser utilizado o regime de
+ tratamento recomendado para o uso da associação lamotrigina/valproato.
+
+* Se a dose calculada de Lamictal® não puder ser alcançada u tilizando comprimidos inteiros, a dose deve ser arredondada para o comprimido inteiro
+mais próximo.
+
+Devido ao risco de exantema (rash), a dose inicial e o escalonamento de doses subseq uentes não devem ser excedido (ver Advertências e
+Precauções).
+É possível que pacientes com idade entre 2 -6 anos requeiram doses de manutenção que estão no final da faixa de doses recomendada s.
+
+Monoterapia e terapia combinada na epilepsia: crianças menores de 2 anos de idade
+Modelo de Texto de Bula – Profissional de Saúde
+Lamictal® Comprimidos Dispersíveis
+
+Não há estudos sobre o uso da lamotrigina na monoterapia em crianças menores de 2 anos de idade ou na terapia combinada em crianças com menos
+de 1 mês de idade. A segurança e a eficácia da terapia combinada da lamotrigina nas crises convulsivas parciais em crianças com idade entre 1 mês
+e 2 anos não foram estabelecida s. Portanto, Lamictal® não é indicado para crianças menores de 2 anos de idade.
+
+Transtorno bipolar: adultos acima de 18 anos de idade
+A lamotrigina é recomendada para uso em pacientes bipolares com risco de futuros episódios depressivos.
+O regime de transição descrito a seguir deve ser observado para prevenir a recorrência de episódios de depressão. O regime de transição envolve o
+escalonamento da dose de lamotrigina para a estabilização da dose de manutenção ao longo de seis semanas (ver Tabela 4), após a qual outras drogas
+psicotrópicas ou antiepiléticas podem ser retiradas, se clinicamente indicado (ver Tabela 5).
+A terapia concomitante deve ser considerada para a prevenção de episódios de mania, uma vez que a eficácia da lamotrigina na mania não foi
+estabelecida conclusivamente.
+
+Tabela 4: Escalonamento de dose recomendada para a manutenção da dose diária total de estabilização para adultos ( a partir de18 anos
+de idade) no tratamento do transtorno bipolar
+
+ Regime de tratamento Semanas 1-2 Semanas 3-4 Semana 5 Dose de estabilização
+ (Semana 6)*
+ -Terapia concomitante 100 mg
+ com inibidores da 12,5 mg 25 mg 50 mg (uma vez ao dia ou
+ glicuronidação da (25 mg em dias alternados) (uma vez ao dia) (uma vez ao dia ou fracionados em duas doses)
+ lamotrigina, por exemplo, fracionados em duas doses) (dose máxima diária de
+ valproato 200 mg)
+ - Terapia concomitante
+ com indutores da
+ glicuronidação da
+ lamotrigina em pacientes
+ não fazendo uso de
+ valproato. 300 mg na Semana 6,
+ aumentando para 400
+ Esse regime de doses deve 50 mg 100 mg 200 mg mg/dia se necessário, na
+ ser usado com: (uma vez ao dia) (fracionados em duas (fracionados em duas Semana 7.
+ -fenitoína doses) doses) (fracionados em duas
+ -carbamazepina doses)
+ -fenobarbital
+ -primidona
+ ou com outros indutores da
+ glicuronidação da
+ lamotrigina (ver Interações
+ Medicamentosas)
+ - Monoterapia com
+ Lamictal® ou terapia
+ concomitante em pacientes
+ fazendo uso de outras 50 mg 100 mg 200 mg (faixa de 100-
+ drogas que não inibem nem 25 mg (uma vez ao dia ou (uma vez ao dia ou 400mg)
+ induzem (uma vez ao dia) fracionados em duas doses) fracionados em duas doses) (uma vez ao dia ou
+ significativamente a fracionados em duas doses)
+ glicuronidação da
+ lamotrigina (ver Interações
+ Medicamentosas)
+ Nota: Em pacientes utilizando DAEs onde a interação farmacocinética com a lamotrigina não é conhecida, deve ser utilizado o escalonamento de
+ doses recomendado para a associação lamotrigina/valproato.
+
+* A dose alvo de estabilização irá variar de acordo com a resposta clínica.
+
+Terapia concomitante com inibidores da glicuronidação da lamotrigina (por exemplo, valproato):
+A dose inicial de lamotrigina é de 25 mg em dias alternado s, durante duas semanas, seguida de 25 mg uma vez por dia durante duas semanas. A
+dose deve ser aumentada para 50 mg uma vez por dia (ou em duas doses fracionadas) na Semana 5. A dose usual para alcançar a resposta ótima é
+de 100 mg/dia uma vez ao dia ou em duas doses fracionadas. Entretanto, a dose pode ser aumentada para um máximo diário de 200 mg, dependendo
+da resposta clínica.
+
+Terapia concomitante com indutores da glicuronidação da lamotrigina em pacientes que não estejam fazendo uso de valproato :
+Modelo de Texto de Bula – Profissional de Saúde
+Lamictal® Comprimidos Dispersíveis
+
+Esse regime de doses deve ser usado com fenitoína, carbamazepina, fenobarbital, primidona e outras drogas conhecidas que induzem a
+glicuronidação da lamotrigina (ver Interações Medicamentosas)
+Nos pacientes fazendo uso de drogas indutoras da glicuronidação da lamotrigina e que não estejam fazendo uso de valproato a dose inicial de
+lamotrigina é de 50 mg uma vez ao dia por duas semanas, seguida de 100 mg/dia em duas doses fracionados durante duas semanas. A dose deve ser
+aumentada para 200 mg/dia em duas doses fracionadas na Semana 5. A dose pode ser aumentada na Semana 6 para 300 mg/dia. Entretanto, a dose
+alvo usual para alcançar uma resposta ótima é de 400 mg/dia, divididos em duas doses, que podem ser tomados na Semana 7.
+
+Monoterapia com Lamictal® ou terapia concomitante em pacientes fazendo uso de outras drogas que não inibem nem induzem
+significativamente a glicuronidação da lamotrigina (ver Interações Medicamentosas) :
+A dose inicial de Lamictal® é de 25 mg uma vez por dia , durante duas semanas, seguida de 50 mg uma vez ao dia (ou em duas doses fracionadas)
+durante duas semanas. A dose deve ser aumentada para 100 mg/dia na Semana 5. A dose alvo usual para alcançar uma resposta ótima é de 200
+mg/dia uma vez ao dia ou em duas doses fracionadas. Entretanto, uma faixa de 100 -400 mg foi utilizada nos ensaios clínicos.
+Uma vez que a dose alvo diária de estabilização da manutenção foi alcançada, outras medicações psicotrópicas podem ser retira das, como
+demonstrado no esquema de doses abaixo (ve r Tabela 5):
+
+Tabela 5: Dose diária total de manutenção na estabilização em adultos (a partir de 18 anos) com transtorno bipolar após a retirada de
+drogas psicotrópicas ou antiepiléticas concomitantes.
+ Regime de tratamento Semana 1 Semana 2 Semana 3 em diante*
+ Dobrar a dose de estabilização,
+ - Após a retirada de inibidores da glicuronidação sem exceder 100 mg/semana, Manter esta dose (200 mg/dia) (fracionados em duas
+ da lamotrigina, por exemplo, valproato. i.e., 100 mg/dia da dose alvo de doses)
+ estabilização será aumentada na
+ Semana 1 para 200 mg/dia
+ - Após a retirada de indutores da glicuronidação 400 mg 300 mg 200 mg
+ da lamotrigina, dependendo da dose original. 300 mg 225 mg 150 mg
+ Esse regime de doses deve ser usado com: 200 mg 150 mg 100 mg
+ -fenitoína
+ -carbamazepina
+ -fenobarbital
+ -primidona
+ ou com outros indutores da glicuronidação da
+ lamotrigina (ver Interações Medicamentosas)
+ - Após a retirada de outras drogas que não Manter dose alvo alcançada no escalonamento de dose (200 mg/dia)
+ inibem nem induzem significativamente a (fracionados em duas doses)
+ glicuronidação da lamotrigina (ver Interações (faixa de 100-400 mg)
+ Medicamentosas)
+ Nota: Em pacientes utilizando DAEs onde a interação farmacocinética com a lamotrigina não é conhecida, o regime de tratamento recomendado
+ para Lamictal® é inicialmente manter a dose atual e ajustar o tratamento com base na resposta clínica.
+
+* a dose pode ser aumentada para 400 mg/dia, se necessário.
+
+- Após a retirada da terapia concomitante com inibidores da glicuronidação da lamotrigina, por exemplo, valproato:
+A dose de lamotrigina deve ser aumentada para dobrar a dose alvo original de estabilização e mantida neste ponto, uma vez que o valproato tenha
+sido retirado.
+
+- Após a retirada da terapia concomitante com indutores da glicuronidação da lamotrigina, dependendo da dose de manutenção original:
+Esse regime de doses deve ser usado com fenitoína, carbamazepina, fenobarbital, primidona ou com outras drogas indutoras da glicuronidação de
+Lamictal® (ver Interações Medicamentosas).
+A dose de Lamictal® deve ser gradualmente reduzida durante três semanas quando o indutor da glicuronidação for retirado.
+
+- Após a retirada da terapia concomitante com outras drogas que não inibem nem induzem significativamente a glicuronidação da lamotrigina (ver
+Interações Medicamentosas):
+A dose alvo alcançada no programa de escalonamento de dose deve ser mantida durante a retirada da outra medicação.
+
+- Ajuste da dose diária de lamotrigina em pacientes com transtorno bipolar após a adição de outros medicamentos:
+Não há experiência clínica no ajuste da dosagem diária de lamotrigina após a adição de outros medicamentos. Entretanto, baseado em estudos de
+interações medicamentosas, as seguintes recomendações devem ser feitas (ver Tabela 6, abaixo):
+
+Tabela 6: Ajuste da dose diária de lamotrigina em adultos (a partir de 18 anos) com transtorno bipolar após a adição de outros
+medicamentos:
+Modelo de Texto de Bula – Profissional de Saúde
+Lamictal® Comprimidos Dispersíveis
+
+ Regime de tratamento Dose atual de estabilização de Semana 1 Semana 2 Semana 3 em
+ lamotrigina (mg/dia) diante
+ - Adição de inibidores da glicuronidação da 200 mg 100 mg Manter esta dose (100 mg/dia)
+ lamotrigina, por exemplo, valproato, dependendo 300 mg 150 mg Manter esta dose (150 mg/dia)
+ da dose original de Lamictal® 400 mg 200 mg Manter esta dose (200 mg/dia)
+ - Adição de indutores da glicuronidação da 200 mg 200 mg 300 mg 400 mg
+ lamotrigina em pacientes que não estejam 150 mg 150 mg 225 mg 300 mg
+ fazendo uso de valproato e dependendo da dose 100 mg 100 mg 150 mg 200 mg
+ original de Lamictal®.
+ Esse regime de doses deve ser usado com:
+ -fenitoína
+ -carbamazepina
+ -fenobarbital
+ -primidona
+ ou com outros indutores da glicuronidação da
+ lamotrigina (ver Interações Medicamentosas)
+ -Adição de outras drogas que não inibem nem Manter a dose alvo alcançada no escalonamento de dose (200 mg/dia)
+ induzem significativamente a glicuronidação da (faixa 100-400 mg)
+ lamotrigina (ver Interações Medicamentosas)
+ Nota: Em pacientes utilizando DAEs onde a interação farmacocinética com a lamotrigina não é conhecida, deve ser utilizado o escalonamento de
+ doses recomendado para a associação lamotrigina/valproato.
+
+Descontinuação de Lamictal® em pacientes adultos com transtorno bipolar:
+Em ensaios clínicos, não houve aumento na incidência, gravidade ou tipo de eventos adversos após a retirada abrupta de Lamictal® em relação ao
+placebo. Portanto, os pacientes podem interromper o tratamento com Lamictal® sem redução prévia da dose.
+
+Transtorno bipolar: crianças e adolescentes (menores de 18 anos de idade):
+Lamictal® não é indicado no tratamento de transtorno bipolar para crianças e adolescentes menores de 18 anos (ver Advertências e Precauções).
+A segurança e a eficácia não foram estabelecidas para esta faixa etária no tratamento do transtorno bipolar. Portanto, não se pode fazer recomendação
+de dosagem.
+
+Recomendações gerais de posologia para populações de pacientes especiais
+
+Mulheres tomando contraceptivos hormonais
+Iniciando o tratamento com Lamictal® em pacientes que já estejam tomando contraceptivos hormonais:
+Embora haja evidências de que os contraceptivos hormonais aumentam o clearance da lamotrigina (ver Advertências e Precauções e Interações
+Medicamentosas), nenhum ajuste nas diretrizes recomendadas para o escalonamento de dose de Lamictal® deve ser necessário com base somente
+no uso de contraceptivos hormonais. O escalonamento das doses deve seguir as diretrizes recomendadas, baseando-se no fato de a lamotrigina ser
+adicionada a valproato (um inibidor da glicuronidação da lamotrigina) ou a um indutor da glicuronidação da lamotrigina ; ou de Lamictal® ser
+adicionado na ausência de valproato ou de um indutor da glicuronidação da lamotrigina. (ver Tabela 2, para pacientes com epilepsia, e Tabela 4,
+para pacientes com transtorno bipolar).
+
+Iniciando o uso de contraceptivos hormonais em pacientes que já estejam tomando doses de manutenção de Lamictal ® e não estejam
+tomando substâncias indutoras da glicuronidação da lamotrigina:
+Na maioria dos casos, será necessário aumentar a dose de manutenção de Lamictal® para valores duas vezes maiores (ver Advertências e Precauções
+e Interações Medicamentosas). É recomendado que, a partir do momento em que seja iniciado o uso de contraceptivos hormonais, a dose de
+lamotrigina seja aumentada para até 50 a 100 mg/dia a cada semana, de acordo com a resposta clínica individual. Os aumentos de dose não devem
+exceder esse valor, a menos que a resposta clínica indique a necessidade de acréscimos maio res.
+
+Interrompendo o uso de contraceptivos hormonais em pacientes que já estejam tomando doses de manutenção de Lamictal ® e não estejam
+tomando substâncias indutoras da glicuronidação da lamotrigina:
+Na maioria dos casos, será necessário reduzir a dose de manutenção de Lamictal® para valores até 50% menores (ver Advertências e Precauções e
+Interações Medicamentosas). É recomendado que seja feita a redução gradual da dose diária de lamotrigina de até 50 a 100 mg a cada semana (não
+excedendo 25% da dose diária total semanal) pelo período de três semanas, a menos que a resposta clínica indique o contrário.
+
+Administração com outros produtos contendo e strogênio
+Outras terapias contendo estrogênio, como terapias de reposição hormonal (TRHs), podem interferir com a lamotrigina. Portanto , pode ser necessário
+um monitoramento clínico rigoroso da eficácia da lamotrigina com ajuste de dose (consulte Advertências e Prec auções).
+Uso com atazanavir/ritonavir
+Modelo de Texto de Bula – Profissional de Saúde
+Lamictal® Comprimidos Dispersíveis
+
+Apesar do atazanavir/ritonavir terem mostrado reduzir a concentração plasmática de lamotrigina (ver Interações Medicamentosas), nenhum ajuste
+no escalonamento de dose de Lamictal® deve ser necessário com base somente no uso de atazanavir/ritonavir. O escalonamento das doses deve
+seguir as diretrizes recomendadas, baseando-se no fato de a lamotrigina ser adicionada ao valproato (um inibidor da glicuronidação da lamotrigina)
+ou a um indutor da glicuronidação da lamotrigina; ou de Lamictal® ser adicionado na ausência de valproato ou de um indutor da glicuronidação da
+lamotrigina.
+Em pacientes que já tomam doses de manutenção de Lamictal® e que não utilizam indutores de glicuronidação, pode ser necessário aumentar a
+dose de Lamictal® se atazanavir/ritonavir forem utilizados, ou diminuir a dose se atazanavir/ritonavir forem descontinuados.
+
+Idosos (acima de 65 anos de idade)
+Nenhum ajuste de dose é necessário. A farmacocinética da lamotrigina nesta faixa etária não difere significativamente da população de adultos não
+idosos.
+
+Insuficiência hepática
+As doses iniciais, de escalonamento e manutenção, devem ser geralmente reduzidas em aproximadamente 50%, em pacientes com insuficiência
+hepática moderada (Child-Pugh grau B), e em 75% na insuficiência hepática grave (Child-Pugh grau C). As doses de escalonamento e manutenção
+devem ser ajustadas de acordo com a resposta clínica (ver Características Farmacológicas - Propriedades Farmacocinéticas).
+
+Insuficiência renal
+Deve-se ter cautela ao administrar Lamictal® a pacientes com insuficiência renal. Em pacientes em estágio terminal de insuficiência renal, as doses
+iniciais de Lamictal® devem ser baseadas no regime de DAEs dos pacientes. Doses de manutenção reduzidas podem ser eficazes para pacientes
+com insuficiência renal significativa (ver Advertências e Precauções). Para informações farmacocinéticas mais detalhadas, ver Características
+Farmacológicas - Propriedades Farmacocinéticas).
+
+Este medicamento não deve ser partido .
+
+9. REAÇÕES ADVERSAS
+As reações adversas identificadas a partir de dados de estudos clínicos de epilepsia e transtorno bipolar foram divididas em duas seções específicas.
+Reações adversas adicionais identificadas a partir de dados de vigilância pós -comercialização para as duas indicações estão incluídas na seção Dados
+Pós-Comercialização. Todas as seções devem ser consultadas ao considerar o perfil de segurança global de Lamictal®.
+Utilizou-se a seguinte convenção para classificar as reações adversas:
+Muito comum: (>1/10), comum (>1/100 a ≤1/10), incomum (>1/1.000 a ≤1/100), rara (> 1/10.000 a ≤1.000) e muito rara (≤1/10.000).
+
+Epilepsia:
+As reações adversas a seguir foram identificadas durante estudos clínicos para epilepsia e devem ser consideradas junto às ob servadas nos estudos
+clínicos para disordem bipolar e nos dados de pós -comercialização para um perfil de segurança global de Lamictal®:
+
+Reação muito comum (>1/10): dor de cabeça, exantema cutâneo1
+
+Reações comuns (>1/100 e ≤1/10): agressividade, irritabilidade, fadiga, sonolência, insônia, tontura, tremor, náusea, vômito, diarreia
+
+Reações incomuns (>1/1.000 e ≤1/100): ataxia, diplopia, visão turva
+
+Reações raras (> 1/10.000 e ≤1.000): Eritema multiforme, síndrome de Stevens-Johnson1, nistagmo
+
+Reações muito raras (≤1/10.000):
+• necrólise epidérmica tóxica1
+• anormalidades hematológicas2 (incluindo neutropenia, leucopenia, anemia, trombocitopenia, pancitopenia, anemia aplástica, agranulocitose),
+ linfadenopatia associada ou não à síndrome de hipersensibilidade3
+• Síndrome de hipersensibilidade3 (incluindo sintomas como febre, linfadenopatia, edema facial, anormalidades sanguíneas e do fígado,
+ coagulação intravascular disseminada (CID), insuficiência múltipla de órgãos)
+• tiques, alucinações, confusão
+• testes de função hepática aumentados, disfunção hepática4, insuficiência hepática
+• reações semelhantes ao lúpus
+• nefrite tubulointersticial5
+
+1 Em estudos clínicos duplo-cegos em adultos, ocorreram exantemas cutâneos (rashs cutâneos) em até 10% dos pacientes que tomavam lamotrigina
+e em 5% dos pacientes que tomavam placebo. Os exantemas cutâneos levaram à suspensão do tratamento com lamotrigina em 2% dos pacientes. O
+exantema, normalmente de aparência máculo-papular, geralmente aparece dentro de oito semanas após o início do tratamento, ocorrendo regressão
+com a suspensão da droga (ver Advertências e Precauções).
+Modelo de Texto de Bula – Profissional de Saúde
+Lamictal® Comprimidos Dispersíveis
+
+Raramente, foram observados exantemas cutâneos graves, incluindo Síndrome de Stevens-Johnson e necrólise epidérmica tóxica (NET, Síndrome
+de Lyell). Embora na maioria dos casos ocorra pronta recuperação com a suspensão da droga, alguns pacientes experimentam déficit de cicatrização
+irreversível e, em alguns raros casos, evoluem para o óbito (ver Advertências e Precauções).
+O risco de exantema global parece estar associado com:
+• altas doses iniciais de lamotrigina;
+• doses que excedam o escalonamento de doses recomendado na terapia com lamotrigina (ver Posologia e Modo de Usar);
+• uso concomitante de valproato (ver Posologia e Modo de Usar).
+Exantema tem sido relatado como parte de Reações Medicamentosas com eosinofilia e sintomas sistêmicos (DRESS); também conhecida como
+síndrome de hipersensibilidade. Essa condição é associada a um padrão variável de sintomas sistêmicos3 (ver Advertências e Precauções)
+2 Anormalidades hematológicas e linfadenopatia pode ou não ser associadas a DRESS / síndrome de hipersensibilidade3 (ver Advertências e
+Precauções)
+
+3 Além disso, exantema também foi relatado como parte síndrome de hipersensibilidade. Essa condição é associada a um padrão variável de sintomas
+sistêmicos como febre, linfadenopatia, edema facial e anormalidades do sangue e fígado. A síndrome mostra um amplo espectro de gravidade clínica
+e pode, raramente, levar à síndrome de coagulação intravascular disseminada (CID) e insuficiência múltipla de órgãos. É importante notar que
+manifestações de hipersensibilidade prematuras (por exemplo, febre e linfadenopatia) podem estar presentes sem que o exantema seja evidente. Se
+tais sinais e sintomas estiverem presentes, o paciente deverá ser avaliado imediatamente, e a lamotrigina, descontinuada, caso uma etiologia
+alternativa não seja estabelecida.
+4 A disfunção hepática ocorre geralmente associada a reações de hipersensibilidade, mas foram relatados casos isolados sem sinais claros de
+hipersensibilidade.
+5 Pode ocorrer em associação com uveite.
+
+Transtorno Bipolar
+As reações adversas a seguir foram identificadas durante estudos clínicos para desordem bipolar e devem ser consideradas junto às observadas nos
+estudos clínicos para epilepsia e nos dados de pós-comercialização para um perfil de segurança global de Lamictal®:
+
+Reações muito comuns (>1/10): exantema cutâneo5, dor de cabeça.
+
+Reações comuns (>1/100 a ≤1/10): agitação, sonolência, vertigem, artralgia, dor, dor lombar.
+
+Reação rara (> 1/10.000 a ≤1.000): Eritema multiforme, síndrome de Stevens Johnson5.
+5 Quando todos os estudos de transtorno bipolar foram considerados (controlados e não-controlados), ocorreram exantemas em 12 % dos pacientes
+fazendo uso de Lamictal®, enquanto que, em estudos clínicos controlados em pacientes com transtorno bipolar, ocorreram exantemas em 8 % dos
+pacientes tomando Lamictal® e em 6 % dos pacientes tomando placebo.
+
+Dados pós-comercialização
+Esta seção inclui as reações adversas identificadas durante vigilância pós-comercialização para ambas as indicações. Estas devem ser consideradas
+junto às observadas nos estudos clínicos para disordem bipolar e epilepsia para um perfil de segurança global de Lamictal®.
+
+Reações muito comuns (>1/10): sonolência, ataxia, vertigem, dor de cabeça, diplopia, visão turva, náusea, vômito
+
+Reações comuns (>1/100 e ≤1/10): nistagmo, tremor, insônia, diarreia
+
+Reações incomuns (>1/1.000 e ≤1/100): fotossensibilidade
+
+Reações raras (> 1/10.000 e ≤1.000): alopecia, meningite asséptica (ver Advertências e Precauções), conjuntivite
+
+Reações muito raras (≤1/10.000): agitação, inconstância, distúrbios do movimento, piora da doença de Parkinson6, efeitos extrapiramidais 6,
+coreoatetose, aumento na frequência das convulsões, pesadelos , linfoistiocitose hemofagocítica (ver Advertências e Precauções), pseudolinfoma,
+hipogamaglobulinemia.
+
+6Foi relatado que a lamotrigina pode piorar os sintomas parkinsonianos em pacientes com doença de Parkinson pré-existente. Há relatos isolados de
+efeitos extrapiramidais e coreoatetose em pacientes sem esta predisposição.
+
+Em casos de eventos adversos, notifique pelo Sistema VigiMed, disponível no portal da Anvisa.
+
+10. SUPERDOSE
+Tem sido descrita a ingestão aguda de doses de até 10 a 20 vezes a dose terapêutica máxima incluindo casos fatais. A superdose tem resultado em
+sintomas que incluem nistagmo, ataxia, alteração do nível de consciência, epilepsia do tipo grande mal e coma. Alargamento do QRS (atraso da
+condução intraventricular) também tem sido observada em pacientes em overdose.
+Modelo de Texto de Bula – Profissional de Saúde
+Lamictal® Comprimidos Dispersíveis
+
+No caso de superdose, o paciente deve ser hospitalizado para receber tratamento sintomático e de suporte apropriados, conforme clinicamente
+indicado ou recomendado pelo Centro de Controle de Intoxicação, onde estiver disponível.
+
+Em caso de intoxicação, ligue para 0800 722 6001, se você precisar de mais orientações.
+
+III -
+
+===== BLOCO 2 =====
+APRESENTAÇÕES
+Lamictal® 25 mg está disponível em embalagens de 30 comprimidos em blister de PVC/folha de alumínio resistente à abertura por
+crianças .
+Lamictal® 50 mg e 100 mg estão disponíveis em embalagens de 30 comprimidos em blister de PVC/folha de alumínio/papel resistente à
+abertura por crianças.
+
+USO ORAL
+USO ADULTO E PEDIÁTRICO (ACIMA DE 12 ANOS)
+
+1. INDICAÇÕES
+Lamictal® é uma droga antiepilética indicada como adjuvante ou em monoterapia para o tratamento de crises convulsivas parciais e
+crises generalizadas, incluindo crises tônico-clônicas.
+Após o controle epiléptico ter sido alcançado durante terapia combinada, drogas antiepiléticas (DAEs) concomitantes geralmente podem
+ser retiradas, substituindo-as pela monoterapia com Lamictal®.
+
+8. POSOLOGIA E MODO DE USAR
+Lamictal® deve ser engolido inteiro, com o auxílio de um copo de água. Não tente administrar quantidades parciais dos comprimidos.
+Os comprimidos não devem ser mastigados nem partidos. Se uma dose calculada de lamotrigina (por exemplo: para uso em crianças e
+pacientes com insuficiência hepática) não puder ser dividida em doses menores, a dose a ser administrada será igual à menor d ose
+equivalente a um comprimido inteiro.
+Este medicamento não deve ser partido ou mastigado.
+
+Reintrodução da terapia
+Os médicos devem avaliar a necessidade de escalonamento de dose ao reintroduzir a terapia com Lamictal®, em pacientes que
+descontinuaram seu uso por alguma razão, uma vez que há sérios riscos de exantema associados a altas doses iniciais e ao exce der a dose
+recomendada para o escalonamento de Lamictal® (ver Advertências e Precauções). Quanto maior o intervalo entre o uso prévio e a
+reintrodução, maior o cuidado que se deve tomar no escalonamento da dose de manutenção. Quando este intervalo exceder cinco meias-
+vidas (ver Propriedades Farmacocinéticas, em Características Farmacológicas ), Lamictal® deve ser escalonado à dose de manutenção de
+acordo com um programa apropriado.
+Recomenda-se que Lamictal® não seja reiniciado em pacientes que tenham descontinuado seu uso por causa de exantema associado ao
+tratamento prévio com Lamictal®, a menos que o potencial benefício ultrapasse os possíveis riscos.
+
+Epilepsia
+Quando drogas antiepilépticas de uso concomitante são retiradas para monoterapia com Lamictal® ou quando outra droga antiepilética
+(DAE) é adicionada ao regime de tratamento contendo lamotrigina, deve -se considerar os efeitos sobre a farmacocinética da lamotrigina
+(ver Interações Medicamentosas).
+
+Dose em monoterapia
+Adultos e crianças acima de 12 anos de idade:
+A dose inicial de Lamictal® em monoterapia é de 25 mg, uma vez ao dia, por duas semanas, seguida por 50 mg, uma vez ao dia, por duas
+semanas. A partir daí, a dose deve ser aumentada em até um máximo de 50 -100 mg, a cada uma a duas semanas, até que uma resposta
+ótima seja alcançada. A dose usual de manutenção para se alcançar uma resposta ideal é de 100 -200 mg/dia, administrados uma vez ao
+dia ou em duas doses fracionadas. Alguns pacientes podem necessitar de até 500 mg/dia de Lamictal® para alcançar a resposta desejada.
+Por conta do risco de exantema ( rash), a dose inicial e o escalonamento de doses subseq uentes não deve ser excedido (ver Advertências e
+Precauções).
+
+Dose em terapia combinada
+Adultos e crianças acima de 12 anos :
+Modelo de Texto de Bula – Profissional de Saúde
+Lamictal® comprimidos
+
+Nos pacientes recebendo valproato, com ou sem outra droga antiepilética (DAE), a dose inicial de Lamictal® deve ser de 25 mg, em dias
+alternados, por duas semanas, seguida por 25 mg, uma vez ao dia, por duas semanas. Em seguida, a dose deve ser aumentada até um
+máximo de 25-50 mg, a cada uma ou duas semanas, até que uma resposta adequada seja alcançada. A dose usual de manutenção para se
+obter uma resposta ótima é de 100-200 mg/dia, administrados uma vez ao dia ou fracionados em duas tomadas.
+Nos pacientes tomando DAEs concomitantes ou outras medicações (ver Interações Medicamentosas) que induzam a glicuronidação da
+lamotrigina, com ou sem outras DAEs (exceto valproato), a dose inicial de Lamictal® é de 50 mg, uma vez ao dia, por duas semanas,
+seguidos por 100 mg/dia, administrados em duas doses fracionadas, por duas semanas.
+A partir daí, a dose deve ser aumentada até um máximo de 100 mg a cada uma ou duas semanas, até que uma resposta adequada seja
+alcançada. A dose usual de manutenção para se obter uma resposta ótima é de 200-400 mg /dia, administrados em duas doses
+fracionadas.
+Alguns pacientes podem necessitar de até 700 mg/dia de Lamictal® para alcançar a resposta desejada.
+Em pacientes usando outras drogas que não induzem ou inibem significativamente a glicuronidação da lamotrigina (ver Interações
+Medicamentosas), a dose inicial de Lamictal® é 25 mg uma vez ao dia por duas semanas, seguidos por 50 mg, uma vez ao dia, por duas
+semanas. A partir daí, a dose deve ser aumentada até um máximo de 50 a 100 mg a cada uma ou duas semanas, até que uma resposta
+adequada seja alcançada. A dose usual de manutenção para se obter uma resposta ótima é de 100-200 mg /dia, administrados uma vez ao
+dia ou em duas doses fracionadas.
+
+Tabela 2 – Regime de tratamento recomendado em epilepsia para adultos e maiores de 12 anos
+ Semanas 1 + 2 Semanas 3 + 4 Dose de manutenção
+ 100-200 mg
+ (uma vez ao dia ou em duas doses
+ 25 mg 50 mg fracionadas).
+ Monoterapia (uma vez ao dia) (uma vez ao dia) Para se atingir a dose de
+ manutenção, as doses podem ser
+ aumentadas até 50-100 mg a cada
+ 1-2 semanas.
+ 100-200mg
+ 12,5 mg (uma vez ao dia ou em duas doses
+ Terapia combinada com valproato (25 mg 25 mg fracionadas).
+ independentemente do uso de administrados (uma vez ao dia) Para se atingir a dose de
+ qualquer outra medicação concomitante em dias alternados) manutenção, as doses podem ser
+ aumentadas até 25-50 mg a cada
+ 1-2 semanas.
+ Este regime de doses deve ser 100-200 mg
+ usado com outras drogas que (uma vez ao dia ou em duas doses
+ não induzem ou inibem 25 mg 50 mg fracionadas).
+ significativamente a (uma vez ao dia) (uma vez ao dia) Para se atingir a dose de
+ glicuronidação da lamotrigina manutenção, as doses podem ser
+ (ver Interações aumentadas até 50-100 mg a cada
+ Terapia Medicamentosas) 1-2 semanas.
+ combinada Esse regime de doses deve ser
+ sem valproato usado com: 200-400 mg
+ fenitoína 100 mg (duas doses fracionadas)
+ carbamazepina 50 mg (duas doses Para se atingir a manutenção, as
+ fenobarbitona (uma vez ao dia) fracionadas) doses podem ser aumentadas até
+ primidona 100 mg a cada 1-2 semanas.
+ ou com outros indutores da
+ glicuronidação da lamotrigina
+ Nota: Em pacientes tomando DAEs cuja interação farmacocinética com a lamotrigina seja desconhecida, deve ser utilizado o regime
+ de tratamento recomendado para o uso da associação lamotrigina/valproato.
+Face ao risco de exantema (rash), a dose inicial e o escalonamento de doses subsequentes não devem ser excedidos (ver Advertências e
+Precauções).
+
+Recomendações posológicas gerais para populações de pacientes especiais
+
+Mulheres tomando contraceptivos hormonais
+− Iniciando o tratamento com Lamictal® em pacientes que já estejam tomando contraceptivos hormonais:
+Embora haja evidências de que os contraceptivos hormonais aumentam o clearance da lamotrigina (ver Advertências e Precauções e
+Interações Medicamentosas), nenhum ajuste no escalonamento de dose de Lamictal ® deve ser necessário com base somente no uso de
+contraceptivos hormonais. O escalonamento das doses deve seguir as diretrizes recomendadas, baseando -se no fato d e a lamotrigina ser
+adicionada a valproato (um inibidor da glicuronidação da lamotrigina) ou a um indutor da glicuronidação da lamotrigina, ou de
+Lamictal® ser adicionado na ausência de valproato ou de um indutor da glicuronidação da lamotrigina.
+
+Modelo de Texto de Bula – Profissional de Saúde
+Lamictal® comprimidos
+
+• Iniciando o uso de contraceptivos hormonais em pacientes que já estejam tomando doses de manutenção de Lamictal® e não estejam
+ tomando substâncias indutoras da glicuronidação da lamotrigina:
+Na maioria dos casos, será necessário aumentar a dose de manutenção de Lamictal® para valores duas vezes maiores (ver Advertências e
+Precauções e Interações Medicamentosas). É recomendado que, a partir do momento em que seja iniciado o uso de contraceptivos
+hormonais, a dose de lamotrigina seja aumentada para até 50 a 100 mg/dia a cada semana, de acordo com a resposta clínica individual.
+Os aumentos de dose não devem exceder esse valor, a menos que a resposta clínica indique a necessidade de acréscimos maiores.
+• Interrompendo o uso de contraceptivos hormonais em pacientes que já estejam tomando doses de manutenção de Lamictal® e não
+ estejam tomando substâncias indutoras da glicuronidação da lamotrigina:
+Na maioria dos casos, será necessário reduzir a dose de manutenção de Lamictal® para valores até 50% menores (ver Advertências e
+Precauções e Interações Medicamentosas). É recomendado que seja feita a redução gradual da dose diária de lamotrigina de até 50 a
+100 mg a cada semana (não excedendo 25% da dose diária total semanal) pelo período de três semanas, a menos que a resposta clínica
+indique o contrário.
+
+Administração com outros produtos contendo estrogênio
+Outras terapias contendo estrogênio, como terapias de reposição hormonal (TRHs), podem interferir com a lamotrigina. Portanto, pode
+ser necessário um monitoramento clínico rigoroso da eficácia da lamotrigina com ajuste de dose (consulte Advertências e
+Precauções).Administração com atazanavir/ritonavir
+Apesar de atazanavir/ritonavir ter mostrado reduzir a concentração plasmática de lamotrigina (ver Interações Medicamentosas), nenhum
+ajuste no escalonamento de dose de Lamictal® deve ser necessário com base somente no uso de atazanavir/ritonavir. O escalonamento
+das doses deve seguir as diretrizes recomendadas, baseando -se no fato de a lamotrigina ser adicionada ao valproato (um inibidor da
+glicuronidação da lamotrigina) ou a um indutor da glicuronidação da lamotrigina, ou de Lamictal® ser adicionado na ausência de
+valproato ou de um indutor da glicuronidação da lamotrigina.
+Em pacientes que já tomam doses de manutenção de Lamictal® e que não utilizam indutores de glicuronidação, pode ser necessário
+aumentar a dose de Lamictal® se atazanavir/ritonavir forem utilizados ou diminuir a dose se atazanavir/ritonavir forem descontinuados.
+
+Idosos (acima de 65 anos de idade)
+Nenhum ajuste de dose é necessário. A farmacocinética da lamotrigina nesta faixa etária não difere significativamente da população de
+adultos não idosos.
+
+Insuficiência hepática
+As doses iniciais de escalonamento e manutenção devem ser geralmente reduzidas em aproximadamente 50% em pacientes com
+insuficiência hepática moderada (Child-Pugh grau B) e em 75% na insuficiência hepática grave (Child-Pugh grau C). As doses de
+escalonamento e manutenção devem ser ajustadas de acordo com a resposta clínica.
+
+Insuficiência renal
+Deve-se ter cautela ao administrar lamotrigina a pacientes com insuficiência renal. Em pacientes em estágio terminal de insuficiência
+renal, as doses iniciais de lamotrigina devem ser baseadas no regime de DAEs dos pacientes. Doses de manutenção reduzidas podem ser
+eficazes para pacientes com insuficiência renal significativa (ver Advertências e Precauções). Para informações farmacocinéticas mais
+detalhadas, ver Propriedades Farmacocinéticas, em Características Farmacológicas.
+
+9. REAÇÕES ADVERSAS
+As reações adversas identificadas a partir de dados de estudos clínicos de epilepsia estão descritas abaixo. Reações adversas adicionais
+identificadas a partir de dados de vigilância pós-comercialização estão incluídas na seção Dados Pós-Comercialização. Todas as seções
+devem ser consultadas ao considerar o perfil de segurança global de Lamictal®. Utilizou-se a seguinte convenção para classificar as
+reações adversas: muito comuns (>1/10), comuns (>1/100 e ≤1/10), incomuns (>1/1.000 e ≤1/100), raras (> 1/10.000 e ≤1.000), muito
+raras (≤1/10.000).
+
+Epilepsia
+As reações adversas a seguir foram identificadas durante estudos clínicos para epilepsia e devem ser consideradas junto às observadas nos
+dados de pós-comercialização para um perfil de segurança global de Lamictal®:
+
+Reações muito comuns (>1/10): dor de cabeça, exantema cutâneo1
+
+Reações comuns (>1/100 e ≤1/10): agressividade, irritabilidade, fadiga, sonolência, insônia, tontura, tremor, náusea, vômito, diarreia
+
+Reações incomuns (>1/1.000 e ≤1/100): ataxia, diplopia, visão turva
+
+Reações raras (> 1/10.000 e ≤1.000): Eritema multiforme, síndrome de Stevens-Johnson1, nistagmo
+
+Reações muito raras (≤1/10.000):
+• necrólise epidérmica tóxica1
+• anormalidades hematológicas2 (incluindo neutropenia, leucopenia, anemia, trombocitopenia, pancitopenia, anemia aplástica,
+ agranulocitose), linfadenopatia associada ou não à síndrome de hipersensibilidade3
+Modelo de Texto de Bula – Profissional de Saúde
+Lamictal® comprimidos
+
+• Síndrome de hipersensibilidade3 (incluindo sintomas como febre, linfadenopatia, edema facial, anormalidades sanguíneas e do
+ fígado, coagulação intravascular disseminada (CID), insuficiência múltipla de órgãos)
+• tiques, alucinações, confusão
+• testes de função hepática aumentados, disfunção hepática4, insuficiência hepática
+• reações semelhantes ao lúpus
+• nefrite tubulointersticial5
+
+1 Em estudos clínicos duplo-cegos em adultos, ocorreram exantemas cutâneos (rashs cutâneos) em até 10% dos pacientes que tomavam
+lamotrigina e em 5% dos pacientes que tomavam placebo. Os exantemas cutâneos levaram à suspensão do tratamento com lamotrigina
+em 2% dos pacientes. O exantema, normalmente de aparência máculo -papular, geralmente aparece dentro de oito semanas após o início
+do tratamento, ocorrendo regressão com a suspensão da droga (ver Advertências e Precauções).
+Raramente, foram observados exantemas cutâneos graves, incluindo Síndrome de Stevens -Johnson e necrólise epidérmica tóxica (NET,
+Síndrome de Lyell). Embora na maioria dos casos ocorra pronta recuperação com a suspensão da droga, alguns pacientes experime ntam
+déficit de cicatrização irreversível e, em alguns raros casos, evoluem para o óbito (ver Advertências e Precauções).
+O risco de exantema global parece estar associado com:
+• altas doses iniciais de lamotrigina;
+• doses que excedam o escalonamento de doses recomendado na terapia com lamotrigina (ver Posologia e Modo de Usar);
+• uso concomitante de valproato (ver Posologia e Modo de Usar).
+Exantema tem sido relatado como parte de Reações Medicamentosas com eosin ofilia e sintomas sistêmicos (DRESS); também conhecida
+como síndrome de hipersensibilidade . Essa condição é associada a um padrão variável de sintomas sistêmicos 3 (ver Advertências e
+Precauções)
+2 Anormalidades hematológicas e linfadenopatia pode ou não ser associadas a DRESS / síndrome de hipersensibilidade 3 (ver
+Advertências e Precauções)
+
+3 Além disso, exantema também foi relatado como parte da síndrome de hipersensibilidade associado a um padrão variável de sinto mas
+sistêmicos como feb re, linfadenopatia, edema facial e anormalidades do sangue e fígado. A síndrome mostra um amplo espectro de
+gravidade clínica e pode, raramente, levar à síndrome de coagulação intravascular disseminada (CID) e insuficiência múltipla de órgãos.
+É importante notar que manifestações de hipersensibilidade prematuras (por exemplo, febre e linfadenopatia) podem estar prese ntes sem
+que o exantema seja evidente. Se tais sinais e sintomas estiverem presentes, o paciente deverá ser avaliado imediatamente, e a
+lamotrigina, descontinuada, caso uma etiologia alternativa não seja estabelecida.
+4 A disfunção hepática ocorre geralmente associada a reações de hipersensibilidade, mas foram relatados casos isolados sem sina is claros
+de hipersensibilidade.
+5 Pode ocorrer em associação com uveite.
+
+Dados pós -comercialização
+Esta seção inclui as reações adversas identificadas durante vigilância pós -comercialização. Estas devem ser consideradas junto às
+observadas nos estudos clínicos para um perfil de segurança global de Lamictal ®.
+
+Reações muito comuns (>1/10): sonolência, ataxia, vertigem, dor de cabeça, diplopia, visão turva, náusea, vômito
+
+Reações comuns (>1/100 e ≤1/10): nistagmo, tremor, insônia, diarreia
+
+Reações incomuns (>1/1.000 e ≤1/100): fotossensibilidade
+
+Reações raras (> 1/10.000 e ≤1.000): alopecia, meningite asséptica (ver Advertências e Precauções), conjuntivite
+
+Reações mui to raras ( ≤1/10.000): agitação, inconstância, distúrbios do movimento, piora da doença de Parkinson 5, efeitos
+extrapiramidais 5, coreoatetose, aumento na frequência das convulsões, pesadelos , linfoistiocitose hemofagocítica (ver Advertências e
+Precauções) , pseudolinfoma e hipogamaglobulinemia.
+
+5 Foi relatado que a lamotrigina pode piorar os sintomas parkinsonianos em pacientes com doença de Parkinson pré -existente. Há relatos
+isolados de efeitos extrapiramidais e coreoatetose em pacientes sem esta predisposição.
+
+Em casos de eventos adversos, notifique pelo Sistema VigiMed, disponível no portal da Anvisa .
+
+10. SUPERDOSE
+Sinais e sintomas: foi descrita a ingestão aguda de doses de até 10 a 20 vezes a dose terapêutica máxima, incluindo casos fatais. A
+superdose resultou em sintomas que incluem nistagmo, ataxia, alteração no nível de consciência, epilepsia do tipo grande mal e coma.
+Alargamento do QRS (atraso da condução intraventricular) também tem sido observado em pacientes em overdose.
+
+Tratamento: no caso de superdose, o paciente deve ser hospitalizado para receber tratamento sintomático e de suporte apropriados,
+conforme clinicamente indicado ou conforme recomendado pelo Centro de Controle de Intoxicação, onde estiver disponível.
+
+Em caso de intoxicação, ligue para 0800 722 6001, se você precisar de mais orientações.
+Modelo de Texto de Bula – Profissional de Saúde
+Lamictal® comprimidos
+
+II-

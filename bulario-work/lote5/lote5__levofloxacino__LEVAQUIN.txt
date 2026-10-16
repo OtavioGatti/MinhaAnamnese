@@ -1,0 +1,659 @@
+FONTE: lote5__levofloxacino__LEVAQUIN.pdf
+
+===== BLOCO 1 =====
+APRESENTAÇÕES
+Comprimidos revestidos com 500 mg de levofloxacino em embalagens com 7 e 10 comprimidos.
+
+USO ORAL
+
+USO ADULTO
+
+1. INDICAÇÕES
+
+Levaquin® é indicado no tratamento de infecções bacterianas causadas por agentes sensíveis ao levofloxacino, tais como:
+
+- Infecções do trato respiratório superior e inferior, incluindo sinusite, exacerbações agudas de bronquite crônica e pneumonia.
+
+- Infecções da pele e tecido subcutâneo, complicadas e não complicadas, tais como impetigo, abscessos, furunculose, celulite e erisipela.
+
+- Infecções do trato urinário, incluindo pielonefrite aguda.
+
+- Osteomielite.
+
+Como as fluoroquinolonas, incluindo Levaquin®, têm sido associadas a reações adversas graves, e pelo fato de que, para alguns pacientes,
+
+infecções do trato urinário não complicadas, exacerbações bacterianas agudas de bronquite crônica e sinusite aguda bacteriana podem ser
+autolimitadas, Levaquin® só deve ser indicado para tratamento destas infecções em pacientes para os quais não existam opções de tratamento
+
+alternativas.
+
+3. CARACTERÍSTICAS FARMACOLÓGICAS
+
+Propriedades farmacodinâmicas
+
+Mecanismo de ação
+
+O levofloxacino é um agente antibacteriano sintético de amplo espectro, para administração oral. Quimicamente, o levofloxacino é o isômero
+levógiro (isômero-L) do racemato ofloxacino, um agente antibacteriano quinolônico. A atividade antibacteriana do ofloxacino deve-se
+basicamente ao isômero-L. O mecanismo de ação do levofloxacino e de outros antimicrobianos fluoroquinolônicos envolve a inibição da
+topoisomerase bacteriana IV e da DNA-girase (ambas são topoisomerases tipo II), enzimas necessárias para a replicação, transcrição,
+restauração e recombinação do DNA. Nesse sentido, o isômero-L produz mais pontes de hidrogênio e, portanto, complexos mais estáveis, com
+a DNA-girase do que o isômero-D. Microbiologicamente, isso se traduz numa atividade antibacteriana 25 a 40 vezes maior para o isômero-L,
+o levofloxacino, do que para o isômero-D. Os derivados quinolônicos inibem rápida e especificamente a síntese do DNA bacteriano.
+
+Microbiologia
+
+O levofloxacino apresenta atividade in vitro contra um amplo espectro de bactérias aeróbicas e anaeróbicas gram-positivas e gram-negativas.
+A atividade bactericida do levofloxacino é rápida e frequentemente ocorre em níveis próximos da Concentração Inibitória Mínima (CIM).
+
+O levofloxacino exibe atividade in vitro contra a maioria das cepas dos microorganismos citados a seguir, entretanto a segurança e eficácia do
+levofloxacino em tratamentos de infecções clínicas devido a esses organismos não foram estabelecidas em estudos clínicos adequados e
+controlados:
+
+Aeróbios Gram-positivos
+ Enterococcus avium Streptococcus constellatus
+ Enterococcus faecium Streptococcus (Grupos C/F, D, G)
+ Staphylococcus aureus Streptococcus milleri
+ Staphylococcus epidermidis Streptococcus sanguis
+ Staphylococcus haemolyticus Streptococcus (Grupo Viridans)
+ Staphylococcus hominis
+
+Anaeróbios Gram-positivos
+ Clostridium perfringens
+ Clostridium spp.
+ Peptostreptococcus anaerobius
+ Peptostreptococcus magnus
+ Propionibacterium acnes
+
+Aeróbios Gram-negativos
+ Proteus vulgaris
+ Acinetobacter baumannii Providencia rettgeri
+ Acinetobacter lwoffii Providencia spp
+ Aeromonas hydrophila Providencia stuartii
+ Bordetella pertussis Pseudomonas fluorescens
+ Campylobacter jejuni Pseudomonas putida
+ Citrobacter (diversus) koseri Salmonella enteritidis
+ Pantoea (Enterobacter) aerogenes Salmonella spp
+ Enterobacter agglomerans Serratia liquefaciens
+ Enterobacter sakazakii
+ Flavobacterium meningosepticum Serratia spp
+
+ Legionella spp. Shigella spp
+ Morganella morganii Stenotrophomonas maltophilia
+ Neisseria gonorrhoeae Vibrio cholerae
+ N. gonorrhoeae (produtora de Vibrio parahaemolyticus
+ penicilinase) Yersinia enterocolitica
+
+Anaeróbios Gram-negativos
+ Bacteroides distasonis
+ Bacteroides fragilis
+ Bacteroides intermedius
+ Veillonella parvula
+
+Outros microorganismos
+ Mycobacterium fortuitum Mycoplasma fermentans
+ Mycobacterium kansasii Mycoplasma hominis
+ Mycobacterium marinum Ureaplasma urealyticum
+ Mycobacterium tuberculosis
+
+O levofloxacino é ativo contra as cepas produtoras de beta-lactamase dos microorganismos listados anteriormente.
+
+O levofloxacino não é ativo contra Treponema pallidum.
+
+Resistência ao levofloxacino devida a mutação espontânea in vitro é um fenômeno raro (média 10-9 a 10-10). Embora tenha sido observada
+
+resistência cruzada entre levofloxacino e outras fluorquinolonas, alguns microorganismos resistentes a outras quinolonas, com o o ofloxacino,
+podem ser sensíveis ao levofloxacino. Na falta de um teste de suscetibilidade ao levo floxacino, a suscetibilidade do microorganismo ao
+ofloxacino pode ser utilizada para predizer a suscetibilidade ao levofloxacino. Contudo, embora microorganismos sensíveis ao ofloxacino
+possam ser considerados sensíveis ao levofloxacino, o contrário nem se mpre é verdadeiro.
+
+O levofloxacino tem se mostrado ativo contra a maioria das cepas susceptíveis dos seguintes microorganismos, nos quais foi demonstrada
+eficácia clínica:
+
+Aeróbios Gram-positivos
+ Enterococcus(Streptococcus) faecalis Streptococcus agalactiae
+ Staphylococcus aureus (MSSA) Streptococcus pneumoniae (incluindo cepas de S. pneumoniae resistentes a
+ múltiplas drogas [MDRSP*])
+ Staphylococcus epidermidis (MSSE) Streptococcus pyogenes
+ Staphylococcus saprophyticus
+
+* Isolados de MDRSP (S. pneumoniae resistente a múltiplas drogas) são cepas resistentes a dois ou mais dos seguintes antibióticos: penicilina
+(MIC ≥ 2 mcg/mL), cefalosporinas de segunda geração , ex.: cefuroxima, macrolídeos, tetraciclinas e trimetopri ma / sulfametoxazol.
+
+Aeróbios Gram-negativos
+ Citrobacter freundii Klebsiella pneumoniae
+ Enterobacter cloacae Legionella pneumophila
+ Escherichia coli Moraxella (Branhamella) catarrhalis
+ Haemophilus influenzae Proteus mirabilis
+ Haemophilus parainfluenzae Pseudomonas aeruginosa
+ Serratia marcescens
+ Klebsiella oxytoca
+Outros microorganismos
+ Chlamydia pneumoniae
+ Mycoplasma pneumoniae
+
+Propriedades farmacocinéticas
+
+Absorção
+
+O levofloxacino é absorvido rapidamente e quase completamente após a administração oral.
+
+O pico de concentração plasmática (aproximadamente 5,1 mcg/mL) é obtido uma a duas horas após a ingestão. A biodisponibilidade absoluta
+do comprimido de 500 mg é de aproximadamente 99%.
+
+A administração de 500 mg de Levaquin® com alimentos prolonga ligeiramente o tempo para o pico de concentração em aproximadamente 1
+
+hora e diminui ligeiramente o pico de concentração em aproximadamente 14%.
+
+A ingestão de alimentos não altera de maneira clinicamente significativa a absorção do levofloxacino.
+
+As concentrações plasmáticas do levofloxacino após a administração intravenosa são semelhantes e comparáveis, em extensão de exposição
+(AUC), às obtidas após a administração oral, quando se utilizam doses equivalentes (mg/mg). Portanto, a via oral e a via intravenosa podem ser
+consideradas intercambiáveis (vide gráfico a seguir).
+
+A farmacocinética do levofloxacino é linear e previsível após a administração oral de doses únicas e doses múltiplas. As concentrações
+plasmáticas aumentam proporcionalmente com o aumento das doses únicas orais, na faixa de 250 a 1.000 mg, conforme a seguir:
+ Dose oral Pico da concentração plasmática Área sob a curva
+
+ (mg) (mcg/mL) (AUC0-∞, mcg.h/mL)
+ 250 2,8 27,2
+ 500 5,1 47,9
+ 750 7,1 82,2
+ 1000 8,9 111,0
+
+O estado de equilíbrio é atingido 48 horas após a administração de 500 mg em regimes de dose única e de duas doses diárias. O pico e o vale
+da concentração plasmática atingidos após doses múltiplas em regimes de dose única diária oral foram de aproximadamente 5,7 e 0,5 mcg/mL,
+respectivamente; após doses múltiplas com regime de administração oral de 2 vezes ao dia, esses valores foram de aproximadamente 7,8 e 3,0
+mcg/mL, respectivamente. Após doses intravenosas, o pico e o vale da concentração plasmática atingidos após múltiplas doses no regime de
+dose única diária foram de aproximadamente 6,4 e 0,6 mcg/mL, respectivamente. Após doses múltiplas com regime de administração
+intravenosa de 2 vezes ao dia, esses valores foram de aproximadamente 7,9 e 2,3 mcg/mL, respectivamente.
+
+Distribuição
+
+O volume médio de distribuição do levofloxacino varia, em geral, de 74 a 112 litros após doses únicas ou múltiplas de 500 mg ou 750 mg,
+indicando ampla distribuição pelos tecidos. A penetração do levofloxacino na pele é rápida e completa. A razão entre biopsia do tecido cutâneo
+e AUC plasmática é de aproximadamente 2. A razão entre o líquido da bolha e AUC plasmática é de aproximadamente 1. O levofloxacino
+também penetra rapidamente na porção esponjosa e cortical dos tecidos ósseos, tanto na cabeça do fêmur quanto na sua parte distal. Os picos
+de concentração tissular variam de 2,4 a 15 mcg/g e são obtidos cerca de 2 a 3 horas após a administração oral. A ligação do levofloxacino às
+proteínas séricas, in vitro, é de aproximadamente 24 a 38% em todas as espécies estudadas, conforme determinado pelo método de diálise de
+equilíbrio, numa faixa clinicamente relevante de 1 a 10 mcg/mL de concentrações de levofloxacino no soro/plasma; a ligação se faz
+principalmente com a albumina sérica em humanos. O levofloxacino liga-se às proteínas plasmáticas independentemente da concentração do
+fármaco.
+
+Metabolismo
+
+O levofloxacino é estereoquimicamente estável no plasma e na urina e não se converte metabolicamente no seu enantiômero, o D-ofloxacino.
+A biotransformação do levofloxacino é limitada em humanos, uma vez que o fármaco é excretado basicamente inalterado na urina. Após a
+administração oral, aproximadamente 87% da dose administrada é recuperada inalterada na urina, num período de 48 horas, enquanto que menos
+de 4% da dose é recuperada nas fezes, num período de 72 horas. Menos de 5% da dose administrada é recuperada na urina como metabólitos
+desmetil e N-óxido, os únicos metabólitos identificados no homem. Estes metabólitos não apresentam atividade farmacológica relevante.
+
+Eliminação
+
+A meia-vida de eliminação plasmática terminal média do levofloxacino varia aproximadamente de 6 a 8 horas, após a administração de doses
+únicas ou de doses múltiplas.
+
+A média aparente da depuração corpórea total e da depuração renal varia de aproximadamente 144 a 226 mL/min e 96 a 142 mL/min,
+respectivamente. A excessiva depuração renal da filtração glomerular sugere que a secreção tubular de levofloxacino ocorre em adição a sua
+filtração glomerular.
+
+A administração concomitantemente de cimetidina ou de probenecida resulta em aproximadamente 24% e 36% na redução da depuração renal
+de levofloxacino, indicando que a secreção de levofloxacino ocorre no túbulo renal proximal. Cristais de levofloxacino não foram encontrados
+em nenhuma amostra de urina recém-coletada em indivíduos recebendo levofloxacino.
+
+4. CONTRAINDICAÇÕES
+ ®
+Levaquin é contraindicado para pacientes que apresentam hipersensibilidade ao levofloxacino, a outros agentes antimicrobianos derivados
+das quinolonas ou a quaisquer outros componentes da fórmula do produto.
+
+5. ADVERTÊNCIAS E PRECAUÇÕES
+
+Reações anafiláticas e/ou de hipersensibilidade
+
+Reações anafiláticas e/ou de hipersensibilidade graves e ocasionalmente fatais foram relatadas em pacientes que receberam tratamento com
+quinolonas, incluindo o levofloxacino. Essas reações frequentemente ocorrem após a primeira dose. Algumas reações foram acompanhadas por
+colapso cardiovascular, hipotensão/choque, convulsões, perda da consciência, formigamento, angioedema, obstrução das vias aéreas, dispneia,
+urticária, coceira e outras reações cutâneas sérias. O tratamento com o levofloxacino deve ser interrompido imediatamente diante do
+aparecimento da primeira erupção cutânea ou qualquer outro sinal de hipersensibilidade.
+
+Eventos decorrentes de mecanismos imunológicos desconhecidos
+
+Eventos graves e algumas vezes fatais devidos a um mecanismo imunológico desconhecido foram relatados em pacientes tratados com
+quinolonas, incluindo, raramente, o levofloxacino. Esses eventos podem ser graves e geralmente ocorrem após a administração de doses
+múltiplas. As manifestações clínicas, isoladas ou associadas, podem incluir: febre, erupção cutânea ou reações dermatológicas graves; vasculite;
+artralgia; mialgia; doença do soro; pneumonite alérgica; nefrite intersticial; falência ou insuficiência renal aguda; hepatite; icterícia; falência ou
+necrose hepática aguda; anemia, incluindo hemolítica e aplástica; trombocitopenia, leucopenia; agranulocitose; pancitopenia e/ou outras
+anormalidades hematológicas. O medicamento deve ser descontinuado imediatamente diante do aparecimento da primeira erupção cutânea ou
+qualquer outro sinal de hipersensibilidade e medidas de suporte devem ser adotadas.
+
+Hepatotoxicidade severa
+
+Foram recebidos relatos pós-comercialização muito raros de hepatotoxicidade severa (incluindo hepatite aguda e eventos fatais) de pacientes
+tratados com o levofloxacino. Não foram detectadas evidências de hepatotoxicidade grave associada ao medicamento em estudos clínicos com
+mais de 7.000 pacientes. A hepatotoxicidade severa geralmente ocorreu em 14 dias após o início da terapia e a maioria dos casos ocorreu em
+até 6 dias. A maioria dos casos de hepatotoxicidade severa não foi associada com hipersensibilidade. A maioria dos relatos de hepatotoxicidade
+fatal ocorreu em pacientes com 65 anos de idade ou mais e a maioria não estava associada com hipersensibilidade. O levofloxacino deve ser
+descontinuado imediatamente se o paciente desenvolver sinais e sintomas de hepatite.
+
+Miastenia grave
+
+O levofloxacino pode exacerbar a fraqueza muscular em pessoas com miastenia grave. Eventos adversos graves de pós-comercialização,
+incluindo morte e necessidade de suporte ventilatório, têm sido associados com o uso de fluorquinolonas em pessoas com miastenia grave.
+Evitar o uso de levofloxacino em pacientes com histórico conhecido de miastenia grave.
+
+Efeitos no sistema nervoso central
+
+Foram relatados convulsões, psicoses tóxicas e aumento da pressão intracraniana (incluindo pseudotumor cerebral) em pacientes em tratamento
+com derivados quinolônicos, incluindo o levofloxacino. As quinolonas também podem provocar uma estimulação do sistema nervoso central,
+podendo desencadear tremores, inquietação, nervosismo, ansiedade, tontura, confusão, delírio, desorientação, alucinações, paranoia, depressão,
+pesadelos, insônia e, raramente, pensamentos ou atos suicidas, incluindo suicídio consumado, especialmente em pacientes com histórico clínico
+de depressão ou com fator de risco para a depressão subjacente. Essas reações podem ocorrer após a primeira dose. Se essas reações ocorrerem
+em pacientes em tratamento com o levofloxacino, o fármaco deve ser descontinuado e medidas adequadas devem ser adotadas. Como todas as
+quinolonas, o levofloxacino deve ser usado com cautela em pacientes com distúrbios do SNC, suspeitos ou confirmados, que possam predispor
+a convulsões ou diminuir o limiar de convulsão (por exemplo, arteriosclerose cerebral severa, epilepsia) ou na presença de outros fatores de
+risco que possam predispor a convulsões ou diminuição do limiar de convulsão (por exemplo, tratamento com outros fármacos, distúrbio renal).
+Neuropatia
+
+Foram relatados em pacientes recebendo quinolonas, inclusive levofloxacino, casos muito raros de polineuropatia axonal de nervos sensoriais
+ou sensomotores, afetando axônios curtos e/ou longos resultando em parestesias, hipoestesias, disestesias e fraqueza. Os sintomas podem ocorrer
+logo após o início do tratamento e podem ser irreversíveis. O levofloxacino deve ser descontinuado imediatamente em pacientes que apresentem
+qualquer um dos sintomas acima.
+
+Colite pseudomembranosa
+
+Colite pseudomembranosa foi relatada com quase todos os agentes antibacterianos, incluindo o levofloxacino e pode variar, em gravidade, de
+intensidade leve até com potencial risco de vida. Assim, é importante considerar esse diagnóstico em pacientes que apresentarem diarreia após
+a administração de qualquer agente antibacteriano.
+
+O tratamento com agentes antibacterianos altera a flora normal do cólon e pode permitir o crescimento excessivo de Clostridium. Estudos
+indicam que a toxina produzida pelo Clostridium difficile é uma das causas primárias de colite associada a antibióticos.
+
+Prolongamento do intervalo QT
+
+Algumas quinolonas, incluindo o levofloxacino, têm sido associadas ao prolongamento do intervalo QT no eletrocardiograma e a casos
+infrequentes de arritmia. Durante o período pós-comercialização, casos muito raros de “Torsades de Pointes” foram relatados em pacientes
+tomando levofloxacino. Em geral, estes relatos envolveram pacientes que já apresentavam condições médicas associadas ou faziam uso
+concomitante de outros medicamentos que poderiam ter contribuído para o evento. Em um estudo com 48 voluntários sadios recebendo doses
+únicas de 500, 1000 e 1500 mg de levofloxacino e placebo foi observado um aumento no QTc médio do período basal ao pós-tratamento. Estas
+alterações foram pequenas e não estatisticamente significantes em relação ao placebo para a dose de 500 mg, com significância estatística
+variável para a dose de 1000 mg, dependendo do método de correção utilizado e estatisticamente significante para a dose de 1500 mg. A
+relevância clínica destas alterações é desconhecida. O levofloxacino deve ser evitado em pacientes com histórico de prolongamento do intervalo
+QT, pacientes com hipocalemia não tratada e pacientes recebendo agentes antiarrítmicos classe IA (quinidina, procainamida) ou classe III
+(amiodarona, sotalol).
+
+Este medicamento pode potencializar o prolongamento do intervalo QT, o que aumenta o risco de ataque de arritmias ventriculares
+graves do tipo “torsades de pointes”, que é potencialmente fatal (morte súbita).
+
+Rupturas dos tendões
+
+Rupturas dos tendões do ombro, da mão, do tendão de Aquiles ou outros tendões, exigindo reparação cirúrgica ou resultando em incapacidade
+prolongada foram relatadas em pacientes que receberam quinolonas, incluindo o levofloxacino. Relatos ocorridos no período pós-
+comercialização indicam que o risco pode ser maior em pacientes que estejam recebendo concomitantemente corticosteroides, especialmente
+os idosos. O tratamento com levofloxacino deve ser descontinuado se o paciente apresentar dor, inflamação ou ruptura de tendão. Os pacientes
+devem repousar e evitar exercícios até que o diagnóstico de tendinite ou ruptura de tendão tenha sido seguramente excluído. A ruptura de tendão
+pode ocorrer durante ou após a terapia com quinolonas, incluindo o levofloxacino.
+
+Insuficiência renal
+
+Deve-se ter cuidado ao administrar o levofloxacino em pacientes com insuficiência renal, pois o fármaco é excretado principalmente pelo rim.
+Em pacientes com insuficiência renal é necessário o ajuste das doses para evitar o acúmulo de levofloxacino devido à diminuição da depuração.
+
+Fototoxicidade
+Reações de fototoxicidade moderadas a severas foram observadas em pacientes expostos à luz solar direta ou à luz ultravioleta (UV), enquanto
+
+recebiam tratamento com quinolonas. A excessiva exposição à luz solar ou à luz ultravioleta deve ser evitada. Entretanto, em testes clínicos, a
+fototoxicidade foi observada em menos de 0,1% dos pacientes. Se ocorrer fototoxicidade, o tratamento deve ser descontinuado.
+
+Monitoramento da glicose sanguínea
+
+Como no caso das outras quinolonas, foram relatados distúrbios na glicose sanguínea em pacientes tratados com levofloxacino, geralmente em
+pacientes diabéticos em tratamento concomitante com um agente hipoglicemiante oral ou com insulina. Casos graves de hipoglicemia que
+resultaram em coma ou morte foram observados em pacientes diabéticos. Recomenda-se cuidadoso monitoramento da glicose sanguínea,
+especialmente em pacientes diabéticos. Se ocorrer uma reação hipoglicemiante, o tratamento com levofloxacino deve ser interrompido.
+
+Cristalúria
+
+Embora não tenha sido relatada cristalúria nos estudos clínicos realizados com o levofloxacino, adequada hidratação deve ser mantida para
+prevenir a formação de urina altamente concentrada.
+
+Distúrbios Oftalmológicos
+
+Existem dados disponíveis sobre a ocorrência de descolamento de retina e uveíte associada ao uso sistêmico de fluoroquinolonas, incluindo o
+levofloxacino. Entretanto, uma relação causal entre o uso destes medicamentos e a ocorrência de distúrbios oculares não pode ser afirmada e
+tão pouco excluída. Portanto, recomenda-se que os pacientes procurem imediatamente um oftalmologista, caso apresentem alterações na visão
+ou algum outro sintoma ocular.
+
+Aneurisma e dissecção da aorta
+
+Estudos epidemiológicos relatam um aumento do risco de aneurisma e dissecção da aorta após a ingestão de fluoroquinolonas, particularmente
+na população idosa. Portanto, as fluoroquinolonas devem ser usadas apenas após avaliação cuidadosa do benefício-risco e após consideração
+de outras opções terapêuticas em pacientes com história familiar positiva de aneurisma, ou em pacientes diagnosticados com aneurisma aórtico
+preexistente e /ou dissecção aórtica, ou na presença de outros fatores de risco ou condições predisponentes para aneurisma e dissecção da aorta
+(por exemplo, síndrome de Marfan, síndrome de Ehlers-Danlos vascular, arterite de Takayasu, arterite de células gigantes, doença de Behcet,
+hipertensão, aterosclerose conhecida).
+
+Em caso de dor súbita abdominal, no peito ou nas costas, os pacientes devem ser aconselhados a consultar imediatamente um médico.
+
+Gravidez e lactação
+
+Gravidez (Categoria C)
+
+Não foram realizados estudos controlados com Levaquin® em gestantes. Portanto, Levaquin® deverá ser utilizado durante a gravidez somente
+
+se o benefício esperado superar o risco potencial para o feto.
+
+Este medicamento não deve ser utilizado por mulheres grávidas sem orientação médica ou do cirurgião-dentista.
+
+Lactação
+
+Devido ao potencial de ocorrência de reações adversas graves nos lactentes de mães em tratamento com o levofloxacino, deve-se decidir entre
+interromper a amamentação ou descontinuar o tratamento com o fármaco, levando-se em consideração a importância do medicamento para a
+mãe.
+
+Uso criterioso no aleitamento ou na doação de leite humano: O uso deste medicamento no período da lactação depende da avaliação e
+acompanhamento do seu médico ou cirurgião-dentista.
+Uso pediátrico
+
+A segurança e a eficácia da utilização do levofloxacino em crianças e adolescentes não foram estabelecidas. No entanto, já foi demonstrado que
+as quinolonas produzem erosão nas articulações que suportam peso, bem como outros sinais de artropatia, em animais jovens de várias espécies.
+Portanto, a utilização do levofloxacino nessas faixas etárias não é recomendada.
+
+Efeitos sobre a capacidade de dirigir veículos e operar máquinas
+
+Levaquin® pode provocar efeitos neurológicos adversos como vertigem e tontura, portanto o paciente deve ser aconselhado a não dirigir
+
+veículos, operar máquinas ou dedicar-se a outras atividades que exijam coordenação e alerta mental, até que se saiba qual a reação individual
+do paciente frente ao fármaco.
+
+Oriente seu paciente a não dirigir veículos ou operar máquinas, até que se saiba qual a reação individual do paciente frente ao fármaco,
+pois sua habilidade e capacidade de reação podem estar prejudicadas.
+
+Resistência bacteriana
+
+Para prevenir o desenvolvimento de bactérias resistentes, este medicamento deverá ser usado somente para o tratamento ou prevenção
+de infecções causadas ou fortemente suspeitas de serem causadas por microrganismos sensíveis a este medicamento.
+
+Corantes
+
+Atenção: Contém os corantes dióxido de titânio, óxido de ferro amarelo e óxido de ferro vermelho.
+
+6. INTERAÇÕES MEDICAMENTOSAS E OUTRAS FORMAS DE INTERAÇÃO
+
+Embora a quelação entre o levofloxacino e cátions divalentes seja menos marcante que a observada com outros derivados quinolônicos, a
+administração concomitante de comprimidos de Levaquin® e antiácidos contendo cálcio, magnésio ou alumínio, bem como sucralfato, cátions
+
+metálicos como ferro, preparações multivitamínicas contendo zinco ou produtos que contenham qualquer uma dessas substâncias, podem
+interferir na absorção gastrintestinal do levofloxacino, resultando em níveis na urina e no soro consideravelmente inferiores ao desejável. Esses
+agentes devem ser tomados pelo menos duas horas antes ou duas horas depois da administração do levofloxacino.
+
+Como no caso de outras quinolonas, a administração concomitante de levofloxacino e teofilina pode prolongar a meia-vida desta última, elevar
+os níveis de teofilina no soro e aumentar o risco de reações adversas relacionadas à teofilina. Portanto, os níveis de teofilina devem ser
+cuidadosamente monitorados e os necessários ajustes em suas doses devem ser realizados, se necessário, quando o levofloxacino for
+coadministrado. Reações adversas, incluindo convulsões, podem ocorrer com ou sem a elevação do nível de teofilina no soro. Nenhum efeito
+significativo do levofloxacino sobre as concentrações plasmáticas, AUC e outros parâmetros de biodisponibilidade da teofilina foram detectados
+em um estudo clínico envolvendo 14 voluntários sadios. De modo semelhante, nenhum efeito aparente da teofilina sobre biodisponibilidade e
+absorção do levofloxacino foi observado.
+
+A administração concomitante do levofloxacino com a digoxina não exige modificação das doses. Nenhum efeito significativo de Levaquin®
+
+sobre o pico de concentração plasmática, AUC,e outros parâmetros de biodisponibilidade da digoxina foi detectado em um estudo clínico com
+pacientes saudáveis. A cinética de absorção e disposição do levofloxacino foram similares na presença ou na ausência de digoxina. Portanto,
+não é necessário ajuste de dose de Levaquin® ou de digoxina quando administrados concomitantemente.
+
+A administração concomitante do levofloxacino com ciclosporina não requer modificações de doses.
+
+Certos derivados quinolônicos, incluindo o levofloxacino, podem aumentar os efeitos do anticoagulante varfarina ou de seus derivados. Quando
+estas substâncias forem administradas concomitantemente, o tempo de protrombina ou outros testes de coagulação aceitáveis devem ser
+monitorados cuidadosamente, principalmente em pacientes idosos.
+
+Nenhum efeito significativo de probenecida ou cimetidina sobre a Cmáx de levofloxacino foi observado em um estudo clínico envolvendo
+pacientes saudáveis. A AUC e a t1/2 de levofloxacino foram maiores enquanto que o CLR foi menor durante o tratamento concomitante de
+ ® ®
+Levaquin com probenecida ou com cimetidina comparado a Levaquin sozinho. Entretanto estas alterações não justificam ajustes de dose
+para Levaquin® quando probenecida ou cimetidina são coadministrados. .
+
+A administração concomitante de fármacos anti-inflamatórios não-esteroidais com derivados quinolônicos, incluindo o levofloxacino, pode
+aumentar o risco de estimulação do SNC e de convulsões.
+
+Alterações dos níveis de glicose sanguínea, incluindo hiperglicemia e hipoglicemia, foram relatadas em pacientes tratados concomitantemente
+com quinolonas e agentes antidiabéticos. Portanto, recomenda-se monitoramento cuidadoso da glicose sanguínea quando esses agentes forem
+coadministrados.
+
+A absorção e a biodisponibilidade do levofloxacino em indivíduos infectados com o HIV, com ou sem tratamento concomitante com zidovudina,
+foram semelhantes. Portanto, não parece necessário realizar ajustes de dose do levofloxacino, quando estiver sendo administrado
+concomitantemente com a zidovudina. Os efeitos do levofloxacino sobre a farmacocinética da zidovudina não foram avaliados.
+
+Algumas quinolonas, incluindo levofloxacino, podem produzir resultado falso positivo para opióides em exames de urina realizados em kits de
+imunoensaio comercialmente disponíveis. Dependendo da situação, pode ser necessário confirmar a presença de opióides com métodos mais
+específicos.
+
+8. POSOLOGIA E MODO DE USAR
+
+A dose usual para pacientes adultos, com função renal normal, é de 500 mg, via oral, a cada 24 horas, dependendo da condição a ser tratada.
+
+A administração de 500 mg de levofloxacino com alimentos aumenta o tempo necessário para alcançar o pico de concentração plasmática em
+cerca de 1 hora e diminui o pico de concentração plasmática em aproximadamente 14% para cada comprimido administrado. Os comprimidos
+podem ser ingeridos independentemente das refeições.
+
+A administração de antiácidos contendo cálcio, magnésio ou alumínio, bem como de sucralfato, cátions divalentes ou trivalentes como ferro,
+preparações polivitamínicas contendo zinco ou de produtos que contenham essas substâncias, deve ser feita duas horas antes ou duas horas após
+a administração de Levaquin®.
+
+Este medicamento não deve ser partido, aberto ou mastigado.
+
+Pacientes idosos
+ As doses recomendadas são válidas também para pacientes idosos. Não há necessidade de ajuste das doses, desde que esses pacientes não
+
+ tenham doença nos rins.
+
+ Uso em crianças: Levaquin® não deve ser usado em crianças e adolescentes.
+
+9. REAÇÕES ADVERSAS
+
+ As reações adversas estão apresentadas a seguir. As reações adversas são eventos adversos que foram considerados razoavelmente associados
+ ao uso de levofloxacino, com base na avaliação detalhada das informações de eventos adversos disponíveis. Nos casos individuais, a relação de
+ causalidade com o levofloxacino não pode ser estabelecida de forma confiável. Além disso, tendo em vista que os ensaios clínicos são
+ conduzidos em condições muito diferentes, as taxas de reações adversas observadas nos ensaios clínicos de um medicamento não podem ser
+ diretamente comparadas com as taxas observadas nos ensaios clínicos de outro medicamento, e podem não refletir as taxas observadas na prática
+ clínica.
+
+ Dados de estudos clínicos
+
+ Os dados descritos a seguir refletem a exposição a Levaquin® em 7.537 pacientes em 29 estudos clínicos Fase 3 agrupados. A população
+
+ estudada tinha idade média de 49,6 anos (74,2% da população era < 65 anos), 50,1% eram homens, 71,0% brancos, 18,8% negros. Os pacientes
+ foram tratados com Levaquin® para uma ampla variedade de doenças infecciosas. A duração do tratamento foi normalmente de 3-14 dias, o
+ número médio de dias em tratamento foi de 9,6 dias e o número médio de doses foi de 10,2. Os pacientes receberam doses de Levaquin® de
+
+ 750 mg uma vez ao dia, 250 mg uma vez ao dia ou 500 mg uma ou duas vezes ao dia. A incidência global, o tipo e a distribuição de reações
+ adversas foram semelhantes nos pacientes que receberam doses de Levaquin® de 750 mg uma vez ao dia, 250 mg uma vez por dia e 500 mg
+
+ uma ou duas vezes ao dia.
+
+ As reações adversas ocorridas em ≥ 1% dos pacientes tratados com o Levaquin® e reações adversas incomuns ocorridas em 0,1 a < 1% dos
+ pacientes tratados com o Levaquin® são apresentadas nas Tabelas 1 e 2 a seguir.
+
+Tabela 1. Reações adversas comuns ( 1%) relatadas em estudos clínicos com Levaquin®
+
+ Classe de Sistema/Órgão Reações Adversas %
+ (N=7.537)
+ Infecções monilíase 1
+ Distúrbios Psiquiátricos insôniaa 4
+
+ Distúrbios do Sistema Nervoso cefaleia 6
+ tontura 3
+ Distúrbios Respiratórios, Torácicos e dispneia 1
+ do Mediastino
+ Distúrbios Gastrintestinais náusea 7
+ diarreia 5
+ constipação 3
+ dor abdominal 2
+ vômitos 2
+ dispepsia 2
+ Distúrbios da Pele e do Tecido erupção cutânea 2
+ Subcutâneo prurido
+ Distúrbios do Sistema Reprodutor e vaginite 1b
+ das Mamas
+ Distúrbios Gerais e Condições no edema 1
+ Local da Administração reação no local da administração 1
+ Classe de Sistema/Órgão Reações Adversas %
+ (N=7.537)
+ dor torácica 1
+
+ a N = 7.274
+
+ b N=3.758 (mulheres)
+
+Tabela 2. Reações adversas incomuns (0,1 a 1%) relatadas em estudos clínicos com Levaquin®
+
+ Classe de Sistema/Órgão Reação Adversa
+ Infecções monilíase genital
+ Distúrbios do Sangue e do Sistema anemia
+ Linfático trombocitopenia
+ granulocitopenia
+ Distúrbios do Sistema Imunológico reação alérgica
+ hiperglicemia
+ Distúrbios Metabólicos e Nutricionais hipoglicemia
+ hipercalemia
+ ansiedade
+ agitação
+ confusão
+ depressão
+ Distúrbios Psiquiátricos alucinações
+ pesadelosa
+ distúrbios do sonoa
+
+ anorexia
+ sonhos anormaisa
+
+ tremores
+ convulsões
+ parestesia
+ vertigem
+ hipertonia
+ Distúrbios do Sistema Nervoso hipercinesias
+ marcha anormal
+ sonolência
+ síncope
+
+ Distúrbios Respiratórios, Torácicos e do epistaxe
+ Mediastino
+ Distúrbios Cardíacos parada cardíaca
+ palpitação
+ taquicardia ventricular
+ arritmia ventricular
+ Distúrbios Vasculares Flebite
+ gastrite
+ estomatite
+ pancreatite
+ esofagite
+ Distúrbios Gastrintestinais gastroenterite
+ glossite
+ colite pseudomembranosa/ por C. difficile
+
+ função hepática anormal
+ Distúrbios Hepatobiliares enzimas hepáticas aumentadas
+ fosfatase alcalina aumentada
+ Distúrbios da Pele e do Tecido urticária
+ Subcutâneo
+ tendinite
+ artralgia
+ Distúrbios Musculoesqueléticos e do mialgia
+ Tecido Conjuntivo dor esquelética
+
+ Distúrbios Renais e Urinários função renal anormal
+ insuficiência renal aguda
+
+ a N = 7.274
+
+Dados pediátricos
+
+Em um grupo de 1.534 pacientes pediátricos (6 meses a 16 anos de idade) tratados com o levofloxacino para infecções respiratórias, crianças
+de 6 meses a 5 anos receberam 10 mg/kg de levofloxacino duas vezes ao dia por aproximadamente 10 dias e as crianças com mais de 5 anos
+receberam 10 mg/kg a um máximo de 500 mg de levofloxacino uma vez ao dia por aproximadamente 10 dias. O perfil de reações adversas foi
+semelhante ao relatado em pacientes adultos, exceto por vômito e diarreia, que foram relatados mais frequentemente em crianças do que em
+pacientes adultos. Entretanto, a frequência de vômitos e diarreia foi semelhante entre as crianças tratadas com o levofloxacino e as tratadas com
+o antibiótico comparador não-fluoroquinolona.
+
+Um subgrupo de 1.340 dessas crianças tratadas com o levofloxacino por aproximadamente 10 dias foi incluído em um estudo prospectivo de
+vigilância a longo prazo para avaliar a incidência de distúrbios musculoesqueléticos definidos pelo protocolo (artralgia, artrite, tendinopatia,
+anormalidade na marcha) durante 60 dias e 1 ano após a primeira dose do levofloxacino.
+
+Durante o período de 60 dias após a primeira dose, a incidência de distúrbios musculoesqueléticos definidos pelo protocolo foi maior nas
+crianças tratadas com o levofloxacino do que nas tratadas com o antibiótico comparador não-fluoroquinolona (2,1% vs. 0,9%, respectivamente
+[p=0,038]). Em 22/28 (78%) dessas crianças, distúrbios relatados foram caracterizados como artralgia. Uma observação semelhante foi feita
+durante o período de 1 ano, com incidência maior de distúrbios musculoesqueléticos definidos pelo protocolo nas crianças tratadas com o
+levofloxacino do que nas tratadas com o antibiótico comparador não-fluoroquinolona (3,4% vs. 1,8%, respectivamente [p=0,025]). A maioria
+desses distúrbios que ocorreu nas crianças tratadas com o levofloxacino foi leve e se resolveu em 7 dias. Os distúrbios foram moderados em 8
+crianças e leves em 35 (76%).
+
+Dados de pós-comercialização
+
+Reações adversas provenientes de relatos espontâneos durante a experiência pós-comercialização mundial com Levaquin® segundo o critério
+
+de inclusão, estão apresentadas a seguir. As reações adversas são classificadas por frequência usando a seguinte convenção:
+
+Muito comum ≥ 1/10
+Comum ≥ 1/100 e <1/10
+
+Incomum ≥ 1 / 1.000 e <1/100
+
+Raro ≥ 1 / 10.000 e <1 / 1.000
+
+Muito raro <1 / 10.000, incluindo relatórios isolados.
+
+Desconhecido Não pode ser estimado a partir dos dados disponíveis
+
+As frequências a seguir refletem as taxas relatadas de reações adversas a partir de relatos espontâneos e não representam estimativas mais
+precisas da incidência que pode ser obtida em estudos clínicos e epidemiológicos.
+
+Reação rara (ocorrendo em mais de 0,01% e menos de 0,1% dos pacientes que tomam este medicamento):
+
+- Distúrbios cutâneos e subcutâneos do tecido: Reação medicamentosa com eosinofilia e sintomas sistémicos (DRESS)
+
+Reação muito rara (ocorre em menos de 0,01% dos pacientes que utilizam este medicamento):
+
+- Distúrbios do tecido cutâneo e subcutâneo: erupções bolhosas incluindo síndrome de Stevens-Johnson, necrólise epidérmica
+tóxica; erupções provocadas por medicamentos; pustulose exantemática generalizada aguda (PEGA); eritema multiforme; vasculite
+leucocitoclástica, reação de fotossensibilidade e hiperpigmentação da pele.
+
+- Distúrbios do tecido musculoesquelético e conectivo: rabdomiólise, ruptura do tendão, dano muscular incluindo ruptura.
+
+- Distúrbios vasculares: vasodilatação
+
+- Distúrbios do sistema nervoso: anosmia, ageusia, parosmia, disgesia, neuropatia periférica (pode ser irreversível), casos isolados
+de encefalopatia, eletroencefalograma anormal, exacerbação de miastenia grave, disfonia, pseudotumor cerebral.
+
+- Distúrbios ópticos: uveíte, distúrbios visuais incluindo diplopia, redução da acuidade visual, visão turva e escotoma.
+
+- Distúrbio da audição e labirinto: hipoacusia, tinido.
+
+- Distúrbios psiquiátricos: psicose, paranoia, relatos isolados de ideação suicida, tentativa de suicídio e suicídio consumado.
+
+- Distúrbios hepáticos e biliares: insuficiência hepática (incluindo casos fatais), hepatite e icterícia.
+
+- Distúrbios cardíacos: taquicardia, relatos isolados de “Torsades de Pointes” e prolongamento do intervalo QT no eletrocardiograma.
+
+- Distúrbios respiratórios, torácicos e do mediastino: relatos isolados de pneumonite alérgica.
+
+- Distúrbios do sistema sanguíneo e linfático: pancitopenia, anemia aplásica, leucopenia, anemia hemolítica e eosinofilia.
+
+- Distúrbios renais e urinários nefrite intersticial.
+
+- Distúrbios do sistema imune: reação de hipersensibilidade, às vezes fatal, incluindo reação anafilactóide e anafilática; choque
+anafilático; edema angioneurótico e doença do soro.
+
+- Distúrbios gerais: falência múltipla de órgãos, febre.
+
+- Laboratoriais: aumento do tempo de protrombina, prolongamento da taxa internacional normalizada e aumento das enzimas
+musculares.
+
+Em casos de eventos adversos, notifique pelo Sistema VigiMed, disponível no Portal da Anvisa.
+
+10. SUPERDOSE
+ ®
+Na eventualidade de ingestão de dose excessiva de Levaquin e se a ingestão for ainda recente, pode ser administrado carvão ativado para
+auxiliar na remoção do fármaco ainda não absorvido. O paciente deverá ser mantido em observação e deverão ser tomadas as medidas de
+hidratação adequadas. O levofloxacino não é removido de maneira eficiente através de hemodiálise ou diálise peritoneal.
+
+Em caso de intoxicação ligue para 0800 722 6001, se você precisar de mais orientações.

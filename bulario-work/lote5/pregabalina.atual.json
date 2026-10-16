@@ -1,0 +1,17 @@
+{
+  "Risco Gestacional": "C",
+  "Slug": "pregabalina",
+  "Nomes Comerciais / Produtos ANVISA": "Lyrica; Prebictal; Dorene; pregabalina.",
+  "Interações": "Opioides, como morfina, fentanila, oxicodona, codeína e tramadol, aumentam risco de sedação e depressão respiratória. Benzodiazepínicos, zolpidem, álcool, barbitúricos, antipsicóticos, prometazina, hidroxizina, mirtazapina e outros depressores do SNC aumentam sonolência, quedas e prejuízo psicomotor. Pioglitazona e rosiglitazona podem aumentar edema e ganho de peso. Medicamentos que reduzem função renal podem exigir reavaliação de dose.",
+  "Apresentações / Nomes Comerciais": "Cápsulas 25 mg, 50 mg, 75 mg, 100 mg, 150 mg e 300 mg; solução oral em algumas apresentações. Exemplos: Lyrica; Prebictal; Dorene; Pregabalina EMS; Pregabalina Eurofarma.",
+  "Posologia Pediátrica": "Epilepsia pediátrica como terapia adjuvante: dose deve ser calculada por peso, idade, função renal e resposta clínica.\nUso para dor neuropática ou ansiedade em pediatria deve ser especializado.\nNão informado na fonte consultada para uma dose pediátrica única aplicável a todas as indicações.",
+  "Texto Resumo": "Pregabalina é usada em dor neuropática, fibromialgia, epilepsia como adjuvante e algumas indicações de ansiedade. Deve ser ajustada à função renal e usada com cautela por sedação, tontura, quedas, edema, ganho de peso, risco de uso abusivo e depressão respiratória com opioides.",
+  "Classe / Categoria": "Anticonvulsivante; modulador de canais de cálcio alfa-2-delta; analgésico adjuvante para dor neuropática; ansiolítico em algumas indicações.",
+  "Posologia Adulto": "Dor neuropática, fibromialgia ou epilepsia como adjuvante: iniciar geralmente com 75 mg por via oral a cada 12 horas ou 50 mg a cada 8 horas, conforme indicação e tolerabilidade.\nDose usual: 150 mg a 600 mg/dia, divididos em 2 a 3 tomadas.\nTranstorno de ansiedade generalizada, quando indicado: dose individualizada na mesma faixa diária.\nAjustar obrigatoriamente em insuficiência renal.\nEvitar suspensão abrupta.",
+  "Contraindicações": "Hipersensibilidade à pregabalina ou componentes da fórmula; uso com cautela em depressão respiratória, insuficiência renal sem ajuste, idosos frágeis, insuficiência cardíaca e associação com opioides ou outros depressores do SNC.",
+  "Tags Busca": "pregabalina; dor neuropática; fibromialgia; epilepsia; ansiedade; lyrica; sedação; tontura",
+  "Advertências": "Pode causar tontura, sonolência, visão turva, diplopia, edema periférico, ganho de peso, boca seca, constipação, euforia, confusão, dificuldade de concentração, ideação suicida, dependência/uso abusivo e depressão respiratória quando associada a opioides ou sedativos. Usar cautela em idosos, insuficiência renal, insuficiência cardíaca, risco de quedas, depressão e histórico de abuso de substâncias.",
+  "Nomes Comerciais OpenAI": "Lyrica; Prebictal; Dorene; Pregabalina EMS; Pregabalina Eurofarma; Pregabalina Medley.",
+  "Rede SUS (RENAME)": false,
+  "Princípio Ativo": "Pregabalina"
+}

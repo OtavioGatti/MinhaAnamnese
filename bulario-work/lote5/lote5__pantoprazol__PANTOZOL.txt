@@ -1,0 +1,663 @@
+FONTE: lote5__pantoprazol__PANTOZOL.pdf
+
+===== BLOCO 1 =====
+APRESENTAÇÕES
+Comprimidos revestidos de liberação retardada de 20 mg ou 40 mg. Embalagens com 7, 14, 28, 42 ou 56 unidades.
+
+USO ORAL
+
+USO ADULTO E PEDIÁTRICO ACIMA DE 5 ANOS
+
+1. INDICAÇÕES
+PANTOZOL 20 mg é indicado para:
+• Tratamento das lesões gastrintestinais leves.
+• Alívio dos sintomas gastrintestinais decorrentes da secreção ácida gástrica.
+• Gastrites ou gastroduodenites agudas ou crônicas e dispepsias não-ulcerosas.
+• Tratamento da doença por refluxo gastroesofágico sem esofagite, das esofagites leves e de manutenção de pacientes com
+esofagite de refluxo cicatrizada para prevenção de recidivas em adultos e pacientes pediátricos acima de 5 anos.
+• Profilaxia das lesões agudas da mucosa gastroduodenal induzidas por medicamentos como os anti-inflamatórios não-
+hormonais.
+PANTOZOL 40 mg é indicado para:
+• Tratamento de úlcera péptica duodenal e úlcera péptica gástrica.
+• Tratamento de esofagite de refluxo moderada ou grave em adultos e pacientes pediátricos acima de 5 anos. Para as
+esofagites leves, recomenda-se PANTOZOL 20 mg comprimidos revestidos de liberação retardada.
+• Erradicação do Helicobacter pylori com a finalidade de evitar a recorrência de úlcera gástrica ou duodenal causada por
+este microorganismo. Neste caso, deve ser associado a dois antibióticos adequados.
+• Tratamento da síndrome de Zollinger-Ellison e de outras doenças que produzem ácido em excesso no estômago.
+
+3. CARACTERÍSTICAS FARMACOLÓGICAS
+Propriedades farmacodinâmicas: PANTOZOL é um inibidor da bomba de prótons, isto é, promove inibição específica e
+dose-dependente da enzima gástrica H+K+ATPase, responsável pela secreção de ácido clorídrico pelas células parietais do
+estômago. Sua substância ativa é um benzimidazol substituído que, após absorção, se acumula no compartimento ácido das
+células parietais. É então convertido em sua forma ativa, uma sulfonamida cíclica, que se liga à H+K+ATPase (bomba
+protônica), causando uma potente e prolongada supressão da secreção ácida basal e estimulada. Tal como os outros
+inibidores da bomba de prótons e inibidores do receptor H2, pantoprazol causa uma redução da acidez no estômago e,
+consequentemente, um aumento da gastrina proporcional à redução da acidez. O aumento de gastrina é reversível.
+Pantoprazol não atua nos receptores de histamina, de acetilcolina ou de gastrina, mas na etapa final da secreção ácida,
+independentemente do seu estímulo. A organo-especificidade e a seletividade de pantoprazol decorrem do fato de somente
+exercer plenamente sua ação em meio ácido (pH<3), mantendo-se praticamente inativo em valores de pH mais elevados.
+Consequentemente, seus completos efeitos farmacológicos e terapêuticos somente podem ser alcançados nas células
+parietais secretoras de ácido (Fitton A., Wiseman L., Drugs 1996). Por meio de um mecanismo de "feedback", esse efeito
+diminui à medida que a secreção ácida é inibida. O efeito é o mesmo se a substância ativa for administrada por via
+intravenosa ou por via oral. O início de sua ação se dá logo após a administração da primeira dose e o efeito máximo é
+cumulativo, ocorrendo dentro de três dias. A produção ácida total é restabelecida três dias após a interrupção da medicação.
+
+Propriedades farmacocinéticas: Depois da dissolução do comprimido revestido de liberação retardada no intestino,
+pantoprazol é absorvido rápida e completamente e a concentração plasmática máxima é alcançada mesmo após uma
+administração única de 40 mg. A farmacocinética não varia após administração única ou repetida. Na faixa de dosagem de 10 a
+80 mg, as cinéticas plasmáticas de pantoprazol são virtualmente lineares após ambas as administrações, oral e intravenosa. A
+ligação de pantoprazol às proteínas plasmáticas é de aproximadamente 98%. A substância é quase exclusivamente
+metabolizada no fígado. A excreção renal representa a principal via de eliminação (cerca de 80%) dos metabólitos de
+pantoprazol; o restante é excretado com as fezes. Nenhum dos metabólitos é considerado biologicamente ativo. O principal
+metabólito presente tanto na urina quanto no plasma é o desmetilpantoprazol, conjugado com sulfato. A meia-vida do
+principal metabólito (cerca de 1,5 h) não é muito maior do que a do próprio pantoprazol.
+
+Biodisponibilidade: Aproximadamente 2,0 - 2,5 h após a administração são alcançadas concentrações plasmáticas máximas
+em torno de 2 – 3 mg/mL, sendo que estes valores permanecem constantes após administrações múltiplas. O volume de
+distribuição situa-se em torno de 0,15 l/kg e a taxa de depuração é de aproximadamente 0,1 l/h.kg. A meia-vida de
+eliminação é de 1 h. Houve poucos casos de indivíduos com taxa de eliminação diminuída. Em função da ativação específica
+de pantoprazol nas células parietais, a sua meia-vida de eliminação não está relacionada com ação mais prolongada (inibição
+da secreção ácida). A biodisponibilidade absoluta é de 77%.
+A ingestão concomitante de alimentos não teve nenhuma influência sobre a ASC (área sob a curva) do pantoprazol, ou sobre a
+Cmax (concentração plasmática máxima), e, portanto, sobre a biodisponibilidade do pantoprazol. Somente a variabilidade do
+tempo (lag-time) será aumentada pela ingestão concomitante de alimentos (Huber, 1996).
+
+Características em pacientes especiais: Quando o pantoprazol é administrado a pacientes com função renal reduzida (por
+exemplo, pacientes em diálise), não se requer nenhum ajuste de dose. Assim como em indivíduos sadios, a meia-vida do
+pantoprazol é curta. Somente pequenas quantidades de pantoprazol são dialisáveis. Embora a meia-vida do principal
+metabólito aumente moderadamente para 2-3 h, a excreção é ainda rápida e, portanto, não ocorre acúmulo. Ainda que em
+pacientes com cirrose hepática (classes A e B de acordo com a classificação de Child) os valores de meia-vida aumentem
+para 7 a 9 h e os valores da ASC aumentem por um fator de 5-7, a concentração plasmática máxima aumenta apenas
+levemente, por um fator de 1,5, comparando-se à de indivíduos sãos. Em voluntários idosos, a ASC e a Cmáx (concentração
+máxima) aumentam discretamente em comparação com as de indivíduos jovens, porém estes aumentos não são clinicamente
+significativos.
+
+Dados de segurança não clínicos
+Carcinogênese, mutagênese, diminuição da fertilidade:
+Os dados dos estudos não clínicos não revelaram riscos especiais para o ser humano, segundo estudos convencionais de
+farmacologia de segurança, toxicidade de dose repetida e genotoxicidade.
+Nos estudos de carcinogenicidade de dois anos em ratos , observaram-se neoplasias neuroendócrinas. Além disso, foram
+encontrados papilomas de células escamosas no estômago ( forestomach ) do rato. O mecanismo que leva à formação de
+carcinoides gástricos por benzimidaz óis substituídos foi cuidadosamente investigado e pode -se concluir que se trata de uma
+reação secundária aos níveis séricos de gastrina massivamente elevados que ocorrem em ratos durante o tratamento crônico
+com dose elevada. Nos estudos com roedores, de dois anos, foi observado um aumento do número de tumores hepáticos
+em ratos e camundongos fêmeas e foi interpretado como sendo devido à alta taxa de metabolização do panto prazol no
+fígado.
+
+Toxicologia e/ou Farmacologia Animal:
+Foi observado um ligeiro aumento das alterações neoplásicas da tireoide no grupo de ratos que receberam a dose mais
+elevada (200 mg/kg). A ocorrência destas neoplasias está associada com as alterações induzidas pelo pantoprazol na
+metabolização da tiroxina no fígado de rato. Como a dose terapêutica para o homem é baixa, não são esperados efeitos
+adversos para a tireoide.
+Em estudos de reprodução em animais, sinais de toxicidade fetal foram observados em doses acima de 3 mg/kg. As
+investigações não revelaram qualquer evidência de diminuição da fertilidade ou efeitos teratogênicos.
+A passagem para a placenta foi investigada em ratos e observou -se que ocorre um aumento dessa com o avanço da gestação.
+Como resultado, a concentração de pantoprazol no feto é aumentada pouco antes do nascimento.
+
+4. CONTRAINDICAÇÕES
+PANTOZOL não deve ser usado em casos de hipersensibilidade conhecida aos componentes da fórmula, ou a
+benzimidazóis substituídos.
+Em terapia combinada para erradicação do Helicobacter pylori, PANTOZOL 40 mg não deve ser administrado a pacientes
+com disfunção hepática moderada a grave ou com disfunção renal, uma vez que não existe experiência clínica sobre a
+eficácia e a segurança da terapia combinada (por exemplo, amoxicilina, claritromicina) nesses pacientes.
+Este medicamento é contraindicado para menores de 5 anos de idade.
+
+5. ADVERTÊNCIAS E PRECAUÇÕES
+PANTOZOL 40 mg não é indicado para distúrbios gastrintestinais leves, como por exemplo dispepsia não-ulcerosa. Nestes
+casos recomenda-se PANTOZOL 20 mg.
+Quando prescrito como parte de uma terapia combinada, as instruções de uso de cada um dos fármacos devem ser seguidas.
+
+Malignidade gástrica:
+A resposta sintomática ao pantoprazol não exclui a presença de malignidade gástrica.
+
+Na presença de qualquer sintoma de alarme (como significativa perda de peso não intencional, vômitos recorrentes,
+disfagia, hematêmese, anemia ou melena) e quando houver suspeita ou presença de úlcera gástrica, deve-se excluir a
+possibilidade de malignidade, já que o tratamento com pantoprazol pode aliviar os sintomas e retardar o diagnóstico. Caso os
+sintomas persistam apesar de tratamento adequado, devem-se considerar investigações adicionais.
+
+Insuficiência hepática:
+Em pacientes com disfunção hepática grave (insuficiência hepática), as enzimas hepáticas devem ser regularmente
+monitoradas durante o tratamento com PANTOZOL, particularmente no uso a longo prazo; se houver aumento nos valores
+enzimáticos, o tratamento deve ser descontinuado.
+
+Influência na absorção de vitamina B12:
+O tratamento diário com qualquer medicação ácido-supressora por períodos prolongados (vários anos) pode levar a uma má
+absorção da cianocobalamina (vitamina B12), causada por hipo ou acloridria. A deficiência de cianocobalamina deve ser
+considerada em pacientes com síndrome de Zollinger-Ellison e outras condições patológicas hipersecretórias que requeiram
+tratamentos de longo prazo, pacientes com reservas corporais reduzidas ou fatores de risco para a absorção reduzida de
+vitamina B12 (tais como idosos) em terapias de longo prazo ou se outros sintomas clínicos relevantes forem observados.
+
+Reações Cutâneas Graves:
+Reações cutâneas graves, incluindo eritema multiforme, síndrome de Stevens-Johnson (SSJ), necrólise epidérmica tóxica
+(NET), reação medicamentosa com eosinofilia e sintomas sistêmicos (DRESS) e pustulose exantemática generalizada
+aguda (PEGA), foram relatados em associação com o uso de IBPs (veja o item 9. REAÇÕES ADVERSAS). Descontinuar
+pantoprazol aos primeiros sinais ou sintomas de reações adversas cutâneas graves ou outros sinais de hipersensibilidade e
+considerar avaliação adicional.
+
+Lúpus Eritematoso Cutâneo Subagudo (LECSA):
+Os inibidores da bomba de prótons estão associados em casos raros com a ocorrência de lúpus eritematoso cutâneo
+subagudo (LECSA). Se ocorrerem lesões, especialmente nas áreas da pele expostas ao sol, e se acompanhadas de artralgia, o
+paciente deve procurar ajuda médica prontamente e o profissional de saúde deve considerar interromper o uso do produto.
+
+Clostridium difficile:
+O tratamento com IBP pode estar associado a um risco aumentado de infecção por Clostridium difficile.
+Como todos os inibidores de bomba de próton, o pantoprazol pode aumentar a contagem de bactérias normalmente
+presentes no trato gastrointestinal superior. O tratamento com PANTOZOL pode levar a um leve aumento do risco de
+infecções gastrointestinais causadas por bactérias como Salmonella, Campylobacter e C. difficile.
+
+Hipomagnesemia:
+Hipomagnesemia tem sido raramente relatada em pacientes tratados com IBP por pelo menos três meses (na maioria dos
+casos, após um ano de terapia). Consequências graves de hipomagnesemia incluem tétano, arritmia e convulsão. A
+hipomagnesemia pode levar à hipocalcemia e à hipocalemia (ver o item 9. REAÇÕES ADVERSAS).
+
+Inibidores da Protease do HIV:
+A coadministração de pantoprazol não é recomendada com inibidores da protease do HIV para os quais a absorção é
+dependente do pH do ácido intragástrico, tais como atazanavir e nelfinavir, devido a uma redução significativa nas suas
+biodisponibilidades.
+
+Metotrexato:
+O uso concomitante com alta dose de metotrexato pode elevar e prolongar os níveis séricos de metotrexato e / ou seus
+metabólitos, levando possivelmente à toxicidade do metotrexato.
+
+Pemetrexede:
+A administração concomitante de inibidores da bomba de prótons (IBPs) com pemetrexede pode aumentar a toxicidade
+relacionada ao pemetrexede. Deve-se ter cautela ao administrar concomitantemente esses medicamentos.
+
+Fratura óssea:
+O tratamento com os inibidores de bomba de próton pode estar associado a um risco aumentado de fraturas relacionadas à
+osteoporose do quadril, punho ou coluna vertebral. O risco de fratura foi maior nos pacientes que receberam altas doses,
+definidas como doses múltiplas diárias, e terapia a longo prazo com IBP (um ano ou mais).
+Pacientes que não responderem ao tratamento após quatro semanas deverão ser investigados.
+
+Gravidez e lactação:
+PANTOZOL não deve ser administrado em gestantes e lactantes, a menos que absolutamente necessário, uma vez que a
+experiência clínica sobre seu uso em mulheres nestas condições é limitada. Estudos em animais demonstraram toxicidade
+reprodutiva.
+O risco potencial em humanos é desconhecido. Estudos em animais mostraram a excreção do pantoprazol no leite materno.
+A excreção de pantoprazol no leite materno tem sido reportada. Portanto, a decisão sobre continuar / descontinuar a
+amamentação ou continuar / interromper o tratamento com pantoprazol deve ser tomada tendo em consideração o benefício
+da amamentação para a criança e o benefício do tratamento com pantoprazol às mulheres. PANTOZOL só deve ser utilizado
+quando o benefício para a mãe for considerado maior que o risco potencial ao feto ou à criança.
+
+Categoria B de risco na gravidez - Este medicamento não deve ser utilizado por mulheres grávidas sem orientação
+médica ou do cirurgião-dentista.
+Uso criterioso no aleitamento ou na doação de leite humano. O uso deste medicamento no período da lactação
+depende da avaliação e acompanhamento do seu médico ou cirurgião-dentista.
+
+Pacientes idosos:
+Não é necessária nenhuma adaptação posológica em indivíduos idosos. PANTOZOL pode ser utilizado por pessoas com
+mais de 65 anos, porém a dose de 40 mg ao dia só deve ser ultrapassada nos pacientes com infecção por Helicobacter pylori,
+durante uma semana de tratamento.
+
+Pacientes pediátricos:
+PANTOZOL está indicado para o tratamento de curta duração (até 8 semanas) da esofagite erosiva (EE) associada com
+DRGE em pacientes com mais de 5 anos de idade.
+
+Pacientes com insuficiência hepática:
+Em pacientes com insuficiência hepática grave, a dose deve ser reduzida para 40 mg de pantoprazol em dias alternados.
+Nestes pacientes, os níveis de enzimas hepáticas devem ser regularmente monitorados durante a terapia, particularmente no
+uso a longo prazo; caso ocorra uma elevação desses níveis, o tratamento com pantoprazol deve ser descontinuado.
+
+Pacientes com insuficiência renal:
+A dose diária de 40 mg de pantoprazol não deve ser excedida.
+
+Dirigir e operar máquinas:
+Não se espera que PANTOZOL afete adversamente a habilidade de dirigir e operar máquinas. Reações adversas como
+tontura e distúrbios visuais podem ocorrer. Se afetado, o paciente não deve dirigir nem operar máquinas.
+
+Atenção: Contém os corantes óxido de ferro amarelo e dióxido de titânio.
+
+6. INTERAÇÕES MEDICAMENTOSAS
+Outros estudos de interações:
+Pantoprazol é extensamente metabolizado no fígado via enzimas do citocromo P450. A principal via metabólica é a
+desmetilação pelo CYP2C19 e outras vias metabólicas incluem a oxidação pelo CYP3A4.
+Os estudos de interação com fármacos que também são metabolizados com estas vias, como a carbamazepina, diazepam,
+glibenclamida, nifedipino, fenitoína e um contraceptivo oral contendo levonorgestrel e etinilestradiol, não se observaram
+interações clínicas significativas.
+Uma interação de pantoprazol com outros medicamentos ou compostos, os quais são metabolizados pelo mesmo sistema
+de enzima, não pode ser excluída.
+Os resultados de uma série de estudos de interação demonstraram que o pantoprazol não afeta o metabolismo de substâncias
+ativas metabolizados por CYP1A2 (tais como cafeína, teofilina), CYP2C9 (tais como piroxicam, diclofenaco, naproxeno),
+CYP2D6 (tais como metoprolol), CYP2E1 (como o etanol), e não interfere com a glicoproteína -P relacionada à absorção
+de digoxina.
+Não houve interações com administração concomitante de antiácidos.
+Estudos de interação também foram realizados administrando pantoprazol concomitantemente com os respectivos
+antibióticos (claritromicina, metronidazol, amoxicilina) e nenhuma interação clinicamente relevante foi encontrada.
+
+Efeitos de pantoprazol em outros medicamentos
+Medicamentos com farmacocinética de absorção pH-dependente:
+Pantoprazol pode alterar a absorção de medicamentos , cuja biodisponibilidade dependa do pH do suco gástrico, como o
+cetoconazol. Isto se aplica também a medicamentos ingeridos pouco antes de PANTOZOL.
+
+Inibidores da Protease do HIV:
+A coadministração de pantoprazol não é recomendada com inibidores da protease do HIV para os quais a absorção é
+dependente do pH do ácido intragástrico, tais como atazanavir e nelfinavir, devido à redução significativa nas suas
+biodisponibilidades.
+
+Metotrexato:
+O uso concomitante com altas doses de metotrexato pode elevar e prolongar os níveis séricos de metotrexato e/ou de seus
+metabólitos, causando eventual toxicidade.
+
+Clopidogrel:
+A administração concomitante do pantoprazol e clopidogrel em indivíduos saudáveis não teve efeito clinicamente
+importante na exposição ao metabólito ativo do clopidogrel ou inibição plaquetária induzida pelo clopidogrel. Não é
+necessário qualquer ajuste da dose de clopidogrel quando administrado com uma dose aprovada de pantoprazol.
+
+Anticoagulantes cumarínicos (femprocumona ou varfarina):
+A coadministração de pantoprazol com varfarina ou femprocumona não afeta a farmacocinética da varfarina,
+femprocumona ou o INR (tempo de protrombina do paciente/média normal do tempo de protrombina). Entretanto, foram
+reportados aumentos de INR e no tempo de protrombina em pacientes recebendo IBPs e varfarina ou femprocumona
+concomitantemente. Um aumento de INR e no tempo de protrombina pode levar a um sangramento anormal, e até mesmo à
+morte. Pacientes tratados com pantoprazol e varfarina ou femprocumona podem precisar ser monitorados para aumento do
+INR e tempo de protrombina.
+
+Ingestão com alimentos:
+A ingestão concomitante de alimentos não teve influência relevante sobre a ASC e sobre a Cmáx de pantoprazol sódico e,
+portanto, sobre a biodisponibilidade. Somente a variabilidade do tempo (lag-time) será aumentada pela ingestão
+concomitante de alimentos. PANTOZOL pode ser administrado com ou sem alimentos.
+
+Interferência em exames de laboratório:
+Em alguns poucos casos isolados detectaram-se alterações no tempo de coagulação durante o uso de pantoprazol. Portanto,
+recomenda-se em pacientes tratados com anticoagulantes cumarínicos a monitoração do tempo de coagulação após o início
+e o final ou durante o tratamento com pantoprazol.
+Níveis aumentados de cromogranina A (CgA) podem interferir com as investigações de tumores neuroendócrinos. Para
+evitar essa interferência, o tratamento com inibidores das bombas de prótons deve ser interrompido 14 dias antes do
+doseamento de CgA.
+
+Efeito de outros medicamentos em pantoprazol
+Medicamentos que inibem ou induzem a CYP2C19:
+Os inibidores da CYP2C19, tais como a fluvoxamina, provavelmente aumentam a exposição sistêmica do pantoprazol. Os
+indutores da CYP2C19 podem diminuir a exposição sistêmica a pantoprazol.
+
+8. POSOLOGIA E MODO DE USAR
+PANTOZOL pode ser administrado com ou sem alimentos.
+
+PANTOZOL 20 mg
+A posologia habitualmente recomendada é de um comprimido de PANTOZOL 20 mg uma vez ao dia.
+A duração do tratamento fica a critério médico e dependente da indicação. Na maioria dos pacientes, o alívio dos sintomas
+é rápido. Na esofagite por refluxo leve, basta em geral um tratamento de quatro a oito semanas.
+
+PANTOZOL 40 mg
+• Tratamento (cicatrização) de úlcera péptica duodenal, úlcera péptica gástrica e esofagites de refluxo moderadas
+ou graves: A posologia habitualmente recomendada para adultos é de um comprimido de 40 mg ao dia antes, durante ou
+após o café da manhã. Úlceras duodenais normalmente cicatrizam completamente em duas semanas. Para úlceras gástricas
+e esofagite por refluxo, em geral, é adequado um período de tratamento de quatro semanas. Em casos individuais, pode ser
+necessário estender o tratamento para quatro semanas (úlcera duodenal) ou para 8 semanas (úlcera gástrica e esofagite por
+refluxo). Em casos isolados de esofagite por refluxo, úlcera gástrica ou úlcera duodenal, a dose diária pode ser aumentada
+para 2 comprimidos ao dia, particularmente nos casos de pacientes refratários a outros medicamentos antiulcerosos.
+
+Posologia para crianças maiores de 5 anos:
+- ≥15 kg a ≤40 kg de peso corporal: 20 mg, uma vez ao dia, por até 8 semanas.
+- ≥40 kg: 40 mg, uma vez ao dia, por até 8 semanas.
+
+• Para erradicação do Helicobacter pylori: Nos casos de úlcera gástrica ou duodenal associadas à infecção por
+Helicobacter pylori, a erradicação da bactéria é obtida por meio da terapia combinada com dois antibióticos, motivo pelo qual
+se recomenda administrar PANTOZOL em jejum nesta condição. Qualquer uma das seguintes combinações de
+PANTOZOL com antibióticos é recomendada, dependendo do padrão de resistência da bactéria:
+a) um comprimido de PANTOZOL 40 mg duas vezes ao dia
++ 1.000 mg de amoxicilina duas vezes ao dia
++ 500 mg de claritromicina duas vezes ao dia
+b) um comprimido de PANTOZOL 40 mg duas vezes ao dia
++ 500 mg de metronidazol duas vezes ao dia
++ 500 mg de claritromicina duas vezes ao dia
+c) um comprimido de PANTOZOL 40 mg duas vezes ao dia
++ 1.000 mg de amoxicilina duas vezes ao dia
++ 500 mg de metronidazol duas vezes ao dia
+
+A duração da terapia combinada para erradicação da infecção por Helicobacter pylori é de sete dias, podendo ser prolongada
+por até no máximo 14 dias. Havendo necessidade de tratamento adicional com PANTOZOL após esse período (por exemplo
+em função da persistência da sintomatologia) para garantir a cicatrização completa da úlcera, manter a posologia
+recomendada para úlceras gástricas e duodenais.
+Em pacientes idosos ou com insuficiência renal, a dose diária de um comprimido de 40 mg não deve ser excedida, a não ser na
+terapia combinada para erradicação do Helicobacter pylori, na qual pacientes idosos também devem receber, durante uma
+semana, a dose usual de 2 comprimidos ao dia (80 mg de PANTOZOL/dia). Em caso de redução intensa da função hepática,
+a dose deve ser ajustada para um comprimido de 40 mg a cada dois dias ou um comprimido de 20 mg ao dia.
+
+• Tratamento da síndrome de Zollinger-Ellison e de outras doenças causadoras de produção exagerada de ácido
+pelo estômago: Os pacientes devem iniciar o tratamento com uma dose diária de 80 mg (2 comprimidos de PANTOZOL 40
+mg). Em seguida, a dose pode ser alterada para uma dose maior ou menor conforme necessário, adotando-se medições de
+secreção de ácido gástrico como parâmetro. Doses diárias acima de 80 mg devem ser divididas e administradas duas vezes
+ao dia (dois comprimidos de PANTOZOL 40 mg por dia). Aumentos temporários da dose diária para valores acima de 160
+mg de pantoprazol são possíveis, mas não devem ser administrados por períodos que se prolonguem além do necessário
+para controlar devidamente a secreção ácida. A duração do tratamento da síndrome de Zollinger-Ellison e outras condições
+patológicas hipersecretórias não é limitada e deve ser adaptada conforme necessidade clínica.
+
+Os comprimidos devem ser ingeridos inteiros, com um pouco de líquido.
+PANTOZOL pode ser administrado antes, durante ou após o café da manhã, exceto quando associado a antibióticos
+(PANTOZOL 40 mg) para erradicação do Helicobacter pylori, quando se recomenda a administração em jejum.
+
+Pacientes idosos: Não é necessária nenhuma adaptação posológica em indivíduos idosos. PANTOZOL pode ser utilizado
+por pessoas com mais de 65 anos, porém a dose de 40 mg ao dia só deve ser ultrapassada nos pacientes com infecção por
+Helicobacter pylori, durante uma semana de tratamento.
+
+Pacientes pediátricos: PANTOZOL está indicado para o tratamento de curta duração (até 8 semanas) da esofagite erosiva
+(EE) associada com DRGE em pacientes com mais de 5 anos de idade.
+
+Pacientes com insuficiência hepática: Em pacientes com insuficiência hepática grave, a dose deve ser reduzida para 40
+mg de pantoprazol em dias alternados. Nestes pacientes, os níveis de enzimas hepáticas devem ser regularmente
+monitorados durante a terapia, particularmente no uso a longo prazo; caso ocorra uma elevação desses níveis, o tratamento
+com pantoprazol deve ser descontinuado.
+Pacientes com insuficiência renal: A dose diária de 40 mg de pantoprazol não deve ser excedida.
+
+Este medicamento não deve ser partido, aberto ou mastigado.
+
+9. REAÇÕES ADVERSAS
+Podem ocorrer as seguintes reações adversas com o uso do produto:
+Reações incomuns (ocorrem entre 0,1% e 1% dos pacientes que utilizam este medicamento): distúrbios do sono,
+cefaleia, boca seca, diarreia, náusea/vômito, inchaço e distensão abdominal, dor e desconforto abdominal, constipação,
+aumento nos níveis de enzimas hepáticas, tontura, reações alérgicas como prurido, exantema, rash e erupções, astenia,
+fadiga e mal-estar.
+Reações raras (ocorrem entre 0,01% e 0,1% dos pacientes que utilizam este medicamento): agranulocitose,
+hipersensibilidade (incluindo reações e choque anafilático), hiperlipidemias, alterações de peso, depressão, distúrbios de
+paladar, distúrbios visuais (visão turva), aumento nos níveis de bilirrubina, urticária, angioedema, artralgia, mialgia,
+ginecomastia, elevação da temperatura corporal e edema periférico.
+Reações muito raras (ocorrem em menos de 0,01% dos pacientes que utilizam este medicamento): leucopenia,
+trombocitopenia, pancitopenia e desorientação.
+Reações de frequência desconhecida: hiponatremia; hipomagnesinemia; alucinação, confusão, dano hepatocelular,
+icterícia, insuficiência hepática, nefrite tubulointersticial (com possível progressão a falência renal), febre induzida por
+medicamentos, síndrome de Stevens Johnson, eritema multiforme, necrólise epidérmica tóxica, reação ao medicamento com
+eosinofilia e sintomas sistêmicos, pustulose exantemática generalizada aguda, fotossensibilidade, fraturas no quadril, punho
+ou coluna, hipocalcemia*, hipocalemia* e distúrbios do ouvido e do labirinto (surdez e zumbido).
+*Hipocalcemia e / ou hipocalemia podem estar relacionadas à ocorrência de hipomagnesemia (veja a seção 5.
+ADVERTÊNCIAS E PRECAUÇÕES – Hipomagnesemia).
+
+Pacientes Pediátricos: A segurança de PANTOZOL no tratamento da esofagite erosiva (EE) associada com DRGE foi
+avaliada em pacientes com idades entre 5 e 16 anos em três estudos clínicos. Embora a EE seja incomum em pacientes
+pediátricos, também foram avaliados estudos de segurança envolvendo 249 pacientes pediátricos com DRGE sintomática
+ou endoscopicamente comprovada. Todas as reações adversas do pantoprazol em pacientes adultos foram consideradas
+relevantes em pacientes pediátricos. As reações adversas mais comumente relatadas (> 4%) em pacientes com idade entre 1
+e 16 anos incluem: infecção respiratória alta, cefaleia, febre, diarreia, vômito, irritação da pele e dor abdominal.
+As reações adversas adicionais relatadas em estudos clínicos com o pantoprazol em pacientes pediátricos com frequência
+≤ 4%, por sistema orgânico, foram:
+Geral: reação alérgica e edema facial.
+Gastrointestinal: constipação, flatulência e náusea.
+Metabólico/Nutricional: aumento de triglicerídeos, enzimas hepáticas elevadas e creatinoquinase (CK).
+Músculoesquelético: artralgia e mialgia.
+Sistema Nervoso: tontura, vertigem.
+Pele e Anexos: urticária.
+As seguintes reações adversas observadas em estudos clínicos com pacientes adultos não foram relatadas em pacientes
+pediátricos, mas são consideradas relevantes: reação de fotossensibilidade, boca seca, hepatite, trombocitopenia, edema
+generalizado, depressão , prurido, leucopenia e visão turva.
+
+Em casos de eventos adversos, notifique pelo Sistema VigiMed, disponível no Portal da Anvisa.
+
+10. SUPERDOSE
+Doses endovenosas de até 240 mg de pantoprazol sódico foram administradas durante 2 minutos e bem toleradas. Como o
+pantoprazol se liga extensivamente às proteínas, não é facilmente dialisável.
+No caso de ingestão de doses muito acima das preconizadas, com manifestações clínicas de intoxicação, devem-se adotar
+as medidas habituais de controle das funções vitais.
+
+Em caso de intoxicação ligue para 0800 722 6001, se você precisar de mais orientações.
+
+Registro - 1.0639.0182
+
+Importado e Registrado por:
+Takeda Pharma Ltda.
+CNPJ 60.397.775/0001-74
+Rodovia SP 340 S/N, km 133,5, Jaguariúna-SP, Brasil
+
+Produzido por:
+Takeda GmbH
+Oranienburg, Alemanha
+
+VENDA SOB PRESCRIÇÃO
+Esta bula foi aprovada pela Anvisa em 05/08/2026.
+
+PZ2040_0226_0826_VPS
+CCDS v11.0
+ Dados da submissão eletrônica Dados da petição/notificação que altera bula Dados das alterações de bulas
+ Data do Nº do expediente Assunto Data do Nº do Assunto Data de Itens de bula Versões Apresentações
+ expediente expediente expediente aprovação (VP/VPS) relacionadas
+ 10451 – 10451 – 20 MG COM REV
+ MEDICAMEN MEDICAMEN CT BL AL/AL X 7
+ Expediente pleito TO NOVO – Expediente TO NOVO – 9. REAÇÕES X 14 X 28 X 42 X
+ 05/08/2026 dessa petição Notificação de 05/08/2026 pleito dessa Notificação de 05/08/2026 ADVERSAS VPS 56
+ Alteração de petição Alteração de 40 MG COM REV
+ Texto de Bula – Texto de Bula – CT BL AL/AL X 7 X
+ RDC 60/12 RDC 60/12 14 X 28 X 42 X 56
+ 10451 – 10451 – 20 MG COM REV
+ MEDICAMEN MEDICAMEN CT BL AL/AL X 7
+ TO NOVO – TO NOVO – 9. REAÇÕES X 14 X 28 X 42 X
+ 16/03/2026 0255987/26-9 Notificação de 16/03/2026 0255987/26-9 Notificação de 16/03/2026 ADVERSAS VPS 56
+ Alteração de Alteração de 40 MG COM REV
+ Texto de Bula – Texto de Bula – CT BL AL/AL X 7 X
+ RDC 60/12 RDC 60/12 14 X 28 X 42 X 56
+ 10451 – 10451 – COMPOSIÇÃO 20 MG COM REV
+ MEDICAMEN MEDICAMEN CT BL AL/AL X 7
+ TO NOVO – TO NOVO – 5. ADVERTÊNCIAS E X 14 X 28 X 42 X
+ 16/12/2025 1607850/25-7 Notificação de 16/12/2025 1607850/25-7 Notificação de 16/12/2025 PRECAUÇÕES VPS 56
+ Alteração de Alteração de 40 MG COM REV
+ Texto de Bula – Texto de Bula –
+
+===== BLOCO 2 =====
+APRESENTAÇÕES
+Pó liofilizado para solução injetável 40 mg/frasco-ampola. Embalagens contendo um frasco-ampola acompanhado de 1
+ ampola com 10 mL de diluente.
+
+ VIA INTRAVENOSA
+
+ USO ADULTO
+
+1. INDICAÇÕES
+ Tratamento de úlcera péptica gástrica ou duodenal, das esofagites por refluxo moderadas ou graves e tratamento da
+ síndrome de Zollinger-Ellison e de outras condições patológicas hipersecretórias quando a via oral não for recomendada,
+ a critério médico.
+ Tratamento de hemorragia digestiva alta (em complemento à terapia endoscópica) e para prevenção de ressangramento.
+ Profilaxia de sangramento agudo por úlcera de estresse
+
+3. CARACTERÍSTICAS FARMACOLÓGICAS
+ Propriedades farmacodinâmicas
+ PANTOZOL (pantoprazol) é um benzimidazol substituído que inibe a secreção de ácido clorídrico no estômago por meios
+ de uma ação específica sobre a bomba de prótons das células parietais gástricas. Pantoprazol é convertido em sua forma
+ ativa somente no meio ácido das células parietais, onde inibe a enzima H+K+ATPase, o estágio final da produção de ácido
+ clorídrico no estômago, o que lhe confere seletividade e organoespecificidade. A inibição depende da dose e afeta tanto a
+ secreção ácida basal como a estimulada. Assim como outros inibidores da bomba de prótons e outros bloqueadores dos
+ receptores H2, o tratamento com pantoprazol causa redução da acidez gástrica e, consequentemente, aumento da gastrina
+ sérica, que, porém, é moderado e proporcional à redução da acidez. O aumento de gastrina é reversível. Uma vez que
+ pantoprazol se liga diretamente à enzima H+K+ATPase, é capaz de afetar a secreção ácida independentemente do estímulo
+ causado por outras substâncias (acetilcolina, histamina, gastrina). O efeito é o mesmo se a substância ativa for
+ administrada por via oral ou endovenosa.
+ O início da ação antisecretória ocorre 15 a 30 minutos após a administração endovenosa.
+ Propriedades farmacocinéticas
+ O volume de distribuição situa-se em torno de 0,15 l/kg e o "clearance" gira em torno de 0,1 l/h. kg. A meia-vida plasmática
+ é de aproximadamente 1 h. Há um pequeno número de indivíduos com eliminação lenta. Em função da ativação específica
+ do pantoprazol dentro das células parietais, sua curta meia-vida plasmática não corresponde à duração prolongada de seu
+ efeito farmacológico (inibição da secreção ácida).
+ Sua farmacocinética não varia após administração única ou repetida. Na faixa de dosagem de 10 a 80 mg, a cinética
+ plasmática do pantoprazol tende a ser linear, tanto após administração oral como endovenosa.
+ A taxa de ligação à proteína plasmática é de aproximadamente 98%. A substância é quase exclusivamente metabolizada
+ no fígado. A eliminação renal representa a principal via de excreção (cerca de 80%) dos metabólitos do pantoprazol, sendo
+ o restante excretado com as fezes. Nenhum dos metabólitos é considerado biologicamente ativo. Seu principal metabólito,
+ tanto no plasma como na urina, é o desmetilpantoprazol, que é conjugado com um sulfato. A meia-vida do principal
+ metabólito é de aproximadamente1,5 h, não sendo, portanto, muito maior do que a do próprio pantoprazol.
+ Características em pacientes especiais
+ Não é necessária nenhuma redução posológica quando pantoprazol é administrado a pacientes com função renal
+ comprometida (inclusive pacientes em diálise). Assim como para os indivíduos sãos, a meia-vida do pantoprazol é curta.
+ Somente pequenas quantidades de pantoprazol são dialisáveis. Embora a meia-vida de seu principal metabólito sofra um
+ aumento moderado para duas a três horas em pacientes com função renal comprometida, sua excreção é ainda rápida e
+ portanto, não ocorre acúmulo.
+ Embora em pacientes com cirrose hepática (classes A e B de acordo com a classificação de Child), se tenha constatado
+ um aumento da meia-vida para valores entre sete e nove horas, e os valores da ASC (área sob a curva) tenham aumentado
+ de cinco a sete vezes, a concentração plasmática máxima aumenta apenas discretamente (1,5 vezes) em relação aos
+ indivíduos saudáveis.
+ Em voluntários idosos, a ASC e a Cmáx (concentração máxima) aumentam discretamente em relação a indivíduos jovens,
+ mas estes aumentos não são clinicamente significativos.
+
+ Dados de segurança não clínicos
+ Carcinogênese, mutagênese, diminuição da fertilidade:
+ Os dados dos estudos não clínicos não revelaram riscos especiais para o ser humano, segundo estudos convencionais de
+ farmacologia de segurança, toxicidade de dose repetida e genotoxicidade.
+ Nos estudos de carcinogenicidade de dois anos em ratos observaram -se neoplasias neuroendócrinas. Além disso, foram
+ encontrados papilomas de células escamosas no estômago (forestomach) do rato. O mecanismo que leva à formação de
+ carcinoides gástricos por be nzimidazois substituídos foi cuidadosamente investigado e pode -se concluir que se trata de
+ uma reação secundária aos níveis séricos de gastrina massivamente elevados que ocorrem em ratos durante o tratamento
+ crônico com dose elevada. Nos estudos com roedor es, de dois anos, foi observado um aumento do número de tumores
+ hepáticos em ratos e camundongos fêmeas e foi interpretado como sendo devido à alta taxa de metabolização do
+ pantoprazol no fígado.
+ Toxicologia e/ou Farmacologia Animal:
+ Foi observado um ligeiro aumento das alterações neoplásicas da tireoide no grupo de ratos que receberam a dose mais
+ elevada (200 mg/kg). A ocorrência destas neoplasias está associada com as alterações induzidas pelo pantoprazol na
+ metabolização da tiroxina no fígado de rato. Como a dose terapêutica para o homem é baixa, não são esperados efeitos
+ adversos para a tireoide.
+ Em estudos de reprodução em animais, sinais de toxicidade fetal foram observados em doses acima de 3 mg/kg. As
+ investigações não revelaram qualquer evidência de diminuição da fertilidade ou efeitos teratogênicos.
+ A passagem para a placenta foi investigada em ratos e observou -se que ocorre um aumento dessa com o avanço da
+ gestação. Como resultado, a concentração de pantoprazol no feto é aumentada pouco antes do nascimento.
+
+4. CONTRAINDICAÇÕES
+ PANTOZOL ev não deve ser usado por indivíduos que apresentem alergia (hipersensibilidade) conhecida ao
+ pantoprazol, aos demais componentes da fórmula ou a benzimidazois substituídos.
+
+5. ADVERTÊNCIAS E PRECAUÇÕES
+ PANTOZOL ev deve ser administrado exclusivamente por via endovenosa.
+ Indica-se a administração de PANTOZOL ev quando a via oral não for recomendada, a critério médico.
+ PANTOZOL ev 40 mg não é indicado em distúrbios gastrintestinais leves, como por exemplo na dispepsia não-ulcerosa.
+ PANTOZOL ev 40 mg contém menos de 1 mmol (23 mg) de sódio por frasco. Pode ser considerado, portanto, “livre de
+ sódio”.
+ Malignidade gástrica:
+ A resposta sintomática ao pantoprazol não exclui a presença de malignidade gástrica.
+ Na presença de qualquer sintoma de alarme, como perda de peso não intencional significativa, vômitos recorrentes,
+ dificuldade para engolir, vômitos com sangue, anemia ou fezes sanguinolentas e quando houver suspeita ou presença de
+ úlcera gástrica, deve-se excluir a possibilidade de malignidade (câncer). Informe seu médico, já que o tratamento com
+ pantoprazol pode aliviar os sintomas e retardar o diagnóstico.
+ Insuficiência hepática:
+ Em pacientes com disfunção hepática grave (insuficiência hepática), a dose diária deve ser reduzida para 20 mg e as
+ enzimas hepáticas precisam ser regularmente monitoradas durante o tratamento com PANTOZOL ev, particularmente no
+ uso a longo prazo. Se houver aumento nos valores enzimáticos, o tratamento deve ser descontinuado.
+ Influência na absorção de vitamina B12:
+ O tratamento diário com qualquer medicação ácido-supressora por períodos prolongados (vários anos) pode levar a uma
+ má absorção da cianocobalamina (vitamina B12), causada por hipo ou acloridria. A deficiência de cianocobalamina deve
+ ser considerada em pacientes com síndrome de Zollinger-Ellison e outras condições patológicas hipersecretórias que
+ requeiram tratamentos de longo prazo, pacientes com reservas corporais reduzidas ou fatores de risco para a absorção
+ reduzida de vitamina B12 (tais como idosos) em terapias de longo prazo ou se outros sintomas clínicos relevantes forem
+ observados.
+ Clostridium difficile:
+ O tratamento com IBP pode estar associado a um risco aumentado de infecção por Clostridium difficile.
+ Como todos os inibidores de bomba de próton, o pantoprazol pode aumentar a contagem de bactérias normalmente
+ presentes no trato gastrointestinal superior. O tratamento com PANTOZOL ev pode levar a um leve aumento do risco de
+ infecções gastrointestinais causadas por bactérias como Salmonella, Campylobacter e C. difficile.
+ Hipomagnesemia:
+ Hipomagnesemia tem sido raramente relatada em pacientes tratados com IBP por pelo menos três meses (na maioria dos
+ casos, após um ano de terapia). Consequências graves de hipomagnesemia incluem tétano, arritmia e convulsão. A
+ hipomagnesemia pode levar à hipocalcemia e à hipocalemia (ver 9. REAÇÕES ADVERSAS).
+ Inibidores da Protease do HIV:
+ A coadministração de pantoprazol não é recomendada com inibidores da protease do HIV para os quais a absorção é
+ dependente do pH do ácido intragástrico, tais como atazanavir e nelfinavir, devido a uma redução significativa nas suas
+ biodisponibilidades.
+ Metotrexato:
+ O uso concomitante com alta dose de metotrexato pode elevar e prolongar os níveis séricos de metotrexato e / ou seus
+ metabólitos, levando possivelmente à toxicidade do metotrexato.
+ Até o momento existem poucas experiências com administração de PANTOZOL ev a crianças.
+ Fratura Óssea:
+ O tratamento com os inibidores de bomba de próton pode estar associado a um risco aumentado de fraturas relacionadas
+ à osteoporose do quadril, punho ou coluna vertebral. O risco de fratura foi maior nos pacientes que receberam altas doses,
+ definidas como doses múltiplas diárias, e terapia a longo prazo com IBP (um ano ou mais).
+
+ Reações Cutâneas Graves
+ Reações cutâneas graves, incluindo eritema multiforme, síndrome de Stevens-Johnson (SSJ), necrólise epidérmica tóxica
+ (NET), reação medicamentosa com eosinofilia e sintomas sistêmicos (DRESS) e pustulose exantemática generalizada
+ aguda (PEGA) foram relatados em associação com o uso de IBPs (veja seção 9. Reações Adversas). Descontinuar
+ pantoprazol aos primeiros sinais ou sintomas de reações adversas cutâneas graves ou outros sinais de hipersensibilidade e
+ considerar avaliação adicional.
+
+ Lúpus Eritematoso Cutâneo Subagudo (LECSA):
+ Os inibidores da bomba de prótons estão associados em casos raros com a ocorrência de lúpus eritematoso cutâneo
+ subagudo. Se ocorrerem lesões, especialmente nas áreas da pele expostas ao sol, e se acompanhadas de artralgia, o paciente
+ deve procurar ajuda médica prontamente e o profissional de saúde deve considerar interromper o produto.
+
+ Uso em gravidez e lactação: PANTOZOL ev não deve ser administrado a gestantes e lactantes, a menos que
+ absolutamente necessário, uma vez que a experiência clínica sobre seu uso em mulheres nestas condições é limitada.
+ Estudos em animais demonstraram toxicidade reprodutiva. O risco potencial em humanos é desconhecido. Estudos em
+ animais mostraram a excreção do pantoprazol no leite materno. A excreção de pantoprazol no leite materno tem sido
+ reportada. Portanto, a decisão sobre continuar / descontinuar a amamentação ou continuar / interromper o tratamento com
+ pantoprazol deve ser tomada tendo em consideração o benefício da amamentação para a criança e o benefício do tratamento
+ com pantoprazol às mulheres.
+ Portanto, PANTOZOL ev só deve ser utilizado quando o benefício para a mãe for considerado maior que o risco potencial ao
+ feto ou à criança.
+ Categoria B de risco na gravidez - Este medicamento não deve ser utilizado por mulheres grávidas sem orientação
+ médica ou do cirurgião-dentista.
+ Pacientes pediátricos: A experiência clínica em crianças é limitada e, portanto, o uso do produto não é recomendado
+ para menores de 18 anos de idade.
+ Pacientes idosos: a dose diária de 40 mg de pantoprazol não deve ser excedida em pacientes idosos.
+ Pacientes com insuficiência renal: A dose diária de 40 mg de pantoprazol não deve ser excedida.
+ Pacientes com insuficiência hepática: Em pacientes com insuficiência hepática grave, os níveis de enzimas hepáticas
+ devem ser monitorados regularmente durante a terapia com pantoprazol, particularmente no uso a longo prazo. Caso
+ ocorra uma elevação desses níveis, o tratamento com pantoprazol deve ser descontinuado.
+ Dirigir e operar máquinas: Não se espera que PANTOZOL ev afete adversamente a habilidade de dirigir e operar
+ máquinas. Reações adversas como tontura e distúrbios visuais podem ocorrer. Se afetado, o paciente não deve dirigir nem
+ operar máquinas.
+
+8. POSOLOGIA E MODO DE USAR
+
+ POSOLOGIA:
+ No tratamento de úlcera péptica gástrica ou duodenal e das esofagites por refluxo moderadas ou graves: salvo
+ critério médico diferente, recomenda-se a administração de um frasco-ampola (40 mg) de PANTOZOL ev ao dia.
+ No tratamento da síndrome de Zollinger-Ellison e de outras condições patológicas hipersecretórias, os pacientes
+ devem iniciar o tratamento com dose diária de 80 mg. Em seguida, a dosagem pode ser alterada para uma dose maior ou
+ menor conforme necessário, utilizando-se medidas de secreção de ácido gástrico como parâmetro. Doses diárias acima de 80
+ mg devem ser divididas e administradas duas vezes ao dia. Aumentos temporários da dose diária para valores acima de 160
+ mg de pantoprazol são possíveis, mas não devem ser utilizados por períodos que se prolonguem além do necessário para
+ controlar devidamente a secreção ácida. A duração do tratamento da síndrome de Zollinger-Elisson e de outras condições
+ patológicas hipersecretórias não é limitada edeve ser adaptada conforme necessidade clínica.
+ No tratamento da hemorragia digestiva alta (em complemento à terapia endoscópica) e na prevenção do
+ ressangramento recomenda-se a administração de 80 mg de PANTOZOL ev em bolus seguidos da infusão de 8 mg/h de
+ PANTOZOL ev durante 72 horas.
+ Na profilaxia de sangramento agudo por úlcera de estresse recomendam-se os seguintes esquemas posológicos: 40
+ mg a 80 mg de PANTOZOL ev uma a duas vezes ao dia.
+
+ Este medicamento deve ser administrado por um profissional de saúde e sob supervisão médica apropriada. A
+ administração intravenosa de pantoprazol é recomendada apenas se a administração oral não for apropriada. Os dados
+ sobre o uso intravenoso estão disponíveis até a administração por 7 dias.
+
+ Pacientes pediátricos: A experiência clínica em crianças é limitada e, portanto, o uso do produto não é recomendado
+ para menores de 18 anos de idade.
+ Pacientes idosos: a dose diária de 40 mg de pantoprazol não deve ser excedida em pacientes idosos.
+ Pacientes com insuficiência renal: A dose diária de 40 mg de pantoprazol não deve ser excedida.
+ Pacientes com insuficiência hepática: Em pacientes com insuficiência hepática grave, os níveis de enzimas hepáticas
+ devem ser monitorados regularmente durante a terapia com pantoprazol, particularmente no uso a longo prazo. Caso
+ ocorra uma elevação desses níveis, o tratamento com pantoprazol d eve ser descontinuado.
+
+ MODO DE USAR:
+ PANTOZOL ev deve ser administrado exclusivamente por via intravenosa.
+ Modo de preparar: Injetando-se o conteúdo da ampola de diluente (10 mL) no frasco-ampola que contém o pó liofilizado,
+ obtém-se rapidamente a solução injetável pronta para a aplicação endovenosa.
+ Pode-se administrar a solução sob a forma de bolus (no mínimo por 2 minutos) ou sob a forma de infusão após a diluição
+ da solução reconstituída em 100 mL de solução fisiológica ou 100 mL de solução de glicose a 5% ou a 10%,
+ recomendando-se nesse caso um tempo de administração de 15 minutos.
+ PANTOZOL ev não deve ser diluído com outros tipos de diluente ou misturado a nenhum outro medicamento
+ injetável.
+ Tão logo se torne recomendável o tratamento por via oral, PANTOZOL ev deve ser descontinuado e substituído pelo
+ tratamento com PANTOZOL comprimidos, levando-se em consideração a equivalência terapêutica entre a forma injetável
+ de 40 mg e os comprimidos revestidos de liberação retardada de 40 mg.
+
+9. REAÇÕES ADVERSAS
+ Podem ocorrer as seguintes reações adversas com o uso do produto:
+ Reações comuns (ocorrem entre 1% e 10% dos pacientes que utilizam este medicamento): tromboflebite no local da
+ injeção.
+ Reações incomuns (ocorrem entre 0,1% e 1% dos pacientes que utilizam este medicamento): Distúrbios do sono, cefaleia,
+ boca seca, diarreia, náusea/vômito, inchaço e distensão abdominal, dor e desconforto abdominal, prisão de ventre,
+ aumento nos níveis de enzimas do fígado, tontura, reações alérgicas como coceira e reações de pele (exantema, rash e
+ erupções), fraqueza, cansaço e mal estar.
+ Reações raras (ocorrem entre 0,01% e 0,1% dos pacientes que utilizam este medicamento): alterações nas células do
+ sangue (agranulocitose), hipersensibilidade (incluindo reações e choque anafilático), hiperlipidemias, alterações de peso,
+ depressão, distúrbios de paladar, distúrbios visuais (visão turva), aumento nos níveis de bilirrubina, urticária, inchaço na
+ pele ou mucosas, dor nas articulações, dor muscular, crescimento de mamas em homens, elevação da temperatura corporal,
+ inchaço periférico.
+ Reações muito raras (ocorrem em menos de 0,01% dos pacientes que utilizam este medicamento): alterações nas células
+ do sangue (leucopenia, trombocitopenia, pancitopenia), desorientação.
+ Reações de frequência desconhecida: hipomagnesinemia; alucinação, confusão, dano hepatocelular, icterícia,
+ insuficiência hepática, Nefrite tubulointersticial (com possível progressão a falência renal), síndrome de Stevens Johnson,
+ eritema multiforme, necrólise epidérmica tóxica, reação ao medicamento com eosinofilia e sintomas sistêmicos, pustulose
+ exantemática generalizada aguda, fotossensibilidade, fraturas no quadril, punho ou coluna, hipocalcemia*, hipocalemia* e
+ distúrbios do ouvido e do labirinto (surdez e zumbido).
+ *Hipocalcemia e / ou hipocalemia podem estar relacionadas à ocorrência de hipomagnesemia (veja a seção 5.
+ ADVERTÊNCIAS E PRECAUÇÕES – Hipomagnesemia).
+
+ Em casos de eventos adversos, notifique pelo Sistema VigiMed, disponível no Portal da Anvisa.
+
+10. SUPERDOSE
+ Doses de até 240 mg administradas em dois minutos por via endovenosa foram bem toleradas.
+ Como o pantoprazol se liga extensivamente às proteínas, não é facilmente dialisável.
+ Na eventualidade da administração acidental de doses muito acima das preconizadas, com manifestações clínicas de
+ intoxicação, recomenda-se adotar as medidas habituais de controle das funções vitais.
+ Em caso de intoxicação, ligue para 0800 722 6001 se você precisar de mais orientações sobre como proceder.

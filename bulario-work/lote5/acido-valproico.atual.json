@@ -1,0 +1,17 @@
+{
+  "Risco Gestacional": "D",
+  "Slug": "acido-valproico",
+  "Nomes Comerciais / Produtos ANVISA": "Depakene; Valpakine; Torval CR; ácido valproico.",
+  "Interações": "Evitar carbapenêmicos como meropenem, imipenem, ertapenem e doripenem, pois reduzem acentuadamente níveis de valproato e podem precipitar crises. Aumenta níveis de lamotrigina e risco de reações cutâneas graves. Pode aumentar efeito de fenobarbital, primidona, diazepam, lorazepam, clonazepam e outros depressores do SNC. Ácido acetilsalicílico pode aumentar fração livre do valproato. Varfarina, heparina, enoxaparina, apixabana, rivaroxabana, clopidogrel e ácido acetilsalicílico aumentam risco de sangramento. Topiramato aumenta risco de hiperamonemia/encefalopatia.",
+  "Apresentações / Nomes Comerciais": "Cápsulas/comprimidos 250 mg e 500 mg; solução oral/xarope 250 mg/5 mL; comprimidos de liberação prolongada conforme fabricante. Exemplos: Depakene; Valpakine; Torval CR; ácido valproico genérico.",
+  "Posologia Pediátrica": "Epilepsia: iniciar geralmente com 10 a 15 mg/kg/dia por via oral, com aumentos graduais de 5 a 10 mg/kg/semana conforme resposta; dose máxima usual: 60 mg/kg/dia.\nUsar com extrema cautela em menores de 2 anos pelo maior risco de hepatotoxicidade grave.",
+  "Texto Resumo": "Ácido valproico é um anticonvulsivante e estabilizador do humor usado em epilepsia e transtorno bipolar. Exige atenção importante a hepatotoxicidade, pancreatite, trombocitopenia e alto risco teratogênico.",
+  "Classe / Categoria": "Anticonvulsivante; estabilizador do humor; antiepiléptico.",
+  "Posologia Adulto": "Epilepsia: iniciar geralmente com 10 a 15 mg/kg/dia por via oral, aumentando 5 a 10 mg/kg/semana conforme resposta clínica; dose máxima usual: 60 mg/kg/dia.\nTranstorno bipolar/mania: dose conforme formulação e resposta clínica, frequentemente iniciada em 250 mg a 500 mg, 2 a 3 vezes ao dia, com ajuste por resposta e tolerabilidade.",
+  "Contraindicações": "Hipersensibilidade ao ácido valproico, valproato de sódio ou componentes da fórmula; doença hepática ativa; disfunção hepática significativa; distúrbios do ciclo da ureia; porfiria; distúrbios mitocondriais por mutação POLG; gravidez, salvo situações excepcionais em epilepsia sem alternativa terapêutica adequada.",
+  "Tags Busca": "ácido valproico; valproato; anticonvulsivante; epilepsia; estabilizador do humor; transtorno bipolar; crises convulsivas",
+  "Advertências": "Risco de hepatotoxicidade grave, pancreatite, trombocitopenia, hiperamonemia, encefalopatia e ideação suicida. Monitorar função hepática, hemograma/plaquetas e sinais clínicos de toxicidade. Alto risco teratogênico, incluindo malformações congênitas e distúrbios do neurodesenvolvimento; evitar em mulheres em idade fértil sem contracepção efetiva e sem avaliação rigorosa de risco-benefício.",
+  "Nomes Comerciais OpenAI": "Depakene; Valpakine; Torval CR; Valproato de sódio; ácido valproico EMS.",
+  "Rede SUS (RENAME)": false,
+  "Princípio Ativo": "Ácido Valproico"
+}

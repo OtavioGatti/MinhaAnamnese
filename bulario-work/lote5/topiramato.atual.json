@@ -1,0 +1,17 @@
+{
+  "Risco Gestacional": "D",
+  "Slug": "topiramato",
+  "Nomes Comerciais / Produtos ANVISA": "Topamax; Amato; topiramato.",
+  "Interações": "Contraceptivos hormonais contendo etinilestradiol, levonorgestrel, desogestrel, noretisterona e outros progestagênios podem ter eficácia reduzida, especialmente em doses mais altas de topiramato; recomendar método adicional. Ácido valproico aumenta risco de hiperamonemia, encefalopatia e hipotermia. Outros anticonvulsivantes, como carbamazepina, fenitoína, fenobarbital e lamotrigina, podem alterar níveis e somar efeitos neurológicos. Inibidores da anidrase carbônica, como acetazolamida e zonisamida, aumentam risco de acidose metabólica e cálculo renal. Metformina pode ter exposição alterada e exige cautela em acidose. Álcool, benzodiazepínicos, opioides, zolpidem e antipsicóticos aumentam sedação/prejuízo cognitivo.",
+  "Apresentações / Nomes Comerciais": "Comprimidos 25 mg, 50 mg e 100 mg; cápsulas sprinkle ou apresentações equivalentes conforme fabricante. Exemplos: Topamax; Amato; Topiramato EMS; Topiramato Eurofarma.",
+  "Posologia Pediátrica": "Epilepsia pediátrica: dose deve ser calculada por peso, idade e indicação, com titulação gradual para reduzir efeitos cognitivos e metabólicos.\nProfilaxia de enxaqueca em adolescentes: uso depende da idade aprovada e avaliação especializada.\nNão informado na fonte consultada para uma dose pediátrica única aplicável a todas as indicações.",
+  "Texto Resumo": "Topiramato é um anticonvulsivante usado em epilepsia e prevenção de enxaqueca. Deve ser titulado lentamente e exige atenção a efeitos cognitivos, perda de peso, acidose metabólica, nefrolitíase, glaucoma agudo, risco suicida, teratogenicidade e redução da eficácia de contraceptivos hormonais.",
+  "Classe / Categoria": "Anticonvulsivante; antiepiléptico; profilático de enxaqueca; modulador de canais de sódio/GABA/glutamato.",
+  "Posologia Adulto": "Epilepsia: iniciar geralmente com 25 mg a 50 mg por via oral à noite, com titulação gradual semanal conforme resposta e tolerabilidade.\nDose usual em monoterapia ou adjuvante: 100 mg a 400 mg/dia, divididos em 1 a 2 tomadas conforme indicação.\nProfilaxia de enxaqueca: iniciar com 25 mg à noite e titular gradualmente; dose usual 50 mg a cada 12 horas.\nAjustar em insuficiência renal.",
+  "Contraindicações": "Hipersensibilidade ao topiramato ou componentes da fórmula; gravidez para prevenção de enxaqueca; mulheres com potencial gestacional sem contracepção eficaz quando usado para prevenção de enxaqueca; acidose metabólica grave não corrigida conforme avaliação clínica.",
+  "Tags Busca": "topiramato; anticonvulsivante; epilepsia; enxaqueca; profilaxia; topamax; parestesia; perda de peso",
+  "Advertências": "Pode causar sonolência, tontura, parestesias, lentificação cognitiva, dificuldade de concentração, perda de peso, anorexia, alteração de humor, depressão, ideação suicida, acidose metabólica, nefrolitíase, oligohidrose, hipertermia, glaucoma agudo de ângulo fechado e miopia aguda. Pode ser teratogênico, com risco de malformações orais. Monitorar bicarbonato, função renal, sintomas oculares, hidratação e alterações cognitivas/humor.",
+  "Nomes Comerciais OpenAI": "Topamax; Amato; Topiramato EMS; Topiramato Eurofarma; Topiramato Medley; Topiramato Germed.",
+  "Rede SUS (RENAME)": false,
+  "Princípio Ativo": "Topiramato"
+}

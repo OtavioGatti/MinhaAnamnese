@@ -1,0 +1,17 @@
+{
+  "Risco Gestacional": "C",
+  "Slug": "levofloxacino",
+  "Nomes Comerciais / Produtos ANVISA": "Tavanic; Levaquin; levofloxacino.",
+  "Interações": "Antiácidos, sucralfato, ferro, zinco, cálcio, magnésio, alumínio, leite e multivitamínicos reduzem absorção; separar horários. Corticosteroides como prednisona, dexametasona e hidrocortisona aumentam risco de tendinite/ruptura de tendão. AINEs como ibuprofeno, naproxeno e diclofenaco podem aumentar risco de efeitos no SNC/convulsões. Varfarina pode ter efeito aumentado, com alteração de INR. Insulina, glibenclamida, gliclazida e glimepirida podem ter risco de disglcemias. Medicamentos que prolongam QT, como amiodarona, sotalol, haloperidol, quetiapina, citalopram, escitalopram, azitromicina, claritromicina, fluconazol, ondansetrona e metadona, aumentam risco arrítmico.",
+  "Apresentações / Nomes Comerciais": "Comprimidos 250 mg, 500 mg e 750 mg; solução para infusão intravenosa 5 mg/mL ou conforme fabricante. Exemplos: Levaquin; Tavanic; Levofloxacino EMS; Levofloxacino Eurofarma.",
+  "Posologia Pediátrica": "Uso pediátrico deve ser reservado a indicações específicas e individualizado por peso, idade, gravidade e risco-benefício.\nNão é recomendado de rotina em crianças e adolescentes por risco musculoesquelético.\nQuando indicado, seguir protocolo especializado e ajustar em insuficiência renal.",
+  "Texto Resumo": "Levofloxacino é uma fluoroquinolona usada em infecções respiratórias, urinárias e outras infecções por microrganismos sensíveis. Seu uso exige cautela por risco de tendinopatia, neuropatia, efeitos no SNC, prolongamento de QT, disglcemias e interações com cátions e corticosteroides.",
+  "Classe / Categoria": "Antibiótico fluoroquinolona; antibacteriano sistêmico.",
+  "Posologia Adulto": "Infecções respiratórias, urinárias, pele/partes moles ou outras infecções sensíveis: 500 mg por via oral ou intravenosa 1 vez ao dia, conforme foco e gravidade.\nAlgumas indicações usam 750 mg 1 vez ao dia.\nDuração varia conforme infecção, gravidade e protocolo.\nAjustar dose em insuficiência renal.",
+  "Contraindicações": "Hipersensibilidade ao levofloxacino, outras quinolonas ou componentes da fórmula; histórico de tendinite ou ruptura de tendão associada a fluoroquinolonas; epilepsia conforme bula de algumas apresentações; crianças e adolescentes em crescimento, gravidez e lactação, salvo situações específicas em que o benefício supere o risco.",
+  "Tags Busca": "levofloxacino; fluoroquinolona; antibiótico; pneumonia; infecção urinária; pielonefrite; quinolona; tavanic",
+  "Advertências": "Pode causar tendinite e ruptura de tendão, neuropatia periférica, efeitos no SNC, convulsões, ansiedade, insônia, confusão, prolongamento de QT, disglcemias, fotossensibilidade, hepatotoxicidade, diarreia por Clostridioides difficile e agravamento de miastenia gravis. Evitar uso desnecessário quando houver alternativas mais seguras. Cautela em idosos, transplantados, uso de corticosteroides, arritmias, distúrbios eletrolíticos e insuficiência renal.",
+  "Nomes Comerciais OpenAI": "Tavanic; Levaquin; Levofloxacino EMS; Levofloxacino Eurofarma; Levofloxacino Medley; Levofloxacino Cristália.",
+  "Rede SUS (RENAME)": false,
+  "Princípio Ativo": "Levofloxacino"
+}

@@ -1,0 +1,122 @@
+{
+  "acido-valproico": {
+    "marca": "Depakene",
+    "empresa": "Abbott Laboratórios do Brasil Ltda.",
+    "publicacao": "2026-10-01",
+    "categoria": "Medicamento novo (referência de mercado)"
+  },
+  "alopurinol": {
+    "marca": "Zyloric",
+    "empresa": "Aspen Pharma Indústria Farmacêutica Ltda.",
+    "publicacao": "2026-04-23",
+    "categoria": "Medicamento de referência"
+  },
+  "aripiprazol": {
+    "marca": "Aristab",
+    "empresa": "Aché Laboratórios Farmacêuticos S.A.",
+    "publicacao": "2026-03-09",
+    "categoria": "Medicamento de referência"
+  },
+  "bupropiona-cloridrato": {
+    "marca": "Wellbutrin",
+    "empresa": "GlaxoSmithKline Brasil Ltda.",
+    "publicacao": "2026-09-04",
+    "categoria": "Medicamento de referência"
+  },
+  "carvedilol": {
+    "marca": "Carvedilol (genérico)",
+    "empresa": "Cimed Indústria S.A.",
+    "publicacao": "2026-06-26",
+    "categoria": "Genérico — marca de referência não localizada no bulário"
+  },
+  "citalopram": {
+    "marca": "Cipramil",
+    "empresa": "Lundbeck Brasil Ltda.",
+    "publicacao": "2023-01-30",
+    "categoria": "Medicamento de referência"
+  },
+  "claritromicina": {
+    "marca": "Klaricid",
+    "empresa": "Abbott Laboratórios do Brasil Ltda.",
+    "publicacao": "2026-03-11",
+    "categoria": "Medicamento novo (referência de mercado)"
+  },
+  "clindamicina": {
+    "marca": "Dalacin C",
+    "empresa": "Pfizer Brasil Ltda.",
+    "publicacao": "2026-10-07",
+    "categoria": "Medicamento de referência"
+  },
+  "colchicina": {
+    "marca": "Colchis",
+    "empresa": "Apsen Farmacêutica S.A.",
+    "publicacao": "2025-12-10",
+    "categoria": "Medicamento similar (sem referência no bulário)"
+  },
+  "domperidona": {
+    "marca": "Motilium",
+    "empresa": "Kenvue Ltda.",
+    "publicacao": "2025-11-12",
+    "categoria": "Medicamento de referência"
+  },
+  "indapamida": {
+    "marca": "Natrilix",
+    "empresa": "Laboratórios Servier do Brasil Ltda.",
+    "publicacao": "2025-12-26",
+    "categoria": "Medicamento de referência"
+  },
+  "lamotrigina": {
+    "marca": "Lamictal",
+    "empresa": "GlaxoSmithKline Brasil Ltda.",
+    "publicacao": "2026-05-08",
+    "categoria": "Medicamento de referência"
+  },
+  "levofloxacino": {
+    "marca": "Levaquin",
+    "empresa": "Janssen-Cilag Farmacêutica Ltda.",
+    "publicacao": "2025-10-23",
+    "categoria": "Medicamento similar (marca original)"
+  },
+  "mirtazapina": {
+    "marca": "Remeron",
+    "empresa": "Organon Farmacêutica Ltda.",
+    "publicacao": "2026-05-12",
+    "categoria": "Medicamento de referência"
+  },
+  "pantoprazol": {
+    "marca": "Pantozol",
+    "empresa": "Takeda Pharma Ltda.",
+    "publicacao": "2026-08-05",
+    "categoria": "Medicamento de referência"
+  },
+  "paroxetina": {
+    "marca": "Aropax",
+    "empresa": "GlaxoSmithKline Brasil Ltda.",
+    "publicacao": "2025-09-24",
+    "categoria": "Medicamento de referência"
+  },
+  "pregabalina": {
+    "marca": "Lyrica",
+    "empresa": "Viatris Farmacêutica do Brasil Ltda.",
+    "publicacao": "2026-01-22",
+    "categoria": "Medicamento de referência"
+  },
+  "rosuvastatina-calcica": {
+    "marca": "Crestor",
+    "empresa": "AstraZeneca do Brasil Ltda.",
+    "publicacao": "2026-01-06",
+    "categoria": "Medicamento de referência"
+  },
+  "topiramato": {
+    "marca": "Topamax",
+    "empresa": "Janssen-Cilag Farmacêutica Ltda.",
+    "publicacao": "2025-10-15",
+    "categoria": "Medicamento de referência"
+  },
+  "venlafaxina": {
+    "marca": "Efexor",
+    "empresa": "Viatris Farmacêutica do Brasil Ltda.",
+    "publicacao": "2026-09-29",
+    "categoria": "Medicamento de referência"
+  }
+}

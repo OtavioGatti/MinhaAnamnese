@@ -1,0 +1,17 @@
+{
+  "Risco Gestacional": "C",
+  "Slug": "claritromicina",
+  "Nomes Comerciais / Produtos ANVISA": "Klaricid; claritromicina.",
+  "Interações": "Não usar com sinvastatina ou lovastatina; suspender temporariamente ou trocar por estatina alternativa se necessário. Contraindicado com cisaprida, pimozida, terfenadina, astemizol, ergotamina, di-hidroergotamina, midazolam oral, ticagrelor e ranolazina. Colchicina pode causar toxicidade fatal, especialmente em insuficiência renal/hepática. Aumenta níveis de carbamazepina, digoxina, ciclosporina, tacrolimo, sildenafil, alprazolam, quetiapina, rivaroxabana e apixabana. Varfarina pode ter INR aumentado. Medicamentos que prolongam QT, como amiodarona, sotalol, citalopram, escitalopram, haloperidol, quetiapina, ciprofloxacino, levofloxacino, moxifloxacino e ondansetrona, aumentam risco de arritmias. Rifampicina, carbamazepina, fenitoína e fenobarbital podem reduzir níveis de claritromicina.",
+  "Apresentações / Nomes Comerciais": "Comprimidos 250 mg e 500 mg; comprimidos de liberação prolongada 500 mg; suspensão oral 125 mg/5 mL ou 250 mg/5 mL; pó para solução injetável conforme fabricante. Exemplos: Klaricid; Claritin; Claritromicina EMS; Claritromicina Medley.",
+  "Posologia Pediátrica": "Suspensão oral: 7,5 mg/kg por dose, por via oral, a cada 12 horas, conforme indicação.\nDose máxima usual: 500 mg a cada 12 horas.\nAjustar em insuficiência renal conforme bula.",
+  "Texto Resumo": "Claritromicina é um macrolídeo usado em infecções respiratórias, pele/tecidos moles e esquemas para erradicação de Helicobacter pylori. Tem interações clinicamente relevantes por CYP3A4 e exige atenção a prolongamento de QT, hepatotoxicidade e combinações contraindicadas.",
+  "Classe / Categoria": "Antibiótico macrolídeo; inibidor de síntese proteica bacteriana.",
+  "Posologia Adulto": "Infecções respiratórias, pele e tecidos moles: 250 mg por via oral a cada 12 horas; em infecções mais graves, 500 mg a cada 12 horas.\nErradicação de Helicobacter pylori: 500 mg por via oral a cada 12 horas em associação com outros fármacos conforme esquema.\nDose e duração variam conforme indicação, gravidade e função renal.\nAjustar dose em insuficiência renal importante.",
+  "Contraindicações": "Hipersensibilidade à claritromicina, eritromicina, azitromicina, outros macrolídeos ou componentes da fórmula; uso concomitante com cisaprida, pimozida, astemizol, terfenadina, ergotamina, di-hidroergotamina, midazolam oral, ticagrelor, ranolazina, colchicina em insuficiência renal ou hepática, sinvastatina ou lovastatina; histórico de prolongamento de QT ou arritmia ventricular; hipocalemia; insuficiência hepática grave associada a insuficiência renal.",
+  "Tags Busca": "claritromicina; macrolídeo; antibiótico; pneumonia; sinusite; helicobacter pylori; h pylori; klaricid",
+  "Advertências": "Pode causar prolongamento de QT, arritmias ventriculares, hepatotoxicidade, colite por Clostridioides difficile, náuseas, diarreia, disgeusia e reações alérgicas. Usar cautela em doença cardíaca, bradicardia, hipocalemia, hipomagnesemia, insuficiência hepática, insuficiência renal e uso de medicamentos metabolizados por CYP3A4.",
+  "Nomes Comerciais OpenAI": "Klaricid; Claritromicina EMS; Claritromicina Medley; Claritromicina Eurofarma; Claritromicina Neo Química.",
+  "Rede SUS (RENAME)": false,
+  "Princípio Ativo": "Claritromicina"
+}

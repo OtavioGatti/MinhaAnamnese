@@ -1,0 +1,17 @@
+{
+  "Risco Gestacional": "C",
+  "Slug": "lamotrigina",
+  "Nomes Comerciais / Produtos ANVISA": "Lamictal; Neural; Lamitor; lamotrigina.",
+  "Interações": "Valproato de sódio/ácido valproico aumenta níveis de lamotrigina e risco de rash grave; exige redução de dose e titulação lenta. Carbamazepina, fenitoína, fenobarbital, primidona, rifampicina e lopinavir/ritonavir podem reduzir níveis de lamotrigina. Contraceptivos hormonais contendo etinilestradiol podem reduzir níveis de lamotrigina e causar variações durante a pausa; lamotrigina pode reduzir levonorgestrel em alguma magnitude. Sertralina pode alterar níveis em alguns pacientes. Outros anticonvulsivantes e psicotrópicos podem somar efeitos neurológicos como tontura, sonolência e ataxia.",
+  "Apresentações / Nomes Comerciais": "Comprimidos 25 mg, 50 mg, 100 mg e 200 mg; comprimidos dispersíveis ou mastigáveis conforme fabricante. Exemplos: Lamictal; Neural; Lamitor; Lamotrigina Eurofarma; lamotrigina genérica.",
+  "Posologia Pediátrica": "Epilepsia pediátrica: dose deve ser calculada por peso, idade, indicação e medicamentos concomitantes.\nA titulação deve ser lenta e seguir bula/protocolo, especialmente se houver uso de valproato.\nNão informado na fonte consultada para uma dose pediátrica única aplicável a todas as situações.",
+  "Texto Resumo": "Lamotrigina é um anticonvulsivante usado em epilepsia e como estabilizador do humor no transtorno bipolar. A titulação lenta é essencial para reduzir risco de reações cutâneas graves, especialmente quando associada ao valproato.",
+  "Classe / Categoria": "Anticonvulsivante; antiepiléptico; estabilizador do humor; bloqueador de canais de sódio.",
+  "Posologia Adulto": "Epilepsia ou transtorno bipolar: dose deve ser titulada gradualmente conforme indicação, uso concomitante de valproato, indutores enzimáticos ou monoterapia.\nCom valproato: iniciar com doses menores e titulação mais lenta.\nCom indutores enzimáticos, como carbamazepina ou fenitoína: podem ser necessárias doses maiores.\nNão iniciar em dose alta; seguir esquema de titulação da bula para reduzir risco de rash grave.",
+  "Contraindicações": "Hipersensibilidade à lamotrigina ou componentes da fórmula.",
+  "Tags Busca": "lamotrigina; anticonvulsivante; epilepsia; transtorno bipolar; estabilizador do humor; rash; lamictal",
+  "Advertências": "Pode causar rash cutâneo, incluindo síndrome de Stevens-Johnson, necrólise epidérmica tóxica e DRESS, principalmente com início em dose alta, titulação rápida ou associação com valproato. Suspender e avaliar imediatamente se houver rash progressivo, febre, linfadenopatia, lesões mucosas ou sinais sistêmicos. Pode causar tontura, diplopia, sonolência, cefaleia, ataxia, náuseas e ideação suicida. Não suspender abruptamente em epilepsia.",
+  "Nomes Comerciais OpenAI": "Lamictal; Neural; Lamitor; Lamotrigina Eurofarma; Lamotrigina EMS; Lamotrigina Cristália.",
+  "Rede SUS (RENAME)": false,
+  "Princípio Ativo": "Lamotrigina"
+}

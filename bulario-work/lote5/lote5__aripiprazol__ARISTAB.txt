@@ -1,0 +1,905 @@
+FONTE: lote5__aripiprazol__ARISTAB.pdf
+
+===== BLOCO 1 =====
+APRESENTAÇÕES
+Comprimidos de 10 mg e 15 mg: embalagens com 10, 30 ou 60 comprimidos.
+Comprimidos de 20 mg e 30 mg: embalagem com 30 comprimidos.
+
+USO ORAL
+USO ADULTO
+
+1. INDICAÇÕES
+
+Esquizofrenia
+Aristab é indicado para o tratamento de esquizofrenia.
+
+Transtorno Bipolar
+
+- Monoterapia
+Aristab é indicado para o tratamento agudo e de manutenção de episódios de mania e mistos associados ao transtorno bipolar do tipo I em
+adultos.
+
+- Terapia Adjuntiva
+Aristab é indicado como terapia adjuntiva ao lítio ou valproato para o tratamento agudo de episódios de mania ou mistos associados ao
+transtorno bipolar do tipo I, com ou sem traços psicóticos
+
+3. CARACTERÍSTICAS FARMACOLÓGICAS
+Descrição
+O aripiprazol é o 7-[4-4-(2,3-diclorofenil)-1-piperazinil]-butoxi]-3,4-dihidrocarbostiril. A fórmula empírica é C23H27Cl2N3O2 e seu peso
+molecular é 448,38. Sua estrutura química é:
+
+Mecanismo de a ção
+O mecanismo de ação do aripiprazol, como ocorre com outras drogas eficazes no tratamento de esquizofrenia e transtorno bipolar, é
+desconhecido. No entanto, foi proposto que a eficácia do aripiprazol é mediada por uma combinação da atividade agonista parcial nos
+receptores D2 e 5-HT1A e da atividade antagonista nos receptores 5-HT2A. Interações com outros receptores fora D2, 5-HT1A e 5-HT2A
+podem explicar alguns dos outros efeitos clínicos de aripiprazol (por ex., hipotensão ortostática observada com o aripiprazol pode ser
+explicada por sua atividade antagonista nos receptores adrenérgicos alfa-1).
+
+Farmacodinâmica
+O aripiprazol apresenta grande afinidade com os receptores D2 e D3 de dopamina, e 5- HT1A e 5-HT2A de serotonina (valores Ki de 0,34
+nM, 0,8 nM, 1,7 nM e 3,4 nM, respectivamente), afinidade moderada com os receptores D4 de dopamina, 5-HT2C e 5-HT7 de serotonina,
+alfa- 1 adrenérgico e H1 de histamina (valores Ki de 44 nM, 15 nM, 39 nM, 57 nM e 61 nM, respectivamente) e afinidade moderada com
+os sítios de recaptação da serotonina (Ki=98 nM). O aripiprazol não apresenta afinidade relevante com os receptores muscarínicos
+colinérgicos (CI50 > 1000 nM). Aripiprazol age como agonista parcial dos receptores D2 de dopamina e 5-HT1A de serotonina e como
+antagonista do receptor 5-HT2A de serotonina.
+
+Farmacocinética
+A atividade de Aristab é principalmente devida à droga inalterada, aripiprazol, e em menor medida ao seu metabólito principal, dehidro-
+aripiprazol, que demonstrou afinidade com os receptores D2 similar à da droga inalterada, representando 40% da exposição da droga
+inalterada no plasma. As meias-vidas médias de eliminação são de aproximadamente 75 horas e 94 horas para o aripiprazol e dehidro-
+aripiprazol, respectivamente. As concentrações no estado de equilíbrio são atingidas em até 14 dias da dosagem das duas porções ativas.
+O acúmulo de aripiprazol é previsível a partir da farmacocinética de dose única. No estado de equilíbrio, a farmacocinética do aripiprazol
+é proporcional à dose. A eliminação de aripiprazol é feita predominantemente por meio do metabolismo hepático envolvendo duas
+isoenzimas P450, CYP2D6 e CYP3A4.
+
+- Absorção
+O aripiprazol é bem absorvido após a administração do comprimido, com concentrações de pico no plasma ocorrendo entre 3 e 5 horas; a
+biodisponibilidade oral absoluta da formulação do comprimido é de 87%. Aristab pode ser administrado com ou sem alimentos. A
+administração do comprimido de Aristab 15 mg com uma refeição padrão com alto teor de gordura não afetou de modo significativo a
+Cmáx ou AUC (Área Sob a Curva) de aripiprazol ou seu metabólito ativo dehidro-aripiprazol, mas retardou o Tmáx em 3 horas para o
+aripiprazol e 12 horas para o dehidro- aripiprazol.
+
+- Distribuição
+O volume da distribuição no estado de equilíbrio de aripiprazol após a administração intravenosa é alto (404 L ou 4,9 L/kg), indicando
+distribuição extravascular extensiva. Em concentrações terapêuticas, a ligação do aripiprazol e seu metabólito principal a proteínas séricas,
+principalmente albumina, é superior a 99%. Em voluntários humanos adultos que receberam entre 0,5 mg/dia e 30 mg/dia de aripiprazol
+por 14 dias, houve uma ocupação do receptor D2 dependente da dose, indicando penetração cerebral do aripiprazol em humanos.
+
+- Metabolismo e e liminação
+O aripiprazol é metabolizado principalmente por três vias de biotransformação: desidrogenação, hidroxilação e N-dealquilação. Com base
+em estudos in vitro, as enzimas CYP3A4 e CYP2D6 são responsáveis pela desidrogenação e hidroxilação de aripiprazol, e a N- dealquilação
+é catalisada pela CYP3A4. O aripiprazol é a porção ativa predominante da droga na circulação sistêmica. No estado de equilíbrio, o
+dehidro- aripiprazol, o qual é o metabólito ativo, representa cerca de 40% da AUC de aripiprazol no plasma.
+
+Aproximadamente 8% dos caucasianos não apresentam capacidade para metabolizar os substratos de CYP2D6 e são classificados como
+metabolizadores “pobres” (MP), enquanto os demais são metabolizadores extensivos (ME). Para metabolizadores pobres dos substratos
+de CYP2D6 é necessário ajuste da dose de aripiprazol [vide 8. POSOLOGIA E MODO DE USAR ]. Os MPs apresentam um aumento
+de aproximadamente 80% na exposição do aripiprazol e redução de cerca de 30% na exposição ao metabólito ativo em comparação aos
+MEs, resultando em uma exposição aproximadamente 60% superior às porções ativas totais de uma dose determinada de aripiprazol em
+comparação aos MEs. A coadministração de Aristab com inibidores conhecidos de CYP2D6 nos MEs, como quinidina ou fluoxetina,
+praticamente dobra a exposição plasmática do aripiprazol, e é necessário um ajuste da dose [vide 6. Interações medicamentosas]. As meias-
+vidas médias de eliminação são de aproximadamente 75 horas e 146 horas para aripiprazol nos MEs e MPs, respectivamente. O aripiprazol
+não inibe ou induz a via da CYP2D6.
+Após uma dose oral única de aripiprazol marcado com [14C], aproximadamente 25% e 55% da radioatividade administrada foi recuperada
+na urina e nas fezes, respectivamente. Menos de 1% de aripiprazol inalterado foi excretado na urina e aproximadamente 18% da dose oral
+foi recuperada inalterada nas fezes.
+
+Farmacocinética em populações especiais
+
+- Insuficiência renal
+Em pacientes com insuficiência renal grave (clearance da creatinina <30 mL/min), a Cmáx de aripiprazol (administrado em uma dose única
+de 15 mg) e de dehidro- aripiprazol aumentou em 36% e 53%, respectivamente, mas a AUC foi 15% menor para o aripiprazol e 7% maior
+para o dehidro- aripiprazol. A excreção renal de aripiprazol e dehidro-aripiprazol inalterados é inferior a 1% da dose. Não é necessário
+ajuste da dose em indivíduos com insuficiência renal.
+
+Aristab comprimidos_ BU20_VPS
+- Insuficiência hepática
+Em um estudo de dose única (15 mg de aripiprazol) em indivíduos com graus variáveis de cirrose hepática (Classes Child-Pugh A, B e C),
+a AUC de aripiprazol, em comparação a indivíduos saudáveis, aumentou em 31% na insuficiência hepática leve, 8% na insuficiência
+hepática moderada e diminuiu 20% na insuficiência hepática grave. Não foi necessário ajuste da dose em nenhuma dessas diferenças.
+
+- Sexo
+A Cmáx e a AUC de aripiprazol e seu metabólito ativo, dehidro-aripiprazol, são de 30% a 40% maiores em mulheres do que em homens e,
+equivalentemente, o clearance oral aparente de aripiprazol é menor nas mulheres. No entanto, essas diferenças são explicadas basicamente
+pelas diferenças no peso corporal (25%) entre homens e mulheres. Não há recomendação de ajuste de dose com base no sexo.
+
+- Raça
+Apesar de não ter sido conduzido um estudo farmacocinético específico para investigar os efeitos da raça sobre a disposição de aripiprazol,
+a avaliação farmacocinética da população não revelou evidência de diferenças relacionadas à raça clinicamente significativas na
+farmacocinética de aripiprazol. Não há recomendação de ajuste de dose com base na raça.
+
+- Tabagismo
+Com base em estudos com enzimas hepáticas humanas in vitro, o aripiprazol não é um substrato para CYP1A2 e também não sofre
+glicuronidação direta. Por isso, o tabagismo não deve apresentar efeito sobre a farmacocinética de aripiprazol. De forma consistente com
+esses resultados in vitro ¸ a avaliação farmacocinética da população não revelou diferenças significativas na farmacocinética entre fumantes
+e não fumantes. Não há recomendação de ajuste de dose com base no tabagismo.
+
+4. CONTRAINDICAÇÕES
+O Aristab é contraindicado para pacientes que são hipersensíveis ao aripiprazol ou qualquer um dos seus excipientes. As reações variaram
+de prurido/urticária a anafilaxia [vide 9. Reações adversas ].
+
+5. ADVERTÊNCIAS E PRECAUÇÕES
+
+Uso em pacientes idosos com psicose associada à demência
+
+- Aumento da mortalidade em pacientes idosos com psicose associada à demência
+Deve- se evitar a utilização de antipsicóticos em pacientes idosos com psicose associada à demência pois pode haver maior risco de eventos
+cerebrovasculares e morte. Análises de dezessete estudos controlados por placebo (duração modal de dez semanas) basicamente em
+pacientes que recebiam drogas antipsicóticas atípicas revelou risco de morte em pacientes tratados com drogas de 1,6 a 1,7 vezes maior
+que em pacientes tratados com placebo. Apesar das causas das mortes serem variadas, a maioria dos óbitos pareceu ter natureza
+cardiovascular (como insuficiência cardíaca, morte súbita) ou infecciosa (como pneumonia). O Aristab (aripiprazol) não é aprovado para
+tratamento de pacientes com psicose associada à demência.
+
+- Eventos adversos cardiovasculares, incluindo AVC (acidente vascular cerebral)
+Em estudos clínicos controlados por placebo (estudo de duas doses variáveis e uma fixa) de psicose associada à demência, houve uma
+incidência elevada de eventos adversos cardiovasculares (como AVC, ataque isquêmico transitório), incluindo fatalidades, em pacientes
+tratados com aripiprazol (idade média: 84 anos; faixa: 78-88 anos). No estudo de dose fixa, houve uma relação de resposta à dose
+estatisticamente significativa para os eventos adversos cerebrovasculares em pacientes tratados com aripiprazol. O aripiprazol não é
+aprovado para o tratamento de pacientes com psicose associada à demência.
+
+- Experiência de segurança em pacientes idosos com psicose associada à doença de Alzheimer
+Em três estudos de dez semanas e controlados por placebo de aripiprazol em pacientes idosos com psicose associada à Doença de
+Alzheimer (n= 938; idade média: 82,4 anos; faixa: 56-99 anos), os eventos adversos emergentes do tratamento que foram relatados com
+uma incidência ≥ 3% e incidência com o aripiprazol no mínimo duas vezes maior que com placebo foram letargia [placebo 2%, aripiprazol
+5%], sonolência (incluindo sedação) [placebo 3%, aripiprazol 8%] e incontinência (principalmente incontinência urinária) [placebo 1%,
+aripiprazol 5%], salivação excessiva [placebo 0%, aripiprazol 4%] e tontura [placebo 1%, aripiprazol 4%].
+
+- Coadministração com medicamentos de tratamento assistido (MAT)
+Embora a coadministração entre medicamentos de tratamento assistido por medicação (MAT ex: metadona e buprenorfina) e
+benzodiazepinicos ou outros depressores do SNC (incluindo álcool) possa aumentar a possibilidade de danos, incluindo overdose e morte,
+a terapia concomitante com MAT pode ser apropriada em alguns pacientes; se o uso concomitante for necessário, recomenda- se
+gerenciamento e monitoramento cuidadosos .
+
+Síndrome neuroléptica maligna (SNM)
+Um complexo de sintomas potencialmente fatal ocasionalmente chamado de síndrome neuroléptica maligna (SNM) pode ocorrer com a
+administração de drogas antipsicóticas, incluindo aripiprazol. Casos raros de SNM ocorreram durante o tratamento com aripiprazol na
+base de dados clínica mundial. As manifestações clínicas da SNM são hipertermia, rigidez muscular, estado mental alterado e evidência
+de instabilidade autonômica (pulso ou pressão arterial irregular, taquicardia, diaforese e arritmia cardíaca).
+Sinais adicionais podem incluir creatinofosfoquinase elevada, mioglobinúria (rabdomiólise) e insuficiência renal aguda.
+
+A avaliação diagnóstica dos pacientes com essa síndrome é complicada. Ao se chegar a um diagnóstico, é importante excluir casos em que
+a apresentação clínica inclua enfermidades médicas sérias (como pneumonia e infecção sistêmica) e sinais e sintomas extrapiramidais
+(SEP) não tratados ou tratados de forma inadequada. Outras considerações importantes no diagnóstico diferencial incluem toxicidade
+anticolinérgica central, internação, febre medicamentosa e patologia do sistema nervoso central.
+
+O tratamento da SNM deve incluir: 1) descontinuação imediata de drogas antipsicóticas e outras drogas não essenciais à terapia
+concomitante; 2) tratamento sintomático intensivo e monitoramento médico; e 3) tratamento de quaisquer problemas médicos sérios
+concomitantes para os quais haja tratamentos específicos. Não há consenso quanto a regimes de tratamento farmacológico específ icos para
+SNM não complicada. Se um paciente precisar tratamento com droga antipsicótica após se recuperar da SNM, deve- se considerar com
+cautela a reintrodução de terapia. O paciente deve ser monitorado cuidadosamente, já que recidivas de SNM têm sido relatadas.
+
+Discinesia tardia
+A síndrome de movimentos discinéticos potencialmente involuntários e irreversíveis pode ser desenvolvida por pacientes tratados com
+drogas antipsicóticas. Apesar de aparentemente haver maior prevalência dessa síndrome entre idosos, especialmente mulheres idosas, é
+impossível confiar em estimativas de prevalência para prever, na introdução do tratamento antipsicótico, quais pacientes tem maior chance
+
+Aristab comprimidos_ BU20_VPS
+de desenvolver a síndrome. É desconhecido se produtos medicamentosos antipsicóticos diferem quanto ao potencial de causar discinesia
+tardia.
+
+Acredita- se que o risco de desenvolver discinesia tardia e a possibilidade de que ela se torne irreversível aumenta conforme a duração do
+tratamento e a dose total acumulada de drogas antipsicóticas administradas ao paciente aumentem. No entanto, embora menos comumente,
+a síndrome pode se desenvolver após períodos de tratamento relativamente curtos a doses baixas.
+
+Não há tratamentos conhecidos para casos estabelecidos de discinesia tardia, apesar de que a síndrome pode diminuir parcial ou
+completamente se o tratamento antipsicótico for interrompido. Por si só, o tratamento antipsicótico pode, no entanto, suprimir to tal ou
+parcialmente os sinais e sintomas da síndrome e, assim, mascarar o processo subjacente. O efeito que a supressão sintomática possui no
+processo de longo prazo da síndrome é desconhecido.
+
+Dadas essas considerações, o Aristab deve ser prescrito de forma que seja mais provável minimizar a ocorrência de discinesia tardia. O
+tratamento antipsicótico crônico deve ser geralmente reservado a pacientes que sofrem de uma enfermidade crônica (1) que se sabe que
+seja responsiva a drogas antipsicóticas e (2) para os quais tratamentos alternativos, igualmente eficazes, mas possivelmente menos danosos,
+não estejam disponíveis ou não sejam adequados. Em pacientes que necessitem de tratamento crônico, a menor dose e a menor duração
+do tratamento que produza uma resposta clínica satisfatória devem ser buscadas. A necessidade de tratamento contínuo deve ser reavaliada
+periodicamente.
+
+Se aparecerem sinais e sintomas de discinesia tardia em um paciente que esteja recebendo Aristab, a descontinuação da droga deve ser
+considerada. No entanto, alguns pacientes talvez precisem do tratamento com Aristab, independentemente da presença da síndrome.
+
+Hiperglicemia e diabetes mellitus
+Foi relatada hiperglicemia, em alguns casos extrema e associada à cetoacidose ou coma hiperosmolar ou morte, em pacientes tratados com
+antipsicóticos atípicos. Houve poucos relatos de hiperglicemia em pacientes tratados com aripiprazol [vide 9. Reações adversas ]. Apesar
+de menos pacientes terem sido tratados com aripiprazol, não é conhecido se essa experiência mais limitada é a única razão para a falta de
+relatos desse tipo. A avaliação da relação entre o uso de antipsicóticos atípicos e anormalidades da glicose é complicada pela possibilidade
+de um risco elevado subjacente de diabetes mellitus em pacientes com esquizofrenia e uma incidência elevada de diabetes mellitus na
+população em geral. Dados esses aspectos conflitantes, a relação entre o uso de antipsicóticos atípicos e eventos adversos relacionados à
+hiperglicemia não é totalmente compreendida. No entanto, estudos epidemiológicos que não incluíam aripiprazol sugerem um risco
+elevado de eventos adversos emergentes do tratamento e relacionados à hiperglicemia em pacientes tratados com antipsicóticos atípicos
+incluídos nesses estudos.
+
+Em virtude de aripiprazol não ser comercializado no momento em que esses estudos foram realizados, não se sabe se aripiprazol está
+associado a esse risco elevado. Estimativas precisas de risco para eventos adversos relacionados à hiperglicemia em pacientes tratados
+com antipsicóticos atípicos não estão disponíveis.
+
+Pacientes com diagnóstico estabelecido de diabetes mellitus que começaram a receber antipsicóticos atípicos devem ser monitorados
+regularmente quanto à piora do controle glicêmico. Pacientes com fatores de risco para diabetes mellitus (como obesidade, histórico
+familiar de diabetes) que estejam dando início ao tratamento com antipsicóticos atípicos devem se submeter a testes de glicose sérica em
+jejum no início do tratamento e periodicamente durante o tratamento. Todos os pacientes tratados com antipsicóticos atípicos devem ser
+monitorados quanto a sintomas de hiperglicemia, incluindo polidipsia, poliúria, polifagia e fraqueza. Pacientes que desenvolverem
+sintomas de hiperglicemia durante o tratamento com antipsicóticos atípicos devem se submeter a testes de glicose sérica em jejum. Em
+alguns casos, a hiperglicemia foi resolvida quando o antipsicótico atípico foi descontinuado. No entanto, alguns pacientes precisaram
+continuar o tratamento antidiabético, apesar da descontinuação da droga suspeita.
+
+Comportamentos compulsivos
+Relatos de casos pós-comercialização sugerem que pacientes podem apresentar impulsos intensos e incapacidade de controlar esses
+impulsos durante o tratamento com aripiprazol. Outros impulsos compulsivos, relatados com menos frequência, incluem: impulsos sexuais,
+compras, compulsão alimentar e outros comportamentos impulsivos ou compulsivos. Como os pacientes podem não reconhecer esses
+comportamentos como anormais, é importante que o médico responsável pela prescrição questione aos pacientes ou aos cuidadores destes
+pacientes especificamente sobre o desenvolvimento de desejos anormais, como impulsos intensos por jogos, compulsões sexuais, por
+compras, alimentares ou outros impulsos enquanto os pacientes estiverem em tratamento com o aripiprazol. Deve-se notar que os sintomas
+impulsivos também podem estar associados à doença do paciente. Recomenda- se precaução inclusive do uso deste medicamento por
+pacientes com alto risco de comportamentos incontroláveis, o que inclui pacientes com histórico pessoal ou familiar de transtorno
+obsessivo-compulsivo, transtorno de controle de impulsos, transtorno bipolar, personalidade impulsiva, alcoolismo, abuso de drogas ou
+comportamento de vícios. Em alguns casos, embora não em todos, observou- se que os impulsos cessaram quando a dose de aripiprazol
+foi reduzida ou quando o medicamento foi descontinuado. Comportamentos compulsivos podem resultar em danos para o paciente e
+outros, se não forem reconhecidos. Considere a redução da dose ou a descontinuação do medicamento se um paciente desenvolver tais
+impulsos.
+
+Hipotensão ortostática
+O aripiprazol pode causar hipotensão ortostática possivelmente em virtude de seu antagonismo ao receptor α1-adrenérgico. A incidência
+de eventos relacionados à hipotensão ortostática em estudos de curta duração e controlados por placebo em pacientes adultos recebendo
+aripiprazol oral (n= 2467) incluiu (incidência com aripiprazol, incidência com placebo): hipotensão ortostática (1%, 0,3%), tontura postural
+(0,5%, 0,3%) e síncope (0,5%, 0,4%).
+A incidência de uma alteração ortostática significativa na pressão arterial (definida como uma redução na pressão arterial sistólica ≥ 20
+mmHg acompanhada de uma elevação na frequência cardíaca ≥ 25 em comparação entre a posição em pé e a posição supina) para o
+aripiprazol não foi significativamente diferente do placebo (incidência com aripiprazol, incidência com placebo) em pacientes adultos
+tratados com aripiprazol oral (4%, 2%).
+
+O aripiprazol deve ser usado com cautela em pacientes com doença cardiovascular conhecida (histórico de infarto do miocárdio ou doença
+cardíaca isquêmica, insuficiência cardíaca ou anormalidades da condução), doença cerebrovascular ou condições que poderiam predispor
+os pacientes à hipotensão (desidratação, hipovolemia e tratamento com medicamentos anti- hipertensivos).
+
+Distúrbios vasculares
+Casos de tromboembolismo venoso (TEV) foram notificados com medicamentos antipsicóticos. Uma vez que pacientes tratados com
+antipsicóticos apresentam frequentemente fatores de risco adquiridos para o TEV, todos os possíveis os fatores de riscos para TEV devem
+ser identificados antes e durante o tratamento com aripiprazol.
+
+Aristab comprimidos_ BU20_VPS
+Quedas
+Os antipsicóticos, incluindo o aripiprazol, podem causar sonolência, hipotensão postural, instabilidade motora e sensorial, que podem levar
+a quedas e, consequentemente, fraturas ou outras lesões. Para pacientes com doenças, condições ou que estejam utilizando medicamentos
+que possam exacerbar esses efeitos, deve- se avaliar o risco de quedas ao iniciar o tratamento antipsicótico, assim como avaliar
+recorrentemente este risco em pacientes em tratamento com terapia antipsicótica de longo prazo.
+
+Leucopenia, neutropenia e a granulocitose
+Efeito da classe: em estudos clínicos e/ou experiência pós-comercialização, têm sido relatados eventos de leucopenia/neutropenia
+relacionados temporariamente a agentes antipsicóticos, incluindo aripiprazol. Também foi relatada agranulocitose.
+
+Fatores de risco possíveis para leucopenia/neutropenia incluem contagem de leucócitos (WBC) preexistente baixa e histórico de
+leucopenia/neutropenia induzidas pela droga. Pacientes com histórico de WBC baixa clinicamente significativa ou leucopenia/neutropenia
+induzidas pela droga devem ter seu hemograma completo (CBC) monitorado frequentemente durante os primeiros meses de terapia e a
+descontinuação de Aristab deve ser considerada ao primeiro sinal de queda clinicamente significativa na WBC na ausência de outros
+fatores causais. Pacientes com neutropenia clinicamente significativa devem ser monitorados cuidadosamente quanto à febre ou outros
+sinais ou sintomas de infecção e tratados imediatamente, se tais sintomas ou sinais ocorrerem. Pacientes com neutropenia grave (contagem
+absoluta de neutrófilos <1000/mm3) devem descontinuar Aristab e ter sua WBC monitorada até a recuperação.
+
+Convulsões
+Em estudos de curto prazo e controlados por placebo, convulsões ocorreram em 0,1% (3/2467) dos pacientes adultos tratados com
+aripiprazol oral. Como ocorre com outras drogas antipsicóticas, o aripiprazol deve ser utilizado com cautela em pacientes com histórico
+de convulsões ou com condições que reduzam o limiar convulsivo, como no caso de demência de Alzheimer. Condições que reduzam o
+limiar convulsivo podem ser mais predominantes em uma população com idade a partir de 65 anos.
+
+Potencial para comprometimento cognitivo ou motor
+Aristab, como outros antipsicóticos, pode comprometer potencialmente as habilidades de julgamento, pensamento ou motoras. Por
+exemplo, em estudos de curto prazo e controlados por placebo, a sonolência (incluindo sedação) foi relatada em pacientes adultos (n=
+2467) tratados com aripiprazol oral (incidência com aripiprazol: 11%, incidência com placebo: 6%). A sonolência (incluindo sedação)
+levou à descontinuação em 0,3% (8/2467) dos pacientes adultos que recebiam aripiprazol em estudos de curto prazo e controlados por
+placebo.
+
+Apesar da incidência de aumento relativamente modesta desses eventos em comparação ao placebo, os pacientes devem ser alertados sobre
+o risco de operar máquinas perigosas, incluindo automóveis, até que eles tenham certeza razoável de que a terapia com Aristab não os
+afeta de modo adverso.
+
+Regulação da temperatura corporal
+A perda da habilidade do corpo em reduzir a temperatura corporal central tem sido atribuída a agentes antipsicóticos. Recomenda- se
+atenção adequada na prescrição de aripiprazol para pacientes que passarão por situações que possam contribuir para uma elevação na
+temperatura corporal central (como exercício extenuante, exposição a calor extremo, administração concomitante de medicamento com
+atividade anticolinérgica, ou sujeição à desidratação) [vide 9. Reações adversas ].
+
+Suicídio
+A possibilidade de tentativa de suicídio é inerente a enfermidades psicóticas e transtorno bipolar. Uma supervisão cuidadosa de pacientes
+de alto risco deve ser realizada durante a terapia. Deve- se prescrever Aristab na menor quantidade consistente com o controle eficaz do
+paciente de modo a reduzir o risco de superdosagem [vide 9. Reações adversas ].
+
+Disfagia
+A falta de motilidade do esôfago e aspiração tem sido associadas ao uso de drogas antipsicóticas, incluindo Aristab. A pneumonia por
+aspiração é uma causa comum de morbidade e mortalidade em pacientes idosos, especialmente entre aqueles com demência de Alzheimer
+avançada. O aripiprazol e outras drogas psicóticas devem ser utilizados com cuidado em pacientes com risco de pneumonia por aspiração
+[vide 5. Advertências e precauções : Uso em pacientes idosos com psicose associada à demência e 9. Reações adversas].
+
+Uso em pacientes com enfermidade concomitantes
+A experiência clínica com aripiprazol em pacientes com certas enfermidades sistêmicas concomitantes é limitada. aripiprazol não foi
+avaliado ou utilizado em uma extensão considerável em pacientes com histórico recente de infarto do miocárdio ou doença cardíaca
+instável. Pacientes com esses diagnósticos foram excluídos dos estudos clínicos pré- comercialização [vide 5. Advertências e precauções ].
+
+Abuso e dependência
+Aripiprazol não foi estudado sistematicamente em humanos com relação ao seu potencial de abuso, tolerância ou dependência física. Em
+estudos de dependência física em macacos, sintomas de abstinência foram observados mediante a interrupção abrupta da administração.
+Enquanto estudos clínicos não revelaram qualquer tendência para comportamento de busca pela droga, essas observações não foram
+sistemáticas e não é possível prever com base nessa experiência limitada até que ponto uma droga que age no sistema nervoso central será
+mal utilizada, usada com fins recreativos e/ou excessivamente utilizada, uma vez que seja comercializada. Conseq uentemente, os pacientes
+devem ser avaliados cuidadosamente quanto a um histórico de abuso de drogas. Tais pacientes devem ser rigorosamente observados com
+relação a sinais de mau uso ou abuso (como desenvolvimento de tolerância, aumento na dose, comportamento de busca pela droga).
+
+Carcinogênese, mutagênese, comprometimento da fertilidade
+
+- Carcinogênese
+Estudos de carcinogênese foram conduzidos em camundongos ICR e ratos Sprague -Dawley (SD) e F344. O aripiprazol foi administrado
+por dois anos na dieta a doses de 1 mg/kg/dia, 3 mg/kg/dia, 10 mg/kg/dia e 30 mg/kg/dia a camundongos ICR, e 1 mg/kg/dia, 3 mg/kg/dia
+e 10 mg/kg/dia a ratos F344 (0,2 vezes a 5 vezes e 0,3 vezes a 3 vezes a dose humana máxima recomendada [DHMR] em mg/m2,
+respectivamente).
+Ademais, os ratos SD receberam doses orais por dois anos a 10 mg/kg/dia, 20 mg/kg/dia, 40 mg/kg/dia e 60 mg/kg/dia (3 vezes a 19 vezes
+a DHMR em mg/m2). O aripiprazol não induziu tumores em camundongos ou ratos machos. Em camundongos fêmeas, as incidências de
+adenomas na glândula pituitária e adenocarcinomas e adenoacantomas das glândulas mamárias foram altas a doses de 3 mg/kg/dia a 30
+mg/kg/dia na dieta (0,1 vez a 0,9 vez a exposição humana à DHRM em mg/m2). Em ratos fêmeas, a incidência de fibroadenomas nas
+glândulas mamárias foi elevada a uma dose de 10/mg/kg/dia na dieta (0,1 vez a exposição humana à DHRM com base na AUC e 3 vezes
+a DHRM em mg/m2); e as incidências de carcinomas adrenocorticais e adenomas/carcinomas adrenocorticais combinados foram elevadas
+a uma dose oral de 60 mg/kg/dia (14 vezes a exposição humana à DHRM com base na AUC e 19 vezes a DHRM em mg/m2).
+
+Aristab comprimidos_ BU20_VPS
+Alterações proliferativas na glândula mamária e pituitária de roedores têm sido observadas após a administração crônica de outros agentes
+antipsicóticos e são consideradas mediadas pela prolactina. A prolactina sérica não foi medida nos estudos de carcinogenicidade de
+aripiprazol. No entanto, elevações nos níveis séricos de prolactina foram observados em camundongos fêmeas em um estudo de treze
+semanas nas doses associadas aos tumores pituitário e da glândula mamária. A prolactina sérica não foi elevada em ratos fêmeas em
+estudos de dieta de quatro e treze semanas na dose associada a tumores na glândula mamária. A relevância para o risco em humanos dos
+achados de tumores endócrinos mediados pela prolactina em roedores é desconhecida.
+
+- Mutagênese
+O potencial mutagênico de aripiprazol foi testado no ensaio in vitro de mutação reversa bacteriana, ensaio in vitro de reparo de DNA
+bacteriano, ensaio in vitro de mutação genética sequencial de células de linfoma de camundongos, ensaio in vitro de aberração
+cromossômica em células de pulmão de hamster chinês (CHL, em inglês), ensaios in vivo de micronúcleos de camundongos e em estudo
+de síntese não programado de DNA em ratos. O aripiprazol e um metabólito (2,3-DCPP) foram clastogênicos em ensaios in vitro de
+aberração cromossômica em células CHL com e sem ativação metabólica. O metabólito 2,3-DCPP produziu elevações no número de
+aberrações no ensaio in vitro nas células CHL na ausência de ativação metabólica. Uma resposta positiva foi obtida no ensaio in vivo de
+micronúcleos de camundongos; no entanto, a resposta foi devida a um mecanismo não considerado relevante em humanos.
+
+- Comprometimento da f ertilidade
+Ratos fêmeas foram tratados com doses orais de 2 mg/kg/dia, 6 mg/kg/dia e 20 mg/kg/dia (0,6 vez, 2 vezes e 6 vezes a dose humana
+recomendada máxima [DHRM] em mg/m2) de aripiprazol duas semanas antes do acasalamento até o dia 7 de gestação. Irregularidades no
+ciclo estrogênico e aumento do corpo lúteo foram observados em todas as doses, mas não foi observado comprometimento da fertilidade.
+Aumento nas perdas de pré-implantação foi observado nas doses de 6 mg/kg e 20 mg/kg, e diminuição do peso fetal foi observada na dose
+de 20 mg/kg.
+
+Ratos machos foram tratados com doses orais de 20 mg/kg/dia, 40 mg/kg/dia e 60 mg/kg/dia (6 vezes, 13 vezes e 19 vezes a DHRM em
+mg/m2) de aripiprazol nove semanas antes do acasalamento e durante o acasalamento. Distúrbios na espermatogênese foram observados
+na dose de 60 mg/kg, e atrofia na próstata foi observada nas doses 40 mg/kg e 60 mg/kg, mas não foi observado comprometimento da
+fertilidade.
+
+Uso em populações específicas
+
+- Gravidez
+Categoria C: As evidências disponíveis são inconclusivas ou inadequadas para determinar o risco fetal quando usadas em mulheres
+grávidas ou em potencial para engravidar. Em estudos com animais, o aripiprazol demonstrou toxicidade do desenvolvimento, incluindo
+possíveis efeitos teratogênicos em ratos e coelhos.
+
+Ratas prenhes foram tratadas com doses orais de 3 mg/kg/dia, 10 mg/kg/dia e 30 mg/kg/dia (1 vez, 3 vezes e 10 vezes a dose humana
+recomendada máxima [DHRM] em mg/m2) de aripiprazol durante o período de organogênese. A gestação foi levemente prolongada a 30
+mg/kg. O tratamento causou um leve atraso no desenvolvimento fetal, conforme evidenciado pelo peso fetal reduzido (30 mg/kg), testículos
+retidos (30 mg/kg) e atraso na ossificação esquelética (10 mg/kg e 30 mg/kg). Não houve efeitos adversos na sobrevivência embrio fetal
+ou do filhote. A prole nascida apresentou peso corporal reduzido (10 mg/kg e 30 mg/kg) e incidências elevadas de nódulos hepato
+diafragmáticos e hérnia diafragmática a 30 mg/kg (os outros grupos de dose não foram examinados com relação a esses achados). Também
+foi observada baixa incidência de hérnia diafragmática em fetos expostos a 30 mg/kg.
+
+No período pós-natal, foi observada abertura vaginal tardia a 10 mg/kg e 30 mg/kg e desempenho reprodutivo comprometido (redução da
+taxa de fertilidade, de corpo lúteo, de implantes e de fetos vivos, e aumento na perda pós-implantação, provavelmente mediada por efeitos
+na prole feminina) foi observado a 30 mg/kg. Foi observada certa toxicidade materna a 30 mg/kg. No entanto, não houve evidências que
+sugiram que esses efeitos no desenvolvimento foram secundários à toxicidade materna.
+
+Coelhas prenhes foram tratadas com doses orais de 10 mg/kg/dia, 30 mg/kg/dia e 100 mg/kg/dia (2 vezes, 3 vezes e 11 vezes a exposição
+humana da DHRM com base na AUC e 6 vezes, 19 vezes e 65 vezes a DHRM em mg/m2) de aripiprazol durante o período de organogênese.
+Foram observados redução no consumo alimentar materno e elevação nos abortos a 100 mg/kg. O tratamento causou elevação na
+mortalidade fetal (100 mg/kg), peso fetal reduzido (30 mg/kg e 100 mg/kg), incidência elevada de uma anormalidade esquelética
+(sternebrae fundida a 30 mg/kg e 100 mg/kg) e variações esqueléticas de menor relevância (100 mg/kg).
+
+Em um estudo no qual ratos foram tratados com doses orais de 3 mg/kg/dia, 10 mg/kg/dia e 30 mg/kg/dia (1 vez, 3 vezes e 10 vezes a
+DHRM em mg/m2) de aripiprazol no pré- natal e no pós-natal (do dia 17 de gestação até o dia 21 pós-parto), toxicidade materna leve e
+gestação levemente prolongada foram observadas a 30 mg/kg. Uma elevação no número de natimortos e reduções no peso dos filhotes
+(persistindo durante a idade adulta) e na sobrevivência foram observadas nessa dose.
+Não há estudos adequados e bem controlados em mulheres grávidas. É desconhecido se aripiprazol pode causar danos ao feto quando
+administrado a uma mulher grávida ou se pode afetar a capacidade reprodutiva. Recém-nascidos que foram expostos à fármacos
+antipsicóticos durante o terceiro trimestre de gravidez apresentam o risco para sintomas extrapiramidais e/ou de abstinência após o parto.
+Há relatos de agitação, hipertonia, hipotonia, tremor, sonolência, dificuldade respiratória e distúrbio alimentar nestes recém -nascidos.
+Essas complicações variaram em gravidade; enquanto em alguns casos os sintomas foram autolimitados, em outros foi requerido suporte
+da unidade de terapia intensiva (UTI) e de hospitalização prolongada. Existem relatos muito raros desses eventos com a exposição ao
+aripiprazol. As pacientes devem avisar ao médico se engravidarem ou se pretendem engravidar durante o tratamento com aripiprazol.
+Aristab deve ser utilizado durante a gravidez apenas se os benefícios potenciais compensarem o possível risco ao feto.
+
+Este medicamento não deve ser utilizado por mulheres grávidas sem orientação médica ou do cirurgião-dentista.
+
+- Trabalho de parto
+O efeito de aripiprazol no trabalho de parto em humanos é desconhecido.
+
+- Uso por lactantes
+Aripiprazol é excretado no leite materno humano.
+Uso criterioso no aleitamento ou doação de leite materno. O uso deste medicamento no período da lactação depende da avaliação
+e acompanhamento do seu médico ou cirurgião-dentista.
+
+- Uso pediátrico
+Não há indicação aprovada para o uso de Aristab em pacientes pediátricos.
+
+Aristab comprimidos_ BU20_VPS
+- Uso geriátrico
+Não há necessidade de ajuste de dose em pacientes idosos.
+Em estudos formais de farmacocinética de dose única (com aripiprazol administrado em dose única de 15 mg), o clearance do aripiprazol
+foi 20% menor em indivíduos idosos (≥ 65 anos) em comparação a indivíduos adultos mais jovens (18 a 64 anos). No entanto, não houve
+efeito detectável atribuível à idade na análise de farmacocinética da população de pacientes esquizofrênicos. Além disso, a farmacocinética
+de aripiprazol após múltiplas doses em pacientes idosos aparentou ser semelhante à observada em indivíduos saudáveis e jovens. Dos
+13.543 pacientes tratados com aripiprazol oral em estudos clínicos, 1.073 (8%) tinham no mínimo 65 anos de idade e 799 (6%) tinham no
+mínimo 75 anos de idade. A maior parte (81%) dos 1.073 pacientes foi diagnosticada com Demência do tipo de Alzheimer.
+
+Estudos de aripiprazol controlados por placebo em esquizofrenia e mania bipolar não incluíram uma quantidade suficiente de indivíduos
+com no mínimo 65 anos de idade para determinar se eles respondem de forma diferente dos indivíduos mais jovens.
+
+Estudos em pacientes idosos com psicose associada à Doença de Alzheimer sugeriram que possa haver um perfil de tolerância diferente
+nessa população em comparação a pacientes mais jovens com esquizofrenia [vide 5. Advertências e precauções: Uso em pacientes idosos
+com psicose associada à demência]. A segurança e a eficácia de aripiprazol no tratamento de pacientes com psicose associada à Doença
+de Alzheimer não foram estabelecidas. Se for decidido tratar tais pacientes com aripiprazol, deve -se ter cautela.
+
+- Pacientes com insuficiência hepática
+Não é necessário o ajuste da dose em pacientes com insuficiência hepática com score de Child-Pugh entre 1 5 e 90 ml/min.
+
+- Pacientes com insuficiência renal
+Não é necessário o ajuste da dose em pacientes com insuficiência renal com TFG entre 5 e 15.
+
+Atenção: Contém lactose monoidratada (tipo de açúcar) abaixo de 0,25 g/comprimido. Este medicamento não deve ser usado por
+pessoas com síndrome de má-absorção de glicose- galactose.
+
+Atenção: Contém os corantes óxido de ferro vermelho (Aristab 10 mg e 30 mg) e óxido de ferro amarelo (Aristab 15 mg).
+
+Oriente seu paciente a não dirigir veículos ou operar máquinas durante o tratamento, pois sua habilidade e capacidade de reação
+podem estar prejudicadas.
+
+O uso deste medicamento pode causar tontura, desmaios ou perda da consciência, expondo o paciente a quedas ou acidentes.
+
+Este medicamento pode potencializar o prolongamento do intervalo QT, o que aumenta o risco de ataque de arritmias
+ventriculares graves do tipo “torsades de pointes”, que é potencialmente fatal (morte súbita).
+
+6. INTERAÇÕES MEDICAMENTOSAS
+Em virtude dos efeitos principais de aripiprazol sobre o sistema nervoso central, deve- se ter cautela quando Aristab for administrado em
+combinação com álcool ou outras drogas com ação central.
+Devido ao seu antagonismo do receptor alfa adrenérgico, aripiprazol possui o potencial de intensificar os efeitos de certos agentes anti-
+hipertensivos.
+
+Potencial de outras drogas afetarem Aristab
+Aripiprazol não é um substrato das enzimas CYP1A1, CYP1A2, CYP2A6, CYP2B6, CYP2C8, CYP2C9, CYP2C19 ou CYP2E1.
+Aripiprazol também não sofre glicuronidação direta. Isto sugere que uma interação de aripiprazol com inibidores ou indutores dessas
+enzimas, ou outros fatores, como tabagismo, seja improvável.
+
+CYP3A4 e CYP2D6 são responsáveis pelo metabolismo de aripiprazol. Os agentes indutores de CYP3A4 (como carbamazepina) podem
+causar uma elevação no clearance de aripiprazol e redução nos níveis séricos. Inibidores de CYP3A4 (como cetoconazol) ou CYP2D6
+(como quinidina, fluoxetina ou paroxetina) podem inibir a eliminação de aripiprazol e causar elevação nos níveis séricos.
+
+- Cetoconazol e outros inibidores de CYP3A4
+A coadministração de cetoconazol (200 mg/dia por quatorze dias) com uma dose única de 15 mg de aripiprazol elevou a AUC de aripiprazol
+e de seu metabólito ativo em 63% e 77%, respectivamente. O efeito de uma dose mais alta de cetoconazol (400 mg/dia) não foi estudado.
+Quando cetoconazol é administrado concomitantemente com aripiprazol, a dose de aripiprazol deve ser reduzida para a metade de sua
+dose normal. Espera- se que outros inibidores fortes de CYP3A4 (itraconazol) tenham efeitos similares e necessitem de reduções
+semelhantes na dose; inibidores moderados (eritromicina, suco de toranja [grapefruit, em inglês]) não foram estudados. Quando um
+inibidor de CYP3A4 for retirado da terapia combinada, a dose de aripiprazol deve ser elevada.
+
+- Quinidina e outros inibidores de CYP2D6
+A coadministração de uma dose única de 10 mg de aripiprazol com quinidina (166 mg/dia por treze dias), um potente inibidor de CYP2D6,
+elevou a AUC de aripiprazol em 112%, mas reduziu a AUC de seu metabólito ativo, dehidro-aripiprazol, em 35%. A dose de aripiprazol
+deve ser reduzida para a metade de sua dose normal quando quinidina for administrada concomitantemente com aripiprazol. Espera-se que
+outros inibidores significativos de CYP2D6, como fluoxetina ou paroxetina, tenham efeitos similares e levem a reduções semelhantes da
+dose. Quando um inibidor de CYP2D6 for retirado da terapia combinada, a dose de aripiprazol deve ser elevada.
+
+- Carbamazepina e outros indutores de CYP3A4
+A coadministração de carbamazepina (200 mg, duas vezes ao dia), um indutor potente de CYP3A4, com aripiprazol (30 mg/dia) resultou
+em uma redução aproximada de 70% nos valores da Cmáx e AUC de aripiprazol e seu metabólito ativo, dehidro-aripiprazol. Quando
+carbamazepina é adicionada à terapia com aripiprazol, a dose deste deve ser dobrada. Aumentos adicionais na dose devem ser baseados
+na avaliação clínica. Quando carbamazepina for retirada da terapia combinada, a dose de aripiprazol deve ser reduzida.
+
+Potencial de aripiprazol afetar outras drogas
+Há baixa probabilidade de aripiprazol causar interações farmacocinéticas clinicamente importantes com drogas metabolizadas pelas
+enzimas do citocromo P450. Em estudos in vivo , doses entre 10 mg/dia e 30 mg/dia de aripiprazol não apresentaram efeito significativo
+no metabolismo por substratos de CYP2D6 (dextrometorfano), CYP2C9 (varfarina), CYP2C19 (omeprazol, varfarina) e CYP3A4
+
+Aristab comprimidos_ BU20_VPS
+(dextrometorfano). Além disso, aripiprazol e dehidro-aripiprazol não apresentaram potencial para alterar o metabolismo mediado por
+CYP1A2 in vitro.
+
+Não foram observados efeitos de aripiprazol sobre a farmacocinética de lítio ou valproato.
+
+-Medicações associadas a prolongamento do intervalo QT
+A coadministração com outro medicamento conhecido por prolongar o intervalo QT deve ser realizada com cautela, devido ao risco de
+efeitos aditivos no intervalo QT que podem levar a eventos adversos cardíacos graves, incluindo torsade de pointes.
+- Álcool
+Não houve diferença significativa entre aripiprazol administrado concomitantemente com etanol e placebo coadministrado com etanol
+sobre o desempenho das habilidades motoras totais ou sobre as respostas a estímulos em indivíduos saudáveis. Como ocorre com a maior
+parte dos medicamentos psicoativos, os pacientes devem ser alertados para evitar ingerir álcool durante o tratamento com Aristab.
+
+Drogas sem interações clinicamente importantes com Aristab
+Não é necessário ajuste na dosagem quando administrado concomitantemente ao aripiprazol: famotidina, valproato, lítio, lamotrigina,
+dextrometorfano, varfarina e omeprazol.
+
+Anormalidades em testes laboratoriais
+Uma comparação entre grupos em estudos de três a seis semanas e controlados por placebo em adultos não revelou diferenças medicamente
+importantes entre os grupos de aripiprazol e placebo nas proporções de pacientes apresentando alterações potencial e clinicamente
+significativas nos parâmetros de rotina de bioquímica sérica, hematologia ou análise de urina. De maneira semelhante, não foram
+observadas diferenças entre aripiprazol e placebo na incidência de descontinuações em razão de alterações na bioquímica sérica,
+hematologia ou análise de urina em pacientes adultos.
+Alterações no ECG
+
+Comparações entre grupos para a análise conjunta de estudos controlados por placebo em pacientes com esquizofrenia e mania bipolar
+não revelaram diferenças significativas entre aripiprazol oral e placebo na proporção de pacientes apresentando alterações potencialmente
+importantes nos parâmetros do ECG.
+
+Aripiprazol foi associado a uma elevação mediana na frequência cardíaca de duas batidas por minuto, em comparação à ausência de
+elevação entre pacientes recebendo placebo.
+
+Interação com nicotina
+A avaliação farmacocinética da população não revelou diferenças farmacocinéticas significativas entre fumantes e não fumantes.
+
+Interação com alimentos
+Aristab pode ser administrado com ou sem alimentos.
+
+8. POSOLOGIA E MODO DE USAR
+
+Esquizofrenia
+A dose de início e a dose alvo recomendadas para Aristab é de 10 mg/dia ou 15 mg/dia uma vez ao dia, independente das refeições. Aristab
+tem sido avaliado sistematicamente e demonstrou ser eficaz em uma variação de dose entre 10 mg/dia e 30 mg/dia; no entanto, doses
+superiores a 10 mg/dia ou 15 mg/dia não foram mais eficazes. Em geral, aumentos na dosagem não devem ser feitos antes de duas semanas,
+o tempo necessário para se atingir o estado de equilíbrio.
+
+Tratamento de manutenção: A manutenção da eficácia na esquizofrenia foi demonstrada em um estudo envolvendo pacientes com
+esquizofrenia que permaneceram com sintomas estáveis ao receber outros medicamentos antipsicóticos por períodos de, no mínimo, três
+meses. Esses pacientes tiveram seus medicamentos descontinuados, foram randomizados para 15 mg/dia de aripiprazol ou placebo e foram
+monitorados quanto à recidiva. Os pacientes devem ser reavaliados periodicamente para determinar a necessidade de continuar com o
+tratamento de manutenção.
+
+- Troca de outros antipsicóticos
+Não há dados coletados de forma sistemática para avaliar especificamente pacientes com esquizofrenia que tenham trocado outros
+antipsicóticos por Aristab , ou dados relativos à administração concomitante com outros antipsicóticos. Ao passo que a descontinuação
+imediata do tratamento antipsicótico anterior possa ser aceitável para alguns pacientes com esquizofrenia, a descontinuação mais gradual
+pode ser mais adequada para os demais pacientes. Em todos os casos, o período de sobreposição da administração dos antipsicóticos deve
+ser minimizado.
+
+Aristab comprimidos_ BU20_VPS
+Transtorno bipolar
+A dose de início e a dose alvo recomendada é de 15 mg uma vez ao dia como monoterapia ou como terapia adjuntiva com lítio ou valproato.
+Aristab deve ser administrado independentemente das refeições. A dose pode ser elevada para 30 mg/dia com base na resposta clínica. A
+segurança das doses superiores a 30 mg/dia não foi avaliada em estudos clínicos.
+
+Tratamento de manutenção: A manutenção da eficácia no transtorno bipolar do tipo I foi demonstrada em um estudo envolvendo
+pacientes que permaneceram com sintomas estáveis ao receberem aripiprazol (15 mg/dia ou 30 mg/dia, como monoterapia) por, no
+mínimo, seis semanas consecutivas. Esses pacientes tiveram seus medicamentos descontinuados, foram randomizados para aripiprazol ou
+placebo na mesma dose em que foram estabilizados e foram monitorados quanto à recidiva. Os pacientes devem ser reavaliados
+periodicamente para determinar a necessidade de continuar com o tratamento de manutenção.
+
+Ajuste da dosagem
+Ajustes da dosagem em adultos não são habitualmente indicados de acordo com a idade, sexo, etnia ou estado da insuficiência renal ou
+hepática.
+
+- Ajuste da dosagem para pacientes recebendo aripiprazol concomitantemente a inibidores fortes de CYP3A4
+Quando for indicada a administração concomitante de aripiprazol com inibidores fortes de CYP3A4, como cetoconazol ou claritromicina,
+a dose de aripiprazol deve ser reduzida para a metade da dose habitual.
+Quando um inibidor de CYP3A4 for retirado da terapia combinada, a dose de aripiprazol deve ser então elevada
+
+- Ajuste da dosagem para pacientes recebendo aripiprazol concomitantemente a inibidores de CYP2D6 em potencial
+Quando ocorrer a administração concomitante de aripiprazol com inibidores de CYP2D6 em potencial, como quinidina, fluoxetina ou
+paroxetina, a dose de aripiprazol deve ser reduzida, no mínimo, até a metade de sua dose normal. Quando um inibidor de CYP2D6 for
+retirado da terapia combinada, a dose de aripiprazol deve ser então elevada
+
+- Ajuste da dosagem para pacientes recebendo indutores de CYP3A4 em potencial
+Quando um indutor de CYP3A4 em potencial, como carbamazepina, é incluído na terapia com aripiprazol, a dose de aripiprazol deve ser
+dobrada. Aumentos adicionais na dose devem ser baseados na avaliação clínica. Quando um indutor de CYP3A4 for retirado da terapia
+combinada, a dose de aripiprazol deve ser reduzida para 10 mg ou 15 mg
+
+ - Ajuste de dosagem para pacientes metabolizadores pobres de substratos de CYP2D6
+A dose habitual de aripiprazol deve ser reduzida pela metade em pacientes metabolizadores pobres de substratos de CYP2D6 Ajustes
+adicionais podem ser necessários com base na avaliação clínica.
+
+Não há estudos sobre os efeitos dos comprimidos de aripiprazol administrados por vias não recomendadas. Dessa forma, para a segurança
+e eficácia da apresentação farmacêutica, a administração deve ser feita apenas por via oral.
+
+Os comprimidos de Aristab 10 mg e 15 mg podem ser partidos. As partes não utilizadas dos comprimidos devem ser guardadas
+nas embalagens originais.
+Arsistab 20 mg e 30 mg: Este medicamento não deve ser partido, aberto ou mastigado.
+
+9. REAÇÕES ADVERSAS
+
+As reações adversas mais comuns em pacientes adultos (≥ 10%) foram náusea, vômito, constipação, cefaleia , acatisia, ansiedade, insônia,
+inquietação, redução dos níveis de HDL, redução de peso, aumento >7% do peso corpóreo, agitação, irritações de pele, eventos
+extrapiramidais, sonolência, sedação, tremor e fadiga.
+
+A seguir estão descritas as incidências dos eventos adversos relatados em pacientes que utilizaram aripiprazol:
+
+Muito comuns: ocorreram em ≥ 10% dos pacientes;
+Comuns (frequentes): ocorreram em ≥ 1% e < 10% dos pacientes;
+Incomuns (infrequentes ): ocorreram em ≥ 0,1% e < 1% dos pacientes;
+Raros: ocorreram em ≥ 0,01% e < 0,1% dos pacientes.
+
+Cardiovasculares
+Angina pectoris: 0,1% – 1%
+Bloqueio atrioventricular: 0,1% – 1%
+Bradiarritmia: <0,1%
+Parada cardiorrespiratória: 0,1% – 1%
+Insuficiência cardiorrespiratória: 0,1% – 1%
+Infarto do miocárdio: 0,1% – 1%
+Hipotensão ortostática: 0,2% - 4%
+Prolongamento do intervalo QT: 0,1% – 1%
+Taquicardia: <2%
+
+Dermatológicos
+Rash cutâneo: <2%
+Irritação de pele: 12,4%
+
+Endócrinos
+Redução dos níveis de HDL: 3 ,7% - 13, 5%
+Redução dos níveis de prolactina: <0,1%
+Diabetes: 0,1% – 1% (incluindo aumento da insulina no sangue, diminuição da tolerância a carboidratos, diabetes mellitus não dependente
+de insulina, tolerância à glicose diminuída e glicosúria)
+Cetoacidose diabética: <0,1%
+Hiperglicemia: 0,8% – 8%
+Hiponatremia: 0,1% – 1%
+Aumento dos níveis de prolactina: 0,1% – 1%
+Aumento dos níveis de LDL: 2 ,2% - 9,6%
+Aumento dos níveis de colesterol sérico: 1 ,1% - 3,6%
+
+Aristab comprimidos_ BU20_VPS
+Aumento dos níveis de triglicerídeos séricos: 1% - 9,7%
+Redução de peso: 4% - 15,4%
+Aumento de >7% do peso corpóreo: 2,5% - 21,5%
+
+Gastrintestinais
+Desconforto abdominal: 2% - 3%
+Constipação: 5% - 11%
+Diarreia: 3%
+Salivação excessiva: 3,1% - 8,1%
+Aumento de apetite: 3% - 7%
+Indigestão: 9%
+Náusea: 8% - 15%
+Dor de dente: 4%
+Vômitos: 3% - 11%
+Xerostomia: 2% - 5%
+
+Hematológicos
+Leucopenia: <1%
+Neutropenia: <1%
+Trombocitopenia: >1%
+
+Hepáticos
+Doença hepática induzida por drogas: <1%
+
+Imunológicos
+Reação de hipersensibilidade: > 0,1%
+
+Musculoesqueléticos
+Artralgia: 2% - 4%
+Dores nas costas: 4%
+Rigidez muscular: 4%
+Dores musculoesqueléticas: 3%
+Mialgia: 2% - 3%
+Dores nos membros: 4%
+Rabdomiólise: < 0,1%
+Espasmos: 2%
+Trismo: 0,1% - 1%
+
+Neurológicos
+Acatisia: 2% - 25%
+Confusão: 4% - 10%
+Distonia: 2% - 4,8%
+Eventos extrapiramidais: 2% - 27,3%
+Cefaleia: 10% - 27%
+Insônia: 8% - 18%
+Sedação: 3% - 21%
+Convulsões: > 0,3%
+Sonolência: 6%¨- 26,3%
+Tremor: 2% - 11,8%
+
+Oftálmicos
+Visão embaçada: 3% - 8%
+Crise oculógira: 0,1% - 1%
+
+Psiquiátricos
+Agitação: 19%
+Ansiedade: 4% - 17%
+Inquietação: 2% - 12%
+Sensação de nervosismo: 3%
+
+Reprodutivos
+Ejaculação tardia: 0,1% - 1%
+
+Respiratórios
+Tosse: 3%
+Congestão nasal: 2%
+Nasofaringite: 9%
+Dor de garganta: 3%
+Infecções respiratórias superiores: 4% - 6%
+
+Outros
+Angioedema: 0,1% - 1%
+Fadiga: 2% - 17%
+Dor: 3%
+
+Outros eventos com incidência desconhecida:
+Taquicardia supraventricular paroxística; torsades de pointes; erupção medicamentosa acneiforme; galactorreia; hiperprolactinemia;
+síndrome metabólica; síndrome de secreção inadequada de hormônio antidiurético; dismotilidade e aspiração esofágica; pancreatite;
+agranulocitose; acidente vascular cerebral (AVC); discinesia tardia; acidente isquêmico transitório; aumento do risco de suicídio;
+comportamentos compulsivos; impulsividade; comportamentos suicidas; soluço; pneumonite de hipersensibilidade crônica; morte;
+
+Aristab comprimidos_ BU20_VPS
+aumento da temperatura corporal; síndrome neuroléptica maligna (SNM); prolongamento do intervalo QT; dispepsia; desconforto
+estomacal; vertigem; distonia e contrações anormais prolongadas de conjuntos de músculos.
+
+Reações adversas dose dependentes, como sonolência (incluindo sedação), acatisia, distonia e ganho de peso foram relatadas.
+- Reações adversas associadas à descontinuação do tratamento em esquizofrenia
+No geral, houve pouca diferença na incidência de descontinuação devida a reações adversas em pacientes tratados com aripiprazol (7%) e
+aqueles tratados com placebo (9%). Os tipos de reações adversas que levaram à descontinuação foram semelhantes para os pacientes
+tratados com aripiprazol e os tratados com placebo.
+
+- Reações adversas associadas à descontinuação do tratamento na mania bipolar
+No geral, houve pouca diferença na incidência de descontinuação devida a reações adversas em pacientes com mania bipolar tratados com
+aripiprazol (11%) e tratados com placebo (10%). Os tipos de reações adversas que levaram à descontinuação foram semelhantes entre os
+pacientes tratados com aripiprazol e os tratados com placebo.
+
+- Outras reações adversas observadas durante a avaliação pré- comercialização de aripiprazol
+Abaixo pode ser encontrada uma relação dos termos do MedDRA que refletem as reações adversas como definidas em “Reações adversas”,
+relatadas por pacientes tratados com aripiprazol oral em doses múltiplas ≥ 2 mg/dia durante qualquer fase de um estudo no banco de dados
+de 13.543 pacientes adultos.
+Todos os eventos avaliados como possíveis reações adversas foram incluídos, exceto pelos eventos mais frequentes. Além disso, reações
+adversas médica ou clinicamente significativas, em especial aquelas provavelmente mais úteis para o médico responsável pela prescrição,
+ou que apresentam plausibilidade farmacológica, também foram incluídas. Eventos já listados em outras partes de R eações adversas”, ou
+aqueles mencionados em “A dvertências e precauções” ou “Superdose ” foram excluídos.
+Apesar de as reações relatadas terem ocorrido durante o tratamento com aripiprazol, elas não foram necessariamente causadas pelo
+medicamento
+
+Os eventos são, ainda, categorizados pela classe de sistemas de órgãos e listados em frequência decrescente de acordo com as definições
+abaixo:
+Comuns (frequentes): ocorreram em ≥ 1/100 e < 1/10 dos pacientes (apenas aqueles ainda não listados nos resultados tabelados de estudos
+controlados por placebo aparecem nessa relação);
+Incomuns (infrequentes ): ocorreram em ≥ 1/1000 e < 1/100 dos pacientes;
+Raros: ocorreram em ≥ 1/10000 e < 1/1000 dos pacientes.
+Distúrbios cardíacos: incomuns – palpitações, extrassístoles, taquicardia sinusal, fibrilação atrial e isquemia miocárdica. Raros – flutter
+atrial, taquicardia supraventricular e taquicardia ventricular.
+Distúrbios oculares: incomuns – fotofobia, diplopia, edema na pálpebra e fotopsia.
+Distúrbios gastrintestinais: incomuns – doença do refluxo gastroesofágico, edema de língua e esofagite. Raro – pancreatite.
+Distúrbios gerais e condições no local de administração: comuns – astenia, edema periférico, dor no peito, pirexia e irritabilidade;
+Incomuns – edema facial, angioedema e sede. Raro – hipotermia.
+Distúrbios hepatobiliares: r aros– hepatitee icterícia.
+Lesões, intoxicação e complicações do procedimento: comum – queda. Incomum – automutilação. Raro – insolação.
+Investigações: comu m – creatinofosfoquinase elevada. Incomuns – enzima hepática elevada, ureia sérica elevada, creatinina sérica elevada
+e bilirrubina sérica elevada. Raros – lactatodesidrogenase sérico elevada e gamaglutamiltransferase elevada.
+
+Distúrbios metabólicos e nutricionais: comu ns – anorexia, hipocalemia, hiponatremia e polidipsia. Raro – cetoacidose diabética.
+Distúrbio musculoesquelético e do tecido conjuntivo: incomuns – fraqueza muscular, compressão muscular e mobilidade reduzida.
+Distúrbios do sistema nervoso: comuns – coordenação anormal e discinesia. Incomuns – distúrbio na fala, parkinsonismo,
+comprometimento da memória, rigidez de roda dentada, acidente vascular cerebral, hipocinesia, discinesia tardia, hipotonia, mioclonia,
+hipertonia, acinesia e bradicinesia. Raros – convulsão de grande mal e coreoatetose.
+Transtornos psiquiátricos: comum – ideação suicida. Incomuns – agressividade, perda da libido, tentativa de suicídio, hostilidade, libido
+elevada, raiva, anorgasmia, delírios, automutilação intencional, suicídio concluído, tique e ideação homicida. Raros – catatonia e
+sonambulismo.
+
+Distúrbios renais e urinários: incomuns – retenção urinária, poliúria e noctúria.
+Distúrbios do sistema reprodutor e das mamas: incomuns – menstruação irregular, disfunção erétil, amenorreia e dor nas mamas. Raros
+– ginecomastia e priapismo.
+Distúrbios respiratórios, torácicos e mediastinais: comuns – congestão nasal, dispneia e pneumonia por aspiração.
+Distúrbios cutâneos e subcutâneos: comuns – hiperidrose. Incomuns – prurido, reação fotossensível, alopecia e urticária.
+Distúrbios vasculares: comum – hipertensão.
+
+Experiência pós-comercialização
+As reações adversas abaixo foram identificadas durante o uso após a aprovação de aripiprazol . Em razão de essas reações serem relatadas
+voluntariamente por uma população de tamanho indeterminado, nem sempre é possível estabelecer uma relação causal com a exposição à
+droga: ocorrências raras de reação alérgica (reação anafilática, angioedema, laringoespasmo, prurido/urticária ou espasmo orofaríngeo) ,
+gripe, crise oculogírica (movimentos involuntários dos olhos), dor testicular, depressão, dor esofágica, apetite aumentado, tendinite,
+arrepios, perturbação afetiva, mal estar, doença de Parkinson, leucocitose (aumento da contagem de leucócitos no sangue), disgeusia
+(alteração do paladar), eructação (arrotos), irritação na garganta, comportamento anormal, tromboembolismo venoso, oscilação da glicose
+sérica e comportamentos compulsivos relacionados à jogos, alimentação , compras e sexo. Estes comportamentos compulsivos são raros ,
+ocorrem em especial no início ou aumento de dose do medicamento e cessaram com a redução da dose ou interrupção do tratamento.
+Os profissionais de saúde devem monitorar e alertar os pacientes e cuidadores sobre a possibilidade de ocorrência de comportamento
+compulsivo. Deve ser considerada a redução de dose ou a interrupção do tratamento com aripiprazol, caso o paciente apresente este
+comportamento.
+
+Em casos de eventos adversos, notifique pelo Sistema VigiMed, disponível no Portal da Anvisa.
+
+10. SUPERDOSE
+A terminologia do MedDRA tem sido utilizada para classificar as reações adversas.
+
+Experiência em humanos
+Um total de 76 casos de superdosagem deliberada ou acidental com aripiprazol oral foi reportado mundialmente. Eles incluem
+superdosagens com aripiprazol isolado e combinado a outras substâncias. Não foi relatada fatalidade nesses casos. Dos 44 casos com
+resultados conhecidos, 33 casos tiveram recuperação sem sequelas e em um caso houve recuperação com sequelas (midríase e sensação
+
+Aristab comprimidos_ BU20_VPS
+de anormalidade). O maior caso conhecido de ingestão aguda com resultado conhecido envolveu 1080 mg de aripiprazol (36 vezes a dose
+diária recomendada máxima) por um paciente que teve recuperação completa. Nos 76 casos, estão incluídos 10 casos de superdosagem
+deliberada ou acidental de crianças (com, no máximo, 12 anos de idade) envolvendo ingestões de aripiprazol de até 195 mg, sem
+fatalidades.
+As reações adversas comuns (relatadas em, no mínimo, 5% de todos os casos de superdosagem) relatadas na superdosagem de aripiprazol
+oral (isolado ou combinado a outras substâncias) incluem vômito, sonolência e tremores. Outros sinais e sintomas clinicamente importantes
+observados em um ou mais pacientes com superdosagem de aripiprazol (isolado ou combinado a outras substâncias) incluem acidose,
+agressividade, aspartato aminotransferase elevado, fibrilação atrial, bradicardia, coma, estado de confusão, convulsão,
+creatinofosfoquinase sérica elevada, nível de consciência deprimido, hipertensão, hipocalemia, hipotensão, letargia, perda de consciência,
+prolongamento do complexo QRS, prolongamento do QT, pneumonia por aspiração, parada respiratória, condição epiléptica e taquicardia.
+
+Conduta em caso de superdose
+Não há informações específicas sobre o tratamento da superdosagem com aripiprazol. Deve ser realizado um eletrocardiograma em caso
+de superdosagem. Se houver prolongamento do intervalo QT, deve-se fazer o monitoramento cardíaco. De outra forma, a conduta em caso
+de superdosagem deve se concentrar em,terapia de apoio, mantendo as vias aéreas adequadas, oxigenadas e ventiladas, além de tratar os
+sintomas. Deve-se manter uma supervisão e um monitoramento médico rigoroso até a recuperação do paciente.
+
+Carvão vegetal: e m caso de superdosagem de Aristab, a administração precoce de carvão vegetal pode ser útil para evitar parcialmente a
+absorção de aripiprazol. A administração de 50 g de carvão vegetal ativado, uma hora após uma dose oral única de 15 mg de aripiprazol,
+reduziu a AUC e a Cmáx médias de aripiprazol em 50%.
+
+Hemodiálise: apesar de não haver informações sobre o efeito da hemodiálise no tratamento de uma superdosagem de aripiprazol, é
+improvável que a hemodiálise seja útil na resolução da superdosagem, já que aripiprazol tem grande afinidade com as proteínas séricas.
+
+Em caso de intoxicação ligue para 0800 722 6001, se você precisar de mais orientações.
+
+REFERÊNCIAS BILIOGRÁFICAS
+1. Bramer S, et al. An open label study of aripiprazole (OPC-14597) in healthy adults with poor and extensive metabolizer genotypes for
+cytochrome P450 2D6, and the effect of coadministered quinidine on aripiprazole pharmacokinetics (Study No. 31- 98- 207). Otsuka
+Maryland Research Institute, 1º de junho de 2001. Número de controle de documentos BMS 920011708. Tabela 11.3.2A, p62.
+2. Bramer S, et al. A Double- Blind, Placebo-controlled Study of the Effects of Oral Administered Ketoconazole on OPC-14597
+Pharmacokinetics in Healthy Adult Male and Female Subjects (Study No. 31-98- 206). Otsuka Maryland Research Institute, 5 de junho de
+2001. Número de controle de documentos BMS 920011707. Tabelas 11.3.1A -11.3.1B, p62- 63.
+3. Kornhauser D et al. Safety, tolerability and pharmacokinetics of aripiprazole and carbamazepine in patients with schizophrenia and
+schizoaffective disorder: Interim report on pharmacokinetics and preliminary safety data. (Study No. CN138- 022).Bristol-Myers Squibb
+Company. 9 de agosto de 2002.
+Número de controle de documentos BMS 930002163. Tabela 11.2.1, p 62.
+4. Kornhauser D et al. Safety, tolerability and pharmacokinetics of aripiprazole and carbamazepine in patients with schizophrenia and
+schizoaffective disorder: Interim report on pharmacokinetics and preliminary safety data. (Study No. CN138- 022). Bristol-Myers Squibb
+Company. 9 de agosto de 2002. Número de controle de documentos BMS 930002163. Tabela 11.2.1, p 62 e Tabela 11.2.2 p 64.
+5. Guidelines for Preparing Core Clinical- Safety Information on Drugs, Second Edition. Report of CIOMS Working Groups III and V,
+Geneva 1999. 104 Caraco, Y, Sheller J, and Wood, A., Pharmacogenetic Determinants of Codeine Induction by Rifampin: The Impact on
+Codeine’s Respiratory, Psychomotor and Miotic Effects. Journal of Pharmacology and Experimental Therapeutics. Volume 281 p 330-
+336, 1997.
+
+III – DIZERES L EGAIS
+
+Registro: 1.057 3.0425
+
+Registrado por:
+Aché Laboratórios Farmacêuticos S.A.
+Av. Brigadeiro Faria Lima, 201 - 1º ao 4° andar
+São Paulo - SP
+CNPJ 60.659.463/0029- 92
+Indústria Brasileira
+
+Produzido por:
+Aché Laboratórios Farmacêuticos S.A.
+Rodovia P residente D utra, km 222,2
+Guarulhos - SP
+
+VENDA SOB PRESCRIÇÃO COM RETENÇÃO DE RECEITA.
+
+Aristab comprimidos_ BU20_VPS
+ Histórico de Alterações da Bula
+
+ Dados da submissão eletrônica Dados da petição/notificação que altera a bula Dados das alterações de bulas
+ Data do Nº do Assunto Data do Nº do Assunto Data de Itens de bula Versões Apresentações
+expediente expediente expediente expediente aprovação (VP/VPS) relacionadas
+ VP
+ I. IDENTIFICAÇÃO DO
+ MEDICAMENTO
+ 4. O QUE DEVO SABER ANTES DE
+ 10451 - 10990 - RDC 73/2016 - USAR ESTE MEDICAMENTO?
+ MEDICAMENTO NOVO NOVO - Mudança 6. COMO DEVO USAR ESTE Comprimidos
+09/03/2026 - - Notificação de11/02/2026 0143118/26-9 menor de excipiente - MEDICAMENTO?VP/VPS10 mg; 15 mg;
+ Alteração de Texto de para formas III.
+
+===== BLOCO 2 =====
+1. INDICAÇÕES
+ 2 RESULTADOS DE EFICÁCIA
+
+5. ADVERTÊNCIAS E PRECAUÇÕES
+
+8. POSOLOGIA E MODO DE USAR
+
+9. REAÇÕES ADVERSAS
+ 10450 – SIMILAR – VP
+ Notificação de Alteração - 6. COMO DEVO USAR ESTE Comprimidos
+03/11/2022 4901318/22-5 de Texto de Bula – 15/12/2021 7053222/21-7 12098 - GQMED Resposta a Ofícios - MEDICAMENTO? VP/VPS10 mg; 15 mg;
+ publicação no bulário - VPS 20 mg e 30 mg
+ RDC 60/12 8. POSOLOGIA
+
+ 10450 – SIMILAR –
+ Notificação de Alteração Comprimidos
+13/08/2021 3176968/21-3 de Texto de Bula – N/A N/A N/A N/A VPS9. REAÇÕES ADVERSAS VPS10 mg; 15 mg;
+ publicação no bulário - 20 mg e 30 mg
+ RDC 60/12
+ 10450 – 11018 - RDC 73/2016 -
+ SIMILAR – Notificação SIMILAR - Inclusão de
+02/10/2020 3382720/20-6 de Alteração de Texto 15/09/2020 3133096/20-7 local de embalagem III.

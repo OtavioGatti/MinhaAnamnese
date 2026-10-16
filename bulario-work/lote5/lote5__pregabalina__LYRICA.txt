@@ -1,0 +1,703 @@
+FONTE: lote5__pregabalina__LYRICA.pdf
+
+===== BLOCO 1 =====
+APRESENTAÇÕES
+Lyrica® 25 mg em embalagens contendo 14 cápsulas duras. 
+Lyrica® 75 mg em embalagens contendo 14 ou 28 cápsulas duras. 
+Lyrica® 150 mg em embalagem contendo 28 cápsulas duras. 
+ 
+VIA DE ADMINISTRAÇÃO: USO ORAL 
+ 
+USO ADULTO ACIMA DE 18 ANOS
+
+1. INDICAÇÕES 
+Dor Neuropática 
+Lyrica® (pregabalina) cápsulas duras é indicado para o tratamento da dor neuropática em adultos. 
+ 
+Epilepsia 
+Lyrica® é indicado como terapia adjunta das crises parciais, com ou sem generalização secundária, em pacientes 
+adultos. 
+ 
+Transtorno de Ansiedade Generalizada (TAG) 
+Lyrica® é indicado para o tratamento do Transtorno de Ansiedade Generalizada (TAG) em adultos. 
+ 
+Fibromialgia 
+Lyrica® é indicado para o controle de fibromialgia.
+
+3. CARACTERÍSTICAS FARMACOLÓGICAS 
+Propriedades Farmacodinâmicas 
+O ingrediente ativo, pregabalina (ácido (S) -3-(aminometil)-5-metil-hexanoico), é um análogo do ácido gama -
+aminobutírico (GABA). 
+ 
+Mecanismo de Ação 
+Estudos in vitro mostram que a pregabalina liga-se a uma subunidade proteica auxiliar (α2-δ) dos canais de cálcio 
+voltagem-dependentes no sistema nervoso central. 
+Evidências de modelos experimentais em animais, com indução de lesão nervosa, demonstram que a pregabalina 
+reduz a liberação na medula espinhal de neurotransmissores pró- nociceptivos dependentes de cálcio , 
+possivelmente, pela interrupção do transporte de cálcio e/ou através da redução da corrente de cálcio para o interior 
+da célula. Evidências de outros modelos de lesão nervosa em animais sugerem que a atividade antinociceptiva 
+também pode ser mediada pela interação com vias descendentes noradrenérgicas e serotoninérgicas. 
+ 
+Propriedades Farmacocinéticas 
+A farmacocinética da pregabalina no estado de equilíbrio é semelhante em voluntários sadios, pacientes com 
+epilepsia recebendo antiepiléticos e em pacientes com dor crônica. 
+ 
+ 
+ 
+LYRICA_CDSv26.0_23May20231_LYRCAP_33_BULA_VPS 
+Absorção: a pregabalina é rapidamente absorvida quando administrada em jejum, com o pico das concentrações 
+plasmáticas ocorrendo dentro de 1 hora após administração tanto de doses únicas como múltiplas. A 
+biodisponibilidade oral da pregabalina foi estimada em ≥ 90%, sendo independente da dose. Após repetidas 
+administrações, o estado de equilíbrio é alcançado dentro de 24 a 48 horas. O índice de absorção da pregabalina é 
+reduzido quando administrado com alimentos, resultando numa diminuição da Cmáx de aproximadam ente 25-
+30% e retardo do Tmáx em aproximadamente 2,5 horas. Entretanto, a administração de pregabalina com alimentos 
+não apresenta efeito clinicamente significativo sobre o grau de absorção deste medicamento. 
+ 
+Distribuição: em estudos pré -clínicos, observou-se que a pregabalina atravessa a barreira hematoencefálica em 
+camundongos, ratos e macacos. O fármaco demonstrou atravessar a placenta em ratas e está presente no leite de 
+ratas lactantes. Em humanos, o volume aparente de distribuição após administração oral é de aproximadamente 
+0,56 L/kg. A pregabalina não se liga a proteínas plasmáticas. 
+ 
+Metabolismo: a pregabalina sofre metabolismo desprezível em humanos. Após uma dose radiomarcada, 
+aproximadamente 98% da radioatividade recuperada na urina foram da pregabalina inalterada. O derivado N -
+metilado da pregabalina, o principal metabólito encontrado na urina, foi responsável por 0,9% da dose. Em estudos 
+pré-clínicos, não houve indicações de racemização do S-enantiômero em R-enantiômero da pregabalina. 
+ 
+Eliminação: a pregabalina é eliminada da circulação sistêmica principalmente por excreção renal como fármaco 
+inalterado. 
+A meia -vida de eliminação da pregabalina é de 6,3 horas. O clearance plasmático e o clearance renal são 
+diretamente proporcionais ao clearance de creatinina (vide Item 3. Características Farmacológicas – Propriedades 
+Farmacocinéticas – Farmacocinética em Grupos Especiais de Pacientes). 
+É necessário o ajuste de dose em pacientes com função renal reduzida ou submetidos à hemodiálise (vide Item 8. 
+Posologia e Modo de Usar – Tabela 1”). 
+ 
+Linearidade / Não linearidade: a farmacocinética da pregabalina é linear na faixa de doses diárias recomendadas. 
+A variabilidade entre indivíduos é baixa (<20%). A farmacocinética das doses múltiplas é previsível a partir dos 
+dados para dose única. Portanto, não há necessidade de monitoração de rotina das concentrações plasmáticas da 
+pregabalina. 
+ 
+Farmacocinética em Grupos Especiais de Pacientes 
+Sexo: estudos clínicos indicam que o sexo não tem influência clinicamente significativa sobre as concentrações 
+plasmáticas da pregabalina. 
+ 
+Insuficiência Renal: o clearance da pregabalina é diretamente proporcional ao clearance de creatinina. Além 
+disso, a pregabalina é removida do plasma por hemodiálise de modo eficaz (após 4 horas de hemodiálise, as 
+concentrações plasmáticas de pregabalina ficam reduzidas em aproximadamente 50%). Como a eliminação renal 
+é a principal via de excreção, é necessária a redução da dose em pacientes com insuficiência renal e suplementação 
+da dose após hemodiálise (vide Item 8. Posologia e Modo de Usar – Tabela 1). 
+ 
+Insuficiência Hepática: nenhum estudo farmacocinético específico foi conduzido em pacientes com insuficiência 
+hepática. Como a pregabalina não sofre metabolismo significativo, sendo excretada predominantemente como 
+fármaco inalterado na urina, a insuficiência hepática não deve alterar significativamente as concentrações 
+plasmáticas de pregabalina. 
+ 
+Idosos (mais de 65 anos de idade): o clearance da pregabalina tende a diminuir com o avanço da idade. Esta 
+diminuição no clearance da pregabalina oral está relacionada com as reduções no clearance de creatinina 
+associadas ao avanço idade. Pode ser necessária redução na dose em pacientes com função renal comprometida 
+devido à idade (vide Item 8. Posologia e Modo de Usar – Tabela 1). 
+ 
+Lactantes: A farmacocinética de 150 mg de pregabalina administrados a cada 12 horas (dose diária de 300 mg) 
+foi avaliada em 10 mulheres lactantes que estavam a pelo menos 12 semanas pós -parto. A lactação apresentou 
+pouca ou nenhuma influência na farmacocinética da pregabalina. A pregabalina foi excretada no leite materno com 
+concentração média no estado de equilíbrio de aproximadamente 76% da concentração no plasma materno. A dose 
+média diária estimada de pregabalina recebida pela criança pelo leite materno (assumindo um consumo médio de 
+ 
+ 
+LYRICA_CDSv26.0_23May20231_LYRCAP_33_BULA_VPS 
+leite de 150 mL/kg/dia) foi 0,31 mg/kg/dia, a qual, em termos de mg/kg seria, aproximadamente, 7% da dose 
+recebida pela mãe. 
+ 
+Dados de Segurança Pré-Clínicos 
+Em estudos convencionais de segurança farmacológica em animais, a pregabalina foi bem tolerada nas doses 
+clinicamente relevantes. Em estudos de toxicidade das doses repetidas em ratos e macacos, foram observados 
+efeitos no SNC, incluindo hipoatividade, hiperatividade e ataxia. Foi comumente observado um aumento da 
+incidência de atrofia da retina em ratos albinos com idade avançada após exposições prolongadas à pregabalina 
+em doses ≥ 5 vezes a média de exposição humana na dose clínica máxima recomendada. 
+ 
+Teratogenicidade: a pregabalina não foi teratogênica em camundongos, ratos ou coelhos. A toxicidade fetal em 
+ratos e coelhos ocorreu somente em exposições suficientemente acima da exposição humana. Em estudos de 
+toxicidade pré e pós-natal, a pregabalina induziu toxicidade no desenvolvimento da cria em ratos, com exposições 
+> 2 vezes a exposição máxima recomendada para humanos. 
+ 
+Mutagenicidade: a pregabalina não é genotóxica, baseando- se nos resultados de uma bateria de testes in vitro e 
+in vivo. 
+ 
+Carcinogenicidade: estudos de carcinogenicidade de 2 anos com pregabalina foram realizados com ratos e 
+camundongos. Nenhum tumor foi observado em ratos expostos a até 24 vezes o valor médio da exposição humana 
+na dose clínica máxima recomendada de 600 mg/dia. Em camundongos , não houve aumento da incidência de 
+tumores com exposições semelhantes à média da exposição humana, mas observou- se um aumento da incidência 
+de hemangiossarcoma com altas exposições. O mecanismo não genotóxico da pregabalina de indução de formação 
+de tumores em camundongos envolve alterações plaquetárias associadas à proliferação de células endoteliais. Estas 
+alterações plaquetárias não estavam presentes em ratos ou humanos baseado em dados clínicos em curto prazo ou 
+longo prazo limitado. Não há evidências sugerindo risco a humanos. 
+Em ratos jovens a toxicidade não diferiu qualitativamente da observada em ratos adultos. Entretanto, os ratos 
+jovens foram mais sensíveis. Em exposições terapêuticas houve evidência de sinais clínicos de hiperatividade do 
+SNC e bruxismo e algumas alterações no crescimento (supressão transitória do ganho de peso corporal). Foi 
+observado efeito sobre o ciclo estral com 5 vezes a exposição terapêutica humana. Efeitos 
+neurocomportamentais/cognitivos foram observados em ratos jovens 1- 2 semanas após a exposição > 2 vezes 
+(resposta acústica de sobressalto) ou > 5 vezes (aprendizado/memória) a exposição terapêutica humana. Resposta 
+acústica de sobressalto reduzida foi observada em ratos jovens, 1-2 semanas após exposição > 2 vezes a exposição 
+terapêutica humana. Nove semanas após a exposição, este efeito não foi mais observado.
+
+4. CONTRAINDICAÇÕES 
+Lyrica® é contraindicado a pacientes com hipersensibilidade conhecida à pregabalina ou a qualquer componente 
+da fórmula. 
+ 
+Lyrica® é um medicamento classificado na categoria C de risco de gravidez. Portanto, este medicamento 
+não deve ser utilizado por mulheres grávidas sem orientação médica ou do cirurgião -dentista.
+
+5. ADVERTÊNCIAS E PRECAUÇÕES 
+Pacientes com problemas hereditários raros de intolerância a galactose, deficiência de lactase de Lapp ou má-
+absorção de glicose-galactose não devem utilizar pregabalina. 
+ 
+Alguns pacientes diabéticos sob tratamento com pregabalina que obtiverem ganho de peso podem necessitar de 
+ajuste da medicação hipoglicêmica. 
+ 
+Houve relatos no período pós -comercialização de reações de hipersensibilidade, incluindo casos de angioedema. 
+pregabalina deve ser descontinuado imediatamente se ocorrerem sintomas de angioedema, tais como edema facial, 
+perioral ou da via aérea superior. 
+ 
+Reações adversas cutâneas graves , incluindo síndrome de Stevens -Johnson e necrólise epidérmica tóxica, que 
+podem ser de risco a vida ou fatais, foram relatadas raramente em associação com o tratamento com pregabalina. 
+No momento da prescrição, os pacientes devem ser avisados sobre os sinais e sintomas e monitorados de perto 
+ 
+ 
+LYRICA_CDSv26.0_23May20231_LYRCAP_33_BULA_VPS 
+quanto a reações cutâneas. Se surgirem sinais e sintomas sugestivos dessas reações, a pregabalina deve ser retirada 
+imediatamente e um tratamento alternativo considerado (conforme apropriado). 
+ 
+O tratamento com pregabalina está associado com tontura e sonolência, que pode aumentar a ocorrência de 
+acidentes (queda) na população idosa. Houve também relatos pós -comercialização de perda de consciência, 
+confusão e dano mental. Portanto, pacientes devem ser alertados para ter cau tela até que os efeitos potenciais de 
+pregabalina sejam familiares. 
+ 
+Na experiência pós -comercialização, visão borrada transitória e outras alterações na acuidade visual foram 
+reportadas por pacientes tratados com pregabalina. A descontinuação da pregabalina pode resultar na resolução ou 
+melhora desses sintomas visuais. 
+ 
+Não há dados suficientes para a suspensão de medicamentos antiepiléticos concomitantes, uma vez que o controle 
+das convulsões com pregabalina foi atingido na situação de uso concomitante com outra droga antiepilética e 
+adoção de monoterapia com pregabalina. 
+Foram observados sintomas de retirada em alguns pacientes após a descontinuação do tratamento prolongado e de 
+curto prazo com pregabalina. Os seguintes eventos foram mencionados: insônia, dor de cabeça, náusea, ansiedade, 
+hiperidrose, diarreia, s índrome gripal, nervosismo, depress ão, dor, convuls ão e tontura (vide Item 9. Reações 
+Adversas). O paciente deve ser informado sobre estes eventos no início do tratamento. As convulsões, incluindo 
+estado epilético e convulsões do tipo grande mal, podem ocorrer durante o uso ou logo após a descontinuação de 
+Lyrica®. 
+ 
+A pregabalina não é conhecida como sendo ativa em locais de receptores associados com drogas de abuso. Casos 
+de mau uso, abuso e dependência foram relatados na base de dados de pós -comercialização. Como é o caso com 
+qualquer droga ativa do SNC, deve-se avaliar cuidadosamente o histórico de pacientes quanto ao abuso de drogas 
+e/ou distúrbios psiquiátricos. Deve-se ter cautela ao considerar o uso de pregabalina em pacientes que estão 
+abusando de drogas ou possuem histórico prévio que possuem maior risco de abuso da pregabalina. 
+ 
+Os pacientes tratados com pregabalina devem ser observados quanto a sinais e sintomas de mau uso, abuso ou 
+dependência da pregabalina (por exemplo, desenvolvimento de tolerância, aumento da dosagem e comportamento 
+de procura de droga). 
+ 
+Embora os efeitos da descontinuação sobre a reversibilidade da insuficiência renal não tenha m sido 
+sistematicamente estudados, foi relatada melhora da função renal após a descontinuação ou redução da dose de 
+pregabalina. 
+ 
+Embora não tenha sido identificada nenhuma relação causal entre a exposição ao pregabalina e insuficiência 
+cardíaca congestiva, houve relatos pós -comercialização de insuficiência cardíaca congestiva em alguns pacientes 
+recebendo pregabalina. Em estudos de curto prazo com pacientes sem doença vascular periférica ou cardíaca 
+clinicamente significante, não houve associação aparente entre edema periférico e complicações cardiovasculares 
+tais como hipertensão ou insuficiência cardíaca congestiva. Devido aos dados limitados de pacientes com 
+insuficiência cardíaca congestiva grave, pregabalina deve ser administrado com cautela nesses pacientes (vide 
+Item 9. Reações Adversas). 
+ 
+Aconselha-se precaução quando se prescreve pregabalina concomitantemente com opioides devido ao risco de 
+depressão do SNC. Num estudo observacional de consumidores de opioides, os pacientes que tomaram pregabalina 
+concomitantemente com um opioide tiveram um risco aumentado de morte relacionada com opioides 
+comparativamente ao consumo de opioide isoladamente (odds ratio ajustada [aOR], 1,68 [IC 95%, 1,19 a 2,36]). 
+ 
+Houve notificações de depressão respiratória grave em relação ao uso de pregabalina. Pacientes com função 
+respiratória comprometida, doença respiratória ou neurológica, insuficiência renal, uso concomitante de 
+depressores do SNC e idosos podem estar em mai or risco de apresentar esta reação adversa grave. Podem ser 
+necessários ajustes de dose nestes pacientes (vide item 8. Posologia e Modo de Usar). 
+ 
+A ideação e o comportamento suicida foram relatados em pacientes tratados com agentes antiepiléticos em diversas 
+indicações. A metanálise de estudos randomizados e placebo-controlados de medicamentos antiepiléticos também 
+LYRICA_CDSv26.0_23May20231_LYRCAP_33_BULA_VPS 
+mostrou um pequeno risco de aumento de idea ção e comportamento suicida. O mecanismo deste fenômeno é 
+desconhecido. 
+Foram observados casos de ideação e comportamento suicida em pacientes tratados com pregabalina na 
+experiência pós-comercialização (vide item 9. Reações Adversas). Um estudo epidemiológico usando um desenho 
+de estudo autocontrolado (comparando períodos de tratamento com períodos sem tratamento em um indivíduo) 
+mostrou evidências de um risco aumentado de novo início de comportamento suicida e morte por suicídio em 
+pacientes tratados com pregabalina. 
+O
+s pacientes (e os cuidadores dos pacientes ) devem ser aconselhados a procurar aconselhamento médico caso 
+surjam sinais de ideação ou comportamento suicida. Os pacientes devem ser monitorados para sinais de ideação e 
+comportamento suicida e, o tratamento apropriado deve ser considerado. A descontinuação do tratamento com 
+pregabalina deve ser considerada em caso de ideação e comportamento suicida. 
+F
+oram relatados casos de encefalopatia, principalmente em pacientes com condi ções de base que facilitem a 
+precipitação do quadro. 
+U
+so durante a Gravidez 
+Há uma quantidade limitada de dados sobre o uso de pregabalina em mulheres grávidas. 
+O
+s dados de um estudo observacional, que incluiu mais de 2.700 gestações expostas à pregabalina com base em 
+dados coletados rotineiramente de registros médicos e administrativos na Dinamarca, Finlândia, Noruega e Suécia, 
+não sugerem riscos substancialmente aumentados de grandes malformações congênitas, resultados adversos do 
+nascimento, ou resultados anormais de desenvolvimento neurológico pós -natal em gestações expostas a 
+pregabalina. 
+M
+alformações congênitas maiores 
+As razões de prevalência ajustadas (aPRs) e intervalos de confiança de 95% (IC) na meta- análise padrão para 
+exposição à monoterapia com pregabalina no primeiro trimestre vs. não exposto a medicamentos antiepilépticos 
+foi de 1,13 (0,96-1,33). 
+R
+esultados de desenvolvimento neurológico no nascimento e pós-natal 
+Não houve achados estatisticamente significativos para natimorto, baixo peso ao nascer, nascimento prematuro, 
+pequeno para a idade gestacional, baixo índice de Apgar e microcefalia. 
+Na população pediátrica exposta in utero, o estudo não forneceu evidências de um risco aumentado para transtorno 
+de déficit de atenção e hiperatividade (TDAH), transtornos do espectro do autismo (TEA) e deficiência intelectual. 
+E
+studos em animais mostraram toxicidade reprodutiva (vide Item 3. Características Farmacológicas – Dados de 
+Segurança Pré-Clínicos). A pregabalina não deve ser utilizada durante a gravidez, a menos que o benefício à mãe 
+justifique claramente o risco potencial ao feto. Métodos contraceptivos eficazes devem ser utilizados por mulheres 
+com potencial de engravidar. 
+Lyrica® é um medicamento classificado na categoria C de risco de gravidez. Portanto, este medicamento 
+não deve ser utilizado por mulheres grávidas sem orientação médica ou do cirurgião- dentista. 
+U
+so durante a Lactação 
+A pregabalina é excretada no leite de mães lactantes ( vide Item 3. Características Farmacológicas – Propriedades 
+Farmacocinéticas). Como a segurança da pregabalina em lactentes é desconhecida, não é recomendada a 
+amamentação durante o tratamento com pregabalina. Deve ser tomada uma decisão entre descontinuar a 
+amamentação ou descontinuar o tratamento com pregabalina, levando em conta o benefício da amamentação para 
+a criança e o benefício do tratamento para a mulher. 
+O uso deste medicamento no período da lactação depende da avaliação e acompanhamento do médico ou 
+cirurgião-dentista. 
+M
+ulheres com potencial para engravidar / contracepção 
+O uso de pregabalina no primeiro trimestre da gravidez pode causar defeitos congênitos graves no feto. A 
+pregabalina não deve ser utilizada durante a gravidez, a menos que o benefício à mãe justifique claramente o risco 
+LYRICA_CDSv26.0_23May20231_LYRCAP_33_BULA_VPS 
+potencial ao feto. As mulheres com potencial para engravidar devem utilizar métodos contraceptivos eficazes 
+durante o tratamento. 
+Ef
+eitos sobre a Habilidade de Dirigir e Operar Máquinas 
+A pregabalina pode causar tontura e sonolência que, portanto, podem prejudicar a habilidade de dirigir e operar 
+máquinas. Os pacientes devem ser aconselhados a não dirigir, operar máquinas complexas, ou se engajar em outras 
+atividades potencialmente perigosas até que se saiba se este medicamento afeta a sua capacidade de executar tais 
+atividades. 
+O
+riente seu paciente a não dirigir veículos ou operar máquinas durante o tratamento com Lyrica®, pois sua 
+habilidade e capacidade de reação podem estar prejudicadas. 
+O
+ uso deste medicamento pode causar tontura, desmaios ou perda da consciência, expondo o paciente a 
+quedas ou acidentes. 
+A
+tenção: Contém lactose (tipo de açúcar) abaixo de 0,25g/cápsula dura. 
+Este medicamento não deve ser usado por pessoas com síndrome de má -absorção de glicose-galactose. 
+. I
+NTERAÇÕES MEDICAMENTOSAS
+A pregabalina provavelmente não produzirá, nem estará sujeita, a interações farmacocinéticas, uma vez que é
+predominantemente excretada na urina na forma inalterada, sofre metabolismo desprezível em humanos (<2% d e
+um
+a dose recuperada na urina como metabólitos), não inibe o metabolismo de fármacos in vitro e nem se liga a
+proteínas plasmáticas.
+D
+o mesmo modo, em estudos in vivo , nenhuma interação farmacocinética clinicamente relevante foi observada 
+entre a pregabalina e a fenitoína, carbamazepina, ácido valproico, lamotrigina, gabapentina, lorazepam, oxicodona 
+ou etanol. Além disso, a análise farmacocinética populacional indicou que hipoglicemiantes orais, diuréticos, 
+insulina, fenobarbital, tiagabina e topiramato, não tiveram efeito clinicamente significativo sobre o clearance da 
+pregabalina. 
+A
+ coadministração de pregabalina com os contraceptivos orais noretisterona e/ou etinilestradiol não influencia a 
+farmacocinética de qualquer um dos agentes no estado de equilíbrio. A pregabalina pode potencializar os efeitos 
+do etanol e lorazepam. Em estudos clínicos controlados, doses orais múltiplas de pregabalina coadministrada com 
+oxicodona, lorazepam ou etanol não resultaram em efeitos clinicamente importantes sobre a respiração. A 
+pregabalina parece ter efeito aditivo no prejuízo da função cognitiva e coordenação motora grosseira causado pela 
+oxicodona. 
+E
+m experiência pós-comercialização, houve relatos de insuficiência respiratória, coma e morte em pacientes sob 
+tratamento de Lyrica® e outros medicamentos depressores do SNC , inclusive em pacientes que abusam da 
+substância. Há relatos pós-comercialização de eventos relacionados à redução da motilidade do trato gastrintestinal 
+inferior (por ex, obstrução intestinal, íleo paralítico, constipação) quando a pregabalina foi coadministrada com 
+medicamentos que têm o potencial para produzir constipação, tais como analgésicos opi oides. 
+N
+ão foram conduzidos estudos de interação farmacodinâmica específica em voluntários idosos. 
+. CUI
+DADOS DE ARMAZENAMENTO DO MEDICAMENTO
+Lyrica® deve ser armazenado em temperatura ambiente (de 15°C a 30°C). Proteger da luz e umidade e pode ser
+utilizado por 36 meses a partir da data de fabricação.
+Número de lote e datas de fabricação e validade: vide embalagem.
+Não use medicamento com o prazo de validade vencido.
+Guarde-o em sua embalagem original.
+Antes de usar, observe o aspecto do medicamento.
+Todo medicamento deve ser mantido fora do alcance das crianças.
+Características físicas e organolépticas:
+Lyrica® 25 mg: cápsula dura de cor branca opaca contendo pó branco a quase branco. Dizeres da Impressão: Corpo: 
+PGN 25; Tampa: VTRS; Cor da tinta: Preta.
+LYRICA_CDSv26.0_23May20231_LYRCAP_33_BULA_VPS 
+Lyrica® 75 mg: cápsula dura de cor branca e laranja contendo pó branco a quase branco. Dizeres da Impressão: 
+Corpo: PGN 75; Tampa: VTRS; Cor da tinta: Preta. 
+Lyrica® 150 mg: cápsula dura de cor branca contendo pó branco a quase branco. Dizeres da Impressão: Corpo: 
+PGN 150; Tampa: VTRS; Cor da tinta: Preta. 
+. P
+OSOLOGIA E MODO DE USAR
+Lyrica® deve ser ingerido com ou sem alimentos.
+A
+ dose é de 150 a 600 mg/dia divididas em duas ou três doses, Lyrica® deve ser tomado com ou sem alimentos. 
+D
+or Neuropática 
+A dose inicial recomendada de Lyrica® é de 75 mg duas vezes ao dia (150 mg/dia). Em estudos clínicos, a eficácia 
+da pregabalina foi demonstrada em pacientes que receberam uma faixa de 150 a 600 mg/dia. Para a maioria dos 
+pacientes, 150 mg duas vezes ao dia é a dose ideal. A eficácia da pregabalina foi demonstrada na primeira semana. 
+Entretanto, com base na resposta individual e na tolerabilidade do paciente, a dose poderá ser aumentada para 150 
+mg duas vezes ao dia após um intervalo de 3 a 7 dias e, se necessário, até uma dose máxima de 300 mg duas vezes 
+ao dia após mais uma semana. 
+E
+pilepsia 
+A dose inicial recomendada de Lyrica ® é de 75 mg duas vezes ao dia (150 mg/dia), com ou sem alimentos. Em 
+estudos clínicos, a eficácia de pregabalina foi demonstrada em pacientes que receberam uma faixa de 150 a 600 
+mg/dia. A eficácia de pregabalina foi demonstrada já na Semana 1. Entretanto, com base na resposta e 
+tolerabilidade individuais do paciente, a dose poderá ser aumentada para 150 mg duas vezes ao dia após 1 semana. 
+A dose máxima de 300 mg duas vezes ao dia pode ser atingida após mais 1 semana. 
+Não é necessário monitorar as concentrações plasmáticas de pregabalina para otimizar a terapia com tal agente. A 
+pregabalina não altera as concentrações plasmáticas de outros medicamentos anticonvulsivantes frequentemente 
+utilizados. Do mesmo modo, medicamentos anticonvulsivantes frequentemente usados não alteram as 
+concentrações plasmáticas da pregabalina (vide Item 6. Interações Medicamentosas). 
+T
+ranstorno de Ansiedade Generalizada (TAG) 
+A dose varia de 150 a 600 mg/dia, divididas em duas ou três doses. A necessidade para o tratamento deve ser 
+reavaliada regularmente. 
+A dose inicial eficaz recomendada de Lyrica® é de 75 mg duas vezes ao dia (150 mg/dia), com ou sem alimentos. 
+Em estudos clínicos, a eficácia de pregabalina foi demonstrada em pacientes que receberam uma faixa de 150 a 
+600 mg/dia. Com base na resposta e tolerabilidade individuais do paciente, a dose pode ser aumentada para 300 
+mg ao dia após 1 semana. Depois de mais uma semana a dose pode ser aumentada para 450 mg ao dia. A dose 
+máxima de 600 mg ao dia pode ser atingida após mais 1 semana. 
+F
+ibromialgia 
+A dose recomendada de Lyrica® é de 300 a 450 mg/dia para a maioria dos pacientes, divididas em duas doses . 
+Alguns pacientes podem obter benefícios adicionais com 600 mg por dia. A dose deve ser iniciada com 75 mg 
+duas vezes ao dia (150 mg/dia) e pode ser aumentada para 150 mg duas vezes ao dia (300 mg/dia) em uma semana 
+baseado na eficácia e tolerabilidade. Pacientes que não experimentaram benefícios suficientes com uma dose de 
+300 mg/dia podem ter a dose aumentada para 225 mg duas vezes ao dia (450 mg/dia). Se necessário, em alguns 
+pacientes, baseado na resposta e tolerabilidade individual, a dose pode ser aumentada até o máximo de 600 mg/dia 
+após uma semana adicional. 
+D
+escontinuação do Tratamento 
+Se Lyrica® for descontinuado, recomenda-se que isso seja feito gradualmente durante, no mínimo, 1 semana. 
+U
+so em Pacientes com Insuficiência Renal 
+A redução da dosagem em pacientes com a função renal comprometida deve ser individualizada de acordo com o 
+clearance de creatinina (CLcr) (vide Item 3. Características Farmacológicas – Propriedades Farmacocinéticas – 
+Farmacocinética em Grupos Especiais de Pacientes – Insuficiência Renal), conforme indicado na Tabela 1, 
+utilizando a seguinte fórmula: 
+ 
+ 
+LYRICA_CDSv26.0_23May20231_LYRCAP_33_BULA_VPS 
+CLcr (mL/min) = [140 - idade (anos)] x peso (kg) (x 0,85 para mulheres) 
+ 72 x creatinina sérica (mg/dL) 
+ 
+Para pacientes submetidos à hemodiálise, a dose diária de Lyrica® deve ser ajustada com base na função renal. 
+Além da dose diária, uma dose suplementar deve ser administrada imediatamente após cada tratamento de 4 horas 
+de hemodiálise (vide Tabela 1). 
+ 
+Tabela 1. Ajuste da dose de Lyrica® baseado na Função Renal 
+ 
+ Dose diária total de Lyrica® (1) 
+Clearance de 
+creatinina (CLcr) 
+(mL/min) 
+Dose inicial 
+(mg/dia) 
+Dose máxima 
+(mg/dia) 
+Regime 
+terapêutico 
+≥60 150 600 2 ou 3 vezes ao dia 
+≥30 - <60 75 300 2 ou 3 vezes ao dia 
+≥15 - <30 25 – 50 150 1 ou 2 vezes ao dia 
+<15 25 75 1 vez ao dia 
+Dosagem complementar após hemodiálise (mg) 
+ 25 100 Dose única (2) 
+(1) A dose diária total (mg/dia) deve ser dividida conforme indicado pelo regime terapêutico para resultar 
+em mg/dose; 
+(2) Dose suplementar é uma dose única adicional. 
+ 
+Uso em Pacientes com Insuficiência Hepática 
+Nenhum ajuste de dose é necessário para pacientes com insuficiência hepática (vide Item 3. Características 
+Farmacológicas – Propriedades Farmacocinéticas – Farmacocinética em Grupos Especiais de Pacientes – 
+Insuficiência Hepática). 
+ 
+Uso em Crianças e Adolescentes (12 a 17 anos de idade) 
+A segurança e a eficácia de Lyrica® em pacientes pediátricos abaixo de 12 anos de idade ainda não foram 
+estabelecidas. A segurança e eficácia da substância pregabalina não foram estabelecidas em pacientes adolescentes 
+(12 a 17 anos) para as indicações aprovadas (incluindo epilepsia). 
+O uso em crianças não é recomendado (vide Item 3. Características Farmacológicas – Dados de Segurança Pré-
+clínicos). 
+ 
+Uso em Pacientes Idosos (acima de 65 anos de idade) 
+Pacientes idosos podem necessitar de redução da dose de Lyrica® devido à diminuição da função renal (vide Item 
+3. Características Farmacológicas – Propriedades Farmacocinéticas – Farmacocinética em Grupos Especiais de 
+Pacientes – Idosos (mais de 65 anos de idade). 
+ 
+Dose Omitida 
+Caso o paciente esqueça-se de tomar Lyrica® no horário estabelecido, deve tomá-lo assim que lembrar. Entretanto, 
+se já estiver perto do horário de tomar a próxima dose, deve desconsiderar a dose esquecida e tomar a próxima. 
+Neste caso, o paciente não deve tomar a dose duplicada para compensar doses esquecidas. O esquecimento de dose 
+pode comprometer a eficácia do tratamento. 
+ 
+Este medicamento não pode ser partido, aberto ou mastigado.
+
+9. REAÇÕES ADVERSAS 
+O programa clínico de pregabalina envolveu mais de 12.000 pacientes expostos à pregabalina, dos quais mais de 
+7.000 participaram de estudos duplo- cegos, placebo -controlados. As reações adversas mais frequentemente 
+notificadas foram tontura e sonolência. As reações adversas foram, em geral, de intensidade leve a moderada. Em 
+todos os estudos controlados, o índice de descontinuação devido a eventos adversos foi de 14% para pacientes 
+recebendo pregabalina e de 5% para pacientes recebendo placebo. As reações ad versas mais comuns que 
+resultaram em descontinuação nos grupos de tratamento com pregabalina foram tontura e sonolência. 
+ 
+ 
+LYRICA_CDSv26.0_23May20231_LYRCAP_33_BULA_VPS 
+Reações adversas selecionadas que foram relacionadas ao tratamento em uma análise conjunta de ensaios clínicos 
+estão listadas na tabela abaixo por Classe de Sistema de Órgãos (SOC). A frequência desses termos tem se baseado 
+em todas as causalidades das reações adversas no conjunto de dados do ensaio clínico ( muito comuns ( ≥ 1/10), 
+comuns (≥ 1/100, < 1/10), incomuns (≥ 1/1.000, < 1/100) e raras (< 1/1.000). 
+ 
+As reações adversas listadas poderão estar associadas a doenças subjacentes e/ou medicamentos concomitantes. 
+ 
+Classe de Sistema de Órgãos Reações Adversas ao Medicamento 
+Infecções e Infestações 
+Comuns Nasofaringite. 
+ 
+Sangue e sistema linfático 
+Incomuns Neutropenia. 
+ 
+Metabólicos e nutricionais 
+Comuns Aumento de apetite. 
+Incomuns Anorexia, hipoglicemia. 
+ 
+Psiquiátricos 
+Comuns Humor eufórico, confusão, irritabilidade, depressão, desorientação, insônia, 
+diminuição da libido. 
+Incomuns Alucinações, inquietação, agitação, humor deprimido, humor elevado, 
+mudanças de humor, despersonalização, sonhos anormais, dificuldade de 
+encontrar palavras, aumento da libido, anorgasmia. 
+Raros Crise de pânico, desinibição, apatia. 
+ 
+Sistema nervoso 
+Muito comuns Tontura, sonolência. 
+Comuns Ataxia, coordenação anormal, tremores, disartria, amnésia, dificuldade de 
+memória, distúrbios de atenção, parestesia, hipoestesia, sedação, transtorno 
+de equilíbrio, letargia. 
+Incomuns Síncope, mioclonia, hiperatividade psicomotora, discinesia, hipotensão 
+postural, tremor de intenção, nistagmo, transtornos cognitivos, transtornos 
+da fala, hiporreflexia, hiperestesia, sensação de queimação. 
+Raros Estupor, parosmia, hipocinesia, ageusia, disgrafia. 
+ 
+Oftalmológicos 
+Comuns Visão turva, diplopia. 
+Incomuns Perda de visão periférica, alteração visual, inchaço ocular, deficiência no 
+campo visual, redução da acuidade visual, dor ocular, astenopia, fotopsia, 
+olhos secos, aumento do lacrimejamento, irritação ocular. 
+Raros Oscilopsia, percepção visual de profundidade alterada, midríase, estrabismo, 
+brilho visual. 
+ 
+Auditivos e de labirinto 
+Comuns Vertigem. 
+ Incomuns Hiperacusia. 
+ 
+Cardíacos 
+Incomuns Taquicardia, bloqueio atrioventricular de primeiro grau, bradicardia sinusal. 
+Raros Taquicardia sinusal, arritmia sinusal. 
+ 
+Vasculares 
+Incomuns Hipotensão arterial, hipertensão arterial, ondas de calor, rubores, frio nas 
+extremidades. 
+ 
+ 
+LYRICA_CDSv26.0_23May20231_LYRCAP_33_BULA_VPS 
+Respiratórios, torácicos e mediastinais 
+Incomuns Dispneia, epistaxe, tosse, congestão nasal, rinite, ronco. 
+Raros 
+Desconhecido 
+Aperto na garganta, secura nasal. 
+Depressão respiratória 
+ 
+Gastrintestinais 
+Comuns Vômitos, constipação, flatulência, distensão abdominal, boca seca. 
+Incomuns Refluxo gastresofágico, hipersecreção salivar, hipoestesia oral. 
+Raros Ascite, pancreatite, disfagia. 
+ 
+Pele e tecido subcutâneo 
+Incomuns Erupções cutâneas papulares (rash), urticária, sudorese. 
+Raros Suor frio. 
+ 
+Musculoesqueléticos e tecido conjuntivo 
+Comuns 
+Incomuns 
+Cãibra muscular, artralgia, dor lombar, dor nos membros, espasmo cervical. 
+Inchaço articular, mialgia, espasmo muscular, dor cervical, rigidez muscular 
+Raros Rabdomiólise. 
+ 
+Renais e urinários 
+Incomuns Incontinência urinária, disúria. 
+Raros Insuficiência renal, oligúria. 
+ 
+Sistema reprodutor e mama 
+Incomuns Disfunção erétil, disfunção sexual, retardo na ejaculação, dismenorreia. 
+Raros Dor mamária, amenorreia, secreção de mama, ginecomastia. 
+ 
+Gerais 
+Comuns Edema periférico, edema, marcha anormal, quedas, sensação de embriaguez, 
+sensação anormal, fadiga. 
+Incomuns Edema generalizado, aperto no peito, dor, pirexia, sede, calafrio, astenia. 
+ 
+Exames laboratoriais 
+Comuns Aumento de peso. 
+Incomuns Elevação de creatina fosfoquinase sanguínea, elevação de alanina 
+aminotransferase, elevação de aspartato aminotransferase, elevação da 
+glicose sanguínea, diminuição da contagem de plaquetas, diminuição do 
+potássio sanguíneo, diminuição de peso. 
+Raros Diminuição de leucócitos, elevação da creatinina sanguínea. 
+ 
+As seguintes reações adversas foram relatadas durante a pós-comercialização: 
+Distúrbios do sistema imune: Incomuns: hipersensibilidade; Raros: angioedema, reação alérgica. 
+Distúrbios do sistema nervoso: Muito comu ns: dor de cabeça; Incomuns: perda de consciência, prejuízo 
+cognitivo. 
+Distúrbios Oftalmológicos: Raros: ceratite. § 
+Distúrbios Cardíacos: Raros: insuficiência cardíaca congestiva. 
+Distúrbios respiratório, torácico e mediastinal: Raros: edema pulmonar. § 
+Distúrbios gastrintestinais: Comuns: náusea, diarreia; Raros: edema da língua. 
+Distúrbios de pele e tecido subcutâneo: Incomuns: inchaço da face, prurido ; Raros: Síndrome de Steve ns- 
+Johnson, necrólise epidérmica tóxica. 
+Distúrbios renais e urinários: Raros: retenção urinária. 
+Distúrbios do sistema reprodutor e mamas: Raros: ginecomastia. § 
+Distúrbios gerais: Incomuns: mal-estar. 
+Distúrbios Psiquiátricos: Incomuns: agressividade; Raros: comportamento suicida, ideação suicida. 
+ 
+LYRICA_CDSv26.0_23May20231_LYRCAP_33_BULA_VPS 
+§ Estimativa de frequência de reação adversa do medicamento feita usando a "Regra de três".
+Idosos (acima de 65 anos de idade) 
+Num total de 998 pa cientes idosos, não foram observadas diferenças q uanto a segurança g eral, em c omparação 
+aos pacientes com menos de 65 anos de idade. 
+Em casos de eventos adversos, notifique pelo Sistema VigiMed, disponível no Portal da Anvisa.
+
+10. SUPERDOSE
+Em superdoses de até 15g nenhuma reação adversa inesperada foi notificada.
+Em experiência pós-comercialização, os eventos adversos mais comumente relatados quando houve superdose de 
+pregabalina incluem di stúrbios a fetivos, sonolência, e stado de confusão, de pressão, a gitação e i nquietação. 
+Convulsões também foram relatadas.
+O t ratamento d a superdose com pregabalina deve incluir medidas g erais de suporte, podendo s er n ecessária 
+hemodiálise (vide Item 8. Posologia e Modo de Usar – Tabela 1).
+Em caso de intoxicação ligue para 0800 722 6001, se você precisar de mais orientações. 
+III - DIZERES LEGAIS 
+Registro: 1.8830.0101 
+Importado e Registrado por: 
+Viatris Farmacêutica do Brasil Ltda. 
+Estrada Dr. Lourival Martins Beda, 1118. 
+Campos dos Goytacazes - RJ - CEP: 28110-000 
+CNPJ: 11.643.096/0001-22 
+Produzido por: 
+Pfizer Manufacturing Deutschland GmbH 
+Freiburg Im Breisgau – Alemanha 
+VENDA SOB PRESCRIÇÃO COM RETENÇÃO DE RECEITA. 
+Esta bula foi aprovada pela Anvisa em 22/01/2026. 
+LYRCAP_33 
+
+ 
+ 
+HISTÓRICO DE ALTERAÇÕES DE BULA 
+ 
+Dados da submissão eletrônica Dados da petição/notificação que altera bula Dados das alterações de bulas 
+Data do 
+expediente 
+N° do 
+expediente Assunto Data do 
+expediente 
+N° do 
+expediente Assunto Data de 
+aprovação Itens de bula Versões 
+(VP/VPS) Apresentações relacionadas 
+22/01/2026 
+A ser gerado no 
+momento do 
+peticionamento 
+10451 - 
+MEDICAMENTO 
+NOVO - 
+Notificação de 
+Alteração de Texto 
+de Bula – 
+publicação no 
+Bulário RDC 60/12 
+N/A N/A N/A N/A 
+VP 
+Composição 
+8. Quais os males que este 
+medicamento pode causar? 
+ 
+VPS 
+Composição 
+2. Resultados de Eficácia 
+ 
+VP/VPS 
+25 MG CAP DURA CT BL AL 
+PLAS PVC TRANS X 14 
+75 MG CAP DURA CT BL AL 
+PLAS PVC TRANS X 14 
+75 MG CAP DURA CT BL AL 
+PLAS PVC TRANS X 28 
+150 MG CAP DURA CT BL AL 
+PLAS PVC TRANS X 28 
+18/12/2025 1622511/25-5 
+10451 - 
+MEDICAMENTO 
+NOVO - 
+Notificação de 
+Alteração de Texto 
+de Bula – 
+publicação no 
+Bulário RDC 60/12 
+N/A N/A N/A N/A 
+VP 
+4. O que devo saber antes 
+de usar este medicamento? 
+III – Dizeres Legais 
+ 
+VPS 
+5. Advertências e 
+Precauções 
+III – Dizeres Legais 
+ 
+VP/VPS 
+25 MG CAP DURA CT BL AL 
+PLAS PVC TRANS X 14 
+75 MG CAP DURA CT BL AL 
+PLAS PVC TRANS X 14 
+75 MG CAP DURA CT BL AL 
+PLAS PVC TRANS X 28 
+150 MG CAP DURA CT BL AL 
+PLAS PVC TRANS X 28 
+13/02/2025 0205166/25-3 
+10458 – 
+MEDICAMENTO 
+NOVO – inclusão 
+inicial de Texto de 
+Bula – publicação 
+no Bulário RDC 
+60/12 
+01/08/2024 1050958/24-1 
+11200 
+MEDICAMENTO 
+NOVO - Solicitação 
+de transferência de 
+titularidade de 
+Registro (operação 
+comercial) 
+11/11/2024 Todos VP/VPS 
+25 MG CAP DURA CT BL AL 
+PLAS PVC TRANS X 14 
+75 MG CAP DURA CT BL AL 
+PLAS PVC TRANS X 14 
+75 MG CAP DURA CT BL AL 
+PLAS PVC TRANS X 28 
+150 MG CAP DURA CT BL AL 
+PLAS PVC TRANS X 28

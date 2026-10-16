@@ -1,0 +1,17 @@
+{
+  "Risco Gestacional": "X",
+  "Slug": "rosuvastatina-calcica",
+  "Nomes Comerciais / Produtos ANVISA": "Crestor; Rosucor; Trezor; rosuvastatina cálcica.",
+  "Interações": "Ciclosporina é contraindicação clássica por aumento importante da exposição à rosuvastatina. Gemfibrozila e outros fibratos, como fenofibrato, ciprofibrato e bezafibrato, aumentam risco de miopatia/rabdomiólise. Inibidores de protease, como ritonavir, lopinavir, atazanavir, darunavir e combinações antirretrovirais, podem aumentar níveis e exigir dose menor. Varfarina pode ter INR aumentado. Ezetimiba pode aumentar risco de eventos musculares em alguns pacientes. Antiácidos com alumínio/magnésio reduzem níveis se administrados juntos; separar horários. Colchicina aumenta risco de miopatia. Ácido fusídico sistêmico, quando disponível, aumenta risco de rabdomiólise e deve ser evitado ou exigir suspensão temporária da estatina.",
+  "Apresentações / Nomes Comerciais": "Comprimidos revestidos 5 mg, 10 mg, 20 mg e 40 mg conforme fabricante; associações fixas com ezetimiba em alguns produtos. Exemplos: Crestor; Rosucor; Trezor; Rosuvastatina EMS; rosuvastatina genérica.",
+  "Posologia Pediátrica": "Hipercolesterolemia familiar em crianças/adolescentes: dose depende da idade, peso, indicação e avaliação especializada.\nEsquemas podem variar de 5 mg a 20 mg ao dia conforme faixa etária e bula.\nMonitorar crescimento, desenvolvimento puberal, enzimas hepáticas e sintomas musculares.",
+  "Texto Resumo": "Rosuvastatina é uma estatina potente usada para redução de LDL-colesterol e prevenção cardiovascular em pacientes selecionados. Exige atenção a sintomas musculares, função hepática, ajuste em insuficiência renal e contraindicação absoluta na gravidez.",
+  "Classe / Categoria": "Hipolipemiante; estatina; inibidor da HMG-CoA redutase.",
+  "Posologia Adulto": "Hipercolesterolemia e prevenção cardiovascular: iniciar geralmente com 5 mg a 10 mg por via oral 1 vez ao dia.\nAjustar conforme LDL-colesterol, risco cardiovascular e tolerabilidade.\nDose usual: 5 mg a 20 mg/dia.\nDose de 40 mg/dia é reservada para pacientes selecionados de alto risco, com monitorização.\nAjustar em insuficiência renal e considerar menor dose em pacientes asiáticos ou com risco de miopatia.",
+  "Contraindicações": "Hipersensibilidade à rosuvastatina ou componentes da fórmula; doença hepática ativa; elevações persistentes e inexplicadas de transaminases; insuficiência renal grave para doses específicas; miopatia; uso concomitante com ciclosporina; gravidez; lactação.",
+  "Tags Busca": "rosuvastatina; estatina; colesterol; ldl; dislipidemia; prevenção cardiovascular; crestor; trezor",
+  "Advertências": "Pode causar mialgia, miopatia, rabdomiólise rara, elevação de transaminases, proteinúria tubular transitória e aumento discreto de glicemia em pacientes predispostos. Orientar procurar atendimento se houver dor muscular intensa, fraqueza, febre, mal-estar ou urina escura. Monitorar enzimas hepáticas quando indicado e avaliar fatores de risco para miopatia, como idade avançada, insuficiência renal, hipotireoidismo e associação com fármacos miotóxicos.",
+  "Nomes Comerciais OpenAI": "Crestor; Rosucor; Trezor; Rosuvastatina EMS; Rosuvastatina Eurofarma; Rosuvastatina Medley.",
+  "Rede SUS (RENAME)": false,
+  "Princípio Ativo": "Rosuvastatina Cálcica"
+}

@@ -1,0 +1,16 @@
+{
+  "Risco Gestacional": "C",
+  "Slug": "mirtazapina",
+  "Nomes Comerciais / Produtos ANVISA": "Remeron; Menelat; Razapina; mirtazapina.",
+  "Interações": "IMAO, como tranilcipromina, moclobemida, selegilina, rasagilina e linezolida, são contraindicados. Álcool, benzodiazepínicos como diazepam, clonazepam, lorazepam e alprazolam, opioides, zolpidem, barbitúricos, prometazina, hidroxizina, quetiapina, olanzapina e outros sedativos aumentam sonolência e depressão do SNC. Serotonérgicos, como fluoxetina, sertralina, escitalopram, venlafaxina, duloxetina, clomipramina, tramadol, triptanos, lítio e Hypericum perforatum, podem aumentar risco de síndrome serotoninérgica. Carbamazepina, fenitoína e rifampicina podem reduzir níveis. Cetoconazol, itraconazol, claritromicina, eritromicina e ritonavir podem aumentar níveis. Varfarina pode ter INR alterado em alguns pacientes.",
+  "Apresentações / Nomes Comerciais": "Comprimidos revestidos ou orodispersíveis 15 mg, 30 mg e 45 mg conforme fabricante. Exemplos: Remeron; Menelat; Razapina; Mirtazapina EMS; mirtazapina genérica.",
+  "Texto Resumo": "Mirtazapina é um antidepressivo usado no tratamento da depressão maior, com perfil frequentemente sedativo e associado a aumento de apetite e peso. Deve ser usada com atenção a sedação, risco de quedas, alterações metabólicas, sintomas de neutropenia e interações com IMAO e depressores do SNC.",
+  "Classe / Categoria": "Antidepressivo noradrenérgico e serotoninérgico específico; NaSSA; antagonista alfa-2 e 5-HT2/5-HT3.",
+  "Posologia Adulto": "Depressão maior: iniciar geralmente com 15 mg por via oral à noite.\nDose usual: 15 mg a 45 mg por via oral 1 vez ao dia, preferencialmente à noite.\nAjustar conforme resposta, tolerabilidade, sedação e ganho de peso.\nNão suspender abruptamente após uso prolongado.",
+  "Contraindicações": "Hipersensibilidade à mirtazapina ou componentes da fórmula; uso concomitante ou recente de inibidores da monoaminoxidase.",
+  "Tags Busca": "mirtazapina; antidepressivo; depressão; insônia; apetite; ganho de peso; remeron; nassa",
+  "Advertências": "Pode causar sonolência, aumento do apetite, ganho de peso, boca seca, constipação, tontura, edema, sonhos vívidos, elevação de colesterol/triglicerídeos e, raramente, neutropenia/agranulocitose. Monitorar piora clínica, ideação suicida, sedação excessiva, peso e sintomas infecciosos como febre ou dor de garganta. Usar cautela em idosos, epilepsia, doença hepática/renal, transtorno bipolar e risco de quedas.",
+  "Nomes Comerciais OpenAI": "Remeron; Menelat; Razapina; Mirtazapina EMS; Mirtazapina Sandoz; Mirtazapina Eurofarma.",
+  "Rede SUS (RENAME)": false,
+  "Princípio Ativo": "Mirtazapina"
+}

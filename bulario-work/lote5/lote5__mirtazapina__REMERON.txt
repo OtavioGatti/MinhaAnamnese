@@ -1,0 +1,439 @@
+FONTE: lote5__mirtazapina__REMERON.pdf
+
+===== BLOCO 1 =====
+APRESENTAÇÕES
+REMERON SOLTAB®
+Comprimidos orodispersíveis de:
+- 1 5 mg em embalagem com 6 ou 30 comprimidos.
+- 30 mg em embalagem com 30 comprimidos.
+- 45 mg em embalagem com 30 comprimidos.
+
+USO ORAL
+
+USO ADULTO
+
+1. INDICAÇÕES
+REMERON SOLTAB® é indicado no tratamento de episódios de depressão maior.
+
+3. CARACTERÍSTICAS FARMACOLÓGICAS
+Propriedades farmacodinâmicas
+Grupo farmacoterapêutico: Outros antidepressivos, código ATC: N06AX11.
+A mirtazapina é um antagonista alfa- 2 de ação pré-sináptica central, que aumenta a neurotransmissão central noradrenérgica e
+sero ton inérgica. Esse aumento é especificamente mediado pelos receptores 5-HT1, porque os receptores 5-HT2 e 5 -HT3 são
+bloqueados pela mirtazapina. Presume- se que os enantiômeros da mirtazapina contribuam para a atividade antidepressiva, o
+enantiômero S(+)bloqueando receptores alfa-2 e 5-HT2 e o enantiômero R(-)bloqueando os receptores 5- HT3. A atividade
+antagonista histamínica H1 da mirtazapina é associada com suas propriedades sedativas. Ela praticamente não apresenta atividade
+anticolinérgica e, em doses terapêuticas, apresenta apenas efeitos limitados (por exemplo, hipotensão ortostática) sobre o sistema
+cardiovascular.
+
+População Pediátrica
+Dois estudos randomizados, duplo-ceg o s, p lacebo -controlados em crianças com idade entre 7 e 18 anos com distúrbios de depressão
+maior (n = 259) utilizando uma dose flexível durante as 4 primeiras semanas (15 – 45 mg de mirtazapina) seguida por uma dose fixa
+(15, 30 ou 45 mg de mirtazapina) por outras 4 semanas, falharam em demonstrar diferenças sign ificativ as nos desfechos primários e
+secundários en t re os tratamento s com mirtazapina e o placebo. Foi observado ganho de peso significativo (≥ 7%) em 48,8% dos
+pacientes tratados com REMERON® comparado com 5,7% no braço recebendo placebo. Também foram comumente observados
+urticária (11,8% vs 6,8%) e hipertrigliceridemia (2,9% vs 0%).
+
+Propriedades farmacocinéticas
+Após a administração oral de REMERON ® a substância ativa mirtazapina é rapidamente bem absorvida (biodisponibilidade
+aproximadamente igual a 50%), atingindo picos de níveis plasmáticos após aproximadamente 2 horas. A ligação da mirtazapina às
+proteínas plasmáticas é de aproximadamente 85%. A meia- vida de eliminação é de 20-40 horas; meias-vidas mais longas, de até 65
+horas, foram ocasionalmente registradas, e, meias-vidas mais curtas foram observadas em homens jovens. A meia-vida de
+eliminação é suficiente para justificar a posologia de administração única diária. O estado de equilíbrio é atingido após 3-4 dias,
+após o que não ocorre acúmulo. A mirtazapina apresenta farmacocinética linear dentro do intervalo de dose recomendada. A
+ingestão de alimentos não influencia a farmacocinética da mirtazapina.
+
+A mirtazapina é amplamente metabolizada e é eliminada pela urina e fezes dentro de poucos dias. As principais vias de
+biotransformação são desmetilação e oxidação seguidas por conjugação. Dados in vitro de microssomos do fígado humano
+indicaram que as enzimas CYP2D6 e CYP1A2 do citocromo P450 estão envolvidas na formação do metabólito 8-hidróxi da
+mirtazapina, enquanto que a CYP3A4 é considerada como responsável pela formação dos metabólitos N-desmetil e N-óxido. O
+metabólito desmetil é farmacologicamente ativo e parece apresentar o mesmo perfil farmacocinético do composto de origem.
+
+A depuração da mirtazapina pode ser reduzida como resultado de insuficiência renal ou hepática.
+
+Dados de segurança pré- clínicos
+Os dados pré-clínicos não revelaram ri sco especial para humanos, com base nos estudos convencionais de farmacologia de
+segurança, toxicidade de doses repetidas, carcinogenicidade ou genotoxicidade.
+Nos estudos de toxicidade reprodutiva em ratos e coelhos, não foram observados efeitos teratogênicos. Na exposição sistêmica du a s
+vezes maior que a exposição sistêmica durante o uso terapêutico da mirtazapina em humanos, houve um aumento na perda pós-
+implantação, diminuição no peso das crias ao nascimento e redução na sobrevida das crias durante os primeiros três dias de
+amamentação em ratos.
+
+ 2 de 9
+A mirtazapina não foi genotóxica em uma série de testes para mutação de genes e danos cromossômicos e do DNA. Foram
+encontrados tumores da tireoide em um estudo de carcinogenicidade em ratos e neoplasias hepatocelulares em um estudo de
+carcinogenicidade em camundongos, que foram considerados como sendo respostas não genotóxicas específicas das espécies,
+associadas com tratamento de longo prazo com doses elevadas de indutores de enzimas hepáticas.
+
+4. CONTRAINDICAÇÕES
+Este medicamento é contraindicado para uso por pacientes:
+- com hipersensibilidade à substância ativa ou a quaisquer dos excipientes.
+- em uso concomitante da mirtazapina com inibidores da monoaminoxidase (veja o item 6. INTERAÇÕES
+MEDICAMENTOSAS).
+
+5. ADVERTÊNCIAS E PRECAUÇÕES
+Uso em crianças e adolescentes menores de 18 anos de idade
+REMERON® não deve ser utilizado no tratamento de crianças e adolescentes menores de 18 anos de idade. Comportamentos
+relacionados ao suicídio (tentativa de suicídio e ideias suicidas) e à hostilidade (predominantemente agressão, comportamento ho stil
+e ódio) foram observados mais frequentemente nos estudos clínicos entre crianças e adolescentes tratados com antidepressivos,
+comparados com aqueles tratados com placebo. Se, com base na necessidade clínica, for tomada a decisão de tratar, o paciente deve
+ser monitorado cuidadosamente quanto ao aparecimento de sintomas suicidas. Além disso, não se dispõe de dados de segurança de
+longo prazo em crianças e adolescentes referentes ao crescimento, maturação e desenvolvimento cognitivo e de comportamento.
+
+Suicídio/ideias suicidas ou piora clínica
+A depressão é associada com um aumento do risco de ideias suicidas, autoagressão e suicídio (eventos relacionados ao suicídio).
+Esse risco persiste até que ocorra remissão significativa. Como pode não ocorrer melhora durante as primeiras poucas semanas ou
+mais de tratamento, os pacientes devem ser rigorosamente monitorados até que ocorra tal melhora. A experiência clínica geral é d e
+que o risco de suicídio pode aumentar nas fases precoces da recuperação.
+Pacientes com histórico de eventos relacionados ao suicídio ou aqueles que apresentam um grau significativo de ideação suicida
+antes de iniciar o tratamento, são conhecidos por apresentar um risco maior de ideias suicidas ou de tentativas de suicídio e devem
+receber monitoração cuidadosa durante o tratamento. Uma meta- análise de estudos clínicos sobre antidepressivos controlados com
+placebo em pacientes adultos com distúrbios psiquiátricos mostrou um aumento do risco de comportamento suicida com
+antidepressivos em comparação com o placebo em pacientes com menos de 25 anos de idade.
+A monitoração rigorosa dos pacientes e, em particular, daqueles com alto risco, deve acompanhar o tratamento com antidepressivos,
+especialmente no início do tratamento e após alterações da dose. Pacientes (e prestadores de cuidados aos pacientes) devem ser
+alertados sobre a necessidade de monitorar qualquer piora clínica, comportamento suicida ou ideias suicidas e alterações incomuns
+no comportamento e procurar auxílio médico imediatamente caso esses sintomas estejam presentes.
+Com relação à possibilidade de suicídio, em particular no início do tratamento, deve- se entregar ao paciente a menor quantidade
+possível de comprimidos orodispersíveis de REMERON SOLTAB®, em consonância com o bom gerenciamento do paciente, com
+objetivo de reduzir o risco de superdose.
+
+Depressão da medula óssea
+Durante o tratamento com REMERON® foi relatada depressão da medula óssea, geralmente se apresentando como granulocitopenia
+ou agranulocitose. Foi relatada agranulocitose como uma rara ocorrência nos estudos clínicos com REMERON®. No período pós-
+comercialização com REMERON® foram relatados casos muito raros de agranulocitose, a maioria deles reversível, mas algumas
+v ezes fatais. A maio ria do s caso s fatais se referiu a p acien tes co m id ad e acima d e 6 5 ano s. O méd ico d ev e estar aten to ao s sintomas
+como febre, dor de garganta, estomatite ou outros sinais de infecção; quando tais sintomas ocorrerem, o tratamento deve ser
+interrompido e deve-se realizar exame hematológico.
+
+Icterícia
+Se ocorrer icterícia, o tratamento deve ser descontinuado.
+
+Condições que necessitam de monitoração
+É necessária a administração cautelosa, bem como a monitoração rigorosa e regular em pacientes com:
+ − Epilepsia e síndrome cerebral orgânica: Embora a experiência clínica indique que as convulsões epilépticas sejam raras
+ durante o tratamento com mirtazapina, assim como com outros antidepressivos, REMERON® deve ser introduzido com
+ cautela em pacientes com histórico de convulsões. O tratamento deve ser descontinuado em qualquer paciente que
+ desenvolver convulsões ou que apresentar um aumento da frequência destas.
+ − Insuficiência hepática: Após a dose única oral de 15 mg de mirtazapina, a depuração da mirtazapina apresentou redução
+ d e ap rox imad ament e 3 5% em paci ent es co m in su fi ci ên ci a hepáti ca l ev e a moderada, em co mp aração co m in di ví duo s
+ com função hepática normal. A concentração plasmática média da mirtazapina au ment ou cerca d e 55 %.
+
+ 3 de 9
+ − Insuficiência renal: Após a dose única oral de 15 mg de mirtazapina em pacientes com insuficiência renal moderada
+ (depuração de creatinina ≥ 10 mL/min e < 40 mL/min) e grave (depuração de creatinina < 10 mL/min) a depuração de
+ mirtazapina diminuiu cerca de 30% e 50%, respectivamente, em comparação com indivíduos normais. A concentração
+ plasmática média da mirtazapina aumentou cerca de 55% e 115%, respectivamente. Não foram encontradas diferenças
+ si gn i fi cat iv as em p aci ent es co m i nsufi ciência ren al l ev e (depu ração d e creati nin a ≥ 40 mL/ mi n e < 8 0 mL/ mi n ) em
+ comparação com o grupo controle.
+ − Doenças cardíacas, tais como distúrbios da condução, angina pectoris e infarto do miocárdio recente, nas quais devem
+ ser tomadas precauções habituais e os medicamentos concomitantes devem ser administrados com cautela.
+ − Hipotensão arterial.
+ − Diabetes melito: em pacientes com diabetes, os antidepressivos podem alterar o controle glicêmico. A dose de insulina
+ e/ou de hipoglicemiantes orais pode necessitar de ajuste e é recomendada monitoração rigorosa.
+Assim como para outros antidepressivos, deve-se levar em consideração os seguintes fatores:
+ − A piora de sintomas psicóticos pode ocorrer quando antidepressivos são administrados a pacientes com esquizofrenia ou
+ outros transtornos psicóticos; as ideias paranoides podem ser intensificadas.
+ − Quando a fase depressiva do transtorno bipolar estiver sendo tratada, ela pode se transformar em fase maníaca. Pacientes
+ com histórico de mania/hipomania devem ser monitorados rigorosamente. A mirtazapina deve ser descontinuada em
+ qualquer paciente que entrar em fase maníaca.
+ − Embora REMERON® não cause dependência, a experiência pós-comercialização mostra que a interrupção brusca do
+ tratamento após administração de longo prazo, pode, algumas vezes, resultar em sintomas de abstinência. A maioria das
+ reações de abstinência é de leve intensidade e autolimitada. Entre os vários sintomas de abstinência relatados, os mais
+ frequentes são tontura, agitação, ansiedade, cefaleia e náuseas. Embora tenham sido relatados como sintomas de
+ abstinência, deve-se entender que eles podem estar relacionados com a doença de base. Nesse caso, recomenda- se
+ descontinuar o tratamento com mirtazapina gradualmente (v eja o item 8. POSOLOGIA E MODO DE USAR).
+ − Recomenda- se cautela em pacientes com distúrbios da micção como na hipertrofia prostática e em pacientes com
+ glaucoma de ângulo fechado e aumento da pressão intraocultar (embora exista pouca probabilidade de ocorrerem
+ problemas com REMERON® p o r causa de su a fraca at iv id ad e an ti co li nérgica).
+ − Acatisia/agitação psicomotora: O uso de antidepressivos foi associado com o desenvolvimento de acatisia, caracterizada
+ por agitação subjetivamente desagradável ou aflitiva e necessidade de movimentar-se frequentemente acompanhada por
+ uma incapacidade de manter-se sentado ou em pé. Isso ocorre principalmente dentro das primeiras semanas de
+ tratamento. Em pacientes que desenvolverem esses sintomas, o aumento das doses pode ser prejudicial.
+ − O efeito de REMERON® sobre o intervalo QTc foi avaliado em um estudo clínico, randomizado, controlado por placebo
+ e moxifloxacino envolvendo 54 voluntários saudáveis, usando análise de resposta à exposição. Este estudo revelou que
+ ambas as doses 45 mg (terapêutica) e 75 mg (supraterapêutica) de mirtazapina não afetam o intervalo QTc em uma
+ extensão clinicamente significativa. Durante o uso pós-comercialização de mirtazapina, casos de prolongamento do
+ intervalo QT, Torsades de Pointes, taquicardia ventricular e morte súbita foram relat ado s . A maioria dos relatos ocorreu
+ em associação à superdose ou em pacientes com outros fatores de risco para prolongamento do intervalo QT, incluindo
+ uso concomitante de medicamentos que prolongam o intervalo QTc (veja os itens 6. INTERAÇÕES
+ MEDICAMENTOSAS e 10. SUPERDOSE). Devem ser tomadas precauções quando REMERON® é prescrito para
+ pacientes com doença cardiovascular conhecida ou história familiar de prolongamento do intervalo QT e em uso
+ concomitante com outros medicamentos que se supõe prolongarem o intervalo QTc.
+
+Este medicamento pode potencializar o prolongamento do intervalo QT, o que aumenta o risco de ataque de arritmias
+ventriculares graves do tipo "torsades de pointes", que é potencialmente fatal (morte súbita).
+
+Hiponatremia
+Foi relatada muito raramente hiponatremia com o uso de mirtazapina. Recomenda- se cautela em pacientes de risco, tais como idosos
+ou aqueles tratados concomitantemente com medicamentos que sabidamente causam hiponatremia.
+
+Síndrome serotonínica
+Interação com substâncias ativas serotoninérgicas: a síndrome serotonínica pode ocorrer quando inibidores seletivos da recaptação
+de serotonina (SSRIs) são utilizados concomitantemente com outras substâncias ativas serotoninérgicas (veja o item 6.
+INTERAÇÕES MEDICAMENTOSAS). Os sintomas da síndrome serotonínica podem ser hipertermia, rigidez, mioclonia,
+instabilidade autonômica com possíveis flutuações rápidas dos sinais vitais, alterações do estado mental que incluem confusão,
+irritabilidade e agitação extrema evoluindo para delírio e coma. Recomenda- se cautela e um monitoramento rigoroso é necessário
+quando estas substâncias ativas são combinadas com mirtazapina. O tratamento com REMERON® deve ser descontinuado se tais
+eventos ocorrerem, e tratamento sintomático de suporte deve ser iniciado. De acordo com a experiência pós-comercialização, parece
+que a síndrome serotonínica ocorre muito raramente em pacientes tratados com REMERON® isoladamente (veja o item 9 .
+REAÇÕES ADVERSAS).
+
+ 4 de 9
+Pacientes idosos
+Pacientes idosos são frequentemente mais sensíveis, especialmente com relação aos efeitos indesejáveis dos antidepressivos.
+Durante a pesquisa clínica com REMERON®, não foram relatados efeitos indesejáveis mais frequentes em idosos do que em outros
+grupos etários.
+
+Sa ca ro se
+REMERON SOLTAB® contém esferas de açúcar contendo sacarose. Os pacientes com raros problemas hereditários de intolerância
+à frutose, má absorção de glicose-galactose ou insuficiência da sacarose isomaltase, não devem receber esse medicamento.
+Atenção: Co ntém sacarose (tipo de açúcar) abaixo de 0,25 g/comprimido orodispersível. Deve ser usado com cautela por
+portadores de D iabetes.
+Este medicamento não deve ser usado por pessoas com síndrome de má -absorção de glicose-galactose e por pessoas com
+insuficiência de sacarose-isomaltase.
+
+Aspartamo
+REMERON SOLTAB® contém aspartamo, uma fonte de fenilalanina. Cada comprimido de 15 mg , 30 mg e 45 mg de mirtazapina
+corresponde a 2,6 mg , 5,2 mg e 7,8 mg de fenilalanina, respectivamente. Ele pode ser perigoso para pacientes com fenilcetonúria.
+Atenção: Contém fenilalanina.
+Contém aspartame (edulcorante).
+
+Efeitos sobre a habilidade de dirigir e operar máquinas
+REMERON® apresenta influência pequena ou moderada sobre a habilidade de dirigir e operar máquinas. REMERON® pode alterar
+a concentração e o estado de alerta (particularmente na fase inicial do tratamento). Os pacientes devem evitar a realização de
+atividades potencialmente perigosas, que requeiram alerta e boa concentração, tais como dirigir veículos ou operar máquinas, a
+qualquer momento, quando forem afetados.
+Durante o tratamento, o paciente não deve dirigir veículos ou operar máquinas, pois sua habilidade e atenção podem estar
+prejudicadas.
+
+Oriente seu paciente a não dirigir veículos ou operar máquinas durante todo o tratamento, pois sua habilidade e capacidade
+de reação podem estar prejudicadas.
+
+O uso deste medicamento pode causar tontura, desmaios ou perda da consciência, expondo o paciente a quedas ou acidentes.
+
+Gravidez e lactação
+Categoria C.
+Este medicamento não deve ser utilizado por mulheres grávidas sem orientação médica ou do cirurgião-dentista.
+Dados limitados sobre o uso da mirtazapina em mulheres grávidas não indicam um aumento do risco de malformações congênitas.
+Os estudos em animais não apresentaram efeitos teratogênicos clinicamente relevantes, mas foi observada toxicidade de
+desenvolvimento (veja o item 3. CARACTERÍSTICAS FARMACOLÓGICAS - Dados de segurança pré-clínicos). Recomenda-
+se cautela ao prescrever o medicamento para gestantes. Se REMERON® for utilizado até o parto ou logo antes do parto, a
+monitoração pós-n at al d o recém-nascido é recomendada para detectar possíveis efeitos de abstinência.
+Uso criterioso no aleitamento ou na doação de leite humano: o uso deste medicamento no período da lactação depende da
+avaliação e acompanhamento do seu médico ou cirurgião-dentista.
+Os estudos em animais e os dados limitados em humanos mostraram excreção da mirtazapina no leite materno apenas em
+quantidades muito pequenas. A decisão de continuar/descontinuar o aleitamento ou continuar/descontinuar o tratamento com
+REMERON® deve ser tomada levando em conta o benefício do aleitamento para a criança e do tratamento com REMERON® para a
+mãe.
+
+6. INTERAÇÕES MEDICAMENTOSAS
+Interações farmacodinâmicas
+- A mirtazapina não deve ser administrada concomitantemente com inibidores da MAO ou dentro das duas semanas após a
+descontinuação do tratamento com inibidor da MAO. Por outro lado, deve-se aguardar cerca de duas semanas para que pacientes
+tratados com mirtazapina possam ser tratados com inibidores da MAO (veja o item 4. CONTRAINDICAÇÕES).
+Além disso, assim como com os inibidores seletivos da recaptação de serotonina (SSRIs), a administração concomitante com outra s
+substâncias ativas serotoninérgicas (L-triptofano, triptanos, tramadol, linezolida, azul de metileno, SSRIs, venlafaxina, lítio e
+preparações contendo Erva de São João – Hypericum perforatum) pode levar ao aparecimento de efeitos associados com a
+serotonina (síndrome serotonínica: veja o item 5. ADVERTÊNCIAS E PRECAUÇÕES).
+
+ 5 de 9
+- A mirtazapina pode aumentar as propriedades sedativas das benzodiazepinas e outros sedativos (especialmente antipsicóticos,
+antagonistas H1 histamínicos, opioides). Recomenda-se cautela quando esses medicamentos são prescritos juntamente com a
+mi rt azap in a.
+- A mirtazapina pode aumentar o efeito depressor do álcool sobre o SNC. Os pacientes devem ser advertidos a evitar o consumo de
+b eb id as al co ól icas en qu an to esti verem em t rat ament o co m mi rt azap in a.
+- A mirtazapina, na dose de 30 mg uma vez ao dia causou um aumento pequeno, mas estatisticamente significativo, na razão
+internacional normalizada (INR) em indivíduos tratados com varfarina. Considerando que com doses mais elevadas de mirtazapina
+não pode ser excluído um efeito mais pronunciado, é recomendável monitorar a INR em caso de tratamento concomitante de
+varfarina com mirtazapina.
+- O risco de prolongamento do intervalo QT e/ ou arritmias ventriculares (por exemplo, Torsades de Pointes) pode ser aumentado
+com o uso concomitante de medicamentos que prolongam o intervalo QTc (por exemplo, alguns antipsicóticos e antibióticos) e no
+caso de superdose com mirtazapina.
+
+Interações farmacocinéticas
+- A carbamazepina e a fenitoína, que são indutores da CYP3A4, aumentaram a depuração da mirtazapina cerca de duas vezes,
+resultando em uma redução nas concentrações plasmáticas médias da mirtazapina de 60% e 45%, respectivamente. Quando a
+carbamazepina ou qualquer outro indutor do metabolismo hepático (tal como a rifampicina) for adicionado ao tratamento com
+mirtazapina, a dose desta pode precisar ser aumentada. Se o tratamento com tal medicamento for descontinuado, poderá ser
+necessário reduzir a dose de mirtazapina.
+- A administração concomitante do potente inibidor da CYP3A4, cetoconazol, aumentou os níveis plasmáticos de pico e a AUC da
+mirtazapina em aproximadamente 40% e 50%, respectivamente.
+- Quando a cimetidina (fraco inibidor da CYP1A2, CYP2D6 e CYP3A4) for administrada com a mirtazapina, a concentração
+plasmática média da mirtazapina pode aumentar mais de 50%. Recomenda- se cautela e a dose poderá precisar ser reduzida ao
+administrar mirtazapina com potentes inibidores da CYP3A4, inibidores da HIV protease, antifúngicos azoles, eritromicina,
+cimetidina ou nefazodona.
+- Os estudos sobre interações não indicaram nenhum efeito farmacocinético relevante com o tratamento concomitante da
+mirtazapina com paroxetina, amitriptilina, risperidona ou lítio.
+
+8. POSOLOGIA E MODO DE USAR
+Adultos
+A dose diária eficaz geralmente varia entre 15 e 45 mg; a dose inicial é de 15 ou 30 mg. A mirtazapina começa a exercer seu efeito,
+em g eral, apó s 1 a 2 seman as de tratamento. O tratamen to com u ma d o se ad eq uada deve resultar em u ma respo sta p o sitiv a dentro d e
+2 a 4 semanas. Com uma resposta insuficiente, a dose pode ser aumentada até a dose máxima. Se não houver resposta dentro das 2 a
+4 semanas seguintes, então, o tratamento deve ser interrompido.
+
+Idosos
+A dose recomendada é a mesma que a de adultos. Em pacientes idosos um aumento da dose pode ser adotado sob rigorosa
+supervisão para permitir uma resposta satisfatória e segura.
+
+Crianças e adolescentes menores de 18 anos de idade
+REMERON® não deve ser utilizado no tratamento de crianças e adolescentes menores de 18 anos (veja o item 5 .
+ADVERTÊNCIAS E PRECAUÇÕES), uma vez que a eficácia não foi demonstrada em dois estudos clínicos de curto prazo (veja
+
+ 6 de 9
+o item 3. CARACTERÍSTICAS FARMACOLÓGICAS) e devido a questões de segurança (veja os itens 5. ADVERTÊNCIAS E
+PRECAUÇÕES, 9. REAÇÕES ADVERSAS e 3. CARACTERÍSTICAS FARMACOLÓGICAS).
+
+Insuficiência renal
+A depuração da mirtazapina pode ser reduzida em pacientes que apresentam insuficiência renal moderada a grave (depuração de
+creatinina < 40 mL/min). Isso deve ser considerado ao prescrever REMERON ® para pacientes dessa categoria (veja o item 5 .
+ADVERTÊNCIAS E PRECAUÇÕES).
+
+Insuficiência hepática
+A depuração da mirtazapina pode ser reduzida em pacientes com insuficiência hepática. Isso deve ser considerado ao prescrever
+REMERON® para pacientes dessa categoria, particularmente com insuficiência hepática grave, uma vez que estes não foram
+estudados (veja o item 5. ADVERTÊNCIAS E PRECAUÇÕES).
+
+A mirtazapina apresenta meia- vida de eliminação de 20 a 40 horas e, portanto, REMERON® é apropriado para administração única
+diária. Ele deve ser administrado preferencialmente em dose única na hora de deitar. REMERON® também pode ser administrado
+dividido em duas doses (uma dose pela manhã e outra à noite, sendo que a dose mais elevada deve ser administrada à noite).
+
+Os comprimidos devem ser administrados por via oral. O comprimido irá desintegrar-se rapidamente sobre a língua, podendo ser
+engolido sem água.
+
+Os pacientes com depressão devem ser tratados durante o período suficiente de pelo menos 6 meses para assegurar que fiquem liv r e s
+de sintomas.
+
+Recomenda- se descontinuar gradativamente o tratamento com mirtazapina para evitar sintomas de abstinência (veja o item 5.
+ADVERTÊNCIAS E PRECAUÇÕES).
+
+Este medicamento não deve ser partido, aberto ou mastigado.
+
+9. REAÇÕES ADVERSAS
+Pacientes deprimidos apresentam vários sintomas associados com a própria doença. Por isso, algumas vezes, é difícil determinar
+quais sintomas resultaram da própria doença ou do tratamento com REMERON®.
+As reações adversas relatadas mais comumente, ocorrendo em mais de 5% dos pacientes tratados com REMERON ® em estudo s
+clínicos randomizados controlados com placebo (ver abaixo) são sonolência, sedação, boca seca, aumento de peso, aumento de
+apetite, tontura e fadiga.
+Todos os estudos randomizados controlados com placebo em pacientes (incluindo indicações diferentes do transtorno de depressão
+maior) foram avaliados com relação às reações adversas de REMERON®. A meta- análise considerou 20 estudos, com uma duração
+de tratamento planejada de até 12 semanas, incluindo 1.501 pacientes (134 indivíduos-anos) recebendo doses de mirtazapina de até
+60 mg e 850 pacientes (79 indivíduos-anos) recebendo placebo. Fases de extensão desses estudos clínicos foram excluídas para
+manter a comparabilidade ao tratamento com placebo.
+A Tabela 1 apresenta a incidência, por categoria, das reações adversas que ocorreram nos estudos clínicos, com frequência
+estatisticamente mais significativa durante o tratamento com REMERON® do que com placebo, acrescentada por reações adversas
+de relatos espontâneos. A frequência das reações adversas dos relatos espontâneos é baseada no índice de relatos desses eventos nos
+estudos clínicos. A frequência das reações adversas dos relatos espontâneos que não foram observadas em pacientes dos estudos
+clínicos randomizados controlados com placebo, mas que foram observadas com mirtazapina, foi classificada como “não
+conhecida”.
+
+Tabela 1. Reações adversas de REMERON®
+Classe de órgãos e Muito comum Comum Incomum Rara Frequência não
+sistemas (≥ 1/10) (≥ 1/100 a < 1/10) (≥ 1/1000 a < (≥ 1/10000 a < conhecida
+ 1/100) 1/1000)
+Distúrbios do sangue  Depressão da
+e do sistema linfático medula óssea
+ (granulocitopenia,
+ agranulocitose,
+ an emia ap lásti ca e
+ trombocitopenia)
+  Eo sino filia
+Distúrbios  Hiperprolactinemia
+
+ 7 de 9
+endócrinos (e sin to mas
+ relacionados, co mo
+ g al acto rréi a e
+ ginecomastia)
+Distúrbios do  Aumento do  Hiponatremia
+metabolismo e p e so 1
+nutrição  Aumento de
+ apetite1
+Distúrbios  Sonhos anormais  Pesadelos2  Agressão  Ideação suicida6
+psiquiátricos  Confusão  M an ia  Comportamento
+  Ansiedade2, 5  Agitação2 su icid a6
+  Insônia3, 5  Alucinações  Sonambulismo
+  Inquietação
+ psicomotora
+ (incl. acatisia,
+ h ip ercin esia)
+Distúrbios do  So no lência1, 4  Letargia1  Parestesia2  Mioclonia  Convulsões (crises)
+sistema nervoso  Sed ação 1, 4  Tontura  Pernas  Síndrome
+  Cefal ei a2  Tremor inquietas sero ton ín ica
+  Amn é si a  Síncope  Parestesia oral
+  Disartria
+
+Distúrbios  Hipotensão  Hipotensão2
+vasculares o rto stática
+Distúrbios  Boca seca  Náu sea3  Hipoestesia  Pancreatite  Edema bucal
+gastrintestinais  Diarreia2 oral  Sal iv ação
+  Vô mito 2 aumentada
+  Con stip ação1
+Distúrbios  Elevações nas
+hepatobiliares atividades da
+ transaminase
+ séri ca
+Distúrbios da pele e  Exantema2  Síndrome de
+tecido subcutâneo St even s-Johnson
+  Dermatite bolhosa
+  Eritema multiforme
+  Necrólise
+ epidérmica tóxica
+  Reação
+ medicamentosa com
+ eosinofilia e
+ sintomas sistêmicos
+ (DRESS)
+Distúrbios  Artralgia  Rabdomiólise7
+musculoesqueléticos  Mialg ia
+e do tecido  Dor lombar1
+conjuntivo
+Distúrbios renais e  Retenção urinária
+urinários
+Distúrbios do  Priapismo
+sistema reprodutivo
+e distúrbios da
+mama
+Distúrbios gerais e  Edema  Edema generalizado
+condições no local de periférico1  Edema localizado
+a dmi ni stra ção  Fad iga
+Investigações  Aumento da
+
+ 8 de 9
+ creatina quinase
+1. Nos estudos clínicos, esses eventos ocorreram mais frequentemente (estatisticamente significativos) durante o tratamento com
+REMERON® do que com placebo.
+2. Nos estudos clínicos, esses eventos ocorreram mais frequentemente durante o tratamento com placebo do que com REMERON®,
+mas n ão co m frequ ên ci a est ati sti camen te mai s si gni fi cati va.
+3. Nos estudos clínicos, esses eventos ocorreram mais frequentemente (estatisticamente significativos) durante o tratamento com
+placebo do que com REMERON®.
+4. Nota: a redução da dose geralmente não leva a menos sonolência/sedação, mas pode prejudicar a eficácia antidepressiva.
+
+5. Em tratamentos com antidepressivos em geral, ansiedade e insônia (que podem ser sintomas da depressão) podem se desenvolver
+ou se tornar piores. No tratamento com mirtazapina, foi relatado o desenvolvimento ou piora da ansiedade e da insônia.
+6. Foram relatados casos de ideação suicida e comportamentos suicidas durante o tratamento com mirtazapina ou no início ou após a
+descontinuação do tratamento (veja o item 5. ADVERTÊNCIAS E PRECAUÇÕES).
+7. Foram relatados casos de rabdomiólise associados à síndrome serotonínica e à superdose de múltiplas drogas. Neste último, uma
+associação cau sal co m a mirtazapina não pode ser verificada.
+
+Nas avaliações laboratoriais em estudos clínicos foram observados aumentos transitórios nas transaminases e na gama-
+glutamiltransferase (entretanto, não foram relatados eventos adversos associados, estatisticamente significativamente mais
+freq uent emen t e co m R EM ER ON® do que com placebo).
+
+População Pediátrica
+Os seguintes eventos adversos foram observados comumente em estudos clínicos conduzidos em crianças: ganho de peso, urticária e
+hipertrigliceridemia (veja o item 3. CARACTERÍSTICAS FARMACOLÓGICAS).
+
+Em casos de eventos adversos, notifique pelo Sistema Vig iMed, di spo nív el no Portal da Anvisa .
+
+10. SUPERDOSE
+A experiência atual referente à superdose com REMERON® isoladamente indica que os sintomas geralmente são leves. Foi relatada
+depressão do sistema nervoso central com desorientação e sedação prolongada, juntamente com taquicardia e leve hipertensão ou
+hipotensão. Entretanto, existe a possibilidade de evolução mais grave (incluindo casos fatais) com doses muito mais elevadas do que
+a dose terapêutica, especialmente em superdoses múltiplas. Nesses casos, o prolongamento do intervalo QT e Torsades de Pointes
+t a mb é m fo ra m re latados.
+Casos de superdose devem receber tratamento sintomático apropriado e de suporte para as funções vitais. Deve ser realizado
+monitoramento por ECG. Também, deve- se considerar a administração de carvão ativado ou lavagem gástrica.
+
+Em caso de intoxicação ligue para 0800 722 6001, se você precisar de mais orientações.

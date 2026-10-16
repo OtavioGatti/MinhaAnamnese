@@ -1,0 +1,17 @@
+{
+  "Risco Gestacional": "B",
+  "Slug": "clindamicina",
+  "Nomes Comerciais / Produtos ANVISA": "Dalacin C; Clindamin-C; Clindarix; clindamicina.",
+  "Interações": "Pode potencializar bloqueadores neuromusculares, como rocurônio, vecurônio, pancurônio e succinilcolina. Eritromicina e cloranfenicol podem antagonizar efeito antibacteriano e devem ser evitados sem justificativa. Varfarina e outros anticoagulantes podem ter INR aumentado e risco de sangramento. Vacina oral contra febre tifoide pode ter eficácia reduzida por antibióticos.",
+  "Apresentações / Nomes Comerciais": "Cápsulas 150 mg e 300 mg; solução injetável 150 mg/mL; creme vaginal 20 mg/g; óvulos vaginais conforme produto; gel/solução tópica para acne conforme apresentação. Exemplos: Dalacin C; Clindamin-C; Clindarix; clindamicina genérica.",
+  "Posologia Pediátrica": "Via oral: 8 mg/kg/dia a 25 mg/kg/dia, divididos a cada 6 a 8 horas, conforme gravidade.\nVia intravenosa ou intramuscular: 20 mg/kg/dia a 40 mg/kg/dia, divididos a cada 6 a 8 horas.\nA dose deve ser individualizada por peso, foco infeccioso e gravidade.",
+  "Texto Resumo": "Clindamicina é um antibiótico lincosamida usado em infecções por anaeróbios e Gram-positivos sensíveis, incluindo pele/partes moles, infecções odontogênicas e ginecológicas selecionadas. O principal alerta é o risco de diarreia grave e colite por Clostridioides difficile.",
+  "Classe / Categoria": "Antibiótico lincosamida; antibacteriano contra anaeróbios e Gram-positivos sensíveis.",
+  "Posologia Adulto": "Infecções leves a moderadas: 150 mg a 300 mg por via oral a cada 6 horas.\nInfecções graves: 300 mg a 450 mg por via oral a cada 6 horas.\nVia intravenosa ou intramuscular: 600 mg a 2700 mg/dia, divididos a cada 6 a 8 horas, conforme gravidade.\nDose máxima parenteral usual: até 4800 mg/dia em infecções muito graves, conforme protocolo.",
+  "Contraindicações": "Hipersensibilidade à clindamicina, lincomicina ou componentes da fórmula; histórico de colite associada a antibióticos conforme avaliação clínica.",
+  "Tags Busca": "clindamicina; antibiótico; anaeróbios; pele; partes moles; infecção dentária; vaginose; lincosamida",
+  "Advertências": "Pode causar diarreia associada a Clostridioides difficile e colite pseudomembranosa, inclusive grave. Suspender e investigar se houver diarreia importante. Usar cautela em doença gastrointestinal prévia, insuficiência hepática e pacientes idosos. Pode causar rash, hepatotoxicidade, neutropenia e reações alérgicas.",
+  "Nomes Comerciais OpenAI": "Dalacin C; Clindamin-C; Clindarix; Clindamicina Teuto; Clindamicina EMS; Clindamicina União Química.",
+  "Rede SUS (RENAME)": false,
+  "Princípio Ativo": "Clindamicina"
+}
