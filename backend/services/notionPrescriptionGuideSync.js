@@ -467,6 +467,51 @@ async function upsertPrescriptionGuides(guides) {
   return Array.isArray(json) ? json : [];
 }
 
+// Linhas publicadas no banco que não têm mais página no Notion. A sincronização
+// só cria e atualiza; quando uma página era refeita com outro slug, a linha
+// antiga ficava publicada para sempre, sem como editar (dois casos achados em
+// 21/10/2026: PAC e otite, parados desde maio). Página que existe mas falhou na
+// validação NÃO conta como sumida: um campo mal preenchido no CMS não pode
+// tirar o protocolo do ar.
+function findOrphanGuides(existingRows, keepSlugs) {
+  const keep = new Set(keepSlugs.filter(Boolean));
+
+  return (Array.isArray(existingRows) ? existingRows : [])
+    .filter((row) => row?.slug && !keep.has(row.slug));
+}
+
+async function deactivateOrphanGuides({ pages, keepSlugs }) {
+  // Consulta incompleta (vazia ou cortada no teto de páginas) faria tudo
+  // parecer órfão: nesse caso não desativa nada.
+  if (pages.length === 0 || pages.length >= MAX_SYNC_PAGES) {
+    return { skipped: true, deactivated: [] };
+  }
+
+  const query = new URLSearchParams({
+    select: 'slug,title',
+    source: 'eq.notion_protocols',
+    active: 'eq.true',
+  });
+  const existing = await requestSupabase('prescription_guides', `?${query.toString()}`, { method: 'GET' });
+  const orphans = findOrphanGuides(existing, keepSlugs);
+
+  if (orphans.length === 0) {
+    return { skipped: false, deactivated: [] };
+  }
+
+  const filtro = new URLSearchParams({
+    slug: `in.(${orphans.map((row) => `"${row.slug}"`).join(',')})`,
+    source: 'eq.notion_protocols',
+  });
+  await requestSupabase('prescription_guides', `?${filtro.toString()}`, {
+    method: 'PATCH',
+    headers: { Prefer: 'return=minimal' },
+    body: JSON.stringify({ active: false, status: 'draft' }),
+  });
+
+  return { skipped: false, deactivated: orphans.map((row) => ({ slug: row.slug, title: row.title })) };
+}
+
 async function syncNotionPrescriptionGuides() {
   const pages = await queryNotionPrescriptionGuidePages();
   const mapped = pages.map(mapNotionPageToPrescriptionGuide);
@@ -524,6 +569,10 @@ async function syncNotionPrescriptionGuides() {
   }
 
   const persisted = await upsertPrescriptionGuides(prepared);
+  const orphans = await deactivateOrphanGuides({
+    pages,
+    keepSlugs: [...prepared.map((guide) => guide.slug), ...skipped.map((item) => item.slug)],
+  });
 
   return {
     totalFromNotion: pages.length,
@@ -531,10 +580,13 @@ async function syncNotionPrescriptionGuides() {
     publishedAvailable: prepared.filter((guide) => guide.active && guide.status === 'published').length,
     persisted: persisted.length,
     skipped,
+    orphansDeactivated: orphans.deactivated,
+    orphanCheckSkipped: orphans.skipped,
   };
 }
 
 module.exports = {
+  findOrphanGuides,
   getNotionPrescriptionGuidesConfig,
   isNotionPrescriptionGuidesSyncConfigured,
   mapNotionPageToPrescriptionGuide,
