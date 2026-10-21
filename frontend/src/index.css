@@ -8790,3 +8790,98 @@ body {
     animation: none;
   }
 }
+
+/* Fale com a gente (rodapé) */
+.footer-support-button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: var(--primary-700);
+  font: inherit;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.footer-support-button:hover {
+  text-decoration: underline;
+}
+
+.footer-social {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.6rem;
+}
+
+.footer-social a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--gray-500);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.footer-social a:hover {
+  color: var(--primary-700);
+}
+
+.support-modal {
+  width: min(100%, 560px);
+}
+
+.support-label {
+  display: block;
+  margin: 0.85rem 0 0.35rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--gray-700);
+}
+
+.support-label span {
+  font-weight: 500;
+  color: var(--gray-400);
+}
+
+.support-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.support-message {
+  width: 100%;
+  min-height: 7rem;
+  resize: vertical;
+  font: inherit;
+}
+
+.support-hint {
+  margin: 0.4rem 0 0;
+  font-size: 0.78rem;
+  color: var(--gray-500);
+}
+
+.support-honeypot {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.support-sent {
+  margin-top: 1rem;
+}
+
+.support-sent p {
+  margin: 0.4rem 0 0;
+  color: var(--gray-600);
+}
+
+@media (max-width: 560px) {
+  .support-row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

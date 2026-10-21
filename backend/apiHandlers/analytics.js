@@ -57,6 +57,9 @@ const ALLOWED_EVENTS = new Set([
   // respondeu ao cartão e quando o Pro foi de fato liberado.
   'checkout_cartao_resultado',
   'checkout_cartao_confirmado',
+  // Fale com a gente (rodapé): abriu o formulário e enviou.
+  'suporte_aberto',
+  'suporte_enviado',
 ]);
 const DEBUG_ANALYTICS = process.env.DEBUG_ANALYTICS === 'true';
 
@@ -133,6 +136,8 @@ function sanitizeMetadata(metadata) {
     'utm_source',
     'utm_campaign',
     'ref_host',
+    // Suporte: só o id do assunto (pagamento, erro…), nunca a mensagem.
+    'assunto',
   ];
 
   allowedKeys.forEach((key) => {

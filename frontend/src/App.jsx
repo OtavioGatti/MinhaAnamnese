@@ -1,4 +1,4 @@
-﻿import { lazy, Suspense, useEffect, useMemo, useRef, useState } from 'react';
+﻿import { lazy, Suspense, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { api } from './apiClient';
 import { classifyCheckoutFailure, normalizeCheckoutReturnStatus, waitAtMost } from './lib/checkoutTracking';
 import {
@@ -70,6 +70,7 @@ import useDiagnosticHypotheses from './hooks/useDiagnosticHypotheses';
 // reduzir o bundle inicial do workspace clínico.
 const AffiliatePage = lazy(() => import('./components/AffiliatePage'));
 const CardCheckoutModal = lazy(() => import('./components/CardCheckoutModal'));
+const SupportModal = lazy(() => import('./components/SupportModal'));
 const SemiannualCheckoutModal = lazy(() => import('./components/SemiannualCheckoutModal'));
 const ClinicalDrugPage = lazy(() => import('./components/ClinicalDrugPage'));
 const ClinicalToolsPage = lazy(() => import('./components/ClinicalToolsPage'));
@@ -1222,6 +1223,8 @@ function App() {
     return resolveStoredOrigin({ current, stored });
   });
   const [phoneCaptureState, setPhoneCaptureState] = useState({ open: false, canSkip: true });
+  const [supportOpen, setSupportOpen] = useState(false);
+  const handleCloseSupport = useCallback(() => setSupportOpen(false), []);
   // Salvou o celular mas o perfil voltou sem ele (SQL ainda não aplicado):
   // não pergunta de novo nesta visita.
   const [phonePromptSuppressed, setPhonePromptSuppressed] = useState(false);
@@ -4545,11 +4548,47 @@ function App() {
           bula oficial, protocolos locais, prontuário institucional ou revisão por profissional habilitado.
         </p>
         <div className="footer-links">
+          <button
+            type="button"
+            className="footer-support-button"
+            onClick={() => {
+              setSupportOpen(true);
+              trackEvent('suporte_aberto', {});
+            }}
+          >
+            Fale com a gente
+          </button>
           {user && isAffiliate ? <a href="/afiliado">Afiliados</a> : null}
           <a href="/termos">Termos de Uso</a>
           <a href="/privacidade">Política de Privacidade</a>
         </div>
+        <div className="footer-social">
+          <a
+            href="https://www.instagram.com/minhaanamnese/"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Minha Anamnese no Instagram"
+          >
+            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false">
+              <rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" strokeWidth="2" />
+              <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" strokeWidth="2" />
+              <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" />
+            </svg>
+            <span>@minhaanamnese</span>
+          </a>
+        </div>
       </footer>
+
+      {supportOpen ? (
+        <Suspense fallback={null}>
+          <SupportModal
+            open
+            userEmail={user?.email || ''}
+            onClose={handleCloseSupport}
+            onSent={(topic) => trackEvent('suporte_enviado', { assunto: topic })}
+          />
+        </Suspense>
+      ) : null}
 
       <PhoneCaptureModal
         open={phoneCaptureState.open}

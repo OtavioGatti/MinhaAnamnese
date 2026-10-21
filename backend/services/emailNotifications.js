@@ -19,8 +19,9 @@ function isEmailConfigured() {
 
 /**
  * Envia um e-mail via Resend. Retorna { ok, id?, error? } — nunca lança.
+ * `replyTo` (opcional): para onde vai o "responder" (o remetente é no-reply).
  */
-async function sendEmail({ to, subject, html }) {
+async function sendEmail({ to, subject, html, replyTo = null }) {
   const { apiKey, from } = getResendConfig();
 
   if (!apiKey) {
@@ -38,7 +39,7 @@ async function sendEmail({ to, subject, html }) {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${apiKey}`,
       },
-      body: JSON.stringify({ from, to, subject, html }),
+      body: JSON.stringify({ from, to, subject, html, ...(replyTo ? { reply_to: replyTo } : {}) }),
     });
 
     if (!response.ok) {
