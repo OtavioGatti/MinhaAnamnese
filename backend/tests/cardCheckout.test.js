@@ -9,9 +9,11 @@ delete process.env.SUPABASE_SERVICE_ROLE_KEY;
 delete process.env.CARD_CHECKOUT_ENABLED;
 
 const {
+  buildDeviceHeaders,
   describeCardSubscriptionFailure,
   isCardCheckoutEnabled,
   normalizeCardToken,
+  normalizeDeviceId,
 } = require('../services/cardCheckout');
 const checkout = require('../apiHandlers/create-checkout');
 const webhook = require('../apiHandlers/webhook/mercadopago');
@@ -93,6 +95,27 @@ test('cartão que não aceita recorrência vira mensagem para trocar de cartão'
 test('recusa na validação do cartão e token expirado têm mensagens próprias', () => {
   assert.equal(describeCardSubscriptionFailure({ providerStatus: 400, providerMessage: 'CC_VAL_433 Credit card validation has failed' }).code, 'CARD_DECLINED');
   assert.equal(describeCardSubscriptionFailure({ providerStatus: 400, providerMessage: 'Card token service not found' }).code, 'CARD_TOKEN_INVALID');
+});
+
+// Caso real de 21/10/2026: o CC_VAL_433 era o antifraude do Mercado Pago
+// (cc_rejected_high_risk), e o texto antigo mandava a pessoa culpar o banco e
+// repetir o mesmo cartão.
+test('recusa na validação não culpa o banco e aponta a página do Mercado Pago', () => {
+  const falha = describeCardSubscriptionFailure({ providerStatus: 400, providerMessage: 'CC_VAL_433 Credit card validation has failed' });
+
+  assert.doesNotMatch(falha.error, /banco não autorizou/);
+  assert.match(falha.error, /página do Mercado Pago/);
+});
+
+// O código do aparelho vem do navegador: só passa adiante se tiver cara de
+// código, e nunca derruba o pagamento quando falta.
+test('identificação do aparelho vira o header X-meli-session-id só quando é válida', () => {
+  assert.equal(normalizeDeviceId('armor.9f2c1d7e5b3a.1729512345'), 'armor.9f2c1d7e5b3a.1729512345');
+  assert.equal(normalizeDeviceId('curto'), null);
+  assert.equal(normalizeDeviceId('tem espaço e <script>'), null);
+  assert.equal(normalizeDeviceId(12345678), null);
+  assert.deepEqual(buildDeviceHeaders('armor.9f2c1d7e5b3a'), { 'X-meli-session-id': 'armor.9f2c1d7e5b3a' });
+  assert.deepEqual(buildDeviceHeaders(null), {});
 });
 
 test('recusa sem motivo conhecido pede para conferir o cartão, sem inventar causa', () => {

@@ -159,6 +159,9 @@ function renderHtml(m) {
   const problemasCartao = (checkout?.problemasCartao || [])
     .map((item) => `<tr><td>${escapeHtml(item.rotulo)}</td><td class="num">${formatNumber(item.vezes)}</td></tr>`)
     .join('');
+  const recusasPagamento = (checkout?.recusasPagamento || [])
+    .map((item) => `<tr><td>${escapeHtml(item.rotulo)}</td><td class="num">${formatNumber(item.vezes)}</td></tr>`)
+    .join('');
   // Acima de 10 s, quase sempre é o servidor gratuito acordando da hibernação.
   const esperaCheckout = checkout?.espera
     ? `Tempo até abrir o Mercado Pago: <strong>${formatSeconds(checkout.espera.medianaMs)}</strong> na mediana; 9 em cada 10 em até <strong>${formatSeconds(checkout.espera.p90Ms)}</strong> (${formatNumber(checkout.espera.amostras)} aberturas).${checkout.espera.p90Ms > 10000 ? ' Acima de 10 s costuma ser o servidor acordando da hibernação.' : ''}`
@@ -284,6 +287,9 @@ function renderHtml(m) {
     ${problemasCartao
       ? `<div class="scroll"><table><thead><tr><th>Cartão não passou — motivo</th><th class="num">Vezes</th></tr></thead><tbody>${problemasCartao}</tbody></table></div>`
       : '<p class="muted note">Nenhum cartão recusado ou com problema no período.</p>'}
+    ${recusasPagamento
+      ? `<div class="scroll"><table><thead><tr><th>Pagamentos recusados — motivo (Mercado Pago)</th><th class="num">Vezes</th></tr></thead><tbody>${recusasPagamento}</tbody></table></div>`
+      : ''}
     <p class="note" style="margin-top:12px">${esperaCheckout}</p>
     <p class="note">${retornosCheckout}</p>
     ${errosCheckout

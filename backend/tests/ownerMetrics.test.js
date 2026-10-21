@@ -883,6 +883,40 @@ test('checkout separa o cartão na página do caminho pelo Mercado Pago, com o m
   assert.equal(resumo.espera.amostras, 1, 'o tempo até o Mercado Pago continua separado');
 });
 
+// Na hora do envio só se sabe que a validação falhou; o webhook traz depois se
+// foi o banco ou o antifraude do Mercado Pago (caso real de 21/10/2026).
+test('checkout separa a recusa do antifraude da recusa do banco e não conta a ida à página como envio', () => {
+  const agora = new Date('2026-10-21T22:00:00Z');
+  const hora = '2026-10-21T12:10:00Z';
+  const recusado = (status_detail) => ({ status: 'rejected', status_detail, user_id: 'u1', created_at: hora });
+
+  const resumo = summarizeCheckout({
+    events: [
+      { event_name: 'checkout_cartao_resultado', user_id: 'u1', created_at: hora, metadata: { resultado: 'recusada', motivo: 'CARD_DECLINED', espera_ms: 5000 } },
+      { event_name: 'checkout_cartao_resultado', user_id: 'u1', created_at: hora, metadata: { resultado: 'pagina_mp_apos_recusa' } },
+    ],
+    payments: [
+      recusado('cc_rejected_high_risk'),
+      recusado('cc_rejected_high_risk'),
+      recusado('cc_rejected_insufficient_amount'),
+      recusado(null),
+      { status: 'approved', status_detail: 'accredited', user_id: 'u2', created_at: hora },
+    ],
+    now: agora,
+  });
+
+  const porId = Object.fromEntries(resumo.etapas.map((etapa) => [etapa.id, etapa]));
+
+  assert.equal(porId.cartaoEnviou.vezes, 1, 'ir à página do Mercado Pago não é um novo envio de cartão');
+  assert.deepEqual(resumo.recusasPagamento, [
+    { rotulo: 'Antifraude do Mercado Pago (risco alto)', vezes: 2 },
+    { rotulo: 'Banco: sem limite', vezes: 1 },
+    { rotulo: 'Sem motivo informado', vezes: 1 },
+  ]);
+  assert.ok(resumo.problemasCartao.some((item) => item.codigo === 'pagina_mp_apos_recusa'));
+  assert.doesNotMatch(resumo.problemasCartao.find((item) => item.codigo === 'CARD_DECLINED').rotulo, /^Banco recusou/);
+});
+
 // O semestral na página usa os mesmos eventos do mensal: o plano separa.
 test('checkout separa o semestral na página do mensal com cartão', () => {
   const agora = new Date('2026-09-24T22:00:00Z');

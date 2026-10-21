@@ -20,6 +20,19 @@ function normalizeCardToken(value) {
   return /^[A-Za-z0-9_-]{8,128}$/.test(token) ? token : null;
 }
 
+// Identificação do aparelho gerada pelo script de segurança do Mercado Pago no
+// navegador (MP_DEVICE_SESSION_ID). Vai no header X-meli-session-id e é o que
+// o antifraude usa para reconhecer o aparelho; sem ela toda compra parece vir
+// de um aparelho desconhecido. Opcional: sem ela o pagamento segue igual.
+function normalizeDeviceId(value) {
+  const deviceId = typeof value === 'string' ? value.trim() : '';
+  return /^[A-Za-z0-9._:-]{8,256}$/.test(deviceId) ? deviceId : null;
+}
+
+function buildDeviceHeaders(deviceId) {
+  return deviceId ? { 'X-meli-session-id': deviceId } : {};
+}
+
 const MOTIVOS_DO_PROVEDOR = [
   {
     // Débito, pré-pago e alguns cartões que o emissor não libera para cobrança
@@ -31,8 +44,13 @@ const MOTIVOS_DO_PROVEDOR = [
   {
     // A cobrança de validação (valor mínimo, devolvido em seguida) foi negada.
     pattern: /cc_val|validation has failed|rejected|declined/i,
+    // A recusa pode ser do banco ou do antifraude do Mercado Pago
+    // (cc_rejected_high_risk, que só chega depois, pelo webhook): o texto não
+    // culpa o banco, e a tela oferece a página do Mercado Pago, onde a pessoa
+    // entra com a conta dela e a aprovação costuma ser maior (caso real de
+    // 21/10/2026: duas tentativas com o mesmo cartão e desistência).
     code: 'CARD_DECLINED',
-    error: 'O banco não autorizou este cartão. Confira os dados ou use outro cartão.',
+    error: 'O cartão não foi aprovado. Tente pagar pela página do Mercado Pago, onde a aprovação costuma ser maior, ou use outro cartão.',
   },
   {
     // O token vale uma vez só e expira: basta digitar de novo.
@@ -83,9 +101,11 @@ function isOnPagePayment(payment) {
 }
 
 module.exports = {
+  buildDeviceHeaders,
   describeCardSubscriptionFailure,
   isCardCheckoutEnabled,
   isOnPagePayment,
   isSemiannualPageCheckoutEnabled,
   normalizeCardToken,
+  normalizeDeviceId,
 };

@@ -16,10 +16,12 @@ const {
   upsertBillingSubscription,
 } = require('../services/billingSubscriptions');
 const {
+  buildDeviceHeaders,
   describeCardSubscriptionFailure,
   isCardCheckoutEnabled,
   isSemiannualPageCheckoutEnabled,
   normalizeCardToken,
+  normalizeDeviceId,
 } = require('../services/cardCheckout');
 const {
   buildOrderPayload,
@@ -486,6 +488,9 @@ module.exports = async function handler(req, res) {
     const plan = getBillingPlan(normalizePlanKey(body.planKey || DEFAULT_PLAN_KEY));
     const pagamentoComCartao = body.cardToken !== undefined && body.cardToken !== null;
     const cardTokenId = pagamentoComCartao ? normalizeCardToken(body.cardToken) : null;
+    // Só nos pagamentos digitados na nossa página: no redirecionamento quem
+    // coleta o aparelho é a página do próprio Mercado Pago.
+    const deviceHeaders = buildDeviceHeaders(normalizeDeviceId(body.deviceId));
 
     if (pagamentoComCartao) {
       const recusa = await checkCardCheckoutRequest({ req, userId, plan, cardTokenId });
@@ -549,6 +554,7 @@ module.exports = async function handler(req, res) {
           payload,
           userId,
           'mercado pago preapproval',
+          pagamentoComCartao ? deviceHeaders : {},
         );
       } catch (error) {
         // No cartão, a recusa do provedor é sobre o cartão: a pessoa precisa
@@ -643,6 +649,7 @@ module.exports = async function handler(req, res) {
         pedido = await createOrder(
           buildOrderPayload({ userId, email, plan, chargeAmount, input: dadosDoPagamento }),
           crypto.randomUUID(),
+          { extraHeaders: deviceHeaders },
         );
       } catch (error) {
         if (error?.providerStatus) {

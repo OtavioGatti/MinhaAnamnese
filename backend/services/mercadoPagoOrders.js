@@ -256,13 +256,14 @@ function buildOrderMetadata({ order, affiliate = null }) {
 
 // --- rede ---------------------------------------------------------------------
 
-async function ordersRequest(method, url, { body, idempotencyKey } = {}) {
+async function ordersRequest(method, url, { body, idempotencyKey, extraHeaders = {} } = {}) {
   const response = await fetch(url, {
     method,
     headers: {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${getOrdersAccessToken()}`,
       ...(idempotencyKey ? { 'X-Idempotency-Key': idempotencyKey } : {}),
+      ...extraHeaders,
     },
     body: body ? JSON.stringify(body) : undefined,
   });
@@ -280,8 +281,8 @@ async function ordersRequest(method, url, { body, idempotencyKey } = {}) {
 }
 
 // Cria o pedido. Recusa do cartão (402) é resposta, não erro.
-async function createOrder(payload, idempotencyKey) {
-  const { status, json } = await ordersRequest('POST', ORDERS_URL, { body: payload, idempotencyKey });
+async function createOrder(payload, idempotencyKey, { extraHeaders = {} } = {}) {
+  const { status, json } = await ordersRequest('POST', ORDERS_URL, { body: payload, idempotencyKey, extraHeaders });
 
   if (status === 201 || status === 200 || status === 402) {
     return json;

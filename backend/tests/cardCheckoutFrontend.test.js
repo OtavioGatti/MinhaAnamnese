@@ -178,3 +178,28 @@ test('a recusa leva a resposta original do Mercado Pago para o evento do painel'
   assert.equal(desfecho.detail, 'Card token service not found');
   assert.equal(describeCardCheckoutResult({ success: false, status: 422, code: 'CARD_DECLINED', error: 'x' }).detail, null);
 });
+
+// Recusa no cartão: a tela oferece a página do Mercado Pago, que tem mais dados
+// para o antifraude. Débito ou pré-pago não passam lá também.
+test('recusa do cartão oferece a página do Mercado Pago, mas não para débito', async () => {
+  const { describeCardCheckoutResult } = await import(MODULO);
+
+  assert.equal(describeCardCheckoutResult({ success: false, status: 422, code: 'CARD_DECLINED', error: 'x' }).offerHostedCheckout, true);
+  assert.equal(describeCardCheckoutResult({ success: false, status: 422, code: 'CARD_NOT_ACCEPTED', error: 'x' }).offerHostedCheckout, true);
+  assert.equal(describeCardCheckoutResult({ success: false, status: 422, code: 'CARD_NOT_RECURRING', error: 'x' }).offerHostedCheckout, false);
+  assert.equal(describeCardCheckoutResult({ success: false, status: 422, code: 'CARD_TOKEN_INVALID', error: 'x' }).offerHostedCheckout, false);
+});
+
+test('o semestral também oferece a página do Mercado Pago na recusa', async () => {
+  const { describeSemiannualResult } = await import(MODULO);
+
+  assert.equal(describeSemiannualResult({ success: false, status: 422, code: 'CARD_DECLINED', error: 'x' }).offerHostedCheckout, true);
+});
+
+test('código do aparelho só sai do script de segurança do Mercado Pago', async () => {
+  const { readMercadoPagoDeviceId } = await import(MODULO);
+
+  assert.equal(readMercadoPagoDeviceId({ MP_DEVICE_SESSION_ID: ' armor.abc123def ' }), 'armor.abc123def');
+  assert.equal(readMercadoPagoDeviceId({}), null);
+  assert.equal(readMercadoPagoDeviceId(null), null);
+});

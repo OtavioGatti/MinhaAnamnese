@@ -10,6 +10,7 @@ import {
   describeOrderStatus,
   describeSemiannualResult,
   isPaidAccessConfirmed,
+  readMercadoPagoDeviceId,
   resolveCardCheckoutEnabled,
   resolveSemiannualPageCheckoutEnabled,
   toOrderPaymentInput,
@@ -2680,12 +2681,13 @@ function App() {
 
   const handleSubmitSemiannual = async (dados) => {
     const origin = semiannualState.origin || 'home';
-    setSemiannualState((current) => ({ ...current, stage: 'enviando', message: '' }));
+    setSemiannualState((current) => ({ ...current, stage: 'enviando', message: '', offerHostedCheckout: false }));
     const inicio = performance.now();
 
     const response = await api.post('/create-checkout', {
       planKey: 'semiannual',
       payment: toOrderPaymentInput(dados),
+      deviceId: readMercadoPagoDeviceId(),
       affiliateCode: readAffiliateReferralCode() || null,
       affiliateCodeSource: readAffiliateReferralSource(),
       sourceUrl: window.location.href,
@@ -2739,7 +2741,12 @@ function App() {
       return desfecho;
     }
 
-    setSemiannualState((current) => ({ ...current, stage: 'formulario', message: desfecho.message }));
+    setSemiannualState((current) => ({
+      ...current,
+      stage: 'formulario',
+      message: desfecho.message,
+      offerHostedCheckout: Boolean(desfecho.offerHostedCheckout),
+    }));
     return desfecho;
   };
 
@@ -2757,17 +2764,19 @@ function App() {
     setSemiannualState((current) => ({ ...current, open: false }));
   };
 
-  const handleSemiannualFallback = () => {
+  // Formulário que não carregou, ou cartão recusado aqui: segue pela página do
+  // Mercado Pago.
+  const handleSemiannualFallback = (resultado = 'formulario_nao_carregou') => {
     const origin = semiannualState.origin || 'home';
     semiannualRoundRef.current += 1;
-    setSemiannualState((current) => ({ ...current, open: false }));
-    trackEvent('checkout_cartao_resultado', { plan_key: 'semiannual', origin, resultado: 'formulario_nao_carregou' });
+    setSemiannualState((current) => ({ ...current, open: false, offerHostedCheckout: false }));
+    trackEvent('checkout_cartao_resultado', { plan_key: 'semiannual', origin, resultado });
     startCheckoutFlow(origin, 'semiannual');
   };
 
   const handleRestartSemiannual = () => {
     semiannualRoundRef.current += 1;
-    setSemiannualState((current) => ({ ...current, stage: 'formulario', message: '', pix: null }));
+    setSemiannualState((current) => ({ ...current, stage: 'formulario', message: '', pix: null, offerHostedCheckout: false }));
   };
 
   // A primeira mensalidade sai pouco depois de a assinatura nascer autorizada.
@@ -2793,12 +2802,13 @@ function App() {
 
   const handleSubmitCard = async (cardFormData) => {
     const origin = cardCheckoutState.origin || 'home';
-    setCardCheckoutState((current) => ({ ...current, stage: 'enviando', message: '' }));
+    setCardCheckoutState((current) => ({ ...current, stage: 'enviando', message: '', offerHostedCheckout: false }));
     const inicio = performance.now();
 
     const response = await api.post('/create-checkout', {
       planKey: 'monthly',
       cardToken: cardFormData?.token || '',
+      deviceId: readMercadoPagoDeviceId(),
       affiliateCode: readAffiliateReferralCode() || null,
       affiliateCodeSource: readAffiliateReferralSource(),
       sourceUrl: window.location.href,
@@ -2836,7 +2846,12 @@ function App() {
       }).catch(() => null);
     }
 
-    setCardCheckoutState((current) => ({ ...current, stage: 'formulario', message: desfecho.message }));
+    setCardCheckoutState((current) => ({
+      ...current,
+      stage: 'formulario',
+      message: desfecho.message,
+      offerHostedCheckout: Boolean(desfecho.offerHostedCheckout),
+    }));
     return desfecho;
   };
 
@@ -2854,10 +2869,10 @@ function App() {
 
   // O formulário do Mercado Pago não carregou (bloqueador, rede): oferece o
   // caminho antigo em vez de deixar a pessoa sem ter como pagar.
-  const handleCardCheckoutFallback = () => {
+  const handleCardCheckoutFallback = (resultado = 'formulario_nao_carregou') => {
     const origin = cardCheckoutState.origin || 'home';
-    setCardCheckoutState((current) => ({ ...current, open: false }));
-    trackEvent('checkout_cartao_resultado', { plan_key: 'monthly', origin, resultado: 'formulario_nao_carregou' });
+    setCardCheckoutState((current) => ({ ...current, open: false, offerHostedCheckout: false }));
+    trackEvent('checkout_cartao_resultado', { plan_key: 'monthly', origin, resultado });
     startCheckoutFlow(origin, 'monthly');
   };
 
@@ -4570,6 +4585,7 @@ function App() {
             listPrice={BILLING_PLANS.monthly.price}
             stage={cardCheckoutState.stage}
             message={cardCheckoutState.message}
+            offerHostedCheckout={Boolean(cardCheckoutState.offerHostedCheckout)}
             onSubmitCard={handleSubmitCard}
             accessUntil={accessState?.planExpiresAt || null}
             onClose={handleCloseCardCheckout}
@@ -4588,6 +4604,7 @@ function App() {
             listPrice={BILLING_PLANS.semiannual.price}
             stage={semiannualState.stage}
             message={semiannualState.message}
+            offerHostedCheckout={Boolean(semiannualState.offerHostedCheckout)}
             pix={semiannualState.pix}
             metodo={semiannualState.metodo}
             accessUntil={accessState?.planExpiresAt || null}

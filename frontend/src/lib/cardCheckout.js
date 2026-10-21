@@ -8,6 +8,13 @@
 // Mercado Pago é a única parte que mexe no DOM.
 
 const SDK_URL = 'https://sdk.mercadopago.com/js/v2';
+const SECURITY_SCRIPT_URL = 'https://www.mercadopago.com/v2/security.js';
+
+// Recusas em que vale oferecer a página do Mercado Pago: lá a pessoa entra com
+// a conta dela e o antifraude tem mais dados (caso real de 21/10/2026:
+// cc_rejected_high_risk duas vezes com o mesmo cartão, e desistência). Cartão
+// de débito ou pré-pago não passa lá também, então não entra.
+const RECUSAS_COM_PAGINA_DO_MERCADO_PAGO = new Set(['CARD_DECLINED', 'CARD_NOT_ACCEPTED']);
 
 // Liga o checkout novo só neste navegador, para testar em produção antes de
 // abrir para todo mundo: ?checkout_cartao=1 liga, ?checkout_cartao=0 desliga.
@@ -63,6 +70,7 @@ export function describeCardCheckoutResult(response) {
       // recusa. Nunca aparece para a pessoa.
       detail: typeof response.detalhe === 'string' ? response.detalhe.slice(0, 100) : null,
       message: response.error || 'Não foi possível confirmar este cartão. Confira os dados ou use outro cartão.',
+      offerHostedCheckout: RECUSAS_COM_PAGINA_DO_MERCADO_PAGO.has(response.code),
     };
   }
 
@@ -116,6 +124,38 @@ export function loadMercadoPagoSdk() {
   }
 
   return carregamentoDoSdk;
+}
+
+let carregamentoDaSeguranca = null;
+
+// Script de segurança do Mercado Pago: identifica o aparelho para o antifraude
+// e grava o código em window.MP_DEVICE_SESSION_ID. Carrega junto com o
+// formulário de pagamento; se falhar (bloqueador), o pagamento segue sem ele.
+export function loadMercadoPagoSecurity() {
+  if (typeof window === 'undefined' || typeof document === 'undefined') {
+    return;
+  }
+
+  if (carregamentoDaSeguranca || window.MP_DEVICE_SESSION_ID) {
+    return;
+  }
+
+  carregamentoDaSeguranca = true;
+  const script = document.createElement('script');
+  script.src = SECURITY_SCRIPT_URL;
+  script.async = true;
+  script.setAttribute('view', 'checkout');
+  script.onerror = () => {
+    carregamentoDaSeguranca = null;
+    script.remove();
+  };
+  document.head.appendChild(script);
+}
+
+// Só o código gerado pelo Mercado Pago; nada sobre a pessoa.
+export function readMercadoPagoDeviceId(source = typeof window === 'undefined' ? null : window) {
+  const deviceId = source?.MP_DEVICE_SESSION_ID;
+  return typeof deviceId === 'string' && deviceId.trim() ? deviceId.trim() : null;
 }
 
 // Mesmo arredondamento do backend (getDiscountedPlanAmount): só para mostrar.

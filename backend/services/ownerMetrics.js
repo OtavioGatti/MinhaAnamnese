@@ -996,14 +996,47 @@ const ROTULOS_ERRO_CHECKOUT = {
 // (lib/cardCheckout.js); nunca carregam dado do cartão.
 const ROTULOS_RESULTADO_CARTAO = {
   CARD_NOT_RECURRING: 'Cartão não aceita cobrança mensal (débito ou pré-pago)',
-  CARD_DECLINED: 'Banco recusou o cartão',
+  // Na hora do envio o Mercado Pago só diz que a validação falhou; se foi o
+  // banco ou o antifraude aparece depois, em "Pagamentos recusados — motivo".
+  CARD_DECLINED: 'Cartão recusado na validação (banco ou antifraude)',
   CARD_TOKEN_INVALID: 'Dados do cartão expiraram',
   CARD_NOT_ACCEPTED: 'Cartão não aceito, sem motivo informado',
   erro: 'Erro nosso ou do Mercado Pago',
   ja_assina: 'Já tinha assinatura ativa',
   checkout_antigo: 'Caminho desligado no servidor: foi para o Mercado Pago',
   formulario_nao_carregou: 'Formulário do cartão não carregou',
+  pagina_mp_apos_recusa: 'Recusado aqui: foi para a página do Mercado Pago',
 };
+
+// Resultados que não são um envio de cartão (a pessoa saiu do formulário).
+const SAIU_DO_FORMULARIO = new Set(['formulario_nao_carregou', 'pagina_mp_apos_recusa']);
+
+// status_detail do Mercado Pago nos pagamentos recusados (vem pelo webhook).
+// É aqui que se separa o banco do antifraude do próprio Mercado Pago.
+const ROTULOS_RECUSA_PAGAMENTO = {
+  cc_rejected_high_risk: 'Antifraude do Mercado Pago (risco alto)',
+  cc_rejected_blacklist: 'Antifraude do Mercado Pago (cartão bloqueado)',
+  cc_rejected_insufficient_amount: 'Banco: sem limite',
+  cc_rejected_call_for_authorize: 'Banco: pediu autorização do titular',
+  cc_rejected_card_disabled: 'Banco: cartão não habilitado',
+  cc_rejected_bad_filled_card_number: 'Dados do cartão errados',
+  cc_rejected_bad_filled_date: 'Dados do cartão errados',
+  cc_rejected_bad_filled_security_code: 'Dados do cartão errados',
+  cc_rejected_bad_filled_other: 'Dados do cartão errados',
+  cc_rejected_duplicated_payment: 'Pagamento duplicado',
+  cc_rejected_max_attempts: 'Tentativas demais com o cartão',
+  cc_rejected_other_reason: 'Banco recusou sem informar o motivo',
+};
+
+function rotuloDaRecusaDePagamento(statusDetail) {
+  const detalhe = String(statusDetail || '').trim();
+
+  if (!detalhe) {
+    return 'Sem motivo informado';
+  }
+
+  return ROTULOS_RECUSA_PAGAMENTO[detalhe] || `Outro motivo (${detalhe.slice(0, 40)})`;
+}
 
 function motivoDoCartao(event) {
   const resultado = event.metadata?.resultado;
@@ -1050,7 +1083,7 @@ function summarizeCheckout({ events = [], subscriptions = [], payments = [], now
   const resultadosNaPagina = doEvento('checkout_cartao_resultado');
   const resultadosDoCartao = resultadosNaPagina.filter((event) => !doSemestral(event));
   const resultadosDoSemestral = resultadosNaPagina.filter(doSemestral);
-  const enviosDoCartao = resultadosDoCartao.filter((event) => event.metadata?.resultado !== 'formulario_nao_carregou');
+  const enviosDoCartao = resultadosDoCartao.filter((event) => !SAIU_DO_FORMULARIO.has(event.metadata?.resultado));
   const temposDoCartao = enviosDoCartao
     .map((event) => Number(event.metadata?.espera_ms))
     .filter((valor) => Number.isFinite(valor) && valor >= 0);
@@ -1062,6 +1095,14 @@ function summarizeCheckout({ events = [], subscriptions = [], payments = [], now
       problemasDoCartao.set(motivo, (problemasDoCartao.get(motivo) || 0) + 1);
     }
   });
+
+  const recusasDePagamento = new Map();
+  payments
+    .filter((payment) => payment.status === 'rejected' && naJanela(payment))
+    .forEach((payment) => {
+      const rotulo = rotuloDaRecusaDePagamento(payment.status_detail);
+      recusasDePagamento.set(rotulo, (recusasDePagamento.get(rotulo) || 0) + 1);
+    });
 
   const esperas = redirecionados
     .map((event) => Number(event.metadata?.espera_ms))
@@ -1093,7 +1134,7 @@ function summarizeCheckout({ events = [], subscriptions = [], payments = [], now
       etapa('cartaoAceito', 'Cartão aceito: assinatura criada', 'eventos', resultadosDoCartao.filter((event) => event.metadata?.resultado === 'autorizada'), 'cartao'),
       etapa('cartaoConfirmado', 'Pro liberado na mesma tela', 'eventos', doEvento('checkout_cartao_confirmado').filter((event) => !doSemestral(event)), 'cartao'),
       etapa('semestralAbriu', 'Abriram o pagamento do semestral', 'eventos', doEvento('upgrade_click').filter((event) => event.metadata?.via === 'pagina'), 'semestral_pagina'),
-      etapa('semestralEnviou', 'Enviaram cartão ou pediram o Pix', 'eventos', resultadosDoSemestral.filter((event) => event.metadata?.resultado !== 'formulario_nao_carregou'), 'semestral_pagina'),
+      etapa('semestralEnviou', 'Enviaram cartão ou pediram o Pix', 'eventos', resultadosDoSemestral.filter((event) => !SAIU_DO_FORMULARIO.has(event.metadata?.resultado)), 'semestral_pagina'),
       etapa('semestralPix', 'Pix gerado (QR Code na tela)', 'eventos', resultadosDoSemestral.filter((event) => event.metadata?.resultado === 'pix'), 'semestral_pagina'),
       etapa('semestralCartao', 'Cartão aprovado ou em análise', 'eventos', resultadosDoSemestral.filter((event) => ['aprovado', 'em_analise'].includes(event.metadata?.resultado)), 'semestral_pagina'),
       etapa('semestralConfirmado', 'Pro liberado na mesma tela', 'eventos', doEvento('checkout_cartao_confirmado').filter(doSemestral), 'semestral_pagina'),
@@ -1110,6 +1151,9 @@ function summarizeCheckout({ events = [], subscriptions = [], payments = [], now
       : null,
     problemasCartao: [...problemasDoCartao.entries()]
       .map(([codigo, vezes]) => ({ codigo, rotulo: ROTULOS_RESULTADO_CARTAO[codigo], vezes }))
+      .sort((a, b) => b.vezes - a.vezes),
+    recusasPagamento: [...recusasDePagamento.entries()]
+      .map(([rotulo, vezes]) => ({ rotulo, vezes }))
       .sort((a, b) => b.vezes - a.vezes),
     erros: [...erros.entries()]
       .map(([tipo, vezes]) => ({ tipo, rotulo: ROTULOS_ERRO_CHECKOUT[tipo], vezes }))

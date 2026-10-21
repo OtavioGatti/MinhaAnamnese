@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { loadMercadoPagoSdk } from '../lib/cardCheckout';
+import { loadMercadoPagoSdk, loadMercadoPagoSecurity } from '../lib/cardCheckout';
 import CheckoutOutcome from './CheckoutOutcome';
 
 const CONTAINER_ID = 'semiannual-checkout-brick';
@@ -40,6 +40,7 @@ function SemiannualCheckoutModal({
   onSubmitPayment,
   onClose,
   onFallback,
+  offerHostedCheckout = false,
   onRestart,
   accessUntil = null,
   metodo = null,
@@ -63,6 +64,9 @@ function SemiannualCheckoutModal({
     let cancelado = false;
     setCarregando(true);
     setFalhaAoCarregar(false);
+
+    // Identificação do aparelho para o antifraude; independe do formulário.
+    loadMercadoPagoSecurity();
 
     loadMercadoPagoSdk()
       .then(async (MercadoPago) => {
@@ -289,11 +293,18 @@ function SemiannualCheckoutModal({
         {mostraFormulario ? (
           <>
             {message ? <div className="templates-inline-error" role="alert">{message}</div> : null}
+            {offerHostedCheckout && stage === 'formulario' ? (
+              <div className="card-checkout-status">
+                <button type="button" className="btn btn-primario" onClick={() => onFallback('pagina_mp_apos_recusa')}>
+                  Pagar pela página do Mercado Pago
+                </button>
+              </div>
+            ) : null}
 
             {falhaAoCarregar ? (
               <div className="card-checkout-status">
                 <p>Não foi possível carregar o formulário de pagamento.</p>
-                <button type="button" className="btn btn-primario" onClick={onFallback}>
+                <button type="button" className="btn btn-primario" onClick={() => onFallback()}>
                   Pagar pela página do Mercado Pago
                 </button>
               </div>
