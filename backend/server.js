@@ -2,13 +2,14 @@ require('dotenv').config({ override: true });
 const express = require('express');
 const cors = require('cors');
 const { apiRoutes } = require('./apiHandlers');
+const { TRUST_PROXY_SETTING } = require('./utils/rateLimit');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 const FRONTEND_URL = process.env.FRONTEND_URL || '*';
 const JSON_BODY_LIMIT = process.env.JSON_BODY_LIMIT || '1mb';
 
-app.set('trust proxy', 1);
+app.set('trust proxy', TRUST_PROXY_SETTING);
 app.use(cors({ origin: FRONTEND_URL, credentials: FRONTEND_URL !== '*' }));
 app.use(express.json({
   limit: JSON_BODY_LIMIT,

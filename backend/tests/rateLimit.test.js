@@ -4,7 +4,28 @@ const test = require('node:test');
 // Força o fallback em memória para não depender de Supabase nos testes.
 process.env.RATE_LIMIT_STORE = 'memory';
 
-const { consumeRateLimit, getClientIp } = require('../utils/rateLimit');
+const express = require('express');
+
+const { TRUST_PROXY_SETTING, consumeRateLimit, getClientIp } = require('../utils/rateLimit');
+
+async function resolveIpThroughExpress(forwardedFor) {
+  const app = express();
+  app.set('trust proxy', TRUST_PROXY_SETTING);
+  app.get('/', (req, res) => res.json({ ip: getClientIp(req) }));
+
+  const server = await new Promise((resolve) => {
+    const instance = app.listen(0, '127.0.0.1', () => resolve(instance));
+  });
+
+  try {
+    const response = await fetch(`http://127.0.0.1:${server.address().port}/`, {
+      headers: forwardedFor ? { 'x-forwarded-for': forwardedFor } : {},
+    });
+    return (await response.json()).ip;
+  } finally {
+    await new Promise((resolve) => server.close(resolve));
+  }
+}
 
 function fakeReq(ip = '203.0.113.10') {
   return { headers: { 'x-forwarded-for': ip } };
@@ -102,4 +123,14 @@ test('x-forwarded-for forjado não abre um bucket novo quando há req.ip', async
     })).allowed,
     false,
   );
+});
+
+test('com o trust proxy do server.js, req.ip pula os proxies internos do Render', async () => {
+  // Cadeia real observada no Render: cliente, depois um ou mais hops 10.x.
+  assert.equal(await resolveIpThroughExpress('203.0.113.7, 10.198.21.52'), '203.0.113.7');
+  assert.equal(await resolveIpThroughExpress('203.0.113.7, 10.198.21.52, 10.196.83.205'), '203.0.113.7');
+  // Valor forjado pelo cliente fica à esquerda do IP real e é ignorado.
+  assert.equal(await resolveIpThroughExpress('198.51.100.4, 203.0.113.7, 10.198.21.52'), '203.0.113.7');
+  // Sem proxy nenhum (local), fica o IP do socket.
+  assert.equal(await resolveIpThroughExpress(null), '127.0.0.1');
 });

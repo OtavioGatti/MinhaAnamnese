@@ -5,6 +5,14 @@ let supabaseDisabledUntil = 0;
 const SUPABASE_RPC_TIMEOUT_MS = 2000;
 const SUPABASE_FAILURE_COOLDOWN_MS = 5 * 60 * 1000;
 
+// Valor de app.set('trust proxy', ...) no server.js. O Render encadeia mais de
+// um proxy interno (10.x) antes do serviço, então "1" (um hop) resolvia req.ip
+// para o IP do proxy e todo mundo caía no mesmo bucket. Confiar nas faixas
+// privadas faz o Express andar a lista de x-forwarded-for a partir do fim e
+// parar no primeiro IP público: o cliente real, visto pelo proxy. O que o
+// cliente forjou fica à esquerda e é ignorado.
+const TRUST_PROXY_SETTING = 'loopback, linklocal, uniquelocal';
+
 function getHeaderValue(req, name) {
   const value = req?.headers?.[name] || req?.headers?.[name.toLowerCase()];
 
@@ -16,9 +24,9 @@ function getHeaderValue(req, name) {
 }
 
 function getClientIp(req) {
-  // Atrás do Render o Express resolve req.ip com 'trust proxy' (server.js):
-  // ele usa a entrada de x-forwarded-for anexada pelo proxy, não a que o
-  // cliente mandou. Esta é a única fonte que o cliente não consegue forjar.
+  // Atrás do Render o Express resolve req.ip com TRUST_PROXY_SETTING
+  // (server.js): o primeiro IP público contando do fim de x-forwarded-for,
+  // não a entrada que o cliente mandou. É a única fonte que não dá para forjar.
   const expressIp = typeof req?.ip === 'string' ? req.ip.trim() : '';
 
   if (expressIp) {
@@ -186,6 +194,7 @@ function sendRateLimitResponse(res, result) {
 }
 
 module.exports = {
+  TRUST_PROXY_SETTING,
   consumeRateLimit,
   getClientIp,
   sendRateLimitResponse,
