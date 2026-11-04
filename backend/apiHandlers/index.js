@@ -81,35 +81,7 @@ function normalizeApiPath(req) {
   return pathname.replace(/\/+$/, '') || '/api';
 }
 
-async function handleApiRequest(req, res) {
-  const pathname = normalizeApiPath(req);
-  const handler = apiRoutes[pathname];
-
-  if (!handler) {
-    return res.status(404).json({
-      success: false,
-      error: 'Endpoint nao encontrado',
-    });
-  }
-
-  try {
-    return await handler(req, res);
-  } catch (error) {
-    console.error(`Unhandled API route error on ${pathname}:`, error);
-
-    if (!res.headersSent) {
-      return res.status(500).json({
-        success: false,
-        error: 'Erro interno no servidor',
-      });
-    }
-
-    return null;
-  }
-}
-
 module.exports = {
   apiRoutes,
-  handleApiRequest,
   normalizeApiPath,
 };

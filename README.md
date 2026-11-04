@@ -60,7 +60,7 @@ O Minha Anamnese é composto por:
 
 - O frontend estático fica na Vercel (CDN, sempre ativo, sem cold start).
 - O backend canônico fica no Render (`backend/server.js`). Todas as rotas de IA (`/organizar`, `/insights`, `/diagnostic-hypotheses`, `/referral-letter`, geração/correção de conteúdo editorial) rodam exclusivamente nele, pois podem exceder o timeout de functions serverless.
-- O diretório `api/` na raiz expõe os mesmos handlers como functions da Vercel. Ele é um fallback opcional apenas para rotas GET de leitura (templates, bulário, prescrições, ferramentas clínicas), ativado no frontend via `VITE_API_FALLBACK_URL`. Sem essa variável, o fallback fica desativado.
+- Não há backend na Vercel: o site só serve o estático e os rewrites (`/sb` para o Supabase e o fallback do SPA). O antigo diretório `api/` com functions da Vercel foi removido em 04/11/2026 porque nunca chegou a ser publicado.
 
 ### Cold start do Render (plano free)
 
@@ -117,12 +117,9 @@ tests/anamnese-evals/
 
 ```env
 VITE_API_URL=http://localhost:3001/api
-VITE_API_FALLBACK_URL=
 VITE_SUPABASE_URL=
 VITE_SUPABASE_ANON_KEY=
 ```
-
-`VITE_API_FALLBACK_URL` (opcional) habilita retry de rotas GET de leitura contra um segundo backend (ex.: `/api` da Vercel) quando o primário estiver inacessível. Vazio = desativado.
 
 Há um `.env.example` em `frontend/` e outro em `backend/` para copiar como ponto de partida. O do backend cobre a maior parte das variáveis (mais de 40, incluindo um secret de sync por base editorial), mas fica desatualizado com a mesma facilidade que este README — hoje faltam nele, por exemplo, as data sources e os secrets de ferramentas clínicas, manobras e exames. Na dúvida, o nome exato da variável está em `process.env.NOME_AQUI` no arquivo do serviço correspondente.
 
