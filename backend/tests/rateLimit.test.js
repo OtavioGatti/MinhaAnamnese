@@ -125,12 +125,15 @@ test('x-forwarded-for forjado não abre um bucket novo quando há req.ip', async
   );
 });
 
-test('com o trust proxy do server.js, req.ip pula os proxies internos do Render', async () => {
-  // Cadeia real observada no Render: cliente, depois um ou mais hops 10.x.
+test('com o trust proxy do server.js, req.ip pula a Cloudflare e os proxies do Render', async () => {
+  // Cadeia real observada em produção: cliente, IP da Cloudflare, hops 10.x.
+  assert.equal(await resolveIpThroughExpress('203.0.113.7, 172.71.151.133, 10.198.21.52'), '203.0.113.7');
+  assert.equal(await resolveIpThroughExpress('203.0.113.7, 104.22.10.172, 10.198.21.52, 10.196.83.205'), '203.0.113.7');
   assert.equal(await resolveIpThroughExpress('203.0.113.7, 10.198.21.52'), '203.0.113.7');
-  assert.equal(await resolveIpThroughExpress('203.0.113.7, 10.198.21.52, 10.196.83.205'), '203.0.113.7');
   // Valor forjado pelo cliente fica à esquerda do IP real e é ignorado.
-  assert.equal(await resolveIpThroughExpress('198.51.100.4, 203.0.113.7, 10.198.21.52'), '203.0.113.7');
+  assert.equal(await resolveIpThroughExpress('198.51.100.4, 203.0.113.7, 172.71.151.3, 10.198.21.52'), '203.0.113.7');
+  // IPv6 da Cloudflare também é pulado.
+  assert.equal(await resolveIpThroughExpress('203.0.113.7, 2606:4700::1111, 10.198.21.52'), '203.0.113.7');
   // Sem proxy nenhum (local), fica o IP do socket.
   assert.equal(await resolveIpThroughExpress(null), '127.0.0.1');
 });
