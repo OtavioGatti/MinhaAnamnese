@@ -172,32 +172,104 @@ function normalizaTexto(valor) {
     .toLowerCase();
 }
 
+// Reduz plural para a comparação por substring não falhar quando o modelo
+// reescreve "cirurgias prévias, internações" como "cirurgia prévia e
+// internação" — o caso real em que um antecedente era "devolvido" ao exame.
+function raizDoToken(token) {
+  return token
+    .replace(/oes$/, 'ao')
+    .replace(/aes$/, 'ao')
+    .replace(/ais$/, 'al')
+    .replace(/eis$/, 'el')
+    .replace(/ois$/, 'ol')
+    .replace(/res$/, 'r')
+    .replace(/ns$/, 'm')
+    .replace(/([^s])s$/, '$1');
+}
+
 function tokensDistintivos(conteudo) {
   return [...new Set(
     normalizaTexto(conteudo)
       .split(/[^a-z0-9]+/)
-      .filter((t) => t.length >= 4 && !GENERICAS.has(t)),
+      .filter((t) => t.length >= 4 && !GENERICAS.has(t))
+      .map(raizDoToken)
+      .filter((t) => t.length >= 4),
   )];
+}
+
+// Siglas que o médico também usa FORA do exame: "AP:" é antecedentes pessoais
+// ou patológicos tanto quanto aparelho respiratório; "AC:" é antecedentes
+// cirúrgicos. Só contam como exame quando a linha está dentro do exame físico
+// do texto original ou quando o conteúdo tem vocabulário de exame.
+const ROTULOS_AMBIGUOS = new Set(['ap', 'ac', 'ad', 'ar', 'cp', 'sv', 'eg']);
+
+const VOCABULARIO_DE_EXAME = new RegExp(
+  '\\b(' + [
+    'mv', 'murmurios?', 'ra', 'ruidos?', 'estertor\\w*', 'sibil\\w*', 'roncos?', 'crepit\\w*',
+    'bnf', 'brnf', 'bulhas?', 'sopros?', 'rcr', 'ritmo', '[23]t', 'taquic\\w*', 'bradic\\w*',
+    'flacid\\w*', 'globoso', 'distendido', 'doloroso', 'indolor', 'rha', 'timpan\\w*', 'macic\\w*',
+    'visceromegalias?', 'blumberg', 'murphy', 'abolid\\w*', 'diminuid\\w*', 'reduzid\\w*',
+    'simetric\\w*', 'expansibilidade', 'tiragem', 'edemas?', 'pulsos?', 'perfus\\w*', 'cianos\\w*',
+    'palid\\w*', 'icteric\\w*', 'hidratad\\w*', 'corad\\w*', 'acianotic\\w*', 'anicteric\\w*',
+    'afebril', 'eupneic\\w*', 'dispneic\\w*', 'orientad\\w*', 'glasgow', 'pupilas?', 'fotorreagentes?',
+    'reflexos?', 'marcha', 'tireoide', 'linfonod\\w*',
+  ].join('|') + ')\\b',
+);
+
+// Cabeçalhos que encerram o exame no texto livre do médico, além dos rótulos
+// do template.
+const CABECALHO_POS_EXAME = /^(hd|hipotese|hipoteses|cd|conduta|plano|impressao|diagnostico|prescricao|evolucao)\b/;
+
+function ehRotuloAmbiguo(rotulo) {
+  return ROTULOS_AMBIGUOS.has(normalizaTexto(rotulo).trim());
 }
 
 function ehRotuloDeSistema(rotulo) {
   return ROTULOS_DE_SISTEMA.has(normalizaTexto(rotulo).replace(/\s+/g, ' ').trim());
 }
 
-/** Linhas "ROTULO: conteúdo" do texto do médico que nomeiam sistema do exame. */
-function achadosDeSistemaNoOriginal(texto) {
+/**
+ * Linhas "ROTULO: conteúdo" do texto do médico que nomeiam sistema do exame.
+ *
+ * @param {string} texto texto original do médico
+ * @param {string[]} [secoes] rótulos do template, para saber onde o exame acaba
+ */
+function achadosDeSistemaNoOriginal(texto, secoes = []) {
+  const rotulosDoTemplate = (Array.isArray(secoes) ? secoes : [])
+    .map((secao) => String(secao || '').trim())
+    .filter(Boolean);
+  let dentroDoExame = false;
+
   return String(texto || '')
     .split(/\r?\n/)
     .map((linha) => {
-      const casou = /^\s*[-*•]?\s*([^:]{1,28}):\s*(.+?)\s*$/.exec(linha);
+      const casou = /^\s*[-*•]?\s*([^:]{1,28}):\s*(.*?)\s*$/.exec(linha);
 
       if (!casou) {
         return null;
       }
 
       const [, rotulo, conteudo] = casou;
+      const rotuloNormalizado = normalizaTexto(rotulo).trim();
 
-      if (!ehRotuloDeSistema(rotulo)) {
+      // Acompanha em que parte do texto a linha está: dentro do exame físico
+      // (do médico, não do template) ou fora dele.
+      if (isPhysicalExamSection(rotulo) || isMentalExamSection(rotulo)) {
+        dentroDoExame = true;
+      } else if (CABECALHO_POS_EXAME.test(rotuloNormalizado) || ehLinhaDeSecao(linha, rotulosDoTemplate)) {
+        dentroDoExame = false;
+      }
+
+      if (!conteudo || !ehRotuloDeSistema(rotulo)) {
+        return null;
+      }
+
+      if (
+        ehRotuloAmbiguo(rotulo) &&
+        !dentroDoExame &&
+        !VOCABULARIO_DE_EXAME.test(normalizaTexto(conteudo))
+      ) {
+        // "AP: nega cirurgias prévias" é antecedente, não ausculta pulmonar.
         return null;
       }
 
@@ -221,7 +293,7 @@ function preservaAchadosDoExame(resultado, original, secoes) {
   }
 
   const saidaNormalizada = normalizaTexto(resultado);
-  const perdidos = achadosDeSistemaNoOriginal(original)
+  const perdidos = achadosDeSistemaNoOriginal(original, secoes)
     .filter(({ tokens }) => !tokens.some((token) => saidaNormalizada.includes(token)));
 
   if (!perdidos.length) {

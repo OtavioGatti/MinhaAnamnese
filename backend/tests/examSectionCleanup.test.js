@@ -157,3 +157,42 @@ test('entrada vazia não quebra', () => {
   assert.equal(preservaAchadosDoExame('EF: x', '', SECOES), 'EF: x');
   assert.equal(preservaAchadosDoExame('', 'AP: algo', SECOES), '');
 });
+
+// O caso real: "AP:" como antecedentes pessoais, reescrito no singular. Antes,
+// "cirurgias"/"internações" não casavam com "cirurgia"/"internação" e a rede
+// devolvia o antecedente para DENTRO do exame físico.
+test('AP de antecedentes pessoais não é devolvido ao exame', () => {
+  const original = 'AP: nega cirurgias prévias, nega internações\nEF: BEG';
+  const saida = [
+    'Antecedentes pessoais: Nega cirurgia prévia e internação.',
+    'EF:',
+    '- Estado geral: Bom estado geral.',
+    'HD: x',
+  ].join('\n');
+
+  assert.equal(preservaAchadosDoExame(saida, original, SECOES), saida);
+});
+
+test('plural reescrito no singular conta como achado preservado', () => {
+  const original = 'EF:\nAP: estertores crepitantes em bases';
+  const saida = ['EF:', '- AP: Estertor crepitante em base.', 'HD: x'].join('\n');
+
+  assert.equal(preservaAchadosDoExame(saida, original, SECOES), saida);
+});
+
+test('AP dentro do exame físico continua protegido mesmo sem jargão', () => {
+  const original = 'HDA: tosse\nEF:\nAP: assimetria importante à direita\nHD: pneumonia';
+  const saida = ['HDA: Tosse.', 'EF:', '- ABD: Plano.', 'HD: Pneumonia.'].join('\n');
+
+  const corrigido = preservaAchadosDoExame(saida, original, SECOES);
+
+  assert.match(corrigido, /- AP: assimetria importante à direita/);
+  assert.ok(corrigido.indexOf('assimetria') < corrigido.indexOf('HD: Pneumonia'));
+});
+
+test('AP fora do exame, mas com vocabulário de ausculta, ainda é exame', () => {
+  const original = 'AP: MV diminuído em base direita';
+  const saida = ['EF:', '- ABD: Plano.', 'HD: x'].join('\n');
+
+  assert.match(preservaAchadosDoExame(saida, original, SECOES), /MV diminuído em base direita/);
+});

@@ -7,7 +7,7 @@ dotenv.config({ path: path.resolve(__dirname, '../.env'), override: true });
 
 const { processAnamnesis } = require('../services/processAnamnesis');
 const { generateInsights } = require('../services/generateInsights');
-const { getTemplateById } = require('../services/templates');
+const { resolveTemplateById } = require('../services/templates');
 const { calculateAnamnesisQualityScore } = require('../utils/anamnesisQualityScore');
 const { sanitizeText } = require('../utils/textSanitization');
 
@@ -394,7 +394,10 @@ function buildSummary(results) {
 
 async function runCase(testCase) {
   const errors = {};
-  const templateConfig = getTemplateById(testCase.templateId);
+  // Resolve também os templates que só existem no CMS (pediatria_urgencia,
+  // geriatria, upa_enfermaria...). getTemplateById só via os hardcoded e
+  // marcava todos esses como "Template inválido".
+  const templateConfig = await resolveTemplateById(testCase.templateId).catch(() => null);
 
   if (!templateConfig) {
     return {

@@ -43,8 +43,10 @@ function foldAccents(value) {
 }
 
 // "Exame do estado mental" pede domínios (humor, pensamento...), não aparelhos.
+// "EEM" é a sigla que o template de psiquiatria do CMS usa.
 function isMentalExamSection(section) {
-  return /estado\s+mental/.test(foldAccents(section));
+  const normalized = foldAccents(section);
+  return /estado\s+mental/.test(normalized) || /^eem\b/.test(normalized);
 }
 
 function isPhysicalExamSection(section) {

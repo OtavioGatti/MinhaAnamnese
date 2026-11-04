@@ -111,28 +111,28 @@
   {
     "id": "ped-001",
     "titulo": "Pediatria - febre e tosse em lactente com bom preenchimento",
-    "templateId": "pediatria",
+    "templateId": "pediatria_urgencia",
     "rawText": "ID: Lactente masculino, 11 meses, trazido pela mãe. QP: Febre e tosse. HMA: Febre há 2 dias e tosse com coriza, piora noturna, redução do apetite, mantendo aceitação de líquidos. Diurese presente. Sem vômitos. AP: nascido a termo, sem internações prévias. Vacinação em dia. MUC: dipirona nas últimas 24 horas. EXAME FÍSICO: T 38,4 C, FC 132, FR 34, SatO2 97% em ar ambiente, corado, hidratado, ausculta pulmonar sem esforço respiratório importante.",
     "observacoes": "Não deve inventar bronquiolite ou pneumonia."
   },
   {
     "id": "ped-002",
     "titulo": "Pediatria - febre em criança com avó e poucas informações",
-    "templateId": "pediatria",
+    "templateId": "pediatria_urgencia",
     "rawText": "ID: Criança 2 anos, acompanhada pela avó. QP: Febre. HMA: Febre há alguns dias, sem medição, mais quieta, pouco apetite, um episódio de vômito ontem. Avó não soube informar mais detalhes. EXAME FÍSICO: não realizado.",
     "observacoes": "Caso pediátrico incompleto."
   },
   {
     "id": "ped-003",
     "titulo": "Pediatria - sibilância recorrente em pré-escolar",
-    "templateId": "pediatria",
+    "templateId": "pediatria_urgencia",
     "rawText": "ID: Menino 4 anos, acompanhado pela mãe. QP: Chiado no peito. HMA: Chiado e tosse há 1 dia, piora à noite, sem febre, já teve episódios parecidos antes. Mãe diz que melhora um pouco com bombinha antiga do irmão. AP: rinite. AF: pai asmático. Vacinação em dia. DNPM sem queixas segundo mãe. EXAME FÍSICO: FC 118, FR 32, Sat 95%, sibilos expiratórios difusos, sem cianose.",
     "observacoes": "Não deve inventar asma se não estiver explicitada como diagnóstico."
   },
   {
     "id": "ped-004",
     "titulo": "Pediatria - lactente com dificuldade respiratória e arroxeamento",
-    "templateId": "pediatria",
+    "templateId": "pediatria_urgencia",
     "rawText": "ID: Lactente 6 meses, prematuro 34 semanas. QP: Dificuldade para respirar. HMA: Desde ontem respiração rápida, pior hoje, gemência, dificuldade para mamar, episódio de arroxeamento por alguns segundos, febre ontem. AP: internação prévia por bronquiolite. EXAME FÍSICO: não realizado.",
     "observacoes": "Caso pediátrico grave, boa sensibilidade esperada."
   },
@@ -250,7 +250,7 @@
   {
     "id": "ped-005",
     "titulo": "Pediatria - diarreia aguda com sinais de hidratação descritos parcialmente",
-    "templateId": "pediatria",
+    "templateId": "pediatria_urgencia",
     "rawText": "ID: Criança 1 ano e 8 meses, acompanhada pela mãe. QP: Diarreia. HMA: Diarreia há 2 dias, 6 episódios no último dia, sem sangue, com vômito 1 vez ontem. Mantém aceitação parcial de líquidos e diurese diminuída segundo mãe. AP: sem doenças conhecidas. Vacinação em dia. MUC: soro de reidratação oral em casa. EXAME FÍSICO: sonolenta, mucosas levemente secas, FC 128, sem outros dados.",
     "observacoes": "Pediatria aguda com hidratação parcial."
   },

@@ -20,7 +20,7 @@
   {
     "id": "pediatria-003",
     "titulo": "Pediatria com febre e tosse em lactente",
-    "templateId": "pediatria",
+    "templateId": "pediatria_urgencia",
     "rawText": "Lactente masculino, 11 meses, trazido pela mãe por febre há 2 dias e tosse com coriza. Mãe refere piora noturna e redução do apetite, mantendo aceitação de líquidos. Diurese presente. Sem vômitos. Nascido a termo, sem internações prévias. Vacinação em dia. Uso de dipirona nas últimas 24 horas. Ao exame: temperatura 38,4 C, FC 132 bpm, FR 34 irpm, SatO2 97% em ar ambiente, corado, hidratado, ausculta pulmonar sem esforço respiratório importante.",
     "observacoes": "Checar se não cria bronquiolite ou pneumonia sem estar explícito.",
     "expectedFlags": []

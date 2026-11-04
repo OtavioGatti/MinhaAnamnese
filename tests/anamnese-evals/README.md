@@ -43,7 +43,7 @@ Campos:
 
 - `id`: identificador estável do caso
 - `titulo`: nome curto para aparecer nos relatórios
-- `templateId`: um template existente do backend, como `clinica_medica`, `pediatria`, `obstetricia` ou `upa_emergencia`
+- `templateId`: um template existente do backend, como `clinica_medica`, `pediatria_urgencia`, `obstetricia` ou `upa_emergencia` (os do CMS também valem; o runner resolve pelo Supabase)
 - `rawText`: texto bruto que será enviado para organização e insights
 - `observacoes`: opcional, entra no relatório
 - `expectedFlags`: opcional, lista de flags esperadas para revisão manual
