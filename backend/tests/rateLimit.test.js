@@ -62,11 +62,44 @@ test('identidades diferentes têm buckets separados', async () => {
   assert.equal((await consumeRateLimit({ ...base, req: fakeReq('198.51.100.1') })).allowed, false);
 });
 
-test('getClientIp prioriza o primeiro IP de x-forwarded-for', () => {
+test('getClientIp usa req.ip do Express e ignora x-forwarded-for forjado', () => {
+  // Atrás do Render, o cliente manda "203.0.113.7" e o proxy anexa o IP real;
+  // o Express (trust proxy) resolve req.ip para o IP real.
+  assert.equal(
+    getClientIp({ ip: '198.51.100.9', headers: { 'x-forwarded-for': '203.0.113.7, 198.51.100.9' } }),
+    '198.51.100.9',
+  );
+  assert.equal(getClientIp({ ip: '198.51.100.9', headers: { 'x-forwarded-for': '203.0.113.7' } }), '198.51.100.9');
+});
+
+test('getClientIp sem Express fica com a última entrada de x-forwarded-for', () => {
   assert.equal(
     getClientIp({ headers: { 'x-forwarded-for': '203.0.113.7, 10.0.0.1' } }),
-    '203.0.113.7',
+    '10.0.0.1',
   );
+  assert.equal(getClientIp({ headers: { 'x-forwarded-for': ' , 203.0.113.7 , ' } }), '203.0.113.7');
+  assert.equal(getClientIp({ headers: { 'x-real-ip': '192.0.2.5' } }), '192.0.2.5');
   assert.equal(getClientIp({ headers: {}, socket: { remoteAddress: '127.0.0.1' } }), '127.0.0.1');
   assert.equal(getClientIp({ headers: {} }), 'unknown');
+});
+
+test('x-forwarded-for forjado não abre um bucket novo quando há req.ip', async () => {
+  const base = {
+    scope: `test_spoof_${Date.now()}`,
+    limit: 1,
+    windowMs: 60_000,
+  };
+  const realIp = '198.51.100.20';
+
+  assert.equal(
+    (await consumeRateLimit({ ...base, req: { ip: realIp, headers: {} } })).allowed,
+    true,
+  );
+  assert.equal(
+    (await consumeRateLimit({
+      ...base,
+      req: { ip: realIp, headers: { 'x-forwarded-for': '203.0.113.99' } },
+    })).allowed,
+    false,
+  );
 });

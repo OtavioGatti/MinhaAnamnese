@@ -16,13 +16,28 @@ function getHeaderValue(req, name) {
 }
 
 function getClientIp(req) {
+  // Atrás do Render o Express resolve req.ip com 'trust proxy' (server.js):
+  // ele usa a entrada de x-forwarded-for anexada pelo proxy, não a que o
+  // cliente mandou. Esta é a única fonte que o cliente não consegue forjar.
+  const expressIp = typeof req?.ip === 'string' ? req.ip.trim() : '';
+
+  if (expressIp) {
+    return expressIp;
+  }
+
+  // Sem Express (functions da Vercel) os cabeçalhos são reescritos pela
+  // plataforma. Mesmo assim, fica a ÚLTIMA entrada da lista — a que o proxy
+  // mais próximo anexou — e nunca a primeira, que vem do cliente.
   const forwardedFor = getHeaderValue(req, 'x-forwarded-for');
-  const firstForwardedIp = forwardedFor.split(',')[0]?.trim();
+  const forwardedIps = forwardedFor
+    .split(',')
+    .map((value) => value.trim())
+    .filter(Boolean);
+  const lastForwardedIp = forwardedIps[forwardedIps.length - 1] || '';
 
   return (
-    firstForwardedIp ||
+    lastForwardedIp ||
     getHeaderValue(req, 'x-real-ip').trim() ||
-    req?.ip ||
     req?.socket?.remoteAddress ||
     req?.connection?.remoteAddress ||
     'unknown'
