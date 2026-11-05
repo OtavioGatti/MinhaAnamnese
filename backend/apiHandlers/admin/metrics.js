@@ -116,7 +116,27 @@ function renderHtml(m) {
     .map((r) => `<div class="tile tile-resumo"><span>${escapeHtml(r.rotulo)}</span><strong>${r.dinheiro ? money(r.atual) : formatNumber(r.atual)}</strong>${changeInline(r.variacao, r.anterior, r.dinheiro)}</div>`)
     .join('');
 
-  // --- crescimento: 7 e 30 dias (sem "hoje", que ao meio-dia é só zero) -------
+  // --- hoje ---------------------------------------------------------------------
+  // O número que o dono abre o painel para ver: gente usando AGORA. Cada um
+  // comparado com ontem até a mesma hora (senão toda tarde pareceria queda).
+  const porId = Object.fromEntries((m.crescimento || []).map((c) => [c.id, c]));
+  const hojeTile = (id, rotulo) => {
+    const c = porId[id];
+    return c
+      ? `<div class="tile tile-hoje"><span>${escapeHtml(rotulo)}</span><strong>${formatNumber(c.hoje)}</strong>${changeInline(c.variacaoDia, c.ontemAteAgora).replace('antes ', 'ontem até ' + horaAgora + ': ')}</div>`
+      : '';
+  };
+  const hoje = [
+    hojeTile('organizaram', 'Sessões que organizaram hoje'),
+    hojeTile('contasOrganizaram', 'Contas que organizaram hoje'),
+    tile('Voltaram hoje', m.retorno.hoje, 'contas que abriram o site'),
+    tile('Sessões hoje', m.sessoesPorPeriodo.hoje, 'com alguma ação'),
+    hojeTile('hipoteses', 'Hipóteses hoje'),
+    hojeTile('cadastros', 'Cadastros hoje'),
+    hojeTile('visitas', 'Visitas sem conta hoje'),
+  ].join('');
+
+  // --- crescimento: 7 e 30 dias --------------------------------------------------
   const crescimento = (m.crescimento || [])
     .map((c) => `<tr>
       <td>${escapeHtml(c.rotulo)}${c.dica ? `<small>${escapeHtml(c.dica)}</small>` : ''}${sparkline(c.serie)}</td>
@@ -272,6 +292,8 @@ function renderHtml(m) {
   .tile strong { font-size: 1.25rem; font-variant-numeric: tabular-nums; }
   .tile small { font-size: 0.72rem; color: #94a3b8; }
   .tile-resumo { background: #eff6ff; border-color: #bfdbfe; }
+  .tile-hoje { background: #f0fdf4; border-color: #bbf7d0; }
+  .tile-hoje strong { font-size: 1.5rem; }
   .tile-resumo strong { font-size: 1.5rem; }
   table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
   th, td { text-align: left; padding: 7px 6px; border-bottom: 1px solid #eef2f7; }
@@ -315,6 +337,12 @@ function renderHtml(m) {
   </div>
 
   ${alertaPagamentos}
+
+  <div class="card">
+    <h2 style="margin-top:0">Hoje, até ${horaAgora}</h2>
+    <p class="muted note">Dia de hoje em Brasília. Comparado com ontem até a mesma hora. "Voltaram" vem do carimbo do servidor (não depende de cookie); o resto, dos eventos.</p>
+    <div class="tiles">${hoje}</div>
+  </div>
 
   <div class="card">
     <h2 style="margin-top:0">A semana em 6 números</h2>
