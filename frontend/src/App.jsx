@@ -22,6 +22,7 @@ import {
   MERCADO_PAGO_ORDERS_PUBLIC_KEY,
   MERCADO_PAGO_PUBLIC_KEY,
   ORGANIZE_LOGIN_REQUIRED_FLAG,
+  PRODUCT_TIPS_FLAG,
   SEMIANNUAL_PAGE_CHECKOUT_FLAG,
 } from './config';
 import { formatBrazilianMobileInput, normalizeBrazilianMobile, PHONE_INVALID_MESSAGE } from './lib/phone';
@@ -65,6 +66,9 @@ import { guides } from './data/guides';
 import { supabase, consumeSignupConfirmationIntent } from './lib/supabaseClient';
 import { applyOutputCaseStyle, toClinicalSentenceCase } from './lib/clinicalTextCase';
 import useDiagnosticHypotheses from './hooks/useDiagnosticHypotheses';
+import useProductTips from './hooks/useProductTips';
+import ProductTip from './components/ProductTip';
+import { PRODUCT_TIPS_OVERRIDE_KEY, countDrugMentions, resolveProductTipsEnabled } from './lib/productTips';
 
 // Páginas fora da home são carregadas sob demanda (code splitting) para
 // reduzir o bundle inicial do workspace clínico.
@@ -1164,6 +1168,38 @@ function App() {
       }),
     };
   });
+  // Dicas contextuais (VITE_PRODUCT_TIPS=on, ou ?dicas=1 neste navegador).
+  const [productTipsMode] = useState(() => {
+    let guardado = null;
+
+    try {
+      guardado = window.localStorage.getItem(PRODUCT_TIPS_OVERRIDE_KEY);
+    } catch {
+      guardado = null;
+    }
+
+    const decisao = resolveProductTipsEnabled({
+      flag: PRODUCT_TIPS_FLAG,
+      search: window.location.search,
+      stored: guardado,
+    });
+
+    try {
+      if (decisao.stored) {
+        window.localStorage.setItem(PRODUCT_TIPS_OVERRIDE_KEY, decisao.stored);
+      } else {
+        window.localStorage.removeItem(PRODUCT_TIPS_OVERRIDE_KEY);
+      }
+    } catch {
+      // Sem armazenamento, vale só para esta visita.
+    }
+
+    return decisao;
+  });
+  // Dicas fechadas nesta sessão (o perfil traz as de sempre em tips_seen).
+  const [tipsSeenLocal, setTipsSeenLocal] = useState([]);
+  const [lastTypedAt, setLastTypedAt] = useState(0);
+  const drugMentionCountRef = useRef(0);
   // Organizar só com conta (VITE_ORGANIZE_LOGIN_REQUIRED=on, ou
   // ?exigir_login=1 neste navegador). O servidor tem a própria chave.
   const [organizeLoginRequired] = useState(() => {
@@ -1960,6 +1996,17 @@ function App() {
 
   const handleTextoChange = (nextText) => {
     setTexto(nextText);
+    setLastTypedAt(Date.now());
+
+    const mencoes = countDrugMentions(nextText);
+
+    if (mencoes > drugMentionCountRef.current && user?.id) {
+      trackEvent('interacao_arroba_usada', { template: templateSelecionado }, {
+        eventKey: `interacao_arroba_usada:${user.id}`,
+      });
+    }
+
+    drugMentionCountRef.current = mencoes;
     setReferralLetter('');
     setReferralError('');
     setReferralCopied(false);
@@ -3610,6 +3657,66 @@ function App() {
     }
   };
 
+  const productTipsContext = {
+    page: currentPage,
+    textoVazio: !texto.trim(),
+    textoLength: texto.trim().length,
+    textoTemArroba: countDrugMentions(texto) > 0,
+    resultado: Boolean(resultado),
+    hypothesesCount: Array.isArray(diagnosticHypotheses.data?.hypotheses) ? diagnosticHypotheses.data.hypotheses.length : 0,
+    canRunAnalysis: Boolean(shouldShowFeedback && canRequestInsights && !hasFinalInterpretation),
+    linkedToolsCount: linkedTools.length,
+    anamnesesCount: anamneseStats?.total_anamneses || 0,
+    templateTemCalculadora,
+    drugMentionsEnabled: Boolean(user?.id && isPro),
+    usedFeatures: profile?.trial_usage?.used || null,
+    lastTypedAt,
+    // Nada de balão por cima de modal, nem durante uma geração.
+    blocked: Boolean(
+      !user?.id ||
+      welcomeOnboardingOpen ||
+      snippetsModalOpen ||
+      legalConsentModalOpen ||
+      phoneCaptureState.open ||
+      planComparisonState.open ||
+      organizeSourceConflict ||
+      supportOpen ||
+      cancelSubscriptionModalOpen ||
+      deleteAccountModalOpen ||
+      loading ||
+      loadingInsights ||
+      diagnosticHypotheses.loading,
+    ),
+  };
+
+  const { activeTip, dismissActiveTip } = useProductTips({
+    enabled: Boolean(productTipsMode.enabled && user?.id),
+    preview: productTipsMode.preview,
+    seen: [...(Array.isArray(profile?.tips_seen) ? profile.tips_seen : []), ...tipsSeenLocal],
+    context: productTipsContext,
+    onShow: (dica) => {
+      trackEvent('dica_exibida', { dica, template: templateSelecionado }, {
+        eventKey: `dica_exibida:${dica}:${user?.id}`,
+      });
+    },
+    onDismiss: (dica) => {
+      setTipsSeenLocal((atual) => (atual.includes(dica) ? atual : [...atual, dica]));
+      trackEvent('dica_concluida', { dica, template: templateSelecionado }, {
+        eventKey: `dica_concluida:${dica}:${user?.id}`,
+      });
+
+      if (!user?.id || productTipsMode.preview) {
+        return;
+      }
+
+      api.post('/profile', { tips_seen_add: [dica] }).then((response) => {
+        if (response.success && response.data) {
+          setProfile(response.data);
+        }
+      });
+    },
+  });
+
   const handleSeeFullReasoning = () => {
     setActiveSidebarTab('diagnostic');
     trackEvent('hipoteses_raciocinio_completo_click', { template: templateSelecionado });
@@ -3754,6 +3861,7 @@ function App() {
             type="button"
             className={`product-nav-item ${currentPage === 'templates' ? 'active' : ''}`}
             onClick={() => handleNavigate('templates')}
+            data-tip="meus_modelos"
           >
             Templates
           </button>
@@ -3768,6 +3876,7 @@ function App() {
             type="button"
             className={`product-nav-item ${currentPage === 'prescriptionGuide' ? 'active' : ''}`}
             onClick={() => handleNavigate('prescriptionGuide')}
+            data-tip="prescricoes"
           >
             Prescrições
           </button>
@@ -3782,6 +3891,7 @@ function App() {
             type="button"
             className={`product-nav-item ${currentPage === 'clinicalTools' ? 'active' : ''}`}
             onClick={() => handleNavigate('clinicalTools')}
+            data-tip="ferramentas"
           >
             Avaliação
           </button>
@@ -4698,6 +4808,8 @@ function App() {
           handleNavigate('templates');
         }}
       />
+
+      <ProductTip tip={activeTip} onDismiss={dismissActiveTip} />
 
       <WelcomeOnboardingModal
         open={welcomeOnboardingOpen}

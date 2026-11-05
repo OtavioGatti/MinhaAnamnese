@@ -30,6 +30,11 @@ function getProfileUpdatesFromRequest(req) {
       body.welcome_onboarding_seen === true
         ? new Date().toISOString()
         : undefined,
+    // Dicas fechadas agora; a união com as já gravadas é feita no serviço.
+    tips_seen_add:
+      Array.isArray(body.tips_seen_add)
+        ? body.tips_seen_add
+        : undefined,
     cookie_consent_status:
       Object.prototype.hasOwnProperty.call(body, 'cookie_consent_status')
         ? body.cookie_consent_status

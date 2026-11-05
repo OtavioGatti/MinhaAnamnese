@@ -145,6 +145,7 @@ function StructuralFeedback({
               <button
                 className="btn btn-primario analysis-ready-button"
                 type="button"
+                data-tip="analise"
                 onClick={onGerarInsights}
                 disabled={loadingInsights}
               >

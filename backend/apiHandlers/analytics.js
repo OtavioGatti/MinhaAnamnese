@@ -46,6 +46,11 @@ const ALLOWED_EVENTS = new Set([
   'onboarding_exibido',
   'onboarding_fechado',
   'onboarding_cta_click',
+  // Dicas contextuais (balões): qual apareceu e qual foi fechada com "Entendi".
+  'dica_exibida',
+  'dica_concluida',
+  // Menção de medicamento com @ no texto base (bulário em linha).
+  'interacao_arroba_usada',
   // Ferramentas clínicas (o cálculo é no navegador) e frases prontas
   'ferramenta_calculada',
   'frase_pronta_usada',
@@ -86,6 +91,8 @@ function sanitizeMetadata(metadata) {
     'score',
     'is_pro',
     'is_trial',
+    // Id da dica contextual (nome fixo da lista do frontend, nunca texto).
+    'dica',
     'has_teaser',
     'plan_key',
     // Cartas

@@ -43,7 +43,9 @@ test('todo evento disparado pelo frontend é aceito pelo backend', () => {
 // markWelcomeOnboardingSeen passa o nome por variável, então o regex acima não
 // pega — ficam travados explicitamente.
 test('os eventos de onboarding com nome dinâmico estão na allowlist', () => {
-  for (const name of ['onboarding_fechado', 'onboarding_cta_click']) {
+  // dica_* saem do hook useProductTips, não do App.jsx, então o regex acima
+  // também não os vê.
+  for (const name of ['onboarding_fechado', 'onboarding_cta_click', 'dica_exibida', 'dica_concluida', 'interacao_arroba_usada']) {
     assert.ok(ALLOWED_EVENTS.has(name), `${name} deveria ser aceito`);
   }
 });

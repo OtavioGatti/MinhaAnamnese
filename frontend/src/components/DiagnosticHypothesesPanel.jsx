@@ -97,6 +97,7 @@ function HypothesisCard({ hypothesis, index, onOpenPrescriptionGuide, onOpenMane
           className="diagnostic-reasoning-toggle"
           aria-expanded={isReasoningExpanded}
           aria-controls={reasoningId}
+          data-tip={index === 0 ? 'hipotese_detalhe' : undefined}
           onClick={() => setIsReasoningExpanded((expanded) => !expanded)}
         >
           <span aria-hidden="true">{isReasoningExpanded ? '▾' : '▸'}</span>

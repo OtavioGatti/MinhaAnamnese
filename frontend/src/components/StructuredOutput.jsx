@@ -86,6 +86,7 @@ function StructuredOutput({
                   onClick={onSuggestHypotheses}
                   disabled={diagnosticLoading}
                   type="button"
+                  data-tip="hipoteses"
                 >
                   {diagnosticLoading ? 'Analisando...' : 'Sugerir hipóteses'}
                   {!diagnosticProAccess ? <span>PRO</span> : null}

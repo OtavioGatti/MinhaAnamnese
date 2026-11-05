@@ -41,7 +41,7 @@ function LinkedClinicalTools({ tools, onOpenTool, title = 'Ferramentas relaciona
   }
 
   return (
-    <section className="linked-tools">
+    <section className="linked-tools" data-tip="escore_sugerido">
       <h4>{title}</h4>
       {hint ? <p>{hint}</p> : null}
       <div className="linked-tools-chips">

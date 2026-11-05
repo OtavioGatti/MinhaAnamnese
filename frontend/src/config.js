@@ -15,3 +15,6 @@ export const SEMIANNUAL_PAGE_CHECKOUT_FLAG = String(import.meta.env.VITE_SEMIANN
 // navegador aberto com ?exigir_login=1. O servidor tem a própria chave
 // (ORGANIZE_LOGIN_REQUIRED no Render), que é a trava de verdade.
 export const ORGANIZE_LOGIN_REQUIRED_FLAG = String(import.meta.env.VITE_ORGANIZE_LOGIN_REQUIRED || '').toLowerCase();
+// Dicas contextuais (balões nas funções principais). "on" liga para todos;
+// sem isso só liga no navegador aberto com ?dicas=1.
+export const PRODUCT_TIPS_FLAG = String(import.meta.env.VITE_PRODUCT_TIPS || '').toLowerCase();

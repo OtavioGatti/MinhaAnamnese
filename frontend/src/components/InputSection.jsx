@@ -77,7 +77,7 @@ function InputSection({
       <div className="form-group">
         <label htmlFor="texto">Texto base</label>
         <div className="input-wrapper">
-          <div className="textarea-shell">
+          <div className="textarea-shell" data-tip="arroba">
             <textarea
               className="task-textarea"
               ref={inputRef}
@@ -135,6 +135,7 @@ function InputSection({
           onClick={onOpenSnippets}
           title="Inserir frases prontas (exame físico normal, condutas...)"
           type="button"
+          data-tip="frases_prontas"
         >
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
@@ -150,6 +151,7 @@ function InputSection({
             onClick={onOpenCalculadora}
             title="Abrir calculadoras de apoio"
             type="button"
+            data-tip="calculadoras"
           >
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <rect x="4" y="2" width="16" height="20" rx="2" />

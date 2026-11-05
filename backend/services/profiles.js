@@ -41,7 +41,59 @@ const OPTIONAL_PROFILE_COLUMNS = [
   'whatsapp_opt_in_at',
   'signup_origin',
   'signup_campaign',
+  'tips_seen',
 ];
+
+// Dicas do produto (balões contextuais) já fechadas. Ids curtos definidos no
+// frontend (frontend/src/lib/productTips.js); aqui só se garante o formato.
+const MAX_TIPS_SEEN = 50;
+const TIP_ID_PATTERN = /^[a-z0-9_]{1,40}$/;
+
+function normalizeTipsSeen(value) {
+  let list = value;
+
+  if (typeof list === 'string') {
+    try {
+      list = JSON.parse(list);
+    } catch (_error) {
+      list = [];
+    }
+  }
+
+  if (!Array.isArray(list)) {
+    return [];
+  }
+
+  const seen = [];
+
+  for (const item of list) {
+    const id = typeof item === 'string' ? item.trim() : '';
+
+    if (TIP_ID_PATTERN.test(id) && !seen.includes(id)) {
+      seen.push(id);
+    }
+
+    if (seen.length >= MAX_TIPS_SEEN) {
+      break;
+    }
+  }
+
+  return seen;
+}
+
+// A tela manda só o que acabou de fechar (tips_seen_add); a união com o que já
+// estava gravado acontece aqui, com o perfil em mãos, para duas abas abertas
+// não apagarem uma a dica da outra.
+function resolveTipsSeen(existingProfile, overrides) {
+  if (Array.isArray(overrides.tips_seen_add)) {
+    return normalizeTipsSeen([
+      ...normalizeTipsSeen(existingProfile?.tips_seen),
+      ...overrides.tips_seen_add,
+    ]);
+  }
+
+  return normalizeTipsSeen(overrides.tips_seen ?? existingProfile?.tips_seen);
+}
 
 // Atividade do usuario para o painel de metricas. Uma escrita por requisicao
 // autenticada seria caro demais no free tier, entao so regrava se o carimbo
@@ -328,6 +380,7 @@ function buildProfileFallback(user, existingProfile = null, overrides = {}) {
     welcome_onboarding_seen_at: normalizePlanExpiresAt(
       overrides.welcome_onboarding_seen_at ?? existingProfile?.welcome_onboarding_seen_at,
     ),
+    tips_seen: resolveTipsSeen(existingProfile, overrides),
     terms_accepted_at: normalizePlanExpiresAt(
       overrides.terms_accepted_at ??
         existingProfile?.terms_accepted_at ??
@@ -468,6 +521,10 @@ async function upsertProfile(fields) {
     payload.welcome_onboarding_seen_at = normalizePlanExpiresAt(fields.welcome_onboarding_seen_at);
   }
 
+  if ('tips_seen' in fields) {
+    payload.tips_seen = normalizeTipsSeen(fields.tips_seen);
+  }
+
   if ('terms_accepted_at' in fields) {
     payload.terms_accepted_at = normalizePlanExpiresAt(fields.terms_accepted_at);
   }
@@ -601,6 +658,8 @@ function shouldUpdateProfile(existingProfile, nextProfile) {
     normalizePlanExpiresAt(existingProfile.trial_started_at) !== normalizePlanExpiresAt(nextProfile.trial_started_at) ||
     normalizePlanExpiresAt(existingProfile.welcome_onboarding_seen_at) !==
       normalizePlanExpiresAt(nextProfile.welcome_onboarding_seen_at) ||
+    JSON.stringify(normalizeTipsSeen(existingProfile.tips_seen)) !==
+      JSON.stringify(normalizeTipsSeen(nextProfile.tips_seen)) ||
     normalizePlanExpiresAt(existingProfile.terms_accepted_at) !==
       normalizePlanExpiresAt(nextProfile.terms_accepted_at) ||
     normalizePlanExpiresAt(existingProfile.terms_scrolled_at) !==
@@ -645,6 +704,7 @@ async function expireProfileAccessIfNeeded(user, profile) {
     free_full_insights_used_count: profile.free_full_insights_used_count,
     trial_started_at: profile.trial_started_at,
     welcome_onboarding_seen_at: profile.welcome_onboarding_seen_at,
+    tips_seen: profile.tips_seen,
     terms_accepted_at: profile.terms_accepted_at,
     terms_scrolled_at: profile.terms_scrolled_at,
     terms_version: profile.terms_version,
@@ -736,6 +796,7 @@ async function ensureUserProfile(user, overrides = {}) {
     free_full_insights_used_count: fallbackProfile.free_full_insights_used_count,
     trial_started_at: fallbackProfile.trial_started_at,
     welcome_onboarding_seen_at: fallbackProfile.welcome_onboarding_seen_at,
+    tips_seen: fallbackProfile.tips_seen,
     terms_accepted_at: fallbackProfile.terms_accepted_at,
     terms_scrolled_at: fallbackProfile.terms_scrolled_at,
     terms_version: fallbackProfile.terms_version,
@@ -859,6 +920,7 @@ module.exports = {
   normalizeOutputCaseStyle,
   normalizePlan,
   normalizeTemplateId,
+  normalizeTipsSeen,
   shouldTouchLastSeen,
   touchLastSeen,
   upsertProfile,
