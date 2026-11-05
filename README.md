@@ -402,7 +402,7 @@ O painel traz as ressalvas no rodapé, mas as duas que mais importam:
 - **Quem recusa o banner de cookies não emite evento nenhum.** Toda métrica de evento (uso, retenção, funil) é piso, não total.
 - **Não existe registro de clique no link de afiliado.** A taxa mostrada é "iniciou checkout → pagou", uma etapa tardia — não é a conversão do link de divulgação, e por isso parece alta.
 
-Há duas leituras de funil, de propósito: **Alcance por etapa** (ignora a ordem, é a confiável) e **Funil em sequência** (só conta quem seguiu a ordem exata de `FUNNEL_STEPS`). Quando as duas divergem muito, é sinal de que a ordem declarada não reflete o uso real — hoje é o caso, porque o clique no CTA costuma vir antes do score.
+O painel abre com **a semana em 6 números** (7 dias contra os 7 anteriores), o **funil do teste Pro por mês de cadastro** (entraram, usaram, usaram Pro, em teste, expiraram sem pagar, pagaram), a **adoção por função** em % das contas ativas, os **modelos mais usados**, o bloco das **dicas contextuais** e o **tempo de resposta das hipóteses**. O "funil em sequência" antigo saiu em 05/11/2026: a ordem declarada nunca refletiu o uso real. Fica só o **Alcance por etapa** (ignora a ordem), já com as etapas de hoje. Checkout, afiliados e as tabelas brutas ficam recolhidos. Comissão cancelada (estorno ou teste do dono) não conta como venda nem receita de afiliado. As leituras novas são puras, em `backend/services/ownerMetricsInsights.js`.
 
 ## Programa de Afiliados (Operação)
 

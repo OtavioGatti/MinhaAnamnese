@@ -12,10 +12,29 @@
 // isso degrade de forma visível (ver `truncated`) em vez de silenciosamente
 // mentir quando a base crescer.
 
-const { buildFunnelMetrics, getZeroFunnelMetrics } = require('./funnelMetrics');
-const { getGlobalFunnelSessions } = require('./funnelTracking');
-const { FUNNEL_STEPS } = require('../utils/funnel');
 const { summarizeAffiliateCommissions } = require('./affiliates');
+const {
+  summarizeAdoption,
+  summarizeAiLatency,
+  summarizeTips,
+  summarizeTopTemplates,
+  summarizeTrialCohorts,
+  summarizeWeek,
+} = require('./ownerMetricsInsights');
+
+// Etapas do alcance por sessão. Era a lista do funil antigo (nota, CTA de
+// avaliação), que não reflete o uso de hoje; o funil estrito saiu do painel
+// porque a própria página avisava que a ordem declarada não batia com o real.
+const ETAPAS_DE_ALCANCE = [
+  { nome: 'anamnese_gerada', rotulo: 'Organizou uma anamnese' },
+  { nome: 'hipoteses_diagnosticas_geradas', rotulo: 'Gerou hipóteses' },
+  { nome: 'hipotese_prescricao_click', rotulo: 'Abriu prescrição a partir de hipótese' },
+  { nome: 'frase_pronta_usada', rotulo: 'Usou frase pronta' },
+  { nome: 'ferramenta_calculada', rotulo: 'Calculou uma ferramenta' },
+  { nome: 'carta_gerada', rotulo: 'Gerou uma carta' },
+  { nome: 'planos_abertos', rotulo: 'Abriu o quadro de planos' },
+  { nome: 'upgrade_click', rotulo: 'Clicou em assinar' },
+];
 const { describeDeclineReason } = require('../utils/paymentDeclineReasons');
 
 const ROW_LIMIT = 5000;
@@ -206,6 +225,8 @@ function summarizeProfiles(profiles) {
   const total = profiles.length;
   let comTrial = 0;
   let proVigente = 0;
+  let emTesteAgora = 0;
+  let proPago = 0;
   let afiliadoCortesia = 0;
   let basico = 0;
 
@@ -223,13 +244,23 @@ function summarizeProfiles(profiles) {
 
     if (plano === 'pro' && profile.billing_status === 'active' && isFutureOrNull(profile.plan_expires_at)) {
       proVigente += 1;
+
+      // "Pro vigente" misturava quem está no teste grátis com quem pagou. O
+      // teste tem access_source 'trial'; o resto (paid, legacy, none) é Pro
+      // concedido ou comprado.
+      if (profile.access_source === 'trial') {
+        emTesteAgora += 1;
+      } else {
+        proPago += 1;
+      }
+
       return;
     }
 
     basico += 1;
   });
 
-  return { total, comTrial, proVigente, afiliadoCortesia, basico };
+  return { total, comTrial, proVigente, emTesteAgora, proPago, afiliadoCortesia, basico };
 }
 
 // Venda é o pagamento que o webhook terminou de processar, o que liberou o
@@ -520,11 +551,15 @@ function summarizeAffiliates({
       return;
     }
 
+    // Comissão cancelada é pagamento estornado (ou teste do dono): não é
+    // venda, não é receita. Em 05/11/2026 dois testes estornados de R$ 77,40
+    // apareciam como "2 pagos" e inflavam a receita dos afiliados.
+    const validas = lista.filter((commission) => commission.status !== 'cancelled');
     // Reaproveita o somador já existente e testado do fluxo de repasse.
-    const resumo = summarizeAffiliateCommissions(lista, new Map());
+    const resumo = summarizeAffiliateCommissions(validas, new Map());
     linha.conversoes = resumo.conversions;
     linha.comissaoTotal = resumo.totalCommission;
-    linha.receitaGerada = roundMoney(lista.reduce((t, c) => t + (Number(c.gross_amount) || 0), 0));
+    linha.receitaGerada = roundMoney(validas.reduce((t, c) => t + (Number(c.gross_amount) || 0), 0));
   });
 
   return [...porAfiliado.values()]
@@ -950,6 +985,8 @@ function summarizeGrowth({ fontes, now = new Date(), metricas = METRICAS_DE_CRES
     const ontemAteAgora = conta(inicioOntem, inicioOntem + decorridoHoje + 1);
     const ultimos7 = conta(agora - 7 * DIA_MS, fimAgora);
     const anteriores7 = conta(agora - 14 * DIA_MS, agora - 7 * DIA_MS);
+    const ultimos30 = conta(agora - 30 * DIA_MS, fimAgora);
+    const anteriores30 = conta(agora - 60 * DIA_MS, agora - 30 * DIA_MS);
 
     return {
       id: metrica.id,
@@ -961,6 +998,9 @@ function summarizeGrowth({ fontes, now = new Date(), metricas = METRICAS_DE_CRES
       ultimos7,
       anteriores7,
       variacaoSemana: compareChange(ultimos7, anteriores7),
+      ultimos30,
+      anteriores30,
+      variacaoMes: compareChange(ultimos30, anteriores30),
       serie: dias.map((inicio, indice) => ({
         dia: new Date(inicio).toISOString(),
         valor: conta(inicio, indice === dias.length - 1 ? fimAgora : dias[indice + 1]),
@@ -1181,12 +1221,11 @@ async function getOwnerMetrics() {
     attributionsResult,
     commissionsResult,
     subscriptionsResult,
-    funnel,
   ] = await Promise.all([
     selectRows(
       'profiles',
       {
-        select: 'id,current_plan,billing_status,plan_expires_at,trial_started_at,created_at,last_seen_at,referred_by_affiliate_id',
+        select: 'id,current_plan,billing_status,access_source,plan_expires_at,trial_started_at,created_at,last_seen_at,referred_by_affiliate_id',
         // Se o Max Rows do projeto cortar, que corte as contas mais antigas —
         // as mais novas são as que pesam em ativação/retorno.
         order: 'created_at.desc',
@@ -1207,12 +1246,12 @@ async function getOwnerMetrics() {
     // antigas primeiro.
     selectRows('events', { select: 'user_id,session_id,event_name,metadata,created_at', order: 'created_at.desc' }),
     selectRows('anamneses', { select: 'user_id,created_at', order: 'created_at.desc' }),
-    selectRows('usage_logs', { select: 'user_id,action,created_at', order: 'created_at.desc' }),
+    // metadata traz durationMs das hipóteses (latência da IA).
+    selectRows('usage_logs', { select: 'user_id,action,metadata,created_at', order: 'created_at.desc' }),
     selectRows('affiliates', { select: 'id,code,status,commission_rate' }),
     selectRows('affiliate_attributions', { select: 'affiliate_id,buyer_user_id,created_at', order: 'created_at.desc' }),
     selectRows('affiliate_commissions', { select: 'affiliate_id,gross_amount,commission_amount,status,payout_id,created_at', order: 'created_at.desc' }),
     selectRows('billing_subscriptions', { select: 'user_id,status,created_at', order: 'created_at.desc' }),
-    getGlobalFunnelSessions().catch(() => ({ sessions: [], truncated: false })),
   ]);
 
   const profiles = profilesResult.rows;
@@ -1242,18 +1281,14 @@ async function getOwnerMetrics() {
     .filter(([, resultado]) => resultado.truncated)
     .map(([nome]) => nome);
 
-  const metricasFunil = funnel.sessions.length
-    ? buildFunnelMetrics(funnel.sessions)
-    : getZeroFunnelMetrics();
-  const alcance = summarizeStepReach(events, FUNNEL_STEPS);
-  // Quando o funil estrito perde etapas que o alcance mostra, é sinal de que a
-  // ordem declarada não bate com o comportamento real — vale avisar em vez de
-  // deixar o zero passar por resultado.
-  const funilDivergente = metricasFunil.etapas.some((etapa, indice) => (
-    etapa.total === 0 && (alcance.etapas[indice]?.sessoes || 0) > 0
-  ));
+  const alcanceBruto = summarizeStepReach(events, ETAPAS_DE_ALCANCE.map((etapa) => etapa.nome));
+  const alcance = {
+    ...alcanceBruto,
+    etapas: alcanceBruto.etapas.map((etapa, indice) => ({ ...etapa, rotulo: ETAPAS_DE_ALCANCE[indice].rotulo })),
+  };
 
   const retorno = summarizeReturn(profiles);
+  const now = new Date();
 
   return {
     geradoEm: new Date().toISOString(),
@@ -1267,6 +1302,12 @@ async function getOwnerMetrics() {
       total: anamneses.length,
       usuariosDistintos: new Set(anamneses.map((a) => a.user_id).filter(Boolean)).size,
     },
+    resumoSemana: summarizeWeek({ profiles, events, payments, now }),
+    testePro: summarizeTrialCohorts({ profiles, events, usos, payments, now }),
+    adocao: summarizeAdoption({ events, usos, now }),
+    templatesMaisUsados: summarizeTopTemplates(events, { now }),
+    dicas: summarizeTips({ events, usos }),
+    latenciaIa: summarizeAiLatency(usos, { now }),
     ativacao: summarizeActivation({ profiles, events, usos }),
     usoDeRecursos: summarizeFeatureUsage(usos),
     organizacoes: summarizeOrganizations(events, profiles),
@@ -1277,7 +1318,6 @@ async function getOwnerMetrics() {
     retencao: summarizeRetention(events),
     eventos: summarizeEventUsage(events),
     alcance,
-    funil: metricasFunil,
     afiliados: summarizeAffiliates({
       affiliates,
       attributions,
@@ -1287,8 +1327,6 @@ async function getOwnerMetrics() {
     }),
     avisos: buildWarnings({
       tabelasTruncadas,
-      funnelTruncated: funnel.truncated,
-      funilDivergente,
       retornoSemRegistro: retorno.semRegistro,
       faltaLastSeen,
       faltaMotivoRecusa,
@@ -1354,6 +1392,7 @@ function buildWarnings({
 }
 
 module.exports = {
+  ETAPAS_DE_ALCANCE,
   getOwnerMetrics,
   isOwnerMetricsStorageAvailable,
   buildWarnings,
