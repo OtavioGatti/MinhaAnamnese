@@ -116,6 +116,11 @@ const MONOGRAPH_TEXT_FIELDS = [
   ['geriatricUse', 'Uso Geriátrico'],
   ['perioperative', 'Perioperatório'],
   ['monitoring', 'Monitoramento'],
+  // Uso consagrado que a bula brasileira não traz (ex.: midazolam IM na crise
+  // convulsiva). Fica separado das indicações para a bula continuar sendo só a
+  // bula; o texto cita a diretriz e é escrito e revisado à mão, nunca pela IA
+  // (a automação editorial não conhece este campo).
+  ['offLabelUse', 'Uso Fora da Bula'],
   ['references', 'Referências'],
   ['reviewedBy', 'Revisado por'],
 ];

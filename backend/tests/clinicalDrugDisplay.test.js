@@ -54,3 +54,20 @@ test('gestação usa o rótulo novo da bula; revisão diz em que dá para confia
   assert.equal(getReviewState({ monograph: { clinicalReviewStatus: 'Precisa correção' } }).tone, 'danger');
   assert.equal(getReviewState({}).tone, 'neutral');
 });
+
+test('uso fora da bula aparece na aba principal, depois das indicações, sempre com aviso', async () => {
+  const { buildSectionsByTab } = await import(MODULO);
+  const drug = {
+    adultDosage: '2 mg IV',
+    monograph: { indications: 'Sedação', offLabelUse: 'Crise convulsiva: 10 mg IM.\nFonte: diretriz X.' },
+  };
+
+  const principal = buildSectionsByTab(drug).principal;
+  const keys = principal.map((s) => s.key);
+  const offLabel = principal.find((s) => s.key === 'offLabelUse');
+
+  assert.ok(keys.indexOf('offLabelUse') > keys.indexOf('indications'));
+  assert.match(offLabel.notice, /Não consta da bula brasileira/);
+  // Sem texto, a seção some como as outras.
+  assert.equal(buildSectionsByTab({ monograph: {} }).principal.some((s) => s.key === 'offLabelUse'), false);
+});

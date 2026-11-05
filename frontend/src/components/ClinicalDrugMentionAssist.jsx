@@ -675,6 +675,7 @@ function ClinicalDrugQuickModal({ drug, onClose, onOpenCatalog }) {
                     key={section.key}
                     title={section.title}
                     text={section.text}
+                    notice={section.notice}
                     expanded={Boolean(expanded[section.key])}
                     onToggle={() => setExpanded((current) => ({ ...current, [section.key]: !current[section.key] }))}
                   />

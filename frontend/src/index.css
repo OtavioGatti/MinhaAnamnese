@@ -4647,6 +4647,10 @@ body {
   background: #fef2f2;
 }
 
+.clinical-drug-section-notice {
+  margin-bottom: 0.6rem;
+}
+
 .clinical-tool-page {
   display: grid;
   gap: 1rem;

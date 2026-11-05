@@ -51,6 +51,15 @@ export const DRUG_SECTION_DEFINITIONS = [
   { key: 'adultDosage', tab: 'principal', title: 'Posologia adulto', read: (drug) => drug.adultDosage },
   { key: 'pediatricDosage', tab: 'principal', title: 'Posologia pediátrica', read: (drug) => drug.pediatricDosage },
   { key: 'administration', tab: 'principal', title: 'Administração', read: (drug) => drug.monograph?.administration },
+  // Uso de prática que a bula brasileira não traz. Vem sempre com o aviso, para
+  // não ser lido como indicação aprovada.
+  {
+    key: 'offLabelUse',
+    tab: 'principal',
+    title: 'Uso fora da bula',
+    notice: 'Não consta da bula brasileira. Uso baseado na diretriz citada no texto; confira a fonte e a situação clínica antes de usar.',
+    read: (drug) => drug.monograph?.offLabelUse,
+  },
   { key: 'presentations', tab: 'principal', title: 'Apresentações', read: (drug) => drug.presentations || drug.anvisaPresentations },
   { key: 'commercialNames', tab: 'principal', title: 'Nomes comerciais', read: (drug) => getCommercialNames(drug).join('\n') },
   { key: 'mechanism', tab: 'principal', title: 'Mecanismo de ação', read: (drug) => drug.monograph?.mechanism },

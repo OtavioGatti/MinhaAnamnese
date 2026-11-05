@@ -109,6 +109,16 @@ test('monograph reúne as seções novas e ignora as vazias', () => {
   });
 });
 
+test('uso fora da bula vai para a monograph separado das indicações', () => {
+  const drug = mapWithProperties({
+    'Indicações': richText('Sedação em procedimentos.'),
+    'Uso Fora da Bula': richText('Crise convulsiva sem acesso venoso: 10 mg IM.\nFonte: diretriz X.'),
+  });
+
+  assert.equal(drug.monograph.indications, 'Sedação em procedimentos.');
+  assert.equal(drug.monograph.offLabelUse, 'Crise convulsiva sem acesso venoso: 10 mg IM.\nFonte: diretriz X.');
+});
+
 test('medicamento antigo sem nenhum campo novo gera monograph vazio', () => {
   assert.deepEqual(mapDrug({}).monograph, {});
 });

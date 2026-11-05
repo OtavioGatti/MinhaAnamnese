@@ -22,7 +22,8 @@ export function ClinicalDrugSectionBody({ title, text }) {
   );
 }
 
-export function ClinicalDrugSection({ title, text, expanded, onToggle }) {
+// `notice`: aviso fixo da seção (ex.: uso fora da bula), mostrado antes do texto.
+export function ClinicalDrugSection({ title, text, notice, expanded, onToggle }) {
   return (
     <section className="clinical-drug-section">
       <button
@@ -39,6 +40,11 @@ export function ClinicalDrugSection({ title, text, expanded, onToggle }) {
 
       {expanded ? (
         <div className="clinical-drug-section-content">
+          {notice ? (
+            <div className="clinical-drug-review warning clinical-drug-section-notice">
+              <span>{notice}</span>
+            </div>
+          ) : null}
           <ClinicalDrugSectionBody title={title} text={text} />
         </div>
       ) : null}
