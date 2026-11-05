@@ -117,6 +117,7 @@ tests/anamnese-evals/
 
 ```env
 VITE_API_URL=http://localhost:3001/api
+VITE_PRODUCT_TIPS=
 VITE_SUPABASE_URL=
 VITE_SUPABASE_ANON_KEY=
 ```
