@@ -3,7 +3,7 @@ const {
   getClinicalDrugBySlug,
   listClinicalDrugs,
 } = require('../services/clinicalDrugs');
-const { recordFeatureUsage } = require('../services/trialUsage');
+const { isAutomaticOpen, recordFeatureUsage } = require('../services/trialUsage');
 const { resolveSupabaseUser } = require('../utils/supabaseAuth');
 
 function getQueryParam(req, name) {
@@ -66,12 +66,17 @@ module.exports = async function handler(req, res) {
         });
       }
 
-      // Rastreia consumo no trial (por recurso único; não bloqueia).
-      await recordFeatureUsage({
-        userId: auth.user.id,
-        feature: 'clinicalDrugs',
-        resourceKey: drug.slug || slug,
-      }).catch(() => null);
+      // Registra o uso por medicamento (cada um conta uma vez; não bloqueia).
+      // `auto=1` marca o 1º item que a tela abre sozinha ao carregar a lista, e
+      // isso não é consulta: até 07/11/2026 contava, e o abatacepte (o 1º do
+      // bulário) era metade dos "usos" do mês.
+      if (!isAutomaticOpen(req)) {
+        await recordFeatureUsage({
+          userId: auth.user.id,
+          feature: 'clinicalDrugs',
+          resourceKey: drug.slug || slug,
+        }).catch(() => null);
+      }
 
       return res.status(200).json({
         success: true,

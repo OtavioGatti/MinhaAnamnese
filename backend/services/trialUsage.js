@@ -198,9 +198,27 @@ async function recordFeatureUsage({ userId, feature, resourceKey = null, metadat
   });
 }
 
+// Os catálogos (bulário, prescrição, ferramentas) abrem sozinhos o 1º item da
+// lista para a tela não ficar vazia, e pedem esse detalhe com `auto=1`. Abrir
+// a página não é usar o recurso: essa leitura não entra em `usage_logs`. Sem
+// isso, o 1º item de cada catálogo virava o "mais consultado" do painel, e a
+// oferta do Pro dizia que a pessoa tinha usado um recurso que ela só viu abrir.
+function isAutomaticOpen(req) {
+  if (typeof req?.query?.auto === 'string') {
+    return req.query.auto === '1';
+  }
+
+  try {
+    return new URL(req?.url || '/', 'http://localhost').searchParams.get('auto') === '1';
+  } catch (_error) {
+    return false;
+  }
+}
+
 module.exports = {
   getTrialFeatureUsage,
   getTrialUsageSummary,
+  isAutomaticOpen,
   recordFeatureUsage,
   TRIAL_USAGE_ACTIONS,
   USAGE_ACTIONS,

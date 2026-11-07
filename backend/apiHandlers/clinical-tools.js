@@ -5,7 +5,7 @@ const {
   listClinicalToolsBySlugs,
 } = require('../services/clinicalTools');
 const { resolveSupabaseUser } = require('../utils/supabaseAuth');
-const { recordFeatureUsage } = require('../services/trialUsage');
+const { isAutomaticOpen, recordFeatureUsage } = require('../services/trialUsage');
 const { resolveClinicalToolsAccess } = require('../config/freeClinicalTools');
 
 function getQueryParam(req, name) {
@@ -80,8 +80,10 @@ module.exports = async function handler(req, res) {
       }
 
       // O cálculo acontece no navegador, então abrir a ferramenta é o único
-      // rastro de servidor que existe — e ele não depende de cookie.
-      if (auth.user?.id) {
+      // rastro de servidor que existe — e ele não depende de cookie. A abertura
+      // automática (`auto=1`, o 1º item da lista) fica de fora; se a pessoa
+      // preencher a ferramenta, a tela pede de novo sem a marca e aí conta.
+      if (auth.user?.id && !isAutomaticOpen(req)) {
         await recordFeatureUsage({
           userId: auth.user.id,
           feature: 'clinicalTools',

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { api } from '../apiClient';
 import Cid10SearchSection from './Cid10SearchSection';
 import usePersistedState from '../lib/usePersistedState';
+import useAutoSelection from '../lib/useAutoSelection';
 
 const DEFAULT_QUERY = '';
 const SEARCH_DEBOUNCE_MS = 320;
@@ -724,6 +725,12 @@ function PrescriptionGuidePage({
   const [query, setQuery] = usePersistedState('prescriptionGuide.query', DEFAULT_QUERY);
   const [guides, setGuides] = useState([]);
   const [selectedSlug, setSelectedSlug] = usePersistedState('prescriptionGuide.selectedSlug', '');
+  const selection = useAutoSelection({
+    storageKey: 'prescriptionGuide.autoSelectedSlug',
+    selectedSlug,
+    setSelectedSlug,
+    detailPath: (slug) => `/prescription-guides?slug=${encodeURIComponent(slug)}`,
+  });
   const [selectedGuide, setSelectedGuide] = useState(null);
   const [expandedSections, setExpandedSections] = useState({});
   const [loadingGuides, setLoadingGuides] = useState(false);
@@ -739,7 +746,8 @@ function PrescriptionGuidePage({
     }
 
     setQuery(initialQuery || '');
-    setSelectedSlug(initialSlug || '');
+    // Chegar por link é escolha, mesmo que o guia já estivesse aberto.
+    selection.selectByUser(initialSlug || '');
     setSelectedGuide(null);
     // Chegar por link direto (ex.: "Abrir guia relacionado" nas hipóteses)
     // sempre aponta para um protocolo, então a aba volta para ele.
@@ -774,7 +782,7 @@ function PrescriptionGuidePage({
       if (response.success && Array.isArray(response.data)) {
         setGuides(response.data);
         if (!selectedSlug && !accessState?.isTrialAccess && response.data[0]?.slug) {
-          setSelectedSlug(response.data[0].slug);
+          selection.selectAutomatically(response.data[0].slug);
         }
       } else {
         setGuides([]);
@@ -801,7 +809,7 @@ function PrescriptionGuidePage({
     async function loadGuideDetail() {
       setLoadingDetail(true);
       setError('');
-      const response = await api.get(`/prescription-guides?slug=${encodeURIComponent(selectedSlug)}`);
+      const response = await api.get(selection.detailUrl(selectedSlug));
 
       if (ignore) {
         return;
@@ -842,6 +850,8 @@ function PrescriptionGuidePage({
       return;
     }
 
+    // Copiar do guia que abriu sozinho é usá-lo: aí ele conta.
+    selection.confirmUse();
     await navigator.clipboard.writeText(content);
     setCopiedKey(key);
     window.setTimeout(() => setCopiedKey(''), 1400);
@@ -947,7 +957,7 @@ function PrescriptionGuidePage({
             }}
             guides={guides}
             selectedSlug={selectedSlug}
-            setSelectedSlug={setSelectedSlug}
+            setSelectedSlug={selection.selectByUser}
             loadingGuides={loadingGuides}
             error={error}
           />

@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { api } from '../apiClient';
+import useAutoSelection from '../lib/useAutoSelection';
 import {
   buildSectionsByTab,
   DRUG_TABS,
@@ -216,6 +217,12 @@ function ClinicalDrugPage({
   const [query, setQuery] = useState(DEFAULT_QUERY);
   const [drugs, setDrugs] = useState([]);
   const [selectedSlug, setSelectedSlug] = useState(getSlugFromPath);
+  const selection = useAutoSelection({
+    storageKey: 'clinicalDrugs.autoSelectedSlug',
+    selectedSlug,
+    setSelectedSlug,
+    detailPath: (slug) => `/clinical-drugs?slug=${encodeURIComponent(slug)}`,
+  });
   const [selectedDrug, setSelectedDrug] = useState(null);
   const [loadingDrugs, setLoadingDrugs] = useState(false);
   const [loadingDetail, setLoadingDetail] = useState(false);
@@ -263,7 +270,7 @@ function ClinicalDrugPage({
       if (response.success && Array.isArray(response.data)) {
         setDrugs(response.data);
         if (!selectedSlug && response.data[0]?.slug) {
-          setSelectedSlug(response.data[0].slug);
+          selection.selectAutomatically(response.data[0].slug);
         }
       } else {
         setDrugs([]);
@@ -290,7 +297,7 @@ function ClinicalDrugPage({
     async function loadDrugDetail() {
       setLoadingDetail(true);
       setError('');
-      const response = await api.get(`/clinical-drugs?slug=${encodeURIComponent(selectedSlug)}`);
+      const response = await api.get(selection.detailUrl(selectedSlug));
 
       if (ignore) {
         return;
@@ -373,7 +380,7 @@ function ClinicalDrugPage({
           setQuery={setQuery}
           drugs={drugs}
           selectedSlug={selectedSlug}
-          setSelectedSlug={setSelectedSlug}
+          setSelectedSlug={selection.selectByUser}
           loadingDrugs={loadingDrugs}
           error={error}
         />

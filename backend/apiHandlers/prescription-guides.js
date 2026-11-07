@@ -4,6 +4,7 @@ const {
   listPrescriptionGuides,
 } = require('../services/prescriptionGuides');
 const {
+  isAutomaticOpen,
   recordFeatureUsage,
 } = require('../services/trialUsage');
 const { resolveSupabaseUser } = require('../utils/supabaseAuth');
@@ -71,14 +72,18 @@ module.exports = async function handler(req, res) {
 
       let nextProfile = profile;
 
-      await recordFeatureUsage({
-        userId: auth.user.id,
-        feature: 'prescriptionGuides',
-        resourceKey: slug,
-        metadata: {
-          title: guide.title,
-        },
-      }).catch(() => null);
+      // `auto=1`: o 1º guia que a tela abre sozinha para quem já é Pro. Não é
+      // consulta, então não conta (no teste a tela nem abre o 1º).
+      if (!isAutomaticOpen(req)) {
+        await recordFeatureUsage({
+          userId: auth.user.id,
+          feature: 'prescriptionGuides',
+          resourceKey: slug,
+          metadata: {
+            title: guide.title,
+          },
+        }).catch(() => null);
+      }
 
       if (profile?.access_state?.isTrialAccess) {
         nextProfile = await ensureUserProfile(auth.user).catch(() => profile);

@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { api } from '../apiClient';
 import CatalogFilterPanel, { getCatalogFilterValues } from './CatalogFilterPanel';
 import usePersistedState from '../lib/usePersistedState';
+import useAutoSelection from '../lib/useAutoSelection';
 import ExamsSection from './ExamsSection';
 import ManeuversSection from './ManeuversSection';
 import {
@@ -1011,6 +1012,12 @@ function ClinicalToolsPage({
   // para que eles não sumam conforme a busca estreita o resultado.
   const [catalog, setCatalog] = useState([]);
   const [selectedSlug, setSelectedSlug] = usePersistedState('clinicalTools.selectedSlug', initialToolSlug);
+  const selection = useAutoSelection({
+    storageKey: 'clinicalTools.autoSelectedSlug',
+    selectedSlug,
+    setSelectedSlug,
+    detailPath: (slug) => `/clinical-tools?slug=${encodeURIComponent(slug)}`,
+  });
   const [selectedTool, setSelectedTool] = useState(null);
   // Respostas marcadas ficam guardadas por ferramenta: trocar de calculadora, ir
   // à Home e voltar preserva o preenchimento de cada uma.
@@ -1064,7 +1071,7 @@ function ClinicalToolsPage({
         }
 
         if (!selectedSlug && response.data[0]?.slug) {
-          setSelectedSlug(response.data[0].slug);
+          selection.selectAutomatically(response.data[0].slug);
         }
       } else {
         setTools([]);
@@ -1093,7 +1100,7 @@ function ClinicalToolsPage({
       setLoadingDetail(true);
       setError('');
       setCopied(false);
-      const response = await api.get(`/clinical-tools?slug=${encodeURIComponent(selectedSlug)}`);
+      const response = await api.get(selection.detailUrl(selectedSlug));
 
       if (ignore) {
         return;
@@ -1149,7 +1156,9 @@ function ClinicalToolsPage({
     setQuery(DEFAULT_QUERY);
     setCategory('');
     setSubcategory('');
-    setSelectedSlug(initialToolSlug);
+    // Chegar por link é escolha, mesmo que a ferramenta já estivesse aberta.
+    selection.selectByUser(initialToolSlug);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [initialToolSlug]);
 
   const categories = useMemo(() => getCatalogFilterValues(catalog, 'category'), [catalog]);
@@ -1178,7 +1187,8 @@ function ClinicalToolsPage({
       return;
     }
 
-    setSelectedSlug(visibleTools[0].slug);
+    selection.selectAutomatically(visibleTools[0].slug);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedSlug, visibleTools]);
 
   const result = useMemo(() => {
@@ -1232,6 +1242,8 @@ function ClinicalToolsPage({
   }
 
   function updateFieldValue(fieldId, value) {
+    // Preencher a ferramenta que abriu sozinha é usá-la: aí ela conta.
+    selection.confirmUse();
     setCopied(false);
     setValuesByTool((current) => ({
       ...current,
@@ -1367,7 +1379,7 @@ function ClinicalToolsPage({
             subcategories={subcategories}
             tools={visibleTools}
             selectedSlug={selectedSlug}
-            setSelectedSlug={setSelectedSlug}
+            setSelectedSlug={selection.selectByUser}
             loadingTools={loadingTools}
             error={error}
           />
