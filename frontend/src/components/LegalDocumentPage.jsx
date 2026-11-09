@@ -1,5 +1,5 @@
-export const LEGAL_DOCUMENT_VERSION = '2026-10-16';
-export const LEGAL_LAST_UPDATED = '16/10/2026';
+export const LEGAL_DOCUMENT_VERSION = '2026-11-09';
+export const LEGAL_LAST_UPDATED = '09/11/2026';
 
 const TERMS_SECTIONS = [
   {
@@ -88,14 +88,19 @@ const PRIVACY_SECTIONS = [
       'Mercado Pago é utilizado para processamento de pagamentos e gestão de assinaturas do plano profissional.',
       'Render e Vercel são utilizados para hospedagem da infraestrutura do backend e frontend.',
       'Notion é utilizado internamente como CMS editorial para sincronização de templates e guias, sem acesso aos dados gerados pelos usuários.',
+      'Além dos serviços essenciais acima, usamos duas ferramentas de medição que só funcionam se você aceitar os cookies não essenciais no banner de privacidade.',
+      'Google (Google Analytics e Google Ads) é utilizado para medir, de forma agregada, as visitas e o uso do site e para saber se um cadastro veio de um anúncio do Google.',
+      'Meta Platforms (Pixel da Meta) é utilizada para medir o resultado dos nossos anúncios no Facebook e no Instagram. O Pixel só é carregado para visitantes sem conta logada, na página inicial e nas páginas de Termos e Privacidade; ele nunca é carregado na área logada. Informamos à Meta apenas que houve uma visita, um cadastro enviado ou um pagamento aprovado (neste caso, com o valor pago), junto com os identificadores dos cookies do próprio Pixel. O aviso de pagamento aprovado é enviado sem carregar o Pixel. Não enviamos à Meta e-mail, nome, celular, texto de anamnese nem qualquer dado clínico.',
     ],
   },
   {
     title: '4. Uso de Cookies',
     paragraphs: [
       'O Minha Anamnese utiliza cookies e tecnologias semelhantes para manter sua sessão de usuário ativa e segura, lembrar preferências de interface e templates, e monitorar métricas gerais de uso para melhorar a estabilidade e performance do site.',
-      'Ao acessar a plataforma pela primeira vez, você poderá consentir com o uso de cookies não essenciais através do nosso banner de privacidade.',
+      'Ao acessar a plataforma pela primeira vez, ou quando esta parte da política mudar, você poderá consentir com o uso de cookies não essenciais através do nosso banner de privacidade.',
+      'Os cookies não essenciais são de medição e publicidade: os do Google Analytics e do Google Ads (por exemplo, _ga e _gcl_aw) e os do Pixel da Meta (_fbp e _fbc). Eles servem para medir visitas e para saber se um cadastro ou uma assinatura veio de um anúncio. Sem o seu aceite, essas ferramentas não são carregadas e esses cookies não são gravados.',
       'Cookies essenciais, necessários para autenticação e funcionamento básico, permanecem ativos mesmo quando cookies não essenciais são recusados.',
+      'Para rever a sua escolha, apague os dados deste site no navegador: o banner volta a aparecer na próxima visita.',
     ],
   },
   {
