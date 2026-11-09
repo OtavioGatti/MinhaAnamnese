@@ -85,6 +85,7 @@ const SupportModal = lazy(() => import('./components/SupportModal'));
 const SemiannualCheckoutModal = lazy(() => import('./components/SemiannualCheckoutModal'));
 const ClinicalDrugPage = lazy(() => import('./components/ClinicalDrugPage'));
 const ClinicalToolsPage = lazy(() => import('./components/ClinicalToolsPage'));
+const MaterialsPage = lazy(() => import('./components/MaterialsPage'));
 const EvolutionPage = lazy(() => import('./components/EvolutionPage'));
 const PrescriptionGuidePage = lazy(() => import('./components/PrescriptionGuidePage'));
 const ProfilePage = lazy(() => import('./components/ProfilePage'));
@@ -325,6 +326,10 @@ function getInitialWorkspacePageFromPath() {
 
   if (path === '/ferramentas') {
     return 'clinicalTools';
+  }
+
+  if (path === '/materiais') {
+    return 'materials';
   }
 
   // Link de um medicamento: /bulario/<slug>. A página lê o slug do endereço.
@@ -3951,6 +3956,13 @@ function App() {
           >
             Avaliação
           </button>
+          <button
+            type="button"
+            className={`product-nav-item ${currentPage === 'materials' ? 'active' : ''}`}
+            onClick={() => handleNavigate('materials')}
+          >
+            Materiais
+          </button>
           {user && isAffiliate ? (
             <button
               type="button"
@@ -4662,6 +4674,21 @@ function App() {
           initialToolSlug={clinicalToolTarget}
           initialManeuverSlug={maneuverTarget}
           initialExamSlug={examTarget}
+        />
+      )}
+
+      {currentPage === 'materials' && (
+        <MaterialsPage
+          user={user}
+          isPro={isPro}
+          onLogin={() => {
+            setAuthMode('login');
+            setAuthError('');
+            setAuthPanelAberto(true);
+          }}
+          onRequestUpgrade={() => handleUpgradeInsights('materials')}
+          onMaterialDownloaded={(slug) => trackEvent('material_baixado', { slug })}
+          onMaterialLinkOpened={(slug) => trackEvent('material_link_aberto', { slug })}
         />
       )}
 

@@ -774,6 +774,7 @@ const ROTULOS_DE_RECURSO = {
   trial_insight: 'Avaliação da anamnese',
   trial_user_template: 'Template próprio',
   clinical_tool: 'Calculadora clínica',
+  material_download: 'Material baixado',
 };
 
 // Uso por recurso pelo registro do servidor: não depende de cookie e vale para

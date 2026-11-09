@@ -54,6 +54,9 @@ const ALLOWED_EVENTS = new Set([
   // Ferramentas clínicas (o cálculo é no navegador) e frases prontas
   'ferramenta_calculada',
   'frase_pronta_usada',
+  // Aba Materiais: PDF baixado e página oficial de escala aberta.
+  'material_baixado',
+  'material_link_aberto',
   // Checkout: do link do Mercado Pago recebido até a volta de lá
   'checkout_redirecionado',
   'checkout_erro',

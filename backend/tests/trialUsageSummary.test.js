@@ -47,6 +47,7 @@ test('sem armazenamento o resumo volta zerado, com as mesmas chaves', async () =
     'clinicalTools',
     'diagnosticHypotheses',
     'insights',
+    'materials',
     'prescriptionGuides',
     'referralLetters',
     'userTemplates',

@@ -15,12 +15,13 @@ const TRIAL_USAGE_FEATURES = Object.keys(TRIAL_USAGE_ACTIONS);
 // limite consumido.
 const EXTRA_USAGE_ACTIONS = {
   clinicalTools: 'clinical_tool',
+  materials: 'material_download',
 };
 
 const USAGE_ACTIONS = { ...TRIAL_USAGE_ACTIONS, ...EXTRA_USAGE_ACTIONS };
 
 // Contam por recurso único (mesmo item visto de novo não soma).
-const UNIQUE_RESOURCE_FEATURES = new Set(['prescriptionGuides', 'clinicalDrugs', 'clinicalTools']);
+const UNIQUE_RESOURCE_FEATURES = new Set(['prescriptionGuides', 'clinicalDrugs', 'clinicalTools', 'materials']);
 
 function getTrialUsageConfig() {
   return {
