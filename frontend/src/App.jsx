@@ -102,7 +102,7 @@ const COOKIE_CONSENT_KEY = 'minha-anamnese-cookie-consent';
 // Política: mudar a Política (ex.: celular no cadastro, 14/10/2026) não pode
 // reabrir o banner de cookies para todo mundo — até a pessoa clicar de novo, os
 // eventos de uso deixariam de ser medidos. Só sobe se a parte de cookies mudar.
-const COOKIE_CONSENT_VERSION = '2026-07-13';
+const COOKIE_CONSENT_VERSION = '2026-11-09';
 const AFFILIATE_REFERRAL_KEY = 'minha-anamnese-affiliate-ref';
 // Como o código chegou (link ou digitado): vai ao checkout para registro.
 const AFFILIATE_REFERRAL_SOURCE_KEY = 'minha-anamnese-affiliate-ref-source';
@@ -1520,9 +1520,6 @@ function App() {
       // sessão, senão o sinal se perderia antes de o usuário estar autenticado.
       if (data.session?.user && consumeSignupConfirmationIntent()) {
         trackSignupConversion(data.session.user.id);
-        trackMetaCompleteRegistration(data.session.user.id, {
-          consent: canTrackNonEssentialCookies(readCookieConsent()),
-        });
         setEmailConfirmedBanner({ email: data.session.user.email || '' });
       }
 
@@ -1542,9 +1539,6 @@ function App() {
       // aqui. Consumir o intent garante que só um dos dois caminhos dispara.
       if (session?.user && consumeSignupConfirmationIntent()) {
         trackSignupConversion(session.user.id);
-        trackMetaCompleteRegistration(session.user.id, {
-          consent: canTrackNonEssentialCookies(readCookieConsent()),
-        });
         setEmailConfirmedBanner({ email: session.user.email || '' });
       }
 
@@ -3313,6 +3307,11 @@ function App() {
       canal: trafficOrigin.canal,
       utm_campaign: trafficOrigin.utm_campaign,
     });
+
+    // Pixel do Meta: conta o cadastro aqui, no envio, enquanto a pessoa ainda
+    // é visitante na vitrine. Só dispara com o Pixel carregado (aceite de
+    // cookies na versão atual); o id fica só na trava local.
+    trackMetaCompleteRegistration(data?.user?.id);
 
     if (data?.session?.user) {
       resetAuthFormState();

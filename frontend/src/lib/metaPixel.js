@@ -9,11 +9,15 @@
 //    enableMetaPixel/disableMetaPixel. Ao sair da vitrine (login, bulário,
 //    ferramentas...) o script e o `fbq` são removidos da página.
 //
-// 2. As conversões (cadastro confirmado, pagamento aprovado) acontecem com a
-//    pessoa já logada. Elas saem por uma requisição de imagem ao endpoint do
-//    Pixel, SEM carregar o script: o Meta recebe só o nome do evento e os
-//    identificadores de clique/navegador que o próprio Pixel gravou na vitrine
-//    (_fbp/_fbc), nunca o endereço real da página nem nada da tela.
+// 2. O pagamento aprovado (Subscribe) acontece com a pessoa já logada. Ele sai
+//    por uma requisição de imagem ao endpoint do Pixel, SEM carregar o script:
+//    o Meta recebe só o nome do evento, o valor e os identificadores de
+//    clique/navegador que o próprio Pixel gravou na vitrine (_fbp/_fbc, lidos
+//    dos cookies e mandados na URL — cookie do nosso domínio não vai sozinho
+//    para facebook.com), nunca o endereço real da página nem nada da tela.
+//
+// O cadastro (CompleteRegistration) sai no envio do formulário, ainda na
+// vitrine, pelo próprio fbq — ver trackMetaCompleteRegistration.
 //
 // Sem correspondência avançada: nenhum e-mail, nome, telefone ou id de usuário
 // sai daqui. A detecção automática (cliques em botão, metadados da página) e o
@@ -172,19 +176,30 @@ function remember(key, value) {
   }
 }
 
-// Uma vez por usuário, no mesmo ponto do trackSignupConversion. O userId só
-// serve para a trava local; não é enviado.
-export function trackMetaCompleteRegistration(userId, { consent = false } = {}) {
-  if (!userId || !consent || !isAvailable()) {
+// Cadastro ENVIADO com sucesso, não o e-mail confirmado: o link de confirmação
+// costuma abrir em outro navegador (app de e-mail), sem os cookies do Pixel e
+// sem o aceite de cookies, e a conversão ficaria sem anúncio de origem. No
+// envio a pessoa ainda é visitante sem sessão, na vitrine, com o Pixel já
+// carregado — por isso sai pelo próprio fbq, e só se ele estiver ativo.
+//
+// Uma vez por cadastro: `signupId` (id que o signUp devolve) só serve para a
+// trava local e não é enviado. Nenhum parâmetro vai junto do evento.
+export function trackMetaCompleteRegistration(signupId) {
+  if (!active || typeof window.fbq !== 'function' || urlCarriesSecret()) {
     return false;
   }
 
-  if (readStored(REGISTRATION_KEY) === userId) {
+  const dedupeKey = String(signupId || '');
+
+  if (dedupeKey && readStored(REGISTRATION_KEY) === dedupeKey) {
     return false;
   }
 
-  remember(REGISTRATION_KEY, userId);
-  sendConversion('CompleteRegistration');
+  if (dedupeKey) {
+    remember(REGISTRATION_KEY, dedupeKey);
+  }
+
+  window.fbq('track', 'CompleteRegistration');
   return true;
 }
 

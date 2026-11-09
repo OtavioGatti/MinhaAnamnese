@@ -8,8 +8,9 @@ function CookieConsentBanner({ visible, onAccept, onReject }) {
       <div className="cookie-consent-copy">
         <strong>Privacidade e cookies</strong>
         <p>
-          Usamos cookies essenciais para login e segurança. Cookies não essenciais ajudam a medir uso e melhorar estabilidade.
-          Você pode aceitar ou recusar métricas não essenciais.
+          Usamos cookies essenciais para login e segurança. Com o seu aceite, usamos também cookies de medição de uso
+          (Google) e de medição e publicidade da Meta, para saber se os nossos anúncios funcionam. O Pixel da Meta não
+          roda na área logada e não recebe dado clínico. Você pode aceitar ou recusar.
         </p>
         <a href="/privacidade">Ler Política de Privacidade</a>
       </div>
