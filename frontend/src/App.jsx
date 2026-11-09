@@ -57,6 +57,13 @@ import EmailConfirmedBanner from './components/EmailConfirmedBanner';
 import CookieConsentBanner from './components/CookieConsentBanner';
 import { initGoogleAnalytics, trackGoogleAnalyticsPageView } from './lib/googleAnalytics';
 import { initGoogleAdsTag, trackSignupConversion } from './lib/googleAdsConversion';
+import {
+  disableMetaPixel,
+  enableMetaPixel,
+  trackMetaCompleteRegistration,
+  trackMetaPageView,
+  trackMetaSubscribe,
+} from './lib/metaPixel';
 import LegalConsentModal from './components/LegalConsentModal';
 import LegalDocumentPage, { LEGAL_DOCUMENT_VERSION } from './components/LegalDocumentPage';
 import WelcomeOnboardingModal from './components/WelcomeOnboardingModal';
@@ -1000,6 +1007,7 @@ function App() {
   const organizacaoIdRef = useRef(0);
   const trackingSessionIdRef = useRef(null);
   const cookieConsentSyncedRef = useRef('');
+  const metaChargedAmountRef = useRef({});
   const profileHydratedUserRef = useRef(null);
   const lastSavedProfileSnapshotRef = useRef(null);
   const [templates, setTemplates] = useState([]);
@@ -1512,6 +1520,9 @@ function App() {
       // sessão, senão o sinal se perderia antes de o usuário estar autenticado.
       if (data.session?.user && consumeSignupConfirmationIntent()) {
         trackSignupConversion(data.session.user.id);
+        trackMetaCompleteRegistration(data.session.user.id, {
+          consent: canTrackNonEssentialCookies(readCookieConsent()),
+        });
         setEmailConfirmedBanner({ email: data.session.user.email || '' });
       }
 
@@ -1531,6 +1542,9 @@ function App() {
       // aqui. Consumir o intent garante que só um dos dois caminhos dispara.
       if (session?.user && consumeSignupConfirmationIntent()) {
         trackSignupConversion(session.user.id);
+        trackMetaCompleteRegistration(session.user.id, {
+          consent: canTrackNonEssentialCookies(readCookieConsent()),
+        });
         setEmailConfirmedBanner({ email: session.user.email || '' });
       }
 
@@ -1856,6 +1870,27 @@ function App() {
 
     trackGoogleAnalyticsPageView(`/${currentPage === 'home' ? '' : currentPage}`, currentPage);
   }, [currentPage, cookieConsent]);
+
+  // Pixel do Meta: só na vitrine — visitante sem conta logada, na home ou nas
+  // páginas legais (login, cadastro e planos abrem por cima da home). Com
+  // sessão, ou no bulário/ferramentas/prescrições, o script é removido: ali
+  // circula dado clínico e o conjunto de dados é de "Saúde e bem-estar".
+  const metaPixelAllowed =
+    canTrackNonEssentialCookies(cookieConsent) &&
+    !loadingUser &&
+    !user &&
+    (Boolean(legalPage) || currentPage === 'home');
+
+  useEffect(() => {
+    if (!metaPixelAllowed) {
+      disableMetaPixel();
+      return;
+    }
+
+    if (enableMetaPixel()) {
+      trackMetaPageView();
+    }
+  }, [metaPixelAllowed, currentPage, legalPage]);
 
   useEffect(() => {
     if (
@@ -2697,6 +2732,23 @@ function App() {
 
   // Pergunta ao servidor pelo pedido do semestral até ele ser pago, encerrar
   // ou o prazo acabar. Para sozinho se o modal fechar ou abrir de novo.
+  // Subscribe do Pixel do Meta: só quando a aprovação é confirmada aqui na
+  // página. O valor é o que o servidor disse que cobrou; a estimativa local
+  // (mesmo arredondamento) cobre a resposta que não o traz.
+  const guardarValorCobrado = (planKey, response) => {
+    metaChargedAmountRef.current[planKey] =
+      Number(response?.data?.charged_amount) ||
+      estimateMonthlyCharge(BILLING_PLANS[planKey].price, referralDiscount?.rate);
+  };
+
+  const reportarAssinaturaAoMeta = (planKey, reference) => {
+    trackMetaSubscribe({
+      value: metaChargedAmountRef.current[planKey],
+      reference: `${planKey}:${reference || ''}`,
+      consent: canTrackNonEssentialCookies(readCookieConsent()),
+    });
+  };
+
   const acompanharPedidoSemestral = async (orderId, { intervaloMs, ateMs }) => {
     const rodada = semiannualRoundRef.current;
 
@@ -2719,6 +2771,7 @@ function App() {
 
         setSemiannualState((current) => ({ ...current, stage: 'confirmado' }));
         trackEvent('checkout_cartao_confirmado', { plan_key: 'semiannual' });
+        reportarAssinaturaAoMeta('semiannual', orderId);
         return;
       }
 
@@ -2743,6 +2796,7 @@ function App() {
       sourceUrl: window.location.href,
     });
     const desfecho = describeSemiannualResult(response);
+    guardarValorCobrado('semiannual', response);
 
     // Só o tipo do resultado e o código do motivo: nada do cartão.
     trackEvent('checkout_cartao_resultado', {
@@ -2763,6 +2817,7 @@ function App() {
 
       setSemiannualState((current) => ({ ...current, stage: 'confirmado', metodo: 'cartao' }));
       trackEvent('checkout_cartao_confirmado', { plan_key: 'semiannual' });
+      reportarAssinaturaAoMeta('semiannual', desfecho.orderId);
       return desfecho;
     }
 
@@ -2844,6 +2899,7 @@ function App() {
         if (isPaidAccessConfirmed(profileResponse.data)) {
           setCardCheckoutState((current) => ({ ...current, stage: 'confirmado' }));
           trackEvent('checkout_cartao_confirmado', { plan_key: 'monthly' });
+          reportarAssinaturaAoMeta('monthly', preapprovalId);
           return;
         }
       }
@@ -2864,6 +2920,7 @@ function App() {
       sourceUrl: window.location.href,
     });
     const desfecho = describeCardCheckoutResult(response);
+    guardarValorCobrado('monthly', response);
 
     // Só o tipo do resultado e o código do motivo: nada do cartão.
     trackEvent('checkout_cartao_resultado', {
