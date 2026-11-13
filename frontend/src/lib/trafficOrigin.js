@@ -56,7 +56,7 @@ function normalizeSource(source) {
   return value;
 }
 
-function channelFromUserAgent(userAgent) {
+export function channelFromUserAgent(userAgent) {
   const ua = String(userAgent || '');
   if (/musical_ly|BytedanceWebview|TikTok/i.test(ua)) {
     return 'tiktok';

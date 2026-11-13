@@ -3294,60 +3294,89 @@ body {
   line-height: 1.3;
 }
 
+/* Banner de cookies: faixa curta no rodapé, centralizada. z-index 125 = acima
+   das janelas (.app-modal-backdrop, 120) e abaixo das dicas (130), para dar
+   para responder com os termos ou os planos abertos. */
 .cookie-consent-banner {
   position: fixed;
-  right: 1rem;
-  bottom: 1rem;
-  z-index: 80;
-  width: min(560px, calc(100vw - 2rem));
+  left: 0;
+  right: 0;
+  bottom: max(0.75rem, env(safe-area-inset-bottom));
+  z-index: 125;
+  width: min(900px, calc(100vw - 1.5rem));
+  margin: 0 auto;
   display: flex;
   align-items: center;
-  justify-content: space-between;
   gap: 1rem;
-  padding: 1rem;
+  padding: 0.75rem 1rem;
   border: 1px solid rgba(191, 219, 254, 0.92);
-  border-radius: 16px;
-  background: rgba(255, 255, 255, 0.97);
-  box-shadow: 0 20px 42px rgba(15, 23, 42, 0.18);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 14px 34px rgba(15, 23, 42, 0.2);
 }
 
 .cookie-consent-copy {
-  display: grid;
-  gap: 0.25rem;
-}
-
-.cookie-consent-copy strong {
-  color: var(--gray-900);
-  font-size: 0.92rem;
-}
-
-.cookie-consent-copy p {
-  color: var(--gray-600);
-  font-size: 0.82rem;
+  flex: 1 1 auto;
+  min-width: 0;
+  margin: 0;
+  color: var(--gray-700);
+  font-size: 0.84rem;
   line-height: 1.45;
 }
 
 .cookie-consent-copy a {
-  width: fit-content;
   color: var(--primary-700);
-  font-size: 0.8rem;
   font-weight: 700;
-  text-decoration: none;
-}
-
-.cookie-consent-copy a:hover {
   text-decoration: underline;
+  white-space: nowrap;
 }
 
 .cookie-consent-actions {
   display: flex;
   align-items: center;
-  gap: 0.55rem;
+  gap: 0.5rem;
   flex-shrink: 0;
 }
 
-.cookie-consent-actions .btn {
-  white-space: nowrap;
+/* Recusar e Aceitar com o mesmo estilo e o mesmo tamanho: nenhum dos dois em
+   destaque. */
+.cookie-consent-choice {
+  min-width: 112px;
+  min-height: 40px;
+  padding: 0.5rem 1rem;
+  background: white;
+  color: var(--primary-700);
+  border: 1.5px solid var(--primary-600);
+  font-weight: 600;
+}
+
+.cookie-consent-choice:not(:disabled):hover {
+  background: var(--primary-50);
+}
+
+/* Enquanto o banner existe, a página e as janelas ganham folga embaixo do
+   tamanho dele (--cookie-banner-space, medido no CookieConsentBanner): nada
+   fica coberto sem saída. */
+html.has-cookie-banner body {
+  padding-bottom: var(--cookie-banner-space, 0px);
+}
+
+html.has-cookie-banner .app-modal-backdrop {
+  align-items: flex-start;
+  overflow-y: auto;
+  padding-bottom: calc(1.25rem + var(--cookie-banner-space, 0px));
+}
+
+html.has-cookie-banner .app-modal-backdrop > * {
+  margin-block: auto;
+}
+
+html.has-cookie-banner .legal-consent-modal {
+  max-height: min(calc(100dvh - 2rem - var(--cookie-banner-space, 0px)), 820px);
+}
+
+html.has-cookie-banner .plan-comparison-modal {
+  max-height: min(calc(100dvh - 2.5rem - var(--cookie-banner-space, 0px)), 760px);
 }
 
 .future-page-placeholder,
@@ -7575,10 +7604,25 @@ body {
     padding: 1rem 1rem 4.5rem;
   }
 
-  .legal-header,
+  .legal-header {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  /* Celular: texto em cima, Recusar e Aceitar lado a lado embaixo (mesma
+     largura). A faixa fica em ~1/4 da tela. */
   .cookie-consent-banner {
     align-items: stretch;
     flex-direction: column;
+    gap: 0.6rem;
+    width: calc(100vw - 1rem);
+    bottom: max(0.5rem, env(safe-area-inset-bottom));
+    padding: 0.75rem;
+  }
+
+  .cookie-consent-copy {
+    font-size: 0.8rem;
+    line-height: 1.4;
   }
 
   .legal-nav {
@@ -7591,12 +7635,21 @@ body {
   }
 
   .cookie-consent-actions {
-    align-items: stretch;
-    flex-direction: column-reverse;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
   }
 
-  .cookie-consent-actions .btn {
+  /* No celular a janela não encolhe para caber acima do banner (o texto dos
+     termos sumiria): ela mantém a altura e o fundo rola até os botões ficarem
+     acima da faixa (folga do backdrop = altura do banner). */
+  html.has-cookie-banner .legal-consent-modal,
+  html.has-cookie-banner .plan-comparison-modal {
+    max-height: calc(100dvh - 1.5rem);
+  }
+
+  .cookie-consent-choice {
     width: 100%;
+    min-width: 0;
   }
 }
 

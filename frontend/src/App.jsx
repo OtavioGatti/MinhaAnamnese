@@ -37,6 +37,8 @@ import {
 } from './lib/signupGate';
 import PhoneCaptureModal from './components/PhoneCaptureModal';
 import { classifyTrafficOrigin, ORIGIN_STORAGE_KEY, parseStoredOrigin, resolveStoredOrigin } from './lib/trafficOrigin';
+import { classifyConsentContext, createConsentStatsCounter, sendConsentStat } from './lib/consentStats';
+import { isTrackingEnvironment } from './lib/gtag';
 import DiagnosticHypothesesPanel from './components/DiagnosticHypothesesPanel';
 import FocusedClinicalReview from './components/FocusedClinicalReview';
 import InputSection from './components/InputSection';
@@ -449,6 +451,16 @@ function saveCookieConsent(consent) {
 function canTrackNonEssentialCookies(consent) {
   return consent?.status === 'accepted' && consent?.version === COOKIE_CONSENT_VERSION;
 }
+
+// Contagem anônima do banner (mostrado/aceitou/recusou) — ver lib/consentStats.js.
+// Uma instância por carga de página; em localhost não conta.
+const consentStatsCounter = createConsentStatsCounter({
+  send: (evento, context) => {
+    if (isTrackingEnvironment()) {
+      sendConsentStat(supabase, evento, context);
+    }
+  },
+});
 
 function formatRelativeTime(value) {
   const date = new Date(value);
@@ -1271,6 +1283,12 @@ function App() {
 
     return resolveStoredOrigin({ current, stored });
   });
+  // Só o que a contagem anônima do banner leva: origem pelo utm_source da
+  // chegada, celular/desktop e o app do navegador interno. Calculado no aparelho.
+  const [consentStatsContext] = useState(() => classifyConsentContext({
+    search: window.location.search,
+    userAgent: window.navigator.userAgent,
+  }));
   const [phoneCaptureState, setPhoneCaptureState] = useState({ open: false, canSkip: true });
   const [supportOpen, setSupportOpen] = useState(false);
   const handleCloseSupport = useCallback(() => setSupportOpen(false), []);
@@ -1891,6 +1909,17 @@ function App() {
     }
   }, [metaPixelAllowed, currentPage, legalPage]);
 
+  // Banner na tela para visitante sem sessão (a mesma população do Pixel):
+  // conta 1 "mostrado" nesta carga de página, sem esperar a resposta. É anônimo
+  // por construção (lib/consentStats.js), por isso não depende do aceite.
+  useEffect(() => {
+    if (cookieConsent || loadingUser || user) {
+      return;
+    }
+
+    consentStatsCounter.shown(consentStatsContext);
+  }, [consentStatsContext, cookieConsent, loadingUser, user]);
+
   useEffect(() => {
     if (
       !user?.id ||
@@ -2076,6 +2105,7 @@ function App() {
     const nextConsent = buildCookieConsent(status);
     saveCookieConsent(nextConsent);
     setCookieConsent(nextConsent);
+    consentStatsCounter.decision(status);
 
     if (status === 'rejected') {
       trackingSessionIdRef.current = null;
