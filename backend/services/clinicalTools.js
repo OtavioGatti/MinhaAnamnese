@@ -238,6 +238,27 @@ function normalizeOption(option, index) {
   };
 }
 
+// Campo que só é perguntado quando outro campo tem certo valor (ex.: a faixa de
+// hemoglobina do Blatchford depende do sexo). Fora da condição o campo não é
+// exibido, não é exigido e não entra no cálculo — por isso a regra precisa
+// existir igual nos dois lados (ver frontend/src/components/ClinicalToolsPage.jsx).
+function normalizeVisibilityRule(value) {
+  const config = safeJsonObject(value);
+  const fieldId = normalizeKey(
+    config.field_id ?? config.fieldId ?? config.field ?? config.campo ?? config.campo_id,
+  );
+  const rawValues = config.values ?? config.value ?? config.valores ?? config.valor;
+  const values = (Array.isArray(rawValues) ? rawValues : [rawValues])
+    .map((item) => normalizeKey(item))
+    .filter(Boolean);
+
+  if (!fieldId || values.length === 0) {
+    return null;
+  }
+
+  return { fieldId, values };
+}
+
 function normalizeField(field, index) {
   const label = normalizeText(field?.label || field?.title || field?.name);
 
@@ -285,6 +306,9 @@ function normalizeField(field, index) {
     showAnswer: normalizeBoolean(field?.show_answer ?? field?.showAnswer ?? field?.mostrar_resposta),
     alertFrom: normalizeOptionalNumber(
       field?.alert_from ?? field?.alertFrom ?? field?.alerta_a_partir_de ?? field?.alerta_de,
+    ),
+    visibleWhen: normalizeVisibilityRule(
+      field?.visible_when ?? field?.visibleWhen ?? field?.visivel_quando ?? field?.mostrar_quando,
     ),
     options,
   };
@@ -452,6 +476,55 @@ function validateChecklistAxis(tool) {
   return errors;
 }
 
+// Campo condicional mal configurado some da tela sem nunca ser perguntado: o
+// escore sairia menor do que o caso, sem aviso. Por isso a ferramenta não publica
+// com condição apontando para campo/valor que não existe.
+function validateFieldVisibility(tool) {
+  const errors = [];
+  const fields = Array.isArray(tool.fields) ? tool.fields : [];
+  const conditionalFields = fields.filter((field) => field.visibleWhen);
+
+  if (conditionalFields.length === 0) {
+    return errors;
+  }
+
+  if (tool.engineConfig?.axisFieldId) {
+    errors.push('campo condicional não é suportado em checklist com eixo');
+  }
+
+  conditionalFields.forEach((field) => {
+    const rule = field.visibleWhen;
+    const controller = fields.find((item) => item.id === rule.fieldId);
+
+    if (!controller) {
+      errors.push(`condição de "${field.label}" aponta para campo inexistente`);
+      return;
+    }
+
+    if (controller.id === field.id) {
+      errors.push(`condição de "${field.label}" aponta para o próprio campo`);
+      return;
+    }
+
+    if (controller.visibleWhen) {
+      errors.push(`condição de "${field.label}" depende de campo também condicional`);
+    }
+
+    if (!controller.required) {
+      errors.push(`campo "${controller.label}" precisa ser obrigatório para condicionar outro campo`);
+    }
+
+    const optionValues = new Set(controller.options.map((option) => option.value));
+    const unknownValues = rule.values.filter((value) => !optionValues.has(value));
+
+    if (unknownValues.length > 0) {
+      errors.push(`condição de "${field.label}" usa valor inexistente em "${controller.label}"`);
+    }
+  });
+
+  return errors;
+}
+
 function validateClinicalToolSchema(tool) {
   const errors = [];
 
@@ -494,6 +567,7 @@ function validateClinicalToolSchema(tool) {
   }
 
   errors.push(...validateChecklistAxis(tool));
+  errors.push(...validateFieldVisibility(tool));
 
   return {
     valid: errors.length === 0,

@@ -134,6 +134,27 @@ function getFieldSelectedItems(field, value) {
   }];
 }
 
+// Espelho de normalizeVisibilityRule (backend/services/clinicalTools.js): campo
+// condicional só é perguntado quando o campo que o controla está na condição
+// (ex.: faixa de hemoglobina do Blatchford depende do sexo). Enquanto está fora
+// da condição ele não aparece, não é exigido e não soma ponto.
+function isFieldVisible(field, values) {
+  const rule = field?.visibleWhen;
+
+  if (!rule?.fieldId || !Array.isArray(rule.values) || rule.values.length === 0) {
+    return true;
+  }
+
+  const current = values?.[rule.fieldId];
+  const selected = Array.isArray(current) ? current : [current];
+
+  return selected.some((value) => rule.values.includes(value));
+}
+
+function getVisibleFields(fields, values) {
+  return (fields || []).filter((field) => isFieldVisible(field, values));
+}
+
 function isFieldMissing(field, value) {
   if (!field?.required) {
     return false;
@@ -276,7 +297,7 @@ function calculateToolResult(tool, values) {
     return calculateChecklistToolResult(tool, values);
   }
 
-  const fields = tool?.fields || [];
+  const fields = getVisibleFields(tool?.fields, values);
   const missingFields = fields.filter((field) => isFieldMissing(field, values[field.id]));
   const configuredOutputs = Array.isArray(tool?.engineConfig?.outputs) ? tool.engineConfig.outputs : [];
 
@@ -291,9 +312,11 @@ function calculateToolResult(tool, values) {
   }
 
   if (tool.toolType === 'math_formula') {
-    const variables = fields.reduce((accumulator, field) => ({
+    const variables = (tool?.fields || []).reduce((accumulator, field) => ({
       ...accumulator,
-      [field.id]: getFieldNumericValue(field, values[field.id]),
+      [field.id]: isFieldVisible(field, values)
+        ? getFieldNumericValue(field, values[field.id])
+        : 0,
     }), {});
     const outputFallbackRanges = configuredOutputs.length === 1 ? tool.resultRanges : [];
     const outputs = configuredOutputs.map((output) => {
@@ -1394,7 +1417,10 @@ function ClinicalToolsPage({
 
                 <div className="clinical-tool-workspace">
                   <form className="clinical-tool-form">
-                    {(isChecklist ? result.activeFields : selectedTool.fields).map((field) => (
+                    {(isChecklist
+                      ? result.activeFields
+                      : getVisibleFields(selectedTool.fields, values)
+                    ).map((field) => (
                       <ClinicalToolField
                         key={field.id}
                         field={field}
